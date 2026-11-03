@@ -67,9 +67,12 @@ const MOCKS_SQL = `
 const CACHE_TTL_SECONDS = 6 * 60 * 60;
 /** Per-isolate guard so a cold KV cache does not fan out into many D1 reads. */
 const MEMORY_TTL_MS = 60_000;
+/** Pause after a D1 failure so a quota outage does not retry on every request. */
+const FAILURE_BACKOFF_MS = 5 * 60_000;
 
 let memory: { at: number; rows: SubjectStatRow[] } | null = null;
 let inflight: Promise<SubjectStatRow[]> | null = null;
+let lastFailureAt = 0;
 
 async function loadSubjectStats(): Promise<SubjectStatRow[]> {
   const cached = await readPracticeCache<SubjectStatRow[]>(SUBJECT_STATS_CACHE_KEY);
@@ -92,6 +95,7 @@ async function loadSubjectStats(): Promise<SubjectStatRow[]> {
       console.error("Subject stats refresh failed; serving the cached copy.", error);
       return cached.payload;
     }
+    lastFailureAt = Date.now();
     throw error;
   }
 }
@@ -99,10 +103,14 @@ async function loadSubjectStats(): Promise<SubjectStatRow[]> {
 /** Cached per-subject rollups. Throws when D1 fails and no cache exists. */
 export async function getSubjectStats(): Promise<SubjectStatRow[]> {
   if (memory && Date.now() - memory.at < MEMORY_TTL_MS) return memory.rows;
+  if (lastFailureAt && Date.now() - lastFailureAt < FAILURE_BACKOFF_MS) {
+    throw new Error("Subject stats are cooling down after a D1 failure.");
+  }
   if (!inflight) {
     inflight = loadSubjectStats()
       .then((rows) => {
         memory = { at: Date.now(), rows };
+        lastFailureAt = 0;
         return rows;
       })
       .finally(() => {
