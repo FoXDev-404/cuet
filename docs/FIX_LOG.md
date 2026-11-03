@@ -10,7 +10,7 @@ Review and remediation log tracking the implementation and verification of fixes
 | **Fix 1** | P0 | Environment Separation | `DONE` | Distinct DB & KV IDs in wrangler.jsonc; check-env-separation passed; export-content verified 0 user rows; purge-test-data guard tested. | Staging database provisioned on Cloudflare. |
 | **Fix 2** | P0 | Production Guards | `DONE` | Middleware guards for /dev 404, admin 503 on session in prod, bootstrap super admin creation disabled when admin exists. Proven by unit & E2E tests. | None. |
 | **Fix 3** | P0 | Paper Provenance & Rights | `DONE` | Migration 0017 applied; all 214 papers classified as unknown; policy gates (noindex, sitemap exclusion, no ads) active; takedown doc & admin dashboard built. | 214 papers pending owner clearance; copyright risk High until cleared. |
-| **Fix 4** | P0 | Explanation Honesty & Review Queue | `NOT_STARTED` | Pending implementation | Schema migration for explanation status/source, unreviewed badge, admin review queue, sample generator. |
+| **Fix 4** | P0 | Explanation Honesty & Review Queue | `DONE` | Migration 0018 applied; backfilled ai_draft/banner/unreviewed; 0 questions marked reviewed; solutions show unreviewed badge; review queue & sample CSV generated. | Owner to review docs/REVIEW_SAMPLE_100.csv and approve genuine human explanations over time. |
 | **Fix 9** | P1 | Autosave & D1 Capacity | `NOT_STARTED` | Pending implementation | Delta autosave, KV caching of version payloads, row read budgets enforced in tests. |
 | **Fix 5** | P1 | Exam Facts & Scoring from Data | `NOT_STARTED` | Pending implementation | Dynamic marking scheme from version/paper data, removal of hard-coded +5/-1, source attribution on exam pages. |
 | **Fix 6** | P1 | Structured Data | `NOT_STARTED` | Pending implementation | Remove disallowed schemas (Quiz, Course, FAQPage on practice/questions), test crawling JSON-LD. |
@@ -97,3 +97,35 @@ Review and remediation log tracking the implementation and verification of fixes
 - **Remaining Work & Risks:** Copyright risk severity remains **High** until the site owner or editorial staff marks papers as `cleared` via `/admin/pyq`. In the interim, all papers are safely shielded by forced `noindex`, sitemap exclusion, and ad blocking while remaining 100% playable for students.
 - **Owner Decisions Needed:**
   - Owner review in `/admin/pyq` to verify and transition authentic NTA public release papers from `unknown` to `cleared` over time.
+
+### Fix 4 — Explanation Honesty and Review Queue (P0)
+- **Status:** `DONE`
+- **What Changed:**
+  - `migrations/0018_explanation_provenance_and_review.sql`: Added `explanation_source`, `explanation_status`, `reviewed_by`, and `reviewed_at` columns and indexes to both `practice_questions` and `questions`.
+  - `scripts/backfill-explanation-provenance.mjs`: Script accurately categorizing questions:
+    - Banners -> `banner` (358 practice, 34 mock).
+    - Unreviewed AI bulk write-ups -> `ai_draft` (6,245 practice, 10,288 mock).
+    - None -> `none` (1,744 mock).
+    - All existing rows strictly initialized as `explanation_status = 'unreviewed'` (0 rows marked reviewed without human sign-off).
+  - `src/lib/attempts.ts` & `src/pages/result/[attemptId]/solutions.astro`:
+    - Updated query and solution UI to show a clean `"Unreviewed explanation"` badge on AI drafts/unreviewed explanations, and `"Key pending review"` on placeholder banners.
+  - `src/pages/api/admin/review/action.ts`: Review queue endpoint implementing Approve, Flag, Edit with strict policy gate: unkeyed questions (`correct_option` is NULL) cannot be marked `reviewed`.
+  - `src/pages/api/admin/review/sample.csv.ts`: Dynamic randomized review sample CSV generator.
+  - `scripts/generate-review-sample.mjs` & `docs/REVIEW_SAMPLE_100.csv`: Pre-generated 100-question sample file (70 practice, 30 mock) ready for owner review.
+  - `src/pages/admin/review.astro`: Upgraded into a full Explanation Editorial Review Queue with honest 5-card dashboard, status/source/keyed filters, and inline review actions.
+  - `tests/unit/explanation-honesty.test.ts`: Added 6 unit tests verifying schema, initial counts, sample CSV, solution badge rendering, and unkeyed review prevention.
+- **Evidence / Proof:**
+  - Practice Questions Provenance Breakdown:
+    - `ai_draft` + `unreviewed`: 6,245 / 6,603 (94.6%)
+    - `banner` + `unreviewed`: 358 / 6,603 (5.4%)
+    - `reviewed`: **0** (0.0% — zero false claims)
+  - Mock Questions Provenance Breakdown:
+    - `ai_draft` + `unreviewed`: 10,288 / 12,066 (85.3%)
+    - `banner` + `unreviewed`: 34 / 12,066 (0.3%)
+    - `none` + `unreviewed`: 1,744 / 12,066 (14.5%)
+    - `reviewed`: **0**
+  - Sample File: `docs/REVIEW_SAMPLE_100.csv` (101 lines, 100 questions).
+  - `npm run test`: 262/262 unit tests pass.
+  - Astro Build / Check: 331 files clean, 0 errors, 0 warnings.
+- **Remaining Work & Risks:** Explanations remain marked unreviewed in student view until editors sign off on them in the review queue.
+- **Owner Decisions Needed:** Owner can open `docs/REVIEW_SAMPLE_100.csv` or `/admin/review` to inspect and approve verified human write-ups.

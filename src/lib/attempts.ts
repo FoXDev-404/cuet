@@ -58,6 +58,8 @@ export type SolutionQuestion = AttemptQuestion & {
   explanation_hi: string | null;
   explanation_image_url: string | null;
   explanation_image_alt: string | null;
+  explanation_source?: "official" | "human" | "ai_draft" | "banner" | "none";
+  explanation_status?: "unreviewed" | "reviewed" | "flagged";
   selected: number | null;
   time_spent_sec: number;
   marked_for_review: number;
@@ -400,6 +402,7 @@ export async function loadResult(attempt: AttemptRow): Promise<AttemptResult | n
             p.image_url AS passage_image_url, p.image_alt AS passage_image_alt,
             q.correct_option, q.explanation, q.explanation_hi,
             q.explanation_image_url, q.explanation_image_alt,
+            q.explanation_source, q.explanation_status,
             aa.selected, COALESCE(aa.time_spent_sec, 0) AS time_spent_sec,
             COALESCE(aa.marked_for_review, 0) AS marked_for_review, aa.is_correct
      FROM mock_questions mq

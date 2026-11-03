@@ -382,7 +382,18 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
           ) : null}
 
           <div class="mt-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950">
-            <p class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Explanation</p>
+            <div class="flex items-center gap-2">
+              <p class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Explanation</p>
+              {question.explanation_status === "unreviewed" || question.explanation_source === "ai_draft" ? (
+                <span class="inline-flex items-center rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
+                  Unreviewed explanation
+                </span>
+              ) : question.explanation_source === "banner" ? (
+                <span class="inline-flex items-center rounded bg-neutral-200 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
+                  Key pending review
+                </span>
+              ) : null}
+            </div>
             <div class="mt-2 text-sm leading-7" set:html={renderRichText(question.explanation)}></div>
             {question.explanation_image_url ? (
               <img
