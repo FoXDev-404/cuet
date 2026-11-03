@@ -1,0 +1,360 @@
+{
+  "exam": {
+    "id": "local-chemistry-2026-05-11-shift-1",
+    "slug": "chemistry-2026-05-11-shift-1",
+    "title": "CUET UG Chemistry 11 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2026,
+    "examDate": "2026-05-11",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Chemistry_May11_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "When blood cells are placed in 1% (w/v) NaCl aqueous solution:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cell will burst"
+          },
+          {
+            "id": "B",
+            "text": "Cell will shrink"
+          },
+          {
+            "id": "C",
+            "text": "Cell will swell"
+          },
+          {
+            "id": "D",
+            "text": "Cell remains as such"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "A solution of copper sulphate cannot be stored in a zinc vessel because",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Copper is more reactive than zinc"
+          },
+          {
+            "id": "B",
+            "text": "Reduction potential of copper is less than zinc"
+          },
+          {
+            "id": "C",
+            "text": "Oxidation potential of copper is higher than zinc"
+          },
+          {
+            "id": "D",
+            "text": "Reduction potential of copper is higher than zinc"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The rate of the reaction,  $ 2\\text{NO} + \\text{Cl}_2 \\rightarrow 2\\text{NOCl} $ is given by the rate equation, rate = k[ $ \\text{NO} $]^2[ $ \\text{Cl}_2 $]. The value of the rate constant can be increased by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "increasing the concentration of NO."
+          },
+          {
+            "id": "B",
+            "text": "increasing the temperature."
+          },
+          {
+            "id": "C",
+            "text": "increasing the concentration of the  $ Cl_{2} $."
+          },
+          {
+            "id": "D",
+            "text": "doing all of these."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Identify the product C in the series.\n\n $$ \\mathrm{C}_{6}\\mathrm{H}_{5}\\mathrm{NO}_{2}\\xrightarrow{\\mathrm{Fe}/\\mathrm{HCl}}A\\xrightarrow{\\mathrm{NaNO}_{2}+\\mathrm{HCl},273\\mathrm{~K}}B\\xrightarrow{\\mathrm{H}_{2}\\mathrm{O},283\\mathrm{~K}}C $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ C_{6}H_{5}OH $"
+          },
+          {
+            "id": "B",
+            "text": "$ C_{6}H_{5}CH_{2}OH $"
+          },
+          {
+            "id": "C",
+            "text": "$ C_{6}H_{5}CHO $"
+          },
+          {
+            "id": "D",
+            "text": "$ C_{6}H_{5}NH_{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Which of the following is the strongest base?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Aniline"
+          },
+          {
+            "id": "B",
+            "text": "N-methyl aniline"
+          },
+          {
+            "id": "C",
+            "text": "O-methyl aniline"
+          },
+          {
+            "id": "D",
+            "text": "Benzylamine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "At the state of dynamic equilibrium, for solute + solvent gives solution.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Rate of dissolution = Rate of unsaturation."
+          },
+          {
+            "id": "B",
+            "text": "Rate of dissolution = Rate of crystallization"
+          },
+          {
+            "id": "C",
+            "text": "Rate of dissolution = Rate of saturation"
+          },
+          {
+            "id": "D",
+            "text": "Rate of crystallization = Rate of saturation."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Which of the following expression correctly represents molar conductivity?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\Lambda_{m}=\\tfrac{K}{C} $$"
+          },
+          {
+            "id": "B",
+            "text": "$ \\Lambda_{m} = \\frac{KA}{1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\Lambda_{m}=KV $"
+          },
+          {
+            "id": "D",
+            "text": "all of these"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "For the given Nernst equation\n\n $$ \\begin{array}{r}{E_{\\mathrm{c e l l}}=E_{\\mathrm{c e l l}}^{\\circ}-\\frac{R T}{n F}\\ln\\left[\\frac{[\\mathrm{M g}^{2+}]}{[\\mathrm{A g}^{+}]}\\right]}\\end{array} $$ \n\nWhich of the following representation is correct?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ Ag^{+} $ | Ag | |  $ Mg^{2+} $ | Mg"
+          },
+          {
+            "id": "B",
+            "text": "$ Mg^{2+} $ |Mg||Ag|  $ Ag^{+} $"
+          },
+          {
+            "id": "C",
+            "text": "Mg  $ \\left|Mg^{2+}\\right|\\left|Ag^{+}\\right|Ag $"
+          },
+          {
+            "id": "D",
+            "text": "Mg  $ \\left|Mg^{2+}\\right| $  $ \\left|Ag\\right|Ag^{+} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "The oxidation potentials of A and B are +2.37 V and +1.66 V respectively. In chemical reactions",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A will be replaced by B"
+          },
+          {
+            "id": "B",
+            "text": "A will replace B"
+          },
+          {
+            "id": "C",
+            "text": "A will not replace B"
+          },
+          {
+            "id": "D",
+            "text": "A and B will not replace each other"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "The rate of the reaction,  $ 2NO + Cl_{2} \\rightarrow 2NOCl $ is given by the rate equation, rate = k[NO] $ ^{2} $[Cl $ _{2} $]. The value of the rate constant can be increased by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "increasing the concentration of NO."
+          },
+          {
+            "id": "B",
+            "text": "increasing the temperature."
+          },
+          {
+            "id": "C",
+            "text": "increasing the concentration of the  $ Cl_{2} $."
+          },
+          {
+            "id": "D",
+            "text": "doing all of these."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

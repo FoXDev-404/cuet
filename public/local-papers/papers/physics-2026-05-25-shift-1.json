@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-25-shift-1",
+    "slug": "physics-2026-05-25-shift-1",
+    "title": "CUET UG Physics 25 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-25",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Physics_May25_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "A circular plane sheet of radius 10 cm is placed in a uniform electric field of  $ 5 \\times 10^{5} $ N C $ ^{-1} $, making an angle of  $ 60^{\\circ} $ with the field. The electric flux through the sheet is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ 1.36\\times10^{2}\\mathrm{N m^{2}C^{-1}} $$"
+          },
+          {
+            "id": "B",
+            "text": "$ 1.36 \\times 10^{4} $ N m $ ^{2} $C $ ^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 0.515 \\times 10^{2} $ N m $ ^{2} $C $ ^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 0.515 \\times 10^{4} $ N m $ ^{2} $C $ ^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Two parallel infinite line charges $+\\lambda$ and $-\\lambda$ are placed with a separation distance $R$ in free space. The net electric field exactly mid-way between the two charges is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "zero"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{2\\lambda}{\\pi\\varepsilon_{0}R} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\frac{\\lambda}{\\pi\\varepsilon_{0}R} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{\\lambda}{2\\pi\\varepsilon_{0}R} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "An electric dipole of moment  $ \\vec{p} $ is placed in a uniform electric field  $ \\vec{E} $. Then\n\n(i) the torque on the dipole is  $ \\vec{p} \\times \\vec{E} $.\n\n(ii) the potential energy of the system is  $ \\vec{p} \\cdot \\vec{E} $.\n\n(iii) the resultant force on the dipole is zero.\n\nChoose the correct option.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(i), (ii) and (iii) are correct"
+          },
+          {
+            "id": "B",
+            "text": "(i) and (iii) are correct and (ii) is wrong"
+          },
+          {
+            "id": "C",
+            "text": "Only (i) is correct"
+          },
+          {
+            "id": "D",
+            "text": "(i) and (ii) are correct and (iii) is wrong"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "A parallel plate capacitor having area A and separated by distance d is filled by a copper plate of thickness b. The new capacity is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\frac{\\varepsilon_{0}A}{d+\\frac{b}{2}} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{\\varepsilon_{0}A}{2d} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\frac{\\varepsilon_{0}A}{d_{c}-b_{a}} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{2\\varepsilon_{0}A}{d+\\frac{b}{2}} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "A parallel plate capacitor of capacitance  $ 5 \\, \\mu F $ and plate separation  $ 6 \\, cm $ is connected to a  $ 1 \\, V $ battery and charged. A dielectric of dielectric constant  $ 4 $ and thickness  $ 4 \\, cm $ is introduced between the plates of the capacitor. The additional charge that flows into the capacitor from the battery is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2\\ \\mu C $"
+          },
+          {
+            "id": "B",
+            "text": "$ 3\\ \\mu C $"
+          },
+          {
+            "id": "C",
+            "text": "$ 5\\ \\mu C $"
+          },
+          {
+            "id": "D",
+            "text": "$ 10\\ \\mu C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "A slab of material of dielectric constant K has the same area A as the plates of a parallel plate capacitor, and has thickness  $ \\left(\\frac{3}{4}d\\right) $, where d is the separation of the plates. The capacitance when the slab is inserted between the plates is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\frac{\\varepsilon_{0}A}{d}\\left(\\frac{K+3}{4K}\\right) $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{\\varepsilon_{0}A}{d}\\left(\\frac{2K}{K+3}\\right) $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\frac{\\varepsilon_{0}A}{d}\\left(\\frac{K}{K+3}\\right) $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{\\varepsilon_{0}A}{d}\\left(\\frac{4K}{K+3}\\right) $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "A wire has a resistance of 2.5 Ω at 28°C and a resistance of 2.9 Ω at 100°C. The temperature coefficient of resistivity of the material of the wire is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1.06 \\times 10^{-3} \\,^{\\circ}C^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 3.5 \\times 10^{-2} \\,^{\\circ}C^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 2.22 \\times 10^{-3} \\,^{\\circ}C^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 3.95 \\times 10^{-2} \\,^{\\circ}C^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Choose the correct combination of three resistances 1  $ \\Omega $, 2  $ \\Omega $ and 3  $ \\Omega $ to get equivalent resistance  $ \\frac{11}{5} $  $ \\Omega $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "All three are combined in parallel"
+          },
+          {
+            "id": "B",
+            "text": "All three are combined in series"
+          },
+          {
+            "id": "C",
+            "text": "$ 1 \\, \\Omega $ and  $ 2 \\, \\Omega $ are in parallel and  $ 3 \\, \\Omega $ is in series with both"
+          },
+          {
+            "id": "D",
+            "text": "$ 2 \\, \\Omega $ and  $ 3 \\, \\Omega $ are combined in parallel and  $ 1 \\, \\Omega $ is in series with both"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "A battery of emf 15 V and internal resistance of 4 Ω is connected to a resistor. If the current in the circuit is 2 A, the resistance of the resistor and terminal voltage of the battery will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2.5 Ω, 6 V"
+          },
+          {
+            "id": "B",
+            "text": "3.5  $ \\Omega $, 6 V"
+          },
+          {
+            "id": "C",
+            "text": "2.5  $ \\Omega $, 7 V"
+          },
+          {
+            "id": "D",
+            "text": "3.5  $ \\Omega $, 7 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Two cells $\\varepsilon_{1}$ and $\\varepsilon_{2}$ are connected in opposition to each other as shown in the figure. The cell $\\varepsilon_{1}$ is of emf 9 V and internal resistance 3 $\\Omega$. The cell $\\varepsilon_{2}$ is of emf 7 V and internal resistance 7 $\\Omega$. The potential difference between the points A and B is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "8.4 V"
+          },
+          {
+            "id": "B",
+            "text": "5.6 V"
+          },
+          {
+            "id": "C",
+            "text": "7.8 V"
+          },
+          {
+            "id": "D",
+            "text": "6.6 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

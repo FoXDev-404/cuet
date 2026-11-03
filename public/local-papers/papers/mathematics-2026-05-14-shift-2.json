@@ -1,0 +1,350 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-14-shift-2",
+    "slug": "mathematics-2026-05-14-shift-2",
+    "title": "CUET UG Mathematics 14 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-14",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May14_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "If $f(x)=x^{5}-5x^{3}+5x^{2}-1$, then the number of critical points of $f(x)$ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "The integral \\int\\frac{2+x^{4}}{1+x^{2}}dx is equal to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{3}x^{3} + 3\\tan^{-1}x - x + C $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{3}x^{3} + 3\\tan^{-1}x + x + C $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{3}x^{3} - 3\\tan^{-1}x - x + C $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{3}x^{3} - 3\\tan^{-1}x + x + C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The value of the integral  $ I = \\int_{-3}^{3}(x^{3}-x)dx $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{3}{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "x"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "The integral  $ \\int e^x (\\tan^{-1} x + \\frac{1}{1+x^2}) dx $ is equal to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ e^{x}(\\tan^{-1}x+2)+C $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\tan^{-1}x+C $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ e^{x}\\tan^{-1}x+C $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ e^{x}\\cot^{-1}x+C $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The value of  $ \\int_{0}^{2}|x-2|dx= $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "3/2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "If  $ X + Y = \\begin{pmatrix} 5 & 3 \\\\ 0 & 7 \\end{pmatrix} $ and  $ X - Y = \\begin{pmatrix} 7 & 1 \\\\ 2 & 3 \\end{pmatrix} $. Then X and Y are",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ X = \\begin{pmatrix} 6 & 2 \\\\ 1 & 5 \\end{pmatrix} $ and  $ Y = \\begin{pmatrix} -1 & 1 \\\\ -1 & 2 \\end{pmatrix} $"
+          },
+          {
+            "id": "B",
+            "text": "$ X = \\begin{pmatrix} 0 & 5 \\\\ 1 & 4 \\end{pmatrix} $ and  $ Y = \\begin{pmatrix} -1 & -1 \\\\ -1 & 2 \\end{pmatrix} $\n\n $$ \\left(\\mathrm{C}\\right)X=\\begin{pmatrix}6&2\\\\ 1&5\\end{pmatrix}and Y=\\begin{pmatrix}-1&-1\\\\ -1&2\\end{pmatrix} $$"
+          },
+          {
+            "id": "D",
+            "text": "$X = \\begin{pmatrix} 1 & 4 \\\\ 5 & 0 \\end{pmatrix}$ and $Y = \\begin{pmatrix} 0 & 2 \\\\ 1 & 1 \\end{pmatrix}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "A certain type of fish has a 4/5 probability of surviving in a pond, while another fish has a 2/5 probability of survival. What is the probability that exactly one of them survives?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2/5"
+          },
+          {
+            "id": "B",
+            "text": "9/16"
+          },
+          {
+            "id": "C",
+            "text": "14/25"
+          },
+          {
+            "id": "D",
+            "text": "16/25"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "A card is picked at random from a pack of 52 playing cards. Given that the picked card is a\n\nking, the probability of this card to be a card of spade is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{4}{13} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{4} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "If  $ \\vec{a} $ and  $ \\vec{b} $ are unit vectors, then the angle between  $ \\vec{a} $ and  $ \\vec{b} $ for  $ \\sqrt{3}\\vec{a}-\\vec{b} $ to be a unit vector is given by :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\pi/6 $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\pi/4 $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\pi/3 $"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\pi/3 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Consider the function  $ f(x) = -2x^3 - 9x^2 - 12x + 5 $. Then, which of the following is/are correct?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ f(x) $ decreasing in  $ (0, \\infty) $ and increasing in  $ (-\\infty, 0) $"
+          },
+          {
+            "id": "B",
+            "text": "$ f(x) $ increasing in  $ (-\\infty,1) \\cup (2, \\infty) $ and decreasing in  $ (1,2) $"
+          },
+          {
+            "id": "C",
+            "text": "$ f(x) $ increasing in  $ (0, \\infty) $ and decreasing in  $ (-\\infty, 0) $"
+          },
+          {
+            "id": "D",
+            "text": "$ f(x) $ is increasing in  $ (-2,-1) $ and decreasing in  $ (-\\infty,-2)\\cup(-1,\\infty) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

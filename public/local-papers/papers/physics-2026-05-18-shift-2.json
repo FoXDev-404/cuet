@@ -1,0 +1,378 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-18-shift-2",
+    "slug": "physics-2026-05-18-shift-2",
+    "title": "CUET UG Physics 18 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-18",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Physics_May18_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "What are the respective numbers of $\\alpha$ and $\\beta$ particles emitted respectively in the following radioactive decay?\n\n $$ ^{200}_{90}X \\longrightarrow ^{168}_{80}Y $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "8 and 8"
+          },
+          {
+            "id": "B",
+            "text": "8 and 6"
+          },
+          {
+            "id": "C",
+            "text": "6 and 8"
+          },
+          {
+            "id": "D",
+            "text": "6 and 6"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Current I is flowing in conductor shaped as shown in the figure. The radius of the curved part is r and the length of straight portion is very large. The value of the magnetic field at the centre O will be\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-18-shift-2/q02-figure-1.jpg\" alt=\"Figure 1 for question 2\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\mu_{0}I}{4\\pi r}\\left(\\frac{3\\pi}{2}+1\\right) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\mu_{0}I}{4\\pi r}\\left(\\frac{3\\pi}{2}-1\\right) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\mu_0I}{4\\pi r}\\left(\\frac{pi}{2}+1\\right) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\mu_0 I}{4 \\pi r} \\left( \\frac{\\pi}{2} - 1 \\right) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-18-shift-2/q02-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The magnetic induction at the centre O in the figure shown is\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-18-shift-2/q03-figure-1.jpg\" alt=\"Figure 1 for question 3\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\mu_{0}i}{4}\\left(\\frac{1}{R_{1}}-\\frac{1}{R_{2}}\\right) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\mu_{0}i}{4}\\left(\\frac{1}{R_{1}}+\\frac{1}{R_{2}}\\right) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\mu_{0}i}{4}(R_{1}-R_{2}) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\mu_{0}i}{4}(R_{1}+R_{2}) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q03-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-18-shift-2/q03-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 3"
+          }
+        ]
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Three long, straight parallel wires, carrying current, are arranged as shown in figure. The force experienced by a 25 cm length of wire C is\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-18-shift-2/q04-figure-1.jpg\" alt=\"Figure 1 for question 4\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 10^{-3} $ N"
+          },
+          {
+            "id": "B",
+            "text": "$ 2.5 \\times 10^{-3} $ N"
+          },
+          {
+            "id": "C",
+            "text": "Zero"
+          },
+          {
+            "id": "D",
+            "text": "$ 1.5 \\times 10^{-3} $ N"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q04-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-18-shift-2/q04-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "A steady current / flow through a long straight wire of radius 'a'. The current is uniformly\n\ndistributed across its cross section. The ratio of the magnetic fields due to the wire at distance  $ \\frac{a}{4} $ and 3a respectively from the axis of the wire is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3:4"
+          },
+          {
+            "id": "B",
+            "text": "4:3"
+          },
+          {
+            "id": "C",
+            "text": "2:3"
+          },
+          {
+            "id": "D",
+            "text": "1:4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "In the figure shown, the magnetic field induction at the point O will be\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-18-shift-2/q06-figure-1.jpg\" alt=\"Figure 1 for question 6\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\frac{\\mu_{0}i}{2\\pi r} $$"
+          },
+          {
+            "id": "B",
+            "text": "$ \\left(\\frac{\\mu_{0}}{4\\pi}\\right)\\left(\\frac{i}{r}\\right)(\\pi+2) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\left(\\frac{\\mu_{0}}{4\\pi}\\right)\\left(\\frac{i}{r}\\right)(\\pi+1) $\n\n $$ \\frac{\\mu_{0}i}{4\\pi r}(\\pi-2) $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q06-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-18-shift-2/q06-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 6"
+          }
+        ]
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The nucleus of helium atom contains two protons that are separated by a distance  $ 3.0 \\times 10^{-15} $ m. The magnitude of the electrostatic force that each proton exerts on the other is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20.6 N"
+          },
+          {
+            "id": "B",
+            "text": "25.6 N"
+          },
+          {
+            "id": "C",
+            "text": "15.6 N"
+          },
+          {
+            "id": "D",
+            "text": "12.6 N"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Under the action of a given coulombic force the acceleration of an electron is  $ 2.5 \\times 10^{22} $ m s $ ^{-2} $. Then the magnitude of the acceleration of a proton under the action of same force is nearly",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ 1.6\\times10^{-19}m s^{-2} $$ \n\n $$ 9.1\\times10^{31}\\mathrm{~m~s}^{-2} $$ \n\n $$ 1.5\\times10^{19}\\mathrm{~m~s}^{-2} $$"
+          },
+          {
+            "id": "D",
+            "text": "$ 1.6 \\times 10^{27} $ m s $ ^{-2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "If the charge on an object is doubled then electric field becomes",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "half"
+          },
+          {
+            "id": "B",
+            "text": "double"
+          },
+          {
+            "id": "C",
+            "text": "unchanged"
+          },
+          {
+            "id": "D",
+            "text": "thrice"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Which of the following statements is not true about electric field lines?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Electric field lines start from positive charge and end at negative charge."
+          },
+          {
+            "id": "B",
+            "text": "Two electric field lines can never cross each other."
+          },
+          {
+            "id": "C",
+            "text": "Electrostatic field lines do not form any closed loops."
+          },
+          {
+            "id": "D",
+            "text": "Electric field lines cannot be taken as continuous curve"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

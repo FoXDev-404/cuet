@@ -1,0 +1,356 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-22-shift-1",
+    "slug": "mathematics-2026-05-22-shift-1",
+    "title": "CUET UG Mathematics 22 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-22",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Mathematics_May22_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Find the total area of the region bounded by the parabola y^{2}=4x and the straight line y=x.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{4}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{8}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{16}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Determine the sum of the order and the degree of the differential equation given by:\n\n $ y = x \\frac{dy}{dx} + \\sqrt{1 + \\left(\\frac{dy}{dx}\\right)^2} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "If the three vectors  $ \\vec{a} = \\hat{i} + \\lambda \\hat{j} + \\hat{k} $,  $ \\vec{b} = \\hat{j} + \\hat{k} $, and  $ \\vec{c} = \\hat{i} + \\hat{j} $ are coplanar, find the exact value of the scalar constant  $ \\lambda $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "-2"
+          },
+          {
+            "id": "D",
+            "text": "2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "A straight vector line makes equal acute angles  $ \\alpha = \\beta = \\gamma $ with all three primary coordinates axes. Find the absolute value of  $ \\cos \\alpha $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{\\sqrt{3}} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{\\sqrt{2}} $"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Simplify the inverse trigonometric expression to find its principal value:  $ \\tan^{-1}\\left(\\frac{1}{2}\\right)+\\tan^{-1}\\left(\\frac{1}{3}\\right) $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\pi}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\tan^{-1}\\left(\\frac{2}{5}\\right) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\pi}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\pi}{4} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Under what condition will a linear programming system containing objective function variables have no common feasible region?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "When the objective function coefficients are set strictly to zero."
+          },
+          {
+            "id": "B",
+            "text": "When the system of linear constraints is mutually inconsistent, meaning there is no overlapping coordinate space that satisfies all conditions at once."
+          },
+          {
+            "id": "C",
+            "text": "When all constraints are written using strictly non-negative bounding limits."
+          },
+          {
+            "id": "D",
+            "text": "When the optimal solution point matches one of the outer corner coordinates."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Find the total area of the region bounded between the curve y = x^{3}, the x-axis, and the vertical lines x = -1 and x = 1.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{4} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Determine the degree of the following differential equation:  $ \\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]^{\\frac{3}{2}}=\\frac{d^2y}{dx^2} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Not defined"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "If the straight line equation  $ \\frac{x-1}{2} = \\frac{y-2}{3} = \\frac{z-3}{4} $ runs completely parallel to the plane surface given by Ax + 2y + 3z = 5, find the value of the coefficient A.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9"
+          },
+          {
+            "id": "B",
+            "text": "0"
+          },
+          {
+            "id": "C",
+            "text": "-9"
+          },
+          {
+            "id": "D",
+            "text": "-4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Find the maximum value of the linear objective function  $ Z = 3x + 4y $ subject to the system constraints:  $ x + y \\leq 4 $,  $ x \\geq 0 $, and  $ y \\geq 0 $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "12"
+          },
+          {
+            "id": "B",
+            "text": "16"
+          },
+          {
+            "id": "C",
+            "text": "24"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "exam": {
+    "id": "local-geography-2026-05-11-shift-1",
+    "slug": "geography-2026-05-11-shift-1",
+    "title": "CUET UG Geography 11 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Geography",
+    "subjectId": "local-geography",
+    "subjectCode": "GEO",
+    "year": 2026,
+    "examDate": "2026-05-11",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Geography_May11_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 9,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Match the LIST-I with LIST-II\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>LIST-I</td><td style='text-align: center; word-wrap: break-word;'>LIST-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A. Alkaline Earth metals</td><td style='text-align: center; word-wrap: break-word;'>I. s-block</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B. Transition Elements</td><td style='text-align: center; word-wrap: break-word;'>II. p-block</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C. Transuranic Elements</td><td style='text-align: center; word-wrap: break-word;'>III. d-block</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D. Metalloid</td><td style='text-align: center; word-wrap: break-word;'>IV. f-block</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I, B-II, C-III, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-III, C-IV, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-III, C-II, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-III, C-I, D-IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Which of the following is the correct chronological sequence of the 'Evolution of Geography?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Spatial Organisation"
+          },
+          {
+            "id": "B",
+            "text": "Emergence of Humanistic, Radical and Behavioural schools"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Post-modernism in Geography\n\nChoose the correct answer from the options given below:\n\n(A)3,1,2,4\n\n(B) 1,3,2,4\n\n(C) 3, 2, 1, 4\n\n(D) 2, 3, 1, 4\n\n3. Given below are two statements: one is labelled as Statement I and the other is labelled as Statement II.\n\nStatement I: The Demographic Transition Theory helps us predict the future population of any area.\n\nStatement II: In the first stage, fertility is high but mortality is low due to medical advancements.\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both Statements are correct."
+          },
+          {
+            "id": "B",
+            "text": "Statement I is correct, Statement II is incorrect."
+          },
+          {
+            "id": "C",
+            "text": "Statement I is incorrect, Statement II is correct."
+          },
+          {
+            "id": "D",
+            "text": "Both Statements are incorrect."
+          },
+          {
+            "id": "D",
+            "text": "Arrange the following continents in descending order of their population growth rate (2010–15):"
+          },
+          {
+            "id": "A",
+            "text": "Asia"
+          },
+          {
+            "id": "B",
+            "text": "Africa"
+          },
+          {
+            "id": "C",
+            "text": "Latin America"
+          },
+          {
+            "id": "D",
+            "text": "Europe\n\nChoose the correct answer from the options given below:"
+          },
+          {
+            "id": "A",
+            "text": "2,3,1,4"
+          },
+          {
+            "id": "B",
+            "text": "2,1,3,4"
+          },
+          {
+            "id": "C",
+            "text": "1,2,3,4"
+          },
+          {
+            "id": "D",
+            "text": "3,2,1,4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Which pair is NOT correctly matched regarding the components of population change?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Crude Birth Rate (CBR):  $ \\frac{Bi}{P} \\times 1000 $"
+          },
+          {
+            "id": "B",
+            "text": "Crude Death Rate (CDR):  $ \\frac{D}{P} \\times 1000 $"
+          },
+          {
+            "id": "C",
+            "text": "Growth Rate: (Births – Deaths) + (In-migration – Out-migration)"
+          },
+          {
+            "id": "D",
+            "text": "Natural Growth: Births + Deaths"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Consider the following statements about the Human Development Index (HDI):\n\n1. It was created by Dr. Mahbub-ul-Haq and Prof. Amartya Sen.\n\n2. The index ranges from 0 to 100.\n\n3. Access to resources is measured by purchasing power in US dollars.\n\nWhich is/are correct?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1 and 2"
+          },
+          {
+            "id": "B",
+            "text": "1 and 3"
+          },
+          {
+            "id": "C",
+            "text": "2 and 3"
+          },
+          {
+            "id": "D",
+            "text": "All of the above"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Identify the type of farming based on these characteristics:\n\n- Large estates owned by Europeans in colonies.\n\n• Focus on a single crop (Monoculture).\n\n• High capital investment and scientific methods.\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Intensive Subsistence"
+          },
+          {
+            "id": "B",
+            "text": "Mediterranean Agriculture"
+          },
+          {
+            "id": "C",
+            "text": "Plantation Agriculture"
+          },
+          {
+            "id": "D",
+            "text": "Extensive Commercial Grain Farming"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Arrange the following primary activities from 'Most Ancient' to 'Modern':\n\n1. Commercial Livestock Rearing\n\n2. Nomadic Herding\n\n3. Gathering\n\n4. Market Gardening\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3,2,1,4"
+          },
+          {
+            "id": "B",
+            "text": "3, 1, 2, 4"
+          },
+          {
+            "id": "C",
+            "text": "2, 3, 1, 4"
+          },
+          {
+            "id": "D",
+            "text": "3, 2, 4, 1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Match the following 'Shifting Cultivation' names with their regions:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Name</td><td style='text-align: center; word-wrap: break-word;'>Region</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A. Milpa</td><td style='text-align: center; word-wrap: break-word;'>1. Northeast India</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B. Jhumming</td><td style='text-align: center; word-wrap: break-word;'>2. Central America/Mexico</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C. Ladang</td><td style='text-align: center; word-wrap: break-word;'>3. Vietnam</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D. Ray</td><td style='text-align: center; word-wrap: break-word;'>4. Indonesia/Malaysia</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-2, B-1, C-4, D-3"
+          },
+          {
+            "id": "B",
+            "text": "A-1, B-2, C-3, D-4"
+          },
+          {
+            "id": "C",
+            "text": "A-2, B-1, C-3, D-4"
+          },
+          {
+            "id": "D",
+            "text": "A-4, B-3, C-2, D-1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Statement I: Mediterranean agriculture is highly specialized commercial agriculture.\n\nStatement II: Viticulture (grape cultivation) is a specialty of the Mediterranean region.\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Statement I is the cause of Statement II."
+          },
+          {
+            "id": "B",
+            "text": "Both statements are correct and II explains I."
+          },
+          {
+            "id": "C",
+            "text": "Both statements are correct but II does not explain I."
+          },
+          {
+            "id": "D",
+            "text": "Statement II is incorrect."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

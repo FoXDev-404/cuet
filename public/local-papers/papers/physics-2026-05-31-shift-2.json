@@ -1,0 +1,423 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-31-shift-2",
+    "slug": "physics-2026-05-31-shift-2",
+    "title": "CUET UG Physics 31 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-31",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Physics_May31_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Two charges +4μC and +9μC are separated by a distance of 3 m in vacuum. The electrostatic force between them is  $ (k=9\\times10^{9} N m^{2}C^{-2}) $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.018N"
+          },
+          {
+            "id": "B",
+            "text": "0.036N"
+          },
+          {
+            "id": "C",
+            "text": "0.054N"
+          },
+          {
+            "id": "D",
+            "text": "0.072N"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q01-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q01-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 1"
+          }
+        ]
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Given below are two statements:\n\nAssertion (A): In a pure inductive AC circuit, current lags voltage by  $ 90^{\\circ} $.\n\nReason (R): An inductor opposes the change in current flowing through it.\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "id": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "id": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "id": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q02-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "A resistor of resistance  $ 20\\Omega $ is connected across a 10V battery. The current flowing through the resistor is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 0.2A $"
+          },
+          {
+            "id": "B",
+            "text": "$ 0.5A $"
+          },
+          {
+            "id": "C",
+            "text": "$ 2A $"
+          },
+          {
+            "id": "D",
+            "text": "$ 5A $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Match the semiconductor devices in Column I with their functions in Column II.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Column I</td><td colspan=\"2\">Column II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)</td><td style='text-align: center; word-wrap: break-word;'>LED</td><td style='text-align: center; word-wrap: break-word;'>(I)</td><td style='text-align: center; word-wrap: break-word;'>Voltage Regulation</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)</td><td style='text-align: center; word-wrap: break-word;'>Zener Diode</td><td style='text-align: center; word-wrap: break-word;'>(II)</td><td style='text-align: center; word-wrap: break-word;'>Light Emission</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)</td><td style='text-align: center; word-wrap: break-word;'>Photodiode</td><td style='text-align: center; word-wrap: break-word;'>(III)</td><td style='text-align: center; word-wrap: break-word;'>Light Detection</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)</td><td style='text-align: center; word-wrap: break-word;'>Solar Cell</td><td style='text-align: center; word-wrap: break-word;'>(IV)</td><td style='text-align: center; word-wrap: break-word;'>Converts Solar Energy into Electrical Energy</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-II, B-I, C-III, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-II, C-IV, D-III"
+          },
+          {
+            "id": "C",
+            "text": "A-III, B-I, C-II, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-IV, C-I, D-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q04-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q04-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The energy of an electron in the first Bohr orbit of hydrogen atom is -13.6eV. The energy\n\nof the electron in the third orbit is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ -1.51\\,eV $"
+          },
+          {
+            "id": "B",
+            "text": "$ -3.4\\,eV $"
+          },
+          {
+            "id": "C",
+            "text": "$ -13.6\\,eV $"
+          },
+          {
+            "id": "D",
+            "text": "$ -0.85\\,eV $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q05-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q05-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Given below are two statements:\n\nAssertion (A): Electromagnetic waves can travel through vacuum.\n\nReason (R): Electromagnetic waves consist of oscillating electric and magnetic fields.\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "id": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "id": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "id": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q06-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q06-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 6"
+          },
+          {
+            "id": "q06-exp-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q06-exp-2.jpg",
+            "page": 1,
+            "alt": "Figure 2 for question 6"
+          }
+        ]
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "A convex lens has a focal length of 20 cm. An object is placed 30 cm from the lens. The image distance is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "60 cm"
+          },
+          {
+            "id": "B",
+            "text": "30 cm"
+          },
+          {
+            "id": "C",
+            "text": "20 cm"
+          },
+          {
+            "id": "D",
+            "text": "15 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q07-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q07-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 7"
+          }
+        ]
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Match the following electromagnetic waves with their applications.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Column I</td><td colspan=\"2\">Column II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)</td><td style='text-align: center; word-wrap: break-word;'>Gamma Rays</td><td style='text-align: center; word-wrap: break-word;'>(I)</td><td style='text-align: center; word-wrap: break-word;'>Radar Communication</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)</td><td style='text-align: center; word-wrap: break-word;'>X-rays</td><td style='text-align: center; word-wrap: break-word;'>(II)</td><td style='text-align: center; word-wrap: break-word;'>Cancer Treatment</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)</td><td style='text-align: center; word-wrap: break-word;'>Microwaves</td><td style='text-align: center; word-wrap: break-word;'>(III)</td><td style='text-align: center; word-wrap: break-word;'>Medical Imaging</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)</td><td style='text-align: center; word-wrap: break-word;'>Radio Waves</td><td style='text-align: center; word-wrap: break-word;'>(IV)</td><td style='text-align: center; word-wrap: break-word;'>Broadcasting</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-II, B-III, C-I, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-II, C-IV, D-III"
+          },
+          {
+            "id": "C",
+            "text": "A-II, B-IV, C-I, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-III, B-II, C-IV, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q08-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q08-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 8"
+          }
+        ]
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "A photon of wavelength 500 nm is incident on a metal surface. The energy of the photon is approximately  $ h = 6.63 \\times 10^{-34} \\, J \\, s $,  $ c = 3 \\times 10^8 \\, m/s $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1.99 \\times 10^{-19} J $"
+          },
+          {
+            "id": "B",
+            "text": "$ 3.98 \\times 10^{-19} J $"
+          },
+          {
+            "id": "C",
+            "text": "$ 5.97 \\times 10^{-19} J $"
+          },
+          {
+            "id": "D",
+            "text": "$ 7.96 \\times 10^{-19} J $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Given below are two statements:\n\nAssertion (A): In a nuclear reactor, control rods are used to control the rate of fission reaction.\n\nReason (R): Control rods absorb excess neutrons produced during fission.\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "id": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "id": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "id": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q10-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-31-shift-2/q10-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 10"
+          }
+        ]
+      }
+    ]
+  }
+}

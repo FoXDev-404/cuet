@@ -1,0 +1,344 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-29-shift-2",
+    "slug": "mathematics-2026-05-29-shift-2",
+    "title": "CUET UG Mathematics 29 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-29",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May29_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Identify the order and degree of the differential equation:\n\n $$ \\left(\\frac{d^{3}y}{dx^{3}}\\right)^{2}+4\\left(\\frac{dy}{dx}\\right)^{4}+y=\\sin(x) $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Order 3, Degree 4"
+          },
+          {
+            "id": "B",
+            "text": "Order 3, Degree 2"
+          },
+          {
+            "id": "C",
+            "text": "Order 4, Degree 3"
+          },
+          {
+            "id": "D",
+            "text": "Order 1, Degree 4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Consider a  $ 3 \\times 3 $ matrix A. If\n\n $$ \\mathrm{adj}(A)=\\begin{pmatrix}{{{2}}}&{{{0}}}&{{{0}}} \\\\{{{0}}}&{{{2}}}&{{{0}}} \\\\{{{0}}}&{{{0}}}&{{{2}}}\\end{pmatrix} $$ \n\nfind  $ \\det(A) $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "8"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "$ 2\\sqrt{2} $"
+          },
+          {
+            "id": "D",
+            "text": "2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Find the shortest distance between the lines\n\n $$ \\vec{r}=\\hat{i}+2\\hat{j}+\\hat{k}+\\lambda(\\hat{i}-\\hat{j}+\\hat{k}) $$ \n\nand\n\n $$ \\vec{r}=2\\hat{i}-\\hat{j}-\\hat{k}+\\mu(2\\hat{i}+\\hat{j}+2\\hat{k}) $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3/ $ \\sqrt{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$9/\\sqrt{54}$"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sqrt{6} $"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Maximize\n\n $$ Z=3x+4y $$ \n\nsubject to\n\n $$ x+y\\leq10,\\qquad x,y\\geq0 $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (10,0) $"
+          },
+          {
+            "id": "B",
+            "text": "$ (0,10) $"
+          },
+          {
+            "id": "C",
+            "text": "(5,5)"
+          },
+          {
+            "id": "D",
+            "text": "$ (0,0) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Probability that the second ball is red, given the first was blue (3 red and 5 blue balls, without replacement).",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3/7"
+          },
+          {
+            "id": "B",
+            "text": "3/8"
+          },
+          {
+            "id": "C",
+            "text": "2/7"
+          },
+          {
+            "id": "D",
+            "text": "5/14"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Find the local maximum of\n\n $$ f(x)=x^{3}-3x+2 $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "x=1"
+          },
+          {
+            "id": "B",
+            "text": "x=-1"
+          },
+          {
+            "id": "C",
+            "text": "x = 0"
+          },
+          {
+            "id": "D",
+            "text": "x=2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Find the domain of\n\n $$ f(x)=\\sin^{-1}(2x-1) $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ [0,1] $"
+          },
+          {
+            "id": "B",
+            "text": "$ [-1,1] $"
+          },
+          {
+            "id": "C",
+            "text": "$ [0,\\infty) $"
+          },
+          {
+            "id": "D",
+            "text": "$ [-0.5,0.5] $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Is\n\n $$ f(x)=\\left|x-2\\right| $$ \n\ndifferentiable at x = 2?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Yes"
+          },
+          {
+            "id": "B",
+            "text": "No"
+          },
+          {
+            "id": "C",
+            "text": "Only for x > 2"
+          },
+          {
+            "id": "D",
+            "text": "Only for x < 2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Find the adjoint of\n\n $$ \\boldsymbol{A}=\\begin{pmatrix}1&2\\\\ 3&4\\end{pmatrix} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\begin{pmatrix}4&-2\\\\-3&1\\end{pmatrix} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\begin{pmatrix}{{{-4}}}&{{{2}}} \\\\{{{3}}}&{{{-1}}}\\end{pmatrix} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Find the derivative of\n\n $$ f(x)=e^{x^{2}} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ e^{x^{2}} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ 2x e^{x^{2}} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ x^{2}e^{x^{2}-1} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ e^{2x} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "exam": {
+    "id": "local-chemistry-2026-05-18-shift-2",
+    "slug": "chemistry-2026-05-18-shift-2",
+    "title": "CUET UG Chemistry 18 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2026,
+    "examDate": "2026-05-18",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Chemistry_May18_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "For the reaction\n\n $$ 2\\boldsymbol{A}+\\boldsymbol{B}\\rightarrow3\\boldsymbol{C}+\\boldsymbol{D} $$ \n\nWhich of the following does not express the reaction rate?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ -\\frac{d[B]}{dt} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{d[D]}{dt} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ -\\frac{1}{2}\\frac{d[A]}{dt} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{1}{3}\\frac{d[C]}{dt} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "The oxidation potentials of A and B are\n\n $$ +2.37\\mathrm{~V}\\quad\\mathrm{a n d}\\quad+1.66\\mathrm{~V} $$ \n\nrespectively. In chemical reactions",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A will be replaced by B"
+          },
+          {
+            "id": "B",
+            "text": "A will replace B"
+          },
+          {
+            "id": "C",
+            "text": "A will not replace B"
+          },
+          {
+            "id": "D",
+            "text": "A and B will not replace each other"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "For which value of x and y, the following square planar compound shows geometrical isomers\n\n $$ [\\mathrm{P t}(\\mathrm{C l})_{\\mathrm{x}}(\\mathrm{B r})_{\\mathrm{y}}]^{2-} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1,3"
+          },
+          {
+            "id": "B",
+            "text": "3,1"
+          },
+          {
+            "id": "C",
+            "text": "2,2"
+          },
+          {
+            "id": "D",
+            "text": "1,1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Match the columns\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Column-I</td><td colspan=\"2\">Column-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)</td><td style='text-align: center; word-wrap: break-word;'>$ CH_{2}=CH-CH_{2}Cl $</td><td style='text-align: center; word-wrap: break-word;'>(p)</td><td style='text-align: center; word-wrap: break-word;'>gem-Dichloride</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)</td><td style='text-align: center; word-wrap: break-word;'>$ CH_{2}=CHX $</td><td style='text-align: center; word-wrap: break-word;'>(q)</td><td style='text-align: center; word-wrap: break-word;'>Vinylic halide</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)</td><td style='text-align: center; word-wrap: break-word;'>$ CH_{3}CHCl_{2} $</td><td style='text-align: center; word-wrap: break-word;'>(r)</td><td style='text-align: center; word-wrap: break-word;'>vic-Dichloride</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)</td><td style='text-align: center; word-wrap: break-word;'>$ CH_{2}ClCH_{2}Cl $</td><td style='text-align: center; word-wrap: break-word;'>(s)</td><td style='text-align: center; word-wrap: break-word;'>Allylic halide</td></tr></table>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ A \\to (r) $,  $ B \\to (q) $,  $ C \\to (p) $,  $ D \\to (s) $"
+          },
+          {
+            "id": "B",
+            "text": "$ A \\to (q) $,  $ B \\to (p) $,  $ C \\to (s) $,  $ D \\to (r) $"
+          },
+          {
+            "id": "C",
+            "text": "$ A \\to (s) $,  $ B \\to (q) $,  $ C \\to (p) $,  $ D \\to (r) $\n\n $$ A\\to(r),B\\to(p),C\\to(s),D\\to(q) $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "To prepare 3-ethylpentan-3-ol, the reagents needed are",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\mathrm{CH}_{3}\\mathrm{CH}_{2}\\mathrm{MgBr}+\\mathrm{CH}_{3}\\mathrm{COCH}_{2}\\mathrm{CH}_{3} $$"
+          },
+          {
+            "id": "B",
+            "text": "$ CH_{3}MgBr + CH_{3}CH_{2}CH_{2}COCH_{2}CH_{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ CH_{3}CH_{2}MgBr + CH_{3}CH_{2}COCH_{2}CH_{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ CH_{3}CH_{2}CH_{2}MgBr + CH_{3}COCH_{2}CH_{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Chromosomes are made from",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "proteins"
+          },
+          {
+            "id": "B",
+            "text": "nucleic acids"
+          },
+          {
+            "id": "C",
+            "text": "proteins and nucleic acids"
+          },
+          {
+            "id": "D",
+            "text": "carbohydrates and nucleic acids"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The electronic configuration of Cu(II) is\n\n $$ 3d^{9} $$ \n\nwhereas that of Cu(I) is\n\n $$ 3d^{10} $$ \n\nWhich of the following is correct?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cu(II) is more stable"
+          },
+          {
+            "id": "B",
+            "text": "Cu(I) is less stable"
+          },
+          {
+            "id": "C",
+            "text": "Cu(I) and Cu(II) are equally stable"
+          },
+          {
+            "id": "D",
+            "text": "Stability of Cu(I) and Cu(II) depends on nature of copper salts"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "On addition of small amount of  $ KMnO_{4} $ to concentrated  $ H_{2}SO_{4} $, a green oily compound is obtained which is highly explosive in nature. Identify the compound from the following.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ Mn_{2}O_{7} $"
+          },
+          {
+            "id": "B",
+            "text": "$ MnO_{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ MnSO_{4} $"
+          },
+          {
+            "id": "D",
+            "text": "$ Mn_{2}O_{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Which of the following oxidation state is common for all lanthanoids?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "+2"
+          },
+          {
+            "id": "B",
+            "text": "+3"
+          },
+          {
+            "id": "C",
+            "text": "+4"
+          },
+          {
+            "id": "D",
+            "text": "+5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "The magnetic nature of elements depends on the presence of unpaired electrons. Identify the configuration of transition element, which shows highest magnetic moment.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3d^{7} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 3d^{5} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 3d^{8} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 3d^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-30-shift-1",
+    "slug": "mathematics-2026-05-30-shift-1",
+    "title": "CUET UG Mathematics 30 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-30",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Mathematics_May30_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Find the order and degree of the differential equation:\n\n $$ \\sqrt{1+\\left(\\frac{dy}{dx}\\right)^{2}}=\\frac{d^{2}y}{dx^{2}} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Order 2, Degree 2"
+          },
+          {
+            "id": "B",
+            "text": "Order 2, Degree 1"
+          },
+          {
+            "id": "C",
+            "text": "Order 1, Degree 2"
+          },
+          {
+            "id": "D",
+            "text": "Order 2, Degree  $ \\frac{1}{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Find the angle between the vectors\n\n $$ \\vec{a}=\\hat{i}+\\hat{j}-\\hat{k} $$ \n\nand\n\n $$ \\vec{b}=\\hat{i}-\\hat{j}+\\hat{k}. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 0^{\\circ} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 90^{\\circ} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\cos^{-1}\\left(-\\frac{1}{3}\\right) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\cos^{-1}\\left(\\frac{1}{3}\\right) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Minimize\n\n $$ Z=2x+3y $$ \n\nsubject to\n\n $$ x+y\\geq5,\\qquad x,y\\geq0. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10"
+          },
+          {
+            "id": "B",
+            "text": "15"
+          },
+          {
+            "id": "C",
+            "text": "0"
+          },
+          {
+            "id": "D",
+            "text": "12"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "If\n\n $$ P(A)=0.5,\\qquad P(B)=0.3,\\qquad P(A\\cap B)=0.1, $$ \n\nfind\n\n $$ P(A|B). $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.1"
+          },
+          {
+            "id": "B",
+            "text": "0.2"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "0.5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Find the rate of change of the area of a circle with respect to its radius r when\n\n $$ r=3~\\mathbf{c m}. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3\\pi $"
+          },
+          {
+            "id": "B",
+            "text": "$ 6\\pi $"
+          },
+          {
+            "id": "C",
+            "text": "$ 9\\pi $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\pi $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Find the value of\n\n $$ \\cos\\left(\\sin^{-1}\\left(\\frac{1}{2}\\right)\\right). $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\sqrt{3}}{2} $"
+          },
+          {
+            "id": "C",
+            "text": "1"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Is\n\n $$ f(x)=x^{2} $$ \n\ncontinuous at x = 0?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Yes"
+          },
+          {
+            "id": "B",
+            "text": "No"
+          },
+          {
+            "id": "C",
+            "text": "Only from left"
+          },
+          {
+            "id": "D",
+            "text": "Only from right"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Find\n\n $$ \\frac{dy}{dx} $$ \n\nif\n\n $$ y=\\log(\\sin x). $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\tan x $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\cot x $"
+          },
+          {
+            "id": "C",
+            "text": "$ -cotx $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\sec x $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Calculate\n\n $$ \\int e^{x}dx. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ e^{x} + C $"
+          },
+          {
+            "id": "B",
+            "text": "$$ e^{x+1}+C $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\frac{e^{x}}{x}+C $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ x e^{x}+C $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Find the distance from the point\n\nto the plane\n\n $$ x+y+z=3. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "0"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sqrt{3} $"
+          },
+          {
+            "id": "D",
+            "text": "3"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

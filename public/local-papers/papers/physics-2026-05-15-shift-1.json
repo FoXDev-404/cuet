@@ -1,0 +1,431 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-15-shift-1",
+    "slug": "physics-2026-05-15-shift-1",
+    "title": "CUET UG Physics 15 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-15",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Physics_May15_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "In the circuit shown below, the potential difference between A and B is:\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-15-shift-1/q01-figure-1.jpg\" alt=\"Figure 1 for question 1\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "6 V"
+          },
+          {
+            "id": "B",
+            "text": "3 V"
+          },
+          {
+            "id": "C",
+            "text": "2V"
+          },
+          {
+            "id": "D",
+            "text": "1 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q01-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q01-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 1"
+          },
+          {
+            "id": "q01-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q01-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 1"
+          }
+        ]
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "The frequency of revolution of the electron in Bohr's orbit varies with n, the principal quantum number as",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\frac{1}{n} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{1}{n_{1}^{3}} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\frac{1}{n^{4}} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{1}{n^{2}} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Which of the following phenomena cannot be explained by wave theory of light?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Reflection of light"
+          },
+          {
+            "id": "B",
+            "text": "Diffraction of light"
+          },
+          {
+            "id": "C",
+            "text": "Refraction of light"
+          },
+          {
+            "id": "D",
+            "text": "Compton effect"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q03-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q03-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 3"
+          }
+        ]
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "A parallel plate capacitor with air between the plates has a capacitance of  $ 6pF $. What will be the capacitance if the distance between the plates is reduced to half and the space between them is filled with a substance of dielectric constant 5?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 30pF $"
+          },
+          {
+            "id": "B",
+            "text": "$ 60pF $"
+          },
+          {
+            "id": "C",
+            "text": "$ 15pF $"
+          },
+          {
+            "id": "D",
+            "text": "$ 120pF $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q04-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q04-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The value of current I in the electrical circuit as given below, when potential at A is equal to the potential at B, will be ___ A.\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-15-shift-1/q05-figure-1.jpg\" alt=\"Figure 1 for question 5\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2A"
+          },
+          {
+            "id": "B",
+            "text": "3A"
+          },
+          {
+            "id": "C",
+            "text": "4A"
+          },
+          {
+            "id": "D",
+            "text": "5A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q05-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q05-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "In a hydrogen atom an electron makes a transition from $n_{1} \\to n_{2}$, where $n_{1}$ and $n_{2}$ are the principal quantum numbers of these two states. Assuming Bohr's model to be valid, if the time period of electron in the initial state is eight times of that in the final state, the possible values of $n_{1}$ and $n_{2}$ are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ n_{1}=8 $,  $ n_{2}=4 $"
+          },
+          {
+            "id": "B",
+            "text": "$ n_{1}=4 $,  $ n_{2}=8 $"
+          },
+          {
+            "id": "C",
+            "text": "$ n_{1}=8 $,  $ n_{2}=2 $"
+          },
+          {
+            "id": "D",
+            "text": "$ n_{1}=2 $,  $ n_{2}=8 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q06-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q06-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 6"
+          }
+        ]
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "An electric dipole of moment P is placed along the direction of electric field E. The work done in deflecting the dipole through  $ 180^{\\circ} $ is equal to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "PE"
+          },
+          {
+            "id": "B",
+            "text": "+2PE"
+          },
+          {
+            "id": "C",
+            "text": "-2PE"
+          },
+          {
+            "id": "D",
+            "text": "Zero"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q07-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q07-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 7"
+          }
+        ]
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "What is the unit of electric flux in terms of the base units of SI?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ kg^{-1}m^{3}s^{-3}A^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ kg \\, m^{3}s^{3}A^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ kg \\, m^{3}s^{-3}A^{1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ kg \\, m^{3}s^{-3}A^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q08-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q08-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 8"
+          }
+        ]
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "In terms of Bohr radius  $ a_{0} $, the radius of  $ 2^{nd} $ Bohr orbit of Hydrogen is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 4a_{0} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 8a_{0} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sqrt{2}a_{0} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 2a_{0} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q09-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q09-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 9"
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Two identical symmetric double convex lenses of focal length f are cut into two equal parts $L_{1}, L_{2}$ by $AB$ plane and $L_{3}, L_{4}$ by $XY$ plane as shown in figure respectively. The ratio of focal lengths of lenses $L_{1}$ and $L_{3}$ is\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-15-shift-1/q10-figure-1.jpg\" alt=\"Figure 1 for question 10\" />\n</div>\n\n\nOR",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1:4"
+          },
+          {
+            "id": "B",
+            "text": "1:1"
+          },
+          {
+            "id": "C",
+            "text": "2:1"
+          },
+          {
+            "id": "D",
+            "text": "1:2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q10-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-15-shift-1/q10-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 10"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-22-shift-2",
+    "slug": "mathematics-2026-05-22-shift-2",
+    "title": "CUET UG Mathematics 22 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-22",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May22_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "If $A$ is a non-singular square matrix of order $3 \\times 3$ such that its determinant is $|A|=5$, find the absolute value of the determinant of its adjoint matrix, represented as $|adj(A)|$.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "125"
+          },
+          {
+            "id": "C",
+            "text": "25"
+          },
+          {
+            "id": "D",
+            "text": "15"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Determine the exact expression for the Integrating Factor (I.F.) of the following first-order linear differential equation:  $ \\frac{dy}{dx} - y \\tan x = e^{x} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\sec x $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\cos x $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sin x $"
+          },
+          {
+            "id": "D",
+            "text": "$ e^{-\\tan x} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Find the open interval across which the cubic polynomial function  $ f(x) = 2x^3 - 3x^2 - 36x + 7 $ is classified as strictly decreasing.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (-2,3) $"
+          },
+          {
+            "id": "B",
+            "text": "$ (-\\infty, -2) \\cup (3, \\infty) $"
+          },
+          {
+            "id": "C",
+            "text": "$ (-3,2) $"
+          },
+          {
+            "id": "D",
+            "text": "$ (0,\\infty) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Find the shortest distance between the two parallel straight lines whose vector position\n\nequations are given by:\n\n $$ \\vec{r}=(\\hat{i}+2\\hat{j}-4\\hat{k})+\\lambda(2\\hat{i}+3\\hat{j}+6\\hat{k}) $$ \n\n $$ \\vec{r}=(3\\hat{i}+3\\hat{j}-5\\hat{k})+\\mu(2\\hat{i}+3\\hat{j}+6\\hat{k}) $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\sqrt{2} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{\\sqrt{293}}{7} $$"
+          },
+          {
+            "id": "C",
+            "text": "0"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{5}{7} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Find the maximum value of the linear objective optimization function\n\n $$ Z=4x+y $$ \n\nevaluated over a feasible region bounded by the corner vertices:\n\n(0,0), (3,0), (2,3), and (0,4).",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "12"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "11"
+          },
+          {
+            "id": "D",
+            "text": "16"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q05-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-22-shift-2/q05-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "If A is a square matrix of order 3 such that its determinant is |A|=3, calculate the value of the scalar matrix determinant represented by |2A|.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "6"
+          },
+          {
+            "id": "B",
+            "text": "24"
+          },
+          {
+            "id": "C",
+            "text": "12"
+          },
+          {
+            "id": "D",
+            "text": "18"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "An unbiased coin is tossed twice. Let event A represent getting a head on the first toss, and event B represent getting a head on the second toss. Determine the mathematical relationship between events A and B.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Dependent Events"
+          },
+          {
+            "id": "B",
+            "text": "Independent Events"
+          },
+          {
+            "id": "C",
+            "text": "Mutually Exclusive Events"
+          },
+          {
+            "id": "D",
+            "text": "Equivalence Events"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Find the equation of the normal to the curve  $ y = x^2 - x $ at the coordinate point position  $ (1, 0) $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ x + y - 1 = 0 $"
+          },
+          {
+            "id": "B",
+            "text": "$ x - y - 1 = 0 $"
+          },
+          {
+            "id": "C",
+            "text": "$ x + y + 1 = 0 $"
+          },
+          {
+            "id": "D",
+            "text": "$ 2x + y - 2 = 0 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Evaluate the value of the following definite integral using standard calculus integrations:\n\n $ \\int_{0}^{1}xe^{x}\\,dx $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "e"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "e-1"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Find the total number of distinct binary relations that can be defined over a set A containing exactly 3 elements.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9"
+          },
+          {
+            "id": "B",
+            "text": "64"
+          },
+          {
+            "id": "C",
+            "text": "512"
+          },
+          {
+            "id": "D",
+            "text": "27"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

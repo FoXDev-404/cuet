@@ -1,0 +1,354 @@
+{
+  "exam": {
+    "id": "local-general-test-2026-05-22-shift-1",
+    "slug": "general-test-2026-05-22-shift-1",
+    "title": "CUET UG General Test 22 May 2026 Shift 1 Previous Year Paper",
+    "subject": "General Test",
+    "subjectId": "local-general-test",
+    "subjectCode": "GT",
+    "year": 2026,
+    "examDate": "2026-05-22",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_GAT_May22_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 60,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "A 5 cm long perpendicular is drawn from the centre of a circle to a 24 cm long chord. Find the diameter of the circle.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "26 cm"
+          },
+          {
+            "id": "B",
+            "text": "32 cm"
+          },
+          {
+            "id": "C",
+            "text": "13 cm"
+          },
+          {
+            "id": "D",
+            "text": "30 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "A pump can fill a tank with water in 2 hours. Because of a leak, it took 2 hours and 20 minutes to fill the tank. The leak can drain all the water of the tank in:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "14 hours"
+          },
+          {
+            "id": "B",
+            "text": "12 hours"
+          },
+          {
+            "id": "C",
+            "text": "10 hours"
+          },
+          {
+            "id": "D",
+            "text": "8 hours"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The ratio of the supplementary and the complementary angles of an angle is 3:1. What is the supplementary angle of the given angle?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 45^{\\circ} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 60^{\\circ} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 120^{\\circ} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 135^{\\circ} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "A sum becomes five times of itself in 8 years at simple interest. What is the rate of interest per annum?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "37.5%"
+          },
+          {
+            "id": "B",
+            "text": "25%"
+          },
+          {
+            "id": "C",
+            "text": "50%"
+          },
+          {
+            "id": "D",
+            "text": "12.5%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "In how many years shall Rs. 3,500 invested at the rate of 10% simple interest per annum, amount to Rs. 4,500?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2\\frac{4}{7} $ years"
+          },
+          {
+            "id": "B",
+            "text": "$ 2\\frac{3}{7} $ years"
+          },
+          {
+            "id": "C",
+            "text": "$ 2\\frac{6}{7} $ years"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\frac{5}{7} $ years"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "A 9 cm solid metallic cube and a solid metallic cuboid having dimensions 5 cm, 13 cm, 31 cm are melted and recast into a single cube. What is the total surface area (in cm²) of the new cube?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1362"
+          },
+          {
+            "id": "B",
+            "text": "865"
+          },
+          {
+            "id": "C",
+            "text": "2744"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Let A and B be two cylinders such that the capacity of A is the same as the capacity of B. The ratio of the diameters of A and B is 1:4. What is the ratio of the heights of A and B?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "16:3"
+          },
+          {
+            "id": "B",
+            "text": "16:1"
+          },
+          {
+            "id": "C",
+            "text": "1:16"
+          },
+          {
+            "id": "D",
+            "text": "3:16"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "A person lent certain sum of money at the annual rate of 5 percent on simple interest. In 4 years, the interest amounted to Rs. 800. What is the sum lent?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Rs. 4000"
+          },
+          {
+            "id": "B",
+            "text": "Rs. 2000"
+          },
+          {
+            "id": "C",
+            "text": "Rs. 1600"
+          },
+          {
+            "id": "D",
+            "text": "Rs. 3200"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "A diver rowing at the speed of 3 km/h in still water takes double the time going 50 km upstream compared to going 50 km downstream. The speed of the diver downstream is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3 km/h"
+          },
+          {
+            "id": "B",
+            "text": "6 km/h"
+          },
+          {
+            "id": "C",
+            "text": "4 km/h"
+          },
+          {
+            "id": "D",
+            "text": "5 km/h"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "2 dice are thrown in the air. Find the probability of getting a sum less than 11.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7/12"
+          },
+          {
+            "id": "B",
+            "text": "11/12"
+          },
+          {
+            "id": "C",
+            "text": "5/12"
+          },
+          {
+            "id": "D",
+            "text": "1/3"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

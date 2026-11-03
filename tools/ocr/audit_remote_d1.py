@@ -118,6 +118,28 @@ def index_sql() -> str:
     return match.group(1)
 
 
+SUBJECT_STATS_TS = ROOT / "src/lib/subject-stats.ts"
+
+
+def measure_subject_stats() -> tuple[int, int]:
+    """Runs the four rollup queries and returns (queries, rows_read)."""
+    source = SUBJECT_STATS_TS.read_text(encoding="utf-8")
+    names = (
+        "SUBJECT_LIST_SQL",
+        "PUBLISHED_QUESTIONS_SQL",
+        "MOCK_QUESTIONS_SQL",
+        "MOCKS_SQL",
+    )
+    rows_read = 0
+    for name in names:
+        match = re.search(rf"const {name} = `(.*?)`;", source, re.DOTALL)
+        if not match:
+            raise RuntimeError(f"{name} not found in {SUBJECT_STATS_TS}")
+        _, meta = run_remote(re.sub(r"\s+", " ", match.group(1)))
+        rows_read += int(meta.get("rows_read") or 0)
+    return len(names), rows_read
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -219,6 +241,20 @@ def main() -> int:
             print("(the KV cache exists; this measurement needs a free budget)")
         except RuntimeError as error:
             print(f"\npractice-library index query failed: {error}")
+
+    try:
+        queries, rows_read = measure_subject_stats()
+        print("\nsubject rollup (syllabus / mock hubs)")
+        print(f"  queries       : {queries}")
+        print(f"  rows read     : {rows_read:,} per cold refresh")
+        print(
+            "  before the fix: ~2,146,872 rows for a single correlated query;"
+            " the KV cache now refreshes this every 6 hours"
+        )
+    except QuotaExceeded:
+        print("\nsubject rollup query skipped: quota exhausted")
+    except RuntimeError as error:
+        print(f"\nsubject rollup query failed: {error}")
 
     return 0 if mismatches == 0 and not quota_blocked else 2
 

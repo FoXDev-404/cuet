@@ -1,0 +1,354 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-19-shift-1",
+    "slug": "physics-2026-05-19-shift-1",
+    "title": "CUET UG Physics 19 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-19",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Physics_May19_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "In Young's double slit experiment, if the distance between the slits is increased while keeping all other parameters constant, the fringe width will:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Increase"
+          },
+          {
+            "id": "B",
+            "text": "Decrease"
+          },
+          {
+            "id": "C",
+            "text": "Remain unchanged"
+          },
+          {
+            "id": "D",
+            "text": "First increase then decrease"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "The dimensional formula of capacitance is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ [M^{-1}L^{-2}T^{4}A^{2}] $"
+          },
+          {
+            "id": "B",
+            "text": "$ [ML^{2}T^{-2}A^{-2}] $"
+          },
+          {
+            "id": "C",
+            "text": "$ [M^{-1}L^{-1}T^{3}A] $"
+          },
+          {
+            "id": "D",
+            "text": "$ [MLT^{-3}A^{-1}] $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Polarisation of light proves that light waves are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Longitudinal"
+          },
+          {
+            "id": "B",
+            "text": "Transverse"
+          },
+          {
+            "id": "C",
+            "text": "Stationary"
+          },
+          {
+            "id": "D",
+            "text": "Electromagnetic only in vacuum"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "The work function of a metal is 2 eV. Photoelectric emission will occur when the metal is illuminated with light of energy:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1 eV"
+          },
+          {
+            "id": "B",
+            "text": "1.5 eV"
+          },
+          {
+            "id": "C",
+            "text": "2.5 eV"
+          },
+          {
+            "id": "D",
+            "text": "2 eV only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "In a moving coil galvanometer, the magnetic field is made radial so that the:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Resistance decreases"
+          },
+          {
+            "id": "B",
+            "text": "Current sensitivity decreases"
+          },
+          {
+            "id": "C",
+            "text": "Deflection becomes directly proportional to current"
+          },
+          {
+            "id": "D",
+            "text": "Coil does not rotate"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The SI unit of magnetic flux is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Tesla"
+          },
+          {
+            "id": "B",
+            "text": "Weber"
+          },
+          {
+            "id": "C",
+            "text": "Henry"
+          },
+          {
+            "id": "D",
+            "text": "Coulomb"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "In an electromagnetic wave, the electric field and magnetic field are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Parallel to each other"
+          },
+          {
+            "id": "B",
+            "text": "Anti-parallel to each other"
+          },
+          {
+            "id": "C",
+            "text": "Perpendicular to each other and to the direction of propagation"
+          },
+          {
+            "id": "D",
+            "text": "Parallel to the direction of propagation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "The half-life of a radioactive substance is 10 days. The fraction of the original sample left after 30 days is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{4} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{6} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{8} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "The focal length of a convex lens is 20 cm. An object is placed at 40 cm from the lens. The image formed will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Virtual and erect"
+          },
+          {
+            "id": "B",
+            "text": "Real and inverted"
+          },
+          {
+            "id": "C",
+            "text": "Virtual and inverted"
+          },
+          {
+            "id": "D",
+            "text": "Real and erect"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "The magnetic field at the center of a circular current carrying loop depends on:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Only the radius of the loop"
+          },
+          {
+            "id": "B",
+            "text": "Only the current flowing"
+          },
+          {
+            "id": "C",
+            "text": "Current and radius of the loop"
+          },
+          {
+            "id": "D",
+            "text": "Resistance of the wire only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

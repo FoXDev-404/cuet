@@ -1,0 +1,356 @@
+{
+  "exam": {
+    "id": "local-general-test-2026-05-29-shift-2",
+    "slug": "general-test-2026-05-29-shift-2",
+    "title": "CUET UG General Test 29 May 2026 Shift 2 Previous Year Paper",
+    "subject": "General Test",
+    "subjectId": "local-general-test",
+    "subjectCode": "GT",
+    "year": 2026,
+    "examDate": "2026-05-29",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_GAT_May29_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 60,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Select the odd group of numbers.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "13 - 159"
+          },
+          {
+            "id": "B",
+            "text": "9 - 71"
+          },
+          {
+            "id": "C",
+            "text": "5 - 31"
+          },
+          {
+            "id": "D",
+            "text": "17 - 279"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "A # B means 'A is the brother of B', A @ B means 'A is the daughter of B', A & B means 'A is the husband of B', A % B means 'A is the wife of B'. If G % M # L @ P & C @ B, then how is L related to B?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Daughter"
+          },
+          {
+            "id": "B",
+            "text": "Granddaughter"
+          },
+          {
+            "id": "C",
+            "text": "Sister"
+          },
+          {
+            "id": "D",
+            "text": "Daughter-in-law"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "What is the fourth proportional to $\\sqrt{6}$, $\\sqrt{8}$ and $\\sqrt{21}$?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$3\\sqrt{7}$"
+          },
+          {
+            "id": "B",
+            "text": "$2\\sqrt{7}$"
+          },
+          {
+            "id": "C",
+            "text": "$8\\sqrt{7}$"
+          },
+          {
+            "id": "D",
+            "text": "$5\\sqrt{7}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "In a certain code language, 'INNER' is written as 'SNNWJ' and 'GLASS' is written as 'UPAII'. How will 'MODEL' be written in that language?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "OMXVP"
+          },
+          {
+            "id": "B",
+            "text": "OMXWP"
+          },
+          {
+            "id": "C",
+            "text": "OMWWP"
+          },
+          {
+            "id": "D",
+            "text": "OMXWO"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The average age of 14 students and their teacher is 20 years. If the teacher is excluded, then their average age reduces by 1.5 years. The teacher's age is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "41 years"
+          },
+          {
+            "id": "B",
+            "text": "30 years"
+          },
+          {
+            "id": "C",
+            "text": "39 years"
+          },
+          {
+            "id": "D",
+            "text": "59 years"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The radius of the base of a right circular cone is 7 cm and its curved surface area is 550 cm². The volume of the cone is: (use  $ \\pi = 22/7 $)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1223 \\, cm^{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 1233 \\, cm^{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 1322 \\, cm^{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 1232 \\, cm^{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Successive discounts of 13 percent and 19 percent are equivalent to a single discount of:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9.53 percent"
+          },
+          {
+            "id": "B",
+            "text": "39.53 percent"
+          },
+          {
+            "id": "C",
+            "text": "29.53 percent"
+          },
+          {
+            "id": "D",
+            "text": "19.53 percent"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "What is the angle made by hands of clock at 11 O' clock?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 15^{\\circ} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 22\\frac{1}{2}^{\\circ} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 30^{\\circ} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 36^{\\circ} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Two unbiased dice are thrown simultaneously. Find the probability of getting a sum 5.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{9} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{2}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{5}{9} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{6}{11} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "5 bells start commencing together at 9 AM. They ring at the intervals of 12 seconds, 18 seconds.\n\nseconds, 24 seconds, 36 seconds and 45 seconds. At what time do the bells ring together again?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9:10 AM"
+          },
+          {
+            "id": "B",
+            "text": "9:06 AM"
+          },
+          {
+            "id": "C",
+            "text": "9:08 AM"
+          },
+          {
+            "id": "D",
+            "text": "9:05 AM"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

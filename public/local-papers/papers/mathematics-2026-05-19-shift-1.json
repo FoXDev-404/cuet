@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-19-shift-1",
+    "slug": "mathematics-2026-05-19-shift-1",
+    "title": "CUET UG Mathematics 19 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-19",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Mathematics_May19_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Let A be a non-singular  $ 3 \\times 3 $ matrix satisfying\n\n $$ A^{3}-6A^{2}+11A-6I=O. $$ \n\n#### If\n\n $$ B=A^{2}-5A+7I, $$ \n\nthen find  $ \\det(B) $ given that  $ \\det(A) = 6 $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "8"
+          },
+          {
+            "id": "C",
+            "text": "27"
+          },
+          {
+            "id": "D",
+            "text": "64"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "If\n\n $$ \\begin{vmatrix}x+a&y&z\\\\x&y+b&z\\\\x&y&z+c\\end{vmatrix}=abc, $$ \n\nwhere $a, b, c \\neq 0$, then find the value of\n\n $$ \\frac{x}{a}+\\frac{y}{b}+\\frac{z}{c}. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "3"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "If\n\n $$ y=\\left(\\frac{x+1}{x-1}\\right)^{x}, $$ \n\nthen find  $ \\frac{dy}{dx} $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ y\\left[\\ln\\left(\\frac{x+1}{x-1}\\right)-\\frac{2x}{x^{2}-1}\\right] $"
+          },
+          {
+            "id": "B",
+            "text": "y  $ \\left[\\ln\\left(\\frac{x+1}{x-1}\\right)+\\frac{2x}{x^{2}-1}\\right] $"
+          },
+          {
+            "id": "C",
+            "text": "$ y\\left[\\ln(x+1)-\\ln(x-1)\\right] $"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{2y}{x^{2}-1} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Evaluate:\n\n $$ \\int\\frac{x^{2}+1}{x^{4}+1}dx $$ \n\n(A)  $ \\frac{1}{\\sqrt{2}}\\tan^{-1}\\left(\\frac{x^{2}-1}{\\sqrt{2}x}\\right)+C $\n\n(B) $ \\tan^{-1}x+C $\n\n(C)  $ \\frac{1}{2}\\ln(x^{2}+1)+C $\n\n(D) $ \\frac{x}{x^{2}+1}+C $\n\n $$ \\vec{a}=2\\hat{i}-\\hat{j}+\\hat{k},\\qquad\\vec{b}=\\hat{i}+2\\hat{j}-\\hat{k}, $$ \n\nand\n\n $$ \\vec{c}=\\lambda\\hat{i}+\\mu\\hat{j}+3\\hat{k}. $$ \n\nIf\n\n $$ [\\vec{a}\\ \\vec{b}\\ \\vec{c}]=0 $$ \n\nand\n\n $$ \\vec{c}\\cdot(\\vec{a}+\\vec{b})=10, $$ \n\nthen find the value of $\\lambda + \\mu$.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Let\n\n $$ \\vec{a}=2\\hat{i}-\\hat{j}+\\hat{k},\\qquad\\vec{b}=\\hat{i}+2\\hat{j}-\\hat{k}, $$ \n\nand\n\n $$ \\vec{c}=\\lambda\\hat{i}+\\mu\\hat{j}+3\\hat{k}. $$ \n\nIf\n\n $$ [\\vec{a}\\;\\vec{b}\\;\\vec{c}]=0 $$ \n\nand\n\n $$ \\vec{c}\\cdot(\\vec{a}+\\vec{b})=10, $$ \n\nthen find the value of $\\lambda + \\mu$.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Find the equation of the plane which passes through the point\n\n $$ (1,-2,3), $$ \n\ncontains the line of intersection of the planes\n\n $$ x+y+z=1 $$ \n\nand\n\n $$ 2x-y+3z=4, $$ \n\nand is perpendicular to the plane\n\n $$ x-2y+2z+5=0. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5x - y + z - 10 = 0"
+          },
+          {
+            "id": "B",
+            "text": "$ x + y + z - 1 = 0 $"
+          },
+          {
+            "id": "C",
+            "text": "2x - y + 3z - 4 = 0"
+          },
+          {
+            "id": "D",
+            "text": "$ 3x + y - z + 2 = 0 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Let A and B be two  $ 3 \\times 3 $ matrices such that\n\n $$ \\boldsymbol{A}^{2}-4\\boldsymbol{A}+3\\boldsymbol{I}=\\boldsymbol{O} $$ \n\nand\n\n $$ \\boldsymbol{B}=\\boldsymbol{A}^{-1}+2\\boldsymbol{A}. $$ \n\nFind the determinant of B if  $ \\det(A) = 3 $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9"
+          },
+          {
+            "id": "B",
+            "text": "27"
+          },
+          {
+            "id": "C",
+            "text": "81"
+          },
+          {
+            "id": "D",
+            "text": "3"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "If\n\n $$ f(x)=\\left(\\frac{1+\\sin x}{1-\\sin x}\\right)^{\\tan x}, $$ \n\nthen find\n\n $$ \\lim_{x\\to0}\\frac{\\ln f(x)}{x^{2}}. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "If\n\n $$ \\left|\\begin{matrix}x+a&y&z\\\\ x&y+b&z\\\\ x&y&z+c\\end{matrix}\\right|=2abc, $$ \n\nwhere $a, b, c \\neq 0$, then find the value of\n\n $$ \\frac{x}{a}+\\frac{y}{b}+\\frac{z}{c}. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "3"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "If\n\n $$ y=\\left(x^{\\sin x}\\right)^{\\tan x}, $$ \n\nthen find\n\n $$ \\frac{dy}{dx}. $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\sqrt{2} $\n\n $$ y\\left[\\sec^{2}x\\sin x\\ln x+\\tan x\\cos x\\ln x+\\frac{\\tan x\\sin x}{x}\\right] $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ y\\left[\\cos x+\\sin x\\right] $$"
+          },
+          {
+            "id": "C",
+            "text": "$ y \\tan x $"
+          },
+          {
+            "id": "D",
+            "text": "$$ x^{\\sin x} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,368 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-12-shift-2",
+    "slug": "physics-2026-05-12-shift-2",
+    "title": "CUET UG Physics 12 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-12",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Physics_May12_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "A network of five capacitors is shown in the figure. The total charge stored in the network connected between A and B is:\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-12-shift-2/q01-figure-1.jpg\" alt=\"Figure 1 for question 1\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 8 \\mu C $"
+          },
+          {
+            "id": "B",
+            "text": "$ 10 \\mu C $"
+          },
+          {
+            "id": "C",
+            "text": "$ 9 \\, mC $"
+          },
+          {
+            "id": "D",
+            "text": "$ 10 \\, mC $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q01-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-12-shift-2/q01-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 1"
+          }
+        ]
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "In a certain region, a uniform electric field exists in the positive x-direction. Let  $ V_{A} = $ potential at  $ (0,0,0) $ cm,  $ V_{B} = $ potential at  $ (5,0,0) $ cm and  $ V_{C} = $ potential at  $ (0,5,0) $ cm. The correct relationship between them is:\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-12-shift-2/q02-figure-1.jpg\" alt=\"Figure 1 for question 2\" />\n</div>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ V_{A} < V_{C} $ and  $ V_{A} = V_{B} $"
+          },
+          {
+            "id": "B",
+            "text": "$ V_{A} = V_{C} $ and  $ V_{A} > V_{B} $"
+          },
+          {
+            "id": "C",
+            "text": "$ V_{A} > V_{C} $ and  $ V_{A} = V_{B} $"
+          },
+          {
+            "id": "D",
+            "text": "$ V_{A} = V_{C} $ and  $ V_{A} < V_{B} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-12-shift-2/q02-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "A negatively charged object A is repelled by another charged object B. However, an object C is attracted to object B. Which of the following is the most probable for the charge of object C?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "neutral or negatively charged"
+          },
+          {
+            "id": "B",
+            "text": "negatively charged only"
+          },
+          {
+            "id": "C",
+            "text": "neutral or positively charged"
+          },
+          {
+            "id": "D",
+            "text": "positively charged only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Two-point charges,  $ q_{1}=36\\ \\mu C $ and  $ q_{2}=-9\\ \\mu C $ are placed at a distance of 30 cm. What distance from  $ q_{1} $, where the net electric field is zero, will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10 cm"
+          },
+          {
+            "id": "B",
+            "text": "20 cm"
+          },
+          {
+            "id": "C",
+            "text": "60 cm"
+          },
+          {
+            "id": "D",
+            "text": "30 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "An infinitely long line charge distribution produces a field of  $ 9 \\times 10^4 $ NC $ ^{-1} $ at a distance of 2 cm. The linear charge density of the distribution is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.01  $ \\mu $C m $ ^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 0.1 \\, \\mu\\text{C} \\, \\text{m}^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 1 \\mu\\mathrm{C} \\, \\mathrm{m}^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\mu C \\, m^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "A body of 20 g and +50  $ \\mu $C charge is suspended from the ceiling by a string. If a horizontal electric field of 10 kV/m is applied, the angle between the string and vertical direction is: (Take  $ g = 10 \\, \\text{N/kg} $)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\tan^{-1}(2.50) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\tan^{-1}(3.00) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\tan^{-1}(3.50) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\sin^{-1}(2.50) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The transfer of integral number of ___ is one of the evidence of quantisation of electric charge. Fill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "photons"
+          },
+          {
+            "id": "B",
+            "text": "nuclei"
+          },
+          {
+            "id": "C",
+            "text": "electrons"
+          },
+          {
+            "id": "D",
+            "text": "neutron"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "When a slab of insulating material 4 mm thick is introduced between the plates of a parallel plate capacitor of separation 4 mm, it is found that the distance between the plates has to be increased by 3.2 mm to restore the capacity to its original value. The dielectric constant of the material is ___. Fill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "5"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "7"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "A copper ball of density 8.0 g/cc and 1 cm in diameter is immersed in oil of density 0.8 g/cc. The charge on the ball if it remains just suspended in oil in an electric field of intensity 600π V/m acting in the upward direction is ___. Fill in the blank with the correct answer from the options given below. (Take g = 10 m/s²)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2\\times10^{-6} $ C"
+          },
+          {
+            "id": "B",
+            "text": "$ 2\\times10^{-5} $ C"
+          },
+          {
+            "id": "C",
+            "text": "$ 1 \\times 10^{-5} $ C"
+          },
+          {
+            "id": "D",
+            "text": "$ 1\\times10^{-6} $ C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "For an electric dipole in a non-uniform electric field with dipole moment parallel to direction of the field, the force F and torque  $ \\tau $ on the dipole respectively are ___. Fill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "F = 0,  $ \\tau = 0 $"
+          },
+          {
+            "id": "B",
+            "text": "$ F \\neq 0, \\tau = 0 $"
+          },
+          {
+            "id": "C",
+            "text": "F = 0,  $ \\tau \\neq 0 $"
+          },
+          {
+            "id": "D",
+            "text": "$ F \\neq 0, \\tau \\neq 0 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-computer-science-2026-05-11-shift-2",
+    "slug": "computer-science-2026-05-11-shift-2",
+    "title": "CUET UG Computer Science 11 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Computer Science",
+    "subjectId": "local-computer-science",
+    "subjectCode": "CS",
+    "year": 2026,
+    "examDate": "2026-05-11",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_ComputerScience_May11_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Which SQL command is used to remove all rows from a table without deleting the table structure?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "DELETE"
+          },
+          {
+            "id": "B",
+            "text": "DROP"
+          },
+          {
+            "id": "C",
+            "text": "TRUNCATE"
+          },
+          {
+            "id": "D",
+            "text": "REMOVE"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "What will be the output of the following Python code?\n\na=[1,2,3]\n\nprint(a[::-1])",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ [1,2,3] $"
+          },
+          {
+            "id": "B",
+            "text": "$ [3,2,1] $"
+          },
+          {
+            "id": "C",
+            "text": "Error"
+          },
+          {
+            "id": "D",
+            "text": "None"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Which protocol is used for sending e-mails?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "HTTP"
+          },
+          {
+            "id": "C",
+            "text": "SMTP"
+          },
+          {
+            "id": "B",
+            "text": "FTP"
+          },
+          {
+            "id": "D",
+            "text": "TCP"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "In Python, which data type is immutable?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "List"
+          },
+          {
+            "id": "B",
+            "text": "Dictionary"
+          },
+          {
+            "id": "C",
+            "text": "Set"
+          },
+          {
+            "id": "D",
+            "text": "Tuple"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Which of the following is NOT a valid aggregate function in SQL?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "AVG()"
+          },
+          {
+            "id": "B",
+            "text": "SUM()"
+          },
+          {
+            "id": "C",
+            "text": "COUNT()"
+          },
+          {
+            "id": "D",
+            "text": "COMPUTE()"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "What is the full form of URL?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Uniform Resource Locator"
+          },
+          {
+            "id": "B",
+            "text": "Universal Resource Link"
+          },
+          {
+            "id": "C",
+            "text": "Uniform Reference Link"
+          },
+          {
+            "id": "D",
+            "text": "Unified Resource Locator"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Which keyword is used to define a function in Python?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "function"
+          },
+          {
+            "id": "B",
+            "text": "define"
+          },
+          {
+            "id": "C",
+            "text": "def"
+          },
+          {
+            "id": "D",
+            "text": "func"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which topology uses a central hub/switch?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ring Topology"
+          },
+          {
+            "id": "B",
+            "text": "Bus Topology"
+          },
+          {
+            "id": "C",
+            "text": "Mesh Topology"
+          },
+          {
+            "id": "D",
+            "text": "Star Topology"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "What will be the output?\n\nx = 5\n\ny = 2\n\nprint(x // y)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2.5"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "Error"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Which clause is used to filter records in SQL?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "ORDER BY"
+          },
+          {
+            "id": "B",
+            "text": "GROUP BY"
+          },
+          {
+            "id": "C",
+            "text": "WHERE"
+          },
+          {
+            "id": "D",
+            "text": "HAVING"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

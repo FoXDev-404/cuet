@@ -1,0 +1,348 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-26-shift-2",
+    "slug": "mathematics-2026-05-26-shift-2",
+    "title": "CUET UG Mathematics 26 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-26",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May26_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Evaluate:\n\n $$ \\int\\left(3x^{2}+4x-5\\right)dx $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (x^{3}+2x^{2}-5x+C) $"
+          },
+          {
+            "id": "B",
+            "text": "$ (3x^{3}+4x^{2}-5x+C) $"
+          },
+          {
+            "id": "C",
+            "text": "$ (x^{2}+2x-5+C) $"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\left(x^{3}+4x^{2}-5+C\\right) $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "If $y = e^{2x}$, then find $\\frac{dy}{dx}$.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2e^{2x} $"
+          },
+          {
+            "id": "B",
+            "text": "$ e^{x} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 2xe^{2x} $"
+          },
+          {
+            "id": "D",
+            "text": "$$ e^{2x}+2 $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Find the value of:\n\n $$ \\int\\frac{1}{x}dx $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\log x + C $\n\n $$ \\frac{1}{x^{2}}+C $$"
+          },
+          {
+            "id": "C",
+            "text": "$ x \\log x + C $\n\n $$ e^{x}+C $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Find the solution of the differential equation:\n\n $$ \\frac{dy}{dx}=3x^{2} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ y = x^{3} + C $"
+          },
+          {
+            "id": "B",
+            "text": "$ y = 3x^{3} + C $"
+          },
+          {
+            "id": "C",
+            "text": "$ y = x^{2} + C $"
+          },
+          {
+            "id": "D",
+            "text": "y = 9x + C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "If\n\n $$ \\frac{dy}{dx}=y $$ \n\nthen which of the following is the correct solution?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "y = Ce^{x}"
+          },
+          {
+            "id": "B",
+            "text": "y = Cx"
+          },
+          {
+            "id": "C",
+            "text": "$ y = x^{2} + C $"
+          },
+          {
+            "id": "D",
+            "text": "$ y = \\log x $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Which of the following functions has derivative equal to  $ \\cos x $?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\sin x $"
+          },
+          {
+            "id": "B",
+            "text": "$ -\\sin x $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\tan x $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\sec x $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Match the following:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>Mathematical Expression</td><td style='text-align: center; word-wrap: break-word;'>List-II</td><td style='text-align: center; word-wrap: break-word;'>Resulting Value</td><td style='text-align: center; word-wrap: break-word;'>Correct Match</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(P)</td><td style='text-align: center; word-wrap: break-word;'>$ \\det \\begin{bmatrix} 1 &amp; 0 \\\\ 0 &amp; 1 \\end{bmatrix} $</td><td style='text-align: center; word-wrap: break-word;'>(I)</td><td style='text-align: center; word-wrap: break-word;'>1</td><td style='text-align: center; word-wrap: break-word;'>P  $ \\rightarrow $ I</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(Q)</td><td style='text-align: center; word-wrap: break-word;'>$ \\int 2x dx $</td><td style='text-align: center; word-wrap: break-word;'>(III)</td><td style='text-align: center; word-wrap: break-word;'>$ x^{2} + C $</td><td style='text-align: center; word-wrap: break-word;'>Q  $ \\rightarrow $ III</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(R)</td><td style='text-align: center; word-wrap: break-word;'>$ \\frac{d}{dx}(x^{2}) $</td><td style='text-align: center; word-wrap: break-word;'>(II)</td><td style='text-align: center; word-wrap: break-word;'>2x</td><td style='text-align: center; word-wrap: break-word;'>R  $ \\rightarrow $ II</td></tr></table>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "P-I, Q-III, R-II"
+          },
+          {
+            "id": "B",
+            "text": "P-II, Q-I, R-III"
+          },
+          {
+            "id": "C",
+            "text": "P-III, Q-II, R-I"
+          },
+          {
+            "id": "D",
+            "text": "P-I, Q-II, R-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "If\n\n $$ \\begin{aligned}&\\boldsymbol{A}=\\begin{bmatrix} \\\\{{{2}}}&{{{1}}} \\\\{{{3}}}&{{{4}}} \\\\\\end{bmatrix}\\\\ \\end{aligned} $$ \n\nthen find |A|.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "8"
+          },
+          {
+            "id": "C",
+            "text": "11"
+          },
+          {
+            "id": "D",
+            "text": "13"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Find the simple interest on Rs 5000 at 10% per annum for 2 years.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Rs 500"
+          },
+          {
+            "id": "B",
+            "text": "Rs 1000"
+          },
+          {
+            "id": "C",
+            "text": "Rs 1500"
+          },
+          {
+            "id": "D",
+            "text": "Rs 2000"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "A shopkeeper earns 20% profit on an article whose cost price is Rs 800. Find the selling price.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Rs 920"
+          },
+          {
+            "id": "B",
+            "text": "Rs 940"
+          },
+          {
+            "id": "C",
+            "text": "Rs 960"
+          },
+          {
+            "id": "D",
+            "text": "Rs 1000"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

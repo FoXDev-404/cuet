@@ -1,0 +1,354 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-30-shift-2",
+    "slug": "mathematics-2026-05-30-shift-2",
+    "title": "CUET UG Mathematics 30 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-30",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May30_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "If\n\n $$ \\int_{0}^{1}(3x^{2}+2x+1)dx=k, $$ \n\nthen the value of k is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "If\n\n $$ \\int\\frac{2x+1}{x^{2}+x+1}dx $$ \n\nis equal to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\ln(x^{2}+x+1)+C $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\begin{array}{l}\\frac{1}{2}\\ln(x^{2}+x+1)+C\\end{array} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\tan^{-1}(x)+C $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{x}{x^{2}+x+1}+C $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The number of 5-digit numbers that can be formed using the digits 1, 2, 3, 4, 5, 6 without\n\nrepetition and divisible by 5 is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "60"
+          },
+          {
+            "id": "B",
+            "text": "120"
+          },
+          {
+            "id": "C",
+            "text": "240"
+          },
+          {
+            "id": "D",
+            "text": "720"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "If a random variable $X$ has probability distribution\n\n $$ P(X=x)=kx, $$ \n\n $$ x=1,2,3,4, $$ \n\nthen the value of k is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\frac{1}{5} $$"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{10} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{20} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{15} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "If\n\n $$ z=\\frac{1+i}{1-i}, $$ \n\nthen  $ z^{8} $ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "-1"
+          },
+          {
+            "id": "C",
+            "text": "i"
+          },
+          {
+            "id": "D",
+            "text": "-i"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The differential equation of the family of curves\n\n $$ y=c e^{2x} $$ \n\nis:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{dy}{dx}=2y $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{dy}{dx}=y $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{d^{2}y}{dx^{2}}=2y $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{dy}{dx}=2x $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "A bag contains 5 red balls, 4 blue balls and 3 green balls. Two balls are drawn at random without replacement. The probability that both balls are red is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{5}{33} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{10}{33} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{20}{33} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{5}{12} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Find the equation of the tangent to\n\n $$ y=x^{3}-3x+1 $$ \n\nat the point where x = 2.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "y = 9x - 13"
+          },
+          {
+            "id": "B",
+            "text": "y = 9x - 15"
+          },
+          {
+            "id": "C",
+            "text": "y = 6x - 7"
+          },
+          {
+            "id": "D",
+            "text": "y=12x-19"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "If\n\n $$ \\sin^{-1}x+\\cos^{-1}x=\\theta $$ \n\nfind  $ \\theta $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "$ \\pi $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\pi/2 $"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\pi $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Find the shortest distance between the skew lines\n\n $$ \\vec{r}=(1,0,0)+\\lambda(1,1,0) $$ \n\nand\n\n $$ \\vec{r}=(0,1,1)+\\mu(0,1,1) $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "$ \\sqrt{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{\\sqrt{2}} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\sqrt{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

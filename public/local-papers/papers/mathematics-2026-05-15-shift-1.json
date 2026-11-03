@@ -1,0 +1,356 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-15-shift-1",
+    "slug": "mathematics-2026-05-15-shift-1",
+    "title": "CUET UG Mathematics 15 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-15",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Mathematics_May15_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Let  $ A = \\{1, 2, 3\\} $ and  $ B = \\{2, 4, 6\\} $. A function  $ f: A \\to B $ is defined by  $ f(x) = 2x $. The function is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "One-one only"
+          },
+          {
+            "id": "B",
+            "text": "Onto only"
+          },
+          {
+            "id": "C",
+            "text": "Both one-one and onto"
+          },
+          {
+            "id": "D",
+            "text": "Neither one-one nor onto"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "If $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, then $A^{-1}$ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\begin{pmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\begin{pmatrix} 2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\begin{pmatrix} 2 & 1 \\\\ \\frac{3}{2} & \\frac{1}{2} \\end{pmatrix}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\begin{pmatrix} -2 & 1 \\\\ -\\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Evaluate:  $ \\begin{vmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 4 \\\\ 5 & 6 & 0 \\end{vmatrix} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "-1"
+          },
+          {
+            "id": "C",
+            "text": "5"
+          },
+          {
+            "id": "D",
+            "text": "10"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "A bag contains 5 red balls and 3 blue balls. Two balls are drawn at random without replacement. The probability that both are red is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\left(\\frac{5}{14}\\right) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\left(\\frac{8}{56}\\right) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\left(\\frac{5}{28}\\right) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\left(\\frac{15}{56}\\right) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "If  $ f(x)=\\begin{cases}x^{2}+k, & x\\leq1 \\\\ 2x+1, & x>1\\end{cases} $ is continuous at x=1, then the value of k is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Solve:  $ \\frac{dy}{dx} = 3x^2 $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ y = x^3 + C $"
+          },
+          {
+            "id": "B",
+            "text": "$ y = 3x + C $"
+          },
+          {
+            "id": "C",
+            "text": "$ y = x^2 + C $"
+          },
+          {
+            "id": "D",
+            "text": "$ y = 9x + C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The feasible region of a linear programming problem is always:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Circular"
+          },
+          {
+            "id": "B",
+            "text": "Open"
+          },
+          {
+            "id": "C",
+            "text": "Convex"
+          },
+          {
+            "id": "D",
+            "text": "Irregular"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "The principal value of  $ \\tan^{-1}(1) $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(0)"
+          },
+          {
+            "id": "B",
+            "text": "$ \\left(\\frac{\\pi}{6}\\right) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\left(\\frac{\\pi}{4}\\right) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\left(\\frac{\\pi}{2}\\right) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Differentiate:  $ y = x^{2} \\sin x $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (2x \\sin x) $"
+          },
+          {
+            "id": "B",
+            "text": "$ (x^{2} \\cos x) $"
+          },
+          {
+            "id": "C",
+            "text": "$ (2x \\sin x + x^{2} \\cos x) $"
+          },
+          {
+            "id": "D",
+            "text": "$ (2x \\cos x) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Evaluate:  $ \\int_{0}^{1}(2x+1)dx $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

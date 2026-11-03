@@ -1,0 +1,356 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-22-shift-1",
+    "slug": "physics-2026-05-22-shift-1",
+    "title": "CUET UG Physics 22 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-22",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Physics_May22_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "An electromagnetic wave travels in free space along the x-direction. At a particular point in space and time,\n\n $$ \\vec{B}=2\\times10^{-7}\\hat{j}T $$ \n\nis associated with this wave. The value of corresponding electric field  $ \\vec{E} $ at this point is ___ V/m.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 60\\hat{k} $"
+          },
+          {
+            "id": "B",
+            "text": "$ -60\\hat{k} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 30\\hat{k} $"
+          },
+          {
+            "id": "D",
+            "text": "$ -600\\hat{k} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Two resistors of  $ 200\\Omega $ and  $ 400\\Omega $ are connected in series with a battery of  $ 100V $. A bulb rated at  $ 200V $,  $ 100W $ is connected across the  $ 400\\Omega $ resistance. The potential drop across the bulb is ___ V.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "25"
+          },
+          {
+            "id": "B",
+            "text": "50"
+          },
+          {
+            "id": "C",
+            "text": "66.6"
+          },
+          {
+            "id": "D",
+            "text": "100"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Two point charges  $ 8\\mu C $ and  $ -2\\mu C $ are located at x = 2 cm and x = 4 cm, respectively on the x-axis. The ratio of electric flux due to these charges through two spheres of radii 3 cm and 5 cm with their centers at the origin is ___.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "4:1"
+          },
+          {
+            "id": "B",
+            "text": "3:4"
+          },
+          {
+            "id": "C",
+            "text": "4:3"
+          },
+          {
+            "id": "D",
+            "text": "4:5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "A circular current loop of radius R is placed inside a square loop of side length  $ L $ ( $ L \\gg R $) such that they are co-planar and their centers coincide. The permeability of free space is  $ \\mu_0 $. The mutual inductance between circular loop and square loop is ___.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2\\sqrt{2}\\frac{\\mu_0 L^2}{R} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\sqrt{2}\\frac{\\mu_0 L^2}{R} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sqrt{2}\\frac{\\mu_0 R^2}{L} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\sqrt{2}\\frac{\\mu_0 R^2}{L} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The binding energy per nucleon of  $ {}^{209}_{83}Bi $ is ___ MeV.\n\nGiven:  $ m(\\text{}_{83}^{209}\\text{Bi}) = 208.980388 u $,  $ m_p = 1.007825 u $,  $ m_n = 1.008665 u $,\n\n $ 1u = 931\\,\\text{MeV}/c^2 $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7.48"
+          },
+          {
+            "id": "B",
+            "text": "7.84"
+          },
+          {
+            "id": "C",
+            "text": "8.79"
+          },
+          {
+            "id": "D",
+            "text": "6.94"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Match the LIST-I with LIST-II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">List-I</td><td colspan=\"2\">List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>Planck&#x27;s constant</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>$ ML^{2}T^{-2} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>Stopping potential</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>$ T^{-1} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>Work function</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>$ ML^{2}T^{-2}A^{-1} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>Threshold frequency</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>$ ML^{2}T^{-3}A^{-1} $</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-III, B-IV, C-I, D-II"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-II, C-III, D-IV"
+          },
+          {
+            "id": "C",
+            "text": "A-IV, B-III, C-I, D-II"
+          },
+          {
+            "id": "D",
+            "text": "A-I, B-IV, C-III, D-II"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Given below are two statements: one is labelled as Assertion A and the other is labelled as Reason R.\n\nAssertion A: In electrostatics, a conductor does not store any net charge inside.\n\nReason R: Inside the capacitor (with no dielectric medium), the free charge carriers, if placed between the plates of capacitor, experience force and drift.\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "id": "B",
+            "text": "Both A and R are true but R is NOT the correct explanation of A"
+          },
+          {
+            "id": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "id": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "A solenoid has a core made of material with relative permeability 400. The magnetic field produced in the interior of solenoid is 1.0T. The magnetic intensity in SI units is  $ \\alpha \\times 10^{5} $. The value of  $ \\alpha $ is ___.\n\n $$ \\mathrm{G i v e n}\\colon\\mu_{0}=4\\pi\\times10^{-7}\\mathrm{S I u n i t s} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{25}{\\pi} $"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{1}{\\frac{1}{1}6\\pi} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\frac{ 冫 }{ 冫 }\\pi $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{1}{4\\pi} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "A magnetic field vector in an electromagnetic wave is represented by\n\n $$ \\vec{B}=B_{0}\\sin\\left(2\\pi\\nu t-\\frac{2\\pi x}{\\lambda}\\right)\\hat{j} $$ \n\nIts associated electric field vector is ___.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\vec{E}=-\\nu\\lambda B_{0}\\sin\\left(2\\pi\\nu t-\\frac{2\\pi x}{\\lambda}\\right)\\hat{k} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\vec{E}=-\\nu\\lambda B_{0}\\sin\\left(2\\pi\\nu t-\\frac{2\\pi x}{\\lambda}\\right)\\hat{i} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ \\vec{E}=\\nu\\lambda B_{0}\\sin\\left(2\\pi\\nu t-\\frac{2\\pi x}{\\lambda}\\right)\\hat{k} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\vec{E}=\\nu\\lambda B_{0}\\sin\\left(2\\pi\\nu t-\\frac{2\\pi x}{\\lambda}\\right)\\hat{i} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "A convex lens is made from glass material having refractive index of 1.4 with same radius of curvature on both sides. The ratio of its focal length and radius of curvature is ___.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.5"
+          },
+          {
+            "id": "B",
+            "text": "2.5"
+          },
+          {
+            "id": "C",
+            "text": "0.8"
+          },
+          {
+            "id": "D",
+            "text": "1.25"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

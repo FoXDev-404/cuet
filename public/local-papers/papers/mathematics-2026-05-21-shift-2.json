@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-21-shift-2",
+    "slug": "mathematics-2026-05-21-shift-2",
+    "title": "CUET UG Mathematics 21 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-21",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May21_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Find the shortest distance between the two skew lines whose vector equations are given by:\n\n $$ \\vec{r}=(\\hat{i}+2\\hat{j}+3\\hat{k})+\\lambda(\\hat{i}-3hat{t}j+2\\hat{k}) $$ \n\n $$ \\vec{r}=(4\\hat{i}+5\\hat{j}+6\\hat{k})+\\mu(2\\hat{i}+3\\hat{j}+\\hat{k}) $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3\\frac{1}{\\sqrt{19}} $"
+          },
+          {
+            "id": "B",
+            "text": "0"
+          },
+          {
+            "id": "C",
+            "text": "9"
+          },
+          {
+            "id": "D",
+            "text": "$ \\sqrt{151} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Evaluate the definite integral using standard definite integral properties:\n\n $$ \\int_{0}^{\\frac{\\pi}{2}}\\frac{\\sin^{5}x}{\\sin^{5}x+\\cos^{5}x}dx $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\pi}{4} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\pi}{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\pi $"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "If A is a skew-symmetric matrix of order  $ 5 \\times 5 $, what is the value of its determinant  $ |A| $?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "-1"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Two independent events $A$ and $B$ have individual probabilities of occurring given by $P(A)=0.4$ and $P(B)=0.5$. Find the probability that at least one of these two events occurs.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.70"
+          },
+          {
+            "id": "B",
+            "text": "0.90"
+          },
+          {
+            "id": "C",
+            "text": "0.20"
+          },
+          {
+            "id": "D",
+            "text": "0.30"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Find the general solution of the following homogeneous differential equation:\n\n $$ \\frac{dy}{dx}=\\frac{x^{2}+y^{2}}{xy} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ y^{2}=2x^{2}\\ln|x|+Cx^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ y = x \\ln |x| + C $"
+          },
+          {
+            "id": "C",
+            "text": "$ y^{2}=x^{2}+C $"
+          },
+          {
+            "id": "D",
+            "text": "$ y = e^{x} + Cx $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Find the angle  $ \\theta $ between the line  $ \\frac{x-1}{1} = \\frac{y+2}{-2} = \\frac{z-3}{2} $ and the plane  $ 2x - y + 2z = 7 $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\sin^{-1}\\left(\\frac{8}{9}\\right) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\cos^{-1}\\left(\\frac{8}{9}\\right) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\pi}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\sin^{-1}\\left(\\frac{2}{3}\\right) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Let a relation $R$ be defined on the set of all natural numbers $\\mathbb{N}$ by the rule: $(a,b)\\in R$ if and only if $a+b$ is an even number. This relation $R$ is classified as an:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Equivalence Relation"
+          },
+          {
+            "id": "B",
+            "text": "Symmetric but not Transitive Relation"
+          },
+          {
+            "id": "C",
+            "text": "Reflexive but not Symmetric Relation"
+          },
+          {
+            "id": "D",
+            "text": "Anti-symmetric Relation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Find the total area of the bounded region enclosed between the parabola curve  $ y^{2}=8x $ and its vertical latus rectum boundary line.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{32}{3} $ square units"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{16}{3} $ square units"
+          },
+          {
+            "id": "C",
+            "text": "8 square units"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{64}{3} $ square units"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "If the direction vectors of two straight lines are given by  $ \\vec{m} = \\hat{i} + \\hat{j} + 0\\hat{k} $ and  $ \\vec{n} = \\hat{i} + 0\\hat{j} + \\hat{k} $, calculate the value of  $ \\cos\\phi $ representing the acute angle between them.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\sqrt{3}}{2} $"
+          },
+          {
+            "id": "C",
+            "text": "0"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "A pair of standard unbiased six-sided dice are rolled simultaneously. Given that the sum of the numbers showing is exactly 6, what is the conditional probability that one of the dice shows the number 2?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{2}{5} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{5} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{6} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{2}{36} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

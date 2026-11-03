@@ -1,0 +1,368 @@
+{
+  "exam": {
+    "id": "local-chemistry-2026-05-30-shift-1",
+    "slug": "chemistry-2026-05-30-shift-1",
+    "title": "CUET UG Chemistry 30 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2026,
+    "examDate": "2026-05-30",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Chemistry_May30_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "A compound A having molecular formula  $ C_{8}H_{8}O $ gives a deep violet colour with neutral  $ FeCl_{3} $. Treatment of A with excess  $ CH_{3}I/K_{2}CO_{3} $ gives compound B. Ozonolysis of B followed by reductive workup  $ (Zn/H_{2}O) $ produces one mole of an isaldehyde and one mole of formaldehyde. The anisaldehyde obtained is then subjected to Cannizzaro reaction using concentrated NaOH. The number of moles of an isolyl alcohol formed from 2 moles of A is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.5"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "An equimolar mixture of benzaldehyde and acetaldehyde is treated with dilute NaOH. The major product formed is isolated and then subjected to  $ I_{2}/NaOH $. The number of moles of yellow precipitate obtained per mole of benzaldehyde initially taken is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "0.5"
+          },
+          {
+            "id": "C",
+            "text": "1"
+          },
+          {
+            "id": "D",
+            "text": "2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2026-05-30-shift-1/q02-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The molar conductivities at infinite dilution of HCl,  $ CH_{3}COONa $ and  $ CH_{3}COOH $ are 426.0, 91.0 and 390.5  $ \\Omega^{-1}cm^{2}mol^{-1} $, respectively. If the molar conductivity of 0.01 M acetic acid solution is 15.62  $ \\Omega^{-1}cm^{2}mol^{-1} $, the value of  $ K_{a} $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1.8 \\times 10^{-5} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 1.8 \\times 10^{-4} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 1.8 \\times 10^{-3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 1.8 \\times 10^{-6} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "For the electrochemical cell\n\n $$ Zn|Zn^{2+}(10^{-2}M)||Cu^{2+}(10^{-4}M)|Cu $$ \n\nat 298K,  $ E_{cell}^{\\circ} = 1.10V $. The minimum external potential required to just stop the spontaneous cell reaction is closest to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.98 V"
+          },
+          {
+            "id": "B",
+            "text": "1.04 V"
+          },
+          {
+            "id": "C",
+            "text": "1.16 V"
+          },
+          {
+            "id": "D",
+            "text": "1.22 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "For a first-order reaction, the rate constant increases by a factor of 16 when the temperature is increased from 300K to 340K. The activation energy of the reaction is closest to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 28 \\, kJ \\, mol^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 57 \\, kJ \\, mol^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 85 \\, kJ \\, mol^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 114 \\, kJ \\, mol^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "A coordination compound  $ [CoF_{6}]^{3-} $ is converted into  $ [Co(CN)_{6}]^{3-} $. Which of the following correctly represents the hybridization and number of unpaired electrons in the final complex?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ sp^{3}d^{2} $, 4 unpaired electrons"
+          },
+          {
+            "id": "B",
+            "text": "$ d^{2}sp^{3} $, 0 unpaired electrons"
+          },
+          {
+            "id": "C",
+            "text": "$ sp^{3}d^{2} $, 2 unpaired electrons"
+          },
+          {
+            "id": "D",
+            "text": "$ d^{2}sp^{3} $, 2 unpaired electrons"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "An octahedral coordination compound of chromium(III) reacts with one mole of EDTA to form a stable chelate. The original complex has the formula  $ [Cr(en)_2Cl_2]^+ $, where en represents ethane-1,2-diamine. The total number of geometrical and optical isomers possible for the complex is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q07-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2026-05-30-shift-1/q07-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 7"
+          }
+        ]
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which of the following statements regarding lanthanoids is correct?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Basicity of lanthanoid hydroxides increases from  $ La(OH)_{3} $ to  $ Lu(OH)_{3} $"
+          },
+          {
+            "id": "B",
+            "text": "Atomic radii increase regularly from La to Lu"
+          },
+          {
+            "id": "C",
+            "text": "Lanthanoid contraction is mainly due to poor shielding by 4f electrons"
+          },
+          {
+            "id": "D",
+            "text": "Cerium exhibits only the +3 oxidation state"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Phenol is subjected to the following sequence of reactions:\n\n $$  Phenol\\xrightarrow{Kolbe-Schmitt}A\\xrightarrow{SOCl_{2}}B\\xrightarrow{Clemmensen~Reduction}C\\xrightarrow{Reimer-Tiemann}D $$ \n\n## The functional group present in the final product D is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Only - CHO"
+          },
+          {
+            "id": "B",
+            "text": "Only -COOH"
+          },
+          {
+            "id": "C",
+            "text": "Both -OH and -CHO"
+          },
+          {
+            "id": "D",
+            "text": "Both -OH and -COOH"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Assertion (A): Sucrose is a non-reducing sugar and does not exhibit mutarotation.\n\nReason (R): In sucrose, both anomeric carbon atoms are involved in glycosidic bond formation.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both Assertion and Reason are true, and Reason is the correct explanation of Assertion."
+          },
+          {
+            "id": "B",
+            "text": "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion."
+          },
+          {
+            "id": "C",
+            "text": "Assertion is true, but Reason is false."
+          },
+          {
+            "id": "D",
+            "text": "Assertion is false, but Reason is true."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

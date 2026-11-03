@@ -1,0 +1,354 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-21-shift-1",
+    "slug": "mathematics-2026-05-21-shift-1",
+    "title": "CUET UG Mathematics 21 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-21",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Mathematics_May21_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "If the function  $ f(x) $ defined below is continuous at x = 2, find the value of the constant k:\n\n $$ f(x)=\\begin{cases}kx^{2}&if x\\leq2\\\\3x-2&if x>2\\end{cases} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Find the slope of the normal to the curve  $ y = 2x^{2} + 3\\sin x $ at the coordinate point where x = 0.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ -\\frac{1}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "-3"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The total area of a parallelogram constructed with adjacent vector sides given by  $ \\vec{a} = \\hat{i} - \\hat{j} + 3\\hat{k} $\n\nand  $ \\vec{b}=2\\hat{i}-7\\hat{j}+\\hat{k} $ is equal to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 15\\sqrt{2} $"
+          },
+          {
+            "id": "B",
+            "text": "15"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sqrt{35} $"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "A random variable X has the following probability distribution table: Find the exact value\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>X</td><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>1</td><td style='text-align: center; word-wrap: break-word;'>2</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>$ P(X) $</td><td style='text-align: center; word-wrap: break-word;'>k</td><td style='text-align: center; word-wrap: break-word;'>2k</td><td style='text-align: center; word-wrap: break-word;'>3k</td></tr></table>\n\n\nof the unknown parameter k.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{6} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "1"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{5} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "If two vectors  $ \\vec{a} = 2\\hat{i} + \\lambda\\hat{j} + \\hat{k} $ and  $ \\vec{b} = 4\\hat{i} - 2\\hat{j} - 2\\hat{k} $ are perpendicular to each other, determine the value of the scalar constant  $ \\lambda $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "-3"
+          },
+          {
+            "id": "C",
+            "text": "6"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Evaluate the principal value of the inverse trigonometric expression:  $ \\sin^{-1}\\left(\\sin\\frac{2\\pi}{3}\\right) $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\pi}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{2\\pi}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ -\\frac{\\pi}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\pi}{6} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "If a square matrix A satisfies the condition  $ A^{T} = -A $, then the matrix A is classified as a:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Skew-symmetric matrix"
+          },
+          {
+            "id": "B",
+            "text": "Symmetric matrix"
+          },
+          {
+            "id": "C",
+            "text": "Identity matrix"
+          },
+          {
+            "id": "D",
+            "text": "Orthogonal matrix"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Find the interval where the function  $ f(x) = x^2 - 4x + 6 $ is strictly decreasing.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (-\\infty, 2) $"
+          },
+          {
+            "id": "B",
+            "text": "$ (2, \\infty) $"
+          },
+          {
+            "id": "C",
+            "text": "$ (-\\infty, 4) $"
+          },
+          {
+            "id": "D",
+            "text": "$ [-2, 2] $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Simplify the following expression using inverse trigonometric properties:  $ \\tan(\\sin^{-1}x + \\cos^{-1}x) $ where  $ |x| \\leq 1 $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Not defined ( $ \\infty $)"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "0"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\pi}{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Calculate the mean (expected value) of a random variable X given its probability distribution setup below:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>X</td><td style='text-align: center; word-wrap: break-word;'>1</td><td style='text-align: center; word-wrap: break-word;'>2</td><td style='text-align: center; word-wrap: break-word;'>3</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>$ P(X) $</td><td style='text-align: center; word-wrap: break-word;'>0.2</td><td style='text-align: center; word-wrap: break-word;'>0.5</td><td style='text-align: center; word-wrap: break-word;'>0.3</td></tr></table>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2.1"
+          },
+          {
+            "id": "B",
+            "text": "2.0"
+          },
+          {
+            "id": "C",
+            "text": "1.0"
+          },
+          {
+            "id": "D",
+            "text": "3.0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

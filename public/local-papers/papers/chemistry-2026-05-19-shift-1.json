@@ -1,0 +1,354 @@
+{
+  "exam": {
+    "id": "local-chemistry-2026-05-19-shift-1",
+    "slug": "chemistry-2026-05-19-shift-1",
+    "title": "CUET UG Chemistry 19 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2026,
+    "examDate": "2026-05-19",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Chemistry_May19_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "For a first-order reaction, if the time taken for 90% completion is t, what will be the approximate time taken for 99.9% completion of the same reaction?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2t"
+          },
+          {
+            "id": "B",
+            "text": "3t"
+          },
+          {
+            "id": "C",
+            "text": "4t"
+          },
+          {
+            "id": "D",
+            "text": "1.5t"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "According to collision theory, increasing the starting concentration of a collection of reacting molecules directly results in a change in which of the following system factors?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Activation energy"
+          },
+          {
+            "id": "B",
+            "text": "Collision frequency"
+          },
+          {
+            "id": "C",
+            "text": "Rate constant"
+          },
+          {
+            "id": "D",
+            "text": "Fraction of molecules with energy greater than activation energy"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "What is the cell potential ( $ E_{cell} $) for a concentration cell consisting of two hydrogen electrodes at 298 K, where the anode compartment is at pH = 3 and the cathode compartment is at pH = 1 under standard pressure conditions?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.0591 V"
+          },
+          {
+            "id": "B",
+            "text": "0.1182 V"
+          },
+          {
+            "id": "C",
+            "text": "-0.1182 V"
+          },
+          {
+            "id": "D",
+            "text": "0.0000 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of the following expressions correctly relates the limiting molar conductivity ( $ \\Lambda_{m}^{\\circ} $) of aluminum sulfate,  $ \\mathrm{Al}_{2}(\\mathrm{SO}_{4})_{3} $, to its individual ionic components according to Kohlerausch's Law?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\Lambda_{m}^{\\circ}=\\lambda^{\\circ}(\\mathrm{Al}^{3+})+\\lambda^{\\circ}(\\mathrm{SO}_{4}^{2-}) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\Lambda_{m}^{\\circ}=2\\lambda^{\\circ}(\\mathrm{Al}^{3+})+3\\lambda^{\\circ}(\\mathrm{SO}_{4}^{2-}) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\Lambda_{m}^{\\circ}=3\\lambda^{\\circ}(\\mathrm{Al}^{3+})+2\\lambda^{\\circ}(\\mathrm{SO}_{4}^{2-}) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\Lambda_{m}^{\\circ}=\\frac{1}{2}\\lambda^{\\circ}(\\mathrm{Al}^{3+})+\\frac{1}{3}\\lambda^{\\circ}(\\mathrm{SO}_{4}^{2-}) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "What is the correct increasing order of basic strength for the following amines when measured inside an aqueous medium?\n\n(I)  $  \\text{CH}_3\\text{NH}_2  $, (II)  $  (\\text{CH}_3)_2\\text{NH}  $, (III)  $  (\\text{CH}_3)_3\\text{N}  $, (IV)  $  \\text{NH}_3  $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "IV < III < I < II"
+          },
+          {
+            "id": "B",
+            "text": "IV < I < II < III"
+          },
+          {
+            "id": "C",
+            "text": "III < I < II < IV"
+          },
+          {
+            "id": "D",
+            "text": "I < II < III < IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "An organic compound with the molecular formula  $ C_{7}H_{8}O $ is completely insoluble in water but dissolves readily in an aqueous NaOH solution. When treated with bromine water, it forms a white precipitate. Identify the compound.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Benzyl alcohol"
+          },
+          {
+            "id": "B",
+            "text": "Anisole"
+          },
+          {
+            "id": "C",
+            "text": "o-Cresol"
+          },
+          {
+            "id": "D",
+            "text": "Methoxybenzene"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Which of the following coordination complex ions exhibits structural asymmetry leading to optical isomerism?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "trans- $ [\\mathrm{Co(en)_{2}Cl_{2}}] $^{+}"
+          },
+          {
+            "id": "B",
+            "text": "cis-[Co(en) $ _{2} $Cl $ _{2} $] $ ^{+} $"
+          },
+          {
+            "id": "C",
+            "text": "$ [\\mathrm{Co}(\\mathrm{NH}_{3})_{4}\\mathrm{Cl}_{2}]^{+} $"
+          },
+          {
+            "id": "D",
+            "text": "$ [Cr(NH_{3})_{5}Cl]^{2+} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Using Crystal Field Theory (CFT), what is the correct electronic configuration and magnetic behavior of the high-spin complex  $ [\\mathrm{Fe}(\\mathrm{H}_{2}\\mathrm{O})_{6}]^{2+} $?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ t_{2g}^{4}e_{g}^{2} $, Paramagnetic"
+          },
+          {
+            "id": "B",
+            "text": "$ t_{2g}^{6}e_{g}^{0} $, Diamagnetic"
+          },
+          {
+            "id": "C",
+            "text": "$ t_{2g}^{3}e_{g}^{3} $, Paramagnetic"
+          },
+          {
+            "id": "D",
+            "text": "$ t_{2g}^{5}e_{g}^{1} $, Paramagnetic"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Which of the following alkyl halides will undergo the fastest rate of nucleophilic substitution via an  $ S_{N}1 $ mechanism when treated with an aqueous nucleophile?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "CH_{3}Cl"
+          },
+          {
+            "id": "B",
+            "text": "$ (\\mathrm{CH}_{3})_{3}\\mathrm{CCl} $"
+          },
+          {
+            "id": "C",
+            "text": "$ CH_{3}CH_{2}Cl $"
+          },
+          {
+            "id": "D",
+            "text": "$ (\\mathrm{CH}_{3})_{2}\\mathrm{CHCl} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "When phenol is treated with chloroform (CHCl_{3}) in the presence of an aqueous sodium hydroxide solution followed by acidification, a prominent aromatic aldehyde is generated. What is the name of this organic reaction?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Kolbe's Reaction"
+          },
+          {
+            "id": "B",
+            "text": "Reimer-Tiemann Reaction"
+          },
+          {
+            "id": "C",
+            "text": "Rosenmund Reduction"
+          },
+          {
+            "id": "D",
+            "text": "Friedel-Crafts Acylation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

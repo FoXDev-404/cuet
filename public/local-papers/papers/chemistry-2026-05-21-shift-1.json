@@ -1,0 +1,360 @@
+{
+  "exam": {
+    "id": "local-chemistry-2026-05-21-shift-1",
+    "slug": "chemistry-2026-05-21-shift-1",
+    "title": "CUET UG Chemistry 21 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2026,
+    "examDate": "2026-05-21",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Chemistry_May21_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Arrange the following compounds in increasing order of acidic strength:\n\n#### Phenol, Water, Propan-1-ol, Propan-2-ol",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Water < Propan-2-ol < Propan-1-ol < Phenol"
+          },
+          {
+            "id": "B",
+            "text": "Propan-2-ol < Propan-1-ol < Water < Phenol"
+          },
+          {
+            "id": "C",
+            "text": "Propan-1-ol < Propan-2-ol < Water < Phenol"
+          },
+          {
+            "id": "D",
+            "text": "Phenol < Water < Propan-1-ol < Propan-2-ol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Among the following amines, the strongest base in aqueous solution is:\n\n $$  NH_{3},CH_{3}NH_{2},(CH_{3})_{2}NH,(CH_{3})_{3}N $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ NH_{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ (\\mathrm{CH}_{3})_{3}\\mathrm{N} $"
+          },
+          {
+            "id": "C",
+            "text": "( $ CH_{3})_{2}NH $"
+          },
+          {
+            "id": "D",
+            "text": "$ CH_{3}NH_{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Lucas reagent gives immediate turbidity with:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ethanol"
+          },
+          {
+            "id": "B",
+            "text": "Propan-1-ol"
+          },
+          {
+            "id": "C",
+            "text": "Propan-2-ol"
+          },
+          {
+            "id": "D",
+            "text": "tert-Butyl alcohol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of the following compounds has the highest boiling point?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Propane"
+          },
+          {
+            "id": "B",
+            "text": "Propanal"
+          },
+          {
+            "id": "C",
+            "text": "Propan-1-ol"
+          },
+          {
+            "id": "D",
+            "text": "Dimethyl ether"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Among the following, the compound having the lowest value of  $ pK_{a} $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ethanol"
+          },
+          {
+            "id": "B",
+            "text": "Water"
+          },
+          {
+            "id": "C",
+            "text": "Phenol"
+          },
+          {
+            "id": "D",
+            "text": "Propan-2-ol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Which of the following compounds gives a positive Hinsberg test and forms a soluble sulphonamide?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Aniline"
+          },
+          {
+            "id": "B",
+            "text": "Dimethylamine"
+          },
+          {
+            "id": "C",
+            "text": "Trimethylamine"
+          },
+          {
+            "id": "D",
+            "text": "Triphenylamine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The compound which is most basic in gaseous phase is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ammonia"
+          },
+          {
+            "id": "B",
+            "text": "Methylamine"
+          },
+          {
+            "id": "C",
+            "text": "Dimethylamine"
+          },
+          {
+            "id": "D",
+            "text": "Trimethylamine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which of the following compounds can show metamerism?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Propanal"
+          },
+          {
+            "id": "B",
+            "text": "Propanone"
+          },
+          {
+            "id": "C",
+            "text": "Methoxyethane"
+          },
+          {
+            "id": "D",
+            "text": "Ethanol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "The half-life of a first order reaction is 1386 s. The rate constant k is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 5 \\times 10^{-4} $ s $ ^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 2 \\times 10^{-4} \\, s^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 1 \\times 10^{-3} \\, s^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 4\\times10^{-3}\\ s^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Which of the following biomolecules acts as the genetic material in most organisms?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Protein"
+          },
+          {
+            "id": "B",
+            "text": "DNA"
+          },
+          {
+            "id": "C",
+            "text": "Lipid"
+          },
+          {
+            "id": "D",
+            "text": "Polysaccharide"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q10-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2026-05-21-shift-1/q10-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 10"
+          }
+        ]
+      }
+    ]
+  }
+}

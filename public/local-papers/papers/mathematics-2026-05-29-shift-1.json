@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-29-shift-1",
+    "slug": "mathematics-2026-05-29-shift-1",
+    "title": "CUET UG Mathematics 29 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-29",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Mathematics_May29_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Let  $ A $ be a  $ 3 \\times 3 $ matrix such that  $ A^2 = I $. If  $ \\det(A) = -1 $ and the sum of eigenvalues is 1, find the set of eigenvalues of  $ A $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1, 1, 1"
+          },
+          {
+            "id": "B",
+            "text": "1, 1, -1"
+          },
+          {
+            "id": "C",
+            "text": "-1, -1, 1"
+          },
+          {
+            "id": "D",
+            "text": "-1, -1, -1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Analyze the function  $ f(x) = |x - 1| + |x - 2| + |x - 3| $. Determine the points where the derivative  $ f'(x) $ is undefined.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "x = 1, 3"
+          },
+          {
+            "id": "B",
+            "text": "x = 1, 2, 3"
+          },
+          {
+            "id": "C",
+            "text": "x = 1.5, 2.5"
+          },
+          {
+            "id": "D",
+            "text": "x = 0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Identify the order and degree of the differential equation:\n\n $$ \\left(\\frac{d^{3}y}{dx^{3}}\\right)^{2}+4\\left(\\frac{dy}{dx}\\right)^{4}+y=\\sin(x) $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Order 3, Degree 4"
+          },
+          {
+            "id": "B",
+            "text": "Order 3, Degree 2"
+          },
+          {
+            "id": "C",
+            "text": "Order 4, Degree 3"
+          },
+          {
+            "id": "D",
+            "text": "Order 1, Degree 4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "For the linear differential equation\n\n $$ \\frac{dy}{dx}+\\frac{2}{x}y=x^{2} $$ \n\ncalculate the integrating factor (I.F).",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "x"
+          },
+          {
+            "id": "B",
+            "text": "$ x^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ x^{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\ln(x) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Maximize  $ Z = 5x + 3y $ subject to  $ x + y \\leq 6 $ and x, y  $ \\geq 0 $. Where does the maximum value occur?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (0,0) $"
+          },
+          {
+            "id": "B",
+            "text": "$ (0,6) $"
+          },
+          {
+            "id": "C",
+            "text": "$ (6,0) $"
+          },
+          {
+            "id": "D",
+            "text": "$ (3,3) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "A bag has 4 red and 6 black balls. Two balls are drawn without replacement. What is the probability that the second is red given the first was black?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{4}{10} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{4}{9} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{6}{9} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{2}{9} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Find the domain of the function  $ f(x) = \\sin^{-1}(3x - 1) $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ [-1,1] $"
+          },
+          {
+            "id": "B",
+            "text": "$ [0,\\frac{2}{3}] $"
+          },
+          {
+            "id": "C",
+            "text": "$ [-\\frac{1}{3},\\frac{1}{3}] $"
+          },
+          {
+            "id": "D",
+            "text": "$ [\\frac{1}{3},1] $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "For vectors  $ \\vec{a} = 3\\hat{i} - \\hat{j} + 2\\hat{k} $ and  $ \\vec{b} = \\hat{i} + 2\\hat{j} - \\hat{k} $, find the scalar projection of  $ \\vec{a} $ onto  $ \\vec{b} $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ -\\frac{1}{\\sqrt{6}} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{\\sqrt{6}} $"
+          },
+          {
+            "id": "C",
+            "text": "$ -\\frac{1}{6} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{6} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Let $R$ be a relation on $\\{1,2,3\\}$ defined by\n\n $$ R=\\left\\{(1,1),(2,2),(3,3),(1,2)\\right\\} $$ \n\nIdentify the properties satisfied by R.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Symmetric only"
+          },
+          {
+            "id": "B",
+            "text": "Reflexive and Transitive"
+          },
+          {
+            "id": "C",
+            "text": "Equivalence relation"
+          },
+          {
+            "id": "D",
+            "text": "None of these"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Find the local maximum point of the function\n\n $$ f(x)=-x^{3}+3x+1 $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "x=1"
+          },
+          {
+            "id": "B",
+            "text": "x=-1"
+          },
+          {
+            "id": "C",
+            "text": "x = 0"
+          },
+          {
+            "id": "D",
+            "text": "$ x = \\sqrt{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

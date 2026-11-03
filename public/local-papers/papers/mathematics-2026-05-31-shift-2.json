@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-31-shift-2",
+    "slug": "mathematics-2026-05-31-shift-2",
+    "title": "CUET UG Mathematics 31 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-31",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May31_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "If\n\n $$ y(x)=\\det\\begin{pmatrix}\\sin x&\\cos x&\\sin x+\\cos x+1\\\\27&28&27\\\\1&1&1\\end{pmatrix} $$ \n\nfor  $ x \\in \\mathbb{R} $, then  $ \\frac{d^2 y}{dx^2} + y $ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "-1"
+          },
+          {
+            "id": "B",
+            "text": "0"
+          },
+          {
+            "id": "C",
+            "text": "1"
+          },
+          {
+            "id": "D",
+            "text": "2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Let $y = f(x)$ satisfy\n\n $$ \\frac{dy}{dx}+\\frac{xy}{x^{2}-1}=\\frac{x^{6}+4x}{\\sqrt{1-x^{2}}},-1<x<1 $$ \n\nwith  $ f(0)=0 $. If\n\n $$ 6\\int_{-1/2}^{1/2}f(x)dx=2\\pi-\\alpha, $$ \n\nthen  $ \\alpha^{2} $ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "25"
+          },
+          {
+            "id": "B",
+            "text": "26"
+          },
+          {
+            "id": "C",
+            "text": "27"
+          },
+          {
+            "id": "D",
+            "text": "28"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "If the system\n\n $$ 2x+\\lambda y+3z=5,\\quad3x+2y-z=7,\\quad4x+5y+\\mu z=9 $$ \n\nhas infinitely many solutions, then $\\lambda^{2}+\\mu^{2}$ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20"
+          },
+          {
+            "id": "B",
+            "text": "24"
+          },
+          {
+            "id": "C",
+            "text": "26"
+          },
+          {
+            "id": "D",
+            "text": "28"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Let $f: \\mathbf{R} \\to \\mathbf{R}$ be a thrice differentiable odd function satisfying $f'(x) \\geq 0$, $f''(x) = f(x)$, $f(0) = 0$, $f'(0) = 3$. Then $9f(\\ln 3)$ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "24"
+          },
+          {
+            "id": "B",
+            "text": "30"
+          },
+          {
+            "id": "C",
+            "text": "36"
+          },
+          {
+            "id": "D",
+            "text": "42"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Let $y = y(x)$ satisfy\n\n $$ \\cos x(\\log(\\cos x))^{2}dy+(\\sin x-3y\\sin x\\log(\\cos x))dx=0,\\quad x\\in(0,\\pi/2). $$ \n\nIf $y(\\pi/4)=-\\frac{1}{\\log 2}$, then $y(\\pi/6)$ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{1}{\\log 3-\\log 4}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{1}{\\log 2}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{1}{\\log 3}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{1}{\\log 4}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "If\n\n $$ f(x)=\\int\\frac{1}{x^{1/4}(1+x^{1/4})}dx,\\quad f(0)=-6, $$ \n\nthen $f(1)$ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$4(\\ln 2 - 2)$"
+          },
+          {
+            "id": "B",
+            "text": "$4(\\ln 2 - 1)$"
+          },
+          {
+            "id": "C",
+            "text": "$2(\\ln 2 - 1)$"
+          },
+          {
+            "id": "D",
+            "text": "$6(\\ln 2 - 2)$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The number of relations on  $ A = \\{1, 2, 3\\} $ containing at most 6 elements including  $ (1,2) $, that are reflexive and transitive but not symmetric is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "4"
+          },
+          {
+            "id": "B",
+            "text": "5"
+          },
+          {
+            "id": "C",
+            "text": "6"
+          },
+          {
+            "id": "D",
+            "text": "7"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "The number of singular matrices of order 2, whose elements are from the set  $ \\{2,3,6,9\\} $, is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "32"
+          },
+          {
+            "id": "B",
+            "text": "36"
+          },
+          {
+            "id": "C",
+            "text": "40"
+          },
+          {
+            "id": "D",
+            "text": "44"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Let  $ a \\in \\mathbb{R} $ and  $ A $ be a matrix of order  $ 3 \\times 3 $ such that  $ \\det(A) = -4 $ and\n\n $$ \\boldsymbol{A}+\\boldsymbol{I}=\\begin{bmatrix}1&a&1\\\\ 2&1&0\\\\ a&1&2\\end{bmatrix}. $$ \n\nIf  $ \\det((a+1)\\operatorname{adj}((a-1)A)) $ is  $ 2^{m}3^{n} $, then  $ m+n $ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "14"
+          },
+          {
+            "id": "B",
+            "text": "07"
+          },
+          {
+            "id": "C",
+            "text": "18"
+          },
+          {
+            "id": "D",
+            "text": "20"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Let\n\n $$ A=\\begin{bmatrix}\\log_{5}128&\\log_{4}5\\\\ \\log_{5}8&\\log_{4}25\\end{bmatrix}. $$ \n\nIf  $ A_{ij} $ is cofactor of  $ a_{ij} $,  $ C_{ij} = \\sum_{k=1}^{2} a_{ik} A_{jk} $, and  $ C = [C_{ij}] $, then  $ 8|C| $ equals:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "238"
+          },
+          {
+            "id": "B",
+            "text": "240"
+          },
+          {
+            "id": "C",
+            "text": "242"
+          },
+          {
+            "id": "D",
+            "text": "244"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

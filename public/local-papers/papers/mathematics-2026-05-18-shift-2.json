@@ -1,0 +1,410 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-18-shift-2",
+    "slug": "mathematics-2026-05-18-shift-2",
+    "title": "CUET UG Mathematics 18 May 2026 Shift 2 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-18",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_Mathematics_May18_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Match the following integrals in Column I with their corresponding results in Column II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Column I</td><td style='text-align: center; word-wrap: break-word;'>Column II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.  $ \\int \\frac{dx}{x^{2}-a^{2}} $</td><td style='text-align: center; word-wrap: break-word;'>I.  $ \\frac{1}{2a}\\log\\left|\\frac{a+x}{a-x}\\right|+C $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.  $ \\int \\frac{dx}{a^{2}-x^{2}} $</td><td style='text-align: center; word-wrap: break-word;'>II.  $ \\log\\left|x+\\sqrt{x^{2}-a^{2}}\\right|+C $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.  $ \\int \\frac{dx}{\\sqrt{x^{2}-a^{2}}} $</td><td style='text-align: center; word-wrap: break-word;'>III.  $ \\frac{1}{2a}\\log\\left|\\frac{x-a}{x+a}\\right|+C $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.  $ \\int \\frac{dx}{\\sqrt{a^{2}-x^{2}}} $</td><td style='text-align: center; word-wrap: break-word;'>IV.  $ \\sin^{-1}\\frac{x}{a}+C $</td></tr></table>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I, B-III, C-IV, D-II"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-I, C-II, D-IV"
+          },
+          {
+            "id": "C",
+            "text": "A-III, B-II, C-I, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-IV, B-II, C-III, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "If $R = \\{(x, y) \\mid x, y \\in \\mathbb{Z}, x^2 + y^2 \\leq 4\\}$ is a relation in $\\mathbb{Z}$, then the domain of $R$ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\{0, 1, 2\\}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\{0, -1, -2\\}$"
+          },
+          {
+            "id": "C",
+            "text": "$ \\{-2,-1,0,1,2\\} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\{-1,0,2\\} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q02-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "If  $ R = \\{(x, y) \\mid x, y \\in \\mathbb{R}, x^2 + y^2 = 1\\} $ is a relation in  $ \\mathbb{R} $, then  $ R $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Reflexive"
+          },
+          {
+            "id": "B",
+            "text": "Symmetric"
+          },
+          {
+            "id": "C",
+            "text": "Transitive"
+          },
+          {
+            "id": "D",
+            "text": "Equivalence Relation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "The value of  $ \\cot^{-1}\\left[2\\cos\\left(2\\sin^{-1}\\frac{1}{2}\\right)\\right] $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\pi}{6} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\pi}{4} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{2\\pi}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\pi}{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q04-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q04-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The value of $\\cos\\left(\\frac{\\pi}{6}-\\cos^{-1}\\left(-\\frac{\\sqrt{3}}{2}\\right)\\right)$ is equal to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ -\\frac{\\sqrt{1}}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ -\\frac{1}{\\sqrt{2}} $"
+          },
+          {
+            "id": "C",
+            "text": "$ -\\frac{1}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q05-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q05-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "If $A = \\begin{bmatrix} 2 & 3 \\\\ 5 & -2 \\end{bmatrix}$, then:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ A^{-1}=\\frac{1}{11}A $"
+          },
+          {
+            "id": "B",
+            "text": "$ A^{-1}=\\frac{1}{19}A $"
+          },
+          {
+            "id": "C",
+            "text": "$ A^{-1}=-\\frac{1}{19}A $"
+          },
+          {
+            "id": "D",
+            "text": "$ A^{-1}=\\frac{1}{7}A $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q06-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q06-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 6"
+          }
+        ]
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The value of  $ \\lambda $ for which the following system of equations has unique solution:\n\n $$ \\lambda x+3y-z=1 $$ \n\n $$ x+2y+z=2 $$ \n\n $$ -\\lambda x+y+2z=-1 $$ \n\nare:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\lambda \\neq \\frac{5}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\lambda \\neq \\frac{3}{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\lambda \\neq \\frac{7}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\lambda \\neq -\\frac{7}{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "If $B$ is a non-singular $4\\times4$ matrix and $A$ is its adjoint such that $|A|=125$, then $|B|$ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "25"
+          },
+          {
+            "id": "C",
+            "text": "125"
+          },
+          {
+            "id": "D",
+            "text": "625"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q08-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q08-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 8"
+          }
+        ]
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "If A is a square matrix of order 3 such that  $ |2(\\text{adj}A)| = 288 $, then the value of  $ |A| $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "144"
+          },
+          {
+            "id": "B",
+            "text": "36"
+          },
+          {
+            "id": "C",
+            "text": "$ \\pm12 $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\pm6 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q09-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q09-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 9"
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "If $A$ is a square matrix of order 3 and $|A| = -3$, then the value of $|2AA^T|$ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "-36"
+          },
+          {
+            "id": "B",
+            "text": "72"
+          },
+          {
+            "id": "C",
+            "text": "-72"
+          },
+          {
+            "id": "D",
+            "text": "36"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q10-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q10-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 10"
+          }
+        ]
+      }
+    ]
+  }
+}

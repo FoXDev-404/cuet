@@ -1,0 +1,400 @@
+{
+  "exam": {
+    "id": "local-physics-2026-05-30-shift-1",
+    "slug": "physics-2026-05-30-shift-1",
+    "title": "CUET UG Physics 30 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2026,
+    "examDate": "2026-05-30",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Physics_May30_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "A galvanometer of resistance  $ 50\\Omega $ gives full-scale deflection when a current of 2 mA passes through it. The value of shunt resistance required to convert it into an ammeter of range 2A is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.05Ω"
+          },
+          {
+            "id": "B",
+            "text": "0.5Ω"
+          },
+          {
+            "id": "C",
+            "text": "5Ω"
+          },
+          {
+            "id": "D",
+            "text": "50Ω"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "In an AC circuit containing a pure resistor, the phase difference between voltage and current is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 90^{\\circ} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 180^{\\circ} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 45^{\\circ} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 0^{\\circ} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-30-shift-1/q02-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Two coils have mutual inductance 0.5H. If the current in the primary coil changes at the rate of  $ 4A s^{-1} $, the induced emf in the secondary coil is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.5V"
+          },
+          {
+            "id": "B",
+            "text": "1V"
+          },
+          {
+            "id": "C",
+            "text": "2V"
+          },
+          {
+            "id": "D",
+            "text": "4V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q03-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-30-shift-1/q03-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 3"
+          }
+        ]
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Match the electromagnetic waves in Column I with their common applications in Column II.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Column I</td><td colspan=\"2\">Column II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)</td><td style='text-align: center; word-wrap: break-word;'>Gamma rays</td><td style='text-align: center; word-wrap: break-word;'>(I)</td><td style='text-align: center; word-wrap: break-word;'>Radar communication</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)</td><td style='text-align: center; word-wrap: break-word;'>X-rays</td><td style='text-align: center; word-wrap: break-word;'>(II)</td><td style='text-align: center; word-wrap: break-word;'>Cancer treatment</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)</td><td style='text-align: center; word-wrap: break-word;'>Microwaves</td><td style='text-align: center; word-wrap: break-word;'>(III)</td><td style='text-align: center; word-wrap: break-word;'>Bone imaging</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)</td><td style='text-align: center; word-wrap: break-word;'>Radio waves</td><td style='text-align: center; word-wrap: break-word;'>(IV)</td><td style='text-align: center; word-wrap: break-word;'>Broadcasting</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-II, B-III, C-I, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-II, C-IV, D-III"
+          },
+          {
+            "id": "C",
+            "text": "A-II, B-IV, C-I, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-III, B-II, C-IV, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "According to Bohr’s atomic model, the angular momentum of an electron in the  $ n^{\\mathrm{th}} $ orbit is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{nh}{2\\pi} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{h}{2\\pi n} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{n^{2}h}{2\\pi} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{h}{n} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q05-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-30-shift-1/q05-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "A photon has energy 6eV. The corresponding work function of a metal is 2eV. The maximum kinetic energy of the emitted photoelectron is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2eV"
+          },
+          {
+            "id": "B",
+            "text": "4eV"
+          },
+          {
+            "id": "C",
+            "text": "6eV"
+          },
+          {
+            "id": "D",
+            "text": "8eV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "A long straight conductor carries a current of 10A. The magnetic field at a point 20cm away from the conductor is  $ (\\mu_{0}=4\\pi\\times10^{-7}\\mathrm{T}\\mathrm{mA}^{-1}) $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1 \\times 10^{-5} $ T"
+          },
+          {
+            "id": "B",
+            "text": "$ 2 \\times 10^{-5} $ T"
+          },
+          {
+            "id": "C",
+            "text": "$ 5 \\times 10^{-6} $ T"
+          },
+          {
+            "id": "D",
+            "text": "$ 4 \\times 10^{-5} $ T"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q07-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-30-shift-1/q07-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 7"
+          }
+        ]
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "An object is placed 30 cm in front of a concave mirror of focal length 20 cm. The image distance is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "-60 cm"
+          },
+          {
+            "id": "B",
+            "text": "+60 cm"
+          },
+          {
+            "id": "C",
+            "text": "+30 cm"
+          },
+          {
+            "id": "D",
+            "text": "-30 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q08-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-30-shift-1/q08-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 8"
+          }
+        ]
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "In a semiconductor, the conductivity increases with increase in temperature because",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Resistance increases"
+          },
+          {
+            "id": "B",
+            "text": "Number of free charge carriers increases"
+          },
+          {
+            "id": "C",
+            "text": "Mobility becomes zero"
+          },
+          {
+            "id": "D",
+            "text": "Band gap increases"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q09-exp-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2026-05-30-shift-1/q09-exp-1.jpg",
+            "page": 1,
+            "alt": "Figure 1 for question 9"
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Two capacitors of capacitances  $ 6\\mu F $ and  $ 3\\mu F $ are connected in series across a battery. The equivalent capacitance of the combination is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 9 \\mu F $"
+          },
+          {
+            "id": "B",
+            "text": "$ 2 \\mu F $"
+          },
+          {
+            "id": "C",
+            "text": "$ 4.5 \\mu F $"
+          },
+          {
+            "id": "D",
+            "text": "$ 18 \\mu F $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

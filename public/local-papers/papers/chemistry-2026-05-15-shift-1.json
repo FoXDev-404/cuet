@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-chemistry-2026-05-15-shift-1",
+    "slug": "chemistry-2026-05-15-shift-1",
+    "title": "CUET UG Chemistry 15 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2026,
+    "examDate": "2026-05-15",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Chemistry_May15_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "The molar conductivity of 0.5 mol/dm³ solution of AgNO₃ with electrolytic conductivity of  $ 5.76 \\times 10^{-3} $ S cm⁻¹ at 298 K is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.086S cm $ ^{2} $/mol"
+          },
+          {
+            "id": "B",
+            "text": "28.8S cm^{2}/mol"
+          },
+          {
+            "id": "C",
+            "text": "2.88S cm^{2}/mol"
+          },
+          {
+            "id": "D",
+            "text": "11.52S cm $ ^{2} $/mol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Given below are two statements: one is labelled as Assertion A and the other is labelled as Reason R:\n\nAssertion (A): A reaction can have zero activation energy.\n\nReason (R): The minimum extra amount of energy absorbed by reactant molecules so that their energy becomes equal to threshold value, is called activation energy.\n\nIn the light of the above statements, choose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "id": "B",
+            "text": "Both A and R are true and R is NOT the correct explanation of A"
+          },
+          {
+            "id": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "id": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The following data is for a reaction between reactants A and B:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Rate (mol L^{-1}s^{-1})</td><td style='text-align: center; word-wrap: break-word;'>[A]</td><td style='text-align: center; word-wrap: break-word;'>[B]</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>$ 2 \\times 10^{-3} $</td><td style='text-align: center; word-wrap: break-word;'>0.1M</td><td style='text-align: center; word-wrap: break-word;'>0.1M</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>$ 4 \\times 10^{-3} $</td><td style='text-align: center; word-wrap: break-word;'>0.2M</td><td style='text-align: center; word-wrap: break-word;'>0.1M</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>$ 1.6 \\times 10^{-2} $</td><td style='text-align: center; word-wrap: break-word;'>0.2M</td><td style='text-align: center; word-wrap: break-word;'>0.2M</td></tr></table>\n\n\nThe order of the reaction with respect to A and B, respectively are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1,0"
+          },
+          {
+            "id": "B",
+            "text": "0,1"
+          },
+          {
+            "id": "C",
+            "text": "1,2"
+          },
+          {
+            "id": "D",
+            "text": "2,1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "$ t_{99.9\\%} $ with respect to  $ t_{90\\%} $ for a first order reaction is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Two"
+          },
+          {
+            "id": "B",
+            "text": "One"
+          },
+          {
+            "id": "C",
+            "text": "Three"
+          },
+          {
+            "id": "D",
+            "text": "Four"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "99% of a first order reaction was completed in 32 minutes. When will 99.9% of the reaction complete?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "48 minute"
+          },
+          {
+            "id": "B",
+            "text": "49 minute"
+          },
+          {
+            "id": "C",
+            "text": "46 minute"
+          },
+          {
+            "id": "D",
+            "text": "50 minute"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The slope of Arrhenius Plot ( $ \\ln k $ v/s  $ \\frac{1}{T} $) of the first-order reaction is  $ -5 \\times 10^{3} $ K. The value of  $ E_{a} $ of the reaction is. Choose the correct option for your answer. [Given  $ R = 8.314JK^{-1}mol^{-1} $]",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 166 \\, kJ mol^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ -83 \\, kJ mol^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 41.5 \\, kJ mol^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 83.0 \\, kJ mol^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "'Spin only' magnetic moment is same for which of the following ions?\n\nA.  $ Ti^{3+} $\n\nB.  $ Cr^{2+} $\n\nC.  $ Mn^{2+} $\n\nD.  $ Fe^{2+} $\n\nE.  $ Sc^{3+} $\n\nChoose the most appropriate answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B and D only"
+          },
+          {
+            "id": "B",
+            "text": "A and E only"
+          },
+          {
+            "id": "C",
+            "text": "B and C only"
+          },
+          {
+            "id": "D",
+            "text": "A and D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which of the following set of ions act as oxidizing agents?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ Ce^{4+} $ and  $ Tb^{4+} $"
+          },
+          {
+            "id": "B",
+            "text": "$ La^{3+} $ and  $ Lu^{3+} $"
+          },
+          {
+            "id": "C",
+            "text": "$ Eu^{2+} $ and  $ Yb^{2+} $"
+          },
+          {
+            "id": "D",
+            "text": "$ Eu^{2+} $ and  $ Tb^{4+} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Assertion (A): Ionization enthalpy increases along each series of transition elements from left to right. However, small variations occur.\n\n## Reason (R): There is a corresponding increase in nuclear charge which accompanies the filling of electrons in the inner d-orbitals.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) is correct but (R) is not correct"
+          },
+          {
+            "id": "B",
+            "text": "(A) is not correct but (R) is correct"
+          },
+          {
+            "id": "C",
+            "text": "Both (A) and (R) are correct and (R) is the correct explanation of (A)"
+          },
+          {
+            "id": "D",
+            "text": "Both (A) and (R) are correct but (R) is not the correct explanation of (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "The incorrect statement among the following is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Lanthanoids are good conductors of heat and electricity."
+          },
+          {
+            "id": "B",
+            "text": "Actinoids are highly reactive metals, especially when finely divided."
+          },
+          {
+            "id": "C",
+            "text": "Actinoid contraction is greater for element-to-element than Lanthanoid contraction."
+          },
+          {
+            "id": "D",
+            "text": "Most of the trivalent Lanthanoid ions are colourless in the solid state."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

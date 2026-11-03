@@ -1,0 +1,352 @@
+{
+  "exam": {
+    "id": "local-general-test-2026-05-14-shift-2",
+    "slug": "general-test-2026-05-14-shift-2",
+    "title": "CUET UG General Test 14 May 2026 Shift 2 Previous Year Paper",
+    "subject": "General Test",
+    "subjectId": "local-general-test",
+    "subjectCode": "GT",
+    "year": 2026,
+    "examDate": "2026-05-14",
+    "shift": "Shift 2",
+    "sourceFile": "CUET_UG_2026_GAT_May14_Shift2_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 60,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "What can be placed at ‘?’ if both sides of ‘::’ have the same relationship between numbers:\n\n85 : 42 :: 139 : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "68"
+          },
+          {
+            "id": "B",
+            "text": "69"
+          },
+          {
+            "id": "C",
+            "text": "70"
+          },
+          {
+            "id": "D",
+            "text": "67"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Select the option that is related to the third number in the same way as the second number is related to the first number.\n\n13 : 1331 :: 17 : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2642"
+          },
+          {
+            "id": "B",
+            "text": "1453"
+          },
+          {
+            "id": "C",
+            "text": "3375"
+          },
+          {
+            "id": "D",
+            "text": "1829"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Select the number from among the given options that can replace the mark (?) in the\n\nfollowing series:\n\n7, 16, 41, 94, 249, ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "568"
+          },
+          {
+            "id": "B",
+            "text": "468"
+          },
+          {
+            "id": "C",
+            "text": "586"
+          },
+          {
+            "id": "D",
+            "text": "486"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which two signs should be interchanged to make the given equation correct?\n\n16 - 18  $ \\times $ 216  $ \\div $ 432 + 40 = 20",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "+ and -"
+          },
+          {
+            "id": "B",
+            "text": "$ \\times $ and  $ \\div $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\times $ and +"
+          },
+          {
+            "id": "D",
+            "text": "$ \\div $ and -"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "If A denotes 'Addition', B denotes 'Multiplication', C denotes 'Subtraction' and D denotes 'division', then what will be the value of the following expression?\n\n(45 D 9) B 5 A 8 B (7 A 3 C 6) C (28 D (4 D 4))",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "82"
+          },
+          {
+            "id": "B",
+            "text": "32"
+          },
+          {
+            "id": "C",
+            "text": "29"
+          },
+          {
+            "id": "D",
+            "text": "38"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "A bag contains 5 red, 4 blue and 3 green balls. One ball is drawn at random. What is the probability that the ball drawn is blue?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{4} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{4}{12} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{5}{12} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Find the missing term: 2, 6, 12, 20, 30, ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "36"
+          },
+          {
+            "id": "B",
+            "text": "40"
+          },
+          {
+            "id": "C",
+            "text": "42"
+          },
+          {
+            "id": "D",
+            "text": "44"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which Indian city hosted the G20 Summit 2023?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Mumbai"
+          },
+          {
+            "id": "B",
+            "text": "Bengaluru"
+          },
+          {
+            "id": "C",
+            "text": "New Delhi"
+          },
+          {
+            "id": "D",
+            "text": "Hyderabad"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Find the compound interest on 5000 at 10% per annum for 2 years.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1000"
+          },
+          {
+            "id": "B",
+            "text": "1025"
+          },
+          {
+            "id": "C",
+            "text": "1050"
+          },
+          {
+            "id": "D",
+            "text": "1100"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Ravi walks 10 m towards North, then turns right and walks 6 m. He again turns right and walks 10 m. In which direction is he from the starting point?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "North"
+          },
+          {
+            "id": "B",
+            "text": "East"
+          },
+          {
+            "id": "C",
+            "text": "West"
+          },
+          {
+            "id": "D",
+            "text": "South"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "exam": {
+    "id": "local-mathematics-2026-05-18-shift-1",
+    "slug": "mathematics-2026-05-18-shift-1",
+    "title": "CUET UG Mathematics 18 May 2026 Shift 1 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2026,
+    "examDate": "2026-05-18",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_Mathematics_May18_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Solve:\n\n $$ \\frac{dy}{dx}=y\\tan x $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "y = Csecx"
+          },
+          {
+            "id": "B",
+            "text": "y = C  $ \\cos x $"
+          },
+          {
+            "id": "C",
+            "text": "$ y = C \\sin x $"
+          },
+          {
+            "id": "D",
+            "text": "$ y = C \\tan x $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Solve:\n\n $$ \\frac{dy}{dx}+y=e^{x},\\qquad y(0)=2 $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ y = e^{x} + e^{-x} $"
+          },
+          {
+            "id": "B",
+            "text": "$ y = \\frac{1}{2} e^{x} + \\frac{3}{2} e^{-x} $"
+          },
+          {
+            "id": "C",
+            "text": "$ y = e^{x} + 1 $"
+          },
+          {
+            "id": "D",
+            "text": "y = 2e^{x}"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Evaluate:\n\n $$ \\int\\frac{1}{x^{2}+4x+5}dx $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\tan^{-1}(x+2)+C $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{2}\\tan^{-1}(x+2)+C $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\tan^{-1}(2x+4)+C $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\ln(x^{2}+4x+5)+C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Evaluate:\n\n $$ \\int_{0}^{1}\\frac{1}{1+x^{2}}dx $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\pi}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\pi}{4} $"
+          },
+          {
+            "id": "C",
+            "text": "1"
+          },
+          {
+            "id": "D",
+            "text": "$ \\ln2 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "For  $ y = x^{3} - 3x^{2} + 2 $, slope at x = 2:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "6"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "If\n\n $$ \\begin{aligned}&\\boldsymbol{A}=\\begin{bmatrix} \\\\{{{2}}}&{{{3}}} \\\\{{{1}}}&{{{4}}} \\\\\\end{bmatrix}\\\\ \\end{aligned} $$ \n\nthen  $ A^{-1} = $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{5}\\left[\\begin{array}{cc}4 & -3 \\\\ -1 & 2\\end{array}\\right] $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{5}\\left[\\begin{array}{cc}4 & 3 \\\\ 1 & 2\\end{array}\\right] $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{3}\\left[\\begin{array}{cc}4 & -3 \\\\ -1 & 2\\end{array}\\right] $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\begin{bmatrix}4 & -3 \\\\ -1 & 2\\end{bmatrix} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Solve:\n\n $$ \\begin{aligned}\\left|\\begin{matrix}x&1\\\\ 2&x\\end{matrix}\\right|&=0\\end{aligned} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ x = \\pm \\sqrt{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ x = \\pm 1 $"
+          },
+          {
+            "id": "C",
+            "text": "$ x = \\pm 2 $"
+          },
+          {
+            "id": "D",
+            "text": "x = 0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "If  $ \\vec{a} = 2\\hat{i} + \\hat{j} $,  $ \\vec{b} = \\hat{i} + 3\\hat{j} $, then  $ \\vec{a} \\cdot \\vec{b} = $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "7"
+          },
+          {
+            "id": "C",
+            "text": "8"
+          },
+          {
+            "id": "D",
+            "text": "6"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Distance between  $ A(1,2,3) $ and  $ B(4,6,3) $:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "4"
+          },
+          {
+            "id": "B",
+            "text": "5"
+          },
+          {
+            "id": "C",
+            "text": "6"
+          },
+          {
+            "id": "D",
+            "text": "7"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Line through  $ (1,2,3) $ parallel to  $ \\hat{i} + 2\\hat{j} + 3\\hat{k} $:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{x-1}{1} = \\frac{y-2}{2} = \\frac{z-3}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{x}{1} = \\frac{y}{2} = \\frac{z}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{x+1}{1} = \\frac{y+2}{2} = \\frac{z+3}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{x-1}{2} = \\frac{y-2}{3} = \\frac{z-3}{1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}

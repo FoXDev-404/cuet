@@ -1,0 +1,356 @@
+{
+  "exam": {
+    "id": "local-general-test-2026-05-14-shift-1",
+    "slug": "general-test-2026-05-14-shift-1",
+    "title": "CUET UG General Test 14 May 2026 Shift 1 Previous Year Paper",
+    "subject": "General Test",
+    "subjectId": "local-general-test",
+    "subjectCode": "GT",
+    "year": 2026,
+    "examDate": "2026-05-14",
+    "shift": "Shift 1",
+    "sourceFile": "CUET_UG_2026_GAT_May14_Shift1_QP.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 10,
+    "sourceQuestionCount": 60,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "If a person buys 15 pencils for 12, and sells 12 pencils for 15, find the gain or loss percentage.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Loss of 56.25%"
+          },
+          {
+            "id": "B",
+            "text": "Gain of 65.25%"
+          },
+          {
+            "id": "C",
+            "text": "Loss of 56.52%"
+          },
+          {
+            "id": "D",
+            "text": "Gain of 56.25%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Find the median of first 6 multiples of 5.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7.5"
+          },
+          {
+            "id": "B",
+            "text": "17.5"
+          },
+          {
+            "id": "C",
+            "text": "27.5"
+          },
+          {
+            "id": "D",
+            "text": "37.5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Potato's per-kilogram price has risen from Rs.18 to Rs.25. What should be the percentage reduction in potato use so that expenditure does NOT increase?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "28%"
+          },
+          {
+            "id": "B",
+            "text": "31%"
+          },
+          {
+            "id": "C",
+            "text": "22%"
+          },
+          {
+            "id": "D",
+            "text": "34%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Find the missing character in the given table:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>16</td><td style='text-align: center; word-wrap: break-word;'>210</td><td style='text-align: center; word-wrap: break-word;'>14</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>14</td><td style='text-align: center; word-wrap: break-word;'>156</td><td style='text-align: center; word-wrap: break-word;'>12</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>12</td><td style='text-align: center; word-wrap: break-word;'>?</td><td style='text-align: center; word-wrap: break-word;'>10</td></tr></table>",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "90"
+          },
+          {
+            "id": "B",
+            "text": "100"
+          },
+          {
+            "id": "C",
+            "text": "110"
+          },
+          {
+            "id": "D",
+            "text": "120"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [
+          "missing_answer_key"
+        ],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "If  $ \\left(\\frac{3}{5}\\right)^{3p-2}=\\left(\\frac{9}{25}\\right)^{8}\\times\\left(\\frac{3}{5}\\right)^{-3} $, then the value of  $ 2p+1 $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10"
+          },
+          {
+            "id": "B",
+            "text": "11"
+          },
+          {
+            "id": "C",
+            "text": "14"
+          },
+          {
+            "id": "D",
+            "text": "15"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Find the next term in the series: M13, O18, ?, S28, U33",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "R22"
+          },
+          {
+            "id": "B",
+            "text": "Q23"
+          },
+          {
+            "id": "C",
+            "text": "P22"
+          },
+          {
+            "id": "D",
+            "text": "R24"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The area of an equilateral  $ \\triangle ABC $ is  $ 169\\sqrt{3} $ cm $ ^2 $. Find the in-radius of  $ \\triangle ABC $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 10/\\sqrt{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 13/\\sqrt{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$12/\\sqrt{3}$"
+          },
+          {
+            "id": "D",
+            "text": "$11/\\sqrt{3}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "If the word 'LEADER' is coded as 20-13-9-12-13-26. How would you write \"LIGHT\"?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20-16-15-17-22"
+          },
+          {
+            "id": "B",
+            "text": "20-17-15-16-28"
+          },
+          {
+            "id": "C",
+            "text": "20-15-16-18-23"
+          },
+          {
+            "id": "D",
+            "text": "20-16-17-15-27"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "A sum of money becomes 7 times itself in 2 years at a certain rate of simple interest. Find the rate of interest per annum.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "100%"
+          },
+          {
+            "id": "B",
+            "text": "10%"
+          },
+          {
+            "id": "C",
+            "text": "200%"
+          },
+          {
+            "id": "D",
+            "text": "300%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "The difference between the CI and the SI on a sum of money lent for 2 years at 20% interest per annum is 80. The sum is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2,000"
+          },
+          {
+            "id": "B",
+            "text": "1,200"
+          },
+          {
+            "id": "C",
+            "text": "1,500"
+          },
+          {
+            "id": "D",
+            "text": "1,000"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      }
+    ]
+  }
+}
