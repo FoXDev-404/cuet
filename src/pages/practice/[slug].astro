@@ -31,10 +31,21 @@ const instructions = [
 const metaDescription =
   paper.metaDescription ||
   `Take the ${paper.dateLabel} CUET ${paper.subject.name} paper: ${paper.scorableQuestionCount} ranked questions, ${paper.durationMinutes} minutes, +5/−1 marking, saved result, leaderboard rank and a post-submit review.`;
+
+function formatPracticeSeoTitle(title: string): string {
+  const suffix = " | CUET Mock";
+  const maxBase = 60 - suffix.length;
+  let clean = title.replace(/Question Paper( with Solutions)?/i, "").replace(/^CUET UG/i, "CUET").trim();
+  if (clean.length > maxBase) {
+    clean = clean.slice(0, maxBase - 1).trim() + "…";
+  }
+  return `${clean}${suffix}`;
+}
+const seoTitle = formatPracticeSeoTitle(paper.title);
 ---
 
 <BaseLayout
-  title={`${paper.title} — CUET Previous-Year Practice`}
+  title={seoTitle}
   description={metaDescription}
   structuredData={structuredData}
 >

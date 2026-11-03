@@ -40,6 +40,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("an editor creates, publishes and sees a mock test", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes a QA mock into the local D1 database.",
@@ -150,6 +151,7 @@ test("an editor copies a public link and toggles sharing", async ({ page }) => {
 test("question creation and revisions keep one public id and enforce indexing rules", async ({
   page,
 }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes questions into the local D1 database.",

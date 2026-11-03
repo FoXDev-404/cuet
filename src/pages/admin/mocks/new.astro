@@ -11,7 +11,8 @@ const [subjects, questions] = await Promise.all([
     `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
      FROM questions q JOIN subjects s ON s.id = q.subject_id
      WHERE q.deleted_at IS NULL AND q.status = 'published'
-     ORDER BY s.name, q.id`,
+     ORDER BY s.name, q.id
+     LIMIT 200`,
   ),
 ]);
 const canPublish = can(admin.role, "mocks.publish");
