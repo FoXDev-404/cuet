@@ -1,0 +1,1768 @@
+{
+ "exam": {
+  "id": "local-physics-2023-05-25-shift-3",
+  "slug": "physics-2023-05-25-shift-3",
+  "title": "CUET UG Physics 25 May 2023 Shift 3 Previous Year Paper",
+  "subject": "Physics",
+  "subjectId": "local-physics",
+  "subjectCode": "PHY",
+  "year": 2023,
+  "examDate": "2023-05-25",
+  "shift": "Shift 3",
+  "sourceFile": "Physics_2023-05-25_Shift_3.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 50,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "In the shown ac source gives a Voltage V=20 cos 2000t. Neglecting source resistance, the voltmeter and Ammeter reading will be.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0 V, 1.4 A"
+     },
+     {
+      "id": "B",
+      "text": "1.68 V, 0.47 A"
+     },
+     {
+      "id": "C",
+      "text": "0 V, 14 A"
+     },
+     {
+      "id": "D",
+      "text": "5.6 V, 1.4a"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q01-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q01-figure-1.jpg",
+      "page": 1,
+      "alt": "Figure for question 1"
+     }
+    ]
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "If the forward voltage in a p-n junction diode is increased, the width of the depletion region",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Increases"
+     },
+     {
+      "id": "B",
+      "text": "Decreases"
+     },
+     {
+      "id": "C",
+      "text": "No change"
+     },
+     {
+      "id": "D",
+      "text": "Fluctuates"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "The work function for Aluminium surface is 4.2 eV. Find the threshold wavelength for the photoelectric emission.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2959 A $ ^{\\circ} $"
+     },
+     {
+      "id": "B",
+      "text": "4200 A $ ^{\\circ} $"
+     },
+     {
+      "id": "C",
+      "text": "4736 A $ ^{\\circ} $"
+     },
+     {
+      "id": "D",
+      "text": "5890 A $ ^{\\circ} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "The half-life period of a radioactive element 'X' is same as the mean life of another radioactive element Y.\n\nInitially both of them have the same no. of atoms, then:\n\nA. X and Y have the same decay rate initially.\n\nB. X and Y decay at the same rate always.\n\nC. Y will decay at a faster rate than X.\n\nD. X will decay at a faster rate than Y.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A and B Only"
+     },
+     {
+      "id": "B",
+      "text": "A Only"
+     },
+     {
+      "id": "C",
+      "text": "C only"
+     },
+     {
+      "id": "D",
+      "text": "B and D only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "A Convex minor produces the magnification 1/3 and 1/4 when the object is placed at the points P and Q in front of the mirror.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "P is far from the mirror as compared to Q."
+     },
+     {
+      "id": "B",
+      "text": "Q is far from the mirror as compared to P"
+     },
+     {
+      "id": "C",
+      "text": "P and Q both are coinciding"
+     },
+     {
+      "id": "D",
+      "text": "Convex mirror produces the magnification always greater than 1."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "The wire loop PQRSP formed by joining two semicircular wires of radii $ R_1 $ & $ R_2 $ carries a current I as shown in the fig. The magnitude of magnetic field at the centre 'C' is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\mu_0I}{2}\\left(\\frac{1}{R_1} + \\frac{1}{R_2}\\right) $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\mu_{0}I}{4}\\left(\\frac{1}{R_{1}}+\\frac{1}{R_{2}}\\right) $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\mu_{0}I}{2}\\left(\\frac{1}{R_{1}}-\\frac{1}{R_{2}}\\right) $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\mu_0 I}{4} \\left( \\frac{1}{R_1} - \\frac{1}{R_2} \\right) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q06-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q06-figure-1.jpg",
+      "page": 1,
+      "alt": "Figure for question 6"
+     }
+    ]
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "When we draw the variation of the potential energy of a pair of nucleons with their separations, then",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "the force is attractive when separation between them is greater than 0.8 fm"
+     },
+     {
+      "id": "B",
+      "text": "the force is repulsive when separation between them is greater than 0.5 fm"
+     },
+     {
+      "id": "C",
+      "text": "the force is attractive when separation between them is less than 0.8 fm"
+     },
+     {
+      "id": "D",
+      "text": "the force is independent of their separation (d) the force is independent of their separation."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "A Neutron is moving with a velocity of V in non-uniform magnetic field as shown in figure.\n\nVelocity $ \\vec{v} $ of neutron would be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Maximum at B"
+     },
+     {
+      "id": "B",
+      "text": "Same at A, B and C"
+     },
+     {
+      "id": "C",
+      "text": "Minimum at A and C"
+     },
+     {
+      "id": "D",
+      "text": "Maximum at A and C"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q08-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q08-figure-1.jpg",
+      "page": 1,
+      "alt": "Figure for question 8"
+     }
+    ]
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "Which of the following option is correct by using Coulomb's law.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(if the product of $ q_1 q_2 $ is positive) $ \\overline{F}_{12} $ $ q_1 $ $ q_2 $"
+     },
+     {
+      "id": "B",
+      "text": "(if the product of $ q_1 q_2 $ is negative) $ \\overline{F}_{12} $ $ \\overline{F}_{21} $ $ q_1 $ $ q_2 $"
+     },
+     {
+      "id": "C",
+      "text": "(if the product of $ q_1 q_2 $ is positive) $ \\vec{F}_{12} $ $ \\quad q_1 $ $ \\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad"
+     },
+     {
+      "id": "D",
+      "text": "(if the product of $ q_1 q_2 $ negative) $ \\overrightarrow{F}_{12} $ $ \\overrightarrow{F}_{21} $ $ q_1 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "A heater boils x amount of water in time $ t_{1} $ and another heater boils the same water in time $ t_{2} $ having resistances $ R_{1} $ and $ R_{2} $ respectively. The ratio $ \\frac{t_{1}}{t_{2}} $ will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\left(\\frac{R_{1}}{R_{2}}\\right)^{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\left(\\frac{R_{2}}{R_{1}}\\right)^{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{R_{2}}{R_{1}} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{R_{1}}{R_{2}} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "Which of the following statements are correct?\n\nA. A Equi Convex lens of $f = 20\\ \\mathrm{cm}$ is cut as the $f$ focal length of each part is 10 cm.\n\nB. A Equi Convex lens of $f = 20\\ \\mathrm{cm}$ is cut as the focal length of each part is 20 cm.\n\nC. If an Equi Convex lens of refractive index $\\mu_{1}$ is placed in a liquid of $(\\mu2)$ such that $(\\mu_{1} > \\mu2)$. It will not change its nature.\n\nD. A Convex lens of $f = 20\\ \\mathrm{cm}$ is cut as the focal length of each part is 40 cm.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B only"
+     },
+     {
+      "id": "B",
+      "text": "A, B, c only"
+     },
+     {
+      "id": "C",
+      "text": "B, C Only"
+     },
+     {
+      "id": "D",
+      "text": "B, C, D Only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Which of the following statements are collect about transformers?\n\nA. Transformers cannot be used to step up DC.\n\nB. The frequency of output across the secondary is always equal to the frequency of input across the primary.\n\nC. The output power of a transformer may be increased to a value which is more than the input power.\n\nD. Transformation ratio is equal to turns ratio.\n\nE. In a step-up transformer, secondary current is less than primary current.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B, C"
+     },
+     {
+      "id": "B",
+      "text": "B, C, D"
+     },
+     {
+      "id": "C",
+      "text": "C, D, A"
+     },
+     {
+      "id": "D",
+      "text": "A, B, D, E"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "A Potentiometer wire of length L and a resistance r are connected in series with a battery of emf $ E_{0} $ and a resistance $ r_{(a)} $. An unknown emf E is balanced at a length l of the potentiometer wire. The emf E will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{LE_{0}r}{(r+r_{1})l} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{E_{0}r}{lr_{1}} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{E_{0}r}{(r+r_{1})}\\cdot\\frac{l}{L} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{E_{0}l}{L} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "A capacitor of $ 25\\mu F $ is connected in series with d.c Voltage of 5V. The value of current in the circuit will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2 \\times 10^{5} $ A"
+     },
+     {
+      "id": "B",
+      "text": "5A"
+     },
+     {
+      "id": "C",
+      "text": "$ 5 \\times 10^{6} $ A"
+     },
+     {
+      "id": "D",
+      "text": "Zero"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "The graph between resistivity and temperature given below can be for the material",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Copper"
+     },
+     {
+      "id": "B",
+      "text": "Nichrome"
+     },
+     {
+      "id": "C",
+      "text": "Manganin"
+     },
+     {
+      "id": "D",
+      "text": "Semiconductors"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q15-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q15-figure-1.jpg",
+      "page": 2,
+      "alt": "Figure for question 15"
+     }
+    ]
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Which phenomena proves the particle nature of photon?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Interference"
+     },
+     {
+      "id": "B",
+      "text": "diffraction"
+     },
+     {
+      "id": "C",
+      "text": "polarisation"
+     },
+     {
+      "id": "D",
+      "text": "Photo electric effect"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Peak voltage of a modulating signal is 2 V. The carrier wave is represented by $ C(t) = 4\\sin(8\\pi t) $ V. The modulation index of modulated signal is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.5"
+     },
+     {
+      "id": "B",
+      "text": "1.0"
+     },
+     {
+      "id": "C",
+      "text": "4.0"
+     },
+     {
+      "id": "D",
+      "text": "8.0"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "The waves used by artificial satellite for communication purposes are",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Ground waves"
+     },
+     {
+      "id": "B",
+      "text": "Microwaves"
+     },
+     {
+      "id": "C",
+      "text": "F. M. radio waves"
+     },
+     {
+      "id": "D",
+      "text": "A. M. radio waves"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "The time taken by light to travel normally through a glass plate of thickness 1 mm would be:\n\n(Take refractive index of glass = 1.5)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 0.1 \\times 10^{-13} s $"
+     },
+     {
+      "id": "B",
+      "text": "$ 12 \\times 10^{-5} s $"
+     },
+     {
+      "id": "C",
+      "text": "$ 5 \\times 10^{-12} s $"
+     },
+     {
+      "id": "D",
+      "text": "$ 1.5 \\times 10^{-5} s $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "A slab of material of dielectric constant k has the same area as the plates of a parallel plate capacitor, but has a thickness $\\frac{3d}{4}$. Where d is the distance between plates of capacitor. The ratio of the capacitance with dielectric inside it to its capacitance without the dielectric is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{3k}{(k+4)}$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{4k}{(k+3)}$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{5k}{(k+2)}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{k}{(k+3)}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Monochromatic light of frequency $ 6 \\times 10^{14} $ Hz is produced by a laser source. The energy of photon of light is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 3.98 \\times 10^{-19} $ J"
+     },
+     {
+      "id": "B",
+      "text": "$ 39.8 \\times 10^{-19} $ J"
+     },
+     {
+      "id": "C",
+      "text": "$ 1.12 \\times 10^{-20} $ J"
+     },
+     {
+      "id": "D",
+      "text": "$ 2.24 \\times 10^{-20} $ J"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "A semiconductor device is connected in series circuit with a battery and resistance. A current is found to pass through the circuit. If the polarity of the battery is reversed, the current chops at almost zero. The device may be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A p-type semiconductor"
+     },
+     {
+      "id": "B",
+      "text": "An Intrinsic semiconductor"
+     },
+     {
+      "id": "C",
+      "text": "An n-type semiconductor"
+     },
+     {
+      "id": "D",
+      "text": "a p-n Junction"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "Two identical thin metal plates are given charges q_{1} and q_{2} (q_{2} < q_{1}) respectively. If they are now brought close together to form a parallel plate capacitor with a capacitance 'C' then the potential difference between the plates is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{q_{1}+q_{2}}{2C} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{q_{1}}{2Cq_{2}} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{q_{1}-q_{2}}{2C} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{q_{2}}{C(q_{1}+q_{2})} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "the shape of a wavefront when light emerging out of a convex lens when a parallel beam of light incident over it is,",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Parabolic"
+     },
+     {
+      "id": "B",
+      "text": "Plane"
+     },
+     {
+      "id": "C",
+      "text": "Cylindrical"
+     },
+     {
+      "id": "D",
+      "text": "Spherical"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Arrange the following m Increasing number of quantum number when coming from excited energy state\n\nA. Lyman Series\n\nB. Balmer Series\n\nC. Paschen Series\n\nD Brackett Series\n\nE. Pfund Series",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "E, D, C, B, A"
+     },
+     {
+      "id": "B",
+      "text": "A, B, C, E, D"
+     },
+     {
+      "id": "C",
+      "text": "A, B, C, D, E"
+     },
+     {
+      "id": "D",
+      "text": "B, A, C, D, E"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "A short solenoid of radius a and $ n_1 $ number of turns per unit length and length $ L $ is kept coaxially inside a very long solenoid of radius $ b $ and $ n_2 $ number of turns per unit length. What is the mutual inductance of the system.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\mu_0 \\pi b^2 n_1 n_2 L $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\mu_0 \\pi a^2 n_1 n_2 L^2 $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\mu_0 \\pi a^2 n_1 n_2 L $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\mu_0 \\pi b^2 n_1 n_2 L^2 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Which of the following statements are correct?\n\nA. The saturation current is constant with collector plate potential for different frequencies of incident radiation.\n\nB. The saturation current is different with collector plate potential for different frequencies of incident radiation.\n\nC. The saturation current is different with collector plate potential for different intensity of incident radiation.\n\nD. The saturation current is constant with collector plate potential for different intensity of incident radiation.\n\nE. Below threshold frequency no photo electrons are emitted.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B, E Only"
+     },
+     {
+      "id": "B",
+      "text": "A, B, C, D, E Only"
+     },
+     {
+      "id": "C",
+      "text": "A, C, E Only"
+     },
+     {
+      "id": "D",
+      "text": "C, D, E only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "For insulators and semiconductors, the resistance decreases with increase in temperature because",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "number density decreases"
+     },
+     {
+      "id": "B",
+      "text": "number density of charge carriers increases"
+     },
+     {
+      "id": "C",
+      "text": "Resistivity does not depend upon the temperature"
+     },
+     {
+      "id": "D",
+      "text": "Resistivity does not depend upon the number density of Charge carriers"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "A long wire carrying current I is bent in the form of a circle as shown in the figure.\n\nThe $ \\overrightarrow{B} $ at point O is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\mu_0}{4\\pi} = \\frac{2\\mathrm{I}}{\\mathrm{r}} $ (1 - $ \\pi $) perpendicularly outward"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\mu_{0}}{4\\pi} = \\frac{2\\pi I}{r} $ perpendicularly inward"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\mu_{0}}{4\\pi} = \\frac{21}{r} (1 + \\pi) $ perpendicularly outward"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\mu_{0}}{4\\pi} = \\frac{21}{\\mathrm{r}} (1 + \\pi) $ perpendicularly inward"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q29-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q29-figure-1.jpg",
+      "page": 4,
+      "alt": "Figure for question 29"
+     }
+    ]
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "A bubble in glass slab ( $ \\mu = 1.5 $) when viewed from one side appears at 5 cm and 2 cm from otherside, then the thickness of the glass slab is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2.5 cm"
+     },
+     {
+      "id": "B",
+      "text": "7.5 cm"
+     },
+     {
+      "id": "C",
+      "text": "10.5 cm"
+     },
+     {
+      "id": "D",
+      "text": "17.5 cm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Match List - I with List - II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q31-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q31-table-1.jpg",
+      "page": 4,
+      "alt": "Table for question 31"
+     },
+     {
+      "id": "q31-table-2",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q31-table-2.jpg",
+      "page": 4,
+      "alt": "Table for question 31"
+     }
+    ]
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "I-V characteristics of solar cell is drawn in the fourth quadrant. The reason is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Solar cells does not draw current and supplies the same to the load."
+     },
+     {
+      "id": "B",
+      "text": "Solar cell draws the current and does not supply."
+     },
+     {
+      "id": "C",
+      "text": "Solar cell does not supply the current."
+     },
+     {
+      "id": "D",
+      "text": "Solar cell only store the light energy."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q32-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q32-figure-1.jpg",
+      "page": 4,
+      "alt": "Figure for question 32"
+     }
+    ]
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "A parallel plate capacitor whose capacitance C is 13.0 pF is charged by a battery to a potential difference V = 13.0 V between its plates. What is the potential energy of the capacitor?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1.098 nJ"
+     },
+     {
+      "id": "B",
+      "text": "2197 pF"
+     },
+     {
+      "id": "C",
+      "text": "1.98 pJ"
+     },
+     {
+      "id": "D",
+      "text": "2.197 nJ"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "The wavelength of radiation emitted, when He $ ^{+} $ makes a transition from the state n = 3 to the state n = 2 will be:\n\n(Take Rydberg constant R - 1.097 $ \\times $ 10 $ ^{7} $ m $ ^{-1} $)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1.641 nm"
+     },
+     {
+      "id": "B",
+      "text": "164.1 nm"
+     },
+     {
+      "id": "C",
+      "text": "16.41 um"
+     },
+     {
+      "id": "D",
+      "text": "1641 nm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "An electric dipole of dipole moment $ 5 \\times 10^{-6} $ Cm is placed in a uniform electric field of $ 10^{-2} $ N/C making an angle of $ 30^\\circ $ with the direction of the field. The torque exerted by the electric field on the dipole is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 1 \\times 10^{-8} $ Nm"
+     },
+     {
+      "id": "B",
+      "text": "$ 1.5 \\times 10^{-8} $ Nm"
+     },
+     {
+      "id": "C",
+      "text": "$ 2.5 \\times 10^{-8} $ Nm"
+     },
+     {
+      "id": "D",
+      "text": "$ 5 \\times 10^{-8} $ Nm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "Choose the wrong statement:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ". Potential difference across the terminals of the cell in a closed circuit is less than its emf."
+     },
+     {
+      "id": "B",
+      "text": "Internal resistance of the cell decreases with decrease in temperature of electrolyte."
+     },
+     {
+      "id": "C",
+      "text": "Terminal potential difference versus current graph for a cell is a straight line with a negative slope."
+     },
+     {
+      "id": "D",
+      "text": "Terminal potential difference when cell is being charged V=E+Ir."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "A dielectric material placed in uniform electric field, which of the following option is $ \\underline{\\text{NOT CORRECT}} $:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "The free movement of charges in a dielectric is not possible"
+     },
+     {
+      "id": "B",
+      "text": "The free movement of charges in a dielectric is possible"
+     },
+     {
+      "id": "C",
+      "text": "The external field induces dipole moment by stretching molecules of dielectrics"
+     },
+     {
+      "id": "D",
+      "text": "The external field induces dipole moment by re-orienting molecules of dielectrics"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "A ray of light passes through four transparent media with refractive index $ \\mu_1, \\mu_2, \\mu_3 $ and $ \\mu_4 $ shown in figure. The surfaces of all media are parallel. If BC and DE are parallel, we must have",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\mu_1 = \\mu_4 $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\mu_2 = \\mu_3 $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\mu_2 = \\mu_4 $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\mu_1 = \\mu_2 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": [
+     {
+      "id": "q38-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q38-table-1.jpg",
+      "page": 5,
+      "alt": "Table for question 38"
+     }
+    ]
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "Four materials A, B, C and D have the magnetic susceptibility $ x_{mA}, x_{mB}, x_{mc} $ and $ x_{mD} $ respectively. which are related as $ x_{mD} < x_{mC} < x_{mB} < x_{mA} $. Which material can be magnetised with maximum ease?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "B"
+     },
+     {
+      "id": "B",
+      "text": "C"
+     },
+     {
+      "id": "C",
+      "text": "A"
+     },
+     {
+      "id": "D",
+      "text": "D"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Which of the following statements are correct?\n\nA. The angle at minimum deviation of a prism is greater for violet light than that for red light.\n\nB. The purpose of microscopes and telescopes is to increase the visual angle.\n\nC. For the diffraction to take place the size of aperture or of the obstacle should be comparable to the wavelength of light.\n\nD. The light scattered in the direction of the incident light is always plane polarised.\n\nE. The source and its virtual image can behave as a coherent sources.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B, and C only"
+     },
+     {
+      "id": "B",
+      "text": "A, B, C, D only"
+     },
+     {
+      "id": "C",
+      "text": "A, B, C, E Only"
+     },
+     {
+      "id": "D",
+      "text": "B, C, D, E Only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Light of uniform intensity shines perpendicularly on a totally absorbing surface, fully illuminating the surface. If the area of the surface is decreased, what is the effect on radiation pressure?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Increases"
+     },
+     {
+      "id": "B",
+      "text": "Decreases"
+     },
+     {
+      "id": "C",
+      "text": "Remains the same"
+     },
+     {
+      "id": "D",
+      "text": "Cannot be said"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "The intensity of a plane monochromatic wave is 1380 Wm⁻² What is the amplitude of electric field in this wave? (Take speed of light $ 3 \\times 10^8 \\, \\text{ms}^{-1} $; $ \\omega_0 = 8.85 \\times 10^{-12} \\, \\text{C}^2 \\, \\text{N}^{-1} \\, \\text{m}^{-2} $)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "102 N C⁻¹"
+     },
+     {
+      "id": "B",
+      "text": "10.2 N C⁻¹"
+     },
+     {
+      "id": "C",
+      "text": "1020 N C⁻¹"
+     },
+     {
+      "id": "D",
+      "text": "10200 N C⁻¹"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "In free space, all components of the complete electromagnetic spectrum have the same",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "energy"
+     },
+     {
+      "id": "B",
+      "text": "velocity"
+     },
+     {
+      "id": "C",
+      "text": "frequency"
+     },
+     {
+      "id": "D",
+      "text": "intensity"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "The intensity of light due to (see figure) interference of two waves (1) and (2) which have path difference of $ \\lambda $ is: (where $ I_{0} = \\text{Intensity of each wave}) $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Zero"
+     },
+     {
+      "id": "B",
+      "text": "$ I_{0} $"
+     },
+     {
+      "id": "C",
+      "text": "$2I_{0}$"
+     },
+     {
+      "id": "D",
+      "text": "$4I_{0}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5,
+     6
+    ],
+    "assets": [
+     {
+      "id": "q44-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q44-figure-1.jpg",
+      "page": 6,
+      "alt": "Figure for question 44"
+     }
+    ]
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "The induced e.m.f in a coil rotating in a uniform magnetic field will increases if\n\nA. Total number of turns in the coil decreases\n\nB. Magnetic field increases\n\nC. Speed of rotation of coil decreases\n\nD. Area of the coil increases",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, C and D only"
+     },
+     {
+      "id": "B",
+      "text": "B and D only"
+     },
+     {
+      "id": "C",
+      "text": "A, B and C Only"
+     },
+     {
+      "id": "D",
+      "text": "A, B, C and D only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "What is the ratio of wavelength in the given figure of energy levels of a molecule",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5:1"
+     },
+     {
+      "id": "B",
+      "text": "1:4"
+     },
+     {
+      "id": "C",
+      "text": "2:3"
+     },
+     {
+      "id": "D",
+      "text": "6:1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": [
+     {
+      "id": "q46-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q46-figure-1.jpg",
+      "page": 6,
+      "alt": "Figure for question 46"
+     }
+    ]
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "A bulb and a capacitor are connected in series to an a.c. source. A dielectric slab is now introduced between the plates of the capacitor. The intensity of the bulb will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Zero"
+     },
+     {
+      "id": "B",
+      "text": "Increases"
+     },
+     {
+      "id": "C",
+      "text": "Decreases"
+     },
+     {
+      "id": "D",
+      "text": "Remain same"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "Match List - I with List - II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": [
+     {
+      "id": "q48-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-25-shift-3/q48-table-1.jpg",
+      "page": 6,
+      "alt": "Table for question 48"
+     }
+    ]
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "The magnitude of electric force exerted by a proton on an electron in a hydrogen atom is, (Given distance of separation between charges, 1Å)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2.3 \\times 10^{-10} N $"
+     },
+     {
+      "id": "B",
+      "text": "$ 2.3 \\times 10^{-8} N $"
+     },
+     {
+      "id": "C",
+      "text": "$ 2.3 \\times 10^{-9} N $"
+     },
+     {
+      "id": "D",
+      "text": "$ 2.3 \\times 10^{-7} N $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "Displacement current $(i_{d})=\\frac{\\omega_{0}d\\phi_{E}}{dt}$.\n\nWhere symbols have their usual meanings.\n\nWhich of the following options gives correct equation for displacement current?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$i_{d}=\\omega_{0}\\frac{d(BA)}{dt}$"
+     },
+     {
+      "id": "B",
+      "text": "$i_{d}=A\\omega_{0}\\frac{dE}{dt}$"
+     },
+     {
+      "id": "C",
+      "text": "$i_{d}=qA\\omega_{0}\\frac{dE}{dt}$"
+     },
+     {
+      "id": "D",
+      "text": "$i_{d}=\\frac{A\\omega_{0}}{q}\\frac{dE}{dt}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

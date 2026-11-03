@@ -1,0 +1,455 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { first } from "../../../lib/db";
+import { getGuestToken } from "../../../lib/auth/session";
+import { hasFinishedAttempt, loadOwnPending, loadVisibleThreads, votedIds } from "../../../lib/discussions";
+import { chatTone, displayInitial, safeAvatarUrl } from "../../../lib/chat";
+import { formatDateTime, renderPlainText, renderRichText } from "../../../lib/content";
+import { getSetting } from "../../../lib/settings";
+import { oldSlugRedirect } from "../../../lib/slug-redirects";
+
+const slug = Astro.params.slug ?? "";
+const mock = await first<{ id: number; title: string; slug: string }>(
+  `SELECT id, title, slug FROM mock_tests
+   WHERE slug = ? AND status = 'published' AND deleted_at IS NULL`,
+  slug,
+);
+if (!mock) {
+  const target = await oldSlugRedirect(slug);
+  if (target) return Astro.redirect(`/mock/${target}/discussion`, 301);
+  return new Response("Discussion not found", { status: 404 });
+}
+
+const user = Astro.locals.user;
+const admin = Astro.locals.admin;
+const paused = !admin && (await getSetting("discussion_enabled", "true")) === "false";
+const access = Boolean(admin) || (await hasFinishedAttempt(mock.id, user?.id ?? null, getGuestToken(Astro.cookies)));
+
+const requestedQuestion = Number(Astro.url.searchParams.get("question") ?? "0");
+const question =
+  access && Number.isInteger(requestedQuestion) && requestedQuestion > 0
+    ? await first<{ id: number; text: string }>(
+        `SELECT q.id, q.text FROM mock_questions_current mq JOIN questions q ON q.id = mq.question_id
+         WHERE mq.mock_id = ? AND q.id = ?`,
+        mock.id,
+        requestedQuestion,
+      )
+    : null;
+const questionId = question?.id ?? null;
+
+const threads = access ? await loadVisibleThreads(mock.id, questionId, user?.id ?? null) : [];
+const pending = access && user ? await loadOwnPending(mock.id, user.id, questionId) : [];
+const votes = await votedIds(threads.map((thread) => thread.id), user?.id ?? null);
+
+const roots = threads.filter((thread) => thread.parent_id === null);
+const repliesByParent = new Map<number, typeof threads>();
+for (const thread of threads) {
+  if (thread.parent_id === null) continue;
+  const list = repliesByParent.get(thread.parent_id) ?? [];
+  list.push(thread);
+  repliesByParent.set(thread.parent_id, list);
+}
+
+const viewer = user
+  ? await first<{ avatar_url: string | null }>("SELECT avatar_url FROM users WHERE id = ?", user.id)
+  : null;
+const viewerAvatar = safeAvatarUrl(viewer?.avatar_url);
+const viewerTone = user ? chatTone(user.id) : null;
+const viewerInitial = user ? displayInitial(user.username) : "";
+
+const nextPath = `/mock/${mock.slug}/discussion${questionId ? `?question=${questionId}` : ""}`;
+const loginHref = `/login?next=${encodeURIComponent(nextPath)}`;
+const signupHref = `/signup?next=${encodeURIComponent(nextPath)}`;
+const liveCount = threads.length + pending.length;
+
+function authorBadge(thread: { is_best_answer: number }): string {
+  if (thread.is_best_answer) return "Best answer";
+  return "";
+}
+---
+
+<BaseLayout
+  title={`${mock.title} Discussion — CUET Free Mock Test`}
+  description="Post-submission discussion for this mock test."
+  noindex
+>
+  {paused ? (
+    <section class="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Temporarily paused</p>
+      <h1 class="mt-3 text-3xl font-black tracking-tight">Discussions are paused.</h1>
+      <p class="mt-4 text-sm leading-6 text-[var(--muted)] ">
+        The discussion board is closed for maintenance. Your attempts, results and bookmarks are unaffected. Check back after the site notice is removed.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a class="rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-bold text-[var(--on-primary)] hover:bg-[var(--primary-hover)]" href={`/mock/${mock.slug}`}>Open the mock</a>
+        <a class="rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)]  " href="/cuet-ug-mock-test">Browse tests</a>
+      </div>
+    </section>
+  ) : !access ? (
+    <section class="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">After the test</p>
+      <h1 class="mt-3 text-3xl font-black tracking-tight">Discussion unlocks after you submit.</h1>
+      <p class="mt-4 text-sm leading-6 text-[var(--muted)] ">
+        This thread can mention correct answers, so it opens only for students who have finished this paper. Take the mock, then come back to compare approaches.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a class="rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-bold text-[var(--on-primary)] hover:bg-[var(--primary-hover)]" href={`/mock/${mock.slug}`}>Open the mock</a>
+        <a class="rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)]  " href="/cuet-ug-mock-test">Browse tests</a>
+      </div>
+    </section>
+  ) : (
+    <section class="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:py-10">
+      <nav class="flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
+        <a class="hover:underline" href="/cuet-ug-mock-test">Mock tests</a>
+        <span aria-hidden="true">/</span>
+        <a class="hover:underline" href={`/mock/${mock.slug}`}>{mock.title}</a>
+        <span aria-hidden="true">/</span>
+        <span>Discussion</span>
+      </nav>
+
+      <div class="mt-3 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-black tracking-tight sm:text-3xl">
+            {question ? "Question discussion" : "Mock discussion"}
+          </h1>
+          <p class="mt-2 text-sm text-[var(--muted)]">
+            {liveCount} message{liveCount === 1 ? "" : "s"} · visible only to students who finished this paper. Be useful, not dismissive.
+          </p>
+        </div>
+        <a class="rounded-lg border border-[var(--border)] px-3 py-1.5 text-xs font-semibold text-[var(--ink-2)] hover:bg-[var(--surface-3)]   " href={`/mock/${mock.slug}`}>
+          Open the mock
+        </a>
+      </div>
+
+      {question ? (
+        <div class="mt-4 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-4 text-sm leading-7 shadow-sm">
+          <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--muted)] ">Question context</p>
+          <div class="mt-1" set:html={renderRichText(question.text)}></div>
+          <a class="mt-2 inline-block text-xs font-semibold text-[var(--primary)] hover:underline" href={`/mock/${mock.slug}/discussion`}>See all mock discussion →</a>
+        </div>
+      ) : null}
+
+      {!user ? (
+        <div class="mt-5 flex flex-wrap items-center gap-3 rounded-xl border border-[var(--warning-border)] bg-[var(--warning-bg)] p-4 text-sm text-[var(--warning-ink)]">
+          <span class="rounded-full bg-[var(--warning-border)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[var(--warning-ink)]">Read only</span>
+          <p class="min-w-0 flex-1">You can read this thread as a guest. Log in or create a free account to post and vote.</p>
+          <div class="flex gap-2">
+            <a class="rounded-lg bg-[var(--primary)] px-3 py-1.5 text-xs font-bold text-[var(--on-primary)] hover:bg-[var(--primary-hover)]" href={loginHref}>Log in</a>
+            <a class="rounded-lg border border-[var(--warning-border)] px-3 py-1.5 text-xs font-bold hover:bg-[var(--warning-bg)]" href={signupHref}>Sign up</a>
+          </div>
+        </div>
+      ) : null}
+
+      <div class="mt-6 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm">
+        <div class="h-1 bg-gradient-to-r from-[var(--primary)] via-[var(--review)] to-[var(--cta)]" aria-hidden="true"></div>
+
+        <div class="flex items-center gap-3 border-b border-[var(--border)] px-4 py-3 sm:px-5">
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-[var(--surface-2)] text-lg font-black text-[var(--muted)] shadow-sm ring-1 ring-[var(--border)]" aria-hidden="true">#</span>
+          <div class="min-w-0">
+            <p class="truncate text-sm font-bold text-[var(--ink)]">mock-discussion</p>
+            <p class="truncate text-[11px] text-[var(--muted)] ">Post-submission chat · finished attempts only</p>
+          </div>
+          <span class="ml-auto shrink-0 rounded-full bg-[var(--surface-2)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-[var(--muted)] ring-1 ring-[var(--border)]">
+            {liveCount} message{liveCount === 1 ? "" : "s"}
+          </span>
+        </div>
+
+        {pending.length > 0 ? (
+          <div class="border-b border-[var(--border)] px-4 py-3 sm:px-5">
+            <div class="rounded-xl border border-[var(--warning-border)] bg-[var(--warning-bg)] p-3">
+              <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--warning-ink)]">Awaiting moderation · only you can see this</p>
+              <ul class="mt-2.5 space-y-2.5">
+                {pending.map((comment) => {
+                  const tone = chatTone(comment.user_id);
+                  const avatar = safeAvatarUrl(comment.avatar_url);
+                  return (
+                    <li class="flex gap-2.5">
+                      {avatar ? (
+                        <img src={avatar} alt="" width="28" height="28" loading="lazy" referrerpolicy="no-referrer" class="mt-0.5 h-7 w-7 shrink-0 rounded-full object-cover ring-1 ring-[var(--border)]" />
+                      ) : (
+                        <span class:list={["mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br text-[10px] font-black text-[var(--on-primary)] ring-1 ring-[var(--border)]", tone.avatar]} aria-hidden="true">
+                          {displayInitial(comment.username)}
+                        </span>
+                      )}
+                      <div class="min-w-0 flex-1">
+                        <div class="flex flex-wrap items-center gap-2">
+                          <span class:list={["text-[13px] font-bold", tone.name]}>{comment.username}</span>
+                          <span class="rounded-full bg-[var(--warning-border)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[var(--warning-ink)]">Pending</span>
+                          <time class="text-[10px] text-[var(--warning-ink)]" datetime={comment.created_at}>{formatDateTime(comment.created_at)}</time>
+                        </div>
+                        <div class="mt-0.5 text-[13px] leading-6 text-[var(--warning-ink)]" set:html={renderPlainText(comment.body)}></div>
+                        <button class="mt-1.5 rounded-md border border-[var(--warning-border)] px-2 py-0.5 text-[11px] font-semibold hover:bg-[var(--warning-bg)]" type="button" data-delete-comment={comment.id}>
+                          Delete
+                        </button>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        ) : null}
+
+        <div class="divide-y divide-[var(--border)]">
+          {roots.length === 0 ? (
+            <div class="px-6 py-12 text-center">
+              <span class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[var(--surface-2)] text-2xl font-black text-[var(--muted)] ring-1 ring-[var(--border)]" aria-hidden="true">#</span>
+              <p class="mt-3 text-sm font-bold text-[var(--ink-2)] ">No messages yet</p>
+              <p class="mt-1 text-xs text-[var(--muted)] ">
+                {user ? "Start the conversation in the composer below." : "Log in to start the conversation."}
+              </p>
+            </div>
+          ) : (
+            roots.map((thread) => {
+              const tone = chatTone(thread.user_id);
+              const avatar = safeAvatarUrl(thread.avatar_url);
+              const replies = repliesByParent.get(thread.id) ?? [];
+              return (
+                <article class="group relative px-4 py-4 transition-colors hover:bg-[var(--surface-3)] sm:px-5">
+                  <div class="flex gap-3">
+                    {avatar ? (
+                      <img src={avatar} alt="" width="40" height="40" loading="lazy" referrerpolicy="no-referrer" class="mt-0.5 h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-[var(--border)]" />
+                    ) : (
+                      <span class:list={["mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br text-sm font-black text-[var(--on-primary)] ring-1 ring-[var(--border)]", tone.avatar]} aria-hidden="true">
+                        {displayInitial(thread.username)}
+                      </span>
+                    )}
+
+                    <div class="min-w-0 flex-1">
+                      <header class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span class:list={["text-sm font-bold", tone.name]}>{thread.username}</span>
+                        {thread.parent_id === null && thread.is_pinned ? <span class="rounded-full bg-[var(--chip-bg)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[var(--chip-ink)]">Pinned</span> : null}
+                        {thread.is_best_answer ? <span class="rounded-full bg-[var(--chip-bg)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[var(--chip-ink)]">{authorBadge(thread)}</span> : null}
+                        <time class="text-[10px] font-medium text-[var(--muted)] " datetime={thread.created_at}>{formatDateTime(thread.created_at)}</time>
+                        {thread.question_text ? <span class="rounded-full bg-[var(--surface-3)] px-2 py-0.5 text-[9px] font-semibold text-[var(--ink-2)]">Question linked</span> : null}
+                      </header>
+
+                      <div class="mt-1 text-[13.5px] leading-6 text-[var(--ink-2)] " set:html={renderRichText(thread.body)}></div>
+
+                      <footer class="mt-2 flex flex-wrap items-center gap-1.5 text-[11px]">
+                        <button
+                          type="button"
+                          class:list={[
+                            "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-semibold transition-colors",
+                            votes.has(thread.id)
+                              ? "border-[var(--primary)] bg-[var(--primary-tint)] text-[var(--primary)]"
+                              : "border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)] hover:border-[var(--primary)] hover:text-[var(--primary)]",
+                          ]}
+                          data-vote={thread.id}
+                          data-author={thread.username}
+                          data-kind="comment"
+                          aria-label={`Upvote comment by ${thread.username}, ${thread.upvotes} upvote${thread.upvotes === 1 ? "" : "s"}`}
+                        >
+                          <span aria-hidden="true">▲</span>
+                          <span data-vote-count>{thread.upvotes}</span>
+                        </button>
+
+                        {user ? (
+                          <details class="inline-block min-w-0 [&[open]]:w-full">
+                            <summary class="cursor-pointer list-none rounded-md px-1.5 py-0.5 font-semibold text-[var(--muted)] hover:bg-[var(--surface-3)] hover:text-[var(--ink)] [&::-webkit-details-marker]:hidden">
+                              Reply
+                            </summary>
+                            <form class="mt-2 w-full rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-2 shadow-sm" data-discussion-form data-parent-id={thread.id} data-question-id={questionId ?? ""}>
+                              <textarea class="min-h-16 w-full resize-y bg-transparent px-1 py-0.5 text-[13px] text-[var(--ink)] outline-none placeholder:text-[var(--muted)]" name="body" minlength="2" maxlength="2000" required placeholder={`Reply to ${thread.username}`}></textarea>
+                              <div class="mt-1 flex items-center justify-end gap-2">
+                                <p class="mr-auto hidden text-[11px] text-[var(--danger-ink)]" data-discussion-message></p>
+                                <button class="rounded-md bg-[var(--primary)] px-3 py-1.5 text-[11px] font-bold text-[var(--on-primary)] hover:bg-[var(--primary-hover)] disabled:opacity-60" type="submit">Send</button>
+                              </div>
+                            </form>
+                          </details>
+                        ) : null}
+
+                        {user ? <button type="button" class="rounded-md px-1.5 py-0.5 font-medium text-[var(--muted)] hover:bg-[var(--danger-bg)] hover:text-[var(--danger-ink)]" data-report={thread.id}>Report</button> : null}
+                        {user && thread.user_id === user.id ? <button type="button" class="rounded-md px-1.5 py-0.5 font-medium text-[var(--muted)] hover:bg-[var(--danger-bg)] hover:text-[var(--danger-ink)]" data-delete-comment={thread.id}>Delete</button> : null}
+                      </footer>
+
+                      {replies.length > 0 ? (
+                        <ol class:list={["mt-3 space-y-3 border-l-2 pl-3 sm:ml-[52px] sm:pl-4", tone.line]}>
+                          {replies.map((reply) => {
+                            const replyTone = chatTone(reply.user_id);
+                            const replyAvatar = safeAvatarUrl(reply.avatar_url);
+                            return (
+                              <li class="relative">
+                                <div class="flex gap-2.5">
+                                  {replyAvatar ? (
+                                    <img src={replyAvatar} alt="" width="28" height="28" loading="lazy" referrerpolicy="no-referrer" class="mt-0.5 h-7 w-7 shrink-0 rounded-full object-cover ring-1 ring-[var(--border)]" />
+                                  ) : (
+                                    <span class:list={["mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br text-[10px] font-black text-[var(--on-primary)] ring-1 ring-[var(--border)]", replyTone.avatar]} aria-hidden="true">
+                                      {displayInitial(reply.username)}
+                                    </span>
+                                  )}
+                                  <div class="min-w-0 flex-1">
+                                    <header class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                                      <span class:list={["text-[13px] font-bold", replyTone.name]}>{reply.username}</span>
+                                      <time class="text-[10px] font-medium text-[var(--muted)] " datetime={reply.created_at}>{formatDateTime(reply.created_at)}</time>
+                                      {reply.is_best_answer ? <span class="rounded-full bg-[var(--chip-bg)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[var(--chip-ink)]">Best answer</span> : null}
+                                    </header>
+                                    <div class="mt-0.5 text-[13px] leading-6 text-[var(--ink-2)] " set:html={renderRichText(reply.body)}></div>
+                                    <footer class="mt-1.5 flex flex-wrap items-center gap-1.5 text-[11px]">
+                                      <button
+                                        type="button"
+                                        class:list={[
+                                          "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-semibold transition-colors",
+                                          votes.has(reply.id)
+                                            ? "border-[var(--primary)] bg-[var(--primary-tint)] text-[var(--primary)]"
+                                            : "border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)] hover:border-[var(--primary)] hover:text-[var(--primary)]",
+                                        ]}
+                                        data-vote={reply.id}
+                                        data-author={reply.username}
+                                        data-kind="reply"
+                                        aria-label={`Upvote reply by ${reply.username}, ${reply.upvotes} upvote${reply.upvotes === 1 ? "" : "s"}`}
+                                      >
+                                        <span aria-hidden="true">▲</span>
+                                        <span data-vote-count>{reply.upvotes}</span>
+                                      </button>
+                                      {user ? <button type="button" class="rounded-md px-1.5 py-0.5 font-medium text-[var(--muted)] hover:bg-[var(--danger-bg)] hover:text-[var(--danger-ink)]" data-report={reply.id}>Report</button> : null}
+                                      {user && reply.user_id === user.id ? <button type="button" class="rounded-md px-1.5 py-0.5 font-medium text-[var(--muted)] hover:bg-[var(--danger-bg)] hover:text-[var(--danger-ink)]" data-delete-comment={reply.id}>Delete</button> : null}
+                                    </footer>
+                                  </div>
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ol>
+                      ) : null}
+                    </div>
+                  </div>
+                </article>
+              );
+            })
+          )}
+        </div>
+
+        {user ? (
+          <div class="border-t border-[var(--border)] bg-[var(--surface)] p-3 sm:p-4">
+            <form id="new-discussion" class="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-2 shadow-sm" data-discussion-form data-parent-id="" data-question-id={questionId ?? ""}>
+              <div class="flex items-end gap-2.5">
+                {viewerAvatar ? (
+                  <img src={viewerAvatar} alt="" width="32" height="32" loading="lazy" referrerpolicy="no-referrer" class="mb-0.5 h-8 w-8 shrink-0 rounded-full object-cover ring-1 ring-[var(--border)]" />
+                ) : (
+                  <span class:list={["mb-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gradient-to-br text-[11px] font-black text-[var(--on-primary)] ring-1 ring-[var(--border)]", viewerTone?.avatar]} aria-hidden="true">
+                    {viewerInitial}
+                  </span>
+                )}
+                <label class="sr-only" for="discussion-body">Your comment</label>
+                <textarea id="discussion-body" class="max-h-40 min-h-9 flex-1 resize-y bg-transparent px-1 py-1.5 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--muted)]" name="body" rows="1" minlength="2" maxlength="2000" required placeholder="Message #mock-discussion"></textarea>
+                <button class="mb-0.5 rounded-lg bg-[var(--primary)] px-3 py-1.5 text-xs font-bold text-[var(--on-primary)] transition-colors hover:bg-[var(--primary-hover)] disabled:opacity-60" type="submit">Send</button>
+              </div>
+              <p class="mt-1 hidden px-1 text-[11px] text-[var(--danger-ink)]" data-discussion-message></p>
+            </form>
+            <p class="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 px-1 text-[10px] text-[var(--muted)] ">
+              <span>Plain text with optional $math$.</span>
+              <span class="h-1 w-1 rounded-full bg-[var(--border)]" aria-hidden="true"></span>
+              <span>New accounts are moderated; helpful contributors become auto-approved.</span>
+            </p>
+          </div>
+        ) : null}
+      </div>
+    </section>
+  )}
+
+  <script is:inline define:vars={{ mockId: Number(mock.id), questionId: questionId ?? null }}>
+    const messageFor = (form) => form.querySelector("[data-discussion-message]");
+
+    document.querySelectorAll("[data-discussion-form]").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const textarea = form.querySelector("textarea[name=body]");
+        const button = form.querySelector("button[type=submit]");
+        const message = messageFor(form);
+        if (!textarea || !button) return;
+
+        button.disabled = true;
+        try {
+          const response = await fetch("/api/discussions", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              mockId,
+              questionId: questionId || null,
+              parentId: form.dataset.parentId ? Number(form.dataset.parentId) : null,
+              body: textarea.value,
+            }),
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error || "Could not post the comment.");
+          if (result.status === "pending") {
+            alert(result.message || "Your comment is awaiting moderation.");
+          }
+          location.reload();
+        } catch (error) {
+          const text = error instanceof Error ? error.message : "Could not post the comment.";
+          if (message) {
+            message.textContent = text;
+            message.className = "text-[11px] text-[var(--danger-ink)]";
+          } else {
+            alert(text);
+          }
+          button.disabled = false;
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-vote]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        button.disabled = true;
+        try {
+          const response = await fetch(`/api/discussions/${button.dataset.vote}/vote`, { method: "POST" });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error || "Could not vote.");
+          const count = button.querySelector("[data-vote-count]");
+          if (count) count.textContent = String(result.upvotes);
+          const kind = button.dataset.kind || "comment";
+          const author = button.dataset.author || "";
+          button.setAttribute(
+            "aria-label",
+            `Upvote ${kind} by ${author}, ${result.upvotes} upvote${result.upvotes === 1 ? "" : "s"}`,
+          );
+          button.classList.toggle("border-[var(--primary)]", result.voted);
+          button.classList.toggle("bg-[var(--primary-tint)]", result.voted);
+        } catch (error) {
+          alert(error instanceof Error ? error.message : "Could not vote.");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-report]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const reason = prompt("What is wrong with this comment?");
+        if (!reason) return;
+        button.disabled = true;
+        try {
+          const response = await fetch(`/api/discussions/${button.dataset.report}/report`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ reason }),
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error || "Could not send the report.");
+          alert(result.message || "Report received.");
+        } catch (error) {
+          alert(error instanceof Error ? error.message : "Could not send the report.");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+    document.querySelectorAll("[data-delete-comment]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        if (!confirm("Delete this comment? This cannot be undone from the site.")) return;
+        button.disabled = true;
+        try {
+          const response = await fetch(`/api/discussions/${button.dataset.deleteComment}`, { method: "DELETE" });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.error || "Could not delete the comment.");
+          location.reload();
+        } catch (error) {
+          alert(error instanceof Error ? error.message : "Could not delete the comment.");
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</BaseLayout>

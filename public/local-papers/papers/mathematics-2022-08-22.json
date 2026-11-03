@@ -1,0 +1,1540 @@
+{
+ "exam": {
+  "id": "local-mathematics-2022-08-22",
+  "slug": "mathematics-2022-08-22",
+  "title": "CUET UG Mathematics 22 August 2022 Previous Year Paper",
+  "subject": "Mathematics",
+  "subjectId": "local-mathematics",
+  "subjectCode": "MAT",
+  "year": 2022,
+  "examDate": "2022-08-22",
+  "shift": null,
+  "sourceFile": "Mathematics_2022-08-22.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 46,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "If the matrices $ \\begin{bmatrix} 1-x^2 & 2y \\\\ x+5 & 0 \\end{bmatrix}=\\begin{bmatrix}-3 & y-1 \\\\ 7 & 0 \\end{bmatrix} $ then the value of x and y is equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "x=2, y=-1"
+     },
+     {
+      "id": "B",
+      "text": "x=-2, y=-1"
+     },
+     {
+      "id": "C",
+      "text": "x=2, y=-2"
+     },
+     {
+      "id": "D",
+      "text": "x=2, y=-1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "Match List-I with List-II\n\nList-I List-II\n\nA. If $A' = -A$, I. Symmetric\n\nthen matrix A is\n\nB. If $A' = A$, then II. $(A')^{-1}$\n\nmatrix A is\n\nC. $(A^{-1})' =$ III. $B'A'$\n\nD. $(AB)' =$ IV. Skew-symmetric",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-IV, B-I, C-III, D-II"
+     },
+     {
+      "id": "B",
+      "text": "A-IV, B-I, C-II, D-III"
+     },
+     {
+      "id": "C",
+      "text": "A-I, B-IV, C-II, D-III"
+     },
+     {
+      "id": "D",
+      "text": "A-I, B-IV, C-III, D-II (d) A-1, B-IV, C-III, D-II"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "For what value of k the following system of linear equations is:\n\n$ kx + 3y + 3z = 5 $; x - 2y + z = -4\n\n3x - y - 2z = 3\n\nhas no solution?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "k=2"
+     },
+     {
+      "id": "B",
+      "text": "k=6"
+     },
+     {
+      "id": "C",
+      "text": "k=-3"
+     },
+     {
+      "id": "D",
+      "text": "k=-6"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "If $ \\mathrm{e}^{\\mathrm{y}}(\\mathrm{x}+1)=1 $ and $ \\frac{\\mathrm{d}^{2}\\mathrm{y}}{\\mathrm{d}x^{2}}=\\left(\\frac{\\mathrm{dy}}{\\mathrm{dx}}\\right)^{k} $ then the least positive integer $ k' $ is equal to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "The tangent to the curve $ y = e^{2x} $ at the point $ (0, 1) $ meets x-axis at:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ (0,1) $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\left(-\\frac{1}{2},0\\right) $"
+     },
+     {
+      "id": "C",
+      "text": "$ (2,0) $"
+     },
+     {
+      "id": "D",
+      "text": "$ (0,2) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "The interval on which the function $f(x)=-2x^{3}-9x^{2}-12x+1$ is increasing, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$(-2,-1)$"
+     },
+     {
+      "id": "B",
+      "text": "$(-1,\\infty)$"
+     },
+     {
+      "id": "C",
+      "text": "$(-\\infty,-2)\\cup(-1,\\infty)$"
+     },
+     {
+      "id": "D",
+      "text": "$(-\\infty,-2)$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "If $ \\int \\frac{x}{\\sqrt{x-1}} \\, dx = f(x) $ and solution of this integral is\n\n$ f(x) = A(x-1)^{3/2} + B\\sqrt{x-1} + C $, then which of the\n\nfollowings are true?\n\n(A) $ A = \\frac{3}{2} $, $ B = \\frac{1}{2} $ (B) $ A = \\frac{2}{3} $, $ B = 2 $\n\n(C) $ A = \\frac{2}{3} $, B = -2 (D) Iff(2) = 0, then $ C = -\\frac{8}{3} $\n\n(E) Iff(1) = 0, then C = 1",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, D only"
+     },
+     {
+      "id": "B",
+      "text": "B, E only"
+     },
+     {
+      "id": "C",
+      "text": "B, D only"
+     },
+     {
+      "id": "D",
+      "text": "D, E only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "$ \\int_{0}^{5}|x-5|dx= $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{25}{2} $"
+     },
+     {
+      "id": "B",
+      "text": "25"
+     },
+     {
+      "id": "C",
+      "text": "26"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{26}{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "The area of the region bounded by the curve $ y=|x-1| $ and line x=0 and x=2 in first quadrant is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2"
+     },
+     {
+      "id": "B",
+      "text": "0"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Match List-I with List-II.\n\nList-I List-II\n\nDifferential equation Degree of\n\ndifferential equation\n\n$$ \\left(\\frac{\\mathrm{d}^{2}\\mathbf{y}}{\\mathrm{d}\\mathbf{x}^{2}}\\right)^{2}+\\left(\\frac{\\mathrm{d}\\mathbf{y}}{\\mathrm{d}\\mathbf{x}}\\right)^{2}=\\left(\\frac{\\mathrm{d}\\mathbf{y}}{\\mathrm{d}\\mathbf{x}}\\right) $$\n\nB. $ \\left(1+\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right)^{3}=\\left(\\frac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}}\\right)^{3} $\n\nC. $ \\left(\\frac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}}\\right)+\\left(\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right)^{2}=0 $\n\nD. $ \\left(\\frac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}}\\right)^{4}+2=\\left(\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right)^{2} $\n\nIV. 3",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-I, B-II, C-IV, D-III"
+     },
+     {
+      "id": "B",
+      "text": "A-IV, B-III, C-I, D-II"
+     },
+     {
+      "id": "C",
+      "text": "A-II, B-IV, C-I, D-III"
+     },
+     {
+      "id": "D",
+      "text": "A-III, B-I, C-II, D-IV (d) A-III, B-I, C-II, D-IV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "The differential equation representing family of curve $y=ae^{mx}+be^{mx}$ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$y''-(m+n)y'+mny=0$"
+     },
+     {
+      "id": "B",
+      "text": "$y''+(m+n)y'+mny=0$"
+     },
+     {
+      "id": "C",
+      "text": "$y''-(m+n)y'-mny=0$"
+     },
+     {
+      "id": "D",
+      "text": "$y'-(m+n)y'+y=0$ (d) $ y''-(m+n)y+y=0 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Two dices are thrown simultaneously. If X denotes the number of sixes, then the expectation of X is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{4} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{8} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "In a binomial distribution b(n, p), if n = 10 and q = 0.7, then its mean is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "7"
+     },
+     {
+      "id": "B",
+      "text": "5"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "The corner points of the feasible region, determined by the system of linear inequalities are $(0,0)(5,0)(3,4)$ and $(0,5)$. Let $z=2x+qy$ where $q>0$. For what value of $q$ the maximum value of $z$ occurs at both $(3,4)$ and $(0,5)$ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$2 \\cdot"
+     },
+     {
+      "id": "B",
+      "text": "$ 1"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{2}{3}$"
+     },
+     {
+      "id": "D",
+      "text": "$6$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Let R be the relation in the set $\\{1, 2, 3, 4\\}$ and given by $R = \\{(1,2),(2,2),(1,1),(1,3),(4,4),(3,3),(3,2)\\}$.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "R is reflexive and symmetric, but not transitive"
+     },
+     {
+      "id": "B",
+      "text": "R is reflexive and transitive, but not symmetric"
+     },
+     {
+      "id": "C",
+      "text": "R is symmetric and transitive, but not reflexive"
+     },
+     {
+      "id": "D",
+      "text": "R is an equivalence relation"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Which one of the following functions is one-one?\n\nA. f: R → R such that f(x) = x²\n\nB. f: R → R such that f(x) = 3x + 2\n\nC. f: N → N such that f(x) = x²\n\nD. f: R → R such that f(x) = [x], where [x] is greatest integer ≤ x",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A and C only"
+     },
+     {
+      "id": "B",
+      "text": "B and C only"
+     },
+     {
+      "id": "C",
+      "text": "C and D only"
+     },
+     {
+      "id": "D",
+      "text": "A, B and C only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "The value of $ \\tan^{-1}\\left[2\\cos\\left(2\\sin^{-1}\\frac{1}{2}\\right)\\right] $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\pi $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\pi}{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\pi}{3} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\pi}{4} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "The value of $ \\begin{vmatrix} x & \\sin\\theta & \\cos\\theta \\\\ -\\sin\\theta & -x & 1 \\\\ \\cos\\theta & 1 & x \\end{vmatrix} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "independent of \\theta"
+     },
+     {
+      "id": "B",
+      "text": "dependent of \\theta"
+     },
+     {
+      "id": "C",
+      "text": "equal to x^{3}"
+     },
+     {
+      "id": "D",
+      "text": "depend on both \\theta and x"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "One branch of $\\sin^{-1}x$ other than the principal value branch corresponds to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\left[\\pi, 2\\pi\\right]$"
+     },
+     {
+      "id": "B",
+      "text": "$\\left[\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right]$"
+     },
+     {
+      "id": "C",
+      "text": "$\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right] - \\{0\\}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\left[\\frac{3\\pi}{2}, \\frac{5\\pi}{2}\\right]$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "If $A=\\begin{bmatrix}2 & 3\\\\ 1 & 2\\end{bmatrix}$ where $I$ is the identity matrix of order $2\\times2$ and $O$ is $2\\times2$ zero matrix, then choose one of the following correct option given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$A^{2}-4A+I=0$"
+     },
+     {
+      "id": "B",
+      "text": "$A^{2}+4A+I=0$"
+     },
+     {
+      "id": "C",
+      "text": "$A^{2}-4A-I=0$"
+     },
+     {
+      "id": "D",
+      "text": "$A^{2}-4A+2I=0$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "The function $ f(x)=[x] $, where [x] denotes the greatest integer function, is continuous at",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2"
+     },
+     {
+      "id": "B",
+      "text": "0"
+     },
+     {
+      "id": "C",
+      "text": "2"
+     },
+     {
+      "id": "D",
+      "text": "2.5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "The points of discontinuity for the given function f:\n\n$ R \\rightarrow R $ defined as\n\n$ f(x)=\\left\\{\\begin{aligned}&2x-5&2<x<3\\\\ &2,&3\\leq x<5\\\\ &5x,&5\\leq x<7\\end{aligned}\\right. $\n\n(A) 2 (B) 3 (C) 5 (D) 7",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A and B only"
+     },
+     {
+      "id": "B",
+      "text": "B and C only"
+     },
+     {
+      "id": "C",
+      "text": "C and D only"
+     },
+     {
+      "id": "D",
+      "text": "A and D only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "The function $ f(x) = |x - 1| + |x - 2| $ is not differentiable at (A) 1 (B) 2 (C) $ \\frac{3}{2} $ (D) 0\n\n(E) 4",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A and B only"
+     },
+     {
+      "id": "B",
+      "text": "A and C only"
+     },
+     {
+      "id": "C",
+      "text": "C and D only"
+     },
+     {
+      "id": "D",
+      "text": "D and E only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "A window is in the form of a rectangle surmounted by an equilateral triangle. If the perimeter of the window is 10m. Find the side of triangle to admit maximum light. Write the steps to solve this problem in correct order.\n\nA. Assume side of triangle as x and other side of rectangle as y\n\nB. Write perimeter: $3x + 2y = 10$ and area (A) = $xy + \\frac{\\sqrt{3}}{4}x^{2}$\n\nC. Put $\\frac{\\mathrm{d}A}{\\mathrm{d}x}=0$ to get value of $x$\n\nD. Write area (A) in terms of x and find $\\frac{\\mathrm{d}A}{\\mathrm{d}x}$\n\nE Check $\\frac{\\mathrm{d}^{2}A}{\\mathrm{d}x^{2}}<0$ at value of x. Then x is required side of triangle\n\nChoose the correct order from the option given below:\n\n(a) A, B, D, C, E (b) B, A, C, D, E\n\n(c) B, D, A, C, E (d) A, B, C, D, E\n\n$$\\int e^{2x}\\sin x\\,dx =$$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{e^{2x}}{4}(2\\sin x - \\cos x) + C$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{e^{2x}}{5}(2\\cos x - \\sin x) + C$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{e^{2x}}{4}(2\\sin x + \\cos x) + C$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{e^{2x}}{5}(2\\sin x - \\cos x) + C$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Match List-I with List-II\n\nList-I List-II\n\nA. $ \\int \\frac{1}{\\sqrt{a^{2}-x^{2}}} dx $\n\nB. $ \\int \\frac{-1}{(a^{2}+x^{2})} dx $\n\nC. $ \\int \\frac{1}{x \\sqrt{x^{2}-a^{2}}} dx $\n\nD. $ \\int \\frac{-1}{\\sqrt{a^{2}-x^{2}}} dx $\n\nI. $ \\cos^{-1}\\left(\\frac{x}{a}\\right)+C $\n\nII. $ \\frac{1}{a}\\sec^{-1}\\left(\\frac{x}{a}\\right)+C $\n\nIII. $ \\frac{1}{a}\\cot^{-1}\\left(\\frac{x}{a}\\right)+C $\n\nIV. $ \\sin^{-1}\\left(\\frac{x}{a}\\right)+C $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-I, B-II, C-III, D-IV"
+     },
+     {
+      "id": "B",
+      "text": "A-I, B-II, C-IV, D-III"
+     },
+     {
+      "id": "C",
+      "text": "A-III, B-IV, C-II, D-I"
+     },
+     {
+      "id": "D",
+      "text": "A-IV, B-III, C-II, D-I"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "$ \\int_{0}^{\\frac{\\pi}{2}}\\frac{\\mathrm{d}x}{1+\\tan^{n}x}= $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\pi}{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ -\\frac{\\pi}{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\pi}{4} $"
+     },
+     {
+      "id": "D",
+      "text": "$ -\\frac{\\pi}{4} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "Write the values of the following definite integration in increasing order\n\nA. $ \\int_{0}^{\\frac{\\pi}{2}}\\sin^{5}x\\,dx $\n\nB. $ \\int_{0}^{\\frac{\\pi}{2}}\\log\\left(\\frac{4+3\\sin x}{4+3\\cos x}\\right)dx $\n\nC. $ \\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}}\\frac{1}{1+\\sqrt{\\tan x}}\\,dx $\n\nD. $ \\int_{0}^{1}xe^{x}dx $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "B<D<A<C"
+     },
+     {
+      "id": "B",
+      "text": "D<B<C<A"
+     },
+     {
+      "id": "C",
+      "text": "B<A<C<D"
+     },
+     {
+      "id": "D",
+      "text": "B<C<A<D"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "$ \\int \\frac{\\sin(x + \\alpha)}{\\sin x} \\, dx = $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ x \\cos \\alpha + \\sin \\alpha \\log(\\sin x) + C $"
+     },
+     {
+      "id": "B",
+      "text": "$ x \\cos \\alpha - \\sin \\alpha \\log(\\sin x) + C $"
+     },
+     {
+      "id": "C",
+      "text": "$ x \\sin \\alpha + \\cos \\alpha \\log(\\sin x) + C $"
+     },
+     {
+      "id": "D",
+      "text": "$ x \\sin \\alpha - \\cos \\alpha \\log(\\cos x) + C $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Arrange the value of all integrals in its ascending order\n\nA. $ \\int_{0}^{\\pi}\\frac{\\sin^{4}x}{\\sin^{4}x+\\cos^{4}x}dx $\n\nB. $ \\int_{-1}^{1}\\sin^{5}x\\cos^{4}x dx $\n\nC. $ \\int_{1}^{\\sqrt{3}}\\frac{dx}{1+x^{2}} $ D. $ \\int_{2}^{3}x^{2}dx $\n\nChoose the correct option answer from the option given below:\n\nChoose the correct option answer from the option given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A < B < C < D"
+     },
+     {
+      "id": "B",
+      "text": "B < C < A < D"
+     },
+     {
+      "id": "C",
+      "text": "C < A < B < D"
+     },
+     {
+      "id": "D",
+      "text": "D < C < B < A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "The solution of differential equation $ xy \\, dy = (x^2 + y^2) \\, dx \\, is $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ y^2 = -x^2 \\log(Cx) $"
+     },
+     {
+      "id": "B",
+      "text": "$ y = x^2 \\log x $"
+     },
+     {
+      "id": "C",
+      "text": "$ y^2 = x \\log(Cx) $"
+     },
+     {
+      "id": "D",
+      "text": "$ y^2 = 2x^2 \\log(Cx) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Match List-I with List-II\n\nList-I\n\nA. The distance of the point (3, 4, 5) from y-axis is\n\nB. Angle between two diagonals of a cube is\n\nC. Projection of $\\overrightarrow{a} = \\hat{i} + \\hat{j} + \\hat{k}$ on vector $\\overrightarrow{b} = 2\\hat{i} - \\hat{j} + \\hat{k}$ is\n\nList-II\n\nI. $\\cos^{-1}\\left(\\frac{1}{3}\\right)$\n\nII. $\\sqrt{34}$\n\nIII. $\\cos^{-1}\\left(-\\frac{1}{3}\\right)$\n\nD. Angle between $ \\overrightarrow{a} = -\\hat{i} - \\hat{j} + \\hat{k} $ IV. $ \\frac{2}{\\sqrt{6}} $ and $ \\overrightarrow{b} = \\hat{i} + \\hat{j} + \\hat{k} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-II, B-III, C-IV, D-I"
+     },
+     {
+      "id": "B",
+      "text": "A-IV, B-I, C-III, D-II"
+     },
+     {
+      "id": "C",
+      "text": "A-II, B-I, C-III, D-IV"
+     },
+     {
+      "id": "D",
+      "text": "A-II, B-I, C-IV, D-III"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "The shortest distance of the point (3,-2,1) from the plane x+2y-2z+9=0 is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{2} $"
+     },
+     {
+      "id": "B",
+      "text": "12"
+     },
+     {
+      "id": "C",
+      "text": "2"
+     },
+     {
+      "id": "D",
+      "text": "2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "Arrange the distance between the following planes to the plane $ x + y - z + 2 = 0 $ in ascending order:\n\nA. $ x + y - z + 5 = 0 $\n\nB. $ 2x + 2y - 2z + 5 = 0 $\n\nC. $ 3x + 3y - 3z + 9 = 0 $\n\nD. $ \\frac{1}{2}x + \\frac{1}{2}y - \\frac{1}{2}z + 1 = 0 $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B, C, D"
+     },
+     {
+      "id": "B",
+      "text": "D, B, C, A"
+     },
+     {
+      "id": "C",
+      "text": "B, A, D, C"
+     },
+     {
+      "id": "D",
+      "text": "D, B, A, C"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "If a line $ \\frac{x-4}{2}=\\frac{y}{3}=\\frac{z+2}{4} $ intersects a plane $ 2x-2y+z=0 $ at point P, then the distance from point P to the origin is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3 units"
+     },
+     {
+      "id": "B",
+      "text": "5 units"
+     },
+     {
+      "id": "C",
+      "text": "7 units"
+     },
+     {
+      "id": "D",
+      "text": "$ 2\\sqrt{2} $ units"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "If A and B are independent events such that P(A) = $ \\frac{1}{4} $ and P(B) = $ \\frac{1}{2} $, then P(A' / B') is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{4} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{3}{4} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{8} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "A random variable has the following probability distribution:\n\n$ P(X=x) \\quad k \\quad \\frac{1}{4} \\quad 6k \\quad 4k \\quad k $\n\nWhich of the following statements are correct?\n\nA. $ k = \\frac{1}{10} $\n\nB. $ P(X=3) = \\frac{1}{4} $\n\nC. $ P(X<2) = \\frac{11}{16} $\n\nD. $ P(1<X<4) = \\frac{5}{8} $\n\nE. $ P(X=4) = \\frac{1}{8} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B, E only"
+     },
+     {
+      "id": "B",
+      "text": "B, C, D only"
+     },
+     {
+      "id": "C",
+      "text": "B, D only"
+     },
+     {
+      "id": "D",
+      "text": "D, E only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "In a linear programming problem, Maximize $ z = 3x + 9y $, the corner points are $ (0, 10) $, $ (5, 5) $, $ (15, 15) $ and $ (0, 20) $, z is maximum at\n\nA. $ (0,10) $\n\nB. $ (5,5) $\n\nC. $ (15,15) $\n\nD. $ (0,20) $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A and B only"
+     },
+     {
+      "id": "B",
+      "text": "A and C only"
+     },
+     {
+      "id": "C",
+      "text": "B and C only"
+     },
+     {
+      "id": "D",
+      "text": "C and D only Passage Rahul went to a park with his younger brother and observed that park is circular and a pavement running around it. He asked the gardener about the radius of the park and found it to be 15m. And the pavement is 2m broad. Answer the following questions based on the above information."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "The area of the circular park, using integration, is given by\n\n(a) $ \\int_{0}^{15}\\sqrt{225-x^{2}}dx $\n\n(b) $ \\int_{0}^{15}\\sqrt{15-x^{2}}dx $\n\n(c) $ \\int_{0}^{15}\\sqrt{225-x^{2}}dx $\n\n(d) $ \\int_{0}^{15}\\sqrt{15-x^{2}}dx $\n\nThe integral $\\sqrt{225-x^{2}}$ can be solved using $t$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{x}{2}\\sqrt{x^{2}-a^{2}}-\\frac{a^{2}}{2}\\log\\left|x+\\sqrt{x^{2}-a^{2}}\\right|+C$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{x}{2}\\sqrt{x^{2}+a^{2}}+\\frac{a^{2}}{2}\\log\\left|x+\\sqrt{x^{2}+a^{2}}\\right|+C$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{x}{2}\\sqrt{a^{2}-x^{2}}+\\frac{a^{2}}{2}\\sin^{-1}\\frac{x}{a}+C$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{x}{2}\\sqrt{a^{2}-x^{2}}-\\frac{a^{2}}{2}\\sin^{-1}\\frac{x}{a}+C$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "The area of the pavement running around the circular park, using integration, is given by",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$4\\int_{0}^{17}\\sqrt{17-x^{2}}dx$"
+     },
+     {
+      "id": "B",
+      "text": "$4\\int_{0}^{17}\\sqrt{289-x^{2}}dx$"
+     },
+     {
+      "id": "C",
+      "text": "$$ \\left(4\\int\\limits_{0}^{17}\\sqrt{17-x^{2}}\\ d x\\right)-\\left(4\\int\\limits_{0}^{15}\\sqrt{15-x^{2}}\\ d x\\right) $$"
+     },
+     {
+      "id": "D",
+      "text": "$ \\left(4\\int\\limits_{0}^{17}\\sqrt{289-x^{2}} \\mathrm{d}x\\right)-\\left(4\\int\\limits_{0}^{15}\\sqrt{225-x^{2}} \\mathrm{d}x\\right) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "The area of the circular pavement is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 289\\pi $ sq units"
+     },
+     {
+      "id": "B",
+      "text": "$ 225\\pi $ sq units"
+     },
+     {
+      "id": "C",
+      "text": "$ 514\\pi $ sq units"
+     },
+     {
+      "id": "D",
+      "text": "$ 64\\pi $ sq units"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "If the gardener wishes to put manure at the rate of $\\overrightarrow{50/m^{2}}$ in the circular park. Then find the approximate cost of manuring",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "₹8338"
+     },
+     {
+      "id": "B",
+      "text": "₹833.8"
+     },
+     {
+      "id": "C",
+      "text": "₹4710"
+     },
+     {
+      "id": "D",
+      "text": "₹35325 Passage Ram purchased a gift which is in the shape of a tetrahedron. Let $ A = (1, 2, 1) $, $ B = (2, 3, 1) $, $ C = (3, 1, 0) $ and $ D = (4, 3, 1) $ be the vertices of the tetrahedron. Based on the above information, answer the following questions"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "The vector $ \\overrightarrow{AB} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\hat{i} + \\hat{j} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\hat{i} + \\hat{j} + \\hat{k} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\hat{i} - \\hat{j} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\hat{j} + \\hat{k} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "The vector $\\overrightarrow{\\mathrm{CD}}$ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$2\\hat{i}+2\\hat{j}+3\\hat{k}$"
+     },
+     {
+      "id": "B",
+      "text": "$\\hat{i}+2\\hat{j}+\\hat{k}$"
+     },
+     {
+      "id": "C",
+      "text": "$\\hat{i}-\\hat{j}+\\hat{k}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\hat{i}-2\\hat{j}-\\hat{k}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "The area of $\\triangle ABC$ is equal to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{\\sqrt{13}}{2}$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{\\sqrt{5}}{2}$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{\\sqrt{7}}{2}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{\\sqrt{11}}{2}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "The unit vector along $\\overrightarrow{\\mathrm{CD}}$ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{1}{\\sqrt{6}}\\left(\\hat{i}+2\\hat{j}+\\hat{k}\\right)$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{1}{\\sqrt{3}}\\left(\\hat{i}-3\\hat{j}-\\hat{k}\\right)$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{1}{\\sqrt{6}}\\left(\\hat{i}-2\\hat{j}+\\hat{k}\\right)$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{1}{\\sqrt{2}}\\left(\\hat{i}-\\hat{j}\\right)$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "$ \\overrightarrow{AB} $. $ \\overrightarrow{CD} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "1"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "3"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

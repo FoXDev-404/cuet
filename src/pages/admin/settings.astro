@@ -1,0 +1,111 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can } from "../../lib/auth/admin";
+import { loadSettings, SETTING_FIELDS } from "../../lib/admin/settings";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "settings.write")) return Astro.redirect("/forbidden", 303);
+
+const settings = await loadSettings();
+const textFields = SETTING_FIELDS.filter((field) => field.type === "text");
+const booleanFields = SETTING_FIELDS.filter((field) => field.type === "boolean");
+---
+
+<AdminLayout title="Settings" active="settings">
+  <div>
+    <h1 class="text-2xl font-black tracking-tight">Settings</h1>
+    <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+      Site-wide switches for registration, discussions and maintenance. Every change is written to the audit log.
+    </p>
+  </div>
+
+  <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+    <p class="font-bold">Maintenance mode rewrites public pages</p>
+    <p class="mt-1">Admin pages and APIs stay reachable while maintenance is on, so you can switch it back off. Test the public site in a private window before scheduling maintenance around an exam.</p>
+  </div>
+
+  <form id="settings-form" class="mt-6 max-w-3xl space-y-6">
+    <p id="settings-status" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
+
+    <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-lg font-bold">Identity</h2>
+      {textFields.map((field) => (
+        <label class="mt-4 block text-sm font-semibold">
+          {field.label}
+          <input
+            class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950"
+            name={field.key}
+            value={settings[field.key]}
+            maxlength={field.maxLength ?? 80}
+            required
+          />
+          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">{field.description}</span>
+        </label>
+      ))}
+    </section>
+
+    <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-lg font-bold">Feature switches</h2>
+      <div class="mt-4 space-y-4">
+        {booleanFields.map((field) => {
+          const enabled = settings[field.key] === "true";
+          return (
+            <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3 dark:border-neutral-800">
+              <input class="mt-1" name={field.key} type="checkbox" value="true" checked={enabled} />
+              <span class="min-w-0">
+                <span class="block text-sm font-semibold">{field.label}</span>
+                <span class="mt-0.5 block text-xs leading-5 text-neutral-500 dark:text-neutral-400">{field.description}</span>
+                <span class:list={["mt-1 inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold", enabled ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200" : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300"]}>
+                  {enabled ? "On" : "Off"}
+                </span>
+              </span>
+            </label>
+          );
+        })}
+      </div>
+    </section>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <button class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">Save settings</button>
+      <a class="text-sm font-semibold text-neutral-600 hover:underline dark:text-neutral-300" href="/admin">Back to dashboard</a>
+    </div>
+  </form>
+
+  <script is:inline>
+    const form = document.getElementById("settings-form");
+    const statusBox = document.getElementById("settings-status");
+
+    function showStatus(message, ok) {
+      if (!statusBox) return;
+      statusBox.textContent = message;
+      statusBox.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/40 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
+    }
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector("button[type=submit]");
+      if (!button) return;
+      button.disabled = true;
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+      form.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+        payload[checkbox.name] = checkbox.checked ? "true" : "false";
+      });
+
+      try {
+        const response = await fetch("/api/admin/settings", {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || "Could not save the settings.");
+        showStatus(result.changed === 0 ? "No changes to save." : "Settings saved.", true);
+        if (result.changed > 0) setTimeout(() => location.reload(), 600);
+      } catch (error) {
+        showStatus(error instanceof Error ? error.message : "Could not save the settings.", false);
+        button.disabled = false;
+      }
+    });
+  </script>
+</AdminLayout>

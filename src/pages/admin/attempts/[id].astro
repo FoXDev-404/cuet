@@ -1,0 +1,275 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import { can } from "../../../lib/auth/admin";
+import { findAttemptDetail } from "../../../lib/admin/attempts";
+import { formatDateTime, renderRichText } from "../../../lib/content";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "attempts.view")) return Astro.redirect("/admin", 303);
+
+const id = Number(Astro.params.id);
+if (!Number.isInteger(id) || id <= 0) return Astro.redirect("/admin/attempts", 303);
+
+const detail = await findAttemptDetail(id);
+if (!detail) return new Response("Attempt not found", { status: 404 });
+
+const { attempt, answers } = detail;
+const letters = ["A", "B", "C", "D", "E", "F"];
+const answered = answers.filter((answer) => answer.selected !== null).length;
+const marked = answers.filter((answer) => answer.marked_for_review === 1).length;
+const canVoid = can(admin.role, "attempts.void");
+const canRescore = can(admin.role, "attempts.rescore");
+
+const summary = [
+  { label: "Student", value: attempt.username ?? "Guest" },
+  { label: "Email", value: attempt.email ?? "—" },
+  { label: "Mock", value: attempt.mock_title },
+  { label: "Version", value: `v${attempt.version_no ?? "?"} (id ${attempt.version_id})` },
+  { label: "Status", value: attempt.status.replace("_", " ") },
+  { label: "Score", value: attempt.score === null ? "—" : String(attempt.score) },
+  { label: "Correct / wrong / skipped", value: `${attempt.correct ?? "—"} / ${attempt.wrong ?? "—"} / ${attempt.skipped ?? "—"}` },
+  { label: "Time taken", value: attempt.time_taken_sec === null ? "—" : `${Math.floor(attempt.time_taken_sec / 60)}m ${attempt.time_taken_sec % 60}s` },
+  { label: "Started", value: formatDateTime(attempt.started_at) },
+  { label: "Submitted", value: attempt.submitted_at ? formatDateTime(attempt.submitted_at) : "—" },
+  { label: "First attempt", value: attempt.is_first_attempt ? "Yes (ranked)" : "No" },
+  { label: "Answers stored", value: `${answers.length} (${answered} answered, ${marked} marked)` },
+];
+---
+
+<AdminLayout title={`Attempt #${attempt.id}`} active="attempts">
+  <nav class="text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+    <a class="hover:underline" href="/admin/attempts">Attempts</a>
+    <span aria-hidden="true"> / </span>
+    <span>#{attempt.id}</span>
+  </nav>
+
+  <div class="mt-2 flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Attempt #{attempt.id}</h1>
+      <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+        {attempt.mock_title} · {attempt.status.replace("_", " ")}
+        {attempt.voided_at ? " · voided" : ""}
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/mocks/${attempt.mock_id}`}>Open mock</a>
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/result/${attempt.id}`}>Student result</a>
+    </div>
+  </div>
+
+  {attempt.voided_at ? (
+    <div class="mt-4 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 dark:border-red-900 dark:bg-red-950/40 dark:text-red-100">
+      <p class="font-bold">This attempt is voided.</p>
+      <p class="mt-1">Reason: {attempt.void_reason ?? "not recorded"}. It is excluded from statistics and rescoring can still be previewed.</p>
+    </div>
+  ) : null}
+
+  <p id="action-error" class="mt-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+  <p id="action-success" class="mt-4 hidden rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200"></p>
+  <div id="rescore-progress" class="mt-4 hidden rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900 dark:border-sky-900 dark:bg-sky-950/40 dark:text-sky-100" role="status"></div>
+
+  <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <div class="space-y-6">
+      <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 class="font-bold">Attempt summary</h2>
+        <dl class="mt-4 grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
+          {summary.map((item) => (
+            <div class="min-w-0 border-b border-neutral-100 pb-2 dark:border-neutral-800">
+              <dt class="text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">{item.label}</dt>
+              <dd class="mt-0.5 truncate font-medium" title={item.value}>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section class="overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 px-5 py-4 dark:border-neutral-800">
+          <h2 class="font-bold">Stored answers</h2>
+          <span class="text-xs text-neutral-500 dark:text-neutral-400">Correct letter comes from the pinned paper version.</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[780px] text-left text-sm">
+            <thead class="bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:bg-neutral-950 dark:text-neutral-400">
+              <tr>
+                <th class="px-4 py-2.5">Question</th>
+                <th class="px-4 py-2.5">Selected</th>
+                <th class="px-4 py-2.5">Key</th>
+                <th class="px-4 py-2.5">Result</th>
+                <th class="px-4 py-2.5 text-right">Time</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+              {answers.map((answer) => (
+                <tr>
+                  <td class="max-w-md px-4 py-2.5">
+                    <a class="hover:underline" href={`/admin/questions/${answer.question_id}`}>
+                      <span class="line-clamp-2" set:html={renderRichText(answer.text)}></span>
+                    </a>
+                    <span class="mt-0.5 block text-[11px] text-neutral-500 dark:text-neutral-400">
+                      #{answer.question_id} · {answer.subject_name ?? "—"}{answer.topic_name ? ` · ${answer.topic_name}` : ""}{answer.marked_for_review === 1 ? " · marked" : ""}
+                    </span>
+                  </td>
+                  <td class="px-4 py-2.5 font-semibold">{answer.selected === null ? "—" : letters[answer.selected] ?? answer.selected}</td>
+                  <td class="px-4 py-2.5 font-semibold">{letters[answer.correct_option] ?? answer.correct_option}</td>
+                  <td class="px-4 py-2.5">
+                    {answer.selected === null ? <span class="rounded-full bg-neutral-100 px-2 py-0.5 text-xs font-semibold dark:bg-neutral-800">Skipped</span>
+                      : answer.is_correct === 1 ? <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200">Correct</span>
+                      : <span class="rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-900 dark:bg-red-950/60 dark:text-red-200">Wrong</span>}
+                  </td>
+                  <td class="px-4 py-2.5 text-right tabular-nums text-neutral-500 dark:text-neutral-400">{answer.time_spent_sec}s</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {answers.length === 0 ? <p class="px-4 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">No answer rows are stored for this attempt.</p> : null}
+      </section>
+    </div>
+
+    <aside class="space-y-4 lg:self-start">
+      {canVoid ? (
+        <section class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+          <h2 class="text-sm font-bold">Void or restore</h2>
+          <p class="mt-1 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+            Voiding removes the attempt from rankings and learning statistics without deleting its answers. A written reason is required.
+          </p>
+          {attempt.voided_at ? (
+            <button class="mt-3 w-full rounded-lg bg-emerald-700 px-3 py-2 text-xs font-bold text-white hover:bg-emerald-800" type="button" data-attempt-action="restore">Restore attempt</button>
+          ) : (
+            <button class="mt-3 w-full rounded-lg border border-red-300 px-3 py-2 text-xs font-bold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40" type="button" data-attempt-action="void">Void attempt…</button>
+          )}
+        </section>
+      ) : null}
+
+      {canRescore ? (
+        <section class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+          <h2 class="text-sm font-bold">Rescore</h2>
+          <p class="mt-1 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+            Preview compares the stored score with a fresh calculation from the pinned questions. Nothing is written until you start the job.
+          </p>
+          <button class="mt-3 w-full rounded-lg border border-neutral-300 px-3 py-2 text-xs font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" type="button" data-rescore-preview>Preview rescore</button>
+          <button class="mt-2 w-full rounded-lg bg-brand-600 px-3 py-2 text-xs font-bold text-white hover:bg-brand-700" type="button" data-rescore-start>Rescore this attempt</button>
+          <div id="rescore-preview" class="mt-3 hidden rounded-lg bg-neutral-50 p-3 text-xs dark:bg-neutral-950"></div>
+        </section>
+      ) : null}
+
+      <section class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 class="text-sm font-bold">Integrity</h2>
+        <ul class="mt-2 space-y-1.5 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+          <li>Score is read from the attempt row; edits happen only through rescore jobs.</li>
+          <li>Voiding is reversible and audit-logged.</li>
+          <li>Question changes never rewrite this attempt's stored answers.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <div data-attempt-id={attempt.id} hidden></div>
+  <script>
+    const attemptId = Number(document.querySelector("[data-attempt-id]")?.getAttribute("data-attempt-id") ?? 0);
+    const errorBox = document.getElementById("action-error") as HTMLElement;
+    const successBox = document.getElementById("action-success") as HTMLElement;
+    const progressBox = document.getElementById("rescore-progress") as HTMLElement;
+
+    function message(box: HTMLElement, text: string) {
+      box.textContent = text;
+      box.classList.remove("hidden");
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-attempt-action]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const action = button.dataset.attemptAction!;
+        let reason = "";
+        if (action === "void") {
+          const typed = prompt("Reason for voiding this attempt (shown in the audit log and to other admins):");
+          if (typed === null) return;
+          reason = typed.trim();
+          if (reason.length < 5) {
+            message(errorBox, "Write at least 5 characters explaining why this attempt is void.");
+            return;
+          }
+          if (!confirm("Void this attempt? It will be excluded from rankings. You can restore it later.")) return;
+        }
+
+        const response = await fetch(`/api/admin/attempts/${attemptId}`, {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ action, reason }),
+        });
+        const result = (await response.json()) as { error?: string; changed?: boolean };
+        if (!response.ok) {
+          message(errorBox, result.error || "Could not update the attempt.");
+          return;
+        }
+        message(successBox, result.changed ? `Attempt ${action === "void" ? "voided" : "restored"}. Reloading…` : "No change was needed.");
+        location.reload();
+      });
+    });
+
+    document.querySelector("[data-rescore-preview]")?.addEventListener("click", async () => {
+      const target = document.getElementById("rescore-preview") as HTMLElement;
+      target.classList.remove("hidden");
+      target.textContent = "Calculating…";
+      const response = await fetch("/api/admin/rescore", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ mode: "preview", attemptIds: [attemptId] }),
+      });
+      const result = (await response.json()) as {
+        error?: string;
+        total?: number;
+        changed?: number;
+        samples?: Array<{ attemptId: number; oldScore: number | null; newScore: number }>;
+      };
+      if (!response.ok) {
+        target.textContent = result.error || "Preview failed.";
+        return;
+      }
+      if (!result.changed) {
+        target.textContent = `Stored score matches a fresh calculation for ${result.total ?? 0} attempt(s). No rescore needed.`;
+        return;
+      }
+      target.innerHTML = `<p class="font-bold">${result.changed} of ${result.total} attempt(s) would change.</p>` +
+        (result.samples ?? []).map((sample) => `<p class="mt-1">Attempt #${sample.attemptId}: ${sample.oldScore ?? "—"} → ${sample.newScore}</p>`).join("");
+    });
+
+    document.querySelector("[data-rescore-start]")?.addEventListener("click", async () => {
+      if (!confirm("Recalculate this attempt from the pinned questions? A revision snapshot is kept in the audit log.")) return;
+      progressBox.classList.remove("hidden");
+      progressBox.textContent = "Starting rescore job…";
+      const start = await fetch("/api/admin/rescore", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ mode: "start", attemptIds: [attemptId], reason: "Manual attempt rescore from admin" }),
+      });
+      const started = (await start.json()) as { error?: string; jobId?: number };
+      if (!start.ok || !started.jobId) {
+        progressBox.textContent = started.error || "Could not start the rescore job.";
+        return;
+      }
+
+      for (let round = 0; round < 200; round += 1) {
+        const response = await fetch(`/api/admin/rescore/${started.jobId}`, { method: "POST" });
+        const result = (await response.json()) as {
+          error?: string;
+          processed?: number;
+          total?: number;
+          done?: boolean;
+          changed?: number;
+        };
+        if (!response.ok) {
+          progressBox.textContent = result.error || "Rescore failed.";
+          return;
+        }
+        progressBox.textContent = `Rescoring ${result.processed ?? 0} / ${result.total ?? 0}… ${result.changed ?? 0} changed.`;
+        if (result.done) {
+          progressBox.textContent = `Rescore complete. ${result.changed ?? 0} attempt(s) recalculated. Reloading…`;
+          setTimeout(() => location.reload(), 900);
+          return;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 250));
+      }
+      progressBox.textContent = "The job is still running. Reopen this page to see the final state.";
+    });
+  </script>
+</AdminLayout>

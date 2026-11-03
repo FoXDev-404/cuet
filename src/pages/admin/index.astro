@@ -1,0 +1,266 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { all, first } from "../../lib/db";
+import { can } from "../../lib/auth/admin";
+import { formatDateTime } from "../../lib/content";
+import { getLocalPapers } from "../../lib/local-papers";
+
+const admin = Astro.locals.admin!;
+const localPapers = getLocalPapers();
+const localReviewPapers = localPapers
+  .filter((paper) => paper.pendingReviewCount > 0)
+  .sort(
+    (a, b) =>
+      b.pendingReviewCount - a.pendingReviewCount ||
+      b.year - a.year ||
+      a.title.localeCompare(b.title),
+  );
+const localPendingQuestions = localPapers.reduce(
+  (sum, paper) => sum + paper.pendingReviewCount,
+  0,
+);
+const localFullyKeyed = localPapers.length - localReviewPapers.length;
+
+type CountRow = { count: number };
+const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+const [
+  questions,
+  publishedQuestions,
+  mocks,
+  publishedMocks,
+  users,
+  attemptsToday,
+  newUsers,
+  openReports,
+] = await Promise.all([
+    first<CountRow>("SELECT COUNT(*) AS count FROM questions WHERE deleted_at IS NULL"),
+    first<CountRow>("SELECT COUNT(*) AS count FROM questions WHERE deleted_at IS NULL AND status = 'published'"),
+    first<CountRow>("SELECT COUNT(*) AS count FROM mock_tests WHERE deleted_at IS NULL"),
+    first<CountRow>("SELECT COUNT(*) AS count FROM mock_tests WHERE deleted_at IS NULL AND status = 'published'"),
+    first<CountRow>("SELECT COUNT(*) AS count FROM users WHERE deleted_at IS NULL"),
+    first<CountRow>(
+      "SELECT COUNT(*) AS count FROM attempts WHERE started_at >= ?",
+      `${new Date().toISOString().slice(0, 10)}T00:00:00.000Z`,
+    ),
+    first<CountRow>(
+      "SELECT COUNT(*) AS count FROM users WHERE deleted_at IS NULL AND created_at >= ?",
+      weekAgo,
+    ),
+    first<CountRow>(
+      "SELECT COUNT(*) AS count FROM question_reports WHERE status = 'open'",
+    ),
+  ]);
+
+const recentAttempts = await all<{
+  id: number;
+  status: string;
+  score: number | null;
+  started_at: string;
+  mock_title: string;
+  username: string | null;
+}>(
+  `SELECT a.id, a.status, a.score, a.started_at, m.title AS mock_title, u.username
+   FROM attempts a
+   JOIN mock_tests m ON m.id = a.mock_id
+   LEFT JOIN users u ON u.id = a.user_id
+   ORDER BY a.id DESC LIMIT 8`,
+);
+
+const recentAudit = can(admin.role, "audit.view")
+  ? await all<{ id: number; action: string; entity_type: string; entity_id: number | null; created_at: string; email: string }>(
+      `SELECT l.id, l.action, l.entity_type, l.entity_id, l.created_at, a.email
+       FROM audit_log l JOIN admins a ON a.id = l.admin_id
+       ORDER BY l.id DESC LIMIT 8`,
+    )
+  : [];
+
+const [recentUsers, popularMocks, pendingReports] = await Promise.all([
+  all<{ id: number; username: string; email: string; created_at: string }>(
+    `SELECT id, username, email, created_at FROM users
+     WHERE deleted_at IS NULL ORDER BY id DESC LIMIT 5`,
+  ),
+  all<{ id: number; title: string; slug: string; attempt_count: number; status: string }>(
+    `SELECT m.id, m.title, m.slug, m.status,
+            (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id) AS attempt_count
+     FROM mock_tests m
+     WHERE m.deleted_at IS NULL
+     ORDER BY attempt_count DESC, m.id DESC LIMIT 5`,
+  ),
+  all<{ id: number; question_id: number; reason: string; created_at: string; question_text: string | null }>(
+    `SELECT r.id, r.question_id, r.reason, r.created_at, q.text AS question_text
+     FROM question_reports r LEFT JOIN questions q ON q.id = r.question_id
+     WHERE r.status = 'open' ORDER BY r.id DESC LIMIT 5`,
+  ),
+]);
+
+const cards = [
+  { label: "Questions", value: questions?.count ?? 0, detail: `${publishedQuestions?.count ?? 0} published`, href: "/admin/questions" },
+  { label: "Mock tests", value: mocks?.count ?? 0, detail: `${publishedMocks?.count ?? 0} published`, href: "/admin/mocks" },
+  { label: "Users", value: users?.count ?? 0, detail: `+${newUsers?.count ?? 0} in 7 days`, href: "/admin/users" },
+  { label: "Attempts today", value: attemptsToday?.count ?? 0, detail: "started since midnight UTC", href: "#" },
+];
+---
+
+<AdminLayout title="Dashboard" active="dashboard">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Admin dashboard</h1>
+      <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">P2 content operations. Every write is recorded in the audit log.</p>
+    </div>
+    <div class="flex gap-2">
+      <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/questions/new">New question</a>
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-900" href="/admin/mocks/new">New mock</a>
+    </div>
+  </div>
+
+  <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {cards.map((card) => (
+      <a href={card.href} class="rounded-2xl border border-neutral-200 bg-white p-5 transition-shadow hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">{card.label}</p>
+        <p class="mt-2 text-3xl font-black">{card.value}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{card.detail}</p>
+      </a>
+    ))}
+  </div>
+
+  <section class="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30" aria-labelledby="pyq-review-heading">
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-amber-300">Previous-year library</p>
+        <h2 class="mt-1 text-lg font-black text-amber-950 dark:text-amber-100" id="pyq-review-heading">Review queue</h2>
+        <p class="mt-1 max-w-2xl text-sm leading-6 text-amber-900 dark:text-amber-100/80">
+          {localPapers.length} refined papers · {localFullyKeyed} fully keyed · {localReviewPapers.length} need a review · {localPendingQuestions} questions pending a matched key.
+        </p>
+      </div>
+      <a class="rounded-lg bg-amber-900 px-3 py-2 text-sm font-bold text-white hover:bg-amber-950 dark:bg-amber-100 dark:text-amber-950 dark:hover:bg-white" href="/admin/review">Open review queue</a>
+    </div>
+
+    {localReviewPapers.length === 0 ? (
+      <p class="mt-4 text-sm text-emerald-800 dark:text-emerald-300">Every playable previous-year question has a matched key.</p>
+    ) : (
+      <ol class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {localReviewPapers.slice(0, 6).map((paper) => (
+          <li class="rounded-xl border border-amber-200 bg-white/80 p-3 dark:border-amber-900/60 dark:bg-neutral-900/60">
+            <a class="line-clamp-2 text-sm font-semibold text-amber-950 hover:underline dark:text-amber-100" href={`/admin/review?paper=${paper.slug}#detail-heading`}>
+              {paper.title}
+            </a>
+            <p class="mt-1 text-xs text-amber-800 dark:text-amber-300">
+              {paper.pendingReviewCount} pending of {paper.recoveredQuestionCount} · {paper.subject.name} · {paper.year}
+            </p>
+          </li>
+        ))}
+      </ol>
+    )}
+  </section>
+
+  <div class="mt-8 grid gap-6 lg:grid-cols-2">
+    <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="font-bold">Recent attempts</h2>
+      {recentAttempts.length === 0 ? (
+        <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">No attempts yet. Published mocks will appear here once students start.</p>
+      ) : (
+        <div class="mt-3 overflow-x-auto" tabindex="0" role="region" aria-label="Recent attempts">
+          <table class="w-full text-left text-sm">
+            <thead class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+              <tr><th class="pb-2">Mock</th><th class="pb-2">Student</th><th class="pb-2">Status</th><th class="pb-2 text-right">Score</th></tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+              {recentAttempts.map((attempt) => (
+                <tr>
+                  <td class="py-2 pr-3"><span class="line-clamp-2">{attempt.mock_title}</span><span class="block text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(attempt.started_at)}</span></td>
+                  <td class="py-2 pr-3">{attempt.username ?? "Guest"}</td>
+                  <td class="py-2 pr-3"><span class="rounded-full bg-neutral-100 px-2 py-0.5 text-xs dark:bg-neutral-800">{attempt.status}</span></td>
+                  <td class="py-2 text-right font-semibold">{attempt.score ?? "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+
+    <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="flex items-center justify-between">
+        <h2 class="font-bold">Audit log</h2>
+        {can(admin.role, "audit.view") ? <a class="text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/audit-log">View all</a> : null}
+      </div>
+      {recentAudit.length === 0 ? (
+        <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">No writes recorded yet.</p>
+      ) : (
+        <ul class="mt-3 space-y-2 text-sm">
+          {recentAudit.map((entry) => (
+            <li class="flex items-start justify-between gap-3 border-b border-neutral-100 pb-2 last:border-0 dark:border-neutral-800">
+              <div>
+                <p class="font-medium">{entry.action}</p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400">{entry.entity_type} #{entry.entity_id ?? "—"} · {entry.email}</p>
+              </div>
+              <time class="whitespace-nowrap text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(entry.created_at)}</time>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  </div>
+
+  <div class="mt-6 grid gap-6 lg:grid-cols-3">
+    <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="flex items-center justify-between gap-2">
+        <h2 class="font-bold">New users</h2>
+        <span class="rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">+{newUsers?.count ?? 0} this week</span>
+      </div>
+      {recentUsers.length === 0 ? (
+        <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">No registered users yet.</p>
+      ) : (
+        <ul class="mt-3 space-y-2 text-sm">
+          {recentUsers.map((entry) => (
+            <li class="border-b border-neutral-100 pb-2 last:border-0 dark:border-neutral-800">
+              <p class="truncate font-medium">{entry.username}</p>
+              <p class="truncate text-xs text-neutral-500 dark:text-neutral-400">{entry.email} · {formatDateTime(entry.created_at)}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      <a class="mt-3 inline-block text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/users">Manage users →</a>
+    </section>
+
+    <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="font-bold">Popular mocks</h2>
+      {popularMocks.length === 0 ? (
+        <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">No mock tests yet.</p>
+      ) : (
+        <ol class="mt-3 space-y-2 text-sm">
+          {popularMocks.map((entry, index) => (
+            <li class="flex items-start justify-between gap-3 border-b border-neutral-100 pb-2 last:border-0 dark:border-neutral-800">
+              <div class="min-w-0">
+                <p class="truncate font-medium">#{index + 1} {entry.title}</p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400">{entry.status} · {entry.attempt_count} attempt{entry.attempt_count === 1 ? "" : "s"}</p>
+              </div>
+              <a class="shrink-0 text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/admin/mocks/${entry.id}`}>Edit</a>
+            </li>
+          ))}
+        </ol>
+      )}
+      <a class="mt-3 inline-block text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/mocks">Mock builder →</a>
+    </section>
+
+    <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="flex items-center justify-between gap-2">
+        <h2 class="font-bold">Pending reports</h2>
+        <span class:list={["rounded-full px-2 py-0.5 text-[10px] font-bold uppercase", (openReports?.count ?? 0) > 0 ? "bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200" : "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"]}>{openReports?.count ?? 0} open</span>
+      </div>
+      {pendingReports.length === 0 ? (
+        <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">No open question reports. Great.</p>
+      ) : (
+        <ul class="mt-3 space-y-2 text-sm">
+          {pendingReports.map((report) => (
+            <li class="border-b border-neutral-100 pb-2 last:border-0 dark:border-neutral-800">
+              <p class="line-clamp-2 font-medium">{report.question_text ?? `Question #${report.question_id}`}</p>
+              <p class="text-xs text-neutral-500 dark:text-neutral-400">{report.reason} · {formatDateTime(report.created_at)}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      <a class="mt-3 inline-block text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/moderation?tab=question-reports">Open moderation queue →</a>
+    </section>
+  </div>
+</AdminLayout>

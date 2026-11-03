@@ -1,0 +1,180 @@
+---
+import AdminLayout from "../../../../layouts/AdminLayout.astro";
+import { can } from "../../../../lib/auth/admin";
+import { listRows, type RowRecord } from "../../../../lib/admin/data";
+import { getTable, visibleColumns, type ColumnDef } from "../../../../lib/admin/schema";
+import { formatDateTime } from "../../../../lib/content";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "data.manage")) return Astro.redirect("/admin", 303);
+
+const table = getTable(Astro.params.table ?? "");
+if (!table) return new Response("Unknown table", { status: 404 });
+
+const params = Astro.url.searchParams;
+const page = Math.max(Number(params.get("page") ?? 1) || 1, 1);
+const per = Math.min(Math.max(Number(params.get("per") ?? 25) || 25, 10), 100);
+const q = (params.get("q") ?? "").trim().slice(0, 100);
+const sort = params.get("sort") ?? "";
+const dir = params.get("dir") === "asc" ? "asc" : "desc";
+const includeDeleted = params.get("deleted") === "1";
+
+const result = await listRows(table, { page, per, q, sort: sort || undefined, dir, includeDeleted });
+const columns = visibleColumns(table);
+
+const priority = ["text", "title", "body", "email", "username", "name", "key", "path", "message", "slug", "status", "created_at", "deleted_at"];
+const chosen: ColumnDef[] = [];
+const pkColumn = columns.find((column) => column.name === table.pk);
+if (pkColumn) chosen.push(pkColumn);
+for (const name of priority) {
+  const match = columns.find((column) => column.name === name);
+  if (match && !chosen.some((column) => column.name === match.name)) chosen.push(match);
+  if (chosen.length >= 8) break;
+}
+const display = chosen.slice(0, 8);
+
+function plain(value: unknown, limit = 120): string {
+  const text = String(value ?? "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return text.length > limit ? `${text.slice(0, limit)}…` : text;
+}
+
+function cell(row: RowRecord, column: ColumnDef): string {
+  const value = row[column.name];
+  if (value === null || value === undefined || value === "") return "—";
+  if (column.type === "boolean") return Number(value) === 1 ? "Yes" : "No";
+  if (column.type === "datetime") {
+    const formatted = formatDateTime(String(value));
+    return formatted || String(value);
+  }
+  if (column.type === "json") return plain(value, 60);
+  return plain(value);
+}
+
+function sortHref(name: string): string {
+  const next = new URLSearchParams(params);
+  next.set("sort", name);
+  next.set("dir", sort === name && dir === "desc" ? "asc" : "desc");
+  next.set("page", "1");
+  return `?${next.toString()}`;
+}
+
+function pageHref(target: number): string {
+  const next = new URLSearchParams(params);
+  next.set("page", String(target));
+  next.set("per", String(per));
+  return `?${next.toString()}`;
+}
+
+const totalPages = Math.max(Math.ceil(result.total / result.per), 1);
+const exportParams = new URLSearchParams();
+if (q) exportParams.set("q", q);
+if (includeDeleted) exportParams.set("deleted", "1");
+const exportQuery = exportParams.toString() ? `?${exportParams.toString()}` : "";
+
+const rowHref = (id: unknown) =>
+  `/admin/data/${table.name}/row?id=${encodeURIComponent(String(id))}`;
+---
+
+<AdminLayout title={table.label} active="data">
+  <nav class="text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+    <a class="hover:underline" href="/admin/data">Data manager</a>
+    <span aria-hidden="true"> / </span>
+    <span>{table.label}</span>
+  </nav>
+
+  <div class="mt-2 flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">{table.label}</h1>
+      <p class="mt-1 font-mono text-xs text-neutral-500 dark:text-neutral-400">
+        {table.name} · {result.total.toLocaleString()} row{result.total === 1 ? "" : "s"}
+        {table.pk !== "id" ? ` · primary key: ${table.pk}` : ""}
+      </p>
+      {table.note ? <p class="mt-2 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">{table.note}</p> : null}
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/api/admin/data/${table.name}/export${exportQuery}`} download>Export CSV</a>
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/api/admin/data/${table.name}/export${exportQuery}${exportQuery ? "&" : "?"}format=json`} download>JSON</a>
+      {table.editable !== false ? (
+        <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/admin/data/${table.name}/row`}>New row</a>
+      ) : null}
+    </div>
+  </div>
+
+  <form method="get" class="mt-6 flex flex-wrap items-end gap-3 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+    <label class="text-xs font-semibold">
+      Search
+      <input class="mt-1 block h-10 w-64 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" type="search" name="q" value={q} placeholder={`Search ${table.label.toLowerCase()}…`} />
+    </label>
+    <label class="flex items-center gap-2 pb-2 text-xs font-semibold">
+      <input type="checkbox" name="deleted" value="1" checked={includeDeleted} />
+      Include deleted
+    </label>
+    <label class="text-xs font-semibold">
+      Rows
+      <select class="mt-1 block h-10 rounded-lg border border-neutral-300 bg-white px-2 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="per">
+        {[10, 25, 50, 100].map((value) => (<option value={value} selected={value === per}>{value}</option>))}
+      </select>
+    </label>
+    <button class="h-10 rounded-lg bg-neutral-900 px-4 text-sm font-bold text-white dark:bg-white dark:text-neutral-900" type="submit">Apply</button>
+    {q || includeDeleted ? <a class="pb-2 text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/admin/data/${table.name}`}>Reset</a> : null}
+  </form>
+
+  <div class="mt-5 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-[820px] text-left text-sm">
+        <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+          <tr>
+            {display.map((column) => (
+              <th class="whitespace-nowrap px-3 py-3">
+                <a class="hover:underline" href={sortHref(column.name)} title={`Sort by ${column.label}`}>
+                  {column.label}{sort === column.name ? (dir === "asc" ? " ↑" : " ↓") : ""}
+                </a>
+              </th>
+            ))}
+            <th class="px-3 py-3 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+          {result.rows.map((row) => (
+            <tr class:list={["align-top", row.deleted_at ? "bg-red-50/40 dark:bg-red-950/10" : ""]}>
+              {display.map((column) => (
+                <td class:list={["px-3 py-2.5", column.name === table.pk ? "font-mono text-xs" : "", column.type === "longtext" || column.type === "json" ? "max-w-[280px]" : "max-w-[200px]"]}>
+                  {column.name === table.pk ? (
+                    <a class="font-semibold hover:underline" href={rowHref(row[table.pk])}>{String(row[table.pk])}</a>
+                  ) : (
+                    <span class={column.type === "boolean" ? "font-semibold" : ""}>{cell(row, column)}</span>
+                  )}
+                  {column.name === "deleted_at" && row.deleted_at ? (
+                    <span class="ml-1 rounded bg-red-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-red-800 dark:bg-red-950/60 dark:text-red-200">deleted</span>
+                  ) : null}
+                </td>
+              ))}
+              <td class="whitespace-nowrap px-3 py-2.5 text-right">
+                <a class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={rowHref(row[table.pk])}>{table.editable === false ? "View" : "Edit"}</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {result.rows.length === 0 ? (
+      <div class="px-4 py-12 text-center text-sm text-neutral-500 dark:text-neutral-400">
+        No rows match this view.
+        {table.editable !== false ? <a class="ml-1 font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/admin/data/${table.name}/row`}>Create one</a> : null}
+      </div>
+    ) : null}
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      Page {result.page} of {totalPages} · showing {result.rows.length} row{result.rows.length === 1 ? "" : "s"}
+    </p>
+    <div class="flex gap-2">
+      {page > 1 ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(page - 1)}>Previous</a> : null}
+      {page < totalPages ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(page + 1)}>Next</a> : null}
+    </div>
+  </div>
+</AdminLayout>

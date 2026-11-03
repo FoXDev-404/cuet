@@ -1,0 +1,1680 @@
+{
+ "exam": {
+  "id": "local-physics-2024-07-19-shift-1",
+  "slug": "physics-2024-07-19-shift-1",
+  "title": "CUET UG Physics 19 July 2024 Shift 1 Previous Year Paper",
+  "subject": "Physics",
+  "subjectId": "local-physics",
+  "subjectCode": "PHY",
+  "year": 2024,
+  "examDate": "2024-07-19",
+  "shift": "Shift 1",
+  "sourceFile": "Physics_2024-07-19_Shift_1.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 48,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "A uniform electric field pointing in the positive X direction exists in a region. Let O be the origin, A be the point on the X axis at x = +2 cm and B be the point on the Y axis at y = +1 cm. Then potential at the point O, A and B satisfy:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ V_{0} > V_{A} $"
+     },
+     {
+      "id": "B",
+      "text": "$ V_{0} < V_{A} $"
+     },
+     {
+      "id": "C",
+      "text": "$ V_{0} > V_{B} $"
+     },
+     {
+      "id": "D",
+      "text": "$ V_{0} < V_{B} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "An electric bulb rated 200 V - 100 W is connected to a 160 V power supply. The power consumed by it would be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "64 W"
+     },
+     {
+      "id": "B",
+      "text": "80 W"
+     },
+     {
+      "id": "C",
+      "text": "100 W"
+     },
+     {
+      "id": "D",
+      "text": "$ 125 \\, W $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Which of the following particles will experience maximum magnetic force (magnitude) when projected with the same velocity perpendicular to the magnetic field? Choose the correct answer from the options given below.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Electron"
+     },
+     {
+      "id": "B",
+      "text": "Proton"
+     },
+     {
+      "id": "C",
+      "text": "He $ ^{+} $"
+     },
+     {
+      "id": "D",
+      "text": "Li^{+}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "An a.c. circuit contains a 4 Ω resistance wire in series with an inductance coil of reactance 3 Ω. The impedance of the circuit is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "7 Ω"
+     },
+     {
+      "id": "B",
+      "text": "5 Ω"
+     },
+     {
+      "id": "C",
+      "text": "1 Ω"
+     },
+     {
+      "id": "D",
+      "text": "4/3 Ω"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "Magnetic moment due to the motion of the electron in the nth energy state of a hydrogen atom is proportional to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "n"
+     },
+     {
+      "id": "B",
+      "text": "n^{2}"
+     },
+     {
+      "id": "C",
+      "text": "n^{3}"
+     },
+     {
+      "id": "D",
+      "text": "n^{0}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "Energy levels A, B, C of a certain atom correspond to increasing value of energy $ E_A < E_B < E_C $. If $ \\lambda_1 $, $ \\lambda_2 $, $ \\lambda_3 $ are the wavelengths of radiation corresponding to the transitions $ C \\to B $, $ B \\to A $ and $ C \\to A $ respectively, then:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\lambda_{3}=\\lambda_{1}+\\lambda_{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\lambda_{1}=\\lambda_{2}=\\lambda_{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\lambda_{3}^{2}=\\lambda_{1}^{2}+\\lambda_{2}^{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\lambda_{3}=\\frac{\\lambda_{1}\\lambda_{2}}{\\lambda_{1}+\\lambda_{2}} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "An object A is charged by rubbing with an object B. In the process, $ 10^9 $ electrons are transferred from A to B. The charge developed on A will be: (Take electronic charge $ e = 1.602 \\times 10^{-19} $ C)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 10^{9} $ C"
+     },
+     {
+      "id": "B",
+      "text": "$ 10^{-9} $ C"
+     },
+     {
+      "id": "C",
+      "text": "$ 1.6 \\times 10^{-10} $ C"
+     },
+     {
+      "id": "D",
+      "text": "$ 1.6 \\times 10^{+10} $ C"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "E and V respectively represent magnitudes of electrostatic field and potential inside a charged metallic shell. We have:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "E = 0, V = 0"
+     },
+     {
+      "id": "B",
+      "text": "E = 0, $ V \\neq 0 $"
+     },
+     {
+      "id": "C",
+      "text": "$ E \\neq 0 $, V = 0"
+     },
+     {
+      "id": "D",
+      "text": "$ E \\neq 0, V \\neq 0 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "An electron and a proton held 1 Å apart form an electric dipole. The electric dipole moment of the dipole is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ 1.6\\times10^{-29}C m $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ 1.6\\times10^{-19}C m $$"
+     },
+     {
+      "id": "C",
+      "text": "$$ 3.2\\times10^{-19}C m $$"
+     },
+     {
+      "id": "D",
+      "text": "$$ 3.2\\times10^{-29}C m $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "A point charge q is placed at a distance r from another point charge Q. If the distance between the charges is doubled then:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "the force between the charges becomes half and the potential energy becomes one-fourth."
+     },
+     {
+      "id": "B",
+      "text": "the force between the charges becomes one-fourth and the potential energy becomes half."
+     },
+     {
+      "id": "C",
+      "text": "both the force between the charges and the potential energy become one-fourth."
+     },
+     {
+      "id": "D",
+      "text": "both the force between the charges and the potential energy become half."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "A conducting wire of length L, uniform area of cross-section A of a material having n free electrons per unit volume offers a resistance R to flow of current through itself. (m and e respectively denote the mass and charge of electron). If $ \\tau $ is mean free time of free electrons in the conductor, the correct formula for resistance R is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$R=\\frac{mL}{e^{2}nA\\tau}$"
+     },
+     {
+      "id": "B",
+      "text": "$R=\\frac{mA}{e^{2}nL\\tau}$"
+     },
+     {
+      "id": "C",
+      "text": "$R=\\frac{m\\tau}{e^{2}nAL}$"
+     },
+     {
+      "id": "D",
+      "text": "$R=\\frac{e^{2}nA\\tau}{mL}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "A galvanometer with resistance 100 Ohm gives full scale deflection with a current of 2 mA. The resistance required to convert the galvanometer into an ammeter of range 0 to 20 A is nearly:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 10^{-2} $ Ohm in series."
+     },
+     {
+      "id": "B",
+      "text": "$ 10^{-2} $ Ohm in parallel."
+     },
+     {
+      "id": "C",
+      "text": "10 Ohm in parallel."
+     },
+     {
+      "id": "D",
+      "text": "$ 10^{-1} $ Ohm in series."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "The figure below shows a part of an electric circuit. The current marked IA is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1 A"
+     },
+     {
+      "id": "B",
+      "text": "1.3 A"
+     },
+     {
+      "id": "C",
+      "text": "1.7 A"
+     },
+     {
+      "id": "D",
+      "text": "3 A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": [
+     {
+      "id": "q13-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q13-figure-1.jpg",
+      "page": 10,
+      "alt": "Figure for question 13"
+     }
+    ]
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "A magnetic dipole aligned parallel to a uniform magnetic field requires a work of W units to rotate it through $ 60^{\\circ} $. The torque exerted by the field on the dipole in this new position is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2W"
+     },
+     {
+      "id": "B",
+      "text": "W"
+     },
+     {
+      "id": "C",
+      "text": "$\\sqrt{3} W$"
+     },
+     {
+      "id": "D",
+      "text": "$(\\sqrt{3}/2) W$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "In a coil, an increase in current from 5 A to 10 A in 100 ms induces an induced emf of 100 V. The self inductance of the coil is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2 \\, H $"
+     },
+     {
+      "id": "B",
+      "text": "$ 10 \\, H $"
+     },
+     {
+      "id": "C",
+      "text": "$ 20 \\, H $"
+     },
+     {
+      "id": "D",
+      "text": "2000H"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "A 200 turn circular coil of area $ 10^{3} $ cm $ ^{2} $ rotates at 60 revolutions per minute in a uniform magnetic field of 0.02 T perpendicular to the axis of rotation of the coil. The maximum voltage induced in the coil is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{2}{5}\\pi V $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{4}\\pi V $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{4}{5}\\pi V $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{12}{5}\\pi V $ Answer"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "In the electromagnetic spectrum, $ v_1 $, $ v_2 $ and $ v_3 $ respectively denote the frequencies of microwaves, ultraviolet waves and gamma-rays. We can conclude that:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ v_{1} > v_{2} > v_{3} $"
+     },
+     {
+      "id": "B",
+      "text": "$ v_1 < v_2 < v_3 $"
+     },
+     {
+      "id": "C",
+      "text": "$ v_{1} > v_{3} > v_{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ v_{3} < v_{1} < v_{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Match Column-1 with Column-2.\n\nIn the table given below, certain EM waves are listed in Column-1 and their uses in Column-2 not necessarily in that order.\n\nChoose the correct matching of waves and their uses from the options given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"
+     },
+     {
+      "id": "C",
+      "text": "$$ \\mathrm{(A)}-(\\mathrm{IV}),\\mathrm{(B)}-(\\mathrm{II}),\\mathrm{(C)}-(\\mathrm{I}),\\mathrm{(D)}-(\\mathrm{III}) $$"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13,
+     14
+    ],
+    "assets": [
+     {
+      "id": "q18-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q18-table-1.jpg",
+      "page": 14,
+      "alt": "Table for question 18"
+     }
+    ]
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "Light is incident on an interface between water ( $ \\mu=4/3 $) and glass ( $ \\mu=3/2 $). For total internal reflection, light should be travelling from:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "water to glass and $ \\angle i > \\angle i_{c} $"
+     },
+     {
+      "id": "B",
+      "text": "water to glass and $ \\angle i < \\angle i_c $"
+     },
+     {
+      "id": "C",
+      "text": "glass to water and $ \\angle i < \\angle i_c $"
+     },
+     {
+      "id": "D",
+      "text": "glass to water and $ \\angle i > \\angle i_{c} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": [
+     {
+      "id": "q20-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q20-table-1.jpg",
+      "page": 15,
+      "alt": "Table for question 20"
+     }
+    ]
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "In a Young's double-slit experiment, using monochromatic light of wavelength $ \\lambda $, the intensity of light at a point on the screen is $ I_0 $, where the path difference between two interfering waves is $ \\lambda $. The path difference between the interfering waves at a point where the intensity is $ I_0/2 $ will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\lambda/4 $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\lambda/2 $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\lambda $"
+     },
+     {
+      "id": "D",
+      "text": "$ 2\\lambda $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "A pure silicon crystal with $ 5 \\times 10^{28} $ atoms $ m^{-3} $ has $ n_i = 1.5 \\times 10^{16} \\, \\text{m}^{-3} $. It is doped with a concentration of 1 in $ 10^5 $ pentavalent atoms. The number density of holes (per $ m^3 $) in the doped semiconductor will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 4.5 \\times 10^{3} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 4.5 \\times 10^{8} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\left(\\frac{10}{3}\\right)10^{12} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\left(\\frac{10}{3}\\right)10^{7} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "The potentials are applied to the four p-n junctions as shown below:\nThe forward biased p-n junctions are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(B), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": [
+     {
+      "id": "q23-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q23-figure-1.jpg",
+      "page": 18,
+      "alt": "Figure for question 23"
+     }
+    ]
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "For the given diagram $ E = 4 \\times 10^3 $ N/C, the net flux through the cube of side $ x = 1 $ cm, placed $ x = 1 $ cm from the origin as shown is:\n\n(E is acting towards positive x-axis and $ \\Phi = 1 $)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2 \\times 10^{-6} $ Wb"
+     },
+     {
+      "id": "B",
+      "text": "1\\times10^{-6}Wb"
+     },
+     {
+      "id": "C",
+      "text": "3\\times10^{-6}Wb"
+     },
+     {
+      "id": "D",
+      "text": "$ 4 \\times 10^{-6} $ Wb"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18,
+     19
+    ],
+    "assets": [
+     {
+      "id": "q24-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q24-figure-1.jpg",
+      "page": 19,
+      "alt": "Figure for question 24"
+     }
+    ]
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Arrange the following materials in the increasing order of their resistivity.(A) Copper\n\n(B) Platinum\n\n(C) Silver\n\n(D) Aluminum\n\nChoose the correct sequence from the options given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (C), (B), (D)"
+     },
+     {
+      "id": "B",
+      "text": "(C), (A), (D), (B)"
+     },
+     {
+      "id": "C",
+      "text": "(C), (B), (A), (D)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (D), (A), (C)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "For the given equation of charge $ Q = 3t^2 + 6t $, where Q is in coulomb and t is time in sec, the initial value of current is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0A"
+     },
+     {
+      "id": "B",
+      "text": "2A"
+     },
+     {
+      "id": "C",
+      "text": "6A"
+     },
+     {
+      "id": "D",
+      "text": "9A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "In the circuit shown below the current in the $ 1\\ \\Omega $ resistor is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1.3 A from P to Q"
+     },
+     {
+      "id": "B",
+      "text": "0 A"
+     },
+     {
+      "id": "C",
+      "text": "0.13 A from Q to P"
+     },
+     {
+      "id": "D",
+      "text": "0.13 A from P to Q"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": [
+     {
+      "id": "q27-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q27-figure-1.jpg",
+      "page": 21,
+      "alt": "Figure for question 27"
+     }
+    ]
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "The current sensitivity of a moving coil galvanometer is doubled by making the number of turns double. Then its voltage sensitivity will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Double"
+     },
+     {
+      "id": "B",
+      "text": "Half"
+     },
+     {
+      "id": "C",
+      "text": "1/4 times"
+     },
+     {
+      "id": "D",
+      "text": "Remain unchanged"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "Current through ABC and A'B'C' is I as shown in the given figure. If, PB = PB' = r and C'BPBC are collinear, the magnetic field at P is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2I/4πr"
+     },
+     {
+      "id": "B",
+      "text": "$ 2\\mu\\text{ol}/4\\pi r $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\mu $ol/4 $ \\pi $ $ \\tau $"
+     },
+     {
+      "id": "D",
+      "text": "Zero"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": [
+     {
+      "id": "q29-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q29-figure-1.jpg",
+      "page": 22,
+      "alt": "Figure for question 29"
+     }
+    ]
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": [
+     {
+      "id": "q30-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q30-table-1.jpg",
+      "page": 23,
+      "alt": "Table for question 30"
+     }
+    ]
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Two identical coaxial coils P and Q carrying equal current in the same direction are brought nearer. The current in:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "P increases while in Q decreases"
+     },
+     {
+      "id": "B",
+      "text": "Q increases while in P decreases"
+     },
+     {
+      "id": "C",
+      "text": "Both P and Q increases"
+     },
+     {
+      "id": "D",
+      "text": "Both P and Q decreases"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "A capacitor and a coil having a resistance R are in series and are connected to a 6 Volt AC source. By varying the frequency of the source, the maximum current of 600 mA is observed. If the same coil is now connected to a cell of emf 6 volt and internal resistance 0.5 A of 2 ohm, the current through it will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.5 A"
+     },
+     {
+      "id": "B",
+      "text": "0.6A"
+     },
+     {
+      "id": "C",
+      "text": "1.0A"
+     },
+     {
+      "id": "D",
+      "text": "2.0A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     25
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "In an LCR series circuit, source of emf is:\n\nE = 30 sin (100t) and R = 120 Ω, L = 100 mH, C = 100 μF\n\n(A) The numerical value of impedance\n\n(B) The numerical value of Resistance R\n\n(C) The numerical value of capacitive reactance\n\n(D) The numerical value of inductive reactance\n\nArrange the values of quantities mentioned in (A, B, C, D) in increasing order.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B), (C), (D)"
+     },
+     {
+      "id": "B",
+      "text": "(A), (C), (B), (D)"
+     },
+     {
+      "id": "C",
+      "text": "(D), (C), (B), (A)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (A), (D), (C)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     25
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "For a series LCR circuit, at the condition of resonance, the value of the power factor will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Zero"
+     },
+     {
+      "id": "B",
+      "text": "1.0"
+     },
+     {
+      "id": "C",
+      "text": "0.2"
+     },
+     {
+      "id": "D",
+      "text": "0.5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "The electric field of an EM wave in free space is given by $ E = 10 \\cos (10^7 t + k x) $ V/m where t and x are in sec and meter respectively. It can be inferred that:\n\n(A) The wavelength $ \\lambda $ is 188.4 m\n\n(B) The wave number k is 0.33 rad/m\n\n(C) The wave amplitude is 10 V/m\n\n(D) The wave is propagating along the +x direction\n\nWhich of the following pairs of statements are correct?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(C) and (D)"
+     },
+     {
+      "id": "B",
+      "text": "(A) and (B)"
+     },
+     {
+      "id": "C",
+      "text": "(B) and (C)"
+     },
+     {
+      "id": "D",
+      "text": "(A) and (C)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "Arrange the following in increasing order of focal length of convex lens.\n\n(A) $ F_{v} $ focal length of violet\n\n(B) $ F_{r} $ focal length of red\n\n(C) Fb focal length of blue\n\n(D) $ F_{y} $ focal length of yellow",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B), (C), (D)"
+     },
+     {
+      "id": "B",
+      "text": "(A), (C), (D), (B)"
+     },
+     {
+      "id": "C",
+      "text": "(B), (A), (D), (C)"
+     },
+     {
+      "id": "D",
+      "text": "(C), (B), (D), (A)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Light from a point source in air falls on a spherical glass surface (n=1.5 and radius of curvature = 10 cm). The distance of the light source from the glass surface is 50 cm. The position at which the image is formed is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "100 cm in the air"
+     },
+     {
+      "id": "B",
+      "text": "150 cm in the glass surface"
+     },
+     {
+      "id": "C",
+      "text": "200 cm in the air"
+     },
+     {
+      "id": "D",
+      "text": "50 cm in the glass surface"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "For a light pipe as shown in the figure:\n\n(A) Optical density of core should be greater than the optical density of cladding\n\n(B) r and $ \\theta $ will always be equal\n\n(C) Optical density of cladding is $ \\sin\\theta $. $ \\sin i / \\sin r $\n\n(D) Optical density of cladding is $ \\sin r $. $ \\sin i / \\sin \\theta $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (C) only"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": [
+     {
+      "id": "q39-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2024-07-19-shift-1/q39-figure-1.jpg",
+      "page": 30,
+      "alt": "Figure for question 39"
+     }
+    ]
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "If the energy of incident radiation is increased by 25%. The kinetic energy of the photoelectrons emitted from the metal surface increased from 0.6 eV to 0.9 eV. The work function of the metal is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1 eV"
+     },
+     {
+      "id": "B",
+      "text": "1.2 eV"
+     },
+     {
+      "id": "C",
+      "text": "1.5 eV"
+     },
+     {
+      "id": "D",
+      "text": "0.6 eV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "If the momentum of the electron is changed by P then the de Broglie wavelength associated with it changes by 1%. The initial momentum of the electron will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "200 P"
+     },
+     {
+      "id": "B",
+      "text": "100 P"
+     },
+     {
+      "id": "C",
+      "text": "300 P"
+     },
+     {
+      "id": "D",
+      "text": "150 P"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "Consider the following particles:\n\n(A) Proton\n\n(B) $ \\alpha $ particle\n\n(C) Electron\n\nFor charge to mass ratio of the above particles we can say:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(C) > (A) > (B)"
+     },
+     {
+      "id": "B",
+      "text": "(A) < (C) < (B)"
+     },
+     {
+      "id": "C",
+      "text": "(B) = (A) > (C)"
+     },
+     {
+      "id": "D",
+      "text": "(C) = (B) > (A)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "As per Nuclear Physics there is a close relationship between mass number and radius of the nucleus. If the mass number of A is 216 and the mass number of B is 27, then the ratio of the nuclear radii $ (r_{a}/r_{B}) $ of the two elements is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2:1"
+     },
+     {
+      "id": "B",
+      "text": "4:1"
+     },
+     {
+      "id": "C",
+      "text": "6:1"
+     },
+     {
+      "id": "D",
+      "text": "8:1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     34
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "An equilateral prism is made of a material of refractive index $ \\sqrt{3} $. The angle of minimum deviation through the prism is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ 60^{\\circ} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ 30^{\\circ} $$"
+     },
+     {
+      "id": "C",
+      "text": "$$ 45^{\\circ} $$"
+     },
+     {
+      "id": "D",
+      "text": "$$ 0^{\\circ} $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     34
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "When a photon of energy hv falls on a photosensitive metallic surface (work function hv₀), electrons are emitted from the metallic surface. It is possible to say that:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "All ejected electrons have the same KE equal to $ (hv - hv_{0}) $"
+     },
+     {
+      "id": "B",
+      "text": "The ejected electrons have a distribution of KE, the most energetic ones having KE equal to $ (hv - hv_{0}) $"
+     },
+     {
+      "id": "C",
+      "text": "The most energetic electrons have KE equal to $ hv $"
+     },
+     {
+      "id": "D",
+      "text": "The KE of ejected electrons is $ hv_{0} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     35
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Two parallel plate capacitors, each of capacitance 40 µF are connected in series. The space between the plates of one capacitor is filled with a material of dielectric constant K=4. The equivalent capacitance of the system would be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 30\\ \\mu\\mathrm{F} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 31\\ \\mu\\mathrm{F} $"
+     },
+     {
+      "id": "C",
+      "text": "$ 32\\ \\mu\\mathrm{F} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 33\\ \\mu\\mathrm{F} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     36
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "The Wheatstone bridge is an arrangement of four resistances, say $ R_1 $, $ R_2 $, $ R_3 $ and $ R_4 $. The null point condition is given by:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ R_{1}/R_{2}=R_{3}/R_{4} $"
+     },
+     {
+      "id": "B",
+      "text": "$ R_{1} + R_{2} = R_{3} + R_{4} $"
+     },
+     {
+      "id": "C",
+      "text": "$ R_1 - R_2 = R_3 - R_4 $"
+     },
+     {
+      "id": "D",
+      "text": "$ R_1 \\times R_2 = R_3 \\times R_4 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "Study of radioactive decay of unstable nuclei resulting in emission of a particle lead us to four different observations listed below:\n\n(A) no change in atomic number and mass number.\n\n(B) no change in mass number but the atomic number decreases by 1.\n\n(C) no change in mass number but the atomic number increases by 1.\n\n(D) atomic number decreases by 2 and the mass number decreases by 4.\n\nArrange the particles emitted in the above four cases in correct sequence.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "alpha particle, positron, electron, photon."
+     },
+     {
+      "id": "B",
+      "text": "alpha particle, electron, positron, photon."
+     },
+     {
+      "id": "C",
+      "text": "photon, positron, electron, alpha particle."
+     },
+     {
+      "id": "D",
+      "text": "alpha particle, positron, photon, electron."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     38
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "In a p type semiconductor the acceptor level is situated 50 meV above the valence band. The maximum wavelength of light required to produce a hole will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 24.8 \\times 10^{-5} $ m"
+     },
+     {
+      "id": "B",
+      "text": "$ 0.248 \\times 10^{-5} $ m"
+     },
+     {
+      "id": "C",
+      "text": "$ 2.48 \\times 10^{-5} $ m"
+     },
+     {
+      "id": "D",
+      "text": "$ 248 \\times 10^{-5} $ m"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     39
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

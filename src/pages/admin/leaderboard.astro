@@ -1,0 +1,212 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can } from "../../lib/auth/admin";
+import { formatDateTime, formatDuration } from "../../lib/content";
+import {
+  listLeaderboardMocks,
+  rankedAttempts,
+  recentAttempts,
+} from "../../lib/admin/leaderboard";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "leaderboards.write")) return Astro.redirect("/forbidden", 303);
+
+const mocks = await listLeaderboardMocks();
+const requested = Number(Astro.url.searchParams.get("mock") ?? "0");
+const selected =
+  mocks.find((mock) => mock.id === requested) ?? mocks[0] ?? null;
+
+const ranked = selected?.version_id ? await rankedAttempts(selected.id, selected.version_id) : [];
+const recent = selected ? await recentAttempts(selected.id) : [];
+const displayed = ranked.map((attempt, index) => ({ ...attempt, rank: index + 1 }));
+const label = (attempt: { guest_token: string | null; username: string | null; user_id: number | null }) =>
+  attempt.username ?? (attempt.guest_token ? `Guest ${attempt.guest_token.slice(0, 6)}` : `User #${attempt.user_id ?? "—"}`);
+---
+
+<AdminLayout title="Leaderboard control" active="leaderboard">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Leaderboard control</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Review ranked first attempts, disqualify suspicious scores, and reinstate an attempt when a review clears it. Only submitted first attempts are ranked; expired attempts and retakes never enter the public leaderboard.
+      </p>
+    </div>
+    {selected ? (
+      <div class="flex flex-wrap gap-2">
+        <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/leaderboard/${selected.slug}`} target="_blank" rel="noopener">View public board</a>
+        <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/mocks/${selected.id}`}>Open mock</a>
+      </div>
+    ) : null}
+  </div>
+
+  {mocks.length === 0 ? (
+    <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 p-10 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+      No mock tests exist yet. Build and publish a paper first, then return here.
+    </div>
+  ) : (
+    <>
+      <form class="mt-5 flex flex-wrap items-end gap-3 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900" action="/admin/leaderboard" method="get">
+        <label class="block w-full text-xs font-semibold text-neutral-500 dark:text-neutral-400 sm:w-auto">Paper
+          <select class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950 sm:w-auto sm:min-w-64" name="mock">
+            {mocks.map((mock) => (
+              <option value={mock.id} selected={selected?.id === mock.id}>
+                {mock.title} · {mock.status} · v{mock.version_no ?? "—"} · {mock.ranked_count} ranked
+              </option>
+            ))}
+          </select>
+        </label>
+        <button class="rounded-lg bg-neutral-900 px-3 py-2 text-sm font-bold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200" type="submit">Load paper</button>
+        {selected ? (
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">
+            Version {selected.version_no ?? "—"} · {selected.ranked_count} ranked first attempt{selected.ranked_count === 1 ? "" : "s"} · {selected.attempt_count} finished attempt{selected.attempt_count === 1 ? "" : "s"} in total.
+          </p>
+        ) : null}
+      </form>
+
+      {selected ? (
+        <>
+          <section class="mt-8">
+            <h2 class="text-lg font-bold">Current leaderboard</h2>
+            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+              Scored by the version pinned to each attempt. The public page shows the same ordering: score, then time taken, then accuracy.
+            </p>
+            <div class="mt-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+              <div class="overflow-x-auto" role="region" aria-label="Current ranked attempts" tabindex="0">
+                <table class="w-full min-w-[900px] text-left text-sm">
+                  <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+                    <tr>
+                      <th class="px-4 py-3">Rank</th>
+                      <th class="px-4 py-3">Student</th>
+                      <th class="px-4 py-3 text-right">Score</th>
+                      <th class="px-4 py-3 text-right">Correct</th>
+                      <th class="px-4 py-3 text-right">Time</th>
+                      <th class="px-4 py-3">Submitted</th>
+                      <th class="px-4 py-3 text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+                    {displayed.map((attempt) => (
+                      <tr>
+                        <td class="px-4 py-3 font-black">#{attempt.rank}</td>
+                        <td class="px-4 py-3">
+                          <span class="block font-semibold">{label(attempt)}</span>
+                          <span class="block text-[11px] text-neutral-500 dark:text-neutral-400">attempt #{attempt.id}{attempt.email ? ` · ${attempt.email}` : ""}</span>
+                        </td>
+                        <td class="px-4 py-3 text-right font-bold">{attempt.score ?? 0}</td>
+                        <td class="px-4 py-3 text-right">{attempt.correct ?? 0}</td>
+                        <td class="px-4 py-3 text-right text-xs text-neutral-500 dark:text-neutral-400">{formatDuration(attempt.time_taken_sec)}</td>
+                        <td class="whitespace-nowrap px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(attempt.submitted_at)}</td>
+                        <td class="px-4 py-3 text-right">
+                          <button class="rounded-lg border border-red-300 px-2.5 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-800 dark:text-red-300 dark:hover:bg-red-950/30" type="button" data-attempt-action="disqualify" data-attempt-id={attempt.id} data-attempt-name={label(attempt)}>Disqualify</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {displayed.length === 0 ? <p class="px-4 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">No ranked attempts on the current version yet. A paper appears on the public leaderboard after the first eligible submission.</p> : null}
+            </div>
+          </section>
+
+          <section class="mt-8">
+            <h2 class="text-lg font-bold">Recent submissions</h2>
+            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+              Every attempt on this paper, including retakes and expired sessions. Disqualifying a ranked attempt promotes that student's earliest remaining submitted attempt when one exists.
+            </p>
+            <div class="mt-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+              <div class="overflow-x-auto" role="region" aria-label="Recent attempts" tabindex="0">
+                <table class="w-full min-w-[980px] text-left text-sm">
+                  <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+                    <tr>
+                      <th class="px-4 py-3">Attempt</th>
+                      <th class="px-4 py-3">Student</th>
+                      <th class="px-4 py-3">Version</th>
+                      <th class="px-4 py-3">Status</th>
+                      <th class="px-4 py-3 text-right">Score</th>
+                      <th class="px-4 py-3">Started</th>
+                      <th class="px-4 py-3 text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+                    {recent.map((attempt) => {
+                      const statusLabel = attempt.disqualified_at
+                        ? "Disqualified"
+                        : attempt.status === "expired"
+                          ? "Expired — unranked"
+                          : attempt.status === "in_progress"
+                            ? "In progress"
+                            : attempt.is_first_attempt
+                              ? "Ranked first attempt"
+                              : "Retake — unranked";
+                      const tone = attempt.disqualified_at
+                        ? "bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200"
+                        : attempt.status === "submitted" && attempt.is_first_attempt
+                          ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200"
+                          : "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300";
+                      return (
+                        <tr>
+                          <td class="px-4 py-3 font-semibold">#{attempt.id}</td>
+                          <td class="px-4 py-3">
+                            <span class="block">{label(attempt)}</span>
+                            {attempt.email ? <span class="block text-[11px] text-neutral-500 dark:text-neutral-400">{attempt.email}</span> : null}
+                          </td>
+                          <td class="px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">v{attempt.version_no ?? "—"}</td>
+                          <td class="px-4 py-3">
+                            <span class:list={["rounded-full px-2 py-0.5 text-xs font-semibold", tone]}>{statusLabel}</span>
+                          </td>
+                          <td class="px-4 py-3 text-right font-semibold">{attempt.score ?? "—"}</td>
+                          <td class="whitespace-nowrap px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(attempt.started_at)}</td>
+                          <td class="px-4 py-3 text-right">
+                            {attempt.status === "submitted" && attempt.is_first_attempt ? (
+                              <button class="rounded-lg border border-red-300 px-2.5 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-800 dark:text-red-300 dark:hover:bg-red-950/30" type="button" data-attempt-action="disqualify" data-attempt-id={attempt.id} data-attempt-name={label(attempt)}>Disqualify</button>
+                            ) : attempt.status === "submitted" && attempt.disqualified_at ? (
+                              <button class="rounded-lg border border-neutral-300 px-2.5 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" type="button" data-attempt-action="reinstate" data-attempt-id={attempt.id} data-attempt-name={label(attempt)}>Reinstate</button>
+                            ) : (
+                              <span class="text-xs text-neutral-500 dark:text-neutral-400">—</span>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              {recent.length === 0 ? <p class="px-4 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">No attempts on this paper yet.</p> : null}
+            </div>
+          </section>
+        </>
+      ) : null}
+    </>
+  )}
+
+  <script is:inline>
+    document.querySelectorAll("[data-attempt-action]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const action = button.dataset.attemptAction;
+        const attemptId = button.dataset.attemptId;
+        const name = button.dataset.attemptName || "this attempt";
+        if (!action || !attemptId) return;
+
+        const prompt = action === "disqualify"
+          ? `Disqualify attempt #${attemptId} by ${name}? A replacement is promoted only if this attempt held the ranked slot.`
+          : `Reinstate attempt #${attemptId} by ${name}? It returns to the leaderboard only if the student has no other ranked attempt on this paper.`;
+        if (!confirm(prompt)) return;
+
+        button.disabled = true;
+        try {
+          const response = await fetch("/api/admin/leaderboard", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ attemptId: Number(attemptId), action }),
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.error || "Could not update the leaderboard.");
+          location.reload();
+        } catch (error) {
+          alert(error instanceof Error ? error.message : "Could not update the leaderboard.");
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</AdminLayout>

@@ -1,0 +1,136 @@
+---
+import { siteUrl } from "../../lib/site-url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLocalPaperSummary, localPaperPath } from "../../lib/local-papers";
+import { breadcrumbJsonLd } from "../../lib/seo";
+
+const slug = Astro.params.slug ?? "";
+const paper = getLocalPaperSummary(slug);
+if (!paper) return new Response("Practice paper not found", { status: 404 });
+
+const path = localPaperPath(paper.slug);
+const rankedPath = `/mock/${paper.slug}/instructions`;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Previous-year papers", path: "/cuet-ug-previous-year-papers" },
+    { name: `${paper.year} ${paper.subject.name}`, path: `/pyq/${paper.year}/${paper.subject.slug}` },
+    { name: paper.title, path },
+  ]),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const instructions = [
+  `The paper runs for ${paper.durationMinutes} minutes. The countdown starts when you begin and submits automatically at zero.`,
+  `A correct answer earns +${paper.markingScheme.correct} marks and a wrong answer is scored −${paper.markingScheme.wrong}. Unattempted questions score ${paper.markingScheme.skipped}.`,
+  "Reading passages and printed figures appear above the questions that depend on them.",
+  "Correct options and explanations appear only after you submit, on the same screen.",
+];
+
+const metaDescription =
+  paper.metaDescription ||
+  `Take the ${paper.dateLabel} CUET ${paper.subject.name} paper: ${paper.scorableQuestionCount} ranked questions, ${paper.durationMinutes} minutes, +5/−1 marking, saved result, leaderboard rank and a post-submit review.`;
+---
+
+<BaseLayout
+  title={`${paper.title} — CUET Previous-Year Practice`}
+  description={metaDescription}
+  structuredData={structuredData}
+>
+  <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
+      <div>
+        <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+          <a class="hover:underline" href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <a class="hover:underline" href="/cuet-ug-previous-year-papers">Previous-year papers</a>
+          <span aria-hidden="true">/</span>
+          <a class="hover:underline" href={`/pyq/${paper.year}/${paper.subject.slug}`}>{paper.year} {paper.subject.name}</a>
+          <span aria-hidden="true">/</span>
+          <span>{paper.dateLabel}</span>
+        </nav>
+
+        <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
+          <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">PYQ · {paper.year}</span>
+          <span class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{paper.subject.name}</span>
+          {paper.shift ? <span class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{paper.shift}</span> : null}
+        </div>
+
+        <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">{paper.title}</h1>
+        <p class="mt-4 max-w-2xl leading-7 text-neutral-600 dark:text-neutral-300">
+          A CUET {paper.subject.name} paper from {paper.year}, attempted under a server deadline and ranked like every D1 mock. Your score, rank and percentile are saved to your dashboard, and the first submitted attempt appears on the leaderboard.
+        </p>
+        {paper.pendingReviewCount > 0 ? (
+          <p class="mt-3 max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+            {paper.pendingReviewCount} question{paper.pendingReviewCount === 1 ? " is" : "s are"} not included in the ranked paper because the printed answer key could not be verified. The ranked attempt contains {paper.scorableQuestionCount} scored questions.
+          </p>
+        ) : null}
+
+        <div class="mt-6 grid max-w-2xl grid-cols-2 gap-3 text-sm sm:grid-cols-4">
+          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</p>
+            <p class="mt-1 text-xl font-black">{paper.recoveredQuestionCount}</p>
+            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">in the original paper</p>
+          </div>
+          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p>
+            <p class="mt-1 text-xl font-black">{paper.durationMinutes} min</p>
+            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">Auto-submits at zero</p>
+          </div>
+          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Scored</p>
+            <p class="mt-1 text-xl font-black">{paper.scorableQuestionCount}</p>
+            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">in the ranked paper</p>
+          </div>
+          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempts</p>
+            <p class="mt-1 text-xl font-black">{paper.attemptCount.toLocaleString("en-IN")}</p>
+            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">submitted so far</p>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-xl border border-neutral-200 bg-white p-4 text-sm dark:border-neutral-800 dark:bg-neutral-950">
+          <p class="font-semibold">Marking scheme</p>
+          <p class="mt-1 text-neutral-600 dark:text-neutral-400">+{paper.markingScheme.correct} for a correct answer · −{paper.markingScheme.wrong} for a wrong answer · {paper.markingScheme.skipped} for unattempted questions.</p>
+        </div>
+      </div>
+
+      <aside class="h-fit rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 class="font-bold">Ready to begin?</h2>
+        <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+          Answers are hidden until you submit. The ranked result includes the score, rank, percentile, a per-question review and explanations.
+        </p>
+        <a class="mt-5 block rounded-lg bg-brand-600 px-4 py-3 text-center text-sm font-bold text-white hover:bg-brand-700" href={rankedPath}>
+          Start ranked paper →
+        </a>
+        <a class="mt-2 block rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/leaderboard/${paper.slug}`}>
+          View leaderboard
+        </a>
+        <a class="mt-2 block rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/cuet-ug-previous-year-papers">All previous-year papers</a>
+        <ul class="mt-5 space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+          <li>• Ranked: first submitted attempt counts on the leaderboard.</li>
+          <li>• Saved to your dashboard and history.</li>
+          <li>• Server deadline; answers stay hidden until submit.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div class="grid gap-8 lg:grid-cols-[1fr_340px]">
+      <div>
+        <h2 class="text-xl font-bold">Instructions</h2>
+        <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+          {instructions.map((line) => <li>{line}</li>)}
+        </ol>
+      </div>
+
+      <aside class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 text-sm dark:border-neutral-800 dark:bg-neutral-900/60">
+        <h2 class="font-bold">Independent practice</h2>
+        <p class="mt-2 text-neutral-600 dark:text-neutral-400">CUET Free Mock Test is not affiliated with NTA. Verify official dates, patterns and marking rules against the current NTA bulletin.</p>
+        <a class="mt-3 inline-block font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/disclaimer">Read the disclaimer</a>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,1713 @@
+{
+ "exam": {
+  "id": "local-mathematics-2024-07-19-shift-1",
+  "slug": "mathematics-2024-07-19-shift-1",
+  "title": "CUET UG Mathematics 19 July 2024 Shift 1 Previous Year Paper",
+  "subject": "Mathematics",
+  "subjectId": "local-mathematics",
+  "subjectCode": "MAT",
+  "year": 2024,
+  "examDate": "2024-07-19",
+  "shift": "Shift 1",
+  "sourceFile": "Mathematics_2024-07-19_Shift_1.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 50,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "For $ I = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} $, if $ A = \\begin{bmatrix} a & b \\\\ c & -a \\end{bmatrix} $ be such that $ A^2 = I $, then:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 1 + a^{2} + bc = 0 $"
+     },
+     {
+      "id": "B",
+      "text": "$ 1 - a^{2} - bc = 0 $"
+     },
+     {
+      "id": "C",
+      "text": "$ 1 - a^{2} + bc = 0 $"
+     },
+     {
+      "id": "D",
+      "text": "$ 1 + a^{2} - bc = 0 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "If $ x = at^4 $ and $ y = 2at^2 $, then $ \\frac{d^2y}{dx^2} $ is equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$-\\frac{1}{4at^{4}}$"
+     },
+     {
+      "id": "B",
+      "text": "$-\\frac{2}{t^{3}}$"
+     },
+     {
+      "id": "C",
+      "text": "$-\\frac{1}{t}$"
+     },
+     {
+      "id": "D",
+      "text": "$-\\frac{1}{2at^{6}}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "A random variable X has the following probability distribution:\n\nThen:\n\n(A) $ k = \\frac{1}{6} $\n\n(B) $ P(X < 2) = \\frac{1}{2} $\n\n(C) $ \\mathrm{E}(\\mathrm{X}) = \\frac{3}{4} $\n\n(D) $ P(1 < X < 2) = \\frac{5}{6} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (B) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (B), (C) and (D)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q03-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2024-07-19-shift-1/q03-table-1.jpg",
+      "page": 3,
+      "alt": "Table for question 3"
+     }
+    ]
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "If $ \\begin{bmatrix}1 & 3 \\\\ 4 & 5\\end{bmatrix}\\begin{bmatrix}x \\\\ 2\\end{bmatrix}=\\begin{bmatrix}5 \\\\ 6\\end{bmatrix} $, then value of x is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "0"
+     },
+     {
+      "id": "C",
+      "text": "1"
+     },
+     {
+      "id": "D",
+      "text": "3"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "Let $ f(x) = x^3 - 6x^2 + 12x - 3 $, then at $ x = 2 $, $ f(x) $ has:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "a maximum"
+     },
+     {
+      "id": "B",
+      "text": "a minimum"
+     },
+     {
+      "id": "C",
+      "text": "both a maximum and a minimum"
+     },
+     {
+      "id": "D",
+      "text": "neither a maximum nor a minimum"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "The integral of the function $ \\frac{1}{9-4x^2} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{22}\\log_{e}\\left|\\frac{3+x}{3-x}\\right| + \\mathrm{C} $, where C is an arbitrary constant"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{12}\\log_{e}\\left|\\frac{3+2x}{3-2x}\\right| + \\mathrm{C} $, where C is an arbitrary constant"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{2}\\log_{e}\\left|\\frac{7+x}{7-x}\\right| + \\mathrm{C} $, where C is an arbitrary constant"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{12}\\log_{e}\\left|\\frac{3-2x}{3+2x}\\right| + \\mathrm{C} $, where C is an arbitrary constant"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "The interval, in which the function $ f(x) = \\frac{3}{x} + \\frac{x}{3} $ is strictly decreasing, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ (-\\infty, -3) \\cup (3, \\infty) $"
+     },
+     {
+      "id": "B",
+      "text": "$ (-3, 3) $"
+     },
+     {
+      "id": "C",
+      "text": "$ (-3, 0) \\cup (0, 3) $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\mathbb{R} - \\{0\\} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "A pair of dice is rolled. If the two numbers appearing on them are different, the probability that Match List-I with List-II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)- (I), (B)- (II), (C)- (III), (D)- (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": [
+     {
+      "id": "q08-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2024-07-19-shift-1/q08-table-1.jpg",
+      "page": 10,
+      "alt": "Table for question 8"
+     }
+    ]
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "The value of $ I = \\int_{0}^{1.5} \\left[ x^{2} \\right] \\, dx $, where [ ] denotes the greatest integer function, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2 - \\sqrt{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\sqrt{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ 5\\sqrt{2} $"
+     },
+     {
+      "id": "D",
+      "text": "3 - $ 2\\sqrt{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Maximise $ Z = 9x + 3y $\n\nSubject to the constraints: $ x + 3y \\leq 60 $, $ x - y \\leq 0 $, $ x \\geq 0 $, $ y \\geq 0 $\n\nIf x = A, y = B is the optimum solution of the given LPP, then the value of A + B is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "15"
+     },
+     {
+      "id": "B",
+      "text": "30"
+     },
+     {
+      "id": "C",
+      "text": "48"
+     },
+     {
+      "id": "D",
+      "text": "61"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "The area (in square units) of the region bounded by curves y = x and y = x^{3} is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "1/2"
+     },
+     {
+      "id": "C",
+      "text": "1/4"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "The solution region of the inequality $2x + 4y \\leq 9$ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "open half plane containing origin"
+     },
+     {
+      "id": "B",
+      "text": "closed half plane containing origin"
+     },
+     {
+      "id": "C",
+      "text": "open half plane not containing origin"
+     },
+     {
+      "id": "D",
+      "text": "closed half plane not containing origin"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "If p, q, r are distinct, then value of $ \\begin{vmatrix} p & p^2 & 1 + p^3 \\\\ q & q^2 & 1 + q^3 \\\\ r & r^2 & 1 + r^3 \\end{vmatrix} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ (1 + \\mathrm{pqr})(\\mathrm{q} - \\mathrm{p})(\\mathrm{r} - \\mathrm{p})(\\mathrm{r} - \\mathrm{q}) $"
+     },
+     {
+      "id": "B",
+      "text": "$ (1 - \\mathrm{pqr})(\\mathrm{q} + \\mathrm{p})(\\mathrm{r} + \\mathrm{p})(\\mathrm{r} - \\mathrm{q}) $"
+     },
+     {
+      "id": "C",
+      "text": "$ (1 + \\mathrm{pqr})(\\mathrm{q} - \\mathrm{p})(\\mathrm{r} + \\mathrm{p})(\\mathrm{r} - \\mathrm{q}) $"
+     },
+     {
+      "id": "D",
+      "text": "$ (1 - \\mathrm{pqr})(\\mathrm{q} + \\mathrm{p})(\\mathrm{r} - \\mathrm{p})(\\mathrm{r} + \\mathrm{q}) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "The degree and order of the differential equation $ \\left(\\frac{d^2y}{dx^2}\\right)^{4/5} = 10\\frac{dy}{dx} + 2 $ are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Degree 2, Order 5"
+     },
+     {
+      "id": "B",
+      "text": "Degree 5, Order 1"
+     },
+     {
+      "id": "C",
+      "text": "Degree 20, Order 2"
+     },
+     {
+      "id": "D",
+      "text": "Degree 4, Order 2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "The particular solution of the differential equation (y - x²y)dy = (1 - x³)dx with y(0) = 1, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ y^{2}=x^{2}+2\\log_{e}|1+x|+1 $"
+     },
+     {
+      "id": "B",
+      "text": "$ y^{2}=1+x^{2}+2\\log_{e}\\left|\\frac{1+x}{2}\\right| $"
+     },
+     {
+      "id": "C",
+      "text": "$ y^{2}=x^{2}+2x-3 $"
+     },
+     {
+      "id": "D",
+      "text": "y^{2}=x^{2}+2x+1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Relation R on the set A = {1, 2, 3, ....., 13, 14} defined as $ R = \\{(x, y) : 3x - y = 0\\} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Reflexive, symmetric and transitive"
+     },
+     {
+      "id": "B",
+      "text": "Reflexive and transitive but not symmetric"
+     },
+     {
+      "id": "C",
+      "text": "Neither reflexive nor symmetric but transitive"
+     },
+     {
+      "id": "D",
+      "text": "Neither reflexive nor symmetric nor transitive"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "If $A = \\begin{bmatrix} 2 & 3 \\\\ 1 & -4 \\end{bmatrix}$ and $B = \\begin{bmatrix} 1 & -2 \\\\ -1 & 3 \\end{bmatrix}$, then $B^{-1} A^{-1}$ is equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ -\\frac{1}{11}\\begin{bmatrix}14&5\\\\ 5&1\\end{bmatrix} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{11}\\begin{bmatrix}15&11\\\\ 1&0\\end{bmatrix} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{11}\\begin{bmatrix}14&5\\\\ 5&1\\end{bmatrix} $"
+     },
+     {
+      "id": "D",
+      "text": "$ -\\frac{1}{11}\\begin{bmatrix}15&11\\\\ 1&0\\end{bmatrix} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "If $ (\\cos x)^{\\mathrm{y}} = (\\sin y)^{\\mathrm{x}} $ then $ \\frac{\\mathrm{dy}}{\\mathrm{dx}} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\log_{e}\\sin y-y\\tan x}{\\log_{e}\\cos x+x\\cot y} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\log_{e}\\sin y+y\\tan x}{\\log_{e}\\cos x+x\\cos y} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\log_{e}\\sin y+y\\tan x}{\\log_{e}\\cos x-x\\cot y} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\log_{e}\\cos x-x\\cos y}{\\log_{e}\\sin y+y\\tan x} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "A particle moves along the curve $ 6x = y^3 + 2 $. The points on the curve at which the x coordinate is changing 8 times as fast as y coordinate are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ (11,4),\\left(-\\frac{31}{3},4\\right) $"
+     },
+     {
+      "id": "B",
+      "text": "$ (-11,4),\\left(\\frac{31}{3},-4\\right) $"
+     },
+     {
+      "id": "C",
+      "text": "$ (11,-4),\\left(-\\frac{31}{3},-4\\right) $"
+     },
+     {
+      "id": "D",
+      "text": "$ (11,4),\\left(-\\frac{31}{3},-4\\right) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "Area of the parallelogram, whose adjacent sides are given by the vectors $ \\overrightarrow{a} = 2\\overrightarrow{i} - \\overrightarrow{j} + 5\\overrightarrow{k} $ and $ \\overrightarrow{b} = 2\\overrightarrow{i} + \\overrightarrow{j} + 2\\overrightarrow{k} $, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\sqrt{105} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\sqrt{101} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\sqrt{103} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\sqrt{102} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "The angle between the lines $ \\overrightarrow{r} = 3\\overrightarrow{i} - 2\\overrightarrow{j} + 1\\overrightarrow{k} + \\mu(4\\overrightarrow{i} + 6\\overrightarrow{j} + 12\\overrightarrow{k}) $ and $ \\overrightarrow{r} = 7\\overrightarrow{i} - 3\\overrightarrow{j} + 9\\overrightarrow{k} + \\lambda(5\\overrightarrow{i} + 8\\overrightarrow{j} - 4\\overrightarrow{k}) $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\cos^{-1}\\frac{10}{7\\sqrt{105}} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\cos^{-1}\\frac{5}{72} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\cos^{-1}\\frac{2}{35} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\cos^{-1}\\frac{7}{98} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "If $ P(A) = 0.4 $, $ P(B) = 0.8 $ and $ P(A|B) = 0.6 $, then $ P(A \\cup B) $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.96"
+     },
+     {
+      "id": "B",
+      "text": "0.72"
+     },
+     {
+      "id": "C",
+      "text": "0.36"
+     },
+     {
+      "id": "D",
+      "text": "0.42"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "Let $ f: \\mathbb{R} \\to \\mathbb{R} $ be defined as $ f(x) = 10 - x^2 $, then:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "f is one-one and onto."
+     },
+     {
+      "id": "B",
+      "text": "f is one-one but not onto."
+     },
+     {
+      "id": "C",
+      "text": "f is neither one-one nor onto."
+     },
+     {
+      "id": "D",
+      "text": "f is onto but not one-one."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "The domain of f(x) = cos⁻¹7x is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ [-\\frac{1}{7}, \\frac{1}{7}] $"
+     },
+     {
+      "id": "B",
+      "text": "$ [-7, 7] $"
+     },
+     {
+      "id": "C",
+      "text": "[0, 7]"
+     },
+     {
+      "id": "D",
+      "text": "$ [-1, 1] $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "For a, b > 0, if P = $ \\begin{bmatrix} 0 & -a \\\\ 2a & b \\end{bmatrix} $ and Q = $ \\begin{bmatrix} b & a \\\\ -b & 0 \\end{bmatrix} $ are two matrices such that PQ = $ \\begin{bmatrix} 2 & 0 \\\\ 3 & 8 \\end{bmatrix} $, then the value of $ (a + b)^{ab} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "8"
+     },
+     {
+      "id": "B",
+      "text": "9"
+     },
+     {
+      "id": "C",
+      "text": "1/9"
+     },
+     {
+      "id": "D",
+      "text": "1/27"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     34
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "If $ A = \\begin{bmatrix} 2 & 4 \\\\ x & \\frac{-1}{2} \\end{bmatrix} $ and A is singular, then x is equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{4} $"
+     },
+     {
+      "id": "B",
+      "text": "$ -\\frac{1}{4} $"
+     },
+     {
+      "id": "C",
+      "text": "7"
+     },
+     {
+      "id": "D",
+      "text": "32"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     35
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "If $y = \\frac{1}{\\sqrt{1-4\\sin^{2}x\\cos^{2}x}}$, then $\\frac{\\mathrm{d}y}{\\mathrm{d}x} =$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2sec x tan x"
+     },
+     {
+      "id": "B",
+      "text": "sin 2x"
+     },
+     {
+      "id": "C",
+      "text": "2sec 2x tan 2x"
+     },
+     {
+      "id": "D",
+      "text": "cos 2x"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     36
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "The value of $ \\int_{-1}^{1} |\\tan^{-1} x| dx $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{\\pi}{2}-\\log_{e}2$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{\\pi}{2}+\\log_{e}2$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{\\pi-1-\\log_{e}2}{2}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{\\pi-1+\\log_{e}2}{2}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "The area (in square units) bounded by the curve $ y = |x - 2| $ between x = 0, y = 0 and x = 5 is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "8"
+     },
+     {
+      "id": "B",
+      "text": "13"
+     },
+     {
+      "id": "C",
+      "text": "6.5"
+     },
+     {
+      "id": "D",
+      "text": "3.5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     39
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "The area (in square units) enclosed between the curve $ x^2 = 4y $ and the line $ x = y $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "8"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{16}{3} $"
+     },
+     {
+      "id": "C",
+      "text": "16"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{8}{3} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     40
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "If the solution of differential equation $ \\frac{dy}{dx} = \\frac{ax+3}{2y+5} $ represents a circle, then a is equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     42
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (I), (B) - (IV), (C) - (II), (D) - (III)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (II), (B) - (IV), (C) - (III), (D) - (I)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (II), (B) - (III), (C) - (IV), (D) - (I)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     43
+    ],
+    "assets": [
+     {
+      "id": "q32-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2024-07-19-shift-1/q32-table-1.jpg",
+      "page": 43,
+      "alt": "Table for question 32"
+     }
+    ]
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "A die is thrown three times. Events A and B are defined as below\n\nA: 6 on the third throw\n\nB: 4 on the first and 5 on the second throw\n\nThe probability of Agiven that Bhas already occurred, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1/6"
+     },
+     {
+      "id": "B",
+      "text": "2/3"
+     },
+     {
+      "id": "C",
+      "text": "3/4"
+     },
+     {
+      "id": "D",
+      "text": "1/2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     44
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Let A be a matrix such that $ A^2 = I $, where I is an identity matrix, then $ (I + A)^4 - 8A $ is equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5I"
+     },
+     {
+      "id": "B",
+      "text": "8I"
+     },
+     {
+      "id": "C",
+      "text": "$ 8(1+A) $"
+     },
+     {
+      "id": "D",
+      "text": "$ 5(1+A) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     46
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "For $f(x) = \\int \\frac{\\mathrm{e}^{x}}{\\sqrt{4 - \\mathrm{e}^{2x}}} \\, \\mathrm{d}x$, if the point $(0, \\frac{\\pi}{2})$ satisfies $y = f(x)$, then the constant of integration of the given integral is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\pi}{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\pi}{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\pi}{6} $"
+     },
+     {
+      "id": "D",
+      "text": "0"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     48
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "The equation of line passing through origin and parallel to the line $ \\overrightarrow{r}=3\\overrightarrow{i}+4\\overrightarrow{j}-5\\overrightarrow{k}+\\mathrm{t}(2\\overrightarrow{i}-\\overrightarrow{j}+7\\overrightarrow{k}) $, where t is a parameter, is:\n\n(A) $ \\frac{x}{2} = \\frac{y}{-1} = \\frac{z}{7} $\n\n(B) $ \\overrightarrow{r} = m(12\\overrightarrow{i} - 6\\overrightarrow{j} + 42\\overrightarrow{k}) $; where m is the parameter\n\n(C) $ \\overrightarrow{r} = (12\\overrightarrow{i} - 6\\overrightarrow{j} + 42\\overrightarrow{k}) + \\mathrm{s}(0\\overrightarrow{i} - 0\\overrightarrow{j} + 0\\overrightarrow{k}) $; where s is the parameter\n\n(D) $ \\frac{x-3}{0}=\\frac{y-4}{0}=\\frac{z+5}{0} $\n\n(E) $ \\frac{x}{3}=\\frac{y}{4}=\\frac{z}{5} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (B) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(C), (D) and (E) only"
+     },
+     {
+      "id": "D",
+      "text": "(A) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     49
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "$ A = \\begin{bmatrix} 0 & \\alpha & \\beta \\\\ -\\alpha & 0 & \\gamma \\\\ -\\beta & -\\gamma & 0 \\end{bmatrix} \\mathbf{is} \\mathbf{a} $\n\n(A) square matrix\n\n(B) diagonal matrix\n\n(C) symmetric matrix\n\n(D) skew-symmetric matrix",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (B) and (C) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     50
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "The integrating factor of the differential equation $ (y \\log_{e} y)\\frac{dx}{dy} + x = 2 \\log_{e} y $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "y"
+     },
+     {
+      "id": "B",
+      "text": "\\frac{1}{y}"
+     },
+     {
+      "id": "C",
+      "text": "$ \\log e y $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\log e (\\log e y) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     52
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "Optimise $Z = 3x + 9y$ subject to the constraints:\n\n$$ \\mathbf{x}+3\\mathbf{y}\\leq60,\\mathbf{x}+\\mathbf{y}\\geq10,\\mathbf{x}\\leq\\mathbf{y},\\mathbf{x}\\geq\\mathbf{0},\\mathbf{y}\\geq\\mathbf{0},then $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Maximum value of Zoccurs at the point(15, 15)only."
+     },
+     {
+      "id": "B",
+      "text": "Maximum value of Zoccurs at the point(0, 20)only."
+     },
+     {
+      "id": "C",
+      "text": "Maximum value of Zoccurs exactly at two points(15, 15)and(0, 20)."
+     },
+     {
+      "id": "D",
+      "text": "Maximum value of Zoccurs at all the points on the line segment joining(15, 15)and(0, 20)."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     53
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Minimise $ Z = -50x + 20y $\n\nsubject to the constraints: $2x - y \\geq -5$, $3x + y \\geq 3$, $2x - 3y \\leq 12$, $x \\geq 0$, $y \\geq 0$.\n\nThen which of the following is/are true:\n\n(A) Feasible region is unbounded.\n\n(B) Z has no minimum value.\n\n(C) The minimum value of Z is 100.\n\n(D) The minimum value of Z is -300.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(C) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     54
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "If the system of linear equations $ x + y + z = 2 $, $ 2x + y - z = 3 $ and $ 3x + 2y + kz = 4 $ has a unique solution, then:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "k = 0"
+     },
+     {
+      "id": "B",
+      "text": "1 < k < 1"
+     },
+     {
+      "id": "C",
+      "text": "$ k \\neq 0 $"
+     },
+     {
+      "id": "D",
+      "text": "3 < k < 3"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     55
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "The function $ f(x) = ||x| + 1 - x| $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "continuous and differentiable at x = 0 only"
+     },
+     {
+      "id": "B",
+      "text": "continuous at x = 0 but nowhere differentiable"
+     },
+     {
+      "id": "C",
+      "text": "continuous everywhere and differentiable at all points except at x = 0"
+     },
+     {
+      "id": "D",
+      "text": "continuous but not differentiable at x = 1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     57
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "Match List-I with List-II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (IV), (B) - (I), (C) - (III), (D) - (II)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     58
+    ],
+    "assets": [
+     {
+      "id": "q43-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2024-07-19-shift-1/q43-table-1.jpg",
+      "page": 58,
+      "alt": "Table for question 43"
+     }
+    ]
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "The value of $ \\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}} \\frac{\\mathrm{d}x}{1 + \\tan^{18}x} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\pi}{4} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\pi}{6} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\pi}{9} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\pi}{12} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     60
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "If the angle between $ \\overrightarrow{a} = 2y^2\\hat{i} + 4y\\hat{j} + \\hat{k} $ and $ \\overrightarrow{db} = 7\\hat{i} - 2\\hat{j} + y\\hat{k} $ is obtuse, then:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1/2 < y < 0"
+     },
+     {
+      "id": "B",
+      "text": "1 < y < -1/2"
+     },
+     {
+      "id": "C",
+      "text": "1/2 < y < 1"
+     },
+     {
+      "id": "D",
+      "text": "0 < y < 1/2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     61
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Two events X and Y are such that $ P(X) = \\frac{1}{3} $, $ P(Y) = n $ and the probability of occurrence of at least one event is 0.8. If the events are independent, then the value of n is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{3}{10} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{15} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{7}{10} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{11}{15} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     62
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "The shortest distance (in units) between the lines $ \\frac{1-x}{1} = \\frac{2y-10}{2} = \\frac{z+1}{1} $ and $ \\frac{x-3}{-1} = \\frac{y-5}{1} = \\frac{z-0}{1} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\sqrt{11}}{\\sqrt{3}} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{11}{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{14}{3} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\sqrt{\\frac{14}{3}} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     64
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "The value of $\\lambda$ for which the lines $\\frac{2-x}{3} = \\frac{3-4y}{5} = \\frac{z-2}{3}$ and $\\frac{x-2}{-3} = \\frac{2y-4}{3} = \\frac{2-z}{\\lambda}$ are perpendicular is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{8}{19} $"
+     },
+     {
+      "id": "D",
+      "text": "$$ \\frac{19}{8} $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     65
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "Let A and Bare two independent events such that $ P(A) = \\frac{3}{5} $ and $ P(B) = \\frac{4}{9} $.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     66,
+     67
+    ],
+    "assets": [
+     {
+      "id": "q49-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2024-07-19-shift-1/q49-table-1.jpg",
+      "page": 67,
+      "alt": "Table for question 49"
+     }
+    ]
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "If P = $ \\begin{bmatrix} 5 & 3 \\\\ -1 & -2 \\end{bmatrix} $ satisfies the equation $ P^{2} - 3P - 7l = 0 $, where I is an identity matrix of order 2, then $ P^{-1} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{7}\\begin{bmatrix}2&3\\\\ -1&-5\\end{bmatrix} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\begin{bmatrix}2&3\\\\ -1&-5\\end{bmatrix} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{7}\\begin{bmatrix}2&3\\\\ -1&-1\\end{bmatrix} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{7}\\begin{bmatrix}2&5\\\\ -1&-1\\end{bmatrix} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     68
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

@@ -1,0 +1,142 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import SeoIntro from "../components/SeoIntro.astro";
+import { breadcrumbJsonLd, getPageSeo } from "../lib/seo";
+
+const PATH = "/terms";
+const DEFAULT_TITLE = "Terms of Use — CUET Free Mock Test";
+const DEFAULT_DESCRIPTION =
+  "The rules for using this free CUET mock test site: accounts, acceptable use, practice scores, discussions, content ownership and liability.";
+
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Terms of use", path: PATH },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: new URL(PATH, site).toString(),
+    dateModified: "2026-10-31",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} noindex={(seo?.noindex ?? 0) === 1} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Terms"
+    title="Terms of use"
+    intro="These terms are deliberately short and specific. Use the site for genuine practice, do not attack it or scrape it, and treat practice scores as practice. By using the site, you agree to the rules below."
+    updated="31 October 2026"
+  />
+
+  <SeoIntro html={seo?.intro_html} />
+
+  <article class="mx-auto max-w-3xl space-y-8 px-4 py-10 text-sm leading-7 text-neutral-600 sm:px-6 lg:py-14 dark:text-neutral-300">
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">1. Agreement</h2>
+      <p class="mt-2">
+        By visiting or using CUET Free Mock Test, you accept these terms. If you do not agree, do not use the site. If you use the site on behalf of an organisation, you confirm that you may accept these terms for it.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">2. The service</h2>
+      <p class="mt-2">
+        The site provides free practice papers, timed attempts, server-scored results, solutions, leaderboards and discussions. It is an independent educational project and is not affiliated with NTA or any university. Features may be added, changed or withdrawn, and a paper may be removed if a content or copyright problem is found.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">3. Accounts and guest mode</h2>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>You are responsible for keeping your password and session secure.</li>
+        <li>Provide a valid email address that you control. Do not impersonate another person.</li>
+        <li>One person should use one account. Sharing an account to manipulate a leaderboard is not allowed.</li>
+        <li>Guest attempts belong to the browser cookie that created them. Clearing cookies may make a guest attempt unreachable.</li>
+        <li>You must be at least 13 years old to create an account.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">4. Acceptable use</h2>
+      <p class="mt-2">You agree not to:</p>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>Attempt to access another user's account, attempts or private data.</li>
+        <li>Probe, scan, overload or disrupt the site, or bypass rate limits and security controls.</li>
+        <li>Scrape the question bank, solutions or other content at scale without written permission.</li>
+        <li>Upload malware, post unlawful content, harass other users, or use discussions to share answer keys before a paper is submitted.</li>
+        <li>Use automated tools to submit attempts or manipulate scores, ranks, votes or reports.</li>
+        <li>Copy the question bank or explanations and republish them as another product.</li>
+      </ul>
+      <p class="mt-2">We may suspend or remove access for a serious or repeated breach.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">5. Content and ownership</h2>
+      <p class="mt-2">
+        The site's original questions, explanations, interface, design and editorial text are owned by the project or its licensors. You may read and practise them for personal, non-commercial use. You may not republish, resell or systematically extract them without permission.
+      </p>
+      <p class="mt-2">
+        Official exam names and facts belong to their respective owners. Third-party trademarks are used only for identification. If you believe content infringes your rights, contact <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:legal@cuetfreemocktest.com">legal@cuetfreemocktest.com</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">6. Practice scores and leaderboards</h2>
+      <p class="mt-2">
+        Scores, ranks and percentiles are generated from attempts on this site. They are not NTA scores, official ranks or admission predictions. Only the first submitted attempt for a paper is ranked, and guest attempts join the board only after the attempt is claimed by a registered account in the same browser. We may remove an attempt from a leaderboard if it appears automated, shared or manipulated.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">7. Discussions</h2>
+      <p class="mt-2">
+        Discussions are available only after a finished attempt. New accounts are moderated, and comments may be approved, hidden, pinned or marked as a best answer. Do not post personal data, abusive content, spam, or answer keys intended to leak a paper. You grant the site a non-exclusive licence to display and moderate content you post. You can ask for your own comment to be removed.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">8. Availability and changes</h2>
+      <p class="mt-2">
+        The site is provided on a best-effort basis and may be unavailable during maintenance or provider incidents. We do not guarantee uninterrupted access, permanent storage of a guest attempt, or that a particular paper will remain published. Back up anything you need outside the site.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">9. Disclaimers and limitation</h2>
+      <p class="mt-2">
+        Content is provided for practice and general information. It is not legal, academic, career or exam-administration advice. To the extent permitted by law, the site is not liable for indirect or consequential loss, loss of data, or decisions made from a practice score or an unverified exam fact. Nothing in these terms excludes liability that cannot legally be excluded.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">10. Termination</h2>
+      <p class="mt-2">
+        You may stop using the site at any time and request account deletion. We may suspend or terminate access for a breach of these terms, a security risk, or a legal requirement. Provisions that by their nature should survive termination — ownership, disclaimers and liability — will continue to apply.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">11. Governing law</h2>
+      <p class="mt-2">
+        These terms are governed by the laws of India. Courts in India have exclusive jurisdiction over disputes, subject to any mandatory consumer protection rights that apply where you live.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">12. Changes and contact</h2>
+      <p class="mt-2">
+        We may update these terms as the service changes. The review date at the top shows when the current version was published. Questions about these terms: <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:legal@cuetfreemocktest.com">legal@cuetfreemocktest.com</a>. Read the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/privacy-policy">privacy policy</a> and <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/disclaimer">disclaimer</a> too.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

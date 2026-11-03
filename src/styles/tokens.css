@@ -1,0 +1,371 @@
+/* ==========================================================================
+   Design tokens — the ONLY file allowed to contain colour values.
+   Three-block theme pattern:
+     1. :root                       light (and OS fallback)
+     2. @media (prefers-color-scheme: dark) :root:not([data-theme="light"])
+     3. :root[data-theme="dark"]    explicit user choice
+   The dark values in blocks 2 and 3 MUST stay identical; parity is enforced by
+   tests/unit/design-tokens.test.ts.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* surfaces */
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-2: #ffffff;
+  --surface-3: #f1f5f9;
+  --overlay: rgb(15 23 42 / 0.5);
+
+  /* text */
+  --ink: #111827;
+  --ink-2: #475569;
+  --muted: #64748b;
+
+  /* lines */
+  --border: #e2e8f0;
+  --border-input: #64748b;
+  --focus: #1d4ed8;
+  --focus-ring: rgb(29 78 216 / 0.28);
+
+  /* brand */
+  --primary: #1e40af;
+  --primary-hover: #1e3a8a;
+  --on-primary: #ffffff;
+  --link: #1e40af;
+  --link-hover: #1e3a8a;
+  --primary-tint: #eff6ff;
+  --cta: #f59e0b;
+  --cta-hover: #d97706;
+  --on-cta: #1f2937;
+  --chip-bg: #dbeafe;
+  --chip-ink: #1e3a8a;
+
+  /* exam status (test palette and results) */
+  --correct: #15803d;
+  --on-correct: #ffffff;
+  --wrong: #dc2626;
+  --on-wrong: #ffffff;
+  --review: #7c3aed;
+  --on-review: #ffffff;
+  --not-visited: #e5e7eb;
+  --on-not-visited: #1f2937;
+
+  /* footer / inverse band */
+  --footer-bg: #0f172a;
+  --footer-ink: #e2e8f0;
+  --footer-muted: #94a3b8;
+
+  /* exam chrome (NTA-style test player) */
+  --exam-bar-from: #3d3f8f;
+  --exam-bar-mid: #5c62c4;
+  --exam-on-bar: #ffffff;
+  --exam-bar-line: rgb(255 255 255 / 0.3);
+  --exam-bar-wash: rgb(255 255 255 / 0.1);
+  --exam-bar-muted: rgb(255 255 255 / 0.8);
+  --exam-subbar-bg: #edeffa;
+  --exam-subbar-border: #d8dcf0;
+  --exam-subbar-ink: #2f3273;
+  --exam-palette-border: #64748b;
+  --exam-palette-bg: #ffffff;
+  --exam-palette-ink: #3f3f46;
+  --exam-section-ink: #52525b;
+  --exam-hover: #f4f4f5;
+
+  /* feedback surfaces (error banners, timer warning) */
+  --danger-bg: #fef2f2;
+  --danger-border: #fca5a5;
+  --danger-ink: #7f1d1d;
+  --success-bg: #ecfdf5;
+  --success-border: #6ee7b7;
+  --success-ink: #065f46;
+  --warning-bg: #fffbeb;
+  --warning-border: #fcd34d;
+  --warning-ink: #78350f;
+  --media-bg: #ffffff;
+
+  /* charts */
+  --chart-1: #1e40af;
+  --chart-2: #0d9488;
+  --chart-3: #d97706;
+  --chart-grid: #e2e8f0;
+
+  /* shape and elevation */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.06), 0 2px 8px rgb(15 23 42 / 0.06);
+  --shadow-brand: 0 0 18px rgb(30 64 175 / 0.35);
+
+  /* fixed palette scales used by Tailwind utilities */
+  --palette-brand-50: #eff6ff;
+  --palette-brand-100: #dbeafe;
+  --palette-brand-200: #bfdbfe;
+  --palette-brand-300: #93c5fd;
+  --palette-brand-400: #60a5fa;
+  --palette-brand-500: #2563eb;
+  --palette-brand-600: #1d4ed8;
+  --palette-brand-700: #1e40af;
+  --palette-brand-800: #1e3a8a;
+  --palette-brand-900: #172554;
+  --palette-brand-950: #0f172a;
+
+  --palette-accent-50: #fffbeb;
+  --palette-accent-100: #fef3c7;
+  --palette-accent-200: #fde68a;
+  --palette-accent-300: #fcd34d;
+  --palette-accent-400: #fbbf24;
+  --palette-accent-500: #f59e0b;
+  --palette-accent-600: #b45309;
+  --palette-accent-700: #b45309;
+  --palette-accent-800: #92400e;
+  --palette-accent-900: #78350f;
+  --palette-accent-950: #451a03;
+
+  --palette-neutral-50: #f8fafc;
+  --palette-neutral-100: #f1f5f9;
+  --palette-neutral-200: #e2e8f0;
+  --palette-neutral-300: #cbd5e1;
+  --palette-neutral-400: #94a3b8;
+  --palette-neutral-500: #64748b;
+  --palette-neutral-600: #475569;
+  --palette-neutral-700: #334155;
+  --palette-neutral-800: #1e293b;
+  --palette-neutral-900: #0f172a;
+  --palette-neutral-950: #020617;
+
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  --font-heading: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+}
+
+/* 1) OS preference when the user has not chosen, and when JS is off. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface-2: #1e293b;
+    --surface-3: #243247;
+    --overlay: rgb(0 0 0 / 0.65);
+    --ink: #f1f5f9;
+    --ink-2: #cbd5e1;
+    --muted: #94a3b8;
+    --border: #334155;
+    --border-input: #64748b;
+    --focus: #93c5fd;
+    --focus-ring: rgb(147 197 253 / 0.32);
+    --primary: #60a5fa;
+    --primary-hover: #93c5fd;
+    --on-primary: #0b1220;
+    --link: #93c5fd;
+    --link-hover: #bfdbfe;
+    --primary-tint: #1e293b;
+    --cta: #f59e0b;
+    --cta-hover: #fbbf24;
+    --on-cta: #1f2937;
+    --chip-bg: #1e3a8a;
+    --chip-ink: #bfdbfe;
+    --correct: #22c55e;
+    --on-correct: #052e16;
+    --wrong: #f87171;
+    --on-wrong: #450a0a;
+    --review: #a78bfa;
+    --on-review: #1e1b4b;
+    --not-visited: #334155;
+    --on-not-visited: #e2e8f0;
+    --footer-bg: #020617;
+    --footer-ink: #e2e8f0;
+    --footer-muted: #94a3b8;
+    --exam-bar-from: #312e81;
+    --exam-bar-mid: #4338ca;
+    --exam-on-bar: #ffffff;
+    --exam-bar-line: rgb(255 255 255 / 0.3);
+    --exam-bar-wash: rgb(255 255 255 / 0.12);
+    --exam-bar-muted: rgb(255 255 255 / 0.8);
+    --exam-subbar-bg: #1e1b4b;
+    --exam-subbar-border: #312e81;
+    --exam-subbar-ink: #c7d2fe;
+    --exam-palette-border: #64748b;
+    --exam-palette-bg: #1f2937;
+    --exam-palette-ink: #e5e7eb;
+    --exam-section-ink: #94a3b8;
+    --exam-hover: #243247;
+    --danger-bg: #450a0a;
+    --danger-border: #7f1d1d;
+    --danger-ink: #fecaca;
+    --success-bg: #052e16;
+    --success-border: #065f46;
+    --success-ink: #bbf7d0;
+    --warning-bg: #451a03;
+    --warning-border: #92400e;
+    --warning-ink: #fde68a;
+    --media-bg: #ffffff;
+    --chart-1: #60a5fa;
+    --chart-2: #2dd4bf;
+    --chart-3: #fbbf24;
+    --chart-grid: #334155;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+    --shadow-brand: 0 0 18px rgb(96 165 250 / 0.35);
+  }
+}
+
+/* 2) Explicit user choice. Values must equal the media block above. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #1e293b;
+  --surface-3: #243247;
+  --overlay: rgb(0 0 0 / 0.65);
+  --ink: #f1f5f9;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --border: #334155;
+  --border-input: #64748b;
+  --focus: #93c5fd;
+  --focus-ring: rgb(147 197 253 / 0.32);
+  --primary: #60a5fa;
+  --primary-hover: #93c5fd;
+  --on-primary: #0b1220;
+  --link: #93c5fd;
+  --link-hover: #bfdbfe;
+  --primary-tint: #1e293b;
+  --cta: #f59e0b;
+  --cta-hover: #fbbf24;
+  --on-cta: #1f2937;
+  --chip-bg: #1e3a8a;
+  --chip-ink: #bfdbfe;
+  --correct: #22c55e;
+  --on-correct: #052e16;
+  --wrong: #f87171;
+  --on-wrong: #450a0a;
+  --review: #a78bfa;
+  --on-review: #1e1b4b;
+  --not-visited: #334155;
+  --on-not-visited: #e2e8f0;
+  --footer-bg: #020617;
+  --footer-ink: #e2e8f0;
+  --footer-muted: #94a3b8;
+  --exam-bar-from: #312e81;
+  --exam-bar-mid: #4338ca;
+  --exam-on-bar: #ffffff;
+  --exam-bar-line: rgb(255 255 255 / 0.3);
+  --exam-bar-wash: rgb(255 255 255 / 0.12);
+  --exam-bar-muted: rgb(255 255 255 / 0.8);
+  --exam-subbar-bg: #1e1b4b;
+  --exam-subbar-border: #312e81;
+  --exam-subbar-ink: #c7d2fe;
+  --exam-palette-border: #64748b;
+  --exam-palette-bg: #1f2937;
+  --exam-palette-ink: #e5e7eb;
+  --exam-section-ink: #94a3b8;
+  --exam-hover: #243247;
+  --danger-bg: #450a0a;
+  --danger-border: #7f1d1d;
+  --danger-ink: #fecaca;
+  --success-bg: #052e16;
+  --success-border: #065f46;
+  --success-ink: #bbf7d0;
+  --warning-bg: #451a03;
+  --warning-border: #92400e;
+  --warning-ink: #fde68a;
+  --media-bg: #ffffff;
+  --chart-1: #60a5fa;
+  --chart-2: #2dd4bf;
+  --chart-3: #fbbf24;
+  --chart-grid: #334155;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+  --shadow-brand: 0 0 18px rgb(96 165 250 / 0.35);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Print always uses the light token set, whatever the screen theme. */
+@media print {
+  :root,
+  :root[data-theme="dark"] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #f8fafc;
+    --surface-2: #ffffff;
+    --surface-3: #f1f5f9;
+    --ink: #111827;
+    --ink-2: #475569;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --border-input: #64748b;
+    --focus: #1d4ed8;
+    --focus-ring: rgb(29 78 216 / 0.28);
+    --overlay: rgb(15 23 42 / 0.5);
+    --primary: #1e40af;
+    --primary-hover: #1e3a8a;
+    --on-primary: #ffffff;
+    --link: #1e40af;
+    --link-hover: #1e3a8a;
+    --primary-tint: #eff6ff;
+    --cta: #f59e0b;
+    --cta-hover: #d97706;
+    --on-cta: #1f2937;
+    --chip-bg: #dbeafe;
+    --chip-ink: #1e3a8a;
+    --correct: #15803d;
+    --on-correct: #ffffff;
+    --wrong: #dc2626;
+    --on-wrong: #ffffff;
+    --review: #7c3aed;
+    --on-review: #ffffff;
+    --not-visited: #e5e7eb;
+    --on-not-visited: #1f2937;
+    --footer-bg: #ffffff;
+    --footer-ink: #111827;
+    --footer-muted: #475569;
+    --exam-bar-from: #ffffff;
+    --exam-bar-mid: #ffffff;
+    --exam-on-bar: #111827;
+    --exam-bar-line: #e2e8f0;
+    --exam-bar-wash: #ffffff;
+    --exam-bar-muted: #475569;
+    --exam-subbar-bg: #ffffff;
+    --exam-subbar-border: #e2e8f0;
+    --exam-subbar-ink: #111827;
+    --exam-palette-border: #e2e8f0;
+    --exam-palette-bg: #ffffff;
+    --exam-palette-ink: #111827;
+    --exam-section-ink: #475569;
+    --exam-hover: #f1f5f9;
+    --danger-bg: #fef2f2;
+    --danger-border: #fca5a5;
+    --danger-ink: #7f1d1d;
+    --success-bg: #ecfdf5;
+    --success-border: #6ee7b7;
+    --success-ink: #065f46;
+    --warning-bg: #fffbeb;
+    --warning-border: #fcd34d;
+    --warning-ink: #78350f;
+    --media-bg: #ffffff;
+    --chart-1: #1e40af;
+    --chart-2: #0d9488;
+    --chart-3: #d97706;
+    --chart-grid: #e2e8f0;
+    --shadow: none;
+    --shadow-brand: none;
+  }
+}
+
+/* Share card — always the light palette, because the exported PNG must not
+   depend on the viewer's theme. Kept outside the three theme blocks so the
+   theme-parity test never treats these as light-only theme tokens. */
+:root {
+  --share-card-bg: #ffffff;
+  --share-card-ink: #0f172a;
+  --share-card-muted: #475569;
+  --share-card-border: #e2e8f0;
+  --share-card-brand: #1e40af;
+  --share-card-brand-soft: #eff6ff;
+  --share-card-correct: #15803d;
+  --share-card-correct-bg: #f0fdf4;
+  --share-card-footer: #0f172a;
+  --share-card-footer-ink: #ffffff;
+  --share-card-footer-muted: #cbd5e1;
+}

@@ -1,0 +1,1768 @@
+{
+ "exam": {
+  "id": "local-computer-science-2025",
+  "slug": "computer-science-2025",
+  "title": "CUET UG Computer Science 2025 Previous Year Paper",
+  "subject": "Computer Science",
+  "subjectId": "local-computer-science",
+  "subjectCode": "CS",
+  "year": 2025,
+  "examDate": null,
+  "shift": null,
+  "sourceFile": "Computer Science_2025.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 50,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "Identify the relational algebra operation denoted by:\n\nCourse X Student:\n\nwhere 'Course' and 'Student' are two relations and X is an operation.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Union"
+     },
+     {
+      "id": "B",
+      "text": "Set Difference"
+     },
+     {
+      "id": "C",
+      "text": "Cartesian Product"
+     },
+     {
+      "id": "D",
+      "text": "Intersection"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "Given:\n\nTableA:\nTableB:\nFind TableA U TableB?\n1.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     1,
+     2
+    ],
+    "assets": [
+     {
+      "id": "q02-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q02-table-1.jpg",
+      "page": 1,
+      "alt": "Table for question 2"
+     },
+     {
+      "id": "q02-table-2",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q02-table-2.jpg",
+      "page": 1,
+      "alt": "Table for question 2"
+     },
+     {
+      "id": "q02-options",
+      "kind": "options",
+      "path": "/local-papers/assets/computer-science-2025/q02-options.jpg",
+      "page": 2,
+      "alt": "Printed answer choices for question 2"
+     }
+    ]
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Given two relations:\n\n'Employee' with structure as ID, name, Address, Phone, Deptno\n\nDepartment with structure as Deptno, Dname\n\n_ is used to represent the relationship between two relations Employee and Department.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Primary key"
+     },
+     {
+      "id": "B",
+      "text": "Alternate key"
+     },
+     {
+      "id": "C",
+      "text": "Foreign key"
+     },
+     {
+      "id": "D",
+      "text": "Candidate key"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "A value is specified for the column, if no value is provided.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "unique"
+     },
+     {
+      "id": "B",
+      "text": "null"
+     },
+     {
+      "id": "C",
+      "text": "default"
+     },
+     {
+      "id": "D",
+      "text": "primary"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "Given table 'StudAtt' with structure as Rno, Attdate, Attendance.\n\nIdentify the suitable command to add primary key to the table after table creation.\n\nNote: In the given case, we want to make both Rno and Attdate columns as primary key.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "ALTER TABLE StudAtt ADD PRIMARY KEY(Rno, Attdate);"
+     },
+     {
+      "id": "B",
+      "text": "CREATE TABLE StudAtt ADD PRIMARY KEY(Rno);"
+     },
+     {
+      "id": "C",
+      "text": "ALTER TABLE StudAtt ADD PRIMARY KEY;"
+     },
+     {
+      "id": "D",
+      "text": "ALTER TABLE StudAtt ADD PRIMARY KEY(Rno) AND PRIMARY KEY(Attdate);"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "The SELECT command when combined with DISTINCT clause is used to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "returns records without repetition"
+     },
+     {
+      "id": "B",
+      "text": "returns records with repetition"
+     },
+     {
+      "id": "C",
+      "text": "returns all records with conditions"
+     },
+     {
+      "id": "D",
+      "text": "returns all records without checking"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "_ is used to search for a specific pattern in a column.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Between operator"
+     },
+     {
+      "id": "B",
+      "text": "In operator"
+     },
+     {
+      "id": "C",
+      "text": "Like operator"
+     },
+     {
+      "id": "D",
+      "text": "Null operator"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "Give the output of the query:\n\nSELECT MONTH(\"2010-03-05\");",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3"
+     },
+     {
+      "id": "B",
+      "text": "5"
+     },
+     {
+      "id": "C",
+      "text": "MARCH"
+     },
+     {
+      "id": "D",
+      "text": "MAY"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "Match List-I with List-II\n\nChooco the correct answer from the options given below",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (III), (B) - (I), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (I), (B) - (II), (C) - (IV), (D), - (III)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q09-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q09-table-1.jpg",
+      "page": 4,
+      "alt": "Table for question 9"
+     }
+    ]
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Given Relation: 'STUDENT'\n\nFind the value of:\n\nSELECT AVG(MARKS) FROM STUDENT;",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "30"
+     },
+     {
+      "id": "B",
+      "text": "22.5"
+     },
+     {
+      "id": "C",
+      "text": "90"
+     },
+     {
+      "id": "D",
+      "text": "23"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q10-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q10-table-1.jpg",
+      "page": 4,
+      "alt": "Table for question 10"
+     }
+    ]
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "_ operation is used to get the common tuples from two relations.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Union"
+     },
+     {
+      "id": "B",
+      "text": "Intersect"
+     },
+     {
+      "id": "C",
+      "text": "Set Difference"
+     },
+     {
+      "id": "D",
+      "text": "Cartesian product"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Identify the correct IP address from the options given:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "FC:F8:AE:CE:7B:16"
+     },
+     {
+      "id": "B",
+      "text": "192.168.256.178"
+     },
+     {
+      "id": "C",
+      "text": "192.168.0.178"
+     },
+     {
+      "id": "D",
+      "text": "192.168.0.-1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Arrange the following python code segments in order with respect to exception handling.\n\n(A) except ZeroDivisionError:\n\nprint(\"Zero denominator not allowed\")\n\n(B) finally:\n\nprint(\"Over and Out\")\n\n(C) try:\n\nn=50\n\nd=int(input(\"enter denominator\"))\n\nd/n=q\n\nprint(\"division performed\")\n\n(D) else:\n\nprint(\"Result=\"，q)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(C),(A),(B),(D)"
+     },
+     {
+      "id": "B",
+      "text": "(C),(A),(D),(B)"
+     },
+     {
+      "id": "C",
+      "text": "(B),(A),(D),(C)"
+     },
+     {
+      "id": "D",
+      "text": "(C),(B),(D),(A)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "_ is the process of transforming data or an object in memory (RAM) to a stream of bytes called byte streams.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "read()"
+     },
+     {
+      "id": "B",
+      "text": "write()"
+     },
+     {
+      "id": "C",
+      "text": "Pickling"
+     },
+     {
+      "id": "D",
+      "text": "De-serialization"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "Identify the correct code to read data from the file notes.dat in a binary file:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "import pickle f1=open(\"notes.dat\",\"r\") data=pickle.load(f1) print(data) f1.close()"
+     },
+     {
+      "id": "B",
+      "text": "import pickle f1=open(\"notes.dat\",\"rb\") data=f1.load() print(data) f1.closen"
+     },
+     {
+      "id": "C",
+      "text": "import pickle f1=open(\"notes.dat\",\"rb\") data=pickle.load(f1) print(data) f1.close()"
+     },
+     {
+      "id": "D",
+      "text": "import pickle f1=open(\"notes.dat\", \"rb\") data=f1.read() print(data) f1.close()"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Identify the correct python statement to open a text file \"data.txt\" in both read and write mode.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "file.open(\"data.txt\")"
+     },
+     {
+      "id": "B",
+      "text": "file.open(\"data.txt\",\"r+\")"
+     },
+     {
+      "id": "C",
+      "text": "file.open(\"data.txt\".rw\")"
+     },
+     {
+      "id": "D",
+      "text": "file.open(\"data.txt\",\"rw+\")"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Identify the type of expression where operators are placed before the corresponding operands:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Polish expression"
+     },
+     {
+      "id": "B",
+      "text": "Infix expression"
+     },
+     {
+      "id": "C",
+      "text": "Postfix expression"
+     },
+     {
+      "id": "D",
+      "text": "Reverse polish expression"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Evaluate the postfix expression:\n\n2457*5/+",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "29"
+     },
+     {
+      "id": "B",
+      "text": "30"
+     },
+     {
+      "id": "C",
+      "text": "31"
+     },
+     {
+      "id": "D",
+      "text": "0"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "STACK follows _ principle, where insertion and deletion is from end/ends only.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "LIFO, two"
+     },
+     {
+      "id": "B",
+      "text": "FIFO, two"
+     },
+     {
+      "id": "C",
+      "text": "HFO, top"
+     },
+     {
+      "id": "D",
+      "text": "LIFO, one"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "Given a scenario:\n\nSuppose there is a web-server hosting a website to declare results. This server can handle a maximum of 100 concurrent requests to view results, So, as to serve thousands of user requests. a _ would be the most appropriate data structure to use.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Stack"
+     },
+     {
+      "id": "B",
+      "text": "Queue"
+     },
+     {
+      "id": "C",
+      "text": "List"
+     },
+     {
+      "id": "D",
+      "text": "Dictionary"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "To perform enqueue and dequeue efficiently on a queue, which of the following operations are required?\n\nA) isEmpty\n\nB) peek\n\nC) isfull\n\nD) update",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(B) (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Distance table:\n\nIdentify the correct place where we have to use repeaters.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Between A to B"
+     },
+     {
+      "id": "B",
+      "text": "Between A to C"
+     },
+     {
+      "id": "C",
+      "text": "Between A to D"
+     },
+     {
+      "id": "D",
+      "text": "Between A to E"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": [
+     {
+      "id": "q22-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/computer-science-2025/q22-figure-1.jpg",
+      "page": 9,
+      "alt": "Figure for question 22"
+     },
+     {
+      "id": "q22-table-2",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q22-table-2.jpg",
+      "page": 9,
+      "alt": "Table for question 22"
+     }
+    ]
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "In MAC address, Organisational Unique Identifier (OUI) consist of _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "32 bits"
+     },
+     {
+      "id": "B",
+      "text": "48 bits"
+     },
+     {
+      "id": "C",
+      "text": "24 bits"
+     },
+     {
+      "id": "D",
+      "text": "64 bits"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "Given a list numList of n elements and key value K, arrange the following steps for finding the position of the key K in the numList using binary search algorithm i.e. BinarySearch(numList, key)\n\n(A) Calculate mid = (first + last) / 2\n\n(B) SET first = 0, last = n-1\n(C) PRINT \"Search unsuccessful\"\n(C) PRINT \"Search unsuccessful\"\nIF numList[mid] = key DRIIT \"Flempt found at position\" mid+1\nSTOP\nELSE\nIF numList[mid] > key, THEN last = mid-1\nEL SE first = mid + 1",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A),(B),(D),(C)"
+     },
+     {
+      "id": "B",
+      "text": "(D),(B),(A),(C)"
+     },
+     {
+      "id": "C",
+      "text": "(B),(A),(D),(C)"
+     },
+     {
+      "id": "D",
+      "text": "(D),(A),(B),(C)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "In binary search after every pass of the algorithm, the search area:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "gets doubled"
+     },
+     {
+      "id": "B",
+      "text": "gets reduced by half"
+     },
+     {
+      "id": "C",
+      "text": "remains same"
+     },
+     {
+      "id": "D",
+      "text": "gets reduced by one third"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "For binary search, the list is in ascending order and the key is present in the list. If the middle element is less than the key, it means:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "The key is in the first half."
+     },
+     {
+      "id": "B",
+      "text": "The key is in the second half."
+     },
+     {
+      "id": "C",
+      "text": "The key is not in the list."
+     },
+     {
+      "id": "D",
+      "text": "The key is the middle element."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Arrange the following in order related to bubble sort for a list of elements:\n\n(A)\n\n-94212630\n\n(D)\n\n-94122630",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B), (D), (C)"
+     },
+     {
+      "id": "B",
+      "text": "(A),(C),(B),(D)"
+     },
+     {
+      "id": "C",
+      "text": "(B),(A),(D),(C)"
+     },
+     {
+      "id": "D",
+      "text": "(C),(B),(D),(A)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": [
+     {
+      "id": "q27-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q27-table-1.jpg",
+      "page": 11,
+      "alt": "Table for question 27"
+     }
+    ]
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "The amount of time an algorithm takes to process a given data can be called its:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Process time"
+     },
+     {
+      "id": "B",
+      "text": "Time period"
+     },
+     {
+      "id": "C",
+      "text": "Time complexity"
+     },
+     {
+      "id": "D",
+      "text": "Time bound"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "Identify the incorrect statement in the context of measures of variability:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Range is the difference between maximum and minimum values of the data."
+     },
+     {
+      "id": "B",
+      "text": "Mean is the average of numeric values of an attribute."
+     },
+     {
+      "id": "C",
+      "text": "Standard deviation refers to differences within the set of data of a variable."
+     },
+     {
+      "id": "D",
+      "text": "Measures of variability is also known as measures of dispersion."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "Identify type of data being collected/generated in the scenerio of recording a video:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Structured Data"
+     },
+     {
+      "id": "B",
+      "text": "Ambiguous data"
+     },
+     {
+      "id": "C",
+      "text": "Unstructured data"
+     },
+     {
+      "id": "D",
+      "text": "Formal Data"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Given data:\n\nWeight of 20 student in kgs=[35, 35, 40, 40, 40, 50, 50, 50, 50, 50, 60, 65, 65, 70, 70, 72, 75, 75, 78, 78]\n\nFind the mode.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "50"
+     },
+     {
+      "id": "B",
+      "text": "55"
+     },
+     {
+      "id": "C",
+      "text": "57.4"
+     },
+     {
+      "id": "D",
+      "text": "57"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\left(\\mathrm{A}\\right)-\\left(1\\right),\\left(\\mathrm{B}\\right)-\\left(\\mathrm{II}\\right),\\left(\\mathrm{C}\\right)-\\left(\\mathrm{III}\\right),\\left(\\mathrm{D}\\right)-\\left(\\mathrm{IV}\\right)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (III), (B) - (1), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (1), (B) - (II), (C) - (IV), (D) - (I1I)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (1), (D) - (11)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": [
+     {
+      "id": "q32-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q32-table-1.jpg",
+      "page": 12,
+      "alt": "Table for question 32"
+     }
+    ]
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "In SQL table, the set of values which a column can take in each row is called _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Tuple"
+     },
+     {
+      "id": "B",
+      "text": "Attribute"
+     },
+     {
+      "id": "C",
+      "text": "Domain"
+     },
+     {
+      "id": "D",
+      "text": "Relation"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Which of the following is synonym for Meta - data?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Data Dictionary"
+     },
+     {
+      "id": "B",
+      "text": "Database Instance"
+     },
+     {
+      "id": "C",
+      "text": "Database Schema"
+     },
+     {
+      "id": "D",
+      "text": "Data Constraint"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "Single row functions are also known as _ functions.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Multi row"
+     },
+     {
+      "id": "B",
+      "text": "Group"
+     },
+     {
+      "id": "C",
+      "text": "Mathematical"
+     },
+     {
+      "id": "D",
+      "text": "Scalar"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "Ms Ritika wants to delete the table 'sports' permanently. Help her in selecting the correct SQL command from the following.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "DELETE FROM SPORTS;"
+     },
+     {
+      "id": "B",
+      "text": "DROP SPORTS;"
+     },
+     {
+      "id": "C",
+      "text": "DROP TABLE SPORTS;"
+     },
+     {
+      "id": "D",
+      "text": "DELETE* FROM SPORTS;"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Which of the following are text functions?\n\n(A) MIDO\n\n(B) INSTRO\n\n(C) SUBSTRO\n\n(D) LENGTH)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A),(B),(C)and(D)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "Match List-I with List-II\nChoose the correctanswer from the options given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (11), (B) - (IV), (C) - (1), (D) - (III)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (1), (B) - (III), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (Ⅳ), (B) - (Ⅱ), (C) - (Ⅱ), (D) - (Ⅰ)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": [
+     {
+      "id": "q38-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q38-table-1.jpg",
+      "page": 14,
+      "alt": "Table for question 38"
+     }
+    ]
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "_ is a language used to design web pages.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Web browser"
+     },
+     {
+      "id": "B",
+      "text": "HTTP"
+     },
+     {
+      "id": "C",
+      "text": "HTML"
+     },
+     {
+      "id": "D",
+      "text": "WWW"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(I),(B)-(I),(C)-(IV),(D)-(D)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (II), (B) - (IV), (C) - (I), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": [
+     {
+      "id": "q40-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q40-table-1.jpg",
+      "page": 15,
+      "alt": "Table for question 40"
+     }
+    ]
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Bandwidth of a channel is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "The range of frequencies available for transmission of data through that channel."
+     },
+     {
+      "id": "B",
+      "text": "The path of message travels between source and destination."
+     },
+     {
+      "id": "C",
+      "text": "The set of rules on the Internet."
+     },
+     {
+      "id": "D",
+      "text": "I he data or inormation that heeds to be exchanged."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "Data Transfer Rate 1 Gbps is equal to:\n\n(A) 1024 Mbps\n\n(B) 1024 Kbps\n\n(C) $ 2^{30} $ bps\n\n(D) 22 bps",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B) and (C) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "Identify the wired transmission media for the following:\n\n\"They are less expensive and commonly used in telephone lines and LANs. These cables are of two types: Unshielded and shielded.\"",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Optical Fibre"
+     },
+     {
+      "id": "B",
+      "text": "Coaxial Cable"
+     },
+     {
+      "id": "C",
+      "text": "TWisted pair cabie"
+     },
+     {
+      "id": "D",
+      "text": "Microwaves"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "The term Cookie is defined as:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A computer cookie is a small file or data packet which is stored by a website on the server's computer."
+     },
+     {
+      "id": "B",
+      "text": "A cookie is edited only by the website that created it, the client's computer acts as a host to store the cookie."
+     },
+     {
+      "id": "C",
+      "text": "Cookies are used by the user to store data on the computer."
+     },
+     {
+      "id": "D",
+      "text": "A cookie is a security system to protect your data."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "Identify the concept behind the below-given scenario:\n\nIf an attacker limits or stops an authorized user to access a service, device or any such resource by overloading that resource with illegitimate requests.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Snooping"
+     },
+     {
+      "id": "B",
+      "text": "Eavesdropping"
+     },
+     {
+      "id": "C",
+      "text": "Deniar or service"
+     },
+     {
+      "id": "D",
+      "text": "Plagiarism"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "The HTTPS based websites require:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Search Engine Optimization"
+     },
+     {
+      "id": "B",
+      "text": "Digital authenticity"
+     },
+     {
+      "id": "C",
+      "text": "WWW Certificate"
+     },
+     {
+      "id": "D",
+      "text": "SSL Digital Certificate"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "State the output of the following query.\nSELECT ENGTH(MID('INFORMATICS PRACTICES',5,-5));",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "NO OUTPUT"
+     },
+     {
+      "id": "B",
+      "text": "5"
+     },
+     {
+      "id": "C",
+      "text": "0"
+     },
+     {
+      "id": "D",
+      "text": "ERROR"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "Match List-I with List-II\n\nChoose the correctanswer from the options given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (III), (B) - (IV), (C) - (II), (D) - (I)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": [
+     {
+      "id": "q48-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2025/q48-table-1.jpg",
+      "page": 17,
+      "alt": "Table for question 48"
+     }
+    ]
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "What will be the format of the output of the NOW function?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "HH:MM:SS"
+     },
+     {
+      "id": "B",
+      "text": "YYYY-MM-DD HH:MM:SS"
+     },
+     {
+      "id": "C",
+      "text": "HH:MM:SS YYYY-MM-DD"
+     },
+     {
+      "id": "D",
+      "text": "YYYY-DD-MM HH:MM:SS"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "State the output of the following query:\n\nSELECT ROUND(9873.567,-2);",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "9900"
+     },
+     {
+      "id": "B",
+      "text": "9873"
+     },
+     {
+      "id": "C",
+      "text": "9800"
+     },
+     {
+      "id": "D",
+      "text": "9873.5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

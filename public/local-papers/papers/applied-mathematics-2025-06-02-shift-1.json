@@ -1,0 +1,1646 @@
+{
+ "exam": {
+  "id": "local-applied-mathematics-2025-06-02-shift-1",
+  "slug": "applied-mathematics-2025-06-02-shift-1",
+  "title": "CUET UG Applied Mathematics 2 June 2025 Shift 1 Previous Year Paper",
+  "subject": "Applied Mathematics",
+  "subjectId": "local-applied-mathematics",
+  "subjectCode": "APM",
+  "year": 2025,
+  "examDate": "2025-06-02",
+  "shift": "Shift 1",
+  "sourceFile": "Applied Mathematics_2025-06-02_Shift_1.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 48,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "$$ \\int\\frac{e^{2x}-e^{-2x}}{e^{2x}+e^{-2x}}dx $$\n\nis equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{2}\\log|e^{2x}-e^{-2x}|+C $, where $ C $ is an arbitrary constant."
+     },
+     {
+      "id": "B",
+      "text": "$ \\log|e^{2x}-e^{-2x}|+C $, where $ C $ is an arbitrary constant."
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{2}\\log|e^{2x}+e^{-2x}|+C $, where $ C $ is an arbitrary constant."
+     },
+     {
+      "id": "D",
+      "text": "$ \\log|e^{2x} + e^{-2x}| + C $, where $ C $ is an arbitrary constant."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "Linear inequalities corresponding to the shaded feasible region OABCO in the given figure are",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 4x + 3y \\leq 12 $, $ 3x + 4y \\leq 12 $, $ x \\geq 0 $, $ y \\geq 0 $"
+     },
+     {
+      "id": "B",
+      "text": "$ 4x + 3y \\geq 12 $, $ 3x + 4y \\geq 12 $, $ x \\geq 0 $, $ y \\geq 0 $"
+     },
+     {
+      "id": "C",
+      "text": "$ 4x + 3y \\leq 12 $, $ 3x + 4y \\geq 12 $, $ x, \\geq 0, y \\geq 0 $"
+     },
+     {
+      "id": "D",
+      "text": "$ 4x + 3y \\geq 12 $, $ 3x + 4y \\leq 12 $, $ x \\geq 0 $, $ y \\geq 0 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q02-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/applied-mathematics-2025-06-02-shift-1/q02-figure-1.jpg",
+      "page": 2,
+      "alt": "Figure for question 2"
+     }
+    ]
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(\\mathbf{A})-(\\mathbf{I}),(\\mathbf{B})-(\\mathbf{I V}),(\\mathbf{C})-(\\mathbf{I I}),(\\mathbf{D})-(\\mathbf{I I I})"
+     },
+     {
+      "id": "B",
+      "text": "\\ (\\mathrm{A})-(\\mathrm{II}),(\\mathrm{B})-(\\mathrm{I}),(\\mathrm{C})-(\\mathrm{III}),(\\mathrm{D})-(\\mathrm{IV})"
+     },
+     {
+      "id": "C",
+      "text": "(A) - $ \\mathrm{(III)} $, (B) - $ \\mathrm{(IV)} $, (C) - $ \\mathrm{(II)} $, (D) - $ \\mathrm{(I)} $"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q03-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/applied-mathematics-2025-06-02-shift-1/q03-table-1.jpg",
+      "page": 3,
+      "alt": "Table for question 3"
+     }
+    ]
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "$$ \\mathrm{I f}\\begin{bmatrix}3&1\\\\ 2&1\\end{bmatrix}A\\begin{bmatrix}2&1\\\\ 1&1\\end{bmatrix}=\\begin{bmatrix}1&1\\\\ 0&1\\end{bmatrix}, $$\n\nthen matrix 'A' is\n\n$$ \\begin{bmatrix}1&1\\\\ 0&0\\end{bmatrix} $$\n\n$$ \\begin{bmatrix}{{{-1}}}&{{{1}}} \\\\{{{3}}}&{{{-4}}}\\end{bmatrix} $$\n\n$$ \\begin{bmatrix}1&-1\\\\ -3&4\\end{bmatrix} $$\n\n$$ 4.\\begin{bmatrix}1&0\\\\ 0&1\\end{bmatrix} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "For the function $ f(x) = -2x^3 + 3x^2 + 36x - 10 $, which of the following is/are true?\n\n(A) f is increasing in $ (-\\infty, -2) $\n\n(B) f is increasing in $ (-2,3) $\n\n(C) f is decreasing in $ (-\\infty, -2) $\n\n(D) f is decreasing in $ (3, \\infty) $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(B), (C) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "$$ If\\;y=\\frac{1}{\\sqrt[3]{1-x^{3}}},\\;then\\;\\frac{dy}{dx}is equal to: $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "x(1-x^{3})^{-\\frac{4}{3}}"
+     },
+     {
+      "id": "B",
+      "text": "x^{2}(1-x^{3})^{-\\frac{4}{3}}"
+     },
+     {
+      "id": "C",
+      "text": "\\left(1-x^{3}\\right)^{-\\frac{4}{3}}"
+     },
+     {
+      "id": "D",
+      "text": "x^{2}(1-x^{3})^{-\\frac{4}{3}}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "If x is real, the minimum value of $ x^{2}-8x+20 $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "4"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "0"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "If A is a square matrix of order 3 and |A| = 5, then the value of | - A A^{*} | is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "25"
+     },
+     {
+      "id": "B",
+      "text": "25"
+     },
+     {
+      "id": "C",
+      "text": "5"
+     },
+     {
+      "id": "D",
+      "text": "5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "$$ x+y\\leq60, $$\n\n$$ 5x+y\\leq100, $$\n\n$$ x,y\\geq0. $$\n\nIf the maximum value of Z occurs at x = a and $ y = \\beta $, then the value of $ a + \\beta $ is:\n\n1.10",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "If the matrix $ \\begin{bmatrix} 2 & -1 & 3 \\\\ \\lambda & 0 & 7 \\\\ -1 & 1 & 4 \\end{bmatrix} $ is not invertible, then the value of $ \\lambda $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "1"
+     },
+     {
+      "id": "C",
+      "text": "1"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "If the matrix $ \\begin{bmatrix} 3 & 2a & -5 \\\\ 4 & 0 & b \\\\ -5 & 3 & 10 \\end{bmatrix} $ is symmetric, then the value of $ 5a + 2b $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "6"
+     },
+     {
+      "id": "B",
+      "text": "10"
+     },
+     {
+      "id": "C",
+      "text": "16"
+     },
+     {
+      "id": "D",
+      "text": "20"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "The solution of the differential equation $ y \\, dx + (x - y^2) \\, dy = 0 $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 3xy + x^{3} = C $: C is an arbitrary constant"
+     },
+     {
+      "id": "B",
+      "text": "$ 3xy + y^{3} = C $: C is an arbitrary constant"
+     },
+     {
+      "id": "C",
+      "text": "$ 3xy - y^{3} = C $: C is an arbitrary constant"
+     },
+     {
+      "id": "D",
+      "text": "$ 3xy - x^{3} = C $: C is an arbitrary constant"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "The value of $ \\int_{0}^{1}\\log_{e}(\\frac{1}{x}-1)dx $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "0"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{3}{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\log 2 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "Area of the region bounded by $ y = x^{2} $ and the line y = 16 is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{256}{3} $ square units"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{128}{3} $ square units"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{64}{3} $ square units"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{32}{3} $ square units"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "The probability distribution of a random variable x is, $ P(x) = \\frac{k}{2^x} $, x = 0, 1, 2, 3. Then\nMatch List-I with List-II\n\nList-I List-II\n(A) k (I) 2/15\n(B) P(x=1) (II) 1/5\n(C) P(1) (III) 8/15\n(D) P(x≥2) (IV) 4/15",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Calculate Three yearly moving averages for the following data",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "217, 229, 233, 218"
+     },
+     {
+      "id": "B",
+      "text": "217, 235, 229, 233"
+     },
+     {
+      "id": "C",
+      "text": "235, 229, 233, 218"
+     },
+     {
+      "id": "D",
+      "text": "235,229,233,218"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": [
+     {
+      "id": "q16-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/applied-mathematics-2025-06-02-shift-1/q16-table-1.jpg",
+      "page": 15,
+      "alt": "Table for question 16"
+     }
+    ]
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "A machine costing Rs.50,000 has a useful life of 4 years. The estimated scrap value is Rs 10,000. The rate of depreciation per annum is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20%"
+     },
+     {
+      "id": "B",
+      "text": "30%"
+     },
+     {
+      "id": "C",
+      "text": "25%"
+     },
+     {
+      "id": "D",
+      "text": "15%"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "For the linear programming problem,\n\nMinimize (Z) = 60x + 30y\n\nsubject to: $ 2x - y \\geq -5 $; $ 3x + y \\geq 3 $; $ 2x - 3y \\leq 12 $; x, y $ \\geq 0 $\n\nthe optimal value of z is\n\n1.360\n\n4. No Minimum value of Z",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "If CAGR stands for Compound Annual Growth Rate, F.V stands for final value of an investment, P.V stands for present value of an investment and n is the number of years then",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "CAGR=\\left(\\frac{F.V}{P.V}\\right)^{\\frac{1}{n}}-1"
+     },
+     {
+      "id": "B",
+      "text": "CAGR=\\left(\\frac{P.V}{F.V}\\right)^{\\frac{1}{n}}-1"
+     },
+     {
+      "id": "C",
+      "text": "CAGR = $ \\left(\\frac{F.V}{P.V}\\right)^{n} - 1 $"
+     },
+     {
+      "id": "D",
+      "text": "CAGR = $ \\left(\\frac{P.V}{F.V}\\right)^{n} - 1 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "If maximum value of $f(x) = 2x^{3} + 3x^{2} - 6ax + 10$ occurs at $x = -3$, then the value of $a$ is _",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "If $ A = \\begin{bmatrix} 1 & 2 \\\\ 0 & 3 \\end{bmatrix} $, then $ |A \\, \\text{adj}A| $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3"
+     },
+     {
+      "id": "B",
+      "text": "6"
+     },
+     {
+      "id": "C",
+      "text": "9"
+     },
+     {
+      "id": "D",
+      "text": "12"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "A machine costing Rs 3,00,000 will have its scrap value of Rs 50,000. The company at present plans to put Rs 36,650 per annum at the end of each year in a sinking fund at the rate 5% per annum for the replacement of the machine after its useful life. Suppose the new machine will cost Rs 4,000,000 at that time, then the useful life (approx.) of the machine is:\n\n[Given: (1.4775) $ ^{\\frac{1}{8}} $ ≈ 1.05]",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "6.5 yrs"
+     },
+     {
+      "id": "B",
+      "text": "8.5 yrs"
+     },
+     {
+      "id": "C",
+      "text": "7 yrs"
+     },
+     {
+      "id": "D",
+      "text": "8 yrs"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "If the sum and difference of squares of mean and variance of a Binomial distribution is $ \\frac{225}{256} $ and $ \\frac{63}{256} $ respectively, the $ P(X \\geq 2) $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{81}{256} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{9}{16} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{5}{32} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{9}{256} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "The effective rate per annum equivalent to a nominal rate of 8% compounded semi-annually is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "8.24%"
+     },
+     {
+      "id": "B",
+      "text": "8.33%"
+     },
+     {
+      "id": "C",
+      "text": "8.16%"
+     },
+     {
+      "id": "D",
+      "text": "8.06%"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     25
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "If $ A $ is a square matrix such that $ A^2 = A $ and $ I $ is the identify matrix of the same order as $ A $ then $ (I + 2A)^3 - 6A $ is equal to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ I + 26A $"
+     },
+     {
+      "id": "B",
+      "text": "20A"
+     },
+     {
+      "id": "C",
+      "text": "$ I + 20A $"
+     },
+     {
+      "id": "D",
+      "text": "26A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "If $ x_{1}, x_{2}, x_{3}, \\ldots, x_{n} $ are n observationsions in a sample then which of following is/are TRUE?\n\n(A) The mean $\\bar{x}$ has $n$ degree of freedom\n\n(B) The mean $\\bar{x}$ has $(n-1)$ degree of freedom\n\n(C) The standard deviation of the sample has $ (n-1) $ degree of freedom\n\n(D) The standard deviation of the sample has n degree of freedom",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "D",
+      "text": "(B) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "A and B are two independent events. The probability that both events A and B occur is $ \\frac{1}{6} $ and the probability that neither of them occur is $ \\frac{1}{3} $. If $ P(A) = x $, $ P(B) = y $ then the value of $ x + y $ is.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{6} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{5}{6} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{2}{6} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{4}{6} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "The area bounded by the x-axis and the parabola $ y = 3x - x^{2} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{27}{2} $ Sq.unit"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{9}{2} $ Sq.unit"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{15}{2} $ Sq.unit"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{11}{2} $ Sq.unit"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "A pair of dice is thrown until the sum of numbers appeared is a perfect square or a non-perfect square sum appeared five times in succession. If random variable X denotes the number of non perfect square sums appeared. then $ P(X > 0) $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{7}{36} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{29}{36} $"
+     },
+     {
+      "id": "C",
+      "text": "1"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "$$ \\int e^{(x\\log5)}e^{x}dx,is: $$\n\nWhere c is the constant of integration.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ \\frac{5^{x}}{\\log 5}e^{x}+C $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ 5^{x} e^{x} + C $$"
+     },
+     {
+      "id": "C",
+      "text": "$$ (5e)^{x}\\log(5e)+C $$"
+     },
+     {
+      "id": "D",
+      "text": "$$ \\frac{(5e)^{x}}{\\log(5e)}+C $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "The maximum value of $ Z $ for the linear programming problem maximize $ Z = x + y $ subject to the constraints $ x + 4y \\leq 8, 2x + 3y \\leq 12, 3x + y \\leq 9, x \\geq 0, y \\geq 0 $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3 $ \\frac{10}{11} $"
+     },
+     {
+      "id": "B",
+      "text": "3 $ \\frac{9}{11} $"
+     },
+     {
+      "id": "C",
+      "text": "4 $ \\frac{10}{11} $"
+     },
+     {
+      "id": "D",
+      "text": "4 $ \\frac{9}{11} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "Solution of the inequality $ \\frac{2x+3}{4x-5}\\geq0 $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\left(-\\frac{3}{2},\\frac{5}{4}\\right) $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\left(-\\infty, -\\frac{3}{2}\\right] \\cup \\left[\\frac{5}{4}, \\infty\\right) $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\left[-\\frac{3}{2},\\frac{5}{4}\\right) $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\left(-\\infty, -\\frac{3}{2}\\right] \\cup \\left(\\frac{5}{4}, \\infty\\right) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     35
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "The probability distribution of a random discrete variable is given\n\n$$ \\begin{array}{l}X\\quad-1\\quad01\\quad23\\\\ P(X)\\quad0.1p\\quad0.3qr\\end{array} $$\n\nIf it is known that P(X=1) is the mean of P(X=0) and P(X=2). Then the value of r is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "0.1"
+     },
+     {
+      "id": "C",
+      "text": "0.2"
+     },
+     {
+      "id": "D",
+      "text": "0.3"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     36
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "Data available for profit (₹ Thousands) of a company as\n\nBased on the above data using least square method the trend value for the year '2007' is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "147.64"
+     },
+     {
+      "id": "B",
+      "text": "138.86"
+     },
+     {
+      "id": "C",
+      "text": "130.57"
+     },
+     {
+      "id": "D",
+      "text": "131.22"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": [
+     {
+      "id": "q35-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/applied-mathematics-2025-06-02-shift-1/q35-table-1.jpg",
+      "page": 37,
+      "alt": "Table for question 35"
+     }
+    ]
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "If $ y = e^{\\frac{1}{2}\\log(1 + \\tan^2 x)} $, then $ \\frac{d^2 y}{dx^2} $ is equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\sec x $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{2}\\left(\\frac{1}{1+\\tan^{2}x}\\right)e^{\\log(1+\\tan^{2}x)} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\sec x(\\sec^{2}x + \\tan^{2}x) $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\sec x \\tan x $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     39
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Which of the given values of x and y make the following pair of matrices equal?\n\n$$ \\begin{bmatrix}2x-1&4\\\\ y-1&3+2x\\end{bmatrix}and\\begin{bmatrix}0&y-2\\\\ 5&4\\end{bmatrix} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ x = \\frac{1}{4}, y = 6 $"
+     },
+     {
+      "id": "B",
+      "text": "$ x = \\frac{1}{2}, y = 6 $"
+     },
+     {
+      "id": "C",
+      "text": "x = 6, $ y = \\frac{1}{2} $"
+     },
+     {
+      "id": "D",
+      "text": "x=2,y=6"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     40
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "If under pure competition demand and supply functions are given by $p = \\sqrt{10 - x}$ and $p = \\frac{1}{2}(x - 2)$ respectively, where $p$ is price per unit and $x$ is quantity, then the consumer surplus is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{2}{3}\\left[11-10\\sqrt{10}\\right] $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{10}{3}[1-2\\sqrt{10}] $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{2}{3}\\left[10\\sqrt{10}-26\\right] $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{2}{3}[11+10\\sqrt{10}] $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     41
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "The ratio of the speeds of a motor boat and that of the current of water is 26:4. The boat goes certain distance against the current in 6 hrs. The time taken by the boat to come back is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3 hrs 48 minutes"
+     },
+     {
+      "id": "B",
+      "text": "4 hrs 24 minutes"
+     },
+     {
+      "id": "C",
+      "text": "4 hrs 42 minutes"
+     },
+     {
+      "id": "D",
+      "text": "3 hrs 56 minutes"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     42
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "In a kilometer race P runs at 10 m/sec, Q runs at 5 m/sec then which of the following statement(s) is/ are correct?\n\n(A) P wins the race in 100 sec\n\n(B) Q wins the race in 100 sec\n\n(C) P defeats Q by 500 m\n\n(D) Q defeats P by 500 m",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) only"
+     },
+     {
+      "id": "B",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     43
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "The unit's digit of $ 2^{2025} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     45
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "Three pipes A, B & C fill a tank in 3 hours working simultaneously. The pipe C is twice as faster as B and B is twice as fast as A. The time taken by pipe A alone to fill the tank is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "27 hours"
+     },
+     {
+      "id": "B",
+      "text": "81 hours"
+     },
+     {
+      "id": "C",
+      "text": "12 hours"
+     },
+     {
+      "id": "D",
+      "text": "21 hours"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     45
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "The value of $ \\int_{-a}^{a} f(x) dx $ where $ f(x) = \\frac{7^{x}}{1 + 7^{x}} $, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "a"
+     },
+     {
+      "id": "B",
+      "text": "2a"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{a}{2} $"
+     },
+     {
+      "id": "D",
+      "text": "7a"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     46
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "Mameesh took a loan of Rs 9,00,800 from bank at an interest rate of 6% per annum for 10 years. If she has to pay the loan back with the help of equal monthly installments (EMI). Then, the EMI using reduced balance method is (approx):\n\n(Given: (1.005) $ ^{-120} $=0.5496)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Rs 12,000"
+     },
+     {
+      "id": "B",
+      "text": "Rs 9,000"
+     },
+     {
+      "id": "C",
+      "text": "Rs 10,000"
+     },
+     {
+      "id": "D",
+      "text": "Rs 9,820"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     48
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "Match List-1 with List-2",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(\\mathbf{A})-(\\mathrm{III}),(\\mathbf{B})-(\\mathrm{II}),(\\mathbf{C})-(\\mathrm{IV}),(\\mathbf{D})-(\\mathrm{I})"
+     },
+     {
+      "id": "B",
+      "text": "(\\mathbf{A})-(\\mathrm{III}),(\\mathbf{B})-(\\mathrm{I}),(\\mathbf{C})-(\\mathrm{II}),(\\mathbf{D})-(\\mathrm{IV})"
+     },
+     {
+      "id": "C",
+      "text": "(\\mathbf{A})-(\\mathrm{II}),(\\mathbf{B})-(\\mathrm{I}),(\\mathbf{C})-(\\mathrm{IV}),(\\mathbf{D})-(\\mathrm{III})"
+     },
+     {
+      "id": "D",
+      "text": "(\\mathbf{A})-(\\mathrm{II}),(\\mathbf{B})-(\\mathrm{IV}),(\\mathbf{C})-(\\mathrm{I}),(\\mathbf{D})-(\\mathrm{III})"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     49
+    ],
+    "assets": [
+     {
+      "id": "q45-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/applied-mathematics-2025-06-02-shift-1/q45-table-1.jpg",
+      "page": 49,
+      "alt": "Table for question 45"
+     }
+    ]
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "The amount of money needed to ensure for a prize of Rs 5000 at the beginning of each year indefinitely if money is worth 5% compounded annually is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1,07,500"
+     },
+     {
+      "id": "B",
+      "text": "1,10,000"
+     },
+     {
+      "id": "C",
+      "text": "1,02,500"
+     },
+     {
+      "id": "D",
+      "text": "1,05,000"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     50
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "For 95% confidence interval for a population mean reported to be 132 to 142 with standard deviation $ \\sigma = 17.85 $ then the sample size used in this case, is:\n\n[Given that: $ Z_{.0125} = 1.96 $]",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "36"
+     },
+     {
+      "id": "B",
+      "text": "49"
+     },
+     {
+      "id": "C",
+      "text": "64"
+     },
+     {
+      "id": "D",
+      "text": "81"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     51
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "400 g of apple vinegar has 40% apple juice in it. The amount of apple juice, which should be added to make it 60% in apple vinegar, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     52
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "If $ a_{ij} = i + 3j $, then the matrix of order 2 with elements as $ a_{ij} $\n\n$$ \\begin{bmatrix}4&7\\\\ 5&12\\end{bmatrix} $$\n\n$$ \\begin{bmatrix}3&7\\\\ 5&12\\end{bmatrix} $$\n\n$$ \\begin{bmatrix}4&7\\\\ 5&8\\end{bmatrix} $$\n\n$$ \\begin{bmatrix}3&7\\\\ 5&14\\end{bmatrix} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     54
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

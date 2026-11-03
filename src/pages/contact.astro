@@ -1,0 +1,124 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import SeoIntro from "../components/SeoIntro.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { breadcrumbJsonLd, getPageSeo, parseFaq, type FaqItem } from "../lib/seo";
+
+const PATH = "/contact";
+const DEFAULT_TITLE = "Contact CUET Free Mock Test — Corrections and Support";
+const DEFAULT_DESCRIPTION =
+  "Contact the CUET Free Mock Test team for question corrections, account help, privacy requests, copyright concerns or partnership enquiries.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "How quickly will I get a reply?",
+    answer:
+      "Genuine corrections and account issues are usually reviewed within a few working days. Exam-date questions cannot be answered faster than the official NTA portal, so check there first.",
+  },
+  {
+    question: "How do I report a wrong answer or explanation?",
+    answer:
+      "Open the result, go to solutions, and use the report link under the question. Include the paper name and question number. That creates a moderation item with the question linked automatically.",
+  },
+  {
+    question: "Can you predict my score or college admission?",
+    answer:
+      "No. The site publishes practice scores and site-relative ranks, not official NTA scores or university cut-offs. Admission predictions require verified official data that this site does not claim to have.",
+  },
+  {
+    question: "How do I delete my account and data?",
+    answer:
+      "Email the privacy address from the account you want removed. Include the username or email used to sign up. Account deletion removes the profile and identifies the attempts for deletion under the retention policy.",
+  },
+];
+
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Contact", path: PATH },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: title,
+    description,
+    url: new URL(PATH, site).toString(),
+  },
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={title} description={description} noindex={(seo?.noindex ?? 0) === 1} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Contact"
+    title="Tell us what is broken, unclear or missing"
+    intro="Corrections make the question bank better. Use the report link inside a solution for content errors, or email the right address below for account, privacy and copyright matters."
+    updated="31 October 2026"
+  />
+
+  <SeoIntro html={seo?.intro_html} />
+
+  <article class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-14">
+    <section class="grid gap-4 sm:grid-cols-2">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Content and corrections</p>
+        <h2 class="mt-2 font-bold">Questions, keys and explanations</h2>
+        <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+          Use the report link under the question on the solutions page. It is faster than email because the paper and question are linked automatically.
+        </p>
+        <a class="mt-3 inline-block text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-mock-test">Open the mock library →</a>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">General support</p>
+        <h2 class="mt-2 font-bold">Accounts and site issues</h2>
+        <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+          Email <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:support@cuetfreemocktest.com">support@cuetfreemocktest.com</a> with your username, the page URL and what happened.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Privacy</p>
+        <h2 class="mt-2 font-bold">Data access and deletion</h2>
+        <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+          Email <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:privacy@cuetfreemocktest.com">privacy@cuetfreemocktest.com</a> from the address on your account. See the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/privacy-policy">privacy policy</a> for retention details.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Copyright</p>
+        <h2 class="mt-2 font-bold">Content removal requests</h2>
+        <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+          Email <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:legal@cuetfreemocktest.com">legal@cuetfreemocktest.com</a> with the paper, the material and the right you believe is affected. The item is reviewed before it stays live.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">What to include</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <li>The page URL and, for a question, the paper name and question number.</li>
+        <li>A clear description of the problem and any evidence you can share.</li>
+        <li>For account issues, the username or email used to sign up — never send your password.</li>
+        <li>For copyright, the specific material and the basis of the request.</li>
+      </ul>
+    </section>
+
+    <section class="mt-10 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="font-bold text-amber-900 dark:text-amber-200">What we cannot help with</h2>
+      <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
+        We cannot change an official NTA date, recover an NTA application, confirm a university cut-off or provide an official rank. Those matters belong to NTA and the admitting university. For exam dates and admit cards, use the official NTA CUET portal.
+      </p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <p class="mt-10 text-center text-xs text-neutral-500 dark:text-neutral-400">
+      Independence note: this site is not affiliated with NTA. See the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/disclaimer">disclaimer</a>.
+    </p>
+  </article>
+</BaseLayout>

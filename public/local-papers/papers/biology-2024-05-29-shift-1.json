@@ -1,0 +1,1702 @@
+{
+ "exam": {
+  "id": "local-biology-2024-05-29-shift-1",
+  "slug": "biology-2024-05-29-shift-1",
+  "title": "CUET UG Biology 29 May 2024 Shift 1 Previous Year Paper",
+  "subject": "Biology",
+  "subjectId": "local-biology",
+  "subjectCode": "BIO",
+  "year": 2024,
+  "examDate": "2024-05-29",
+  "shift": "Shift 1",
+  "sourceFile": "Biology_2024-05-29_Shift_1.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 49,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "Who performed experiments on Vicia faba to prove that the DNA replicates semi-conservatively?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Taylor and colleagues"
+     },
+     {
+      "id": "B",
+      "text": "Matthew Meselson"
+     },
+     {
+      "id": "C",
+      "text": "Stahl"
+     },
+     {
+      "id": "D",
+      "text": "Hershey and Chase"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "A thermostable DNA polymerase is isolated from :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Thermus aquaticus"
+     },
+     {
+      "id": "B",
+      "text": "Agrobacterium tumefaciens"
+     },
+     {
+      "id": "C",
+      "text": "E. coli"
+     },
+     {
+      "id": "D",
+      "text": "Salmonella typhimurium Answer: A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "ELISA is based on the principle of :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Antigen - Antigen interaction"
+     },
+     {
+      "id": "B",
+      "text": "B-cells and T-cells interaction"
+     },
+     {
+      "id": "C",
+      "text": "Antigen - Antibody interaction"
+     },
+     {
+      "id": "D",
+      "text": "T-cell - Antibody interaction"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "Which of the following represents a test cross in which half the offspring is heterozygous and half would be homozygous recessive?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "TT×tt"
+     },
+     {
+      "id": "B",
+      "text": "Tt × tt"
+     },
+     {
+      "id": "C",
+      "text": "Tt × T"
+     },
+     {
+      "id": "D",
+      "text": "tt × tt"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "In which phase of cell cycle does replication of DNA take place?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ G_{1} $ phase"
+     },
+     {
+      "id": "B",
+      "text": "M phase"
+     },
+     {
+      "id": "C",
+      "text": "S phase"
+     },
+     {
+      "id": "D",
+      "text": "$ G_{2} $ phase"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "In Hershey and Chase experiment, some viruses grew on medium that contained :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ {}^{35}S, {}^{32}P $"
+     },
+     {
+      "id": "B",
+      "text": "$ {}^{36}S, {}^{34}P $"
+     },
+     {
+      "id": "C",
+      "text": "$ {}^{32}S, {}^{36}P $"
+     },
+     {
+      "id": "D",
+      "text": "$ {}^{34}S, {}^{36}P $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "Which one of the following is not a process of DNA recombinant technology?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Isolation of DNA"
+     },
+     {
+      "id": "B",
+      "text": "RNA interference (RNAi)"
+     },
+     {
+      "id": "C",
+      "text": "Introduction of Restriction endonucleases"
+     },
+     {
+      "id": "D",
+      "text": "Culturing the host cells in a medium at a large scale"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "Which of the following gas is found in the Stratosphere?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Ozone"
+     },
+     {
+      "id": "B",
+      "text": "Carbon dioxide"
+     },
+     {
+      "id": "C",
+      "text": "Methane"
+     },
+     {
+      "id": "D",
+      "text": "Hydrogen"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "In which of the following units is thickness of ozone layer measured?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Dobson"
+     },
+     {
+      "id": "B",
+      "text": "Joule"
+     },
+     {
+      "id": "C",
+      "text": "Newton"
+     },
+     {
+      "id": "D",
+      "text": "Decibel"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Ex-situ conservation includes :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "biosphere reserves"
+     },
+     {
+      "id": "B",
+      "text": "national parks"
+     },
+     {
+      "id": "C",
+      "text": "wildlife sanctuaries"
+     },
+     {
+      "id": "D",
+      "text": "seed banks"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "In a velvet grass seed, the cotyledon is called :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Scutellum"
+     },
+     {
+      "id": "B",
+      "text": "Coleorrhiza"
+     },
+     {
+      "id": "C",
+      "text": "Coleoptile"
+     },
+     {
+      "id": "D",
+      "text": "Testa"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Which of the following is a recessive trait for garden pea plant?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Round seed"
+     },
+     {
+      "id": "B",
+      "text": "Constricted pod"
+     },
+     {
+      "id": "C",
+      "text": "Tall plant"
+     },
+     {
+      "id": "D",
+      "text": "Violet flower"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Nucleosome is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Positively charged DNA wrapped around negatively charged histone octamer"
+     },
+     {
+      "id": "B",
+      "text": "Negatively charged DNA wrapped around positively charged histone octamer"
+     },
+     {
+      "id": "C",
+      "text": "Positively charged DNA wrapped around positively charged histone octamer"
+     },
+     {
+      "id": "D",
+      "text": "Negatively charged DNA wrapped around negatively charged histone octamer Answer: B"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "\"Transforming Principle\" was given by :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Maclyn McCarty"
+     },
+     {
+      "id": "B",
+      "text": "Frederick Griffith"
+     },
+     {
+      "id": "C",
+      "text": "Alfred Hershey"
+     },
+     {
+      "id": "D",
+      "text": "Watson and Crick"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "Which disorder is caused by the substitution of Glutamic acid (Glu) by Valine (Val) at the sixth position of the beta globin chain of the haemoglobin?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Phenylketonuria"
+     },
+     {
+      "id": "B",
+      "text": "Sickle-cell Anaemia"
+     },
+     {
+      "id": "C",
+      "text": "Haemophilia"
+     },
+     {
+      "id": "D",
+      "text": "Thalassemia"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Arrange the following steps of DNA fingerprinting in proper sequence:\n\n(A) Hybridisation using labelled VNTR probe\n\n(B) Separation of DNA fragments by electrophoresis\n\n(C) Digestion of DNA by restriction endonucleases\n\n(D) Blotting of separated DNA fragments to nylon\n\n(E) Isolation of DNA",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(C), (A), (B), (D), (E)"
+     },
+     {
+      "id": "B",
+      "text": "(E), (C), (B), (D), (A)"
+     },
+     {
+      "id": "C",
+      "text": "(B), (C), (D), (E), (A)"
+     },
+     {
+      "id": "D",
+      "text": "(C), (D), (B), (A), (E)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+     },
+     {
+      "id": "B",
+      "text": "(A)- (II), (B)- (I), (C)- (IV), (D)- (III)"
+     },
+     {
+      "id": "C",
+      "text": "(A)- (II), (B)- (III), (C)- (IV), (D)- (I)"
+     },
+     {
+      "id": "D",
+      "text": "(A)- (II), (B)- (IV), (C)- (III), (D)- (I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": [
+     {
+      "id": "q17-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q17-table-1.jpg",
+      "page": 18,
+      "alt": "Table for question 17"
+     }
+    ]
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Streptokinase enzyme is used for :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "removing clot from blood vessels"
+     },
+     {
+      "id": "B",
+      "text": "clarifying fruit juices"
+     },
+     {
+      "id": "C",
+      "text": "synthesis of cholesterol"
+     },
+     {
+      "id": "D",
+      "text": "removing oily stains Answer: A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "Select the incorrect statement:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Chromosome 1 has the most genes and chromosome Y has the fewest."
+     },
+     {
+      "id": "B",
+      "text": "Chromosome 21 has the most genes and chromosome Y has the fewest"
+     },
+     {
+      "id": "C",
+      "text": "Less than 2 percent of the genome codes for proteins."
+     },
+     {
+      "id": "D",
+      "text": "The functions of over 50 percent of discovered genes are unknown"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "Which of the following is not a step of Polymerase Chain Reaction?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Extension"
+     },
+     {
+      "id": "B",
+      "text": "Downstream processing"
+     },
+     {
+      "id": "C",
+      "text": "Annealing"
+     },
+     {
+      "id": "D",
+      "text": "Denaturation"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Which of the following equation is correct about Verhulst-Pearl Logistic Growth?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\mathrm{dN/dt} = (h - \\mathrm{d})\\frac{(\\mathrm{K}-\\mathrm{N})}{\\mathrm{K}} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\mathrm{dN/dt} = \\mathrm{rN}\\frac{(\\mathrm{N}-\\mathrm{K})}{\\mathrm{K}} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\mathrm{dN/dt} = \\mathrm{rN}\\frac{(\\mathrm{K}-\\mathrm{N})}{\\mathrm{K}} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\mathrm{dN/dt} = (h - \\mathrm{d})\\frac{(\\mathrm{N}-\\mathrm{K})}{\\mathrm{K}} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\ (A)\\ - (III),\\ (B)\\ - (IV),\\ (C)\\ - (I),\\ (D)\\ - (II)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": [
+     {
+      "id": "q22-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q22-table-1.jpg",
+      "page": 24,
+      "alt": "Table for question 22"
+     }
+    ]
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "Analogous structures are a result of :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Divergent evolution"
+     },
+     {
+      "id": "B",
+      "text": "Convergent evolution"
+     },
+     {
+      "id": "C",
+      "text": "Genetic drift"
+     },
+     {
+      "id": "D",
+      "text": "Point mutations"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     25
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "Amino acid is attached to which site of tRNA?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Anticodon loop"
+     },
+     {
+      "id": "B",
+      "text": "3' end"
+     },
+     {
+      "id": "C",
+      "text": "5' end"
+     },
+     {
+      "id": "D",
+      "text": "D-loop"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Which one of the following lymphoid organ is large at birth but reduces with age?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Bone marrow"
+     },
+     {
+      "id": "B",
+      "text": "Thymus"
+     },
+     {
+      "id": "C",
+      "text": "Spleen"
+     },
+     {
+      "id": "D",
+      "text": "Peyer's patches"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "Which of the following plays a significant role in our stomach in checking disease causing microbes?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Penicillium notatum"
+     },
+     {
+      "id": "B",
+      "text": "Monascus purpureus"
+     },
+     {
+      "id": "C",
+      "text": "Trichoderma polysporum"
+     },
+     {
+      "id": "D",
+      "text": "Lactobacillus"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Given below are two statements :\n\nStatement I : Whisky, brandy and rum are produced without distillation of the fermented broth.\n\nStatement II : Saccharomyces cerevisiae is called doctor's yeast.\nIn the light of the above statements, choose the correct answer from the options given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Both Statement I and Statement II are true"
+     },
+     {
+      "id": "B",
+      "text": "Both Statement I and Statement II are false"
+     },
+     {
+      "id": "C",
+      "text": "Statement I is true, but Statement II is false"
+     },
+     {
+      "id": "D",
+      "text": "Statement I is false, but Statement II is true"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "Given below is the DNA coding sequence. Its complementary strand would read as :\n\n5'-GTATTACG-3'",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5'-CUT UUTGC-3'"
+     },
+     {
+      "id": "B",
+      "text": "3'-CATAATGC-5'"
+     },
+     {
+      "id": "C",
+      "text": "3'-CUT UUTGC-5'"
+     },
+     {
+      "id": "D",
+      "text": "~5^{\\prime}-CTUTTUGC-3^{\\prime}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "Which of the following statements is not correct for Restriction enzymes?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Exonuleases remove nucleotide from ends of the DNA"
+     },
+     {
+      "id": "B",
+      "text": "Endonucleases make cuts at specific positions within the DNA."
+     },
+     {
+      "id": "C",
+      "text": "Ligases join sticky ends of DNA together."
+     },
+     {
+      "id": "D",
+      "text": "The first restriction endonuclease was Hind II."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (II), (B) - (III), (C) - (IV), (D) - (I)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": [
+     {
+      "id": "q30-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q30-table-1.jpg",
+      "page": 32,
+      "alt": "Table for question 30"
+     }
+    ]
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Which one of the following is not associated with megasporangium?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Funicle"
+     },
+     {
+      "id": "B",
+      "text": "Integument"
+     },
+     {
+      "id": "C",
+      "text": "Generative cell"
+     },
+     {
+      "id": "D",
+      "text": "Micropyle"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "Which of the following does not constitute accessory duct of female reproductive system?\n\nWhich of the following does not constitute accessory duct of female reproductive system?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Fallopian tubes"
+     },
+     {
+      "id": "B",
+      "text": "Uterus"
+     },
+     {
+      "id": "C",
+      "text": "Cervix"
+     },
+     {
+      "id": "D",
+      "text": "Vagina"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     34
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "The female external genitalia include:\n\n(A) Mons publis\n\n(B) Hymen\n\n(C) Mammary ducts\n\n(D) Clitoris\n\n(E) Cervix\n\nChoose the correct answer from the options given below:\n\nThe female external genitalia include:\n\n(A) Mons publis\n\n(B) Hymen\n\n(C) Mammary ducts\n\n(D) Clitoris\n\n(E) Cervix",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(B), (D) and (E) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(C), (D) and (E) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     35
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Select the organ of female reproductive system where the sperm is not transported at the time of coitus :\n\nSelect the organ of female reproductive system where the sperm is not transported at the time of coitus :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Cervix"
+     },
+     {
+      "id": "B",
+      "text": "Ovary"
+     },
+     {
+      "id": "C",
+      "text": "Uterus"
+     },
+     {
+      "id": "D",
+      "text": "Fallopian tube"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     36
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "Which of the following does not take place before ovulation in human female?\nWhich of the following does not take place before ovulation in human female?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "The secretion of LH and FSH increases during follicular phase."
+     },
+     {
+      "id": "B",
+      "text": "The corpus luteum secretes large amounts of progesterone."
+     },
+     {
+      "id": "C",
+      "text": "LH and FSH attains a peak level in the middle of the cycle"
+     },
+     {
+      "id": "D",
+      "text": "Maximum secretion of LH induces rupture of Graafian follicle."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Name the population interaction which takes place when one species is benefitted and another species has no effect (no benefit no harm).\n\nName the population interaction which takes place when one species is benefitted and another species has no effect (no benefit no harm).",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Competition"
+     },
+     {
+      "id": "B",
+      "text": "Predation"
+     },
+     {
+      "id": "C",
+      "text": "Commensalism"
+     },
+     {
+      "id": "D",
+      "text": "Amensalism"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     41
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "Identify the incorrect matching from the following population interaction:\n\nIdentify the incorrect matching from the following population interaction:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     42,
+     43
+    ],
+    "assets": [
+     {
+      "id": "q38-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q38-table-1.jpg",
+      "page": 43,
+      "alt": "Table for question 38"
+     },
+     {
+      "id": "q38-table-2",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q38-table-2.jpg",
+      "page": 43,
+      "alt": "Table for question 38"
+     }
+    ]
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "Given below are two statements :\n\nStatement I: An orchid grows as an epiphyte on a mango branch where mango tree does not derive any apparent benefit from it.\n\nStatement II: A orchid growing on a mango tree is an example of commensalism.\n\nIn the light of the above statements, choose the correct answer from the options given below:\n\nGiven below are two statements :\n\nStatement I: An orchid grows as an epiphyte on a mango branch where mango tree does not derive any apparent benefit from it.\n\nStatement II: A orchid growing on a mango tree is an example of commensalism.\n\nIn the light of the above statements, choose the correct answer from the options given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Both Statement I and Statement II are true"
+     },
+     {
+      "id": "B",
+      "text": "Both Statement I and Statement II are false"
+     },
+     {
+      "id": "C",
+      "text": "Statement I is true, but Statement II is false"
+     },
+     {
+      "id": "D",
+      "text": "Statement I is false, but Statement II is true"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     44
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Match List-I with List-II:\n\nChoose the correct answer from the options given below:\nMatch List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)- (IV), (B)- (II), (C)- (I), (D)- (III)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (II), (B) - (III), (C) - (I), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (III), (B) - (II), (C) - (IV), (D) - (I)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III) Answer: D"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     45,
+     46
+    ],
+    "assets": [
+     {
+      "id": "q40-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q40-table-1.jpg",
+      "page": 45,
+      "alt": "Table for question 40"
+     },
+     {
+      "id": "q40-table-2",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q40-table-2.jpg",
+      "page": 45,
+      "alt": "Table for question 40"
+     },
+     {
+      "id": "q40-table-3",
+      "kind": "table",
+      "path": "/local-papers/assets/biology-2024-05-29-shift-1/q40-table-3.jpg",
+      "page": 46,
+      "alt": "Table for question 40"
+     }
+    ]
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Select the incorrect pair in response to abiotic factors :\n\nSelect the incorrect pair in response to abiotic factors :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "We maintain a constant body temperature of $ 37^{\\circ} $C - Conformer"
+     },
+     {
+      "id": "B",
+      "text": "Every winter Keoladeo National Park hosts the birds coming from Siberia - Migration"
+     },
+     {
+      "id": "C",
+      "text": "Under unfavourable conditions many zooplankton species in ponds enter the stage of suspended development - Diapause"
+     },
+     {
+      "id": "D",
+      "text": "If a predator is too efficient it overexploits its prey - Extinction If a predator is too efficient it overexploits its prey - Extinction Answer: A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     47
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "Which one is the correct example of hermaphrodites?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Tapeworm and leech"
+     },
+     {
+      "id": "B",
+      "text": "Cockroach and frog"
+     },
+     {
+      "id": "C",
+      "text": "Cockroach and earthworm"
+     },
+     {
+      "id": "D",
+      "text": "Carp fish and pigeon"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     48
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "In diploid organisms, which of the following undergoes meiosis?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Vegetative cell"
+     },
+     {
+      "id": "B",
+      "text": "Sporogenous tissue"
+     },
+     {
+      "id": "C",
+      "text": "Pollen grain"
+     },
+     {
+      "id": "D",
+      "text": "Synergids"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     49
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "Who proposed that the first form of life could have come from pre-existing non-living organic molecules?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Darwin"
+     },
+     {
+      "id": "B",
+      "text": "Oparin and Haldane"
+     },
+     {
+      "id": "C",
+      "text": "Lamarck"
+     },
+     {
+      "id": "D",
+      "text": "Thomas Malthus"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     50
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "Given below are two statements :\n\nStatement I: In a bioreactor, small volume of cultures are developed in which useful bio-products are produced.\n\nStatement II : In downstream processing, the products formulated with suitable preservatives are ready for marketing without testing of their quality.\n\nIn the light of the above statements, choose the correct answer from the options given below:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Both Statement I and Statement II are true"
+     },
+     {
+      "id": "B",
+      "text": "Both Statement I and Statement II are false"
+     },
+     {
+      "id": "C",
+      "text": "Statement I is true, but Statement II is false"
+     },
+     {
+      "id": "D",
+      "text": "Statement I is false, but Statement II is true"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     51
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "The method where an ovum is transferred from a donor into the fallopian tube of another female is _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "IUI"
+     },
+     {
+      "id": "B",
+      "text": "ICSI"
+     },
+     {
+      "id": "C",
+      "text": "GIFT"
+     },
+     {
+      "id": "D",
+      "text": "ZIFT"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     52
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "When one of the parents has 'A' blood group and the other parent has 'O' blood group, then their child can have blood group.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Only 'A'"
+     },
+     {
+      "id": "B",
+      "text": "Only 'O'"
+     },
+     {
+      "id": "C",
+      "text": "Both 'A' and 'O'"
+     },
+     {
+      "id": "D",
+      "text": "Either 'A' or 'O"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     53
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "The size of VNTR varies from :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.1 to 20 kb"
+     },
+     {
+      "id": "B",
+      "text": "0.1 to 10 kb"
+     },
+     {
+      "id": "C",
+      "text": "0.2 to 15 kb"
+     },
+     {
+      "id": "D",
+      "text": "0.2 to 10 kb"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     54
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "The common approach(es) for the treatment of cancer is/are :\n\n(A) Vaccination\n\n(B) Surgery\n\n(C) Physiotherapy\n\n(D) Radiation therapy\n\n(E) Immunotherapy",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) only"
+     },
+     {
+      "id": "B",
+      "text": "(B), (D) and (E) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A) and (C) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     55
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "Which of the following controls/control the growth of bollworms ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "CryIAc and CryIIAbgenes"
+     },
+     {
+      "id": "B",
+      "text": "CryIAb gene"
+     },
+     {
+      "id": "C",
+      "text": "RNAi"
+     },
+     {
+      "id": "D",
+      "text": "dsRNA"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     56
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

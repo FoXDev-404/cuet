@@ -1,0 +1,298 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqSection from "../components/FaqSection.astro";
+import LocalPaperCard from "../components/LocalPaperCard.astro";
+import { all } from "../lib/db";
+import { parseMarkingScheme, renderRichText } from "../lib/content";
+import { getLocalPaperYears, getLocalPapers } from "../lib/local-papers";
+import { listPyqYears } from "../lib/pyq";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  getPageSeo,
+  itemListJsonLd,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/cuet-ug-previous-year-papers";
+const DEFAULT_TITLE = "CUET UG Previous Year Papers — Timed PYQ Practice";
+const DEFAULT_DESCRIPTION =
+  "Practise CUET UG previous-year papers from 2021–2025 as timed mocks with server scoring, detailed solutions and a post-submit review.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "Where can I find official CUET UG previous year papers?",
+    answer:
+      "Check the official NTA CUET portal and the information bulletins for the relevant session. This site does not host the original PDFs; papers appear as practice only when their year, shift and source can be recorded responsibly.",
+  },
+  {
+    question: "Are the PYQ mocks on this site actual exam papers?",
+    answer:
+      "They are practice versions of previous-year papers, prepared for timed online attempts. For the official paper and marking scheme, always check the NTA portal and the current bulletin.",
+  },
+  {
+    question: "Do previous-year questions repeat in CUET UG?",
+    answer:
+      "Exact questions rarely repeat, but concepts, formats and difficulty patterns do. The value of a PYQ is rehearsal: you learn how the paper allocates time and how distractor options are built.",
+  },
+  {
+    question: "Should I attempt a PYQ before finishing the syllabus?",
+    answer:
+      "Yes, one early paper is useful as a diagnostic even if you have not finished everything. Expect a low score; the section breakdown is the output you want, not a polished result.",
+  },
+  {
+    question: "Can I retake a previous-year paper?",
+    answer:
+      "Yes. Retakes are scored and reviewed normally, but only the first submitted attempt counts on the leaderboard. Use the retake to check whether your error review actually worked.",
+  },
+  {
+    question: "Why is a paper marked noindex or missing?",
+    answer:
+      "Papers stay out of search until the question set, solutions and page introduction are complete. Empty archives are deliberately not indexed.",
+  },
+];
+
+const pyqs = await all<{
+  id: number;
+  title: string;
+  slug: string;
+  duration_min: number;
+  total_marks: number;
+  marking_scheme: string;
+  pyq_year: number | null;
+  pyq_shift: string | null;
+  question_count: number;
+  attempt_count: number;
+  intro_html: string | null;
+} >(
+  `SELECT m.id, m.title, m.slug, m.duration_min, m.total_marks, m.marking_scheme,
+          m.pyq_year, m.pyq_shift, m.intro_html,
+          (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
+          (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count
+   FROM mock_tests m
+   WHERE m.type = 'pyq' AND m.status = 'published' AND m.deleted_at IS NULL
+     AND m.practice_paper_slug IS NULL
+   ORDER BY m.pyq_year DESC, m.pyq_shift, m.id DESC
+   LIMIT 60`,
+);
+
+const localPapers = getLocalPapers();
+const localYears = getLocalPaperYears();
+const pyqYears = await listPyqYears();
+
+const yearMap = new Map<number, { year: number; playable_count: number }>();
+for (const row of pyqYears) yearMap.set(row.year, { ...row });
+for (const row of localYears) {
+  const existing = yearMap.get(row.year);
+  yearMap.set(row.year, {
+    year: row.year,
+    playable_count: (existing?.playable_count ?? 0) + row.playable_count,
+  });
+}
+const playableYears = [...yearMap.values()]
+  .filter((row) => row.playable_count > 0)
+  .sort((a, b) => b.year - a.year);
+
+const totalPapers = pyqs.length + localPapers.length;
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const noindex = (seo?.noindex ?? 0) === 1 || totalPapers === 0;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Previous-year papers", path: PATH },
+  ]),
+  articleJsonLd({ site, title, description, path: PATH, updated: seo?.updated_at ?? null }),
+  ...(totalPapers > 0
+    ? [
+        itemListJsonLd(site, [
+          ...pyqs.map((paper) => ({ name: paper.title, path: `/mock/${paper.slug}` })),
+          ...localPapers.map((paper) => ({ name: paper.title, path: paper.path })),
+        ]),
+      ]
+    : []),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const steps = [
+  { title: "Take it timed first", body: "Use the instructions page and the countdown. A paper attempted without a clock tells you very little about exam readiness." },
+  { title: "Mark every guess", body: "Note which answers were confident, eliminated or blind. The result page separates correct from lucky." },
+  { title: "Review before scoring", body: "Read the solution for every wrong and skipped question, even the ones you got right by elimination." },
+  { title: "Re-attempt after a gap", body: "Wait at least a week, then retake only the questions you missed. If the same unit fails again, it is a concept gap, not carelessness." },
+];
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Previous-year papers"
+    title="Rehearse the paper, not a screenshot of it"
+    intro="A previous-year paper is most useful when it is attempted under a clock, graded after submit, and reviewed question by question. Every paper here is attempted on the ranked engine, with a server deadline, saved result and first-attempt leaderboard."
+  />
+
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <section class="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="font-bold text-amber-900 dark:text-amber-200">Source and copyright policy</h2>
+      <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
+        We do not host coaching material or the original PDF files. A paper is published here only after its year, shift and source are recorded. If you believe a paper is mislabelled, report it and we will review the entry.
+      </p>
+    </section>
+
+    {playableYears.length > 0 ? (
+      <section class="mt-8">
+        <h2 class="text-lg font-bold">Browse by year</h2>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {playableYears.map((row) => (
+            <a class="rounded-full border border-neutral-300 bg-white px-3.5 py-1.5 text-sm font-semibold hover:border-brand-300 hover:bg-brand-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:border-brand-700 dark:hover:bg-brand-950/40" href={`/pyq/${row.year}`}>
+              {row.year} <span class="text-xs font-normal text-neutral-500 dark:text-neutral-400">({row.playable_count})</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ) : null}
+
+    <section class="mt-10">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight">PYQ library</h2>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+            {totalPapers > 0
+              ? `${totalPapers} paper${totalPapers === 1 ? "" : "s"} available${localPapers.length > 0 ? ` · ${localPapers.length} previous-year paper${localPapers.length === 1 ? "" : "s"} in the ranked practice library` : ""}.`
+              : "The archive is being rebuilt paper by paper."}
+          </p>
+        </div>
+        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-mock-test">All mock tests →</a>
+      </div>
+
+      {totalPapers === 0 ? (
+        <div class="mt-5 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
+          <h3 class="font-bold">No PYQ paper is published yet</h3>
+          <p class="mx-auto mt-2 max-w-xl text-sm leading-6 text-neutral-500 dark:text-neutral-400">
+            The archive is intentionally empty rather than filled with unverified or copied papers. In the meantime, use the original subject mocks to rehearse the same timing and review loop.
+          </p>
+          <div class="mt-4 flex flex-wrap justify-center gap-2">
+            <a class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse mock tests</a>
+            <a class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" href="/cuet-ug-exam-pattern">Read the pattern guide</a>
+          </div>
+        </div>
+      ) : (
+        <>
+          {pyqs.length > 0 ? (
+            <div class="mt-5 grid gap-4 md:grid-cols-2">
+              {pyqs.map((paper) => {
+                const marking = parseMarkingScheme(paper.marking_scheme);
+                return (
+                  <article class="flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                      {paper.pyq_year ? (
+                        <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{paper.pyq_year}</span>
+                      ) : null}
+                      {paper.pyq_shift ? (
+                        <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{paper.pyq_shift}</span>
+                      ) : null}
+                      <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">PYQ</span>
+                    </div>
+                    <h3 class="mt-3 text-lg font-bold leading-snug">
+                      <a class="hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${paper.slug}`}>{paper.title}</a>
+                    </h3>
+                    <dl class="mt-4 grid grid-cols-3 gap-2 text-sm">
+                      <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                        <dt class="text-[11px] uppercase tracking-wide text-neutral-500">Questions</dt>
+                        <dd class="font-bold">{paper.question_count}</dd>
+                      </div>
+                      <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                        <dt class="text-[11px] uppercase tracking-wide text-neutral-500">Minutes</dt>
+                        <dd class="font-bold">{paper.duration_min}</dd>
+                      </div>
+                      <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                        <dt class="text-[11px] uppercase tracking-wide text-neutral-500">Marks</dt>
+                        <dd class="font-bold">{paper.total_marks}</dd>
+                      </div>
+                    </dl>
+                    <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
+                      +{marking.correct} correct · {marking.wrong} wrong · {paper.attempt_count} attempt{paper.attempt_count === 1 ? "" : "s"}
+                    </p>
+                    <a class="mt-4 inline-flex w-fit rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.slug}/instructions`}>
+                      Start this paper →
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          ) : null}
+
+          {localPapers.length > 0 ? (
+            <div class="mt-10">
+              <div class="flex flex-wrap items-end justify-between gap-3">
+                <h3 class="font-bold">Previous-year practice papers</h3>
+                <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/practice">Open the practice library →</a>
+              </div>
+              <div class="mt-4 grid gap-4 md:grid-cols-2">
+                {localPapers.map((paper) => <LocalPaperCard paper={paper} />)}
+              </div>
+            </div>
+          ) : null}
+        </>
+      )}
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">How to use a PYQ properly</h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        {steps.map((step, index) => (
+          <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+            <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Step {index + 1}</p>
+            <h3 class="mt-2 font-bold">{step.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">What a PYQ can and cannot tell you</h2>
+      <div class="mt-3 grid gap-4 sm:grid-cols-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <div>
+          <p class="font-semibold text-neutral-900 dark:text-neutral-100">It can</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>show the rhythm of a full paper</li>
+            <li>reveal how options are designed</li>
+            <li>test whether your revision survives a clock</li>
+            <li>give you a realistic section split</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-neutral-900 dark:text-neutral-100">It cannot</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>guarantee the next paper's difficulty</li>
+            <li>predict chapter weightage for your session</li>
+            <li>replace the current official syllabus</li>
+            <li>compensate for a copied, unverified source</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Build the review habit first</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">Even without a PYQ archive, a timed original paper gives you the same diagnostic loop.</p>
+        </div>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Practice now</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

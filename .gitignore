@@ -1,0 +1,30 @@
+# Dependencies and build output
+node_modules/
+dist/
+.astro/
+test-results/
+playwright-report/
+
+# Local Cloudflare/Wrangler state
+.wrangler/
+
+# Local secrets
+.env
+.dev.vars
+
+# Logs
+*.log
+
+# Generated browser/QA artifacts
+.playwright-mcp/
+
+# D1 exports (workflow artifacts)
+backup-*.sql
+
+# PaddleOCR raw exports and caches are archived outside the repo.
+# Restore them before rebuilding the practice library from source scans.
+tools/ocr/OCR DATA/
+
+# OS junk
+.DS_Store
+Thumbs.db

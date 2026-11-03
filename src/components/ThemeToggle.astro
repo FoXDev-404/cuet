@@ -1,0 +1,116 @@
+---
+interface Props {
+  class?: string;
+  /** Extra class for the surrounding wrapper when a label is shown. */
+  label?: boolean;
+}
+
+const { class: className = "", label = false } = Astro.props;
+---
+
+<div class:list={["flex items-center gap-2", className]} data-theme-toggle-host>
+  {label ? <span class="text-xs font-semibold text-[var(--ink-2)]">Theme</span> : null}
+  <button
+    type="button"
+    class="theme-toggle"
+    data-theme-toggle
+    aria-label="Theme: system. Activate to change."
+    title="Theme: system"
+  >
+    <svg class="icon-system h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+      <path d="M8 20h8M12 16v4"></path>
+    </svg>
+    <svg class="icon-light h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+    </svg>
+    <svg class="icon-dark h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  type ThemeMode = "system" | "light" | "dark";
+
+  const STORAGE_KEY = "theme";
+  const ORDER: ThemeMode[] = ["system", "light", "dark"];
+
+  function storedMode(): ThemeMode {
+    try {
+      const value = localStorage.getItem(STORAGE_KEY);
+      return value === "light" || value === "dark" ? value : "system";
+    } catch {
+      return "system";
+    }
+  }
+
+  function syncThemeColor(_mode: ThemeMode): void {
+    const background = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+    if (!background) return;
+    document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((meta) => {
+      meta.setAttribute("content", background);
+    });
+  }
+
+  function apply(mode: ThemeMode, persist: boolean): void {
+    const root = document.documentElement;
+    if (mode === "system") {
+      root.removeAttribute("data-theme");
+    } else {
+      root.setAttribute("data-theme", mode);
+    }
+    if (persist) {
+      try {
+        if (mode === "system") localStorage.removeItem(STORAGE_KEY);
+        else localStorage.setItem(STORAGE_KEY, mode);
+      } catch {
+        /* Private mode or blocked storage must not crash the page. */
+      }
+    }
+    syncThemeColor(mode);
+    syncButtons(mode);
+    window.dispatchEvent(new CustomEvent("themechange", { detail: { mode } }));
+  }
+
+  function syncButtons(mode: ThemeMode): void {
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+      const next = ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length];
+      button.setAttribute("aria-label", `Theme: ${mode}. Activate for ${next}.`);
+      button.setAttribute("title", `Theme: ${mode}`);
+      button.dataset.themeMode = mode;
+    });
+  }
+
+  function init(): void {
+    const mode = storedMode();
+    syncThemeColor(mode);
+    syncButtons(mode);
+
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+      if (button.dataset.bound === "1") return;
+      button.dataset.bound = "1";
+      button.addEventListener("click", () => {
+        const current = storedMode();
+        const next = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length];
+        apply(next, true);
+      });
+    });
+
+    window.addEventListener("storage", (event) => {
+      if (event.key !== STORAGE_KEY && event.key !== null) return;
+      apply(storedMode(), false);
+    });
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => {
+      if (storedMode() === "system") syncThemeColor("system");
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+</script>

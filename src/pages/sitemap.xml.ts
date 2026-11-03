@@ -1,0 +1,260 @@
+import type { APIRoute } from "astro";
+import { all } from "../lib/db";
+import { getLocalPapers, getLocalPaperYears, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
+import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
+import { siteUrl } from "../lib/site-url";
+
+type UrlEntry = { loc: string; lastmod?: string | null; changefreq?: string; priority?: string };
+
+function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+export const GET: APIRoute = async ({ request }) => {
+  const base = siteUrl(request.url);
+  const urls: UrlEntry[] = [];
+  const add = (path: string, options: { lastmod?: string | null; changefreq?: string; priority?: string } = {}) => {
+    urls.push({ loc: new URL(path, base).toString(), ...options });
+  };
+
+  let mocks: {
+    slug: string;
+    published_at: string | null;
+    updated_at: string | null;
+    practice_paper_slug: string | null;
+    eligible: number;
+  }[] = [];
+  let subjects: { slug: string; question_count: number; mock_count: number }[] = [];
+  let syllabusSubjects: { slug: string; topic_count: number; question_count: number }[] = [];
+  let topics: { subject_slug: string; topic_slug: string; question_count: number }[] = [];
+  let pyqYears: { year: number; playable_count: number }[] = [];
+  let pyqSubjects: { year: number; subject_slug: string; playable_count: number }[] = [];
+  let posts: { slug: string; updated_at: string | null; published_at: string | null }[] = [];
+  let sharedQuestions: SeoIndexableQuestion[] = [];
+  let playablePyqCount = 0;
+  let rankedMockCount = 0;
+  const localPapers = getLocalPapers();
+  const localYears = getLocalPaperYears();
+  const localSubjectSlugs = new Set(localPapers.map((paper) => paper.subject.slug));
+  const hasPracticeContent = (slug: string, questionCount: number, paperCount: number) =>
+    questionCount > 0 || paperCount > 0 || localSubjectSlugs.has(slug);
+
+  try {
+    mocks = await all(
+      `SELECT m.slug, m.published_at, m.updated_at, m.practice_paper_slug,
+              (SELECT COUNT(*) FROM attempts a
+                WHERE a.mock_id = m.id AND a.status = 'submitted' AND a.is_first_attempt = 1) AS eligible
+       FROM mock_tests m
+       WHERE m.status = 'published' AND m.deleted_at IS NULL
+         AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
+       ORDER BY m.published_at DESC, m.id DESC`,
+    );
+    subjects = await all(
+      `SELECT s.slug,
+              (SELECT COUNT(DISTINCT q.id) FROM questions q
+                JOIN mock_questions_current mq ON mq.question_id = q.id
+                JOIN mock_tests m ON m.id = mq.mock_id
+                WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL
+                  AND m.status = 'published' AND m.deleted_at IS NULL) AS question_count,
+              (SELECT COUNT(DISTINCT m.id) FROM mock_tests m
+                WHERE m.status = 'published' AND m.deleted_at IS NULL
+                  AND (m.subject_id = s.id OR EXISTS (
+                    SELECT 1 FROM mock_questions_current mq JOIN questions q2 ON q2.id = mq.question_id
+                    WHERE mq.mock_id = m.id AND q2.subject_id = s.id
+                  ))) AS mock_count
+       FROM subjects s JOIN exams e ON e.id = s.exam_id
+       WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
+    );
+    syllabusSubjects = await all(
+      `SELECT s.slug,
+              (SELECT COUNT(*) FROM topics t WHERE t.subject_id = s.id) AS topic_count,
+              (SELECT COUNT(DISTINCT q.id) FROM questions q
+                JOIN mock_questions_current mq ON mq.question_id = q.id
+                JOIN mock_tests m ON m.id = mq.mock_id
+                WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL
+                  AND m.status = 'published' AND m.deleted_at IS NULL) AS question_count
+       FROM subjects s JOIN exams e ON e.id = s.exam_id
+       WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
+    );
+    topics = await all(
+      `SELECT s.slug AS subject_slug, t.slug AS topic_slug,
+              (SELECT COUNT(DISTINCT q.id) FROM questions q
+                JOIN mock_questions_current mq ON mq.question_id = q.id
+                JOIN mock_tests m ON m.id = mq.mock_id
+                WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
+                  AND m.status = 'published' AND m.deleted_at IS NULL) AS question_count
+       FROM topics t
+       JOIN subjects s ON s.id = t.subject_id
+       JOIN exams e ON e.id = s.exam_id
+       WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
+    );
+    pyqYears = await all(
+      `SELECT p.year, COUNT(DISTINCT m.id) AS playable_count
+       FROM pyq_papers p
+       JOIN mock_tests m ON m.pyq_paper_id = p.id AND m.status = 'published' AND m.deleted_at IS NULL
+       WHERE p.status = 'published' AND p.deleted_at IS NULL
+       GROUP BY p.year
+       ORDER BY p.year DESC`,
+    );
+    pyqSubjects = await all(
+      `SELECT p.year, s.slug AS subject_slug, COUNT(DISTINCT m.id) AS playable_count
+       FROM pyq_papers p
+       JOIN subjects s ON s.id = p.subject_id
+       JOIN mock_tests m ON m.pyq_paper_id = p.id AND m.status = 'published' AND m.deleted_at IS NULL
+       WHERE p.status = 'published' AND p.deleted_at IS NULL
+       GROUP BY p.year, s.slug`,
+    );
+    posts = await all(
+      `SELECT slug, updated_at, published_at FROM blog_posts
+       WHERE status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
+         AND length(body) >= 400
+       ORDER BY published_at DESC, id DESC`,
+    );
+    playablePyqCount = pyqYears.reduce((total, year) => total + year.playable_count, 0);
+    rankedMockCount = mocks.filter((mock) => mock.eligible > 0).length;
+  } catch (error) {
+    console.error("sitemap query failed", error);
+  }
+
+  // Kept separate so a sharing-policy failure cannot drop the rest of the
+  // sitemap. Shared questions are included only when they pass the same
+  // `seoEligible` check the page uses.
+  try {
+    sharedQuestions = await listSeoIndexableQuestions();
+  } catch (error) {
+    console.error("sitemap shared-question query failed", error);
+  }
+
+  add("/", { changefreq: "weekly", priority: "1.0" });
+  if (mocks.length > 0 || localPapers.length > 0) add("/cuet-ug-mock-test", { changefreq: "weekly", priority: "0.9" });
+  if (subjects.some((subject) => hasPracticeContent(subject.slug, subject.question_count, subject.mock_count))) {
+    add("/cuet-mock-test", { changefreq: "weekly", priority: "0.8" });
+  }
+  add("/cuet-ug-syllabus", { changefreq: "monthly", priority: "0.9" });
+  add("/cuet-ug-exam-pattern", { changefreq: "monthly", priority: "0.9" });
+  add("/cuet-ug-marking-scheme", { changefreq: "monthly", priority: "0.8" });
+  add("/cuet-ug-important-dates", { changefreq: "weekly", priority: "0.8" });
+  if (playablePyqCount > 0 || localPapers.length > 0) {
+    add("/cuet-ug-previous-year-papers", { changefreq: "monthly", priority: "0.8" });
+  }
+  if (localPapers.length > 0) {
+    add("/practice", { changefreq: "weekly", priority: "0.8" });
+  }
+  if (posts.length > 0) add("/blog", { changefreq: "weekly", priority: "0.7" });
+  if (rankedMockCount > 0) add("/leaderboard", { changefreq: "daily", priority: "0.6" });
+  add("/about", { changefreq: "yearly", priority: "0.4" });
+  add("/contact", { changefreq: "yearly", priority: "0.4" });
+  add("/privacy-policy", { changefreq: "yearly", priority: "0.3" });
+  add("/terms", { changefreq: "yearly", priority: "0.3" });
+  add("/disclaimer", { changefreq: "yearly", priority: "0.3" });
+
+  for (const subject of subjects) {
+    if (hasPracticeContent(subject.slug, subject.question_count, subject.mock_count)) {
+      add(`/cuet-mock-test/${subject.slug}`, { changefreq: "weekly", priority: "0.7" });
+    }
+  }
+
+  for (const subject of syllabusSubjects) {
+    if (subject.topic_count > 0 || hasPracticeContent(subject.slug, subject.question_count, 0)) {
+      add(`/cuet-ug-syllabus/${subject.slug}`, { changefreq: "monthly", priority: "0.6" });
+    }
+  }
+
+  for (const topic of topics) {
+    if (topic.question_count > 0) {
+      add(`/cuet-mock-test/${topic.subject_slug}/${topic.topic_slug}`, {
+        changefreq: "weekly",
+        priority: "0.6",
+      });
+    }
+  }
+
+  const pyqYearPaths = new Set(
+    pyqYears.filter((year) => year.playable_count > 0).map((year) => `/pyq/${year.year}`),
+  );
+  for (const year of localYears) {
+    if (year.playable_count > 0) pyqYearPaths.add(`/pyq/${year.year}`);
+  }
+  for (const path of pyqYearPaths) {
+    add(path, { changefreq: "monthly", priority: "0.6" });
+  }
+
+  const pyqSubjectPaths = new Set(
+    pyqSubjects
+      .filter((paper) => paper.playable_count > 0)
+      .map((paper) => `/pyq/${paper.year}/${paper.subject_slug}`),
+  );
+  for (const paper of localPapers) {
+    pyqSubjectPaths.add(`/pyq/${paper.year}/${paper.subject.slug}`);
+  }
+  for (const path of pyqSubjectPaths) {
+    add(path, { changefreq: "monthly", priority: "0.5" });
+  }
+
+  for (const paper of localPapers) {
+    add(paper.path, {
+      lastmod: LOCAL_LIBRARY_ADDED_AT,
+      changefreq: "monthly",
+      priority: "0.6",
+    });
+  }
+
+  for (const post of posts) {
+    add(`/blog/${post.slug}`, {
+      lastmod: post.updated_at ?? post.published_at,
+      changefreq: "monthly",
+      priority: "0.6",
+    });
+  }
+
+  for (const mock of mocks) {
+    // Imported previous-year papers are canonical on /practice/<slug>, so only
+    // their leaderboard is a distinct indexable URL.
+    if (!mock.practice_paper_slug) {
+      add(`/mock/${mock.slug}`, {
+        lastmod: mock.updated_at ?? mock.published_at,
+        changefreq: "weekly",
+        priority: "0.8",
+      });
+    }
+    if (mock.eligible > 0) {
+      add(`/leaderboard/${mock.slug}`, {
+        lastmod: mock.updated_at ?? mock.published_at,
+        changefreq: "daily",
+        priority: "0.5",
+      });
+    }
+  }
+
+  for (const question of sharedQuestions) {
+    add(question.path, {
+      lastmod: question.lastmod,
+      changefreq: "monthly",
+      priority: "0.5",
+    });
+  }
+
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls
+  .map(
+    (entry) => `  <url>
+    <loc>${escapeXml(entry.loc)}</loc>${entry.lastmod ? `\n    <lastmod>${escapeXml(entry.lastmod.slice(0, 10))}</lastmod>` : ""}${entry.changefreq ? `\n    <changefreq>${entry.changefreq}</changefreq>` : ""}${entry.priority ? `\n    <priority>${entry.priority}</priority>` : ""}
+  </url>`,
+  )
+  .join("\n")}
+</urlset>
+`;
+
+  return new Response(body, {
+    headers: {
+      "content-type": "application/xml; charset=utf-8",
+      "cache-control": "public, max-age=3600",
+    },
+  });
+};

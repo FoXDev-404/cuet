@@ -1,0 +1,266 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { all } from "../../../lib/db";
+import { formatDate, parseOptions, renderRichText } from "../../../lib/content";
+import { dashboardNav } from "../../../lib/navigation";
+import { imageDimensionsForUrls } from "../../../lib/media-dimensions";
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect(`/login?next=${encodeURIComponent("/dashboard/wrong-questions/retry")}`, 303);
+
+const rows = await all<{
+  id: number;
+  text: string;
+  options: string;
+  image_url: string | null;
+  image_alt: string | null;
+  subject_name: string;
+  wrong_count: number;
+  last_wrong: string;
+  passage_body: string | null;
+  passage_image_url: string | null;
+  passage_image_alt: string | null;
+}>(
+  `SELECT q.id, q.text, q.options, q.image_url, q.image_alt, s.name AS subject_name,
+          COUNT(*) AS wrong_count, MAX(a.submitted_at) AS last_wrong,
+          p.body AS passage_body, p.image_url AS passage_image_url, p.image_alt AS passage_image_alt
+   FROM attempt_answers aa
+   JOIN attempts a ON a.id = aa.attempt_id
+   JOIN questions q ON q.id = aa.question_id
+   JOIN subjects s ON s.id = q.subject_id
+   LEFT JOIN passages p ON p.id = q.passage_id
+   WHERE a.user_id = ? AND a.status IN ('submitted', 'expired')
+     AND aa.selected IS NOT NULL AND aa.is_correct = 0 AND q.deleted_at IS NULL
+   GROUP BY q.id
+   ORDER BY wrong_count DESC, last_wrong DESC
+   LIMIT 20`,
+  user.id,
+);
+
+const dimensions = await imageDimensionsForUrls(
+  rows.flatMap((row) => [
+    row.image_url,
+    row.passage_image_url,
+    ...parseOptions(row.options).map((option) => option.image_url),
+  ]),
+);
+const questions = rows.map((row) => ({
+  ...row,
+  options: parseOptions(row.options).map((option) => {
+    const size = option.image_url ? dimensions.get(option.image_url) : undefined;
+    return {
+      ...option,
+      image_width: size?.width ?? null,
+      image_height: size?.height ?? null,
+    };
+  }),
+  image_width: row.image_url ? dimensions.get(row.image_url)?.width ?? null : null,
+  image_height: row.image_url ? dimensions.get(row.image_url)?.height ?? null : null,
+  passage_image_width: row.passage_image_url
+    ? dimensions.get(row.passage_image_url)?.width ?? null
+    : null,
+  passage_image_height: row.passage_image_url
+    ? dimensions.get(row.passage_image_url)?.height ?? null
+    : null,
+}));
+const letters = ["A", "B", "C", "D", "E", "F"];
+---
+
+<BaseLayout title="Unranked wrong-question retry — CUET Free Mock Test" description="Retry the questions you answered incorrectly. Unranked and private to your account." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
+  <section class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+    <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/dashboard/wrong-questions">← Back to wrong questions</a>
+    <h1 class="mt-3 text-2xl font-black tracking-tight">Retry your wrong questions</h1>
+    <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+      Answer up to 20 questions you have missed before. This retry is private and unranked: it does not change your dashboard accuracy, attempt history or leaderboard position. Answers and explanations appear only after you submit.
+    </p>
+
+    {questions.length === 0 ? (
+      <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
+        <h2 class="font-bold">Nothing to retry yet</h2>
+        <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">Finish a mock with at least one incorrect answer, then come back here.</p>
+        <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse mock tests</a>
+      </div>
+    ) : (
+      <form id="retry-form" class="mt-6 space-y-5" novalidate>
+        {questions.map((question, index) => (
+          <fieldset
+            class="rounded-2xl border border-neutral-200 bg-white p-4 sm:p-5 dark:border-neutral-800 dark:bg-neutral-900"
+            data-retry-question={question.id}
+          >
+            <legend class="sr-only">Question {index + 1}</legend>
+            <div class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+              <span class="font-bold">Q{index + 1}</span>
+              <span class="rounded-full bg-neutral-100 px-2 py-0.5 font-semibold dark:bg-neutral-800">{question.subject_name}</span>
+              <span class="rounded-full bg-red-100 px-2 py-0.5 font-semibold text-red-900 dark:bg-red-950/50 dark:text-red-200">Missed {question.wrong_count}×</span>
+              <span>Last miss {formatDate(question.last_wrong)}</span>
+            </div>
+
+            {question.passage_body ? (
+              <div class="mt-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm leading-7 dark:border-neutral-800 dark:bg-neutral-950">
+                <div set:html={renderRichText(question.passage_body)}></div>
+                {question.passage_image_url ? (
+                  <img
+                    class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                    src={question.passage_image_url}
+                    alt={question.passage_image_alt ?? ""}
+                    width={question.passage_image_width ?? undefined}
+                    height={question.passage_image_height ?? undefined}
+                    loading="lazy"
+                  />
+                ) : null}
+              </div>
+            ) : null}
+
+            <div class="mt-3 text-sm leading-7" set:html={renderRichText(question.text)}></div>
+            {question.image_url ? (
+              <img
+                class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                src={question.image_url}
+                alt={question.image_alt ?? ""}
+                width={question.image_width ?? undefined}
+                height={question.image_height ?? undefined}
+                loading="lazy"
+              />
+            ) : null}
+
+            <div class="mt-4 space-y-2">
+              {question.options.map((option, optionIndex) => (
+                <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 px-3 py-2 text-sm hover:bg-neutral-50 dark:border-neutral-800 dark:hover:bg-neutral-950">
+                  <input class="mt-1" type="radio" name={`q-${question.id}`} value={optionIndex} />
+                  <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-current text-xs font-bold">{letters[optionIndex] ?? optionIndex + 1}</span>
+                  <span class="min-w-0 flex-1">
+                    <span set:html={renderRichText(option.text)}></span>
+                    {option.image_url ? (
+                      <img
+                        class="mt-2 max-h-40 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                        src={option.image_url}
+                        alt={option.alt ?? ""}
+                        width={option.image_width ?? undefined}
+                        height={option.image_height ?? undefined}
+                        loading="lazy"
+                      />
+                    ) : null}
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            <div class="mt-4 hidden rounded-xl border p-4 text-sm" data-retry-result></div>
+          </fieldset>
+        ))}
+
+        <div class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+          <p id="retry-message" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
+          <div class="mt-3 flex flex-wrap items-center gap-3">
+            <button id="retry-submit" class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">Submit retry</button>
+            <a class="text-sm font-semibold text-neutral-600 hover:underline dark:text-neutral-300" href="/dashboard/wrong-questions">Cancel</a>
+          </div>
+        </div>
+      </form>
+    )}
+  </section>
+</BaseLayout>
+
+<script>
+  import { renderRichText } from "../../../lib/rich-text";
+
+  type RetryResult = {
+    question_id: number;
+    selected: number | null;
+    correct_option: number;
+    is_correct: boolean | null;
+    explanation: string | null;
+    explanation_hi: string | null;
+    explanation_image_url: string | null;
+    explanation_image_alt: string | null;
+    explanation_image_width: number | null;
+    explanation_image_height: number | null;
+  };
+
+  const form = document.getElementById("retry-form") as HTMLFormElement | null;
+  if (form) {
+    const message = document.getElementById("retry-message") as HTMLElement;
+    const button = document.getElementById("retry-submit") as HTMLButtonElement;
+    const letters = ["A", "B", "C", "D", "E", "F"];
+
+    function show(text: string, ok: boolean) {
+      message.textContent = text;
+      message.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/50 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (button.disabled) return;
+      button.disabled = true;
+      button.textContent = "Checking…";
+      message.className = "hidden";
+
+      const cards = [...form.querySelectorAll<HTMLElement>("[data-retry-question]")];
+      const answers = cards.map((card) => {
+        const questionId = Number(card.dataset.retryQuestion);
+        const selected = card.querySelector<HTMLInputElement>(`input[name="q-${questionId}"]:checked`);
+        return { question_id: questionId, selected: selected ? Number(selected.value) : null };
+      });
+
+      try {
+        const response = await fetch("/api/me/wrong-questions/retry", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ answers }),
+        });
+        const data = (await response.json().catch(() => ({}))) as {
+          error?: string;
+          results?: RetryResult[];
+        };
+        if (!response.ok || !data.results) {
+          throw new Error(data.error || "Could not check this retry.");
+        }
+
+        let correct = 0;
+        for (const result of data.results) {
+          const card = form.querySelector<HTMLElement>(`[data-retry-question="${result.question_id}"]`);
+          const box = card?.querySelector<HTMLElement>("[data-retry-result]");
+          if (!card || !box) continue;
+          if (result.is_correct) correct += 1;
+          const tone = result.is_correct
+            ? "border-brand-300 bg-brand-50 text-brand-900 dark:border-brand-700 dark:bg-brand-950/40 dark:text-brand-100"
+            : result.is_correct === null
+              ? "border-neutral-300 bg-neutral-50 text-neutral-800 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
+              : "border-red-300 bg-red-50 text-red-900 dark:border-red-800 dark:bg-red-950/40 dark:text-red-100";
+          const label = result.is_correct
+            ? "Correct"
+            : result.is_correct === null
+              ? "Skipped"
+              : "Incorrect";
+          const correctLetter = letters[result.correct_option] ?? String(result.correct_option + 1);
+          const chosenLetter =
+            result.selected === null ? "—" : letters[result.selected] ?? String(result.selected + 1);
+          const image = result.explanation_image_url
+            ? `<img class="mt-3 max-h-64 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700" src="${result.explanation_image_url}" alt="${(result.explanation_image_alt || "").replace(/"/g, "&quot;")}"${result.explanation_image_width && result.explanation_image_height ? ` width="${result.explanation_image_width}" height="${result.explanation_image_height}"` : ""} loading="lazy" />`
+            : "";
+          const hindi = result.explanation_hi
+            ? `<details class="mt-2"><summary class="cursor-pointer font-semibold">Hindi explanation</summary><div class="mt-1 leading-7">${renderRichText(result.explanation_hi)}</div></details>`
+            : "";
+          box.className = `mt-4 rounded-xl border p-4 text-sm ${tone}`;
+          box.innerHTML = `
+            <p class="font-bold">${label} · correct answer ${correctLetter} · you chose ${chosenLetter}</p>
+            <div class="mt-2 leading-7">${renderRichText(result.explanation || "No explanation recorded.")}</div>
+            ${image}
+            ${hindi}
+          `;
+          card.querySelectorAll<HTMLInputElement>("input[type=radio]").forEach((input) => {
+            input.disabled = true;
+          });
+        }
+
+        show(`Retry checked: ${correct} of ${data.results.length} correct. This practice is unranked.`, true);
+        button.textContent = "Retry submitted";
+        button.disabled = true;
+      } catch (error) {
+        show(error instanceof Error ? error.message : "Could not check this retry.", false);
+        button.disabled = false;
+        button.textContent = "Submit retry";
+      }
+    });
+  }
+</script>

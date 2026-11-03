@@ -1,0 +1,278 @@
+---
+import { siteUrl } from "../../lib/site-url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import FaqSection from "../../components/FaqSection.astro";
+import { all, first } from "../../lib/db";
+import { getLocalSubjectSummary } from "../../lib/local-papers";
+import { renderRichText } from "../../lib/content";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  formatVerified,
+  getExamInfo,
+  getPageSeo,
+  parseFaq,
+  type FaqItem,
+} from "../../lib/seo";
+
+const slug = Astro.params.subject ?? "";
+const subject = await first<{ id: number; name: string; slug: string; type: string }>(
+  `SELECT s.id, s.name, s.slug, s.type
+   FROM subjects s JOIN exams e ON e.id = s.exam_id
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+  slug,
+);
+if (!subject) return new Response("Subject syllabus not found", { status: 404 });
+
+const [topics, questionCount, paperCount] = await Promise.all([
+  all<{ id: number; name: string; slug: string; count: number }>(
+    `SELECT t.id, t.name, t.slug,
+            (SELECT COUNT(DISTINCT q.id) FROM questions q
+              JOIN mock_questions_current mq ON mq.question_id = q.id
+              JOIN mock_tests m ON m.id = mq.mock_id
+              WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
+                AND m.status = 'published' AND m.deleted_at IS NULL
+                AND m.practice_paper_slug IS NULL) AS count
+     FROM topics t WHERE t.subject_id = ? ORDER BY t.name`,
+    subject.id,
+  ),
+  first<{ count: number }>(
+    `SELECT COUNT(DISTINCT q.id) AS count
+     FROM questions q
+     JOIN mock_questions_current mq ON mq.question_id = q.id
+     JOIN mock_tests m ON m.id = mq.mock_id
+     WHERE q.subject_id = ? AND q.status = 'published' AND q.deleted_at IS NULL
+       AND m.status = 'published' AND m.deleted_at IS NULL
+       AND m.practice_paper_slug IS NULL`,
+    subject.id,
+  ),
+  first<{ count: number }>(
+    `SELECT COUNT(DISTINCT m.id) AS count FROM mock_tests m
+     WHERE m.status = 'published' AND m.deleted_at IS NULL
+       AND m.practice_paper_slug IS NULL
+       AND (m.subject_id = ? OR EXISTS (
+         SELECT 1 FROM mock_questions_current mq JOIN questions q ON q.id = mq.question_id
+         WHERE mq.mock_id = m.id AND q.subject_id = ?
+       ))`,
+    subject.id,
+    subject.id,
+  ),
+]);
+
+const localSummary = getLocalSubjectSummary(subject.slug);
+const libraryQuestions = localSummary?.questionCount ?? 0;
+const timedQuestions = questionCount?.count ?? 0;
+const publishedQuestions = timedQuestions + libraryQuestions;
+const papers = (paperCount?.count ?? 0) + (localSummary?.paperCount ?? 0);
+if (topics.length === 0 && publishedQuestions === 0) {
+  return new Response("Subject syllabus not published yet", { status: 404 });
+}
+
+const PATH = `/cuet-ug-syllabus/${subject.slug}`;
+const seo = await getPageSeo(PATH);
+const info = (await getExamInfo(["syllabus"]))["syllabus"];
+const verified = formatVerified(info?.last_verified);
+const noindex = (seo?.noindex ?? 0) === 1 || (topics.length === 0 && publishedQuestions === 0);
+
+const subjectGuidance: Record<string, { focus: string; method: string }> = {
+  english: {
+    focus: "reading comprehension, vocabulary, grammar and verbal ability",
+    method: "Read the passage once for structure, then answer with the exact line that supports your choice. Keep a separate log of idioms, confusable words and grammar rules that actually caused a wrong answer.",
+  },
+  hindi: {
+    focus: "passage comprehension, grammar and sentence-level accuracy",
+    method: "Read for the main idea first, then return to the passage for evidence. Revise grammar rules with short sentences rather than isolated definitions.",
+  },
+  mathematics: {
+    focus: "algebra, calculus, coordinate geometry, vectors, probability and numerical ability",
+    method: "Write the first step before calculating. Keep an error log that separates concept gaps, algebra slips and misread conditions; each needs a different fix.",
+  },
+  physics: {
+    focus: "mechanics, electromagnetism, optics, thermodynamics and modern physics",
+    method: "Sketch the situation and name the principle before reaching for a formula. Check units, signs and limiting cases at the end of every numerical.",
+  },
+  chemistry: {
+    focus: "physical, organic and inorganic chemistry",
+    method: "Keep reactions, exceptions and named effects on a one-page revision sheet, then test them through unfamiliar data and equation-based questions.",
+  },
+  biology: {
+    focus: "cell biology, genetics, physiology, ecology and evolution",
+    method: "Use precise terminology and redraw diagrams from memory. Distinguish similar processes by their inputs, outputs and location.",
+  },
+  "computer-science": {
+    focus: "programming logic, data structures, databases and computer networks",
+    method: "Trace code by hand, then test boundary conditions. For SQL and networking, write the exact operation instead of recognising a familiar option.",
+  },
+};
+
+const guidance = subjectGuidance[subject.slug] ?? {
+  focus: `the units listed for ${subject.name} in the current official syllabus`,
+  method: "Mark the official unit list, diagnose with a timed paper, and revise only the units that produced errors. Re-test after a gap instead of rereading the same notes.",
+};
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: `What is the ${subject.name} syllabus for CUET UG?`,
+    answer:
+      "The authoritative scope is published by NTA in the current information bulletin. This page lists the topics mapped in this site's question bank and links them to practice; it does not replace the official document.",
+  },
+  {
+    question: `How many ${subject.name} questions are published here?`,
+    answer: `${publishedQuestions} ${subject.name} question${publishedQuestions === 1 ? "" : "s"} across ${papers} paper${papers === 1 ? "" : "s"} are available right now. Topic links cover the timed paper bank; the previous-year practice papers are listed on the subject practice page.`,
+  },
+  {
+    question: `How should I revise ${subject.name}?`,
+    answer: `Start with ${guidance.focus}. ${guidance.method}`,
+  },
+  {
+    question: "Does this page guarantee the exam pattern or marking scheme?",
+    answer:
+      "No. Pattern, marking and dates change between sessions and are published by NTA. Check the official bulletin and the exam-pattern page before relying on any number.",
+  },
+];
+
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const title = seo?.title || `${subject.name} Syllabus for CUET UG — Topic Map and Practice`;
+const description =
+  seo?.description ||
+  `A practical ${subject.name} syllabus map for CUET UG: ${topics.length} mapped topic${topics.length === 1 ? "" : "s"}, ${publishedQuestions} published question${publishedQuestions === 1 ? "" : "s"} and links to timed practice.`;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "CUET UG syllabus", path: "/cuet-ug-syllabus" },
+    { name: subject.name, path: PATH },
+  ]),
+  articleJsonLd({
+    site,
+    title,
+    description,
+    path: PATH,
+    updated: seo?.updated_at ?? info?.last_verified ?? null,
+  }),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow={`Syllabus · ${subject.name}`}
+    title={`${subject.name} syllabus, mapped to practice`}
+    intro={`This page turns the official ${subject.name} scope into a checklist you can act on. Topics come from the site's question bank; the authoritative scope remains the current NTA information bulletin.`}
+    updated={verified}
+  />
+
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a class="hover:underline" href="/cuet-ug-syllabus">Syllabus</a>
+      <span aria-hidden="true">/</span>
+      <span>{subject.name}</span>
+    </nav>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-3">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Mapped topics</p>
+        <p class="mt-1 text-3xl font-black">{topics.length}</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions available</p>
+        <p class="mt-1 text-3xl font-black">{publishedQuestions}</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Papers</p>
+        <p class="mt-1 text-3xl font-black">{papers}</p>
+      </div>
+    </div>
+
+    <section class="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="font-bold text-amber-900 dark:text-amber-200">Official scope first</h2>
+      <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
+        NTA publishes the authoritative syllabus and any changes in the current information bulletin. This page is an editorial map for practice, not a reproduction of that document.
+        {verified ? ` The shared syllabus summary was last reviewed on ${verified}.` : " No official syllabus summary has been verified for the current session yet."}
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2 text-sm">
+        {info?.source_url ? (
+          <a class="rounded-lg bg-amber-900 px-3 py-2 font-bold text-white hover:bg-amber-800 dark:bg-amber-200 dark:text-amber-950" href={info.source_url} rel="noopener noreferrer" target="_blank">Official syllabus source</a>
+        ) : (
+          <a class="rounded-lg bg-amber-900 px-3 py-2 font-bold text-white hover:bg-amber-800 dark:bg-amber-200 dark:text-amber-950" href="https://cuet.nta.nic.in/" rel="noopener noreferrer" target="_blank">NTA CUET portal</a>
+        )}
+        <a class="rounded-lg border border-amber-300 px-3 py-2 font-bold text-amber-900 hover:bg-amber-100 dark:border-amber-800 dark:text-amber-100 dark:hover:bg-amber-950" href="/cuet-ug-exam-pattern">Exam pattern</a>
+      </div>
+      {info?.value ? (
+        <div class="mt-4 whitespace-pre-wrap rounded-xl bg-white/70 p-4 text-sm leading-7 text-amber-950 dark:bg-neutral-950/60 dark:text-amber-100">
+          {info.value}
+        </div>
+      ) : null}
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">{subject.name} topic checklist</h2>
+      <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        {guidance.focus.charAt(0).toUpperCase() + guidance.focus.slice(1)}. A topic becomes a practice link when at least one timed-paper question is mapped to it.
+      </p>
+      {topics.length === 0 ? (
+        <div class="mt-4 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
+          <h3 class="font-bold">No topics are mapped yet</h3>
+          <p class="mx-auto mt-2 max-w-xl text-sm leading-6 text-neutral-500 dark:text-neutral-400">
+            The practice library has {publishedQuestions} {subject.name} question{publishedQuestions === 1 ? "" : "s"}, but the timed bank has no topic mapping for this subject yet. Use the subject practice page to browse the previous-year practice papers.
+          </p>
+          <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href={`/cuet-mock-test/${subject.slug}`}>Open {subject.name} practice</a>
+        </div>
+      ) : (
+        <ul class="mt-4 space-y-2">
+          {topics.map((topic) => (
+            <li class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm dark:border-neutral-800 dark:bg-neutral-900">
+              <div class="min-w-0">
+                {topic.count > 0 ? (
+                  <a class="font-semibold hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/cuet-mock-test/${subject.slug}/${topic.slug}`}>{topic.name}</a>
+                ) : (
+                  <span class="font-semibold text-neutral-500 dark:text-neutral-400">{topic.name}</span>
+                )}
+                <span class="ml-2 text-xs text-neutral-500 dark:text-neutral-400">{topic.count} timed-paper question{topic.count === 1 ? "" : "s"}</span>
+              </div>
+              {topic.count > 0 ? (
+                <a class="text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/cuet-mock-test/${subject.slug}/${topic.slug}`}>Practise topic →</a>
+              ) : (
+                <span class="text-xs text-neutral-400 dark:text-neutral-500">Awaiting content</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+
+    <section class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">How to study {subject.name} without rereading</h2>
+      <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">{guidance.method}</p>
+      <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <li>Mark the official unit list and remove anything that is not in the current bulletin.</li>
+        <li>Take one timed paper to find the units that actually produce errors.</li>
+        <li>Study one weak unit, then answer questions on it without notes.</li>
+        <li>Re-test after three days and again inside a mixed paper.</li>
+      </ol>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-10 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Put the {subject.name} checklist to work</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">Take a timed paper, then use the section analysis to decide which topic to revise first.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={`/cuet-mock-test/${subject.slug}`}>Practise {subject.name}</a>
+          <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-previous-year-papers">PYQ papers</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

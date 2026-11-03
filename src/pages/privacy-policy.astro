@@ -1,0 +1,194 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import SeoIntro from "../components/SeoIntro.astro";
+import { breadcrumbJsonLd, getPageSeo } from "../lib/seo";
+
+const PATH = "/privacy-policy";
+const DEFAULT_TITLE = "Privacy Policy — CUET Free Mock Test";
+const DEFAULT_DESCRIPTION =
+  "What data this CUET mock test site collects, why it is needed, how long it is kept, and how to access or delete your account data.";
+
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Privacy policy", path: PATH },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: new URL(PATH, site).toString(),
+    dateModified: "2026-10-31",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} noindex={(seo?.noindex ?? 0) === 1} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Privacy"
+    title="Privacy policy"
+    intro="This page explains what the site stores, why it stores it, and what you can ask us to change or delete. It also describes the optional analytics and advertising integrations that can be enabled by configuration."
+    updated="31 October 2026"
+  />
+
+  <SeoIntro html={seo?.intro_html} />
+
+  <article class="mx-auto max-w-3xl space-y-8 px-4 py-10 text-sm leading-7 text-neutral-600 sm:px-6 lg:py-14 dark:text-neutral-300">
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">1. Who we are</h2>
+      <p class="mt-2">
+        CUET Free Mock Test is an independent practice website. References to "we", "us" and "the site" mean this project. References to "you" mean a visitor, guest candidate or registered user. The site is not affiliated with the National Testing Agency or any university.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">2. Data we collect</h2>
+      <p class="mt-2">We collect only what the product needs to run:</p>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Account data:</strong> username, email address, a password hash if you sign up with email, or a Google account identifier and avatar URL if you use Google sign-in.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Attempt data:</strong> which paper you started, your selected options, marked-for-review state, per-question time, start and deadline timestamps, score, correct/wrong/skipped counts, and whether the attempt is your first for that paper.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Discussion data:</strong> comments, replies, votes, reports and moderation status. Comments are stored as plain text.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Share data:</strong> when you share a question or mock, we store an aggregate event with the shared question's public id or the mock id, the surface, the channel and, if you are signed in, your user id. We do not store an IP address, attempt id, score or recipient in this event.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Technical data:</strong> the IP address and request metadata processed by our hosting provider for security, rate limiting and abuse prevention. We do not build advertising profiles.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Contact data:</strong> whatever you include when you email us about a correction, account or privacy request.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">3. Guests, cookies and local storage</h2>
+      <p class="mt-2">
+        You can take a mock test without creating an account. Guest attempts are linked to a random token in a cookie so the same browser can resume and later claim the attempt. We use a small number of essential cookies:
+      </p>
+      <div class="mt-3 overflow-x-auto rounded-xl border border-neutral-200 dark:border-neutral-800" role="region" aria-label="Cookies used by CUET Free Mock Test" tabindex="0">
+        <table class="w-full min-w-[520px] text-left text-xs">
+          <thead class="bg-neutral-50 uppercase tracking-wide text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
+            <tr>
+              <th class="px-3 py-2">Name</th>
+              <th class="px-3 py-2">Purpose</th>
+              <th class="px-3 py-2">Lifetime</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            <tr>
+              <td class="px-3 py-2 font-mono">cuet_session</td>
+              <td class="px-3 py-2">Keeps a registered user signed in. HttpOnly, Secure and SameSite protected.</td>
+              <td class="px-3 py-2">30 days</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 font-mono">cuet_guest</td>
+              <td class="px-3 py-2">Links a guest attempt to this browser so it can be resumed or claimed after signup.</td>
+              <td class="px-3 py-2">Session or up to 30 days</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-2">
+        The light/dark preference is stored in your browser's <code class="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">localStorage</code>, not sent to the server. Our hosting provider may set strictly necessary security cookies at the edge. If Google AdSense is enabled on content pages, Google may set advertising or measurement cookies as described in section 11; the active test screen never loads the advertising script.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">4. Why we use the data</h2>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>To create and secure your account, sign you in and let you reset a password.</li>
+        <li>To run an attempt: hide answers before submit, autosave progress, enforce the deadline and calculate the score on the server.</li>
+        <li>To show your dashboard, attempt history, solutions and site-relative rank.</li>
+        <li>To operate discussions, moderation, reports and abuse controls.</li>
+        <li>To investigate errors, protect the service and comply with legal obligations.</li>
+      </ul>
+      <p class="mt-2">
+        We do not sell personal data. We do not use your email to send marketing at launch. If an announcement or email feature is added, it will be described here before it is used.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">5. Legal bases</h2>
+      <p class="mt-2">
+        Where data-protection law requires a legal basis, we rely on the performance of the service you asked for (running an attempt or account), your consent (creating an account, posting a comment), our legitimate interest in keeping the service secure and preventing abuse, and compliance with legal obligations. You can withdraw consent for optional features without losing access to the core practice tools.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">6. Sharing and processors</h2>
+      <p class="mt-2">
+        The site runs on Cloudflare infrastructure. Cloudflare processes requests and stores the database and media objects on our behalf. If you choose Google sign-in, Google authenticates you and shares the basic profile data needed to create the account. We do not share your email or attempt history with advertisers.
+      </p>
+      <p class="mt-2">
+        We may disclose data if required by law, to respond to a valid legal request, or to protect the rights and safety of users. If the project is transferred, data may move to the successor entity under the same commitments.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">7. Retention</h2>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>Account records are kept while the account exists. A deletion request removes or anonymises the profile and associated identifiers, subject to the attempt-integrity note below.</li>
+        <li>Attempts and scores may be retained in an anonymised or pseudonymised form because leaderboard and historical-paper integrity depend on them.</li>
+        <li>Session tokens expire automatically. Password-reset tokens are single-use and time-limited.</li>
+        <li>Technical logs are kept only as long as needed for security and troubleshooting.</li>
+        <li>Moderation records may be retained to enforce community rules and document decisions.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">8. Security</h2>
+      <p class="mt-2">
+        Passwords are stored as PBKDF2-SHA256 hashes with a per-user salt, never as plain text. Session tokens are random, stored in HttpOnly cookies and kept as hashes in the database. Admin actions require an authorised account and are written to an audit log. No system is perfectly secure, so use a unique password and tell us promptly if you suspect unauthorised access.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">9. Your choices and rights</h2>
+      <p class="mt-2">
+        Depending on where you live, you may have the right to access, correct, delete or restrict the processing of your personal data, to object to certain processing, or to receive a portable copy. To make a request, email
+        {" "}<a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:privacy@cuetfreemocktest.com">privacy@cuetfreemocktest.com</a>
+        {" "}from the address on your account. We may need to verify that the account belongs to you before acting. You can also complain to your local data-protection authority.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">10. Children</h2>
+      <p class="mt-2">
+        The site is intended for candidates preparing for undergraduate admissions and is not directed at children under 13. If you believe a child under 13 has created an account, contact us and we will review and delete the account.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">11. Advertising and analytics</h2>
+      <p class="mt-2">
+        The site can run Cloudflare Web Analytics, which reports aggregate page views and performance without cookies or cross-site tracking. It can also run Google AdSense on selected content pages after approval. When AdSense is enabled, Google and its partners may use cookies or similar identifiers to serve and measure ads, including personalised ads where consent and local law allow it. You can review Google's advertising controls at
+        <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="https://myadcenter.google.com/" rel="noopener noreferrer" target="_blank">My Ad Center</a>.
+      </p>
+      <p class="mt-2">
+        Ads are never placed on the active test screen, an in-progress result, a dashboard or any page with little publisher content. If neither integration is configured, the site loads no analytics beacon and no advertising script. Before enabling advertising in a region that requires consent, the operator must configure an approved consent mechanism; this policy will be updated if the integrations or providers change.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">12. International processing</h2>
+      <p class="mt-2">
+        Cloudflare and Google operate globally, so data may be processed outside your state or country. Where required, transfers rely on the providers' contractual safeguards. The practice content itself is served from Cloudflare's edge network.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">13. Changes to this policy</h2>
+      <p class="mt-2">
+        If the way we handle data changes, this page will be updated and the review date at the top will change. Material changes that affect your rights will be communicated on the site before they take effect.
+      </p>
+    </section>
+
+    <section class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100">14. Contact</h2>
+      <p class="mt-2">
+        Privacy questions and requests: <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:privacy@cuetfreemocktest.com">privacy@cuetfreemocktest.com</a>. General support: <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:support@cuetfreemocktest.com">support@cuetfreemocktest.com</a>. See also the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/terms">terms</a> and <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/disclaimer">disclaimer</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

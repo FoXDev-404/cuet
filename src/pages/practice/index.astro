@@ -1,0 +1,148 @@
+---
+import { siteUrl } from "../../lib/site-url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import LocalPaperCard from "../../components/LocalPaperCard.astro";
+import { getLocalPapers, getLocalPaperYears } from "../../lib/local-papers";
+
+const PATH = "/practice";
+const papers = getLocalPapers();
+const years = getLocalPaperYears();
+const totalScorable = papers.reduce((sum, paper) => sum + paper.scorableQuestionCount, 0);
+const totalPending = papers.reduce((sum, paper) => sum + paper.pendingReviewCount, 0);
+const totalAttempts = papers.reduce((sum, paper) => sum + paper.attemptCount, 0);
+const subjectCount = new Set(papers.map((paper) => paper.subject.name)).size;
+const papersByYear = years.map((entry) => ({
+  ...entry,
+  papers: papers.filter((paper) => paper.year === entry.year),
+}));
+
+const faqs = [
+  {
+    question: "Are these attempts ranked and saved?",
+    answer:
+      "Yes. Every paper runs on the same ranked engine as the D1 mocks. The result is saved to your dashboard and history, the first submitted attempt counts on the leaderboard, and the result screen shows your rank and percentile.",
+  },
+  {
+    question: "What happens to questions without a printed key?",
+    answer:
+      "They are excluded from the ranked paper so the score stays trustworthy. The practice detail page shows exactly how many questions were excluded and how many remain in the ranked attempt.",
+  },
+  {
+    question: "What does the attempt counter count?",
+    answer:
+      "Every submitted or auto-submitted ranked attempt on that paper. The counter is calculated from real attempts in D1, so it is a public activity count rather than a fabricated number.",
+  },
+];
+
+const site = siteUrl(Astro.url);
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", site).toString() },
+      { "@type": "ListItem", position: 2, name: "Practice library", item: new URL(PATH, site).toString() },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="CUET Previous-Year Practice Library — Ranked Subject and Year Papers"
+  description="Take CUET UG previous-year papers by subject and year as ranked, server-timed mocks with saved results, leaderboard rank, percentile and detailed solutions after submit."
+  structuredData={structuredData}
+>
+  <PageHero
+    eyebrow="Practice library · ranked previous-year papers"
+    title="Previous-year CUET papers, ranked like the real thing"
+    intro="Timed, server-graded and ranked. Pick a subject and year, attempt the paper under a server deadline, then review every answer and compare your first attempt on the leaderboard."
+  />
+
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Papers</p>
+        <p class="mt-1 text-3xl font-black">{papers.length}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">across {years.length} exam years</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Subjects</p>
+        <p class="mt-1 text-3xl font-black">{subjectCount}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">papers across 2021–2025</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Scored questions</p>
+        <p class="mt-1 text-3xl font-black">{totalScorable}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Included in the score</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Ranked attempts</p>
+        <p class="mt-1 text-3xl font-black">{totalAttempts.toLocaleString("en-IN")}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">submitted across the library</p>
+      </div>
+    </div>
+
+    <section class="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="font-bold text-amber-900 dark:text-amber-200">Read this before you start</h2>
+      <ul class="mt-2 space-y-1.5 text-sm leading-7 text-amber-900 dark:text-amber-100">
+        <li>• These attempts are ranked and saved to your dashboard and history.</li>
+        <li>• Only the first submitted attempt counts on the leaderboard; retakes are still saved.</li>
+        <li>• {totalPending} questions are excluded across the library because their printed key could not be verified. Each affected paper shows the exact count.</li>
+      </ul>
+    </section>
+
+    {papersByYear.map((entry) => (
+      <section class="mt-10">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight">{entry.year || "Undated"} papers</h2>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+              {entry.paper_count} papers · {entry.papers.reduce((sum, paper) => sum + paper.scorableQuestionCount, 0)} scorable questions
+            </p>
+          </div>
+          <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-previous-year-papers">All previous-year papers →</a>
+        </div>
+        <div class="mt-5 grid gap-4 md:grid-cols-2">
+          {entry.papers.map((paper) => <LocalPaperCard paper={paper} />)}
+        </div>
+      </section>
+    ))}
+
+    <section class="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">How scoring works</h2>
+      <div class="mt-3 grid gap-4 text-sm leading-7 text-neutral-600 dark:text-neutral-300 sm:grid-cols-2">
+        <div>
+          <p class="font-semibold text-neutral-900 dark:text-neutral-100">Server-side, after submit</p>
+          <p class="mt-1">The browser receives the questions and options only. Answers are saved and scored against the stored key, and the attempt stays pinned to the paper version it was served.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-neutral-900 dark:text-neutral-100">Ranked by design</p>
+          <p class="mt-1">The score, correct/wrong/skipped counts, rank and percentile are stored in D1. Your dashboard and history show the attempt, and the first submitted attempt competes on the leaderboard. The public attempt counter is calculated from those saved attempts.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">Questions about the library</h2>
+      <div class="mt-4 space-y-3">
+        {faqs.map((faq) => (
+          <details class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+            <summary class="cursor-pointer font-semibold">{faq.question}</summary>
+            <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-300">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Want a full-length mixed paper?</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">The main mock library has full-length and subject-wise D1 papers, all using the same ranked engine, saved attempts and first-attempt leaderboards.</p>
+        </div>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Open mock library</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,332 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can } from "../../lib/auth/admin";
+import { all } from "../../lib/db";
+import { getLocalPaper, getLocalPapers } from "../../lib/local-papers";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "questions.write") && !can(admin.role, "mocks.write")) {
+  return Astro.redirect("/forbidden", 303);
+}
+
+const papers = getLocalPapers();
+const reviewPapers = papers
+  .filter((paper) => paper.pendingReviewCount > 0)
+  .sort(
+    (a, b) =>
+      b.pendingReviewCount - a.pendingReviewCount ||
+      Number(a.year) - Number(b.year) ||
+      a.title.localeCompare(b.title),
+  );
+
+const totalPending = papers.reduce((sum, paper) => sum + paper.pendingReviewCount, 0);
+const totalScorable = papers.reduce((sum, paper) => sum + paper.scorableQuestionCount, 0);
+const fullyKeyed = papers.length - reviewPapers.length;
+
+const missingRows = await all<{ paper_slug: string; missing: number }>(
+  `SELECT paper_slug, COUNT(*) AS missing
+   FROM practice_questions
+   WHERE deleted_at IS NULL
+     AND correct_option IS NOT NULL
+     AND (explanation IS NULL OR TRIM(explanation) = '')
+   GROUP BY paper_slug`,
+);
+const missingExplanations = new Map(
+  missingRows.map((row) => [row.paper_slug, Number(row.missing) || 0]),
+);
+const totalMissingExplanations = missingRows.reduce(
+  (sum, row) => sum + (Number(row.missing) || 0),
+  0,
+);
+
+const selectedSlug = Astro.url.searchParams.get("paper") ?? "";
+const selected =
+  selectedSlug && papers.some((paper) => paper.slug === selectedSlug)
+    ? await getLocalPaper(selectedSlug)
+    : null;
+
+// The Data manager is the correction surface. It is guarded by data.manage,
+// which only super admins hold, so editors keep the read-only review view.
+const canEditPractice = can(admin.role, "data.manage");
+const paperIdRows = canEditPractice
+  ? await all<{ id: number; slug: string }>(
+      "SELECT id, slug FROM practice_papers WHERE deleted_at IS NULL",
+    )
+  : [];
+const paperIdBySlug = new Map(paperIdRows.map((row) => [row.slug, row.id]));
+const selectedPaperId = selected ? paperIdBySlug.get(selected.slug) ?? null : null;
+
+const questionRowIds =
+  canEditPractice && selected
+    ? await all<{ id: number; question_key: string }>(
+        "SELECT id, question_key FROM practice_questions WHERE paper_slug = ? AND deleted_at IS NULL",
+        selected.slug,
+      )
+    : [];
+const questionEditHrefs = new Map(
+  questionRowIds.map((row) => [
+    row.question_key,
+    `/admin/data/practice_questions/row?id=${row.id}`,
+  ]),
+);
+
+const encodedSlug = selected ? encodeURIComponent(selected.slug) : "";
+const editPaperHref = selectedPaperId
+  ? `/admin/data/practice_papers/row?id=${selectedPaperId}`
+  : null;
+const editQuestionsHref =
+  selected && canEditPractice
+    ? `/admin/data/practice_questions?q=${encodedSlug}&per=100`
+    : null;
+const editPassagesHref =
+  selected && canEditPractice
+    ? `/admin/data/practice_passages?q=${encodedSlug}&per=100`
+    : null;
+
+function withEditHref<T extends { id: string }>(question: T) {
+  return {
+    ...question,
+    editHref: questionEditHrefs.get(question.id) ?? null,
+  };
+}
+const pendingQuestions = selected
+  ? selected.questions.filter((question) => !question.scorable).map(withEditHref)
+  : [];
+const unexplainedQuestions = selected
+  ? selected.questions
+      .filter((question) => question.scorable && !question.explanation)
+      .map(withEditHref)
+  : [];
+
+const stats = [
+  {
+    label: "Refined papers",
+    value: papers.length,
+    detail: `${fullyKeyed} fully keyed`,
+    tone: "neutral",
+  },
+  {
+    label: "Papers needing review",
+    value: reviewPapers.length,
+    detail: "At least one question without a matched key",
+    tone: reviewPapers.length > 0 ? "amber" : "mint",
+  },
+  {
+    label: "Questions pending",
+    value: totalPending,
+    detail: "Playable, excluded from scoring",
+    tone: totalPending > 0 ? "amber" : "mint",
+  },
+  {
+    label: "Keyed without explanation",
+    value: totalMissingExplanations,
+    detail: "Keys kept, explanations never invented",
+    tone: "neutral",
+  },
+];
+
+const toneClass: Record<string, string> = {
+  amber: "border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100",
+  mint: "border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100",
+  neutral: "border-neutral-200 bg-white text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100",
+};
+---
+
+<AdminLayout title="Previous-year review" active="review">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Previous-year review queue</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Every refined OCR paper, its recovered keys and the rows that still need a human check. Pending questions stay playable and are excluded from scoring; explanations are never invented.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/practice" target="_blank" rel="noopener">View public library</a>
+      <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/pyq">PYQ manager</a>
+    </div>
+  </div>
+
+  <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {stats.map((stat) => (
+      <div class:list={["rounded-2xl border p-5", toneClass[stat.tone]]}>
+        <p class="text-xs font-semibold uppercase tracking-wide">{stat.label}</p>
+        <p class="mt-2 text-3xl font-black">{stat.value}</p>
+        <p class="mt-1 text-xs">{stat.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  {selected ? (
+    <section class="mt-8 rounded-2xl border border-brand-200 bg-white p-5 dark:border-brand-800 dark:bg-neutral-900" aria-labelledby="detail-heading">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Paper review</p>
+          <h2 class="mt-1 text-xl font-black" id="detail-heading">{selected.title}</h2>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+            {selected.subject.name} · {selected.year} · {selected.questions.length} questions · {selected.scorableQuestionCount} keyed · {pendingQuestions.length} pending
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {editPaperHref ? (
+            <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href={editPaperHref}>Edit paper</a>
+          ) : null}
+          {editQuestionsHref ? (
+            <a class="rounded-lg border border-brand-300 px-3 py-2 text-sm font-bold text-brand-700 hover:bg-brand-50 dark:border-brand-800 dark:text-brand-300 dark:hover:bg-brand-950/40" href={editQuestionsHref}>Edit questions</a>
+          ) : null}
+          {editPassagesHref ? (
+            <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={editPassagesHref}>Edit passages</a>
+          ) : null}
+          <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/practice/${selected.slug}`} target="_blank" rel="noopener">Open paper</a>
+          <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/practice/${selected.slug}/take`} target="_blank" rel="noopener">Open take screen</a>
+          <a class="rounded-lg bg-neutral-900 px-3 py-2 text-sm font-bold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900" href="/admin/review#queue">Back to queue</a>
+        </div>
+      </div>
+
+      {canEditPractice ? (
+        <div class="mt-4 rounded-xl border border-brand-200 bg-brand-50/60 p-4 dark:border-brand-900 dark:bg-brand-950/20">
+          <p class="text-sm font-bold text-brand-900 dark:text-brand-100">Edit, verify and publish</p>
+          <ul class="mt-1 list-disc space-y-1 pl-5 text-xs leading-5 text-neutral-700 dark:text-neutral-300">
+            <li>Set <code class="rounded bg-white px-1 py-0.5 font-mono text-[11px] dark:bg-neutral-900">correct_option</code> to <code>A</code>, <code>B</code>, <code>C</code> or <code>D</code> to make a pending row scorable. Leave it blank when the printed key cannot be verified.</li>
+            <li>Add the printed reasoning in <code class="rounded bg-white px-1 py-0.5 font-mono text-[11px] dark:bg-neutral-900">explanation</code>; never publish an invented write-up.</li>
+            <li>Set the paper&apos;s <code class="rounded bg-white px-1 py-0.5 font-mono text-[11px] dark:bg-neutral-900">publication_status</code> to <code>published</code> when the corrected paper is ready for the public library.</li>
+          </ul>
+          <p class="mt-2 text-xs text-neutral-600 dark:text-neutral-400">Every save is validated and recorded in the audit log. Review counts refresh within about 30 seconds.</p>
+        </div>
+      ) : (
+        <p class="mt-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-xs text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+          Editing practice papers needs the Data manager permission. Ask a super admin for access.
+        </p>
+      )}
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <div>
+          <h3 class="font-bold">Pending questions ({pendingQuestions.length})</h3>
+          {pendingQuestions.length === 0 ? (
+            <p class="mt-2 text-sm text-emerald-700 dark:text-emerald-300">Every playable question in this paper has a matched key.</p>
+          ) : (
+            <ol class="mt-3 space-y-3">
+              {pendingQuestions.map((question) => (
+                <li class="rounded-xl border border-amber-200 bg-amber-50/70 p-4 dark:border-amber-900 dark:bg-amber-950/20">
+                  <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="rounded-full bg-amber-200 px-2 py-0.5 font-bold text-amber-950 dark:bg-amber-900/60 dark:text-amber-100">Q{question.number}</span>
+                    {question.reviewFlags.map((flag) => (
+                      <span class="rounded-full bg-white px-2 py-0.5 font-semibold text-amber-900 dark:bg-neutral-900 dark:text-amber-200">{flag}</span>
+                    ))}
+                    {question.assets.length > 0 ? (
+                      <span class="rounded-full bg-white px-2 py-0.5 font-semibold text-neutral-600 dark:bg-neutral-900 dark:text-neutral-300">{question.assets.length} crop{question.assets.length === 1 ? "" : "s"}</span>
+                    ) : null}
+                    {question.editHref ? (
+                      <a class="ml-auto rounded-md bg-neutral-900 px-2 py-1 text-[11px] font-bold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200" href={question.editHref}>Edit Q{question.number}</a>
+                    ) : null}
+                  </div>
+                  <p class="mt-2 text-sm leading-6 text-neutral-800 dark:text-neutral-200">
+                    {question.stemEn.length > 320 ? `${question.stemEn.slice(0, 320)}…` : question.stemEn || "Question body is shown as a printed-page crop."}
+                  </p>
+                  <p class="mt-2 text-[11px] text-amber-800 dark:text-amber-300">
+                    No printed key matched this row. Keep it pending unless the source key can be verified.
+                  </p>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+
+        <div>
+          <h3 class="font-bold">Keyed rows without a printed explanation ({unexplainedQuestions.length})</h3>
+          {unexplainedQuestions.length === 0 ? (
+            <p class="mt-2 text-sm text-emerald-700 dark:text-emerald-300">Every keyed row also has a recovered explanation.</p>
+          ) : (
+            <div class="mt-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950">
+              <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                The key is preserved and scored, but the source has no printed explanation. Do not publish an invented write-up.
+              </p>
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                {unexplainedQuestions.map((question) =>
+                  question.editHref ? (
+                    <a class="rounded-md bg-white px-2 py-1 text-xs font-semibold text-neutral-700 ring-1 ring-neutral-200 hover:bg-neutral-100 hover:underline dark:bg-neutral-900 dark:text-neutral-200 dark:ring-neutral-800" href={question.editHref} title={`Edit Q${question.number}`}>Q{question.number}</a>
+                  ) : (
+                    <span class="rounded-md bg-white px-2 py-1 text-xs font-semibold text-neutral-700 ring-1 ring-neutral-200 dark:bg-neutral-900 dark:text-neutral-200 dark:ring-neutral-800">Q{question.number}</span>
+                  ),
+                )}
+              </div>
+            </div>
+          )}
+
+          <div class="mt-6 rounded-xl border border-neutral-200 p-4 text-sm dark:border-neutral-800">
+            <p class="font-bold">Source</p>
+            <p class="mt-1 text-neutral-600 dark:text-neutral-400">{selected.sourceFile ?? "Not recorded"}</p>
+            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-500">{selected.sourceMethod ?? "Built from the OCR archive."}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  <section class="mt-8" id="queue" aria-labelledby="queue-heading">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h2 class="text-xl font-bold" id="queue-heading">Papers needing review ({reviewPapers.length})</h2>
+        <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+          Sorted by the number of questions still missing a matched key.
+        </p>
+      </div>
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        {totalScorable.toLocaleString("en-IN")} keyed rows across {papers.length} papers
+      </p>
+    </div>
+
+    {reviewPapers.length === 0 ? (
+      <div class="mt-4 rounded-2xl border border-dashed border-emerald-300 p-10 text-center dark:border-emerald-800">
+        <h3 class="font-bold text-emerald-800 dark:text-emerald-200">No paper is waiting on a key.</h3>
+        <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">Every playable row has a matched printed key.</p>
+      </div>
+    ) : (
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+        <table class="w-full min-w-[860px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Paper</th>
+              <th class="px-4 py-3">Year</th>
+              <th class="px-4 py-3">Subject</th>
+              <th class="px-4 py-3 text-right">Questions</th>
+              <th class="px-4 py-3 text-right">Keyed</th>
+              <th class="px-4 py-3 text-right">Pending</th>
+              <th class="px-4 py-3 text-right">No explanation</th>
+              <th class="px-4 py-3"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {reviewPapers.map((paper) => (
+              <tr class="hover:bg-neutral-50 dark:hover:bg-neutral-950/60">
+                <td class="max-w-[320px] px-4 py-3">
+                  <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/admin/review?paper=${paper.slug}#detail-heading`}>
+                    {paper.title}
+                  </a>
+                  <p class="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400">{paper.dateLabel}{paper.shift ? ` · ${paper.shift}` : ""}</p>
+                </td>
+                <td class="px-4 py-3">{paper.year}</td>
+                <td class="px-4 py-3">{paper.subject.name}</td>
+                <td class="px-4 py-3 text-right">{paper.recoveredQuestionCount}</td>
+                <td class="px-4 py-3 text-right font-semibold text-emerald-700 dark:text-emerald-300">{paper.scorableQuestionCount}</td>
+                <td class="px-4 py-3 text-right font-bold text-amber-700 dark:text-amber-300">{paper.pendingReviewCount}</td>
+                <td class="px-4 py-3 text-right text-neutral-500 dark:text-neutral-400">{missingExplanations.get(paper.slug) ?? 0}</td>
+                <td class="px-4 py-3 text-right">
+                  <div class="flex justify-end gap-1.5">
+                    <a class="whitespace-nowrap rounded-lg border border-neutral-300 px-2.5 py-1 text-xs font-semibold hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/review?paper=${paper.slug}#detail-heading`}>
+                      Review
+                    </a>
+                    {paperIdBySlug.get(paper.slug) ? (
+                      <a class="whitespace-nowrap rounded-lg border border-brand-300 px-2.5 py-1 text-xs font-semibold text-brand-700 hover:bg-brand-50 dark:border-brand-800 dark:text-brand-300 dark:hover:bg-brand-950/40" href={`/admin/data/practice_papers/row?id=${paperIdBySlug.get(paper.slug)}`}>
+                        Edit
+                      </a>
+                    ) : null}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </section>
+</AdminLayout>

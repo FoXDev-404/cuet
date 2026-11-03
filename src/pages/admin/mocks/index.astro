@@ -1,0 +1,87 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import { all } from "../../../lib/db";
+import { formatDateTime } from "../../../lib/content";
+
+const mocks = await all<{
+  id: number;
+  title: string;
+  slug: string;
+  type: string;
+  status: string;
+  duration_min: number;
+  total_marks: number;
+  published_at: string | null;
+  updated_at: string | null;
+  question_count: number;
+  attempt_count: number;
+}>(
+  `SELECT m.id, m.title, m.slug, m.type, m.status, m.duration_min, m.total_marks,
+          m.published_at, m.updated_at,
+          (SELECT COUNT(*) FROM mock_questions_current q WHERE q.mock_id = m.id) AS question_count,
+          (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id) AS attempt_count
+   FROM mock_tests m
+   WHERE m.deleted_at IS NULL
+   ORDER BY m.id DESC`,
+);
+
+const statusClass: Record<string, string> = {
+  draft: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300",
+  in_review: "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200",
+  published: "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200",
+  archived: "bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
+};
+---
+
+<AdminLayout title="Mock builder" active="mocks">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Mock tests</h1>
+      <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Select published questions, set the marking scheme, then publish. Published papers are frozen.</p>
+    </div>
+    <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/mocks/new">New mock</a>
+  </div>
+
+  <div class="mt-6 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-[820px] text-left text-sm">
+        <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+          <tr>
+            <th class="px-4 py-3">Mock</th>
+            <th class="px-4 py-3">Status</th>
+            <th class="px-4 py-3">Questions</th>
+            <th class="px-4 py-3">Duration</th>
+            <th class="px-4 py-3">Marks</th>
+            <th class="px-4 py-3">Attempts</th>
+            <th class="px-4 py-3 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+          {mocks.map((mock) => (
+            <tr>
+              <td class="px-4 py-3">
+                <a class="font-medium hover:text-brand-700 dark:hover:text-brand-300" href={`/admin/mocks/${mock.id}`}>{mock.title}</a>
+                <span class="mt-0.5 block font-mono text-xs text-neutral-500 dark:text-neutral-400">/{mock.slug}</span>
+                <span class="text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(mock.updated_at ?? mock.published_at)}</span>
+              </td>
+              <td class="px-4 py-3"><span class={`rounded-full px-2 py-0.5 text-xs font-semibold ${statusClass[mock.status] ?? ""}`}>{mock.status.replace("_", " ")}</span></td>
+              <td class="px-4 py-3 font-semibold">{mock.question_count}</td>
+              <td class="px-4 py-3">{mock.duration_min} min</td>
+              <td class="px-4 py-3">{mock.total_marks}</td>
+              <td class="px-4 py-3">{mock.attempt_count}</td>
+              <td class="px-4 py-3 text-right">
+                <a class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/mocks/${mock.id}`}>{mock.status === "published" ? "View" : "Edit"}</a>
+                {mock.status === "published" ? <a class="ml-1 rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/mock/${mock.slug}`}>Public</a> : null}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {mocks.length === 0 ? (
+      <div class="px-4 py-12 text-center text-sm text-neutral-500 dark:text-neutral-400">
+        No mock tests yet. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/mocks/new">Build the first one</a>.
+      </div>
+    ) : null}
+  </div>
+</AdminLayout>

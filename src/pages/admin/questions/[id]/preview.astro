@@ -1,0 +1,93 @@
+---
+import AdminLayout from "../../../../layouts/AdminLayout.astro";
+import { findQuestion } from "../../../../lib/admin/questions";
+import { can } from "../../../../lib/auth/admin";
+import { formatDateTime, parseOptions, renderRichText } from "../../../../lib/content";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "questions.write")) return Astro.redirect("/admin", 303);
+
+const id = Number(Astro.params.id);
+if (!Number.isInteger(id) || id <= 0) return Astro.redirect("/admin/questions", 303);
+const question = await findQuestion(id);
+if (!question || question.deleted_at) return new Response("Question not found", { status: 404 });
+
+const options = parseOptions(question.options);
+const optionsHi = question.options_hi ? parseOptions(question.options_hi) : [];
+const letters = ["A", "B", "C", "D", "E", "F"];
+---
+
+<AdminLayout title={`Preview question #${question.id}`} active="questions">
+  <nav class="text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+    <a class="hover:underline" href="/admin/questions">Questions</a>
+    <span aria-hidden="true"> / </span>
+    <span>#{question.id}</span>
+  </nav>
+
+  <div class="mt-2 flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Student preview</h1>
+      <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+        Rendered exactly as the paper shows it. This view is admin-only and never served to students.
+      </p>
+    </div>
+    <div class="flex gap-2">
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/questions/${question.id}`}>Edit</a>
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/questions/${question.id}#history`}>History</a>
+    </div>
+  </div>
+
+  <article class="mt-6 max-w-3xl rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
+    <div class="flex flex-wrap items-center gap-2 text-xs">
+      <span class="rounded-full bg-neutral-100 px-2 py-0.5 font-semibold dark:bg-neutral-800">{question.status.replace("_", " ")}</span>
+      {question.difficulty ? <span class="rounded-full bg-neutral-100 px-2 py-0.5 font-semibold capitalize dark:bg-neutral-800">{question.difficulty}</span> : null}
+      {question.year ? <span class="rounded-full bg-amber-100 px-2 py-0.5 font-semibold text-amber-900 dark:bg-amber-950/60 dark:text-amber-200">PYQ {question.year}</span> : null}
+      <span class="text-neutral-500 dark:text-neutral-400">#{question.id} · updated {formatDateTime(question.updated_at ?? question.created_at)}</span>
+    </div>
+
+    <div class="mt-5 text-base leading-7" set:html={renderRichText(question.text)}></div>
+    {question.text_hi ? <div class="mt-3 text-base leading-7" lang="hi" dir="auto" set:html={renderRichText(question.text_hi)}></div> : null}
+
+    {question.image_url ? (
+      <figure class="media-frame mt-4">
+        <img src={question.image_url} alt={question.image_alt ?? ""} loading="lazy" />
+        {question.image_alt ? <figcaption class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">{question.image_alt}</figcaption> : null}
+      </figure>
+    ) : null}
+
+    <ol class="mt-5 space-y-2">
+      {options.map((option, index) => (
+        <li class:list={["flex items-start gap-3 rounded-xl border p-3", index === question.correct_option ? "border-emerald-400 bg-emerald-50 dark:border-emerald-700 dark:bg-emerald-950/30" : "border-neutral-200 dark:border-neutral-800"]}>
+          <span class="font-bold">{letters[index]}.</span>
+          <span class="min-w-0 flex-1">
+            <span set:html={renderRichText(option.text)}></span>
+            {option.image_url ? <img class="media-frame mt-2 max-h-48" src={option.image_url} alt={option.alt ?? ""} loading="lazy" /> : null}
+          </span>
+          {index === question.correct_option ? <span class="shrink-0 rounded-full bg-emerald-700 px-2 py-0.5 text-[10px] font-bold uppercase text-white">Correct</span> : null}
+        </li>
+      ))}
+    </ol>
+
+    {optionsHi.length > 0 ? (
+      <details class="mt-4 rounded-xl border border-neutral-200 p-3 dark:border-neutral-800">
+        <summary class="cursor-pointer text-sm font-semibold">Hindi options</summary>
+        <ol class="mt-2 space-y-1 text-sm" lang="hi" dir="auto">
+          {optionsHi.map((option, index) => (<li><span class="font-bold">{letters[index]}.</span> <span set:html={renderRichText(option.text)}></span></li>))}
+        </ol>
+      </details>
+    ) : null}
+
+    {question.explanation ? (
+      <section class="mt-6 border-t border-neutral-200 pt-4 dark:border-neutral-800">
+        <h2 class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Explanation</h2>
+        <div class="mt-2 text-sm leading-7" set:html={renderRichText(question.explanation)}></div>
+        {question.explanation_hi ? <div class="mt-2 text-sm leading-7" lang="hi" dir="auto" set:html={renderRichText(question.explanation_hi)}></div> : null}
+        {question.explanation_image_url ? <img class="media-frame mt-3 max-h-64" src={question.explanation_image_url} alt={question.explanation_image_alt ?? ""} loading="lazy" /> : null}
+      </section>
+    ) : (
+      <p class="mt-6 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+        No printed explanation is stored. Do not invent one; leave it empty and flag the row for review.
+      </p>
+    )}
+  </article>
+</AdminLayout>

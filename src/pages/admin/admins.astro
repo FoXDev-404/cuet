@@ -1,0 +1,175 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can, ADMIN_ROLES } from "../../lib/auth/admin";
+import { listAdmins } from "../../lib/admin/admins";
+import { formatDateTime } from "../../lib/content";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "admins.manage")) return Astro.redirect("/admin", 303);
+
+const params = Astro.url.searchParams;
+const q = (params.get("q") ?? "").trim().slice(0, 120);
+const includeDeleted = params.get("deleted") === "1";
+const selectedId = Number(params.get("id") ?? 0);
+const rows = await listAdmins(q, includeDeleted);
+const selected = rows.find((row) => row.id === selectedId) ?? null;
+---
+
+<AdminLayout title="Admins" active="admins">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Admins</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Admin identity is matched by email against the signed-in account. Roles drive the API matrix and the
+        navigation; hiding a button is never the security boundary. At least one active Super Admin must remain.
+      </p>
+    </div>
+    <div class="rounded-xl border border-neutral-200 bg-white px-4 py-3 text-right dark:border-neutral-800 dark:bg-neutral-900">
+      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Admin rows</p>
+      <p class="text-2xl font-black tabular-nums">{rows.length}</p>
+    </div>
+  </div>
+
+  <form method="get" class="mt-6 flex flex-wrap items-end gap-3 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+    <label class="text-xs font-semibold">
+      Search
+      <input class="mt-1 block h-10 w-72 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" type="search" name="q" value={q} placeholder="Email or role…" />
+    </label>
+    <label class="flex items-center gap-2 pb-2 text-xs font-semibold">
+      <input type="checkbox" name="deleted" value="1" checked={includeDeleted} />
+      Include removed
+    </label>
+    <button class="h-10 rounded-lg bg-neutral-900 px-4 text-sm font-bold text-white dark:bg-white dark:text-neutral-900" type="submit">Filter</button>
+  </form>
+
+  <p id="admin-error" class="mt-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+  <p id="admin-success" class="mt-4 hidden rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200"></p>
+
+  <div class="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_380px]">
+    <section class="overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[760px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Email</th>
+              <th class="px-4 py-3">Role</th>
+              <th class="px-4 py-3">State</th>
+              <th class="px-4 py-3">Added</th>
+              <th class="px-4 py-3 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {rows.map((row) => (
+              <tr class:list={[row.deleted_at || !row.is_active ? "opacity-70" : ""]}>
+                <td class="max-w-[280px] px-4 py-3">
+                  <p class="truncate font-semibold">{row.email}</p>
+                  {row.email === admin.email ? <span class="text-[10px] font-bold uppercase text-brand-700 dark:text-brand-300">you</span> : null}
+                  {row.deleted_at ? <span class="ml-1 rounded bg-red-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-red-800 dark:bg-red-950/60 dark:text-red-200">removed</span> : null}
+                </td>
+                <td class="px-4 py-3">
+                  <span class:list={["rounded-full px-2 py-0.5 text-xs font-semibold", row.role === "super" ? "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200" : "bg-neutral-100 dark:bg-neutral-800"]}>{row.role}</span>
+                </td>
+                <td class="px-4 py-3 text-xs font-semibold">{row.is_active && !row.deleted_at ? "Active" : "Inactive"}</td>
+                <td class="px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(row.created_at)}</td>
+                <td class="whitespace-nowrap px-4 py-3 text-right">
+                  <a class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/admins?id=${row.id}${q ? `&q=${encodeURIComponent(q)}` : ""}`}>Edit</a>
+                  {!row.deleted_at && row.id !== admin.id ? (
+                    <button class="ml-1 rounded-lg border border-red-200 px-2 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40" type="button" data-remove-admin={row.id}>Remove</button>
+                  ) : null}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {rows.length === 0 ? <p class="px-4 py-12 text-center text-sm text-neutral-500 dark:text-neutral-400">No admins match this search.</p> : null}
+    </section>
+
+    <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-lg font-black">{selected ? `Edit ${selected.email}` : "Add an admin"}</h2>
+      <p class="mt-1 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+        {selected ? "Changing a role takes effect on the next request. Removing an admin keeps the audit trail but blocks access immediately." : "The person must sign in with this exact email (Google or password). New admins become active immediately."}
+      </p>
+
+      <form id="admin-form" class="mt-4 space-y-3" data-id={selected?.id ?? ""} novalidate>
+        <label class="block text-xs font-semibold">
+          Email
+          <input class="mt-1 h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" data-field="email" type="email" required value={selected?.email ?? ""} placeholder="owner@example.com" />
+        </label>
+        <label class="block text-xs font-semibold">
+          Role
+          <select class="mt-1 h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" data-field="role">
+            {ADMIN_ROLES.map((role) => (<option value={role} selected={(selected?.role ?? "editor") === role}>{role}</option>))}
+          </select>
+        </label>
+        <label class="flex items-center gap-2 text-xs font-semibold">
+          <input data-field="is_active" type="checkbox" checked={selected ? Boolean(selected.is_active) && !selected.deleted_at : true} />
+          Active
+        </label>
+        <button id="save-admin" class="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">{selected ? "Save admin" : "Add admin"}</button>
+        {selected ? <a class="block text-center text-xs font-semibold text-neutral-500 hover:underline dark:text-neutral-400" href="/admin/admins">Cancel edit</a> : null}
+      </form>
+
+      <div class="mt-5 rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+        <p class="font-bold text-neutral-800 dark:text-neutral-200">Role reference</p>
+        <p class="mt-1"><strong>super</strong> — everything, including data manager, trash, admins and permanent purge.</p>
+        <p><strong>editor</strong> — full content: questions, mocks, passages, PYQ, SEO, users view and revisions.</p>
+        <p><strong>moderator</strong> — discussions, reports, mutes; no content publishing.</p>
+        <p><strong>contributor</strong> — own drafts and media only.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const form = document.getElementById("admin-form") as HTMLFormElement | null;
+    const errorBox = document.getElementById("admin-error") as HTMLElement;
+    const successBox = document.getElementById("admin-success") as HTMLElement;
+
+    function show(box: HTMLElement, text: string) {
+      box.textContent = text;
+      box.classList.remove("hidden");
+    }
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      errorBox.classList.add("hidden");
+      successBox.classList.add("hidden");
+      const button = document.getElementById("save-admin") as HTMLButtonElement;
+      const id = form.dataset.id;
+      const payload = {
+        email: form.querySelector<HTMLInputElement>('[data-field="email"]')?.value.trim() ?? "",
+        role: (form.querySelector('[data-field="role"]') as unknown as HTMLSelectElement).value,
+        is_active: form.querySelector<HTMLInputElement>('[data-field="is_active"]')?.checked ?? false,
+      };
+      button.disabled = true;
+      try {
+        const response = await fetch(id ? `/api/admin/admins/${id}` : "/api/admin/admins", {
+          method: id ? "PATCH" : "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) throw new Error(result.error || "Could not save this admin.");
+        show(successBox, id ? "Admin updated. Reloading…" : "Admin added. Reloading…");
+        location.reload();
+      } catch (error) {
+        show(errorBox, error instanceof Error ? error.message : "Could not save this admin.");
+        button.disabled = false;
+      }
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-remove-admin]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const id = button.dataset.removeAdmin;
+        if (!id || !confirm("Remove this admin role? The audit history stays, but sign-in will no longer grant admin access.")) return;
+        const response = await fetch(`/api/admin/admins/${id}`, { method: "DELETE" });
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) {
+          show(errorBox, result.error || "Could not remove this admin.");
+          return;
+        }
+        location.reload();
+      });
+    });
+  </script>
+</AdminLayout>

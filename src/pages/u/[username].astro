@@ -1,0 +1,140 @@
+---
+import { siteUrl } from "../../lib/site-url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { all, first } from "../../lib/db";
+import { formatDate } from "../../lib/content";
+import { breadcrumbJsonLd } from "../../lib/seo";
+
+const username = Astro.params.username ?? "";
+const profile = await first<{
+  id: number;
+  username: string;
+  avatar_url: string | null;
+  bio: string | null;
+  created_at: string;
+}>(
+  `SELECT id, username, avatar_url, bio, created_at FROM users
+   WHERE username = ? AND is_profile_public = 1 AND deleted_at IS NULL`,
+  username,
+);
+if (!profile) return new Response("Profile not found", { status: 404 });
+
+const [summary, ranked, badges, subjects] = await Promise.all([
+  first<{ tests: number; correct: number; wrong: number }>(
+    `SELECT COUNT(*) AS tests, COALESCE(SUM(correct), 0) AS correct, COALESCE(SUM(wrong), 0) AS wrong
+     FROM attempts WHERE user_id = ? AND status IN ('submitted', 'expired')`,
+    profile.id,
+  ),
+  first<{ best_rank: number }>(
+    `SELECT MIN(rank) AS best_rank FROM (
+       SELECT RANK() OVER (PARTITION BY a.version_id ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank
+       FROM attempts a JOIN users u ON u.id = a.user_id
+       WHERE a.user_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL
+     )`,
+    profile.id,
+  ),
+  all<{ code: string; name: string; description: string | null; awarded_at: string }>(
+    `SELECT b.code, b.name, b.description, ub.awarded_at
+     FROM user_badges ub JOIN badges b ON b.id = ub.badge_id
+     WHERE ub.user_id = ? ORDER BY ub.awarded_at DESC LIMIT 12`,
+    profile.id,
+  ),
+  all<{ name: string; attempted: number; correct: number }>(
+    `SELECT s.name, us.attempted, us.correct
+     FROM user_stats us JOIN subjects s ON s.id = us.subject_id
+     WHERE us.user_id = ? AND us.attempted >= 5
+     ORDER BY (CAST(us.correct AS REAL) / us.attempted) DESC LIMIT 6`,
+    profile.id,
+  ),
+]);
+
+const tests = summary?.tests ?? 0;
+const answered = (summary?.correct ?? 0) + (summary?.wrong ?? 0);
+const accuracy = answered > 0 ? Math.round(((summary?.correct ?? 0) / answered) * 1000) / 10 : null;
+const site = siteUrl(Astro.url);
+const structuredData = breadcrumbJsonLd(site, [
+  { name: "Home", path: "/" },
+  { name: "Leaderboard", path: "/leaderboard" },
+  { name: profile.username, path: `/u/${profile.username}` },
+]);
+---
+
+<BaseLayout
+  title={`${profile.username} — CUET practice profile`}
+  description={`${profile.username}'s public CUET mock practice profile: tests taken, best rank and verified subject accuracy.`}
+  structuredData={structuredData}
+>
+  <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
+    <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+      <div class="flex flex-wrap items-center gap-4">
+        {profile.avatar_url ? (
+          <img src={profile.avatar_url} alt="" width="64" height="64" class="h-16 w-16 rounded-2xl object-cover" referrerpolicy="no-referrer" />
+        ) : (
+          <span class="grid h-16 w-16 place-items-center rounded-2xl bg-brand-600 text-2xl font-black text-white">{profile.username.slice(0, 1).toUpperCase()}</span>
+        )}
+        <div class="min-w-0">
+          <h1 class="truncate text-2xl font-black tracking-tight sm:text-3xl">{profile.username}</h1>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">Joined {formatDate(profile.created_at)} · Public profile</p>
+        </div>
+      </div>
+      {profile.bio ? <p class="mt-4 max-w-2xl whitespace-pre-wrap text-sm leading-7 text-neutral-700 dark:text-neutral-300">{profile.bio}</p> : null}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Tests taken</p>
+        <p class="mt-1 text-3xl font-black">{tests}</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Best rank</p>
+        <p class="mt-1 text-3xl font-black">{ranked?.best_rank ? `#${ranked.best_rank}` : "—"}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Among this site's eligible first attempts</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Average accuracy</p>
+        <p class="mt-1 text-3xl font-black">{accuracy !== null ? `${accuracy}%` : "—"}</p>
+      </div>
+    </div>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-bold">Badges</h2>
+      {badges.length === 0 ? (
+        <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">No badges awarded yet.</p>
+      ) : (
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+          {badges.map((badge) => (
+            <li class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+              <p class="font-bold">{badge.name}</p>
+              <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">{badge.description ?? "Practice achievement."}</p>
+              <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">{formatDate(badge.awarded_at)}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+
+    {subjects.length > 0 ? (
+      <section class="mt-8">
+        <h2 class="text-xl font-bold">Subject accuracy</h2>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Only subjects with at least 5 attempted questions are shown, so a tiny sample is not presented as strength.</p>
+        <ul class="mt-4 space-y-3">
+          {subjects.map((subject) => {
+            const percent = Math.round((subject.correct / subject.attempted) * 100);
+            return (
+              <li>
+                <div class="flex items-center justify-between gap-3 text-sm"><span class="font-medium">{subject.name}</span><span class="text-xs text-neutral-500 dark:text-neutral-400">{subject.correct}/{subject.attempted} · {percent}%</span></div>
+                <div class="mt-1.5 h-2 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800"><div class="h-full rounded-full bg-brand-500" style={`width:${percent}%`}></div></div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ) : null}
+
+    <p class="mt-8 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
+      This profile shows username, join date, aggregate practice counts and badges only. Email, full attempt history, answers and device data are never public.
+    </p>
+  </section>
+</BaseLayout>

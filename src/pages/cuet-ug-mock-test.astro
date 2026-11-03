@@ -1,0 +1,198 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SeoIntro from "../components/SeoIntro.astro";
+import FaqSection from "../components/FaqSection.astro";
+import AdSlot from "../components/AdSlot.astro";
+import { all } from "../lib/db";
+import { parseMarkingScheme } from "../lib/content";
+import { getLocalPapers } from "../lib/local-papers";
+import {
+  breadcrumbJsonLd,
+  getPageSeo,
+  itemListJsonLd,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/cuet-ug-mock-test";
+const DEFAULT_TITLE = "CUET UG Mock Tests — Free NTA-style Practice";
+const DEFAULT_DESCRIPTION =
+  "Free CUET UG mock tests with a real exam interface, server-scored results, solutions and first-attempt leaderboards.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "Are these CUET UG mock tests free?",
+    answer:
+      "Yes. Every published paper is free to attempt, with a server-scored result and written solutions after you submit. There is no paywall and no card required.",
+  },
+  {
+    question: "Do I need an account to take a mock test?",
+    answer:
+      "No. You can start as a guest and the attempt is tied to a cookie in this browser so it can be resumed. Create an account afterwards to keep the history and enter the first-attempt leaderboard.",
+  },
+  {
+    question: "How is my score calculated?",
+    answer:
+      "Each paper stores its own marking scheme. The server compares your saved answers with the key only after submit, then applies that scheme. The instructions page shows the exact marking before the timer starts.",
+  },
+  {
+    question: "Can I retake a paper?",
+    answer:
+      "Yes. Retakes are scored and shown in your dashboard, but only the first submitted attempt counts on the leaderboard. Use a retake to check whether your error review worked.",
+  },
+  {
+    question: "Why is the list empty?",
+    answer:
+      "Papers are added after editorial review, never to fill an empty page. An empty list stays out of search results until a real paper is published.",
+  },
+];
+
+const mocks = await all<{
+  id: number;
+  title: string;
+  slug: string;
+  type: string;
+  duration_min: number;
+  total_marks: number;
+  marking_scheme: string;
+  subject_name: string | null;
+  question_count: number;
+  attempt_count: number;
+  published_at: string | null;
+}>(
+  `SELECT m.id, m.title, m.slug, m.type, m.duration_min, m.total_marks, m.marking_scheme,
+          s.name AS subject_name,
+          (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
+          (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count,
+          m.published_at
+   FROM mock_tests m LEFT JOIN subjects s ON s.id = m.subject_id
+   WHERE m.status = 'published' AND m.deleted_at IS NULL
+     AND m.practice_paper_slug IS NULL
+     AND m.slug NOT LIKE 'e2e-%'
+     AND LOWER(m.title) NOT LIKE '%fixture%'
+   ORDER BY m.published_at DESC, m.id DESC`,
+);
+
+const localPapers = getLocalPapers();
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const noindex = (seo?.noindex ?? 0) === 1 || (mocks.length === 0 && localPapers.length === 0);
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "CUET UG mock tests", path: PATH },
+  ]),
+  itemListJsonLd(
+    site,
+    mocks.map((mock) => ({ name: mock.title, path: `/mock/${mock.slug}` })),
+  ),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  noindex={noindex}
+  canonical={seo?.canonical_url}
+  structuredData={structuredData}
+  ads={!noindex}
+>
+  <section class="border-b border-neutral-200 bg-gradient-to-b from-brand-50 to-white dark:border-neutral-800 dark:from-brand-950/30 dark:to-neutral-950">
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
+      <p class="text-xs font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300">CUET UG · Free forever</p>
+      <h1 class="mt-3 max-w-3xl text-3xl font-black tracking-tight sm:text-5xl">Mock tests that behave like the NTA screen.</h1>
+      <p class="mt-4 max-w-2xl text-neutral-600 dark:text-neutral-300">
+        Full-length and subject papers with a question palette, countdown, autosave and server-side scoring. Every result includes written solutions.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <span class="rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">Answers hidden until submit</span>
+        <span class="rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">Refresh-safe autosave</span>
+        <span class="rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">First attempt ranked</span>
+      </div>
+    </div>
+  </section>
+
+  <SeoIntro html={seo?.intro_html} width="wide" />
+
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">Available mock tests</h2>
+        <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">New papers are added as the question bank grows. No signup needed to start.</p>
+      </div>
+      <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-syllabus">Read the syllabus →</a>
+    </div>
+
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {mocks.map((mock) => {
+        const marking = parseMarkingScheme(mock.marking_scheme);
+        return (
+          <article class="flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900">
+            <div class="flex flex-wrap items-center gap-2 text-xs">
+              <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{mock.type}</span>
+              {mock.subject_name ? <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{mock.subject_name}</span> : null}
+            </div>
+            <h3 class="mt-3 text-lg font-bold leading-snug"><a class="hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${mock.slug}`}>{mock.title}</a></h3>
+            <dl class="mt-4 grid grid-cols-3 gap-2 text-sm">
+              <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950"><dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</dt><dd class="font-bold">{mock.question_count}</dd></div>
+              <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950"><dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Minutes</dt><dd class="font-bold">{mock.duration_min}</dd></div>
+              <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950"><dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Marks</dt><dd class="font-bold">{mock.total_marks}</dd></div>
+            </dl>
+            <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">+{marking.correct} correct · {marking.wrong} wrong · {mock.attempt_count} attempts</p>
+            <a class="mt-4 inline-flex w-fit rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${mock.slug}`}>View test →</a>
+          </article>
+        );
+      })}
+    </div>
+
+    {mocks.length === 0 ? (
+      <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 p-12 text-center dark:border-neutral-700">
+        <h3 class="font-bold">{localPapers.length > 0 ? "The practice library is ready." : "Papers are being prepared."}</h3>
+        <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+          {localPapers.length > 0
+            ? `${localPapers.length} previous-year practice papers are available below with server grading. The ranked D1 bank is being rebuilt separately.`
+            : "The first original CUET UG mock will appear here after editorial review. Meanwhile, read the syllabus and exam-pattern guide."}
+        </p>
+        {localPapers.length > 0 ? (
+          <a class="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/practice">Open the practice library →</a>
+        ) : null}
+      </div>
+    ) : null}
+  </section>
+
+  {localPapers.length > 0 ? (
+    <section class="mx-auto max-w-6xl px-4 pb-12 sm:px-6">
+      <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 class="text-xl font-bold text-amber-900 dark:text-amber-200">Previous-year practice library</h2>
+            <p class="mt-1 max-w-2xl text-sm leading-6 text-amber-900 dark:text-amber-100">
+              {localPapers.length} papers across {new Set(localPapers.map((paper) => paper.subject.name)).size} subjects, all attempted on the same ranked engine, with saved results and first-attempt leaderboards.
+            </p>
+          </div>
+          <a class="text-sm font-bold text-amber-900 underline dark:text-amber-200" href="/practice">Open practice library →</a>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {localPapers.slice(0, 8).map((paper) => (
+            <a class="rounded-full border border-amber-300 bg-white px-3.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 dark:border-amber-800 dark:bg-neutral-900 dark:text-amber-200 dark:hover:bg-amber-950/40" href={paper.path}>
+              {paper.year} · {paper.subject.name}{paper.shift ? ` · ${paper.shift}` : ""}
+            </a>
+          ))}
+          <a class="rounded-full bg-amber-900 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-amber-950 dark:bg-amber-200 dark:text-amber-950" href="/practice">View all {localPapers.length} papers →</a>
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  {!noindex ? <AdSlot /> : null}
+
+  <div class="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
+    <FaqSection faqs={faqs} />
+  </div>
+</BaseLayout>

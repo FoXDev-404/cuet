@@ -1,0 +1,1525 @@
+{
+ "exam": {
+  "id": "local-chemistry-2022-08-17",
+  "slug": "chemistry-2022-08-17",
+  "title": "CUET UG Chemistry 17 August 2022 Previous Year Paper",
+  "subject": "Chemistry",
+  "subjectId": "local-chemistry",
+  "subjectCode": "CHE",
+  "year": 2022,
+  "examDate": "2022-08-17",
+  "shift": null,
+  "sourceFile": "Chemistry_2022-08-17.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 44,
+  "sourceQuestionCount": 48,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "In a face centred cubic unit cell of close packed atoms, the radius of atom (r) is related to the edge length 'a' of the unit cell by the expression",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\mathrm{r} = \\frac{\\mathrm{a}}{\\sqrt{2}} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\mathrm{r} = \\frac{\\mathrm{a}}{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\mathrm{r} = \\frac{\\mathrm{a}}{2\\sqrt{2}} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\mathrm{r} = \\frac{\\sqrt{3}\\mathrm{a}}{4} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "An alloy of Cu, Ag and Au is found to have Cu constituting the CCP lattice. If Ag atoms occupy edge centres, and Au is present at body centre, then the alloy has formula",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ Cu_{4}Ag_{2}Au $"
+     },
+     {
+      "id": "B",
+      "text": "$ Cu_{4}Ag_{4}Au $"
+     },
+     {
+      "id": "C",
+      "text": "$ Cu_{4}Ag_{3}Au $"
+     },
+     {
+      "id": "D",
+      "text": "CuAgAu"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "What is $\\Delta G^{\\circ}$ for the given reaction?\n\n$\\mathrm{Zn(s) + Cu^{2+}(aq) \\rightarrow Zn^{2+}(aq) + Cu(s)}$\n\n(Given: $E_{Zn^{2+}/Zn}^{0} = -0.76\\,\\mathrm{V}$ & $E_{Cu^{2+}/Cu}^{0} = +0.34\\,\\mathrm{V}$)\n\n$F = 96500\\,\\mathrm{C\\,mol}^{-1}$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\Delta G^{\\circ} = -212.3\\,\\mathrm{kJ/mol}$"
+     },
+     {
+      "id": "B",
+      "text": "$\\Delta G^{\\circ} = +212.3\\,\\mathrm{kJ/mol}$"
+     },
+     {
+      "id": "C",
+      "text": "$\\Delta G^{\\circ} = -312.5\\,\\mathrm{kJ/mol}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\Delta G^{\\circ} = 0$ (d) $ \\Delta G^{0}=0 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "How many electrons flow when a current of 5 amperes is passed through a metal for 193s?\n\n(Given: F = 96500 c mol $ ^{-1} $, $ N_{A} = 6.022 \\times 10^{23} $ mol $ ^{-1} $)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 6.022 \\times 10^{23} $ electrons"
+     },
+     {
+      "id": "B",
+      "text": "$ 6.022 \\times 10^{21} $ electrons"
+     },
+     {
+      "id": "C",
+      "text": "$ 3.011 \\times 10^{21} $ electrons"
+     },
+     {
+      "id": "D",
+      "text": "$ 3.011 \\times 10^{23} $ electrons"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "Kohlrausch law of independent migration of ion is applicable to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Only to weak electrolytes at a certain concentration"
+     },
+     {
+      "id": "B",
+      "text": "Only to strong electrolytes at all concentrations"
+     },
+     {
+      "id": "C",
+      "text": "To both - strong and weak electrolytes"
+     },
+     {
+      "id": "D",
+      "text": "To non-electrolytes"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "In the first order reaction the concentration of the reactant is reduced $ \\frac{1}{4} $th in 60 minutes, what will be its half-life?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "120 minutes"
+     },
+     {
+      "id": "B",
+      "text": "40 minutes"
+     },
+     {
+      "id": "C",
+      "text": "30 minutes"
+     },
+     {
+      "id": "D",
+      "text": "25 minutes"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "Which of the following is the correct relationship between time required for completion of 99.9% of a first order reaction and its half-life?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ t_{\\frac{1}{2}} = 5 \\times t_{99.9\\%} $"
+     },
+     {
+      "id": "B",
+      "text": "$ t_{99.9\\%} = 10 \\times t_{\\frac{1}{2}} $"
+     },
+     {
+      "id": "C",
+      "text": "$ t_{99.9\\%} = 2t_{\\frac{1}{2}} $"
+     },
+     {
+      "id": "D",
+      "text": "$ t_{99.9\\%} = t_{\\frac{1}{2}} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "A catalyst increases the rate of reaction by:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Decreasing enthalpy of reactants"
+     },
+     {
+      "id": "B",
+      "text": "Increasing internal energy of reactants"
+     },
+     {
+      "id": "C",
+      "text": "Decreasing activation energy of reaction"
+     },
+     {
+      "id": "D",
+      "text": "Increasing activation energy of reaction"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Match List-I with List-II.\n\nA. Gem stone\n\nB. Milk\n\nC. Cloud\n\nD. Froth\n\nList-I List-II\n\nI. Emulsion\n\nII. Solid sol\n\nIII. Foam\n\nIV. Aerosol",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-IV, B-I, C-II, D-III"
+     },
+     {
+      "id": "B",
+      "text": "A-II, B-I, C-IV, D-III"
+     },
+     {
+      "id": "C",
+      "text": "A-II, B-IV, C-I, D-III"
+     },
+     {
+      "id": "D",
+      "text": "A-III, B-I, C-IV, D-II"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "Consider the case when a highly diluted solution of KI is added to AgNO_{3} solution. Arrange the following in the increasing order of ease of coagulation of the resulting sol.\n\nA. BaSO_{4}\n\nB. NaCl\n\nC. Na_{3}PO_{4}\n\nD. K_{4}[Fe(CN)_{6}]",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A < C < B < D"
+     },
+     {
+      "id": "B",
+      "text": "D < C < A < B"
+     },
+     {
+      "id": "C",
+      "text": "A < B < C < D"
+     },
+     {
+      "id": "D",
+      "text": "B < A < C < D"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Which of the following conditions can be used to change physical adsorption of a gas to chemical adsorption?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Decrease in temperature"
+     },
+     {
+      "id": "B",
+      "text": "Increase in temperature"
+     },
+     {
+      "id": "C",
+      "text": "Using catalyst"
+     },
+     {
+      "id": "D",
+      "text": "Increasing surface area of adsorbent"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Which of the following graph(s) are for First Order Reactions?\n\n(A)\n\n(B)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A and D only"
+     },
+     {
+      "id": "B",
+      "text": "B and C only"
+     },
+     {
+      "id": "C",
+      "text": "A, D and E only"
+     },
+     {
+      "id": "D",
+      "text": "C and E only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q13-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/chemistry-2022-08-17/q13-figure-1.jpg",
+      "page": 2,
+      "alt": "Figure for question 13"
+     },
+     {
+      "id": "q13-figure-2",
+      "kind": "figure",
+      "path": "/local-papers/assets/chemistry-2022-08-17/q13-figure-2.jpg",
+      "page": 2,
+      "alt": "Figure for question 13"
+     },
+     {
+      "id": "q13-figure-3",
+      "kind": "figure",
+      "path": "/local-papers/assets/chemistry-2022-08-17/q13-figure-3.jpg",
+      "page": 2,
+      "alt": "Figure for question 13"
+     },
+     {
+      "id": "q13-figure-4",
+      "kind": "figure",
+      "path": "/local-papers/assets/chemistry-2022-08-17/q13-figure-4.jpg",
+      "page": 2,
+      "alt": "Figure for question 13"
+     }
+    ]
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "Consider the statements for the metallurgical processes and select the correct statements:\n\n(A) Malachite is an ore of copper\n\n(B) Bauxite is an ore of aluminium\n\n(C) Calamine is an ore of Zinc\n\n(D) Haematite is an ore of iron\n\n(E) Siderite is an ore of Zinc\n\nChoose the correct statement from the options given below",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B, E and D only"
+     },
+     {
+      "id": "B",
+      "text": "A and B only"
+     },
+     {
+      "id": "C",
+      "text": "A, B, C and D only"
+     },
+     {
+      "id": "D",
+      "text": "A only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "Arrange the following molecules in the increasing order of number of P-OH bonds present in it\n\n(A) $ H_{4}P_{2}O_{6} $ (B) $ H_{3}PO_{2} $\n\n(C) $ H_{3}PO_{4} $ (D) $ H_{3}PO_{3} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "B < C < D < A"
+     },
+     {
+      "id": "B",
+      "text": "B < D < C < A"
+     },
+     {
+      "id": "C",
+      "text": "D < B < A < C"
+     },
+     {
+      "id": "D",
+      "text": "D < C < B < A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Arrange the following in the decreasing order of acidity:\n\n(A) $ H_{2}O $ (B) $ H_{2}S $ (C) $ H_{2}Te $ (D) $ H_{2}Se $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "D>C>B>A"
+     },
+     {
+      "id": "B",
+      "text": "C>D>B>A"
+     },
+     {
+      "id": "C",
+      "text": "A>B>C>D"
+     },
+     {
+      "id": "D",
+      "text": "A>B>D>C"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Which of the following molecules have linear shape?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "XeF_{2}"
+     },
+     {
+      "id": "B",
+      "text": "XeF_{4}"
+     },
+     {
+      "id": "C",
+      "text": "XeF_{6}"
+     },
+     {
+      "id": "D",
+      "text": "XeO_{3}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Which of the following statements about d-block elements are NOT correct?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "They show variable oxidation states"
+     },
+     {
+      "id": "B",
+      "text": "They exhibit paramagnetic and diamagnetic properties"
+     },
+     {
+      "id": "C",
+      "text": "All of their ions are coloured"
+     },
+     {
+      "id": "D",
+      "text": "They exhibit catalytic property"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "The spin only magnetic moment of Cr^{3+} ion in BM is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1.73"
+     },
+     {
+      "id": "B",
+      "text": "3.87"
+     },
+     {
+      "id": "C",
+      "text": "4.89"
+     },
+     {
+      "id": "D",
+      "text": "3.57"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "Select the correct statements for the $d$-block and $f$-block elements:\n\nA. The maximum oxidation state shown by manganese is +6.\n\nB. $\\mathrm{Sc}^{3+}$ (Scandium) is colourless\n\nC. Brass is an alloy of Copper and Zinc\n\nD. Lanthanide series included a total of 15 elements\n\nE. $\\mathrm{V}_{2}\\mathrm{O}_{5}$ (Vanadium Pentaoxide) is used in the manufacturing of sulphuric acid (by contact process).",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A and B only"
+     },
+     {
+      "id": "B",
+      "text": "A, B and E only"
+     },
+     {
+      "id": "C",
+      "text": "B, C and E only"
+     },
+     {
+      "id": "D",
+      "text": "B, C and D only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "The IUPAC name of [Pt(NH_{3})2Cl_{2}] is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Diammine dichlorido platinum (II)"
+     },
+     {
+      "id": "B",
+      "text": "Diammine dichlorido platinum (IV)"
+     },
+     {
+      "id": "C",
+      "text": "Diammine dichlorido platinum (0)"
+     },
+     {
+      "id": "D",
+      "text": "Diammine dichlorido platinum (IV)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Match List I with List II\n\nList I: (Property)\n\nA. Transition metal\n\ncan act as catalyst\n\nList II: (Reason)\n\nI. Due to their high ionic charges, small size and availability of d-orbitals\n\nB. Zr and Hf have similar atomic radii\n\nII. Unpaired electrons in d-orbitals of metal ions\n\nC. Transition metals form complex compounds\n\nD. Transition metals ions are coloured\n\nIII. Ability to adopt multiple oxidation states and to form complexes\n\nIV. As consequence of\n\nLanthanoid\n\ncontraction",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-I, B-IV, C-II, D-III"
+     },
+     {
+      "id": "B",
+      "text": "A-II, B-III, C-IV, D-I"
+     },
+     {
+      "id": "C",
+      "text": "A-III, B-IV-, C-I, D-II"
+     },
+     {
+      "id": "D",
+      "text": "A-IV, B-I, C-III, D-III"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "The donor atoms in ethylene diamine tetra acetate ions are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Two N and two O atoms"
+     },
+     {
+      "id": "B",
+      "text": "Two N and four O atoms"
+     },
+     {
+      "id": "C",
+      "text": "Four N and two O atoms"
+     },
+     {
+      "id": "D",
+      "text": "Three N and Three O atoms"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "Indicate the complex ion which does not show geometrical isomerism:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ [\\mathrm{Cr}(\\mathrm{H}_{2}\\mathrm{O})_{4}\\mathrm{Cl}_{2}]^{+} $"
+     },
+     {
+      "id": "B",
+      "text": "$ [\\mathrm{Pt}(\\mathrm{NH}_{3})_{2}\\mathrm{Cl}_{2}] $"
+     },
+     {
+      "id": "C",
+      "text": "$ [\\mathrm{Pt}(\\mathrm{NH}_{3})_{6}]^{3+} $"
+     },
+     {
+      "id": "D",
+      "text": "$ [\\mathrm{Co}(\\mathrm{CN})_{4}(\\mathrm{NC})_{2}]^{3-} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Which of the following is the electronic configuration of the central metal atom/ion of $ [Co(H_{2}O)_{6}]^{2+} $ complex ion?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ t_{2}g^{6}eg^{1} $"
+     },
+     {
+      "id": "B",
+      "text": "$ t_{2}g^{4}eg^{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ t_{2}g^{5}eg^{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ t_{2}g^{6}eg^{0} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Consider the following bromides:\n\nBr\n\n(Ⅰ)\n\n(Ⅱ)\n\nThe correct order of reactivity towards $ S_{N1} $ reaction is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "I > II > III"
+     },
+     {
+      "id": "B",
+      "text": "II > III > I"
+     },
+     {
+      "id": "C",
+      "text": "$ \\Pi > I > \\Pi $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\Pi > \\Pi > I $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q27-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/chemistry-2022-08-17/q27-figure-1.jpg",
+      "page": 3,
+      "alt": "Figure for question 27"
+     },
+     {
+      "id": "q27-figure-2",
+      "kind": "figure",
+      "path": "/local-papers/assets/chemistry-2022-08-17/q27-figure-2.jpg",
+      "page": 3,
+      "alt": "Figure for question 27"
+     },
+     {
+      "id": "q27-figure-3",
+      "kind": "figure",
+      "path": "/local-papers/assets/chemistry-2022-08-17/q27-figure-3.jpg",
+      "page": 3,
+      "alt": "Figure for question 27"
+     }
+    ]
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "Aryl halides can not be prepared by the reaction of aryl alcohols with $ PCl_{3} $, $ PCl_{5} $ or $ SOCl_{2} $ because:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Phenols are highly stable compounds"
+     },
+     {
+      "id": "B",
+      "text": "Carbon-oxygen bond in phenols has a partial double bond character"
+     },
+     {
+      "id": "C",
+      "text": "Carbon-oxygen bond is highly polar"
+     },
+     {
+      "id": "D",
+      "text": "Phenyl cation is stabilised by resonance"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "Jones Reagent is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ KMnO_{4} $ | $ H_{2}SO_{4} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\mathrm{K}_{2}\\mathrm{Cr}_{2}\\mathrm{O}_{7}|\\mathrm{H}_{2}\\mathrm{SO}_{4} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\mathrm{CrO}_{3}|\\mathrm{H}_{2}\\mathrm{SO}_{4} $"
+     },
+     {
+      "id": "D",
+      "text": "$ KMnO_{4} $ | KOH"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "Match List I with List II\n\nList I: List II:\n\nNames of drug Class of drugs\n\nA. Ranitidine\n\nB. Tranquilizer\n\nII. Narcotic Analgesic\n\nC. Codeine\n\nD. Chloramphenicol IV. Antacid\n\nChoose the correct answer from the options given below:\n\n(a) A-IV, B-I, C-II, D-III",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-IV, B-I, C-II, D-III"
+     },
+     {
+      "id": "B",
+      "text": "A-IV, B-II, C-II, D-I"
+     },
+     {
+      "id": "C",
+      "text": "A-III, B-IV, C-II, D-I"
+     },
+     {
+      "id": "D",
+      "text": "A-I, B-II, C-III, D-IV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Match List I with List II\n\nList-I\n\nGiven pair of organic\n\ncompounds can be\n\ndistinguished by\n\nList-II\n\nTests\n\n1. Ethanal/Propanal I Sodium Hydrogen carbonate test\n\n2. Ethanol/Ethanolic II. Fehling's Test acid\n\n3. Butanal/ III. Tollen's Test\n\nButan-2-one\n\n4. Benzaldehyde/IV. Iodoform Test Ethanol",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1-IV, 2-I, 3-II, 4-III"
+     },
+     {
+      "id": "B",
+      "text": "1-III,2-II,3-IV,4-I"
+     },
+     {
+      "id": "C",
+      "text": "1-IV, 2-I, 3-III, 4-II"
+     },
+     {
+      "id": "D",
+      "text": "1-I, 2-II, 3-III, 4-IV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "Out of the following compounds, which is the most basic in aqueous solution?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\mathrm{CH}_{3}-\\mathrm{NH}_{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\mathrm{(CH_{3})_{2}NH} $"
+     },
+     {
+      "id": "C",
+      "text": "$ (\\mathrm{CH}_{3})_{3}\\mathrm{N} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\mathrm{C}_{6}\\mathrm{H}_{5}\\mathrm{NH}_{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Arrange the following in increasing order of their boiling points:\n\nA. $ (C_{2}H_{5})_{2}NH $ B. n-C $ _{4} $H $ _{9} $NH $ _{2} $ C. C $ _{2} $H $ _{5} $N(CH $ _{3} $) $ _{2} $ D. n-C $ _{4} $H $ _{9} $OH",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "B < C < A < D"
+     },
+     {
+      "id": "B",
+      "text": "C < B < A < D"
+     },
+     {
+      "id": "C",
+      "text": "C < A < B < D"
+     },
+     {
+      "id": "D",
+      "text": "C < D < B < A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "Which of the following is an essential amino acid?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Glycine"
+     },
+     {
+      "id": "B",
+      "text": "Alanine"
+     },
+     {
+      "id": "C",
+      "text": "Glutamine"
+     },
+     {
+      "id": "D",
+      "text": "Valine"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "In nucleic acids, the Nucleotides are joined together by",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Glycosidic linkage"
+     },
+     {
+      "id": "B",
+      "text": "Phosphodiester linkage"
+     },
+     {
+      "id": "C",
+      "text": "Hydrogen bonds"
+     },
+     {
+      "id": "D",
+      "text": "Weak intermolecular forces"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "The letter 'D' in carbohydrates signifies",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Dextrorotatory"
+     },
+     {
+      "id": "B",
+      "text": "Configuration"
+     },
+     {
+      "id": "C",
+      "text": "Diamagnetic character"
+     },
+     {
+      "id": "D",
+      "text": "Optical activity"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "Which of the following monomeric pair is used to make polymer Nylon 6, 6?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Hexane-1, 6 dioic acid and Hexane-1, 6-diamine"
+     },
+     {
+      "id": "B",
+      "text": "Ethane-1, 2-dioic acid and Benzene-1, 4-dicarboxylic Acid"
+     },
+     {
+      "id": "C",
+      "text": "Urea and Methanal"
+     },
+     {
+      "id": "D",
+      "text": "Phenol and Methanol"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "Which amongst the following antibiotics is an example of narrow spectrum antibiotic?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Vancomycin"
+     },
+     {
+      "id": "B",
+      "text": "Chloramphenicol"
+     },
+     {
+      "id": "C",
+      "text": "Amoxycillin"
+     },
+     {
+      "id": "D",
+      "text": "Penicillin G"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Which of the following polymers are obtained by chain growth polymerisation?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Orlon"
+     },
+     {
+      "id": "B",
+      "text": "Nylon"
+     },
+     {
+      "id": "C",
+      "text": "Teflon"
+     },
+     {
+      "id": "D",
+      "text": "Nylon 2-nylon 6 (E) Dacron"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Isotonic solutions are the solutions with:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Same vapour pressure"
+     },
+     {
+      "id": "B",
+      "text": "Same temperature"
+     },
+     {
+      "id": "C",
+      "text": "Same osmotic pressure"
+     },
+     {
+      "id": "D",
+      "text": "Same volume"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "An unripe mango placed in a concentrated salt solution to prepare pickle shrivels because:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "It gains water via osmosis"
+     },
+     {
+      "id": "B",
+      "text": "It loses water via reverse osmosis"
+     },
+     {
+      "id": "C",
+      "text": "It gains water via reverse osmosis"
+     },
+     {
+      "id": "D",
+      "text": "It loses water via osmosis"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "Adding a salt to water leads to increase in the boiling point of solution with respect to water because:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Vapour pressure of solution is increased"
+     },
+     {
+      "id": "B",
+      "text": "Solubility of salt in water is increased"
+     },
+     {
+      "id": "C",
+      "text": "Solubility of salt in water is decreased"
+     },
+     {
+      "id": "D",
+      "text": "Vapour pressure of solution is decreased"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "Salt is used to clear snow on the roads covered with snow to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Decrease the freezing point"
+     },
+     {
+      "id": "B",
+      "text": "Increase the boiling point"
+     },
+     {
+      "id": "C",
+      "text": "Increase the osmotic pressure"
+     },
+     {
+      "id": "D",
+      "text": "Increase the solubility of salt"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "Which of the following is a colligative property?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Vapour pressure"
+     },
+     {
+      "id": "B",
+      "text": "Osmotic pressure"
+     },
+     {
+      "id": "C",
+      "text": "Freezing point"
+     },
+     {
+      "id": "D",
+      "text": "Boiling point Passage: Ethers are class of organic compounds that contain ether group - an oxygen atom connected to two alkyl groups or aryl groups. They have the general formula $ R-O-R' $, where R and $ R' $ represent the alkyl or aryl groups. Ether, like water have a tetrahedral geometry i.e., oxygen is $ sp^{3} $ hybridised. The C-O-C bond angle in ethers is slightly greater than the tetrahedral angle due to repulsive interactions between the two bulky groups when they are attached to oxygen."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Which of the following cannot be made by using Williamson Synthesis?\n\n(a) Methoxybenzene\n\n(b) Benzyl p-nitro phenyl ether\n\n(c) tert-Butyl methyl ether\n\n(d) Di-tert-Butyl ether\n\nThe IUPAC name of the ether\n\n$ \\mathrm{CH}_{2}=\\mathrm{CH}-\\mathrm{CH}_{2}-\\mathrm{O}-\\mathrm{CH}_{3} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Alkyl methyl ether"
+     },
+     {
+      "id": "B",
+      "text": "1-Methoxyprop-2-ene"
+     },
+     {
+      "id": "C",
+      "text": "3-Methoxyprop-1-ene"
+     },
+     {
+      "id": "D",
+      "text": "Vinyl dimethyl ether"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "Dehydration of alcohol to ethers is catalysed by:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Conc. H_{2}SO_{4} at 413 K"
+     },
+     {
+      "id": "B",
+      "text": "Hot & NaOH"
+     },
+     {
+      "id": "C",
+      "text": "Hot & HBr"
+     },
+     {
+      "id": "D",
+      "text": "Hot & HNO_{3}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

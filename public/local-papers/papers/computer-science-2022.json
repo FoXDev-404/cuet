@@ -1,0 +1,1546 @@
+{
+ "exam": {
+  "id": "local-computer-science-2022",
+  "slug": "computer-science-2022",
+  "title": "CUET UG Computer Science 2022 Previous Year Paper",
+  "subject": "Computer Science",
+  "subjectId": "local-computer-science",
+  "subjectCode": "CS",
+  "year": 2022,
+  "examDate": null,
+  "shift": null,
+  "sourceFile": "Computer Science_2022.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 45,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "Which of the following function(s) is/are SQL aggregate functions?\n\n(A) Trim() (B) Max() (C) Count (D) Lower() (E) Avg()\n\nChoose the correct answer from the options given below:\n\n(a) (B) only (C) (B), (C) and (E) only (D) (B), (C), (D) and (E) only\n2. Consider the given table and answer the question:\n\nWhat will be the effect of following command?\n\nSelect Mname as \"Name\", Maddress as \"residence\" from Mother;",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "It will change the field headings temporarily Mname to Name and Maddress to residence."
+     },
+     {
+      "id": "B",
+      "text": "It will give error message"
+     },
+     {
+      "id": "C",
+      "text": "It will change all the Names, addresses to Name and residence"
+     },
+     {
+      "id": "D",
+      "text": "It will change the field names Mname to name and Maddress to residence"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q01-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2022/q01-table-1.jpg",
+      "page": 1,
+      "alt": "Table for question 1"
+     }
+    ]
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "To retrieve the given column from Mother table:\n\nName\n\nLata Sharma\n\nLovely Singh\n\nLavanya Mehra\n\nThe correct command is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Select Mname from Mother Where Mname is 'Lata Sharma', 'Lovely Singh', 'Lavanya Mehra'."
+     },
+     {
+      "id": "B",
+      "text": "Select Mname from Mother where Mname like '%L';"
+     },
+     {
+      "id": "C",
+      "text": "Select Mname from Mother where Mname like 'L%';"
+     },
+     {
+      "id": "D",
+      "text": "Select Mname from Mother starting with L;"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "Which of the following query will change the name - 'Lata Sharma' to 'Elina'?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Update Mother where Mname = 'Lata Sharma';"
+     },
+     {
+      "id": "B",
+      "text": "Update Mother set Mname = 'Elina' where Mname = 'Lata Sharma';"
+     },
+     {
+      "id": "C",
+      "text": "Alter table Mother set Mname = 'Elina' where Mname = 'Lata Sharma';"
+     },
+     {
+      "id": "D",
+      "text": "Alter table Mname = 'Elina' where Mname = 'Lata Sharma';"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "What will be result of the following query?\n\nSelect distinct Mqualification from Mother;",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "It will display the mqualification column after filtering it"
+     },
+     {
+      "id": "B",
+      "text": "It will display each mqualification number of times"
+     },
+     {
+      "id": "C",
+      "text": "It will display each mqualification once after removing the duplicates"
+     },
+     {
+      "id": "D",
+      "text": "It will give error message"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "Identify an application software which is required by a client to request any resource and to receive response of his request out of the following:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Google"
+     },
+     {
+      "id": "B",
+      "text": "Web Browser"
+     },
+     {
+      "id": "C",
+      "text": "Website"
+     },
+     {
+      "id": "D",
+      "text": "Web Page"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "What is the output of the code given below?\n\nList = [1, 2, 3]\n\nList[3]",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "NameError"
+     },
+     {
+      "id": "B",
+      "text": "ValueError"
+     },
+     {
+      "id": "C",
+      "text": "IndexError"
+     },
+     {
+      "id": "D",
+      "text": "No Error, it will"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "Which of the following offer secure communication?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Radio waves"
+     },
+     {
+      "id": "B",
+      "text": "Infrared"
+     },
+     {
+      "id": "C",
+      "text": "Laser"
+     },
+     {
+      "id": "D",
+      "text": "Microwaves"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "Which of the following access mode is used to open binary file in read mode only?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "wb"
+     },
+     {
+      "id": "B",
+      "text": "a"
+     },
+     {
+      "id": "C",
+      "text": "rb"
+     },
+     {
+      "id": "D",
+      "text": "r"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Choose the correct statements about Database:\n\n(A) Database schema is the design of database\n\n(B) Database is the skeleton of the database that represents the structure\n\n(C) Meta data is data about constraint\n\n(D) We may not retrieve the data through queries",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (B) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(D) and (A) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "Match List-I with List-II\n\n(A) Bus Topology\n\n(B) Star Topology\n\n(C) Ring Topology\n\n(D) Tree Topology\n\n(E) List-II\n\nTerms\n\n(I) With Central Networking device like hub or switch.\n\n(II) Each Node is connected to two other devices, one each and either side\n\n(III) There are multiple branches and also known as hybrid topology\n\n(IV) A single backbone shared among the nodes.\n\n(A)(B)(C)(D)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "In context of network type Local Area Network (LAN), which of the following statement(s) are correct:\n\n(A) It covers a small area, within a building or a campus\n\n(B) Less congestion\n\n(C) Less fault tolerance\n\n(D) It operates on the principle of broadcasting\n\n(E) Speed of LAN is slower than MAN and WAN",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(C), (D) and (E) only"
+     },
+     {
+      "id": "C",
+      "text": "(B), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (B) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Identify the type of error which is raised when variable name is not defined?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "TypeError"
+     },
+     {
+      "id": "B",
+      "text": "NameError"
+     },
+     {
+      "id": "C",
+      "text": "ValueError"
+     },
+     {
+      "id": "D",
+      "text": "SyntaxError"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "Which of the following is a 12 digit hexadecimal number that uniquely identifies a machine on a network?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "MAC address"
+     },
+     {
+      "id": "B",
+      "text": "IP address"
+     },
+     {
+      "id": "C",
+      "text": "Processor Number"
+     },
+     {
+      "id": "D",
+      "text": "ISP Code"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "Match List-I with List-II\n\n(A) Primary key\n\n(B) Degree\n\n(C) Unique\n\n(D) Cardinality\n\nList-I\n\nList-II\n\n(I) All the values in a column distinct\n\n(II) Number of tuples in a table\n\n(III) The column which can\n\nUniquely identify each\n\n(IV) Number of Attributes in a\n\ntable\n\n(b) (A)-(III), (B)-(IV), (C)-(I), (D)-(II)\n\n(c) (A)-(III), (B)-(I), (C)-(II), (D)-(IV)\n\n(d)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(III),"
+     },
+     {
+      "id": "B",
+      "text": "(IV),"
+     },
+     {
+      "id": "C",
+      "text": "(II),"
+     },
+     {
+      "id": "D",
+      "text": "(I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Tamisha has written SQL queries and used several functions that take numeric values as input and return a numeric value as result. Identify the category of function of SQL used for the above:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "String"
+     },
+     {
+      "id": "B",
+      "text": "Math"
+     },
+     {
+      "id": "C",
+      "text": "Data and Time"
+     },
+     {
+      "id": "D",
+      "text": "Integer"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Pandas DataFrame.append() method merges two Dataframes. To get column labels in sorted order parameter is used?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Arrange"
+     },
+     {
+      "id": "B",
+      "text": "sort"
+     },
+     {
+      "id": "C",
+      "text": "Order by"
+     },
+     {
+      "id": "D",
+      "text": "sorted"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Abhishek wants to set up a network and use a communication protocol that establishes a dedicated and direct connection between two communicating devices. The protocol should define how two devices will authenticate each other and establish a direct link between them. The communicating device should have duplex modes for using the protocol. Identify the protocol from the following:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "HTTP"
+     },
+     {
+      "id": "B",
+      "text": "PPP"
+     },
+     {
+      "id": "C",
+      "text": "TCP/IP"
+     },
+     {
+      "id": "D",
+      "text": "SMTP"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "Ethernet cards can support data transfer between _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "100 Kbps and 1000 Kbps"
+     },
+     {
+      "id": "B",
+      "text": "10 Mbps and 1000 Mbps"
+     },
+     {
+      "id": "C",
+      "text": "10 Kbps and 10 Mbps"
+     },
+     {
+      "id": "D",
+      "text": "1 Mbps and 1 Tbps"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "Scatter plots are sometimes called correlation plots because _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "They are used to show comparison between variables of no relation between them in different colours."
+     },
+     {
+      "id": "B",
+      "text": "It is a two dimensional data visualization"
+     },
+     {
+      "id": "C",
+      "text": "They use dots to represent values"
+     },
+     {
+      "id": "D",
+      "text": "They show how two variables are correlated"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Match the following list for Line graph markers:\n\nList-I List-II\n\nMarker Value Marker type\n\n(A) \"3\" (I) Diamond\n\n(B) \"I\" (II) Octagon\n\n(C) \"8\" (III) tri_down\n\n(D) \"D\" (IV) tri_left",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(II), (B)-(IV), (C)-(III), (D)-(I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Mrinal has missed some exams in UT4. The teacher wants to see the total number of tests missed in all by the students. If dataset 'df' has names of students at index and subject names as columns, then select the correct option that will count the students, who missed the test:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "print(df.isnull().sum())"
+     },
+     {
+      "id": "B",
+      "text": "print(df.isnull().sum().sum())"
+     },
+     {
+      "id": "C",
+      "text": "print(df.isnull(sum(sum())))"
+     },
+     {
+      "id": "D",
+      "text": "print(df.sum(isnull)))"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "Identify the correct statement to add a new row to a DataFrame DFone. The content of DFone are given below:\n\nL1 L2 L3\n\nOne 21 22 23\n\nTwo 31 48 21\n\nThree 46 21 23\n\nSelect correct option to add a row with a level 'Four' and values 82, 84, 86",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "DFone.addrow['Four'] = [82, 84, 86]"
+     },
+     {
+      "id": "B",
+      "text": "DFone.loc('Four') = [82, 84, 86]"
+     },
+     {
+      "id": "C",
+      "text": "DFone.loc['Four'] = [82, 84, 86]"
+     },
+     {
+      "id": "D",
+      "text": "DFone['Four'] = (82, 84, 86)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "In Pandas series we can define our own labelled index. Identify the incorrect statement(s):\n\n(A) Series require more memory\n\n(B) There can be NaN values in series\n\n(C) Labelled indexes can have letters or numbers\n\n(D) Elements in series can be indexed in descending order\n\n(E) Indexing starts with zero and is fixed",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(E) only"
+     },
+     {
+      "id": "C",
+      "text": "(B), and (E) only"
+     },
+     {
+      "id": "D",
+      "text": "(D) and (E) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Identify correct option to import data from a CSV file named 'Myfile.csv' to a dataframe DF1. The values are separated by comma(,) (assume pd as alias name for pandas):",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "DF1 = pd.Read_csv('Myfile.csv', sep = (,))"
+     },
+     {
+      "id": "B",
+      "text": "DF1 = pd.readcsv('Myfile.csv', sep = ',')"
+     },
+     {
+      "id": "C",
+      "text": "DF1 = pd.read_csv('Myfile.csv', sep = ',')"
+     },
+     {
+      "id": "D",
+      "text": "DF1 = pd.read_csv('Myfile.csv', sep = (','))"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "Identify the correct option to create series of names of weekdasy and assign day number starting from 1 as index values where pd is the pandas object:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "wd = pd.Series(['Mon'], ['Tue'], ['Wed'], ['Thu'], ['Fri']), ['Sat'], index = [1, 2, 3, 4, 5, 6, 7])"
+     },
+     {
+      "id": "B",
+      "text": "wd = pd.Series(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], index = (0)]"
+     },
+     {
+      "id": "C",
+      "text": "wd = pd.Series(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], index = [1, 2, 3, 4, 5, 6, 7])"
+     },
+     {
+      "id": "D",
+      "text": "wd = pd.Series(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], index(1, 2, 3, 4, 5, 6, 7))"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Quartiles are the measures which divide data into four equal parts, and each part contains equal number of observations. Calculating quartiles requires calculation of _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Mean"
+     },
+     {
+      "id": "B",
+      "text": "Median"
+     },
+     {
+      "id": "C",
+      "text": "Mode"
+     },
+     {
+      "id": "D",
+      "text": "Range"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "What is meant by attenuation?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Cable disturbance"
+     },
+     {
+      "id": "B",
+      "text": "Cable shortage"
+     },
+     {
+      "id": "C",
+      "text": "Loss of signal strength"
+     },
+     {
+      "id": "D",
+      "text": "Unwanted signals with transmission"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "Following are the sequence of steps of host a website in a jumbled order. Arrange them in correct order:\n\n(A) create logins with appropriate rights and note down IP address\n\n(B) upload the files in properly organised folder on the allotted space\n\n(C) Get domain name mapped to the IP address of web server\n\n(D) Sele4ct web hosting service provider according to the requirement\n\n(E) Identify the domain name and get it registered",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(D), (E), (B), (A), (C)"
+     },
+     {
+      "id": "B",
+      "text": "(D), (E), (A), (C), (B)"
+     },
+     {
+      "id": "C",
+      "text": "(D), (E), (B), (C), (A)"
+     },
+     {
+      "id": "D",
+      "text": "(D), (E), (A), (B), (C) Arrange steps in proper sequence to plot a chart in python using matplotlib on data from a csv file: (A) labelling the axis of chart (B) importing pandas and matplotlib.pyplot Library module (C) Displaying graph using show() method (D) importing data from a csv file (E) plotting the graph using plot()"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "Consider the average height and weight of persons age 8 to 16 stored in the following two lists:\n\nheight = [121.9, 124.5, 129.5, 134.6]\n\nweight = [19.7, 21.3, 30.5, 25.9]\n\nTo plot a line chart, Ankush write the statement:\n\nplt.plot(_, _, _, = 'green')\n\nMissing Missing Missing\n\nPart 1 Part 2 Part 3\n\nIdentify the correct blanks:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "height, weight, color"
+     },
+     {
+      "id": "B",
+      "text": "weight, height, color"
+     },
+     {
+      "id": "C",
+      "text": "plt.height, plt.weight, color"
+     },
+     {
+      "id": "D",
+      "text": "plt.height, plt.weight, plt.color"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q32-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/computer-science-2022/q32-figure-1.jpg",
+      "page": 4,
+      "alt": "Figure for question 32"
+     }
+    ]
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "Given the following dataframe (df), choose the correct option to add to column for 'ply' subject with values 30, 40, 50, 60 respectively:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "df = [30, 40, 50, 60] 3 Sarthak 80"
+     },
+     {
+      "id": "B",
+      "text": "df.'phy' = [30, 40, 50, 60]"
+     },
+     {
+      "id": "C",
+      "text": "df['phy'] = [30, 40, 50, 60]"
+     },
+     {
+      "id": "D",
+      "text": "df = {'phy': [30, 40, 50, 60]}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q33-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2022/q33-table-1.jpg",
+      "page": 4,
+      "alt": "Table for question 33"
+     }
+    ]
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "What will be the output of the following code:\n\nimport pandas as pd\n\nX = [30, 5, 20, 60, 25, 34, 27, 30, 42, 60]\n\nY=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']\n\nZ = pd.Series(Y, X)\n\nprint(Z.tail(6))",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "First 6 Rows will be printed"
+     },
+     {
+      "id": "B",
+      "text": "Last 6 Rows will be printed"
+     },
+     {
+      "id": "C",
+      "text": "All the Rows will be printed"
+     },
+     {
+      "id": "D",
+      "text": "Value 6 will be printed"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "Which of the following library is used for putting graphs and visualization in python?\n\n(a) Maths (b) Matplotlib\n\n(c) Numpy (d) Series\n\n36. Consider the 'Sale' Table and 'Model' Table from the Bike Showroom and answer the questions.\n\nChoose the correct SQL query to display the sum of commission earned by Emp_ID E2, E8 and E6",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Select * from Sale where sum(Commission) in E2, E8, E6;"
+     },
+     {
+      "id": "B",
+      "text": "Select sum(Commission) from Sale where Emp_ID in ('E2', 'E8', 'E8');"
+     },
+     {
+      "id": "C",
+      "text": "Select sum(Commission) from Sale where Emp_ID between ['E1', 'E8');"
+     },
+     {
+      "id": "D",
+      "text": "Select * from Sale where sum(Commission) = Emp_ID('E2', 'E8', 'E6');"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q35-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2022/q35-table-1.jpg",
+      "page": 4,
+      "alt": "Table for question 35"
+     },
+     {
+      "id": "q35-table-2",
+      "kind": "table",
+      "path": "/local-papers/assets/computer-science-2022/q35-table-2.jpg",
+      "page": 4,
+      "alt": "Table for question 35"
+     }
+    ]
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Choose the correct query to display the customer ID and number of bikes purchased if the customer has purchased more than 1 bikes from Sale Table:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Select CustID, count(*) \"No of bike\" From Sale Group by CustID;"
+     },
+     {
+      "id": "B",
+      "text": "Select * from Sale having count(*) > 1;"
+     },
+     {
+      "id": "C",
+      "text": "Select CustID, count(*) from Sale Group By CustID having count(*) > 1;"
+     },
+     {
+      "id": "D",
+      "text": "Select CustID, count(*) from Sale Group By InvoiceNo;"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "Choose the correct query to display number of bikes purchased by each customer from Sale Table:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Select * from Sale;"
+     },
+     {
+      "id": "B",
+      "text": "Select CustID, Count(*) As \"No. of bikes\" from Sale Group by CustID;"
+     },
+     {
+      "id": "C",
+      "text": "Select CustID, count \"No of bikes\" from Sale;"
+     },
+     {
+      "id": "D",
+      "text": "Select BikeID from Sale;"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "Choose the correct SQL query to display the Saleprice of only those Bikes which are manufactured by Yamaha?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Select Saleprice, Manufacturer from Sale S, Model M where M.Manufacturer = \"Yamaha\";"
+     },
+     {
+      "id": "B",
+      "text": "Select Saleprice, Manufacturer from Sale, Model where Model.Manufacturer = \"Yamaha\";"
+     },
+     {
+      "id": "C",
+      "text": "Select Saleprice, Manufacturer from Sale, Model where Model.Manufacturer = \"Yamaha\" Group by Manufacturer;"
+     },
+     {
+      "id": "D",
+      "text": "Select Saleprice, Manufacturer from Sale S, Model M where M.Manufacturer = \"Yamaha\" and S.BikeID = M.BikeID;"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "With reference to the tables MODEL and SALE from the database BIKE show room, which operation can be performed on the two tables?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Union"
+     },
+     {
+      "id": "B",
+      "text": "Intersection"
+     },
+     {
+      "id": "C",
+      "text": "Cartesian Product"
+     },
+     {
+      "id": "D",
+      "text": "Difference"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Aditi submitted project and presented work of Kamakshi as her own work. This act of Aditi is an example of:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Copyright Infringement"
+     },
+     {
+      "id": "B",
+      "text": "Hacking"
+     },
+     {
+      "id": "C",
+      "text": "Plagiarism"
+     },
+     {
+      "id": "D",
+      "text": "Cracking"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "Aditi's social account shows some posts made by Aditi, though Aditi has not actually posted them. This act of posting content by someone else on your name is an example of:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Ransomware"
+     },
+     {
+      "id": "B",
+      "text": "Copyright Infringement"
+     },
+     {
+      "id": "C",
+      "text": "Patent Violation"
+     },
+     {
+      "id": "D",
+      "text": "Identify theft"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "The act of Aditi of copying data from internet without obtaining permission from the owner [or without paying for it, if it is being sold] is an example of:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Plagiarism"
+     },
+     {
+      "id": "B",
+      "text": "Trademark Infringement"
+     },
+     {
+      "id": "C",
+      "text": "Copyright Infringement"
+     },
+     {
+      "id": "D",
+      "text": "Hacking"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "Aditi should manage the ewaste properly:\n\n(A) She should not throw the ewaste in water\n\n(B) She should reuse the electronic waster after making slight modification\n\n(C) She can sell her ewaste to an NGO which recycles the ewaste into some useful product\n\n(D) She can burn the ewaste and get rid of it\n\n(E) She can throw all her ewaste in the domestic garbage bin",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (D) and (E) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (B) and (E) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (B) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "The term which has been derived from the literal practice of secretly listening to the conversations of people by standing under roof of a house?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Snooping"
+     },
+     {
+      "id": "B",
+      "text": "Routing"
+     },
+     {
+      "id": "C",
+      "text": "Buffering"
+     },
+     {
+      "id": "D",
+      "text": "Evasdropping"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Identify the statistical function for analysis of data provided by pandas:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\max() $"
+     },
+     {
+      "id": "B",
+      "text": "rename()"
+     },
+     {
+      "id": "C",
+      "text": "$ \\text{tail}() $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\text{mod}() $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "Match List-I with List-II.\n\nList-I List-II\n\n(A) DataFrame.values (I) returns false if DataFrame is not empty\n\n(B) DataFrame.T (II) Display tuple representing dimensionality of DataFrame\n\n(C) DataFrame.shape (III) Displays Numpy ndarray having all values in Data Frame without axis label.\n\n(D) DataFrame.empty (IV) It returns transpose of the DataFrame",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(III), (C)-(II), (D)-(VI)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "Difference between loc() and iloc():",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Both are label indexed based functions."
+     },
+     {
+      "id": "B",
+      "text": "Both are integer position-based functions."
+     },
+     {
+      "id": "C",
+      "text": "loc() is label indexed based function and iloc() is integer position based function."
+     },
+     {
+      "id": "D",
+      "text": "iloc() is integer position based function and loc() is index position based function."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "Find valid IP Address out of the following:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "10:B5:03:63:2E:FC"
+     },
+     {
+      "id": "B",
+      "text": "192.186.0.10"
+     },
+     {
+      "id": "C",
+      "text": "192.258.10.20"
+     },
+     {
+      "id": "D",
+      "text": "10:B5:03"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

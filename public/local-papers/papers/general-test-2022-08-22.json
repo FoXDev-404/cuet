@@ -1,0 +1,2158 @@
+{
+ "exam": {
+  "id": "local-general-test-2022-08-22",
+  "slug": "general-test-2022-08-22",
+  "title": "CUET UG General Test 22 August 2022 Previous Year Paper",
+  "subject": "General Test",
+  "subjectId": "local-general-test",
+  "subjectCode": "GT",
+  "year": 2022,
+  "examDate": "2022-08-22",
+  "shift": null,
+  "sourceFile": "General Test_2022-08-22.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 64,
+  "sourceQuestionCount": 70,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "Find the odd number in the series\n\n2,3,5,7,9,11,13",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5"
+     },
+     {
+      "id": "B",
+      "text": "7"
+     },
+     {
+      "id": "C",
+      "text": "11"
+     },
+     {
+      "id": "D",
+      "text": "9"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "The sum of the place values of five in the number 503535 is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5000505"
+     },
+     {
+      "id": "B",
+      "text": "500505"
+     },
+     {
+      "id": "C",
+      "text": "505005"
+     },
+     {
+      "id": "D",
+      "text": "555"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "What will be the greatest number which when halved will be exactly divisible by 12, 15, 18, and 30?\n\n(a) 240 (b) 256 (c) 360 (d) 180\n\n81×81+51×51-2×81×51?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "810"
+     },
+     {
+      "id": "B",
+      "text": "510"
+     },
+     {
+      "id": "C",
+      "text": "800"
+     },
+     {
+      "id": "D",
+      "text": "900"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "Value of $ \\sqrt{0.01} \\times 3\\sqrt{0.027} - 0.03 $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "1"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "9"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "a = 7, b = 5 Then find the value of $ ab^{2} + 3a^{2}b $:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "343"
+     },
+     {
+      "id": "B",
+      "text": "593"
+     },
+     {
+      "id": "C",
+      "text": "735"
+     },
+     {
+      "id": "D",
+      "text": "910"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "$ y + \\sqrt{256} = 2\\sqrt{169} $, then, value of y is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "10"
+     },
+     {
+      "id": "B",
+      "text": "12"
+     },
+     {
+      "id": "C",
+      "text": "13"
+     },
+     {
+      "id": "D",
+      "text": "14"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "$ (0.04 \\times 4 - 0.004 \\times 4) $ equals",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1.44"
+     },
+     {
+      "id": "B",
+      "text": "0.144"
+     },
+     {
+      "id": "C",
+      "text": "14.4"
+     },
+     {
+      "id": "D",
+      "text": "0.141"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "If $ 2^{x-1} + 2^{x+1} = 1280 $, then find the value of x",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "4"
+     },
+     {
+      "id": "B",
+      "text": "6"
+     },
+     {
+      "id": "C",
+      "text": "8"
+     },
+     {
+      "id": "D",
+      "text": "9"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "If 50% of a number is equal to 1/5th of another number, what is the ratio of the number to the second number?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2:5"
+     },
+     {
+      "id": "B",
+      "text": "9:6"
+     },
+     {
+      "id": "C",
+      "text": "10:1"
+     },
+     {
+      "id": "D",
+      "text": "3:7"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "The average of the four consecutive odd number is 16.\n\nWhat is the difference between fourth and first?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "4"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "5"
+     },
+     {
+      "id": "D",
+      "text": "6"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "x% of x is the same as 20% of",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$20x$"
+     },
+     {
+      "id": "B",
+      "text": "$x/20$"
+     },
+     {
+      "id": "C",
+      "text": "$x^{2}/20$"
+     },
+     {
+      "id": "D",
+      "text": "$20x^{2}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Hari sells 6 eggs at Rs. 24. He buys 10 eggs at Rs. 30. What is his profit or loss%?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "33.33%"
+     },
+     {
+      "id": "B",
+      "text": "55.33%"
+     },
+     {
+      "id": "C",
+      "text": "65.66%"
+     },
+     {
+      "id": "D",
+      "text": "60.66%"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "A shopkeeper bought candy at 10 for a rupee. How many for a rupee must he sells to gain 25%?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5"
+     },
+     {
+      "id": "B",
+      "text": "6"
+     },
+     {
+      "id": "C",
+      "text": "7"
+     },
+     {
+      "id": "D",
+      "text": "8"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "A sum becomes its double in 15 years. Find the annual rate of simple interest:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 6\\frac{1}{3}\\% \\text{ PA} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 6\\frac{2}{3}\\% \\text{ PA} $"
+     },
+     {
+      "id": "C",
+      "text": "$ 7\\frac{2}{3}\\% \\text{ PA} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 7\\frac{1}{3}\\% \\text{ PA} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Simple interest of Rs.20000 for 8 years at 6% PA is equal to the simple interest on Rs. 16000 at 3% PA for a fixed period. The time period is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20 yrs"
+     },
+     {
+      "id": "B",
+      "text": "19 yrs"
+     },
+     {
+      "id": "C",
+      "text": "21 yrs"
+     },
+     {
+      "id": "D",
+      "text": "22 yrs"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "P can lay railway track between two given stations in 15 days and Q can do the same job in 10 days. With help of R, they did the job in 4 days only. Then, R alone can do the job in:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "10 days"
+     },
+     {
+      "id": "B",
+      "text": "12 days"
+     },
+     {
+      "id": "C",
+      "text": "8 days"
+     },
+     {
+      "id": "D",
+      "text": "9 days"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Mohan is on tour and he has Rs. 75 for his expenses. If he exceeds his tour by 4 days he must reduce daily expenses by Rs. 5. The number of days of Mohan's tour programme is-",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3 days"
+     },
+     {
+      "id": "B",
+      "text": "4 days"
+     },
+     {
+      "id": "C",
+      "text": "5 days"
+     },
+     {
+      "id": "D",
+      "text": "6 days"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "A can do piece of work in 20 days, which B can do in 16 days, B worked at it for 8 days. A can finish the remaining work is.....",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "8 days"
+     },
+     {
+      "id": "B",
+      "text": "10 days"
+     },
+     {
+      "id": "C",
+      "text": "6 days"
+     },
+     {
+      "id": "D",
+      "text": "12 days"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "The speed of a boat upstream is 12 km/hr and speed of the stream is 2 km/hr. How much time will take to travel 48 km downstream?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3.5 hours"
+     },
+     {
+      "id": "B",
+      "text": "2.5 hours"
+     },
+     {
+      "id": "C",
+      "text": "5.5 hours"
+     },
+     {
+      "id": "D",
+      "text": "3 hours"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Ramnaresh complete a journey in 10 hours. He travels first half of the journey at the rate of 20 km/hr and second half at the rate of 25 km/hr. Find the total journey in km.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "111.11 km"
+     },
+     {
+      "id": "B",
+      "text": "222.22 km"
+     },
+     {
+      "id": "C",
+      "text": "333.33 km"
+     },
+     {
+      "id": "D",
+      "text": "444.44 km"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Excluding stopage, the speed of a train is 120 kmph and including stopages it is 100 kmph. For how many minutes does the train stop per hour?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "10min"
+     },
+     {
+      "id": "B",
+      "text": "15min"
+     },
+     {
+      "id": "C",
+      "text": "20min"
+     },
+     {
+      "id": "D",
+      "text": "12min"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "A train passes two bridges of lengths 1 km and 500 m in 120 seconds and 80 second respectively. The length of the train is-",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "400m"
+     },
+     {
+      "id": "B",
+      "text": "300m"
+     },
+     {
+      "id": "C",
+      "text": "750m"
+     },
+     {
+      "id": "D",
+      "text": "500m"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "The time taken by train 720 m long travelling at 28 km/hr in passing a boy walking 10 km/hr in same direction will be.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "146 sec"
+     },
+     {
+      "id": "B",
+      "text": "144 sec"
+     },
+     {
+      "id": "C",
+      "text": "145 sec"
+     },
+     {
+      "id": "D",
+      "text": "147 sec"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "The minute arm of a clock is 20 cm long. The number of minutes taken by the tip of the arm to travel a length of 20 cm is nearly equal to.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "4.77 min"
+     },
+     {
+      "id": "B",
+      "text": "9.54 min"
+     },
+     {
+      "id": "C",
+      "text": "19.18 min"
+     },
+     {
+      "id": "D",
+      "text": "14.31 min"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "If February 01, 2013 was Friday, what will be day on February 01, 2024?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Saturday"
+     },
+     {
+      "id": "B",
+      "text": "Monday"
+     },
+     {
+      "id": "C",
+      "text": "Tuesday"
+     },
+     {
+      "id": "D",
+      "text": "Thursday"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "How many times in a day, the hands of a clock are straight?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "22"
+     },
+     {
+      "id": "B",
+      "text": "24"
+     },
+     {
+      "id": "C",
+      "text": "44"
+     },
+     {
+      "id": "D",
+      "text": "46"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "Looking into the mirror the clock shows 9:30 as the time. The actual time is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3:30"
+     },
+     {
+      "id": "B",
+      "text": "4:30"
+     },
+     {
+      "id": "C",
+      "text": "2:30"
+     },
+     {
+      "id": "D",
+      "text": "6:30"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "If the radius of a circle is 22 cm then\n\nA. Area of the circle = 31.04 cm²\n\nB. Area of the circle = 41.04 cm²\n\nC. Circumference of the circle = 19.75 cm\n\nD. Circumference of the circle = 29.75 cm\n\nE. Area of the circle = 21.04 cm²",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B and E only"
+     },
+     {
+      "id": "B",
+      "text": "A, D and E only"
+     },
+     {
+      "id": "C",
+      "text": "A and D only"
+     },
+     {
+      "id": "D",
+      "text": "A and C only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "If the height of cylinder is halved and radius is doubled, then what will happen to the curved surface area?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Increase by 1"
+     },
+     {
+      "id": "B",
+      "text": "double"
+     },
+     {
+      "id": "C",
+      "text": "triple"
+     },
+     {
+      "id": "D",
+      "text": "the same"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "The perimeter of a square is 40 cm. Find the area of given square.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "40 cm"
+     },
+     {
+      "id": "B",
+      "text": "40 cm $ ^{2} $"
+     },
+     {
+      "id": "C",
+      "text": "100 cm"
+     },
+     {
+      "id": "D",
+      "text": "100 cm $ ^{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "A man standing on the top of a tower standing on the sea shore, finds that a boat coming towards him takes 10 minutes for the angle to change from $45^{\\circ}$ to $60^{\\circ}$. Find the time taken by the boat to reach the shore from this position.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "17.32 min"
+     },
+     {
+      "id": "B",
+      "text": "8.66 min"
+     },
+     {
+      "id": "C",
+      "text": "7.32 min"
+     },
+     {
+      "id": "D",
+      "text": "13.66 min DIRECTIONS (Qs. 33-36): Study the given pie chart carefully to answer the following question from"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "What fraction of Saksham's weight consist of muscles and skin protein?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{1}{50}$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{3}{50}$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{2}{25}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{1}{25}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Ratio of distribution of Protein in muscles to the distribution of Protein in eye is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2:25"
+     },
+     {
+      "id": "B",
+      "text": "2:5"
+     },
+     {
+      "id": "C",
+      "text": "3:111"
+     },
+     {
+      "id": "D",
+      "text": "3:5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "What percentage of Saksham's body weight is made of bones?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.15%"
+     },
+     {
+      "id": "B",
+      "text": "10%"
+     },
+     {
+      "id": "C",
+      "text": "1.5%"
+     },
+     {
+      "id": "D",
+      "text": "Cannot determined"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "In terms of total body weight the portion of material other than water and protein is closed to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{5} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{85}{100} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{15} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{25} $ General Mental Ability & Logical and Analytical Reasoning"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Copy: Pen :: Wall : ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Color"
+     },
+     {
+      "id": "B",
+      "text": "Paint"
+     },
+     {
+      "id": "C",
+      "text": "Brush"
+     },
+     {
+      "id": "D",
+      "text": "Clock"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "XU:RO::LI:?.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "JG"
+     },
+     {
+      "id": "B",
+      "text": "HE"
+     },
+     {
+      "id": "C",
+      "text": "GD"
+     },
+     {
+      "id": "D",
+      "text": "FC"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "Crooked: Bent :: Twisted : ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Straight"
+     },
+     {
+      "id": "B",
+      "text": "Brave"
+     },
+     {
+      "id": "C",
+      "text": "Zigzag"
+     },
+     {
+      "id": "D",
+      "text": "Fighter"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Find the missing terms:\n\n69:23 ::87:..... ?.....",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "25"
+     },
+     {
+      "id": "B",
+      "text": "26"
+     },
+     {
+      "id": "C",
+      "text": "27"
+     },
+     {
+      "id": "D",
+      "text": "29"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Dismal: Cheerful :: Despair : ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Offer"
+     },
+     {
+      "id": "B",
+      "text": "Inferior"
+     },
+     {
+      "id": "C",
+      "text": "Hope"
+     },
+     {
+      "id": "D",
+      "text": "Bright"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "In this question, four words have been given of which three are alike in some way and one is different. Find the odd one out.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Moon"
+     },
+     {
+      "id": "B",
+      "text": "Mars"
+     },
+     {
+      "id": "C",
+      "text": "Mercury"
+     },
+     {
+      "id": "D",
+      "text": "Venus"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "Complete the series:\n\n153, 144, 135, ..... ?....., 117, 108, 99",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "130"
+     },
+     {
+      "id": "B",
+      "text": "125"
+     },
+     {
+      "id": "C",
+      "text": "126"
+     },
+     {
+      "id": "D",
+      "text": "121"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "Complete the series:\n\n1, 8, 27, 64, ..... ? ..... 216, 243",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "81."
+     },
+     {
+      "id": "B",
+      "text": "100"
+     },
+     {
+      "id": "C",
+      "text": "125."
+     },
+     {
+      "id": "D",
+      "text": "169"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "Complete the series\n\n23, 31, 41, 47, 59, ..... ?.....",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "61"
+     },
+     {
+      "id": "B",
+      "text": "63"
+     },
+     {
+      "id": "C",
+      "text": "67"
+     },
+     {
+      "id": "D",
+      "text": "71"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "If FASHION is coded as 6119891514 and DESIGNER as 45199714518, what will the code for CATWALK?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "31232011211"
+     },
+     {
+      "id": "B",
+      "text": "31202311112"
+     },
+     {
+      "id": "C",
+      "text": "31202311211"
+     },
+     {
+      "id": "D",
+      "text": "31212311201"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "If 'Rail' is called 'Truck'. 'Truck' is called 'Tractor' 'Tractor' is called 'Car', 'Car' is called 'Scooter', 'Scooter' is called 'Bicycle', 'Bicycle' is called 'Moped'. Which is used to plough a field?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Car"
+     },
+     {
+      "id": "B",
+      "text": "Tractor"
+     },
+     {
+      "id": "C",
+      "text": "Truck"
+     },
+     {
+      "id": "D",
+      "text": "Moped"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "Pis Q's father. Q is T's father. T is S' brother. S is R' daughter. Then, how is P related to S",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Brother"
+     },
+     {
+      "id": "B",
+      "text": "Uncle"
+     },
+     {
+      "id": "C",
+      "text": "Father"
+     },
+     {
+      "id": "D",
+      "text": "Grandfather"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "One day, Saurabh cycled 40 km southwards from his home, then he turned right and cycled 20 km and turned right again and cycled 40 km. From there, he turned left and cycled 40 km. How many kilometres will he have to cycle to reach his home straight?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20km"
+     },
+     {
+      "id": "B",
+      "text": "30km"
+     },
+     {
+      "id": "C",
+      "text": "40km"
+     },
+     {
+      "id": "D",
+      "text": "60km"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q51",
+    "sourceQuestionNo": 51,
+    "stemEn": "Find out the symbols which makes given figure:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q51-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2022-08-22/q51-figure-1.jpg",
+      "page": 3,
+      "alt": "Figure for question 51"
+     },
+     {
+      "id": "q51-figure-2",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2022-08-22/q51-figure-2.jpg",
+      "page": 3,
+      "alt": "Figure for question 51"
+     },
+     {
+      "id": "q51-options",
+      "kind": "options",
+      "path": "/local-papers/assets/general-test-2022-08-22/q51-options.jpg",
+      "page": 3,
+      "alt": "Printed answer choices for question 51"
+     }
+    ]
+   },
+   {
+    "id": "q52",
+    "sourceQuestionNo": 52,
+    "stemEn": "Rohit is as much younger than Arun as He is older than Neena. The sum of ages of Arun and Neena is 110 years. What is the age of Rohit?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "50 years"
+     },
+     {
+      "id": "B",
+      "text": "55 years"
+     },
+     {
+      "id": "C",
+      "text": "60 years"
+     },
+     {
+      "id": "D",
+      "text": "65 years"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q53",
+    "sourceQuestionNo": 53,
+    "stemEn": "Arrange the following words in the sequence they will appear in dictionary:\n\nA. Distraction\n\nB. Distribution\n\nC. Desperation\n\nD. District\n\nE. Documentation",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "D,C,A,E,B"
+     },
+     {
+      "id": "B",
+      "text": "B,A,C,D,E"
+     },
+     {
+      "id": "C",
+      "text": "C,A,B,D,E"
+     },
+     {
+      "id": "D",
+      "text": "C,D,B,E,E"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q54",
+    "sourceQuestionNo": 54,
+    "stemEn": "Arrange the following in a meaningful sequence:\n\nA. Agra\n\nB. Taj Mahal\n\nC. India\n\nD. Uttar Pradesh\n\nE. North India",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "ABCED"
+     },
+     {
+      "id": "B",
+      "text": "BADEC"
+     },
+     {
+      "id": "C",
+      "text": "BADCE"
+     },
+     {
+      "id": "D",
+      "text": "ABDEC"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q56",
+    "sourceQuestionNo": 56,
+    "stemEn": "The number of students who took any three of the above language was",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "62"
+     },
+     {
+      "id": "B",
+      "text": "64"
+     },
+     {
+      "id": "C",
+      "text": "63"
+     },
+     {
+      "id": "D",
+      "text": "82"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q57",
+    "sourceQuestionNo": 57,
+    "stemEn": "The number of students who took both Hindi and Urdu among other languages was",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "62"
+     },
+     {
+      "id": "B",
+      "text": "63"
+     },
+     {
+      "id": "C",
+      "text": "65"
+     },
+     {
+      "id": "D",
+      "text": "66"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q58",
+    "sourceQuestionNo": 58,
+    "stemEn": "The number of students in total who took Hindi or English or Sanskrit was",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "183"
+     },
+     {
+      "id": "B",
+      "text": "190"
+     },
+     {
+      "id": "C",
+      "text": "424"
+     },
+     {
+      "id": "D",
+      "text": "430 General Knowledge & Current Affairs"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q59",
+    "sourceQuestionNo": 59,
+    "stemEn": "Who among the following was an illiterate?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Jahangir"
+     },
+     {
+      "id": "B",
+      "text": "Shah Jahan"
+     },
+     {
+      "id": "C",
+      "text": "Akbar"
+     },
+     {
+      "id": "D",
+      "text": "Aurangazeb"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q60",
+    "sourceQuestionNo": 60,
+    "stemEn": "Which Governor General is associated with Doctrine of Lapse?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Lord Ripon"
+     },
+     {
+      "id": "B",
+      "text": "Lord Dalhousie"
+     },
+     {
+      "id": "C",
+      "text": "Lord Bentinck"
+     },
+     {
+      "id": "D",
+      "text": "Lord Curzon"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q62",
+    "sourceQuestionNo": 62,
+    "stemEn": "Identify the European power from whom Shivaji obtained cannons and ammunition:\n\n(a) The French (b) The Portuguese\n\n(c) The Dutch (d) The English\n\n61. The Greek ambassador sent to Chandragupta Maurya's Court was:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Kautilya"
+     },
+     {
+      "id": "B",
+      "text": "Seleucus Nicator"
+     },
+     {
+      "id": "C",
+      "text": "Megasthenes"
+     },
+     {
+      "id": "D",
+      "text": "Justin"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q63",
+    "sourceQuestionNo": 63,
+    "stemEn": "The call of \"Back to the Vedas\" was given by Swami Vivekananda",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Swami Vivekananda"
+     },
+     {
+      "id": "B",
+      "text": "Swami Dayanand Saraswati"
+     },
+     {
+      "id": "C",
+      "text": "Aurobindo Ghosh"
+     },
+     {
+      "id": "D",
+      "text": "Raja Ram Mohan Roy"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q64",
+    "sourceQuestionNo": 64,
+    "stemEn": "Relative Humidity is measured by:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Hygrometer"
+     },
+     {
+      "id": "B",
+      "text": "Barometer"
+     },
+     {
+      "id": "C",
+      "text": "Presure gauge"
+     },
+     {
+      "id": "D",
+      "text": "Hydrometer"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q65",
+    "sourceQuestionNo": 65,
+    "stemEn": "Arange the given layers of earth's atmosphere (from lowest to highest)\n\nA. Exosphere\n\nB. Stratosphere\n\nC. Troposphere\n\nD. Ionosphere\n\nE. Mesosphere\n\nChoose the correct answer from the options given below:\n\n(a) BECAD (b) EDCAB\n\n(c) CADEB (d) CBEDA\n\nFirst women speaker of Lok sabha was:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Sushma Swaraj"
+     },
+     {
+      "id": "B",
+      "text": "Smriti Irani"
+     },
+     {
+      "id": "C",
+      "text": "Pratibha Devi Singh Patil"
+     },
+     {
+      "id": "D",
+      "text": "Meira Kumar"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q67",
+    "sourceQuestionNo": 67,
+    "stemEn": "Arrange these states/UT according to literacy rates (from the bottom)\n\nA. Goa\n\nB. Lakshadweep\n\nC. Kerala\n\nD. Mizoram\n\nE. Tripura",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "DAEBC"
+     },
+     {
+      "id": "B",
+      "text": "BDECA"
+     },
+     {
+      "id": "C",
+      "text": "CBDEA"
+     },
+     {
+      "id": "D",
+      "text": "CBDAE"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q68",
+    "sourceQuestionNo": 68,
+    "stemEn": "Who is known as the honorary title 'The Nightingale of Kashmir'?\n\n(a) Habba Khatoon (b) Laileshwari\n\n(c) Arnimal (d) Rupa Bhawani\n\nA. Leela Sanson 1. Kathak\n\nB. Birju Maharaj II. Kathakali\n\nC. Savita Mehta III. Bharatnatyam\n\nD. Mathour IV. Manipur\n\nGovindan Kutty",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-II, B-III, C-IV, D-I"
+     },
+     {
+      "id": "B",
+      "text": "A-III, B-I, C-IV, D-II"
+     },
+     {
+      "id": "C",
+      "text": "A-II, B-III, C-I, D-IV"
+     },
+     {
+      "id": "D",
+      "text": "A-II, B-IV, C-III, D-I"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q70",
+    "sourceQuestionNo": 70,
+    "stemEn": "An evacuation mission by government of India to evacuate Indian nationals from Ukraine due the Russia-Ukraine tension is named as:\n\n(a) Operation safehornecoming\n\n(b) Operation maitri\n\n(c) Operation Raahat\n\n(d) Operation Ganga\n71. Match the List I with List II\n\nList I _ List II\n\nA. Noble Peace L. Syukuro Manabe, Klaus Prize 2021 Hasseimann, Giorgio Parisi\n\nB. Noble Prize in Literature 2021 II. Maria Ressa and Dmitry Muratov\n\nC. Noble Prize in Physics 2021 III. Abdulrazak Gumah\n\nD. Noble Prize in Chemistry 2021 IV. Benjamin List and David MacMillan\n\n$$ \\mathcal{K}^{*}\\frac{0\\mathcal{G}}{001}=(X)\\cdot\\frac{(X)}{001}. $$\n\n$$ K=\\frac{30}{X_{1}} $$\n\n43 = egga d to teco gnills2 (a) £1\n\n03 = egga d to teco gnills\n\n$$ \\begin{array}{c} 30 \\quad 130 \\quad 30 \\quad 00\\\\ \\downarrow \\quad \\downarrow \\quad \\downarrow \\quad \\downarrow\\\\ \\times 21 \\quad \\times 2 \\quad \\times 31 \\quad \\times 3\\\\ \\times b \\longrightarrow o \\longrightarrow 34 \\quad Cb \\longrightarrow 10 \\longrightarrow 30 \\end{array} $$\n\n$$ 2200\\div(100-120)\\times(100-120)=2200(m) $$\n\nChoose the correct answer from the options given below:\n\n(a) A-II, B-III, C-I, D-IV\n\n(b) A-I, B-II, C-III, D-IV\n\n(c) A-III, B-IV, C-II, D-I\n\n(d) A-IV, B-II, C-III, D-I\n\nThe pictorial comic book is a tribute to the forgotten women freedom fighters of the country:\n\n(a) Everyday REal Heronies\n\n(b) Unsung Heroes of History\n\n(c) Unsung Hero: Indian History\n\n(d) India's women Unsug Heroes\n\nWho won the world Athletes of the year by world Athletics at the world Athletics Awards 2021:\n\n(a) Elaine Thompson-Herah and Karsten Warholm\n\n(b) Mutaz Barshim and Gianmarco Tamberi\n\n(c) Arthing Mu\n\n(d) Erriyan Kinghton\n\nWo won a gold medal in the 91 kg weight category at the ASBC Asian Boxing Championship?\n\n(a) Hawa Sing (b) Mohammed Ali Qamar\n\n(c) Akhil Kumar (d) Sanjeet Kumar\n\nIn the IIFL wealth Hurun India Rich List, in which order following Indians appear:\n\nA. Shiv Nadar & the family\n\nB. Gautam Adani\n\nC. Mukesh Ambani\n\nD. SP Hinduja & family",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, C, B, D"
+     },
+     {
+      "id": "B",
+      "text": "C, B, A, D"
+     },
+     {
+      "id": "C",
+      "text": "D, A, C, B"
+     },
+     {
+      "id": "D",
+      "text": "B, A, D, C $ \\left(4 \\times \\frac{4}{0.001}\\right) - \\left(5 \\times \\frac{4}{0.01}\\right) = (d) \\quad g $ $$ \\Rightarrow\\frac{100}{11}\\frac{1000}{11} $$ $$ 441.0=\\frac{441}{0001}=\\frac{81-001}{0001}\\approx $$ $$ 见 \\quad(b)\\quad\\frac{\\sum}{\\sum^{*}}\\div\\sum_{*}\\cdot\\sum=1380 $$ $$ \\Sigma_{x}\\left(\\frac{x}{1}+5\\right)=1580 $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

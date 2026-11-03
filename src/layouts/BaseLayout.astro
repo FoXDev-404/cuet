@@ -1,0 +1,394 @@
+---
+import "../styles/global.css";
+import "katex/dist/katex.min.css";
+import { env } from "cloudflare:workers";
+import BrandLogo from "../components/BrandLogo.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { siteUrl } from "../lib/site-url";
+import { getSetting } from "../lib/settings";
+import {
+  adsenseClient,
+  adSlotAllowed,
+  analyticsToken,
+  googleSiteVerification,
+} from "../lib/integrations";
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+  /** Full robots value, for pages such as shared questions that use noindex, follow. */
+  robots?: string;
+  canonical?: string | null;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  sectionLabel?: string;
+  sectionNav?: { href: string; label: string }[];
+  /** Explicit opt-in for manual AdSense units on substantial content pages. */
+  ads?: boolean;
+  /** Social preview image URL; falls back to the brand logo. */
+  image?: string | null;
+}
+
+const {
+  title,
+  description = "Free CUET UG mock tests, previous-year papers, syllabus and exam-pattern guides.",
+  noindex = false,
+  robots: robotsOverride = "",
+  canonical: canonicalOverride = null,
+  structuredData = [],
+  sectionLabel = "",
+  sectionNav = [],
+  ads = false,
+  image: imageOverride = null,
+} = Astro.props;
+
+const robots = robotsOverride || (noindex ? "noindex, nofollow" : "");
+
+const structuredDataList = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
+
+const site = siteUrl(Astro.url);
+const socialImage = new URL(imageOverride || "/logo.png", site).toString();
+let canonical = new URL(Astro.url.pathname, site);
+if (canonicalOverride) {
+  try {
+    const override = new URL(canonicalOverride);
+    if (override.protocol === "http:" || override.protocol === "https:") canonical = override;
+  } catch {
+    // An invalid stored value must never break rendering; keep the self URL.
+  }
+}
+const siteName = await getSetting("site_name", "CUET Free Mock Test");
+const user = Astro.locals.user;
+const isAdmin = Boolean(Astro.locals.admin);
+const path = Astro.url.pathname;
+
+// Optional integrations emit nothing unless a valid value is configured.
+// Ads are double-gated: the page must opt in and the path must not be private.
+const analytics = analyticsToken(env);
+const gscVerification = googleSiteVerification(env);
+const adClient = ads && adSlotAllowed(path) ? adsenseClient(env) : "";
+
+const nav = [
+  { href: "/cuet-ug-mock-test", label: "Mock Tests" },
+  { href: "/cuet-mock-test", label: "Practice" },
+  { href: "/cuet-ug-previous-year-papers", label: "PYQs" },
+  { href: "/leaderboard", label: "Leaderboard" },
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/dashboard/history", label: "Analytics" },
+];
+
+const isActive = (href: string) =>
+  path === href || (href !== "/dashboard" && path.startsWith(`${href}/`));
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: site.toString(),
+  description,
+  logo: new URL("/logo.png", site).toString(),
+  image: new URL("/logo.png", site).toString(),
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={canonical} />
+    {robots ? <meta name="robots" content={robots} /> : null}
+    {gscVerification ? <meta name="google-site-verification" content={gscVerification} /> : null}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(organization)} />
+    {structuredDataList.map((data) => (
+      <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))}
+    {adClient ? (
+      <script
+        is:inline
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
+        crossorigin="anonymous"
+      ></script>
+    ) : null}
+  </head>
+  <body class="flex min-h-screen flex-col antialiased">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/90 text-neutral-900 backdrop-blur-xl dark:border-white/10 dark:bg-ink-950/90 dark:text-white">
+      <div class="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
+        <BrandLogo />
+
+        <nav class="ml-auto hidden items-center gap-0.5 lg:flex" aria-label="Primary">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              class:list={[
+                "rounded-lg px-3 py-2 text-[13px] font-medium transition-colors",
+                isActive(item.href)
+                  ? "bg-brand-50 text-brand-700 dark:bg-white/10 dark:text-white"
+                  : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-white",
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div class="ml-auto flex items-center gap-1.5 lg:ml-3">
+          <ThemeToggle />
+
+          <div class="hidden items-center gap-2 lg:flex">
+            {user ? (
+              <>
+                {isAdmin ? (
+                  <a href="/admin" class="rounded-lg px-2.5 py-2 text-xs font-semibold text-accent-700 hover:bg-neutral-100 dark:text-accent-300 dark:hover:bg-white/5">
+                    Admin
+                  </a>
+                ) : null}
+                <a
+                  href="/dashboard/discussions"
+                  class="grid h-9 w-9 place-items-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"
+                  aria-label="Discussions and replies"
+                >
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                    <path d="M10.3 21a2 2 0 0 0 3.4 0"></path>
+                  </svg>
+                </a>
+                <a
+                  href="/dashboard"
+                  class="flex min-w-0 items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-2.5 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/75 dark:hover:bg-white/10 dark:hover:text-white"
+                >
+                  <span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-400 to-accent-500 text-[10px] font-black text-white" aria-hidden="true">
+                    {user.username.slice(0, 1).toUpperCase()}
+                  </span>
+                  <span class="max-w-[170px] truncate">{user.email}</span>
+                  <svg class="h-3.5 w-3.5 shrink-0 text-neutral-400 dark:text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  data-logout
+                  class="grid h-9 w-9 place-items-center rounded-lg border border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:border-white/10 dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"
+                  aria-label="Log out"
+                  title="Log out"
+                >
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <path d="m16 17 5-5-5-5"></path>
+                    <path d="M21 12H9"></path>
+                  </svg>
+                </button>
+              </>
+            ) : (
+              <>
+                <a href="/login" class="rounded-lg px-3 py-2 text-sm font-semibold text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white">
+                  Log in
+                </a>
+                <a href="/signup" class="rounded-lg bg-brand-500 px-3.5 py-2 text-sm font-semibold text-white shadow-[var(--shadow-brand)] transition-colors hover:bg-brand-600">
+                  Start free
+                </a>
+              </>
+            )}
+          </div>
+
+          <details class="relative lg:hidden">
+            <summary class="grid h-9 w-9 cursor-pointer list-none place-items-center rounded-lg border border-neutral-300 text-neutral-600 hover:bg-neutral-100 dark:border-white/15 dark:text-white/75 dark:hover:bg-white/10" aria-label="Open menu">
+              <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16"></path>
+              </svg>
+            </summary>
+            <div class="absolute right-0 top-full mt-2 w-[min(19rem,calc(100vw-2rem))] rounded-2xl border border-neutral-200 bg-white p-3 shadow-xl shadow-neutral-900/10 dark:border-white/10 dark:bg-ink-900 dark:shadow-black/50">
+              <nav class="grid gap-1" aria-label="Mobile">
+                {nav.map((item) => (
+                  <a
+                    href={item.href}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    class:list={[
+                      "rounded-lg px-3 py-2 text-sm font-medium",
+                      isActive(item.href)
+                        ? "bg-brand-50 text-brand-700 dark:bg-white/10 dark:text-white"
+                        : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white",
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+              <div class="mt-3 border-t border-neutral-200 pt-3 dark:border-white/10">
+                {user ? (
+                  <div class="space-y-1">
+                    <p class="truncate px-3 text-[11px] text-neutral-500 dark:text-white/55">{user.email}</p>
+                    {isAdmin ? (
+                      <a href="/admin" class="block rounded-lg px-3 py-2 text-sm font-medium text-accent-700 hover:bg-neutral-100 dark:text-accent-300 dark:hover:bg-white/5">
+                        Admin
+                      </a>
+                    ) : null}
+                    <a href="/dashboard/settings" class="block rounded-lg px-3 py-2 text-sm text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white">
+                      Account settings
+                    </a>
+                    <button type="button" data-logout class="block w-full rounded-lg px-3 py-2 text-left text-sm text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white">
+                      Log out
+                    </button>
+                  </div>
+                ) : (
+                  <div class="grid gap-2">
+                    <a href="/login" class="rounded-lg border border-neutral-300 px-3 py-2 text-center text-sm font-semibold text-neutral-700 hover:bg-neutral-100 dark:border-white/15 dark:text-white/80 dark:hover:bg-white/5">
+                      Log in
+                    </a>
+                    <a href="/signup" class="rounded-lg bg-brand-500 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-brand-600">
+                      Start free
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </header>
+
+    {sectionNav.length > 0 ? (
+      <div class="border-b border-neutral-200 bg-neutral-50/90 dark:border-white/10 dark:bg-ink-900/80">
+        <nav class="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 py-2 sm:px-6" aria-label={sectionLabel || "Section"}>
+          {sectionNav.map((item) => {
+            const active = path === item.href || path === `${item.href}/`;
+            return (
+              <a
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                class:list={[
+                  "whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold",
+                  active
+                    ? "bg-brand-100 text-brand-800 dark:bg-white/10 dark:text-white"
+                    : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/55 dark:hover:bg-white/5 dark:hover:text-white",
+                ]}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+      </div>
+    ) : null}
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10 bg-ink-950 text-white">
+      <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div>
+            <BrandLogo tone="dark" />
+            <p class="mt-4 max-w-xs text-sm leading-6 text-white/50">
+              A focused space for CUET UG practice: mock tests, previous-year questions and performance reviews, moving forward one step at a time.
+            </p>
+            <a class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-white/55 hover:text-accent-300" href="/about">
+              About the platform
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m13 6 6 6-6 6"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="text-sm">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">Study</p>
+            <ul class="mt-3 space-y-2 text-white/60">
+              <li><a class="hover:text-accent-300" href="/cuet-ug-mock-test">Mock tests</a></li>
+              <li><a class="hover:text-accent-300" href="/cuet-mock-test">Practice papers</a></li>
+              <li><a class="hover:text-accent-300" href="/cuet-ug-previous-year-papers">Previous year papers</a></li>
+              <li><a class="hover:text-accent-300" href="/leaderboard">Leaderboard</a></li>
+              <li><a class="hover:text-accent-300" href="/dashboard/history">Performance analytics</a></li>
+            </ul>
+          </div>
+
+          <div class="text-sm">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">Explore</p>
+            <ul class="mt-3 space-y-2 text-white/60">
+              <li><a class="hover:text-accent-300" href="/cuet-mock-test">Subjects &amp; categories</a></li>
+              <li><a class="hover:text-accent-300" href="/cuet-ug-syllabus">CUET syllabus</a></li>
+              <li><a class="hover:text-accent-300" href="/cuet-ug-exam-pattern">Exam pattern</a></li>
+              <li><a class="hover:text-accent-300" href="/cuet-ug-important-dates">Important dates</a></li>
+              <li><a class="hover:text-accent-300" href="/cuet-ug-marking-scheme">Marking scheme</a></li>
+              <li><a class="hover:text-accent-300" href="/dashboard/discussions">Discussions</a></li>
+              <li><a class="hover:text-accent-300" href="/blog">Preparation guides</a></li>
+            </ul>
+          </div>
+
+          <div class="text-sm">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">Your account</p>
+            <ul class="mt-3 space-y-2 text-white/60">
+              <li><a class="hover:text-accent-300" href="/dashboard">Dashboard</a></li>
+              <li><a class="hover:text-accent-300" href="/login">Log in</a></li>
+              <li><a class="hover:text-accent-300" href="/signup">Create account</a></li>
+              <li><a class="hover:text-accent-300" href="/contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 CUETFreeMockTest.com. All rights reserved.</p>
+          <div class="flex flex-wrap gap-4">
+            <a class="hover:text-white/70" href="/privacy-policy">Privacy</a>
+            <a class="hover:text-white/70" href="/terms">Terms</a>
+            <a class="hover:text-white/70" href="/disclaimer">Disclaimer</a>
+          </div>
+        </div>
+        <p class="mt-3 text-[10px] font-medium uppercase tracking-[0.18em] text-white/50">
+          Independent practice resource · Not affiliated with NTA
+        </p>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (() => {
+        document.querySelectorAll("[data-logout]").forEach((item) => {
+          item.addEventListener("click", async () => {
+            await fetch("/api/auth/logout", { method: "POST" });
+            location.href = "/";
+          });
+        });
+      })();
+    </script>
+    {analytics ? (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: analytics })}
+      ></script>
+    ) : null}
+  </body>
+</html>

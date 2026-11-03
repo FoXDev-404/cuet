@@ -1,0 +1,523 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { all, first } from "../lib/db";
+import { formatDate, formatDateTime, formatDuration } from "../lib/content";
+import { dashboardNav } from "../lib/navigation";
+import { percentileFor } from "../lib/ranking";
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect(`/login?next=${encodeURIComponent("/dashboard")}`, 303);
+
+const [profile, finished, attempts, subjects, badges, topicStats, timeStats, bestRank] =
+  await Promise.all([
+  first<{
+    created_at: string;
+    avatar_url: string | null;
+    streak_count: number;
+    target_exam_date: string | null;
+  }>(
+    "SELECT created_at, avatar_url, streak_count, target_exam_date FROM users WHERE id = ?",
+    user.id,
+  ),
+  first<{
+    attempts: number;
+    correct: number;
+    wrong: number;
+    average: number | null;
+    best: number | null;
+    time: number;
+  }>(
+    `SELECT COUNT(*) AS attempts,
+            COALESCE(SUM(correct), 0) AS correct,
+            COALESCE(SUM(wrong), 0) AS wrong,
+            AVG(score) AS average,
+            MAX(score) AS best,
+            COALESCE(SUM(time_taken_sec), 0) AS time
+     FROM attempts WHERE user_id = ? AND status IN ('submitted', 'expired')`,
+    user.id,
+  ),
+  all<{
+    id: number;
+    status: string;
+    score: number | null;
+    correct: number | null;
+    wrong: number | null;
+    skipped: number | null;
+    time_taken_sec: number | null;
+    started_at: string;
+    submitted_at: string | null;
+    deadline_at: string;
+    is_first_attempt: number;
+    title: string;
+    slug: string;
+    total_marks: number;
+  }>(
+    `SELECT a.id, a.status, a.score, a.correct, a.wrong, a.skipped, a.time_taken_sec,
+            a.started_at, a.submitted_at, a.deadline_at, a.is_first_attempt,
+            m.title, m.slug, v.total_marks
+     FROM attempts a
+     JOIN mock_tests m ON m.id = a.mock_id
+     JOIN mock_test_versions v ON v.id = a.version_id
+     WHERE a.user_id = ?
+     ORDER BY a.id DESC LIMIT 50`,
+    user.id,
+  ),
+  all<{
+    name: string;
+    attempted: number;
+    correct: number;
+    avg_time_sec: number;
+  }>(
+    `SELECT s.name, us.attempted, us.correct, us.avg_time_sec
+     FROM user_stats us JOIN subjects s ON s.id = us.subject_id
+     WHERE us.user_id = ? AND us.topic_id = 0
+     ORDER BY us.attempted DESC`,
+    user.id,
+  ),
+  all<{ name: string; description: string | null; awarded_at: string }>(
+    `SELECT b.name, b.description, ub.awarded_at
+     FROM user_badges ub JOIN badges b ON b.id = ub.badge_id
+     WHERE ub.user_id = ? ORDER BY ub.awarded_at DESC`,
+    user.id,
+  ),
+  all<{
+    subject_name: string;
+    topic_name: string;
+    attempted: number;
+    correct: number;
+    avg_time_sec: number;
+  }>(
+    `SELECT s.name AS subject_name, t.name AS topic_name, us.attempted, us.correct, us.avg_time_sec
+     FROM user_stats us
+     JOIN subjects s ON s.id = us.subject_id
+     JOIN topics t ON t.id = us.topic_id
+     WHERE us.user_id = ? AND us.topic_id > 0 AND us.attempted >= 5
+     ORDER BY (CAST(us.correct AS REAL) / us.attempted) ASC, us.attempted DESC
+     LIMIT 6`,
+    user.id,
+  ),
+  first<{ answered_time: number; answered: number; all_time: number; all_questions: number }>(
+    `SELECT COALESCE(SUM(CASE WHEN aa.selected IS NOT NULL THEN aa.time_spent_sec ELSE 0 END), 0) AS answered_time,
+            COALESCE(SUM(CASE WHEN aa.selected IS NOT NULL THEN 1 ELSE 0 END), 0) AS answered,
+            COALESCE(SUM(aa.time_spent_sec), 0) AS all_time,
+            COUNT(*) AS all_questions
+     FROM attempt_answers aa
+     JOIN attempts a ON a.id = aa.attempt_id
+     WHERE a.user_id = ? AND a.status IN ('submitted', 'expired')`,
+    user.id,
+  ),
+  first<{ rank: number; eligible: number; score: number; version_id: number }>(
+    `SELECT rank, eligible, score, version_id FROM (
+       SELECT a.user_id, a.version_id, a.score,
+              RANK() OVER (PARTITION BY a.version_id ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank,
+              COUNT(*) OVER (PARTITION BY a.version_id) AS eligible
+       FROM attempts a JOIN users u ON u.id = a.user_id
+       WHERE a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL
+     ) WHERE user_id = ? ORDER BY rank ASC, eligible DESC LIMIT 1`,
+    user.id,
+  ),
+]);
+
+const live = attempts.filter((attempt) => attempt.status === "in_progress");
+const answered = (finished?.correct ?? 0) + (finished?.wrong ?? 0);
+const accuracy = answered > 0 ? Math.round(((finished?.correct ?? 0) / answered) * 1000) / 10 : 0;
+const claimed = Math.min(50, Math.max(0, Number(Astro.url.searchParams.get("claimed") ?? "0") || 0));
+
+// Score trend: submitted attempts only (expired runs are not comparable), oldest first.
+const trend = attempts
+  .filter((attempt) => attempt.status === "submitted" && attempt.score !== null && attempt.total_marks > 0)
+  .slice(0, 12)
+  .reverse()
+  .map((attempt) => ({
+    id: attempt.id,
+    title: attempt.title,
+    score: attempt.score as number,
+    total: attempt.total_marks,
+    percent: Math.max(0, Math.min(100, ((attempt.score as number) / attempt.total_marks) * 100)),
+    submittedAt: attempt.submitted_at,
+  }));
+
+const trendWidth = 600;
+const trendHeight = 140;
+const trendPad = 10;
+const trendPoints = trend.map((point, index) => {
+  const x = trend.length <= 1 ? trendWidth / 2 : (index / (trend.length - 1)) * trendWidth;
+  const y = trendHeight - trendPad - (point.percent / 100) * (trendHeight - trendPad * 2);
+  return `${x.toFixed(1)},${y.toFixed(1)}`;
+});
+
+// Strong/weak labels require at least 10 attempted questions (minimum sample).
+const MIN_SUBJECT_SAMPLE = 10;
+const rankedSubjects = subjects
+  .filter((subject) => subject.attempted >= MIN_SUBJECT_SAMPLE)
+  .map((subject) => ({
+    ...subject,
+    accuracy: Math.round((subject.correct / subject.attempted) * 1000) / 10,
+  }))
+  .sort((a, b) => b.accuracy - a.accuracy);
+const strongestSubject = rankedSubjects[0] ?? null;
+const weakestSubject = rankedSubjects.length > 1 ? rankedSubjects[rankedSubjects.length - 1] : null;
+
+const averageAnsweredTime =
+  timeStats && timeStats.answered > 0
+    ? Math.round(timeStats.answered_time / timeStats.answered)
+    : null;
+const averageAllTime =
+  timeStats && timeStats.all_questions > 0
+    ? Math.round(timeStats.all_time / timeStats.all_questions)
+    : null;
+const bestPercentile = bestRank ? percentileFor(bestRank.rank, bestRank.eligible) : null;
+const averageScore = finished?.average != null ? Math.round(finished.average * 10) / 10 : null;
+const examCountdown = profile?.target_exam_date
+  ? Math.ceil((Date.parse(`${profile.target_exam_date.slice(0, 10)}T23:59:59.999Z`) - Date.now()) / 86_400_000)
+  : null;
+
+const statusLabel: Record<string, string> = {
+  in_progress: "In progress",
+  submitted: "Submitted",
+  expired: "Time expired",
+};
+const statusClass: Record<string, string> = {
+  in_progress: "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200",
+  submitted: "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200",
+  expired: "bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200",
+};
+---
+
+<BaseLayout
+  title="My dashboard — CUET Free Mock Test"
+  description="Your CUET mock test history, accuracy and subject-wise performance."
+  noindex
+  sectionLabel="Dashboard"
+  sectionNav={dashboardNav}
+>
+  <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
+    <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-10">
+      <div class="flex flex-wrap items-center gap-4">
+        <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-600 text-xl font-black text-white">
+          {user.username.slice(0, 1).toUpperCase()}
+        </span>
+        <div class="min-w-0">
+          <h1 class="truncate text-2xl font-black tracking-tight sm:text-3xl">Hi, {user.username}</h1>
+          <p class="truncate text-sm text-neutral-600 dark:text-neutral-400">
+            {user.email} · joined {formatDate(profile?.created_at)}
+          </p>
+        </div>
+        <a class="ml-auto rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">
+          Take a mock test
+        </a>
+      </div>
+
+      {claimed > 0 ? (
+        <p class="mt-5 rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-200">
+          {claimed === 1 ? "1 guest attempt was" : `${claimed} guest attempts were`} added to this account. Open a result to continue, then check the leaderboard.
+        </p>
+      ) : null}
+
+      {!profile ? null : profile.target_exam_date ? (
+        <p class="mt-4 text-xs text-neutral-500 dark:text-neutral-400">
+          Target exam date: {formatDate(profile.target_exam_date)}
+          {examCountdown !== null
+            ? examCountdown > 0
+              ? ` · ${examCountdown} day${examCountdown === 1 ? "" : "s"} to go`
+              : examCountdown === 0
+                ? " · exam day"
+                : ` · ${Math.abs(examCountdown)} day${examCountdown === -1 ? "" : "s"} ago`
+            : ""}
+        </p>
+      ) : null}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempts finished</p>
+        <p class="mt-1 text-3xl font-black">{finished?.attempts ?? 0}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{live.length} in progress</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Best score</p>
+        <p class="mt-1 text-3xl font-black">{finished?.best ?? "—"}</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+          {averageScore !== null ? `Average ${averageScore} across ${finished?.attempts ?? 0} finished attempt${(finished?.attempts ?? 0) === 1 ? "" : "s"}` : "Across submitted and expired attempts"}
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Accuracy</p>
+        <p class="mt-1 text-3xl font-black">{accuracy}%</p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{finished?.correct ?? 0} correct · {finished?.wrong ?? 0} wrong</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Time practising</p>
+        <p class="mt-1 text-3xl font-black">{Math.round((finished?.time ?? 0) / 60)}<span class="ml-1 text-base font-bold text-neutral-600 dark:text-neutral-400">min</span></p>
+        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Streak: {profile?.streak_count ?? 0} day{(profile?.streak_count ?? 0) === 1 ? "" : "s"}</p>
+      </div>
+    </div>
+
+    <section class="mt-8">
+      <div class="flex flex-wrap items-end justify-between gap-2">
+        <h2 class="text-lg font-bold">Performance insights</h2>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          Accuracy = correct ÷ attempted questions. Subject labels need at least {MIN_SUBJECT_SAMPLE} attempted questions; topic labels need at least 5.
+        </p>
+      </div>
+      <div class="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Avg time / answered question</p>
+          <p class="mt-1 text-3xl font-black">{averageAnsweredTime !== null ? `${averageAnsweredTime}s` : "—"}</p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+            Skipped questions excluded{averageAllTime !== null ? ` · ${averageAllTime}s including skipped` : ""}
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Best rank</p>
+          <p class="mt-1 text-3xl font-black">{bestRank ? `#${bestRank.rank}` : "—"}</p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+            {bestRank
+              ? `${bestPercentile ?? 0} percentile of ${bestRank.eligible} eligible first attempt${bestRank.eligible === 1 ? "" : "s"} · platform-only estimate`
+              : "Ranked after your first submitted attempt"}
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Strongest subject</p>
+          <p class="mt-1 truncate text-xl font-black">{strongestSubject?.name ?? "—"}</p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+            {strongestSubject
+              ? `${strongestSubject.accuracy}% over ${strongestSubject.attempted} questions`
+              : `Attempt ${MIN_SUBJECT_SAMPLE}+ questions in a subject to label it`}
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Needs focus</p>
+          <p class="mt-1 truncate text-xl font-black">{weakestSubject?.name ?? "—"}</p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+            {weakestSubject
+              ? `${weakestSubject.accuracy}% over ${weakestSubject.attempted} questions`
+              : `Attempt ${MIN_SUBJECT_SAMPLE}+ questions in two subjects to compare`}
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <div class="flex flex-wrap items-end justify-between gap-2">
+            <h3 class="font-bold">Score trend</h3>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400">Submitted attempts, oldest → newest</p>
+          </div>
+          {trend.length === 0 ? (
+            <p class="mt-4 text-sm text-neutral-500 dark:text-neutral-400">Submit a mock to start your score trend. Expired attempts are excluded so the line stays comparable.</p>
+          ) : (
+            <>
+              <svg class="mt-4 h-auto w-full" viewBox={`0 0 ${trendWidth} ${trendHeight}`} role="img" aria-label={`Score trend across ${trend.length} submitted attempt${trend.length === 1 ? "" : "s"}. First ${trend[0].score} of ${trend[0].total}, latest ${trend[trend.length - 1].score} of ${trend[trend.length - 1].total}, best ${Math.max(...trend.map((point) => point.score))}.`}>
+                <line x1="0" y1={trendHeight - trendPad} x2={trendWidth} y2={trendHeight - trendPad} stroke="currentColor" stroke-opacity="0.15" />
+                <line x1="0" y1={trendPad} x2={trendWidth} y2={trendPad} stroke="currentColor" stroke-opacity="0.15" />
+                {trend.length > 1 ? (
+                  <polyline points={trendPoints.join(" ")} fill="none" stroke="var(--chart-2)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+                ) : null}
+                {trend.map((_point, index) => {
+                  const [x, y] = trendPoints[index].split(",");
+                  return <circle cx={x} cy={y} r="3.5" fill="var(--chart-2)" />;
+                })}
+              </svg>
+              <ol class="mt-2 space-y-1 text-xs text-neutral-500 dark:text-neutral-400">
+                {trend.map((point) => (
+                  <li class="flex items-center justify-between gap-3">
+                    <span class="truncate">{point.title}</span>
+                    <span class="whitespace-nowrap font-semibold text-neutral-700 dark:text-neutral-300">
+                      {point.score}/{point.total}
+                      {point.submittedAt ? ` · ${formatDate(point.submittedAt)}` : ""}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
+        </section>
+
+        <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <div class="flex flex-wrap items-end justify-between gap-2">
+            <h3 class="font-bold">Topic-level weakness</h3>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400">Minimum 5 attempted questions</p>
+          </div>
+          {topicStats.length === 0 ? (
+            <p class="mt-4 text-sm text-neutral-500 dark:text-neutral-400">
+              Topic insights appear after you attempt at least five questions in a topic. One-question samples are never labelled weak.
+            </p>
+          ) : (
+            <div class="mt-3 overflow-x-auto">
+              <table class="w-full min-w-[420px] text-left text-sm">
+                <thead class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                  <tr>
+                    <th class="py-2 pr-3">Topic</th>
+                    <th class="py-2 pr-3 text-right">Accuracy</th>
+                    <th class="py-2 pr-3 text-right">Sample</th>
+                    <th class="py-2 text-right">Avg time</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+                  {topicStats.map((topic) => {
+                    const percent = Math.round((topic.correct / topic.attempted) * 100);
+                    return (
+                      <tr>
+                        <td class="py-2 pr-3">
+                          <p class="font-medium">{topic.topic_name}</p>
+                          <p class="text-xs text-neutral-500 dark:text-neutral-400">{topic.subject_name}</p>
+                        </td>
+                        <td class="py-2 pr-3 text-right">
+                          <span class:list={["rounded-full px-2 py-0.5 text-xs font-bold", percent >= 60 ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200" : percent >= 40 ? "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200" : "bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200"]}>{percent}%</span>
+                        </td>
+                        <td class="py-2 pr-3 text-right text-xs text-neutral-500 dark:text-neutral-400">{topic.attempted} Qs</td>
+                        <td class="py-2 text-right text-xs text-neutral-500 dark:text-neutral-400">{Math.round(topic.avg_time_sec)}s</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+      </div>
+    </section>
+
+    {live.length > 0 ? (
+      <section class="mt-8">
+        <h2 class="text-lg font-bold">Continue where you left off</h2>
+        <div class="mt-3 grid gap-3 sm:grid-cols-2">
+          {live.map((attempt) => {
+            const over = Date.parse(attempt.deadline_at) < Date.now();
+            return (
+              <div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900 dark:bg-amber-950/30">
+                <div class="min-w-0">
+                  <p class="truncate font-semibold">{attempt.title}</p>
+                  <p class="text-xs text-amber-900 dark:text-amber-200">
+                    Started {formatDateTime(attempt.started_at)} · {over ? "time is over" : "timer running"}
+                  </p>
+                </div>
+                <a class="rounded-lg bg-neutral-900 px-3 py-2 text-xs font-bold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900" href={`/attempt/${attempt.id}`}>
+                  {over ? "View result" : "Resume →"}
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    ) : null}
+
+    <section class="mt-8">
+      <div class="flex flex-wrap items-end justify-between gap-2">
+        <h2 class="text-lg font-bold">Attempt history</h2>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">Showing the latest 50 attempts</p>
+      </div>
+
+      {attempts.length === 0 ? (
+        <div class="mt-3 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
+          <h3 class="font-bold">No attempts yet</h3>
+          <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">Start a free mock test and your score, accuracy and subject analysis will appear here.</p>
+          <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse mock tests</a>
+        </div>
+      ) : (
+        <div class="mt-3 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+          <table class="w-full min-w-[780px] text-left text-sm">
+            <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+              <tr>
+                <th class="px-4 py-3">Mock</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3 text-right">Score</th>
+                <th class="px-4 py-3 text-right">Accuracy</th>
+                <th class="px-4 py-3 text-right">Time</th>
+                <th class="px-4 py-3">Date</th>
+                <th class="px-4 py-3 text-right">Open</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+              {attempts.map((attempt) => {
+                const total = (attempt.correct ?? 0) + (attempt.wrong ?? 0);
+                const rowAccuracy = total > 0 ? Math.round(((attempt.correct ?? 0) / total) * 100) : 0;
+                const href = attempt.status === "in_progress" ? `/attempt/${attempt.id}` : `/result/${attempt.id}`;
+                return (
+                  <tr>
+                    <td class="max-w-xs px-4 py-3">
+                      <a class="line-clamp-2 font-medium hover:text-brand-700 dark:hover:text-brand-300" href={href}>{attempt.title}</a>
+                      {attempt.is_first_attempt ? <span class="mt-1 inline-block rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-semibold text-violet-900 dark:bg-violet-950/50 dark:text-violet-200">First attempt</span> : null}
+                    </td>
+                    <td class="px-4 py-3"><span class={`whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold ${statusClass[attempt.status] ?? ""}`}>{statusLabel[attempt.status] ?? attempt.status}</span></td>
+                    <td class="px-4 py-3 text-right font-bold">{attempt.score ?? "—"}{attempt.score !== null ? <span class="text-xs font-normal text-neutral-600 dark:text-neutral-400"> / {attempt.total_marks}</span> : null}</td>
+                    <td class="px-4 py-3 text-right">{attempt.status === "in_progress" ? "—" : `${rowAccuracy}%`}</td>
+                    <td class="px-4 py-3 text-right text-xs text-neutral-500 dark:text-neutral-400">{attempt.time_taken_sec ? formatDuration(attempt.time_taken_sec) : "—"}</td>
+                    <td class="whitespace-nowrap px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(attempt.submitted_at ?? attempt.started_at)}</td>
+                    <td class="px-4 py-3 text-right">
+                      <a class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={href}>
+                        {attempt.status === "in_progress" ? "Resume" : "Result"}
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+
+    <div class="mt-8 grid gap-6 lg:grid-cols-2">
+      <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="flex flex-wrap items-end justify-between gap-2">
+          <h2 class="font-bold">Subject performance</h2>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Correct ÷ attempted questions</p>
+        </div>
+        {subjects.length === 0 ? (
+          <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">Finish a mock to see subject-wise accuracy.</p>
+        ) : (
+          <ul class="mt-4 space-y-4">
+            {subjects.map((subject) => {
+              const percent = subject.attempted > 0 ? Math.round((subject.correct / subject.attempted) * 100) : 0;
+              const label =
+                strongestSubject?.name === subject.name
+                  ? "Strong"
+                  : weakestSubject?.name === subject.name
+                    ? "Focus"
+                    : null;
+              return (
+                <li>
+                  <div class="flex items-center justify-between gap-3 text-sm">
+                    <span class="flex min-w-0 items-center gap-2">
+                      <span class="truncate font-medium">{subject.name}</span>
+                      {label ? (
+                        <span class:list={["rounded-full px-2 py-0.5 text-[10px] font-bold uppercase", label === "Strong" ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200" : "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"]}>{label}</span>
+                      ) : null}
+                    </span>
+                    <span class="whitespace-nowrap text-xs text-neutral-500 dark:text-neutral-400">{subject.correct}/{subject.attempted} · {percent}%</span>
+                  </div>
+                  <div class="mt-1.5 h-2 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
+                    <div class:list={["h-full rounded-full", percent >= 60 ? "bg-brand-500" : percent >= 40 ? "bg-amber-500" : "bg-red-500"]} style={`width:${percent}%`}></div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <p class="mt-4 text-[11px] text-neutral-500 dark:text-neutral-400">
+          Strong/Focus labels need at least {MIN_SUBJECT_SAMPLE} attempted questions per subject. This is your own practice data, not an external benchmark.
+        </p>
+      </section>
+
+      <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 class="font-bold">Badges</h2>
+        {badges.length === 0 ? (
+          <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">Complete your first mock to earn the First Mock badge.</p>
+        ) : (
+          <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+            {badges.map((badge) => (
+              <li class="rounded-xl border border-brand-200 bg-brand-50 p-3 dark:border-brand-800 dark:bg-brand-950/40">
+                <p class="text-sm font-bold text-brand-900 dark:text-brand-200">{badge.name}</p>
+                <p class="mt-1 text-xs text-brand-800 dark:text-brand-300">{badge.description ?? "Awarded for practice."}</p>
+                <p class="mt-1 text-[10px] uppercase tracking-wide text-brand-700 dark:text-brand-400">{formatDate(badge.awarded_at)}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,141 @@
+---
+import { siteUrl } from "../../lib/site-url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { first } from "../../lib/db";
+import { formatDate } from "../../lib/content";
+import { articleJsonLd, breadcrumbJsonLd, getPageSeo } from "../../lib/seo";
+import { estimateReadingMinutes, renderArticleBody } from "../../lib/blog";
+
+const slug = Astro.params.slug ?? "";
+const post = await first<{
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  body: string;
+  published_at: string | null;
+  updated_at: string | null;
+}>(
+  `SELECT id, slug, title, description, body, published_at, updated_at
+   FROM blog_posts
+   WHERE slug = ? AND status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
+     AND length(body) >= 400`,
+  slug,
+);
+if (!post) return new Response("Guide not found", { status: 404 });
+
+const PATH = `/blog/${post.slug}`;
+const seo = await getPageSeo(PATH);
+const title = seo?.title || `${post.title} — CUET Free Mock Test`;
+const description = seo?.description || post.description;
+const noindex = (seo?.noindex ?? 0) === 1;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Guides", path: "/blog" },
+    { name: post.title, path: PATH },
+  ]),
+  articleJsonLd({
+    site,
+    title,
+    description,
+    path: PATH,
+    updated: seo?.updated_at ?? post.updated_at ?? post.published_at,
+  }),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData} ads={!noindex}>
+  <article class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-14">
+    <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a class="hover:underline" href="/blog">Guides</a>
+      <span aria-hidden="true">/</span>
+      <span class="line-clamp-1">{post.title}</span>
+    </nav>
+
+    <header class="mt-5 border-b border-neutral-200 pb-6 dark:border-neutral-800">
+      <p class="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-300">
+        {formatDate(post.published_at)} · {estimateReadingMinutes(post.body)} min read
+      </p>
+      <h1 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">{post.title}</h1>
+      <p class="mt-3 text-lg leading-8 text-neutral-600 dark:text-neutral-300">{post.description}</p>
+    </header>
+
+    {seo?.intro_html ? (
+      <div class="mt-6 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100">
+        {seo.intro_html}
+      </div>
+    ) : null}
+
+    <div class="article-body mt-8" set:html={renderArticleBody(post.body)} />
+
+    {!noindex ? <AdSlot /> : null}
+
+    <footer class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-5 text-sm dark:border-neutral-800 dark:bg-neutral-900">
+      <p class="font-bold">Put the guide into practice</p>
+      <p class="mt-2 text-neutral-600 dark:text-neutral-400">Reading changes nothing until you attempt a timed paper and review the errors.</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <a class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse mock tests</a>
+        <a class="rounded-lg border border-neutral-300 px-4 py-2 text-sm font-bold hover:bg-white dark:border-neutral-700 dark:hover:bg-neutral-950" href="/blog">All guides</a>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-body :global(h2) {
+    margin-top: 2.25rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .article-body :global(h3) {
+    margin-top: 1.75rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  .article-body :global(h4) {
+    margin-top: 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .article-body :global(p) {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink-2);
+  }
+  .article-body :global(ul),
+  .article-body :global(ol) {
+    margin-top: 1rem;
+    padding-left: 1.4rem;
+    line-height: 1.85;
+  }
+  .article-body :global(ul) { list-style: disc; }
+  .article-body :global(ol) { list-style: decimal; }
+  .article-body :global(li) { margin-top: 0.35rem; color: var(--ink-2); }
+  .article-body :global(blockquote) {
+    margin-top: 1.25rem;
+    border-left: 3px solid var(--correct);
+    padding: 0.25rem 0 0.25rem 1rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .article-body :global(pre) {
+    margin-top: 1.25rem;
+    overflow-x: auto;
+    border-radius: 0.75rem;
+    background: var(--footer-bg);
+    padding: 1rem;
+    color: var(--footer-ink);
+    font-size: 0.85rem;
+  }
+  .article-body :global(a) { text-decoration: underline; }
+</style>

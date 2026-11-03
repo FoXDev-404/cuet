@@ -1,0 +1,1991 @@
+{
+ "exam": {
+  "id": "local-general-test-2024-05-15-shift-3",
+  "slug": "general-test-2024-05-15-shift-3",
+  "title": "CUET UG General Test 15 May 2024 Shift 3 Previous Year Paper",
+  "subject": "General Test",
+  "subjectId": "local-general-test",
+  "subjectCode": "GT",
+  "year": 2024,
+  "examDate": "2024-05-15",
+  "shift": "Shift 3",
+  "sourceFile": "General Test_2024-05-15_Shift_3.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 57,
+  "sourceQuestionCount": 60,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [
+   {
+    "id": "p4cc9640ed594",
+    "title": "Reading passage",
+    "contentEn": "'P % Q' means that 'P is the sister of Q'\n\n'P + Q' means that 'P is the son of Q'\n\n'P ×Q' means that 'P is the husband of Q'\n\n'P - Q' means that 'P is the brother of Q'"
+   },
+   {
+    "id": "p6c6a4e4484b1",
+    "title": "Reading passage",
+    "contentEn": "Statements :\n\nNo keyboard is a mouse.\n\nAll mouses are computers.\n\nAll computers are laptops.\n\nConclusions :\n\nI. All mouses are laptops."
+   }
+  ],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "From the given options, which pass connects Jammu with Srinagar?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Banihal pass"
+     },
+     {
+      "id": "B",
+      "text": "Nathu La pass"
+     },
+     {
+      "id": "C",
+      "text": "Niti pass"
+     },
+     {
+      "id": "D",
+      "text": "Rohtang pass"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "Which of the following is not correctly matched regarding Padma Awards-2024?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Padma Vibhushan Award $ \\rightarrow $ Shri Konidela Chiranjeevi"
+     },
+     {
+      "id": "B",
+      "text": "Padma Shri Award $ \\rightarrow $ Mithun Chakraborty"
+     },
+     {
+      "id": "C",
+      "text": "Padma Bhushan Award $ \\rightarrow $ M. Fathima Beevi"
+     },
+     {
+      "id": "D",
+      "text": "Padma Bhushan Award $ \\rightarrow $ Sitaram Jindal"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)- (I), (B)- (III), (C)- (IV), (D)- (II)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (II), (B) - (III), (C) - (I), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (II), (B) - (I), (C) - (III), (D) - (IV)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q03-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q03-table-1.jpg",
+      "page": 3,
+      "alt": "Table for question 3"
+     }
+    ]
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "If $ \\sin A = \\frac{4}{5} $, then $ (3 - \\tan A)(2 + \\cos A) = $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{12}{5} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{13}{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{13}{5} $"
+     },
+     {
+      "id": "D",
+      "text": "3"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "A man can row a boat at 8 km/h in still water. If the speed of the water current is 2 km/h and it takes him 2 hours to row to a place and come back, then how far off (in km) is the place?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "7.5"
+     },
+     {
+      "id": "B",
+      "text": "6"
+     },
+     {
+      "id": "C",
+      "text": "9.5"
+     },
+     {
+      "id": "D",
+      "text": "10"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "The following states were formed after 1960. What was the correct sequence of their formation?\n\n(A) Haryana\n\n(B) Sikkim\n\n(C) Nagaland\n\n(D) Goa",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(C), (B), (A), (D)"
+     },
+     {
+      "id": "B",
+      "text": "(C), (A), (B), (D)"
+     },
+     {
+      "id": "C",
+      "text": "(C), (D), (A), (B)"
+     },
+     {
+      "id": "D",
+      "text": "(D), (C), (A), (B)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "Out of the given options, which scheme's objective is to conduct an annual survey at the gram panchayat level to monitor the progress in the development process of rural areas?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Mission Antyodaya (2022-23)"
+     },
+     {
+      "id": "B",
+      "text": "Mission Karmayogi (2022-23)"
+     },
+     {
+      "id": "C",
+      "text": "Mission Rashtriya Gokul (2022-23)"
+     },
+     {
+      "id": "D",
+      "text": "Mission Atmanirbhar Bharat (2022-23)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "Which one of the following countries is not a member of the \"Quadrilateral Security Dialogue\", also known as \"QUAD\"?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "China"
+     },
+     {
+      "id": "B",
+      "text": "Japan"
+     },
+     {
+      "id": "C",
+      "text": "India"
+     },
+     {
+      "id": "D",
+      "text": "Australia"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "Who has become the first woman chairperson of the Railway Board of Indian Railways in 2023?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Jaya Verma Sinha"
+     },
+     {
+      "id": "B",
+      "text": "Mita Vashishth"
+     },
+     {
+      "id": "C",
+      "text": "Ravneet Kaur"
+     },
+     {
+      "id": "D",
+      "text": "Vasudha Gupta Answer: A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (III), (B) - (I), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (Ⅳ), (B) - (I), (C) - (III), (D) - (II)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (II), (B) - (I), (C) - (IV), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11,
+     12
+    ],
+    "assets": [
+     {
+      "id": "q10-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q10-table-1.jpg",
+      "page": 12,
+      "alt": "Table for question 10"
+     }
+    ]
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "\"Jhulaghat Suspension Bridge\" between India and which country has become fully operational now?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Bhutan"
+     },
+     {
+      "id": "B",
+      "text": "Nepal"
+     },
+     {
+      "id": "C",
+      "text": "China"
+     },
+     {
+      "id": "D",
+      "text": "Myanmar"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Due to ocean acidification when the ocean becomes more acidic, what happens to the pH level of the ocean?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "The pH level goes down."
+     },
+     {
+      "id": "B",
+      "text": "The pH level stays the same."
+     },
+     {
+      "id": "C",
+      "text": "The pH level goes up."
+     },
+     {
+      "id": "D",
+      "text": "The pH level becomes zero."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Who is the first para-athlete to receive the Padma Bhushan award in India?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Bhavina Patel"
+     },
+     {
+      "id": "B",
+      "text": "Devendra Jhajharia"
+     },
+     {
+      "id": "C",
+      "text": "Avani Lekhara"
+     },
+     {
+      "id": "D",
+      "text": "Mariyappan Thangavelu"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "Zemu Glacier is located in which state of India?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Uttarakhand"
+     },
+     {
+      "id": "B",
+      "text": "Himachal Pradesh"
+     },
+     {
+      "id": "C",
+      "text": "Sikkim"
+     },
+     {
+      "id": "D",
+      "text": "Arunachal Pradesh"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "Who among the following is Chile's first woman President?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Mary Robinson"
+     },
+     {
+      "id": "B",
+      "text": "Michelle Bachelet"
+     },
+     {
+      "id": "C",
+      "text": "Kim Campbell"
+     },
+     {
+      "id": "D",
+      "text": "Jennifer Shipley"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Which organisation developed and launched 'Ugram' Indigenous Assault Rifle for the armed forces?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "ISRO"
+     },
+     {
+      "id": "B",
+      "text": "BEL"
+     },
+     {
+      "id": "C",
+      "text": "HAL"
+     },
+     {
+      "id": "D",
+      "text": "DRDO"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Which of the following substances is a bad conductor of electricity?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Diamond"
+     },
+     {
+      "id": "B",
+      "text": "Gold"
+     },
+     {
+      "id": "C",
+      "text": "Silver"
+     },
+     {
+      "id": "D",
+      "text": "Graphite"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Which of the following disease is caused due to the deficiency of proteins?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Arthritis"
+     },
+     {
+      "id": "B",
+      "text": "Kwashiorkor"
+     },
+     {
+      "id": "C",
+      "text": "Goitre"
+     },
+     {
+      "id": "D",
+      "text": "Night Blindness"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (III), (B) - (I), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (I), (B) - (IV), (C) - (II), (D) - (III)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (Ⅳ), (B) - (I), (C) - (III), (D) - (II)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (Ⅳ), (B) - (I), (C) - (II), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": [
+     {
+      "id": "q19-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q19-table-1.jpg",
+      "page": 21,
+      "alt": "Table for question 19"
+     }
+    ]
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "DRDO has conducted the first successful flight test of Agni-5 missile equipped with MIRV technology. What is the full form of MIRV?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Multiple Independently Targetable Re-Entry Vehicle"
+     },
+     {
+      "id": "B",
+      "text": "Mission India Target Re-Entry Vehicle"
+     },
+     {
+      "id": "C",
+      "text": "Multiple Independently Technology Re-Entry Vehicle"
+     },
+     {
+      "id": "D",
+      "text": "Multiple Indirect Targetable Re-Entry vehicle Answer: A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Which Indian has won the \"Ramon Magsaysay Award-2023\" ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Korvi Rakshand"
+     },
+     {
+      "id": "B",
+      "text": "Ashwini Kumar"
+     },
+     {
+      "id": "C",
+      "text": "Dipti Ranjan Sahoo"
+     },
+     {
+      "id": "D",
+      "text": "Dr. Ravi Kannan R."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Who has been appointed the Chairman of the $ 16^{th} $ Finance Commission of India?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Ajay Narayan Jha"
+     },
+     {
+      "id": "B",
+      "text": "Smt. Annie George Mathew"
+     },
+     {
+      "id": "C",
+      "text": "Pradip Kumar Mohanty"
+     },
+     {
+      "id": "D",
+      "text": "Dr. Arvind Panagariya"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     25
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "Sri Ranganathswamy Temple which is situated in Tamil Nadu, is dedicated to which deity?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Lord Shiva"
+     },
+     {
+      "id": "B",
+      "text": "Lord Vishnu"
+     },
+     {
+      "id": "C",
+      "text": "Goddess Durga"
+     },
+     {
+      "id": "D",
+      "text": "Goddess Lakshmi"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "The Election Commission of India gets the power to conduct elections from which of the following articles?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Article 324"
+     },
+     {
+      "id": "B",
+      "text": "Article 280"
+     },
+     {
+      "id": "C",
+      "text": "Article 264"
+     },
+     {
+      "id": "D",
+      "text": "Article 26"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Match List-I with List-II:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (Ⅳ), (B) - (Ⅱ), (C) - (Ⅰ), (D) - (Ⅲ)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (Ⅳ), (B) - (Ⅲ), (C) - (Ⅰ), (D) - (Ⅱ)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": [
+     {
+      "id": "q25-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q25-table-1.jpg",
+      "page": 28,
+      "alt": "Table for question 25"
+     }
+    ]
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "In which state is \"Amchang Wildlife Sanctuary\" loacted?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Assam"
+     },
+     {
+      "id": "B",
+      "text": "Rajasthan"
+     },
+     {
+      "id": "C",
+      "text": "Odisha"
+     },
+     {
+      "id": "D",
+      "text": "Manipur"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "India's first 3D-printed Post Office has been inaugurated in :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Guwahati"
+     },
+     {
+      "id": "B",
+      "text": "Kolkata"
+     },
+     {
+      "id": "C",
+      "text": "Mumbai"
+     },
+     {
+      "id": "D",
+      "text": "Bengaluru"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "What should come in the place of the question mark (?) in the following alphanumeric series ?\n\nA1X, B4P, E25J, J100F, ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "O289D"
+     },
+     {
+      "id": "B",
+      "text": "O225E"
+     },
+     {
+      "id": "C",
+      "text": "Q289D"
+     },
+     {
+      "id": "D",
+      "text": "Q225E"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "In the given analogy, choose the word which will replace the question mark :\n\nNEGI : MVTR :: SING : ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "TRNS"
+     },
+     {
+      "id": "B",
+      "text": "TRNT"
+     },
+     {
+      "id": "C",
+      "text": "FRMT"
+     },
+     {
+      "id": "D",
+      "text": "HRMT"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "In a certain code language 'ki ru pi' means 'nobody like cruel', 'ki mi cha' means 'king was cruel' and 'ru pi cha' means 'nobody like king'. What is the code for 'was' in the given code language?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "ki"
+     },
+     {
+      "id": "B",
+      "text": "mi"
+     },
+     {
+      "id": "C",
+      "text": "cha"
+     },
+     {
+      "id": "D",
+      "text": "ru"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     34
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Which of the following means 'A is the son-in-law of G'?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ A \\times U\\% S \\times G $"
+     },
+     {
+      "id": "B",
+      "text": "$ A + S\\% U \\times G $"
+     },
+     {
+      "id": "C",
+      "text": "$ A - S + U \\times G $"
+     },
+     {
+      "id": "D",
+      "text": "$ A \\times U\\% S + G $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": "p4cc9640ed594",
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     35
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "If $ 26^{th} $ January, 2020 was a Sunday, then what day of the week was it on $ 16^{th} $ March of that year?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Sunday"
+     },
+     {
+      "id": "B",
+      "text": "Monday"
+     },
+     {
+      "id": "C",
+      "text": "Tuesday"
+     },
+     {
+      "id": "D",
+      "text": "Wednesday Answer: B"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "What will be the measurement of the angle made by the hour and minute hands of a clock when the time is 'quarter past 3'?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 6\\frac{1}{2}^{\\circ} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 10^{\\circ} $"
+     },
+     {
+      "id": "C",
+      "text": "$ 7\\frac{1}{2}^{\\circ} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 8\\frac{1}{2}^{\\circ} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     38
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "If in a certain code language, 'MERCURY' is coded as 'NGUGZXF', then how will 'ENTANGLE' be coded in the same code language?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "FPXFSSMSM"
+     },
+     {
+      "id": "B",
+      "text": "FPWESMSM"
+     },
+     {
+      "id": "C",
+      "text": "FPWESNSN"
+     },
+     {
+      "id": "D",
+      "text": "FPWFTNSM"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     39
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "The problem given below consists of a question and two statements numbered I and II. You have to decide whether the data provided in the statements are sufficient to answer the question.\n\nHow many sisters does Sunny have?\n\nI. Sunny is the only son of his parents.\n\nII. Sunny's parents have three children.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Only statement I alone is sufficient to answer the question."
+     },
+     {
+      "id": "B",
+      "text": "Only statement II alone is sufficient to answer the question."
+     },
+     {
+      "id": "C",
+      "text": "Statements I and II together are sufficient to answer the question."
+     },
+     {
+      "id": "D",
+      "text": "Either statement I or II alone is sufficient to answer the question."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     40
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "A boy leaves his house. He travels 6 km towards South, then travels 8 km towards West and further travels 9 km towards South. How far and in which direction is he from his house now?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "13 km, South West"
+     },
+     {
+      "id": "B",
+      "text": "17 km, South West"
+     },
+     {
+      "id": "C",
+      "text": "17 km, North West"
+     },
+     {
+      "id": "D",
+      "text": "13 km, West"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     42
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Find out which of the answer figures completes the figure matrix :\n\nProblem figure :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     44
+    ],
+    "assets": [
+     {
+      "id": "q37-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q37-figure-1.jpg",
+      "page": 44,
+      "alt": "Figure for question 37"
+     },
+     {
+      "id": "q37-options",
+      "kind": "options",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q37-options.jpg",
+      "page": 44,
+      "alt": "Printed answer choices for question 37"
+     }
+    ]
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "The sequence of folding a piece of paper and the manner in which the folded paper has been cut is shown in the following figures. How would this paper look when unfolded?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     46,
+     47
+    ],
+    "assets": [
+     {
+      "id": "q39-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q39-figure-1.jpg",
+      "page": 46,
+      "alt": "Figure for question 39"
+     },
+     {
+      "id": "q39-options",
+      "kind": "options",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q39-options.jpg",
+      "page": 47,
+      "alt": "Printed answer choices for question 39"
+     }
+    ]
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Find out the missing (?) number and letter.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "59 and K"
+     },
+     {
+      "id": "B",
+      "text": "61 and L"
+     },
+     {
+      "id": "C",
+      "text": "61 and K"
+     },
+     {
+      "id": "D",
+      "text": "59 and L"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     47,
+     48
+    ],
+    "assets": [
+     {
+      "id": "q40-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2024-05-15-shift-3/q40-table-1.jpg",
+      "page": 48,
+      "alt": "Table for question 40"
+     }
+    ]
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "What will be the next number of the series\n\n3, 6, 10.5, 17, 26, ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "31"
+     },
+     {
+      "id": "B",
+      "text": "38"
+     },
+     {
+      "id": "C",
+      "text": "40"
+     },
+     {
+      "id": "D",
+      "text": "41"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     49
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "In a class of 40 students, Anjali's rank is thrice that of Anita. There are 4 students who have ranks worse than that of Anjali. Anita's rank in the class is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 9^{th} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 10^{th} $"
+     },
+     {
+      "id": "C",
+      "text": "$ 18^{th} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 12^{th} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     49
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "Six people E, H, K, M, S and U are seated in a circle facing the centre. U and H are immediate neighbours of M. E is the only person sitting between K and S. H is to the immediate right of S. Who is to the immediate right of U?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "M"
+     },
+     {
+      "id": "B",
+      "text": "E"
+     },
+     {
+      "id": "C",
+      "text": "K"
+     },
+     {
+      "id": "D",
+      "text": "S"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     51
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "II. All computers can never be keyboards.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Only conclusion I follows"
+     },
+     {
+      "id": "B",
+      "text": "Only conclusion II follows"
+     },
+     {
+      "id": "C",
+      "text": "Neither conclusion I nor II follows"
+     },
+     {
+      "id": "D",
+      "text": "Both conclusions I and II follow"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": "p6c6a4e4484b1",
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     53
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Simplify: $ 24 \\div 4 \\times 2 + 8 - 4 = ? $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "7"
+     },
+     {
+      "id": "C",
+      "text": "16"
+     },
+     {
+      "id": "D",
+      "text": "56"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     54
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "The difference of the greatest and the smallest of the fractions $ \\frac{1}{2} $, $ \\frac{8}{11} $, $ \\frac{7}{8} $, $ \\frac{7}{9} $, $ \\frac{5}{6} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{3}{8} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{6}{7} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{7}{9} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{3} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     55
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "The sum of LCM and HCF of two numbers is 854. If the LCM is 60 times the HCF and one of the numbers is 70, then the other number is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "160"
+     },
+     {
+      "id": "B",
+      "text": "164"
+     },
+     {
+      "id": "C",
+      "text": "168"
+     },
+     {
+      "id": "D",
+      "text": "172"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     56
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "The present age of Harish is 8 times the sum of the ages of his two sons at present. After 8 years, his age will be 2 times the sum of the ages of his two sons. The present age of Harish (in years) is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "31"
+     },
+     {
+      "id": "B",
+      "text": "32"
+     },
+     {
+      "id": "C",
+      "text": "33"
+     },
+     {
+      "id": "D",
+      "text": "34"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     57
+    ],
+    "assets": []
+   },
+   {
+    "id": "q51",
+    "sourceQuestionNo": 51,
+    "stemEn": "In a class of 40 students, ratio of boys and girls is 3:2 and the average marks scored by boys is 42 and that by girls is 46. Then the average marks scored by the whole class is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "43.4"
+     },
+     {
+      "id": "B",
+      "text": "43.6"
+     },
+     {
+      "id": "C",
+      "text": "43.8"
+     },
+     {
+      "id": "D",
+      "text": "44"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     59
+    ],
+    "assets": []
+   },
+   {
+    "id": "q52",
+    "sourceQuestionNo": 52,
+    "stemEn": "The sum of three numbers is 136. If the ratio between the first number and the second number is 2:3 and that between the second and the third number is 5:3, then the first number is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "42"
+     },
+     {
+      "id": "B",
+      "text": "40"
+     },
+     {
+      "id": "C",
+      "text": "36"
+     },
+     {
+      "id": "D",
+      "text": "32"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     60
+    ],
+    "assets": []
+   },
+   {
+    "id": "q53",
+    "sourceQuestionNo": 53,
+    "stemEn": "An item is sold for ₹504 after allowing 20% discount and still a profit of 5% has been earned. The marked price is how much more than the cost price?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "₹120"
+     },
+     {
+      "id": "B",
+      "text": "₹135"
+     },
+     {
+      "id": "C",
+      "text": "₹150"
+     },
+     {
+      "id": "D",
+      "text": "₹160"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     61
+    ],
+    "assets": []
+   },
+   {
+    "id": "q54",
+    "sourceQuestionNo": 54,
+    "stemEn": "A certain sum becomes ₹2,356 in 3 years and ₹2,660 in 5 years on simple interest. The value of sum is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "₹1,800"
+     },
+     {
+      "id": "B",
+      "text": "₹1,880"
+     },
+     {
+      "id": "C",
+      "text": "₹1,900"
+     },
+     {
+      "id": "D",
+      "text": "₹1,980"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     63
+    ],
+    "assets": []
+   },
+   {
+    "id": "q55",
+    "sourceQuestionNo": 55,
+    "stemEn": "In a square, lengths of the diagonals are $ (4k+6) $ cm and $ (7k-3) $ cm. The area of the square $ (in\\ cm^{2}) $ is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "144"
+     },
+     {
+      "id": "B",
+      "text": "162"
+     },
+     {
+      "id": "C",
+      "text": "169"
+     },
+     {
+      "id": "D",
+      "text": "172"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     63
+    ],
+    "assets": []
+   },
+   {
+    "id": "q56",
+    "sourceQuestionNo": 56,
+    "stemEn": "The volume of a cylinder having base radius 3 cm is $ 396 \\, \\text{cm}^3 $. Find its curved surface area (in $ \\text{cm}^2 $).\n\n(Use $ \\pi = \\frac{22}{7} $)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "280"
+     },
+     {
+      "id": "B",
+      "text": "301.5"
+     },
+     {
+      "id": "C",
+      "text": "264"
+     },
+     {
+      "id": "D",
+      "text": "320.6"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     64
+    ],
+    "assets": []
+   },
+   {
+    "id": "q57",
+    "sourceQuestionNo": 57,
+    "stemEn": "A tap can fill a tank in 6 hours. After half the tank is filled, three more similar taps are opened. What is the total time taken to fill the tank completely?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "4 hours"
+     },
+     {
+      "id": "B",
+      "text": "5 hours"
+     },
+     {
+      "id": "C",
+      "text": "3 hours 30 minutes"
+     },
+     {
+      "id": "D",
+      "text": "3 hours 45 minutes"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     66
+    ],
+    "assets": []
+   },
+   {
+    "id": "q58",
+    "sourceQuestionNo": 58,
+    "stemEn": "A train running at the speed of 80 km/h crosses a 350 m long tunnel in 36 seconds. The length of the train (in m) is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "350"
+     },
+     {
+      "id": "B",
+      "text": "380"
+     },
+     {
+      "id": "C",
+      "text": "420"
+     },
+     {
+      "id": "D",
+      "text": "450"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     67
+    ],
+    "assets": []
+   },
+   {
+    "id": "q59",
+    "sourceQuestionNo": 59,
+    "stemEn": "If the mean of 3, 4, 9, 2k, 10, 8, 6 and $ (k+6) $ is 8, and mode of 2, 2, 3, 2p, $ (2p+1) $, 4, 4, 5 and 6 (p is a natural number) is 4, then the value of $ (k-2p) $ is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "1"
+     },
+     {
+      "id": "C",
+      "text": "2"
+     },
+     {
+      "id": "D",
+      "text": "3"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     67
+    ],
+    "assets": []
+   },
+   {
+    "id": "q60",
+    "sourceQuestionNo": 60,
+    "stemEn": "In triangle ABC, points D and E are on AB and AC respectively such that DE is parallel to BC. If AD = 6 cm, DB = 4 cm, AE = 9 cm, then the length of EC (in cm) is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "7"
+     },
+     {
+      "id": "B",
+      "text": "6.4"
+     },
+     {
+      "id": "C",
+      "text": "6"
+     },
+     {
+      "id": "D",
+      "text": "5.5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     69
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

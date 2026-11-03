@@ -1,0 +1,1272 @@
+---
+import "../../styles/global.css";
+import "katex/dist/katex.min.css";
+import BrandLogo from "../../components/BrandLogo.astro";
+import DiscussionPreview from "../../components/DiscussionPreview.astro";
+import MockShareSheet from "../../components/MockShareSheet.astro";
+import ThemeToggle from "../../components/ThemeToggle.astro";
+import {
+  attemptAnswers,
+  attemptQuestions,
+  canAccessAttempt,
+  findAttempt,
+  parseQuestionAssets,
+  remainingSeconds,
+  settleAttempt,
+} from "../../lib/attempts";
+import { getGuestToken } from "../../lib/auth/session";
+import { parseMarkingScheme, parseOptions } from "../../lib/content";
+import { imageDimensionsForUrls } from "../../lib/media-dimensions";
+import { getSetting } from "../../lib/settings";
+import { siteUrl } from "../../lib/site-url";
+
+const id = Number(Astro.params.id);
+if (!Number.isInteger(id) || id <= 0) return new Response("Attempt not found", { status: 404 });
+
+let attempt = await findAttempt(id);
+if (!attempt || !canAccessAttempt(attempt, Astro.locals.user, getGuestToken(Astro.cookies))) {
+  return new Response("Attempt not found", { status: 404 });
+}
+attempt = await settleAttempt(attempt);
+if (attempt.status !== "in_progress") return Astro.redirect(`/result/${attempt.id}`, 303);
+
+const [mock, rawQuestions, savedAnswers] = await Promise.all([
+  import("../../lib/db").then(({ first }) =>
+    first<{
+      title: string;
+      slug: string;
+      practice_paper_slug: string | null;
+      total_marks: number;
+      marking_scheme: string;
+    }>(
+      `SELECT m.title, m.slug, m.practice_paper_slug, v.total_marks, v.marking_scheme
+       FROM mock_tests m JOIN mock_test_versions v ON v.id = ?
+       WHERE m.id = ?`,
+      attempt!.version_id,
+      attempt!.mock_id,
+    ),
+  ),
+  attemptQuestions(attempt.version_id),
+  attemptAnswers(attempt.id),
+]);
+const marking = parseMarkingScheme(mock?.marking_scheme ?? "");
+const shareDuringAttempt =
+  !mock?.practice_paper_slug &&
+  (await getSetting("share_question_during_attempt", "false")) === "true";
+const mockShareUrl = mock?.slug
+  ? new URL(`/mock/${mock.slug}/instructions`, siteUrl(Astro.url)).toString()
+  : null;
+
+const answerMap: Record<number, { selected: number | null; marked: number; time: number }> = {};
+for (const answer of savedAnswers) {
+  answerMap[answer.question_id] = {
+    selected: answer.selected,
+    marked: answer.marked_for_review,
+    time: answer.time_spent_sec,
+  };
+}
+
+const optionSets = rawQuestions.map((question) => ({
+  options: parseOptions(question.options),
+  optionsHi: parseOptions(question.options_hi),
+}));
+const assetSets = rawQuestions.map((question) => parseQuestionAssets(question.assets_json));
+const imageDimensions = await imageDimensionsForUrls(
+  rawQuestions.flatMap((question, index) => [
+    question.image_url,
+    question.passage_image_url,
+    ...optionSets[index].options.map((option) => option.image_url),
+    ...optionSets[index].optionsHi.map((option) => option.image_url),
+    ...assetSets[index].map((asset) => asset.url),
+  ]),
+);
+const withDimensions = <T extends { image_url: string | null }>(option: T): T & {
+  image_width: number | null;
+  image_height: number | null;
+} => {
+  const size = option.image_url ? imageDimensions.get(option.image_url) : undefined;
+  return {
+    ...option,
+    image_width: size?.width ?? null,
+    image_height: size?.height ?? null,
+  };
+};
+
+const questions = rawQuestions.map((question, index) => {
+  const sets = optionSets[index];
+  const image = question.image_url ? imageDimensions.get(question.image_url) : undefined;
+  const passageImage = question.passage_image_url
+    ? imageDimensions.get(question.passage_image_url)
+    : undefined;
+  return {
+    id: question.id,
+    section: question.section,
+    position: question.position,
+    text: question.text,
+    text_hi: question.text_hi,
+    options: sets.options.map(withDimensions),
+    options_hi: sets.optionsHi.map(withDimensions),
+    image_url: question.image_url,
+    image_alt: question.image_alt,
+    image_width: image?.width ?? null,
+    image_height: image?.height ?? null,
+    passage: question.passage_body
+      ? {
+          body: question.passage_body,
+          body_hi: question.passage_body_hi,
+          image_url: question.passage_image_url,
+          image_alt: question.passage_image_alt,
+          image_width: passageImage?.width ?? null,
+          image_height: passageImage?.height ?? null,
+        }
+      : null,
+    assets: assetSets[index].map((asset) => {
+      const size = imageDimensions.get(asset.url);
+      return {
+        ...asset,
+        image_width: size?.width ?? null,
+        image_height: size?.height ?? null,
+      };
+    }),
+  };
+});
+
+const sections = [...new Set(questions.map((question) => question.section))];
+const hasHindiContent = questions.some(
+  (question) => Boolean(question.text_hi) || question.options_hi.length > 0 || Boolean(question.passage?.body_hi),
+);
+const data = {
+  attemptId: attempt.id,
+  mockTitle: mock?.title ?? "CUET Mock Test",
+  mockSlug: mock?.slug ?? "",
+  practicePaperSlug: mock?.practice_paper_slug ?? null,
+  deadlineAt: attempt.deadline_at,
+  serverNow: new Date().toISOString(),
+  remainingSec: remainingSeconds(attempt),
+  questions,
+  answers: answerMap,
+  sections,
+  candidate: Astro.locals.user?.username ?? "Guest",
+  totalMarks: mock?.total_marks ?? 0,
+  marking,
+};
+const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{data.mockTitle} — Attempt</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <style is:global>
+      :root { --q-font: 16px; }
+      body { margin: 0; background: var(--bg); color: var(--ink); }
+      .nta-titlebar {
+        background: linear-gradient(90deg, var(--exam-bar-from) 0%, var(--exam-bar-mid) 50%, var(--exam-bar-from) 100%);
+        color: var(--exam-on-bar);
+      }
+      .nta-candidate { color: var(--exam-bar-muted); }
+      .nta-timer {
+        border: 1px solid var(--exam-bar-line);
+        background: var(--exam-bar-wash);
+        color: var(--exam-on-bar);
+      }
+      .nta-submit {
+        border: 1px solid var(--exam-on-bar);
+        background: var(--exam-on-bar);
+        color: var(--exam-bar-from);
+      }
+      .nta-submit:hover { opacity: 0.88; }
+      .nta-subbar { background: var(--exam-subbar-bg); border-color: var(--exam-subbar-border); color: var(--exam-subbar-ink); }
+      .nta-option {
+        display: flex;
+        gap: 0.7rem;
+        align-items: flex-start;
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 0.35rem;
+        padding: 0.45rem 0.6rem;
+        text-align: left;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: var(--q-font);
+        line-height: 1.6;
+      }
+      .nta-option:hover { background: var(--surface-3); }
+      .nta-option.selected { background: var(--primary-tint); }
+      .nta-radio {
+        display: grid;
+        place-items: center;
+        height: 1.05rem;
+        width: 1.05rem;
+        flex: 0 0 auto;
+        margin-top: 0.3rem;
+        border: 1.5px solid var(--border-input);
+        border-radius: 9999px;
+        background: var(--surface-2);
+      }
+      .nta-radio::after { content: ""; height: 0.5rem; width: 0.5rem; border-radius: 9999px; background: transparent; }
+      .nta-option.selected .nta-radio { border-color: var(--primary); }
+      .nta-option.selected .nta-radio::after { background: var(--primary); }
+      .nta-question-text { font-size: var(--q-font); line-height: 1.8; }
+      .nta-question-text .katex-display { overflow-x: auto; padding: 0.25rem 0; }
+      .nta-palette-btn {
+        display: grid;
+        place-items: center;
+        height: 1.7rem;
+        width: 1.7rem;
+        border-radius: 0.2rem;
+        border: 1px solid var(--exam-palette-border);
+        background: var(--exam-palette-bg);
+        color: var(--exam-palette-ink);
+        font-size: 0.68rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .nta-palette-btn:hover { border-color: var(--primary); }
+      .nta-palette-btn.current { outline: 2px solid var(--ink); outline-offset: 1px; }
+      .nta-palette-btn.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .nta-palette-btn.unanswered { background: var(--cta); border-color: var(--cta); color: var(--on-cta); }
+      .nta-palette-btn.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
+      .nta-palette-btn.marked.answered {
+        background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%);
+        border-color: var(--review);
+        color: var(--on-correct);
+      }
+      .nta-palette-btn.disabled { opacity: 0.55; cursor: not-allowed; }
+      .nta-legend-swatch {
+        display: grid;
+        place-items: center;
+        height: 1.7rem;
+        width: 1.7rem;
+        flex: 0 0 auto;
+        border: 1px solid var(--exam-palette-border);
+        border-radius: 0.2rem;
+        background: var(--exam-palette-bg);
+        color: var(--exam-palette-ink);
+        font-size: 0.65rem;
+        font-weight: 700;
+      }
+      .nta-legend-swatch.unanswered { background: var(--cta); border-color: var(--cta); color: var(--on-cta); }
+      .nta-legend-swatch.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .nta-legend-swatch.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
+      .nta-legend-swatch.marked-answered {
+        background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%);
+        border-color: var(--review);
+        color: var(--on-correct);
+      }
+      .nta-btn {
+        border: 1px solid var(--primary);
+        border-radius: 0.3rem;
+        background: var(--primary);
+        color: var(--on-primary);
+        padding: 0.55rem 0.9rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .nta-btn:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+      .nta-btn:disabled { opacity: 0.55; }
+      .nta-btn-ghost {
+        border: 1px solid var(--border);
+        border-radius: 0.3rem;
+        background: var(--surface-2);
+        color: var(--ink-2);
+        padding: 0.55rem 0.9rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .nta-btn-ghost:hover { background: var(--surface-3); }
+      .nta-tool {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        border: 1px solid var(--exam-palette-border);
+        border-radius: 0.3rem;
+        background: var(--exam-palette-bg);
+        color: var(--exam-palette-ink);
+        padding: 0.35rem 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+      .nta-tool:hover { border-color: var(--primary); }
+      .nta-section { border-bottom: 2px solid transparent; color: var(--exam-section-ink); }
+      .nta-section:hover { color: var(--primary); }
+      .nta-section.nta-section-active { border-color: var(--primary); color: var(--primary); font-weight: 700; }
+      #timer.nta-timer-warning { border-color: var(--danger-border); background: var(--danger-bg); color: var(--danger-ink); }
+      .nta-panel { background: var(--surface); border-color: var(--border); }
+      .nta-chrome { background: var(--surface-2); border-color: var(--border); }
+      .nta-image {
+        max-height: 18rem;
+        max-width: 100%;
+        cursor: zoom-in;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        background: var(--media-bg);
+        padding: 0.25rem;
+      }
+      .nta-zoom { position: fixed; inset: 0; z-index: 80; display: none; place-items: center; background: var(--overlay); padding: 1rem; }
+      .nta-zoom.open { display: grid; }
+      .nta-zoom img { max-width: 95vw; max-height: 90vh; background: var(--media-bg); border-radius: 0.5rem; }
+
+      /* ---- KnowledgeGate-style exam shell ---- */
+      .exam-frame {
+        background:
+          radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 28rem),
+          var(--surface);
+      }
+      .exam-topbar {
+        background: var(--surface-2);
+        border-bottom: 1px solid var(--border);
+      }
+      .exam-accent-line {
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--review), var(--cta));
+      }
+      .exam-paper-title {
+        color: var(--ink);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .exam-subtitle { color: var(--muted); }
+      .exam-brand > span { display: none; }
+      @media (min-width: 640px) {
+        .exam-brand > span { display: block; }
+      }
+      .exam-toplink {
+        align-items: center;
+        border-radius: 0.45rem;
+        padding: 0.35rem 0.55rem;
+        color: var(--ink-2);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .exam-toplink:hover { background: var(--surface-3); color: var(--primary); }
+      .exam-timer {
+        border: 1px solid var(--border);
+        border-radius: 0.55rem;
+        background: var(--surface);
+        color: var(--ink);
+        padding: 0.3rem 0.65rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.8rem;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+        line-height: 1.2;
+      }
+      .exam-submit {
+        border: 1px solid var(--primary);
+        border-radius: 0.55rem;
+        background: var(--primary);
+        color: var(--on-primary);
+        padding: 0.45rem 0.85rem;
+        font-size: 0.72rem;
+        font-weight: 800;
+        line-height: 1.2;
+      }
+      .exam-submit:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+      .exam-candidatebar {
+        background: color-mix(in srgb, var(--primary-tint) 70%, var(--surface-2));
+        border-bottom: 1px solid var(--border);
+      }
+      .exam-avatar {
+        display: grid;
+        place-items: center;
+        height: 2.2rem;
+        width: 2.2rem;
+        flex: 0 0 auto;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, var(--primary), var(--review));
+        color: var(--on-primary);
+        font-size: 0.8rem;
+        font-weight: 900;
+        box-shadow: 0 0 0 2px var(--surface-2), 0 0 0 3px var(--border);
+      }
+      .exam-candidate-label {
+        color: var(--muted);
+        font-size: 0.55rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .exam-candidate-name { color: var(--ink); font-size: 0.8rem; font-weight: 800; line-height: 1.25; }
+      .exam-meta-pill {
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        background: var(--surface-2);
+        color: var(--ink-2);
+        padding: 0.2rem 0.55rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .exam-sections {
+        background: var(--surface-2);
+        border-bottom: 1px solid var(--border);
+      }
+      .exam-question-scroll { background: transparent; }
+      .exam-question-card {
+        margin: 0 auto;
+        max-width: 60rem;
+        border: 1px solid var(--border);
+        border-radius: 0.9rem;
+        background: var(--surface-2);
+        box-shadow: 0 12px 34px -26px color-mix(in srgb, var(--ink) 28%, transparent);
+        padding: clamp(1rem, 2vw, 1.6rem);
+      }
+      .exam-question-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.75rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.75rem;
+      }
+      .exam-question-number {
+        color: var(--ink);
+        font-size: 0.95rem;
+        font-weight: 800;
+      }
+      .exam-marks {
+        border: 1px solid color-mix(in srgb, var(--correct) 30%, var(--border));
+        border-radius: 9999px;
+        background: color-mix(in srgb, var(--correct) 10%, var(--surface-2));
+        color: var(--correct);
+        padding: 0.2rem 0.6rem;
+        font-size: 0.65rem;
+        font-weight: 800;
+      }
+      .exam-badge {
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        background: var(--surface);
+        color: var(--ink-2);
+        padding: 0.2rem 0.55rem;
+        font-size: 0.6rem;
+        font-weight: 800;
+      }
+      .exam-badge.review { border-color: color-mix(in srgb, var(--review) 35%, var(--border)); background: color-mix(in srgb, var(--review) 10%, var(--surface-2)); color: var(--review); }
+      .exam-badge.danger { border-color: var(--danger-border); background: var(--danger-bg); color: var(--danger-ink); }
+      .exam-footer {
+        background: var(--surface-2);
+        border-top: 1px solid var(--border);
+      }
+      .exam-btn {
+        border: 1px solid var(--border);
+        border-radius: 0.55rem;
+        background: var(--surface-2);
+        color: var(--ink-2);
+        padding: 0.55rem 0.8rem;
+        font-size: 0.72rem;
+        font-weight: 800;
+        line-height: 1.2;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .exam-btn:hover { background: var(--surface-3); }
+      .exam-btn-primary { border-color: var(--primary); background: var(--primary); color: var(--on-primary); }
+      .exam-btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+      .exam-btn-review { border-color: color-mix(in srgb, var(--review) 45%, var(--border)); background: color-mix(in srgb, var(--review) 9%, var(--surface-2)); color: var(--review); }
+      .exam-btn-review:hover { background: color-mix(in srgb, var(--review) 16%, var(--surface-2)); }
+      .exam-btn-submit { border-color: var(--wrong); background: var(--wrong); color: var(--on-wrong); }
+      .exam-btn-submit:hover { filter: brightness(0.94); }
+      .exam-palette {
+        background: var(--surface-2);
+        border-left: 1px solid var(--border);
+      }
+      .exam-palette-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.6rem;
+      }
+      .exam-palette-title { color: var(--ink); font-size: 0.8rem; font-weight: 800; }
+      .exam-legend-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.45rem;
+      }
+      .exam-legend-card {
+        display: flex;
+        min-height: 3.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        border: 1px solid var(--border);
+        border-radius: 0.55rem;
+        padding: 0.45rem 0.55rem;
+        background: var(--surface);
+        line-height: 1.1;
+      }
+      .exam-legend-card.wide { grid-column: span 2 / span 2; }
+      .exam-legend-num { font-size: 1.05rem; font-weight: 900; font-variant-numeric: tabular-nums; }
+      .exam-legend-label { margin-top: 0.2rem; font-size: 0.56rem; font-weight: 800; letter-spacing: 0.02em; }
+      .exam-legend-card.notvisited { background: var(--not-visited); border-color: color-mix(in srgb, var(--on-not-visited) 16%, var(--border)); color: var(--on-not-visited); }
+      .exam-legend-card.unanswered { background: var(--wrong); border-color: var(--wrong); color: var(--on-wrong); }
+      .exam-legend-card.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .exam-legend-card.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
+      .exam-legend-card.marked-answered { background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%); border-color: var(--review); color: var(--on-correct); }
+      .exam-palette-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.35rem; }
+      .exam-quick-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        border-top: 1px solid var(--border);
+        padding-top: 0.7rem;
+        color: var(--ink-2);
+        font-size: 0.68rem;
+        font-weight: 700;
+      }
+      .exam-quick-link:hover { color: var(--primary); }
+
+      /* Palette states (overrides the older NTA palette colours). */
+      .nta-palette-btn { height: 1.75rem; width: 1.75rem; border-radius: 0.35rem; border: 1px solid var(--border); background: var(--not-visited); color: var(--on-not-visited); }
+      .nta-palette-btn.unanswered { background: var(--wrong); border-color: var(--wrong); color: var(--on-wrong); }
+      .nta-palette-btn.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .nta-palette-btn.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
+      .nta-palette-btn.marked.answered { background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%); border-color: var(--review); color: var(--on-correct); }
+      .nta-palette-btn.current { outline: 2px solid var(--ink); outline-offset: 1px; }
+      .nta-section { border-bottom: 2px solid transparent; color: var(--ink-2); border-radius: 0.35rem 0.35rem 0 0; }
+      .nta-section:hover { color: var(--primary); background: var(--primary-tint); }
+      .nta-section.nta-section-active { border-color: var(--primary); color: var(--primary); font-weight: 800; }
+      #timer.nta-timer-warning { border-color: var(--danger-border); background: var(--danger-bg); color: var(--danger-ink); }
+      .exam-timer.nta-timer-warning { border-color: var(--danger-border); background: var(--danger-bg); color: var(--danger-ink); }
+      .nta-option { border-radius: 0.6rem; border: 1px solid transparent; padding: 0.55rem 0.7rem; }
+      .nta-option:hover { background: var(--surface-3); border-color: var(--border); }
+      .nta-option.selected { border-color: color-mix(in srgb, var(--primary) 40%, var(--border)); background: var(--primary-tint); }
+      .nta-question-text { color: var(--ink); }
+      @media (max-width: 640px) {
+        .exam-question-card { border-radius: 0.7rem; padding: 0.85rem; }
+        .exam-palette-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      }
+    </style>
+  </head>
+  <body class="min-h-[100dvh] bg-[var(--surface)] text-[var(--ink)] antialiased">
+    <h1 class="sr-only">{data.mockTitle} attempt</h1>
+    <div class="exam-frame flex h-[100dvh] flex-col overflow-hidden">
+      <header class="shrink-0">
+        <div class="exam-accent-line" aria-hidden="true"></div>
+        <div class="exam-topbar flex h-14 items-center gap-2 px-2 sm:px-4">
+          <div class="flex min-w-0 items-center gap-2">
+            <BrandLogo class="exam-brand" size="compact" showTagline={false} link={false} />
+            <div class="hidden h-7 w-px bg-[var(--border)] sm:block" aria-hidden="true"></div>
+            <div class="min-w-0">
+              <p class="exam-paper-title truncate text-xs sm:text-sm">{data.mockTitle}</p>
+              <p class="exam-subtitle hidden truncate text-[10px] sm:block">CUET (UG) · {questions.length} questions · {sections.length} section{sections.length === 1 ? "" : "s"}</p>
+            </div>
+          </div>
+          <div class="ml-auto flex shrink-0 items-center gap-1.5">
+            <a class="exam-toplink hidden md:inline-flex" href={`/mock/${mock?.slug}/instructions`}>Instructions</a>
+            <a class="exam-toplink hidden lg:inline-flex" href="#discussion">Discussion</a>
+            <div id="timer" class="exam-timer" aria-live="off">--:--:--</div>
+            <p id="timer-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></p>
+            {shareDuringAttempt && mockShareUrl ? (
+              <MockShareSheet shareUrl={mockShareUrl} mockId={attempt.mock_id} />
+            ) : null}
+            <ThemeToggle />
+            <button id="submit-attempt" class="exam-submit" type="button">Submit test</button>
+          </div>
+        </div>
+        <div class="exam-candidatebar flex min-h-12 flex-wrap items-center gap-2 px-2 py-1.5 sm:px-4">
+          <span class="exam-avatar" aria-hidden="true">{data.candidate.slice(0, 1).toUpperCase()}</span>
+          <div class="min-w-0">
+            <p class="exam-candidate-label">Candidate</p>
+            <p class="exam-candidate-name truncate">{data.candidate}</p>
+          </div>
+          <div class="ml-auto flex items-center gap-1.5">
+            <span class="exam-meta-pill hidden sm:inline-flex">✦ {questions.length} questions</span>
+            <span class="exam-meta-pill hidden md:inline-flex">Marks +{marking.correct} / {marking.wrong}</span>
+            <button id="palette-toggle" class="exam-btn lg:hidden" type="button" aria-label="Open question palette">Palette</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="relative flex min-h-0 flex-1 overflow-hidden">
+        <main class="flex min-w-0 flex-1 flex-col">
+          <div class="exam-sections flex shrink-0 items-center gap-1 overflow-x-auto px-2 sm:px-4">
+            {sections.map((section) => (
+              <button class="nta-section whitespace-nowrap px-2.5 py-2.5 text-xs font-semibold" data-section={section} type="button">{section}</button>
+            ))}
+            <span id="save-state" class="ml-auto whitespace-nowrap pl-2 text-[10px] font-semibold text-[var(--muted)]" role="status" aria-live="polite" aria-atomic="true">Ready</span>
+          </div>
+
+          <div id="question-area" class="exam-question-scroll min-h-0 flex-1 overflow-y-auto p-3 sm:p-5 lg:px-7"></div>
+
+          <footer class="exam-footer flex shrink-0 flex-wrap items-center gap-1.5 px-2 py-2 sm:px-4">
+            <button id="previous" class="exam-btn" type="button">← Previous</button>
+            <div class="ml-auto flex flex-wrap items-center justify-end gap-1.5">
+              <button id="clear" class="exam-btn" type="button">Clear response</button>
+              <button id="save-mark" class="exam-btn hidden sm:inline-flex" type="button">Mark for review</button>
+              <button id="mark-next" class="exam-btn exam-btn-review hidden xl:inline-flex" type="button">Mark &amp; next</button>
+              <button id="save-next" class="exam-btn exam-btn-primary" type="button">Save &amp; next →</button>
+              <button id="submit-attempt-bottom" class="exam-btn exam-btn-submit hidden lg:inline-flex" type="button">Submit test</button>
+            </div>
+          </footer>
+        </main>
+
+        <aside id="palette" class="exam-palette absolute inset-y-0 right-0 z-30 w-[20rem] max-w-[88vw] translate-x-full overflow-y-auto p-4 shadow-2xl transition-transform lg:static lg:z-auto lg:w-80 lg:translate-x-0 lg:shadow-none">
+          <div class="exam-palette-head">
+            <div>
+              <h2 class="exam-palette-title">Question palette</h2>
+              <p class="mt-0.5 text-[10px] text-[var(--muted)]">Tap a number to jump</p>
+            </div>
+            <button id="palette-close" class="rounded px-2 py-1 text-sm lg:hidden" type="button" aria-label="Close question palette">✕</button>
+          </div>
+
+          <section class="mt-3" aria-labelledby="palette-status">
+            <h3 id="palette-status" class="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--muted)]">Question status</h3>
+            <div id="palette-summary" class="exam-legend-grid mt-2"></div>
+          </section>
+
+          <section class="mt-5 border-t border-[var(--border)] pt-4" aria-labelledby="palette-numbers">
+            <div class="flex items-center justify-between gap-2">
+              <h3 id="palette-numbers" class="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--muted)]">Questions</h3>
+              <span class="rounded-full bg-[var(--surface)] px-2 py-0.5 text-[10px] font-bold text-[var(--muted)] ring-1 ring-[var(--border)]">{questions.length}</span>
+            </div>
+            <div id="palette-grid" class="exam-palette-grid mt-3"></div>
+          </section>
+
+          <div class="mt-5 border-t border-[var(--border)] pt-3">
+            <p class="text-[10px] font-bold uppercase tracking-wide text-[var(--muted)]">Display</p>
+            <div class="mt-2 flex flex-wrap items-center gap-1.5">
+              {hasHindiContent ? (
+                <button id="language-toggle" class="nta-tool" type="button"><span data-lang-label>EN</span><span class="sr-only"> — switch question language</span></button>
+              ) : null}
+              <button id="font-down" class="nta-tool" type="button" aria-label="A− decrease font size">A−</button>
+              <button id="font-up" class="nta-tool" type="button" aria-label="A+ increase font size">A+</button>
+              <button id="fullscreen-toggle" class="nta-tool hidden" type="button" aria-label="Enter fullscreen" aria-pressed="false">⛶</button>
+            </div>
+          </div>
+
+          <a class="exam-quick-link mt-4" href="#discussion">
+            <span>Discussion &amp; chat</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <p class="mt-3 rounded-lg bg-[var(--surface)] p-3 text-[11px] leading-5 text-[var(--muted)] ring-1 ring-[var(--border)]">Answers autosave every 10 seconds. The server checks the deadline; changing the timer in your browser cannot add time.</p>
+        </aside>
+      </div>
+    </div>
+
+    <section id="discussion" class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <div class="sticky top-0 z-20 mb-3 flex flex-wrap items-end justify-between gap-3 bg-white/95 py-2 backdrop-blur supports-[backdrop-filter]:bg-white/85 dark:bg-neutral-950/95 dark:supports-[backdrop-filter]:bg-neutral-950/85">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">Live with this attempt</p>
+          <h2 class="mt-1 text-xl font-black tracking-tight">Discussion &amp; chat</h2>
+          <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Scroll down to read what other students are saying and post your own message. The timer keeps running.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-[10px] font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Time left</span>
+          <span id="discussion-timer" class="exam-timer" aria-live="off">--:--:--</span>
+          <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="#question-area">Back to the paper ↑</a>
+        </div>
+      </div>
+      <DiscussionPreview
+        mockId={attempt.mock_id}
+        mockSlug={mock?.slug ?? ""}
+        access
+        heading="Live paper chat"
+        limit={4}
+        interactive
+        fullBoardLink={false}
+        reloadOnPost={false}
+        loginNext={`/attempt/${attempt.id}#discussion`}
+        note="Open during the attempt. Comments may mention answers, so use them as hints. Your first submitted attempt is the one that counts on the leaderboard."
+      />
+    </section>
+
+    <div id="toast" class="pointer-events-none fixed bottom-20 left-1/2 z-50 hidden -translate-x-1/2 rounded-lg bg-[var(--footer-bg)] px-4 py-2 text-xs font-medium text-[var(--footer-ink)] shadow-lg"></div>
+    <div id="zoom" class="nta-zoom" role="dialog" aria-modal="true" aria-label="Image preview"><img id="zoom-image" alt="" /></div>
+
+    <script type="application/json" id="attempt-data" set:html={serialized}></script>
+    <script>
+      import { renderRichText } from "../../lib/rich-text";
+
+      type Option = { text: string; image_url: string | null; alt: string | null; image_width: number | null; image_height: number | null };
+      type Question = {
+        id: number;
+        section: string;
+        position: number;
+        text: string;
+        text_hi: string | null;
+        options: Option[];
+        options_hi: Option[];
+        image_url: string | null;
+        image_alt: string | null;
+        image_width: number | null;
+        image_height: number | null;
+        assets: { url: string; alt: string; kind: string; image_width: number | null; image_height: number | null }[];
+        passage: { body: string; body_hi: string | null; image_url: string | null; image_alt: string | null; image_width: number | null; image_height: number | null } | null;
+      };
+      type Answer = { selected: number | null; marked: number; time: number };
+      type AttemptData = {
+        attemptId: number;
+        mockTitle: string;
+        mockSlug: string;
+        practicePaperSlug: string | null;
+        deadlineAt: string;
+        serverNow: string;
+        remainingSec: number;
+        questions: Question[];
+        answers: Record<string, Answer>;
+        sections: string[];
+        candidate: string;
+        totalMarks: number;
+        marking: { correct: number; wrong: number; skipped: number };
+      };
+
+      const data = JSON.parse((document.getElementById("attempt-data") as HTMLElement).textContent || "{}") as AttemptData;
+      const questions = data.questions;
+      const answers: Record<number, Answer> = {};
+      for (const question of questions) {
+        const saved = data.answers[String(question.id)];
+        answers[question.id] = saved ?? { selected: null, marked: 0, time: 0 };
+      }
+
+      const state = {
+        index: 0,
+        language: "en" as "en" | "hi",
+        visited: new Set<number>(questions.length ? [questions[0].id] : []),
+        timeUp: false,
+        submitting: false,
+        enteredAt: Date.now(),
+        finishing: false,
+      };
+
+      const area = document.getElementById("question-area") as HTMLElement;
+      const paletteGrid = document.getElementById("palette-grid") as HTMLElement;
+      const paletteSummary = document.getElementById("palette-summary") as HTMLElement;
+      const palette = document.getElementById("palette") as HTMLElement;
+      const saveState = document.getElementById("save-state") as HTMLElement;
+      if (Object.values(answers).some((answer) => answer.selected !== null || answer.marked || answer.time > 0)) {
+        saveState.textContent = "Saved";
+      }
+      const toast = document.getElementById("toast") as HTMLElement;
+      const timerEl = document.getElementById("timer") as HTMLElement;
+      const discussionTimerEl = document.getElementById("discussion-timer") as HTMLElement | null;
+      let toastTimer: number | undefined;
+      let saveTimer: number | undefined;
+      let autoSubmitted = false;
+      /** Answers changed since the last successful autosave. */
+      const dirtyAnswers = new Set<number>();
+
+      const deadlineClient = Date.now() + Math.max(0, data.remainingSec) * 1000;
+      const timerAnnouncer = document.getElementById("timer-announcer") as HTMLElement;
+      const announced = new Set<number>();
+
+      function announceRemaining(remaining: number) {
+        const milestones: [number, string][] = [
+          [1800, "30 minutes remaining."],
+          [600, "10 minutes remaining."],
+          [300, "5 minutes remaining."],
+          [60, "1 minute remaining."],
+          [0, "Time is over. Your saved answers are being submitted."],
+        ];
+        for (const [seconds, message] of milestones) {
+          if (remaining <= seconds && !announced.has(seconds)) {
+            announced.add(seconds);
+            timerAnnouncer.textContent = message;
+          }
+        }
+      }
+
+      function showToast(message: string) {
+        toast.textContent = message;
+        toast.classList.remove("hidden");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.add("hidden"), 2200);
+      }
+
+      function escapeHtml(value: string): string {
+        return value.replace(/[&<>"']/g, (character) => {
+          const map: Record<string, string> = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          };
+          return map[character] ?? character;
+        });
+      }
+
+      function flushTime() {
+        const now = Date.now();
+        const seconds = Math.floor((now - state.enteredAt) / 1000);
+        if (seconds > 0 && questions[state.index]) {
+          answers[questions[state.index].id].time += seconds;
+          dirtyAnswers.add(questions[state.index].id);
+        }
+        state.enteredAt = now;
+      }
+
+      function currentAnswer() {
+        const question = questions[state.index];
+        return question ? answers[question.id] : null;
+      }
+
+      function countStatus() {
+        let answered = 0;
+        let unmarked = 0;
+        let answeredMarked = 0;
+        let notAnswered = 0;
+        let notVisited = 0;
+        for (const question of questions) {
+          const answer = answers[question.id];
+          const visited = state.visited.has(question.id);
+          if (answer.selected !== null && answer.marked) answeredMarked += 1;
+          else if (answer.selected !== null) answered += 1;
+          else if (answer.marked) unmarked += 1;
+          else if (visited) notAnswered += 1;
+          else notVisited += 1;
+        }
+        return { answered, marked: unmarked, answeredMarked, notAnswered, notVisited };
+      }
+
+      function renderSummary() {
+        const counts = countStatus();
+        paletteSummary.innerHTML = `
+          <p class="exam-legend-card notvisited"><span class="exam-legend-num">${counts.notVisited}</span><span class="exam-legend-label">Not visited</span></p>
+          <p class="exam-legend-card unanswered"><span class="exam-legend-num">${counts.notAnswered}</span><span class="exam-legend-label">Not answered</span></p>
+          <p class="exam-legend-card answered"><span class="exam-legend-num">${counts.answered}</span><span class="exam-legend-label">Answered</span></p>
+          <p class="exam-legend-card marked"><span class="exam-legend-num">${counts.marked}</span><span class="exam-legend-label">Marked for review</span></p>
+          <p class="exam-legend-card marked-answered wide"><span class="exam-legend-num">${counts.answeredMarked}</span><span class="exam-legend-label">Answered &amp; marked · counted for evaluation</span></p>
+        `;
+      }
+
+      function renderPalette() {
+        paletteGrid.innerHTML = "";
+        questions.forEach((question, index) => {
+          const answer = answers[question.id];
+          const visited = state.visited.has(question.id);
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "nta-palette-btn";
+          button.textContent = String(index + 1);
+          if (answer.selected !== null) button.classList.add("answered");
+          else if (visited && !answer.marked) button.classList.add("unanswered");
+          if (answer.marked) button.classList.add("marked");
+          if (index === state.index) button.classList.add("current");
+          if (index === state.index) button.setAttribute("aria-current", "true");
+          button.setAttribute("aria-label", `Question ${index + 1}${answer.selected !== null ? ", answered" : ""}${answer.marked ? ", marked for review" : ""}`);
+          button.addEventListener("click", () => goTo(index));
+          paletteGrid.appendChild(button);
+        });
+        renderSummary();
+      }
+
+      function optionMarkup(question: Question): string {
+        const options = state.language === "hi" && question.options_hi.length ? question.options_hi : question.options;
+        const selected = answers[question.id].selected;
+        return options.map((option, index) => {
+          const body = option.text ? renderRichText(option.text) : "";
+          const dimensions =
+            option.image_width && option.image_height
+              ? ` width="${option.image_width}" height="${option.image_height}"`
+              : "";
+          const image = option.image_url
+            ? `<img class="nta-image mt-2" src="${option.image_url}" alt="${(option.alt || "").replace(/"/g, "&quot;")}"${dimensions} loading="lazy" />`
+            : "";
+          return `<button type="button" class="nta-option ${selected === index ? "selected" : ""}" data-option="${index}" role="radio" aria-checked="${selected === index}" ${state.timeUp ? "disabled" : ""}>
+            <span class="nta-radio" aria-hidden="true"></span>
+            <span class="shrink-0 text-[15px] font-semibold">${index + 1}.</span>
+            <span class="min-w-0">${body || `<span class="text-[var(--muted)]">Option ${index + 1}</span>`}${image}</span>
+          </button>`;
+        }).join("");
+      }
+
+      function extraAssetMarkup(assets: Question["assets"], label: string): string {
+        if (assets.length === 0) return "";
+        const images = assets
+          .map((asset) => {
+            const dimensions =
+              asset.image_width && asset.image_height
+                ? ` width="${asset.image_width}" height="${asset.image_height}"`
+                : "";
+            return `<img class="nta-image" src="${asset.url}" alt="${(asset.alt || "").replace(/"/g, "&quot;")}"${dimensions} loading="lazy" />`;
+          })
+          .join("");
+        return `<figure class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3">
+          <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--muted)]">${label}</figcaption>
+          <div class="flex flex-wrap gap-2">${images}</div>
+        </figure>`;
+      }
+
+      function renderQuestion() {
+        const question = questions[state.index];
+        if (!question) {
+          area.innerHTML = "<p class='p-6 text-sm text-[var(--muted)]'>No questions in this attempt.</p>";
+          return;
+        }
+        state.visited.add(question.id);
+        const answer = answers[question.id];
+        const passage = question.passage
+          ? `<div class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 text-sm leading-7">
+              ${renderRichText(state.language === "hi" && question.passage.body_hi ? question.passage.body_hi : question.passage.body)}
+              ${question.passage.image_url ? `<img class="nta-image mt-3" src="${question.passage.image_url}" alt="${(question.passage.image_alt || "").replace(/"/g, "&quot;")}"${question.passage.image_width && question.passage.image_height ? ` width="${question.passage.image_width}" height="${question.passage.image_height}"` : ""} loading="lazy" />` : ""}
+            </div>`
+          : "";
+        const text = renderRichText(state.language === "hi" && question.text_hi ? question.text_hi : question.text);
+        const image = question.image_url
+          ? `<img class="nta-image mt-4" src="${question.image_url}" alt="${(question.image_alt || "").replace(/"/g, "&quot;")}"${question.image_width && question.image_height ? ` width="${question.image_width}" height="${question.image_height}"` : ""} />`
+          : "";
+        const extraAssets = question.assets.filter((asset) => asset.url !== question.image_url);
+        const optionAssets = extraAssets.filter((asset) => asset.kind === "options");
+        const bodyAssets = extraAssets.filter((asset) => asset.kind !== "options");
+        const marksLabel = `${data.marking.correct >= 0 ? "+" : ""}${data.marking.correct} / ${data.marking.wrong}`;
+        area.innerHTML = `
+          <article class="exam-question-card" aria-label="Question ${state.index + 1}">
+            <header class="exam-question-head">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="exam-question-number">Question ${state.index + 1}</span>
+                <span class="exam-marks">${marksLabel}</span>
+                <span class="exam-badge">${escapeHtml(question.section)}</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-1.5">
+                ${answer.marked ? `<span class="exam-badge review">Marked for review</span>` : ""}
+                ${state.timeUp ? `<span class="exam-badge danger">Time over</span>` : ""}
+                <span class="exam-badge">${state.index + 1} / ${questions.length}</span>
+              </div>
+            </header>
+            ${passage}
+            <div class="mt-5 flex gap-2.5">
+              <span class="shrink-0 text-[15px] font-semibold text-[var(--ink)]">${state.index + 1}.</span>
+              <div class="nta-question-text min-w-0 flex-1">${text}</div>
+            </div>
+            ${image}
+            ${extraAssetMarkup(bodyAssets, "Figure / table")}
+            ${extraAssetMarkup(optionAssets, "Printed answer choices")}
+            <div class="mt-5 space-y-1" role="radiogroup" aria-label="Answer options">${optionMarkup(question)}</div>
+            <p class="mt-4 text-[10px] font-medium text-[var(--muted)]">${data.marking.wrong} for a wrong answer · ${data.marking.skipped} for unattempted · Saved automatically</p>
+          </article>
+        `;
+        const optionButtons = Array.from(area.querySelectorAll<HTMLButtonElement>("[data-option]"));
+        optionButtons.forEach((button, index) => {
+          button.addEventListener("click", () => {
+            if (state.timeUp) return;
+            const selected = Number(button.dataset.option);
+            answers[question.id].selected = selected;
+            dirtyAnswers.add(question.id);
+            optionButtons.forEach((option) => {
+              option.classList.remove("selected");
+              option.setAttribute("aria-checked", "false");
+            });
+            button.classList.add("selected");
+            button.setAttribute("aria-checked", "true");
+            renderPalette();
+            scheduleSave();
+          });
+          button.addEventListener("keydown", (event) => {
+            if (!["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft"].includes(event.key)) return;
+            event.preventDefault();
+            const step = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : -1;
+            const target = optionButtons[(index + step + optionButtons.length) % optionButtons.length];
+            target?.focus();
+            target?.click();
+          });
+        });
+        area.querySelectorAll<HTMLImageElement>(".nta-image").forEach((imageElement) => {
+          imageElement.addEventListener("click", () => openZoom(imageElement.src, imageElement.alt));
+        });
+        renderPalette();
+        updateSectionTabs();
+        preloadNextImage();
+      }
+
+      function updateSectionTabs() {
+        const current = questions[state.index]?.section;
+        document.querySelectorAll<HTMLElement>("[data-section]").forEach((tab) => {
+          tab.classList.toggle("nta-section-active", tab.dataset.section === current);
+        });
+      }
+
+      function preloadNextImage() {
+        const next = questions[state.index + 1];
+        if (!next) return;
+        const urls = [next.image_url, ...next.assets.map((asset) => asset.url)].filter(
+          (url): url is string => Boolean(url),
+        );
+        for (const url of urls) {
+          const image = new Image();
+          image.src = url;
+        }
+      }
+
+      function goTo(index: number) {
+        if (index < 0 || index >= questions.length) return;
+        flushTime();
+        state.index = index;
+        renderQuestion();
+        area.scrollTop = 0;
+        palette.classList.add("translate-x-full");
+      }
+
+      function nextQuestion() {
+        if (state.index < questions.length - 1) goTo(state.index + 1);
+      }
+
+      function previousQuestion() {
+        if (state.index > 0) goTo(state.index - 1);
+      }
+
+      function openZoom(src: string, alt: string) {
+        const modal = document.getElementById("zoom") as HTMLElement;
+        const image = document.getElementById("zoom-image") as HTMLImageElement;
+        image.src = src;
+        image.alt = alt;
+        modal.classList.add("open");
+      }
+
+      function closeZoom() {
+        (document.getElementById("zoom") as HTMLElement).classList.remove("open");
+      }
+
+      function payloadAnswers() {
+        return questions
+          .filter((question) => dirtyAnswers.has(question.id))
+          .map((question) => ({
+            question_id: question.id,
+            selected: answers[question.id].selected,
+            time_spent_sec: answers[question.id].time,
+            marked_for_review: answers[question.id].marked,
+          }));
+      }
+
+      async function saveAnswers(silent = true) {
+        flushTime();
+        if (state.timeUp || state.submitting) return;
+        const sent = payloadAnswers();
+        if (sent.length === 0) {
+          saveState.textContent = "Saved";
+          return;
+        }
+        saveState.textContent = "Saving…";
+        try {
+          const response = await fetch(`/api/attempts/${data.attemptId}/answers`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ answers: sent }),
+          });
+          const result = (await response.json()) as { error?: string; redirect?: string; status?: string };
+          if (response.status === 409 && result.redirect) {
+            state.finishing = true;
+            location.href = result.redirect;
+            return;
+          }
+          if (!response.ok) throw new Error(result.error || "Could not save.");
+          for (const item of sent) {
+            const current = answers[item.question_id];
+            if (
+              current &&
+              current.selected === item.selected &&
+              current.time === item.time_spent_sec &&
+              current.marked === item.marked_for_review
+            ) {
+              dirtyAnswers.delete(item.question_id);
+            }
+          }
+          saveState.textContent = "Saved";
+        } catch (error) {
+          saveState.textContent = "Not saved";
+          if (!silent) showToast(error instanceof Error ? error.message : "Could not save answers.");
+        }
+      }
+
+      function scheduleSave() {
+        window.clearTimeout(saveTimer);
+        saveTimer = window.setTimeout(() => saveAnswers(true), 1200);
+      }
+
+      async function submitAttempt(auto = false) {
+        if (state.submitting) return;
+        flushTime();
+        const counts = countStatus();
+        if (
+          !auto &&
+          !confirm(
+            `Submit the test?\n\nAnswered: ${counts.answered + counts.answeredMarked}\nNot answered: ${counts.notAnswered}\nMarked for review: ${counts.marked + counts.answeredMarked}\nNot visited: ${counts.notVisited}\n\nYou cannot change answers after submitting.`,
+          )
+        ) {
+          return;
+        }
+        state.submitting = true;
+        state.finishing = true;
+        saveState.textContent = "Submitting…";
+        try {
+          const response = await fetch(`/api/attempts/${data.attemptId}/submit`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ answers: payloadAnswers() }),
+          });
+          const result = (await response.json()) as { error?: string; redirect?: string };
+          if (!response.ok) throw new Error(result.error || "Could not submit the test.");
+          location.href = result.redirect || `/result/${data.attemptId}`;
+        } catch (error) {
+          state.submitting = false;
+          saveState.textContent = "Submit failed";
+          alert(error instanceof Error ? error.message : "Could not submit the test.");
+        }
+      }
+
+      function tick() {
+        const remaining = Math.max(0, Math.floor((deadlineClient - Date.now()) / 1000));
+        const hours = String(Math.floor(remaining / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((remaining % 3600) / 60)).padStart(2, "0");
+        const seconds = String(remaining % 60).padStart(2, "0");
+        const time = `${hours}:${minutes}:${seconds}`;
+        timerEl.textContent = time;
+        timerEl.classList.toggle("nta-timer-warning", remaining <= 300);
+        if (discussionTimerEl) {
+          discussionTimerEl.textContent = time;
+          discussionTimerEl.classList.toggle("nta-timer-warning", remaining <= 300);
+        }
+        announceRemaining(remaining);
+        if (remaining <= 0 && !state.timeUp) {
+          state.timeUp = true;
+          showToast("Time is over — submitting saved answers.");
+          renderQuestion();
+          if (!autoSubmitted) {
+            autoSubmitted = true;
+            submitAttempt(true);
+          }
+        }
+      }
+
+      document.getElementById("save-next")?.addEventListener("click", () => { saveAnswers(true); nextQuestion(); });
+      document.getElementById("previous")?.addEventListener("click", previousQuestion);
+      document.getElementById("clear")?.addEventListener("click", () => {
+        const answer = currentAnswer();
+        if (!answer || state.timeUp) return;
+        answer.selected = null;
+        if (questions[state.index]) dirtyAnswers.add(questions[state.index].id);
+        renderQuestion();
+        scheduleSave();
+      });
+      document.getElementById("save-mark")?.addEventListener("click", () => {
+        const answer = currentAnswer();
+        if (!answer || state.timeUp) return;
+        answer.marked = 1;
+        if (questions[state.index]) dirtyAnswers.add(questions[state.index].id);
+        renderQuestion();
+        renderPalette();
+        scheduleSave();
+        void saveAnswers(true);
+      });
+      document.getElementById("mark-next")?.addEventListener("click", () => {
+        const answer = currentAnswer();
+        if (!answer || state.timeUp) return;
+        answer.marked = 1;
+        if (questions[state.index]) dirtyAnswers.add(questions[state.index].id);
+        renderPalette();
+        scheduleSave();
+        nextQuestion();
+      });
+      document.getElementById("submit-attempt")?.addEventListener("click", () => { void submitAttempt(); });
+      document.getElementById("submit-attempt-bottom")?.addEventListener("click", () => { void submitAttempt(); });
+      document.getElementById("language-toggle")?.addEventListener("click", (event) => {
+        state.language = state.language === "en" ? "hi" : "en";
+        const label = state.language === "en" ? "EN" : "हिं";
+        const toggle = event.currentTarget as HTMLElement;
+        const visible = toggle.querySelector("[data-lang-label]");
+        if (visible) visible.textContent = label;
+        renderQuestion();
+      });
+      document.getElementById("font-up")?.addEventListener("click", () => {
+        const current = Number(getComputedStyle(document.documentElement).getPropertyValue("--q-font").replace("px", "")) || 16;
+        document.documentElement.style.setProperty("--q-font", `${Math.min(22, current + 1)}px`);
+      });
+      document.getElementById("font-down")?.addEventListener("click", () => {
+        const current = Number(getComputedStyle(document.documentElement).getPropertyValue("--q-font").replace("px", "")) || 16;
+        document.documentElement.style.setProperty("--q-font", `${Math.max(13, current - 1)}px`);
+      });
+      document.getElementById("palette-toggle")?.addEventListener("click", () => palette.classList.remove("translate-x-full"));
+      document.getElementById("palette-close")?.addEventListener("click", () => palette.classList.add("translate-x-full"));
+
+      const fullscreenToggle = document.getElementById("fullscreen-toggle") as HTMLButtonElement | null;
+      function updateFullscreenButton() {
+        if (!fullscreenToggle) return;
+        const active = Boolean(document.fullscreenElement);
+        fullscreenToggle.textContent = active ? "⤢" : "⛶";
+        fullscreenToggle.setAttribute("aria-pressed", String(active));
+        fullscreenToggle.setAttribute(
+          "aria-label",
+          active ? "Exit fullscreen" : "Enter fullscreen",
+        );
+      }
+      if (fullscreenToggle && document.fullscreenEnabled) {
+        fullscreenToggle.classList.remove("hidden");
+        fullscreenToggle.addEventListener("click", async () => {
+          try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+            else await document.documentElement.requestFullscreen();
+          } catch {
+            showToast("Fullscreen is not available in this browser.");
+          }
+          updateFullscreenButton();
+        });
+        document.addEventListener("fullscreenchange", updateFullscreenButton);
+        updateFullscreenButton();
+        try {
+          if (!sessionStorage.getItem("cue-fs-hint")) {
+            sessionStorage.setItem("cue-fs-hint", "1");
+            showToast("Tip: the ⛶ button opens a distraction-free fullscreen test.");
+          }
+        } catch {}
+      }
+      document.querySelectorAll<HTMLElement>("[data-section]").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const index = questions.findIndex((question) => question.section === tab.dataset.section);
+          if (index >= 0) goTo(index);
+        });
+      });
+      document.getElementById("zoom")?.addEventListener("click", closeZoom);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeZoom();
+      });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) showToast("Tab switch noted — this is a warning only.");
+      });
+      window.addEventListener("beforeunload", (event) => {
+        flushTime();
+        try {
+          fetch(`/api/attempts/${data.attemptId}/answers`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ answers: payloadAnswers() }),
+            keepalive: true,
+          });
+        } catch {}
+        const hasProgress = Object.values(answers).some(
+          (answer) => answer.selected !== null || answer.marked === 1,
+        );
+        if (hasProgress && !state.submitting && !state.finishing && !state.timeUp) {
+          event.preventDefault();
+        }
+      });
+
+      renderQuestion();
+      tick();
+      window.setInterval(tick, 1000);
+      window.setInterval(() => saveAnswers(true), 10000);
+    </script>
+  </body>
+</html>

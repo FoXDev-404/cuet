@@ -1,0 +1,28 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  updated?: string | null;
+  align?: "left" | "center";
+}
+
+const { eyebrow, title, intro, updated = null, align = "left" } = Astro.props;
+---
+
+<section class="border-b border-neutral-200 bg-gradient-to-b from-brand-50 to-white dark:border-neutral-800 dark:from-brand-950/30 dark:to-neutral-950">
+  <div class:list={["mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:py-16", align === "center" ? "text-center" : ""]}>
+    <p class="text-xs font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300">{eyebrow}</p>
+    <h1 class:list={["mt-3 text-3xl font-black tracking-tight sm:text-5xl", align === "center" ? "mx-auto max-w-3xl" : "max-w-3xl"]}>
+      {title}
+    </h1>
+    <p class:list={["mt-4 text-base leading-7 text-neutral-600 sm:text-lg dark:text-neutral-300", align === "center" ? "mx-auto max-w-2xl" : "max-w-2xl"]}>
+      {intro}
+    </p>
+    {updated ? (
+      <p class:list={["mt-4 text-xs text-neutral-500 dark:text-neutral-400", align === "center" ? "mx-auto" : ""]}>
+        Last reviewed: {updated}
+      </p>
+    ) : null}
+  </div>
+</section>

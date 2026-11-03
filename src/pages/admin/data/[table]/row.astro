@@ -1,0 +1,296 @@
+---
+import AdminLayout from "../../../../layouts/AdminLayout.astro";
+import { can } from "../../../../lib/auth/admin";
+import { foreignOptions, getRow } from "../../../../lib/admin/data";
+import {
+  editableColumns,
+  getTable,
+  visibleColumns,
+  type ColumnDef,
+} from "../../../../lib/admin/schema";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "data.manage")) return Astro.redirect("/admin", 303);
+
+const table = getTable(Astro.params.table ?? "");
+if (!table) return new Response("Unknown table", { status: 404 });
+if (table.editable === false) {
+  return Astro.redirect(`/admin/data/${table.name}`, 303);
+}
+
+const params = Astro.url.searchParams;
+const rawId = params.get("id");
+const isNew = rawId === null;
+let id: string | number | null = null;
+let row: Record<string, string | number | null> | null = null;
+
+if (!isNew) {
+  const pk = table.columns.find((column) => column.name === table.pk);
+  if (pk && (pk.type === "integer" || pk.type === "real")) {
+    const numeric = Number(rawId);
+    if (!Number.isInteger(numeric) || numeric <= 0) return new Response("Invalid row id", { status: 404 });
+    id = numeric;
+  } else {
+    id = rawId;
+  }
+  row = await getRow(table, id);
+  if (!row) return new Response("Row not found", { status: 404 });
+}
+
+const fields = editableColumns(table).filter((column) => column.name !== table.pk);
+const fkOptions = new Map<string, Array<{ value: string | number; label: string }>>();
+for (const field of fields) {
+  if (field.fk) fkOptions.set(field.name, await foreignOptions(field.fk));
+}
+
+const readonlyColumns = visibleColumns(table).filter(
+  (column) => column.readonly && !fields.some((field) => field.name === column.name),
+);
+
+function displayValue(column: ColumnDef): string {
+  const value = row?.[column.name];
+  if (value === null || value === undefined || value === "") return "—";
+  if (column.type === "boolean") return Number(value) === 1 ? "Yes" : "No";
+  return String(value);
+}
+
+function fieldValue(column: ColumnDef): string {
+  const value = row?.[column.name];
+  if (value === null || value === undefined) return "";
+  if (column.type === "json") {
+    try {
+      return JSON.stringify(JSON.parse(String(value)), null, 2);
+    } catch {
+      return String(value);
+    }
+  }
+  return String(value);
+}
+---
+
+<AdminLayout title={isNew ? `New ${table.label}` : `${table.label} #${id}`} active="data">
+  <nav class="text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+    <a class="hover:underline" href="/admin/data">Data manager</a>
+    <span aria-hidden="true"> / </span>
+    <a class="hover:underline" href={`/admin/data/${table.name}`}>{table.label}</a>
+    <span aria-hidden="true"> / </span>
+    <span>{isNew ? "New row" : `#${id}`}</span>
+  </nav>
+
+  <div class="mt-2 flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">{isNew ? `New ${table.label}` : `${table.label} #${id}`}</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        {isNew ? "Create a row directly in the allow-listed table. Validation and the audit trail run server-side." : table.note ?? "Edit the allow-listed columns. Read-only and sensitive columns are never submitted."}
+      </p>
+    </div>
+    <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/data/${table.name}`}>Back to list</a>
+  </div>
+
+  {row?.deleted_at ? (
+    <div class="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 dark:border-red-900 dark:bg-red-950/40 dark:text-red-100">
+      <p>This row is in the trash (deleted {String(row.deleted_at)}). Restore it before editing.</p>
+      <button class="rounded-lg bg-red-700 px-3 py-2 text-xs font-bold text-white hover:bg-red-800" type="button" data-restore-row>Restore row</button>
+    </div>
+  ) : null}
+
+  <p id="form-error" class="mt-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+  <p id="form-success" class="mt-4 hidden rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200"></p>
+
+  <form
+    id="data-row-form"
+    class="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]"
+    data-table={table.name}
+    data-id={id ?? ""}
+    novalidate
+  >
+    <section class="grid gap-4 rounded-2xl border border-neutral-200 bg-white p-5 sm:grid-cols-2 dark:border-neutral-800 dark:bg-neutral-900">
+      {fields.map((column) => (
+        <div class:list={["space-y-1", column.type === "longtext" || column.type === "json" ? "sm:col-span-2" : ""]}>
+          <label class="block text-xs font-semibold" for={`field-${column.name}`}>
+            {column.label}
+            {column.nullable === false ? <span class="text-red-600 dark:text-red-400" aria-hidden="true"> *</span> : null}
+            <span class="ml-1 font-mono text-[10px] font-normal text-neutral-500 dark:text-neutral-400">{column.name}</span>
+          </label>
+
+          {column.name === "deleted_at" ? (
+            <p class="rounded-lg border border-neutral-200 px-3 py-2 text-sm text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">Managed by Trash, not edited here.</p>
+          ) : column.type === "boolean" ? (
+            <label class="flex h-10 items-center gap-2 text-sm">
+              <input id={`field-${column.name}`} data-column={column.name} type="checkbox" checked={row ? Number(row[column.name]) === 1 : false} class="h-4 w-4" />
+              <span class="text-neutral-600 dark:text-neutral-400">Enabled</span>
+            </label>
+          ) : column.type === "enum" ? (
+            <select id={`field-${column.name}`} data-column={column.name} class="h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" required={column.nullable === false}>
+              {column.nullable !== false ? <option value="" selected={!row?.[column.name]}>Not set</option> : null}
+              {(column.enumValues ?? []).map((value) => (
+                <option value={value} selected={String(row?.[column.name] ?? "") === value}>{value.replace(/_/g, " ")}</option>
+              ))}
+            </select>
+          ) : column.fk ? (
+            <select id={`field-${column.name}`} data-column={column.name} class="h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" required={column.nullable === false}>
+              {column.nullable !== false ? <option value="" selected={!row?.[column.name]}>Not set</option> : null}
+              {(fkOptions.get(column.name) ?? []).map((option) => (
+                <option value={option.value} selected={String(row?.[column.name] ?? "") === String(option.value)}>
+                  #{option.value} · {option.label}
+                </option>
+              ))}
+            </select>
+          ) : column.type === "longtext" || column.type === "json" ? (
+            <textarea
+              id={`field-${column.name}`}
+              data-column={column.name}
+              data-kind={column.type}
+              class="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 font-mono text-xs text-neutral-900 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-100"
+              rows={column.type === "json" ? 8 : 5}
+              required={column.nullable === false}
+              placeholder={column.type === "json" ? "Valid JSON, for example {\"correct\": 5}" : ""}
+            >{fieldValue(column)}</textarea>
+          ) : (
+            <input
+              id={`field-${column.name}`}
+              data-column={column.name}
+              data-kind={column.type}
+              type={column.type === "integer" || column.type === "real" ? "number" : "text"}
+              step={column.type === "real" ? "any" : column.type === "integer" ? "1" : undefined}
+              class="h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950"
+              value={fieldValue(column)}
+              required={column.nullable === false}
+              maxlength={column.maxLength}
+            />
+          )}
+        </div>
+      ))}
+    </section>
+
+    <aside class="space-y-4 lg:self-start">
+      <section class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+        <button id="save-row" class="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit" disabled={Boolean(row?.deleted_at)}>
+          {isNew ? "Create row" : "Save changes"}
+        </button>
+        <p class="mt-2 text-center text-[11px] leading-4 text-neutral-500 dark:text-neutral-400">
+          Server-side validation applies. Edit conflicts are rejected instead of overwritten.
+        </p>
+      </section>
+
+      {!isNew ? (
+        <section class="rounded-2xl border border-red-200 bg-white p-4 dark:border-red-900 dark:bg-neutral-900">
+          <h2 class="text-sm font-bold text-red-800 dark:text-red-300">Danger zone</h2>
+          <p class="mt-1 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+            {table.softDelete ? "Soft delete moves this row to Trash. Restore from there or from this page before the purge window." : "This table has no soft-delete column. The row is removed after confirmation."}
+          </p>
+          <button class="mt-3 w-full rounded-lg border border-red-300 px-3 py-2 text-xs font-bold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40" type="button" data-delete-row>
+            Delete row #{id}
+          </button>
+        </section>
+      ) : null}
+
+      {readonlyColumns.length > 0 ? (
+        <section class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+          <h2 class="text-sm font-bold">Record metadata</h2>
+          <dl class="mt-2 space-y-1.5 text-xs">
+            {readonlyColumns.map((column) => (
+              <div class="flex justify-between gap-3">
+                <dt class="text-neutral-500 dark:text-neutral-400">{column.label}</dt>
+                <dd class="max-w-[60%] truncate text-right font-mono">{displayValue(column)}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ) : null}
+    </aside>
+  </form>
+
+  <script>
+    const form = document.getElementById("data-row-form") as HTMLFormElement | null;
+    if (form) {
+      const errorBox = document.getElementById("form-error") as HTMLElement;
+      const successBox = document.getElementById("form-success") as HTMLElement;
+      const saveButton = document.getElementById("save-row") as HTMLButtonElement;
+      const tableName = form.dataset.table ?? "";
+      const id = form.dataset.id ?? "";
+
+      function showMessage(box: HTMLElement, message: string) {
+        box.textContent = message;
+        box.classList.remove("hidden");
+      }
+
+      function collect(): Record<string, unknown> {
+        const payload: Record<string, unknown> = { _action: id ? "update" : "create" };
+        if (id) payload._id = id;
+        form!.querySelectorAll<HTMLElement>("[data-column]").forEach((element) => {
+          const key = element.dataset.column!;
+          if (element instanceof HTMLInputElement && element.type === "checkbox") {
+            payload[key] = element.checked;
+            return;
+          }
+          const value = (element as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).value;
+          const kind = element.dataset.kind;
+          if (kind === "integer" || kind === "real") {
+            payload[key] = value === "" ? null : Number(value);
+          } else {
+            payload[key] = value;
+          }
+        });
+        return payload;
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        errorBox.classList.add("hidden");
+        successBox.classList.add("hidden");
+        saveButton.disabled = true;
+        saveButton.textContent = "Saving…";
+        try {
+          const response = await fetch(`/api/admin/data/${tableName}`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(collect()),
+          });
+          const result = (await response.json()) as { error?: string; id?: string | number };
+          if (!response.ok) throw new Error(result.error || "Could not save this row.");
+          showMessage(successBox, "Saved. The change is in the audit log.");
+          if (!id && result.id !== undefined) {
+            location.href = `/admin/data/${tableName}/row?id=${encodeURIComponent(String(result.id))}`;
+            return;
+          }
+          saveButton.disabled = false;
+          saveButton.textContent = "Save changes";
+        } catch (error) {
+          showMessage(errorBox, error instanceof Error ? error.message : "Could not save this row.");
+          saveButton.disabled = false;
+          saveButton.textContent = id ? "Save changes" : "Create row";
+        }
+      });
+
+      document.querySelector("[data-delete-row]")?.addEventListener("click", async () => {
+        if (!confirm(`Delete this row from ${tableName}?`)) return;
+        const response = await fetch(`/api/admin/data/${tableName}`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ _action: "delete", _id: id }),
+        });
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) {
+          showMessage(errorBox, result.error || "Delete failed.");
+          return;
+        }
+        location.href = `/admin/data/${tableName}`;
+      });
+
+      document.querySelector("[data-restore-row]")?.addEventListener("click", async () => {
+        const response = await fetch(`/api/admin/data/${tableName}`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ _action: "restore", _id: id }),
+        });
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) {
+          showMessage(errorBox, result.error || "Restore failed.");
+          return;
+        }
+        location.reload();
+      });
+    }
+  </script>
+</AdminLayout>

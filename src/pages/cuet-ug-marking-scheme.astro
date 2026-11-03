@@ -1,0 +1,303 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { all } from "../lib/db";
+import { parseMarkingScheme, renderRichText } from "../lib/content";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  formatVerified,
+  getExamInfo,
+  getPageSeo,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/cuet-ug-marking-scheme";
+const DEFAULT_TITLE = "CUET UG Marking Scheme — +5, −1 and Guessing Maths";
+const DEFAULT_DESCRIPTION =
+  "How CUET UG marking works: +5 for a correct answer, −1 for a wrong answer and 0 for unattempted, with worked examples and the real expected value of a guess.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "What is the CUET UG marking scheme?",
+    answer:
+      "In the standard multiple-choice scheme, a correct answer earns +5 marks, a wrong answer deducts 1 mark and an unattempted question scores 0. The official bulletin for your session is the source of truth, and every paper here prints its own scheme before the timer starts.",
+  },
+  {
+    question: "Is there negative marking in CUET UG?",
+    answer:
+      "The usual MCQ scheme applies a 1-mark penalty for a wrong response. The penalty changes the maths of guessing, but it does not automatically make every guess a bad idea. Eliminating even one option improves the expected value.",
+  },
+  {
+    question: "Does an unattempted question reduce my score?",
+    answer:
+      "No. A skipped question adds zero. The penalty applies only when you choose an option and it is wrong.",
+  },
+  {
+    question: "Is a blind guess worth it with +5 and −1?",
+    answer:
+      "With four equally likely options, the expected value is (1/4 × 5) + (3/4 × −1) = +0.5 marks. It is slightly positive, but the variance is high and a guess costs time. Eliminate options where you can; a 50-50 shot is worth +2 marks in expectation.",
+  },
+  {
+    question: "Are CUET marks normalised across shifts?",
+    answer:
+      "When a subject is held in multiple shifts, NTA may use a normalisation or equating process so scores are comparable. The method for the session is described in the official bulletin. This site does not normalise practice scores; it shows the raw score for the paper you attempted.",
+  },
+  {
+    question: "How does this site calculate my score?",
+    answer:
+      "The server reads the paper's stored marking scheme and counts your correct, wrong and skipped answers after submit. The browser never receives the answer key first, and an expired attempt is scored from the answers saved before the deadline.",
+  },
+];
+
+const papers = await all<{
+  id: number;
+  title: string;
+  slug: string;
+  total_marks: number;
+  marking_scheme: string;
+  question_count: number;
+}>(
+  `SELECT m.id, m.title, m.slug, m.total_marks, m.marking_scheme,
+          (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count
+   FROM mock_tests m
+   WHERE m.status = 'published' AND m.deleted_at IS NULL
+     AND m.practice_paper_slug IS NULL
+   ORDER BY m.published_at DESC, m.id DESC
+   LIMIT 30`,
+);
+
+const seo = await getPageSeo(PATH);
+const info = (await getExamInfo(["marking-scheme"]))["marking-scheme"];
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const verified = formatVerified(info?.last_verified);
+const noindex = (seo?.noindex ?? 0) === 1;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "CUET UG marking scheme", path: PATH },
+  ]),
+  articleJsonLd({
+    site,
+    title,
+    description,
+    path: PATH,
+    updated: seo?.updated_at ?? info?.last_verified ?? null,
+  }),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const examples = [
+  { correct: 30, wrong: 4, skipped: 16, total: 50 },
+  { correct: 20, wrong: 10, skipped: 20, total: 50 },
+  { correct: 8, wrong: 12, skipped: 30, total: 50 },
+].map((row) => ({ ...row, score: row.correct * 5 - row.wrong }));
+
+const guessRows = [
+  { situation: "Blind guess, 4 options", chance: "1 in 4", ev: (1 / 4) * 5 + (3 / 4) * -1 },
+  { situation: "One option eliminated", chance: "1 in 3", ev: (1 / 3) * 5 + (2 / 3) * -1 },
+  { situation: "Two options eliminated", chance: "1 in 2", ev: (1 / 2) * 5 + (1 / 2) * -1 },
+  { situation: "Three options eliminated", chance: "certain", ev: 5 },
+];
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Marking scheme"
+    title="Every mark has a consequence"
+    intro="A correct answer earns +5, a wrong answer costs 1, and a skipped question is neutral. The interesting part is what that arithmetic does to guessing. Here are the worked examples, the expected value, and the exact scheme used by each published paper."
+    updated={verified}
+  />
+
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <section class="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="font-bold text-amber-900 dark:text-amber-200">Verify the scheme for your session</h2>
+      <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
+        The numbers below describe the standard multiple-choice convention and the papers on this site. NTA can revise the marking scheme, so confirm it in the official bulletin before relying on it.
+        {verified ? ` The official summary was last reviewed on ${verified}.` : " No official marking summary has been verified for the current session yet."}
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2 text-sm">
+        <a class="rounded-lg bg-amber-900 px-3 py-2 font-bold text-white hover:bg-amber-800 dark:bg-amber-200 dark:text-amber-950" href={info?.source_url || "https://cuet.nta.nic.in/"} rel="noopener noreferrer" target="_blank">
+          {info?.source_url ? "Official marking source" : "NTA CUET portal"}
+        </a>
+        <a class="rounded-lg border border-amber-300 px-3 py-2 font-bold text-amber-900 hover:bg-amber-100 dark:border-amber-800 dark:text-amber-100 dark:hover:bg-amber-950" href="/cuet-ug-exam-pattern">
+          Exam pattern guide
+        </a>
+      </div>
+      {info?.value ? (
+        <div class="mt-4 whitespace-pre-wrap rounded-xl bg-white/70 p-4 text-sm leading-7 text-amber-950 dark:bg-neutral-950/60 dark:text-amber-100">
+          {info.value}
+        </div>
+      ) : null}
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">The core numbers</h2>
+      <div class="mt-4 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-2xl border border-brand-200 bg-brand-50 p-5 dark:border-brand-800 dark:bg-brand-950/40">
+          <p class="text-4xl font-black text-brand-700 dark:text-brand-300">+5</p>
+          <p class="mt-1 text-sm font-semibold text-brand-900 dark:text-brand-200">Correct answer</p>
+          <p class="mt-1 text-xs text-brand-800/80 dark:text-brand-300/80">Full marks for the question.</p>
+        </div>
+        <div class="rounded-2xl border border-red-200 bg-red-50 p-5 dark:border-red-900 dark:bg-red-950/30">
+          <p class="text-4xl font-black text-red-700 dark:text-red-400">−1</p>
+          <p class="mt-1 text-sm font-semibold text-red-900 dark:text-red-200">Wrong answer</p>
+          <p class="mt-1 text-xs text-red-800/80 dark:text-red-300/80">One mark is deducted.</p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-4xl font-black text-neutral-700 dark:text-neutral-200">0</p>
+          <p class="mt-1 text-sm font-semibold">Unattempted</p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Skipping is neutral, not penalised.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">Worked examples</h2>
+      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Three attempts on a 50-question paper, all using +5 / −1 / 0.</p>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" role="region" aria-label="Worked marking-scheme examples" tabindex="0">
+        <table class="w-full min-w-[620px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Correct</th>
+              <th class="px-4 py-3">Wrong</th>
+              <th class="px-4 py-3">Skipped</th>
+              <th class="px-4 py-3">Arithmetic</th>
+              <th class="px-4 py-3 text-right">Score</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {examples.map((example) => (
+              <tr>
+                <td class="px-4 py-3 font-semibold text-brand-700 dark:text-brand-300">{example.correct}</td>
+                <td class="px-4 py-3 font-semibold text-red-700 dark:text-red-400">{example.wrong}</td>
+                <td class="px-4 py-3 text-neutral-500 dark:text-neutral-400">{example.skipped}</td>
+                <td class="px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{example.correct} × 5 − {example.wrong} × 1</td>
+                <td class="px-4 py-3 text-right text-lg font-black">{example.score}<span class="text-xs font-normal text-neutral-600 dark:text-neutral-400"> / 250</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">The real maths of guessing</h2>
+      <p class="mt-2 max-w-3xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        Expected value is the average result if you faced the same decision many times. With four equally likely options, a blind guess is not negative: it is slightly positive. That does not make blind guessing a strategy, because one mark of upside is small compared with the time it consumes and the variance it adds.
+      </p>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" role="region" aria-label="Expected marks by guessing situation" tabindex="0">
+        <table class="w-full min-w-[560px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Situation</th>
+              <th class="px-4 py-3">Probability correct</th>
+              <th class="px-4 py-3 text-right">Expected marks</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {guessRows.map((row) => (
+              <tr>
+                <td class="px-4 py-3">{row.situation}</td>
+                <td class="px-4 py-3 text-neutral-500 dark:text-neutral-400">{row.chance}</td>
+                <td class:list={["px-4 py-3 text-right font-bold", row.ev > 0 ? "text-brand-700 dark:text-brand-300" : "text-red-700 dark:text-red-400"]}>
+                  {row.ev > 0 ? "+" : ""}{row.ev.toFixed(2)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 text-sm dark:border-neutral-800 dark:bg-neutral-900">
+          <h3 class="font-bold">What this means in the hall</h3>
+          <p class="mt-2 leading-7 text-neutral-600 dark:text-neutral-400">
+            If you have eliminated two options, a shot is worth about +2 marks on average. If you have no information and the clock is short, the +0.5 expected value is usually not worth the seconds it takes away from a question you can solve.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 text-sm dark:border-neutral-800 dark:bg-neutral-900">
+          <h3 class="font-bold">The accuracy rule</h3>
+          <p class="mt-2 leading-7 text-neutral-600 dark:text-neutral-400">
+            Track accuracy, not just attempts. A student with 80% accuracy on 40 questions scores 156, while a student with 55% accuracy on 60 questions scores 159. Volume and accuracy have to grow together.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">Scheme used by each published paper</h2>
+      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">These values come from the paper's stored marking scheme and are frozen after publish.</p>
+      {papers.length === 0 ? (
+        <div class="mt-5 rounded-2xl border border-dashed border-neutral-300 p-10 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+          No paper is published yet. Its scheme will appear here automatically.
+        </div>
+      ) : (
+        <div class="mt-5 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" role="region" aria-label="Marking scheme by published paper" tabindex="0">
+          <table class="w-full min-w-[640px] text-left text-sm">
+            <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+              <tr>
+                <th class="px-4 py-3">Paper</th>
+                <th class="px-4 py-3 text-right">Questions</th>
+                <th class="px-4 py-3 text-right">Total marks</th>
+                <th class="px-4 py-3 text-right">Correct</th>
+                <th class="px-4 py-3 text-right">Wrong</th>
+                <th class="px-4 py-3 text-right">Skipped</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+              {papers.map((paper) => {
+                const marking = parseMarkingScheme(paper.marking_scheme);
+                return (
+                  <tr>
+                    <td class="px-4 py-3">
+                      <a class="font-medium hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${paper.slug}/instructions`}>{paper.title}</a>
+                    </td>
+                    <td class="px-4 py-3 text-right">{paper.question_count}</td>
+                    <td class="px-4 py-3 text-right">{paper.total_marks}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-brand-700 dark:text-brand-300">+{marking.correct}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-red-700 dark:text-red-400">{marking.wrong}</td>
+                    <td class="px-4 py-3 text-right text-neutral-500 dark:text-neutral-400">{marking.skipped}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+
+    <section class="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">How scoring works on this site</h2>
+      <ol class="mt-3 list-decimal space-y-3 pl-5 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <li>The paper's marking scheme is read from the database, not from the browser.</li>
+        <li>When you submit, the server compares each saved answer with the stored key.</li>
+        <li>Correct, wrong and skipped counts are multiplied by the paper's scheme.</li>
+        <li>A submitted attempt is frozen. Retakes are scored separately and only the first attempt counts on the leaderboard.</li>
+        <li>If the timer expires, the answers saved before the deadline are scored and the attempt is marked expired.</li>
+      </ol>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Test the arithmetic on a real paper</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">Every result shows correct, wrong and skipped counts next to the score, so you can verify the maths yourself.</p>
+        </div>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Start a mock test</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,341 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DiscussionPreview from "../../components/DiscussionPreview.astro";
+import { getGuestToken } from "../../lib/auth/session";
+import { all, first } from "../../lib/db";
+import {
+  canAccessAttempt,
+  findAttempt,
+  loadResult,
+  settleAttempt,
+} from "../../lib/attempts";
+import { formatDateTime, formatDuration } from "../../lib/content";
+
+const attemptId = Number(Astro.params.attemptId);
+if (!Number.isInteger(attemptId) || attemptId <= 0) {
+  return new Response("Result not found", { status: 404 });
+}
+
+let attempt = await findAttempt(attemptId);
+if (!attempt || !canAccessAttempt(attempt, Astro.locals.user, getGuestToken(Astro.cookies))) {
+  return new Response("Result not found", { status: 404 });
+}
+
+attempt = await settleAttempt(attempt);
+if (attempt.status === "in_progress") return Astro.redirect(`/attempt/${attempt.id}`, 303);
+
+const result = await loadResult(attempt);
+if (!result) return new Response("Result not found", { status: 404 });
+
+const { mock, sections, rank, percentile, eligible } = result;
+const totals = sections.reduce(
+  (sum, section) => ({
+    total: sum.total + section.total,
+    answered: sum.answered + section.answered,
+    correct: sum.correct + section.correct,
+    wrong: sum.wrong + section.wrong,
+    skipped: sum.skipped + section.skipped,
+    score: sum.score + section.score,
+    time: sum.time + section.time,
+  }),
+  { total: 0, answered: 0, correct: 0, wrong: 0, skipped: 0, score: 0, time: 0 },
+);
+
+const accuracy = totals.answered > 0 ? Math.round((totals.correct / totals.answered) * 1000) / 10 : 0;
+const attemptedPercent = totals.total > 0 ? Math.round((totals.answered / totals.total) * 100) : 0;
+const isGuest = attempt.user_id === null;
+const expired = attempt.status === "expired";
+const scoreTone =
+  totals.score >= 0
+    ? "text-brand-700 dark:text-brand-300"
+    : "text-red-700 dark:text-red-400";
+
+// The individual paper board is shown on every finished attempt, including a
+// retake: the board is the paper's, not the attempt's.
+const [leaderboardRows, boardCount] = await Promise.all([
+  all<{
+    rank: number;
+    user_id: number;
+    username: string;
+    score: number;
+    time_taken_sec: number;
+    correct: number;
+    wrong: number;
+  }>(
+    `SELECT rank, user_id, username, score, time_taken_sec, correct, wrong FROM (
+       SELECT a.user_id, u.username, a.score, a.time_taken_sec, a.correct, a.wrong,
+              RANK() OVER (
+                ORDER BY a.score DESC, a.time_taken_sec ASC,
+                         (CASE WHEN a.correct + a.wrong > 0
+                               THEN a.correct * 1.0 / (a.correct + a.wrong)
+                               ELSE 0 END) DESC
+              ) AS rank,
+              ROW_NUMBER() OVER (
+                ORDER BY a.score DESC, a.time_taken_sec ASC,
+                         (CASE WHEN a.correct + a.wrong > 0
+                               THEN a.correct * 1.0 / (a.correct + a.wrong)
+                               ELSE 0 END) DESC
+              ) AS position
+       FROM attempts a JOIN users u ON u.id = a.user_id
+       WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
+         AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
+     ) WHERE position <= 5
+     ORDER BY position`,
+    attempt.version_id,
+  ),
+  first<{ count: number }>(
+    `SELECT COUNT(*) AS count
+     FROM attempts a JOIN users u ON u.id = a.user_id
+     WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
+       AND a.user_id IS NOT NULL AND u.deleted_at IS NULL`,
+    attempt.version_id,
+  ),
+]);
+const boardEligible = boardCount?.count ?? 0;
+const boardMedals = ["🥇", "🥈", "🥉"];
+const myBoardRank = leaderboardRows.find((row) => row.user_id === attempt.user_id)?.rank ?? null;
+---
+
+<BaseLayout
+  title={`Result — ${mock.title} — CUET Free Mock Test`}
+  description="Server-scored mock test result with section analysis, accuracy and solutions."
+  noindex
+>
+  <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
+    <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-12">
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <a class="text-neutral-500 hover:underline dark:text-neutral-400" href="/cuet-ug-mock-test">Mock tests</a>
+        <span class="text-neutral-400">/</span>
+        <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">
+          {expired ? "Time expired" : "Submitted"}
+        </span>
+      </div>
+      <h1 class="mt-3 text-2xl font-black tracking-tight sm:text-4xl">{mock.title}</h1>
+      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+        Scored on the server on {formatDateTime(attempt.submitted_at)} · {formatDuration(attempt.time_taken_sec)} used of {mock.duration_min} minutes.
+      </p>
+
+      {expired ? (
+        <p class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+          The timer ran out before the test was submitted. The answers saved before the deadline were scored.
+        </p>
+      ) : null}
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Score</p>
+          <p class={`mt-1 text-3xl font-black ${scoreTone}`}>{totals.score}<span class="text-base font-bold text-neutral-600 dark:text-neutral-400"> / {mock.total_marks}</span></p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Server-scored with this paper's marking scheme</p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Accuracy</p>
+          <p class="mt-1 text-3xl font-black">{accuracy}%</p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{totals.correct} correct of {totals.answered} attempted</p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempted</p>
+          <p class="mt-1 text-3xl font-black">{totals.answered}<span class="text-base font-bold text-neutral-600 dark:text-neutral-400"> / {totals.total}</span></p>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{attemptedPercent}% of the paper · {totals.skipped} skipped</p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Rank</p>
+          {rank && eligible > 0 ? (
+            <>
+              <p class="mt-1 text-3xl font-black">#{rank}</p>
+              <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">of {eligible} first attempts · {percentile} percentile</p>
+            </>
+          ) : (
+            <>
+              <p class="mt-1 text-3xl font-black text-neutral-600 dark:text-neutral-400">—</p>
+              <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                {isGuest
+                  ? "Create an account in this browser to enter the first-attempt leaderboard."
+                  : attempt.is_first_attempt
+                    ? "Rank appears when other students finish."
+                    : "Only a first attempt is ranked."}
+              </p>
+            </>
+          )}
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-2 text-xs">
+        <span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{totals.correct} correct</span>
+        <span class="rounded-full bg-red-100 px-3 py-1 font-semibold text-red-900 dark:bg-red-950/50 dark:text-red-200">{totals.wrong} wrong</span>
+        <span class="rounded-full bg-neutral-200 px-3 py-1 font-semibold text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">{totals.skipped} skipped</span>
+        {attempt.is_first_attempt ? <span class="rounded-full bg-violet-100 px-3 py-1 font-semibold text-violet-900 dark:bg-violet-950/50 dark:text-violet-200">First attempt — leaderboard eligible</span> : null}
+      </div>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href={`/result/${attempt.id}/solutions`}>
+          Review solutions →
+        </a>
+        <a class="rounded-lg border border-brand-300 bg-brand-50 px-4 py-2.5 text-sm font-bold text-brand-900 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-200" href={`/leaderboard/${mock.slug}`}>
+          View leaderboard
+        </a>
+        <a class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" href="#discussion">
+          Discussion
+        </a>
+        <a class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" href={`/mock/${mock.slug}/instructions`}>
+          Retake this mock
+        </a>
+        {isGuest ? (
+          <a class="rounded-lg border border-brand-300 bg-brand-50 px-4 py-2.5 text-sm font-bold text-brand-900 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-200" href="/signup">
+            Save this result — create a free account
+          </a>
+        ) : (
+          <a class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" href="/dashboard">
+            My dashboard
+          </a>
+        )}
+      </div>
+
+      {isGuest ? (
+        <p class="mt-3 max-w-2xl text-xs text-neutral-500 dark:text-neutral-400">
+          This attempt is tied to a guest cookie on this browser. Creating an account in this browser claims it, then its rank counts towards the first-attempt leaderboard.
+        </p>
+      ) : null}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <h2 class="text-xl font-bold">Section analysis</h2>
+    {sections.length === 0 ? (
+      <p class="mt-3 text-sm text-neutral-500">No section data for this paper.</p>
+    ) : (
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" role="region" aria-label="Section-wise performance" tabindex="0">
+        <table class="w-full min-w-[680px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Section</th>
+              <th class="px-4 py-3 text-right">Questions</th>
+              <th class="px-4 py-3 text-right">Correct</th>
+              <th class="px-4 py-3 text-right">Wrong</th>
+              <th class="px-4 py-3 text-right">Skipped</th>
+              <th class="px-4 py-3 text-right">Score</th>
+              <th class="px-4 py-3 text-right">Time</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {sections.map((section) => (
+              <tr>
+                <td class="px-4 py-3 font-medium">{section.section}</td>
+                <td class="px-4 py-3 text-right">{section.total}</td>
+                <td class="px-4 py-3 text-right text-brand-700 dark:text-brand-300">{section.correct}</td>
+                <td class="px-4 py-3 text-right text-red-700 dark:text-red-400">{section.wrong}</td>
+                <td class="px-4 py-3 text-right text-neutral-500">{section.skipped}</td>
+                <td class="px-4 py-3 text-right font-bold">{section.score}</td>
+                <td class="px-4 py-3 text-right text-xs text-neutral-500 dark:text-neutral-400">{formatDuration(section.time)}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot class="border-t border-neutral-200 bg-neutral-50 font-bold dark:border-neutral-800 dark:bg-neutral-950">
+            <tr>
+              <td class="px-4 py-3">Total</td>
+              <td class="px-4 py-3 text-right">{totals.total}</td>
+              <td class="px-4 py-3 text-right">{totals.correct}</td>
+              <td class="px-4 py-3 text-right">{totals.wrong}</td>
+              <td class="px-4 py-3 text-right">{totals.skipped}</td>
+              <td class="px-4 py-3 text-right">{totals.score}</td>
+              <td class="px-4 py-3 text-right text-xs">{formatDuration(totals.time)}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    )}
+
+    <div class="mt-8 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" aria-labelledby="paper-leaderboard">
+      <div class="flex flex-wrap items-end justify-between gap-3 border-b border-neutral-200 bg-gradient-to-r from-brand-50 via-white to-accent-50 px-5 py-4 dark:border-neutral-800 dark:from-brand-950/40 dark:via-neutral-900 dark:to-neutral-900">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">This paper</p>
+          <h2 id="paper-leaderboard" class="mt-1 text-xl font-black">Leaderboard</h2>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+            {boardEligible} ranked first attempt{boardEligible === 1 ? "" : "s"} · updated automatically when a registered student submits.
+          </p>
+        </div>
+        <a class="rounded-lg border border-brand-300 px-3 py-1.5 text-xs font-bold text-brand-800 hover:bg-brand-50 dark:border-brand-800 dark:text-brand-200 dark:hover:bg-brand-950/40" href={`/leaderboard/${mock.slug}`}>
+          Full leaderboard →
+        </a>
+      </div>
+
+      {leaderboardRows.length === 0 ? (
+        <div class="px-5 py-8 text-center text-sm text-neutral-500 dark:text-neutral-400">
+          <p class="font-semibold text-neutral-700 dark:text-neutral-200">No ranked attempts yet.</p>
+          <p class="mt-1">Your paper is scored. The board opens as soon as a registered student finishes a first attempt.</p>
+          {isGuest ? (
+            <a class="mt-3 inline-block rounded-lg bg-brand-600 px-4 py-2 font-bold text-white hover:bg-brand-700" href="/signup">Create an account to enter</a>
+          ) : null}
+        </div>
+      ) : (
+        <div class="overflow-x-auto" role="region" aria-label={`${mock.title} top ranked students`} tabindex="0">
+          <table class="w-full min-w-[620px] text-left text-sm">
+            <thead class="border-b border-neutral-200 bg-neutral-50 text-[10px] uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+              <tr>
+                <th class="px-5 py-3">Rank</th>
+                <th class="px-5 py-3">Student</th>
+                <th class="px-5 py-3 text-right">Score</th>
+                <th class="px-5 py-3 text-right">Accuracy</th>
+                <th class="px-5 py-3 text-right">Time</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+              {leaderboardRows.map((row) => {
+                const rowAttempts = row.correct + row.wrong;
+                const rowAccuracy = rowAttempts > 0 ? Math.round((row.correct / rowAttempts) * 1000) / 10 : 0;
+                const isMe = attempt.user_id === row.user_id;
+                return (
+                  <tr class:list={[isMe ? "bg-brand-50 dark:bg-brand-950/30" : ""]}>
+                    <td class="whitespace-nowrap px-5 py-3 font-bold">
+                      {boardMedals[row.rank - 1] ? <span class="mr-1" aria-hidden="true">{boardMedals[row.rank - 1]}</span> : null}
+                      #{row.rank}
+                    </td>
+                    <td class="max-w-[14rem] truncate px-5 py-3 font-medium">
+                      {row.username}
+                      {isMe ? <span class="ml-2 rounded-full bg-brand-600 px-2 py-0.5 text-[10px] font-bold uppercase text-white">You</span> : null}
+                    </td>
+                    <td class="whitespace-nowrap px-5 py-3 text-right font-bold">{row.score}<span class="text-xs font-normal text-neutral-500 dark:text-neutral-400"> / {mock.total_marks}</span></td>
+                    <td class="px-5 py-3 text-right">{rowAccuracy}%</td>
+                    <td class="whitespace-nowrap px-5 py-3 text-right text-xs text-neutral-500 dark:text-neutral-400">{formatDuration(row.time_taken_sec)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      <div class="border-t border-neutral-100 px-5 py-3 text-xs text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
+        {isGuest ? (
+          <span>
+            Your attempt is saved on this browser. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/signup">Create a free account</a> to claim it and enter this board.
+          </span>
+        ) : myBoardRank ? (
+          <span>You are #{myBoardRank} on this paper. Only your first submitted attempt is ranked.</span>
+        ) : rank ? (
+          <span>You are #{rank} overall, outside the top five shown here. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/leaderboard/${mock.slug}`}>See the full board →</a></span>
+        ) : (
+          <span>Only a first submitted attempt is ranked. Retakes stay in your dashboard and never change the board.</span>
+        )}
+      </div>
+    </div>
+
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 text-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <h3 class="font-bold">How to read this result</h3>
+        <p class="mt-2 leading-6 text-neutral-600 dark:text-neutral-400">
+          Score uses the marking scheme set on this paper. Rank and percentile are calculated only from first submitted attempts by registered users of this site and are not an official NTA rank.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 text-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <h3 class="font-bold">What next</h3>
+        <p class="mt-2 leading-6 text-neutral-600 dark:text-neutral-400">
+          Open the solutions to see every question, your answer and a written explanation. A second attempt is allowed, but only the first one is ranked.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
+    <DiscussionPreview mockId={mock.id} mockSlug={mock.slug} access={true} heading="Discussion & chat" limit={4} interactive sectionId="discussion" />
+  </section>
+</BaseLayout>

@@ -1,0 +1,1633 @@
+{
+ "exam": {
+  "id": "local-physics-2022-08-22",
+  "slug": "physics-2022-08-22",
+  "title": "CUET UG Physics 22 August 2022 Previous Year Paper",
+  "subject": "Physics",
+  "subjectId": "local-physics",
+  "subjectCode": "PHY",
+  "year": 2022,
+  "examDate": "2022-08-22",
+  "shift": null,
+  "sourceFile": "Physics_2022-08-22.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 47,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "Two identical charged metallic spheres A and B repel each other with a force F. A third sphere of same size but uncharged is brought in contact with 'A' then brought in contact with 'B'. The new force between A and B is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "F"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{3}{8}F $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{3}{4}F $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{2}F $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "When a point charge q is placed at the center of a cube of side 'a' the electric flux linked with the cube is $\\phi$. If sides of cube are increased to '2a', then electric flux through cube will be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\phi$"
+     },
+     {
+      "id": "B",
+      "text": "$2\\phi$"
+     },
+     {
+      "id": "C",
+      "text": "$4\\phi$"
+     },
+     {
+      "id": "D",
+      "text": "$\\phi/2$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Electric field strength due to a uniformly charged infinite plane sheet varies with distance from it as",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q03-options",
+      "kind": "options",
+      "path": "/local-papers/assets/physics-2022-08-22/q03-options.jpg",
+      "page": 1,
+      "alt": "Printed answer choices for question 3"
+     }
+    ]
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "A parallel plate capacity of capacitance $ C_{0} $ is charged using a cell of emf $ V_{0} $. The potential difference between the plates of capacitor if the distance between plates becomes half its initial value.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ V_{0} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 2V_{0} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{V_{0}}{4} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{V_{0}}{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "Given below are two statements: one is labeled as Assertion A and the other is labelled as Reason R.\n\nAssertion A: No work is done to move a test charge on the surface of charged conductor from one point to the other.\n\nReason R: Electric field has a tangential component along the surface of a charged conductor.\n\nIn the light of above statements, choose the most appropriate answer from the options given below.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Both A and R are correct and R is the correct explanation of A."
+     },
+     {
+      "id": "B",
+      "text": "Both A and R are correct and R is NOT the correct explanation of A."
+     },
+     {
+      "id": "C",
+      "text": "A is correct but R is not correct."
+     },
+     {
+      "id": "D",
+      "text": "A is not correct but R is correct."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "A parallel plate capacitor has two plates of area A separated by a small distance 'd'. The capacitor is charged to the potential difference of V and the battery is disconnected.\n\nA metal plate with area A and thickness $\\frac{d}{2}$ is fully inserted, between the plates, so that it always remains parallel to the plates. The capacitance of capacitor will now be\n\n$$ \\frac{2\\in_{0}A}{d} $$\n\n(b)\n\n$$ \\frac{\\varepsilon_{0}A}{d} $$\n\n(c)\n\n$$ \\frac{\\epsilon_{0}A}{2d} $$\n\n(d)\n\n$$ \\frac{\\varepsilon_{0}A}{4d} $$\n\nKirchhoff's loop rule is based on Conservation of charge",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Conservation of energy"
+     },
+     {
+      "id": "B",
+      "text": "Conservation of energy"
+     },
+     {
+      "id": "C",
+      "text": "Conservation of mass"
+     },
+     {
+      "id": "D",
+      "text": "Wheatstone bridge"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "In the following arrangement of potentiometer to measure the emf $E_{2}$, the balance point is obtained at P, When the key S is open\n\nWhen the key 'S' is closed, the balance point will",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "move to the right"
+     },
+     {
+      "id": "B",
+      "text": "move to the left"
+     },
+     {
+      "id": "C",
+      "text": "remain unaffected"
+     },
+     {
+      "id": "D",
+      "text": "not be obtained"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q08-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2022-08-22/q08-figure-1.jpg",
+      "page": 1,
+      "alt": "Figure for question 8"
+     }
+    ]
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Two resistors R and 3R are connected in parallel in an electrical circuit. The heat generated in R and 3R is in the ratio of:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3:1"
+     },
+     {
+      "id": "B",
+      "text": "1:3"
+     },
+     {
+      "id": "C",
+      "text": "1:9"
+     },
+     {
+      "id": "D",
+      "text": "9:1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "The equivalent resistance between points A and B in the given management of resistors is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 1\\Omega $"
+     },
+     {
+      "id": "B",
+      "text": "$ 16\\Omega $"
+     },
+     {
+      "id": "C",
+      "text": "$ 4\\Omega $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{16}{3}\\Omega $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q11-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2022-08-22/q11-figure-1.jpg",
+      "page": 2,
+      "alt": "Figure for question 11"
+     }
+    ]
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "A charged particle passes undeflected with a velocity of $4 \\times 10^{3}$ m/s through magnetic field and electric field acting perpendicular to each other. The magnetic field applied is 2.0 T. The value of the electric field is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$4.0 \\times 10^{3}$ NC$^{-1}$"
+     },
+     {
+      "id": "B",
+      "text": "$2.0 \\times 10^{3}$ NC$^{-1}$"
+     },
+     {
+      "id": "C",
+      "text": "$8 \\times 10^{3}$ NC$^{-1}$"
+     },
+     {
+      "id": "D",
+      "text": "$16 \\times 10^{3}$ NC$^{-1}$ Passage:(Q.No.13-15) The galvanometer consists of a coil of many turns free to rotate about a fixed axis in a uniform radial magnetic field. The cylindrical soft iron core makes the field not only radial but also increases the strength of the magnetic field. In radial magnetic field coil experiences maximum deflecting torque which rotates the coil in the magnetic field. The suspension wire and a spring connected to the ends of coil provide restoring torque which tends to bring the coil back to the original position. In equilibrium, deflection torque and restoring torque becomes equal. A galvanometer can not be used to detect the presence of current in an electrical circuit. A galvanometer can be converted into an ammeter and voltmeter by connecting suitable resistance with it. The voltmeter can be used to measure potential difference across a resistor in an electrical circuit."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "A galvanometer cannot be used to measure current as:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "It is not a very sensitive device."
+     },
+     {
+      "id": "B",
+      "text": "It is a low resistance device."
+     },
+     {
+      "id": "C",
+      "text": "It has a large resistance and will change value of current in the circuit when connected in series."
+     },
+     {
+      "id": "D",
+      "text": "It gives very small deflection even for a large value of current."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "When the number of turns of the coil in a galvanometer is doubled:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Both current and voltage sensitivities are doubled"
+     },
+     {
+      "id": "B",
+      "text": "No change in current sensitivity and voltage sensitivity becomes double"
+     },
+     {
+      "id": "C",
+      "text": "Current sensitivity is doubled and no change in voltage sensitivity"
+     },
+     {
+      "id": "D",
+      "text": "Current sensitivity is doubled and voltage sensitivity becomes $\\sqrt{2}$ times its initial value."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "To convert galvanometer into an ammeter to measure current:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A high resistance is connected in series with galvanometer"
+     },
+     {
+      "id": "B",
+      "text": "A high resistance is connected in parallel with galvanometer"
+     },
+     {
+      "id": "C",
+      "text": "A low resistance is connected in parallel with galvanometer"
+     },
+     {
+      "id": "D",
+      "text": "A low resistance is connected in series with galvanometer"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Only 5% of total current can flow through galvanometer of resistance 38 Ω for full scale deflection. The value of shunt required to convert galvanometer into ammeter is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "19 Ω"
+     },
+     {
+      "id": "B",
+      "text": "2 Ω"
+     },
+     {
+      "id": "C",
+      "text": "0.5 Ω"
+     },
+     {
+      "id": "D",
+      "text": "5 Ω"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "A galvanometer coil of 100 turns and area $5\\ cm^{2}$ experiences a torque of $2\\times10^{-4}\\ Nm$ in a radial magnetic field of 2T. The current in the coil is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$2\\mathrm{mA}$"
+     },
+     {
+      "id": "B",
+      "text": "$0.2\\mathrm{mA}$"
+     },
+     {
+      "id": "C",
+      "text": "$200\\mathrm{mA}$"
+     },
+     {
+      "id": "D",
+      "text": "$0.5\\mathrm{mA}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "A metallic rod of length 'Im' rotates vertically about one of its ends with angular velocity 5 rad/s. The horizontal component of Earth's magnetic field parallel to the axis of rotation is $ 0.2 \\times 10^{-4} $ T. The emf developed between the two ends of rod is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 5\\mu V $"
+     },
+     {
+      "id": "B",
+      "text": "$ 50\\mu V $"
+     },
+     {
+      "id": "C",
+      "text": "$ 5mV $"
+     },
+     {
+      "id": "D",
+      "text": "$ 50mV $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "Energy stored in an inductor is 25 mJ, when a current of 60 mA flows through it. The self-inductance of the inductor is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.83 H"
+     },
+     {
+      "id": "B",
+      "text": "138.8 H"
+     },
+     {
+      "id": "C",
+      "text": "8.3 H"
+     },
+     {
+      "id": "D",
+      "text": "13.89 H"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "The self-inductance of a solenoid of length '1', area of cross-section 'A' and total turns 'N' is 'L'. The value of self-inductance L increases when:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "length 1 increases keeping other factors constant."
+     },
+     {
+      "id": "B",
+      "text": "length 1 decreases keeping other factors constant."
+     },
+     {
+      "id": "C",
+      "text": "area A decreases keeping other factors constant."
+     },
+     {
+      "id": "D",
+      "text": "total turns N decreases keeping other factors constant."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "The concentric circular coils, one of small radius $ r_1 $, and other of large radius $ r_2 $ such that $ r_1 < r_2 $, are placed co-axially with centres coinciding The mutual inductance of the arrangement is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\mu_0\\pi r_2^2}{2r_1} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\mu_0\\pi r_1^2}{2r_2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\mu_0\\pi r_1r_2 $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\mu_0r_1^2}{r_2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "An LCR series circuit, with L = 5.0 H. C = 80uF and R = 40 $ \\Omega $ is connected to a 230 V ac source of variable frequency. The frequency of the source at which impedance of the circuit becomes 40 $ \\Omega $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "100 rad/s"
+     },
+     {
+      "id": "B",
+      "text": "200 rad/s"
+     },
+     {
+      "id": "C",
+      "text": "25 rad/s"
+     },
+     {
+      "id": "D",
+      "text": "50 rad/s"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q22-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2022-08-22/q22-figure-1.jpg",
+      "page": 3,
+      "alt": "Figure for question 22"
+     }
+    ]
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "Identify the terms related to a transformer:\n\nA. Resonance B. Mutual induction\n\nC. Capacitive reactance\n\nD. Eddy current E Flux leakage",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, C only"
+     },
+     {
+      "id": "B",
+      "text": "B, D, E only"
+     },
+     {
+      "id": "C",
+      "text": "A, B, C only"
+     },
+     {
+      "id": "D",
+      "text": "C, D only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "An electromagnetic wave is propagating in a medium with a velocity $ \\vec{v} = \\vec{v}k $. The instantaneous oscillating electric field is along +X direction. Then direction of oscillating magnetic field of electromagnetic wave will be along.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "z direction"
+     },
+     {
+      "id": "B",
+      "text": "+ z direction"
+     },
+     {
+      "id": "C",
+      "text": "y direction"
+     },
+     {
+      "id": "D",
+      "text": "+ y direction"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Arrange the frequencies associated with following waves in increasing order\n\nWaves used in television communication ( $ v_{1} $)\n\nWaves used in Physio therapy ( $ v_{2} $)\n\nWaves used in medicine to destroy cancer cells ( $ v_{3} $)\n\nWaves used in LASIK eye surgery ( $ v_{4} $)\n\nWaves used in radar system ( $ v_{5} $)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ v_{1} < v_{2} < v_{3} < v_{4} < v_{5} $"
+     },
+     {
+      "id": "B",
+      "text": "$ v_{5} < v_{1} < v_{2} < v_{4} < v_{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ v_{1} < v_{5} < v_{2} < v_{4} < v_{3} $"
+     },
+     {
+      "id": "D",
+      "text": "$ v_{2} < v_{3} < v_{1} < v_{4} < v_{5} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "Match List I with List II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A-III, B-IV, C-II, D-I"
+     },
+     {
+      "id": "B",
+      "text": "A-IV, B-I, C-II, D-III"
+     },
+     {
+      "id": "C",
+      "text": "A-III, B-IV, C-I, D-II"
+     },
+     {
+      "id": "D",
+      "text": "A-III, B-I, C-II, D-IV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q26-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2022-08-22/q26-table-1.jpg",
+      "page": 3,
+      "alt": "Table for question 26"
+     }
+    ]
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "A biconvex lens has focal length 20 cm. If it is cut into two halves to form two plano convex lenses, then the focal length of each plano convex lens is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20 cm"
+     },
+     {
+      "id": "B",
+      "text": "10 cm"
+     },
+     {
+      "id": "C",
+      "text": "40 cm"
+     },
+     {
+      "id": "D",
+      "text": "5 cm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "A compound microscope consists of an objective lens with focal length 1 cm, eye piece of focal length 2 cm and a tube length 20 cm. The total magnification of the microscope when the final image is formed at the near point, will be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "200"
+     },
+     {
+      "id": "B",
+      "text": "270"
+     },
+     {
+      "id": "C",
+      "text": "300"
+     },
+     {
+      "id": "D",
+      "text": "250"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "An object of size 2.0 cm is placed at a distance of 20 cm in front of a convex mirror of radius of curvature 40 cm. The size of image will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.5 cm"
+     },
+     {
+      "id": "B",
+      "text": "0.75 cm"
+     },
+     {
+      "id": "C",
+      "text": "1.0 cm"
+     },
+     {
+      "id": "D",
+      "text": "1.5 cm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "When white light passes through a prism, the angle of deviation is maximum for:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Yellow light"
+     },
+     {
+      "id": "B",
+      "text": "Green light"
+     },
+     {
+      "id": "C",
+      "text": "Violet light"
+     },
+     {
+      "id": "D",
+      "text": "Red light"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Polaroids are used in sunglasses and window panes because:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "They can change the frequency of incident light."
+     },
+     {
+      "id": "B",
+      "text": "They can control the intensity of incident light."
+     },
+     {
+      "id": "C",
+      "text": "They can make the light waves coherent."
+     },
+     {
+      "id": "D",
+      "text": "Images are bright due to total internal reflection."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "The light waves from two identical coherent sources each of intensity 'Io' are used to study the pattern. The intensity at maximum and minimum interference pattern on the screen are respectively",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$2I_{0}, I_{0}$"
+     },
+     {
+      "id": "B",
+      "text": "$2I_{0}, 0$"
+     },
+     {
+      "id": "C",
+      "text": "$4I_{0}, 2I_{0}$"
+     },
+     {
+      "id": "D",
+      "text": "$4I_{0}, 0$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "A point light source is placed at the focus of the convex lens. What will be the shape of refracted wave front of the emerging out light from this lens?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Plane"
+     },
+     {
+      "id": "B",
+      "text": "Converging spherical"
+     },
+     {
+      "id": "C",
+      "text": "Cylindrical"
+     },
+     {
+      "id": "D",
+      "text": "Diverging spherical"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Identify the \"incorrect\" statement of the following:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "In photoelectric effect the minimum cut off potential is different for different metals."
+     },
+     {
+      "id": "B",
+      "text": "Different photo sensitive materials respond differently to incident light."
+     },
+     {
+      "id": "C",
+      "text": "In photo electric effect, the threshold frequency is same for different metals."
+     },
+     {
+      "id": "D",
+      "text": "The photoelectric emission is an instantaneous process without any time lag even when the incident radiation is made exceedingly dim."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "de Broglie wavelength of particle at ground level when dropped from height H is $\\lambda$. When the same particle is dropped from height 2H, its wavelength at ground level will be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{\\lambda}{2}$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{\\lambda}{\\sqrt{2}}$"
+     },
+     {
+      "id": "C",
+      "text": "$2\\lambda$"
+     },
+     {
+      "id": "D",
+      "text": "$\\sqrt{2}\\lambda$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "Regarding photoelectric effect, choose the correct graph:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q36-options",
+      "kind": "options",
+      "path": "/local-papers/assets/physics-2022-08-22/q36-options.jpg",
+      "page": 4,
+      "alt": "Printed answer choices for question 36"
+     }
+    ]
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Ratio of longest wavelengths of Lyman and Balmer series respectively is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5/27"
+     },
+     {
+      "id": "B",
+      "text": "3/13"
+     },
+     {
+      "id": "C",
+      "text": "7/29"
+     },
+     {
+      "id": "D",
+      "text": "9/31"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "Various spectral series of H-atom are given as following. Identify the series which exist only in Infra Red region of Electro-magnetic radiation\n\nA. Lyman series B. Pfund series C. Brackett series D. Balmer series",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, B, D only"
+     },
+     {
+      "id": "B",
+      "text": "B, C, E only"
+     },
+     {
+      "id": "C",
+      "text": "C, D, E only"
+     },
+     {
+      "id": "D",
+      "text": "A, D only Passage:(Q.No.39-43) Einstein showed from his theory of special relativity that it is necessary to treat mass as another form of energy. Before the advent of this theory of special relativity, it was presumed that mass and energy were conserved separately in a reaction. However, Einstein showed that mass is another form of energy and one can convert mass energy into other forms of energy. Einstein gave his famous mass-energy equivalence relation. Experimental verification of the Einstein's mass-energy relation has been achieved in the study of nuclear reactions amongst nucleons, nuclei, electrons and other more recently discovered particles. It may be expected that the mass of the nucleus is equal to the total mass of its individual protons and neutrons. However, the nuclear mass 'M' is found to be always less than the mass of its constituent nucleons. This difference in the mass of a nucleus and its constituents is called the mass defect. The energy equivalent of mass defect is called binding energy of the nucleus."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "The energy equivalent of one atomic mass unit is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "9.31 MeV"
+     },
+     {
+      "id": "B",
+      "text": "7.6 MeV"
+     },
+     {
+      "id": "C",
+      "text": "931.5 MeV"
+     },
+     {
+      "id": "D",
+      "text": "127.5 MeV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "The constancy of the binding energy in the range $30 < A < 170$ is a consequence of the fact that the nuclear force is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Short-ranged"
+     },
+     {
+      "id": "B",
+      "text": "Attractive"
+     },
+     {
+      "id": "C",
+      "text": "Very strong"
+     },
+     {
+      "id": "D",
+      "text": "Conservative"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "The energy needed to separate a nucleus into its constituents is called:\n\n(a) Binding energy\n\n(b) Binding energy per nucleon\n\n(c) Mass defect\n\n(d) Potential energy\n\nColumn-I Column-II\n\n(A) Nuclear fusion (1) E=mc^{2}\n\n(B) Nuclear fission (2) Generally possible for nuclei with low atomic number\n\n(C) β-decay\n\n(3) Generally possible for nuclei with higher atomic number\n\n(D) Mass-energy (4) Essentially proceeds by equivalence weak reaction nuclear forces",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) $ \\rightarrow $ (2); (B) $ \\rightarrow $ (3); (C) $ \\rightarrow $ (4); (D) $ \\rightarrow $ (1)"
+     },
+     {
+      "id": "B",
+      "text": "(A) $ \\rightarrow $ (4); (B) $ \\rightarrow $ (1); (C) $ \\rightarrow $ (2); (D) $ \\rightarrow $ (4)"
+     },
+     {
+      "id": "C",
+      "text": "(A) $ \\rightarrow $ (1); (B) $ \\rightarrow $ (3); (C) $ \\rightarrow $ (2); (D) $ \\rightarrow $ (4)"
+     },
+     {
+      "id": "D",
+      "text": "(A) $ \\rightarrow $ (3); (B) $ \\rightarrow $ (4); (C) $ \\rightarrow $ (2); (D) $ \\rightarrow $ (1)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "The volume of a nucleus varies with mass number A as:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A"
+     },
+     {
+      "id": "B",
+      "text": "$ A^{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ A^{1/3} $"
+     },
+     {
+      "id": "D",
+      "text": "1/A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "To make extrinsic semiconductors, the dopants materials which can be added to intrinsic semiconductors are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Indium for p-type. Boron for n-type"
+     },
+     {
+      "id": "B",
+      "text": "Antimony for p-type. Indium for n-type"
+     },
+     {
+      "id": "C",
+      "text": "Aluminium for p-type. Phosphorus for n-type"
+     },
+     {
+      "id": "D",
+      "text": "Phosphorus for p-type. Aluminium for n-type"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "The photodiode which can detect light of wavelength 620 nm when falls on it will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "diode with band Gap: 2 eV"
+     },
+     {
+      "id": "B",
+      "text": "diode with band Gap: 2.7 eV"
+     },
+     {
+      "id": "C",
+      "text": "diode with band Gap: 3.2 eV"
+     },
+     {
+      "id": "D",
+      "text": "diode with band Gap: 4.8 eV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "In a full wave rectification, the output frequency of signal, if the input frequency is 50 Hz, will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "25 Hz"
+     },
+     {
+      "id": "B",
+      "text": "50 Hz"
+     },
+     {
+      "id": "C",
+      "text": "100 Hz"
+     },
+     {
+      "id": "D",
+      "text": "200 Hz"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "The following figure shows input and output for a logic gate. The logic gate corresponding to this voltage waveform is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "OR gate"
+     },
+     {
+      "id": "B",
+      "text": "NOR gate"
+     },
+     {
+      "id": "C",
+      "text": "AND gate"
+     },
+     {
+      "id": "D",
+      "text": "NAND gate"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": [
+     {
+      "id": "q47-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2022-08-22/q47-figure-1.jpg",
+      "page": 5,
+      "alt": "Figure for question 47"
+     }
+    ]
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "The device in which no external bias is applied for its operation is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Zener diode"
+     },
+     {
+      "id": "B",
+      "text": "Light Emitting Diode (LED)"
+     },
+     {
+      "id": "C",
+      "text": "Photodiode"
+     },
+     {
+      "id": "D",
+      "text": "Solar Cell"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "The phenomena involved in the reflection of radiowaves by ionosphere is similar to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Reflection of light by a plane mirror."
+     },
+     {
+      "id": "B",
+      "text": "Total Internal Reflection of light for the formation of mirage."
+     },
+     {
+      "id": "C",
+      "text": "Dispersion of light by water molecules during the formation of a rainbow."
+     },
+     {
+      "id": "D",
+      "text": "Scattering of light by the particles in air."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "The device which converts one form of energy into another in communication systems is called a:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Transmitter"
+     },
+     {
+      "id": "B",
+      "text": "Modulator"
+     },
+     {
+      "id": "C",
+      "text": "Transducer"
+     },
+     {
+      "id": "D",
+      "text": "Repeater"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

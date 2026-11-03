@@ -1,0 +1,715 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SeoIntro from "../components/SeoIntro.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { all } from "../lib/db";
+import {
+  getLocalPaperYears,
+  getLocalPapers,
+  getLocalSubjectSummaries,
+  getPopularLocalPapers,
+  type LocalPaperSummary,
+} from "../lib/local-papers";
+import {
+  getPageSeo,
+  itemListJsonLd,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/";
+const DEFAULT_TITLE = "CUET Free Mock Test — Timed Mocks, Real Results, Free Solutions";
+const DEFAULT_DESCRIPTION =
+  "Free CUET UG mock tests with a server timer, hidden answers, instant results and written solutions. Practise by subject, track progress and join first-attempt leaderboards.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "Is CUET Free Mock Test really free?",
+    answer:
+      "Yes. Every published paper, result, solution, dashboard feature and leaderboard is free. There is no paywall, no card requirement and no locked answer key.",
+  },
+  {
+    question: "Do I need an account to take a mock test?",
+    answer:
+      "No. You can start as a guest and the attempt is linked to a cookie in this browser so it can be resumed. Create an account afterwards to keep the attempt in your history and enter the first-attempt leaderboard.",
+  },
+  {
+    question: "How is the timer enforced?",
+    answer:
+      "The deadline is stored on the server when the attempt starts. The countdown you see is derived from that deadline, so refreshing the page or changing your device clock cannot add time. A small grace period is allowed for a submit already in flight.",
+  },
+  {
+    question: "Are answers visible before I submit?",
+    answer:
+      "No. The attempt page and its API responses never contain the correct option or the explanation. They are revealed on the result and solutions pages only after you submit or the deadline expires.",
+  },
+  {
+    question: "How does the leaderboard work?",
+    answer:
+      "Only a registered user's first submitted attempt for a paper is ranked. Retakes are scored and shown in your dashboard, but they never change your leaderboard position. Rank and percentile mean “among users of this site”, not an official NTA rank.",
+  },
+  {
+    question: "Is this site affiliated with NTA?",
+    answer:
+      "No. CUET Free Mock Test is an independent practice project. CUET UG is conducted by the National Testing Agency, and official dates, patterns and marking rules must always be checked in the current NTA information bulletin.",
+  },
+];
+
+type TagTone = "mint" | "violet" | "amber" | "neutral";
+
+type PaperTag = { label: string; tone: TagTone };
+
+type PaperRow = {
+  href: string;
+  title: string;
+  tags: PaperTag[];
+  count: string;
+  meta: string;
+};
+
+let announcements: { id: number; message: string; link: string | null }[] = [];
+
+try {
+  announcements = await all<{ id: number; message: string; link: string | null }>(
+    `SELECT id, message, link FROM announcements
+     WHERE is_active = 1
+       AND (starts_at IS NULL OR datetime(starts_at) <= datetime('now'))
+       AND (ends_at IS NULL OR datetime(ends_at) >= datetime('now'))
+     ORDER BY id DESC LIMIT 3`,
+  );
+} catch (error) {
+  console.error("homepage announcements failed", error);
+}
+
+const localPapers = getLocalPapers();
+const localYears = getLocalPaperYears();
+const popularPapers = getPopularLocalPapers(12);
+const subjectRows = getLocalSubjectSummaries().slice(0, 6);
+const localQuestionCount = localPapers.reduce(
+  (sum, paper) => sum + paper.recoveredQuestionCount,
+  0,
+);
+const localScorableCount = localPapers.reduce(
+  (sum, paper) => sum + paper.scorableQuestionCount,
+  0,
+);
+const localPendingCount = localPapers.reduce(
+  (sum, paper) => sum + paper.pendingReviewCount,
+  0,
+);
+
+function paperRow(paper: LocalPaperSummary): PaperRow {
+  const fullyKeyed = paper.pendingReviewCount === 0;
+  return {
+    href: paper.path,
+    title: paper.title,
+    tags: [
+      { label: String(paper.year), tone: "violet" },
+      { label: paper.subject.name, tone: "mint" },
+      {
+        label: fullyKeyed ? "Fully keyed" : `${paper.pendingReviewCount} pending`,
+        tone: fullyKeyed ? "mint" : "amber",
+      },
+    ],
+    count: `${paper.recoveredQuestionCount} question${paper.recoveredQuestionCount === 1 ? "" : "s"}`,
+    meta: `${paper.durationMinutes} min · ${paper.attemptCount.toLocaleString("en-IN")} attempt${paper.attemptCount === 1 ? "" : "s"}`,
+  };
+}
+
+const libraryRows = popularPapers.slice(0, 6).map(paperRow);
+const heroRows = popularPapers.slice(0, 4).map(paperRow);
+const libraryCount = localPapers.length;
+
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const noindex = (seo?.noindex ?? 0) === 1 || localPapers.length === 0;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "CUET Free Mock Test",
+    url: site.toString(),
+    description,
+    inLanguage: "en-IN",
+    publisher: { "@type": "Organization", name: "CUET Free Mock Test", url: site.toString() },
+  },
+  ...(popularPapers.length > 0
+    ? [
+        itemListJsonLd(
+          site,
+          popularPapers.map((paper) => ({ name: paper.title, path: paper.path })),
+        ),
+      ]
+    : []),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const heroTagTone: Record<TagTone, string> = {
+  mint: "bg-accent-50 text-accent-700 ring-1 ring-accent-200 dark:bg-accent-500/10 dark:text-accent-300 dark:ring-accent-500/20",
+  violet: "bg-brand-50 text-brand-700 ring-1 ring-brand-200 dark:bg-brand-500/15 dark:text-brand-300 dark:ring-brand-500/25",
+  amber: "bg-amber-50 text-amber-800 ring-1 ring-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/20",
+  neutral: "bg-neutral-100 text-neutral-600 ring-1 ring-neutral-200 dark:bg-white/5 dark:text-white/50 dark:ring-white/10",
+};
+
+const libraryTagTone: Record<TagTone, string> = {
+  mint: "bg-accent-50 text-accent-700 ring-1 ring-accent-200 dark:bg-accent-500/10 dark:text-accent-300 dark:ring-accent-500/20",
+  violet: "bg-brand-50 text-brand-700 ring-1 ring-brand-200 dark:bg-brand-500/15 dark:text-brand-300 dark:ring-brand-500/25",
+  amber: "bg-amber-50 text-amber-800 ring-1 ring-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/20",
+  neutral: "bg-neutral-100 text-neutral-600 ring-1 ring-neutral-200 dark:bg-white/5 dark:text-white/50 dark:ring-white/10",
+};
+
+const icons: Record<string, string> = {
+  clock: `<circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>`,
+  grid: `<rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect>`,
+  history: `<path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l3 2"></path>`,
+  chart: `<path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M8 16v-5"></path><path d="M13 16V8"></path><path d="M18 16v-3"></path>`,
+  target: `<circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle>`,
+  book: `<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>`,
+  monitor: `<rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path>`,
+  spark: `<path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"></path>`,
+  layers: `<path d="m12 2 9 5-9 5-9-5 9-5Z"></path><path d="m3 12 9 5 9-5"></path><path d="m3 17 9 5 9-5"></path>`,
+};
+
+const featureLinks = [
+  {
+    href: "/cuet-ug-mock-test",
+    title: "Timed mock tests",
+    hint: "Full-length, server-timed",
+    icon: "clock",
+  },
+  {
+    href: "/cuet-ug-syllabus",
+    title: "Topic practice",
+    hint: "Syllabus-led practice",
+    icon: "layers",
+  },
+  {
+    href: "/cuet-ug-previous-year-papers",
+    title: "Previous-year questions",
+    hint: "Past papers and practice",
+    icon: "history",
+  },
+  {
+    href: "/dashboard/history",
+    title: "Progress insights",
+    hint: "Scores and trends",
+    icon: "chart",
+  },
+];
+
+const rhythmSteps = [
+  {
+    number: "01",
+    title: "Build your base",
+    body: "Work through focused questions, get comfortable with the concepts, and keep your study sessions manageable.",
+    href: "/cuet-ug-syllabus",
+    cta: "Start practising",
+    icon: "book",
+  },
+  {
+    number: "02",
+    title: "Get exam-ready",
+    body: "Settle into an exam-style flow with a timer, question review, and a clear finish to each attempt.",
+    href: "/cuet-ug-mock-test",
+    cta: "Browse mock tests",
+    icon: "target",
+  },
+  {
+    number: "03",
+    title: "Learn from each try",
+    body: "Review your performance, spot topics to revisit, and use what you learned to plan your next session.",
+    href: "/dashboard/history",
+    cta: "View analytics",
+    icon: "chart",
+  },
+];
+
+const focusCards = [
+  {
+    title: "Exam-style sessions",
+    body: "Take a full paper with timed navigation to practise staying on pace.",
+    href: "/cuet-ug-mock-test",
+    icon: "monitor",
+  },
+  {
+    title: "Focused question sets",
+    body: "Select a subject or a topic and work through practice questions at your own pace.",
+    href: "/cuet-mock-test",
+    icon: "grid",
+  },
+  {
+    title: "Past-year review",
+    body: "Bring previous-year questions into your regular revision routine.",
+    href: "/cuet-ug-previous-year-papers",
+    icon: "history",
+  },
+  {
+    title: "A clearer review",
+    body: "Use your results to decide what to strengthen next.",
+    href: "/dashboard/history",
+    icon: "chart",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  noindex={noindex}
+  canonical={seo?.canonical_url}
+  structuredData={structuredData}
+>
+  {announcements.length > 0 ? (
+    <div class="border-b border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900">
+      <div class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-2.5 text-sm sm:px-6">
+        {announcements.map((announcement) => (
+          <p class="text-neutral-600 dark:text-white/65">
+            <span class="mr-2 rounded-full bg-accent-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-accent-700 dark:bg-accent-500/15 dark:text-accent-300">Notice</span>
+            {announcement.link ? (
+              <a class="font-semibold text-neutral-800 underline decoration-neutral-300 underline-offset-2 hover:decoration-accent-600 dark:text-white/85 dark:decoration-white/20 dark:hover:decoration-accent-300" href={announcement.link}>
+                {announcement.message}
+              </a>
+            ) : (
+              announcement.message
+            )}
+          </p>
+        ))}
+      </div>
+    </div>
+  ) : null}
+
+  <section class="hero-grid hero-fade relative overflow-hidden text-neutral-900 dark:text-white">
+    <div class="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 pb-20 pt-14 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:pb-24 lg:pt-20">
+      <div class="min-w-0">
+        <p class="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/70 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent-500 shadow-[var(--shadow-brand)] dark:bg-accent-400" aria-hidden="true"></span>
+          {localPapers.length} previous-year papers · {localYears.length} exam years
+        </p>
+
+        <h1 class="mt-6 max-w-2xl text-4xl font-black leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
+          Practice <span class="text-accent-700 dark:text-accent-300">FREE</span> Online CUET 2027 Mock Tests for UG
+        </h1>
+
+        <p class="mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8 dark:text-white/55">
+          NTA-pattern practice papers, previous-year questions (PYQs), and time-bound full-length test series for CUET UG. Start practising today.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/practice"
+            class="group inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-brand)] transition-colors hover:bg-brand-600"
+          >
+            Start a Mock Test
+            <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+          <a
+            href="/cuet-ug-previous-year-papers"
+            class="inline-flex items-center gap-2 rounded-xl border border-neutral-300 bg-white/70 px-5 py-3 text-sm font-bold text-neutral-700 transition-colors hover:bg-white hover:text-neutral-900 dark:border-white/15 dark:bg-white/[0.03] dark:text-white/80 dark:hover:bg-white/[0.08] dark:hover:text-white"
+          >
+            Browse Previous-Year Papers
+          </a>
+        </div>
+
+        <ul class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-600 dark:text-white/50">
+          <li class="flex items-center gap-2">
+            <span class="grid h-4 w-4 place-items-center rounded-full bg-accent-100 text-accent-700 dark:bg-accent-500/15 dark:text-accent-300" aria-hidden="true">
+              <svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"></path></svg>
+            </span>
+            Learn at your own pace.
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="grid h-4 w-4 place-items-center rounded-full bg-accent-100 text-accent-700 dark:bg-accent-500/15 dark:text-accent-300" aria-hidden="true">
+              <svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"></path></svg>
+            </span>
+            Pick up where you left off.
+          </li>
+        </ul>
+
+        <p class="mt-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-white/50">
+          {localPapers.length} papers · {localQuestionCount.toLocaleString("en-IN")} questions · {localScorableCount.toLocaleString("en-IN")} ready to score
+          {localPendingCount > 0 ? ` · ${localPendingCount} marked pending review` : ""}
+        </p>
+      </div>
+
+      <aside class="relative z-10 min-w-0" aria-labelledby="popular-heading">
+        <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white/85 shadow-xl shadow-neutral-900/10 backdrop-blur dark:border-white/10 dark:bg-white/[0.035] dark:shadow-2xl dark:shadow-black/40">
+          <div class="flex items-start justify-between gap-4 border-b border-neutral-200 px-5 py-4 dark:border-white/10">
+            <div>
+              <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500 dark:text-white/35">From the 2021–2025 previous-year library</p>
+              <h2 class="mt-1 text-base font-bold" id="popular-heading">Most Popular Mock Tests</h2>
+            </div>
+            <a
+              href="/practice"
+              class="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:border-white/10 dark:text-white/50 dark:hover:bg-white/10 dark:hover:text-white"
+              aria-label="View all mock tests"
+            >
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M7 17 17 7"></path>
+                <path d="M7 7h10v10"></path>
+              </svg>
+            </a>
+          </div>
+
+          {heroRows.length > 0 ? (
+            <div>
+              {heroRows.map((row) => (
+                <a
+                  href={row.href}
+                  class="group block border-b border-neutral-200 px-5 py-3.5 transition-colors last:border-b-0 hover:bg-neutral-50 dark:border-white/[0.07] dark:hover:bg-white/[0.03]"
+                >
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    {row.tags.map((tag) => (
+                      <span class:list={["rounded px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide", heroTagTone[tag.tone]]}>
+                        {tag.label}
+                      </span>
+                    ))}
+                  </div>
+                  <div class="mt-1.5 flex items-start justify-between gap-3">
+                    <p class="min-w-0 text-[13px] font-semibold leading-5 text-neutral-700 group-hover:text-neutral-900 dark:text-white/75 dark:group-hover:text-white">{row.title}</p>
+                    <div class="shrink-0 text-right text-[10px] leading-4 text-neutral-500 dark:text-white/35">
+                      <p class="font-semibold text-accent-700 dark:text-accent-300">{row.count}</p>
+                      <p>{row.meta}</p>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p class="px-5 py-8 text-sm leading-6 text-neutral-600 dark:text-white/45">
+              The previous-year paper library is being rebuilt. Study guides remain available in the meantime.
+            </p>
+          )}
+
+          <a
+            href="/practice"
+            class="flex items-center justify-center gap-2 px-5 py-3.5 text-[11px] font-bold text-brand-700 transition-colors hover:text-brand-900 dark:text-brand-300 dark:hover:text-white"
+          >
+            View All Mock Tests
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+
+        <p class="mt-3 text-center text-[10px] font-medium uppercase tracking-[0.16em] text-neutral-500 dark:text-white/25">
+          Independent practice · answers stay hidden until submit
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="relative bg-white py-14 dark:bg-ink-950 sm:py-16 lg:py-20" aria-labelledby="library-heading">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-700 dark:text-brand-300">Explore the library</p>
+          <h2 class="mt-3 max-w-xl text-3xl font-black tracking-tight sm:text-4xl" id="library-heading">
+            Most Popular Mock Tests and subject-wise practice.
+          </h2>
+        </div>
+        <p class="max-w-xl text-sm leading-7 text-neutral-600 dark:text-white/55 lg:justify-self-end">
+          Every paper below is a previous-year practice paper. Fully scored papers appear first, and every row opens the matching timed test or subject practice.
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-4 lg:grid-cols-2">
+        <div class="min-w-0 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
+          <div class="flex items-center justify-between gap-3 border-b border-neutral-200 px-4 py-3 dark:border-white/10">
+            <div class="flex min-w-0 items-center gap-2">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-300">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={icons.monitor} />
+              </span>
+              <span class="truncate text-[10px] font-bold uppercase tracking-[0.18em] text-neutral-500 dark:text-white/55">Mock test library</span>
+            </div>
+            <span class="shrink-0 text-[10px] font-semibold text-neutral-500 dark:text-white/55">{libraryCount} papers</span>
+          </div>
+
+          <div class="px-4 pb-1 pt-4">
+            <h3 class="text-lg font-bold">Most Popular Mock Tests</h3>
+            <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
+              Fully keyed papers first, then the newest and deepest sets.
+            </p>
+          </div>
+
+          <div class="mt-2">
+            {libraryRows.length > 0 ? (
+              libraryRows.map((row) => (
+                <a
+                  href={row.href}
+                  class="group flex flex-col gap-2 border-t border-neutral-100 px-4 py-3 transition-colors hover:bg-neutral-50 dark:border-white/[0.07] dark:hover:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-1.5">
+                      {row.tags.map((tag) => (
+                        <span class:list={["rounded px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide", libraryTagTone[tag.tone]]}>
+                          {tag.label}
+                        </span>
+                      ))}
+                    </div>
+                    <p class="mt-1.5 truncate text-sm font-semibold text-neutral-800 group-hover:text-brand-700 dark:text-white/75 dark:group-hover:text-white">
+                      {row.title}
+                    </p>
+                  </div>
+                  <div class="flex shrink-0 items-center gap-4 text-[10px] text-neutral-500 dark:text-white/55 sm:justify-end">
+                    <span><span class="font-bold text-accent-600 dark:text-accent-300">{row.count.split(" ")[0]}</span> {row.count.split(" ").slice(1).join(" ")}</span>
+                    <span>{row.meta}</span>
+                  </div>
+                </a>
+              ))
+            ) : (
+              <p class="border-t border-neutral-100 px-4 py-8 text-center text-sm text-neutral-600 dark:border-white/[0.07] dark:text-white/55">
+                No previous-year paper is published yet. The library is being rebuilt paper by paper.
+              </p>
+            )}
+          </div>
+
+          <a href="/practice" class="flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]">
+            View All Mock Tests
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="min-w-0 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
+          <div class="flex items-center justify-between gap-3 border-b border-neutral-200 px-4 py-3 dark:border-white/10">
+            <div class="flex min-w-0 items-center gap-2">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-accent-50 text-accent-700 dark:bg-accent-500/10 dark:text-accent-300">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={icons.layers} />
+              </span>
+              <span class="truncate text-[10px] font-bold uppercase tracking-[0.18em] text-neutral-500 dark:text-white/55">Practice library</span>
+            </div>
+            <span class="shrink-0 text-[10px] font-semibold text-neutral-500 dark:text-white/55">{subjectRows.length} subjects</span>
+          </div>
+
+          <div class="px-4 pb-1 pt-4">
+            <h3 class="text-lg font-bold">Most Popular Subject Practice</h3>
+            <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
+              Open a subject to compare its papers across 2021–2025.
+            </p>
+          </div>
+
+          <div class="mt-2">
+            {subjectRows.length > 0 ? (
+              subjectRows.map((subject) => (
+                <div class="flex items-center justify-between gap-4 border-t border-neutral-100 px-4 py-4 dark:border-white/[0.07]">
+                  <div class="min-w-0">
+                    <p class="text-[9px] font-bold uppercase tracking-[0.16em] text-neutral-500 dark:text-white/55">Subject</p>
+                    <p class="mt-1 truncate font-semibold text-neutral-800 dark:text-white/80">{subject.subject.name}</p>
+                    <p class="mt-0.5 text-[10px] uppercase tracking-wide text-neutral-500 dark:text-white/55">
+                      {subject.paperCount} paper{subject.paperCount === 1 ? "" : "s"} · latest {subject.latestYear}
+                    </p>
+                  </div>
+                  <div class="shrink-0 text-right">
+                    <p class="text-[9px] font-bold uppercase tracking-[0.16em] text-neutral-500 dark:text-white/55">Questions / keyed</p>
+                    <p class="mt-1 text-sm font-bold text-accent-600 dark:text-accent-300">{subject.questionCount} / {subject.scorableQuestionCount}</p>
+                    <a class="mt-1 inline-flex text-[11px] font-semibold text-brand-700 hover:underline dark:text-brand-300" href={subject.href}>
+                      Practice available →
+                    </a>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div class="border-t border-neutral-100 px-4 py-10 text-center text-sm text-neutral-500 dark:border-white/[0.07] dark:text-white/55">
+                Subject practice opens when the first paper is published.
+              </div>
+            )}
+          </div>
+
+          <a href="/cuet-ug-previous-year-papers" class="flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]">
+            View All Subjects
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/60" aria-label="Library shortcuts">
+    <div class="mx-auto grid max-w-6xl gap-3 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+      {featureLinks.map((feature) => (
+        <a
+          href={feature.href}
+          class="group flex min-w-0 items-center gap-3 rounded-xl border border-neutral-200 bg-white p-3.5 transition-colors hover:border-brand-300 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/40"
+        >
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-300">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" set:html={icons[feature.icon]} />
+          </span>
+          <span class="min-w-0">
+            <span class="block truncate text-[13px] font-bold text-neutral-800 dark:text-white/80">{feature.title}</span>
+            <span class="block truncate text-[10px] text-neutral-500 dark:text-white/55">{feature.hint}</span>
+          </span>
+          <svg class="ml-auto h-3.5 w-3.5 shrink-0 text-neutral-500 transition-transform group-hover:translate-x-0.5 dark:text-white/55" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200 bg-white py-10 dark:border-white/10 dark:bg-ink-950" aria-labelledby="local-practice-heading">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="rounded-2xl border border-amber-200 bg-amber-50/70 p-5 dark:border-amber-500/20 dark:bg-amber-500/[0.06] sm:p-6">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-300">
+              Full library · 2021–2025
+            </p>
+            <h2 class="mt-2 text-2xl font-black tracking-tight" id="local-practice-heading">
+              Browse every previous-year paper by year
+            </h2>
+            <p class="mt-2 max-w-2xl text-sm leading-6 text-neutral-700 dark:text-white/60">
+              {localPapers.length} papers · {localQuestionCount.toLocaleString("en-IN")} questions · {localScorableCount.toLocaleString("en-IN")} ready to score. Results are graded on the server, saved to your account and ranked on the leaderboard.
+            </p>
+          </div>
+          <a
+            href="/practice"
+            class="inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-white px-4 py-2.5 text-sm font-bold text-amber-900 transition-colors hover:border-amber-400 hover:bg-amber-50 dark:border-amber-500/30 dark:bg-white/[0.04] dark:text-amber-200 dark:hover:bg-white/[0.08]"
+          >
+            Browse the practice library
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          {localYears.map((entry) => (
+            <a
+              href={`/pyq/${entry.year}`}
+              class="group inline-flex items-baseline gap-2 rounded-xl border border-amber-200/80 bg-white/80 px-4 py-2.5 text-sm font-bold text-neutral-800 transition-colors hover:border-amber-400 hover:text-amber-900 dark:border-white/10 dark:bg-white/[0.03] dark:text-white/75 dark:hover:border-amber-500/40 dark:hover:text-white"
+            >
+              {entry.year}
+              <span class="text-[10px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-white/45">
+                {entry.paper_count} paper{entry.paper_count === 1 ? "" : "s"}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SeoIntro html={seo?.intro_html} width="wide" />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20" aria-labelledby="rhythm-heading">
+    <div class="grid gap-6 lg:grid-cols-[1fr_0.85fr] lg:items-end">
+      <div>
+        <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-700 dark:text-brand-300">A simple study rhythm</p>
+        <h2 class="mt-3 max-w-xl text-3xl font-black tracking-tight sm:text-4xl" id="rhythm-heading">
+          Small steps add up to stronger preparation.
+        </h2>
+      </div>
+      <p class="max-w-md text-sm leading-7 text-neutral-600 dark:text-white/55 lg:justify-self-end">
+        Move from learning to exam practice, then use what you learned to plan the next session.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      {rhythmSteps.map((step) => (
+        <article class="flex min-w-0 flex-col rounded-2xl border border-neutral-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.035]">
+          <div class="flex items-center justify-between gap-3">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-300">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" set:html={icons[step.icon]} />
+            </span>
+            <span class="text-[10px] font-black tracking-[0.2em] text-neutral-500 dark:text-white/55">{step.number}</span>
+          </div>
+          <h3 class="mt-5 text-lg font-bold">{step.title}</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-white/55">{step.body}</p>
+          <a class="mt-auto pt-5 text-xs font-bold text-brand-700 hover:underline dark:text-brand-300" href={step.href}>
+            {step.cta} →
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/40" aria-labelledby="focus-heading">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:py-20">
+      <div>
+        <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-700 dark:text-brand-300">Made for your next session</p>
+        <h2 class="mt-3 max-w-sm text-3xl font-black tracking-tight sm:text-4xl">
+          Less guesswork. More focused practice.
+        </h2>
+        <p class="mt-4 max-w-sm text-sm leading-7 text-neutral-600 dark:text-white/55">
+          Find the right place to begin, take a mock when you are ready, and revisit the areas that need another look.
+        </p>
+        <a href="/cuet-mock-test" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600">
+          Browse subjects and categories
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14"></path>
+            <path d="m13 6 6 6-6 6"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        {focusCards.map((card) => (
+          <a
+            href={card.href}
+            class="group flex min-w-0 flex-col rounded-2xl border border-neutral-200 bg-white p-5 transition-colors hover:border-brand-300 dark:border-white/10 dark:bg-white/[0.035] dark:hover:border-brand-500/40"
+          >
+            <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-300">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" set:html={icons[card.icon]} />
+            </span>
+            <h3 class="mt-4 font-bold">{card.title}</h3>
+            <p class="mt-1.5 text-xs leading-6 text-neutral-600 dark:text-white/55">{card.body}</p>
+            <span class="mt-auto pt-4 text-brand-700 dark:text-brand-300" aria-hidden="true">
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14"></path>
+                <path d="m13 6 6 6-6 6"></path>
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 pb-4 pt-10 sm:px-6">
+    <FaqSection faqs={faqs} intro="Quick answers about accounts, timing, scoring and independence." />
+  </div>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
+    <div class="session-glow relative overflow-hidden rounded-3xl p-8 text-center text-white shadow-[var(--shadow-brand)] sm:p-12 lg:p-14">
+      <span class="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full border border-white/10" aria-hidden="true"></span>
+      <span class="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full border border-white/10" aria-hidden="true"></span>
+
+      <div class="relative z-10 mx-auto max-w-2xl">
+        <span class="mx-auto grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-white/10">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={icons.spark} />
+        </span>
+        <h2 class="mt-5 text-3xl font-black tracking-tight sm:text-4xl">Start with one good session.</h2>
+        <p class="mt-3 text-sm leading-7 text-white/70">
+          Choose a mock test or jump into practice. Your CUET preparation can move forward one question at a time.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a href="/cuet-ug-mock-test" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-brand-800 transition-colors hover:bg-brand-50">
+            Choose a mock test
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+          <a href="/practice" class="inline-flex items-center gap-2 rounded-xl border border-white/40 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10">
+            Explore Practice
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

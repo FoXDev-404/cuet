@@ -1,0 +1,281 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { all, first } from "../lib/db";
+import { getLocalSubjectSummary } from "../lib/local-papers";
+import { renderRichText } from "../lib/content";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  formatVerified,
+  getExamInfo,
+  getPageSeo,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/cuet-ug-syllabus";
+const DEFAULT_TITLE = "CUET UG Syllabus — Section-wise Guide and Subject Map";
+const DEFAULT_DESCRIPTION =
+  "A practical guide to the CUET UG syllabus: languages, domain subjects and the General Test, plus a subject map you can practise on this site.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "Where is the official CUET UG syllabus?",
+    answer:
+      "NTA publishes the authoritative syllabus in the information bulletin for the current session at cuet.nta.nic.in. This page does not reproduce that document; it explains how to read it and how to practise against it.",
+  },
+  {
+    question: "Does this site cover the entire syllabus?",
+    answer:
+      "Not yet. The practice library grows paper by paper, and the subject cards below show how many questions are available today. Every mock lists its own sections, duration and marking scheme before you start.",
+  },
+  {
+    question: "Which language section should I choose?",
+    answer:
+      "Choose a language you have studied and can read at speed. The official bulletin lists the languages offered in the current session. Practise reading comprehension and grammar in that language rather than switching late in your preparation.",
+  },
+  {
+    question: "How do domain subjects and university eligibility interact?",
+    answer:
+      "The subjects you can choose depend on the programme and university you are applying to. Check the university's eligibility rules alongside the NTA bulletin, because a subject that is allowed by NTA may still not satisfy a particular course requirement.",
+  },
+  {
+    question: "Are NCERT textbooks enough for the domain subjects?",
+    answer:
+      "NCERT books are a sensible baseline for many domain subjects, but the official syllabus defines the scope and the university may add eligibility conditions. Use the syllabus as a checklist, then practise with questions to find gaps.",
+  },
+  {
+    question: "How do I practise one subject on this site?",
+    answer:
+      "Open the subject card below. Each subject page lists available papers and the size of the practice library. You can also filter the full mock list by paper type.",
+  },
+];
+
+const exam = await first<{ id: number; name: string }>(
+  "SELECT id, name FROM exams WHERE slug = 'cuet-ug' AND is_active = 1",
+);
+const subjects = exam
+  ? await all<{
+      id: number;
+      name: string;
+      slug: string;
+      type: string;
+      question_count: number;
+      mock_count: number;
+    }>(
+      `SELECT s.id, s.name, s.slug, s.type,
+              (SELECT COUNT(DISTINCT q.id) FROM questions q
+                JOIN mock_questions_current mq ON mq.question_id = q.id
+                JOIN mock_tests m ON m.id = mq.mock_id
+                WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL
+                  AND m.status = 'published' AND m.deleted_at IS NULL
+                  AND m.practice_paper_slug IS NULL) AS question_count,
+              (SELECT COUNT(DISTINCT m.id) FROM mock_tests m
+                WHERE m.status = 'published' AND m.deleted_at IS NULL
+                  AND m.practice_paper_slug IS NULL
+                  AND (m.subject_id = s.id OR EXISTS (
+                    SELECT 1 FROM mock_questions_current mq
+                    JOIN questions q2 ON q2.id = mq.question_id
+                    WHERE mq.mock_id = m.id AND q2.subject_id = s.id
+                  ))) AS mock_count
+       FROM subjects s
+       WHERE s.exam_id = ? AND s.is_active = 1
+       ORDER BY CASE s.type WHEN 'language' THEN 0 WHEN 'domain' THEN 1 ELSE 2 END, s.name`,
+      exam.id,
+    )
+  : [];
+
+const subjectCards = subjects.map((subject) => {
+  const local = getLocalSubjectSummary(subject.slug);
+  return {
+    ...subject,
+    question_count: subject.question_count + (local?.questionCount ?? 0),
+    mock_count: subject.mock_count + (local?.paperCount ?? 0),
+  };
+});
+const languages = subjectCards.filter((subject) => subject.type === "language");
+const domains = subjectCards.filter((subject) => subject.type === "domain");
+const general = subjectCards.filter((subject) => subject.type !== "language" && subject.type !== "domain");
+
+const seo = await getPageSeo(PATH);
+const info = (await getExamInfo(["syllabus"]))["syllabus"];
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const verified = formatVerified(info?.last_verified);
+const noindex = (seo?.noindex ?? 0) === 1 || subjects.length === 0;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "CUET UG syllabus", path: PATH },
+  ]),
+  articleJsonLd({
+    site,
+    title,
+    description,
+    path: PATH,
+    updated: seo?.updated_at ?? info?.last_verified ?? null,
+  }),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const groups = [
+  {
+    key: "language",
+    heading: "Language sections",
+    copy: "Reading comprehension, vocabulary, grammar and verbal ability. Pick one language and practise it consistently.",
+    items: languages,
+  },
+  {
+    key: "domain",
+    heading: "Domain subjects",
+    copy: "Subject knowledge drawn from the class 12 curriculum. Your choices depend on the university programme you are targeting.",
+    items: domains,
+  },
+  {
+    key: "general",
+    heading: "General Test",
+    copy: "General awareness, current events, quantitative reasoning, logical reasoning and data interpretation.",
+    items: general,
+  },
+].filter((group) => group.items.length > 0);
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Syllabus"
+    title="The CUET UG syllabus, turned into a study plan"
+    intro="Use the official NTA bulletin as the scope, then use practice to find what you actually know. This guide maps the sections, explains how to read the bulletin, and links every subject to the questions available here."
+    updated={verified}
+  />
+
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <section class="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="font-bold text-amber-900 dark:text-amber-200">Read the official syllabus first</h2>
+      <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
+        NTA publishes the authoritative syllabus and any changes in the current information bulletin. This page is an editorial guide, not a replacement for that document.
+        {verified ? ` The summary below was last reviewed on ${verified}.` : " No official summary has been verified for the current session yet."}
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2 text-sm">
+        {info?.source_url ? (
+          <a class="rounded-lg bg-amber-900 px-3 py-2 font-bold text-white hover:bg-amber-800 dark:bg-amber-200 dark:text-amber-950" href={info.source_url} rel="noopener noreferrer" target="_blank">
+            Official syllabus source
+          </a>
+        ) : (
+          <a class="rounded-lg bg-amber-900 px-3 py-2 font-bold text-white hover:bg-amber-800 dark:bg-amber-200 dark:text-amber-950" href="https://cuet.nta.nic.in/" rel="noopener noreferrer" target="_blank">
+            NTA CUET portal
+          </a>
+        )}
+        <a class="rounded-lg border border-amber-300 px-3 py-2 font-bold text-amber-900 hover:bg-amber-100 dark:border-amber-800 dark:text-amber-100 dark:hover:bg-amber-950" href="/cuet-ug-exam-pattern">
+          See the exam pattern guide
+        </a>
+      </div>
+      {info?.value ? (
+        <div class="mt-4 whitespace-pre-wrap rounded-xl bg-white/70 p-4 text-sm leading-7 text-amber-950 dark:bg-neutral-950/60 dark:text-amber-100">
+          {info.value}
+        </div>
+      ) : null}
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">Subject map</h2>
+      <p class="mt-2 max-w-3xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        These are the subject areas active in the question bank. The count beside each subject is the number of questions you can practise right now, not an official exam weightage.
+      </p>
+
+      <div class="mt-6 space-y-8">
+        {groups.map((group) => (
+          <div>
+            <h3 class="text-lg font-bold">{group.heading}</h3>
+            <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">{group.copy}</p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              {group.items.map((subject) => (
+                <div class="rounded-2xl border border-neutral-200 bg-white p-4 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-brand-700">
+                  <a class="group flex items-start justify-between gap-4" href={`/cuet-ug-syllabus/${subject.slug}`}>
+                    <div class="min-w-0">
+                      <p class="font-bold group-hover:text-brand-700 dark:group-hover:text-brand-300">{subject.name} syllabus</p>
+                      <p class="mt-1 text-xs text-neutral-600 dark:text-neutral-400">
+                        {subject.question_count} question{subject.question_count === 1 ? "" : "s"} available · {subject.mock_count} paper{subject.mock_count === 1 ? "" : "s"}
+                      </p>
+                    </div>
+                    <span class="mt-0.5 text-brand-600 dark:text-brand-400" aria-hidden="true">→</span>
+                  </a>
+                  <a class="mt-2 inline-block text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/cuet-mock-test/${subject.slug}`}>Practise {subject.name} →</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">Turn the syllabus into a weekly plan</h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Step 1</p>
+          <h3 class="mt-2 font-bold">Mark the scope</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+            Print or copy the official unit list. Tick only the units that appear in the current bulletin. Delete rumours and last year's extra chapters.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Step 2</p>
+          <h3 class="mt-2 font-bold">Diagnose before you revise</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+            Take one timed paper early. The score matters less than the section breakdown: it tells you which units deserve the next two weeks.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Step 3</p>
+          <h3 class="mt-2 font-bold">Study in exam units</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+            Group chapters the way the paper groups them. A language section rewards speed and vocabulary; a domain section rewards recall and application. Study differently for each.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Step 4</p>
+          <h3 class="mt-2 font-bold">Re-test, don't re-read</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+            End each week with a timed section. Review every wrong answer in the solutions, then note whether the cause was a concept gap, a reading error or a guess.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">What the syllabus does not tell you</h2>
+      <ul class="mt-3 space-y-3 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Chapter weightage.</strong> Official documents rarely publish a fixed number of questions per chapter. Treat social-media weightage charts as guesses and let timed practice reveal where marks actually come from.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Question difficulty.</strong> The same unit can be tested at recall level or application level. A mock with a written solution shows you the difference.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">University eligibility.</strong> NTA conducts the test; universities set programme requirements. Read both before locking your subject combination.</li>
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Put the syllabus to work</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">
+            Start with a timed paper, then use the section analysis to decide what to study next.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Browse mock tests</a>
+          <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-exam-pattern">Exam pattern</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

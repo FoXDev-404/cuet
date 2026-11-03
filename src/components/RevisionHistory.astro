@@ -1,0 +1,143 @@
+---
+import { formatDateTime } from "../lib/content";
+import type { RevisionRow } from "../lib/admin/revisions";
+
+interface Props {
+  entityType: string;
+  entityId: number;
+  current: Record<string, unknown>;
+  revisions: RevisionRow[];
+  canRestore: boolean;
+}
+
+const { entityType, entityId, current, revisions, canRestore } = Astro.props;
+
+type RevisionView = RevisionRow & {
+  snapshot: Record<string, unknown> | null;
+  changed: string[];
+};
+
+const views: RevisionView[] = revisions.map((revision) => {
+  let snapshot: Record<string, unknown> | null = null;
+  try {
+    const parsed = JSON.parse(revision.snapshot_json) as unknown;
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      snapshot = parsed as Record<string, unknown>;
+    }
+  } catch {
+    snapshot = null;
+  }
+  const changed = snapshot
+    ? Object.keys(snapshot)
+        .filter((key) => JSON.stringify(snapshot![key]) !== JSON.stringify(current[key]))
+        .slice(0, 20)
+    : [];
+  return { ...revision, snapshot, changed };
+});
+
+const liveChanges = views.filter(
+  (view) => view.reason && !view.reason.startsWith("Before "),
+);
+---
+
+
+<section class="card mt-8" id="history" aria-labelledby="revision-heading">
+  <div class="border-b border-token px-4 py-3">
+    <h2 id="revision-heading" class="font-bold">Revision history</h2>
+    <p class="mt-1 text-xs text-muted-token">
+      Every save stores the previous row first. Restoring a revision also stores the current row, so it can be undone.
+    </p>
+  </div>
+
+  {liveChanges.length > 0 ? (
+    <div class="m-4 rounded-xl border border-token bg-surface p-4" role="status">
+      <p class="text-sm font-semibold">Live content was changed in place</p>
+      <ul class="mt-2 space-y-1 text-xs text-muted-token">
+        {liveChanges.map((view) => (
+          <li>
+            Admin #{view.admin_id ?? "unknown"} at {formatDateTime(view.created_at)} — {view.reason}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : null}
+
+  {views.length === 0 ? (
+    <p class="px-4 py-8 text-sm text-muted-token">
+      No revisions yet for {entityType} #{entityId}. The first save will create one.
+    </p>
+  ) : (
+    <ol class="divide-y divide-[var(--border)]">
+      {views.map((view) => (
+        <li class="px-4 py-4">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div class="min-w-0">
+              <p class="text-sm font-semibold">
+                Revision #{view.id}
+                <span class="ml-2 rounded-full bg-surface px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-muted-token">
+                  {view.changed.length} changed
+                </span>
+              </p>
+              <p class="mt-1 text-xs text-muted-token">
+                {formatDateTime(view.created_at)} · Admin #{view.admin_id ?? "unknown"}
+                {view.reason ? ` · ${view.reason}` : ""}
+              </p>
+              {view.changed.length > 0 ? (
+                <p class="mt-2 break-words text-xs text-body-2">
+                  {view.changed.join(", ")}
+                </p>
+              ) : null}
+            </div>
+            {canRestore ? (
+              <button
+                type="button"
+                class="min-h-11 rounded-lg border border-token px-3 py-2 text-xs font-bold hover:bg-surface disabled:opacity-60"
+                data-restore-revision={view.id}
+                data-revision-label={`revision #${view.id}`}
+              >
+                Restore
+              </button>
+            ) : null}
+          </div>
+          {view.snapshot ? (
+            <details class="mt-2">
+              <summary class="cursor-pointer text-xs font-semibold text-link">Show stored snapshot</summary>
+              <pre class="mt-2 max-h-72 overflow-auto rounded-lg bg-surface p-3 text-xs">{JSON.stringify(view.snapshot, null, 2)}</pre>
+            </details>
+          ) : (
+            <p class="mt-2 text-xs text-muted-token">This snapshot could not be parsed.</p>
+          )}
+        </li>
+      ))}
+    </ol>
+  )}
+</section>
+
+<script>
+  const status = document.createElement("p");
+  status.className = "mt-2 text-xs text-muted-token";
+  status.setAttribute("role", "status");
+
+  document.querySelectorAll<HTMLButtonElement>("[data-restore-revision]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const id = button.dataset.restoreRevision;
+      const label = button.dataset.revisionLabel ?? `revision #${id}`;
+      if (!id || !confirm(`Restore ${label}? The current row is saved as a new revision first.`)) return;
+
+      button.disabled = true;
+      const original = button.textContent;
+      button.textContent = "Restoring…";
+      try {
+        const response = await fetch(`/api/admin/revisions/${id}/restore`, { method: "POST" });
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) throw new Error(result.error || "Could not restore the revision.");
+        location.reload();
+      } catch (error) {
+        button.disabled = false;
+        button.textContent = original;
+        status.textContent = error instanceof Error ? error.message : "Could not restore the revision.";
+        button.insertAdjacentElement("afterend", status);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { all } from "../../lib/db";
+import { formatDate } from "../../lib/content";
+import { dashboardNav } from "../../lib/navigation";
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect(`/login?next=${encodeURIComponent("/dashboard/wrong-questions")}`, 303);
+
+const wrong = await all<{
+  question_id: number;
+  text: string;
+  subject_name: string;
+  wrong_count: number;
+  last_wrong: string;
+  attempt_id: number;
+  mock_title: string;
+  mock_slug: string;
+}>(
+  `SELECT aa.question_id, q.text, s.name AS subject_name,
+          COUNT(*) AS wrong_count, MAX(a.submitted_at) AS last_wrong,
+          MAX(a.id) AS attempt_id, MAX(m.title) AS mock_title, MAX(m.slug) AS mock_slug
+   FROM attempt_answers aa
+   JOIN attempts a ON a.id = aa.attempt_id
+   JOIN questions q ON q.id = aa.question_id
+   JOIN subjects s ON s.id = q.subject_id
+   JOIN mock_tests m ON m.id = a.mock_id
+   WHERE a.user_id = ? AND a.status IN ('submitted', 'expired')
+     AND aa.selected IS NOT NULL AND aa.is_correct = 0 AND q.deleted_at IS NULL
+   GROUP BY aa.question_id
+   ORDER BY wrong_count DESC, last_wrong DESC
+   LIMIT 100`,
+  user.id,
+);
+---
+
+<BaseLayout title="Wrong questions — CUET Free Mock Test" description="Questions you answered incorrectly, plus a private unranked retry." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
+  <section class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <h1 class="text-2xl font-black tracking-tight">Wrong questions</h1>
+        <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+          Built only from submitted and expired attempts. A question appears once, with the number of times you missed it. Small samples are not labelled as “weak topics”; use the count as a starting point.
+        </p>
+      </div>
+      {wrong.length > 0 ? (
+        <a class="shrink-0 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/dashboard/wrong-questions/retry">Retry up to 20 →</a>
+      ) : null}
+    </div>
+
+    {wrong.length === 0 ? (
+      <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
+        <h2 class="font-bold">Nothing here yet</h2>
+        <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">Finish a mock and every incorrect answer will be collected here for revision.</p>
+        <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse mock tests</a>
+      </div>
+    ) : (
+      <ul class="mt-6 space-y-3">
+        {wrong.map((row) => (
+          <li class="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+            <div class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+              <span class="rounded-full bg-neutral-100 px-2 py-0.5 font-semibold dark:bg-neutral-800">{row.subject_name}</span>
+              <span class="rounded-full bg-red-100 px-2 py-0.5 font-semibold text-red-900 dark:bg-red-950/50 dark:text-red-200">Missed {row.wrong_count}×</span>
+              <span>{row.mock_title}</span>
+              <span>Last miss {formatDate(row.last_wrong)}</span>
+            </div>
+            <p class="mt-2 line-clamp-3 text-sm leading-6">{row.text.replace(/\$[^$]+\$/g, "…")}</p>
+            <a class="mt-3 inline-block text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/result/${row.attempt_id}/solutions#q-${row.question_id}`}>Open the solution →</a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</BaseLayout>

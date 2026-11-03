@@ -1,0 +1,410 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Dark applies when the user chose dark, OR when the OS is dark and the user
+   has not chosen light. System mode removes data-theme, so the media query
+   alone drives it — no JS listener required. */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(html:not([data-theme="light"]), html:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
+@theme inline {
+  --color-brand-50: var(--palette-brand-50);
+  --color-brand-100: var(--palette-brand-100);
+  --color-brand-200: var(--palette-brand-200);
+  --color-brand-300: var(--palette-brand-300);
+  --color-brand-400: var(--palette-brand-400);
+  --color-brand-500: var(--palette-brand-500);
+  --color-brand-600: var(--palette-brand-600);
+  --color-brand-700: var(--palette-brand-700);
+  --color-brand-800: var(--palette-brand-800);
+  --color-brand-900: var(--palette-brand-900);
+  --color-brand-950: var(--palette-brand-950);
+
+  --color-accent-50: var(--palette-accent-50);
+  --color-accent-100: var(--palette-accent-100);
+  --color-accent-200: var(--palette-accent-200);
+  --color-accent-300: var(--palette-accent-300);
+  --color-accent-400: var(--palette-accent-400);
+  --color-accent-500: var(--palette-accent-500);
+  --color-accent-600: var(--palette-accent-600);
+  --color-accent-700: var(--palette-accent-700);
+  --color-accent-800: var(--palette-accent-800);
+  --color-accent-900: var(--palette-accent-900);
+  --color-accent-950: var(--palette-accent-950);
+
+  --color-neutral-50: var(--palette-neutral-50);
+  --color-neutral-100: var(--palette-neutral-100);
+  --color-neutral-200: var(--palette-neutral-200);
+  --color-neutral-300: var(--palette-neutral-300);
+  --color-neutral-400: var(--palette-neutral-400);
+  --color-neutral-500: var(--palette-neutral-500);
+  --color-neutral-600: var(--palette-neutral-600);
+  --color-neutral-700: var(--palette-neutral-700);
+  --color-neutral-800: var(--palette-neutral-800);
+  --color-neutral-900: var(--palette-neutral-900);
+  --color-neutral-950: var(--palette-neutral-950);
+
+  --color-ink-700: var(--palette-neutral-700);
+  --color-ink-800: var(--palette-neutral-800);
+  --color-ink-900: var(--palette-neutral-900);
+  --color-ink-950: var(--palette-neutral-950);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Hindi benefits from a taller line box. */
+:lang(hi) {
+  line-height: 1.75;
+}
+
+::selection {
+  background: var(--chip-bg);
+  color: var(--chip-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ===== Shared presentational utilities (token-only) ===== */
+
+.bg-page {
+  background-color: var(--bg);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.bg-surface-2 {
+  background-color: var(--surface-2);
+}
+
+.text-body {
+  color: var(--ink);
+}
+
+.text-body-2 {
+  color: var(--ink-2);
+}
+
+.text-muted-token {
+  color: var(--muted);
+}
+
+.border-token {
+  border-color: var(--border);
+}
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.media-frame {
+  background: var(--media-bg);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.media-frame img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-ink);
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -4rem;
+  z-index: 100;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--ink);
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* Theme toggle: one 44x44 cycling button. Icons swap on data-theme; the
+   system icon is the default (no attribute). */
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.theme-toggle .icon-light,
+.theme-toggle .icon-dark {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .icon-system,
+:root[data-theme="light"] .theme-toggle .icon-dark {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .icon-light {
+  display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-system,
+:root[data-theme="dark"] .theme-toggle .icon-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-dark {
+  display: block;
+}
+
+/* ===== Marketing hero and decorative surfaces ===== */
+
+.hero-grid {
+  background-color: var(--surface);
+  background-image:
+    radial-gradient(
+      ellipse 68% 58% at 50% -18%,
+      color-mix(in srgb, var(--primary) 16%, transparent),
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 42% 42% at 88% 18%,
+      color-mix(in srgb, var(--cta) 14%, transparent),
+      transparent 72%
+    ),
+    linear-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px);
+  background-size: auto, auto, 64px 64px, 64px 64px;
+}
+
+.hero-fade::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 7rem;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+}
+
+.session-glow {
+  background-image:
+    radial-gradient(
+      ellipse 70% 90% at 20% 0%,
+      color-mix(in srgb, var(--on-primary) 20%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 55% 70% at 88% 100%,
+      color-mix(in srgb, var(--cta) 22%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(120deg, var(--primary-hover) 0%, var(--primary) 50%, var(--primary-hover) 100%);
+  color: var(--on-primary);
+}
+
+.footer-band {
+  background: var(--footer-bg);
+  color: var(--footer-ink);
+}
+
+/* Admin uses an unmistakable dark band so it is never confused with the
+   public site, while content below keeps the normal token surfaces. */
+.admin-band {
+  background: var(--footer-bg);
+  color: var(--footer-ink);
+}
+
+.admin-band a {
+  color: var(--footer-muted);
+}
+
+.admin-band a:hover {
+  color: var(--footer-ink);
+  background: color-mix(in srgb, var(--footer-ink) 10%, transparent);
+}
+
+.admin-band a[aria-current="page"] {
+  color: var(--footer-ink);
+  background: color-mix(in srgb, var(--footer-ink) 16%, transparent);
+}
+
+.admin-band .theme-toggle {
+  border-color: color-mix(in srgb, var(--footer-ink) 35%, transparent);
+  background: transparent;
+  color: var(--footer-ink);
+}
+
+.admin-band .theme-toggle:hover {
+  background: color-mix(in srgb, var(--footer-ink) 12%, transparent);
+  color: var(--footer-ink);
+}
+
+.admin-band input[type="search"] {
+  background: color-mix(in srgb, var(--footer-ink) 8%, transparent);
+  border-color: color-mix(in srgb, var(--footer-ink) 30%, transparent);
+  color: var(--footer-ink);
+}
+
+.admin-band input[type="search"]::placeholder {
+  color: var(--footer-muted);
+}
+
+.admin-band .admin-band-muted {
+  color: var(--footer-muted);
+}
+
+.ad-slot {
+  min-height: 280px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* ===== Motion, forced colours, print ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid CanvasText;
+    outline-offset: 2px;
+  }
+
+  .theme-toggle,
+  .card,
+  input,
+  select,
+  textarea,
+  button,
+  .chip {
+    border: 1px solid ButtonText;
+  }
+
+  .theme-toggle button[aria-pressed="true"] {
+    outline: 2px solid Highlight;
+  }
+}
+
+@media print {
+  :root,
+  :root[data-theme="dark"] {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  header,
+  footer,
+  nav,
+  .theme-toggle,
+  .ad-slot,
+  .no-print,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .card,
+  .media-frame {
+    border: 1px solid var(--border);
+    box-shadow: none;
+  }
+}

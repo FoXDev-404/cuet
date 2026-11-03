@@ -1,0 +1,288 @@
+---
+import { siteUrl } from "../../../lib/site-url";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import FaqSection from "../../../components/FaqSection.astro";
+import { all, first } from "../../../lib/db";
+import { parseMarkingScheme, renderRichText } from "../../../lib/content";
+import {
+  breadcrumbJsonLd,
+  getPageSeo,
+  itemListJsonLd,
+  parseFaq,
+  type FaqItem,
+} from "../../../lib/seo";
+
+const subjectSlug = Astro.params.subject ?? "";
+const topicSlug = Astro.params.topic ?? "";
+
+const subject = await first<{ id: number; name: string; slug: string; type: string }>(
+  `SELECT s.id, s.name, s.slug, s.type
+   FROM subjects s JOIN exams e ON e.id = s.exam_id
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+  subjectSlug,
+);
+if (!subject) return new Response("Topic not found", { status: 404 });
+
+const topic = await first<{ id: number; name: string; slug: string }>(
+  "SELECT id, name, slug FROM topics WHERE slug = ? AND subject_id = ?",
+  topicSlug,
+  subject.id,
+);
+if (!topic) return new Response("Topic not found", { status: 404 });
+
+const questionCount = await first<{ count: number }>(
+  `SELECT COUNT(DISTINCT q.id) AS count
+   FROM questions q
+   JOIN mock_questions_current mq ON mq.question_id = q.id
+   JOIN mock_tests m ON m.id = mq.mock_id
+   WHERE q.topic_id = ? AND q.status = 'published' AND q.deleted_at IS NULL
+     AND m.status = 'published' AND m.deleted_at IS NULL
+     AND m.practice_paper_slug IS NULL`,
+  topic.id,
+);
+const publishedQuestions = questionCount?.count ?? 0;
+if (publishedQuestions === 0) return new Response("Topic not published yet", { status: 404 });
+
+const [papers, relatedTopics] = await Promise.all([
+  all<{
+    id: number;
+    title: string;
+    slug: string;
+    type: string;
+    duration_min: number;
+    total_marks: number;
+    marking_scheme: string;
+    question_count: number;
+    topic_question_count: number;
+  }>(
+    `SELECT m.id, m.title, m.slug, m.type, v.duration_min, v.total_marks, v.marking_scheme,
+            (SELECT COUNT(*) FROM mock_questions_current mq2 WHERE mq2.mock_id = m.id) AS question_count,
+            (SELECT COUNT(*) FROM mock_questions_current mq2
+              JOIN questions q2 ON q2.id = mq2.question_id
+              WHERE mq2.mock_id = m.id AND q2.topic_id = ?) AS topic_question_count
+     FROM mock_tests m
+     JOIN mock_test_versions v ON v.id = m.current_version_id
+     WHERE m.status = 'published' AND m.deleted_at IS NULL
+       AND m.practice_paper_slug IS NULL
+       AND EXISTS (
+         SELECT 1 FROM mock_questions_current mq JOIN questions q ON q.id = mq.question_id
+         WHERE mq.mock_id = m.id AND q.topic_id = ?
+       )
+     ORDER BY m.published_at DESC, m.id DESC
+     LIMIT 24`,
+    topic.id,
+    topic.id,
+  ),
+  all<{ name: string; slug: string; count: number }>(
+    `SELECT t.name, t.slug,
+            (SELECT COUNT(DISTINCT q.id) FROM questions q
+              JOIN mock_questions_current mq ON mq.question_id = q.id
+              JOIN mock_tests m ON m.id = mq.mock_id
+              WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
+                AND m.status = 'published' AND m.deleted_at IS NULL
+                AND m.practice_paper_slug IS NULL) AS count
+     FROM topics t
+     WHERE t.subject_id = ? AND t.id != ?
+     ORDER BY count DESC, t.name
+     LIMIT 8`,
+    subject.id,
+    topic.id,
+  ),
+]);
+
+const PATH = `/cuet-mock-test/${subject.slug}/${topic.slug}`;
+const seo = await getPageSeo(PATH);
+const noindex = (seo?.noindex ?? 0) === 1 || publishedQuestions === 0;
+
+const subjectGuidance: Record<string, string> = {
+  english:
+    "English questions reward evidence. For every answer, find the line in the passage or the grammar rule that settles it, then check whether your first choice was a paraphrase or a distortion.",
+  hindi:
+    "Hindi questions mix comprehension with grammar. Read the passage once for structure, then return to the exact sentence that supports each answer instead of relying on overall impression.",
+  mathematics:
+    "Mathematics rewards a clean first step. Write the given information and the quantity being asked before calculating, then check whether an error came from the concept, the algebra or a misread condition.",
+  physics:
+    "Physics questions test the model before the formula. Sketch the situation, name the principle, and check units and signs at the end; most lost marks come from a wrong model, not arithmetic.",
+  chemistry:
+    "Chemistry mixes recall with data interpretation. Separate reactions and exceptions into a revision sheet, then practise applying them to unfamiliar data under a clock.",
+  biology:
+    "Biology rewards precise terminology and diagram literacy. Distinguish similar processes and structures, and review the exact wording that changed an answer.",
+  "computer-science":
+    "Computer Science questions combine logic and syntax. Trace small snippets by hand and test boundary conditions instead of guessing the output.",
+};
+
+const guidance =
+  subjectGuidance[subject.slug] ??
+  `Build ${topic.name} practice around the official syllabus scope, then use timed questions to find the sub-topics that still need revision.`;
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: `How many ${topic.name} questions are published?`,
+    answer: `There are ${publishedQuestions} timed-paper ${subject.name} question${publishedQuestions === 1 ? "" : "s"} mapped to ${topic.name} right now. The count follows the papers that are currently published.`,
+  },
+  {
+    question: `Which papers include ${topic.name}?`,
+    answer:
+      papers.length > 0
+        ? `${papers.length} published paper${papers.length === 1 ? "" : "s"} include at least one ${topic.name} question. The card above each paper shows how many questions come from this topic.`
+        : `No published paper currently includes a ${topic.name} question. This page will list papers as soon as they are published.`,
+  },
+  {
+    question: `How should I revise ${topic.name}?`,
+    answer:
+      "Take a short timed set first, mark every guess, then read the explanation for each miss. Return to the same topic after a few days and check whether the error was conceptual or a reading mistake.",
+  },
+];
+
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const title = seo?.title || `${topic.name} — ${subject.name} CUET Practice Questions`;
+const description =
+  seo?.description ||
+  `Practise ${topic.name} for CUET UG ${subject.name}: ${publishedQuestions} published question${publishedQuestions === 1 ? "" : "s"} with timed papers, server scoring and written solutions.`;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Practice", path: "/cuet-mock-test" },
+    { name: subject.name, path: `/cuet-mock-test/${subject.slug}` },
+    { name: topic.name, path: PATH },
+  ]),
+  itemListJsonLd(
+    site,
+    papers.map((paper) => ({ name: paper.title, path: `/mock/${paper.slug}` })),
+  ),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow={`${subject.name} · ${topic.name}`}
+    title={`${topic.name} practice for CUET UG ${subject.name}`}
+    intro={`${guidance} This page lists the timed papers that contain ${topic.name} questions, so you can rehearse the topic in context rather than as an isolated flashcard.`}
+  />
+
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a class="hover:underline" href="/cuet-mock-test">Practice</a>
+      <span aria-hidden="true">/</span>
+      <a class="hover:underline" href={`/cuet-mock-test/${subject.slug}`}>{subject.name}</a>
+      <span aria-hidden="true">/</span>
+      <span>{topic.name}</span>
+    </nav>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-3">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions in timed papers</p>
+        <p class="mt-1 text-3xl font-black">{publishedQuestions}</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Papers with this topic</p>
+        <p class="mt-1 text-3xl font-black">{papers.length}</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Subject</p>
+        <p class="mt-1 text-xl font-black">{subject.name}</p>
+      </div>
+    </div>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">Papers that test {topic.name}</h2>
+      {papers.length === 0 ? (
+        <div class="mt-4 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
+          <h3 class="font-bold">No paper covers this topic yet</h3>
+          <p class="mx-auto mt-2 max-w-xl text-sm leading-6 text-neutral-500 dark:text-neutral-400">
+            The question bank has {publishedQuestions} published {topic.name} question{publishedQuestions === 1 ? "" : "s"}, but none are part of a published paper yet. Use the {subject.name} subject page to see what is available today.
+          </p>
+          <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href={`/cuet-mock-test/${subject.slug}`}>Open {subject.name} practice</a>
+        </div>
+      ) : (
+        <div class="mt-4 grid gap-4 md:grid-cols-2">
+          {papers.map((paper) => {
+            const marking = parseMarkingScheme(paper.marking_scheme);
+            return (
+              <article class="flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+                <div class="flex flex-wrap gap-2 text-xs">
+                  <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{paper.type}</span>
+                  <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{paper.topic_question_count} {topic.name} question{paper.topic_question_count === 1 ? "" : "s"}</span>
+                </div>
+                <h3 class="mt-3 text-lg font-bold leading-snug">
+                  <a class="hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${paper.slug}`}>{paper.title}</a>
+                </h3>
+                <dl class="mt-4 grid grid-cols-3 gap-2 text-sm">
+                  <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                    <dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</dt>
+                    <dd class="font-bold">{paper.question_count}</dd>
+                  </div>
+                  <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                    <dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Minutes</dt>
+                    <dd class="font-bold">{paper.duration_min}</dd>
+                  </div>
+                  <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                    <dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Marks</dt>
+                    <dd class="font-bold">{paper.total_marks}</dd>
+                  </div>
+                </dl>
+                <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">+{marking.correct} correct · {marking.wrong} wrong · {marking.skipped} skipped</p>
+                <a class="mt-4 inline-flex w-fit rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.slug}/instructions`}>Start timed paper →</a>
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </section>
+
+    {relatedTopics.length > 0 ? (
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold tracking-tight">More {subject.name} topics</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {relatedTopics.map((related) =>
+            related.count > 0 ? (
+              <a class="rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-sm font-semibold hover:border-brand-300 hover:bg-brand-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:border-brand-700 dark:hover:bg-brand-950/40" href={`/cuet-mock-test/${subject.slug}/${related.slug}`}>
+                {related.name} <span class="text-xs font-normal text-neutral-500 dark:text-neutral-400">({related.count})</span>
+              </a>
+            ) : (
+              <span class="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+                {related.name}
+              </span>
+            ),
+          )}
+        </div>
+      </section>
+    ) : null}
+
+    <section class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">A three-pass review for {topic.name}</h2>
+      <ol class="mt-3 list-decimal space-y-3 pl-5 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Attempt without notes.</strong> Use the timer and mark any answer you are unsure about. A lucky guess is still a gap.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Classify the miss.</strong> Decide whether the error was a missing concept, a misread condition or a calculation slip. The fix is different for each.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Return in three days.</strong> Retry only the missed questions, then take another paper that includes {topic.name}. Spacing is what turns a corrected answer into a stable one.</li>
+      </ol>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-10 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Test {topic.name} in a full paper</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">A topic is easier in isolation than inside a timed section. Use a paper to check whether the idea survives pressure and switching.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={papers[0] ? `/mock/${papers[0].slug}/instructions` : `/cuet-mock-test/${subject.slug}`}>
+            {papers[0] ? "Start the first paper" : `Open ${subject.name} practice`}
+          </a>
+          <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href={`/cuet-ug-syllabus/${subject.slug}`}>Syllabus guide</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

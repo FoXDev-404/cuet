@@ -1,0 +1,335 @@
+---
+import { parseMarkingScheme, renderRichText } from "../lib/content";
+
+interface MockFormModel {
+  id: number;
+  title: string;
+  slug: string;
+  type: string;
+  subject_id: number | null;
+  duration_min: number;
+  total_marks: number;
+  marking_scheme: string;
+  instructions: string | null;
+  intro_html: string | null;
+  pyq_year: number | null;
+  pyq_shift: string | null;
+  status: string;
+  version_no: number;
+  version_id: number;
+  locked: boolean;
+}
+
+interface Props {
+  mock?: MockFormModel | null;
+  subjects: { id: number; name: string }[];
+  questions: {
+    id: number;
+    text: string;
+    subject_name: string;
+    status: string;
+    explanation: string | null;
+  }[];
+  selected: Record<number, string>;
+  positions?: Record<number, number>;
+  sectionOrder?: string;
+  canPublish: boolean;
+}
+
+const {
+  mock = null,
+  subjects,
+  questions,
+  selected,
+  positions = {},
+  sectionOrder = "",
+  canPublish,
+} = Astro.props;
+const marking = parseMarkingScheme(mock?.marking_scheme ?? "");
+const locked = mock?.locked ?? false;
+const status = mock?.status ?? "draft";
+---
+
+<style>
+  .field {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-input);
+    background: var(--surface-2);
+    color: var(--ink);
+    padding: 0.6rem 0.75rem;
+    font-size: 0.875rem;
+    outline: none;
+  }
+  .field:focus { border-color: var(--focus); box-shadow: 0 0 0 3px var(--focus-ring); }
+  .label { display: block; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); padding: 1.25rem; }
+</style>
+
+<div id="mock-lock" data-locked={locked ? "true" : "false"} class={locked ? "mb-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200" : "hidden"}>
+  This version is published and frozen. Create a new version to make corrections; existing attempts keep their original paper and scores.
+</div>
+
+<form id="mock-form" data-id={mock?.id ?? ""} data-version-id={mock?.version_id ?? ""} class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]" novalidate>
+  <div class="space-y-6">
+    <p id="mock-error" class="hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+
+    <section class="card space-y-4">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="label sm:col-span-2">
+          Title
+          <input class="field mt-1" data-field="title" type="text" required maxlength="180" value={mock?.title ?? ""} placeholder="CUET UG English Full Mock 1" />
+        </label>
+        <label class="label">
+          URL slug
+          <input class="field mt-1 font-mono text-xs" data-field="slug" type="text" maxlength="120" value={mock?.slug ?? ""} placeholder="cuet-ug-english-mock-1" />
+        </label>
+        <label class="label">
+          Type
+          <select class="field mt-1" data-field="type">
+            {["full", "subject", "chapter", "pyq"].map((item) => (<option value={item} selected={mock?.type === item}>{item}</option>))}
+          </select>
+        </label>
+        <label class="label">
+          Subject <span class="font-normal text-neutral-500 dark:text-neutral-400">(optional for full mocks)</span>
+          <select class="field mt-1" data-field="subject_id">
+            <option value="">Full / multi-subject</option>
+            {subjects.map((subject) => (<option value={subject.id} selected={mock?.subject_id === subject.id}>{subject.name}</option>))}
+          </select>
+        </label>
+        <label class="label">
+          Duration (minutes)
+          <input class="field mt-1" data-field="duration_min" type="number" min="1" max="600" required value={mock?.duration_min ?? 60} />
+        </label>
+        <label class="label">
+          Total marks
+          <input class="field mt-1" data-field="total_marks" type="number" min="1" step="0.5" required value={mock?.total_marks ?? 100} />
+        </label>
+        <label class="label">
+          Status
+          <select class="field mt-1" data-field="status" disabled={locked}>
+            <option value="draft" selected={status === "draft"}>Draft</option>
+            <option value="in_review" selected={status === "in_review"} disabled={!canPublish}>In review</option>
+            <option value="published" selected={status === "published"} disabled={!canPublish}>Published</option>
+          </select>
+          {!canPublish ? <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">Only editors publish mocks.</span> : null}
+        </label>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-3">
+        <label class="label">Correct marks<input class="field mt-1" data-field="correct" type="number" min="0" step="0.5" value={marking.correct} /></label>
+        <label class="label">Wrong marks<input class="field mt-1" data-field="wrong" type="number" max="0" step="0.5" value={marking.wrong} /></label>
+        <label class="label">Skipped marks<input class="field mt-1" data-field="skipped" type="number" step="0.5" value={marking.skipped} /></label>
+      </div>
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">Marking values are stored per mock. Verify CUET marking from the official NTA bulletin before publishing.</p>
+
+      <label class="label">
+        Instructions shown before the timer
+        <textarea class="field mt-1" data-field="instructions" rows="5" placeholder="One instruction per line.">{mock?.instructions ?? ""}</textarea>
+      </label>
+      <label class="label">
+        Unique SEO intro <span class="font-normal text-neutral-500 dark:text-neutral-400">(plain text, shown on the mock detail page)</span>
+        <textarea class="field mt-1" data-field="intro_html" rows="5">{mock?.intro_html ?? ""}</textarea>
+      </label>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="label">PYQ year<input class="field mt-1" data-field="pyq_year" type="number" min="1900" max="2100" value={mock?.pyq_year ?? ""} /></label>
+        <label class="label">PYQ shift<input class="field mt-1" data-field="pyq_shift" type="text" maxlength="60" value={mock?.pyq_shift ?? ""} /></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 class="font-bold">Questions</h2>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Only published questions are offered. Select at least one.</p>
+        </div>
+        <p class="text-sm font-semibold"><span data-selected-count>0</span> selected</p>
+      </div>
+      <label class="label mt-4">
+        Section order
+        <textarea class="field mt-1 font-mono text-xs" id="section-order" rows="2" placeholder="Language, Domain, General Test" disabled={locked}>{sectionOrder}</textarea>
+        <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">One section per line or comma-separated. Sections render in this order; unknown sections follow afterwards.</span>
+      </label>
+      <input class="field mt-4" id="question-filter" type="search" placeholder="Filter by text or subject…" />
+      <div class="mt-4 max-h-[32rem] space-y-2 overflow-y-auto pr-1" tabindex="0" role="region" aria-label="Question list">
+        {questions.map((question) => {
+          const isSelected = Object.prototype.hasOwnProperty.call(selected, question.id);
+          return (
+            <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50 dark:border-neutral-800 dark:hover:bg-neutral-950" data-question-row data-search={`${question.text} ${question.subject_name}`.toLowerCase()}>
+              <input class="mt-1" type="checkbox" data-question-checkbox value={question.id} data-subject={question.subject_name} checked={isSelected} disabled={locked} />
+              <span class="min-w-0 flex-1">
+                <span class="block text-sm font-medium"><span class="line-clamp-2" set:html={renderRichText(question.text)}></span></span>
+                <span class="mt-1 flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+                  <span>{question.subject_name}</span>
+                  <span>·</span>
+                  <span>#{question.id}</span>
+                  {!question.explanation ? <span class="rounded-full bg-amber-100 px-2 py-0.5 font-semibold text-amber-900 dark:bg-amber-950/50 dark:text-amber-200">No explanation</span> : null}
+                </span>
+                <span class="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_7rem]">
+                  <span>
+                    <span class="sr-only">Section for question {question.id}</span>
+                    <input class="field text-xs" type="text" maxlength="100" data-section value={selected[question.id] ?? question.subject_name} placeholder="Section" disabled={locked} />
+                  </span>
+                  <span>
+                    <span class="sr-only">Order for question {question.id}</span>
+                    <input class="field text-xs" type="number" min="1" max="500" step="1" data-order value={positions[question.id] ?? ""} placeholder="Order" disabled={locked} />
+                  </span>
+                </span>
+              </span>
+            </label>
+          );
+        })}
+      </div>
+      {questions.length === 0 ? (
+        <p class="mt-4 rounded-xl border border-dashed border-neutral-300 p-6 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+          No published questions yet. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/questions/new">Create and publish questions first</a>.
+        </p>
+      ) : null}
+    </section>
+  </div>
+
+  <aside class="space-y-4 lg:sticky lg:top-24 lg:self-start">
+    <section class="card space-y-3">
+      <button id="save-mock" type="submit" disabled={locked} class="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-50">
+        {mock ? "Save mock" : "Create mock"}
+      </button>
+      {mock ? <a class="block text-center text-xs text-neutral-500 hover:underline dark:text-neutral-400" href={`/admin/mocks/${mock.id}`}>Editing mock #{mock.id} · version {mock.version_no}</a> : null}
+      {mock ? <a class="block rounded-lg border border-neutral-300 px-3 py-2 text-center text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/mocks/${mock.id}/preview`}>Preview saved draft</a> : null}
+      <a class="block text-center text-sm font-medium text-neutral-600 hover:underline dark:text-neutral-300" href="/admin/mocks">Back to mock list</a>
+    </section>
+    <section class="card text-sm">
+      <h2 class="font-bold">Publishing checklist</h2>
+      <ul class="mt-2 space-y-1.5 text-neutral-600 dark:text-neutral-400">
+        <li>• Every question is published with an explanation.</li>
+        <li>• Every image has meaningful alt text.</li>
+        <li>• Marking scheme is verified against NTA.</li>
+        <li>• Duration and total marks match the paper.</li>
+      </ul>
+    </section>
+  </aside>
+</form>
+
+<script>
+  const form = document.getElementById("mock-form") as HTMLFormElement | null;
+  if (form) {
+    const errorBox = document.getElementById("mock-error") as HTMLElement;
+    const saveButton = document.getElementById("save-mock") as HTMLButtonElement;
+    const mockId = form.dataset.id || "";
+    const rows = [...form.querySelectorAll("[data-question-row]")] as HTMLElement[];
+    const checks = [...form.querySelectorAll("[data-question-checkbox]")] as HTMLInputElement[];
+    const selectedCount = form.querySelector("[data-selected-count]") as HTMLElement;
+    const titleInput = form.querySelector('[data-field="title"]') as HTMLInputElement;
+    const slugInput = form.querySelector('[data-field="slug"]') as HTMLInputElement;
+    const filterInput = document.getElementById("question-filter") as HTMLInputElement;
+    const sectionOrderInput = document.getElementById("section-order") as HTMLTextAreaElement | null;
+
+    function field(name: string): string {
+      const element = form!.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+      return element.value.trim();
+    }
+
+    function updateCount() {
+      const count = checks.filter((check) => check.checked).length;
+      selectedCount.textContent = String(count);
+    }
+    checks.forEach((check) => check.addEventListener("change", updateCount));
+    updateCount();
+
+    filterInput?.addEventListener("input", () => {
+      const term = filterInput.value.trim().toLowerCase();
+      rows.forEach((row) => {
+        row.classList.toggle("hidden", Boolean(term) && !row.dataset.search?.includes(term));
+      });
+    });
+
+    let slugTouched = Boolean(slugInput.value);
+    slugInput.addEventListener("input", () => { slugTouched = Boolean(slugInput.value.trim()); });
+    titleInput.addEventListener("input", () => {
+      if (slugTouched) return;
+      slugInput.value = titleInput.value.toLowerCase().trim().replace(/['"]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 90);
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (saveButton.disabled) return;
+      errorBox.classList.add("hidden");
+      saveButton.disabled = true;
+      saveButton.textContent = "Saving…";
+
+      try {
+        const sectionOrder = (sectionOrderInput?.value ?? "")
+          .split(/[\n,]/)
+          .map((section) => section.trim())
+          .filter(Boolean)
+          .filter((section, index, all) => all.indexOf(section) === index);
+        const sectionRank = new Map<string, number>();
+        for (const section of sectionOrder) {
+          if (!sectionRank.has(section)) sectionRank.set(section, sectionRank.size);
+        }
+        const questions = checks
+          .filter((check) => check.checked)
+          .map((check, index) => {
+            const row = check.closest("[data-question-row]") as HTMLElement;
+            const section = (row.querySelector("[data-section]") as HTMLInputElement).value.trim();
+            const orderValue = Number((row.querySelector("[data-order]") as HTMLInputElement).value);
+            return {
+              index,
+              order: Number.isFinite(orderValue) && orderValue > 0 ? orderValue : null,
+              question_id: Number(check.value),
+              section: section || check.dataset.subject || "General",
+            };
+          })
+          .sort((left, right) => {
+            const leftRank = sectionRank.get(left.section) ?? sectionRank.size;
+            const rightRank = sectionRank.get(right.section) ?? sectionRank.size;
+            return (
+              leftRank - rightRank ||
+              (left.order ?? Number.MAX_SAFE_INTEGER) - (right.order ?? Number.MAX_SAFE_INTEGER) ||
+              left.index - right.index
+            );
+          })
+          .map(({ question_id, section }) => ({ question_id, section }));
+        if (questions.length === 0) throw new Error("Select at least one question.");
+
+        const payload = {
+          title: field("title"),
+          slug: field("slug"),
+          subject_id: field("subject_id") || null,
+          type: field("type"),
+          duration_min: field("duration_min"),
+          total_marks: field("total_marks"),
+          marking: {
+            correct: field("correct"),
+            wrong: field("wrong"),
+            skipped: field("skipped"),
+          },
+          instructions: field("instructions"),
+          intro_html: field("intro_html"),
+          pyq_year: field("pyq_year") || null,
+          pyq_shift: field("pyq_shift"),
+          status: field("status"),
+          section_order: sectionOrder,
+          questions,
+        };
+
+        const response = await fetch(mockId ? `/api/admin/mocks/${mockId}` : "/api/admin/mocks", {
+          method: mockId ? "PATCH" : "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = (await response.json()) as { error?: string; redirect?: string; url?: string; id?: string };
+        if (!response.ok) throw new Error(result.error || "Could not save the mock.");
+        location.href = result.redirect || "/admin/mocks";
+      } catch (error) {
+        errorBox.textContent = error instanceof Error ? error.message : "Could not save the mock.";
+        errorBox.classList.remove("hidden");
+        errorBox.scrollIntoView({ behavior: "smooth", block: "center" });
+        saveButton.disabled = false;
+        saveButton.textContent = mockId ? "Save mock" : "Create mock";
+      }
+    });
+  }
+</script>

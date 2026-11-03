@@ -1,0 +1,234 @@
+---
+import "../../../styles/global.css";
+
+if (import.meta.env.PROD) {
+  return new Response("Not found", { status: 404 });
+}
+
+const requested = new URL(Astro.url).searchParams.get("theme");
+const theme = requested === "dark" ? "dark" : "light";
+---
+
+<!doctype html>
+<html lang="en" data-theme={theme}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Style guide — {theme}</title>
+  </head>
+  <body class="bg-[var(--bg)] p-5 text-[var(--ink)] antialiased">
+    <main class="mx-auto max-w-4xl space-y-8">
+      <header>
+        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">CUETFreeMockTest.com</p>
+        <h1 class="mt-1 text-2xl font-black tracking-tight">Components · {theme}</h1>
+      </header>
+
+      <section class="sg-section">
+        <h2>Typography</h2>
+        <h3 class="text-xl font-black tracking-tight">Mock test heading</h3>
+        <p class="mt-2 text-sm leading-7">
+          Body copy uses <code>--ink</code> on <code>--bg</code>. Links such as
+          <a class="sg-link" href="#typography">the official answer key</a> use <code>--link</code> and stay underlined in prose.
+        </p>
+        <p class="mt-2 text-xs text-[var(--muted)]">Muted metadata uses <code>--muted</code>.</p>
+      </section>
+
+      <section class="sg-section">
+        <h2>Buttons</h2>
+        <div class="sg-row">
+          <button class="sg-btn sg-btn-primary" type="button">Start free mock test</button>
+          <button class="sg-btn sg-btn-cta" type="button">Unlock analysis</button>
+          <button class="sg-btn sg-btn-secondary" type="button">Browse papers</button>
+          <button class="sg-btn sg-btn-ghost" type="button">Cancel</button>
+          <button class="sg-btn sg-btn-destructive" type="button">Delete attempt</button>
+          <button class="sg-btn sg-btn-primary" type="button" disabled>Disabled</button>
+          <button class="sg-btn sg-btn-primary" type="button" aria-busy="true"><span class="sg-spinner" aria-hidden="true"></span> Loading</button>
+        </div>
+        <p class="sg-note">All targets are at least 44px tall. CTA appears at most once per view.</p>
+      </section>
+
+      <section class="sg-section">
+        <h2>Links and breadcrumbs</h2>
+        <p class="text-sm"><a class="sg-link" href="#links">Previous-year papers</a> · <a class="sg-link" href="#links">Syllabus</a></p>
+        <nav class="mt-3 flex flex-wrap items-center gap-1 text-xs text-[var(--ink-2)]" aria-label="Breadcrumb example">
+          <a class="sg-link" href="#links">Home</a><span aria-hidden="true">/</span>
+          <a class="sg-link" href="#links">Mock tests</a><span aria-hidden="true">/</span>
+          <span aria-current="page">General test</span>
+        </nav>
+      </section>
+
+      <section class="sg-section">
+        <h2>Form controls</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="sg-label">Email
+            <input class="sg-input mt-1" type="email" placeholder="you@example.com" />
+          </label>
+          <label class="sg-label">Subject
+            <select class="sg-input mt-1">
+              <option>General test</option>
+              <option>Mathematics</option>
+            </select>
+          </label>
+          <label class="sg-label">Answer
+            <textarea class="sg-input mt-1" rows="2" placeholder="Write a short answer"></textarea>
+          </label>
+          <div>
+            <label class="sg-label">Options</label>
+            <label class="mt-2 flex items-center gap-2 text-sm"><input type="checkbox" checked /> Email me results</label>
+            <label class="mt-2 flex items-center gap-2 text-sm"><input type="radio" name="sg-radio" checked /> English</label>
+            <label class="mt-2 flex items-center gap-2 text-sm"><input type="radio" name="sg-radio" /> Hindi</label>
+          </div>
+        </div>
+        <label class="sg-label mt-4">Password
+          <input class="sg-input sg-input-error mt-1" type="password" aria-invalid="true" aria-describedby="sg-error" />
+        </label>
+        <p id="sg-error" class="sg-error"><span aria-hidden="true">⚠</span> Use at least 8 characters.</p>
+      </section>
+
+      <section class="sg-section">
+        <h2>Cards and chips</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <article class="sg-card">
+            <div class="sg-row">
+              <span class="sg-chip">General test</span>
+              <span class="sg-chip sg-chip-success">Free</span>
+            </div>
+            <h3 class="mt-3 text-base font-bold">CUET UG General Test Mock 01</h3>
+            <p class="mt-1 text-xs text-[var(--muted)]">50 questions · 60 minutes · 200 marks</p>
+            <p class="mt-3 text-sm text-[var(--ink-2)]">Full-length practice with instant scoring and solutions.</p>
+            <a class="sg-btn sg-btn-primary mt-4 inline-flex" href="#cards">Start test</a>
+          </article>
+          <article class="sg-card">
+            <div class="sg-row">
+              <span class="sg-chip">Mathematics</span>
+              <span class="sg-chip sg-chip-success">Free</span>
+            </div>
+            <h3 class="mt-3 text-base font-bold">CUET UG Mathematics Mock 04</h3>
+            <p class="mt-1 text-xs text-[var(--muted)]">40 questions · 60 minutes · 200 marks</p>
+            <p class="mt-3 text-sm text-[var(--ink-2)]">Section-wise analysis after submission.</p>
+            <a class="sg-btn sg-btn-secondary mt-4 inline-flex" href="#cards">View paper</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="sg-section">
+        <h2>Feedback</h2>
+        <div class="sg-alert sg-alert-success"><strong>Saved.</strong> Your answers were stored on the server.</div>
+        <div class="sg-alert sg-alert-warning"><strong>Key pending.</strong> This question is not scored yet.</div>
+        <div class="sg-alert sg-alert-danger"><strong>Time over.</strong> The attempt was submitted automatically.</div>
+      </section>
+
+      <section class="sg-section">
+        <h2>Question palette</h2>
+        <div class="sg-row">
+          <span class="sg-palette sg-palette-answered" aria-label="Answered">1</span>
+          <span class="sg-palette sg-palette-unanswered" aria-label="Not answered">2</span>
+          <span class="sg-palette sg-palette-marked" aria-label="Marked for review">3</span>
+          <span class="sg-palette sg-palette-combo" aria-label="Answered and marked">4</span>
+          <span class="sg-palette sg-palette-current" aria-label="Current question">5</span>
+          <span class="sg-palette" aria-label="Not visited">6</span>
+        </div>
+        <p class="sg-note">Status is never colour-only: each state also carries a glyph and an accessible label.</p>
+      </section>
+
+      <section class="sg-section">
+        <h2>Table</h2>
+        <div class="sg-table-wrap">
+          <table class="sg-table">
+            <thead><tr><th scope="col">Section</th><th scope="col">Questions</th><th scope="col">Score</th></tr></thead>
+            <tbody>
+              <tr><td>General test</td><td>50</td><td>186</td></tr>
+              <tr><td>Mathematics</td><td>40</td><td>152</td></tr>
+              <tr><td>English</td><td>30</td><td>121</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sg-section">
+        <h2>Empty, skeleton, toast</h2>
+        <div class="sg-card text-center">
+          <p class="text-sm font-bold">No attempts yet</p>
+          <p class="mt-1 text-xs text-[var(--muted)]">Finish a mock test to see your score history here.</p>
+          <a class="sg-btn sg-btn-primary mt-3 inline-flex" href="#empty">Start a mock test</a>
+        </div>
+        <div class="mt-4 space-y-2" aria-hidden="true">
+          <div class="sg-skeleton h-4 w-2/3"></div>
+          <div class="sg-skeleton h-4 w-1/2"></div>
+        </div>
+        <div class="sg-toast mt-4" role="status">Answer saved · just now</div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  .sg-section { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); padding: 1rem; }
+  .sg-section > h2 { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .sg-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.75rem; }
+  .sg-note { margin-top: 0.6rem; font-size: 0.75rem; color: var(--muted); }
+  .sg-link { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+  .sg-link:hover { color: var(--link-hover); }
+  .sg-btn {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.95rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+  .sg-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .sg-btn-primary { background: var(--primary); color: var(--on-primary); }
+  .sg-btn-primary:hover:not(:disabled) { background: var(--primary-hover); }
+  .sg-btn-cta { background: var(--cta); color: var(--on-cta); }
+  .sg-btn-cta:hover:not(:disabled) { background: var(--cta-hover); }
+  .sg-btn-secondary { border-color: var(--border-input); background: var(--surface-2); color: var(--ink); }
+  .sg-btn-secondary:hover { background: var(--surface-3); }
+  .sg-btn-ghost { background: transparent; color: var(--ink-2); }
+  .sg-btn-ghost:hover { background: var(--surface-3); color: var(--ink); }
+  .sg-btn-destructive { background: var(--wrong); color: var(--on-wrong); }
+  .sg-btn-destructive:hover { opacity: 0.9; }
+  .sg-spinner { width: 0.9rem; height: 0.9rem; border-radius: 999px; border: 2px solid currentColor; border-right-color: transparent; animation: sg-spin 0.8s linear infinite; }
+  @keyframes sg-spin { to { transform: rotate(360deg); } }
+  .sg-label { display: block; font-size: 0.8125rem; font-weight: 600; }
+  .sg-input { width: 100%; min-height: 44px; border: 1px solid var(--border-input); border-radius: var(--radius-sm); background: var(--surface-2); color: var(--ink); padding: 0.55rem 0.7rem; font-size: 0.875rem; }
+  .sg-input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .sg-input-error { border-color: var(--wrong); }
+  .sg-error { margin-top: 0.4rem; display: flex; gap: 0.35rem; font-size: 0.75rem; font-weight: 600; color: var(--danger-ink); }
+  .sg-card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); padding: 1rem; }
+  .sg-chip { display: inline-flex; align-items: center; border-radius: 999px; background: var(--chip-bg); color: var(--chip-ink); padding: 0.2rem 0.6rem; font-size: 0.6875rem; font-weight: 700; }
+  .sg-chip-success { background: var(--success-bg); color: var(--success-ink); }
+  .sg-alert { margin-top: 0.6rem; border: 1px solid; border-radius: var(--radius-sm); padding: 0.65rem 0.8rem; font-size: 0.8125rem; }
+  .sg-alert-success { border-color: var(--success-border); background: var(--success-bg); color: var(--success-ink); }
+  .sg-alert-warning { border-color: var(--warning-border); background: var(--warning-bg); color: var(--warning-ink); }
+  .sg-alert-danger { border-color: var(--danger-border); background: var(--danger-bg); color: var(--danger-ink); }
+  .sg-palette { position: relative; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 0.3rem; border: 1px solid var(--exam-palette-border); background: var(--exam-palette-bg); color: var(--exam-palette-ink); font-size: 0.75rem; font-weight: 700; }
+  .sg-palette::after { position: absolute; right: 0.2rem; bottom: 0.1rem; font-size: 0.55rem; line-height: 1; }
+  .sg-palette-answered { border-color: var(--correct); background: var(--correct); color: var(--on-correct); }
+  .sg-palette-answered::after { content: "✓"; }
+  .sg-palette-unanswered { border-color: var(--wrong); background: var(--wrong); color: var(--on-wrong); }
+  .sg-palette-unanswered::after { content: "–"; }
+  .sg-palette-marked { border-color: var(--review); background: var(--review); color: var(--on-review); }
+  .sg-palette-marked::after { content: "•"; }
+  .sg-palette-combo { border-color: var(--review); background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%); color: var(--on-correct); }
+  .sg-palette-combo::after { content: "✓"; }
+  .sg-palette-current { outline: 3px solid var(--primary); outline-offset: 1px; }
+  .sg-table-wrap { margin-top: 0.75rem; overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .sg-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+  .sg-table th, .sg-table td { padding: 0.55rem 0.7rem; text-align: left; border-bottom: 1px solid var(--border); }
+  .sg-table thead th { background: var(--surface-3); font-weight: 700; }
+  .sg-table tbody tr:nth-child(even) { background: var(--surface); }
+  .sg-skeleton { border-radius: 6px; background: var(--surface-3); animation: sg-pulse 1.4s ease-in-out infinite; }
+  @keyframes sg-pulse { 50% { opacity: 0.5; } }
+  .sg-toast { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface-2); color: var(--ink); padding: 0.55rem 0.8rem; font-size: 0.8125rem; box-shadow: var(--shadow); }
+  @media (prefers-reduced-motion: reduce) {
+    .sg-spinner, .sg-skeleton { animation: none; }
+  }
+</style>

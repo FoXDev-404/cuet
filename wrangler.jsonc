@@ -1,0 +1,47 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cuet-astro",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-10-30",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cuet-blueprint-db",
+      "database_id": "77ed64bd-006b-475b-9389-504c1639ced8",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "7ea138189e80421db764cab62751e577"
+    },
+    {
+      "binding": "MEDIA_KV",
+      "id": "0c268f3ee06c4ee6928493f58c6e0f46"
+    }
+  ],
+  "vars": {
+    "SITE_URL": "https://cuet-astro.cuet-platform.workers.dev",
+    "DEV_SHOW_RESET_LINK": "",
+    "ADMIN_AUTH_MODE": "session",
+    "CF_ACCESS_TEAM_DOMAIN": "",
+    "CF_ACCESS_AUD": "",
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": "",
+    "EMAIL_PROVIDER": "",
+    "EMAIL_FROM": "",
+    "CF_ANALYTICS_TOKEN": "",
+    "GSC_VERIFICATION": "",
+    "ADSENSE_CLIENT": "",
+    "ADSENSE_SLOT_ID": ""
+  }
+}

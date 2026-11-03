@@ -1,0 +1,1618 @@
+{
+ "exam": {
+  "id": "local-physics-2023-05-30-shift-1",
+  "slug": "physics-2023-05-30-shift-1",
+  "title": "CUET UG Physics 30 May 2023 Shift 1 Previous Year Paper",
+  "subject": "Physics",
+  "subjectId": "local-physics",
+  "subjectCode": "PHY",
+  "year": 2023,
+  "examDate": "2023-05-30",
+  "shift": "Shift 1",
+  "sourceFile": "Physics_2023-05-30_Shift_1.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 45,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "Resolving power of a telescope can be increased by increasing:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Wavelength of light incident at telescope"
+     },
+     {
+      "id": "B",
+      "text": "Diameter of eye piece"
+     },
+     {
+      "id": "C",
+      "text": "Focal length of eyepiece"
+     },
+     {
+      "id": "D",
+      "text": "Diameter of Objective lens"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Match List - I with List - II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q03-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q03-table-1.jpg",
+      "page": 1,
+      "alt": "Table for question 3"
+     }
+    ]
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "What is the mathematical expression for potential gradient?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{dv}{rdr} $"
+     },
+     {
+      "id": "B",
+      "text": "$ -\\frac{dE}{dr} $"
+     },
+     {
+      "id": "C",
+      "text": "$ -\\frac{dV}{dr} $"
+     },
+     {
+      "id": "D",
+      "text": "$ -\\frac{dV}{dA} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "Two electrons are moving with different kinetic energies. If $ 1^{st} $ electron is moving with kinetic energy k and the $ 2^{nd} $ electron with kinetic energy 4k, the ratio of their de Broglie wavelengths will be respectively:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1:2"
+     },
+     {
+      "id": "B",
+      "text": "1:4"
+     },
+     {
+      "id": "C",
+      "text": "2:1"
+     },
+     {
+      "id": "D",
+      "text": "4:1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "The distance estimation for which ray optics is good approximation for an aperture of 3 mm and wavelength 300 nm would be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "40 m"
+     },
+     {
+      "id": "B",
+      "text": "30 m"
+     },
+     {
+      "id": "C",
+      "text": "20 m"
+     },
+     {
+      "id": "D",
+      "text": "10 m"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "The current flowing through the two bulbs marked as 60 W, 240 V each when connected in series with 240 V source is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.125 A"
+     },
+     {
+      "id": "B",
+      "text": "0.25 A"
+     },
+     {
+      "id": "C",
+      "text": "4 A"
+     },
+     {
+      "id": "D",
+      "text": "2 A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "In equation $P = Ec^{-1}$, where $P$ is momentum, $E$ is energy and $c$ is the speed of light. In which of the following options, this equation is valid:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "for an electron only"
+     },
+     {
+      "id": "B",
+      "text": "for a photon but not for an electron"
+     },
+     {
+      "id": "C",
+      "text": "for an electron as well as for a photon"
+     },
+     {
+      "id": "D",
+      "text": "neither for an electron nor for a photon"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "Let a rod AB of length l having resistance r is moving perpendicular to a magnetic field B with constant velocity v. If the ends of the rod is connected to a wire PQRS of negligible resistance, then current passing through the wire will be: (see fig.)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{Blv}{2r} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{Blv}{r} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{Blv}{4} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{3Blv}{4r} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q09-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q09-figure-1.jpg",
+      "page": 1,
+      "alt": "Figure for question 9"
+     }
+    ]
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Let $ i_{E} $, $ i_{C} $ and $ i_{B} $ represent the emitter current, collector current and the base current respectively in a transistor. Choose the correct statement from the following.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ i_{C} $ is slightly greater than $ i_{E} $"
+     },
+     {
+      "id": "B",
+      "text": "$ i_{B} $ is much greater than $ i_{E} $"
+     },
+     {
+      "id": "C",
+      "text": "$ i_{C} $ is equal to $ i_{B} $"
+     },
+     {
+      "id": "D",
+      "text": "$ i_{E} $ is equal to the sum of $ i_{C} $ and $ i_{B} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Match List - I with List - II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(III), (C)-(IV), (D)-(II)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q12-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q12-table-1.jpg",
+      "page": 2,
+      "alt": "Table for question 12"
+     }
+    ]
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Match List - I with List - II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q13-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q13-table-1.jpg",
+      "page": 2,
+      "alt": "Table for question 13"
+     }
+    ]
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "What is the value of $ V_{0} $ if the silicon diode starts conducting at 0.7 V while the Germanium start conducting at 0.3 V?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "11 V"
+     },
+     {
+      "id": "B",
+      "text": "12 V"
+     },
+     {
+      "id": "C",
+      "text": "11.7 V"
+     },
+     {
+      "id": "D",
+      "text": "11.3 V"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q14-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q14-figure-1.jpg",
+      "page": 2,
+      "alt": "Figure for question 14"
+     }
+    ]
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "A cube of side 'a' has a charge Q at each of its vertices, what is the potential due to this charge array at the centre of the cube?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{2Q}{\\sqrt{3}\\pi\\epsilon_0a} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{4Q}{\\sqrt{3}\\pi\\epsilon_0a} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{Q}{2\\sqrt{3}\\pi\\epsilon_0a} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{8Q}{\\sqrt{3}\\pi\\epsilon_0a^2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "What will be the time by light to travel 2 cm thickness of glass of refractive index 1.5?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2 \\times 10^{-10} s $"
+     },
+     {
+      "id": "B",
+      "text": "$ 2.5 \\times 10^{-10} s $"
+     },
+     {
+      "id": "C",
+      "text": "$ 2.25 \\times 10^{10} s $"
+     },
+     {
+      "id": "D",
+      "text": "$ 10^{-10} s $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Choose the correct relation between drift velocity $ (v_{d}) $ and current density (J) from the following:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ v_d = \\text{Jne} $"
+     },
+     {
+      "id": "B",
+      "text": "$ v_d = \\frac{J}{ne} $"
+     },
+     {
+      "id": "C",
+      "text": "$ v_d = \\frac{J}{neA} $"
+     },
+     {
+      "id": "D",
+      "text": "$ v_d = \\frac{J}{ne^2A} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "A\n\nB O\n\nThe logic circuit perform the logic function of:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "AND"
+     },
+     {
+      "id": "B",
+      "text": "NAND"
+     },
+     {
+      "id": "C",
+      "text": "OR"
+     },
+     {
+      "id": "D",
+      "text": "NOR"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "In Ampere-circuital law, the missing term is:\n\n(a) $ i = \\varepsilon_{O} \\frac{dt}{d\\phi_{E}} $\n\n(b) $ i = \\varepsilon_{O} \\frac{d\\phi_{E}}{dt} $\n\n(c) $ i = \\frac{1}{\\varepsilon_{O}} \\frac{dt}{d\\phi_{E}} $\n\n(d) $ i = \\frac{1}{\\varepsilon_{O}} \\frac{d\\phi_{E}}{dt} $\n\nQ20 Which of the following causes electric conduction in a semiconductor?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Holes only"
+     },
+     {
+      "id": "B",
+      "text": "Electrons only"
+     },
+     {
+      "id": "C",
+      "text": "Both electrons and holes"
+     },
+     {
+      "id": "D",
+      "text": "Neither holes nor electrons"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Three circuits are shown below in which same alternating current is flowing. What will be the effect on currents in three cases respectively if frequency of alternating emf be increased?\n\n(i)\n\n(ii)\n\n(iii)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Decrease; decrease; increase"
+     },
+     {
+      "id": "B",
+      "text": "No effect; decrease; increase"
+     },
+     {
+      "id": "C",
+      "text": "Increase; increase; decrease"
+     },
+     {
+      "id": "D",
+      "text": "No effect; decrease; decrease"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q21-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q21-figure-1.jpg",
+      "page": 3,
+      "alt": "Figure for question 21"
+     }
+    ]
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Four lenses of focal length $ \\pm5 $ cm and $ \\pm200 $ cm are available for making a telescope. To produce the largest magnification for making a telescope with the help of these lenses, the focal length of eye piece should be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "+200 cm"
+     },
+     {
+      "id": "B",
+      "text": "5 cm"
+     },
+     {
+      "id": "C",
+      "text": "200 cm"
+     },
+     {
+      "id": "D",
+      "text": "+5 cm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "In the circuit shown below, the potential difference between A and B is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "6 V"
+     },
+     {
+      "id": "B",
+      "text": "3 V"
+     },
+     {
+      "id": "C",
+      "text": "2 V"
+     },
+     {
+      "id": "D",
+      "text": "1 V"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q23-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q23-figure-1.jpg",
+      "page": 3,
+      "alt": "Figure for question 23"
+     }
+    ]
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "In a Young double slit experiment, if one of the slits is covered with a black paper then:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Fringe width of central maxima decreases"
+     },
+     {
+      "id": "B",
+      "text": "Intensity of the central maxima increases"
+     },
+     {
+      "id": "C",
+      "text": "Width of maxima decreases"
+     },
+     {
+      "id": "D",
+      "text": "Diffraction pattern is observed on the screen"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "A 300 turns rectangular coil of length 20 cm and breadth 12 cm is carrying a current of 12 A, when placed in a magnetic field of 6 T. The plane of the coil is making an angle of $ 60^{\\circ} $ with the magnetic field. What is the torque acting on the coil?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "518.4 N m"
+     },
+     {
+      "id": "B",
+      "text": "259.2 N m"
+     },
+     {
+      "id": "C",
+      "text": "447.8 N m"
+     },
+     {
+      "id": "D",
+      "text": "366.6 N m"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "In a hydrogen atom an electron makes a transition from $ n_{1} \\to n_{2} $, where $ n_{1} $ and $ n_{2} $ are the principal quantum numbers of these two states. Assuming Bohr's model to be valid, if the time period of electron in the initial state is eight times of that in the final state, the possible values of $ n_{1} $ and $ n_{2} $ are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ n_{1} = 8 $, $ n_{2} = 4 $"
+     },
+     {
+      "id": "B",
+      "text": "$ n_{1} = 4 $, $ n_{2} = 8 $"
+     },
+     {
+      "id": "C",
+      "text": "$ n_{1} = 8 $, $ n_{2} = 2 $"
+     },
+     {
+      "id": "D",
+      "text": "$ n_{1} = 2 $, $ n_{2} = 8 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "A parallel plate capacitor with air between the plates has a capacitance of 6pF. What will be the capacitance if the distance between the plates is reduced to half and the space between them is filled with a substance of dielectric constant 5?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "30pF"
+     },
+     {
+      "id": "B",
+      "text": "60pF"
+     },
+     {
+      "id": "C",
+      "text": "15pF"
+     },
+     {
+      "id": "D",
+      "text": "120pF"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "The wavelength of light from the spectral emission line of sodium is 662 nm. The kinetic energy at which an electron would have same de-Broglie wavelength would be: $ (h = 6.62 \\times 10^{-34} J - s, m_e = 9 \\times 10^{-31} kg) $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 5.5 \\times 10^{-25} $ J"
+     },
+     {
+      "id": "B",
+      "text": "$5.5 \\times 10^{-24} J$"
+     },
+     {
+      "id": "C",
+      "text": "$ 18 \\times 10^{-23} J $"
+     },
+     {
+      "id": "D",
+      "text": "$ 4.5 \\times 10^{-22} J $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "A e.m.f. $ e_s = 50\\sin 314t $ is applied across a pure capacitor of $ 637\\mu F $. The instantaneous current I is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 10\\cos 314tA $"
+     },
+     {
+      "id": "B",
+      "text": "$ 50\\cos 314tA $"
+     },
+     {
+      "id": "C",
+      "text": "$ 20\\cos 314tA $"
+     },
+     {
+      "id": "D",
+      "text": "$ 20\\sin 314tA $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "An alpha-particle moves with a speed of $ (5 \\times 10^5\\,\\text{fm})^-1 $. It enters a region where there is a magnetic field of magnitude 4T, directed at an angle of $ 45^\\circ $ to the X-axis and lying in XY plane. The magnitude of magnetic force on alpha particle is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 1.6 \\times 10^{-14}\\,N $"
+     },
+     {
+      "id": "B",
+      "text": "$ 3.2 \\times 10^{-13}\\,N $"
+     },
+     {
+      "id": "C",
+      "text": "$ 4.5 \\times 10^{-13}\\,N $"
+     },
+     {
+      "id": "D",
+      "text": "$ 1.6 \\times 10^{-13}\\,N $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Calculate the Ratio of Range of Transmitting antenna of height 64 m to the receiving antenna of height 16 m:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "4:1"
+     },
+     {
+      "id": "B",
+      "text": "1:4"
+     },
+     {
+      "id": "C",
+      "text": "2:1"
+     },
+     {
+      "id": "D",
+      "text": "1:2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "The resistance of a potentiometer wire of length 4 m is 10Ω. A resistance box and 2 V accumulator are connected in series with it. What resistance should be introduced in the box to have a potential drop of 1μV/mm of the potentiometer wire?\n\n(a) 799.9Ω\n\n(b) 790Ω\n\n(c) 9.995Ω\n\n(d) 4990Ω\n\nQ33 What is the unit of electric flux in terms of the base units of SI?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ kg^{-1} \\, m^3 \\, s^{-3} \\, A^{-1} $"
+     },
+     {
+      "id": "B",
+      "text": "$ kgm^3 \\, s^3 \\, A^{-1} $"
+     },
+     {
+      "id": "C",
+      "text": "$ kgm^3 \\, s^{-3} \\, A^1 $"
+     },
+     {
+      "id": "D",
+      "text": "$ kgm^3 \\, s^{-3} \\, A^{-1} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Match List - I with List - II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q34-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q34-table-1.jpg",
+      "page": 4,
+      "alt": "Table for question 34"
+     },
+     {
+      "id": "q34-table-2",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q34-table-2.jpg",
+      "page": 4,
+      "alt": "Table for question 34"
+     }
+    ]
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "A capacitor charged from a 50 V d.c. supply is found to have charge of $ 10\\mu C $. The capacitance of the capacitor would be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 0.1\\mu F $"
+     },
+     {
+      "id": "B",
+      "text": "$ 0.2\\mu F $"
+     },
+     {
+      "id": "C",
+      "text": "$ 0.3\\mu F $"
+     },
+     {
+      "id": "D",
+      "text": "$ 0.4\\mu F $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "In terms of Bohr radius $ a_{0} $ the radius of $ 2^{nd} $ Bohr orbit of Hydrogen is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 4a_{0} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 8a_{0} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\sqrt{2}a_{0} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 2a_{0} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "A point charge q moves from point A to point D along the path ABCD (as shown) in a uniform electric field E pointing parallel to negative direction of X-axis. The co-ordinates of A, B, C, D are $ (0,0,0) $, $ (a,b,0) $, $ (3a,0,0) $ and $ (2a,-b,0) $ respectively. The work done by the field in the above process is given by expression:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ qEa $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\sqrt{2}qEa $"
+     },
+     {
+      "id": "C",
+      "text": "qEa"
+     },
+     {
+      "id": "D",
+      "text": "2aqE"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": [
+     {
+      "id": "q37-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q37-figure-1.jpg",
+      "page": 4,
+      "alt": "Figure for question 37"
+     }
+    ]
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "A radioactive nucleus decays as given below:\n\n$ \\overset{A}{Z}P \\to \\overset{A}{Z+1}Q \\to \\overset{A-4}{Z-1}R^{*}\\to \\overset{A-4}{Z-1}R $\n\nWhich particles are emitted in the sequence?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\alpha $, $ \\beta $, $ \\gamma $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\beta $, $ \\gamma $, $ \\alpha $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\gamma $, $ \\alpha $, $ \\beta $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\beta $, $ \\alpha $, $ \\gamma $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "An electron moves around the nucleus in a hydrogen atom of radius 0.05 nm with a velocity of $ 2 \\times 10^{6} \\, m s^{-1} $. The magnetic field produced at the center of nucleus is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.128"
+     },
+     {
+      "id": "B",
+      "text": "6.4 T"
+     },
+     {
+      "id": "C",
+      "text": "128 T"
+     },
+     {
+      "id": "D",
+      "text": "12.8"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Match List - I with List - II.\n\nChoose the correct answer from the options given below:\n\n(a) (A)-(IV), (B)-(III), (C)-(I), (D)-(II)\n\n(b) (A)-(IV), (B)-(III), (C)-(II), (D)-(I)\n\n(c) (A)-(III), (B)-(IV), (C)-(I), (D)-(II)\n\n(d) (A)-(II), (B)-(III), (C)-(I), (D)-(IV)\n\n41. In an experiment, a student in the laboratory measures the terminal potential difference (V) of a cell (emf E and internal resistance r) as a function of current I flowing through it and plot a graph taking V on y-axis and I on x-axis. What is the slope of the graph between V and I?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ r^{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ -r^{2} $"
+     },
+     {
+      "id": "C",
+      "text": "r"
+     },
+     {
+      "id": "D",
+      "text": "r Compare it with standard equation of the line: $ y = mx + c $ $ \\Rightarrow y = c + mx $ Since graph of student is V vs I $ \\therefore $ V is y and I is x Since graph of student is $V$ vs $1$ : $V$ is $y$ and $I$ is $x$ Therefore, $(-r)$ is slope"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": [
+     {
+      "id": "q40-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q40-table-1.jpg",
+      "page": 5,
+      "alt": "Table for question 40"
+     }
+    ]
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "A plane electromagnetic wave of frequency\n\n30MHz travels in free space along the $x$-direction.\n\nAt a particular point in space and time $\\vec{E} =$\n\n6.3$\\hat{j}$ $V/m$. The $\\vec{B}$ at this point would be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$2.1 \\times 10^{-8}\\hat{k}$ $T$"
+     },
+     {
+      "id": "B",
+      "text": "$2.1 \\times 10^{-6}\\hat{j}$ $T$"
+     },
+     {
+      "id": "C",
+      "text": "$1.6 \\times 10^{-8}\\hat{i}$ $T$"
+     },
+     {
+      "id": "D",
+      "text": "$2.6 \\times 10^{-8}\\hat{j}$ $T$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "Match List - I with List - II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": [
+     {
+      "id": "q43-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q43-table-1.jpg",
+      "page": 5,
+      "alt": "Table for question 43"
+     }
+    ]
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "Which of the following statements are correct?\n\n(A) When light rays undergo two internal reflections inside a raindrop, a secondary rainbow is formed.\n\n(B) The angle between the emergent ray and angle of prism is called the angle of deviation.\n\n(C) Light undergoes successive total internal reflections as it moves through an optical fiber.\n\n(D) A telescope provides angular magnification of distant objects.\n\n(E) A simple magnifier is a diverging lens of small focal length.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (E) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(B), (C), (D) and (E) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "Match List - I with List - II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": [
+     {
+      "id": "q45-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q45-table-1.jpg",
+      "page": 5,
+      "alt": "Table for question 45"
+     }
+    ]
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Which of the following is not a significant characteristic of a pulse?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Pulse amplitude"
+     },
+     {
+      "id": "B",
+      "text": "Pulse width"
+     },
+     {
+      "id": "C",
+      "text": "Pulse position"
+     },
+     {
+      "id": "D",
+      "text": "Pulse duration modulation"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "An object is placed before a convex lens and its real image is obtained. Now if half of the surface is covered with paper. The result will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "No image will be formed"
+     },
+     {
+      "id": "B",
+      "text": "Half image will be formed"
+     },
+     {
+      "id": "C",
+      "text": "Image will be same as before"
+     },
+     {
+      "id": "D",
+      "text": "Full image will be formed with less brightness"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "A car has a fresh storage battery of e.m.f. 15 V and internal resistance $ 4 \\times 10^{-2} $ Ω. If the starter motor draws a current of 85 A, what is the terminal voltage of the battery when the starter is on?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3.4 V"
+     },
+     {
+      "id": "B",
+      "text": "11.6 V"
+     },
+     {
+      "id": "C",
+      "text": "12 V"
+     },
+     {
+      "id": "D",
+      "text": "12.5 V"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "A bar magnet of magnetic moment 3J/T lies aligned with the directions of a uniform magnetic field of 0.2 T. The amount of work, required so as to align its magnetic moment opposite to the field direction is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1.2 J"
+     },
+     {
+      "id": "B",
+      "text": "0.6 J"
+     },
+     {
+      "id": "C",
+      "text": "zero"
+     },
+     {
+      "id": "D",
+      "text": "0.6 J"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "Match List - I with List - II.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(IV), (C)-(III), (D)-(II)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": [
+     {
+      "id": "q50-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2023-05-30-shift-1/q50-table-1.jpg",
+      "page": 6,
+      "alt": "Table for question 50"
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+if (import.meta.env.PROD) {
+  return new Response("Not found", { status: 404 });
+}
+---
+
+<BaseLayout
+  title="Design system style guide"
+  description="Internal component catalogue for the CUETFreeMockTest design system."
+  noindex
+>
+  <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">Internal · not indexed</p>
+    <h1 class="mt-2 text-3xl font-black tracking-tight">Design system style guide</h1>
+    <p class="mt-2 max-w-3xl text-sm leading-6 text-[var(--ink-2)]">
+      Every component below is rendered twice from the same markup: once with the light token set and once with the dark token set.
+      Use the site theme toggle in the header to check the live page, or inspect the two fixed previews.
+    </p>
+
+    <div class="mt-6 grid gap-6 lg:grid-cols-2">
+      <section class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4">
+        <h2 class="text-sm font-bold">Light theme</h2>
+        <p class="mt-1 text-xs text-[var(--muted)]">Forced <code>data-theme="light"</code></p>
+        <iframe
+          src="/dev/styleguide/frame?theme=light"
+          title="Light theme component preview"
+          class="mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--bg)]"
+          data-styleguide-frame
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4">
+        <h2 class="text-sm font-bold">Dark theme</h2>
+        <p class="mt-1 text-xs text-[var(--muted)]">Forced <code>data-theme="dark"</code></p>
+        <iframe
+          src="/dev/styleguide/frame?theme=dark"
+          title="Dark theme component preview"
+          class="mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--bg)]"
+          data-styleguide-frame
+          loading="lazy"
+        ></iframe>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function fitFrame(frame: HTMLIFrameElement) {
+    try {
+      const height = frame.contentDocument?.documentElement.scrollHeight;
+      if (height) frame.style.height = `${height + 24}px`;
+    } catch {
+      /* Cross-origin should never happen for same-site frames. */
+    }
+  }
+
+  const frames = Array.from(document.querySelectorAll<HTMLIFrameElement>("[data-styleguide-frame]"));
+  frames.forEach((frame) => {
+    frame.addEventListener("load", () => fitFrame(frame));
+    if (frame.contentDocument?.readyState === "complete") fitFrame(frame);
+  });
+  window.addEventListener("resize", () => frames.forEach(fitFrame));
+</script>

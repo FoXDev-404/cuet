@@ -1,0 +1,129 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import SeoIntro from "../components/SeoIntro.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { breadcrumbJsonLd, getPageSeo, parseFaq, type FaqItem } from "../lib/seo";
+
+const PATH = "/about";
+const DEFAULT_TITLE = "About CUET Free Mock Test — Independent Practice, No Paywall";
+const DEFAULT_DESCRIPTION =
+  "Why this site exists, how papers are edited and scored, and the standards behind every CUET UG mock test, solution and leaderboard.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "Is this site affiliated with NTA?",
+    answer:
+      "No. CUET Free Mock Test is an independent practice project. CUET is conducted by the National Testing Agency, and this site does not represent or speak for NTA or any university.",
+  },
+  {
+    question: "Is everything really free?",
+    answer:
+      "Yes. Published mock tests, solutions, the dashboard and the leaderboard are free. There is no paywall, no card requirement and no locked result.",
+  },
+  {
+    question: "How are questions checked before publishing?",
+    answer:
+      "Every published question needs a non-empty explanation, a valid correct option and alt text for any image. A paper cannot be published with an empty or incomplete question set, and published papers are frozen so historical attempts stay valid.",
+  },
+  {
+    question: "Who writes the explanations?",
+    answer:
+      "Explanations are written and edited for this site. They are not copied from coaching material or official PDFs. If you find an error, report it from the solutions page and an editor will review the question.",
+  },
+  {
+    question: "How can I report a mistake or a copyright concern?",
+    answer:
+      "Use the report link under any question on the solutions page, or email the address on the contact page with the paper name and question number. Copyright concerns are reviewed before the content stays live.",
+  },
+];
+
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "About", path: PATH },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: title,
+    description,
+    url: new URL(PATH, site).toString(),
+  },
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={title} description={description} noindex={(seo?.noindex ?? 0) === 1} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="About"
+    title="A practice site built around the attempt, not the answer key"
+    intro="Most CUET preparation content is a PDF with a key at the end. This project is an attempt to make practice behave like the exam: a server timer, hidden answers, a real result, and an explanation you can learn from after submit."
+    updated="31 October 2026"
+  />
+
+  <SeoIntro html={seo?.intro_html} />
+
+  <article class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-14">
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight">Why this exists</h2>
+      <p class="mt-3 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+        Mock tests are only useful if the attempt is honest. If the answer key is one scroll away, or the timer pauses when the tab closes, the score tells you nothing. So the first design decision here was simple: correct answers and explanations are never sent to the browser before submit, and the deadline is stored on the server.
+      </p>
+      <p class="mt-3 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+        The second decision was to keep the result useful after the score. Every submitted attempt opens a section analysis and a question-by-question solution page. A wrong answer is not just marked red; the explanation shows the reasoning and the report link lets you flag a genuine error.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">What you get for free</h2>
+      <ul class="mt-3 space-y-2 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+        <li>Timed CUET UG mock tests with a question palette, mark-for-review and clear response.</li>
+        <li>Server-side scoring using each paper's own marking scheme.</li>
+        <li>Written solutions with KaTeX formulas and diagrams where needed.</li>
+        <li>A private dashboard with attempt history, accuracy and subject performance.</li>
+        <li>A first-attempt-only leaderboard so retakes cannot farm a rank.</li>
+        <li>Post-submission discussions, moderated so answer keys do not leak before a test.</li>
+      </ul>
+      <p class="mt-3 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+        There is no paid tier to unlock these features. If advertising is introduced later, it will be disclosed on the privacy page before it goes live, and it will never appear inside the test screen.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">Editorial standards</h2>
+      <div class="mt-3 space-y-4 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+        <p><strong class="text-neutral-900 dark:text-neutral-100">No invented exam facts.</strong> Dates, marking rules and syllabus scope belong to the official NTA bulletin. When an official summary has been verified, it is shown with a source link and a review date. When it has not, the page says so instead of guessing.</p>
+        <p><strong class="text-neutral-900 dark:text-neutral-100">No answer-key leaks.</strong> The attempt API returns questions without the correct option or explanation. A result is available only after a submit or an expired deadline.</p>
+        <p><strong class="text-neutral-900 dark:text-neutral-100">Frozen history.</strong> Published papers are not silently edited. A new version is a new paper, so an old attempt is always scored with the rules that were shown when it started.</p>
+        <p><strong class="text-neutral-900 dark:text-neutral-100">Original explanations.</strong> Solutions are written for this site. Images are redrawn or licensed; copied coaching material is not published.</p>
+        <p><strong class="text-neutral-900 dark:text-neutral-100">Corrections are welcome.</strong> A report from the solutions page creates a moderation item. If a key or explanation is wrong, the paper can be corrected without changing historical scores.</p>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">Independence</h2>
+      <p class="mt-3 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+        CUET Free Mock Test is not affiliated with the National Testing Agency, any university, or any coaching institute. CUET is conducted by NTA. Score, rank and percentile on this site are practice indicators among its own users, not official results.
+      </p>
+      <p class="mt-3 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+        The site is built to run on free-tier infrastructure, which keeps the operating cost low enough to keep practice free. That constraint shapes the product: server-rendered pages, a small client bundle, and no unnecessary third-party scripts.
+      </p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">Get in touch</h2>
+      <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        Questions, corrections and partnership enquiries are welcome. Visit the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/contact">contact page</a> or read the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/privacy-policy">privacy policy</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

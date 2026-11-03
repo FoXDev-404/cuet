@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ThemeToggle from "../../components/ThemeToggle.astro";
+import { first } from "../../lib/db";
+import { dashboardNav } from "../../lib/navigation";
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect(`/login?next=${encodeURIComponent("/dashboard/settings")}`, 303);
+
+const profile = await first<{
+  username: string;
+  email: string;
+  bio: string | null;
+  target_exam_date: string | null;
+  is_profile_public: number;
+  password_hash: string | null;
+  google_id: string | null;
+}>(
+  "SELECT username, email, bio, target_exam_date, is_profile_public, password_hash, google_id FROM users WHERE id = ?",
+  user.id,
+);
+if (!profile) return Astro.redirect("/login", 303);
+---
+
+<BaseLayout title="Account settings — CUET Free Mock Test" description="Profile, privacy, password and account data settings." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
+  <section class="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+    <h1 class="text-2xl font-black tracking-tight">Account settings</h1>
+    <p class="mt-2 text-sm text-[var(--muted)]">Your email is private. A public profile shows only your username, join date, activity counts and badges.</p>
+
+    <section class="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5">
+      <h2 class="font-bold">Appearance</h2>
+      <p class="mt-2 text-sm text-[var(--muted)]">Choose System to follow your device, or force Light or Dark. The theme is stored in this browser and applies to every page.</p>
+      <div class="mt-3"><ThemeToggle label /></div>
+    </section>
+
+    <form id="profile-form" class="mt-6 space-y-4 rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5">
+      <p id="profile-status" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
+      <label class="block text-sm font-semibold">
+        Username
+        <input class="field mt-1" name="username" maxlength="30" required value={profile.username} autocomplete="username" />
+      </label>
+      <label class="block text-sm font-semibold">
+        Email
+        <input class="field mt-1 bg-[var(--surface-3)]" value={profile.email} disabled />
+        <span class="mt-1 block text-xs font-normal text-[var(--muted)]">Email changes are not self-service at launch. Contact support.</span>
+      </label>
+      <label class="block text-sm font-semibold">
+        Short bio <span class="font-normal text-[var(--muted)]">(optional, max 500 characters)</span>
+        <textarea class="field mt-1" name="bio" rows="3" maxlength="500">{profile.bio ?? ""}</textarea>
+      </label>
+      <label class="block text-sm font-semibold">
+        Target exam date <span class="font-normal text-[var(--muted)]">(optional)</span>
+        <input class="field mt-1" name="target_exam_date" type="date" value={profile.target_exam_date ?? ""} />
+      </label>
+      <label class="flex items-start gap-3 text-sm">
+        <input class="mt-1" type="checkbox" name="is_profile_public" checked={profile.is_profile_public === 1} />
+        <span>Make my profile public at <span class="font-mono text-xs">/u/{profile.username}</span>. Attempt history, answers and email are never shown.</span>
+      </label>
+      <button class="rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-bold text-[var(--on-primary)] hover:bg-[var(--primary-hover)]" type="submit">Save profile</button>
+    </form>
+
+    <section class="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5">
+      <h2 class="font-bold">Password</h2>
+      {profile.password_hash ? (
+        <form id="password-form" class="mt-3 grid gap-3 sm:grid-cols-2">
+          <p id="password-status" class="hidden sm:col-span-2 rounded-lg px-3 py-2 text-sm" role="status"></p>
+          <label class="block text-sm font-semibold">Current password<input class="field mt-1" name="current_password" type="password" required autocomplete="current-password" /></label>
+          <label class="block text-sm font-semibold">New password<input class="field mt-1" name="new_password" type="password" minlength="8" required autocomplete="new-password" /></label>
+          <button class="w-fit rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)] sm:col-span-2" type="submit">Change password</button>
+        </form>
+      ) : (
+        <p class="mt-2 text-sm text-[var(--muted)]">This account signs in with Google. Manage the password with your Google account.</p>
+      )}
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5">
+      <h2 class="font-bold">Your data</h2>
+      <p class="mt-2 text-sm text-[var(--muted)]">Download a JSON copy of your profile, attempts, answers, bookmarks and comments.</p>
+      <a class="mt-3 inline-block rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)]" href="/api/account/export">Download my data</a>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-[var(--danger-border)] bg-[var(--danger-bg)] p-5">
+      <h2 class="font-bold text-[var(--danger-ink)]">Delete account</h2>
+      <p class="mt-2 text-sm leading-6 text-[var(--danger-ink)]">
+        This soft-deletes your profile and anonymises your email and username. Submitted attempt records are retained for leaderboard integrity and legal obligations. This cannot be undone from the site.
+      </p>
+      <form id="delete-form" class="mt-3 flex flex-wrap items-end gap-2">
+        <label class="block text-sm font-semibold text-[var(--danger-ink)]">Type DELETE to confirm
+          <input class="field mt-1" name="confirm" autocomplete="off" required />
+        </label>
+        <button class="rounded-lg bg-[var(--wrong)] px-4 py-2.5 text-sm font-bold text-[var(--on-wrong)] hover:opacity-90" type="submit">Delete my account</button>
+      </form>
+      <p id="delete-status" class="mt-2 hidden text-sm" role="status"></p>
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  .field {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-input);
+    background: var(--surface-2); color: var(--ink);
+    padding: 0.6rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+</style>
+
+<script>
+  function show(element: HTMLElement | null, message: string, ok: boolean) {
+    if (!element) return;
+    element.textContent = message;
+    element.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-[var(--success-bg)] text-[var(--success-ink)]" : "bg-[var(--danger-bg)] text-[var(--danger-ink)]"}`;
+  }
+
+  const profileForm = document.getElementById("profile-form") as HTMLFormElement | null;
+  profileForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const data = new FormData(profileForm);
+    const response = await fetch("/api/account", {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        username: data.get("username"),
+        bio: data.get("bio"),
+        target_exam_date: data.get("target_exam_date"),
+        is_profile_public: data.get("is_profile_public") === "on",
+      }),
+    });
+    const result = (await response.json()) as { error?: string };
+    show(document.getElementById("profile-status"), response.ok ? "Profile saved." : result.error || "Could not save.", response.ok);
+  });
+
+  const passwordForm = document.getElementById("password-form") as HTMLFormElement | null;
+  passwordForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const data = new FormData(passwordForm);
+    const response = await fetch("/api/account/password", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ current_password: data.get("current_password"), new_password: data.get("new_password") }),
+    });
+    const result = (await response.json()) as { error?: string };
+    show(document.getElementById("password-status"), response.ok ? "Password changed. Other sessions were signed out." : result.error || "Could not change the password.", response.ok);
+    if (response.ok) passwordForm.reset();
+  });
+
+  const deleteForm = document.getElementById("delete-form") as HTMLFormElement | null;
+  deleteForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!confirm("Delete this account? This cannot be undone from the site.")) return;
+    const data = new FormData(deleteForm);
+    const response = await fetch("/api/account/delete", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ confirm: data.get("confirm") }),
+    });
+    const result = (await response.json()) as { error?: string; redirect?: string };
+    if (!response.ok) {
+      show(document.getElementById("delete-status"), result.error || "Could not delete the account.", false);
+      return;
+    }
+    location.href = result.redirect || "/";
+  });
+</script>

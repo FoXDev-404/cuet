@@ -1,0 +1,2010 @@
+{
+ "exam": {
+  "id": "local-general-test-2024-05-29-shift-1",
+  "slug": "general-test-2024-05-29-shift-1",
+  "title": "CUET UG General Test 29 May 2024 Shift 1 Previous Year Paper",
+  "subject": "General Test",
+  "subjectId": "local-general-test",
+  "subjectCode": "GT",
+  "year": 2024,
+  "examDate": "2024-05-29",
+  "shift": "Shift 1",
+  "sourceFile": "General Test_2024-05-29_Shift_1.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 58,
+  "sourceQuestionCount": 60,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [
+   {
+    "id": "pf379ea06556b",
+    "title": "Reading passage",
+    "contentEn": "P, Q, R, S, T, K, L, M and N are sitting around a circle facing the centre.\n\nK is $4^{\\mathrm{th}}$ to the right of P and P is $3^{\\mathrm{rd}}$ to the right of Q.\n\nN is $4^{\\mathrm{th}}$ to the left of Q and $3^{\\mathrm{rd}}$ to the right of S.\n\nR is $ 2^{nd} $ to the right of M and M is the immediate neighbour of P.\n\nT is $ 2^{nd} $ to the left of L."
+   }
+  ],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "The sum of the digits of a two-digit number is 10. If 18 is subtracted from it, the digits in the resulting number will be equal. The number is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "75"
+     },
+     {
+      "id": "B",
+      "text": "73"
+     },
+     {
+      "id": "C",
+      "text": "65"
+     },
+     {
+      "id": "D",
+      "text": "64"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "In the given question, a statement is given followed by some conclusions. Choose the conclusion(s) which logically follow(s) the given statement.\n\nStatement: Few shops on this road have neon lights, but they all have signboards.\nConclusions :\n\nI. Some shops have either signboards or neon lights.\n\nII. Some shops have no signboards.\n\nIII. Some shops have no neon lights.\n\nIV. Some shops have both signboards and neon lights.\n\nThe conclusion(s) correctly drawn is/are :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "IV alone"
+     },
+     {
+      "id": "B",
+      "text": "I alone"
+     },
+     {
+      "id": "C",
+      "text": "II and III"
+     },
+     {
+      "id": "D",
+      "text": "III and IV"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Anubhav spent 14% of his income on electricity bills, 28% on rent and 18% on shopping. If $ \\frac{1}{4} $th remaining amount is Rs. 5120, how much did he spend on electricity bills?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Rs.7160"
+     },
+     {
+      "id": "B",
+      "text": "Rs.7168"
+     },
+     {
+      "id": "C",
+      "text": "Rs.8160"
+     },
+     {
+      "id": "D",
+      "text": "Rs.9000"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "If the average of p numbers is $ q^2 $ and that of q numbers is $ p^2 $, then the average of $ (p + q) $ numbers is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{p}{q} $"
+     },
+     {
+      "id": "B",
+      "text": "$ p + q $"
+     },
+     {
+      "id": "C",
+      "text": "pq"
+     },
+     {
+      "id": "D",
+      "text": "p - q"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "Ajay walks at a speed of 4 km/hr. He doubles his speed after reaching exactly half way. He walks for 12 hours in all. What is the total distance travelled by him?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "32 km"
+     },
+     {
+      "id": "B",
+      "text": "30 km"
+     },
+     {
+      "id": "C",
+      "text": "64 km"
+     },
+     {
+      "id": "D",
+      "text": "60 km"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "A shopkeeper earned a profit (in ₹) by selling an item, which is three times the discount offered (in ₹). If the discount offered is 6.25%, what is his profit percentage?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20%"
+     },
+     {
+      "id": "B",
+      "text": "25%"
+     },
+     {
+      "id": "C",
+      "text": "10%"
+     },
+     {
+      "id": "D",
+      "text": "12%"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "The total population of a town is 50,000. The number of males and females increases by 10% and 15% respectively and consequently the\n\npopulation of the town becomes 56,000. What was the number of males in the town?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20,000"
+     },
+     {
+      "id": "B",
+      "text": "30,000"
+     },
+     {
+      "id": "C",
+      "text": "35,000"
+     },
+     {
+      "id": "D",
+      "text": "40,000"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "A 6-digit number has digits as consecutive natural numbers. The number is always divisible by :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3"
+     },
+     {
+      "id": "B",
+      "text": "4"
+     },
+     {
+      "id": "C",
+      "text": "5"
+     },
+     {
+      "id": "D",
+      "text": "2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "The average of 101 consecutive odd numbers is 303. Find the largest number.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "373"
+     },
+     {
+      "id": "B",
+      "text": "401"
+     },
+     {
+      "id": "C",
+      "text": "403"
+     },
+     {
+      "id": "D",
+      "text": "409"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "If A : B = 5 : 6 and B : C = 6 : 7, then A + B : B + C : A + C is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "10:12:11"
+     },
+     {
+      "id": "B",
+      "text": "9:11:10"
+     },
+     {
+      "id": "C",
+      "text": "11:13:12"
+     },
+     {
+      "id": "D",
+      "text": "19:21:20"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Aman can do 50% of the job in 16 days, and Bhanu can do 25% of the job in 24 days. In how many days can they do $ \\frac{1}{4} $th of the job working together?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "6 days"
+     },
+     {
+      "id": "B",
+      "text": "8 days"
+     },
+     {
+      "id": "C",
+      "text": "10 days"
+     },
+     {
+      "id": "D",
+      "text": "12 day"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "In 80 litres mixture of milk and water, the ratio of amount of milk to that of amount of water is 7 : 3. In order to make this ratio 2 : 1, how many litres of water should be added?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5 litres"
+     },
+     {
+      "id": "B",
+      "text": "6 litres"
+     },
+     {
+      "id": "C",
+      "text": "4 litres"
+     },
+     {
+      "id": "D",
+      "text": "10 litres"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "In a triangle PQR, if $ \\angle P + \\angle R = 150^\\circ $ and $ \\angle P + 3\\angle Q = 170^\\circ $, then $ \\angle P $ is equal to :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$70^{\\circ}$"
+     },
+     {
+      "id": "B",
+      "text": "$80^{\\circ}$"
+     },
+     {
+      "id": "C",
+      "text": "$75^{\\circ}$"
+     },
+     {
+      "id": "D",
+      "text": "$65^{\\circ}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "Aman invested Rs. (P + 3000) for 3 years at 8% simple interest. Anuj invested an amount of Rs. P for 2 years at 12% compound interest and received the same amount of interest as Aman received. Find the amount that is invested by Anuj.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\Re"
+     },
+     {
+      "id": "B",
+      "text": "\\Re"
+     },
+     {
+      "id": "C",
+      "text": "\\Re"
+     },
+     {
+      "id": "D",
+      "text": "\\Re $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "In the Delhi zoo, there are some ducks and rabbits. If the heads are counted there are 160, while the legs are 450. What will be number of ducks in the zoo?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "90"
+     },
+     {
+      "id": "B",
+      "text": "92"
+     },
+     {
+      "id": "C",
+      "text": "95"
+     },
+     {
+      "id": "D",
+      "text": "99"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Ankit and Raju decided to start a business and they invested Rs. 5500 and Rs. 6500 respectively. After 11 months, the difference between their profits is Rs. 680. Find the total profit.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Rs.8160"
+     },
+     {
+      "id": "B",
+      "text": "Rs.7260"
+     },
+     {
+      "id": "C",
+      "text": "Rs.7000"
+     },
+     {
+      "id": "D",
+      "text": "Rs.6500"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "PQR is a triangle. The bisectors of the internal angle $\\angle Q$ and external angle $\\angle R$ intersect at M. If $\\angle QMR = 40^{\\circ}$, then $\\angle P$ is :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 75^{\\circ} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 60^{\\circ} $"
+     },
+     {
+      "id": "C",
+      "text": "$ 65^{\\circ} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 80^{\\circ} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "What is the name of the alloy which is obtained after mixing mercury with another metal?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Solder"
+     },
+     {
+      "id": "B",
+      "text": "Amalgam"
+     },
+     {
+      "id": "C",
+      "text": "Duralumin"
+     },
+     {
+      "id": "D",
+      "text": "Pewter"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "What is the name of the scheme launched by the Defence Minister at DefConnect 2024 to foster innovation in defence technology?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "INNOVATE"
+     },
+     {
+      "id": "B",
+      "text": "TECHBOOST"
+     },
+     {
+      "id": "C",
+      "text": "ADITI"
+     },
+     {
+      "id": "D",
+      "text": "DEFEND"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Who is the author of the book \"Kashmir : Travels in Paradise on Earth\"?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Romesh Bhattacharji"
+     },
+     {
+      "id": "B",
+      "text": "Vikram Seth"
+     },
+     {
+      "id": "C",
+      "text": "Jhumpa Lahiri"
+     },
+     {
+      "id": "D",
+      "text": "Shamas Faqir"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Which state became the 25^{th} state of India on 30th May, 1987?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Telangana"
+     },
+     {
+      "id": "B",
+      "text": "Haryana"
+     },
+     {
+      "id": "C",
+      "text": "Gujarat"
+     },
+     {
+      "id": "D",
+      "text": "Goa"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     25
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "Which of these temples is not located in Uttarakhand?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Nanda Devi"
+     },
+     {
+      "id": "B",
+      "text": "Surkanda Devi"
+     },
+     {
+      "id": "C",
+      "text": "Kalighat Kali"
+     },
+     {
+      "id": "D",
+      "text": "Tungnath"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "Which of these states do not share a border with Chhattisgarh?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Karnataka"
+     },
+     {
+      "id": "B",
+      "text": "Madhya Pradesh"
+     },
+     {
+      "id": "C",
+      "text": "Telangana"
+     },
+     {
+      "id": "D",
+      "text": "Jharkhand"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "Which bowler became second Indian bowler to take 500 wickets in Test matches in February, 2024?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Harbhajan Singh"
+     },
+     {
+      "id": "B",
+      "text": "Ravichandran Ashwin"
+     },
+     {
+      "id": "C",
+      "text": "Ishant Sharma"
+     },
+     {
+      "id": "D",
+      "text": "Mohammed Shami"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "Which one of the following rivers is not included in 'Panchnad - The five rivers of Punjab'?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "The Luni"
+     },
+     {
+      "id": "B",
+      "text": "The Jhelum"
+     },
+     {
+      "id": "C",
+      "text": "The Chenab"
+     },
+     {
+      "id": "D",
+      "text": "The Sutlej"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Where was the $ 15^{th} $ BRICS Summit-2023 organised?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "South Africa"
+     },
+     {
+      "id": "B",
+      "text": "Brazil"
+     },
+     {
+      "id": "C",
+      "text": "Russia"
+     },
+     {
+      "id": "D",
+      "text": "China"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "Match List I with List II :",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (II), (B) - (III), (C) - (I), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (I), (B) - (IV), (C) - (III), (D) - (II)"
+     },
+     {
+      "id": "D",
+      "text": "\\left(\\mathrm{A}\\right)-\\left(\\mathrm{II}\\right),\\left(\\mathrm{B}\\right)-\\left(\\mathrm{III}\\right),\\left(\\mathrm{C}\\right)-\\left(\\mathrm{IV}\\right),\\left(\\mathrm{D}\\right)-\\left(\\mathrm{I}\\right)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": [
+     {
+      "id": "q28-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q28-table-1.jpg",
+      "page": 31,
+      "alt": "Table for question 28"
+     }
+    ]
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "From the given options, name the longest river in Asia.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Yangtze River"
+     },
+     {
+      "id": "B",
+      "text": "Lena River"
+     },
+     {
+      "id": "C",
+      "text": "Indus River"
+     },
+     {
+      "id": "D",
+      "text": "Brahmaputra River Answer: A"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "Arrange the following important days according to their chronological order from January to December:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Indian Airforce Day"
+     },
+     {
+      "id": "B",
+      "text": "Kargil Victory Day"
+     },
+     {
+      "id": "C",
+      "text": "World Soil Day"
+     },
+     {
+      "id": "D",
+      "text": "National Youth Day E. International Women's Day Select the correct answer from the options given below"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "Which Railway Minister from the following, resigned immediately after the 1956 Ariyalur train accident?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Jagjivan Ram"
+     },
+     {
+      "id": "B",
+      "text": "Lal Bahadur Shastri"
+     },
+     {
+      "id": "C",
+      "text": "S.K. Patil"
+     },
+     {
+      "id": "D",
+      "text": "Lalit Narayan Mishra"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     35
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "Which of the following countries won the FIH Hockey Men's World Cup 2023?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Germany"
+     },
+     {
+      "id": "B",
+      "text": "Netherlands"
+     },
+     {
+      "id": "C",
+      "text": "Belgium"
+     },
+     {
+      "id": "D",
+      "text": "Australia"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     36
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "Who won the title of the $ 6^{th} $ Khelo India Youth Games 2024?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Haryana"
+     },
+     {
+      "id": "B",
+      "text": "Maharashtra"
+     },
+     {
+      "id": "C",
+      "text": "Karnataka"
+     },
+     {
+      "id": "D",
+      "text": "Tamil Nadu"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "In January 2024, which Indian state was the host of the Purple Fest, the first inclusive festival for persons with disabilities?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Goa"
+     },
+     {
+      "id": "B",
+      "text": "Gujarat"
+     },
+     {
+      "id": "C",
+      "text": "Kerala"
+     },
+     {
+      "id": "D",
+      "text": "Maharashtra"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     38
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "In December 2023, Sultan Haitham bin Tarik was on a State visit to India. He is the Sultan and Prime Minister of which country?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Iran"
+     },
+     {
+      "id": "B",
+      "text": "Yemen"
+     },
+     {
+      "id": "C",
+      "text": "Qatar"
+     },
+     {
+      "id": "D",
+      "text": "Oman"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     39
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "Which of the following states launched the 'Mukhyamantri Seekho-Kamao Yojana' (MMSKY) in 2023?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Uttar Pradesh"
+     },
+     {
+      "id": "B",
+      "text": "Himachal Pradesh"
+     },
+     {
+      "id": "C",
+      "text": "Madhya Pradesh"
+     },
+     {
+      "id": "D",
+      "text": "Bihar"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     40
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Rabindranath Tagore had renounced his knighthood because _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "of execution of Bhagat Singh"
+     },
+     {
+      "id": "B",
+      "text": "of Chauri-Chaura incident"
+     },
+     {
+      "id": "C",
+      "text": "he wanted to join the Congress"
+     },
+     {
+      "id": "D",
+      "text": "of the Jallianwala Bagh tragedy"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     41
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "In which of the following cities of Madhya Pradesh was the $ 17^{th} $ edition of Pravasi Bharatiya Divas (PBD) organized?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Bhopal"
+     },
+     {
+      "id": "B",
+      "text": "Indore"
+     },
+     {
+      "id": "C",
+      "text": "Jabalpur"
+     },
+     {
+      "id": "D",
+      "text": "Gwalior"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     42
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "In the joint military exercise 'Desert Cyclone', 2024, which two nations collaborated to enhance interoperability through knowledge exchange?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "India and Qatar"
+     },
+     {
+      "id": "B",
+      "text": "India and Vietnam"
+     },
+     {
+      "id": "C",
+      "text": "India and Australia"
+     },
+     {
+      "id": "D",
+      "text": "India and UAE"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     43
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Who among the following wrote the book \"Guilty Men of India's Partition\"?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Mahatma Gandhi"
+     },
+     {
+      "id": "B",
+      "text": "Lala Har Dayal"
+     },
+     {
+      "id": "C",
+      "text": "Lala Lajpat Rai"
+     },
+     {
+      "id": "D",
+      "text": "Ram Manohar Lohia"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     44
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Who authored the famous novels, 'The Fountainhead' and 'Atlas Shrugged'?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "H.G. Wells"
+     },
+     {
+      "id": "B",
+      "text": "Ayn Rand"
+     },
+     {
+      "id": "C",
+      "text": "George Orwell"
+     },
+     {
+      "id": "D",
+      "text": "J.M. Barrie"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     45
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "The Bhoodan-Gramadan Movement started by Vinoba Bhave is also known as _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Civil Revolution"
+     },
+     {
+      "id": "B",
+      "text": "Green Revolution"
+     },
+     {
+      "id": "C",
+      "text": "Bloodless Revolution"
+     },
+     {
+      "id": "D",
+      "text": "White Revolution"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     46
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "23 January, the birth anniversary of Netaji Subhas Chandra Bose, is celebrated every year as _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Shaheed Diwas"
+     },
+     {
+      "id": "B",
+      "text": "Parakram Diwas"
+     },
+     {
+      "id": "C",
+      "text": "National Youth Day"
+     },
+     {
+      "id": "D",
+      "text": "Hindi Diwas"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     47
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "23 December, the birthday of former Prime Minister Chaudhary Charan Singh, is celebrated every year as _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Samvidhan Diwas"
+     },
+     {
+      "id": "B",
+      "text": "National Milk Day"
+     },
+     {
+      "id": "C",
+      "text": "National Farmers' Day"
+     },
+     {
+      "id": "D",
+      "text": "Good Governance Day"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     48
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "Find the missing number in the following figure.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3"
+     },
+     {
+      "id": "B",
+      "text": "4"
+     },
+     {
+      "id": "C",
+      "text": "1"
+     },
+     {
+      "id": "D",
+      "text": "2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     49
+    ],
+    "assets": [
+     {
+      "id": "q45-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q45-figure-1.jpg",
+      "page": 49,
+      "alt": "Figure for question 45"
+     }
+    ]
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "In the given analogy, choose the number which will replace the question mark (?).\n\nWSH : 5 :: KMJ : ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "3"
+     },
+     {
+      "id": "B",
+      "text": "7"
+     },
+     {
+      "id": "C",
+      "text": "5"
+     },
+     {
+      "id": "D",
+      "text": "2"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     51
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "From the given options, at what angle are the hands of a clock inclined at 10 minutes to 2 (Smaller angle)?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$115^{\\circ}$"
+     },
+     {
+      "id": "B",
+      "text": "$65^{\\circ}$"
+     },
+     {
+      "id": "C",
+      "text": "$120^{\\circ}$"
+     },
+     {
+      "id": "D",
+      "text": "$112^{\\circ}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     52
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "If $ 1^{st} $ January, 2001 was a Monday, what was the day on $ 26^{th} $ January, 2003 ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Saturday"
+     },
+     {
+      "id": "B",
+      "text": "Sunday"
+     },
+     {
+      "id": "C",
+      "text": "Monday"
+     },
+     {
+      "id": "D",
+      "text": "Wednesday"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     52
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "What comes in place of the question mark (?) in the series given below?\n\nB2D, C3F, E5J, G7N,?, M13Z",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "I9R"
+     },
+     {
+      "id": "B",
+      "text": "K11Z"
+     },
+     {
+      "id": "C",
+      "text": "K9W"
+     },
+     {
+      "id": "D",
+      "text": "K11V"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     53
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "Which one will replace the question mark (?) ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "40"
+     },
+     {
+      "id": "B",
+      "text": "43"
+     },
+     {
+      "id": "C",
+      "text": "44"
+     },
+     {
+      "id": "D",
+      "text": "45"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     54,
+     55
+    ],
+    "assets": [
+     {
+      "id": "q50-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q50-figure-1.jpg",
+      "page": 55,
+      "alt": "Figure for question 50"
+     }
+    ]
+   },
+   {
+    "id": "q51",
+    "sourceQuestionNo": 51,
+    "stemEn": "Take the given statements to be true even if they seem to be at variance with commonly known facts. Then decide which of the given conclusions logically follow the given statements.\n\nStatements :\n\n0% chairs are tables.\n\nAll computers are chairs.\n\nSome books are tables.\n\nConclusions :\n\nI. Not a single table is a computer.\n\nII. Some books are not chairs.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Only conclusion I follows."
+     },
+     {
+      "id": "B",
+      "text": "Only conclusion II follows."
+     },
+     {
+      "id": "C",
+      "text": "Both conclusions I and II follow."
+     },
+     {
+      "id": "D",
+      "text": "Neither conclusion I nor II follows."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     56
+    ],
+    "assets": []
+   },
+   {
+    "id": "q52",
+    "sourceQuestionNo": 52,
+    "stemEn": "Who is to the immediate left of K?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "R"
+     },
+     {
+      "id": "B",
+      "text": "T"
+     },
+     {
+      "id": "C",
+      "text": "Q"
+     },
+     {
+      "id": "D",
+      "text": "M"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": "pf379ea06556b",
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     57
+    ],
+    "assets": []
+   },
+   {
+    "id": "q53",
+    "sourceQuestionNo": 53,
+    "stemEn": "Find the number of triangles in the given figure.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "8"
+     },
+     {
+      "id": "B",
+      "text": "10"
+     },
+     {
+      "id": "C",
+      "text": "12"
+     },
+     {
+      "id": "D",
+      "text": "14"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     60
+    ],
+    "assets": [
+     {
+      "id": "q53-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q53-figure-1.jpg",
+      "page": 60,
+      "alt": "Figure for question 53"
+     }
+    ]
+   },
+   {
+    "id": "q54",
+    "sourceQuestionNo": 54,
+    "stemEn": "Rakesh is $17^{\\text{th}}$ from the right and Ankit is $15^{\\text{th}}$ from the left in a line of students. If they interchange their places, the position of Ankit becomes $19^{\\text{th}}$ from the left. How many students are there in the line?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "36"
+     },
+     {
+      "id": "B",
+      "text": "35"
+     },
+     {
+      "id": "C",
+      "text": "34"
+     },
+     {
+      "id": "D",
+      "text": "33"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     61
+    ],
+    "assets": []
+   },
+   {
+    "id": "q55",
+    "sourceQuestionNo": 55,
+    "stemEn": "In a family, Bhanu is the father of Kamlesh. Bhanu has only two children. Kamlesh is the brother of Ritu. Ritu is the daughter of Santosh. Aryan is the grandson of Santosh. Sunny is the father of Aryan. How is Sunny related to Bhanu?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Son-in-law"
+     },
+     {
+      "id": "B",
+      "text": "Son"
+     },
+     {
+      "id": "C",
+      "text": "Nephew"
+     },
+     {
+      "id": "D",
+      "text": "Brother-in-law"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     62
+    ],
+    "assets": []
+   },
+   {
+    "id": "q56",
+    "sourceQuestionNo": 56,
+    "stemEn": "Identify the number that will replace the question mark in the second equation based on the relationship represented in the first equation.\n\n$$ =a^{2}+b^{3}+c^{4}. $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "420"
+     },
+     {
+      "id": "B",
+      "text": "92"
+     },
+     {
+      "id": "C",
+      "text": "602"
+     },
+     {
+      "id": "D",
+      "text": "456"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     63,
+     64
+    ],
+    "assets": [
+     {
+      "id": "q56-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q56-figure-1.jpg",
+      "page": 64,
+      "alt": "Figure for question 56"
+     }
+    ]
+   },
+   {
+    "id": "q58",
+    "sourceQuestionNo": 58,
+    "stemEn": "Find the number of triangles in the given figure.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "14"
+     },
+     {
+      "id": "B",
+      "text": "15"
+     },
+     {
+      "id": "C",
+      "text": "16"
+     },
+     {
+      "id": "D",
+      "text": "18"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     67
+    ],
+    "assets": [
+     {
+      "id": "q58-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q58-figure-1.jpg",
+      "page": 67,
+      "alt": "Figure for question 58"
+     }
+    ]
+   },
+   {
+    "id": "q59",
+    "sourceQuestionNo": 59,
+    "stemEn": "Which option figure will complete the pattern in the given figure?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     68,
+     69
+    ],
+    "assets": [
+     {
+      "id": "q59-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q59-figure-1.jpg",
+      "page": 69,
+      "alt": "Figure for question 59"
+     },
+     {
+      "id": "q59-options",
+      "kind": "options",
+      "path": "/local-papers/assets/general-test-2024-05-29-shift-1/q59-options.jpg",
+      "page": 69,
+      "alt": "Printed answer choices for question 59"
+     }
+    ]
+   },
+   {
+    "id": "q60",
+    "sourceQuestionNo": 60,
+    "stemEn": "A woman leaves her home. She walks 40 m in North-West direction and then 90 m in South-East direction. Then, she moves 30 m in North direction. How far is she now from her initial position?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "30 m"
+     },
+     {
+      "id": "B",
+      "text": "60 m"
+     },
+     {
+      "id": "C",
+      "text": "50 m"
+     },
+     {
+      "id": "D",
+      "text": "40 m"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     70
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

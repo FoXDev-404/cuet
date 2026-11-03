@@ -1,0 +1,26 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import QuestionForm from "../../../components/QuestionForm.astro";
+import { all } from "../../../lib/db";
+import { can } from "../../../lib/auth/admin";
+
+const admin = Astro.locals.admin!;
+const subjects = await all<{ id: number; name: string }>(
+  "SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name",
+);
+const canPublish = can(admin.role, "questions.publish");
+---
+
+<AdminLayout title="New question" active="questions">
+  <div class="mb-6">
+    <h1 class="text-2xl font-black tracking-tight">New question</h1>
+    <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+      Write original content. Use <code class="rounded bg-neutral-100 px-1 dark:bg-neutral-800">$...$</code> for formulas and add meaningful alt text to every image.
+    </p>
+  </div>
+  {subjects.length === 0 ? (
+    <p class="rounded-xl bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">No active subjects. Apply the seed migration first.</p>
+  ) : (
+    <QuestionForm subjects={subjects} canPublish={canPublish} />
+  )}
+</AdminLayout>

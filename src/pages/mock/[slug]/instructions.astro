@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { first } from "../../../lib/db";
+import { getGuestToken } from "../../../lib/auth/session";
+import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
+import { parseMarkingScheme } from "../../../lib/content";
+import { oldSlugRedirect } from "../../../lib/slug-redirects";
+
+const slug = Astro.params.slug ?? "";
+
+const mock = await first<{
+  id: number;
+  title: string;
+  slug: string;
+  duration_min: number;
+  total_marks: number;
+  marking_scheme: string;
+  instructions: string | null;
+  question_count: number;
+  attempt_count: number;
+}>(
+  `SELECT m.id, m.title, m.slug, m.duration_min, m.total_marks, m.marking_scheme, m.instructions,
+          (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
+          (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count
+   FROM mock_tests m WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
+  slug,
+);
+if (!mock) {
+  const target = await oldSlugRedirect(slug);
+  if (target) return Astro.redirect(`/mock/${target}/instructions`, 301);
+  return new Response("Mock test not found", { status: 404 });
+}
+
+const marking = parseMarkingScheme(mock.marking_scheme);
+let activeAttempt = await findInProgressAttempt(
+  mock.id,
+  Astro.locals.user?.id ?? null,
+  getGuestToken(Astro.cookies),
+);
+if (activeAttempt) {
+  activeAttempt = await settleAttempt(activeAttempt);
+  if (activeAttempt.status !== "in_progress") activeAttempt = null;
+}
+const lines = (mock.instructions ?? "")
+  .split("\n")
+  .map((line) => line.trim())
+  .filter(Boolean);
+---
+
+<BaseLayout title={`Instructions — ${mock.title}`} noindex>
+  <section class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
+    <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/mock/${mock.slug}`}>← Back to ${mock.title}</a>
+    <h1 class="mt-4 text-3xl font-black tracking-tight">Before you start</h1>
+    <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">{mock.attempt_count.toLocaleString("en-IN")} attempt{mock.attempt_count === 1 ? "" : "s"} so far. Read these instructions carefully. The server starts the clock when you click Begin.</p>
+
+    <div class="mt-6 grid gap-3 sm:grid-cols-4">
+      <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</p><p class="mt-1 text-2xl font-black">{mock.question_count}</p></div>
+      <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p><p class="mt-1 text-2xl font-black">{mock.duration_min} min</p></div>
+      <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Total marks</p><p class="mt-1 text-2xl font-black">{mock.total_marks}</p></div>
+      <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Marking</p><p class="mt-1 text-sm font-bold">+{marking.correct} / {marking.wrong}</p></div>
+    </div>
+
+    <div class="mt-6 rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="font-bold">Exam instructions</h2>
+      <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+        {(lines.length > 0
+          ? lines
+          : [
+              "The countdown starts on the server when the attempt is created.",
+              "The question palette shows answered, unanswered, not visited and marked-for-review questions.",
+              "Use Clear Response to remove an answer, and Mark for Review to flag a question.",
+              "Answers autosave every few seconds and when you navigate. A refresh resumes the same attempt.",
+              "The server accepts submissions until the deadline plus a 15-second network grace period.",
+              "Correct answers and explanations are never sent to the browser before submit.",
+            ]
+        ).map((line) => <li>{line}</li>)}
+      </ol>
+    </div>
+
+    <div class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+      Do not close the tab during the test. If you lose connection, reopen this mock and resume — saved answers are kept.
+    </div>
+
+    <p id="start-error" class="mt-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      {activeAttempt ? (
+        <a class="rounded-lg bg-brand-600 px-5 py-3 text-sm font-bold text-white hover:bg-brand-700" href={`/attempt/${activeAttempt.id}`}>Resume your attempt →</a>
+      ) : (
+        <button id="start-attempt" data-mock-id={mock.id} class="rounded-lg bg-brand-600 px-5 py-3 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="button">
+          Begin test →
+        </button>
+      )}
+      <a class="rounded-lg border border-neutral-300 px-5 py-3 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" href={`/mock/${mock.slug}`}>Cancel</a>
+    </div>
+  </section>
+
+  <script>
+    const button = document.getElementById("start-attempt") as HTMLButtonElement | null;
+    const errorBox = document.getElementById("start-error") as HTMLElement | null;
+    button?.addEventListener("click", async () => {
+      button.disabled = true;
+      button.textContent = "Starting…";
+      if (errorBox) errorBox.classList.add("hidden");
+      try {
+        const response = await fetch("/api/attempts/start", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ mockId: Number(button.dataset.mockId) }),
+        });
+        const result = (await response.json()) as { error?: string; redirect?: string };
+        if (!response.ok) throw new Error(result.error || "Could not start the test.");
+        location.href = result.redirect || "/cuet-ug-mock-test";
+      } catch (error) {
+        if (errorBox) {
+          errorBox.textContent = error instanceof Error ? error.message : "Could not start the test.";
+          errorBox.classList.remove("hidden");
+        }
+        button.disabled = false;
+        button.textContent = "Begin test →";
+      }
+    });
+  </script>
+</BaseLayout>

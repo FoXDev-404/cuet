@@ -1,0 +1,223 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can } from "../../lib/auth/admin";
+import { formatDateTime } from "../../lib/content";
+import { estimateReadingMinutes } from "../../lib/blog";
+import { findBlogPost, listBlogPosts } from "../../lib/admin/blog";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "seo.write")) return Astro.redirect("/forbidden", 303);
+
+const posts = await listBlogPosts();
+const requestedId = Number(Astro.url.searchParams.get("id") ?? "0");
+const selected =
+  Number.isInteger(requestedId) && requestedId > 0 ? await findBlogPost(requestedId) : null;
+const live = Boolean(
+  selected?.status === "published" && selected.published_at && selected.body.length >= 400,
+);
+---
+
+<AdminLayout title="Guides" active="blog">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Guides</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Editorial articles for <code>/blog</code>. A guide stays out of search and the sitemap until it is published with at least 400 characters of original body text and an 80-320 character description.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/blog" target="_blank" rel="noopener">View public blog</a>
+      <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/blog">New guide</a>
+    </div>
+  </div>
+
+  <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+    <p class="font-bold">No invented exam facts</p>
+    <p class="mt-1">Guides may explain strategy and study technique. Any date, pattern, marking rule or syllabus claim must link to the official NTA source, or stay out of the article.</p>
+  </div>
+
+  <div class="mt-6 grid gap-6 xl:grid-cols-[1fr_520px]">
+    <section>
+      <h2 class="text-lg font-bold">All guides</h2>
+      {posts.length === 0 ? (
+        <div class="mt-4 rounded-2xl border border-dashed border-neutral-300 p-10 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+          No guides yet. Write the first article with the editor on the right; it stays a draft until you publish it.
+        </div>
+      ) : (
+        <ul class="mt-4 space-y-2">
+          {posts.map((post) => {
+            const published = post.status === "published" && post.published_at && post.body.length >= 400;
+            return (
+              <li class:list={[
+                "rounded-2xl border bg-white p-4 dark:bg-neutral-900",
+                selected?.id === post.id ? "border-brand-400 ring-2 ring-brand-100 dark:border-brand-600 dark:ring-brand-950" : "border-neutral-200 dark:border-neutral-800",
+              ]}>
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                      <span class:list={[
+                        "rounded-full px-2 py-0.5 font-semibold",
+                        published
+                          ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200"
+                          : "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300",
+                      ]}>
+                        {published ? "Published" : "Draft"}
+                      </span>
+                      <span class="text-neutral-500 dark:text-neutral-400">#{post.id}</span>
+                      <span class="text-neutral-500 dark:text-neutral-400">/{post.slug}</span>
+                    </div>
+                    <p class="mt-2 font-semibold leading-6">{post.title}</p>
+                    <p class="mt-1 line-clamp-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400">{post.description}</p>
+                    <p class="mt-2 text-[11px] text-neutral-500 dark:text-neutral-400">
+                      {post.body.length} characters · {estimateReadingMinutes(post.body)} min read
+                      {post.published_at ? ` · published ${formatDateTime(post.published_at)}` : ""}
+                      {post.admin_email ? ` · by ${post.admin_email}` : ""}
+                    </p>
+                  </div>
+                  <div class="flex shrink-0 flex-wrap gap-2">
+                    {published ? (
+                      <a class="rounded-lg border border-neutral-300 px-2.5 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/blog/${post.slug}`} target="_blank" rel="noopener">View</a>
+                    ) : null}
+                    <a class="rounded-lg border border-neutral-300 px-2.5 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/blog?id=${post.id}`}>Edit</a>
+                    <button class="rounded-lg border border-red-200 px-2.5 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/30" type="button" data-delete-post={post.id}>Delete</button>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </section>
+
+    <section class="h-fit rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-lg font-bold">{selected ? `Edit guide #${selected.id}` : "New guide"}</h2>
+        {live ? (
+          <a class="text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/blog/${selected?.slug}`} target="_blank" rel="noopener">Preview live page →</a>
+        ) : null}
+      </div>
+      <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+        Body supports a small Markdown subset: <code>##</code> headings, lists, quotes, fenced code, <code>**bold**</code> and links. Raw HTML is escaped.
+      </p>
+
+      <form id="blog-form" class="mt-4 space-y-3" data-id={selected?.id ?? ""}>
+        <p id="blog-status" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
+
+        <label class="block text-sm font-semibold">Title
+          <input class="field mt-1" name="title" maxlength="180" minlength="6" required value={selected?.title ?? ""} placeholder="How to review a CUET mock test without guessing" />
+        </label>
+
+        <label class="block text-sm font-semibold">Slug
+          <input class="field mt-1" name="slug" maxlength="120" value={selected?.slug ?? ""} placeholder="leave empty to generate from the title" />
+          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">Lowercase letters, numbers and hyphens. Changing the slug of a live guide breaks its old URL.</span>
+        </label>
+
+        <label class="block text-sm font-semibold">Description
+          <textarea class="field mt-1" name="description" rows="3" minlength="40" maxlength="320" required placeholder="80-320 characters shown on cards, in search results and as the meta description.">{selected?.description ?? ""}</textarea>
+        </label>
+
+        <label class="block text-sm font-semibold">Body
+          <textarea class="field mt-1 font-mono text-xs leading-6" name="body" rows="18" maxlength="60000" required placeholder={"## Start with the mistake log\n\nWrite the guide here. Paragraphs, lists, quotes and links are rendered; HTML is not."}>{selected?.body ?? ""}</textarea>
+          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">Published guides need at least 400 characters.</span>
+        </label>
+
+        <label class="block text-sm font-semibold">Status
+          <select class="field mt-1" name="status">
+            <option value="draft" selected={(selected?.status ?? "draft") === "draft"}>Draft — hidden from the public site</option>
+            <option value="published" selected={selected?.status === "published"}>Published — live and indexable</option>
+          </select>
+        </label>
+
+        <div class="flex flex-wrap gap-2 pt-1">
+          <button class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">{selected ? "Save changes" : "Create guide"}</button>
+          {selected ? <a class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/admin/blog">Cancel</a> : null}
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <style>
+    .field {
+      width: 100%;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-input);
+      background: var(--surface-2); color: var(--ink);
+      padding: 0.55rem 0.7rem;
+      font-size: 0.875rem;
+    }
+
+  </style>
+
+  <script is:inline>
+    const form = document.getElementById("blog-form");
+    const statusBox = document.getElementById("blog-status");
+    const titleInput = form?.querySelector("input[name=title]");
+    const slugInput = form?.querySelector("input[name=slug]");
+
+    function slugify(value) {
+      return value
+        .normalize("NFKD")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 120);
+    }
+
+    function showStatus(message, ok) {
+      if (!statusBox) return;
+      statusBox.textContent = message;
+      statusBox.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/40 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
+    }
+
+    titleInput?.addEventListener("input", () => {
+      if (slugInput?.dataset.auto === "false") return;
+      if (slugInput && !slugInput.value.trim()) slugInput.placeholder = slugify(titleInput.value) || "leave empty to generate from the title";
+    });
+
+    slugInput?.addEventListener("input", () => {
+      if (slugInput.value.trim()) slugInput.dataset.auto = "false";
+      else delete slugInput.dataset.auto;
+    });
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector("button[type=submit]");
+      if (!button) return;
+      button.disabled = true;
+
+      const data = new FormData(form);
+      const payload = Object.fromEntries(data.entries());
+      payload.slug = String(payload.slug || "").trim() || slugify(String(payload.title || ""));
+      const id = form.dataset.id;
+
+      try {
+        const response = await fetch(id ? `/api/admin/blog/${id}` : "/api/admin/blog", {
+          method: id ? "PATCH" : "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || "Could not save the guide.");
+        location.href = result.redirect || "/admin/blog";
+      } catch (error) {
+        showStatus(error instanceof Error ? error.message : "Could not save the guide.", false);
+        button.disabled = false;
+      }
+    });
+
+    document.querySelectorAll("[data-delete-post]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        if (!confirm("Delete this guide? It is hidden from the public site immediately; published URLs stop resolving.")) return;
+        button.disabled = true;
+        const response = await fetch(`/api/admin/blog/${button.dataset.deletePost}`, { method: "DELETE" });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          alert(result.error || "Could not delete the guide.");
+          button.disabled = false;
+          return;
+        }
+        location.href = "/admin/blog";
+      });
+    });
+  </script>
+</AdminLayout>

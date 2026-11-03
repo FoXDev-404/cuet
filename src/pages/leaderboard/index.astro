@@ -1,0 +1,327 @@
+---
+import { siteUrl } from "../../lib/site-url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SeoIntro from "../../components/SeoIntro.astro";
+import { all, first } from "../../lib/db";
+import { formatDuration } from "../../lib/content";
+import { breadcrumbJsonLd, getPageSeo, itemListJsonLd } from "../../lib/seo";
+
+const PATH = "/leaderboard";
+const PER_PAGE = 24;
+const DEFAULT_TITLE = "CUET Mock Test Leaderboard — Automatic First-Attempt Rankings";
+const DEFAULT_DESCRIPTION =
+  "Automatic public leaderboards for every free CUET UG mock and previous-year paper. Only each student's first submitted attempt is ranked; guests join after creating an account.";
+
+const requestedPage = Math.trunc(Number(Astro.url.searchParams.get("page") ?? "1"));
+const safeRequestedPage = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+
+const totalRow = await first<{ total: number }>(
+  `SELECT COUNT(*) AS total FROM mock_tests m
+   WHERE m.status = 'published' AND m.deleted_at IS NULL
+     AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)`,
+);
+const total = totalRow?.total ?? 0;
+const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
+const page = Math.min(safeRequestedPage, pageCount);
+const offset = (page - 1) * PER_PAGE;
+
+const mocks = await all<{
+  id: number;
+  title: string;
+  slug: string;
+  total_marks: number;
+  practice_paper_slug: string | null;
+  eligible: number;
+}>(
+  `SELECT m.id, m.title, m.slug, v.total_marks, m.practice_paper_slug,
+          (SELECT COUNT(*) FROM attempts a
+            JOIN users u ON u.id = a.user_id
+            WHERE a.version_id = m.current_version_id AND a.status = 'submitted'
+              AND a.is_first_attempt = 1 AND u.deleted_at IS NULL) AS eligible
+   FROM mock_tests m
+   JOIN mock_test_versions v ON v.id = m.current_version_id
+   WHERE m.status = 'published' AND m.deleted_at IS NULL
+     AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
+   ORDER BY eligible DESC, m.published_at DESC, m.id DESC
+   LIMIT ? OFFSET ?`,
+  PER_PAGE,
+  offset,
+);
+
+const mockIds = mocks.map((mock) => mock.id);
+const topRows =
+  mockIds.length === 0
+    ? []
+    : await all<{
+        mock_id: number;
+        rank: number;
+        score: number;
+        time_taken_sec: number;
+        correct: number;
+        username: string;
+      }>(
+        `SELECT mock_id, rank, score, time_taken_sec, correct, username FROM (
+           SELECT m.id AS mock_id, a.score, a.time_taken_sec, a.correct, u.username,
+                  RANK() OVER (
+                    PARTITION BY m.id
+                    ORDER BY a.score DESC, a.time_taken_sec ASC,
+                             (CASE WHEN a.correct + a.wrong > 0
+                                   THEN a.correct * 1.0 / (a.correct + a.wrong)
+                                   ELSE 0 END) DESC
+                  ) AS rank,
+                  ROW_NUMBER() OVER (
+                    PARTITION BY m.id
+                    ORDER BY a.score DESC, a.time_taken_sec ASC,
+                             (CASE WHEN a.correct + a.wrong > 0
+                                   THEN a.correct * 1.0 / (a.correct + a.wrong)
+                                   ELSE 0 END) DESC
+                  ) AS position
+           FROM attempts a
+           JOIN users u ON u.id = a.user_id
+           JOIN mock_tests m ON m.current_version_id = a.version_id
+           WHERE a.status = 'submitted' AND a.is_first_attempt = 1
+             AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
+             AND m.id IN (${mockIds.map(() => "?").join(",")})
+         ) WHERE position <= 3
+         ORDER BY mock_id, position`,
+        ...mockIds,
+      );
+
+const tops = new Map<number, typeof topRows>();
+for (const row of topRows) {
+  const list = tops.get(row.mock_id) ?? [];
+  list.push(row);
+  tops.set(row.mock_id, list);
+}
+
+// A cross-paper board gives a public, always-populated surface even before a
+// particular paper has enough first attempts. Papers are compared by
+// percentage so a 50-question and 200-question paper remain comparable.
+const overall = await all<{
+  rank: number;
+  user_id: number;
+  username: string;
+  mock_title: string;
+  mock_slug: string;
+  practice_paper_slug: string | null;
+  score: number;
+  total_marks: number;
+  percentage: number;
+  time_taken_sec: number;
+}>(
+  `SELECT rank, user_id, username, mock_title, mock_slug, practice_paper_slug,
+          score, total_marks, percentage, time_taken_sec
+   FROM (
+     SELECT u.id AS user_id, u.username, m.title AS mock_title, m.slug AS mock_slug,
+            m.practice_paper_slug, a.score, v.total_marks, a.time_taken_sec,
+            (a.score * 100.0 / NULLIF(v.total_marks, 0)) AS percentage,
+            RANK() OVER (
+              ORDER BY (a.score * 1.0 / NULLIF(v.total_marks, 0)) DESC,
+                       a.time_taken_sec ASC,
+                       (CASE WHEN a.correct + a.wrong > 0
+                             THEN a.correct * 1.0 / (a.correct + a.wrong)
+                             ELSE 0 END) DESC
+            ) AS rank,
+            ROW_NUMBER() OVER (
+              ORDER BY (a.score * 1.0 / NULLIF(v.total_marks, 0)) DESC,
+                       a.time_taken_sec ASC,
+                       (CASE WHEN a.correct + a.wrong > 0
+                             THEN a.correct * 1.0 / (a.correct + a.wrong)
+                             ELSE 0 END) DESC
+            ) AS position
+     FROM attempts a
+     JOIN users u ON u.id = a.user_id
+     JOIN mock_tests m ON m.id = a.mock_id
+     JOIN mock_test_versions v ON v.id = a.version_id AND v.id = m.current_version_id
+     WHERE a.status = 'submitted' AND a.is_first_attempt = 1
+       AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
+       AND m.status = 'published' AND m.deleted_at IS NULL
+   ) WHERE position <= 8
+   ORDER BY position`,
+);
+
+const medals = ["🥇", "🥈", "🥉"];
+const rankedMocks = mocks.filter((mock) => mock.eligible > 0);
+
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const noindex = (seo?.noindex ?? 0) === 1 || (overall.length === 0 && rankedMocks.length === 0);
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Leaderboard", path: PATH },
+  ]),
+  itemListJsonLd(
+    site,
+    rankedMocks.map((mock) => ({ name: `${mock.title} leaderboard`, path: `/leaderboard/${mock.slug}` })),
+  ),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  noindex={noindex}
+  canonical={seo?.canonical_url}
+  structuredData={structuredData}
+>
+  <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
+    <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+      <div class="flex flex-wrap items-start justify-between gap-6">
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300">Public leaderboard</p>
+          <h1 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Every paper has a board. Every board updates itself.</h1>
+          <p class="mt-4 max-w-2xl leading-7 text-neutral-600 dark:text-neutral-300">
+            Ranked automatically when a registered student submits their first attempt. Practice papers and mock tests share one
+            engine, so the leaderboard is always the same score you see on your result.
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-2 text-xs">
+            <li class="rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">First attempt only</li>
+            <li class="rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">Server-scored</li>
+            <li class="rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">Ties broken by time</li>
+            <li class="rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">Guests join after signup</li>
+          </ul>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a class="rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Take a mock</a>
+          <a class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800" href="/practice">Practice papers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SeoIntro html={seo?.intro_html} width="wide" />
+
+  {overall.length > 0 ? (
+    <section class="mx-auto max-w-6xl px-4 pt-10 sm:px-6" aria-labelledby="overall-board">
+      <div class="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-200 bg-gradient-to-r from-brand-50 via-white to-accent-50 px-5 py-4 dark:border-neutral-800 dark:from-brand-950/40 dark:via-neutral-900 dark:to-neutral-900">
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">All papers</p>
+            <h2 id="overall-board" class="mt-1 text-xl font-black">Top first attempts right now</h2>
+          </div>
+          <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-neutral-600 ring-1 ring-neutral-200 dark:bg-neutral-950 dark:text-neutral-300 dark:ring-neutral-800">Auto-updated</span>
+        </div>
+        <div class="overflow-x-auto" role="region" aria-label="Top first attempts across all papers" tabindex="0">
+          <table class="w-full min-w-[720px] text-left text-sm">
+            <thead class="border-b border-neutral-200 bg-neutral-50 text-[10px] uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+              <tr>
+                <th class="px-5 py-3">Rank</th>
+                <th class="px-5 py-3">Student</th>
+                <th class="px-5 py-3">Paper</th>
+                <th class="px-5 py-3 text-right">Score</th>
+                <th class="px-5 py-3 text-right">Percentage</th>
+                <th class="px-5 py-3 text-right">Time</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+              {overall.map((row) => (
+                <tr class="hover:bg-neutral-50 dark:hover:bg-neutral-950/60">
+                  <td class="whitespace-nowrap px-5 py-3 font-bold">
+                    {medals[row.rank - 1] ? <span class="mr-1" aria-hidden="true">{medals[row.rank - 1]}</span> : null}
+                    #{row.rank}
+                  </td>
+                  <td class="max-w-[12rem] truncate px-5 py-3 font-semibold">{row.username}</td>
+                  <td class="max-w-[20rem] px-5 py-3">
+                    <a class="line-clamp-1 font-medium hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/leaderboard/${row.mock_slug}`}>{row.mock_title}</a>
+                    <span class="mt-0.5 block text-[10px] font-semibold uppercase tracking-wide text-neutral-400">
+                      {row.practice_paper_slug ? "Practice paper" : "Mock test"}
+                    </span>
+                  </td>
+                  <td class="whitespace-nowrap px-5 py-3 text-right font-bold">{row.score}<span class="text-xs font-normal text-neutral-500 dark:text-neutral-400"> / {row.total_marks}</span></td>
+                  <td class="px-5 py-3 text-right font-bold text-brand-700 dark:text-brand-300">{Math.round((row.percentage ?? 0) * 10) / 10}%</td>
+                  <td class="whitespace-nowrap px-5 py-3 text-right text-xs text-neutral-500 dark:text-neutral-400">{formatDuration(row.time_taken_sec)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6" aria-labelledby="paper-boards">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h2 id="paper-boards" class="text-xl font-bold">Paper leaderboards</h2>
+        <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+          {total} published paper{total === 1 ? "" : "s"} · sorted by ranked students. Open any paper to see its full board.
+        </p>
+      </div>
+      <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/practice">Browse the practice library →</a>
+    </div>
+
+    {mocks.length === 0 ? (
+      <div class="mt-5 rounded-2xl border border-dashed border-neutral-300 p-12 text-center dark:border-neutral-700">
+        <h3 class="font-bold">Leaderboards open with the first paper.</h3>
+        <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">Publish a mock test and the first submitted attempt becomes rank 1.</p>
+        <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse mock tests</a>
+      </div>
+    ) : (
+      <>
+        <div class="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {mocks.map((mock) => {
+            const top = tops.get(mock.id) ?? [];
+            const takeHref = mock.practice_paper_slug ? `/practice/${mock.practice_paper_slug}` : `/mock/${mock.slug}/instructions`;
+            return (
+              <article class="flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+                <div class="flex flex-wrap items-start justify-between gap-2">
+                  <div class="min-w-0">
+                    <span class="inline-flex rounded-full bg-neutral-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+                      {mock.practice_paper_slug ? "Practice paper" : "Mock test"}
+                    </span>
+                    <h3 class="mt-2 text-base font-bold leading-snug">
+                      <a class="hover:text-brand-700 dark:hover:text-brand-300" href={`/leaderboard/${mock.slug}`}>{mock.title}</a>
+                    </h3>
+                  </div>
+                  <span class="whitespace-nowrap rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-800 dark:bg-brand-950/50 dark:text-brand-200">{mock.eligible} ranked</span>
+                </div>
+
+                {top.length === 0 ? (
+                  <p class="mt-4 flex-1 text-sm text-neutral-500 dark:text-neutral-400">
+                    No ranked attempts yet.{" "}
+                    <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={takeHref}>Be the first →</a>
+                  </p>
+                ) : (
+                  <ol class="mt-4 flex-1 space-y-2">
+                    {top.map((row) => (
+                      <li class="flex items-center gap-3 rounded-xl bg-neutral-50 px-3 py-2 text-sm dark:bg-neutral-950">
+                        <span class="w-7 text-center text-base" aria-hidden="true">{medals[row.rank - 1] ?? row.rank}</span>
+                        <span class="min-w-0 flex-1 truncate font-medium">{row.username}</span>
+                        <span class="font-bold">{row.score}<span class="text-xs font-normal text-neutral-600 dark:text-neutral-400"> / {mock.total_marks}</span></span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+
+                <div class="mt-4 flex items-center justify-between gap-3 border-t border-neutral-100 pt-3 dark:border-neutral-800">
+                  <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/leaderboard/${mock.slug}`}>Full leaderboard →</a>
+                  <a class="text-xs font-semibold text-neutral-500 hover:text-brand-700 dark:text-neutral-400 dark:hover:text-brand-300" href={takeHref}>Take paper</a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {pageCount > 1 ? (
+          <nav class="mt-8 flex flex-wrap items-center justify-center gap-2" aria-label="Leaderboard pages">
+            {page > 1 ? (
+              <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" href={page === 2 ? "/leaderboard" : `/leaderboard?page=${page - 1}`}>← Previous</a>
+            ) : null}
+            <span class="px-3 text-sm text-neutral-500 dark:text-neutral-400">Page {page} of {pageCount}</span>
+            {page < pageCount ? (
+              <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-900" href={`/leaderboard?page=${page + 1}`}>Next →</a>
+            ) : null}
+          </nav>
+        ) : null}
+      </>
+    )}
+
+    <p class="mt-8 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-xs leading-5 text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400">
+      Rank and percentile are calculated only from registered users' first submitted attempts on this site. They are practice indicators, not an official NTA rank.
+      A guest attempt joins the board after the student creates an account in the same browser. Retakes are scored and saved in the dashboard, but never change the rank.
+    </p>
+  </section>
+</BaseLayout>

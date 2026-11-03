@@ -1,0 +1,107 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import SeoIntro from "../components/SeoIntro.astro";
+import { breadcrumbJsonLd, getPageSeo } from "../lib/seo";
+
+const PATH = "/disclaimer";
+const DEFAULT_TITLE = "Disclaimer — Independent CUET Practice Site";
+const DEFAULT_DESCRIPTION =
+  "CUET Free Mock Test is independent and not affiliated with NTA. Practice scores are unofficial, exam facts can change, and content is provided for study use.";
+
+const seo = await getPageSeo(PATH);
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Disclaimer", path: PATH },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: new URL(PATH, site).toString(),
+    dateModified: "2026-10-31",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} noindex={(seo?.noindex ?? 0) === 1} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Disclaimer"
+    title="Independent practice, unofficial scores"
+    intro="This site is a study tool, not an exam authority. The note below explains the limits of what you should rely on here and where the official information lives."
+    updated="31 October 2026"
+  />
+
+  <SeoIntro html={seo?.intro_html} />
+
+  <article class="mx-auto max-w-3xl space-y-8 px-4 py-10 text-sm leading-7 text-neutral-600 sm:px-6 lg:py-14 dark:text-neutral-300">
+    <section class="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="text-lg font-bold text-amber-900 dark:text-amber-200">Not affiliated with NTA</h2>
+      <p class="mt-2 text-amber-900 dark:text-amber-100">
+        CUET Free Mock Test is an independent project. It is not associated with, endorsed by or connected to the National Testing Agency, the CUET examination, any university or any government body. "CUET" and related names are used only to describe the subject of practice.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">Practice results are not official results</h2>
+      <p class="mt-2">
+        A score, rank or percentile shown here comes from attempts on this site. It is not an NTA score, an official rank, a normalised score or a prediction of admission. Leaderboards include only registered users' first submitted attempts and are calculated among this site's own users.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">Exam facts can change</h2>
+      <p class="mt-2">
+        Exam dates, syllabus scope, section structure, duration and marking rules are set by NTA and can change between sessions. This site shows an official summary only when an editor has verified it with a source link and review date. Otherwise, the page says that no verified summary is available. Always confirm details in the current official information bulletin at the NTA CUET portal before acting on them.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">Content accuracy</h2>
+      <p class="mt-2">
+        Questions and explanations are prepared for practice and reviewed before publishing. Errors can still occur. If a key, explanation, diagram or alt text is wrong, report it from the solutions page or email us. A correction may update the paper, but a historical attempt keeps the score it was given under the paper's stored scheme.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">No professional advice</h2>
+      <p class="mt-2">
+        Nothing on the site is legal, medical, financial, career or admission advice. Guidance about study plans and guessing strategy is educational opinion, not a guarantee of a particular score or outcome. Make decisions using official sources and your own judgement.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">External links</h2>
+      <p class="mt-2">
+        The site links to official portals and other resources for convenience. We do not control those sites and are not responsible for their content, availability or privacy practices. A link is not an endorsement.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">Copyright and source policy</h2>
+      <p class="mt-2">
+        We do not intentionally host copied coaching material, copyrighted PDFs or unlicensed diagrams. Previous-year papers are published only with a recorded source and original explanations. If you are a rights holder and believe material on the site infringes your rights, contact <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:legal@cuetfreemocktest.com">legal@cuetfreemocktest.com</a> with the specific item. We will review it promptly.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">Availability</h2>
+      <p class="mt-2">
+        The site is provided as-is and may be unavailable during maintenance or provider incidents. Guest attempts depend on a browser cookie and may not survive clearing site data. Registered users should keep their own record of important results.
+      </p>
+    </section>
+
+    <section class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100">Questions</h2>
+      <p class="mt-2">
+        See the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/contact">contact page</a>, the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/terms">terms of use</a> and the <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/privacy-policy">privacy policy</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

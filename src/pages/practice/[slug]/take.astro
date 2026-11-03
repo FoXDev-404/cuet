@@ -1,0 +1,13 @@
+---
+import { getLocalPaperSummary } from "../../../lib/local-papers";
+
+/**
+ * The old unranked player is retired. Practice papers now run through the
+ * ranked engine, so a bookmarked /take URL continues into the real flow.
+ */
+const slug = Astro.params.slug ?? "";
+const paper = getLocalPaperSummary(slug);
+if (!paper) return new Response("Practice paper not found", { status: 404 });
+
+return Astro.redirect(`/mock/${paper.slug}/instructions`, 301);
+---

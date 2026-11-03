@@ -1,0 +1,210 @@
+---
+import { siteUrl } from "../../../lib/site-url";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import FaqSection from "../../../components/FaqSection.astro";
+import DiscussionPreview from "../../../components/DiscussionPreview.astro";
+import { all, first } from "../../../lib/db";
+import { getGuestToken } from "../../../lib/auth/session";
+import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
+import { hasFinishedAttempt } from "../../../lib/discussions";
+import { parseMarkingScheme } from "../../../lib/content";
+import { breadcrumbJsonLd, type FaqItem } from "../../../lib/seo";
+import { oldSlugRedirect } from "../../../lib/slug-redirects";
+
+const slug = Astro.params.slug ?? "";
+
+const mock = await first<{
+  id: number;
+  title: string;
+  slug: string;
+  type: string;
+  duration_min: number;
+  total_marks: number;
+  marking_scheme: string;
+  instructions: string | null;
+  intro_html: string | null;
+  subject_name: string | null;
+  published_at: string | null;
+}>(
+  `SELECT m.id, m.title, m.slug, m.type, v.duration_min, v.total_marks, v.marking_scheme,
+          v.instructions, m.intro_html, s.name AS subject_name, v.published_at
+   FROM mock_tests m
+   JOIN mock_test_versions v ON v.id = m.current_version_id
+   LEFT JOIN subjects s ON s.id = m.subject_id
+   WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
+  slug,
+);
+if (!mock) {
+  const target = await oldSlugRedirect(slug);
+  if (target) return Astro.redirect(`/mock/${target}`, 301);
+  return new Response("Mock test not found", { status: 404 });
+}
+
+const marking = parseMarkingScheme(mock.marking_scheme);
+const sections = await all<{ section: string; count: number }>(
+  "SELECT section, COUNT(*) AS count FROM mock_questions_current WHERE mock_id = ? GROUP BY section ORDER BY MIN(position)",
+  mock.id,
+);
+const totalQuestions = sections.reduce((sum, section) => sum + section.count, 0);
+const attemptCount = await first<{ count: number }>(
+  "SELECT COUNT(*) AS count FROM attempts WHERE mock_id = ? AND status IN ('submitted','expired')",
+  mock.id,
+);
+let activeAttempt = await findInProgressAttempt(
+  mock.id,
+  Astro.locals.user?.id ?? null,
+  getGuestToken(Astro.cookies),
+);
+if (activeAttempt) {
+  activeAttempt = await settleAttempt(activeAttempt);
+  if (activeAttempt.status !== "in_progress") activeAttempt = null;
+}
+
+const discussionAccess =
+  Boolean(Astro.locals.admin) ||
+  (await hasFinishedAttempt(mock.id, Astro.locals.user?.id ?? null, getGuestToken(Astro.cookies)));
+
+const intro =
+  mock.intro_html?.trim() ||
+  `This ${mock.subject_name ? `${mock.subject_name} ` : ""}mock follows the CUET UG practice format with ${totalQuestions} questions over ${mock.duration_min} minutes. It is scored on the server after you submit, and every question includes a written solution.`;
+const instructions = (mock.instructions ?? "")
+  .split("\n")
+  .map((line) => line.trim())
+  .filter(Boolean);
+
+const faqs: FaqItem[] = [
+  {
+    question: `How long is ${mock.title}?`,
+    answer: `The paper runs for ${mock.duration_min} minutes and contains ${totalQuestions} question${totalQuestions === 1 ? "" : "s"}. The countdown starts on the server when you begin, so refreshing the page cannot add time.`,
+  },
+  {
+    question: "What is the marking scheme for this paper?",
+    answer: `A correct answer earns +${marking.correct} marks, a wrong answer is scored ${marking.wrong}, and an unattempted question scores ${marking.skipped}. The same scheme is printed on the instructions page before the timer starts.`,
+  },
+  {
+    question: "Can I see the answers before I submit?",
+    answer:
+      "No. The attempt screen and its API responses never include the correct option or explanation. Both become available on the result and solutions pages only after the attempt is submitted or the deadline expires.",
+  },
+  {
+    question: "Can I retake this paper?",
+    answer:
+      "Yes. Retakes are scored and appear in your dashboard, but only the first submitted attempt counts on the leaderboard. A retake is most useful after you have reviewed the solutions.",
+  },
+  {
+    question: "Do I need an account?",
+    answer:
+      "You can start as a guest in this browser. Sign in afterwards to claim the attempt, keep it in your history and become eligible for the leaderboard.",
+  },
+];
+
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Mock tests", path: "/cuet-ug-mock-test" },
+    { name: mock.title, path: `/mock/${mock.slug}` },
+  ]),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${mock.duration_min} minutes. Free server-scored CUET UG mock with solutions.`} noindex={totalQuestions === 0} structuredData={structuredData}>
+  <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 text-xs">
+          <a class="text-neutral-500 hover:underline dark:text-neutral-400" href="/cuet-ug-mock-test">Mock tests</a>
+          <span class="text-neutral-400">/</span>
+          <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{mock.type}</span>
+          {mock.subject_name ? <span class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{mock.subject_name}</span> : null}
+        </div>
+        <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">{mock.title}</h1>
+        <p class="mt-4 max-w-2xl leading-7 text-neutral-600 dark:text-neutral-300">{intro}</p>
+
+        <div class="mt-6 grid max-w-lg grid-cols-3 gap-3 text-sm">
+          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</p>
+            <p class="mt-1 text-xl font-black">{totalQuestions}</p>
+          </div>
+          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p>
+            <p class="mt-1 text-xl font-black">{mock.duration_min} min</p>
+          </div>
+          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempts</p>
+            <p class="mt-1 text-xl font-black">{attemptCount?.count ?? 0}</p>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-xl border border-neutral-200 bg-white p-4 text-sm dark:border-neutral-800 dark:bg-neutral-950">
+          <p class="font-semibold">Marking scheme</p>
+          <p class="mt-1 text-neutral-600 dark:text-neutral-400">+{marking.correct} for a correct answer · {marking.wrong} for a wrong answer · {marking.skipped} for unattempted questions.</p>
+        </div>
+
+        {sections.length > 0 ? (
+          <div class="mt-6">
+            <h2 class="font-bold">Sections</h2>
+            <div class="mt-2 flex flex-wrap gap-2">
+              {sections.map((section) => (
+                <span class="rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-sm dark:border-neutral-800 dark:bg-neutral-950">{section.section} <span class="text-neutral-500 dark:text-neutral-400">({section.count})</span></span>
+              ))}
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      <aside class="h-fit rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 class="font-bold">Ready to begin?</h2>
+        <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">The timer starts on the server. You can refresh and resume without losing saved answers.</p>
+        {activeAttempt ? (
+          <a class="mt-5 block rounded-lg bg-brand-600 px-4 py-3 text-center text-sm font-bold text-white hover:bg-brand-700" href={`/attempt/${activeAttempt.id}`}>Resume attempt →</a>
+        ) : (
+          <a class="mt-5 block rounded-lg bg-brand-600 px-4 py-3 text-center text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${mock.slug}/instructions`}>Start mock test →</a>
+        )}
+        <a class="mt-2 block rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/cuet-ug-syllabus">Revise the syllabus</a>
+        <a class="mt-2 block rounded-lg border border-brand-200 bg-brand-50 px-4 py-3 text-center text-sm font-bold text-brand-900 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-200" href={`/leaderboard/${mock.slug}`}>View this paper's leaderboard</a>
+        <ul class="mt-5 space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+          <li>• Correct answers never reach the browser before submit.</li>
+          <li>• Leaderboard rank uses the first submitted attempt only.</li>
+          <li>• Guests can take the test; log in afterwards to save it.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div class="grid gap-8 lg:grid-cols-[1fr_340px]">
+      <div>
+        <h2 class="text-xl font-bold">Instructions</h2>
+        <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+          {(instructions.length > 0
+            ? instructions
+            : [
+                "The countdown starts when the server creates your attempt.",
+                "Use the question palette to move between questions and mark questions for review.",
+                "Answers autosave; a refresh or a dropped connection resumes the same attempt.",
+                "Submit before the timer ends. The server scores the saved answers and never trusts the browser.",
+                "Read the solutions after submitting; correct answers are hidden until then.",
+              ]
+          ).map((line) => <li>{line}</li>)}
+        </ol>
+
+        <h2 class="mt-8 text-xl font-bold">How this paper is scored</h2>
+        <div class="mt-3 rounded-xl border border-neutral-200 bg-white p-4 text-sm leading-6 dark:border-neutral-800 dark:bg-neutral-900">
+          <p>Each question carries the marking shown above. Unanswered questions do not receive a negative mark. Your score, accuracy, section analysis and time are calculated on the server after submit.</p>
+          <p class="mt-2">Rank and percentile, when shown, mean “among users of this site” and use first submitted attempts only. They are not an official NTA rank.</p>
+        </div>
+      </div>
+
+      <aside class="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 text-sm dark:border-neutral-800 dark:bg-neutral-900/60">
+        <h2 class="font-bold">Not affiliated with NTA</h2>
+        <p class="mt-2 text-neutral-600 dark:text-neutral-400">CUET Free Mock Test is an independent practice site. CUET UG is conducted by the National Testing Agency. Exam dates, patterns and marking rules must always be checked against the official NTA bulletin.</p>
+        <a class="mt-3 inline-block font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/disclaimer">Read the disclaimer</a>
+      </aside>
+    </div>
+
+    <DiscussionPreview mockId={mock.id} mockSlug={mock.slug} access={discussionAccess} />
+
+    <FaqSection faqs={faqs} />
+  </section>
+</BaseLayout>

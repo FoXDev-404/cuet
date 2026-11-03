@@ -1,0 +1,1732 @@
+{
+ "exam": {
+  "id": "local-general-test-2025-05-20-shift-2",
+  "slug": "general-test-2025-05-20-shift-2",
+  "title": "CUET UG General Test 20 May 2025 Shift 2 Previous Year Paper",
+  "subject": "General Test",
+  "subjectId": "local-general-test",
+  "subjectCode": "GT",
+  "year": 2025,
+  "examDate": "2025-05-20",
+  "shift": "Shift 2",
+  "sourceFile": "General Test_2025-05-20_Shift_2.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 48,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [
+   {
+    "id": "p359cb7b2c350",
+    "title": "Reading passage",
+    "contentEn": "There are six members in a family, named A, B, C, D, E, and F. B is the son of C but C is not the mother of B. A and C are a married couple. E is the brother of C, D is the daughter of A. F is the brother of B.\n\n(A) There are only three male members in the family\n\n(B) A has only three children\n\n(C) A and D are both females\n\n(D) D is a female but A is not a female\n\nChoose the correct answer from the options given below\n\n1. (A), (B), (C), and (D) are all incorrect\n\n2. (A), (B), (C), and (D) are all correct\n\n3. (A) and (C) are correct but (B) and (D) are incorrect"
+   }
+  ],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (II), (B) - (III), (C) - (IV), (D) - (I)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": [
+     {
+      "id": "q01-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q01-table-1.jpg",
+      "page": 1,
+      "alt": "Table for question 1"
+     }
+    ]
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "In an examination which had 200 questions, students score 4 marks for every correct answer and lose 1 mark for every wrong answer.\n\nA student attempted all the 200 questions and scored 200 marks. The number of questions, student answered correctly in the examination, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "60"
+     },
+     {
+      "id": "B",
+      "text": "68"
+     },
+     {
+      "id": "C",
+      "text": "80"
+     },
+     {
+      "id": "D",
+      "text": "82"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "If HOME is coded as 815135. How can ROAD be written as?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "810034"
+     },
+     {
+      "id": "B",
+      "text": "181514"
+     },
+     {
+      "id": "C",
+      "text": "351518"
+     },
+     {
+      "id": "D",
+      "text": "510035"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "(A) and (D) are incorrect but (B) and (C) are correct",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": "p359cb7b2c350",
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "If J is the sister of K. K is the sister of L. L is the sister of M. M is the brother of N. Then which of the following statements is not necessary true?\n\n(A) K and L are sisters.\n\n(B) M and N are brothers.\n\n(C) L is sister of N.\n\n(D) J, K, L are females and M is male.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "D",
+      "text": "(A) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "When was the state of Andhra Pradesh bifurcated into Telangana and Andhra Pradesh by the Andhra Pradesh Reorganisation Act?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2011"
+     },
+     {
+      "id": "B",
+      "text": "2012"
+     },
+     {
+      "id": "C",
+      "text": "2014"
+     },
+     {
+      "id": "D",
+      "text": "2016"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "If day before yesterday was Friday, then what will be the Tuesday?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A day after tomorrow"
+     },
+     {
+      "id": "B",
+      "text": "tomorrow"
+     },
+     {
+      "id": "C",
+      "text": "today"
+     },
+     {
+      "id": "D",
+      "text": "$ 3^{rd} $ day after today"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "Six friends, A, B, C, D, E and F are sitting in a row facing towards East. E and F are in the center, and A and B are at the ends. C is sitting on the left of A. Then match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (IV), (B) - (II), (C) - (I), (D) - (III)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (III), (B) - (I), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": [
+     {
+      "id": "q08-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q08-table-1.jpg",
+      "page": 9,
+      "alt": "Table for question 8"
+     }
+    ]
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "Arrange the following major advances in Indian Epigraphy in chronological order, beginning with the earliest to the most recent.\n\n(A) Alexander Cunningham published a set of Ashokan inscriptions\n\n(B) James Pinsep decipherers Ashokan Brahmi\n\n(C) First issue of Epigraphia Indica\n\n(D) First issue of Epigraphia Carnatica",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B), (C), (D)"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B), (D), (C)"
+     },
+     {
+      "id": "C",
+      "text": "(B), (A), (C), (D)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (A), (D), (C)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "Which one of the following is $ \\underline{\\text{NOT}} $ an example of \"In Situ\" biodiversity conservation efforts in India?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Botanical Garden"
+     },
+     {
+      "id": "B",
+      "text": "National Park"
+     },
+     {
+      "id": "C",
+      "text": "Wildlife Sanctuaries"
+     },
+     {
+      "id": "D",
+      "text": "Biosphere Reserve"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "Point A (4, 2) divides segment BC in the ratio 2:5. Coordinates of B and C are (2,6), (9,y) respectively. Find the value of y.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "6"
+     },
+     {
+      "id": "B",
+      "text": "6"
+     },
+     {
+      "id": "C",
+      "text": "8"
+     },
+     {
+      "id": "D",
+      "text": "8"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "Who among the following discovered that when light traverses a transparent material, some of the light that is deflected changes in wavelength?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Jagadish Chandra Bose"
+     },
+     {
+      "id": "B",
+      "text": "C. V. Raman"
+     },
+     {
+      "id": "C",
+      "text": "Meghnad Saha"
+     },
+     {
+      "id": "D",
+      "text": "Satyendra Nath Bose"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "Megha is fifth from the left end and Priya is tenth from the right end in a row of girls. If there are nine girls between\n\nMegha and Priya, how many girls are there in the rows?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "26"
+     },
+     {
+      "id": "B",
+      "text": "25"
+     },
+     {
+      "id": "C",
+      "text": "24"
+     },
+     {
+      "id": "D",
+      "text": "23"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "The state of Arunachal Pradesh does $ \\underline{\\text{NOT}} $ share a land border with which of the following countries?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Bangladesh"
+     },
+     {
+      "id": "B",
+      "text": "China"
+     },
+     {
+      "id": "C",
+      "text": "Bhutan"
+     },
+     {
+      "id": "D",
+      "text": "Myanmar"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "In which year the Department of Non-Conventional Energy Sources (DNES), under the Ministry of Energy, was upgraded into a separate Ministry of Non-Conventional Energy Sources (MNES)?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1985"
+     },
+     {
+      "id": "B",
+      "text": "1988"
+     },
+     {
+      "id": "C",
+      "text": "1992"
+     },
+     {
+      "id": "D",
+      "text": "1995"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Select a figure from the answer figures which will continue the series indicated by the five problem figures.\n\nProblem figure:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     16,
+     17
+    ],
+    "assets": [
+     {
+      "id": "q16-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q16-figure-1.jpg",
+      "page": 17,
+      "alt": "Figure for question 16"
+     },
+     {
+      "id": "q16-options",
+      "kind": "options",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q16-options.jpg",
+      "page": 17,
+      "alt": "Printed answer choices for question 16"
+     }
+    ]
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "What will be the measurement of the angle made by the hands of a clock when the time is 8:40?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20^{0}"
+     },
+     {
+      "id": "B",
+      "text": "350"
+     },
+     {
+      "id": "C",
+      "text": "485^{0}"
+     },
+     {
+      "id": "D",
+      "text": "50^{0}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Which of the following will show \"Tyndall Effect\"?\n\n(A) Mixture of water and milk\n\n(B) Sunlight passing through a canopy of dense forest\n\n(C) Solution of copper sulphate\n\n(D) Light entering a smoke-filled room through a small hole",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "Which of the following country entered into a treaty with Azerbaijan in 2025, ending almost 40 years of conflict?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Georgia"
+     },
+     {
+      "id": "B",
+      "text": "Uzbekistan"
+     },
+     {
+      "id": "C",
+      "text": "Belarus"
+     },
+     {
+      "id": "D",
+      "text": "Armenia"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "Problem Figure:\n\nChoose the correct figure given below from the options that can construct the problem figure.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     20,
+     21
+    ],
+    "assets": [
+     {
+      "id": "q20-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q20-figure-1.jpg",
+      "page": 21,
+      "alt": "Figure for question 20"
+     },
+     {
+      "id": "q20-options",
+      "kind": "options",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q20-options.jpg",
+      "page": 21,
+      "alt": "Printed answer choices for question 20"
+     }
+    ]
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "Who is the author of the book 'The Mughals of India'?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "William Dalrymple"
+     },
+     {
+      "id": "B",
+      "text": "Romila Thapar"
+     },
+     {
+      "id": "C",
+      "text": "Harbans Mukhia"
+     },
+     {
+      "id": "D",
+      "text": "John F. Richards"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "Select the one which is different from the other three alternatives:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "7,56"
+     },
+     {
+      "id": "B",
+      "text": "13,78"
+     },
+     {
+      "id": "C",
+      "text": "9,64"
+     },
+     {
+      "id": "D",
+      "text": "11,132"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "The age distribution of 40 children is as follows\n\nConsider the following statements in respect of the above frequency distribution.\n\n(A) The median of the age distribution is 7 yr.\n\n(B) 70% of the children are in the age group 6-9 yr.\n\n(C) The modal class of the children is 8-9 yr.\n\nWhich of the above statements are true?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (B) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (B) and (C) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23,
+     24
+    ],
+    "assets": [
+     {
+      "id": "q23-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q23-table-1.jpg",
+      "page": 24,
+      "alt": "Table for question 23"
+     }
+    ]
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "Find out the answer figure which completes the problem figure matrix.\n\nProblem figure:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ \\mid $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ \\boxed{一} $$"
+     },
+     {
+      "id": "C",
+      "text": "$$ \\mid $$"
+     },
+     {
+      "id": "D",
+      "text": "$$ \\boxed{\\quad} $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     25,
+     26
+    ],
+    "assets": [
+     {
+      "id": "q24-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q24-table-1.jpg",
+      "page": 26,
+      "alt": "Table for question 24"
+     }
+    ]
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "The remainder when $ (15^{23} + 23^{23}) $ is divided by 19, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "18"
+     },
+     {
+      "id": "B",
+      "text": "15"
+     },
+     {
+      "id": "C",
+      "text": "4"
+     },
+     {
+      "id": "D",
+      "text": "0"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "The monthly salary of A, B and C are in the ratio 2:3:5. If C's monthly salary is Rs.1200 more than that of A, then B's annual salary is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Rs. 24000"
+     },
+     {
+      "id": "B",
+      "text": "Rs. 14400"
+     },
+     {
+      "id": "C",
+      "text": "Rs. 12000"
+     },
+     {
+      "id": "D",
+      "text": "Rs. 96000"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "Which of the following Amendments to the Constitution of India provided that the total number of Ministers, including the Prime Minister, in the Council of Ministers shall not exceed 15% of the total members of the Lok Sabha?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "91st Amendment"
+     },
+     {
+      "id": "B",
+      "text": "93rd Amendment"
+     },
+     {
+      "id": "C",
+      "text": "95th Amendment"
+     },
+     {
+      "id": "D",
+      "text": "99th Amendment"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "What number should replace the question mark ?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5"
+     },
+     {
+      "id": "B",
+      "text": "26"
+     },
+     {
+      "id": "C",
+      "text": "0"
+     },
+     {
+      "id": "D",
+      "text": "48"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": [
+     {
+      "id": "q28-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q28-figure-1.jpg",
+      "page": 29,
+      "alt": "Figure for question 28"
+     },
+     {
+      "id": "q28-figure-2",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q28-figure-2.jpg",
+      "page": 29,
+      "alt": "Figure for question 28"
+     }
+    ]
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "Choose the option that shall come in place of the ? in the following series :\n\n25WV52, 23TS32, 21QP12,?,17KJ71",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "19MN91"
+     },
+     {
+      "id": "B",
+      "text": "19ON92"
+     },
+     {
+      "id": "C",
+      "text": "19NM91"
+     },
+     {
+      "id": "D",
+      "text": "19LK92"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "Which of the following are \"unicellular\" organisms?\n\n(A) Plasmodium\n\n(B) Protoza\n\n(C) Spirogyra\n\n(D) Leishmania",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "The Tlawng river is located at which of the following cities in India?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Imphal"
+     },
+     {
+      "id": "B",
+      "text": "Aizawl"
+     },
+     {
+      "id": "C",
+      "text": "Agartala"
+     },
+     {
+      "id": "D",
+      "text": "Itanagar"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "How many two-digit numbers are divisible by 3?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "30"
+     },
+     {
+      "id": "B",
+      "text": "20"
+     },
+     {
+      "id": "C",
+      "text": "10"
+     },
+     {
+      "id": "D",
+      "text": "8"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (II), (B) - (III), (C) - (I), (D) - (IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (II), (B) - (IV), (C) - (I), (D) - (III)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (II), (B) - (I), (C) - (IV), (D) - (III)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     34,
+     35
+    ],
+    "assets": [
+     {
+      "id": "q33-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q33-table-1.jpg",
+      "page": 35,
+      "alt": "Table for question 33"
+     }
+    ]
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "At the foot of a mountain, the elevation of the summit is $ 45^{\\circ} $. After ascending 2 kilometers towards the mountain, at an incline of $ 30^{\\circ} $, the elevation changes to $ 60^{\\circ} $. Determine the height of the mountain?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "( $ \\sqrt{3} - 1 $) kilometre"
+     },
+     {
+      "id": "B",
+      "text": "( $ \\sqrt{3} + 1 $) kilometre"
+     },
+     {
+      "id": "C",
+      "text": "( $ \\sqrt{3} - 2 $) kilometres"
+     },
+     {
+      "id": "D",
+      "text": "( $ \\sqrt{3} + 2 $) kilometres"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) - (III), (B) - (II), (C) - (IV), (D) - (I)"
+     },
+     {
+      "id": "B",
+      "text": "(A) - (III), (B) - (II), (C) - (I), (D) - (IV)"
+     },
+     {
+      "id": "C",
+      "text": "(A) - (III), (B) - (I), (C) - (II), (D) - (IV)"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     38,
+     39
+    ],
+    "assets": [
+     {
+      "id": "q35-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q35-table-1.jpg",
+      "page": 39,
+      "alt": "Table for question 35"
+     }
+    ]
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "Given below from the options, choose the answer figure which is embedded in the question figure.\n\nQuestion figure:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ""
+     },
+     {
+      "id": "B",
+      "text": ""
+     },
+     {
+      "id": "C",
+      "text": ""
+     },
+     {
+      "id": "D",
+      "text": ""
+     }
+    ],
+    "optionsAreImages": true,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [
+     "image-options"
+    ],
+    "sourcePages": [
+     40
+    ],
+    "assets": [
+     {
+      "id": "q36-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q36-figure-1.jpg",
+      "page": 40,
+      "alt": "Figure for question 36"
+     },
+     {
+      "id": "q36-options",
+      "kind": "options",
+      "path": "/local-papers/assets/general-test-2025-05-20-shift-2/q36-options.jpg",
+      "page": 40,
+      "alt": "Printed answer choices for question 36"
+     }
+    ]
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Arrange the following historical events in chronological order, beginning with the earliest to the most recent.\n\n(A) Universities established in Bombay, Madras and Calcutta\n\n(B) Transfer of Capital from Calcutta to Delhi\n\n(C) Supreme Court set up in Calcutta by the East India Company\n\n(D) Asiatic Society founded by Sir William Jones",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(C), (D), (A), (B)"
+     },
+     {
+      "id": "B",
+      "text": "(C), (D), (B), (A)"
+     },
+     {
+      "id": "C",
+      "text": "(D), (C), (B), (A)"
+     },
+     {
+      "id": "D",
+      "text": "(D), (C), (A), (B)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     41
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "Ram, Shyam and Hari can complete a work in 20, 25 and 30 days, respectively.\n\nConsider the following statements:\n\n(A) Ram and Shyam together will complete the work in $ 11\\frac{1}{9} $ days.\n\n(B) Shyam and Hari together will complete the work in 14 days.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (B)"
+     },
+     {
+      "id": "D",
+      "text": "Neither (A) nor (B)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     42
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "The area of a sector of a circle of radius 36 cm is $ 72\\pi\\ \\text{cm}^2 $. Find the length of the corresponding arc of the sector.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 4\\pi $ cm"
+     },
+     {
+      "id": "B",
+      "text": "$ 3\\pi $ cm"
+     },
+     {
+      "id": "C",
+      "text": "$ 2\\pi $ cm"
+     },
+     {
+      "id": "D",
+      "text": "$ \\pi $ cm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     43
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Kalibangan, an archaeological site, is located in which state in India?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Uttar Pradesh"
+     },
+     {
+      "id": "B",
+      "text": "Assam"
+     },
+     {
+      "id": "C",
+      "text": "Haryana"
+     },
+     {
+      "id": "D",
+      "text": "Rajasthan"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     44
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "A bus passes two persons moving in the direction of the moving bus at a speed of 3 km/hr and 5 km/hr, respectively. The bus passes the first person in 10 s and the second person in 11 s. Find the speed of the bus.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "28 km/hr"
+     },
+     {
+      "id": "B",
+      "text": "27 km/hr"
+     },
+     {
+      "id": "C",
+      "text": "25 km/hr"
+     },
+     {
+      "id": "D",
+      "text": "24 km/hr"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     46
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "Which of the following collections of letters will look the same in the mirror?\n\n(A) OXA8voHM\n\n(B) TWOVIMYOU\n\n(C) HV8SIMOT\n\n(D) AIXW08VA",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     48
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "The Goods and Services Tax Act, expected to create \"One Nation, One Tax and One Market\", came into effect in which year?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2013"
+     },
+     {
+      "id": "B",
+      "text": "2015"
+     },
+     {
+      "id": "C",
+      "text": "2017"
+     },
+     {
+      "id": "D",
+      "text": "2019"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     50
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Consider the compound interest in the following cases:\n\n(A) The compound interest on Rs 16000 at 20% per annum for 9 months, compounded quarterly is Rs. 2500\n\n(B) The compound interest on Rs 2800 at 10% per annum for 18 months is Rs. 434.\n\nChoose the correct statement(s):",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Only (A)"
+     },
+     {
+      "id": "B",
+      "text": "Only (B)"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (B)"
+     },
+     {
+      "id": "D",
+      "text": "Neither (A) nor (B)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     50
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "Baking powder is a mixture of baking soda (sodium hydrogen carbonate) and _?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Acetic Acid"
+     },
+     {
+      "id": "B",
+      "text": "Citric Acid"
+     },
+     {
+      "id": "C",
+      "text": "Tartaric Acid"
+     },
+     {
+      "id": "D",
+      "text": "Oxalic Acid"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     52
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "Which among the following is India's first pico-satellite, weighing less than 1kg, developed by a consortium of seven engineering colleges of India?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "ANUSAT"
+     },
+     {
+      "id": "B",
+      "text": "PRATHAM"
+     },
+     {
+      "id": "C",
+      "text": "STUDSAT"
+     },
+     {
+      "id": "D",
+      "text": "SWAYAM"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     53
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "Profit earned by selling an article for Rs.1060 is 20% more than the loss incurred by selling the article for Rs.950. At what price should the article be sold to earn a 20% profit?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Rs 1100"
+     },
+     {
+      "id": "B",
+      "text": "Rs. 1150"
+     },
+     {
+      "id": "C",
+      "text": "Rs. 1200"
+     },
+     {
+      "id": "D",
+      "text": "Rs. 1250"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     54
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "Iceland is an example of _.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Seamount"
+     },
+     {
+      "id": "B",
+      "text": "Mid-oceanic Ridge"
+     },
+     {
+      "id": "C",
+      "text": "Atoll"
+     },
+     {
+      "id": "D",
+      "text": "Guyot"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     55
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

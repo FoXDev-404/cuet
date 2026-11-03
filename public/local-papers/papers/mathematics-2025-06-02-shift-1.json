@@ -1,0 +1,1639 @@
+{
+ "exam": {
+  "id": "local-mathematics-2025-06-02-shift-1",
+  "slug": "mathematics-2025-06-02-shift-1",
+  "title": "CUET UG Mathematics 2 June 2025 Shift 1 Previous Year Paper",
+  "subject": "Mathematics",
+  "subjectId": "local-mathematics",
+  "subjectCode": "MAT",
+  "year": 2025,
+  "examDate": "2025-06-02",
+  "shift": "Shift 1",
+  "sourceFile": "Mathematics_2025-06-02_Shift_1.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 48,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "$$ \\int\\frac{e^{2x}-e^{-2x}}{e^{2x}+e^{-2x}}dx $$\n\nis equal to:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{2}\\log|e^{2x}-e^{-2x}|+C $, where $ C $ is an arbitrary constant."
+     },
+     {
+      "id": "B",
+      "text": "$ \\log|e^{2x}-e^{-2x}|+C $, where C is an arbitrary constant."
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{2}\\log|e^{2x}+e^{-2x}|+C $, where $ C $ is an arbitrary constant."
+     },
+     {
+      "id": "D",
+      "text": "$ \\log|e^{2x} + e^{-2x}| + C $, where $ C $ is an arbitrary constant."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "Linear inequalities corresponding to the shaded feasible region OABCO in the given figure are",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 4x + 3y \\leq 12 $, $ 3x + 4y \\leq 12 $, $ x \\geq 0 $, $ y \\geq 0 $"
+     },
+     {
+      "id": "B",
+      "text": "$ 4x + 3y \\geq 12 $, $ 3x + 4y \\geq 12 $, $ x \\geq 0 $, $ y \\geq 0 $"
+     },
+     {
+      "id": "C",
+      "text": "$ 4x + 3y \\leq 12 $, $ 3x + 4y \\geq 12 $, $ x, \\geq 0, y \\geq 0 $"
+     },
+     {
+      "id": "D",
+      "text": "$ 4x + 3y \\geq 12 $, $ 3x + 4y \\leq 12 $, $ x \\geq 0 $, $ y \\geq 0 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": [
+     {
+      "id": "q02-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/mathematics-2025-06-02-shift-1/q02-figure-1.jpg",
+      "page": 2,
+      "alt": "Figure for question 2"
+     }
+    ]
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\ (\\mathrm{A})-(\\mathrm{I}),(\\mathrm{B})-(\\mathrm{IV}),(\\mathrm{C})-(\\mathrm{II}),(\\mathrm{D})-(\\mathrm{III})"
+     },
+     {
+      "id": "B",
+      "text": "\\ (\\mathbf{A})-(\\mathbf{II}),(\\mathbf{B})-(\\mathbf{I}),(\\mathbf{C})-(\\mathbf{III}),(\\mathbf{D})-(\\mathbf{IV})"
+     },
+     {
+      "id": "C",
+      "text": "(A) - $ \\mathrm{(III)} $, (B) - $ \\mathrm{(IV)} $, (C) - $ \\mathrm{(II)} $, (D) - $ \\mathrm{(I)} $"
+     },
+     {
+      "id": "D",
+      "text": "(A) - (IV), (B) - (I), (C) - (II), (D) - (III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q03-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2025-06-02-shift-1/q03-table-1.jpg",
+      "page": 3,
+      "alt": "Table for question 3"
+     }
+    ]
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "$$ \\mathrm{If}\\begin{bmatrix}3&1\\\\ 2&1\\end{bmatrix}A\\begin{bmatrix}2&1\\\\ 1&1\\end{bmatrix}=\\begin{bmatrix}1&1\\\\ 0&1\\end{bmatrix}, $$\n\nthen matrix 'A' is\n\n$$ \\begin{bmatrix}1&1\\\\ 0&0\\end{bmatrix} $$\n\n$$ \\begin{bmatrix}{{{-1}}}&{{{1}}} \\\\{{{3}}}&{{{-4}}}\\end{bmatrix} $$\n\n$$ \\begin{bmatrix}1&-1\\\\ -3&4\\end{bmatrix} $$\n\n$$ 4.\\begin{bmatrix}1&0\\\\ 0&1\\end{bmatrix} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "For the function $ f(x) = -2x^3 + 3x^2 + 36x - 10 $, which of the following is/are true?\n\n(A) f is increasing in $ (-\\infty, -2) $\n\n(B) f is increasing in $ (-2,3) $\n\n(C) f is decreasing in $ (-\\infty, -2) $\n\n(D) f is decreasing in $ (3, \\infty) $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(B), (C) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "$$ If\\;y=\\frac{1}{\\sqrt[3]{1-x^{3}}},\\;then\\;\\frac{dy}{dx}is equal to: $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "x(1-x^{3})^{-\\frac{4}{3}}"
+     },
+     {
+      "id": "B",
+      "text": "x^{2}(1-x^{3})^{-\\frac{4}{3}}"
+     },
+     {
+      "id": "C",
+      "text": "\\left(1-x^{3}\\right)^{-\\frac{4}{3}}"
+     },
+     {
+      "id": "D",
+      "text": "x^{2}(1-x^{3})^{-\\frac{4}{3}}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "If x is real, the minimum value of $ x^{2}-8x+20 $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "4"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "0"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "If A is a square matrix of order 3 and |A|=5, then the value of |-AA^{+}| is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "25"
+     },
+     {
+      "id": "B",
+      "text": "25"
+     },
+     {
+      "id": "C",
+      "text": "5"
+     },
+     {
+      "id": "D",
+      "text": "5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "$$ x+y\\leq60, $$\n\n$$ 5x+y\\leq100, $$\n\n$$ x,y\\geq0. $$\n\nIf the maximum value of Z occurs at x = a and $ y = \\beta $, then the value of $ a + \\beta $ is:\n\n1.10",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "If the matrix $ \\begin{bmatrix} 2 & -1 & 3 \\\\ \\lambda & 0 & 7 \\\\ -1 & 1 & 4 \\end{bmatrix} $ is not invertible, then the value of $ \\lambda $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "1"
+     },
+     {
+      "id": "C",
+      "text": "1"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "If the matrix $ \\begin{bmatrix} 3 & 2a & -5 \\\\ 4 & 0 & b \\\\ -5 & 3 & 10 \\end{bmatrix} $ is symmetric, then the value of $ 5a + 2b $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "6"
+     },
+     {
+      "id": "B",
+      "text": "10"
+     },
+     {
+      "id": "C",
+      "text": "16"
+     },
+     {
+      "id": "D",
+      "text": "20"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "The solution of the differential equation $ y \\, dx + (x - y^2) \\, dy = 0 $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 3xy + x^{3} = C $: C is an arbitrary constant"
+     },
+     {
+      "id": "B",
+      "text": "$ 3xy + y^{3} = C $: C is an arbitrary constant"
+     },
+     {
+      "id": "C",
+      "text": "$ 3xy - y^{3} = C $: C is an arbitrary constant"
+     },
+     {
+      "id": "D",
+      "text": "$ 3xy - x^{3} = C $: C is an arbitrary constant"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "The value of $ \\int_{0}^{1}\\log_{e}(\\frac{1}{x}-1)dx $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "0"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{3}{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\log 2 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "Area of the region bounded by $ y = x^{2} $ and the line y = 16 is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{256}{3} $ square units"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{128}{3} $ square units"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{64}{3} $ square units"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{32}{3} $ square units"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "The probability distribution of a random variable x is, $ P(x) = \\frac{k}{2^x} $, x = 0, 1, 2, 3. Then\nMatch List-I with List-II\n\nList-I List-II\n(A) k (I) 2/15\n(B) P(x=1) (II) 1/5\n(C) P(1) (III) 8/15\n(D) P(x≥2) (IV) 4/15",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "If A is a skew-symmetric matrix of order 5, then $ |adjA| $ is equal to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "0"
+     },
+     {
+      "id": "C",
+      "text": "5"
+     },
+     {
+      "id": "D",
+      "text": "5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Relation R on the set $ A = \\{1,2,\\ldots,15\\} $ defined as $ R = \\{(x,y):y - 4x = 0\\} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Reflexive and transitive"
+     },
+     {
+      "id": "B",
+      "text": "Neither Reflexive nor symmetric"
+     },
+     {
+      "id": "C",
+      "text": "Reflexive but not symmetric"
+     },
+     {
+      "id": "D",
+      "text": "Not Reflexive but symmetric"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "Let $ \\vec{a} $ and $ \\vec{b} $ be unit vectors. If $ \\sqrt{3}\\vec{a}-\\vec{b} $ is a unit vector, then the angle between $ \\vec{a} $ and $ \\vec{b} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\pi}{6} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\pi}{4} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\pi}{3} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\pi}{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "A problem in mathematics is given to three students whose chances of solving it are $ \\frac{1}{2} $, $ \\frac{1}{3} $, $ \\frac{1}{4} $ respectively.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{3}{4} $"
+     },
+     {
+      "id": "B",
+      "text": "1"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{3} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{6} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "If $x$, $y$ and $z$ are real numbers such that $x + y + z = 0$, then the value of\n\n$$ \\begin{vmatrix}3x&-x+y&-x+z\\\\ x-y&3y&z-y\\\\ x-z&y-z&3z\\end{vmatrix} $$\n\nis",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 3(xy + yz + zx) $"
+     },
+     {
+      "id": "B",
+      "text": "$ xy + yz + zx $"
+     },
+     {
+      "id": "C",
+      "text": "0"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "The domain of $ y = \\cos^{-1}(x^2 - 4) $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\ [0,\\pi]"
+     },
+     {
+      "id": "B",
+      "text": "\\left[-\\sqrt{5},-\\sqrt{3}\\right]\\cup\\left[\\sqrt{3},\\sqrt{5}\\right]"
+     },
+     {
+      "id": "C",
+      "text": "\\left[-\\sqrt{5},-\\sqrt{3}\\right]\\cap\\left[-\\sqrt{5},\\sqrt{3}\\right]"
+     },
+     {
+      "id": "D",
+      "text": "\\left[-1,1\\right]"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "The integrating factor of the differential equation $ \\frac{dy}{dx} = x + xy $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$e^{-\\frac{x}{2}}$"
+     },
+     {
+      "id": "B",
+      "text": "$e^{-\\frac{x^{2}}{2}}$"
+     },
+     {
+      "id": "C",
+      "text": "$e^{\\frac{x^{2}}{2}}$"
+     },
+     {
+      "id": "D",
+      "text": "$e^{\\frac{x}{2}}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "The area (in sq. units) of the region bounded by the line $ 2y + x = 8 $,\n\nthe x-axis and the lines x = 2 and x = 4 is\n\n$$ 2^{\\frac{3}{2}} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "In a college, 30% students fail in Physics, 25% fail in Mathematics and 10% fail in both.\n\nOne student is chosen at random. The probability that she fails in Physics if she has failed in Mathematics is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{2}{5} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{5} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{9}{10} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{3}{10} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "An urn contains 5 red and 5 black balls. A ball is drawn at random, its color is noted and is returned to Moreover, 2 additional balls of the same color are put in the urn and then a ball is drawn at random.\n\nThe probability that the second drawn ball is red, is:\n\n$$ \\begin{aligned}&1.\\frac{5}{12}\\\\ &2.\\frac{1}{2}\\\\ &3.\\frac{1}{3}\\\\ &4.\\frac{1}{4}\\\\ \\end{aligned} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "If A(3, 2), B(1, -1) and C(2, 1) are three vertices of a parallelogram ABCD, then its area (in sq. units) i\n\n1. 1\n\n2. $ \\frac{1}{2} $\n\n3. 5\n\n4. $ \\frac{5}{2} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(B), (C) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A) and (B) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "If $ A = \\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix} $ and $ A^{4} = \\begin{bmatrix} 1 & 0 \\\\ k & 1 \\end{bmatrix} $, then the value of k is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "81"
+     },
+     {
+      "id": "B",
+      "text": "27"
+     },
+     {
+      "id": "C",
+      "text": "12"
+     },
+     {
+      "id": "D",
+      "text": "36"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "$$ \\int_{0}^{1}\\frac{dx}{\\sqrt{1+x}-\\sqrt{x}} $$\n\nis equal to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ \\frac{5\\sqrt{2}}{3} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ \\frac{4\\sqrt{2}}{3} $$"
+     },
+     {
+      "id": "C",
+      "text": "\\frac{4\\sqrt{3}}{3}"
+     },
+     {
+      "id": "D",
+      "text": "\\frac{\\sqrt{2}}{3}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "The area (in sq. units) of a triangle formed by vertices O, A, and B where $ \\overrightarrow{OA} = \\hat{i} + 2\\hat{j} + 3\\hat{k} $ and $ \\overrightarrow{OB} = $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ 3\\sqrt{5} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ 4\\sqrt{5} $$"
+     },
+     {
+      "id": "C",
+      "text": "6\\sqrt{5}"
+     },
+     {
+      "id": "D",
+      "text": "2\\sqrt{5}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "$$ \\int_{-1}^{1}\\frac{x^{3}+|x|+1}{x^{2}+2|x|+1}dx is equal to $$\n\n$$ (1)\\frac{1}{2}\\log_{e}2-1 $$\n\n(2) $ 2\\log_{e}2 $\n\n(3) $ 2 \\log_{e} 2 - 2 $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "$$ \\mathrm{If}\\;x=a(\\cos t+\\log\\tan\\frac{t}{2}),\\;y=a\\sin t,\\;\\mathrm{then}\\;\\mathrm{value}\\;\\mathrm{of}\\;\\frac{dy}{dx}\\;\\mathrm{at}\\;t=\\pi/4\\mathrm{is} $$\n\n(2) 1\n\n(3)-1\n\n(4)2",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "If the direction ratios of two lines are $a, b, c$ and $(b-c), (c-a), (a-b)$ respectively, then the angle between",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ \\frac{\\pi}{4} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ \\frac{\\pi}{3} $$"
+     },
+     {
+      "id": "C",
+      "text": "\\frac{\\pi}{2}"
+     },
+     {
+      "id": "D",
+      "text": "\\frac{2\\pi}{3}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "If $y=\\sin^{-1}x$, then $(1-x^{2})\\frac{d^{2}y}{dx^{2}}$ is equal to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ -x\\frac{dy}{dx} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ x\\frac{dy}{dx} $$"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{y}{x}\\frac{dy}{dx} $"
+     },
+     {
+      "id": "D",
+      "text": "$$ \\frac{-y}{x}\\frac{dy}{dx} $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "(A) $ P(S|B)=1 $\n\n(B) $ P(A \\cap B) = P(A) + P(B) + P(A \\cup B) $\n\n(C) $ P(\\overline{A}|B) = 1 - P(A|B) $\n\n(D) $ P(A|B) = \\frac{P(A \\cap B)}{P(B)} $, $ P(B) \\neq 0 $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (B) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "D",
+      "text": "(C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     34
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "The foot of the perpendicular drawn from the point (1,6,3) to the line $ \\frac{x}{1}=\\frac{y-1}{2}=\\frac{z-2}{3} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ (-1,-1,1) $"
+     },
+     {
+      "id": "B",
+      "text": "$ (1,2,3) $"
+     },
+     {
+      "id": "C",
+      "text": "$ (1,3,5) $"
+     },
+     {
+      "id": "D",
+      "text": "$ (1,-3,5) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     35
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "If the function f(x)=\\left\\{\\begin{array}{ll}\\frac{\\sin3x}{x},&\\text{if}x\\neq0\\\\ \\frac{3k}{2},&\\text{if}x=0\\end{array}\\right. is continuous at x=0, then the value of k is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{2}{3} $"
+     },
+     {
+      "id": "B",
+      "text": "4"
+     },
+     {
+      "id": "C",
+      "text": "2"
+     },
+     {
+      "id": "D",
+      "text": "9"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     36
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "The value of $ \\int_{\\frac{-\\pi}{2}}^{\\pi/2}(x^{5}+x^{3}\\cos x)dx $ $ \\sin x $.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "$ -1 $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\pi $"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     37
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "A function $f: \\mathbb{R} \\to \\mathbb{R}$ defined by $f(x) = \\frac{x}{x^2 + 1}$\n\nis (where $ \\mathbb{R} $ is the set of real numbers):",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "one-one but not onto"
+     },
+     {
+      "id": "B",
+      "text": "onto but not one-one"
+     },
+     {
+      "id": "C",
+      "text": "neither one-one nor onto"
+     },
+     {
+      "id": "D",
+      "text": "both one-one and onto"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     38
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "The matrix $ A = \\begin{bmatrix} 0 & 0 & 5 \\\\ 0 & 5 & 0 \\\\ 5 & 0 & 0 \\end{bmatrix} $ is a:\n\n(A) Diagonal matrix\n\n(B) Scalar matrix\n\n(C) Square matrix\n\nD) Symmetric matrix",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     39
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "If A is an invertible matrix of order 3, then\n\nMatch List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\ (\\mathrm{A})-(\\mathrm{II}),(\\mathrm{B})-(\\mathrm{IV}),(\\mathrm{C})-(\\mathrm{I}),(\\mathrm{D})-(\\mathrm{III})"
+     },
+     {
+      "id": "B",
+      "text": "\\ (\\mathbf{A})-(\\mathbf{I}),(\\mathbf{B})-(\\mathbf{II}),(\\mathbf{C})-(\\mathbf{III}),(\\mathbf{D})-(\\mathbf{IV})"
+     },
+     {
+      "id": "C",
+      "text": "\\;(\\mathbf{A})-(\\mathbf{I I I}),\\;(\\mathbf{B})-(\\mathbf{I V}),\\;(\\mathbf{C})-(\\mathbf{I}),\\;(\\mathbf{D})-(\\mathbf{I I})"
+     },
+     {
+      "id": "D",
+      "text": "\\ (\\mathrm{A})-(\\mathrm{IV}),(\\mathrm{B})-(\\mathrm{III}),(\\mathrm{C})-(\\mathrm{II}),(\\mathrm{D})-(\\mathrm{I})"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     40
+    ],
+    "assets": [
+     {
+      "id": "q42-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2025-06-02-shift-1/q42-table-1.jpg",
+      "page": 40,
+      "alt": "Table for question 42"
+     }
+    ]
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "Consider a closed cylinder of radius r with a fixed surface area.\n\nThe volume of the cylinder is maximum when its height is:\n\n$$ \\begin{aligned}&1.3r\\\\ &2.\\frac{1}{3}r\\\\ &3.\\frac{r}{2}\\\\ &4.2r\\\\ \\end{aligned} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     41
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "The function $ f(x) = 2\\log_{e}(x - 2) - x^{2} + 4x + 1 $, $ (x > 2) $ is increasing on the interval:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(1,2)"
+     },
+     {
+      "id": "B",
+      "text": "(2,6)"
+     },
+     {
+      "id": "C",
+      "text": "(2,3)"
+     },
+     {
+      "id": "D",
+      "text": "(3,\\infty)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     42
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "The value of $ \\lambda $ so that the lines $ \\frac{1-x}{3}=\\frac{7y-14}{2\\lambda}=\\frac{z-3}{2} $ and $ \\frac{7-7x}{3\\lambda}=\\frac{y-5}{1}=\\frac{6-z}{5} $ are at right angle, is:\n\n1. $ \\frac{70}{11} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     43
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "The solution of the differential equation $ \\frac{dy}{dx} = \\frac{x + y}{x - y} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ y = \\frac{x}{2} \\log_{e}(x^{2} + y^{2}) + C $: C is an arbitrary constant"
+     },
+     {
+      "id": "B",
+      "text": "$ y = \\sqrt{x^2 + y^2} + C $: C is an arbitrary constant"
+     },
+     {
+      "id": "C",
+      "text": "$y = \\frac{1}{2} \\log_{e}(x^{2} + y^{2}) + C$ : $C$ is an arbitrary constant"
+     },
+     {
+      "id": "D",
+      "text": "$ \\tan^{-1}\\frac{y}{x}=\\frac{1}{2}\\log_{e}(x^{2}+y^{2})+C:C $ is an arbitrary constant"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     44
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "The corner points of the bounded feasible region for an LPP are: $ (5,5) $, $ (15,15) $, $ (0,20) $ and $ (0,10) $.\n\nLet $ z = 3x + 9y $ be the objective function.\n\nThen the value of maximum(z) - minimum(z) is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "60"
+     },
+     {
+      "id": "B",
+      "text": "90"
+     },
+     {
+      "id": "C",
+      "text": "120"
+     },
+     {
+      "id": "D",
+      "text": "180"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     45
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "The feasible region corresponding to the linear constraints of a Linear Programming Problem (LPP) is represented by the shaded region in the given figure. Which of the following is not a constraint to the given LPP?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ x + 2y \\leq 10 $"
+     },
+     {
+      "id": "B",
+      "text": "$ x + y \\geq 2 $"
+     },
+     {
+      "id": "C",
+      "text": "$ x - y \\geq 1 $"
+     },
+     {
+      "id": "D",
+      "text": "$ x - y \\leq 1 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     46,
+     47
+    ],
+    "assets": [
+     {
+      "id": "q48-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/mathematics-2025-06-02-shift-1/q48-figure-1.jpg",
+      "page": 47,
+      "alt": "Figure for question 48"
+     }
+    ]
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "If $x = -1$ and $x = -2$ are the extreme points of $f(x) = \\alpha \\log |x| + \\beta x^{2} + x$ then",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\alpha=\\frac{-2}{3},\\beta=\\frac{1}{6}"
+     },
+     {
+      "id": "B",
+      "text": "\\alpha=\\frac{-2}{3},\\beta=-\\frac{1}{6}"
+     },
+     {
+      "id": "C",
+      "text": "\\alpha=\\frac{2}{3},\\beta=\\frac{1}{6}"
+     },
+     {
+      "id": "D",
+      "text": "\\alpha=\\frac{2}{3},\\beta=-\\frac{1}{6}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     48
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "The value of $ \\lambda $ for which the two vectors $ (2\\hat{i} - \\hat{j} + 2\\hat{k}) $ and $ (3\\hat{i} + \\lambda\\hat{j} + \\hat{k}) $ are perpendicular, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     49
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { all } from "../../lib/db";
+import { formatDateTime, formatDuration } from "../../lib/content";
+import { dashboardNav } from "../../lib/navigation";
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect(`/login?next=${encodeURIComponent("/dashboard/history")}`, 303);
+
+const attempts = await all<{
+  id: number;
+  status: string;
+  score: number | null;
+  correct: number | null;
+  wrong: number | null;
+  time_taken_sec: number | null;
+  started_at: string;
+  submitted_at: string | null;
+  is_first_attempt: number;
+  title: string;
+  slug: string;
+  version_no: number;
+  total_marks: number;
+}>(
+  `SELECT a.id, a.status, a.score, a.correct, a.wrong, a.time_taken_sec,
+          a.started_at, a.submitted_at, a.is_first_attempt,
+          m.title, m.slug, v.version_no, v.total_marks
+   FROM attempts a
+   JOIN mock_tests m ON m.id = a.mock_id
+   JOIN mock_test_versions v ON v.id = a.version_id
+   WHERE a.user_id = ?
+   ORDER BY a.id DESC LIMIT 200`,
+  user.id,
+);
+
+const statusLabel: Record<string, string> = {
+  in_progress: "In progress",
+  submitted: "Submitted",
+  expired: "Time expired",
+};
+---
+
+<BaseLayout title="Attempt history — CUET Free Mock Test" description="Every mock attempt on your account, including the frozen paper version used for scoring." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
+  <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <h1 class="text-2xl font-black tracking-tight">Attempt history</h1>
+    <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+      Scores are immutable. Each row keeps the paper version that was served when the attempt started, so a later correction cannot rewrite an old result.
+    </p>
+
+    {attempts.length === 0 ? (
+      <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
+        <h2 class="font-bold">No attempts yet</h2>
+        <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">Take a free mock and your full history will appear here.</p>
+        <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse mock tests</a>
+      </div>
+    ) : (
+      <div class="mt-6 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" role="region" aria-label="Attempt history" tabindex="0">
+        <table class="w-full min-w-[820px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Mock</th>
+              <th class="px-4 py-3">Status</th>
+              <th class="px-4 py-3 text-right">Score</th>
+              <th class="px-4 py-3 text-right">Accuracy</th>
+              <th class="px-4 py-3 text-right">Time</th>
+              <th class="px-4 py-3">Started</th>
+              <th class="px-4 py-3 text-right">Open</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {attempts.map((attempt) => {
+              const answered = (attempt.correct ?? 0) + (attempt.wrong ?? 0);
+              const accuracy = answered > 0 ? Math.round(((attempt.correct ?? 0) / answered) * 1000) / 10 : 0;
+              const href = attempt.status === "in_progress" ? `/attempt/${attempt.id}` : `/result/${attempt.id}`;
+              return (
+                <tr>
+                  <td class="max-w-xs px-4 py-3">
+                    <a class="line-clamp-2 font-medium hover:text-brand-700 dark:hover:text-brand-300" href={href}>{attempt.title}</a>
+                    <span class="mt-1 block text-xs text-neutral-500 dark:text-neutral-400">v{attempt.version_no}{attempt.is_first_attempt ? " · ranked first attempt" : ""}</span>
+                  </td>
+                  <td class="px-4 py-3">{statusLabel[attempt.status] ?? attempt.status}</td>
+                  <td class="px-4 py-3 text-right font-bold">{attempt.score ?? "—"}{attempt.score !== null ? <span class="text-xs font-normal text-neutral-500 dark:text-neutral-400"> / {attempt.total_marks}</span> : null}</td>
+                  <td class="px-4 py-3 text-right">{attempt.status === "in_progress" ? "—" : `${accuracy}%`}</td>
+                  <td class="px-4 py-3 text-right text-xs text-neutral-500 dark:text-neutral-400">{attempt.time_taken_sec ? formatDuration(attempt.time_taken_sec) : "—"}</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(attempt.started_at)}</td>
+                  <td class="px-4 py-3 text-right"><a class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={href}>{attempt.status === "in_progress" ? "Resume" : "Result"}</a></td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </section>
+</BaseLayout>

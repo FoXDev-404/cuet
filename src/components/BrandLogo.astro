@@ -1,0 +1,57 @@
+---
+interface Props {
+  showTagline?: boolean;
+  class?: string;
+  tone?: "auto" | "dark";
+  size?: "default" | "compact";
+  link?: boolean;
+}
+
+const {
+  showTagline = true,
+  class: className = "",
+  tone = "auto",
+  size = "default",
+  link = true,
+} = Astro.props;
+const compact = size === "compact";
+const wordmark = tone === "dark" ? "text-white" : "text-neutral-900 dark:text-white";
+const suffix = tone === "dark" ? "text-white/55" : "text-neutral-500 dark:text-white/55";
+const tagline = tone === "dark" ? "text-white/55" : "text-neutral-500 dark:text-white/55";
+const accent = tone === "dark" ? "text-accent-300" : "text-accent-700 dark:text-accent-300";
+---
+
+<a
+  href={link ? "/" : undefined}
+  class:list={["group flex min-w-0 items-center", compact ? "gap-1.5" : "gap-2.5", className]}
+  title={link ? "CUETFreeMockTest.com — free CUET mock tests" : "CUETFreeMockTest.com"}
+  aria-label={link ? undefined : "CUETFreeMockTest.com"}
+>
+  <img
+    src="/logo.svg"
+    alt=""
+    width={compact ? 24 : 36}
+    height={compact ? 24 : 36}
+    decoding="async"
+    class:list={[
+      "shrink-0 rounded-full shadow-[var(--shadow-brand)] ring-1 ring-white/20",
+      compact ? "h-6 w-6" : "h-9 w-9",
+    ]}
+  />
+  <span class="min-w-0">
+    <span
+      class:list={[
+        "block truncate font-black leading-tight tracking-tight",
+        compact ? "text-[11px] sm:text-[13px]" : "text-[13px] sm:text-[15px]",
+        wordmark,
+      ]}
+    >
+      CUET<span class={accent}>Free</span>MockTest<span class={suffix}>.com</span>
+    </span>
+    {showTagline && !compact ? (
+      <span class:list={["mt-0.5 block truncate text-[8px] font-semibold uppercase tracking-[0.24em]", tagline]}>
+        Practice with purpose
+      </span>
+    ) : null}
+  </span>
+</a>

@@ -1,0 +1,544 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ShareSheet from "../../../components/ShareSheet.astro";
+import { getGuestToken } from "../../../lib/auth/session";
+import {
+  canAccessAttempt,
+  findAttempt,
+  loadResult,
+  parseQuestionAssets,
+  settleAttempt,
+} from "../../../lib/attempts";
+import { all } from "../../../lib/db";
+import { formatDuration, parseMarkingScheme, parseOptions, renderRichText } from "../../../lib/content";
+import { imageDimensionsForUrls } from "../../../lib/media-dimensions";
+import { siteUrl } from "../../../lib/site-url";
+import { questionSharePath } from "../../../lib/share/public-id";
+import { shareMappingsForQuestionIds } from "../../../lib/share/public-question-store";
+import type { ShareAnswer, ShareQuestion } from "../../../lib/share/types";
+
+const attemptId = Number(Astro.params.attemptId);
+if (!Number.isInteger(attemptId) || attemptId <= 0) {
+  return new Response("Result not found", { status: 404 });
+}
+
+let attempt = await findAttempt(attemptId);
+if (!attempt || !canAccessAttempt(attempt, Astro.locals.user, getGuestToken(Astro.cookies))) {
+  return new Response("Result not found", { status: 404 });
+}
+
+attempt = await settleAttempt(attempt);
+if (attempt.status === "in_progress") return Astro.redirect(`/attempt/${attempt.id}`, 303);
+
+const result = await loadResult(attempt);
+if (!result) return new Response("Result not found", { status: 404 });
+
+const marking = parseMarkingScheme(result.mock.marking_scheme);
+const assetSets = result.questions.map((question) => parseQuestionAssets(question.assets_json));
+const dimensions = await imageDimensionsForUrls(
+  result.questions.flatMap((question, index) => [
+    question.image_url,
+    question.passage_image_url,
+    question.explanation_image_url,
+    ...parseOptions(question.options).map((option) => option.image_url),
+    ...parseOptions(question.options_hi).map((option) => option.image_url),
+    ...assetSets[index].map((asset) => asset.url),
+  ]),
+);
+const withDimensions = <T extends { image_url: string | null }>(option: T): T & {
+  image_width: number | null;
+  image_height: number | null;
+} => {
+  const size = option.image_url ? dimensions.get(option.image_url) : undefined;
+  return {
+    ...option,
+    image_width: size?.width ?? null,
+    image_height: size?.height ?? null,
+  };
+};
+const questions = result.questions.map((question, index) => {
+  const options = parseOptions(question.options).map(withDimensions);
+  const centred = question.selected !== null && question.selected === question.correct_option;
+  return {
+    ...question,
+    options,
+    optionsHi: parseOptions(question.options_hi).map(withDimensions),
+    assets: assetSets[index].map((asset) => {
+      const size = dimensions.get(asset.url);
+      return {
+        ...asset,
+        image_width: size?.width ?? null,
+        image_height: size?.height ?? null,
+      };
+    }),
+    image_width: question.image_url ? dimensions.get(question.image_url)?.width ?? null : null,
+    image_height: question.image_url ? dimensions.get(question.image_url)?.height ?? null : null,
+    passage_image_width: question.passage_image_url
+      ? dimensions.get(question.passage_image_url)?.width ?? null
+      : null,
+    passage_image_height: question.passage_image_url
+      ? dimensions.get(question.passage_image_url)?.height ?? null
+      : null,
+    explanation_image_width: question.explanation_image_url
+      ? dimensions.get(question.explanation_image_url)?.width ?? null
+      : null,
+    explanation_image_height: question.explanation_image_url
+      ? dimensions.get(question.explanation_image_url)?.height ?? null
+      : null,
+    state: question.selected === null ? "skipped" : centred ? "correct" : "wrong",
+    correct: centred,
+  };
+});
+
+const counts = {
+  all: questions.length,
+  correct: questions.filter((question) => question.state === "correct").length,
+  wrong: questions.filter((question) => question.state === "wrong").length,
+  skipped: questions.filter((question) => question.state === "skipped").length,
+};
+const letters = ["A", "B", "C", "D", "E", "F"];
+
+// Practice papers are recovered from third-party sources; question sharing
+// stays disabled until the rights are confirmed.
+const canShare = result.mock.practice_paper_slug === null;
+const shareMappings = canShare
+  ? await shareMappingsForQuestionIds(questions.map((question) => question.id))
+  : null;
+const site = siteUrl(Astro.url);
+const shareByQuestion = new Map<
+  number,
+  { view: ShareQuestion; answer: ShareAnswer; shareUrl: string }
+>();
+for (const question of questions) {
+  const mapping = shareMappings?.get(question.id);
+  if (!mapping) continue;
+  const path = questionSharePath(mapping.publicId, question.text);
+  const mapOptions = (options: typeof question.options) =>
+    options.map((option, index) => ({
+      letter: letters[index] ?? String(index + 1),
+      text: option.text,
+      imageUrl: option.image_url,
+      alt: option.alt,
+    }));
+  shareByQuestion.set(question.id, {
+    view: {
+      publicId: mapping.publicId,
+      text: question.text,
+      textHi: question.text_hi,
+      options: mapOptions(question.options),
+      optionsHi: question.optionsHi.length > 0 ? mapOptions(question.optionsHi) : null,
+      imageUrl: question.image_url,
+      imageAlt: question.image_alt,
+      subject: { name: question.section },
+    },
+    answer: {
+      correctOption: question.correct_option,
+      explanation: question.explanation,
+      explanationHi: question.explanation_hi,
+      explanationImageUrl: question.explanation_image_url,
+      explanationImageAlt: question.explanation_image_alt,
+    },
+    shareUrl: new URL(path, site).toString(),
+  });
+}
+
+const user = Astro.locals.user;
+const bookmarked = new Set<number>(
+  user
+    ? (
+        await all<{ question_id: number }>(
+          "SELECT question_id FROM bookmarks WHERE user_id = ?",
+          user.id,
+        )
+      ).map((row) => row.question_id)
+    : [],
+);
+const discussionCounts = new Map(
+  (
+    await all<{ question_id: number; count: number }>(
+      `SELECT question_id, COUNT(*) AS count FROM discussions
+       WHERE mock_id = ? AND question_id IS NOT NULL AND status = 'visible'
+       GROUP BY question_id`,
+      result.mock.id,
+    )
+  ).map((row) => [row.question_id, row.count]),
+);
+const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solutions`)}`;
+---
+
+<BaseLayout
+  title={`Solutions — ${result.mock.title} — CUET Free Mock Test`}
+  description="Question-by-question solutions for this mock test."
+  noindex
+>
+  <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
+    <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+      <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/result/${attempt.id}`}>← Back to result summary</a>
+      <h1 class="mt-3 text-2xl font-black tracking-tight sm:text-3xl">Solutions · {result.mock.title}</h1>
+      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+        +{marking.correct} correct · {marking.wrong} wrong · {marking.skipped} skipped · {formatDuration(attempt.time_taken_sec)} used
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2 text-xs">
+        <span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{counts.correct} correct</span>
+        <span class="rounded-full bg-red-100 px-3 py-1 font-semibold text-red-900 dark:bg-red-950/50 dark:text-red-200">{counts.wrong} wrong</span>
+        <span class="rounded-full bg-neutral-200 px-3 py-1 font-semibold text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">{counts.skipped} skipped</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+    <div class="flex flex-wrap items-center gap-2" id="solution-filters" role="group" aria-label="Filter solutions">
+      {(["all", "wrong", "skipped", "correct"] as const).map((filter) => (
+        <button
+          type="button"
+          class:list={[
+            "rounded-lg border px-3 py-1.5 text-xs font-bold capitalize",
+            filter === "all"
+              ? "border-brand-600 bg-brand-600 text-white"
+              : "border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-900",
+          ]}
+          data-filter={filter}
+        >
+          {filter} ({counts[filter]})
+        </button>
+      ))}
+    </div>
+
+    <div class="mt-5 space-y-4" id="solution-list">
+      {questions.map((question, index) => {
+        const share = shareByQuestion.get(question.id) ?? null;
+        return (
+        <article
+          class="rounded-2xl border border-neutral-200 bg-white p-4 sm:p-5 dark:border-neutral-800 dark:bg-neutral-900"
+          data-state={question.state}
+        >
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            <span class="font-bold text-neutral-500 dark:text-neutral-400">Q{index + 1}</span>
+            <span class="rounded-full bg-neutral-100 px-2.5 py-0.5 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{question.section}</span>
+            <span
+              class:list={[
+                "rounded-full px-2.5 py-0.5 font-semibold",
+                question.state === "correct"
+                  ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200"
+                  : question.state === "wrong"
+                    ? "bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200"
+                    : "bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300",
+              ]}
+            >
+              {question.state === "correct" ? "Correct" : question.state === "wrong" ? "Incorrect" : "Skipped"}
+            </span>
+            <span class="ml-auto text-neutral-500 dark:text-neutral-400">{formatDuration(question.time_spent_sec)}</span>
+            {question.marked_for_review ? (
+              <span class="rounded-full bg-violet-100 px-2.5 py-0.5 font-semibold text-violet-900 dark:bg-violet-950/50 dark:text-violet-200">Marked</span>
+            ) : null}
+          </div>
+
+          {question.passage_body ? (
+            <div class="mt-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm leading-7 dark:border-neutral-800 dark:bg-neutral-950">
+              <div set:html={renderRichText(question.passage_body)}></div>
+              {question.passage_image_url ? (
+                <img
+                  class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                  src={question.passage_image_url}
+                  alt={question.passage_image_alt ?? ""}
+                  width={question.passage_image_width ?? undefined}
+                  height={question.passage_image_height ?? undefined}
+                  loading="lazy"
+                />
+              ) : null}
+            </div>
+          ) : null}
+
+          <div class="mt-3 text-sm leading-7" set:html={renderRichText(question.text)}></div>
+          {question.image_url ? (
+            <img
+              class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+              src={question.image_url}
+              alt={question.image_alt ?? ""}
+              width={question.image_width ?? undefined}
+              height={question.image_height ?? undefined}
+              loading="lazy"
+            />
+          ) : null}
+
+          {question.assets.some((asset) => asset.kind !== "options" && asset.url !== question.image_url) ? (
+            <figure class="mt-3 rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900">
+              <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                Figure / table
+              </figcaption>
+              <div class="flex flex-wrap gap-2">
+                {question.assets
+                  .filter((asset) => asset.kind !== "options" && asset.url !== question.image_url)
+                  .map((asset) => (
+                    <img
+                      class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                      src={asset.url}
+                      alt={asset.alt}
+                      width={asset.image_width ?? undefined}
+                      height={asset.image_height ?? undefined}
+                      loading="lazy"
+                    />
+                  ))}
+              </div>
+            </figure>
+          ) : null}
+
+          {question.assets.some((asset) => asset.kind === "options") ? (
+            <figure class="mt-3 rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900">
+              <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                Printed answer choices
+              </figcaption>
+              <div class="flex flex-wrap gap-2">
+                {question.assets
+                  .filter((asset) => asset.kind === "options")
+                  .map((asset) => (
+                    <img
+                      class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                      src={asset.url}
+                      alt={asset.alt}
+                      width={asset.image_width ?? undefined}
+                      height={asset.image_height ?? undefined}
+                      loading="lazy"
+                    />
+                  ))}
+              </div>
+            </figure>
+          ) : null}
+
+          <ol class="mt-4 space-y-2">
+            {question.options.map((option, optionIndex) => {
+              const isCorrectOption = optionIndex === question.correct_option;
+              const isChosen = optionIndex === question.selected;
+              return (
+                <li
+                  class:list={[
+                    "flex items-start gap-3 rounded-xl border px-3 py-2 text-sm",
+                    isCorrectOption
+                      ? "border-brand-400 bg-brand-50 dark:border-brand-700 dark:bg-brand-950/40"
+                      : isChosen
+                        ? "border-red-300 bg-red-50 dark:border-red-800 dark:bg-red-950/40"
+                        : "border-neutral-200 dark:border-neutral-800",
+                  ]}
+                >
+                  <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-current text-xs font-bold">
+                    {letters[optionIndex] ?? optionIndex + 1}
+                  </span>
+                  <span class="min-w-0 flex-1">
+                    <span set:html={renderRichText(option.text)}></span>
+                    {option.image_url ? (
+                      <img
+                        class="mt-2 max-h-40 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                        src={option.image_url}
+                        alt={option.alt ?? ""}
+                        width={option.image_width ?? undefined}
+                        height={option.image_height ?? undefined}
+                        loading="lazy"
+                      />
+                    ) : null}
+                    <span class="mt-1 block text-xs font-semibold">
+                      {isCorrectOption ? <span class="text-brand-700 dark:text-brand-300">Correct answer</span> : null}
+                      {isChosen && !isCorrectOption ? <span class="text-red-700 dark:text-red-400">Your answer</span> : null}
+                      {isChosen && isCorrectOption ? <span class="text-brand-700 dark:text-brand-300"> · Your answer</span> : null}
+                    </span>
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+
+          {question.optionsHi.length > 0 ? (
+            <details class="mt-3 text-sm">
+              <summary class="cursor-pointer font-semibold text-neutral-600 dark:text-neutral-300">हिंदी विकल्प</summary>
+              <ol class="mt-2 space-y-1.5">
+                {question.optionsHi.map((option, optionIndex) => (
+                  <li class="flex gap-2">
+                    <span class="font-bold">{letters[optionIndex] ?? optionIndex + 1}.</span>
+                    <span set:html={renderRichText(option.text)}></span>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          ) : null}
+
+          <div class="mt-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950">
+            <p class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Explanation</p>
+            <div class="mt-2 text-sm leading-7" set:html={renderRichText(question.explanation)}></div>
+            {question.explanation_image_url ? (
+              <img
+                class="mt-3 max-h-64 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                src={question.explanation_image_url}
+                alt={question.explanation_image_alt ?? ""}
+                width={question.explanation_image_width ?? undefined}
+                height={question.explanation_image_height ?? undefined}
+                loading="lazy"
+              />
+            ) : null}
+            {question.explanation_hi ? (
+              <details class="mt-3 text-sm">
+                <summary class="cursor-pointer font-semibold text-neutral-600 dark:text-neutral-300">हिंदी व्याख्या</summary>
+                <div class="mt-2 leading-7" set:html={renderRichText(question.explanation_hi)}></div>
+              </details>
+            ) : null}
+          </div>
+
+          <div class="mt-3 flex flex-wrap items-center gap-2 text-xs">
+            {share ? (
+              <ShareSheet
+                view={share.view}
+                answer={share.answer}
+                shareUrl={share.shareUrl}
+                context="solutions"
+                questionNumber={index + 1}
+                triggerLabel="Share question"
+                triggerClass="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-neutral-300 px-2.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800"
+              />
+            ) : null}
+            <a
+              class="rounded-lg border border-neutral-300 px-2.5 py-1 font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800"
+              href={`/mock/${result.mock.slug}/discussion?question=${question.id}`}
+            >
+              Discuss this question{discussionCounts.get(question.id) ? ` (${discussionCounts.get(question.id)})` : ""}
+            </a>
+            {user ? (
+              <button
+                type="button"
+                aria-pressed={bookmarked.has(question.id) ? "true" : "false"}
+                class:list={[
+                  "rounded-lg border px-2.5 py-1 font-semibold",
+                  bookmarked.has(question.id)
+                    ? "border-brand-500 bg-brand-50 text-brand-900 dark:border-brand-600 dark:bg-brand-950/40 dark:text-brand-200"
+                    : "border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800",
+                ]}
+                data-bookmark={question.id}
+                data-bookmarked={bookmarked.has(question.id) ? "true" : "false"}
+              >
+                {bookmarked.has(question.id) ? "Saved for review" : "Save for review"}
+              </button>
+            ) : (
+              <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={loginHref}>Log in to bookmark this question</a>
+            )}
+          </div>
+
+          <details class="mt-3 text-xs">
+            <summary class="cursor-pointer font-semibold text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200">
+              Report a problem with this question
+            </summary>            <form class="mt-2 flex flex-col gap-2 sm:flex-row" data-report-form data-question-id={question.id}>
+              <label class="sr-only" for={`report-${question.id}`}>Describe the problem</label>
+              <input
+                class="min-w-0 flex-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950"
+                id={`report-${question.id}`}
+                name="reason"
+                type="text"
+                minlength="5"
+                maxlength="1000"
+                required
+                placeholder="Wrong answer key, typo, broken image…"
+              />
+              <button class="rounded-lg bg-neutral-900 px-3 py-2 font-bold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900" type="submit">
+                Send report
+              </button>
+            </form>
+            <p class="mt-2 hidden text-xs" data-report-message></p>
+          </details>
+        </article>
+        );
+      })}
+    </div>
+
+    <p class="mt-8 text-center text-sm">
+      <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/result/${attempt.id}`}>Back to result summary</a>
+      <span class="mx-2 text-neutral-400">·</span>
+      <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-mock-test">More mock tests</a>
+    </p>
+  </section>
+
+  <script>
+    const list = document.getElementById("solution-list");
+    const cards = [...(list?.querySelectorAll<HTMLElement>("[data-state]") ?? [])];
+    const filterButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-filter]")];
+
+    function applyFilter(filter: string) {
+      for (const card of cards) {
+        const show = filter === "all" || card.dataset.state === filter;
+        card.classList.toggle("hidden", !show);
+      }
+      for (const button of filterButtons) {
+        const active = button.dataset.filter === filter;
+        button.classList.toggle("border-brand-600", active);
+        button.classList.toggle("bg-brand-600", active);
+        button.classList.toggle("text-white", active);
+        button.classList.toggle("border-neutral-300", !active);
+        button.classList.toggle("dark:border-neutral-700", !active);
+      }
+    }
+
+    for (const button of filterButtons) {
+      button.addEventListener("click", () => applyFilter(button.dataset.filter ?? "all"));
+    }
+
+    document.querySelectorAll<HTMLFormElement>("[data-report-form]").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const questionId = form.dataset.questionId;
+        const input = form.querySelector<HTMLInputElement>("input[name=reason]");
+        const button = form.querySelector<HTMLButtonElement>("button[type=submit]");
+        const message = form.parentElement?.querySelector<HTMLElement>("[data-report-message]");
+        if (!questionId || !input || !button) return;
+        button.disabled = true;
+        try {
+          const response = await fetch(`/api/questions/${questionId}/report`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ reason: input.value }),
+          });
+          const result = (await response.json()) as { error?: string; message?: string };
+          if (!response.ok) throw new Error(result.error || "Could not send the report.");
+          if (message) {
+            message.textContent = result.message || "Report received.";
+            message.className = "mt-2 text-xs text-brand-700 dark:text-brand-300";
+          }
+          input.value = "";
+        } catch (error) {
+          if (message) {
+            message.textContent = error instanceof Error ? error.message : "Could not send the report.";
+            message.className = "mt-2 text-xs text-red-700 dark:text-red-400";
+          }
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+    document.querySelectorAll<HTMLButtonElement>("[data-bookmark]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const questionId = button.dataset.bookmark;
+        if (!questionId) return;
+        const saved = button.dataset.bookmarked === "true";
+        button.disabled = true;
+        try {
+          const response = await fetch(saved ? `/api/bookmarks/${questionId}` : "/api/bookmarks", {
+            method: saved ? "DELETE" : "POST",
+            headers: { "content-type": "application/json" },
+            body: saved ? undefined : JSON.stringify({ questionId: Number(questionId) }),
+          });
+          const result = (await response.json()) as { error?: string; bookmarked?: boolean };
+          if (!response.ok) throw new Error(result.error || "Could not update the bookmark.");
+          const nowSaved = Boolean(result.bookmarked);
+          button.dataset.bookmarked = nowSaved ? "true" : "false";
+          button.setAttribute("aria-pressed", nowSaved ? "true" : "false");
+          button.textContent = nowSaved ? "Saved for review" : "Save for review";
+          button.classList.toggle("border-brand-500", nowSaved);
+          button.classList.toggle("bg-brand-50", nowSaved);
+          button.classList.toggle("text-brand-900", nowSaved);
+          button.classList.toggle("dark:bg-brand-950/40", nowSaved);
+          button.classList.toggle("dark:text-brand-200", nowSaved);
+          button.classList.toggle("border-neutral-300", !nowSaved);
+          button.classList.toggle("dark:border-neutral-700", !nowSaved);
+        } catch (error) {
+          alert(error instanceof Error ? error.message : "Could not update the bookmark.");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</BaseLayout>

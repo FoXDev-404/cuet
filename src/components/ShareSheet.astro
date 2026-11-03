@@ -1,0 +1,492 @@
+---
+import { renderRichText } from "../lib/rich-text";
+import type { ShareContext } from "../lib/share/events";
+import type { ShareAnswer, ShareQuestion } from "../lib/share/types";
+
+interface Props {
+  view: ShareQuestion;
+  answer?: ShareAnswer | null;
+  /** Absolute canonical page URL, without any referral or attempt parameters. */
+  shareUrl: string;
+  /** Where this sheet was opened; recorded as an aggregate share event. */
+  context?: ShareContext;
+  /** Only used by the live-attempt surface, which shares a mock link. */
+  mockId?: number | null;
+  triggerLabel?: string;
+  triggerClass?: string;
+  questionNumber?: number | null;
+}
+
+const {
+  view,
+  answer = null,
+  shareUrl,
+  context = "public_page",
+  mockId = null,
+  triggerLabel = "Share",
+  triggerClass = "inline-flex min-h-11 items-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-bold text-white hover:bg-brand-700",
+  questionNumber = null,
+} = Astro.props;
+
+const dialogId = `share-dialog-${view.publicId}`;
+const titleId = `share-title-${view.publicId}`;
+const hindiQuestion = view.textHi?.trim() ? view.textHi : view.text;
+const hindiExplanation = answer?.explanationHi?.trim()
+  ? answer.explanationHi
+  : answer?.explanation;
+const correctLetter = answer
+  ? (view.options[answer.correctOption]?.letter ?? String(answer.correctOption + 1))
+  : "";
+const cardMeta = `CUET UG · ${view.subject.name}${
+  questionNumber ? ` · Q${questionNumber}` : ""
+}`;
+const cardFooterUrl = `cuetfreemocktest.com/q/${view.publicId}`;
+---
+
+<div
+  data-share-sheet
+  data-share-url={shareUrl}
+  data-share-public-id={view.publicId}
+  data-share-context={context}
+  data-share-mock-id={mockId ?? ""}
+  data-share-language="en"
+  data-share-can-reveal={answer ? "true" : "false"}
+>
+  <button
+    type="button"
+    class={triggerClass}
+    data-share-trigger
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls={dialogId}
+  >
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <path d="m8.6 10.7 6.8-3.4M8.6 13.3l6.8 3.4"></path>
+    </svg>
+    {triggerLabel}
+  </button>
+
+  <div id={dialogId} class="fixed inset-0 z-50 hidden" data-share-dialog aria-hidden="true">
+    <div class="absolute inset-0 bg-neutral-950/60" data-share-backdrop aria-hidden="true"></div>
+    <div
+      class="absolute inset-x-0 bottom-0 max-h-[92dvh] overflow-y-auto rounded-t-2xl border border-token bg-surface-2 p-4 text-body shadow-2xl sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[min(28rem,calc(100vw-2rem))] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+    >
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <h2 id={titleId} class="text-lg font-bold">Share this question</h2>
+          <p class="mt-1 text-xs leading-5 text-muted-token">
+            The link opens the public question page. The image never includes your name, score or attempt details.
+          </p>
+        </div>
+        <button
+          type="button"
+          class="-mr-1 -mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-lg text-xl font-semibold text-muted-token hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          data-share-close
+          aria-label="Close share options"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="mt-3 overflow-hidden rounded-xl border border-token bg-neutral-100">
+        <div class="grid min-h-32 place-items-center p-4 text-center text-sm text-neutral-700" data-share-preview-loading>
+          Preparing image…
+        </div>
+        <img class="mx-auto block max-h-64 w-auto" data-share-preview hidden alt="Preview of the shared question image" />
+      </div>
+
+      <label class="mt-3 flex items-start gap-3 rounded-xl border border-token p-3" data-share-answer-row hidden={!answer}>
+        <input class="mt-1 h-4 w-4 shrink-0" type="checkbox" data-share-answer-toggle />
+        <span class="min-w-0">
+          <span class="block text-sm font-semibold">Include answer and explanation</span>
+          <span class="mt-0.5 block text-xs leading-5 text-muted-token">
+            This option appears because you are allowed to see the solution. It stays off unless you choose it.
+          </span>
+        </span>
+      </label>
+
+      <div class="mt-3 grid grid-cols-2 gap-2">
+        <button
+          type="button"
+          class="col-span-2 inline-flex min-h-11 items-center justify-center rounded-lg bg-brand-600 px-4 text-sm font-bold text-white hover:bg-brand-700"
+          data-share-native
+          hidden
+        >
+          Share…
+        </button>
+        <a
+          class="inline-flex min-h-11 items-center justify-center rounded-lg border border-token px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          data-share-whatsapp
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+        <a
+          class="inline-flex min-h-11 items-center justify-center rounded-lg border border-token px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          data-share-telegram
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Telegram
+        </a>
+        <button
+          type="button"
+          class="inline-flex min-h-11 items-center justify-center rounded-lg border border-token px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          data-share-copy
+        >
+          Copy link
+        </button>
+        <button
+          type="button"
+          class="inline-flex min-h-11 items-center justify-center rounded-lg border border-token px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          data-share-download
+        >
+          Download image
+        </button>
+      </div>
+
+      <p class="mt-3 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-800 dark:bg-red-950/50 dark:text-red-200" data-share-error role="alert" hidden></p>
+      <p class="mt-2 min-h-5 text-xs font-semibold text-emerald-700 dark:text-emerald-300" data-share-status role="status" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="share-card-host" aria-hidden="true" inert>
+    <div
+      class="share-card"
+      data-share-card
+      data-correct-option={answer ? String(answer.correctOption) : "-1"}
+    >
+      <header class="share-card__header">
+        <div class="share-card__brand">
+          <span class="share-card__mark" aria-hidden="true">CUET</span>
+          <span class="share-card__brand-text">Free Mock Test</span>
+        </div>
+        <p class="share-card__meta">{cardMeta}</p>
+      </header>
+
+      <main class="share-card__main" data-share-main>
+        <p class="share-card__eyebrow">Practice question</p>
+
+        <div class="share-card__question" data-share-question>
+          <div data-share-lang="en" set:html={renderRichText(view.text)} />
+          <div data-share-lang="hi" lang="hi" hidden set:html={renderRichText(hindiQuestion)} />
+        </div>
+
+        {view.imageUrl ? (
+          <img
+            class="share-card__image"
+            src={view.imageUrl}
+            alt={view.imageAlt ?? "Question diagram"}
+            data-share-image
+          />
+        ) : null}
+
+        <ul class="share-card__options">
+          {view.options.map((option, index) => {
+            const hindi = view.optionsHi?.[index];
+            const hindiText = hindi?.text?.trim() ? hindi.text : option.text;
+            const hindiImage = hindi?.imageUrl ?? option.imageUrl;
+            return (
+              <li class="share-card__option" data-share-option={index}>
+                <span class="share-card__letter" aria-hidden="true">{option.letter}</span>
+                <span class="share-card__option-body">
+                  <span data-share-lang="en" set:html={renderRichText(option.text)} />
+                  <span data-share-lang="hi" lang="hi" hidden set:html={renderRichText(hindiText)} />
+                  {option.imageUrl ? (
+                    <img
+                      class="share-card__option-image"
+                      src={option.imageUrl}
+                      alt={option.alt ?? `Option ${option.letter}`}
+                    />
+                  ) : null}
+                  {hindiImage && hindiImage !== option.imageUrl ? (
+                    <img
+                      class="share-card__option-image"
+                      data-share-lang="hi"
+                      hidden
+                      src={hindiImage}
+                      alt={hindi?.alt ?? `Option ${option.letter} in Hindi`}
+                    />
+                  ) : null}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+
+        {answer ? (
+          <section class="share-card__answer" data-share-answer hidden>
+            <p class="share-card__answer-title">Correct answer: {correctLetter}</p>
+            {answer.explanation?.trim() ? (
+              <div data-share-lang="en" set:html={renderRichText(answer.explanation)} />
+            ) : null}
+            {hindiExplanation?.trim() ? (
+              <div data-share-lang="hi" lang="hi" hidden set:html={renderRichText(hindiExplanation)} />
+            ) : null}
+            {answer.explanationImageUrl ? (
+              <img
+                class="share-card__answer-image"
+                src={answer.explanationImageUrl}
+                alt={answer.explanationImageAlt ?? "Explanation diagram"}
+              />
+            ) : null}
+          </section>
+        ) : null}
+
+        <p class="share-card__truncated" data-share-truncated hidden>
+          <span data-share-lang="en">Read the full question at the link.</span>
+          <span data-share-lang="hi" lang="hi" hidden>पूरा प्रश्न लिंक पर पढ़ें।</span>
+        </p>
+      </main>
+
+      <footer class="share-card__footer">
+        <p class="share-card__url">{cardFooterUrl}</p>
+        <p class="share-card__tagline">Free CUET mock tests</p>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initShareSheets } from "../lib/share/share-sheet";
+
+  initShareSheets();
+</script>
+
+<style>
+  .share-card-host {
+    position: fixed;
+    top: 0;
+    left: -20000px;
+    width: 1080px;
+    height: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .share-card {
+    --share-question-size: 40px;
+    --share-option-size: 34px;
+    display: flex;
+    width: 1080px;
+    min-height: 1080px;
+    max-height: 1920px;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--share-card-bg);
+    color: var(--share-card-ink);
+    font-family: var(--font-body);
+    font-size: 32px;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  .share-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 2px solid var(--share-card-border);
+    padding: 48px 64px 28px;
+  }
+
+  .share-card__brand {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .share-card__mark {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+    background: var(--share-card-brand);
+    color: var(--share-card-footer-ink);
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  .share-card__brand-text {
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .share-card__meta {
+    max-width: 440px;
+    color: var(--share-card-muted);
+    font-size: 26px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .share-card__main {
+    display: flex;
+    min-height: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 28px;
+    overflow: hidden;
+    padding: 40px 64px 32px;
+  }
+
+  .share-card__eyebrow {
+    color: var(--share-card-brand);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .share-card__question {
+    font-size: var(--share-question-size);
+    font-weight: 600;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .share-card :global(.katex-display) {
+    margin: 0.5em 0;
+    overflow: hidden;
+  }
+
+  .share-card :global(.katex) {
+    font-size: 1em;
+  }
+
+  .share-card__image {
+    display: block;
+    max-width: 100%;
+    max-height: 360px;
+    width: auto;
+    height: auto;
+    border: 2px solid var(--share-card-border);
+    border-radius: 18px;
+    object-fit: contain;
+  }
+
+  .share-card__options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .share-card__option {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    border: 2px solid var(--share-card-border);
+    border-radius: 18px;
+    padding: 16px 20px;
+    background: var(--share-card-bg);
+  }
+
+  .share-card__option.is-correct {
+    border-color: var(--share-card-correct);
+    background: var(--share-card-correct-bg);
+  }
+
+  .share-card__letter {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: var(--share-card-brand-soft);
+    color: var(--share-card-brand);
+    font-size: 26px;
+    font-weight: 800;
+  }
+
+  .share-card__option-body {
+    min-width: 0;
+    flex: 1;
+    font-size: var(--share-option-size);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .share-card__option-image {
+    display: block;
+    max-width: 100%;
+    max-height: 180px;
+    margin-top: 10px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+
+  .share-card__answer {
+    border-top: 2px dashed var(--share-card-border);
+    padding-top: 24px;
+    color: var(--share-card-ink);
+    font-size: 28px;
+    line-height: 1.45;
+  }
+
+  .share-card__answer-title {
+    color: var(--share-card-correct);
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .share-card__answer-image {
+    display: block;
+    max-width: 100%;
+    max-height: 320px;
+    margin-top: 16px;
+    width: auto;
+    height: auto;
+    border-radius: 14px;
+    object-fit: contain;
+  }
+
+  .share-card__truncated {
+    color: var(--share-card-muted);
+    font-size: 26px;
+    font-style: italic;
+  }
+
+  .share-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 30px 64px;
+    background: var(--share-card-footer);
+    color: var(--share-card-footer-ink);
+  }
+
+  .share-card__url {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    overflow-wrap: anywhere;
+  }
+
+  .share-card__tagline {
+    flex: 0 0 auto;
+    color: var(--share-card-footer-muted);
+    font-size: 24px;
+    font-weight: 600;
+  }
+</style>

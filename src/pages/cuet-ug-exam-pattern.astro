@@ -1,0 +1,273 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { all } from "../lib/db";
+import { parseMarkingScheme, renderRichText } from "../lib/content";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  formatVerified,
+  getExamInfo,
+  getPageSeo,
+  itemListJsonLd,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/cuet-ug-exam-pattern";
+const DEFAULT_TITLE = "CUET UG Exam Pattern — Sections, Timing and Interface";
+const DEFAULT_DESCRIPTION =
+  "Understand the CUET UG exam pattern and practise it: section structure, on-screen navigation, timer rules and the marking scheme used by each paper.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "Is this the official CUET UG exam pattern?",
+    answer:
+      "No. This page explains the structure and shows the pattern used by papers on this site. NTA publishes the authoritative pattern, question counts and duration for the current session in its information bulletin.",
+  },
+  {
+    question: "How long is the CUET UG exam?",
+    answer:
+      "Duration depends on the sections and subjects in a candidate's combination, and NTA can revise it. The official bulletin is the source of truth. On this site, every paper shows its own duration on the instructions page before the timer starts.",
+  },
+  {
+    question: "How many questions are there?",
+    answer:
+      "The number varies by subject combination and session. Each practice paper here states its question count up front, and the live count is visible in the question palette during the test.",
+  },
+  {
+    question: "Can I move between sections during the test?",
+    answer:
+      "The navigation rules are printed on each paper's instructions page. In the practice interface you can jump between questions with the palette, mark questions for review and clear a response before submitting.",
+  },
+  {
+    question: "Why do two mocks show different marks and marking schemes?",
+    answer:
+      "Every paper stores its own duration, total marks and marking scheme. Published papers are frozen, so an old attempt is always scored with the rules that were shown when it started.",
+  },
+  {
+    question: "Does the practice interface match the real NTA screen exactly?",
+    answer:
+      "It follows the same rhythm: a question palette, countdown, mark-for-review, clear response and a final submit step. It is an independent practice tool and is not affiliated with NTA, so small differences will exist.",
+  },
+];
+
+const papers = await all<{
+  id: number;
+  title: string;
+  slug: string;
+  type: string;
+  duration_min: number;
+  total_marks: number;
+  marking_scheme: string;
+  question_count: number;
+  sections: string | null;
+}>(
+  `SELECT m.id, m.title, m.slug, m.type, m.duration_min, m.total_marks, m.marking_scheme,
+          (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
+          (SELECT GROUP_CONCAT(DISTINCT mq.section) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS sections
+   FROM mock_tests m
+   WHERE m.status = 'published' AND m.deleted_at IS NULL
+     AND m.practice_paper_slug IS NULL
+   ORDER BY m.published_at DESC, m.id DESC
+   LIMIT 30`,
+);
+
+const seo = await getPageSeo(PATH);
+const info = (await getExamInfo(["exam-pattern"]))["exam-pattern"];
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const verified = formatVerified(info?.last_verified);
+const noindex = (seo?.noindex ?? 0) === 1;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "CUET UG exam pattern", path: PATH },
+  ]),
+  articleJsonLd({
+    site,
+    title,
+    description,
+    path: PATH,
+    updated: seo?.updated_at ?? info?.last_verified ?? null,
+  }),
+  ...(papers.length > 0
+    ? [itemListJsonLd(site, papers.map((paper) => ({ name: paper.title, path: `/mock/${paper.slug}` })))]
+    : []),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const stageCards = [
+  {
+    title: "Question palette",
+    body: "Colour-coded buttons show answered, unanswered, marked-for-review and not-visited questions. Tap any number to jump.",
+  },
+  {
+    title: "Server countdown",
+    body: "The timer is anchored to a server deadline, so refreshing the page or editing the browser clock cannot add time.",
+  },
+  {
+    title: "Refresh-safe autosave",
+    body: "Answers and per-question time are saved as you work. Reopening the attempt restores the same state and remaining time.",
+  },
+  {
+    title: "Submit, then reveal",
+    body: "Correct answers and explanations are never sent to the browser before you submit. Scoring happens on the server.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Exam pattern"
+    title="Know the paper before the timer starts"
+    intro="A pattern guide should answer three questions: what sections you will see, how the screen behaves, and how marks are counted. This page covers all three, and shows the exact pattern of every paper published here."
+    updated={verified}
+  />
+
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <section class="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
+      <h2 class="font-bold text-amber-900 dark:text-amber-200">Official pattern and this guide</h2>
+      <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
+        NTA can change section names, question counts, duration and marking between sessions. This page never presents a remembered number as current fact.
+        {verified ? ` The official summary below was last reviewed on ${verified}.` : " No official summary has been verified for the current session yet, so the guidance below focuses on structure and interface."}
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2 text-sm">
+        <a class="rounded-lg bg-amber-900 px-3 py-2 font-bold text-white hover:bg-amber-800 dark:bg-amber-200 dark:text-amber-950" href={info?.source_url || "https://cuet.nta.nic.in/"} rel="noopener noreferrer" target="_blank">
+          {info?.source_url ? "Official pattern source" : "NTA CUET portal"}
+        </a>
+        <a class="rounded-lg border border-amber-300 px-3 py-2 font-bold text-amber-900 hover:bg-amber-100 dark:border-amber-800 dark:text-amber-100 dark:hover:bg-amber-950" href="/cuet-ug-marking-scheme">
+          Marking scheme guide
+        </a>
+      </div>
+      {info?.value ? (
+        <div class="mt-4 whitespace-pre-wrap rounded-xl bg-white/70 p-4 text-sm leading-7 text-amber-950 dark:bg-neutral-950/60 dark:text-amber-100">
+          {info.value}
+        </div>
+      ) : null}
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">The three section families</h2>
+      <p class="mt-2 max-w-3xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        CUET UG papers are organised around language ability, domain-subject knowledge and general aptitude. Your own paper contains the combination you selected; the official bulletin lists the exact options and any section-wise limits.
+      </p>
+      <div class="mt-5 grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Languages</p>
+          <h3 class="mt-2 font-bold">Reading and verbal ability</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+            Comprehension, vocabulary, grammar and sentence-level accuracy. Speed matters, so practise full passages rather than isolated words.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">Domain</p>
+          <h3 class="mt-2 font-bold">Subject knowledge</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+            Class 12-level content for the subjects you choose. Accuracy is built from the official syllabus scope, not from guessed chapter weightage.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">General</p>
+          <h3 class="mt-2 font-bold">Aptitude and awareness</h3>
+          <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+            Quantitative reasoning, logical reasoning, data interpretation and general awareness. Practise under time pressure because this section rewards quick elimination.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight">Pattern of every published paper</h2>
+          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">This table is generated from the same database row that scores your attempt.</p>
+        </div>
+        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-mock-test">Open the mock library →</a>
+      </div>
+
+      {papers.length === 0 ? (
+        <div class="mt-5 rounded-2xl border border-dashed border-neutral-300 p-10 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+          No paper is published yet. The first paper's real section list, duration and marking scheme will appear here automatically.
+        </div>
+      ) : (
+        <div class="mt-5 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+          <table class="w-full min-w-[760px] text-left text-sm">
+            <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+              <tr>
+                <th class="px-4 py-3">Paper</th>
+                <th class="px-4 py-3">Sections</th>
+                <th class="px-4 py-3 text-right">Questions</th>
+                <th class="px-4 py-3 text-right">Duration</th>
+                <th class="px-4 py-3 text-right">Marks</th>
+                <th class="px-4 py-3 text-right">Marking</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+              {papers.map((paper) => {
+                const marking = parseMarkingScheme(paper.marking_scheme);
+                return (
+                  <tr>
+                    <td class="px-4 py-3">
+                      <a class="font-medium hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${paper.slug}`}>{paper.title}</a>
+                      <span class="mt-0.5 block text-xs uppercase tracking-wide text-neutral-600 dark:text-neutral-400">{paper.type}</span>
+                    </td>
+                    <td class="max-w-[18rem] px-4 py-3 text-xs text-neutral-600 dark:text-neutral-400">{paper.sections ?? "—"}</td>
+                    <td class="px-4 py-3 text-right">{paper.question_count}</td>
+                    <td class="px-4 py-3 text-right">{paper.duration_min} min</td>
+                    <td class="px-4 py-3 text-right">{paper.total_marks}</td>
+                    <td class="whitespace-nowrap px-4 py-3 text-right text-xs">+{marking.correct} / {marking.wrong} / {marking.skipped}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">Inside the practice screen</h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        {stageCards.map((card, index) => (
+          <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+            <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">0{index + 1}</p>
+            <h3 class="mt-2 font-bold">{card.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">{card.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">A pattern-aware attempt strategy</h2>
+      <ol class="mt-3 list-decimal space-y-3 pl-5 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Read the instructions page every time.</strong> It is the contract for that paper: sections, duration, marking and navigation rules.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Budget by section, not by question.</strong> Divide the available time across sections according to how many questions each contains, then keep a small review buffer.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Use the palette deliberately.</strong> Mark genuinely uncertain questions for review instead of leaving them in an undefined state.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Skip with a reason.</strong> With negative marking, a blind guess has a negative expected value. Eliminate at least two options before taking a calculated shot.</li>
+      </ol>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Practise the pattern, not just the questions</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">A timed paper with a real palette and server deadline is the closest thing to rehearsal.</p>
+        </div>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Browse mock tests</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

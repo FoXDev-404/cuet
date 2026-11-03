@@ -1,0 +1,1630 @@
+{
+ "exam": {
+  "id": "local-mathematics-2022-08-17",
+  "slug": "mathematics-2022-08-17",
+  "title": "CUET UG Mathematics 17 August 2022 Previous Year Paper",
+  "subject": "Mathematics",
+  "subjectId": "local-mathematics",
+  "subjectCode": "MAT",
+  "year": 2022,
+  "examDate": "2022-08-17",
+  "shift": null,
+  "sourceFile": "Mathematics_2022-08-17.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 48,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "If $x=2at$, $y=at^{2}$, then $\\frac{d^{2}y}{dx^{2}}$ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{1}{2a}$"
+     },
+     {
+      "id": "C",
+      "text": "t"
+     },
+     {
+      "id": "D",
+      "text": "0"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "Ten eggs are drawn successively with replacement from a lot containing 10% defective eggs. The probability that there is at least one defective egg is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{10^{10}-9^{10}}{10^{10}} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{9^{10}-10^{10}}{10^{10}} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{10^{9}-9^{10}}{10^{10}} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{10^{10}+9^{10}}{10^{10}} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "If m is the degree and n is the order of the given differential equation\n\n$ \\frac{x^{3}\\left(\\frac{d^{3}y}{dx^{3}}\\right)^{2}+2x^{2}\\left(\\frac{d^{2}y}{dx^{2}}\\right)^{3}}{\\left(x+1\\right)^{5}}=\\left(3x-\\frac{d^{2}y}{dx^{2}}\\right)^{4} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "m-n=2"
+     },
+     {
+      "id": "B",
+      "text": "m+n=5"
+     },
+     {
+      "id": "C",
+      "text": "m=4, n=3"
+     },
+     {
+      "id": "D",
+      "text": "Order (n) is 3 but degree (m) is not degree 1 (d) Order (n) is 3 but degree (m) is not denoed."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "The differential equation representing the family of curves y=m(x-d) where m and d are arbitrary constants, is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{dy}{dx}=0 $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{d^{2}y}{dx^{2}}=0 $"
+     },
+     {
+      "id": "C",
+      "text": "$ x\\frac{d^{2}y}{dx^{2}}+y=0 $"
+     },
+     {
+      "id": "D",
+      "text": "$ x\\frac{d^{2}y}{dx^{2}}-y=0 $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "$ \\int_{1}^{2}\\frac{dx}{x(x^{4}+1)}= $?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\log\\left(\\frac{32}{17}\\right) $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\log\\left(\\frac{16}{17}\\right)= $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{4}\\log\\left(\\frac{16}{17}\\right) $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{4}\\log\\left(\\frac{32}{17}\\right)= $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "If the area of the region in first quadrant, bounded by the curve $ y^{2}=9x $, x=2, x=4 and the x-axis is $ a+b\\sqrt{2} $, then the value of a+b is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "16"
+     },
+     {
+      "id": "B",
+      "text": "12"
+     },
+     {
+      "id": "C",
+      "text": "20"
+     },
+     {
+      "id": "D",
+      "text": "8"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "If $ \\begin{bmatrix} x+y+z \\\\ x+z \\\\ y+z \\end{bmatrix}=\\begin{bmatrix} 11 \\\\ 6 \\\\ 8 \\end{bmatrix} $, then the value of\n\n$ x+2y-3z $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5"
+     },
+     {
+      "id": "B",
+      "text": "4"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "7"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "If $x=3t^{2}+5t+6$ and $y=-4t^{3}-2t^{2}+5t+7$, $t\\neq\\frac{-5}{6}$ then the value of $\\frac{\\mathrm{dy}}{\\mathrm{dx}}$ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$-2t+1$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{-12t^{2}-4t-5}{6t+5}$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{-4t^{3}-2t^{2}+5t+7}{3t^{2}+5t+6}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{-4t^{3}-2t^{2}+5t+7}{6t+5}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "The interval in which the function $f$ given by $f(x)=x^{2}-4x+6$ is strictly increasing is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$(-\\infty,2)$"
+     },
+     {
+      "id": "B",
+      "text": "$(-\\infty,-2)$"
+     },
+     {
+      "id": "C",
+      "text": "$(2,\\infty)$"
+     },
+     {
+      "id": "D",
+      "text": "$(-2,\\infty)$ (c) $ (2, \\infty) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "If $ y = \\log_{e}\\left(\\frac{2x}{1-x}\\right) $, then $ \\frac{d^2 y}{dx^2} $ at $ x = \\frac{1}{2} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{4} $"
+     },
+     {
+      "id": "C",
+      "text": "0"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{3}{5} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "If $a, b, c$ are mutually unequal real numbers, then the value of $\\left|\\begin{array}{ccc}1 & a & a^{3} \\\\ 1 & b & b^{3} \\\\ 1 & c & c^{3}\\end{array}\\right|=\\frac{1}{2}(0)\\frac{1}{5}(0)\\frac{1}{2}(0)$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$- (a+b+c)$"
+     },
+     {
+      "id": "B",
+      "text": "$a+b+c$"
+     },
+     {
+      "id": "C",
+      "text": "$a^{2}+b^{2}+c^{2}$"
+     },
+     {
+      "id": "D",
+      "text": "$a^{3}+b^{3}+c^{3}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "If $ A = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix} $ and $ n \\in \\mathbb{N} $ (where N is the set of natural numbers), then $ A^n $ is equal to",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ nA $"
+     },
+     {
+      "id": "B",
+      "text": "$ 2nA $"
+     },
+     {
+      "id": "C",
+      "text": "$ 2^{n-1}A $"
+     },
+     {
+      "id": "D",
+      "text": "$ 2^nA $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "If $ y = \\frac{1}{\\sqrt{1 + x^2 - x}} $, then the value of $ (1 + x^2)^{\\frac{3}{2}} \\cdot \\frac{d^2 y}{dx^2} $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "x"
+     },
+     {
+      "id": "B",
+      "text": "$ x^2 - 1 $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\sqrt{1 + x^2} - 1 $"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "The equation of the tangent to the curve $y = x^{2} - 2x + 7$, which is parallel to the line $2x - y + 9 = 0$, is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$2x - y + 3 = 0$"
+     },
+     {
+      "id": "B",
+      "text": "$2x - y + 6 = 0$"
+     },
+     {
+      "id": "C",
+      "text": "$2x - y + 1 = 0$"
+     },
+     {
+      "id": "D",
+      "text": "$2x - y + 4 = 0$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "Consider the non-empty set consisting of children in a family and a relation R defined as aRb if a is brother of b, Then R is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Symmetric but not transitive"
+     },
+     {
+      "id": "B",
+      "text": "Transitive but not symmetric"
+     },
+     {
+      "id": "C",
+      "text": "Neither symmetric nor transitive"
+     },
+     {
+      "id": "D",
+      "text": "Both symmetric and transitive"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "The relation R in the set $\\{1, 2, 3\\}$ given by $R = \\{(1, 1), (2, 2), (3, 3), (1, 2), (2, 3)\\}$ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Reflexive only"
+     },
+     {
+      "id": "B",
+      "text": "Reflexive and symmetry relation"
+     },
+     {
+      "id": "C",
+      "text": "Transitive only"
+     },
+     {
+      "id": "D",
+      "text": "Equivalence relation (d) Equivalence relation"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "If $f: \\mathrm{R}-\\{-1\\}\\to \\mathrm{R}-\\{1\\}$ be a function defined by $f(x)=\\frac{x-1}{x+1}$, then\n\nA. f is one-one but not onto\n\nB. f is onto but not one-one\n\nC. f is one-one and onto\n\nD. $f^{-1}(x)=\\frac{x+1}{x-1}$\n\nE. $(fof)(x)=-\\frac{1}{x};x\\neq0,-1$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "A, D, E only"
+     },
+     {
+      "id": "B",
+      "text": "C, D only"
+     },
+     {
+      "id": "C",
+      "text": "B. E only"
+     },
+     {
+      "id": "D",
+      "text": "C, E only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "The domain of the function $ \\cos^{-1}(2x-1) $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "[0,1]"
+     },
+     {
+      "id": "B",
+      "text": "[-1,1]"
+     },
+     {
+      "id": "C",
+      "text": "(-1,1)"
+     },
+     {
+      "id": "D",
+      "text": "[0, $ \\pi $]"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "$ \\tan^{-1}\\left(\\frac{x}{y}\\right)-\\tan^{-1}\\left(\\frac{x-y}{x+y}\\right)= $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{\\pi}{6} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{\\pi}{3} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{\\pi}{4} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{\\pi}{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "If the matrix $ A = \\begin{bmatrix} 3 & 2a & -5 \\\\ -4 & 0 & b \\\\ -5 & 3 & 7 \\end{bmatrix} $ is symmetric then the value of $ (a + b) $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "5"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "If A is square matrix of size 4 and |A|=6. If |Adj.(Adj.(3A)|=2^{a}.3^{b}, then value of a+b is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "24"
+     },
+     {
+      "id": "B",
+      "text": "54"
+     },
+     {
+      "id": "C",
+      "text": "72"
+     },
+     {
+      "id": "D",
+      "text": "216"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "The value of x for which $ \\left|\\begin{array}{cc}3 & x \\\\ x & 1\\end{array}\\right| = \\left|\\begin{array}{cc}3 & 2 \\\\ 4 & 1\\end{array}\\right| $, is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2"
+     },
+     {
+      "id": "B",
+      "text": "$ \\pm 2\\sqrt{2} $"
+     },
+     {
+      "id": "C",
+      "text": "4"
+     },
+     {
+      "id": "D",
+      "text": "$ -\\pm 2\\sqrt{3} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "If $y=\\left(\\frac{1}{x}\\right)^x$, then $\\frac{d^2y}{dx^2}=$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$x^{-x}(1+\\log x)^2-x^{-(x+1)}$"
+     },
+     {
+      "id": "B",
+      "text": "$x^{-x}(1+\\log x)^2-x^{-(x-1)}$"
+     },
+     {
+      "id": "C",
+      "text": "$x^{-x}(1+\\log x)^{-2}-x^{-(x+1)}$"
+     },
+     {
+      "id": "D",
+      "text": "$x^{-x}(1+\\log x)^{-1}+x^{-(x-1)}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "If $ \\vec{a} $ is a unit vector and $ (\\vec{x}-\\vec{a})\\cdot(\\vec{x}+\\vec{a})=8 $ then $ |\\vec{x}| $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2"
+     },
+     {
+      "id": "B",
+      "text": "3"
+     },
+     {
+      "id": "C",
+      "text": "$ \\pm3 $"
+     },
+     {
+      "id": "D",
+      "text": "5"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "$ \\begin{vmatrix} 0 & \\sin 2\\alpha & -\\cos^{2}\\alpha \\\\ -\\sin^{2}\\alpha & 0 & \\sin\\alpha\\sin\\beta \\\\ -\\cos\\alpha\\sin\\beta & 2\\sin^{2}\\beta & 0 \\end{vmatrix} = $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0"
+     },
+     {
+      "id": "B",
+      "text": "1"
+     },
+     {
+      "id": "C",
+      "text": "Independent of $ \\alpha $"
+     },
+     {
+      "id": "D",
+      "text": "Independent of"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "pending",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "$ \\int \\frac{2}{x^4 - 1} dx = $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\log \\left| \\frac{x^2 - 1}{x^2 + 1} \\right| + C $"
+     },
+     {
+      "id": "B",
+      "text": "$ 2 \\tan^{-1}(x^2) + C $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{2} \\log \\left| \\frac{x - 1}{x + 1} \\right| - \\tan^{-1} x + C $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\tan^{-1} x + \\frac{1}{2} \\log \\left| \\frac{x + 1}{x - 1} \\right| + C $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "The acute angle between the diagonals OG and AD of the cuboid (shown in the figure) is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\cos^{-1}\\left(\\frac{1}{3}\\right) $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\cos^{-1}\\left(-\\frac{1}{3}\\right) $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\cos^{-1}\\left(\\frac{7}{9}\\right) $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\cos^{-1}\\left(\\frac{1}{9}\\right) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q28-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/mathematics-2022-08-17/q28-figure-1.jpg",
+      "page": 3,
+      "alt": "Figure for question 28"
+     }
+    ]
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "In the following figure ABCDEF is a regular hexagon. If $ \\overrightarrow{AB} = \\overrightarrow{a} $ and $ \\overrightarrow{BC} = \\overrightarrow{b} $ then $ \\overrightarrow{CD} $ in terms of $ \\overrightarrow{a} $ and $ \\overrightarrow{b} $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\vec{a} + \\vec{b} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\vec{a} - \\vec{b} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\vec{b} - \\vec{a} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 3\\vec{b} - \\vec{a} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q29-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/mathematics-2022-08-17/q29-figure-1.jpg",
+      "page": 3,
+      "alt": "Figure for question 29"
+     }
+    ]
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "The integrating factor of the differential equation\n\n$ x \\frac{dy}{dx} + y - x + xy \\cot x = 0, (x \\neq 0) $ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ x \\sin x $"
+     },
+     {
+      "id": "B",
+      "text": "$ x \\cos x $"
+     },
+     {
+      "id": "C",
+      "text": "$ x $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\sin x $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "$ \\int \\frac{dx}{\\frac{1}{4}\\sqrt{-x^{2}-2x+3}} = $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\sin^{-1}\\left(\\frac{1}{4}\\right) $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\sin^{-1}\\left(\\frac{3}{4}\\right) $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\sin^{-1}\\left(\\frac{5}{8}\\right) $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\cos^{-1}\\left(\\frac{5}{8}\\right) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "A random variable X has the following probability distribution\n\nThe value of P(0 < X < 5) is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{5} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{2}{5} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{4}{5} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{3}{5} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": [
+     {
+      "id": "q32-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/mathematics-2022-08-17/q32-table-1.jpg",
+      "page": 3,
+      "alt": "Table for question 32"
+     }
+    ]
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "Two independent events A and B are such that $ P(A) = \\frac{1}{2} $ and $ P(B) = \\frac{1}{3} $, the $ P(A \\mid B) = $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{1}{3} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{2}{3} $"
+     },
+     {
+      "id": "D",
+      "text": "1"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "Probability that A speaks truth is $ \\frac{4}{5} $. He tosses a coin and reports that a head appears. The probability that actually there was a head, is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{4}{5} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{1}{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{1}{5} $"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{2}{5} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "The expectation of a number obtained when throwing a die having 1 written on three faces, 2 on two faces and 5 on one face is given by",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "2"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{3}{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{71}{30} $"
+     },
+     {
+      "id": "D",
+      "text": "6"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "If $ \\int \\frac{dx}{\\sqrt{x+2} - \\sqrt{x+1}} = \\frac{2}{3} \\left[ (\\lambda+1)^{\\frac{3}{2}} - \\lambda^{\\frac{3}{2}} \\right] + C $, then the value of $ \\lambda $ is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "x-1"
+     },
+     {
+      "id": "B",
+      "text": "x"
+     },
+     {
+      "id": "C",
+      "text": "x+1"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{1}{x} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "$ \\int_{0}^{\\pi}\\sin^{3}x\\cdot\\cos^{2}x\\cdot dx= $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ -\\frac{4}{15} $"
+     },
+     {
+      "id": "B",
+      "text": "$ \\frac{2}{15} $"
+     },
+     {
+      "id": "C",
+      "text": "0"
+     },
+     {
+      "id": "D",
+      "text": "$ \\frac{4}{15} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "The distance of the point $(3,-2,1)$ from the plane $2x-y+2z+3=0$ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$\\frac{3}{13}$"
+     },
+     {
+      "id": "B",
+      "text": "$\\frac{13}{3}$"
+     },
+     {
+      "id": "C",
+      "text": "$\\frac{14}{3}$"
+     },
+     {
+      "id": "D",
+      "text": "$\\frac{3}{14}$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "The maximum value of the function $z=3x+3y$, subject to the constraints $x+2y\\leq30,2x+y\\leq50,x\\geq0,y\\geq0$ is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "75"
+     },
+     {
+      "id": "B",
+      "text": "90"
+     },
+     {
+      "id": "C",
+      "text": "80"
+     },
+     {
+      "id": "D",
+      "text": "45"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "Let R be the relation in the set $A=\\{a, b, c, d\\}$ given by $R=\\{(a, a), (b, b), (c, c), (a, b), (b, a), (c, d), (d, d), (d, c)\\}$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "R is reflexive and symmetric but not transitive"
+     },
+     {
+      "id": "B",
+      "text": "R is reflexive and transitive but not symmetric"
+     },
+     {
+      "id": "C",
+      "text": "R is symmetric and transitive but not reflexive"
+     },
+     {
+      "id": "D",
+      "text": "R is an equivalence relation Passage: Three pizza outlets A, B and C sell three types of pizza namely cheese pizza, veg pizza and paneer pizza. In a day, A can sell 40 cheese pizza, 30 veg pizza and 20 paneer pizza; B can sell 20 cheese pizza, 40 veg pizza and 60 paneer pizza; C can sell 60 cheese pizza, 20 veg pizza and 30 paneer pizza. If the revenue generated in a day by A is ₹6000, by B is ₹9000 and by C is ₹7000. If x denotes selling price of cheese pizza, y is selling price of veg pizza and z be the selling price of Paneer pizza then based on this information, answer the following question"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "The revenue generated by three outlets A, B and C are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "6000"
+     },
+     {
+      "id": "B",
+      "text": "22000"
+     },
+     {
+      "id": "C",
+      "text": "16000"
+     },
+     {
+      "id": "D",
+      "text": "15000"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "The matrix representation of the above problem is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ \\begin{bmatrix}4&2&6\\\\ 3&4&2\\\\ 2&6&3\\end{bmatrix}\\begin{bmatrix}x\\\\ y\\\\ z\\end{bmatrix}=\\begin{bmatrix}600\\\\ 900\\\\ 700\\end{bmatrix} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ \\begin{bmatrix} {4}&{3}&{2} \\\\ {2}&{4}&{6} \\\\ {6}&{2}&{3} \\end{bmatrix}\\begin{bmatrix} {x} \\\\ {y} \\\\ {z} \\end{bmatrix}=\\begin{bmatrix}600 \\\\ 900 \\\\ 700 \\end{bmatrix} $$"
+     },
+     {
+      "id": "C",
+      "text": "$$ \\begin{bmatrix} {4}&{3}&{2} \\\\ {2}&{2}&{3} \\\\ {6}&{2}&{3} \\end{bmatrix} \\begin{bmatrix} {x} \\\\ {y} \\\\ {z} \\end{bmatrix}=\\begin{bmatrix}600 \\\\ 450 \\\\ 700 \\end{bmatrix} $$"
+     },
+     {
+      "id": "D",
+      "text": "$$ \\begin{bmatrix}4&2&6\\\\ 3&4&2\\\\ 2&6&3\\end{bmatrix}\\begin{bmatrix}x\\\\ y\\\\ z\\end{bmatrix}=\\begin{bmatrix}6000\\\\ 9000\\\\ 7000\\end{bmatrix} $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "The price of a cheese pizza is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "₹50"
+     },
+     {
+      "id": "B",
+      "text": "₹80"
+     },
+     {
+      "id": "C",
+      "text": "₹500"
+     },
+     {
+      "id": "D",
+      "text": "₹800"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "The price of a paneer pizza is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "₹50"
+     },
+     {
+      "id": "B",
+      "text": "₹60"
+     },
+     {
+      "id": "C",
+      "text": "₹65"
+     },
+     {
+      "id": "D",
+      "text": "₹80"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "If the cost price of a cheese pizza is ₹30, a veg pizza is ₹50 and a paneer pizza is ₹50, what is the profit of outlet A in a day?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "₹6300"
+     },
+     {
+      "id": "B",
+      "text": "₹3300"
+     },
+     {
+      "id": "C",
+      "text": "₹2300"
+     },
+     {
+      "id": "D",
+      "text": "₹18300 A rectangle of length 'x' and breadth 'y' is inscribed in a semi-circle of fixed radius 'r' as shown in the figure given below. $$ \\textcircled{2}0^{\\prime}=\\frac{q_{1}}{q_{2}}=(\\alpha+\\bar{\\alpha})\\frac{q_{1}}{q_{2}}=-\\left(\\Sigma\\right)_{\\xi}=4\\xi+2 $$ $$ \\frac{q x}{q y}=\\frac{\\frac{q y}{q x}}{q x}\\quad\\therefore\\quad\\frac{q x}{q y}=\\frac{(q+2)}{-151-41+2}. $$ $$ \\partial=x\\partial x^{\\prime},x=x(x)\\cap D\\setminus\\mathcal{C}_{m} $$ $$ s < x \\Leftarrow 0 < 4 - x \\leq $$ $$ \\textcircled{H}:\\quad\\textcircled{a}G(x,u)=|u|^{2n}\\left(\\frac{1-x}{3x}\\right) $$ $$ \\frac{(x)(y)}{xy}\\cdot\\frac{1}{(x)(y)}=\\frac{(x)(y)}{xy} $$ $$ 20^{\\circ}=\\frac{95}{11}-\\frac{5}{11}-\\frac{25}{11}\\left(\\frac{1}{x-1}\\right) $$ $$ \\frac{1}{x-1}+\\frac{1}{x-1}=\\frac{\\zeta}{(x-1)\\times\\zeta}=\\left[\\frac{x\\zeta+\\zeta(x-1)}{\\zeta(x-1)}\\right]\\frac{x-1}{x\\zeta}= $$ Based on the above information answer the following question"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Area A(θ), 0 < θ < $ \\frac{\\pi}{2} $ of the rectangle ABCD, is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ r^{2}\\sin\\theta $"
+     },
+     {
+      "id": "B",
+      "text": "$ r^{2}\\sin2\\theta $"
+     },
+     {
+      "id": "C",
+      "text": "$ r^{2}\\cos2\\theta $"
+     },
+     {
+      "id": "D",
+      "text": "$ r^{2}\\cos\\theta $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "Dimensions x, y of the rectangle ABCD, when area is maximum are:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ r\\frac{\\sqrt{3}}{2},\\frac{2r}{\\sqrt{3}} $"
+     },
+     {
+      "id": "B",
+      "text": "$ r\\sqrt{2},\\frac{r}{\\sqrt{2}} $"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{r}{\\sqrt{2}},\\sqrt{2}r $"
+     },
+     {
+      "id": "D",
+      "text": "$ r,\\frac{r}{\\sqrt{2}} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "Maximum area of the rectangle is: (a) $ 2r^{2} $ (b) $ 3r^{2} $ (c) $ r^{2} $ (d) $ 4r^{2} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2r^{2} $"
+     },
+     {
+      "id": "B",
+      "text": "$ 3r^{2} $"
+     },
+     {
+      "id": "C",
+      "text": "$ r^{2} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 4r^{2} $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "Perimeter of rectangle when its area is maximum is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ \\frac{8\\sqrt{3}r}{3} $"
+     },
+     {
+      "id": "B",
+      "text": "4r"
+     },
+     {
+      "id": "C",
+      "text": "$ \\frac{7\\sqrt{3}r}{3} $"
+     },
+     {
+      "id": "D",
+      "text": "$ 3\\sqrt{2}r $ $$ 0=\\mathbf{\\Pi}\\left(\\frac{\\psi^{\\mathrm{S b}}}{\\xi_{\\mathrm{S b}}}-x\\xi\\right)\\mathbf{\\xi}(1+x)-\\left(\\frac{\\psi^{\\mathrm{S b}}}{\\xi_{\\mathrm{S b}}}\\right)\\xi_{x\\xi}+\\left(\\frac{\\psi^{\\mathrm{S b}}}{\\xi_{\\mathrm{S b}}}\\right)\\xi_{x\\xi}, $$ $$ \\xi=(w)\\operatorname{arccot}\\xi,t=(w)\\operatorname{sinc}\\xi $$ $$ (b-x)(x)=m^{2}+(b-x)^{2}, $$ $$ 0=\\frac{v_{x}^{2}b}{x b}:w=\\frac{v_{b}^{2}}{x b} $$ $$ \\begin{aligned}&(1)x=1\\Longrightarrow1=x+\\xi=0\\\\&T(x+1+x-1)=1-\\psi x^{2}\\psi x=0\\\\&\\frac{1}{x^{2}+1}\\left(1-x-1\\right)\\frac{\\psi x}{x^{2}+1}=\\frac{1}{x^{2}+1}\\end{aligned} $$ $$ \\mathrm{d}\\Delta\\mathrm{T}_{\\mathrm{b}}\\left[\\mathrm{T}_{\\mathrm{d}}\\right]^{\\mathrm{T}_{\\mathrm{b}}}=\\mathrm{d}\\mathrm{b}\\frac{\\mathrm{T}_{\\mathrm{b}}}{\\mathrm{M}}\\prod_{\\mathrm{c}}^{\\mathrm{T}_{\\mathrm{b}}} $$ $$ \\left[\\frac{\\Sigma}{\\nabla I}\\right]=\\frac{1}{4}\\operatorname{c o s}\\left[\\frac{\\nabla I}{2}\\right]\\operatorname{c o s}\\left[\\frac{1}{4}\\right] $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

@@ -1,0 +1,129 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import { can } from "../../../lib/auth/admin";
+import { listAttempts, listMocksForFilter } from "../../../lib/admin/attempts";
+import { formatDateTime } from "../../../lib/content";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "attempts.view")) return Astro.redirect("/admin", 303);
+
+const params = Astro.url.searchParams;
+const q = (params.get("q") ?? "").trim().slice(0, 120);
+const status = params.get("status") ?? "";
+const mockId = Number(params.get("mock") ?? 0);
+const voided = params.get("voided") === "1" ? "1" : params.get("voided") === "0" ? "0" : "";
+const page = Math.max(Number(params.get("page") ?? 1) || 1, 1);
+
+const [listing, mocks] = await Promise.all([
+  listAttempts({
+    q,
+    status,
+    mockId: Number.isInteger(mockId) && mockId > 0 ? mockId : undefined,
+    voided,
+    page,
+    per: 25,
+  }),
+  listMocksForFilter(),
+]);
+
+const totalPages = Math.max(Math.ceil(listing.total / listing.per), 1);
+const statusClass: Record<string, string> = {
+  in_progress: "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200",
+  submitted: "bg-emerald-100 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200",
+  expired: "bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200",
+};
+
+function pageHref(target: number): string {
+  const next = new URLSearchParams(params);
+  next.set("page", String(target));
+  return `?${next.toString()}`;
+}
+---
+
+<AdminLayout title="Attempts" active="attempts">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Attempts</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Inspect submitted papers, void invalid attempts and rebuild scores after a verified key correction.
+        Scores are recomputed from the pinned paper version; they are never typed by hand.
+      </p>
+    </div>
+    <div class="rounded-xl border border-neutral-200 bg-white px-4 py-3 text-right dark:border-neutral-800 dark:bg-neutral-900">
+      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Matching</p>
+      <p class="text-2xl font-black tabular-nums">{listing.total}</p>
+    </div>
+  </div>
+
+  <form method="get" class="mt-6 grid gap-3 rounded-2xl border border-neutral-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-[1fr_180px_220px_170px_auto] dark:border-neutral-800 dark:bg-neutral-900">
+    <input class="h-10 min-w-0 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" type="search" name="q" value={q} placeholder="Attempt id, student email or mock title…" />
+    <select class="h-10 min-w-0 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="status" aria-label="Status">
+      <option value="">All statuses</option>
+      {["in_progress", "submitted", "expired"].map((value) => (<option value={value} selected={value === status}>{value.replace("_", " ")}</option>))}
+    </select>
+    <select class="h-10 min-w-0 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="mock" aria-label="Mock test">
+      <option value="">All mock tests</option>
+      {mocks.map((mock) => (<option value={mock.id} selected={mock.id === mockId}>#{mock.id} · {mock.title.slice(0, 70)}</option>))}
+    </select>
+    <select class="h-10 min-w-0 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="voided" aria-label="Void state">
+      <option value="">All attempts</option>
+      <option value="0" selected={voided === "0"}>Live only</option>
+      <option value="1" selected={voided === "1"}>Voided only</option>
+    </select>
+    <button class="h-10 rounded-lg bg-neutral-900 px-4 text-sm font-bold text-white dark:bg-white dark:text-neutral-900" type="submit">Filter</button>
+  </form>
+
+  <div class="mt-6 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-[900px] text-left text-sm">
+        <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+          <tr>
+            <th class="px-4 py-3">Attempt</th>
+            <th class="px-4 py-3">Student</th>
+            <th class="px-4 py-3">Mock</th>
+            <th class="px-4 py-3">Status</th>
+            <th class="px-4 py-3 text-right">Score</th>
+            <th class="px-4 py-3">Submitted</th>
+            <th class="px-4 py-3 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+          {listing.rows.map((attempt) => (
+            <tr class:list={[attempt.voided_at ? "bg-red-50/40 dark:bg-red-950/10" : ""]}>
+              <td class="px-4 py-3">
+                <a class="font-semibold hover:underline" href={`/admin/attempts/${attempt.id}`}>#{attempt.id}</a>
+                <span class="block text-[11px] text-neutral-500 dark:text-neutral-400">v{attempt.version_no ?? attempt.version_id}{attempt.is_first_attempt ? " · first" : ""}</span>
+              </td>
+              <td class="max-w-[220px] px-4 py-3">
+                <p class="truncate font-medium">{attempt.username ?? "Guest"}</p>
+                <p class="truncate text-[11px] text-neutral-500 dark:text-neutral-400">{attempt.email ?? (attempt.guest_token ? "Guest session" : "—")}</p>
+              </td>
+              <td class="max-w-[260px] px-4 py-3"><span class="line-clamp-2">{attempt.mock_title}</span></td>
+              <td class="px-4 py-3">
+                <span class={`rounded-full px-2 py-0.5 text-xs font-semibold ${statusClass[attempt.status] ?? ""}`}>{attempt.status.replace("_", " ")}</span>
+                {attempt.voided_at ? <span class="mt-1 block text-[10px] font-bold uppercase text-red-700 dark:text-red-300">voided</span> : null}
+                {attempt.disqualified_at ? <span class="mt-1 block text-[10px] font-bold uppercase text-amber-700 dark:text-amber-300">disqualified</span> : null}
+              </td>
+              <td class="px-4 py-3 text-right font-semibold tabular-nums">{attempt.score ?? "—"}</td>
+              <td class="px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{attempt.submitted_at ? formatDateTime(attempt.submitted_at) : "—"}</td>
+              <td class="whitespace-nowrap px-4 py-3 text-right">
+                <a class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/attempts/${attempt.id}`}>Open</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {listing.rows.length === 0 ? (
+      <p class="px-4 py-12 text-center text-sm text-neutral-500 dark:text-neutral-400">No attempts match these filters.</p>
+    ) : null}
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">Page {listing.page} of {totalPages} · {listing.rows.length} shown</p>
+    <div class="flex gap-2">
+      {page > 1 ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(page - 1)}>Previous</a> : null}
+      {page < totalPages ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(page + 1)}>Next</a> : null}
+    </div>
+  </div>
+</AdminLayout>

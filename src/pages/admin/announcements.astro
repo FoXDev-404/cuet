@@ -1,0 +1,195 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can } from "../../lib/auth/admin";
+import { formatDateTime } from "../../lib/content";
+import {
+  findAnnouncement,
+  listAnnouncements,
+  toIstInput,
+} from "../../lib/admin/announcements";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "announcements.write")) return Astro.redirect("/forbidden", 303);
+
+const announcements = await listAnnouncements();
+const requestedId = Number(Astro.url.searchParams.get("id") ?? "0");
+const selected =
+  Number.isInteger(requestedId) && requestedId > 0 ? await findAnnouncement(requestedId) : null;
+
+const now = Date.now();
+function statusFor(row: { is_active: number; starts_at: string | null; ends_at: string | null }) {
+  if (!row.is_active) return { label: "Inactive", tone: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300" };
+  const starts = row.starts_at ? Date.parse(row.starts_at) : null;
+  const ends = row.ends_at ? Date.parse(row.ends_at) : null;
+  if (starts !== null && starts > now) return { label: "Scheduled", tone: "bg-violet-100 text-violet-900 dark:bg-violet-950/50 dark:text-violet-200" };
+  if (ends !== null && ends < now) return { label: "Expired", tone: "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200" };
+  return { label: "Live", tone: "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200" };
+}
+---
+
+<AdminLayout title="Announcements" active="announcements">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Announcements</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        The homepage notice bar shows up to three live announcements, newest first. Schedule a start and end time so a notice disappears without another edit.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/" target="_blank" rel="noopener">View homepage</a>
+      <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/announcements">New announcement</a>
+    </div>
+  </div>
+
+  <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+    <p class="font-bold">Keep notices factual</p>
+    <p class="mt-1">Do not use the banner to publish unverified exam dates, result rumours or coaching promotions. Link to the official NTA page when a notice refers to a date or notification.</p>
+  </div>
+
+  <div class="mt-6 grid gap-6 xl:grid-cols-[1fr_440px]">
+    <section>
+      <h2 class="text-lg font-bold">All announcements</h2>
+      {announcements.length === 0 ? (
+        <div class="mt-4 rounded-2xl border border-dashed border-neutral-300 p-10 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+          No announcements yet. Create one with the form on the right; it appears on the homepage immediately when active.
+        </div>
+      ) : (
+        <ul class="mt-4 space-y-2">
+          {announcements.map((row) => {
+            const status = statusFor(row);
+            return (
+              <li class:list={[
+                "rounded-2xl border bg-white p-4 dark:bg-neutral-900",
+                selected?.id === row.id ? "border-brand-400 ring-2 ring-brand-100 dark:border-brand-600 dark:ring-brand-950" : "border-neutral-200 dark:border-neutral-800",
+              ]}>
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                      <span class:list={["rounded-full px-2 py-0.5 font-semibold", status.tone]}>{status.label}</span>
+                      <span class="text-neutral-500 dark:text-neutral-400">#{row.id}</span>
+                    </div>
+                    <p class="mt-2 font-semibold leading-6">{row.message}</p>
+                    {row.link ? (
+                      <p class="mt-1 truncate text-xs text-neutral-500 dark:text-neutral-400">
+                        Links to <a class="underline" href={row.link} target="_blank" rel="noopener noreferrer">{row.link}</a>
+                      </p>
+                    ) : null}
+                    <p class="mt-2 text-[11px] text-neutral-500 dark:text-neutral-400">
+                      {row.starts_at ? `Starts ${formatDateTime(row.starts_at)}` : "Starts immediately"}
+                      {" · "}
+                      {row.ends_at ? `Ends ${formatDateTime(row.ends_at)}` : "No end time"}
+                      {row.admin_email ? ` · by ${row.admin_email}` : ""}
+                    </p>
+                  </div>
+                  <div class="flex shrink-0 gap-2">
+                    <a class="rounded-lg border border-neutral-300 px-2.5 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/announcements?id=${row.id}`}>Edit</a>
+                    <button class="rounded-lg border border-red-200 px-2.5 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/30" type="button" data-delete-announcement={row.id}>Delete</button>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </section>
+
+    <section class="h-fit rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-lg font-bold">{selected ? `Edit announcement #${selected.id}` : "New announcement"}</h2>
+      <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Times use Asia/Kolkata (IST). Leave a schedule field empty for no start or no end.</p>
+
+      <form id="announcement-form" class="mt-4 space-y-3" data-id={selected?.id ?? ""}>
+        <p id="announcement-status" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
+
+        <label class="block text-sm font-semibold">Message
+          <textarea class="field mt-1" name="message" rows="3" minlength="3" maxlength="500" required placeholder="A short, factual notice for students.">{selected?.message ?? ""}</textarea>
+        </label>
+
+        <label class="block text-sm font-semibold">Link (optional)
+          <input class="field mt-1" name="link" maxlength="1000" value={selected?.link ?? ""} placeholder="/cuet-ug-important-dates or https://cuet.nta.nic.in/" />
+          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">Relative paths keep students on this site. Use an official source for exam notices.</span>
+        </label>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          <label class="block text-sm font-semibold">Starts (IST)
+            <input class="field mt-1" name="starts_at" type="datetime-local" value={toIstInput(selected?.starts_at ?? null)} />
+          </label>
+          <label class="block text-sm font-semibold">Ends (IST)
+            <input class="field mt-1" name="ends_at" type="datetime-local" value={toIstInput(selected?.ends_at ?? null)} />
+          </label>
+        </div>
+
+        <label class="flex items-center gap-2 text-sm font-semibold">
+          <input name="is_active" type="checkbox" value="true" checked={(selected?.is_active ?? 1) === 1} />
+          Active
+        </label>
+
+        <div class="flex flex-wrap gap-2 pt-1">
+          <button class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" type="submit">{selected ? "Save changes" : "Create announcement"}</button>
+          {selected ? <a class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/admin/announcements">Cancel</a> : null}
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <style>
+    .field {
+      width: 100%;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-input);
+      background: var(--surface-2); color: var(--ink);
+      padding: 0.55rem 0.7rem;
+      font-size: 0.875rem;
+    }
+
+  </style>
+
+  <script is:inline>
+    const form = document.getElementById("announcement-form");
+    const statusBox = document.getElementById("announcement-status");
+
+    function showStatus(message, ok) {
+      if (!statusBox) return;
+      statusBox.textContent = message;
+      statusBox.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/40 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
+    }
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector("button[type=submit]");
+      if (!button) return;
+      button.disabled = true;
+      const data = new FormData(form);
+      const payload = Object.fromEntries(data.entries());
+      payload.is_active = form.querySelector("input[name=is_active]")?.checked ? "true" : "false";
+      const id = form.dataset.id;
+      try {
+        const response = await fetch(id ? `/api/admin/announcements/${id}` : "/api/admin/announcements", {
+          method: id ? "PATCH" : "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || "Could not save the announcement.");
+        location.href = result.redirect || "/admin/announcements";
+      } catch (error) {
+        showStatus(error instanceof Error ? error.message : "Could not save the announcement.", false);
+        button.disabled = false;
+      }
+    });
+
+    document.querySelectorAll("[data-delete-announcement]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        if (!confirm("Delete this announcement? It disappears from the homepage immediately.")) return;
+        button.disabled = true;
+        const response = await fetch(`/api/admin/announcements/${button.dataset.deleteAnnouncement}`, { method: "DELETE" });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          alert(result.error || "Could not delete the announcement.");
+          button.disabled = false;
+          return;
+        }
+        location.reload();
+      });
+    });
+  </script>
+</AdminLayout>

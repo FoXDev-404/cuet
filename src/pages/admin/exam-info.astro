@@ -1,0 +1,264 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { all } from "../../lib/db";
+import { can } from "../../lib/auth/admin";
+import {
+  EXAM_INFO_KEYS,
+  formatVerified,
+  getExamInfo,
+} from "../../lib/seo";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "exam_info.write")) return Astro.redirect("/forbidden", 303);
+
+const rows = await all<{
+  key: string;
+  value: string;
+  source_url: string | null;
+  last_verified: string | null;
+}>("SELECT key, value, source_url, last_verified FROM exam_info ORDER BY key");
+const rowByKey = new Map(rows.map((row) => [row.key, row]));
+
+const knownKeys = EXAM_INFO_KEYS.map((item) => item.key as string);
+const requested = Astro.url.searchParams.get("key") ?? knownKeys[0];
+const selectedKey = knownKeys.includes(requested) ? requested : requested.match(/^[a-z0-9-]{2,60}$/) ? requested : knownKeys[0];
+const current = (await getExamInfo([selectedKey]))[selectedKey] ?? null;
+const isKnownKey = knownKeys.includes(selectedKey);
+
+const labels = new Map<string, string>(EXAM_INFO_KEYS.map((item) => [item.key, item.label]));
+const extraKeys = rows.map((row) => row.key).filter((key) => !knownKeys.includes(key));
+---
+
+<AdminLayout title="Exam info" active="exam-info">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Exam info</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Verified exam facts only. Every published summary needs a source URL and a last-verified date, and the public guide pages show it with both.
+      </p>
+    </div>
+    <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="https://cuet.nta.nic.in/" target="_blank" rel="noopener noreferrer">Official NTA portal</a>
+  </div>
+
+  <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+    <p class="font-bold">Never invent exam facts</p>
+    <p class="mt-1">
+      Copy the fact from the current NTA information bulletin, link it in <span class="font-semibold">Source URL</span>, and set <span class="font-semibold">Last verified</span> to the date you checked it. If a fact is unverified, delete the entry instead of guessing; the public page then shows an honest "not verified yet" state.
+    </p>
+  </div>
+
+  <div class="mt-6 grid gap-6 lg:grid-cols-[300px_1fr]">
+    <section class="rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="border-b border-neutral-200 px-4 py-3 text-sm font-bold dark:border-neutral-800">Fact keys</h2>
+      <ul class="divide-y divide-neutral-100 dark:divide-neutral-800">
+        {EXAM_INFO_KEYS.map((item) => {
+          const row = rowByKey.get(item.key);
+          return (
+            <li>
+              <a
+                href={`/admin/exam-info?key=${encodeURIComponent(item.key)}`}
+                class:list={[
+                  "block px-4 py-3 text-sm",
+                  selectedKey === item.key
+                    ? "bg-brand-50 dark:bg-brand-950/40"
+                    : "hover:bg-neutral-50 dark:hover:bg-neutral-950",
+                ]}
+              >
+                <span class="flex items-center justify-between gap-2">
+                  <span class="font-semibold">{item.label}</span>
+                  <span class:list={[
+                    "shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
+                    row
+                      ? row.source_url && row.last_verified
+                        ? "bg-brand-100 text-brand-800 dark:bg-brand-900/50 dark:text-brand-200"
+                        : "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+                      : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
+                  ]}>
+                    {row ? (row.source_url && row.last_verified ? "verified" : "incomplete") : "empty"}
+                  </span>
+                </span>
+                <span class="mt-0.5 block font-mono text-[11px] text-neutral-600 dark:text-neutral-400">{item.key}</span>
+              </a>
+            </li>
+          );
+        })}
+        {extraKeys.map((key) => (
+          <li>
+            <a
+              href={`/admin/exam-info?key=${encodeURIComponent(key)}`}
+              class:list={[
+                "block px-4 py-3 text-sm",
+                selectedKey === key
+                  ? "bg-brand-50 dark:bg-brand-950/40"
+                  : "hover:bg-neutral-50 dark:hover:bg-neutral-950",
+              ]}
+            >
+              <span class="font-mono text-xs">{key}</span>
+              <span class="mt-0.5 block text-[11px] text-neutral-600 dark:text-neutral-400">Custom key</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+            {isKnownKey ? labels.get(selectedKey) : "Custom fact"}
+          </p>
+          <h2 class="font-mono text-sm font-bold">{selectedKey}</h2>
+        </div>
+        {current ? (
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">
+            Last verified: {formatVerified(current.last_verified) ?? "not set"}
+          </p>
+        ) : (
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Not published yet</p>
+        )}
+      </div>
+
+      <form id="exam-info-form" class="mt-5 space-y-4" data-key={selectedKey}>
+        <div>
+          <label class="block text-sm font-semibold" for="exam-info-value">Verified summary</label>
+          <textarea class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950" id="exam-info-value" name="value" rows="8" maxlength="20000" required placeholder="Factual summary copied from the official source, in your own words.">{current?.value ?? ""}</textarea>
+          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Plain text. Line breaks are preserved on the public page.</p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="block text-sm font-semibold" for="exam-info-source">Source URL</label>
+            <input class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950" id="exam-info-source" name="source_url" type="url" value={current?.source_url ?? ""} placeholder="https://cuet.nta.nic.in/..." />
+            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Official NTA link only.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold" for="exam-info-verified">Last verified</label>
+            <input class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950" id="exam-info-verified" name="last_verified" type="date" value={current?.last_verified?.slice(0, 10) ?? ""} />
+            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">The date you checked the source.</p>
+          </div>
+        </div>
+
+        <p id="exam-info-message" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
+
+        <div class="flex flex-wrap gap-2">
+          <button class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">Save fact</button>
+          {current ? (
+            <button class="rounded-lg border border-red-300 px-4 py-2 text-sm font-bold text-red-700 hover:bg-red-50 disabled:opacity-60 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40" id="exam-info-delete" type="button">Delete fact</button>
+          ) : null}
+          <a class="rounded-lg border border-neutral-300 px-4 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={selectedKey === "syllabus" ? "/cuet-ug-syllabus" : selectedKey === "exam-pattern" ? "/cuet-ug-exam-pattern" : selectedKey === "marking-scheme" ? "/cuet-ug-marking-scheme" : selectedKey === "important-dates" ? "/cuet-ug-important-dates" : "/"} target="_blank" rel="noopener">
+            Preview public page
+          </a>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <section class="mt-6 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+    <h2 class="border-b border-neutral-200 px-4 py-3 text-sm font-bold dark:border-neutral-800">Stored facts</h2>
+    {rows.length === 0 ? (
+      <p class="px-4 py-6 text-sm text-neutral-500 dark:text-neutral-400">No exam facts stored. Public guide pages show their “not verified yet” states.</p>
+    ) : (
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[760px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Key</th>
+              <th class="px-4 py-3">Value</th>
+              <th class="px-4 py-3">Source</th>
+              <th class="px-4 py-3">Last verified</th>
+              <th class="px-4 py-3"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {rows.map((row) => (
+              <tr>
+                <td class="px-4 py-3 font-mono text-xs">{row.key}</td>
+                <td class="max-w-[26rem] px-4 py-3 text-neutral-600 dark:text-neutral-300">
+                  <span class="line-clamp-2">{row.value}</span>
+                </td>
+                <td class="px-4 py-3 text-xs">
+                  {row.source_url ? (
+                    <a class="text-brand-700 underline-offset-2 hover:underline dark:text-brand-300" href={row.source_url} target="_blank" rel="noopener noreferrer">Open source</a>
+                  ) : (
+                    <span class="font-semibold text-amber-700 dark:text-amber-300">Missing</span>
+                  )}
+                </td>
+                <td class="px-4 py-3 text-xs">
+                  {row.last_verified ? (
+                    <span>{formatVerified(row.last_verified)}</span>
+                  ) : (
+                    <span class="font-semibold text-amber-700 dark:text-amber-300">Missing</span>
+                  )}
+                </td>
+                <td class="px-4 py-3 text-right">
+                  <a class="text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/admin/exam-info?key=${encodeURIComponent(row.key)}`}>Edit</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </section>
+
+  <script is:inline>
+    const form = document.getElementById("exam-info-form");
+    const message = document.getElementById("exam-info-message");
+    const deleteButton = document.getElementById("exam-info-delete");
+
+    function show(text, ok) {
+      message.textContent = text;
+      message.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/50 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
+    }
+
+    async function readError(response) {
+      const result = await response.json().catch(() => ({}));
+      return result.error || "Request failed.";
+    }
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      message.className = "hidden";
+      try {
+        const data = new FormData(form);
+        const response = await fetch("/api/admin/exam-info", {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            key: form.dataset.key,
+            value: String(data.get("value") || "").trim(),
+            source_url: String(data.get("source_url") || "").trim(),
+            last_verified: String(data.get("last_verified") || "").trim(),
+          }),
+        });
+        if (!response.ok) throw new Error(await readError(response));
+        show("Saved. The public guide pages will show this summary on the next request.", true);
+      } catch (error) {
+        show(error instanceof Error ? error.message : "Request failed.", false);
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    deleteButton?.addEventListener("click", async () => {
+      if (!confirm("Delete this exam fact? Public pages will return to their unverified state.")) return;
+      deleteButton.disabled = true;
+      message.className = "hidden";
+      try {
+        const response = await fetch("/api/admin/exam-info", {
+          method: "DELETE",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ key: form.dataset.key }),
+        });
+        if (!response.ok) throw new Error(await readError(response));
+        show("Deleted. Reloading…", true);
+        location.reload();
+      } catch (error) {
+        show(error instanceof Error ? error.message : "Request failed.", false);
+        deleteButton.disabled = false;
+      }
+    });
+  </script>
+</AdminLayout>

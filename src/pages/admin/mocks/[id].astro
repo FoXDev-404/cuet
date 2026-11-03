@@ -1,0 +1,251 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import MockForm from "../../../components/MockForm.astro";
+import { all } from "../../../lib/db";
+import { findMock, inspectQuestionsForPublish, latestVersion, listMockVersions, listVersionQuestions } from "../../../lib/admin/mocks";
+import { can } from "../../../lib/auth/admin";
+import { formatDateTime } from "../../../lib/content";
+
+const admin = Astro.locals.admin!;
+const id = Number(Astro.params.id);
+if (!Number.isInteger(id) || id <= 0) return Astro.redirect("/admin/mocks", 303);
+
+const mock = await findMock(id);
+if (!mock || mock.deleted_at) return new Response("Mock not found", { status: 404 });
+
+const versions = await listMockVersions(id);
+const version = await latestVersion(id);
+if (!version) return new Response("Mock version missing", { status: 500 });
+
+const linked = await listVersionQuestions(version.id);
+const selected: Record<number, string> = {};
+const positions: Record<number, number> = {};
+for (const item of linked) {
+  selected[item.question_id] = item.section;
+  positions[item.question_id] = item.position;
+}
+const sectionOrder = [...new Set(linked.map((item) => item.section))].join(", ");
+const locked = version.status === "published" || version.status === "superseded";
+
+const subjects = await all<{ id: number; name: string }>(
+  "SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name",
+);
+const everything = await all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
+  `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
+   FROM questions q JOIN subjects s ON s.id = q.subject_id
+   WHERE q.deleted_at IS NULL
+   ORDER BY s.name, q.id`,
+);
+const questions = everything.filter((question) => question.status === "published" || selected[question.id]);
+const canPublish = can(admin.role, "mocks.publish");
+const issues = await inspectQuestionsForPublish(linked.map((item) => item.question_id));
+const issueGroups = new Map<string, { label: string; count: number; ids: number[] }>();
+for (const issue of issues) {
+  const entry = issueGroups.get(issue.code) ?? {
+    label:
+      issue.code === "explanation" ? "Missing explanation"
+      : issue.code === "alt" ? "Missing image alt text"
+      : issue.code === "answer" ? "Bad answer index"
+      : issue.code === "duplicate" ? "Duplicate question text"
+      : issue.code === "status" ? "Not published"
+      : issue.code === "options" ? "Too few options"
+      : "Other",
+    count: 0,
+    ids: [],
+  };
+  entry.count += 1;
+  if (issue.questionId > 0 && !entry.ids.includes(issue.questionId)) entry.ids.push(issue.questionId);
+  issueGroups.set(issue.code, entry);
+}
+const formMock = {
+  id: mock.id,
+  title: mock.title,
+  slug: mock.slug,
+  type: mock.type,
+  subject_id: mock.subject_id,
+  duration_min: version.duration_min,
+  total_marks: version.total_marks,
+  marking_scheme: version.marking_scheme,
+  instructions: version.instructions,
+  intro_html: mock.intro_html,
+  pyq_year: mock.pyq_year,
+  pyq_shift: mock.pyq_shift,
+  status: version.status,
+  version_no: version.version_no,
+  version_id: version.id,
+  locked,
+};
+---
+
+<AdminLayout title={`Mock #${mock.id}`} active="mocks">
+  <div data-mock-id={mock.id} hidden></div>
+  <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">{mock.title}</h1>
+      <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+        Version {version.version_no} · {linked.length} questions ·
+        {version.published_at ? ` published ${formatDateTime(version.published_at)}` : " not published yet"}
+      </p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide dark:bg-neutral-800">{version.status.replace("_", " ")}</span>
+      {mock.status === "archived" ? <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900 dark:bg-amber-950/50 dark:text-amber-200">Archived</span> : null}
+      {locked && canPublish ? (
+        <form method="post" action={`/api/admin/mocks/${mock.id}/versions`}>
+          <button class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" type="submit">Create new version</button>
+        </form>
+      ) : null}
+      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/mocks/${mock.id}/preview`}>Preview saved draft</a>
+      <button class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" type="button" data-mock-action="duplicate">Duplicate</button>
+      {mock.status === "archived" ? (
+        <button class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" type="button" data-mock-action="restore">Restore</button>
+      ) : (
+        <button class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" type="button" data-mock-action="archive">Archive</button>
+      )}
+      {mock.status !== "published" ? (
+        <button class="rounded-lg border border-red-200 px-3 py-2 text-sm font-bold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40" type="button" data-mock-action="delete">Delete</button>
+      ) : null}
+      {mock.status === "published" ? <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/mock/${mock.slug}`}>Public page</a> : null}
+    </div>
+  </div>
+
+  {mock.status === "archived" ? (
+    <p class="mb-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+      This mock is archived: it is hidden from the public site, but its versions and attempts are kept. Restore it to publish again.
+    </p>
+  ) : null}
+
+  <p id="mock-action-error" class="mb-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+
+  <section class="mb-5 rounded-xl border border-token bg-surface p-4" aria-labelledby="mock-validation-heading">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <h2 id="mock-validation-heading" class="text-sm font-bold">Publish validation</h2>
+      <span class:list={["rounded-full px-2 py-0.5 text-xs font-semibold", issues.length === 0 ? "bg-emerald-100 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200" : "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"]}>
+        {issues.length === 0 ? "Ready" : `${issues.length} blocker${issues.length === 1 ? "" : "s"}`}
+      </span>
+    </div>
+    {issueGroups.size === 0 ? (
+      <p class="mt-2 text-sm text-muted-token">Every selected question is published, has an explanation, valid answer index and unique text.</p>
+    ) : (
+      <ul class="mt-2 space-y-1 text-sm text-body-2">
+        {[...issueGroups.values()].map((group) => (
+          <li>
+            <span class="font-semibold">{group.label}: {group.count}</span>
+            {group.ids.length > 0 ? <span class="text-muted-token"> · question {group.ids.slice(0, 8).map((questionId) => `#${questionId}`).join(", ")}{group.ids.length > 8 ? "…" : ""}</span> : null}
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+
+  {locked ? (
+    <p class="mb-5 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900 dark:border-sky-900 dark:bg-sky-950/40 dark:text-sky-200">
+      Published versions are immutable. The public site continues to serve version {version.version_no} while you prepare the next draft.
+    </p>
+  ) : null}
+
+  <MockForm mock={formMock} subjects={subjects} questions={questions} selected={selected} positions={positions} sectionOrder={sectionOrder} canPublish={canPublish} />
+
+  <section class="mt-8 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+    <div class="border-b border-neutral-200 px-4 py-3 dark:border-neutral-800">
+      <h2 class="font-bold">Version history</h2>
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">Attempts are pinned to the version they started, so publishing a correction never changes old scores.</p>
+    </div>
+    <div class="overflow-x-auto" role="region" aria-label="Version history" tabindex="0">
+      <table class="w-full min-w-[620px] text-left text-sm">
+        <thead class="bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:bg-neutral-950 dark:text-neutral-400">
+          <tr>
+            <th class="px-4 py-3">Version</th>
+            <th class="px-4 py-3">Status</th>
+            <th class="px-4 py-3">Questions</th>
+            <th class="px-4 py-3">Published</th>
+            <th class="px-4 py-3 text-right">Action</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+          {versions.map((row) => (
+            <tr>
+              <td class="px-4 py-3 font-semibold">v{row.version_no}{row.id === mock.current_version_id ? <span class="ml-2 rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-900 dark:bg-brand-900/60 dark:text-brand-100">Live</span> : null}</td>
+              <td class="px-4 py-3">{row.status}</td>
+              <td class="px-4 py-3">{row.id === version.id ? linked.length : "—"}</td>
+              <td class="px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{row.published_at ? formatDateTime(row.published_at) : "—"}</td>
+              <td class="px-4 py-3 text-right">{row.id === version.id ? <span class="text-xs font-semibold text-brand-700 dark:text-brand-300">Editing</span> : null}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</AdminLayout>
+
+<script>
+  const mockId = Number(document.querySelector("[data-mock-id]")?.getAttribute("data-mock-id") ?? 0);
+  const mockActionError = document.getElementById("mock-action-error") as HTMLElement | null;
+
+  function showMockError(message: string) {
+    if (!mockActionError) return;
+    mockActionError.textContent = message;
+    mockActionError.classList.remove("hidden");
+    mockActionError.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-mock-action]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const action = button.dataset.mockAction;
+      if (!action || !mockId) return;
+      const id = String(mockId);
+
+      let url = `/api/admin/mocks/${id}`;
+      let method = "DELETE";
+      if (action === "duplicate") {
+        url = `/api/admin/mocks/${id}/duplicate`;
+        method = "POST";
+      } else if (action === "archive") {
+        url = `/api/admin/mocks/${id}/archive`;
+        method = "POST";
+      } else if (action === "restore") {
+        url = `/api/admin/mocks/${id}/archive`;
+        method = "DELETE";
+      } else if (action === "delete") {
+        if (!confirm("Soft-delete this mock? It moves to Trash and can be restored; published versions and attempts are kept.")) return;
+      }
+      if (action === "archive" && !confirm("Archive this mock? It will be hidden from the public site.")) return;
+
+      button.disabled = true;
+      const original = button.textContent;
+      button.textContent = "Working…";
+      try {
+        const response = await fetch(url, { method });
+        const result = (await response.json()) as { error?: string; redirect?: string };
+        if (!response.ok) throw new Error(result.error || "The action failed.");
+        if (action === "duplicate") {
+          location.href = result.redirect || `/admin/mocks/${id}`;
+          return;
+        }
+        location.href = action === "delete" ? "/admin/mocks" : `/admin/mocks/${id}`;
+      } catch (error) {
+        showMockError(error instanceof Error ? error.message : "The action failed.");
+        button.disabled = false;
+        button.textContent = original;
+      }
+    });
+  });
+
+  const button = document.querySelector("form[action$='/versions'] button") as HTMLButtonElement | null;
+  button?.addEventListener("click", async (event) => {
+    event.preventDefault();
+    if (button.disabled) return;
+    button.disabled = true;
+    button.textContent = "Creating…";
+    try {
+      const response = await fetch(button.form!.action, { method: "POST" });
+      const result = (await response.json()) as { error?: string; redirect?: string };
+      if (!response.ok) throw new Error(result.error || "Could not create a version.");
+      location.href = result.redirect || location.href;
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Could not create a version.");
+      button.disabled = false;
+      button.textContent = "Create new version";
+    }
+  });
+</script>

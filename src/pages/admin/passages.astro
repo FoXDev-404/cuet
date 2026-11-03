@@ -1,0 +1,174 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can } from "../../lib/auth/admin";
+import { findPassage, listPassages } from "../../lib/admin/passages";
+import { all } from "../../lib/db";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "taxonomy.write")) return Astro.redirect("/admin", 303);
+
+const params = Astro.url.searchParams;
+const q = (params.get("q") ?? "").trim().slice(0, 100);
+const subjectId = Number(params.get("subject") ?? 0);
+const selectedId = Number(params.get("id") ?? 0);
+
+const [subjects, passages] = await Promise.all([
+  all<{ id: number; name: string }>("SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name"),
+  listPassages(q, subjectId),
+]);
+const selected = selectedId > 0 ? await findPassage(selectedId) : null;
+
+function plain(value: string, limit = 180): string {
+  const text = value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return text.length > limit ? `${text.slice(0, limit)}…` : text;
+}
+---
+
+<AdminLayout title="Passages" active="passages">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Passages</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Reading passages shared by comprehension questions. Hindi text, an optional source image and alt text are stored here;
+        questions attach with a passage id.
+      </p>
+    </div>
+    <div class="rounded-xl border border-neutral-200 bg-white px-4 py-3 text-right dark:border-neutral-800 dark:bg-neutral-900">
+      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Loaded</p>
+      <p class="text-2xl font-black tabular-nums">{passages.length}</p>
+    </div>
+  </div>
+
+  <form method="get" class="mt-6 grid gap-3 rounded-2xl border border-neutral-200 bg-white p-4 sm:grid-cols-[1fr_220px_auto] dark:border-neutral-800 dark:bg-neutral-900">
+    <input class="h-10 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" type="search" name="q" value={q} placeholder="Search passage text…" />
+    <select class="h-10 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="subject" aria-label="Subject">
+      <option value="">All subjects</option>
+      {subjects.map((subject) => (<option value={subject.id} selected={subject.id === subjectId}>{subject.name}</option>))}
+    </select>
+    <button class="h-10 rounded-lg bg-neutral-900 px-4 text-sm font-bold text-white dark:bg-white dark:text-neutral-900" type="submit">Filter</button>
+  </form>
+
+  <p id="passage-error" class="mt-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+  <p id="passage-success" class="mt-4 hidden rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200"></p>
+
+  <div class="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_440px]">
+    <section class="space-y-3">
+      {passages.map((passage) => (
+        <article class:list={["rounded-2xl border bg-white p-4 dark:bg-neutral-900", selected?.id === passage.id ? "border-brand-500 ring-1 ring-brand-500" : "border-neutral-200 dark:border-neutral-800"]}>
+          <div class="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <p class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">#{passage.id} · {passage.subject_name} · {passage.question_count} question{passage.question_count === 1 ? "" : "s"}</p>
+              <p class="mt-1 line-clamp-3 text-sm leading-6">{plain(passage.body)}</p>
+              {passage.body_hi ? <p class="mt-1 line-clamp-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400" lang="hi" dir="auto">{plain(passage.body_hi, 120)}</p> : null}
+              {passage.image_url ? <p class="mt-1 text-[11px] text-neutral-500 dark:text-neutral-400">Image: {passage.image_url}</p> : null}
+            </div>
+            <div class="flex shrink-0 gap-1">
+              <a class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/passages?id=${passage.id}`}>Edit</a>
+              <button class="rounded-lg border border-red-200 px-2 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40" type="button" data-delete-passage={passage.id}>Delete</button>
+            </div>
+          </div>
+        </article>
+      ))}
+      {passages.length === 0 ? (
+        <div class="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-14 text-center dark:border-neutral-700 dark:bg-neutral-900">
+          <p class="font-bold">No passages yet</p>
+          <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Create one on the right, then attach it to comprehension questions.</p>
+        </div>
+      ) : null}
+    </section>
+
+    <aside class="xl:sticky xl:top-32 xl:self-start">
+      <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 class="text-lg font-black">{selected ? `Edit passage #${selected.id}` : "New passage"}</h2>
+        <p class="mt-1 text-xs leading-5 text-neutral-600 dark:text-neutral-400">
+          {selected ? `${selected.question_count} question(s) currently use this passage.` : "Plain text; questions render it first. Use an image only for a map, chart or table that cannot be expressed as text."}
+        </p>
+        <form id="passage-form" class="mt-4 space-y-3" data-id={selected?.id ?? ""} novalidate>
+          <label class="block text-xs font-semibold">
+            Subject
+            <select class="mt-1 h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" data-field="subject_id">
+              {subjects.map((subject) => (<option value={subject.id} selected={selected?.subject_id === subject.id}>{subject.name}</option>))}
+            </select>
+          </label>
+          <label class="block text-xs font-semibold">
+            Passage text
+            <textarea class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950" data-field="body" rows="7" required>{selected?.body ?? ""}</textarea>
+          </label>
+          <label class="block text-xs font-semibold">
+            Hindi text <span class="font-normal text-neutral-500 dark:text-neutral-400">(optional)</span>
+            <textarea class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950" data-field="body_hi" rows="5" dir="auto">{selected?.body_hi ?? ""}</textarea>
+          </label>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class="block text-xs font-semibold">
+              Image URL
+              <input class="mt-1 h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-xs dark:border-neutral-700 dark:bg-neutral-950" data-field="image_url" type="text" value={selected?.image_url ?? ""} placeholder="/api/media/…" />
+            </label>
+            <label class="block text-xs font-semibold">
+              Image alt text
+              <input class="mt-1 h-10 w-full rounded-lg border border-neutral-300 bg-white px-3 text-xs dark:border-neutral-700 dark:bg-neutral-950" data-field="image_alt" type="text" maxlength="300" value={selected?.image_alt ?? ""} placeholder="Describe the image" />
+            </label>
+          </div>
+          <button id="save-passage" class="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">{selected ? "Save passage" : "Create passage"}</button>
+          {selected ? <a class="block text-center text-xs font-semibold text-neutral-500 hover:underline dark:text-neutral-400" href="/admin/passages">Cancel edit</a> : null}
+        </form>
+      </section>
+    </aside>
+  </div>
+
+  <script>
+    const form = document.getElementById("passage-form") as HTMLFormElement | null;
+    const errorBox = document.getElementById("passage-error") as HTMLElement;
+    const successBox = document.getElementById("passage-success") as HTMLElement;
+
+    function show(box: HTMLElement, text: string) {
+      box.textContent = text;
+      box.classList.remove("hidden");
+    }
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      errorBox.classList.add("hidden");
+      successBox.classList.add("hidden");
+      const button = document.getElementById("save-passage") as HTMLButtonElement;
+      const id = form.dataset.id;
+      const field = (name: string) =>
+        (form.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).value;
+      const payload = {
+        subject_id: field("subject_id"),
+        body: field("body"),
+        body_hi: field("body_hi"),
+        image_url: field("image_url"),
+        image_alt: field("image_alt"),
+      };
+      button.disabled = true;
+      try {
+        const response = await fetch(id ? `/api/admin/passages/${id}` : "/api/admin/passages", {
+          method: id ? "PATCH" : "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = (await response.json()) as { error?: string; redirect?: string; id?: number };
+        if (!response.ok) throw new Error(result.error || "Could not save the passage.");
+        show(successBox, "Passage saved. Reloading…");
+        location.href = result.redirect || `/admin/passages?id=${result.id ?? id}`;
+      } catch (error) {
+        show(errorBox, error instanceof Error ? error.message : "Could not save the passage.");
+        button.disabled = false;
+      }
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-delete-passage]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const id = button.dataset.deletePassage;
+        if (!id || !confirm("Soft-delete this passage? Questions that reference it will need a replacement.")) return;
+        const response = await fetch(`/api/admin/passages/${id}`, { method: "DELETE" });
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) {
+          show(errorBox, result.error || "Could not delete the passage.");
+          return;
+        }
+        location.href = "/admin/passages";
+      });
+    });
+  </script>
+</AdminLayout>

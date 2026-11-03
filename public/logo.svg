@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">CUETFreeMockTest.com</title>
+  <desc id="logo-desc">A verified answer sheet on a deep blue rounded tile.</desc>
+  <defs>
+    <linearGradient id="logo-bg" x1="4" y1="2" x2="44" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3B82F6" />
+      <stop offset="0.55" stop-color="#1E40AF" />
+      <stop offset="1" stop-color="#1E3A8A" />
+    </linearGradient>
+    <linearGradient id="logo-paper" x1="12" y1="9" x2="34" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset="1" stop-color="#EFF6FF" />
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#logo-bg)" />
+  <path d="M15.5 9H27v5.5a2 2 0 0 0 2 2h5v20.5a2.5 2.5 0 0 1-2.5 2.5h-16A2.5 2.5 0 0 1 13 37V11.5A2.5 2.5 0 0 1 15.5 9Z" fill="url(#logo-paper)" />
+  <path d="M27 9l7 7h-5a2 2 0 0 1-2-2V9Z" fill="#BFDBFE" />
+  <rect x="17" y="19" width="11" height="2.2" rx="1.1" fill="#93C5FD" />
+  <rect x="17" y="24" width="8" height="2.2" rx="1.1" fill="#BFDBFE" />
+  <circle cx="34.5" cy="34" r="9" fill="#F59E0B" stroke="#FFFFFF" stroke-width="2" />
+  <path d="M30.7 34.1l2.5 2.5 5-5.2" fill="none" stroke="#1F2937" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

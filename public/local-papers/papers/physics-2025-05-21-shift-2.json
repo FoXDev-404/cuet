@@ -1,0 +1,1722 @@
+{
+ "exam": {
+  "id": "local-physics-2025-05-21-shift-2",
+  "slug": "physics-2025-05-21-shift-2",
+  "title": "CUET UG Physics 21 May 2025 Shift 2 Previous Year Paper",
+  "subject": "Physics",
+  "subjectId": "local-physics",
+  "subjectCode": "PHY",
+  "year": 2025,
+  "examDate": "2025-05-21",
+  "shift": "Shift 2",
+  "sourceFile": "Physics_2025-05-21_Shift_2.pdf",
+  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+  "questionCount": 50,
+  "sourceQuestionCount": 50,
+  "publicationStatus": "published",
+  "reviewRequired": true,
+  "passages": [],
+  "questions": [
+   {
+    "id": "q01",
+    "sourceQuestionNo": 1,
+    "stemEn": "The elements which may be considered for an ideal inductor as a solenoid,\n\n(A) which is made of a thick wire\n\n(B) which has negligible resistance\n\n(C) which has a sufficiently large inductance\n\n(D) which is made of a thin wire",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (B), (C) and (D)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q02",
+    "sourceQuestionNo": 2,
+    "stemEn": "In an experiment on the photoelectric effect, the slope of the cut-off voltage versus frequency of the incident light gives",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "h"
+     },
+     {
+      "id": "B",
+      "text": "h/e"
+     },
+     {
+      "id": "C",
+      "text": "e/h"
+     },
+     {
+      "id": "D",
+      "text": "Vo"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     1
+    ],
+    "assets": []
+   },
+   {
+    "id": "q03",
+    "sourceQuestionNo": 3,
+    "stemEn": "A 10 pF capacitor is connected to a 24 V battery. The electrostatic energy stored in the capacitor is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 11.52 \\times 10^{-9} $ J"
+     },
+     {
+      "id": "B",
+      "text": "$ 1.2 \\times 10^{-9} $ J"
+     },
+     {
+      "id": "C",
+      "text": "$ 5.76 \\times 10^{-9} $ J"
+     },
+     {
+      "id": "D",
+      "text": "$ 2.88 \\times 10^{-9} $ J"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     2
+    ],
+    "assets": []
+   },
+   {
+    "id": "q04",
+    "sourceQuestionNo": 4,
+    "stemEn": "The output frequency of a (i) half-wave rectifier and (ii) full-wave rectifier, if the input frequency is 50 Hz are, respectively",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(i) 50 Hz; (ii) 100 Hz"
+     },
+     {
+      "id": "B",
+      "text": "(i) 100 Hz; (ii) 100 Hz"
+     },
+     {
+      "id": "C",
+      "text": "(i) 50 Hz; (ii) 50 Hz"
+     },
+     {
+      "id": "D",
+      "text": "(i) 100 Hz; (ii) 50 Hz"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q05",
+    "sourceQuestionNo": 5,
+    "stemEn": "A point charge Q is kept at the midpoint of a face of cube of side L. The electric flux emerging from the cube is\n\n1. zero\n\n$$ Q(6\\varepsilon_{0})^{-1} $$\n\n$$ 6Q\\varepsilon_{0}^{-1}L^{2} $$\n\n$$ Q(2\\varepsilon_{0})^{-1} $$",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     3
+    ],
+    "assets": []
+   },
+   {
+    "id": "q06",
+    "sourceQuestionNo": 6,
+    "stemEn": "A long straight wire of a circular cross-section of radius 'a' is carrying steady current I. The current I is uniformly distributed across this cross-section. What will be the magnetic field in the region $ r a $?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ B \\propto r \\, (r a) $"
+     },
+     {
+      "id": "B",
+      "text": "$ B \\propto r \\, (r > a) $ and $ B \\propto r^{-1} \\, (r < a) $"
+     },
+     {
+      "id": "C",
+      "text": "$ B = 0 $ ( $ r a $)"
+     },
+     {
+      "id": "D",
+      "text": "$ B \\propto r (r a) $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     4
+    ],
+    "assets": []
+   },
+   {
+    "id": "q07",
+    "sourceQuestionNo": 7,
+    "stemEn": "The fringe width in Young's double slit experiment is $ 2.4 \\times 10^{-4} $ m, when red light of wavelength 6400\n\nThe decrease in the fringe width, if light of wavelength 4000 \\AA is used instead of red light, will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ 0.9\\times10^{-4}\\mathrm{~m} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ 9\\times10^{-4}\\mathrm{~m} $$"
+     },
+     {
+      "id": "C",
+      "text": "$$ 1.5\\times10^{-4}\\mathrm{~m} $$"
+     },
+     {
+      "id": "D",
+      "text": "$$ 2\\times10^{-4}\\mathrm{~m} $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q08",
+    "sourceQuestionNo": 8,
+    "stemEn": "The energy of the electron in any given state for the hydrogen atom is $ -13.6/n^{2} $ eV. Identify the correct statements among the following.\n\n(A) The negative sign in -13.6 eV signifies that the electron is bound to the nucleus.\n\n(B) The negative sign in -13.6 eV signifies that the electron requires 13.6 eV energy to be separated from the nucleus.\n\n(C) 3.4 eV energy is required to take the electron from the ground to the first excited state.\n\n(D) To find the energy of the third excited state, the value of n is 4.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(B), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (B), (C) and (D)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     5
+    ],
+    "assets": []
+   },
+   {
+    "id": "q09",
+    "sourceQuestionNo": 9,
+    "stemEn": "Identify the correct statements from the following in the context of electromagnetic waves.\n\n(A) X-rays are not electromagnetic waves.\n\n(B) Electromagnetic waves are transverse in nature.\n\n(C) Electromagnetic waves can not be polarised.\n\n(D) Electromagnetic waves travel with the speed of light in vacuum.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only B.2 C.3 D.4 Solution: The correct answer is 2.(B) and (D) only. (A) False: X-rays are electromagnetic waves. (B) True: Electromagnetic waves are transverse, meaning electric and magnetic fields vibrate perpendicular to the direction of propagation. (C) False: They can be polarised, since they are transverse. (D) True: In vacuum, all electromagnetic waves travel with the speed of light $ c = 3 \\times 10^{8} $ m/s."
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     6
+    ],
+    "assets": []
+   },
+   {
+    "id": "q10",
+    "sourceQuestionNo": 10,
+    "stemEn": "A difference of 2.21 eV separates two energy levels in an atom. What is the frequency of radiation emitted when the atom makes a transition from the upper level to the lower level?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "5.3 $ \\times $ 10 $ ^{14} $ Hz"
+     },
+     {
+      "id": "B",
+      "text": "2.3\\times10^{14}Hz"
+     },
+     {
+      "id": "C",
+      "text": "8\\times10^{14}Hz"
+     },
+     {
+      "id": "D",
+      "text": "3\\times10^{14}Hz"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": []
+   },
+   {
+    "id": "q11",
+    "sourceQuestionNo": 11,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(I), (B)-(III), (C)-(IV), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     7
+    ],
+    "assets": [
+     {
+      "id": "q11-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2025-05-21-shift-2/q11-table-1.jpg",
+      "page": 7,
+      "alt": "Table for question 11"
+     }
+    ]
+   },
+   {
+    "id": "q12",
+    "sourceQuestionNo": 12,
+    "stemEn": "A Wheatstone bridge has four resistors: $ R_1 = R_2 = R_3 = 1\\ \\Omega $ and $ R_4 = 2\\ \\Omega $. In order to balance the bridge, resistor $ R_4 $ has to be shunted by resistance of",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.5 $ \\Omega $"
+     },
+     {
+      "id": "B",
+      "text": "1.0 $ \\Omega $"
+     },
+     {
+      "id": "C",
+      "text": "2.0Ω"
+     },
+     {
+      "id": "D",
+      "text": "3.0Ω"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     8
+    ],
+    "assets": []
+   },
+   {
+    "id": "q13",
+    "sourceQuestionNo": 13,
+    "stemEn": "In an AC circuit, the instantaneous values of emf and current are $ E = 100\\sin(314t) $ V and $ I = \\sin(314t) $. The average power consumed in the circuit is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "200 W"
+     },
+     {
+      "id": "B",
+      "text": "100 W"
+     },
+     {
+      "id": "C",
+      "text": "50 W"
+     },
+     {
+      "id": "D",
+      "text": "25 W"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     9
+    ],
+    "assets": []
+   },
+   {
+    "id": "q14",
+    "sourceQuestionNo": 14,
+    "stemEn": "Resistances in two gaps of a metre bridge are $ 8\\Omega $ and $ 24\\Omega $, respectively. The distance by which the balance point shifts by interchanging the resistances in the two gaps, is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "75 cm"
+     },
+     {
+      "id": "B",
+      "text": "50 cm"
+     },
+     {
+      "id": "C",
+      "text": "33.3 cm"
+     },
+     {
+      "id": "D",
+      "text": "25 cm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q15",
+    "sourceQuestionNo": 15,
+    "stemEn": "The magnitude of the magnetic field due to a short bar magnet having a magnetic moment of $ 0.2 \\, Am^2 $, at a distance of 50 cm from the centre of the magnet on its axial line will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1.2\\times10^{-7}\\mathrm{T}"
+     },
+     {
+      "id": "B",
+      "text": "6.4\\times10^{-7}T"
+     },
+     {
+      "id": "C",
+      "text": "3.2\\times10^{-7}T"
+     },
+     {
+      "id": "D",
+      "text": "5\\times10^{-7}T"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     10
+    ],
+    "assets": []
+   },
+   {
+    "id": "q16",
+    "sourceQuestionNo": 16,
+    "stemEn": "In a single slit experiment, a diffraction pattern is obtained on the screen for yellow light. What will be the effect on the diffraction pattern, if yellow light is replaced by X-rays?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "diffraction pattern will not be observed"
+     },
+     {
+      "id": "B",
+      "text": "number of fringes will decrease"
+     },
+     {
+      "id": "C",
+      "text": "number of fringes will increase"
+     },
+     {
+      "id": "D",
+      "text": "central maximum will become narrower"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11
+    ],
+    "assets": []
+   },
+   {
+    "id": "q17",
+    "sourceQuestionNo": 17,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     11,
+     12
+    ],
+    "assets": [
+     {
+      "id": "q17-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2025-05-21-shift-2/q17-table-1.jpg",
+      "page": 12,
+      "alt": "Table for question 17"
+     }
+    ]
+   },
+   {
+    "id": "q18",
+    "sourceQuestionNo": 18,
+    "stemEn": "A wire carries a current of 2.0 A. The number of electrons crossing through its cross-section in 10 s will be\n\n$$ 1.1.6\\times10^{19} $$\n\n$$ 2.1.25\\times10^{18} $$\n\n$$ 2.5\\times10^{20} $$\n\n4.1.25 $ \\times 10^{20} $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     12
+    ],
+    "assets": []
+   },
+   {
+    "id": "q19",
+    "sourceQuestionNo": 19,
+    "stemEn": "In Young's double slit experiment, slits are illuminated by light of wavelength 650 nm. The slits are 0.13 cm apart and the screen is placed 1.2 m away. What will be the separation of the adjacent maxima?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "0.0006 mm"
+     },
+     {
+      "id": "B",
+      "text": "0.006 mm"
+     },
+     {
+      "id": "C",
+      "text": "0.06 mm"
+     },
+     {
+      "id": "D",
+      "text": "0.6 mm"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q20",
+    "sourceQuestionNo": 20,
+    "stemEn": "The armature coil of a generator has 20 turns and its area is $ 0.127 \\, m^2 $. How fast approximately should it be rotated in a magnetic field of $ 0.2 \\, Wbm^{-2} $, so that the peak value of induced emf is $ 160 \\, V $?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "20 rps"
+     },
+     {
+      "id": "B",
+      "text": "50 rps"
+     },
+     {
+      "id": "C",
+      "text": "100 rps"
+     },
+     {
+      "id": "D",
+      "text": "200 rps"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     13
+    ],
+    "assets": []
+   },
+   {
+    "id": "q21",
+    "sourceQuestionNo": 21,
+    "stemEn": "A photo cathode is illuminated by a very small bright source placed 1 m away. When the same source of light is placed 0.5 m away, the number of electrons emitted by the photo cathode would become",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "four times"
+     },
+     {
+      "id": "B",
+      "text": "twice"
+     },
+     {
+      "id": "C",
+      "text": "one fourth"
+     },
+     {
+      "id": "D",
+      "text": "half"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     14
+    ],
+    "assets": []
+   },
+   {
+    "id": "q22",
+    "sourceQuestionNo": 22,
+    "stemEn": "The necessary conditions for total internal reflection are\n\n(A) Light must travel from denser to rarer medium.\n\n(B) The angle of incidence in the denser medium must be less than the critical angle for the two media.\n\n(C) Light must travel from rarer to denser medium.\n\n(D)The angle of incidence in the denser medium must be greater than the critical angle for the two media.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (B) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q23",
+    "sourceQuestionNo": 23,
+    "stemEn": "The mass defect ( $ \\Delta M $) for a nucleus of mass number $ (A) $, atomic number $ (Z) $ and mass $ (M) $ is given b",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\Delta M=[Zm_{p}+(Z-A)m_{n}]-M"
+     },
+     {
+      "id": "B",
+      "text": "\\ \\Delta M=[Zm_{p}+(A-Z)m_{n}]+M"
+     },
+     {
+      "id": "C",
+      "text": "\\Delta M=[Zm_{p}+(A-Z)m_{e}]-M"
+     },
+     {
+      "id": "D",
+      "text": "\\ \\Delta M=[Zm_{p}+(A-Z)m_{n}]-M"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     15
+    ],
+    "assets": []
+   },
+   {
+    "id": "q24",
+    "sourceQuestionNo": 24,
+    "stemEn": "Arrange the following electromagnetic waves in decreasing order of their frequencies.\n\n(A) FM radio waves\n\n(B) UV rays\n\n(C) Gamma rays\n\n(D) X-rays",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B), (C), (D)"
+     },
+     {
+      "id": "B",
+      "text": "(C), (D), (B), (A)"
+     },
+     {
+      "id": "C",
+      "text": "(B), (A), (D), (C)"
+     },
+     {
+      "id": "D",
+      "text": "(C), (B), (D), (A)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     16
+    ],
+    "assets": []
+   },
+   {
+    "id": "q25",
+    "sourceQuestionNo": 25,
+    "stemEn": "An electron moves with a velocity of 1200 m s $ ^{-1} $ in a magnetic field of 0.4 T at an angle of $ 30^{\\circ} $.\n\nWhat will be the approximate radius of its path?\n\n(lake $ \\frac{1}{m} $ of electron = 1.76 $ \\times $ 10 $ ^{11} $ C kg $ ^{-1} $)\n$ 1.9 \\times 10^{-8} \\, m $\n$ 2.8.6 \\times 10^{-9} \\, m $\n$ 3.4.4 \\times 10^{-10} \\, m $\n$ 4.1.5 \\times 10^{-11} \\, m $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q26",
+    "sourceQuestionNo": 26,
+    "stemEn": "In a step-down transformer, 22 kV is converted into 220 V. The number of turns in the primary coil is 60000. The number of turns in the secondary coil will be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "60000"
+     },
+     {
+      "id": "B",
+      "text": "6000"
+     },
+     {
+      "id": "C",
+      "text": "600"
+     },
+     {
+      "id": "D",
+      "text": "60"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     17
+    ],
+    "assets": []
+   },
+   {
+    "id": "q27",
+    "sourceQuestionNo": 27,
+    "stemEn": "A parallel beam of monochromatic light of wavelength 900 nm passes through a long slit of width 0.4 mm.\n\nThe angular divergence in which most of the light is diffracted, is:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 8.9 \\times 10^{-3} $ rad"
+     },
+     {
+      "id": "B",
+      "text": "7.2 $ \\times $ 10 $ ^{-3} $ rad"
+     },
+     {
+      "id": "C",
+      "text": "3.6 $ \\times $ 10 $ ^{-3} $ rad"
+     },
+     {
+      "id": "D",
+      "text": "4.5 $ \\times 10^{-3} $ rad"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   },
+   {
+    "id": "q28",
+    "sourceQuestionNo": 28,
+    "stemEn": "The resistivity of a conductor in which a current density of $ 3.5 \\, A \\, m^{-2} $ is found to exist on applying an electric field of $ 28 \\, V \\, m^{-1} $ will be:",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 0.125 \\, \\Omega \\, m $"
+     },
+     {
+      "id": "B",
+      "text": "$ 4 \\, \\Omega \\, m $"
+     },
+     {
+      "id": "C",
+      "text": "$ 8 \\, \\Omega \\, m $"
+     },
+     {
+      "id": "D",
+      "text": "$ 98 \\, \\Omega \\, m $"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     18
+    ],
+    "assets": []
+   },
+   {
+    "id": "q29",
+    "sourceQuestionNo": 29,
+    "stemEn": "The frequency of revolution of an electron revolving in a circular path in a magnetic field of $ 7.8 \\times 10^{-4} $ T will be\n\n(Take $ e = -1.6 \\times 10^{-19} $ C, $ m_{e} = 9.1 \\times 10^{-31} $ kg, $ \\pi = \\frac{22}{7} $)\n\n(Take $ e = -1.6 \\times 10^{-19} $ C, $ m_e = 9.1 \\times 10^{-31} $ kg, $ \\pi = \\frac{22}{7} $)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "42 MHz"
+     },
+     {
+      "id": "B",
+      "text": "21.8 MHz"
+     },
+     {
+      "id": "C",
+      "text": "220 MHz"
+     },
+     {
+      "id": "D",
+      "text": "46 MHz"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     19
+    ],
+    "assets": []
+   },
+   {
+    "id": "q30",
+    "sourceQuestionNo": 30,
+    "stemEn": "Consider three long straight parallel wires as shown in the figure. Length of wire B is 25 cm. Choose the correct options\n\n(A) Net force experienced by wire B is $ 2 \\times 10^{-4} $ N towards left\n\n(B) Magnitude of repulsion force by wire A on B is $ 5 \\times 10^{-4} $ N\n\n(C) Magnitude of repulsion force by wire C on B is $ 2 \\times 10^{-4} $ N\n\n(D) Net force experienced by wire B is 2 $ \\times $ 10 $ ^{-4} $ N towards right",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     20
+    ],
+    "assets": [
+     {
+      "id": "q30-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2025-05-21-shift-2/q30-figure-1.jpg",
+      "page": 20,
+      "alt": "Figure for question 30"
+     }
+    ]
+   },
+   {
+    "id": "q31",
+    "sourceQuestionNo": 31,
+    "stemEn": "When a semiconductor is doped with a donor impurity, the number of",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "the electrons and holes decrease"
+     },
+     {
+      "id": "B",
+      "text": "the electrons and holes increase"
+     },
+     {
+      "id": "C",
+      "text": "the holes decrease and the electrons increase"
+     },
+     {
+      "id": "D",
+      "text": "the holes increase and the electrons decrease"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": []
+   },
+   {
+    "id": "q32",
+    "sourceQuestionNo": 32,
+    "stemEn": "The coil of a moving coil galvanometer is wound over a metallic frame",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "to increase moment of inertia"
+     },
+     {
+      "id": "B",
+      "text": "to provide electromagnetic damping"
+     },
+     {
+      "id": "C",
+      "text": "to increase its sensitivity"
+     },
+     {
+      "id": "D",
+      "text": "to reduce hysteresis loss"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     21
+    ],
+    "assets": []
+   },
+   {
+    "id": "q33",
+    "sourceQuestionNo": 33,
+    "stemEn": "A system has two charges, $ q_A = 5 \\times 10^{-7} $ C and $ q_B = -5 \\times 10^{-7} $ C, located at points $ A : (0, 0, -10\\ \\text{cm}) $ and $ B : (0, 0, +10\\ \\text{cm}) $, respectively. Which of the following are true?\n\n(A) The electric field of dipole at point $ (0, 0, -15 \\, \\text{cm}) $ is $ 1.73 \\times 10^6 \\, \\text{NC}^{-1} $\n\n(B) Electric field intensity is zero at origin $ (0, 0, 0) $\n\n(C) dipole moment $ (p) = 5 \\times 10^{-8} \\, \\text{C} \\cdot \\text{m} $\n\n(D) direction of the dipole moment is along the negative z-axis",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A) and (B) only"
+     },
+     {
+      "id": "C",
+      "text": "(A) and (C) only"
+     },
+     {
+      "id": "D",
+      "text": "(A), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     22
+    ],
+    "assets": []
+   },
+   {
+    "id": "q34",
+    "sourceQuestionNo": 34,
+    "stemEn": "For which pair among the following, the refractive index will have the minimum and maximum value, respectively?",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Vacuum, diamond"
+     },
+     {
+      "id": "B",
+      "text": "Air, glass"
+     },
+     {
+      "id": "C",
+      "text": "Water, diamond"
+     },
+     {
+      "id": "D",
+      "text": "Crown glass, flint glass (dense)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": []
+   },
+   {
+    "id": "q35",
+    "sourceQuestionNo": 35,
+    "stemEn": "Match List-I with List-II (Symbols have their usual meanings)",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "\\ (\\mathrm{A})-(\\mathrm{IV}),(\\mathrm{B})-(\\mathrm{I}),(\\mathrm{C})-(\\mathrm{II}),(\\mathrm{D})-(\\mathrm{III})"
+     },
+     {
+      "id": "B",
+      "text": "\\ (\\mathbf{A})-(\\mathbf{I}),(\\mathbf{B})-(\\mathbf{II}),(\\mathbf{C})-(\\mathbf{III}),(\\mathbf{D})-(\\mathbf{IV})"
+     },
+     {
+      "id": "C",
+      "text": "(\\mathbf{A})-(\\mathbf{II}),(\\mathbf{B})-(\\mathbf{III}),(\\mathbf{C})-(\\mathbf{IV}),(\\mathbf{D})-(\\mathbf{I})"
+     },
+     {
+      "id": "D",
+      "text": "\\ (\\mathrm{A})-(\\mathrm{III}),(\\mathrm{B})-(\\mathrm{IV}),(\\mathrm{C})-(\\mathrm{I}),(\\mathrm{D})-(\\mathrm{II})"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     23
+    ],
+    "assets": [
+     {
+      "id": "q35-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2025-05-21-shift-2/q35-table-1.jpg",
+      "page": 23,
+      "alt": "Table for question 35"
+     }
+    ]
+   },
+   {
+    "id": "q36",
+    "sourceQuestionNo": 36,
+    "stemEn": "The energy of a Hydrogen atom in its first excited state is\n\n1. -3.4 eV\n\n2.13.6 eV\n\n4. -13.6 eV",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     24
+    ],
+    "assets": []
+   },
+   {
+    "id": "q37",
+    "sourceQuestionNo": 37,
+    "stemEn": "Arrange the following steps (A, B, C and D) in proper sequence to determine the index correction in the given arrangement.\n\n(A) The difference between the two gives the correction to be applied to the observed distance.\n\n(B) The positions of the uprights are read on the scale. Their difference gives the observed distance between tip of the pin and the pole of the mirror.\n\n(C) A thin straight index needle OP is placed so that its one end O touches the tip of the pin and the other end P touches the pole of the mirror.\n\n(D) Length of the needle OP is measured by placing it on the scale which is the actual distance between the points in question.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B), (C), (D)"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B), (D), (C)"
+     },
+     {
+      "id": "C",
+      "text": "(B), (A), (D), (C)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C), (D), (A)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     24,
+     25
+    ],
+    "assets": [
+     {
+      "id": "q37-figure-1",
+      "kind": "figure",
+      "path": "/local-papers/assets/physics-2025-05-21-shift-2/q37-figure-1.jpg",
+      "page": 25,
+      "alt": "Figure for question 37"
+     }
+    ]
+   },
+   {
+    "id": "q38",
+    "sourceQuestionNo": 38,
+    "stemEn": "The force between two small charged spheres having charges of $ 2 \\times 10^{-7} $ C and $ 3 \\times 10^{-7} $ C, respectively, placed 30 cm apart in air would be.\n\nThe force between two small charged spheres having charges of $ 2 \\times 10^{-7} $ C and $ 3 \\times 10^{-7} $ C, respectively, placed 30 cm apart in air would be.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$ 2 \\times 10^{-3} $ N"
+     },
+     {
+      "id": "B",
+      "text": "$ 6 \\times 10^{-7} $ N"
+     },
+     {
+      "id": "C",
+      "text": "$ 6 \\times 10^{-3} $ N"
+     },
+     {
+      "id": "D",
+      "text": "$ 5 \\times 10^{-7} $ N"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q39",
+    "sourceQuestionNo": 39,
+    "stemEn": "Two capacitors of capacitances $ 2 \\, \\mu\\text{F} $ and $ 4 \\, \\mu\\text{F} $ are connected in parallel. A charge of $ 6 \\, \\mu\\text{C} $ is given to the which gets shared. The ratio of the charges on the two capacitors, respectively will be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1:1"
+     },
+     {
+      "id": "B",
+      "text": "2:3"
+     },
+     {
+      "id": "C",
+      "text": "1:2"
+     },
+     {
+      "id": "D",
+      "text": "2:1 D.4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     26
+    ],
+    "assets": []
+   },
+   {
+    "id": "q40",
+    "sourceQuestionNo": 40,
+    "stemEn": "A semicircular arc of radius R is charged uniformly and its linear charge density is $ \\lambda $. What will the ele",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "$$ \\frac{\\lambda}{2\\pi\\varepsilon_{0}R} $$"
+     },
+     {
+      "id": "B",
+      "text": "$$ \\frac{\\lambda}{4\\pi\\varepsilon_{0}R} $$"
+     },
+     {
+      "id": "C",
+      "text": "$$ \\frac{\\lambda}{2\\pi^{2}\\varepsilon_{0}R} $$"
+     },
+     {
+      "id": "D",
+      "text": "$$ \\frac{\\lambda2\\pi R}{\\varepsilon_{0}} $$"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     27
+    ],
+    "assets": []
+   },
+   {
+    "id": "q41",
+    "sourceQuestionNo": 41,
+    "stemEn": "Which of the following statements are true?\n\n(A) The potential energy for a system of two negative point charges is negative\n\n(B) Electrostatic force is a conservative force\n\n(C) Negative potential energy between two charges implies that the force between them is repulsive\n\n(D) Electrostatic potential energy is a scalar quantity",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "C",
+      "text": "(B), (C) and (D) only"
+     },
+     {
+      "id": "D",
+      "text": "(A) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": []
+   },
+   {
+    "id": "q42",
+    "sourceQuestionNo": 42,
+    "stemEn": "Match List-I with List-II",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
+     },
+     {
+      "id": "B",
+      "text": "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"
+     },
+     {
+      "id": "C",
+      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+     },
+     {
+      "id": "D",
+      "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     28
+    ],
+    "assets": [
+     {
+      "id": "q42-table-1",
+      "kind": "table",
+      "path": "/local-papers/assets/physics-2025-05-21-shift-2/q42-table-1.jpg",
+      "page": 28,
+      "alt": "Table for question 42"
+     }
+    ]
+   },
+   {
+    "id": "q43",
+    "sourceQuestionNo": 43,
+    "stemEn": "A planoconvex lens has the radius of curvature of its curved surface 50 cm and the refractive index of its material is 1.5.\n\nIts focal length will be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": ") 1 m"
+     },
+     {
+      "id": "B",
+      "text": ") 0.5 m"
+     },
+     {
+      "id": "C",
+      "text": ") 2 m"
+     },
+     {
+      "id": "D",
+      "text": ") 0.25 m"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     29
+    ],
+    "assets": []
+   },
+   {
+    "id": "q44",
+    "sourceQuestionNo": 44,
+    "stemEn": "A 1.0 m long metallic rod is rotated with an angular frequency of 500 rad s $ ^{-1} $ with one end other end at the circumference of a circular metallic ring of radius 1 m about an axis passing perpendicular to the plane of the ring. A constant and uniform magnetic field of 0.6 T para everywhere. The emf developed between the center and the ring is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "300 V"
+     },
+     {
+      "id": "B",
+      "text": "375 V"
+     },
+     {
+      "id": "C",
+      "text": "225 V"
+     },
+     {
+      "id": "D",
+      "text": "150 V"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q45",
+    "sourceQuestionNo": 45,
+    "stemEn": "A metallic plate exposed to white light emits electrons. The colour of light for which the stopping potential will be minimum is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "Indigo"
+     },
+     {
+      "id": "B",
+      "text": "Orange"
+     },
+     {
+      "id": "C",
+      "text": "Green"
+     },
+     {
+      "id": "D",
+      "text": "Blue"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     30
+    ],
+    "assets": []
+   },
+   {
+    "id": "q46",
+    "sourceQuestionNo": 46,
+    "stemEn": "Identify the correct statements among the following.\n\n(A) The number of electrons $ (n_{e}) $ is more than the number of holes $ (n_{h}) $ in intrinsic conductors.\n\n(B) Semiconductors are elements (Si, Ge) type as well as compounds (GaAs, CdS).\n\nC) The number of charge carriers can be changed by 'doping' of a suitable impurity in pure semiconductor (D) Holes are essentially electron vacancies in a valence band.",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "(A), (B) and (D) only"
+     },
+     {
+      "id": "B",
+      "text": "(B) and (C) only"
+     },
+     {
+      "id": "C",
+      "text": "(A), (B), (C) and (D)"
+     },
+     {
+      "id": "D",
+      "text": "(B), (C) and (D) only"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": []
+   },
+   {
+    "id": "q47",
+    "sourceQuestionNo": 47,
+    "stemEn": "A copper wire of area of cross-section $ 2 \\times 10^{-6} $ m $ ^2 $ and electron density $ 10^{28} $ m $ ^{-3} $ carries a current of 1.6 A. Time taken by an electron to drift from one end of a 1.0 m long wire to its other end will be\n\n$ 1.2 \\times 10^{3} \\, s $\n\n$ 2.10^{3} \\, s $\n\n$ 3.2 \\times 10^{-3} \\, s $\n\n$ 4.1 \\times 10^{-3} \\, s $",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "1"
+     },
+     {
+      "id": "B",
+      "text": "2"
+     },
+     {
+      "id": "C",
+      "text": "3"
+     },
+     {
+      "id": "D",
+      "text": "4"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     31
+    ],
+    "assets": []
+   },
+   {
+    "id": "q48",
+    "sourceQuestionNo": 48,
+    "stemEn": "In visible light, orange differs from violet as they have",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "same frequencies and different wavelengths"
+     },
+     {
+      "id": "B",
+      "text": "same frequencies and same wavelengths"
+     },
+     {
+      "id": "C",
+      "text": "different frequencies and different wavelengths"
+     },
+     {
+      "id": "D",
+      "text": "different frequencies and same wavelengths"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     32
+    ],
+    "assets": []
+   },
+   {
+    "id": "q49",
+    "sourceQuestionNo": 49,
+    "stemEn": "A resistor connected to a battery is heated due to the current. The quantity which does not change is",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "drift speed of the charge carriers"
+     },
+     {
+      "id": "B",
+      "text": "number of free electrons"
+     },
+     {
+      "id": "C",
+      "text": "conductance"
+     },
+     {
+      "id": "D",
+      "text": "resistivity"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   },
+   {
+    "id": "q50",
+    "sourceQuestionNo": 50,
+    "stemEn": "The susceptibility of magnesium at 27°C is $ 1.2 \\times 10^{-5} $.\n\nIts susceptibility at 200 K will be",
+    "optionsEn": [
+     {
+      "id": "A",
+      "text": "8\\times10^{-6}"
+     },
+     {
+      "id": "B",
+      "text": "1.8\\times10^{-5}"
+     },
+     {
+      "id": "C",
+      "text": "4.43\\times10^{-5}"
+     },
+     {
+      "id": "D",
+      "text": "1.2\\times10^{-5}"
+     }
+    ],
+    "optionsAreImages": false,
+    "correctAnswer": null,
+    "explanationEn": null,
+    "passageId": null,
+    "reviewStatus": "keyed",
+    "reviewFlags": [],
+    "sourcePages": [
+     33
+    ],
+    "assets": []
+   }
+  ]
+ }
+}

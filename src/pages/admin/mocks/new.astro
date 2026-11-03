@@ -1,0 +1,26 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import MockForm from "../../../components/MockForm.astro";
+import { all } from "../../../lib/db";
+import { can } from "../../../lib/auth/admin";
+
+const admin = Astro.locals.admin!;
+const [subjects, questions] = await Promise.all([
+  all<{ id: number; name: string }>("SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name"),
+  all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
+    `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
+     FROM questions q JOIN subjects s ON s.id = q.subject_id
+     WHERE q.deleted_at IS NULL AND q.status = 'published'
+     ORDER BY s.name, q.id`,
+  ),
+]);
+const canPublish = can(admin.role, "mocks.publish");
+---
+
+<AdminLayout title="New mock" active="mocks">
+  <div class="mb-6">
+    <h1 class="text-2xl font-black tracking-tight">New mock test</h1>
+    <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Build a paper from published questions. Nothing is visible to students until status is published.</p>
+  </div>
+  <MockForm subjects={subjects} questions={questions} selected={{}} canPublish={canPublish} />
+</AdminLayout>

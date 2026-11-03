@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { safeNext } from "../lib/http";
+import { isGoogleConfigured } from "../lib/auth/oauth";
+
+const next = safeNext(Astro.url.searchParams.get("next"), "/dashboard");
+if (Astro.locals.user) return Astro.redirect(next, 303);
+const googleReady = isGoogleConfigured();
+---
+
+<BaseLayout title="Create a free account — CUET Free Mock Test" noindex>
+  <section class="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_420px] lg:py-20">
+    <div class="max-w-lg">
+      <h1 class="text-3xl font-black tracking-tight sm:text-4xl">Save every attempt. Free forever.</h1>
+      <p class="mt-4 text-neutral-600 dark:text-neutral-300">
+        Create an account to keep your mock history, review weak topics and enter the first-attempt leaderboard.
+      </p>
+      <ul class="mt-6 space-y-2 text-sm text-neutral-600 dark:text-neutral-300">
+        <li>• Resume attempts after a refresh or network drop</li>
+        <li>• Solutions and time analysis for every question</li>
+        <li>• No payment, no coaching upsell</li>
+      </ul>
+    </div>
+
+    <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+      <p id="form-error" class="mb-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+      <form id="signup-form" class="space-y-4">
+        <label class="block text-sm font-medium">
+          Username <span class="font-normal text-neutral-500 dark:text-neutral-400">(optional)</span>
+          <input name="username" type="text" minlength="3" maxlength="30" pattern="[A-Za-z0-9_]{3,30}" autocomplete="username" class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:border-neutral-700 dark:bg-neutral-950 dark:focus:ring-brand-900" />
+        </label>
+        <label class="block text-sm font-medium">
+          Email
+          <input name="email" type="email" autocomplete="email" required class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:border-neutral-700 dark:bg-neutral-950 dark:focus:ring-brand-900" />
+        </label>
+        <label class="block text-sm font-medium">
+          Password
+          <input name="password" type="password" minlength="8" autocomplete="new-password" required class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:border-neutral-700 dark:bg-neutral-950 dark:focus:ring-brand-900" />
+          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">At least 8 characters.</span>
+        </label>
+        <button class="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">
+          Create free account
+        </button>
+      </form>
+
+      {googleReady ? (
+        <>
+          <div class="my-5 flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
+            <span class="h-px flex-1 bg-neutral-200 dark:bg-neutral-800"></span>
+            or
+            <span class="h-px flex-1 bg-neutral-200 dark:bg-neutral-800"></span>
+          </div>
+
+          <a
+            href={`/api/auth/google?next=${encodeURIComponent(next)}`}
+            class="flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold text-neutral-800 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-800"
+          >
+            Continue with Google
+          </a>
+        </>
+      ) : null}
+
+      <p class="mt-4 text-center text-sm text-neutral-500 dark:text-neutral-400">
+        Already have an account? <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/login?next=${encodeURIComponent(next)}`}>Log in</a>
+      </p>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ next }} >
+    const form = document.getElementById("signup-form");
+    const errorBox = document.getElementById("form-error");
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector("button[type=submit]");
+      button.disabled = true;
+      errorBox.classList.add("hidden");
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.next = next;
+      try {
+        const response = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Signup failed.");
+        location.href = result.redirect || "/dashboard";
+      } catch (error) {
+        errorBox.textContent = error.message;
+        errorBox.classList.remove("hidden");
+        button.disabled = false;
+      }
+    });
+  </script>
+</BaseLayout>

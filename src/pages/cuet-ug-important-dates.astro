@@ -1,0 +1,187 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { renderRichText } from "../lib/content";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  formatVerified,
+  getExamInfo,
+  getPageSeo,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/cuet-ug-important-dates";
+const DEFAULT_TITLE = "CUET UG Important Dates — Verified Timeline and Plan";
+const DEFAULT_DESCRIPTION =
+  "Track CUET UG important dates from verified official sources, and build a study timeline around registration, admit card, exam day and result.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "When will CUET UG registration open?",
+    answer:
+      "NTA announces the registration window in its official notification and information bulletin. This page shows a date only after it has been verified against that source; it does not publish rumoured dates.",
+  },
+  {
+    question: "Where should I check for date changes?",
+    answer:
+      "Always check the official NTA CUET portal first. Dates can move because of corrections, centre changes or administrative reasons, and third-party calendars can lag behind.",
+  },
+  {
+    question: "Does this site send exam alerts?",
+    answer:
+      "No. There is no email or SMS alert service at launch. Any active site-wide notice appears in the announcement bar, but the official portal remains the primary source.",
+  },
+  {
+    question: "How should I plan my preparation around the exam date?",
+    answer:
+      "Work backwards: keep the final two weeks for full-length timed papers and revision, the middle weeks for subject revision and section tests, and the first weeks for diagnosing weak areas. Leave a buffer for form correction and admit-card tasks.",
+  },
+  {
+    question: "What happens after the exam?",
+    answer:
+      "NTA typically publishes a provisional answer key and a window for objections before the final result. The exact sequence and dates are announced for each session; use the official portal rather than a fixed assumption.",
+  },
+  {
+    question: "Are these the official CUET UG dates?",
+    answer:
+      "Only the entries marked as verified and linked to an official source are official summaries. Everything else on this page is planning guidance, not a date announcement.",
+  },
+];
+
+const seo = await getPageSeo(PATH);
+const info = (await getExamInfo(["important-dates"]))["important-dates"];
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const verified = formatVerified(info?.last_verified);
+const noindex = (seo?.noindex ?? 0) === 1;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "CUET UG important dates", path: PATH },
+  ]),
+  articleJsonLd({
+    site,
+    title,
+    description,
+    path: PATH,
+    updated: seo?.updated_at ?? info?.last_verified ?? null,
+  }),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const stages = [
+  { name: "Notification and information bulletin", detail: "The official document that sets the rules, syllabus scope and schedule." },
+  { name: "Online registration", detail: "Create the application, choose programmes, subjects and exam cities, and pay the fee." },
+  { name: "Correction window", detail: "A limited opportunity to fix permitted fields. Not every field can be edited." },
+  { name: "Admit card", detail: "Download the card, check the centre address and follow the reporting instructions." },
+  { name: "Exam day", detail: "Carry the required documents, reach the centre early and follow the on-screen instructions." },
+  { name: "Answer key and objections", detail: "Review the provisional key within the published window if objections are invited." },
+  { name: "Result and scorecard", detail: "Download the scorecard from the official portal and check the university admission process separately." },
+];
+
+const plan = [
+  { when: "12+ weeks before", focus: "Diagnose with one full paper, read the official syllabus, and fix the subject plan." },
+  { when: "8–12 weeks before", focus: "Revise weak units, take section tests and build a vocabulary or formula routine." },
+  { when: "4–8 weeks before", focus: "One full-length paper each week, followed by a written error review." },
+  { when: "2–4 weeks before", focus: "Two papers a week, tighter timing and a final pass over recurring mistakes." },
+  { when: "Final week", focus: "Light revision, sleep schedule, documents and centre logistics. No new topics." },
+];
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Important dates"
+    title="Plan around verified dates, not forwarded screenshots"
+    intro="Exam calendars change. This page shows official dates only after they are checked against the NTA source, and gives you a practical timeline you can use while the next notification is still pending."
+    updated={verified}
+  />
+
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <section class:list={["rounded-2xl border p-5", info?.value ? "border-brand-200 bg-brand-50 dark:border-brand-800 dark:bg-brand-950/40" : "border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950/30"]}>
+      <h2 class:list={["font-bold", info?.value ? "text-brand-900 dark:text-brand-200" : "text-amber-900 dark:text-amber-200"]}>
+        {info?.value ? "Verified official timeline" : "No verified dates are published on this page yet"}
+      </h2>
+      {info?.value ? (
+        <div class="mt-2 whitespace-pre-wrap text-sm leading-7 text-brand-900 dark:text-brand-100">{info.value}</div>
+      ) : (
+        <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
+          We do not fill this space with guessed dates. When NTA publishes the notification, an editor will add the verified schedule with a source link and review date. Until then, use the official portal and the planning timeline below.
+        </p>
+      )}
+      <div class="mt-3 flex flex-wrap gap-2 text-sm">
+        <a class="rounded-lg bg-neutral-900 px-3 py-2 font-bold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900" href={info?.source_url || "https://cuet.nta.nic.in/"} rel="noopener noreferrer" target="_blank">
+          {info?.source_url ? "Official date source" : "Check the NTA portal"}
+        </a>
+        {verified ? <span class="rounded-lg border border-current px-3 py-2 text-xs font-semibold">Last reviewed {verified}</span> : null}
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold tracking-tight">The stages every session goes through</h2>
+      <p class="mt-2 max-w-3xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        These are process stages, not dates. Use them as a checklist so that a form correction or document task never surprises you.
+      </p>
+      <ol class="mt-5 space-y-3">
+        {stages.map((stage, index) => (
+          <li class="flex gap-4 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-100 text-sm font-black text-brand-800 dark:bg-brand-900/50 dark:text-brand-200">
+              {index + 1}
+            </span>
+            <div>
+              <p class="font-bold">{stage.name}</p>
+              <p class="mt-1 text-sm leading-6 text-neutral-600 dark:text-neutral-400">{stage.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">A plan that works before the date is announced</h2>
+      <p class="mt-2 max-w-3xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        A fixed 12-week rhythm is more useful than waiting for a notification. Shift the weeks once the official date is known.
+      </p>
+      <div class="mt-5 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+        {plan.map((row) => (
+          <div class="grid gap-1 border-b border-neutral-100 px-4 py-4 last:border-0 sm:grid-cols-[11rem_1fr] sm:gap-4 dark:border-neutral-800">
+            <p class="text-sm font-bold text-brand-700 dark:text-brand-300">{row.when}</p>
+            <p class="text-sm leading-6 text-neutral-600 dark:text-neutral-400">{row.focus}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="text-xl font-bold">Date-checking rules</h2>
+      <ul class="mt-3 space-y-3 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        <li><strong class="text-neutral-900 dark:text-neutral-100">One primary source.</strong> The official NTA CUET portal beats every WhatsApp group, YouTube thumbnail and coaching calendar.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Screenshot the bulletin.</strong> Save the PDF you relied on, so you can compare if a correction notice appears.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Do not wait for the last day.</strong> Registration portals slow down near the deadline, and payment failures take time to resolve.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Check the university too.</strong> Admission and counselling dates are separate from the NTA exam schedule.</li>
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Start the plan today</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">A diagnostic paper takes less time than another hour of scrolling for dates.</p>
+        </div>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Take a mock test</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

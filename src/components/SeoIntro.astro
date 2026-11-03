@@ -1,0 +1,19 @@
+---
+import { renderRichText } from "../lib/content";
+
+interface Props {
+  html?: string | null;
+  width?: "prose" | "wide";
+}
+
+const { html, width = "prose" } = Astro.props;
+---
+
+{html ? (
+  <div class:list={["mx-auto px-4 pt-6 sm:px-6", width === "wide" ? "max-w-5xl" : "max-w-3xl"]}>
+    <div
+      class="rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100"
+      set:html={renderRichText(html)}
+    />
+  </div>
+) : null}

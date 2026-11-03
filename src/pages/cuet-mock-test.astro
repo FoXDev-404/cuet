@@ -1,0 +1,238 @@
+---
+import { siteUrl } from "../lib/site-url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { all } from "../lib/db";
+import { getLocalSubjectSummary } from "../lib/local-papers";
+import { parseMarkingScheme, renderRichText } from "../lib/content";
+import {
+  breadcrumbJsonLd,
+  getPageSeo,
+  itemListJsonLd,
+  parseFaq,
+  type FaqItem,
+} from "../lib/seo";
+
+const PATH = "/cuet-mock-test";
+const DEFAULT_TITLE = "CUET Mock Test Practice — Subject-wise Free Papers";
+const DEFAULT_DESCRIPTION =
+  "Free CUET mock test practice by subject. Take timed papers, review server-scored solutions, and find the topics that need another revision.";
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: "What is the difference between a full mock and subject practice?",
+    answer:
+      "A full mock mixes the sections of a complete paper and tests your stamina across subjects. Subject practice focuses on one area so you can drill a weak unit without spending a full exam slot.",
+  },
+  {
+    question: "Do I need an account to practise?",
+    answer:
+      "No. You can start as a guest and the attempt is tied to a cookie in the same browser. Create an account afterwards to keep the history permanently and enter the first-attempt leaderboard.",
+  },
+  {
+    question: "How often should I take a timed paper?",
+    answer:
+      "One full-length paper a week is a reasonable baseline, with shorter section tests in between. Increase frequency only if you can still complete the error review after each paper.",
+  },
+  {
+    question: "Should I practise weak subjects or strong subjects first?",
+    answer:
+      "Diagnose first, then spend more time on weak subjects while keeping a maintenance schedule for strong ones. A strong subject can lose speed if it is ignored for a month.",
+  },
+  {
+    question: "Are the solutions free?",
+    answer:
+      "Yes. Every submitted attempt opens a result summary and a question-by-question solution page. Answers stay hidden until you submit, so the first attempt is a genuine test.",
+  },
+  {
+    question: "Why does a subject show zero papers?",
+    answer:
+      "The question bank is built paper by paper. A subject page appears as soon as it is active, but the paper count stays at zero until an editor publishes content for it. Those empty pages are kept out of search results.",
+  },
+];
+
+const subjects = await all<{
+  id: number;
+  name: string;
+  slug: string;
+  type: string;
+  question_count: number;
+  mock_count: number;
+}>(
+  `SELECT s.id, s.name, s.slug, s.type,
+          (SELECT COUNT(DISTINCT q.id) FROM questions q
+            JOIN mock_questions_current mq ON mq.question_id = q.id
+            JOIN mock_tests m ON m.id = mq.mock_id
+            WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL
+              AND m.status = 'published' AND m.deleted_at IS NULL
+              AND m.practice_paper_slug IS NULL) AS question_count,
+          (SELECT COUNT(DISTINCT m.id) FROM mock_tests m
+            WHERE m.status = 'published' AND m.deleted_at IS NULL
+              AND m.practice_paper_slug IS NULL
+              AND (m.subject_id = s.id OR EXISTS (
+                SELECT 1 FROM mock_questions_current mq JOIN questions q2 ON q2.id = mq.question_id
+                WHERE mq.mock_id = m.id AND q2.subject_id = s.id
+              ))) AS mock_count
+   FROM subjects s
+   JOIN exams e ON e.id = s.exam_id
+   WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1
+   ORDER BY s.type, s.name`,
+);
+
+const papers = await all<{
+  id: number;
+  title: string;
+  slug: string;
+  type: string;
+  duration_min: number;
+  total_marks: number;
+  marking_scheme: string;
+  question_count: number;
+  subject_name: string | null;
+}>(
+  `SELECT m.id, m.title, m.slug, m.type, m.duration_min, m.total_marks, m.marking_scheme,
+          s.name AS subject_name,
+          (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count
+   FROM mock_tests m
+   LEFT JOIN subjects s ON s.id = m.subject_id
+   WHERE m.status = 'published' AND m.deleted_at IS NULL AND m.type IN ('subject', 'chapter')
+   ORDER BY m.published_at DESC, m.id DESC
+   LIMIT 24`,
+);
+
+const seo = await getPageSeo(PATH);
+const subjectCards = subjects.map((subject) => {
+  const local = getLocalSubjectSummary(subject.slug);
+  return {
+    ...subject,
+    question_count: subject.question_count + (local?.questionCount ?? 0),
+    mock_count: subject.mock_count + (local?.paperCount ?? 0),
+  };
+});
+const title = seo?.title || DEFAULT_TITLE;
+const description = seo?.description || DEFAULT_DESCRIPTION;
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const noindex = (seo?.noindex ?? 0) === 1 || subjects.length === 0;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "CUET mock test practice", path: PATH },
+  ]),
+  itemListJsonLd(
+    site,
+    subjectCards.map((subject) => ({ name: `${subject.name} practice`, path: `/cuet-mock-test/${subject.slug}` })),
+  ),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow="Practice"
+    title="Practise one subject without burning a full exam slot"
+    intro="Subject practice is for the weeks between full mocks: pick one area, take a short timed paper, and review the errors before moving on. Every paper uses the same server scoring and solution pages as the full mock library."
+  />
+
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <section>
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight">Choose a subject</h2>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Each page lists the available papers and the size of the practice library.</p>
+        </div>
+        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-mock-test">Full mock tests →</a>
+      </div>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {subjectCards.map((subject) => (
+          <a
+            class="group flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-brand-700"
+            href={`/cuet-mock-test/${subject.slug}`}
+          >
+            <div class="flex items-center justify-between gap-3">
+              <span class="font-bold group-hover:text-brand-700 dark:group-hover:text-brand-300">{subject.name}</span>
+              <span class="rounded-full bg-neutral-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">{subject.type}</span>
+            </div>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+              {subject.question_count} question{subject.question_count === 1 ? "" : "s"} available
+            </p>
+            <p class="mt-1 text-xs text-neutral-600 dark:text-neutral-400">
+              {subject.mock_count} paper{subject.mock_count === 1 ? "" : "s"} available
+            </p>
+            <span class="mt-4 text-sm font-semibold text-brand-700 dark:text-brand-300">Practise {subject.name} →</span>
+          </a>
+        ))}
+      </div>
+
+      {subjects.length === 0 ? (
+        <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 p-10 text-center text-sm text-neutral-600 dark:border-neutral-700 dark:text-neutral-400">
+          No subjects are active yet. Add them from the admin panel and publish a paper to open practice.
+        </div>
+      ) : null}
+    </section>
+
+    {papers.length > 0 ? (
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold tracking-tight">Subject and chapter papers</h2>
+        <div class="mt-5 grid gap-4 md:grid-cols-2">
+          {papers.map((paper) => {
+            const marking = parseMarkingScheme(paper.marking_scheme);
+            return (
+              <article class="flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+                <div class="flex flex-wrap gap-2 text-xs">
+                  <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{paper.type}</span>
+                  {paper.subject_name ? <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{paper.subject_name}</span> : null}
+                </div>
+                <h3 class="mt-3 text-lg font-bold leading-snug">
+                  <a class="hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${paper.slug}`}>{paper.title}</a>
+                </h3>
+                <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+                  {paper.question_count} questions · {paper.duration_min} min · {paper.total_marks} marks · +{marking.correct}/{marking.wrong}
+                </p>
+                <a class="mt-4 inline-flex w-fit rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.slug}/instructions`}>
+                  Start paper
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    ) : null}
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold tracking-tight">A practice loop that actually moves the score</h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          { step: "Diagnose", body: "Take one mixed paper. Use the section table to rank subjects by accuracy, not by how confident you feel." },
+          { step: "Drill", body: "Pick the weakest subject and take a short timed paper. Review every wrong answer before starting another." },
+          { step: "Repeat", body: "Return to the same subject after three days. Spaced repetition beats a single long session." },
+          { step: "Re-test", body: "Take a full paper at the end of the cycle. If the weak section improved, keep the loop; if not, change the resource." },
+        ].map((item, index) => (
+          <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+            <p class="text-xs font-bold uppercase tracking-wide text-brand-700 dark:text-brand-300">{String(index + 1).padStart(2, "0")} · {item.step}</p>
+            <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">Not sure where to start?</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">Take the mixed starter paper first. The section analysis will tell you which subject page to open next.</p>
+        </div>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Browse all papers</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

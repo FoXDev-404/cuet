@@ -1,0 +1,157 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can } from "../../lib/auth/admin";
+import { listTrash, trashCounts, trashTables } from "../../lib/admin/trash";
+import { formatDateTime } from "../../lib/content";
+
+const admin = Astro.locals.admin!;
+if (!can(admin.role, "trash.manage")) return Astro.redirect("/admin", 303);
+
+const params = Astro.url.searchParams;
+const requestedTable = params.get("table") ?? "";
+const tables = trashTables();
+const selectedTable = tables.some((table) => table.name === requestedTable) ? requestedTable : "";
+const page = Math.max(Number(params.get("page") ?? 1) || 1, 1);
+const per = 50;
+
+const [counts, listing] = await Promise.all([
+  trashCounts(),
+  listTrash({ table: selectedTable || undefined, limit: per, offset: (page - 1) * per }),
+]);
+const totalPages = Math.max(Math.ceil(listing.total / per), 1);
+const totalTrash = Object.values(counts).reduce((sum, count) => sum + count, 0);
+---
+
+<AdminLayout title="Trash" active="trash">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Trash</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Soft-deleted rows across every content table. Restoring returns the row to its original place.
+        Purging is permanent, needs a typed confirmation, and is blocked while other rows reference it.
+      </p>
+    </div>
+    <div class="rounded-xl border border-neutral-200 bg-white px-4 py-3 text-right dark:border-neutral-800 dark:bg-neutral-900">
+      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Rows in trash</p>
+      <p class="text-2xl font-black tabular-nums">{totalTrash}</p>
+    </div>
+  </div>
+
+  <form method="get" class="mt-6 flex flex-wrap items-end gap-3 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+    <label class="text-xs font-semibold">
+      Table
+      <select class="mt-1 block h-10 min-w-56 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="table">
+        <option value="">All tables ({totalTrash})</option>
+        {tables.map((table) => (
+          <option value={table.name} selected={table.name === selectedTable}>{table.label} ({counts[table.name] ?? 0})</option>
+        ))}
+      </select>
+    </label>
+    <button class="h-10 rounded-lg bg-neutral-900 px-4 text-sm font-bold text-white dark:bg-white dark:text-neutral-900" type="submit">Filter</button>
+  </form>
+
+  <p id="trash-error" class="mt-4 hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
+  <p id="trash-success" class="mt-4 hidden rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200"></p>
+
+  {totalTrash === 0 ? (
+    <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-16 text-center dark:border-neutral-700 dark:bg-neutral-900">
+      <p class="text-lg font-bold">Trash is empty</p>
+      <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Deleted questions, mocks, passages, users and pages will appear here.</p>
+    </div>
+  ) : (
+    <div class="mt-6 overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[780px] text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <tr>
+              <th class="px-4 py-3">Record</th>
+              <th class="px-4 py-3">Table</th>
+              <th class="px-4 py-3">Deleted</th>
+              <th class="px-4 py-3 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+            {listing.rows.map((item) => (
+              <tr data-trash-row data-table={item.table} data-id={String(item.id)}>
+                <td class="max-w-md px-4 py-3">
+                  <p class="line-clamp-2 font-medium">{item.label}</p>
+                  <p class="mt-0.5 font-mono text-[11px] text-neutral-500 dark:text-neutral-400">#{String(item.id)}</p>
+                </td>
+                <td class="px-4 py-3">
+                  <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/admin/data/${item.table}`}>{item.tableLabel}</a>
+                </td>
+                <td class="px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(item.deletedAt) || item.deletedAt}</td>
+                <td class="whitespace-nowrap px-4 py-3 text-right">
+                  <button class="rounded-lg border border-neutral-300 px-2 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" type="button" data-restore>Restore</button>
+                  <button class="ml-1 rounded-lg border border-red-200 px-2 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/40" type="button" data-purge>Purge…</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {listing.rows.length === 0 ? (
+        <p class="px-4 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">No rows in this table view.</p>
+      ) : null}
+    </div>
+  )}
+
+  {totalPages > 1 ? (
+    <div class="mt-4 flex items-center justify-between text-sm">
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">Page {page} of {totalPages}</p>
+      <div class="flex gap-2">
+        {page > 1 ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`?${new URLSearchParams({ ...(selectedTable ? { table: selectedTable } : {}), page: String(page - 1) })}`}>Previous</a> : null}
+        {page < totalPages ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`?${new URLSearchParams({ ...(selectedTable ? { table: selectedTable } : {}), page: String(page + 1) })}`}>Next</a> : null}
+      </div>
+    </div>
+  ) : null}
+
+  <script>
+    const errorBox = document.getElementById("trash-error") as HTMLElement;
+    const successBox = document.getElementById("trash-success") as HTMLElement;
+
+    function message(box: HTMLElement, text: string) {
+      box.textContent = text;
+      box.classList.remove("hidden");
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-trash-row]").forEach((row) => {
+      const table = row.dataset.table!;
+      const id = row.dataset.id!;
+
+      row.querySelector("[data-restore]")?.addEventListener("click", async (event) => {
+        const button = event.currentTarget as HTMLButtonElement;
+        button.disabled = true;
+        const response = await fetch(`/api/admin/trash/${table}?id=${encodeURIComponent(id)}`, { method: "POST" });
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) {
+          message(errorBox, result.error || "Restore failed.");
+          button.disabled = false;
+          return;
+        }
+        row.remove();
+        message(successBox, `Restored ${table} #${id}.`);
+      });
+
+      row.querySelector("[data-purge]")?.addEventListener("click", async () => {
+        const typed = prompt(`PERMANENT DELETE.\nType the row id (${id}) to purge ${table} #${id}. This cannot be undone.`);
+        if (typed === null) return;
+        if (typed.trim() !== id) {
+          message(errorBox, "Confirmation did not match the row id. Nothing was purged.");
+          return;
+        }
+        const response = await fetch(
+          `/api/admin/trash/${table}?id=${encodeURIComponent(id)}&confirm=${encodeURIComponent(typed.trim())}`,
+          { method: "DELETE" },
+        );
+        const result = (await response.json()) as { error?: string };
+        if (!response.ok) {
+          message(errorBox, result.error || "Purge failed.");
+          return;
+        }
+        row.remove();
+        message(successBox, `Permanently removed ${table} #${id}.`);
+      });
+    });
+  </script>
+</AdminLayout>

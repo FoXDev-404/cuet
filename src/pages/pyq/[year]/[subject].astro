@@ -1,0 +1,169 @@
+---
+import { siteUrl } from "../../../lib/site-url";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import FaqSection from "../../../components/FaqSection.astro";
+import LocalPaperCard from "../../../components/LocalPaperCard.astro";
+import { first } from "../../../lib/db";
+import { getLocalPapersForYear } from "../../../lib/local-papers";
+import { listPyqPapers, pyqMarking } from "../../../lib/pyq";
+import { renderRichText } from "../../../lib/content";
+import {
+  breadcrumbJsonLd,
+  getPageSeo,
+  itemListJsonLd,
+  parseFaq,
+  type FaqItem,
+} from "../../../lib/seo";
+
+const year = Number(Astro.params.year);
+const subjectSlug = Astro.params.subject ?? "";
+if (!Number.isInteger(year) || year < 2000 || year > 2100) {
+  return new Response("Year not found", { status: 404 });
+}
+
+const dbSubject = await first<{ id: number; name: string; slug: string }>(
+  `SELECT s.id, s.name, s.slug FROM subjects s
+   JOIN exams e ON e.id = s.exam_id
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+  subjectSlug,
+);
+const localPapers = getLocalPapersForYear(year).filter(
+  (paper) => paper.subject.slug === subjectSlug,
+);
+// Subjects such as Applied Mathematics exist only in the practice library, not
+// in the D1 subjects seed. Derive their display metadata from the paper index so
+// the page and its sitemap entry still resolve.
+const subject =
+  dbSubject ??
+  (localPapers[0]
+    ? {
+        id: `local-${subjectSlug}`,
+        name: localPapers[0].subject.name,
+        slug: subjectSlug,
+      }
+    : null);
+if (!subject) return new Response("Subject not found", { status: 404 });
+
+const allPapers = dbSubject
+  ? await listPyqPapers({ year, subjectId: dbSubject.id })
+  : [];
+const papers = allPapers.filter((paper) => Boolean(paper.mock_slug));
+if (papers.length === 0 && localPapers.length === 0) {
+  return new Response("No papers for this subject", { status: 404 });
+}
+const totalPapers = papers.length + localPapers.length;
+
+const PATH = `/pyq/${year}/${subject.slug}`;
+const seo = await getPageSeo(PATH);
+const noindex = (seo?.noindex ?? 0) === 1;
+
+const DEFAULT_FAQ: FaqItem[] = [
+  {
+    question: `How many CUET UG ${subject.name} ${year} papers are available?`,
+    answer: `${totalPapers} ${subject.name} paper${totalPapers === 1 ? "" : "s"} from ${year} ${totalPapers === 1 ? "is" : "are"} available here. Every paper is ranked and saved to your account, with the first submitted attempt counting on the leaderboard.`,
+  },
+  {
+    question: `Should I attempt the ${subject.name} paper before revising the whole syllabus?`,
+    answer:
+      "One early paper is a useful diagnostic even if revision is incomplete. Expect a low score; the section breakdown and the error review are the output you want.",
+  },
+  {
+    question: "Why can I not see answers before submitting?",
+    answer:
+      "The attempt page and its API never include the correct option or explanation. Both open on the result and solutions pages only after the attempt is submitted or the timer expires.",
+  },
+];
+
+const customFaq = parseFaq(seo?.faq_json);
+const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
+const title = seo?.title || `CUET UG ${subject.name} ${year} Previous Year Paper`;
+const description =
+  seo?.description ||
+  `CUET UG ${subject.name} ${year} previous-year papers: ${totalPapers} timed mock${totalPapers === 1 ? "" : "s"} with server scoring, detailed solutions and a post-submit review.`;
+const site = siteUrl(Astro.url);
+
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Previous-year papers", path: "/cuet-ug-previous-year-papers" },
+    { name: String(year), path: `/pyq/${year}` },
+    { name: subject.name, path: PATH },
+  ]),
+  itemListJsonLd(site, [
+    ...papers.map((paper) => ({ name: paper.title, path: `/mock/${paper.mock_slug}` })),
+    ...localPapers.map((paper) => ({ name: paper.title, path: paper.path })),
+  ]),
+].filter((item): item is Record<string, unknown> => Boolean(item));
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+  <PageHero
+    eyebrow={`PYQ · ${year} · ${subject.name}`}
+    title={`${subject.name} ${year} previous-year paper`}
+    intro={`The ${subject.name} paper is most useful when it is attempted in one sitting and reviewed immediately. Every paper is saved and ranked, so the first submitted attempt counts on the leaderboard.`}
+  />
+
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
+    {seo?.intro_html ? (
+      <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
+    ) : null}
+
+    <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a class="hover:underline" href="/cuet-ug-previous-year-papers">Previous-year papers</a>
+      <span aria-hidden="true">/</span>
+      <a class="hover:underline" href={`/pyq/${year}`}>{year}</a>
+      <span aria-hidden="true">/</span>
+      <span>{subject.name}</span>
+    </nav>
+
+    <section class="mt-8 space-y-4">
+      {papers.map((paper) => {
+        const marking = pyqMarking(paper);
+        return (
+          <article class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+            <div class="flex flex-wrap items-center gap-2 text-xs">
+              <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{paper.year}</span>
+              {paper.shift ? <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{paper.shift}</span> : null}
+              <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{subject.name}</span>
+            </div>
+            <h2 class="mt-3 text-xl font-bold leading-snug">
+              <a class="hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${paper.mock_slug}`}>{paper.title}</a>
+            </h2>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+              {paper.question_count ?? 0} questions · {paper.duration_min ?? "—"} minutes · {paper.total_marks ?? "—"} marks · +{marking.correct}/{marking.wrong} · {paper.attempt_count ?? 0} attempt{(paper.attempt_count ?? 0) === 1 ? "" : "s"}
+            </p>
+            {paper.rights_note ? <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900 dark:bg-amber-950/30 dark:text-amber-200">{paper.rights_note}</p> : null}
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+              <a class="inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.mock_slug}/instructions`}>Start this paper →</a>
+              <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/mock/${paper.mock_slug}`}>Paper details</a>
+              {paper.source_url ? <a class="text-xs font-semibold text-neutral-600 hover:underline dark:text-neutral-300" href={paper.source_url} rel="noopener noreferrer" target="_blank">Source note</a> : null}
+            </div>
+          </article>
+        );
+      })}
+
+      {localPapers.length > 0 ? (
+        <div class="pt-2">
+          <div class="grid gap-4 md:grid-cols-2">
+            {localPapers.map((paper) => <LocalPaperCard paper={paper} />)}
+          </div>
+        </div>
+      ) : null}
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-10 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold">{dbSubject ? `Compare with other ${subject.name} practice` : `More ${subject.name} papers`}</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">{dbSubject ? "A subject mock gives you a shorter diagnostic loop after the full paper." : "Browse the previous-year library to compare years and shifts."}</p>
+        </div>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={dbSubject ? `/cuet-mock-test/${subject.slug}` : "/cuet-ug-previous-year-papers"}>{dbSubject ? `Open ${subject.name} practice` : "All previous-year papers"}</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

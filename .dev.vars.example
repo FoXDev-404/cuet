@@ -1,0 +1,29 @@
+# Copy this file to `.dev.vars` (ignored by git) for local development.
+#
+# Google OAuth (optional locally). Create an OAuth 2.0 Web client in Google
+# Cloud Console and add this authorised redirect URI:
+#   http://localhost:4321/api/auth/google/callback
+# Production must use https://<your-domain>/api/auth/google/callback.
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+# Public origin used for canonical links and cookie security.
+SITE_URL=http://localhost:4321
+
+# Local-only: expose the password-reset link in the API response because no
+# transactional email provider is configured. Ignored by production builds.
+DEV_SHOW_RESET_LINK=true
+
+# Transactional email (optional). Leave EMAIL_PROVIDER empty to keep password
+# reset disabled in production. Provider keys belong in `.dev.vars` locally and
+# `wrangler secret put` remotely, never in git.
+EMAIL_PROVIDER=
+EMAIL_FROM=
+RESEND_API_KEY=
+BREVO_API_KEY=
+
+# Optional public integrations. Empty or malformed values emit nothing.
+CF_ANALYTICS_TOKEN=
+GSC_VERIFICATION=
+ADSENSE_CLIENT=
+ADSENSE_SLOT_ID=
