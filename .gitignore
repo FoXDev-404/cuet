@@ -28,3 +28,11 @@ tools/ocr/OCR DATA/
 # OS junk
 .DS_Store
 Thumbs.db
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# Dataset export staging directories (the zip is the deliverable).
+/export/
+/tools/ocr/dataset_export/
+/CUET_Question_Dataset.zip

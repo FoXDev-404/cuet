@@ -1,13 +1,15 @@
 ---
 import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { all, first } from "../../lib/db";
+import { allOr, first, firstOr } from "../../lib/db";
+import { dbUnavailableResponse } from "../../lib/db-resilient";
+import { getLocalMockFallback } from "../../lib/local-mock-fallback";
 import { formatDuration } from "../../lib/content";
 import { breadcrumbJsonLd } from "../../lib/seo";
 import { percentileFor } from "../../lib/ranking";
 
 const slug = Astro.params.slug ?? "";
-const mock = await first<{
+let mock: {
   id: number;
   title: string;
   slug: string;
@@ -15,17 +17,45 @@ const mock = await first<{
   duration_min: number;
   version_id: number;
   practice_paper_slug: string | null;
-}>(
-  `SELECT m.id, m.title, m.slug, v.total_marks, v.duration_min, v.id AS version_id,
-          m.practice_paper_slug
-   FROM mock_tests m JOIN mock_test_versions v ON v.id = m.current_version_id
-   WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
-  slug,
-);
+} | null = null;
+try {
+  mock = await first<{
+    id: number;
+    title: string;
+    slug: string;
+    total_marks: number;
+    duration_min: number;
+    version_id: number;
+    practice_paper_slug: string | null;
+  }>(
+    `SELECT m.id, m.title, m.slug, v.total_marks, v.duration_min, v.id AS version_id,
+            m.practice_paper_slug
+     FROM mock_tests m JOIN mock_test_versions v ON v.id = m.current_version_id
+     WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
+    slug,
+  );
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent). Keep a
+  // practice-paper board online with an empty ranking instead of a 404/500.
+  console.error("Leaderboard paper lookup failed", error);
+  const fallback = getLocalMockFallback(slug);
+  mock = fallback
+    ? {
+        id: fallback.id,
+        title: fallback.title,
+        slug: fallback.slug,
+        total_marks: fallback.total_marks,
+        duration_min: fallback.duration_min,
+        version_id: 0,
+        practice_paper_slug: fallback.slug,
+      }
+    : null;
+  if (!mock) return dbUnavailableResponse();
+}
 if (!mock) return new Response("Leaderboard not found", { status: 404 });
 
 const [rows, summary, mine] = await Promise.all([
-  all<{
+  allOr<{
     rank: number;
     user_id: number;
     username: string;
@@ -40,23 +70,23 @@ const [rows, summary, mine] = await Promise.all([
               RANK() OVER (ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank
        FROM attempts a JOIN users u ON u.id = a.user_id
        WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL
-     ) ORDER BY rank, submitted_at LIMIT 100`,
+     ) ORDER BY rank, submitted_at LIMIT 100`, [],
     mock.version_id,
   ),
-  first<{ eligible: number; average: number | null; best: number | null }>(
+  firstOr<{ eligible: number; average: number | null; best: number | null }>(
     `SELECT COUNT(*) AS eligible, AVG(a.score) AS average, MAX(a.score) AS best
      FROM attempts a JOIN users u ON u.id = a.user_id
-     WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL`,
+     WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL`, null,
     mock.version_id,
   ),
   Astro.locals.user
-    ? first<{ rank: number; score: number; time_taken_sec: number; correct: number; wrong: number }>(
+    ? firstOr<{ rank: number; score: number; time_taken_sec: number; correct: number; wrong: number }>(
         `SELECT rank, score, time_taken_sec, correct, wrong FROM (
            SELECT a.user_id, a.score, a.time_taken_sec, a.correct, a.wrong,
                   RANK() OVER (ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank
            FROM attempts a JOIN users u ON u.id = a.user_id
            WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL
-         ) WHERE user_id = ?`,
+         ) WHERE user_id = ?`, null,
         mock.version_id,
         Astro.locals.user.id,
       )

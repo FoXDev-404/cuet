@@ -15,6 +15,7 @@ import {
   settleAttempt,
 } from "../../lib/attempts";
 import { getGuestToken } from "../../lib/auth/session";
+import { dbUnavailableResponse } from "../../lib/db-resilient";
 import { parseMarkingScheme, parseOptions } from "../../lib/content";
 import { imageDimensionsForUrls } from "../../lib/media-dimensions";
 import { getSetting } from "../../lib/settings";
@@ -23,11 +24,23 @@ import { siteUrl } from "../../lib/site-url";
 const id = Number(Astro.params.id);
 if (!Number.isInteger(id) || id <= 0) return new Response("Attempt not found", { status: 404 });
 
-let attempt = await findAttempt(id);
+let attempt: Awaited<ReturnType<typeof findAttempt>> = null;
+try {
+  attempt = await findAttempt(id);
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent).
+  console.error("Attempt lookup failed", error);
+  return dbUnavailableResponse();
+}
 if (!attempt || !canAccessAttempt(attempt, Astro.locals.user, getGuestToken(Astro.cookies))) {
   return new Response("Attempt not found", { status: 404 });
 }
-attempt = await settleAttempt(attempt);
+try {
+  attempt = await settleAttempt(attempt);
+} catch (error) {
+  console.error("Attempt settlement failed", error);
+  return dbUnavailableResponse();
+}
 if (attempt.status !== "in_progress") return Astro.redirect(`/result/${attempt.id}`, 303);
 
 const [mock, rawQuestions, savedAnswers] = await Promise.all([
@@ -45,10 +58,20 @@ const [mock, rawQuestions, savedAnswers] = await Promise.all([
       attempt!.version_id,
       attempt!.mock_id,
     ),
-  ),
-  attemptQuestions(attempt.version_id),
-  attemptAnswers(attempt.id),
+  ).catch((error) => {
+    console.error("Attempt paper lookup failed", error);
+    return null;
+  }),
+  attemptQuestions(attempt.version_id).catch((error) => {
+    console.error("Attempt question lookup failed", error);
+    return null;
+  }),
+  attemptAnswers(attempt.id).catch((error) => {
+    console.error("Attempt answer lookup failed", error);
+    return null;
+  }),
 ]);
+if (!rawQuestions || !savedAnswers) return dbUnavailableResponse();
 const marking = parseMarkingScheme(mock?.marking_scheme ?? "");
 const shareDuringAttempt =
   !mock?.practice_paper_slug &&

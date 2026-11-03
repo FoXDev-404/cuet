@@ -2,7 +2,7 @@
 import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SeoIntro from "../../components/SeoIntro.astro";
-import { all, first } from "../../lib/db";
+import { allOr, firstOr } from "../../lib/db";
 import { formatDuration } from "../../lib/content";
 import { breadcrumbJsonLd, getPageSeo, itemListJsonLd } from "../../lib/seo";
 
@@ -15,17 +15,17 @@ const DEFAULT_DESCRIPTION =
 const requestedPage = Math.trunc(Number(Astro.url.searchParams.get("page") ?? "1"));
 const safeRequestedPage = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
-const totalRow = await first<{ total: number }>(
+const totalRow = await firstOr<{ total: number }>(
   `SELECT COUNT(*) AS total FROM mock_tests m
    WHERE m.status = 'published' AND m.deleted_at IS NULL
-     AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)`,
+     AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)`, null,
 );
 const total = totalRow?.total ?? 0;
 const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
 const page = Math.min(safeRequestedPage, pageCount);
 const offset = (page - 1) * PER_PAGE;
 
-const mocks = await all<{
+const mocks = await allOr<{
   id: number;
   title: string;
   slug: string;
@@ -43,7 +43,7 @@ const mocks = await all<{
    WHERE m.status = 'published' AND m.deleted_at IS NULL
      AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
    ORDER BY eligible DESC, m.published_at DESC, m.id DESC
-   LIMIT ? OFFSET ?`,
+   LIMIT ? OFFSET ?`, [],
   PER_PAGE,
   offset,
 );
@@ -52,7 +52,7 @@ const mockIds = mocks.map((mock) => mock.id);
 const topRows =
   mockIds.length === 0
     ? []
-    : await all<{
+    : await allOr<{
         mock_id: number;
         rank: number;
         score: number;
@@ -83,7 +83,7 @@ const topRows =
              AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
              AND m.id IN (${mockIds.map(() => "?").join(",")})
          ) WHERE position <= 3
-         ORDER BY mock_id, position`,
+         ORDER BY mock_id, position`, [],
         ...mockIds,
       );
 
@@ -97,7 +97,7 @@ for (const row of topRows) {
 // A cross-paper board gives a public, always-populated surface even before a
 // particular paper has enough first attempts. Papers are compared by
 // percentage so a 50-question and 200-question paper remain comparable.
-const overall = await all<{
+const overall = await allOr<{
   rank: number;
   user_id: number;
   username: string;
@@ -137,7 +137,7 @@ const overall = await all<{
        AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
        AND m.status = 'published' AND m.deleted_at IS NULL
    ) WHERE position <= 8
-   ORDER BY position`,
+   ORDER BY position`, [],
 );
 
 const medals = ["🥇", "🥈", "🥉"];

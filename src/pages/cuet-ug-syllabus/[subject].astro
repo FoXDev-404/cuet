@@ -3,8 +3,9 @@ import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import FaqSection from "../../components/FaqSection.astro";
-import { all, first } from "../../lib/db";
+import { allOr, firstOr } from "../../lib/db";
 import { getLocalSubjectSummary } from "../../lib/local-papers";
+import { getSubjectStats } from "../../lib/subject-stats";
 import { renderRichText } from "../../lib/content";
 import {
   articleJsonLd,
@@ -17,54 +18,50 @@ import {
 } from "../../lib/seo";
 
 const slug = Astro.params.subject ?? "";
-const subject = await first<{ id: number; name: string; slug: string; type: string }>(
+const dbSubject = await firstOr<{ id: number; name: string; slug: string; type: string }>(
   `SELECT s.id, s.name, s.slug, s.type
    FROM subjects s JOIN exams e ON e.id = s.exam_id
-   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`, null,
   slug,
 );
+// Fall back to the bundled practice library so the syllabus page still renders
+// while D1 is unreachable (for example when the daily row-read quota is spent).
+const localSubject = getLocalSubjectSummary(slug);
+const subject =
+  dbSubject ??
+  (localSubject
+    ? {
+        id: 0,
+        name: localSubject.subject.name,
+        slug: localSubject.subject.slug,
+        type: "domain",
+      }
+    : null);
 if (!subject) return new Response("Subject syllabus not found", { status: 404 });
 
-const [topics, questionCount, paperCount] = await Promise.all([
-  all<{ id: number; name: string; slug: string; count: number }>(
-    `SELECT t.id, t.name, t.slug,
-            (SELECT COUNT(DISTINCT q.id) FROM questions q
-              JOIN mock_questions_current mq ON mq.question_id = q.id
-              JOIN mock_tests m ON m.id = mq.mock_id
-              WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
-                AND m.status = 'published' AND m.deleted_at IS NULL
-                AND m.practice_paper_slug IS NULL) AS count
-     FROM topics t WHERE t.subject_id = ? ORDER BY t.name`,
-    subject.id,
-  ),
-  first<{ count: number }>(
-    `SELECT COUNT(DISTINCT q.id) AS count
-     FROM questions q
-     JOIN mock_questions_current mq ON mq.question_id = q.id
-     JOIN mock_tests m ON m.id = mq.mock_id
-     WHERE q.subject_id = ? AND q.status = 'published' AND q.deleted_at IS NULL
-       AND m.status = 'published' AND m.deleted_at IS NULL
-       AND m.practice_paper_slug IS NULL`,
-    subject.id,
-  ),
-  first<{ count: number }>(
-    `SELECT COUNT(DISTINCT m.id) AS count FROM mock_tests m
-     WHERE m.status = 'published' AND m.deleted_at IS NULL
-       AND m.practice_paper_slug IS NULL
-       AND (m.subject_id = ? OR EXISTS (
-         SELECT 1 FROM mock_questions_current mq JOIN questions q ON q.id = mq.question_id
-         WHERE mq.mock_id = m.id AND q.subject_id = ?
-       ))`,
-    subject.id,
-    subject.id,
-  ),
-]);
+// The rollup is cached in KV, so the subject page no longer scans the bank.
+const statsPromise = getSubjectStats().catch((error) => {
+  console.error("Subject stats unavailable; falling back to the local library", error);
+  return [];
+});
+const topics = await allOr<{ id: number; name: string; slug: string; count: number }>(
+  `SELECT t.id, t.name, t.slug,
+          (SELECT COUNT(DISTINCT q.id) FROM questions q
+            JOIN mock_questions_current mq ON mq.question_id = q.id
+            JOIN mock_tests m ON m.id = mq.mock_id
+            WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
+              AND m.status = 'published' AND m.deleted_at IS NULL
+              AND m.practice_paper_slug IS NULL) AS count
+   FROM topics t WHERE t.subject_id = ? ORDER BY t.name`, [],
+  subject.id,
+);
 
 const localSummary = getLocalSubjectSummary(subject.slug);
+const subjectStat = (await statsPromise).find((row) => row.slug === subject.slug);
 const libraryQuestions = localSummary?.questionCount ?? 0;
-const timedQuestions = questionCount?.count ?? 0;
+const timedQuestions = subjectStat?.bank_question_count ?? 0;
 const publishedQuestions = timedQuestions + libraryQuestions;
-const papers = (paperCount?.count ?? 0) + (localSummary?.paperCount ?? 0);
+const papers = (subjectStat?.mock_count ?? 0) + (localSummary?.paperCount ?? 0);
 if (topics.length === 0 && publishedQuestions === 0) {
   return new Response("Subject syllabus not published yet", { status: 404 });
 }

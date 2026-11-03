@@ -1,9 +1,10 @@
 import type { APIRoute } from "astro";
-import { all } from "../../lib/db";
+import { apiUnavailableResponse } from "../../lib/db-resilient";
 import { json } from "../../lib/http";
+import { getSubjectStats } from "../../lib/subject-stats";
 
 export const GET: APIRoute = async () => {
-  const subjects = await all<{
+  let subjects: {
     id: number;
     name: string;
     slug: string;
@@ -12,23 +13,22 @@ export const GET: APIRoute = async () => {
     exam_slug: string;
     question_count: number;
     mock_count: number;
-  }>(
-    `SELECT s.id, s.name, s.slug, s.type, e.name AS exam_name, e.slug AS exam_slug,
-            (SELECT COUNT(*) FROM questions q
-              WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL) AS question_count,
-            (SELECT COUNT(DISTINCT m.id) FROM mock_tests m
-              WHERE m.status = 'published' AND m.deleted_at IS NULL
-                AND m.practice_paper_slug IS NULL
-                AND EXISTS (
-                  SELECT 1 FROM mock_questions_current mq
-                  JOIN questions q2 ON q2.id = mq.question_id
-                  WHERE mq.mock_id = m.id AND q2.subject_id = s.id
-                )) AS mock_count
-     FROM subjects s
-     JOIN exams e ON e.id = s.exam_id
-     WHERE s.is_active = 1 AND e.is_active = 1
-     ORDER BY e.name, s.name`,
-  );
+  }[];
+  try {
+    subjects = (await getSubjectStats()).map((subject) => ({
+      id: subject.id,
+      name: subject.name,
+      slug: subject.slug,
+      type: subject.type,
+      exam_name: subject.exam_name,
+      exam_slug: subject.exam_slug,
+      question_count: subject.published_question_count,
+      mock_count: subject.question_mock_count,
+    }));
+  } catch (error) {
+    console.error("Subjects query failed", error);
+    return apiUnavailableResponse();
+  }
 
   return json({ ok: true, count: subjects.length, subjects });
 };

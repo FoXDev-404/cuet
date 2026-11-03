@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { all, first } from "../../../lib/db";
+import { apiUnavailableResponse } from "../../../lib/db-resilient";
 import { parseMarkingScheme, parseOptions } from "../../../lib/content";
 import { apiError, json } from "../../../lib/http";
 
@@ -32,22 +33,8 @@ export const GET: APIRoute = async ({ params }) => {
   const slug = (params.slug ?? "").trim();
   if (!slug) return apiError("Mock test not found.", 404);
 
-  const mock = await first<MockRow>(
-    `SELECT m.id, m.title, m.slug, m.type, m.status, m.subject_id,
-            s.name AS subject_name, s.slug AS subject_slug,
-            v.id AS version_id, v.version_no, v.duration_min, v.total_marks,
-            v.marking_scheme, v.instructions, m.intro_html,
-            m.pyq_year, m.pyq_shift, m.published_at
-     FROM mock_tests m
-     JOIN mock_test_versions v ON v.id = m.current_version_id
-     LEFT JOIN subjects s ON s.id = m.subject_id
-     WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL
-       AND v.status = 'published'`,
-    slug,
-  );
-  if (!mock) return apiError("Mock test not found.", 404);
-
-  const questions = await all<{
+  let mock: MockRow | null = null;
+  let questions: {
     id: number;
     section: string;
     position: number;
@@ -65,21 +52,60 @@ export const GET: APIRoute = async ({ params }) => {
     passage_body_hi: string | null;
     passage_image_url: string | null;
     passage_image_alt: string | null;
-  }>(
-    `SELECT q.id, mq.section, mq.position, q.subject_id, s.name AS subject_name,
-            t.name AS topic_name, q.text, q.text_hi, q.options, q.options_hi,
-            q.image_url, q.image_alt, q.passage_id,
-            p.body AS passage_body, p.body_hi AS passage_body_hi,
-            p.image_url AS passage_image_url, p.image_alt AS passage_image_alt
-     FROM mock_questions mq
-     JOIN questions q ON q.id = mq.question_id
-     JOIN subjects s ON s.id = q.subject_id
-     LEFT JOIN topics t ON t.id = q.topic_id
-     LEFT JOIN passages p ON p.id = q.passage_id
-     WHERE mq.version_id = ? AND q.deleted_at IS NULL
-     ORDER BY mq.position`,
-    mock.version_id,
-  );
+  }[];
+  try {
+    mock = await first<MockRow>(
+      `SELECT m.id, m.title, m.slug, m.type, m.status, m.subject_id,
+              s.name AS subject_name, s.slug AS subject_slug,
+              v.id AS version_id, v.version_no, v.duration_min, v.total_marks,
+              v.marking_scheme, v.instructions, m.intro_html,
+              m.pyq_year, m.pyq_shift, m.published_at
+       FROM mock_tests m
+       JOIN mock_test_versions v ON v.id = m.current_version_id
+       LEFT JOIN subjects s ON s.id = m.subject_id
+       WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL
+         AND v.status = 'published'`,
+      slug,
+    );
+    if (!mock) return apiError("Mock test not found.", 404);
+
+    questions = await all<{
+      id: number;
+      section: string;
+      position: number;
+      subject_id: number;
+      subject_name: string;
+      topic_name: string | null;
+      text: string;
+      text_hi: string | null;
+      options: string;
+      options_hi: string | null;
+      image_url: string | null;
+      image_alt: string | null;
+      passage_id: number | null;
+      passage_body: string | null;
+      passage_body_hi: string | null;
+      passage_image_url: string | null;
+      passage_image_alt: string | null;
+    }>(
+      `SELECT q.id, mq.section, mq.position, q.subject_id, s.name AS subject_name,
+              t.name AS topic_name, q.text, q.text_hi, q.options, q.options_hi,
+              q.image_url, q.image_alt, q.passage_id,
+              p.body AS passage_body, p.body_hi AS passage_body_hi,
+              p.image_url AS passage_image_url, p.image_alt AS passage_image_alt
+       FROM mock_questions mq
+       JOIN questions q ON q.id = mq.question_id
+       JOIN subjects s ON s.id = q.subject_id
+       LEFT JOIN topics t ON t.id = q.topic_id
+       LEFT JOIN passages p ON p.id = q.passage_id
+       WHERE mq.version_id = ? AND q.deleted_at IS NULL
+       ORDER BY mq.position`,
+      mock.version_id,
+    );
+  } catch (error) {
+    console.error("Mock detail query failed", error);
+    return apiUnavailableResponse();
+  }
 
   const sections = new Map<string, number>();
   for (const question of questions) {

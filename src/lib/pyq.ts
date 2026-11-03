@@ -1,4 +1,4 @@
-import { all } from "./db";
+import { allOr } from "./db";
 import { parseMarkingScheme } from "./content";
 
 export type PyqPaperRow = {
@@ -43,11 +43,11 @@ export async function listPyqPapers(filters: { year?: number; subjectId?: number
     params.push(filters.subjectId);
   }
   const where = clauses.length > 0 ? ` AND ${clauses.join(" AND ")}` : "";
-  return all<PyqPaperRow>(`${SELECT}${where} ORDER BY p.year DESC, p.shift, p.id`, ...params);
+  return allOr<PyqPaperRow>(`${SELECT}${where} ORDER BY p.year DESC, p.shift, p.id`, [], ...params);
 }
 
 export async function listPyqYears(): Promise<{ year: number; paper_count: number; playable_count: number }[]> {
-  return all<{ year: number; paper_count: number; playable_count: number }>(
+  return allOr<{ year: number; paper_count: number; playable_count: number }>(
     `SELECT p.year,
             COUNT(*) AS paper_count,
             SUM(CASE WHEN m.id IS NULL THEN 0 ELSE 1 END) AS playable_count
@@ -56,6 +56,7 @@ export async function listPyqYears(): Promise<{ year: number; paper_count: numbe
      WHERE p.status = 'published' AND p.deleted_at IS NULL
      GROUP BY p.year
      ORDER BY p.year DESC`,
+    [],
   );
 }
 

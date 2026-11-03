@@ -3,8 +3,9 @@ import { siteUrl } from "../lib/site-url";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
-import { all, first } from "../lib/db";
 import { getLocalSubjectSummary } from "../lib/local-papers";
+import { getLocalSubjectCards } from "../lib/local-subject-fallback";
+import { getSubjectStats } from "../lib/subject-stats";
 import { renderRichText } from "../lib/content";
 import {
   articleJsonLd,
@@ -54,48 +55,41 @@ const DEFAULT_FAQ: FaqItem[] = [
   },
 ];
 
-const exam = await first<{ id: number; name: string }>(
-  "SELECT id, name FROM exams WHERE slug = 'cuet-ug' AND is_active = 1",
-);
-const subjects = exam
-  ? await all<{
-      id: number;
-      name: string;
-      slug: string;
-      type: string;
-      question_count: number;
-      mock_count: number;
-    }>(
-      `SELECT s.id, s.name, s.slug, s.type,
-              (SELECT COUNT(DISTINCT q.id) FROM questions q
-                JOIN mock_questions_current mq ON mq.question_id = q.id
-                JOIN mock_tests m ON m.id = mq.mock_id
-                WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL
-                  AND m.status = 'published' AND m.deleted_at IS NULL
-                  AND m.practice_paper_slug IS NULL) AS question_count,
-              (SELECT COUNT(DISTINCT m.id) FROM mock_tests m
-                WHERE m.status = 'published' AND m.deleted_at IS NULL
-                  AND m.practice_paper_slug IS NULL
-                  AND (m.subject_id = s.id OR EXISTS (
-                    SELECT 1 FROM mock_questions_current mq
-                    JOIN questions q2 ON q2.id = mq.question_id
-                    WHERE mq.mock_id = m.id AND q2.subject_id = s.id
-                  ))) AS mock_count
-       FROM subjects s
-       WHERE s.exam_id = ? AND s.is_active = 1
-       ORDER BY CASE s.type WHEN 'language' THEN 0 WHEN 'domain' THEN 1 ELSE 2 END, s.name`,
-      exam.id,
-    )
-  : [];
+let subjects: {
+  id: number;
+  name: string;
+  slug: string;
+  type: string;
+  question_count: number;
+  mock_count: number;
+}[] = [];
+try {
+  subjects = (await getSubjectStats())
+    .filter((subject) => subject.exam_slug === "cuet-ug")
+    .map((subject) => ({
+      id: subject.id,
+      name: subject.name,
+      slug: subject.slug,
+      type: subject.type,
+      question_count: subject.bank_question_count,
+      mock_count: subject.mock_count,
+    }));
+} catch (error) {
+  // No cache and D1 is unreachable: the bundled library rebuilds the grid.
+  console.error("Subject stats unavailable; using the bundled library", error);
+}
 
-const subjectCards = subjects.map((subject) => {
-  const local = getLocalSubjectSummary(subject.slug);
-  return {
-    ...subject,
-    question_count: subject.question_count + (local?.questionCount ?? 0),
-    mock_count: subject.mock_count + (local?.paperCount ?? 0),
-  };
-});
+const subjectCards = subjects.length > 0
+  ? subjects.map((subject) => {
+      const local = getLocalSubjectSummary(subject.slug);
+      return {
+        ...subject,
+        question_count: subject.question_count + (local?.questionCount ?? 0),
+        mock_count: subject.mock_count + (local?.paperCount ?? 0),
+      };
+    })
+  : // D1 could not answer, so rebuild the grid from the bundled library.
+    getLocalSubjectCards();
 const languages = subjectCards.filter((subject) => subject.type === "language");
 const domains = subjectCards.filter((subject) => subject.type === "domain");
 const general = subjectCards.filter((subject) => subject.type !== "language" && subject.type !== "domain");
@@ -107,7 +101,7 @@ const description = seo?.description || DEFAULT_DESCRIPTION;
 const customFaq = parseFaq(seo?.faq_json);
 const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
 const verified = formatVerified(info?.last_verified);
-const noindex = (seo?.noindex ?? 0) === 1 || subjects.length === 0;
+const noindex = (seo?.noindex ?? 0) === 1 || subjectCards.length === 0;
 const site = siteUrl(Astro.url);
 
 const structuredData = [

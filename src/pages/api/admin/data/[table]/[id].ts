@@ -4,6 +4,7 @@ import { audit } from "../../../../../lib/audit";
 import { coerceId, getRow, restoreRow, softDeleteRow, updateRow } from "../../../../../lib/admin/data";
 import { getTable, type TableDef } from "../../../../../lib/admin/schema";
 import { snapshotEntity } from "../../../../../lib/admin/revisions";
+import { invalidateAfterPracticeMutation } from "../../../../../lib/practice-cache";
 import { apiError, forbiddenOrigin, isSameOrigin, json } from "../../../../../lib/http";
 
 type Resolved =
@@ -62,6 +63,7 @@ export const PATCH: APIRoute = async (context) => {
   if ("error" in result) return apiError(result.error, result.conflict ? 409 : 400);
 
   const after = await getRow(resolved.table, resolved.id);
+  await invalidateAfterPracticeMutation(resolved.table.name, [before, after]);
   await audit({
     adminId: guard.admin.id,
     action: "data.update",
@@ -84,6 +86,9 @@ export const POST: APIRoute = async (context) => {
 
   const result = await restoreRow(resolved.table, resolved.id);
   if ("error" in result) return apiError(result.error, 400);
+  await invalidateAfterPracticeMutation(resolved.table.name, [
+    await getRow(resolved.table, resolved.id),
+  ]);
   await audit({
     adminId: guard.admin.id,
     action: "data.restore",
@@ -125,6 +130,8 @@ export const DELETE: APIRoute = async (context) => {
 
   const result = await softDeleteRow(resolved.table, resolved.id, purge);
   if ("error" in result) return apiError(result.error, 400);
+
+  await invalidateAfterPracticeMutation(resolved.table.name, [before]);
 
   await audit({
     adminId: guard.admin.id,

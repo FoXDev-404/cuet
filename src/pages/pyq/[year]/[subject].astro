@@ -4,7 +4,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 import FaqSection from "../../../components/FaqSection.astro";
 import LocalPaperCard from "../../../components/LocalPaperCard.astro";
-import { first } from "../../../lib/db";
+import { firstOr } from "../../../lib/db";
 import { getLocalPapersForYear } from "../../../lib/local-papers";
 import { listPyqPapers, pyqMarking } from "../../../lib/pyq";
 import { renderRichText } from "../../../lib/content";
@@ -22,10 +22,10 @@ if (!Number.isInteger(year) || year < 2000 || year > 2100) {
   return new Response("Year not found", { status: 404 });
 }
 
-const dbSubject = await first<{ id: number; name: string; slug: string }>(
+const dbSubject = await firstOr<{ id: number; name: string; slug: string }>(
   `SELECT s.id, s.name, s.slug FROM subjects s
    JOIN exams e ON e.id = s.exam_id
-   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`, null,
   subjectSlug,
 );
 const localPapers = getLocalPapersForYear(year).filter(

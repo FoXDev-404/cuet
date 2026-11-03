@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { first } from "../../../lib/db";
+import { dbUnavailableResponse } from "../../../lib/db-resilient";
+import { getLocalMockFallback } from "../../../lib/local-mock-fallback";
 import { getGuestToken } from "../../../lib/auth/session";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { parseMarkingScheme } from "../../../lib/content";
@@ -8,7 +10,7 @@ import { oldSlugRedirect } from "../../../lib/slug-redirects";
 
 const slug = Astro.params.slug ?? "";
 
-const mock = await first<{
+let mock: {
   id: number;
   title: string;
   slug: string;
@@ -18,13 +20,32 @@ const mock = await first<{
   instructions: string | null;
   question_count: number;
   attempt_count: number;
-}>(
-  `SELECT m.id, m.title, m.slug, m.duration_min, m.total_marks, m.marking_scheme, m.instructions,
-          (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
-          (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count
-   FROM mock_tests m WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
-  slug,
-);
+} | null = null;
+try {
+  mock = await first<{
+    id: number;
+    title: string;
+    slug: string;
+    duration_min: number;
+    total_marks: number;
+    marking_scheme: string;
+    instructions: string | null;
+    question_count: number;
+    attempt_count: number;
+  }>(
+    `SELECT m.id, m.title, m.slug, m.duration_min, m.total_marks, m.marking_scheme, m.instructions,
+            (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
+            (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count
+     FROM mock_tests m WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
+    slug,
+  );
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent). A
+  // practice paper can still describe itself from the bundled library.
+  console.error("Mock instructions lookup failed", error);
+  mock = getLocalMockFallback(slug);
+  if (!mock) return dbUnavailableResponse();
+}
 if (!mock) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}/instructions`, 301);
@@ -32,14 +53,20 @@ if (!mock) {
 }
 
 const marking = parseMarkingScheme(mock.marking_scheme);
-let activeAttempt = await findInProgressAttempt(
-  mock.id,
-  Astro.locals.user?.id ?? null,
-  getGuestToken(Astro.cookies),
-);
-if (activeAttempt) {
-  activeAttempt = await settleAttempt(activeAttempt);
-  if (activeAttempt.status !== "in_progress") activeAttempt = null;
+let activeAttempt: Awaited<ReturnType<typeof findInProgressAttempt>> = null;
+try {
+  activeAttempt = await findInProgressAttempt(
+    mock.id,
+    Astro.locals.user?.id ?? null,
+    getGuestToken(Astro.cookies),
+  );
+  if (activeAttempt) {
+    activeAttempt = await settleAttempt(activeAttempt);
+    if (activeAttempt.status !== "in_progress") activeAttempt = null;
+  }
+} catch (error) {
+  console.error("Attempt lookup failed", error);
+  activeAttempt = null;
 }
 const lines = (mock.instructions ?? "")
   .split("\n")

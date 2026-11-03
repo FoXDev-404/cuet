@@ -3,7 +3,7 @@ import { siteUrl } from "../lib/site-url";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
-import { all } from "../lib/db";
+import { allOr } from "../lib/db";
 import { parseMarkingScheme, renderRichText } from "../lib/content";
 import {
   articleJsonLd,
@@ -54,7 +54,7 @@ const DEFAULT_FAQ: FaqItem[] = [
   },
 ];
 
-const papers = await all<{
+const papers = await allOr<{
   id: number;
   title: string;
   slug: string;
@@ -72,7 +72,7 @@ const papers = await all<{
    WHERE m.status = 'published' AND m.deleted_at IS NULL
      AND m.practice_paper_slug IS NULL
    ORDER BY m.published_at DESC, m.id DESC
-   LIMIT 30`,
+   LIMIT 30`, [],
 );
 
 const seo = await getPageSeo(PATH);

@@ -1,12 +1,12 @@
 ---
 import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { all, first } from "../../lib/db";
+import { allOr, firstOr } from "../../lib/db";
 import { formatDate } from "../../lib/content";
 import { breadcrumbJsonLd } from "../../lib/seo";
 
 const username = Astro.params.username ?? "";
-const profile = await first<{
+const profile = await firstOr<{
   id: number;
   username: string;
   avatar_url: string | null;
@@ -15,35 +15,40 @@ const profile = await first<{
 }>(
   `SELECT id, username, avatar_url, bio, created_at FROM users
    WHERE username = ? AND is_profile_public = 1 AND deleted_at IS NULL`,
+  null,
   username,
 );
 if (!profile) return new Response("Profile not found", { status: 404 });
 
 const [summary, ranked, badges, subjects] = await Promise.all([
-  first<{ tests: number; correct: number; wrong: number }>(
+  firstOr<{ tests: number; correct: number; wrong: number }>(
     `SELECT COUNT(*) AS tests, COALESCE(SUM(correct), 0) AS correct, COALESCE(SUM(wrong), 0) AS wrong
      FROM attempts WHERE user_id = ? AND status IN ('submitted', 'expired')`,
+    null,
     profile.id,
   ),
-  first<{ best_rank: number }>(
+  firstOr<{ best_rank: number }>(
     `SELECT MIN(rank) AS best_rank FROM (
        SELECT RANK() OVER (PARTITION BY a.version_id ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank
        FROM attempts a JOIN users u ON u.id = a.user_id
        WHERE a.user_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL
      )`,
+    null,
     profile.id,
   ),
-  all<{ code: string; name: string; description: string | null; awarded_at: string }>(
+  allOr<{ code: string; name: string; description: string | null; awarded_at: string }>(
     `SELECT b.code, b.name, b.description, ub.awarded_at
      FROM user_badges ub JOIN badges b ON b.id = ub.badge_id
      WHERE ub.user_id = ? ORDER BY ub.awarded_at DESC LIMIT 12`,
+    [],
     profile.id,
   ),
-  all<{ name: string; attempted: number; correct: number }>(
+  allOr<{ name: string; attempted: number; correct: number }>(
     `SELECT s.name, us.attempted, us.correct
      FROM user_stats us JOIN subjects s ON s.id = us.subject_id
      WHERE us.user_id = ? AND us.attempted >= 5
      ORDER BY (CAST(us.correct AS REAL) / us.attempted) DESC LIMIT 6`,
+    [],
     profile.id,
   ),
 ]);

@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { all, first } from "../../../lib/db";
+import { apiUnavailableResponse } from "../../../lib/db-resilient";
 import { json } from "../../../lib/http";
 
 const TYPES = new Set(["full", "subject", "chapter", "pyq"]);
@@ -56,40 +57,49 @@ export const GET: APIRoute = async ({ url }) => {
       ? "attempt_count DESC, m.published_at DESC, m.id DESC"
       : "m.published_at DESC, m.id DESC";
 
-  const [totalRow, mocks] = await Promise.all([
-    first<{ total: number }>(
-      `SELECT COUNT(*) AS total FROM mock_tests m WHERE ${whereSql}`,
-      ...params,
-    ),
-    all<{
-      id: number;
-      title: string;
-      slug: string;
-      type: string;
-      duration_min: number;
-      total_marks: number;
-      marking_scheme: string;
-      subject_name: string | null;
-      question_count: number;
-      attempt_count: number;
-      published_at: string | null;
-    }>(
-      `SELECT m.id, m.title, m.slug, m.type, m.duration_min, m.total_marks, m.marking_scheme,
-              s.name AS subject_name,
-              (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
-              (SELECT COUNT(*) FROM attempts a
-                WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count,
-              m.published_at
-       FROM mock_tests m
-       LEFT JOIN subjects s ON s.id = m.subject_id
-       WHERE ${whereSql}
-       ORDER BY ${orderSql}
-       LIMIT ? OFFSET ?`,
-      ...params,
-      limit,
-      (page - 1) * limit,
-    ),
-  ]);
+  type MockRow = {
+    id: number;
+    title: string;
+    slug: string;
+    type: string;
+    duration_min: number;
+    total_marks: number;
+    marking_scheme: string;
+    subject_name: string | null;
+    question_count: number;
+    attempt_count: number;
+    published_at: string | null;
+  };
+
+  let totalRow: { total: number } | null = null;
+  let mocks: MockRow[] = [];
+  try {
+    [totalRow, mocks] = await Promise.all([
+      first<{ total: number }>(
+        `SELECT COUNT(*) AS total FROM mock_tests m WHERE ${whereSql}`,
+        ...params,
+      ),
+      all<MockRow>(
+        `SELECT m.id, m.title, m.slug, m.type, m.duration_min, m.total_marks, m.marking_scheme,
+                s.name AS subject_name,
+                (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
+                (SELECT COUNT(*) FROM attempts a
+                  WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count,
+                m.published_at
+         FROM mock_tests m
+         LEFT JOIN subjects s ON s.id = m.subject_id
+         WHERE ${whereSql}
+         ORDER BY ${orderSql}
+         LIMIT ? OFFSET ?`,
+        ...params,
+        limit,
+        (page - 1) * limit,
+      ),
+    ]);
+  } catch (error) {
+    console.error("Mock list query failed", error);
+    return apiUnavailableResponse();
+  }
 
   const total = totalRow?.total ?? 0;
   return json({

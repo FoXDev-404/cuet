@@ -294,11 +294,18 @@ async function auditPublic(browser) {
   }
 
   console.log("\nLocal practice pages");
-  for (const path of [
-    "/mock/english-2022-08-06-shift-1/instructions",
-    "/mock/english-2024-05-15-shift-2/instructions",
-  ]) {
+  const localPracticePaths = skipAttempt
+    ? ["/practice/english-2022-08-06-shift-1", "/practice/english-2024-05-15-shift-2"]
+    : [
+        "/mock/english-2022-08-06-shift-1/instructions",
+        "/mock/english-2024-05-15-shift-2/instructions",
+      ];
+  for (const path of localPracticePaths) {
     for (const viewport of VIEWPORTS) {
+      if (skipAttempt) {
+        await auditPath(page, "local-practice", path, viewport);
+        continue;
+      }
       await auditPath(
         page,
         "local-practice",

@@ -314,4 +314,29 @@ for (const [index, file] of files.entries()) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Cache purge
+// ---------------------------------------------------------------------------
+// The site serves the practice library through a Workers KV cache (see
+// src/lib/practice-cache.ts). A fresh import must not be masked by a cached
+// copy, so drop the index and every cached paper before finishing.
+const cacheKeys = [
+  "cache:practice:index:v1",
+  "cache:practice:subjects:v1",
+  ...importedPapers.map((paper) => `cache:practice:paper:v1:${paper.slug}`),
+];
+const cacheKeyFile = join(OUT_DIR, "practice-cache-keys.txt");
+writeFileSync(cacheKeyFile, `${cacheKeys.join("\n")}\n`, "utf8");
+console.log(`\nPurging ${cacheKeys.length} practice cache key(s)...`);
+const purge = spawnSync(
+  `npx wrangler kv bulk delete "${cacheKeyFile}" --binding MEDIA_KV ${target}`,
+  { cwd: ROOT, stdio: "inherit", shell: true },
+);
+if (purge.error) throw purge.error;
+if (purge.status !== 0) {
+  console.warn(
+    "\nCache purge failed. The cached library will refresh on its own within 10 minutes.",
+  );
+}
+
 console.log("\nImport complete.");

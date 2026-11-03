@@ -9,7 +9,8 @@ import {
   parseQuestionAssets,
   settleAttempt,
 } from "../../../lib/attempts";
-import { all } from "../../../lib/db";
+import { allOr } from "../../../lib/db";
+import { dbUnavailableResponse } from "../../../lib/db-resilient";
 import { formatDuration, parseMarkingScheme, parseOptions, renderRichText } from "../../../lib/content";
 import { imageDimensionsForUrls } from "../../../lib/media-dimensions";
 import { siteUrl } from "../../../lib/site-url";
@@ -22,15 +23,33 @@ if (!Number.isInteger(attemptId) || attemptId <= 0) {
   return new Response("Result not found", { status: 404 });
 }
 
-let attempt = await findAttempt(attemptId);
+let attempt: Awaited<ReturnType<typeof findAttempt>> = null;
+try {
+  attempt = await findAttempt(attemptId);
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent).
+  console.error("Solutions lookup failed", error);
+  return dbUnavailableResponse();
+}
 if (!attempt || !canAccessAttempt(attempt, Astro.locals.user, getGuestToken(Astro.cookies))) {
   return new Response("Result not found", { status: 404 });
 }
 
-attempt = await settleAttempt(attempt);
+try {
+  attempt = await settleAttempt(attempt);
+} catch (error) {
+  console.error("Attempt settlement failed", error);
+  return dbUnavailableResponse();
+}
 if (attempt.status === "in_progress") return Astro.redirect(`/attempt/${attempt.id}`, 303);
 
-const result = await loadResult(attempt);
+let result: Awaited<ReturnType<typeof loadResult>> = null;
+try {
+  result = await loadResult(attempt);
+} catch (error) {
+  console.error("Solutions load failed", error);
+  return dbUnavailableResponse();
+}
 if (!result) return new Response("Result not found", { status: 404 });
 
 const marking = parseMarkingScheme(result.mock.marking_scheme);
@@ -146,8 +165,9 @@ const user = Astro.locals.user;
 const bookmarked = new Set<number>(
   user
     ? (
-        await all<{ question_id: number }>(
+        await allOr<{ question_id: number }>(
           "SELECT question_id FROM bookmarks WHERE user_id = ?",
+          [],
           user.id,
         )
       ).map((row) => row.question_id)
@@ -155,10 +175,11 @@ const bookmarked = new Set<number>(
 );
 const discussionCounts = new Map(
   (
-    await all<{ question_id: number; count: number }>(
+    await allOr<{ question_id: number; count: number }>(
       `SELECT question_id, COUNT(*) AS count FROM discussions
        WHERE mock_id = ? AND question_id IS NOT NULL AND status = 'visible'
        GROUP BY question_id`,
+      [],
       result.mock.id,
     )
   ).map((row) => [row.question_id, row.count]),

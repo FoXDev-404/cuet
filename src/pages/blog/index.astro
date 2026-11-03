@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import { all } from "../../lib/db";
+import { allOr } from "../../lib/db";
 import { formatDate } from "../../lib/content";
 import { getPageSeo, parseFaq } from "../../lib/seo";
 import { estimateReadingMinutes } from "../../lib/blog";
 
-const posts = await all<{
+const posts = await allOr<{
   id: number;
   slug: string;
   title: string;
@@ -20,7 +20,7 @@ const posts = await all<{
    WHERE status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
      AND length(body) >= 400
    ORDER BY published_at DESC, id DESC
-   LIMIT 60`,
+   LIMIT 60`, [],
 );
 
 const seo = await getPageSeo("/blog");

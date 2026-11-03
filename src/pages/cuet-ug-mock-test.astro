@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SeoIntro from "../components/SeoIntro.astro";
 import FaqSection from "../components/FaqSection.astro";
 import AdSlot from "../components/AdSlot.astro";
-import { all } from "../lib/db";
+import { allOr } from "../lib/db";
 import { parseMarkingScheme } from "../lib/content";
 import { getLocalPapers } from "../lib/local-papers";
 import {
@@ -48,7 +48,7 @@ const DEFAULT_FAQ: FaqItem[] = [
   },
 ];
 
-const mocks = await all<{
+const mocks = await allOr<{
   id: number;
   title: string;
   slug: string;
@@ -71,7 +71,7 @@ const mocks = await all<{
      AND m.practice_paper_slug IS NULL
      AND m.slug NOT LIKE 'e2e-%'
      AND LOWER(m.title) NOT LIKE '%fixture%'
-   ORDER BY m.published_at DESC, m.id DESC`,
+   ORDER BY m.published_at DESC, m.id DESC`, [],
 );
 
 const localPapers = getLocalPapers();

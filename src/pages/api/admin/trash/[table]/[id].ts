@@ -4,6 +4,7 @@ import { audit } from "../../../../../lib/audit";
 import { coerceId } from "../../../../../lib/admin/data";
 import { getTable, type TableDef } from "../../../../../lib/admin/schema";
 import { purgeTrashRow, restoreTrashRow, trashRow } from "../../../../../lib/admin/trash";
+import { invalidateAfterPracticeMutation } from "../../../../../lib/practice-cache";
 import { apiError, forbiddenOrigin, isSameOrigin, json } from "../../../../../lib/http";
 
 type Resolved = { table: TableDef; id: string | number } | Response;
@@ -23,8 +24,10 @@ export const POST: APIRoute = async (context) => {
   const resolved = resolve(context);
   if (resolved instanceof Response) return resolved;
 
+  const trashed = await trashRow(resolved.table.name, resolved.id);
   const result = await restoreTrashRow(resolved.table.name, resolved.id);
   if ("error" in result) return apiError(result.error, 400);
+  await invalidateAfterPracticeMutation(resolved.table.name, [trashed]);
 
   await audit({
     adminId: guard.admin.id,
@@ -50,6 +53,7 @@ export const DELETE: APIRoute = async (context) => {
 
   const result = await purgeTrashRow(resolved.table.name, resolved.id);
   if ("error" in result) return apiError(result.error, 409);
+  await invalidateAfterPracticeMutation(resolved.table.name, [row]);
 
   await audit({
     adminId: guard.admin.id,

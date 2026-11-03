@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { first } from "../../../lib/db";
+import { dbUnavailableResponse } from "../../../lib/db-resilient";
+import { getLocalMockFallback } from "../../../lib/local-mock-fallback";
 import { getGuestToken } from "../../../lib/auth/session";
 import { hasFinishedAttempt, loadOwnPending, loadVisibleThreads, votedIds } from "../../../lib/discussions";
 import { chatTone, displayInitial, safeAvatarUrl } from "../../../lib/chat";
@@ -9,11 +11,21 @@ import { getSetting } from "../../../lib/settings";
 import { oldSlugRedirect } from "../../../lib/slug-redirects";
 
 const slug = Astro.params.slug ?? "";
-const mock = await first<{ id: number; title: string; slug: string }>(
-  `SELECT id, title, slug FROM mock_tests
-   WHERE slug = ? AND status = 'published' AND deleted_at IS NULL`,
-  slug,
-);
+let mock: { id: number; title: string; slug: string } | null = null;
+try {
+  mock = await first<{ id: number; title: string; slug: string }>(
+    `SELECT id, title, slug FROM mock_tests
+     WHERE slug = ? AND status = 'published' AND deleted_at IS NULL`,
+    slug,
+  );
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent). A
+  // practice paper can still show its (empty) discussion state.
+  console.error("Discussion paper lookup failed", error);
+  const fallback = getLocalMockFallback(slug);
+  mock = fallback ? { id: fallback.id, title: fallback.title, slug: fallback.slug } : null;
+  if (!mock) return dbUnavailableResponse();
+}
 if (!mock) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}/discussion`, 301);
@@ -23,7 +35,10 @@ if (!mock) {
 const user = Astro.locals.user;
 const admin = Astro.locals.admin;
 const paused = !admin && (await getSetting("discussion_enabled", "true")) === "false";
-const access = Boolean(admin) || (await hasFinishedAttempt(mock.id, user?.id ?? null, getGuestToken(Astro.cookies)));
+const access = Boolean(admin) || (await hasFinishedAttempt(mock.id, user?.id ?? null, getGuestToken(Astro.cookies)).catch((error) => {
+  console.error("Discussion access lookup failed", error);
+  return false;
+}));
 
 const requestedQuestion = Number(Astro.url.searchParams.get("question") ?? "0");
 const question =
@@ -33,13 +48,29 @@ const question =
          WHERE mq.mock_id = ? AND q.id = ?`,
         mock.id,
         requestedQuestion,
-      )
+      ).catch((error) => {
+        console.error("Discussion question lookup failed", error);
+        return null;
+      })
     : null;
 const questionId = question?.id ?? null;
 
-const threads = access ? await loadVisibleThreads(mock.id, questionId, user?.id ?? null) : [];
-const pending = access && user ? await loadOwnPending(mock.id, user.id, questionId) : [];
-const votes = await votedIds(threads.map((thread) => thread.id), user?.id ?? null);
+const threads = access
+  ? await loadVisibleThreads(mock.id, questionId, user?.id ?? null).catch((error) => {
+      console.error("Discussion thread lookup failed", error);
+      return [];
+    })
+  : [];
+const pending = access && user
+  ? await loadOwnPending(mock.id, user.id, questionId).catch((error) => {
+      console.error("Pending discussion lookup failed", error);
+      return [];
+    })
+  : [];
+const votes = await votedIds(threads.map((thread) => thread.id), user?.id ?? null).catch((error) => {
+  console.error("Discussion vote lookup failed", error);
+  return new Set<number>();
+});
 
 const roots = threads.filter((thread) => thread.parent_id === null);
 const repliesByParent = new Map<number, typeof threads>();

@@ -1,9 +1,12 @@
+import staticIndex from "../data/local-papers/index.json";
 import {
   buildSubjectSummaries,
+  buildSummary,
   sortPracticeSummaries,
   type LocalPaper,
   type LocalPaperSummary,
   type LocalSubjectSummary,
+  type RawIndex,
 } from "./practice-normalize";
 
 /**
@@ -30,6 +33,29 @@ let snapshot: PracticeLibrarySnapshot | null = null;
 let warming: Promise<PracticeLibrarySnapshot> | null = null;
 
 const DEFAULT_TTL_MS = 30_000;
+
+/**
+ * Backoff before D1 is retried after a failed load, so a broken or
+ * quota-blocked database is not hammered on every request.
+ */
+const FAILURE_BACKOFF_MS = 300_000;
+
+let lastFailureAt = 0;
+
+/**
+ * Snapshot built from the bundled `src/data/local-papers/index.json`.
+ *
+ * That file is committed with the library, so the listing pages keep working
+ * when D1 is unreachable (daily row-read quota exhausted, database busy).
+ * D1 stays the source of truth; this is only the fallback.
+ */
+export function createBundledPracticeSnapshot(): PracticeLibrarySnapshot {
+  const raw = (staticIndex as RawIndex).papers ?? [];
+  const papers = raw
+    .map((row) => buildSummary(row))
+    .filter((paper): paper is LocalPaperSummary => paper !== null);
+  return createPracticeSnapshot(papers);
+}
 
 export function createPracticeSnapshot(
   papers: LocalPaperSummary[],
@@ -68,7 +94,11 @@ export function usePracticeLibrary(
  * rendering an empty library.
  */
 export function ensurePracticeLibrary(maxAgeMs = DEFAULT_TTL_MS): Promise<PracticeLibrarySnapshot> {
-  if (snapshot && Date.now() - snapshot.loadedAt < maxAgeMs) {
+  const ttl =
+    lastFailureAt && Date.now() - lastFailureAt < FAILURE_BACKOFF_MS
+      ? FAILURE_BACKOFF_MS
+      : maxAgeMs;
+  if (snapshot && Date.now() - snapshot.loadedAt < ttl) {
     return Promise.resolve(snapshot);
   }
   if (warming) return warming;
@@ -86,14 +116,24 @@ export function ensurePracticeLibrary(maxAgeMs = DEFAULT_TTL_MS): Promise<Practi
     .then((papers) => {
       const next = createPracticeSnapshot(papers);
       snapshot = next;
+      lastFailureAt = 0;
       return next;
     })
     .catch((error) => {
+      lastFailureAt = Date.now();
       if (snapshot) {
         console.error("Practice library refresh failed; serving the last snapshot.", error);
         return snapshot;
       }
-      throw error;
+      // No usable snapshot yet: fall back to the bundled index so the library
+      // pages stay online while D1 is unreachable.
+      console.error(
+        "Practice library refresh failed; serving the bundled index.",
+        error,
+      );
+      const bundled = createBundledPracticeSnapshot();
+      snapshot = bundled;
+      return bundled;
     })
     .finally(() => {
       warming = null;

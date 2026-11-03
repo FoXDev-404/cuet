@@ -10,13 +10,22 @@ import {
   questionOgImagePath,
 } from "../../lib/share/public-question";
 import { resolvePublicQuestion } from "../../lib/share/public-question-store";
+import { dbUnavailableResponse } from "../../lib/db-resilient";
 import { renderRichText } from "../../lib/rich-text";
 
 const segment = Astro.params.slug ?? "";
 const publicId = parsePublicId(segment);
 if (!publicId) return new Response("Question not found", { status: 404 });
 
-const resolved = await resolvePublicQuestion(publicId, Astro.locals.user?.id ?? null);
+let resolved: Awaited<ReturnType<typeof resolvePublicQuestion>> = null;
+try {
+  resolved = await resolvePublicQuestion(publicId, Astro.locals.user?.id ?? null);
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent). This is
+  // an indexable page, so answer 503 rather than pretending the question is gone.
+  console.error("Public question lookup failed", error);
+  return dbUnavailableResponse();
+}
 if (!resolved) return new Response("Question not found", { status: 404 });
 
 const canonicalSegment = resolved.path.slice("/q/".length);

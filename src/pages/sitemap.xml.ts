@@ -1,8 +1,10 @@
 import type { APIRoute } from "astro";
-import { all } from "../lib/db";
+import { allOr } from "../lib/db";
 import { getLocalPapers, getLocalPaperYears, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
+import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
 import { siteUrl } from "../lib/site-url";
+import { getSubjectStats, type SubjectStatRow } from "../lib/subject-stats";
 
 type UrlEntry = { loc: string; lastmod?: string | null; changefreq?: string; priority?: string };
 
@@ -44,8 +46,17 @@ export const GET: APIRoute = async ({ request }) => {
   const hasPracticeContent = (slug: string, questionCount: number, paperCount: number) =>
     questionCount > 0 || paperCount > 0 || localSubjectSlugs.has(slug);
 
+  // Fetch the rollup before the big try so a stats failure cannot drop the
+  // mock/PYQ/blog URLs that follow it.
+  let subjectStats: SubjectStatRow[] = [];
   try {
-    mocks = await all(
+    subjectStats = await getSubjectStats();
+  } catch (error) {
+    console.error("sitemap subject stats failed", error);
+  }
+
+  try {
+    mocks = await allOr(
       `SELECT m.slug, m.published_at, m.updated_at, m.practice_paper_slug,
               (SELECT COUNT(*) FROM attempts a
                 WHERE a.mock_id = m.id AND a.status = 'submitted' AND a.is_first_attempt = 1) AS eligible
@@ -53,35 +64,42 @@ export const GET: APIRoute = async ({ request }) => {
        WHERE m.status = 'published' AND m.deleted_at IS NULL
          AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
        ORDER BY m.published_at DESC, m.id DESC`,
+      [],
     );
-    subjects = await all(
-      `SELECT s.slug,
-              (SELECT COUNT(DISTINCT q.id) FROM questions q
-                JOIN mock_questions_current mq ON mq.question_id = q.id
-                JOIN mock_tests m ON m.id = mq.mock_id
-                WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL
-                  AND m.status = 'published' AND m.deleted_at IS NULL) AS question_count,
-              (SELECT COUNT(DISTINCT m.id) FROM mock_tests m
-                WHERE m.status = 'published' AND m.deleted_at IS NULL
-                  AND (m.subject_id = s.id OR EXISTS (
-                    SELECT 1 FROM mock_questions_current mq JOIN questions q2 ON q2.id = mq.question_id
-                    WHERE mq.mock_id = m.id AND q2.subject_id = s.id
-                  ))) AS mock_count
-       FROM subjects s JOIN exams e ON e.id = s.exam_id
-       WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
+    const cuetSubjects = subjectStats.filter((subject) => subject.exam_slug === "cuet-ug");
+    subjects = cuetSubjects.map((subject) => ({
+      slug: subject.slug,
+      question_count: subject.all_mock_question_count,
+      mock_count: subject.all_mock_count,
+    }));
+    const topicCountRows = await allOr<{ subject_id: number; topic_count: number }>(
+      `SELECT subject_id, COUNT(*) AS topic_count FROM topics GROUP BY subject_id`,
+      [],
     );
-    syllabusSubjects = await all(
-      `SELECT s.slug,
-              (SELECT COUNT(*) FROM topics t WHERE t.subject_id = s.id) AS topic_count,
-              (SELECT COUNT(DISTINCT q.id) FROM questions q
-                JOIN mock_questions_current mq ON mq.question_id = q.id
-                JOIN mock_tests m ON m.id = mq.mock_id
-                WHERE q.subject_id = s.id AND q.status = 'published' AND q.deleted_at IS NULL
-                  AND m.status = 'published' AND m.deleted_at IS NULL) AS question_count
-       FROM subjects s JOIN exams e ON e.id = s.exam_id
-       WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
+    const topicCounts = new Map(
+      topicCountRows.map((row) => [row.subject_id, Number(row.topic_count)]),
     );
-    topics = await all(
+    syllabusSubjects = cuetSubjects.map((subject) => ({
+      slug: subject.slug,
+      topic_count: topicCounts.get(subject.id) ?? 0,
+      question_count: subject.all_mock_question_count,
+    }));
+    if (cuetSubjects.length === 0) {
+      // D1 and the cache are both unavailable. Keep the bundled subjects in
+      // the sitemap instead of dropping their internal links.
+      const localCards = getLocalSubjectCards();
+      subjects = localCards.map((card) => ({
+        slug: card.slug,
+        question_count: 0,
+        mock_count: card.mock_count,
+      }));
+      syllabusSubjects = localCards.map((card) => ({
+        slug: card.slug,
+        topic_count: 0,
+        question_count: 0,
+      }));
+    }
+    topics = await allOr(
       `SELECT s.slug AS subject_slug, t.slug AS topic_slug,
               (SELECT COUNT(DISTINCT q.id) FROM questions q
                 JOIN mock_questions_current mq ON mq.question_id = q.id
@@ -92,28 +110,32 @@ export const GET: APIRoute = async ({ request }) => {
        JOIN subjects s ON s.id = t.subject_id
        JOIN exams e ON e.id = s.exam_id
        WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
+      [],
     );
-    pyqYears = await all(
+    pyqYears = await allOr(
       `SELECT p.year, COUNT(DISTINCT m.id) AS playable_count
        FROM pyq_papers p
        JOIN mock_tests m ON m.pyq_paper_id = p.id AND m.status = 'published' AND m.deleted_at IS NULL
        WHERE p.status = 'published' AND p.deleted_at IS NULL
        GROUP BY p.year
        ORDER BY p.year DESC`,
+      [],
     );
-    pyqSubjects = await all(
+    pyqSubjects = await allOr(
       `SELECT p.year, s.slug AS subject_slug, COUNT(DISTINCT m.id) AS playable_count
        FROM pyq_papers p
        JOIN subjects s ON s.id = p.subject_id
        JOIN mock_tests m ON m.pyq_paper_id = p.id AND m.status = 'published' AND m.deleted_at IS NULL
        WHERE p.status = 'published' AND p.deleted_at IS NULL
        GROUP BY p.year, s.slug`,
+      [],
     );
-    posts = await all(
+    posts = await allOr(
       `SELECT slug, updated_at, published_at FROM blog_posts
        WHERE status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
          AND length(body) >= 400
        ORDER BY published_at DESC, id DESC`,
+      [],
     );
     playablePyqCount = pyqYears.reduce((total, year) => total + year.playable_count, 0);
     rankedMockCount = mocks.filter((mock) => mock.eligible > 0).length;

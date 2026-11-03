@@ -3,12 +3,13 @@ import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { first } from "../../lib/db";
+import { dbUnavailableResponse } from "../../lib/db-resilient";
 import { formatDate } from "../../lib/content";
 import { articleJsonLd, breadcrumbJsonLd, getPageSeo } from "../../lib/seo";
 import { estimateReadingMinutes, renderArticleBody } from "../../lib/blog";
 
 const slug = Astro.params.slug ?? "";
-const post = await first<{
+let post: {
   id: number;
   slug: string;
   title: string;
@@ -16,13 +17,29 @@ const post = await first<{
   body: string;
   published_at: string | null;
   updated_at: string | null;
-}>(
-  `SELECT id, slug, title, description, body, published_at, updated_at
-   FROM blog_posts
-   WHERE slug = ? AND status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
-     AND length(body) >= 400`,
-  slug,
-);
+} | null = null;
+try {
+  post = await first<{
+    id: number;
+    slug: string;
+    title: string;
+    description: string;
+    body: string;
+    published_at: string | null;
+    updated_at: string | null;
+  }>(
+    `SELECT id, slug, title, description, body, published_at, updated_at
+     FROM blog_posts
+     WHERE slug = ? AND status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
+       AND length(body) >= 400`,
+    slug,
+  );
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent). The
+  // guide exists, so answer 503 instead of a 500 stack trace.
+  console.error("Blog post lookup failed", error);
+  return dbUnavailableResponse();
+}
 if (!post) return new Response("Guide not found", { status: 404 });
 
 const PATH = `/blog/${post.slug}`;

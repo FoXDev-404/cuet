@@ -4,6 +4,8 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import FaqSection from "../../../components/FaqSection.astro";
 import DiscussionPreview from "../../../components/DiscussionPreview.astro";
 import { all, first } from "../../../lib/db";
+import { dbUnavailableResponse } from "../../../lib/db-resilient";
+import { getLocalMockFallback } from "../../../lib/local-mock-fallback";
 import { getGuestToken } from "../../../lib/auth/session";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { hasFinishedAttempt } from "../../../lib/discussions";
@@ -13,7 +15,7 @@ import { oldSlugRedirect } from "../../../lib/slug-redirects";
 
 const slug = Astro.params.slug ?? "";
 
-const mock = await first<{
+let mock: {
   id: number;
   title: string;
   slug: string;
@@ -25,15 +27,36 @@ const mock = await first<{
   intro_html: string | null;
   subject_name: string | null;
   published_at: string | null;
-}>(
-  `SELECT m.id, m.title, m.slug, m.type, v.duration_min, v.total_marks, v.marking_scheme,
-          v.instructions, m.intro_html, s.name AS subject_name, v.published_at
-   FROM mock_tests m
-   JOIN mock_test_versions v ON v.id = m.current_version_id
-   LEFT JOIN subjects s ON s.id = m.subject_id
-   WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
-  slug,
-);
+} | null = null;
+try {
+  mock = await first<{
+    id: number;
+    title: string;
+    slug: string;
+    type: string;
+    duration_min: number;
+    total_marks: number;
+    marking_scheme: string;
+    instructions: string | null;
+    intro_html: string | null;
+    subject_name: string | null;
+    published_at: string | null;
+  }>(
+    `SELECT m.id, m.title, m.slug, m.type, v.duration_min, v.total_marks, v.marking_scheme,
+            v.instructions, m.intro_html, s.name AS subject_name, v.published_at
+     FROM mock_tests m
+     JOIN mock_test_versions v ON v.id = m.current_version_id
+     LEFT JOIN subjects s ON s.id = m.subject_id
+     WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
+    slug,
+  );
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent). A
+  // practice paper can still describe itself from the bundled library.
+  console.error("Mock overview lookup failed", error);
+  mock = getLocalMockFallback(slug);
+  if (!mock) return dbUnavailableResponse();
+}
 if (!mock) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}`, 301);
@@ -44,25 +67,42 @@ const marking = parseMarkingScheme(mock.marking_scheme);
 const sections = await all<{ section: string; count: number }>(
   "SELECT section, COUNT(*) AS count FROM mock_questions_current WHERE mock_id = ? GROUP BY section ORDER BY MIN(position)",
   mock.id,
-);
+).catch((error) => {
+  console.error("Mock section lookup failed", error);
+  return [] as { section: string; count: number }[];
+});
 const totalQuestions = sections.reduce((sum, section) => sum + section.count, 0);
 const attemptCount = await first<{ count: number }>(
   "SELECT COUNT(*) AS count FROM attempts WHERE mock_id = ? AND status IN ('submitted','expired')",
   mock.id,
-);
-let activeAttempt = await findInProgressAttempt(
-  mock.id,
-  Astro.locals.user?.id ?? null,
-  getGuestToken(Astro.cookies),
-);
-if (activeAttempt) {
-  activeAttempt = await settleAttempt(activeAttempt);
-  if (activeAttempt.status !== "in_progress") activeAttempt = null;
+).catch((error) => {
+  console.error("Mock attempt count lookup failed", error);
+  return null;
+});
+let activeAttempt: Awaited<ReturnType<typeof findInProgressAttempt>> = null;
+try {
+  activeAttempt = await findInProgressAttempt(
+    mock.id,
+    Astro.locals.user?.id ?? null,
+    getGuestToken(Astro.cookies),
+  );
+  if (activeAttempt) {
+    activeAttempt = await settleAttempt(activeAttempt);
+    if (activeAttempt.status !== "in_progress") activeAttempt = null;
+  }
+} catch (error) {
+  console.error("Attempt lookup failed", error);
+  activeAttempt = null;
 }
 
 const discussionAccess =
   Boolean(Astro.locals.admin) ||
-  (await hasFinishedAttempt(mock.id, Astro.locals.user?.id ?? null, getGuestToken(Astro.cookies)));
+  (await hasFinishedAttempt(mock.id, Astro.locals.user?.id ?? null, getGuestToken(Astro.cookies)).catch(
+    (error) => {
+      console.error("Discussion access lookup failed", error);
+      return false;
+    },
+  ));
 
 const intro =
   mock.intro_html?.trim() ||

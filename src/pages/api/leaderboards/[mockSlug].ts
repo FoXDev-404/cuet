@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { all, first } from "../../../lib/db";
+import { apiUnavailableResponse } from "../../../lib/db-resilient";
 import { percentileFor } from "../../../lib/ranking";
 import { apiError, json } from "../../../lib/http";
 
@@ -11,48 +12,60 @@ export const GET: APIRoute = async (context) => {
   const slug = (context.params.mockSlug ?? "").trim();
   if (!slug) return apiError("Leaderboard not found.", 404);
 
-  const mock = await first<{
+  type MockRow = {
     id: number;
     title: string;
     slug: string;
     total_marks: number;
     duration_min: number;
     version_id: number;
-  }>(
-    `SELECT m.id, m.title, m.slug, v.total_marks, v.duration_min, v.id AS version_id
-     FROM mock_tests m JOIN mock_test_versions v ON v.id = m.current_version_id
-     WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
-    slug,
-  );
-  if (!mock) return apiError("Leaderboard not found.", 404);
+  };
+  type EntryRow = {
+    rank: number;
+    username: string;
+    score: number;
+    correct: number;
+    wrong: number;
+    time_taken_sec: number;
+    submitted_at: string;
+  };
+  type SummaryRow = { eligible: number; average: number | null; best: number | null };
 
-  const [rows, summary] = await Promise.all([
-    all<{
-      rank: number;
-      username: string;
-      score: number;
-      correct: number;
-      wrong: number;
-      time_taken_sec: number;
-      submitted_at: string;
-    }>(
-      `SELECT rank, username, score, correct, wrong, time_taken_sec, submitted_at FROM (
-         SELECT u.username, a.score, a.correct, a.wrong, a.time_taken_sec, a.submitted_at,
-                RANK() OVER (ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank
+  let mock: MockRow | null = null;
+  let rows: EntryRow[] = [];
+  let summary: SummaryRow | null = null;
+  try {
+    mock = await first<MockRow>(
+      `SELECT m.id, m.title, m.slug, v.total_marks, v.duration_min, v.id AS version_id
+       FROM mock_tests m JOIN mock_test_versions v ON v.id = m.current_version_id
+       WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
+      slug,
+    );
+    if (!mock) return apiError("Leaderboard not found.", 404);
+
+    [rows, summary] = await Promise.all([
+      all<EntryRow>(
+        `SELECT rank, username, score, correct, wrong, time_taken_sec, submitted_at FROM (
+           SELECT u.username, a.score, a.correct, a.wrong, a.time_taken_sec, a.submitted_at,
+                  RANK() OVER (ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank
+           FROM attempts a JOIN users u ON u.id = a.user_id
+           WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
+             AND u.deleted_at IS NULL
+         ) ORDER BY rank, submitted_at LIMIT 100`,
+        mock.version_id,
+      ),
+      first<SummaryRow>(
+        `SELECT COUNT(*) AS eligible, AVG(a.score) AS average, MAX(a.score) AS best
          FROM attempts a JOIN users u ON u.id = a.user_id
          WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
-           AND u.deleted_at IS NULL
-       ) ORDER BY rank, submitted_at LIMIT 100`,
-      mock.version_id,
-    ),
-    first<{ eligible: number; average: number | null; best: number | null }>(
-      `SELECT COUNT(*) AS eligible, AVG(a.score) AS average, MAX(a.score) AS best
-       FROM attempts a JOIN users u ON u.id = a.user_id
-       WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
-         AND u.deleted_at IS NULL`,
-      mock.version_id,
-    ),
-  ]);
+           AND u.deleted_at IS NULL`,
+        mock.version_id,
+      ),
+    ]);
+  } catch (error) {
+    console.error("Leaderboard feed query failed", error);
+    return apiUnavailableResponse();
+  }
 
   const eligible = summary?.eligible ?? 0;
   return json({

@@ -12,6 +12,7 @@ import {
 } from "../../../../lib/admin/data";
 import { getTable } from "../../../../lib/admin/schema";
 import { snapshotEntity } from "../../../../lib/admin/revisions";
+import { invalidateAfterPracticeMutation } from "../../../../lib/practice-cache";
 import { apiError, forbiddenOrigin, isSameOrigin, json } from "../../../../lib/http";
 
 export const GET: APIRoute = async (context) => {
@@ -59,6 +60,8 @@ export const POST: APIRoute = async (context) => {
     const result = await createRow(table, input);
     if ("error" in result) return apiError(result.error, 400);
 
+    await invalidateAfterPracticeMutation(table.name, [input]);
+
     await audit({
       adminId: guard.admin.id,
       action: "data.create",
@@ -93,6 +96,7 @@ export const POST: APIRoute = async (context) => {
     if ("error" in result) return apiError(result.error, result.conflict ? 409 : 400);
 
     const after = await getRow(table, id);
+    await invalidateAfterPracticeMutation(table.name, [before, after]);
     await audit({
       adminId: guard.admin.id,
       action: "data.update",
@@ -106,6 +110,7 @@ export const POST: APIRoute = async (context) => {
   if (action === "restore") {
     const result = await restoreRow(table, id);
     if ("error" in result) return apiError(result.error, 400);
+    await invalidateAfterPracticeMutation(table.name, [await getRow(table, id)]);
     await audit({
       adminId: guard.admin.id,
       action: "data.restore",
@@ -128,6 +133,7 @@ export const POST: APIRoute = async (context) => {
     }
     const result = await softDeleteRow(table, id, false);
     if ("error" in result) return apiError(result.error, 400);
+    await invalidateAfterPracticeMutation(table.name, [before]);
     await audit({
       adminId: guard.admin.id,
       action: "data.delete",

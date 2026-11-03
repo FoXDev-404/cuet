@@ -2,7 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import DiscussionPreview from "../../components/DiscussionPreview.astro";
 import { getGuestToken } from "../../lib/auth/session";
-import { all, first } from "../../lib/db";
+import { allOr, firstOr } from "../../lib/db";
+import { dbUnavailableResponse } from "../../lib/db-resilient";
 import {
   canAccessAttempt,
   findAttempt,
@@ -16,15 +17,33 @@ if (!Number.isInteger(attemptId) || attemptId <= 0) {
   return new Response("Result not found", { status: 404 });
 }
 
-let attempt = await findAttempt(attemptId);
+let attempt: Awaited<ReturnType<typeof findAttempt>> = null;
+try {
+  attempt = await findAttempt(attemptId);
+} catch (error) {
+  // D1 is unreachable (for example the daily row-read quota is spent).
+  console.error("Result lookup failed", error);
+  return dbUnavailableResponse();
+}
 if (!attempt || !canAccessAttempt(attempt, Astro.locals.user, getGuestToken(Astro.cookies))) {
   return new Response("Result not found", { status: 404 });
 }
 
-attempt = await settleAttempt(attempt);
+try {
+  attempt = await settleAttempt(attempt);
+} catch (error) {
+  console.error("Attempt settlement failed", error);
+  return dbUnavailableResponse();
+}
 if (attempt.status === "in_progress") return Astro.redirect(`/attempt/${attempt.id}`, 303);
 
-const result = await loadResult(attempt);
+let result: Awaited<ReturnType<typeof loadResult>> = null;
+try {
+  result = await loadResult(attempt);
+} catch (error) {
+  console.error("Result load failed", error);
+  return dbUnavailableResponse();
+}
 if (!result) return new Response("Result not found", { status: 404 });
 
 const { mock, sections, rank, percentile, eligible } = result;
@@ -53,7 +72,7 @@ const scoreTone =
 // The individual paper board is shown on every finished attempt, including a
 // retake: the board is the paper's, not the attempt's.
 const [leaderboardRows, boardCount] = await Promise.all([
-  all<{
+  allOr<{
     rank: number;
     user_id: number;
     username: string;
@@ -81,13 +100,15 @@ const [leaderboardRows, boardCount] = await Promise.all([
          AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
      ) WHERE position <= 5
      ORDER BY position`,
+    [],
     attempt.version_id,
   ),
-  first<{ count: number }>(
+  firstOr<{ count: number }>(
     `SELECT COUNT(*) AS count
      FROM attempts a JOIN users u ON u.id = a.user_id
      WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
        AND a.user_id IS NOT NULL AND u.deleted_at IS NULL`,
+    null,
     attempt.version_id,
   ),
 ]);

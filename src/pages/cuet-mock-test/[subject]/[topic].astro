@@ -3,7 +3,7 @@ import { siteUrl } from "../../../lib/site-url";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 import FaqSection from "../../../components/FaqSection.astro";
-import { all, first } from "../../../lib/db";
+import { allOr, firstOr } from "../../../lib/db";
 import { parseMarkingScheme, renderRichText } from "../../../lib/content";
 import {
   breadcrumbJsonLd,
@@ -16,36 +16,36 @@ import {
 const subjectSlug = Astro.params.subject ?? "";
 const topicSlug = Astro.params.topic ?? "";
 
-const subject = await first<{ id: number; name: string; slug: string; type: string }>(
+const subject = await firstOr<{ id: number; name: string; slug: string; type: string }>(
   `SELECT s.id, s.name, s.slug, s.type
    FROM subjects s JOIN exams e ON e.id = s.exam_id
-   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`, null,
   subjectSlug,
 );
 if (!subject) return new Response("Topic not found", { status: 404 });
 
-const topic = await first<{ id: number; name: string; slug: string }>(
-  "SELECT id, name, slug FROM topics WHERE slug = ? AND subject_id = ?",
+const topic = await firstOr<{ id: number; name: string; slug: string }>(
+  "SELECT id, name, slug FROM topics WHERE slug = ? AND subject_id = ?", null,
   topicSlug,
   subject.id,
 );
 if (!topic) return new Response("Topic not found", { status: 404 });
 
-const questionCount = await first<{ count: number }>(
+const questionCount = await firstOr<{ count: number }>(
   `SELECT COUNT(DISTINCT q.id) AS count
    FROM questions q
    JOIN mock_questions_current mq ON mq.question_id = q.id
    JOIN mock_tests m ON m.id = mq.mock_id
    WHERE q.topic_id = ? AND q.status = 'published' AND q.deleted_at IS NULL
      AND m.status = 'published' AND m.deleted_at IS NULL
-     AND m.practice_paper_slug IS NULL`,
+     AND m.practice_paper_slug IS NULL`, null,
   topic.id,
 );
 const publishedQuestions = questionCount?.count ?? 0;
 if (publishedQuestions === 0) return new Response("Topic not published yet", { status: 404 });
 
 const [papers, relatedTopics] = await Promise.all([
-  all<{
+  allOr<{
     id: number;
     title: string;
     slug: string;
@@ -70,11 +70,11 @@ const [papers, relatedTopics] = await Promise.all([
          WHERE mq.mock_id = m.id AND q.topic_id = ?
        )
      ORDER BY m.published_at DESC, m.id DESC
-     LIMIT 24`,
+     LIMIT 24`, [],
     topic.id,
     topic.id,
   ),
-  all<{ name: string; slug: string; count: number }>(
+  allOr<{ name: string; slug: string; count: number }>(
     `SELECT t.name, t.slug,
             (SELECT COUNT(DISTINCT q.id) FROM questions q
               JOIN mock_questions_current mq ON mq.question_id = q.id
@@ -85,7 +85,7 @@ const [papers, relatedTopics] = await Promise.all([
      FROM topics t
      WHERE t.subject_id = ? AND t.id != ?
      ORDER BY count DESC, t.name
-     LIMIT 8`,
+     LIMIT 8`, [],
     subject.id,
     topic.id,
   ),

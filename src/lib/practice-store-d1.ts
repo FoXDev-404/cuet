@@ -1,4 +1,10 @@
 import { getDb } from "./db";
+import {
+  PRACTICE_INDEX_CACHE_KEY,
+  practicePaperCacheKey,
+  readPracticeCache,
+  writePracticeCache,
+} from "./practice-cache";
 import type { PracticeLibraryStore } from "./practice-library";
 import type { LocalPaper, LocalPaperSummary } from "./practice-normalize";
 import {
@@ -45,11 +51,26 @@ const INDEX_SQL = `
 `;
 
 async function loadIndex(): Promise<LocalPaperSummary[]> {
-  const result = await getDb().prepare(INDEX_SQL).all<PaperIndexRow>();
-  return (result.results ?? []).map(mapIndexRow);
+  const cached = await readPracticeCache<LocalPaperSummary[]>(PRACTICE_INDEX_CACHE_KEY);
+  if (cached?.fresh) return cached.payload;
+
+  try {
+    const result = await getDb().prepare(INDEX_SQL).all<PaperIndexRow>();
+    const papers = (result.results ?? []).map(mapIndexRow);
+    await writePracticeCache(PRACTICE_INDEX_CACHE_KEY, papers);
+    return papers;
+  } catch (error) {
+    if (cached) {
+      // D1 is unreachable (quota exhausted, database busy). The index barely
+      // changes, so the last known good copy is better than a 500.
+      console.error("Practice index refresh failed; serving the cached copy.", error);
+      return cached.payload;
+    }
+    throw error;
+  }
 }
 
-async function loadPaper(slug: string): Promise<LocalPaper | null> {
+async function readPaperFromD1(slug: string): Promise<LocalPaper | null> {
   const db = getDb();
   const [paperResult, passageResult, questionResult] = await db.batch<
     PaperRow | PassageRow | QuestionRow
@@ -94,6 +115,27 @@ async function loadPaper(slug: string): Promise<LocalPaper | null> {
     (passageResult.results ?? []) as PassageRow[],
     (questionResult.results ?? []) as QuestionRow[],
   );
+}
+
+async function loadPaper(slug: string): Promise<LocalPaper | null> {
+  const cacheKey = practicePaperCacheKey(slug);
+  const cached = await readPracticeCache<LocalPaper | null>(cacheKey);
+  if (cached?.fresh) return cached.payload;
+
+  try {
+    const paper = await readPaperFromD1(slug);
+    await writePracticeCache(cacheKey, paper);
+    return paper;
+  } catch (error) {
+    if (cached) {
+      console.error(
+        `Practice paper "${slug}" refresh failed; serving the cached copy.`,
+        error,
+      );
+      return cached.payload;
+    }
+    throw error;
+  }
 }
 
 export const practiceLibraryD1Store: PracticeLibraryStore = { loadIndex, loadPaper };
