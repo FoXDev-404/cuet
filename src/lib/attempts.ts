@@ -3,6 +3,7 @@ import { parseMarkingScheme, parseOptions, type QuestionOption } from "./content
 import { firstAttemptFlag, percentileFor } from "./ranking";
 import { scoreAttempt } from "./scoring";
 import { hasExpired, remainingSeconds, SUBMIT_GRACE_SECONDS } from "./attempt-time";
+import { getMockVersionQuestions } from "./mock-cache";
 
 export { hasExpired, remainingSeconds, SUBMIT_GRACE_SECONDS };
 
@@ -22,6 +23,8 @@ export type AttemptRow = {
   deadline_at: string;
   submitted_at: string | null;
   is_first_attempt: number;
+  last_client_seq?: number;
+  section_summary?: string | null;
 };
 
 export type AttemptQuestion = {
@@ -69,7 +72,8 @@ export type SolutionQuestion = AttemptQuestion & {
 export async function findAttempt(id: number): Promise<AttemptRow | null> {
   return first<AttemptRow>(
     `SELECT id, user_id, guest_token, mock_id, version_id, status, score, correct, wrong, skipped,
-            time_taken_sec, started_at, deadline_at, submitted_at, is_first_attempt
+            time_taken_sec, started_at, deadline_at, submitted_at, is_first_attempt,
+            COALESCE(last_client_seq, 0) AS last_client_seq, section_summary
      FROM attempts WHERE id = ?`,
     id,
   );
@@ -88,18 +92,7 @@ export function canAccessAttempt(
 }
 
 export async function attemptQuestions(versionId: number): Promise<AttemptQuestion[]> {
-  return all<AttemptQuestion>(
-    `SELECT q.id, mq.section, mq.position, q.subject_id, q.text, q.text_hi, q.options,
-            q.options_hi, q.image_url, q.image_alt, q.assets_json, q.passage_id,
-            p.body AS passage_body, p.body_hi AS passage_body_hi,
-            p.image_url AS passage_image_url, p.image_alt AS passage_image_alt
-     FROM mock_questions mq
-     JOIN questions q ON q.id = mq.question_id
-     LEFT JOIN passages p ON p.id = q.passage_id
-     WHERE mq.version_id = ?
-     ORDER BY mq.position`,
-    versionId,
-  );
+  return getMockVersionQuestions(versionId);
 }
 
 export async function attemptAnswers(attemptId: number): Promise<AttemptAnswer[]> {
@@ -118,7 +111,8 @@ export async function findInProgressAttempt(
   if (userId) {
     return first<AttemptRow>(
       `SELECT id, user_id, guest_token, mock_id, version_id, status, score, correct, wrong, skipped,
-              time_taken_sec, started_at, deadline_at, submitted_at, is_first_attempt
+              time_taken_sec, started_at, deadline_at, submitted_at, is_first_attempt,
+              COALESCE(last_client_seq, 0) AS last_client_seq, section_summary
        FROM attempts WHERE user_id = ? AND mock_id = ? AND status = 'in_progress'
        ORDER BY id DESC LIMIT 1`,
       userId,
@@ -128,7 +122,8 @@ export async function findInProgressAttempt(
   if (guestToken) {
     return first<AttemptRow>(
       `SELECT id, user_id, guest_token, mock_id, version_id, status, score, correct, wrong, skipped,
-              time_taken_sec, started_at, deadline_at, submitted_at, is_first_attempt
+              time_taken_sec, started_at, deadline_at, submitted_at, is_first_attempt,
+              COALESCE(last_client_seq, 0) AS last_client_seq, section_summary
        FROM attempts WHERE guest_token = ? AND mock_id = ? AND status = 'in_progress'
        ORDER BY id DESC LIMIT 1`,
       guestToken,
@@ -202,18 +197,54 @@ export async function finalizeAttempt(
 
   const questionRows = await all<{
     id: number;
+    section: string;
     subject_id: number;
     topic_id: number | null;
     correct_option: number;
     options: string;
   }>(
-    `SELECT q.id, q.subject_id, q.topic_id, q.correct_option, q.options
+    `SELECT q.id, mq.section, q.subject_id, q.topic_id, q.correct_option, q.options
      FROM mock_questions mq JOIN questions q ON q.id = mq.question_id
      WHERE mq.version_id = ? ORDER BY mq.position`,
     attempt.version_id,
   );
 
   const summary = scoreAttempt(questionRows, answers, marking);
+
+  // Compute and serialize section summaries to persist with the attempt
+  const answerMap = new Map(answers.map((a) => [a.question_id, a]));
+  const sectionsMap = new Map<string, AttemptResult["sections"][number]>();
+  for (const q of questionRows) {
+    const sec = sectionsMap.get(q.section) ?? {
+      section: q.section,
+      total: 0,
+      answered: 0,
+      correct: 0,
+      wrong: 0,
+      skipped: 0,
+      score: 0,
+      time: 0,
+    };
+    sec.total += 1;
+    const ans = answerMap.get(q.id);
+    const isCorrect = summary.correctness.get(q.id);
+    if (ans && ans.selected !== null) {
+      sec.answered += 1;
+      sec.time += ans.time_spent_sec ?? 0;
+      if (isCorrect === 1) {
+        sec.correct += 1;
+        sec.score += marking.correct;
+      } else {
+        sec.wrong += 1;
+        sec.score += marking.wrong;
+      }
+    } else {
+      sec.skipped += 1;
+      sec.score += marking.skipped;
+    }
+    sectionsMap.set(q.section, sec);
+  }
+  const sectionSummaryJson = JSON.stringify([...sectionsMap.values()]);
 
   // Make sure every question has an answer row (unattempted questions score
   // NULL). One insert replaces a query per question and keeps the submit path
@@ -268,7 +299,7 @@ export async function finalizeAttempt(
 
   const submittedAt = new Date().toISOString();
   const updateSql = `UPDATE attempts SET status = ?, score = ?, correct = ?, wrong = ?, skipped = ?,
-       time_taken_sec = ?, submitted_at = ?, is_first_attempt = ?
+       time_taken_sec = ?, submitted_at = ?, is_first_attempt = ?, section_summary = ?
      WHERE id = ? AND status = 'in_progress'`;
   let claimed = false;
   try {
@@ -282,6 +313,7 @@ export async function finalizeAttempt(
       timeTaken,
       submittedAt,
       isFirst,
+      sectionSummaryJson,
       attempt.id,
     );
     claimed = (updated.meta.changes ?? 0) > 0;
@@ -299,6 +331,7 @@ export async function finalizeAttempt(
       timeTaken,
       submittedAt,
       isFirst,
+      sectionSummaryJson,
       attempt.id,
     );
     claimed = (updated.meta.changes ?? 0) > 0;
@@ -375,7 +408,10 @@ export type AttemptResult = {
   }[];
 };
 
-export async function loadResult(attempt: AttemptRow): Promise<AttemptResult | null> {
+export async function loadResult(
+  attempt: AttemptRow,
+  options?: { summaryOnly?: boolean },
+): Promise<AttemptResult | null> {
   const mock = await first<{
     id: number;
     title: string;
@@ -395,83 +431,91 @@ export async function loadResult(attempt: AttemptRow): Promise<AttemptResult | n
   );
   if (!mock) return null;
 
-  const rows = await all<SolutionQuestion>(
-    `SELECT q.id, mq.section, mq.position, q.subject_id, q.text, q.text_hi, q.options,
-            q.options_hi, q.image_url, q.image_alt, q.assets_json, q.passage_id,
-            p.body AS passage_body, p.body_hi AS passage_body_hi,
-            p.image_url AS passage_image_url, p.image_alt AS passage_image_alt,
-            q.correct_option, q.explanation, q.explanation_hi,
-            q.explanation_image_url, q.explanation_image_alt,
-            q.explanation_source, q.explanation_status,
-            aa.selected, COALESCE(aa.time_spent_sec, 0) AS time_spent_sec,
-            COALESCE(aa.marked_for_review, 0) AS marked_for_review, aa.is_correct
-     FROM mock_questions mq
-     JOIN questions q ON q.id = mq.question_id
-     LEFT JOIN passages p ON p.id = q.passage_id
-     LEFT JOIN attempt_answers aa ON aa.attempt_id = ? AND aa.question_id = q.id
-     WHERE mq.version_id = ?
-     ORDER BY mq.position`,
-    attempt.id,
-    attempt.version_id,
-  );
+  let sections: AttemptResult["sections"] = [];
+  let questions: SolutionQuestion[] = [];
 
-  const marking = parseMarkingScheme(mock.marking_scheme);
-  const sections = new Map<string, AttemptResult["sections"][number]>();
-  for (const row of rows) {
-    const section = sections.get(row.section) ?? {
-      section: row.section,
-      total: 0,
-      answered: 0,
-      correct: 0,
-      wrong: 0,
-      skipped: 0,
-      score: 0,
-      time: 0,
-    };
-    section.total += 1;
-    section.time += row.time_spent_sec;
-    if (row.selected === null) section.skipped += 1;
-    else {
-      section.answered += 1;
-      if (row.is_correct === 1) {
-        section.correct += 1;
-        section.score += marking.correct;
-      } else {
-        section.wrong += 1;
-        section.score += marking.wrong;
-      }
+  if (options?.summaryOnly && attempt.section_summary) {
+    try {
+      sections = JSON.parse(attempt.section_summary) as AttemptResult["sections"];
+    } catch {
+      // Fall through to query if invalid
     }
-    sections.set(row.section, section);
+  }
+
+  if (sections.length === 0) {
+    const rows = await all<SolutionQuestion>(
+      `SELECT q.id, mq.section, mq.position, q.subject_id, q.text, q.text_hi, q.options,
+              q.options_hi, q.image_url, q.image_alt, q.assets_json, q.passage_id,
+              p.body AS passage_body, p.body_hi AS passage_body_hi,
+              p.image_url AS passage_image_url, p.image_alt AS passage_image_alt,
+              q.correct_option, q.explanation, q.explanation_hi,
+              q.explanation_image_url, q.explanation_image_alt,
+              q.explanation_source, q.explanation_status,
+              aa.selected, COALESCE(aa.time_spent_sec, 0) AS time_spent_sec,
+              COALESCE(aa.marked_for_review, 0) AS marked_for_review, aa.is_correct
+       FROM mock_questions mq
+       JOIN questions q ON q.id = mq.question_id
+       LEFT JOIN passages p ON p.id = q.passage_id
+       LEFT JOIN attempt_answers aa ON aa.attempt_id = ? AND aa.question_id = q.id
+       WHERE mq.version_id = ?
+       ORDER BY mq.position`,
+      attempt.id,
+      attempt.version_id,
+    );
+
+    const marking = parseMarkingScheme(mock.marking_scheme);
+    const sectionsMap = new Map<string, AttemptResult["sections"][number]>();
+    for (const row of rows) {
+      const section = sectionsMap.get(row.section) ?? {
+        section: row.section,
+        total: 0,
+        answered: 0,
+        correct: 0,
+        wrong: 0,
+        skipped: 0,
+        score: 0,
+        time: 0,
+      };
+      section.total += 1;
+      section.time += row.time_spent_sec;
+      if (row.selected === null) section.skipped += 1;
+      else {
+        section.answered += 1;
+        if (row.is_correct === 1) {
+          section.correct += 1;
+          section.score += marking.correct;
+        } else {
+          section.wrong += 1;
+          section.score += marking.wrong;
+        }
+      }
+      sectionsMap.set(row.section, section);
+    }
+    sections = [...sectionsMap.values()];
+    questions = rows;
   }
 
   let rank: number | null = null;
   let percentile: number | null = null;
   let eligible = 0;
   if (attempt.status === "submitted" && attempt.is_first_attempt) {
-    const count = await first<{ count: number }>(
-      `SELECT COUNT(*) AS count
+    const stats = await first<{ total: number; better: number }>(
+      `SELECT COUNT(*) AS total,
+              SUM(CASE WHEN (a.score > ? OR (a.score = ? AND a.time_taken_sec < ?) OR (a.score = ? AND a.time_taken_sec = ? AND a.correct > ?)) THEN 1 ELSE 0 END) AS better
        FROM attempts a JOIN users u ON u.id = a.user_id
        WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
          AND a.user_id IS NOT NULL AND u.deleted_at IS NULL`,
+      attempt.score,
+      attempt.score,
+      attempt.time_taken_sec,
+      attempt.score,
+      attempt.time_taken_sec,
+      attempt.correct,
       attempt.version_id,
     );
-    eligible = count?.count ?? 0;
+    eligible = stats?.total ?? 0;
     if (eligible > 0) {
-      const better = await first<{ count: number }>(
-        `SELECT COUNT(*) AS count
-         FROM attempts a JOIN users u ON u.id = a.user_id
-         WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
-           AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
-           AND (a.score > ? OR (a.score = ? AND a.time_taken_sec < ?) OR (a.score = ? AND a.time_taken_sec = ? AND a.correct > ?))`,
-        attempt.version_id,
-        attempt.score,
-        attempt.score,
-        attempt.time_taken_sec,
-        attempt.score,
-        attempt.time_taken_sec,
-        attempt.correct,
-      );
-      rank = (better?.count ?? 0) + 1;
+      rank = (stats?.better ?? 0) + 1;
       percentile = percentileFor(rank, eligible);
     }
   }
@@ -482,8 +526,8 @@ export async function loadResult(attempt: AttemptRow): Promise<AttemptResult | n
     rank,
     percentile,
     eligible,
-    questions: rows,
-    sections: [...sections.values()],
+    questions,
+    sections,
   };
 }
 

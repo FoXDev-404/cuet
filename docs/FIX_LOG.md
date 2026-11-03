@@ -129,3 +129,50 @@ Review and remediation log tracking the implementation and verification of fixes
   - Astro Build / Check: 331 files clean, 0 errors, 0 warnings.
 - **Remaining Work & Risks:** Explanations remain marked unreviewed in student view until editors sign off on them in the review queue.
 - **Owner Decisions Needed:** Owner can open `docs/REVIEW_SAMPLE_100.csv` or `/admin/review` to inspect and approve verified human write-ups.
+
+### Fix 9 — Autosave and D1 Capacity (P1)
+- **Status:** `DONE`
+- **What Changed:**
+  - `src/lib/db.ts`: Added request-level D1 query metrics instrumentation (`trackD1Metrics`, `recordD1Metrics`, `getD1Metrics`) using `AsyncLocalStorage`. Every D1 call now accurately tallies `rowsRead`, `rowsWritten`, and `queryCount`.
+  - `src/middleware.ts`: Wrapped request lifecycle in `trackD1Metrics`, exposing `x-d1-rows-read`, `x-d1-rows-written`, and `x-d1-queries` response headers and logging query metrics in development/staging.
+  - `migrations/0019_attempt_sequence_and_capacity.sql`:
+    - Added `last_client_seq INTEGER NOT NULL DEFAULT 0` to `attempts` and `client_seq INTEGER NOT NULL DEFAULT 0` to `attempt_answers` for sequence ordering and out-of-order write rejection.
+    - Added `section_summary TEXT` to `attempts` to persist pre-computed section breakdowns upon attempt completion.
+  - `src/lib/mock-cache.ts`: Created KV-backed cache for immutable mock version question payloads (`getMockVersionQuestions`, `getMockVersionQuestionMeta`, `invalidateMockVersionCache`).
+  - `src/lib/attempts.ts`:
+    - Integrated `getMockVersionQuestions` into `attemptQuestions`, bypassing D1 on repeated question loads.
+    - Persisted `section_summary` during `finalizeAttempt` scoring.
+    - Optimized `loadResult` with `summaryOnly` option: loads section breakdowns directly from stored `section_summary` without scanning question rows, and unified rank + total count into a single aggregate query.
+  - `src/lib/attempt-save.ts` & `src/pages/api/attempts/[id]/answers.ts`:
+    - Delta autosave optimization: server validates questions via KV mock cache (0 D1 question reads).
+    - Client sequence ordering: rejects stale out-of-order writes (`clientSeq < lastSeq`), and uses SQL CASE in upsert so newer sequences overwrite older ones.
+    - Exported `POST: APIRoute = PUT` to support `navigator.sendBeacon`.
+  - `src/pages/attempt/[id].astro`:
+    - Changed interval to 15s (`15000ms`).
+    - Added delta flush save on question navigation (`goTo`).
+    - Added delta flush save on `visibilitychange` hidden.
+    - Added `pagehide` listener dispatching remaining delta via `navigator.sendBeacon`.
+    - Maintained monotonic `clientSeq` counter across all saves.
+  - `src/pages/result/[attemptId].astro`:
+    - Uses `loadResult(attempt, { summaryOnly: true })`.
+    - Removed redundant `boardCount` query by reusing `result.eligible`.
+  - `tests/unit/capacity-budgets.test.ts`: Added 4 unit tests strictly enforcing row-read budgets:
+    - Autosave: **<= 3 rows read** (measured: 1 row read).
+    - Result view: **<= 40 rows read** (measured: 8 rows read).
+    - Leaderboard: **<= 120 rows read** (measured: 12 rows for 10 entries; 102 rows for 100 entries).
+    - Idempotency & sequence ordering verified.
+  - `scripts/load-test.mjs`: Built automated load simulation measuring rows read and written per attempt lifecycle.
+  - `docs/CAPACITY_MODEL.md`: Authored complete capacity model with Cloudflare Free (5M reads, 100k writes) vs Paid tier comparison, 1k / 3k / 10k DAU projections, and operational upgrade triggers.
+- **Evidence / Proof:**
+  - Measured Benchmark (`node scripts/load-test.mjs --concurrency=10 --autosaves=5`):
+    - Start Attempt: 1.0 read, 1.0 write
+    - Delta Autosave: 1.0 read, 2.0 writes
+    - Submit Attempt: 6.0 reads, 1.0 write
+    - View Result: 4.0 reads, 0.0 writes
+    - View Leaderboard: 3.0 reads, 0.0 writes
+    - Total per attempt lifecycle: ~19.0 rows read, ~12.0 rows written
+  - Test Suite: 35/35 test files passed, 266/266 unit tests passed.
+  - Astro Build / Check: 332 files, 0 errors, 0 warnings.
+- **Remaining Work & Risks:** None. Writes are now identified as the primary bounding constraint on the free tier (100k/day), which supports up to ~3,700 DAU before requiring the $5/month Workers Paid tier.
+- **Owner Decisions Needed:** None for current traffic; upgrade trigger documented at 85,000 writes/day.
+

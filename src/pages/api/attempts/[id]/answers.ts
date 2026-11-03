@@ -1,6 +1,5 @@
 import type { APIRoute } from "astro";
 import {
-  attemptQuestions,
   canAccessAttempt,
   finalizeAttempt,
   findAttempt,
@@ -9,6 +8,8 @@ import {
 } from "../../../../lib/attempts";
 import { getGuestToken } from "../../../../lib/auth/session";
 import { normalizeIncomingAnswers, saveAttemptAnswers } from "../../../../lib/attempt-save";
+import { getMockVersionQuestionMeta } from "../../../../lib/mock-cache";
+import { run } from "../../../../lib/db";
 import { apiError, forbiddenOrigin, isSameOrigin, json } from "../../../../lib/http";
 
 export const PUT: APIRoute = async (context) => {
@@ -34,18 +35,41 @@ export const PUT: APIRoute = async (context) => {
     return apiError("Invalid request body.");
   }
 
-  const questions = await attemptQuestions(attempt.version_id);
-  const normalized = normalizeIncomingAnswers(body.answers, questions);
+  const clientSeq = typeof body.seq === "number" ? Math.floor(body.seq) : 0;
+  const lastSeq = attempt.last_client_seq ?? 0;
+
+  // Stale out-of-order autosave request arriving after a newer sequence
+  if (clientSeq > 0 && clientSeq < lastSeq) {
+    return json({
+      ok: true,
+      ignored: true,
+      reason: "out_of_order",
+      lastSeq,
+      remainingSec: remainingSeconds(attempt),
+    });
+  }
+
+  const metaMap = await getMockVersionQuestionMeta(attempt.version_id);
+  const normalized = normalizeIncomingAnswers(body.answers, metaMap, clientSeq);
   if ("error" in normalized) return apiError(normalized.error);
 
-  await saveAttemptAnswers(attempt.id, normalized.answers);
+  if (normalized.answers.length > 0) {
+    await saveAttemptAnswers(attempt.id, normalized.answers, clientSeq);
+  }
+
+  if (clientSeq > lastSeq) {
+    await run("UPDATE attempts SET last_client_seq = ? WHERE id = ?", clientSeq, attempt.id);
+  }
+
   return json({
     ok: true,
     saved: normalized.answers.length,
+    seq: clientSeq,
     serverNow: new Date().toISOString(),
     remainingSec: remainingSeconds(attempt),
   });
 };
 
-/** Blueprint API surface names PATCH; PUT is kept for older clients. */
+/** Blueprint API surface names PATCH; PUT is kept for older clients; POST handles navigator.sendBeacon. */
 export const PATCH: APIRoute = PUT;
+export const POST: APIRoute = PUT;

@@ -1037,6 +1037,9 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       function goTo(index: number) {
         if (index < 0 || index >= questions.length) return;
         flushTime();
+        if (dirtyAnswers.size > 0) {
+          void saveAnswers(true);
+        }
         state.index = index;
         renderQuestion();
         area.scrollTop = 0;
@@ -1063,6 +1066,8 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         (document.getElementById("zoom") as HTMLElement).classList.remove("open");
       }
 
+      let clientSeq = 0;
+
       function payloadAnswers() {
         return questions
           .filter((question) => dirtyAnswers.has(question.id))
@@ -1071,6 +1076,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
             selected: answers[question.id].selected,
             time_spent_sec: answers[question.id].time,
             marked_for_review: answers[question.id].marked,
+            client_seq: clientSeq,
           }));
       }
 
@@ -1084,10 +1090,11 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         }
         saveState.textContent = "Saving…";
         try {
+          const seq = ++clientSeq;
           const response = await fetch(`/api/attempts/${data.attemptId}/answers`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ answers: sent }),
+            body: JSON.stringify({ answers: sent, seq }),
           });
           const result = (await response.json()) as { error?: string; redirect?: string; status?: string };
           if (response.status === 409 && result.redirect) {
@@ -1266,7 +1273,20 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         if (event.key === "Escape") closeZoom();
       });
       document.addEventListener("visibilitychange", () => {
-        if (document.hidden) showToast("Tab switch noted — this is a warning only.");
+        if (document.hidden) {
+          showToast("Tab switch noted — this is a warning only.");
+          if (dirtyAnswers.size > 0) {
+            void saveAnswers(true);
+          }
+        }
+      });
+      window.addEventListener("pagehide", () => {
+        flushTime();
+        if (dirtyAnswers.size > 0 && typeof navigator.sendBeacon === "function") {
+          const payload = JSON.stringify({ answers: payloadAnswers(), seq: ++clientSeq });
+          const blob = new Blob([payload], { type: "application/json" });
+          navigator.sendBeacon(`/api/attempts/${data.attemptId}/answers`, blob);
+        }
       });
       window.addEventListener("beforeunload", (event) => {
         flushTime();
@@ -1274,7 +1294,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
           fetch(`/api/attempts/${data.attemptId}/answers`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ answers: payloadAnswers() }),
+            body: JSON.stringify({ answers: payloadAnswers(), seq: ++clientSeq }),
             keepalive: true,
           });
         } catch {}
@@ -1289,7 +1309,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       renderQuestion();
       tick();
       window.setInterval(tick, 1000);
-      window.setInterval(() => saveAnswers(true), 10000);
+      window.setInterval(() => saveAnswers(true), 15000);
     </script>
   </body>
 </html>

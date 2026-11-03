@@ -7,6 +7,7 @@ import { getSessionUser } from "./lib/auth/session";
 import { ensurePracticeLibrary, setPracticeLibraryStore } from "./lib/practice-library";
 import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
+import { trackD1Metrics } from "./lib/db";
 
 setPracticeLibraryStore(practiceLibraryD1Store);
 
@@ -76,7 +77,8 @@ async function resolveAdmin(context: APIContext) {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  const { pathname } = context.url;
+  const { result: response, metrics } = await trackD1Metrics(async () => {
+    const { pathname } = context.url;
 
   const envRecord = (env as unknown as Record<string, unknown>) || {};
   const currentEnv = String(envRecord.ENV ?? process.env.ENV ?? "").trim().toLowerCase();
@@ -164,17 +166,34 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  const response = await next();
+    const response = await next();
 
-  response.headers.set("x-content-type-options", "nosniff");
-  response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
-  response.headers.set("x-frame-options", "SAMEORIGIN");
-  response.headers.set(
-    "permissions-policy",
-    "camera=(), microphone=(), geolocation=(), payment=()",
-  );
-  if (isPrivatePath(pathname)) {
-    response.headers.set("x-robots-tag", "noindex, nofollow");
+    response.headers.set("x-content-type-options", "nosniff");
+    response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
+    response.headers.set("x-frame-options", "SAMEORIGIN");
+    response.headers.set(
+      "permissions-policy",
+      "camera=(), microphone=(), geolocation=(), payment=()",
+    );
+    if (isPrivatePath(pathname)) {
+      response.headers.set("x-robots-tag", "noindex, nofollow");
+    }
+
+    return response;
+  }, context.url.pathname);
+
+  // Attach D1 instrumentation headers for measurement and observability
+  response.headers.set("x-d1-rows-read", String(metrics.rowsRead));
+  response.headers.set("x-d1-rows-written", String(metrics.rowsWritten));
+  response.headers.set("x-d1-queries", String(metrics.queryCount));
+
+  if (
+    metrics.queryCount > 0 &&
+    (import.meta.env.DEV || (typeof env !== "undefined" && (env as unknown as Record<string, unknown>).ENV !== "production"))
+  ) {
+    console.log(
+      `[D1] ${context.request.method} ${context.url.pathname} -> read=${metrics.rowsRead} written=${metrics.rowsWritten} queries=${metrics.queryCount}`,
+    );
   }
 
   return response;
