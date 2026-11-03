@@ -22,6 +22,7 @@ const MIGRATIONS = [
   "0017_paper_provenance_and_rights.sql",
   "0018_explanation_provenance_and_review.sql",
   "0019_attempt_sequence_and_capacity.sql",
+  "0020_exam_info_seed.sql",
 ];
 
 function apply(db: DatabaseSync, names: string[]): void {

@@ -20,7 +20,6 @@ function getArg(name, defaultValue) {
 
 const CONCURRENCY = parseInt(getArg("concurrency", "5"), 10);
 const AUTOSAVES = parseInt(getArg("autosaves", "5"), 10);
-const SERVER_URL = getArg("url", "");
 
 function findLocalSqlite() {
   const dir = join(process.cwd(), ".wrangler/state/v3/d1/miniflare-D1DatabaseObject");
@@ -203,7 +202,7 @@ async function runStandaloneSimulation(concurrency, autosaves) {
   printReport(concurrency, autosaves, metrics);
 }
 
-function printReport(concurrency, autosaves, metrics) {
+function printReport(_concurrency, autosaves, metrics) {
   console.log("┌─────────────────────────────┬───────────┬──────────────┬───────────────┬────────────────┐");
   console.log("│ Operation                   │ Requests  │ Avg Rows Read│ Avg Rows Wrt  │ Budget Status  │");
   console.log("├─────────────────────────────┼───────────┼──────────────┼───────────────┼────────────────┤");

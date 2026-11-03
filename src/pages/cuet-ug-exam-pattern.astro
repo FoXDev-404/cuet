@@ -82,7 +82,8 @@ const description = seo?.description || DEFAULT_DESCRIPTION;
 const customFaq = parseFaq(seo?.faq_json);
 const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
 const verified = formatVerified(info?.last_verified);
-const noindex = (seo?.noindex ?? 0) === 1;
+const isVerified = Boolean(info && info.value && info.value !== "TODO_VERIFY" && info.last_verified);
+const noindex = (seo?.noindex ?? 0) === 1 || !isVerified;
 const site = siteUrl(Astro.url);
 
 const structuredData = [

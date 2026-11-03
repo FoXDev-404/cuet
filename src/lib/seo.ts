@@ -50,6 +50,8 @@ export const EXAM_INFO_KEYS = [
   { key: "marking-scheme", label: "Marking scheme (official summary)" },
   { key: "syllabus", label: "Syllabus (official summary)" },
   { key: "important-dates", label: "Important dates" },
+  { key: "eligibility", label: "Eligibility criteria" },
+  { key: "subject-combination", label: "Subject combination rules" },
 ] as const;
 
 export async function getPageSeo(path: string): Promise<PageSeoRow | null> {

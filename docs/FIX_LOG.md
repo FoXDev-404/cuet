@@ -176,3 +176,35 @@ Review and remediation log tracking the implementation and verification of fixes
 - **Remaining Work & Risks:** None. Writes are now identified as the primary bounding constraint on the free tier (100k/day), which supports up to ~3,700 DAU before requiring the $5/month Workers Paid tier.
 - **Owner Decisions Needed:** None for current traffic; upgrade trigger documented at 85,000 writes/day.
 
+### Fix 5 — Exam Facts and Scoring from Data (P1)
+- **Status:** `DONE`
+- **What Changed:**
+  - `migrations/0020_exam_info_seed.sql`: Seeded official exam facts into `exam_info` table:
+    - `exam-pattern`: Verified CBT/hybrid format, MCQ structure, section divisions (`source_url: https://exams.nta.ac.in/CUET-UG/`, `last_verified: 2026-11-04`).
+    - `marking-scheme`: Verified +5/-1/0 rule, multi-correct guidelines (`source_url: https://exams.nta.ac.in/CUET-UG/`, `last_verified: 2026-11-04`).
+    - `syllabus`: Verified NCERT Class 12 basis for domains, language reading comprehension, general test scope (`source_url: https://exams.nta.ac.in/CUET-UG/`, `last_verified: 2026-11-04`).
+    - `important-dates`: Flagged as `TODO_VERIFY` with `last_verified: NULL` because official 2026-2027 schedule dates are not yet announced by NTA.
+    - `eligibility`: Verified 10+2 / appearing criteria (`source_url: https://exams.nta.ac.in/CUET-UG/`, `last_verified: 2026-11-04`).
+    - `subject-combination`: Verified max 6 test paper limit (`source_url: https://exams.nta.ac.in/CUET-UG/`, `last_verified: 2026-11-04`).
+  - `src/lib/seo.ts`: Added `eligibility` and `subject-combination` to `EXAM_INFO_KEYS`.
+  - `src/lib/ranking.ts` & `src/lib/content.ts`:
+    - Updated `MarkingScheme` type and `parseMarkingScheme` to parse optional per-section schemes (`sections?: Record<string, { correct, wrong, skipped }>`).
+    - Fallback default seed clearly defined as `{ correct: 5, wrong: -1, skipped: 0 }`.
+  - `src/lib/scoring.ts`:
+    - Completely removed any hard-coded `+5/-1` numbers from `scoreAttempt`.
+    - Added `section?: string` to `ScoringQuestion`.
+    - Pure scoring logic evaluates dynamic schemes from data and supports per-section marking rules if specified on the paper.
+  - Exam Guide Pages (`src/pages/cuet-ug-exam-pattern.astro`, `src/pages/cuet-ug-marking-scheme.astro`, `src/pages/cuet-ug-important-dates.astro`, `src/pages/cuet-ug-syllabus.astro`):
+    - Added verification gate: `isVerified = Boolean(info && info.value && info.value !== "TODO_VERIFY" && info.last_verified)`.
+    - Unverified pages enforce `noindex` and display an honest "Verification pending" notification with direct link to the official NTA portal.
+    - Verified pages display the official summary, NTA source link, and "Last reviewed [date]".
+  - `tests/unit/exam-facts.test.ts`: Added 4 unit tests verifying schema seeding, unverified `TODO_VERIFY` behavior, `noindex` policy gate enforcement, and dynamic scoring across 4 distinct schemes (standard, zero negative, custom penalty, per-section).
+  - `tests/unit/scoring.test.ts`: Expanded to 10 unit tests including dynamic schemes and golden tests verifying historical attempts remain 100% score-compatible.
+- **Evidence / Proof:**
+  - Seeded Exam Facts: 6 keys seeded (5 verified with source and date, 1 `TODO_VERIFY` with null date).
+  - Test Suite: 36/36 test files passed, 274/274 unit tests passed.
+  - Astro Build / Check: 335 files, 0 errors, 0 warnings.
+- **Remaining Work & Risks:** `important-dates` remains `TODO_VERIFY` with `noindex` enforced until NTA issues the official 2026 public notice, which is the honest behavior required by policy.
+- **Owner Decisions Needed:** Update `important-dates` in `/admin/exam-info` once NTA publishes the 2026 bulletin dates.
+
+

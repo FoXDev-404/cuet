@@ -123,4 +123,93 @@ describe("scoreAttempt", () => {
     expect(result.score).toBe(5);
     expect(result.wrong).toBe(1);
   });
+
+  it("supports dynamic schemes: zero negative marking (+4 / 0 / 0)", () => {
+    const result = scoreAttempt(
+      questions,
+      [
+        { question_id: 1, selected: 1, time_spent_sec: 10 }, // correct (+4)
+        { question_id: 2, selected: 0, time_spent_sec: 10 }, // wrong (0)
+        { question_id: 3, selected: null, time_spent_sec: 0 }, // skipped (0)
+        { question_id: 4, selected: 3, time_spent_sec: 10 }, // correct (+4)
+      ],
+      { correct: 4, wrong: 0, skipped: 0 },
+    );
+    expect(result.score).toBe(8);
+    expect(result.correct).toBe(2);
+    expect(result.wrong).toBe(1);
+    expect(result.skipped).toBe(1);
+  });
+
+  it("supports dynamic schemes: custom values (+10 / -2 / -1)", () => {
+    const result = scoreAttempt(
+      questions,
+      [
+        { question_id: 1, selected: 1, time_spent_sec: 10 }, // correct (+10)
+        { question_id: 2, selected: 0, time_spent_sec: 10 }, // wrong (-2)
+        { question_id: 3, selected: null, time_spent_sec: 0 }, // skipped (-1)
+        { question_id: 4, selected: 0, time_spent_sec: 10 }, // wrong (-2)
+      ],
+      { correct: 10, wrong: -2, skipped: -1 },
+    );
+    // 10 - 2 - 1 - 2 = 5
+    expect(result.score).toBe(5);
+    expect(result.correct).toBe(1);
+    expect(result.wrong).toBe(2);
+    expect(result.skipped).toBe(1);
+  });
+
+  it("supports per-section marking schemes across sections", () => {
+    const multiSectionQuestions = [
+      { id: 1, subject_id: 10, section: "Section A", correct_option: 1 },
+      { id: 2, subject_id: 10, section: "Section A", correct_option: 2 },
+      { id: 3, subject_id: 20, section: "Section B", correct_option: 0 },
+      { id: 4, subject_id: 20, section: "Section B", correct_option: 3 },
+    ];
+    const perSectionScheme = {
+      correct: 5,
+      wrong: -1,
+      skipped: 0,
+      sections: {
+        "Section A": { correct: 5, wrong: -1, skipped: 0 },
+        "Section B": { correct: 2, wrong: 0, skipped: 0 }, // No negative marking in Section B
+      },
+    };
+    const result = scoreAttempt(
+      multiSectionQuestions,
+      [
+        { question_id: 1, selected: 1, time_spent_sec: 10 }, // Sec A correct (+5)
+        { question_id: 2, selected: 0, time_spent_sec: 10 }, // Sec A wrong (-1)
+        { question_id: 3, selected: 1, time_spent_sec: 10 }, // Sec B wrong (0)
+        { question_id: 4, selected: 3, time_spent_sec: 10 }, // Sec B correct (+2)
+      ],
+      perSectionScheme,
+    );
+    // 5 - 1 + 0 + 2 = 6
+    expect(result.score).toBe(6);
+    expect(result.correct).toBe(2);
+    expect(result.wrong).toBe(2);
+  });
+
+  it("golden test: existing attempt scores remain exactly unchanged under standard CUET scheme", () => {
+    const standardScheme = { correct: 5, wrong: -1, skipped: 0 };
+    // 35 correct, 10 wrong, 5 skipped
+    const goldenQuestions = Array.from({ length: 50 }, (_, i) => ({
+      id: i + 1,
+      subject_id: 1,
+      correct_option: 1,
+    }));
+    const goldenAnswers = Array.from({ length: 50 }, (_, i) => {
+      if (i < 35) return { question_id: i + 1, selected: 1, time_spent_sec: 30 };
+      if (i < 45) return { question_id: i + 1, selected: 0, time_spent_sec: 20 };
+      return { question_id: i + 1, selected: null, time_spent_sec: 0 };
+    });
+
+    const result = scoreAttempt(goldenQuestions, goldenAnswers, standardScheme);
+    // 35 * 5 - 10 * 1 = 175 - 10 = 165
+    expect(result.score).toBe(165);
+    expect(result.correct).toBe(35);
+    expect(result.wrong).toBe(10);
+    expect(result.skipped).toBe(5);
+  });
 });
