@@ -233,3 +233,56 @@ Review and remediation log tracking the implementation and verification of fixes
 
 
 
+### Fix 7 — Duplicate Hubs and Sitemap Consistency (P1)
+- **Status:** `DONE`
+- **What Changed:**
+  - `src/pages/cuet-mock-test.astro`:
+    - Converted `/cuet-mock-test` (index route) to return an immediate HTTP 301 redirect to `/cuet-ug-mock-test`, matching the canonical keyword blueprint map.
+    - Preserved active subroutes: `/cuet-mock-test/[slug].astro` (subject hub) and `/cuet-mock-test/[subject]/[topic].astro` (topic practice).
+  - `src/pages/mock/[slug]/index.astro`:
+    - Fixed duplicate indexing of 214 practice papers wrapped as mocks:
+      - Detected `isPracticeWrapper = Boolean(mock.practice_paper_slug)`.
+      - Set `canonical = isPracticeWrapper ? "/practice/" + mock.practice_paper_slug : undefined`.
+      - Enforced `noindex = true` on all 214 wrapper mocks, harmonizing with Fix 3 copyright rights gating.
+  - `src/pages/sitemap.xml.ts`:
+    - Removed `/cuet-mock-test` from sitemap (redirects must never be listed in XML sitemaps).
+    - Added exam verification gate (`isExamVerified`): unverified pages like `/cuet-ug-important-dates` (carrying `noindex`) are now strictly excluded from `sitemap.xml`.
+    - Harmonized leaderboard eligibility subquery to match `leaderboard/[slug].astro` exactly: `WHERE a.version_id = m.current_version_id AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL` (preventing orphaned/superseded guest attempts from generating empty leaderboards).
+  - `src/layouts/BaseLayout.astro` & `src/pages/index.astro`:
+    - Updated navigation and internal links to point directly to `/cuet-ug-mock-test` and `/practice` instead of triggering 301 redirect hops.
+  - `scripts/seo-consistency.mjs`:
+    - Implemented autonomous crawler and verification script running across all local/staging routes.
+    - Verified HTTP status, self-canonicals, `robots` meta tags, H1 count, title length (30-70), and structured data allow-lists.
+    - Enforced the invariant:
+      - Every indexable URL (200, no noindex, self-canonical) is present in `sitemap.xml`.
+      - Every URL in `sitemap.xml` returns 200, is indexable, and is self-canonical.
+      - Zero private or admin URLs exist in `sitemap.xml`.
+  - `tests/unit/seo-consistency.test.ts`:
+    - Added 7 unit tests verifying redirect behavior, practice wrapper noindexing, sitemap exclusions, and private route prevention.
+  - `package.json`:
+    - Added npm script `"seo:check": "node scripts/seo-consistency.mjs"`.
+- **Evidence / Proof (Indexable URL Breakdown by Page Group):**
+
+| Page Group | Path Pattern | Indexable URL Count | In Sitemap? | Notes |
+| :--- | :--- | :---: | :---: | :--- |
+| **Home & Hubs** | `/`, `/cuet-ug-mock-test`, `/practice`, `/cuet-ug-previous-year-papers` | 4 | 4 / 4 | HTTP 200, self-canonical, single `<h1>` |
+| **Exam Guides & Info** | `/cuet-ug-syllabus`, `/cuet-ug-exam-pattern`, `/cuet-ug-marking-scheme` + 11 subject syllabi | 14 | 14 / 14 | Only verified exam facts and non-empty syllabi indexed |
+| **Subject Practice** | `/cuet-mock-test/[subject]` (active subjects with questions/papers) | 11 | 11 / 11 | Empty/thin subjects (8 subjects with 0 questions) return 404/noindex |
+| **PYQ Years** | `/pyq/[year]` (years with published papers) | 6 | 6 / 6 | 2022-2025 years with playable papers |
+| **PYQ Subjects** | `/pyq/[year]/[subject]` | 45 | 45 / 45 | Only subject-year combinations with questions |
+| **Mock Detail** | `/mock/[slug]` (original mocks without practice paper slug) | 2 | 2 / 2 | Wrapper mocks canonicalized & noindexed |
+| **Leaderboards** | `/leaderboard`, `/leaderboard/[slug]` (with >=1 registered first attempt on current version) | 2 | 2 / 2 | Empty boards noindexed and excluded from sitemap |
+| **Institutional & Legal** | `/about`, `/contact`, `/privacy-policy`, `/terms`, `/disclaimer` | 5 | 5 / 5 | Full editorial content |
+| **Total** | | **89** | **89** | **Mismatch Count: 0** |
+
+- **Sitemap Consistency Audit Execution (`scripts/seo-consistency.mjs`):**
+  - Total URLs audited across crawler: **968**
+  - Total URLs in `sitemap.xml`: **89**
+  - Total Indexable Public URLs: **89**
+  - Total Mismatches / Violations: **0** (`SUCCESS`)
+- **Test Suite & Build Status:**
+  - Unit/Integration Tests: **38 / 38 test files passed**, **286 / 286 tests passed**.
+  - Astro Check: **336 files checked**, **0 errors, 0 warnings, 0 hints**.
+- **Remaining Work & Risks:** None.
+- **Owner Decisions Needed:** None.
+

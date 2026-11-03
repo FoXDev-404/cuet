@@ -27,6 +27,7 @@ let mock: {
   intro_html: string | null;
   subject_name: string | null;
   published_at: string | null;
+  practice_paper_slug: string | null;
 } | null = null;
 try {
   mock = await first<{
@@ -41,9 +42,11 @@ try {
     intro_html: string | null;
     subject_name: string | null;
     published_at: string | null;
+    practice_paper_slug: string | null;
   }>(
     `SELECT m.id, m.title, m.slug, m.type, v.duration_min, v.total_marks, v.marking_scheme,
-            v.instructions, m.intro_html, s.name AS subject_name, v.published_at
+            v.instructions, m.intro_html, s.name AS subject_name, v.published_at,
+            m.practice_paper_slug
      FROM mock_tests m
      JOIN mock_test_versions v ON v.id = m.current_version_id
      LEFT JOIN subjects s ON s.id = m.subject_id
@@ -54,7 +57,8 @@ try {
   // D1 is unreachable (for example the daily row-read quota is spent). A
   // practice paper can still describe itself from the bundled library.
   console.error("Mock overview lookup failed", error);
-  mock = getLocalMockFallback(slug);
+  const fallback = getLocalMockFallback(slug);
+  mock = fallback ? { ...fallback, practice_paper_slug: null } : null;
   if (!mock) return dbUnavailableResponse();
 }
 if (!mock) {
@@ -146,9 +150,13 @@ const structuredData = [
     { name: mock.title, path: `/mock/${mock.slug}` },
   ]),
 ].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const isPracticeWrapper = Boolean(mock.practice_paper_slug);
+const canonical = isPracticeWrapper ? `/practice/${mock.practice_paper_slug}` : undefined;
+const noindex = totalQuestions === 0 || isPracticeWrapper;
 ---
 
-<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${mock.duration_min} minutes. Free server-scored CUET UG mock with solutions.`} noindex={totalQuestions === 0} structuredData={structuredData}>
+<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${mock.duration_min} minutes. Free server-scored CUET UG mock with solutions.`} noindex={noindex} canonical={canonical} structuredData={structuredData}>
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
       <div>

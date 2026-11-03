@@ -59,7 +59,8 @@ export const GET: APIRoute = async ({ request }) => {
     mocks = await allOr(
       `SELECT m.slug, m.published_at, m.updated_at, m.practice_paper_slug,
               (SELECT COUNT(*) FROM attempts a
-                WHERE a.mock_id = m.id AND a.status = 'submitted' AND a.is_first_attempt = 1) AS eligible
+                JOIN users u ON u.id = a.user_id
+                WHERE a.version_id = m.current_version_id AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL) AS eligible
        FROM mock_tests m
        WHERE m.status = 'published' AND m.deleted_at IS NULL
          AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
@@ -155,6 +156,22 @@ export const GET: APIRoute = async ({ request }) => {
     console.error("sitemap rights_status query failed", err);
   }
 
+  // Exam Info Verification Gate (Fix 5 & Fix 7): Unverified pages with noindex excluded from sitemap
+  let examInfoMap = new Map<string, { value: string; last_verified: string | null }>();
+  try {
+    const examInfoRows = await allOr<{ key: string; value: string; last_verified: string | null }>(
+      `SELECT key, value, last_verified FROM exam_info`,
+      [],
+    );
+    examInfoMap = new Map(examInfoRows.map((r) => [r.key, { value: r.value, last_verified: r.last_verified }]));
+  } catch (err) {
+    console.error("sitemap exam_info query failed", err);
+  }
+  const isExamVerified = (key: string) => {
+    const entry = examInfoMap.get(key);
+    return Boolean(entry && entry.value && entry.value !== "TODO_VERIFY" && entry.last_verified);
+  };
+
   // Kept separate so a sharing-policy failure cannot drop the rest of the
   // sitemap. Shared questions are included only when they pass the same
   // `seoEligible` check the page uses.
@@ -166,13 +183,10 @@ export const GET: APIRoute = async ({ request }) => {
 
   add("/", { changefreq: "weekly", priority: "1.0" });
   if (mocks.length > 0 || localPapers.length > 0) add("/cuet-ug-mock-test", { changefreq: "weekly", priority: "0.9" });
-  if (subjects.some((subject) => hasPracticeContent(subject.slug, subject.question_count, subject.mock_count))) {
-    add("/cuet-mock-test", { changefreq: "weekly", priority: "0.8" });
-  }
-  add("/cuet-ug-syllabus", { changefreq: "monthly", priority: "0.9" });
-  add("/cuet-ug-exam-pattern", { changefreq: "monthly", priority: "0.9" });
-  add("/cuet-ug-marking-scheme", { changefreq: "monthly", priority: "0.8" });
-  add("/cuet-ug-important-dates", { changefreq: "weekly", priority: "0.8" });
+  if (isExamVerified("syllabus")) add("/cuet-ug-syllabus", { changefreq: "monthly", priority: "0.9" });
+  if (isExamVerified("exam-pattern")) add("/cuet-ug-exam-pattern", { changefreq: "monthly", priority: "0.9" });
+  if (isExamVerified("marking-scheme")) add("/cuet-ug-marking-scheme", { changefreq: "monthly", priority: "0.8" });
+  if (isExamVerified("important-dates")) add("/cuet-ug-important-dates", { changefreq: "weekly", priority: "0.8" });
   if (playablePyqCount > 0 || localPapers.length > 0) {
     add("/cuet-ug-previous-year-papers", { changefreq: "monthly", priority: "0.8" });
   }
