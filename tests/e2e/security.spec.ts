@@ -555,3 +555,24 @@ test("comment posting is rate-limited per account", async ({
     cleanupStudent(student.student);
   }
 });
+
+test("robots.txt disallows /dev and /dev/ and sitemap excludes internal styleguide", async ({ request }) => {
+  const robots = await request.get("/robots.txt");
+  expect(robots.status()).toBe(200);
+  const text = await robots.text();
+  expect(text).toContain("Disallow: /dev");
+  expect(text).toContain("Disallow: /dev/");
+
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  expect(xml).not.toContain("/dev/styleguide");
+  expect(xml).not.toContain("<loc>http://localhost:4321/dev</loc>");
+});
+
+test("/dev/styleguide serves in development mode with noindex", async ({ request }) => {
+  const res = await request.get("/dev/styleguide");
+  // In development it serves 200 with noindex header
+  expect(res.status()).toBe(200);
+  expect(res.headers()["x-robots-tag"]).toContain("noindex");
+});

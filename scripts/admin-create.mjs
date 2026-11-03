@@ -74,11 +74,19 @@ function main() {
   const rows = listed?.[0]?.results ?? [];
   const activeSupers = rows.filter((row) => row.role === "super" && Number(row.is_active) === 1);
 
-  if (options.role === "super" && activeSupers.length > 0 && !options.force) {
-    throw new Error(
-      `${scope} already has ${activeSupers.length} active super admin(s). ` +
-        "Refusing to add another. Re-run with --force only if you intend to add one.",
-    );
+  if (options.role === "super" && activeSupers.length > 0) {
+    if (options.remote) {
+      throw new Error(
+        `REMOTE (production) already has ${activeSupers.length} active super admin(s). ` +
+          "Bootstrap super-admin creation is disabled in production once any super admin exists.",
+      );
+    }
+    if (!options.force) {
+      throw new Error(
+        `${scope} already has ${activeSupers.length} active super admin(s). ` +
+          "Refusing to add another. Re-run with --force only if you intend to add one.",
+      );
+    }
   }
 
   const email = options.email.toLowerCase();

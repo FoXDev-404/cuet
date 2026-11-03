@@ -11,6 +11,7 @@ import { getSetting } from "./lib/settings";
 setPracticeLibraryStore(practiceLibraryD1Store);
 
 const NOINDEX_PREFIXES = [
+  "/dev",
   "/admin",
   "/api/admin",
   "/api/attempts",
@@ -76,6 +77,39 @@ async function resolveAdmin(context: APIContext) {
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname } = context.url;
+
+  const envRecord = (env as unknown as Record<string, unknown>) || {};
+  const currentEnv = String(envRecord.ENV ?? process.env.ENV ?? "").trim().toLowerCase();
+
+  // Production Guard 1: /dev/* routes must 404 in production
+  if (pathname === "/dev" || pathname.startsWith("/dev/")) {
+    if (currentEnv === "production") {
+      return new Response("Not found", {
+        status: 404,
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
+      });
+    }
+  }
+
+  // Production Guard 2: Admin routes require Cloudflare Access in production unless overridden
+  if (isAdminPath(pathname) || isAdminApi(pathname)) {
+    const adminAuthMode = String(envRecord.ADMIN_AUTH_MODE ?? process.env.ADMIN_AUTH_MODE ?? "session").trim().toLowerCase();
+    const allowSessionInProd = String(envRecord.ADMIN_ALLOW_SESSION_IN_PROD ?? process.env.ADMIN_ALLOW_SESSION_IN_PROD ?? "").trim() === "1";
+
+    if (currentEnv === "production" && adminAuthMode === "session" && !allowSessionInProd) {
+      const errorMsg = "Admin access via session cookie is disabled in production. Cloudflare Access (JWT) authentication is required. (Set ADMIN_ALLOW_SESSION_IN_PROD=1 to override).";
+      if (isAdminApi(pathname)) {
+        return new Response(JSON.stringify({ error: errorMsg }), {
+          status: 503,
+          headers: { "content-type": "application/json", "cache-control": "no-store" },
+        });
+      }
+      return new Response(errorMsg, {
+        status: 503,
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
+      });
+    }
+  }
 
   try {
     await ensurePracticeLibrary();
