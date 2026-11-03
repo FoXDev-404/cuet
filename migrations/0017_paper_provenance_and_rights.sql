@@ -12,3 +12,4 @@ ALTER TABLE practice_papers ADD COLUMN verified_at TEXT;
 
 CREATE INDEX IF NOT EXISTS idx_practice_papers_rights ON practice_papers(rights_status);
 CREATE INDEX IF NOT EXISTS idx_practice_papers_source_type ON practice_papers(source_type);
+

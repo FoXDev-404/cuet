@@ -134,3 +134,4 @@ if (target === 'local') {
 
 // For remote staging/prod, instructions or wrangler d1 execute
 console.log(`\nTo run purge on remote ${target}, ensure you run through approved staging pipeline.`);
+

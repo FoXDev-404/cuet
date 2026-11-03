@@ -38,3 +38,4 @@ describe("Fix 8 — Honest Labels, Disclaimers, and Copy-Lint", () => {
     expect(resultPage).toContain("not an official NTA rank");
   });
 });
+

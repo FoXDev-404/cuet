@@ -62,3 +62,4 @@ A page is automatically assigned `noindex, nofollow` if ANY of the following con
 2. **Copyright Provenance Gate**: For practice papers, `rights_status != 'cleared'`.
 3. **Fact Verification Gate**: For exam guide pages, the corresponding `exam_info` key has `value = 'TODO_VERIFY'` or `last_verified = NULL`.
 4. **Thin Content Gate**: A subject or topic landing page with fewer than 3 available practice questions.
+

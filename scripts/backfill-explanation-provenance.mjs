@@ -84,3 +84,4 @@ const qCounts = db.prepare(`
 console.table(qCounts);
 
 console.log('✅ Backfill completed successfully.');
+

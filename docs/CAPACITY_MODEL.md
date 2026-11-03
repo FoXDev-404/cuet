@@ -129,3 +129,4 @@ To prevent unexpected service interruption, the following operational thresholds
 ### Outage Prevention Fallbacks:
 - If D1 read limits are ever hit, `allOr` / `firstOr` and `practice-cache.ts` gracefully fall back to KV and bundled local JSON. The entire previous-year paper library, reading mode, and solutions view remain 100% accessible to visitors.
 - Stale responses are served with `Cache-Control` headers, ensuring students never see raw 500 errors.
+

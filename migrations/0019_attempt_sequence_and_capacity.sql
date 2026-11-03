@@ -5,3 +5,4 @@
 ALTER TABLE attempts ADD COLUMN last_client_seq INTEGER NOT NULL DEFAULT 0;
 ALTER TABLE attempt_answers ADD COLUMN client_seq INTEGER NOT NULL DEFAULT 0;
 ALTER TABLE attempts ADD COLUMN section_summary TEXT;
+

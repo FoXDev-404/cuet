@@ -87,3 +87,4 @@ export const POST: APIRoute = async (context) => {
     return apiError(err.message || "Could not update paper rights.", 500);
   }
 };
+

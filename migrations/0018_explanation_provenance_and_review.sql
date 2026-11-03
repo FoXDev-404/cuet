@@ -18,3 +18,4 @@ ALTER TABLE questions ADD COLUMN reviewed_by TEXT;
 ALTER TABLE questions ADD COLUMN reviewed_at TEXT;
 
 CREATE INDEX IF NOT EXISTS idx_questions_review ON questions(explanation_status, explanation_source);
+

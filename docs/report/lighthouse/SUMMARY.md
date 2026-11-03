@@ -3,25 +3,25 @@
 - **Tool Version:** Lighthouse 13.6.0
 - **Form Factor:** Mobile (emulated screen: 360x640, dpr 2)
 - **Throttling:** Simulated 4G (RTT: 150ms, Throughput: 1.6Mbps, CPU Slowdown: 4x)
-- **Audit Date:** 2026-11-03T22:11:12.332Z
+- **Audit Date:** 2026-11-03T22:18:33.300Z
 
 | Page | Theme | Perf | A11y | Best Practices | SEO | LCP | CLS | TBT | Top Issues |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| Home | light | 65 | 100 | 100 | 92 | 2.7 s | 0 | 1,590 ms | Minimize main-thread work; Links do not have descriptive text; Forced reflow |
-| Home | dark | 82 | 100 | 100 | 92 | 2.5 s | 0 | 490 ms | Links do not have descriptive text; Network dependency tree; Time to Interactive |
-| Hubs (Mock Test) | light | 69 | 100 | 100 | 92 | 2.1 s | 0 | 2,270 ms | Max Potential First Input Delay; Reduce initial server response time; Minimize main-thread work |
-| Hubs (Mock Test) | dark | 91 | 100 | 100 | 92 | 2.2 s | 0 | 250 ms | Reduce initial server response time; Links do not have descriptive text; Page prevented back/forward cache restoration |
-| Mock Detail | light | 88 | 100 | 100 | 92 | 2.3 s | 0 | 300 ms | Links do not have descriptive text; Page prevented back/forward cache restoration; Network dependency tree |
-| Mock Detail | dark | 84 | 100 | 100 | 92 | 2.0 s | 0 | 530 ms | Links do not have descriptive text; Forced reflow; Network dependency tree |
-| Instructions | light | 92 | 100 | 100 | 61 | 2.3 s | 0 | 170 ms | Links do not have descriptive text; Page is blocked from indexing; Forced reflow |
-| Instructions | dark | 67 | 100 | 96 | 61 | 3.7 s | 0 | 550 ms | Browser errors were logged to the console; Avoid multiple page redirects; Minimize main-thread work |
-| Attempt Screen | light | 53 | 100 | 100 | 50 | 21.8 s | 0 | 780 ms | Largest Contentful Paint; Reduce initial server response time; Minimize main-thread work |
-| Attempt Screen | dark | 50 | 100 | 100 | 50 | 17.9 s | 0.001 | 1,020 ms | Largest Contentful Paint; Reduce initial server response time; Minimize main-thread work |
-| Result Screen | light | 83 | 100 | 100 | 61 | 2.2 s | 0 | 500 ms | Reduce initial server response time; Links do not have descriptive text; Page is blocked from indexing |
-| Result Screen | dark | 82 | 100 | 100 | 61 | 2.3 s | 0 | 570 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
-| Subject Page | light | 67 | 100 | 100 | 92 | 3.5 s | 0 | 650 ms | Minimize main-thread work; Links do not have descriptive text; Page prevented back/forward cache restoration |
-| Subject Page | dark | 61 | 100 | 100 | 92 | 3.5 s | 0 | 1,130 ms | Minimize main-thread work; Links do not have descriptive text; Page prevented back/forward cache restoration |
-| Public Question Page | light | 84 | 100 | 100 | 61 | 2.2 s | 0 | 490 ms | Links do not have descriptive text; Page is blocked from indexing; Page prevented back/forward cache restoration |
-| Public Question Page | dark | 80 | 100 | 100 | 61 | 2.2 s | 0 | 670 ms | Minimize main-thread work; Links do not have descriptive text; Page is blocked from indexing |
-| Admin Dashboard | light | 60 | 100 | 100 | 58 | 4.7 s | 0.002 | 870 ms | Reduce initial server response time; Minimize main-thread work; Minify JavaScript |
-| Admin Dashboard | dark | 75 | 100 | 100 | 58 | 2.3 s | 0 | 860 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
+| Home | light | 78 | 100 | 100 | 92 | 2.5 s | 0 | 630 ms | Reduce initial server response time; Links do not have descriptive text; Page prevented back/forward cache restoration |
+| Home | dark | 75 | 100 | 100 | 92 | 2.6 s | 0 | 770 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
+| Hubs (Mock Test) | light | 74 | 100 | 100 | 92 | 2.2 s | 0 | 910 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
+| Hubs (Mock Test) | dark | 70 | 100 | 100 | 92 | 2.7 s | 0.001 | 1,140 ms | Reduce initial server response time; Minimize main-thread work; Minify JavaScript |
+| Mock Detail | light | 79 | 100 | 100 | 92 | 2.3 s | 0.001 | 690 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
+| Mock Detail | dark | 49 | 100 | 96 | 92 | 5.2 s | 0 | 760 ms | Browser errors were logged to the console; Reduce initial server response time; Avoid multiple page redirects |
+| Instructions | light | 63 | 100 | 96 | 61 | 4.4 s | 0 | 430 ms | Browser errors were logged to the console; Reduce initial server response time; Avoid multiple page redirects |
+| Instructions | dark | 62 | 100 | 96 | 61 | 3.7 s | 0 | 800 ms | Browser errors were logged to the console; Avoid multiple page redirects; Minimize main-thread work |
+| Attempt Screen | light | 46 | 100 | 100 | 50 | 16.9 s | 0.001 | 1,300 ms | Largest Contentful Paint; Reduce initial server response time; Minimize main-thread work |
+| Attempt Screen | dark | 47 | 100 | 100 | 50 | 16.5 s | 0.001 | 1,140 ms | Largest Contentful Paint; Reduce initial server response time; Minimize main-thread work |
+| Result Screen | light | 74 | 100 | 100 | 61 | 2.3 s | 0 | 1,010 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
+| Result Screen | dark | 73 | 100 | 100 | 61 | 2.7 s | 0 | 720 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
+| Subject Page | light | 44 | 100 | 100 | 92 | 4.1 s | 0.001 | 3,040 ms | Max Potential First Input Delay; Reduce initial server response time; Minimize main-thread work |
+| Subject Page | dark | 61 | 100 | 100 | 92 | 4.1 s | 0.001 | 670 ms | Reduce initial server response time; Minimize main-thread work; Minify JavaScript |
+| Public Question Page | light | 76 | 100 | 100 | 61 | 3.1 s | 0 | 580 ms | Reduce initial server response time; Minimize main-thread work; Minify JavaScript |
+| Public Question Page | dark | 48 | 100 | 100 | 61 | 4.2 s | 0.001 | 1,890 ms | Reduce initial server response time; Avoid multiple page redirects; Minimize main-thread work |
+| Admin Dashboard | light | 83 | 100 | 100 | 58 | 2.3 s | 0 | 460 ms | Reduce initial server response time; Minimize main-thread work; Links do not have descriptive text |
+| Admin Dashboard | dark | 82 | 100 | 100 | 58 | 2.3 s | 0 | 550 ms | Minimize main-thread work; Links do not have descriptive text; Page is blocked from indexing |

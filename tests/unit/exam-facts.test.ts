@@ -137,3 +137,4 @@ describe("Fix 5 — Exam Facts and Scoring from Data", () => {
     expect(res4.score).toBe(3);
   });
 });
+

@@ -277,24 +277,24 @@ _Emulated Mobile: 360x640, DPR 2, Simulated 4G, 4x CPU Throttling_
 
 | Page Route | Theme | Performance | Accessibility | Best Practices | SEO | LCP | CLS | TBT |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Home (`/`)** | Light | **65** | **100** | **100** | **92** | 2.7s | 0 | 1,590ms |
-| **Home (`/`)** | Dark | **82** | **100** | **100** | **92** | 2.5s | 0 | 490ms |
-| **Hubs (`/cuet-ug-mock-test`)** | Light | **69** | **100** | **100** | **92** | 2.1s | 0 | 2,270ms |
-| **Hubs (`/cuet-ug-mock-test`)** | Dark | **91** | **100** | **100** | **92** | 2.2s | 0 | 250ms |
-| **Mock Detail (`/mock/e2e-local-fixture-mock`)** | Light | **88** | **100** | **100** | **92** | 2.3s | 0 | 300ms |
-| **Mock Detail (`/mock/e2e-local-fixture-mock`)** | Dark | **84** | **100** | **100** | **92** | 2.0s | 0 | 530ms |
-| **Instructions (`/mock/.../instructions`)** | Light | **92** | **100** | **100** | **61** (noindex) | 2.3s | 0 | 170ms |
-| **Instructions (`/mock/.../instructions`)** | Dark | **67** | **100** | **96** | **61** (noindex) | 3.7s | 0 | 550ms |
-| **Attempt Screen (`/attempt/4`)** | Light | **53** | **100** | **100** | **50** (noindex) | 21.8s | 0 | 780ms |
-| **Attempt Screen (`/attempt/4`)** | Dark | **50** | **100** | **100** | **50** (noindex) | 17.9s | 0.001 | 1,020ms |
-| **Result Screen (`/result/605`)** | Light | **83** | **100** | **100** | **61** (noindex) | 2.2s | 0 | 500ms |
-| **Result Screen (`/result/605`)** | Dark | **82** | **100** | **100** | **61** (noindex) | 2.3s | 0 | 570ms |
-| **Subject Page (`/cuet-mock-test/english`)** | Light | **67** | **100** | **100** | **92** | 3.5s | 0 | 650ms |
-| **Subject Page (`/cuet-mock-test/english`)** | Dark | **61** | **100** | **100** | **92** | 3.5s | 0 | 1,130ms |
-| **Public Question (`/q/...`)** | Light | **84** | **100** | **100** | **61** (noindex) | 2.2s | 0 | 490ms |
-| **Public Question (`/q/...`)** | Dark | **80** | **100** | **100** | **61** (noindex) | 2.2s | 0 | 670ms |
-| **Admin Dashboard (`/admin`)** | Light | **60** | **100** | **100** | **58** (noindex) | 4.7s | 0.002 | 870ms |
-| **Admin Dashboard (`/admin`)** | Dark | **75** | **100** | **100** | **58** (noindex) | 2.3s | 0 | 860ms |
+| **Home (`/`)** | Light | **78** | **100** | **100** | **92** | 2.5s | 0 | 630ms |
+| **Home (`/`)** | Dark | **75** | **100** | **100** | **92** | 2.6s | 0 | 770ms |
+| **Hubs (`/cuet-ug-mock-test`)** | Light | **74** | **100** | **100** | **92** | 2.2s | 0 | 910ms |
+| **Hubs (`/cuet-ug-mock-test`)** | Dark | **70** | **100** | **100** | **92** | 2.7s | 0.001 | 1,140ms |
+| **Mock Detail (`/mock/e2e-local-fixture-mock`)** | Light | **79** | **100** | **100** | **92** | 2.3s | 0.001 | 690ms |
+| **Mock Detail (`/mock/e2e-local-fixture-mock`)** | Dark | **49** | **100** | **96** | **92** | 5.2s | 0 | 760ms |
+| **Instructions (`/mock/.../instructions`)** | Light | **63** | **100** | **96** | **61** (noindex) | 4.4s | 0 | 430ms |
+| **Instructions (`/mock/.../instructions`)** | Dark | **62** | **100** | **96** | **61** (noindex) | 3.7s | 0 | 800ms |
+| **Attempt Screen (`/attempt/4`)** | Light | **46** | **100** | **100** | **50** (noindex) | 16.9s | 0.001 | 1,300ms |
+| **Attempt Screen (`/attempt/4`)** | Dark | **47** | **100** | **100** | **50** (noindex) | 16.5s | 0.001 | 1,140ms |
+| **Result Screen (`/result/605`)** | Light | **74** | **100** | **100** | **61** (noindex) | 2.3s | 0 | 1,010ms |
+| **Result Screen (`/result/605`)** | Dark | **73** | **100** | **100** | **61** (noindex) | 2.7s | 0 | 720ms |
+| **Subject Page (`/cuet-mock-test/english`)** | Light | **44** | **100** | **100** | **92** | 4.1s | 0.001 | 3,040ms |
+| **Subject Page (`/cuet-mock-test/english`)** | Dark | **61** | **100** | **100** | **92** | 4.1s | 0.001 | 670ms |
+| **Public Question (`/q/...`)** | Light | **76** | **100** | **100** | **61** (noindex) | 3.1s | 0 | 580ms |
+| **Public Question (`/q/...`)** | Dark | **48** | **100** | **100** | **61** (noindex) | 4.2s | 0.001 | 1,890ms |
+| **Admin Dashboard (`/admin`)** | Light | **83** | **100** | **100** | **58** (noindex) | 2.3s | 0 | 460ms |
+| **Admin Dashboard (`/admin`)** | Dark | **82** | **100** | **100** | **58** (noindex) | 2.3s | 0 | 550ms |
 
 ---
 

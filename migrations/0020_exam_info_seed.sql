@@ -49,3 +49,4 @@ ON CONFLICT(key) DO UPDATE SET
   value = excluded.value,
   source_url = excluded.source_url,
   last_verified = excluded.last_verified;
+

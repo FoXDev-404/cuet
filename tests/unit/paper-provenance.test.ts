@@ -69,3 +69,4 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
     expect(sitemap).toContain('if (rights === "cleared")');
   });
 });
+

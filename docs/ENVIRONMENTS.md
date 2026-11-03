@@ -58,3 +58,4 @@ npx wrangler deploy --env production
 # Run migrations against remote production D1
 npx wrangler d1 migrations apply cuet-blueprint-db --remote
 ```
+
