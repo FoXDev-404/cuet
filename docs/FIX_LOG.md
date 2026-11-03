@@ -286,3 +286,32 @@ Review and remediation log tracking the implementation and verification of fixes
 - **Remaining Work & Risks:** None.
 - **Owner Decisions Needed:** None.
 
+### Fix 8 — Honest Labels and Claims (P1)
+- **Status:** `DONE`
+- **What Changed:**
+  - Audited full site copy across `src/pages/`, `src/components/`, `src/layouts/`, and `src/lib/` for unverified superlatives and affiliation claims (`national`, `official`, `verified`, `authentic`, `largest`, `100%`, `guarantee`, `NTA`).
+  - Replaced unproven or ambiguous marketing strings:
+    - `src/pages/u/[username].astro`: Replaced "verified subject accuracy" with "practice subject accuracy".
+    - `src/pages/admin/pyq.astro`: Replaced "all authentic previous-year practice papers" with "previous-year practice papers".
+    - `src/pages/dev/styleguide/frame.astro`: Replaced "the official answer key" with "the paper solutions page".
+    - `src/pages/result/[attemptId].astro`: Updated rank card to "Rank (this site)" with explicit sub-label: "of {eligible} registered participants · {percentile} percentile among users".
+    - `src/pages/dashboard.astro`: Updated rank card to "Best rank (this site)" with explicit label: "{bestPercentile}% percentile among users of this site ({bestRank.eligible} participants)".
+  - Confirmed profile privacy: Verified `is_profile_public INTEGER NOT NULL DEFAULT 0` in `migrations/0001_init.sql`, ensuring all user profiles are strictly private by default.
+  - Preserved independent NTA disclaimer in `src/layouts/BaseLayout.astro` footer, `src/pages/disclaimer.astro`, `src/pages/about.astro`, `src/pages/terms.astro`, and on all practice/mock paper pages.
+  - `scripts/copy-lint.mjs`:
+    - Created build copy-lint tool with explicit allow-list for legitimate factual/legal disclaimers.
+    - Scans 272 source files and fails the build if banned phrases appear in student/public-facing copy.
+  - `tests/unit/copy-lint.test.ts`: Added 5 unit tests verifying copy-lint execution, profile privacy default, independent disclaimers, and site-relative rank labeling.
+  - `package.json`: Added `"lint:copy": "node scripts/copy-lint.mjs"`.
+- **Evidence / Proof:**
+  - Copy-lint output: 272 files scanned, 0 violations detected (`SUCCESS`).
+  - Test Suite: 39 / 39 test files passed, 291 / 291 unit tests passed.
+  - Replaced Strings List:
+    - `src/pages/u/[username].astro`: `"verified subject accuracy"` -> `"practice subject accuracy"`
+    - `src/pages/admin/pyq.astro`: `"all authentic previous-year practice papers"` -> `"previous-year practice papers"`
+    - `src/pages/dev/styleguide/frame.astro`: `"the official answer key"` -> `"the paper solutions page"`
+    - `src/pages/result/[attemptId].astro`: `"Rank"` -> `"Rank (this site)"`; `"first attempts"` -> `"registered participants · {percentile} percentile among users"`
+    - `src/pages/dashboard.astro`: `"Best rank"` -> `"Best rank (this site)"`; `"platform-only estimate"` -> `"percentile among users of this site"`
+- **Remaining Work & Risks:** None.
+- **Owner Decisions Needed:** None.
+

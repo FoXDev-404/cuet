@@ -271,11 +271,11 @@ const statusClass: Record<string, string> = {
           </p>
         </div>
         <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Best rank</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Best rank (this site)</p>
           <p class="mt-1 text-3xl font-black">{bestRank ? `#${bestRank.rank}` : "—"}</p>
           <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
             {bestRank
-              ? `${bestPercentile ?? 0} percentile of ${bestRank.eligible} eligible first attempt${bestRank.eligible === 1 ? "" : "s"} · platform-only estimate`
+              ? `${bestPercentile ?? 0} percentile among users of this site (${bestRank.eligible} participant${bestRank.eligible === 1 ? "" : "s"})`
               : "Ranked after your first submitted attempt"}
           </p>
         </div>

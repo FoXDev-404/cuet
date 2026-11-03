@@ -11,6 +11,7 @@
     "test:e2e": "playwright test",
     "test:a11y": "node scripts/a11y-audit.mjs",
     "seo:check": "node scripts/seo-consistency.mjs",
+    "lint:copy": "node scripts/copy-lint.mjs",
     "check:env": "node scripts/check-env-separation.mjs",
     "export:content": "node scripts/export-content.mjs",
     "purge:test-data": "node scripts/purge-test-data.mjs",
