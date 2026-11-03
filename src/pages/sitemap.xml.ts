@@ -143,6 +143,18 @@ export const GET: APIRoute = async ({ request }) => {
     console.error("sitemap query failed", error);
   }
 
+  // Rights Policy Gate (Fix 3): Papers with rights_status != 'cleared' are excluded from sitemap
+  let rightsMap = new Map<string, string>();
+  try {
+    const rightsRows = await allOr<{ slug: string; rights_status: string }>(
+      `SELECT slug, rights_status FROM practice_papers WHERE deleted_at IS NULL`,
+      [],
+    );
+    rightsMap = new Map(rightsRows.map((r) => [r.slug, r.rights_status]));
+  } catch (err) {
+    console.error("sitemap rights_status query failed", err);
+  }
+
   // Kept separate so a sharing-policy failure cannot drop the rest of the
   // sitemap. Shared questions are included only when they pass the same
   // `seoEligible` check the page uses.
@@ -219,11 +231,14 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   for (const paper of localPapers) {
-    add(paper.path, {
-      lastmod: LOCAL_LIBRARY_ADDED_AT,
-      changefreq: "monthly",
-      priority: "0.6",
-    });
+    const rights = rightsMap.get(paper.slug) ?? "unknown";
+    if (rights === "cleared") {
+      add(paper.path, {
+        lastmod: LOCAL_LIBRARY_ADDED_AT,
+        changefreq: "monthly",
+        priority: "0.6",
+      });
+    }
   }
 
   for (const post of posts) {

@@ -2,223 +2,294 @@
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import { all } from "../../lib/db";
 import { can } from "../../lib/auth/admin";
-import { formatDateTime } from "../../lib/content";
-import { findPyqPaper, listAdminPyq, listPyqMockOptions } from "../../lib/admin/pyq";
 
 const admin = Astro.locals.admin!;
 if (!can(admin.role, "mocks.write")) return Astro.redirect("/forbidden", 303);
 
-const papers = await listAdminPyq();
 const subjects = await all<{ id: number; name: string }>(
   `SELECT s.id, s.name FROM subjects s JOIN exams e ON e.id = s.exam_id
    WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1 ORDER BY s.name`,
 );
-const mockOptions = await listPyqMockOptions();
 
-const requestedId = Number(Astro.url.searchParams.get("id") ?? "0");
-const selected = Number.isInteger(requestedId) && requestedId > 0 ? await findPyqPaper(requestedId) : null;
+const practicePapers = await all<{
+  id: number;
+  slug: string;
+  title: string;
+  year: number;
+  shift: string | null;
+  subject_name: string;
+  source_file: string | null;
+  source_url: string | null;
+  source_type: string;
+  rights_status: string;
+  rights_note: string | null;
+  verified_by: string | null;
+  verified_at: string | null;
+}>(
+  `SELECT p.id, p.slug, p.title, p.year, p.shift, s.name AS subject_name,
+          p.source_file, p.source_url, p.source_type, p.rights_status,
+          p.rights_note, p.verified_by, p.verified_at
+   FROM practice_papers p
+   JOIN subjects s ON s.id = p.subject_id
+   WHERE p.deleted_at IS NULL
+   ORDER BY p.year DESC, s.name ASC, p.shift ASC`,
+);
 
-const years = [...new Set(papers.map((paper) => paper.year))].sort((a, b) => b - a);
-const selectedMockId = selected?.mock_id ?? null;
-const nextYear = new Date().getFullYear();
+const totalCount = practicePapers.length;
+const unknownCount = practicePapers.filter((p) => p.rights_status === "unknown").length;
+const clearedCount = practicePapers.filter((p) => p.rights_status === "cleared").length;
+const restrictedCount = practicePapers.filter((p) => p.rights_status === "restricted").length;
+
+const years = [...new Set(practicePapers.map((p) => p.year))].sort((a, b) => b - a);
+
+const filterRights = Astro.url.searchParams.get("rights") || "all";
+const filterYear = Astro.url.searchParams.get("year") || "all";
+const filterSubject = Astro.url.searchParams.get("subject") || "all";
+
+const filteredPapers = practicePapers.filter((p) => {
+  if (filterRights !== "all" && p.rights_status !== filterRights) return false;
+  if (filterYear !== "all" && String(p.year) !== filterYear) return false;
+  if (filterSubject !== "all" && p.subject_name !== filterSubject) return false;
+  return true;
+});
 ---
 
-<AdminLayout title="PYQ manager" active="pyq">
+<AdminLayout title="Paper Provenance & Rights Manager" active="pyq">
   <div class="flex flex-wrap items-end justify-between gap-3">
     <div>
-      <h1 class="text-2xl font-black tracking-tight">PYQ manager</h1>
+      <h1 class="text-2xl font-black tracking-tight">Paper Provenance & Rights Manager</h1>
       <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
-        Record year, shift, subject, source and rights notes before a previous-year paper is published. Link the paper to a timed mock once its questions and solutions are ready.
+        Review source attribution, verify provenance, and manage copyright clearance for all authentic previous-year practice papers.
+        Papers not marked <strong>cleared</strong> are automatically quarantined with <code>noindex</code>, excluded from sitemaps, and stripped of ads.
       </p>
     </div>
     <div class="flex flex-wrap gap-2">
       <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/cuet-ug-previous-year-papers" target="_blank" rel="noopener">View public archive</a>
-      <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/pyq">New paper</a>
     </div>
   </div>
 
-  <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
-    <p class="font-bold">No copied papers</p>
-    <p class="mt-1">Do not upload a copyrighted PDF or paste a coaching answer key. Record where the paper came from and how it was adapted, then write original explanations for every question before publishing.</p>
+  <!-- Rights Status Counts Dashboard -->
+  <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+    <div class="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+      <p class="text-xs font-bold uppercase tracking-wider text-neutral-500">Total Papers</p>
+      <p class="mt-2 text-3xl font-black">{totalCount}</p>
+      <p class="mt-1 text-xs text-neutral-400">In practice library</p>
+    </div>
+    <div class="rounded-2xl border border-amber-300 bg-amber-50/50 p-4 shadow-sm dark:border-amber-800 dark:bg-amber-950/20">
+      <p class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">Unknown / Pending</p>
+      <p class="mt-2 text-3xl font-black text-amber-900 dark:text-amber-100">{unknownCount}</p>
+      <p class="mt-1 text-xs text-amber-700 dark:text-amber-300">Forced noindex, no ads</p>
+    </div>
+    <div class="rounded-2xl border border-emerald-300 bg-emerald-50/50 p-4 shadow-sm dark:border-emerald-800 dark:bg-emerald-950/20">
+      <p class="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Cleared</p>
+      <p class="mt-2 text-3xl font-black text-emerald-900 dark:text-emerald-100">{clearedCount}</p>
+      <p class="mt-1 text-xs text-emerald-700 dark:text-emerald-300">Indexable, verified</p>
+    </div>
+    <div class="rounded-2xl border border-rose-300 bg-rose-50/50 p-4 shadow-sm dark:border-rose-800 dark:bg-rose-950/20">
+      <p class="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300">Restricted</p>
+      <p class="mt-2 text-3xl font-black text-rose-900 dark:text-rose-100">{restrictedCount}</p>
+      <p class="mt-1 text-xs text-rose-700 dark:text-rose-300">Disputed / Quarantined</p>
+    </div>
   </div>
 
-  <div class="mt-6 grid gap-6 xl:grid-cols-[1fr_420px]">
-    <section>
-      <h2 class="text-lg font-bold">Papers by year</h2>
-      {papers.length === 0 ? (
-        <div class="mt-4 rounded-2xl border border-dashed border-neutral-300 p-10 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
-          No PYQ paper records yet. Create one with the form on the right, then link a published PYQ mock.
-        </div>
-      ) : (
-        <div class="mt-4 space-y-6">
-          {years.map((year) => (
-            <div>
-              <h3 class="text-sm font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">{year}</h3>
-              <ul class="mt-2 space-y-2">
-                {papers.filter((paper) => paper.year === year).map((paper) => (
-                  <li class:list={[
-                    "rounded-2xl border bg-white p-4 dark:bg-neutral-900",
-                    selected?.id === paper.id ? "border-brand-400 ring-2 ring-brand-100 dark:border-brand-600 dark:ring-brand-950" : "border-neutral-200 dark:border-neutral-800",
-                  ]}>
-                    <div class="flex flex-wrap items-start justify-between gap-3">
-                      <div class="min-w-0">
-                        <div class="flex flex-wrap items-center gap-2 text-xs">
-                          <span class:list={[
-                            "rounded-full px-2 py-0.5 font-semibold",
-                            paper.status === "published"
-                              ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200"
-                              : "bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200",
-                          ]}>{paper.status}</span>
-                          {paper.shift ? <span class="rounded-full bg-neutral-100 px-2 py-0.5 font-semibold dark:bg-neutral-800">{paper.shift}</span> : null}
-                          {paper.subject_name ? <span class="rounded-full bg-neutral-100 px-2 py-0.5 font-semibold dark:bg-neutral-800">{paper.subject_name}</span> : null}
-                        </div>
-                        <p class="mt-2 font-bold">{paper.title}</p>
-                        {paper.mock_id ? (
-                          <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
-                            Linked mock: <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/admin/mocks/${paper.mock_id}`}>{paper.mock_title}</a>
-                            {" "}· {paper.mock_status} · {paper.question_count ?? 0} questions
-                          </p>
-                        ) : (
-                          <p class="mt-1 text-xs text-amber-700 dark:text-amber-300">No timed mock linked yet — this paper is hidden from the public archive.</p>
-                        )}
-                        {paper.source_url ? <p class="mt-1 truncate text-xs text-neutral-500 dark:text-neutral-400">Source: {paper.source_url}</p> : null}
-                      </div>
-                      <div class="flex shrink-0 gap-2">
-                        <a class="rounded-lg border border-neutral-300 px-2.5 py-1 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/admin/pyq?id=${paper.id}`}>Edit</a>
-                        <button class="rounded-lg border border-red-200 px-2.5 py-1 text-xs font-semibold text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300 dark:hover:bg-red-950/30" type="button" data-delete-pyq={paper.id}>Delete</button>
-                      </div>
-                    </div>
-                    {paper.updated_at ? <p class="mt-2 text-[11px] text-neutral-500 dark:text-neutral-400">Updated {formatDateTime(paper.updated_at)}</p> : null}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
-    </section>
-
-    <section class="h-fit rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-      <h2 class="text-lg font-bold">{selected ? `Edit paper #${selected.id}` : "New PYQ paper"}</h2>
-      <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
-        A paper is only listed publicly when it is published and linked to a published mock with questions.
-      </p>
-
-      <form id="pyq-form" class="mt-4 space-y-3" data-id={selected?.id ?? ""}>
-        <p id="pyq-status" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
-
-        <div class="grid grid-cols-2 gap-3">
-          <label class="block text-sm font-semibold">Year
-            <input class="field mt-1" name="year" type="number" min="2000" max="2100" required value={selected?.year ?? nextYear} />
-          </label>
-          <label class="block text-sm font-semibold">Shift
-            <input class="field mt-1" name="shift" maxlength="60" placeholder="Shift 1" value={selected?.shift ?? ""} />
-          </label>
-        </div>
-
-        <label class="block text-sm font-semibold">Subject
-          <select class="field mt-1" name="subject_id">
-            <option value="">Mixed / not subject-specific</option>
-            {subjects.map((subject) => (
-              <option value={subject.id} selected={selected?.subject_id === subject.id}>{subject.name}</option>
+  <!-- Filters & Bulk Action Bar -->
+  <div class="mt-6 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <form method="get" class="flex flex-wrap items-center gap-3">
+        <label class="text-xs font-semibold">
+          Rights Status:
+          <select name="rights" class="ml-1 rounded border border-neutral-300 bg-transparent px-2 py-1 text-xs dark:border-neutral-700" onchange="this.form.submit()">
+            <option value="all" selected={filterRights === "all"}>All Statuses ({totalCount})</option>
+            <option value="unknown" selected={filterRights === "unknown"}>Unknown ({unknownCount})</option>
+            <option value="cleared" selected={filterRights === "cleared"}>Cleared ({clearedCount})</option>
+            <option value="restricted" selected={filterRights === "restricted"}>Restricted ({restrictedCount})</option>
+          </select>
+        </label>
+        <label class="text-xs font-semibold">
+          Year:
+          <select name="year" class="ml-1 rounded border border-neutral-300 bg-transparent px-2 py-1 text-xs dark:border-neutral-700" onchange="this.form.submit()">
+            <option value="all" selected={filterYear === "all"}>All Years</option>
+            {years.map((y) => (
+              <option value={String(y)} selected={filterYear === String(y)}>{y}</option>
             ))}
           </select>
         </label>
-
-        <label class="block text-sm font-semibold">Paper title
-          <input class="field mt-1" name="title" maxlength="180" required value={selected?.title ?? ""} placeholder="CUET UG 2024 English — Shift 1" />
-        </label>
-
-        <label class="block text-sm font-semibold">Source URL
-          <input class="field mt-1" name="source_url" type="url" maxlength="1000" value={selected?.source_url ?? ""} placeholder="https://cuet.nta.nic.in/…" />
-          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">Link to the official notice or paper source. Leave empty if this is an original practice set.</span>
-        </label>
-
-        <label class="block text-sm font-semibold">Rights / provenance note
-          <textarea class="field mt-1" name="rights_note" rows="3" maxlength="2000" placeholder="Adapted from the official 2024 paper; all explanations rewritten. Diagrams redrawn.">{selected?.rights_note ?? ""}</textarea>
-        </label>
-
-        <label class="block text-sm font-semibold">Status
-          <select class="field mt-1" name="status">
-            <option value="draft" selected={selected?.status !== "published"}>Draft</option>
-            <option value="published" selected={selected?.status === "published"}>Published</option>
-          </select>
-        </label>
-
-        <label class="block text-sm font-semibold">Linked timed mock
-          <select class="field mt-1" name="mock_id">
-            <option value="">No mock linked</option>
-            {mockOptions.map((mock) => (
-              <option value={mock.id} selected={selectedMockId === mock.id}>{mock.title}{mock.pyq_year ? ` (${mock.pyq_year})` : ""}</option>
+        <label class="text-xs font-semibold">
+          Subject:
+          <select name="subject" class="ml-1 rounded border border-neutral-300 bg-transparent px-2 py-1 text-xs dark:border-neutral-700" onchange="this.form.submit()">
+            <option value="all" selected={filterSubject === "all"}>All Subjects</option>
+            {subjects.map((s) => (
+              <option value={s.name} selected={filterSubject === s.name}>{s.name}</option>
             ))}
           </select>
-          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">Only mocks with type “pyq” are listed. Create one in the mock builder first if needed.</span>
         </label>
-
-        <div class="flex flex-wrap gap-2 pt-1">
-          <button class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" type="submit">{selected ? "Save changes" : "Create paper"}</button>
-          {selected ? <a class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/admin/pyq">Cancel</a> : null}
-        </div>
       </form>
-    </section>
+
+      <div class="flex items-center gap-2">
+        <button id="btn-bulk-clear" class="rounded bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-700 disabled:opacity-50" disabled>
+          Set Cleared
+        </button>
+        <button id="btn-bulk-restrict" class="rounded bg-rose-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-rose-700 disabled:opacity-50" disabled>
+          Set Restricted
+        </button>
+        <button id="btn-bulk-unknown" class="rounded bg-neutral-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-neutral-700 disabled:opacity-50" disabled>
+          Set Unknown
+        </button>
+      </div>
+    </div>
   </div>
 
-  <style>
-    .field {
-      width: 100%;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-input);
-      background: var(--surface-2); color: var(--ink);
-      padding: 0.55rem 0.7rem;
-      font-size: 0.875rem;
+  <!-- Papers Table -->
+  <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+    <table class="w-full text-left text-xs">
+      <thead class="border-b border-neutral-200 bg-neutral-50 uppercase text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950">
+        <tr>
+          <th class="p-3"><input type="checkbox" id="check-all" /></th>
+          <th class="p-3">Paper Title & Shift</th>
+          <th class="p-3">Subject</th>
+          <th class="p-3">Year</th>
+          <th class="p-3">Rights Status</th>
+          <th class="p-3">Source Attribution</th>
+          <th class="p-3">Verified By</th>
+          <th class="p-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800">
+        {filteredPapers.map((paper) => (
+          <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-800/40" data-paper-id={paper.id}>
+            <td class="p-3"><input type="checkbox" class="paper-check" value={paper.id} /></td>
+            <td class="p-3 font-semibold">
+              <a href={`/practice/${paper.slug}`} target="_blank" class="text-brand-700 hover:underline dark:text-brand-300">
+                {paper.title}
+              </a>
+              {paper.shift ? <span class="ml-1 text-neutral-400">({paper.shift})</span> : null}
+            </td>
+            <td class="p-3">{paper.subject_name}</td>
+            <td class="p-3 font-mono">{paper.year}</td>
+            <td class="p-3">
+              {paper.rights_status === "cleared" ? (
+                <span class="inline-flex rounded-full bg-emerald-100 px-2 py-0.5 font-bold uppercase text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200">
+                  Cleared
+                </span>
+              ) : paper.rights_status === "restricted" ? (
+                <span class="inline-flex rounded-full bg-rose-100 px-2 py-0.5 font-bold uppercase text-rose-800 dark:bg-rose-900/60 dark:text-rose-200">
+                  Restricted
+                </span>
+              ) : (
+                <span class="inline-flex rounded-full bg-amber-100 px-2 py-0.5 font-bold uppercase text-amber-800 dark:bg-amber-900/60 dark:text-amber-200">
+                  Unknown
+                </span>
+              )}
+            </td>
+            <td class="p-3 text-neutral-600 dark:text-neutral-400">
+              {paper.source_url ? (
+                <a href={paper.source_url} target="_blank" class="underline">Source link</a>
+              ) : (
+                <span class="text-neutral-400">{paper.source_file || "NTA Archive"}</span>
+              )}
+            </td>
+            <td class="p-3 text-neutral-500">
+              {paper.verified_by ? `${paper.verified_by} (${paper.verified_at?.slice(0, 10)})` : "Unverified"}
+            </td>
+            <td class="p-3">
+              <button class="btn-quick-edit font-semibold text-brand-700 hover:underline dark:text-brand-300" data-id={paper.id} data-rights={paper.rights_status} data-url={paper.source_url || ""} data-note={paper.rights_note || ""}>
+                Edit
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</AdminLayout>
+
+<script>
+  const checkAll = document.getElementById("check-all") as HTMLInputElement | null;
+  const checks = document.querySelectorAll<HTMLInputElement>(".paper-check");
+  const btnClear = document.getElementById("btn-bulk-clear") as HTMLButtonElement | null;
+  const btnRestrict = document.getElementById("btn-bulk-restrict") as HTMLButtonElement | null;
+  const btnUnknown = document.getElementById("btn-bulk-unknown") as HTMLButtonElement | null;
+
+  function updateBulkButtons() {
+    const selected = Array.from(checks).filter((c) => c.checked);
+    const hasSelected = selected.length > 0;
+    if (btnClear) btnClear.disabled = !hasSelected;
+    if (btnRestrict) btnRestrict.disabled = !hasSelected;
+    if (btnUnknown) btnUnknown.disabled = !hasSelected;
+  }
+
+  if (checkAll) {
+    checkAll.addEventListener("change", () => {
+      checks.forEach((c) => (c.checked = checkAll.checked));
+      updateBulkButtons();
+    });
+  }
+
+  checks.forEach((c) => c.addEventListener("change", updateBulkButtons));
+
+  async function applyRights(status: "cleared" | "restricted" | "unknown") {
+    const selectedIds = Array.from(checks)
+      .filter((c) => c.checked)
+      .map((c) => Number(c.value));
+    if (selectedIds.length === 0) return;
+
+    if (!confirm(`Update ${selectedIds.length} paper(s) to rights status: ${status.toUpperCase()}?`)) {
+      return;
     }
 
-  </style>
-
-  <script is:inline>
-    const form = document.getElementById("pyq-form");
-    const statusBox = document.getElementById("pyq-status");
-
-    function showStatus(message, ok) {
-      if (!statusBox) return;
-      statusBox.textContent = message;
-      statusBox.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/40 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
-    }
-
-    form?.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const button = form.querySelector("button[type=submit]");
-      if (!button) return;
-      button.disabled = true;
-      const data = new FormData(form);
-      const id = form.dataset.id;
-      const response = await fetch(id ? `/api/admin/pyq/${id}` : "/api/admin/pyq", {
-        method: id ? "PATCH" : "POST",
+    try {
+      const res = await fetch("/api/admin/practice-papers/rights", {
+        method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(data.entries())),
+        body: JSON.stringify({ paperIds: selectedIds, rights_status: status }),
       });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        showStatus(result.error || "Could not save the paper.", false);
-        button.disabled = false;
+      if (!res.ok) {
+        const err = (await res.json()) as { error?: string };
+        alert(err.error || "Update failed.");
         return;
       }
-      location.href = result.redirect || "/admin/pyq";
-    });
+      window.location.reload();
+    } catch (e: any) {
+      alert(e.message || "Network error.");
+    }
+  }
 
-    document.querySelectorAll("[data-delete-pyq]").forEach((button) => {
-      button.addEventListener("click", async () => {
-        if (!confirm("Delete this PYQ paper record? The linked mock is never deleted.")) return;
-        button.disabled = true;
-        const response = await fetch(`/api/admin/pyq/${button.dataset.deletePyq}`, { method: "DELETE" });
-        const result = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          alert(result.error || "Could not delete the paper.");
-          button.disabled = false;
-          return;
+  btnClear?.addEventListener("click", () => applyRights("cleared"));
+  btnRestrict?.addEventListener("click", () => applyRights("restricted"));
+  btnUnknown?.addEventListener("click", () => applyRights("unknown"));
+
+  document.querySelectorAll(".btn-quick-edit").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const id = Number(btn.getAttribute("data-id"));
+      const currentRights = btn.getAttribute("data-rights") || "unknown";
+      const currentUrl = btn.getAttribute("data-url") || "";
+      const currentNote = btn.getAttribute("data-note") || "";
+
+      const newRights = prompt("Set rights_status (cleared | unknown | restricted):", currentRights);
+      if (!newRights || !["cleared", "unknown", "restricted"].includes(newRights)) return;
+
+      const newUrl = prompt("Set source URL (optional):", currentUrl);
+      const newNote = prompt("Set rights note (optional):", currentNote);
+
+      try {
+        const res = await fetch("/api/admin/practice-papers/rights", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            paperIds: [id],
+            rights_status: newRights,
+            source_url: newUrl ?? "",
+            rights_note: newNote ?? "",
+          }),
+        });
+        if (res.ok) window.location.reload();
+        else {
+          const err = (await res.json()) as { error?: string };
+          alert(err.error || "Failed");
         }
-        location.reload();
-      });
+      } catch (e: any) {
+        alert(e.message || "Network error");
+      }
     });
-  </script>
-</AdminLayout>
+  });
+</script>

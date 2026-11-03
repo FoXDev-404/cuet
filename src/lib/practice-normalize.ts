@@ -212,6 +212,12 @@ export interface LocalPaper {
   durationMinutes: number;
   sourceFile: string | null;
   sourceMethod: string | null;
+  sourceUrl?: string | null;
+  sourceType?: "official_public" | "licensed" | "original" | "unknown";
+  rightsStatus?: "unknown" | "cleared" | "restricted";
+  rightsNote?: string | null;
+  verifiedBy?: string | null;
+  verifiedAt?: string | null;
   publicationStatus: string;
   reviewRequired: boolean;
   sourceQuestionCount: number;
@@ -244,6 +250,12 @@ export interface LocalPaperSummary {
   assetCount: number;
   sourceFile: string | null;
   sourceMethod: string | null;
+  sourceUrl?: string | null;
+  sourceType?: "official_public" | "licensed" | "original" | "unknown";
+  rightsStatus?: "unknown" | "cleared" | "restricted";
+  rightsNote?: string | null;
+  verifiedBy?: string | null;
+  verifiedAt?: string | null;
   publicationStatus: string;
   reviewRequired: boolean;
   localPaper: true;

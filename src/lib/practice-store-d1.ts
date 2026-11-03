@@ -28,6 +28,12 @@ const INDEX_SQL = `
     p.duration_min,
     p.source_file,
     p.source_method,
+    p.source_url,
+    p.source_type,
+    p.rights_status,
+    p.rights_note,
+    p.verified_by,
+    p.verified_at,
     p.source_question_count,
     p.publication_status,
     p.review_required,
@@ -79,7 +85,8 @@ async function readPaperFromD1(slug: string): Promise<LocalPaper | null> {
       .prepare(
         `SELECT
            p.slug, p.title, p.meta_description, p.year, p.exam_date, p.date_label, p.shift,
-           p.duration_min, p.source_file, p.source_method, p.source_question_count,
+           p.duration_min, p.source_file, p.source_method, p.source_url, p.source_type,
+           p.rights_status, p.rights_note, p.verified_by, p.verified_at, p.source_question_count,
            p.publication_status, p.review_required,
            s.name AS subject_name, s.slug AS subject_slug, s.code AS subject_code
          FROM practice_papers p
