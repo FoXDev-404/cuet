@@ -33,7 +33,6 @@ const skipAttempt = /^(1|true|yes)$/i.test(process.env.A11Y_SKIP_ATTEMPT ?? "");
 
 const STATIC_PUBLIC_PATHS = [
   "/",
-  "/cuet-mock-test",
   "/cuet-ug-mock-test",
   "/leaderboard",
   "/cuet-ug-syllabus",
@@ -359,6 +358,21 @@ async function auditPublic(browser) {
       for (const viewport of VIEWPORTS) {
         await auditPath(page, "attempt", `/attempt/${attempt.attemptId}`, viewport, (target) =>
           target.locator("#question-area [data-option]").first().waitFor(),
+        );
+        // Palette expanded state
+        await auditPath(
+          page,
+          "attempt-palette",
+          `/attempt/${attempt.attemptId}`,
+          viewport,
+          null,
+          async (target) => {
+            const toggle = target.locator("button:has-text('Palette'), [aria-label*='palette' i]").first();
+            if (await toggle.isVisible().catch(() => false)) {
+              await toggle.click();
+              await target.waitForTimeout(200);
+            }
+          },
         );
       }
 

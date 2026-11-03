@@ -2,10 +2,10 @@ import { all, first, run } from "./db";
 import { parseMarkingScheme, parseOptions, type QuestionOption } from "./content";
 import { firstAttemptFlag, percentileFor } from "./ranking";
 import { scoreAttempt } from "./scoring";
-import { hasExpired, remainingSeconds, SUBMIT_GRACE_SECONDS } from "./attempt-time";
+import { ATTEMPT_GRACE_SECONDS, hasExpired, remainingSeconds, SUBMIT_GRACE_SECONDS } from "./attempt-time";
 import { getMockVersionQuestions } from "./mock-cache";
 
-export { hasExpired, remainingSeconds, SUBMIT_GRACE_SECONDS };
+export { ATTEMPT_GRACE_SECONDS, hasExpired, remainingSeconds, SUBMIT_GRACE_SECONDS };
 
 export type AttemptRow = {
   id: number;

@@ -25,6 +25,7 @@ export const GET: APIRoute = async ({ params }) => {
       "content-length": String(asset.size_bytes),
       "cache-control": "public, max-age=31536000, immutable",
       "x-content-type-options": "nosniff",
+      "content-security-policy": "default-src 'none'; sandbox",
     },
   });
 };
