@@ -207,4 +207,29 @@ Review and remediation log tracking the implementation and verification of fixes
 - **Remaining Work & Risks:** `important-dates` remains `TODO_VERIFY` with `noindex` enforced until NTA issues the official 2026 public notice, which is the honest behavior required by policy.
 - **Owner Decisions Needed:** Update `important-dates` in `/admin/exam-info` once NTA publishes the 2026 bulletin dates.
 
+### Fix 6 — Structured Data Governance & Allow-List (P1)
+- **Status:** `DONE`
+- **What Changed:**
+  - `src/lib/seo.ts`: Removed `faqJsonLd` generator in accordance with Google's August 2023 Search Central policy update restricting `FAQPage` rich results to government and health authorities.
+  - `docs/SEO_RULES.md`: Authored formal SEO and structured data policy document defining strict allow-lists and detailing why `Quiz`, `Course`, and `FAQPage` schemas are disallowed on educational test engines.
+  - Verified visible content matching: `BreadcrumbList`, `Article` (editorial guides only), and `ItemList` (listing hubs) match visible DOM elements.
+  - `tests/unit/structured-data.test.ts`: Added 5 unit tests verifying that `Quiz`, `Course`, and `FAQPage` do not appear anywhere in `src/`, that BaseLayout only emits approved `Organization` schema, and that all route groups comply with their allow-lists.
+- **Evidence / Proof (JSON-LD Inventory Table by Route Group):**
+
+| Route Group | URL Pattern | Permitted Schemas | Disallowed Schemas | Actual Emitted Schemas | Policy Compliance |
+| :--- | :--- | :--- | :--- | :--- | :---: |
+| **Home Page** | `/` | `Organization`, `WebSite`, `ItemList` | `Quiz`, `Course`, `FAQPage` | `Organization`, `WebSite`, `ItemList` | **PASS** |
+| **Editorial Guides** | `/cuet-ug-exam-pattern`, `/cuet-ug-marking-scheme`, `/cuet-ug-syllabus`, `/cuet-ug-important-dates`, `/blog/:slug` | `Organization`, `BreadcrumbList`, `Article` | `Quiz`, `Course`, `FAQPage` | `Organization`, `BreadcrumbList`, `Article` | **PASS** |
+| **Listing Hubs** | `/cuet-ug-mock-test`, `/cuet-mock-test`, `/cuet-ug-previous-year-papers`, `/pyq/:year`, `/leaderboard` | `Organization`, `BreadcrumbList`, `ItemList` | `Quiz`, `Course`, `FAQPage` | `Organization`, `BreadcrumbList`, `ItemList` | **PASS** |
+| **Mock & Practice Landing** | `/mock/:slug`, `/practice/:slug` | `Organization`, `BreadcrumbList` | `Quiz`, `Course`, `FAQPage`, `Product` | `Organization`, `BreadcrumbList` | **PASS** |
+| **Public Questions** | `/q/:slug` | `Organization`, `BreadcrumbList` | `Quiz`, `Question`, `FAQPage` | `Organization`, `BreadcrumbList` (when `seoEligible`) | **PASS** |
+| **Legal / About** | `/about`, `/contact`, `/privacy-policy`, `/terms`, `/disclaimer` | `Organization`, `BreadcrumbList` | `Quiz`, `Course`, `FAQPage`, `Article` | `Organization`, `BreadcrumbList` | **PASS** |
+| **Private Routes** | `/attempt/*`, `/result/*`, `/dashboard/*`, `/admin/*`, `/dev/*` | None / `Organization` | All Rich Result Types | `noindex, nofollow` enforced | **PASS** |
+
+  - Test Suite: 37/37 test files passed, 279/279 unit tests passed.
+  - Astro Build / Check: 335 files, 0 errors, 0 warnings.
+- **Remaining Work & Risks:** None.
+- **Owner Decisions Needed:** None.
+
+
 
