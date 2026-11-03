@@ -1,50 +1,48 @@
-# Appendix D: Dependencies and Security Audit
+# Appendix D: Dependencies & Security Audit
 
-> Complete inventory of production and development dependencies, version freshness, and npm vulnerability audit.
+_Extracted from `package.json` and `package-lock.json` on 2026-11-03T22:04:36.688Z._
 
-## 1. Security Audit Summary (`npm audit`)
+## Production Dependencies
 
-| Scope | Info | Low | Moderate | High | Critical | Total Vulnerabilities | Status |
-|---|---|---|---|---|---|---|---|
-| **Production (`--omit=dev`)** | 0 | 0 | 0 | 0 | 0 | **0** | ✅ CLEAN (0 vulnerabilities) |
-| **Development & Build** | 0 | 0 | 2 | 0 | 0 | **2** | ℹ️ 2 moderate in dev dependencies |
+| Package | Version | Purpose / Notes |
+| :--- | :---: | :--- |
+| `@astrojs/cloudflare` | `14.4.3` | Cloudflare Workers adapter |
+| `@astrojs/react` | `^7.1.2` | Interactive client components |
+| `astro` | `7.4.4` | Core web framework with SSR support |
+| `html-to-image` | `^1.11.13` | Production runtime dependency |
+| `jose` | `^6.1.0` | JWT verification for Cloudflare Access |
+| `katex` | `0.19.1` | LaTeX math rendering for questions and formulas |
+| `react` | `^19.3.0` | Interactive client components |
+| `react-dom` | `^19.3.0` | Production runtime dependency |
+| `zod` | `^4.6.7` | Schema validation for forms, APIs, and uploads |
 
-> [!NOTE]
-> Production deployment has **zero known security vulnerabilities** in its shipped dependencies.
+## Key Development & Tooling Dependencies
 
----
+| Package | Version | Purpose / Notes |
+| :--- | :---: | :--- |
+| `@astrojs/check` | `^0.9.12` | Astro TypeScript and template diagnostics |
+| `@cloudflare/workers-types` | `^5.20261031.1` | Dev tool / testing harness |
+| `@fontsource/inter` | `^5.3.0` | Dev tool / testing harness |
+| `@fontsource/noto-sans-devanagari` | `^5.3.0` | Dev tool / testing harness |
+| `@playwright/test` | `1.64.1` | Browser E2E test runner |
+| `@resvg/resvg-js` | `^2.6.2` | Dev tool / testing harness |
+| `@tailwindcss/vite` | `^4.3.3` | Dev tool / testing harness |
+| `@types/node` | `^26.6.6` | Dev tool / testing harness |
+| `axe-core` | `4.14.0` | Automated accessibility auditing engine |
+| `satori` | `0.63.2` | SVG / OpenGraph image generation from HTML |
+| `tailwindcss` | `4.3.3` | Dev tool / testing harness |
+| `typescript` | `^5.9.3` | Dev tool / testing harness |
+| `vitest` | `5.0.5` | Unit and integration test runner |
+| `wrangler` | `4.156.0` | Cloudflare CLI for D1, KV, and Workers |
 
-## 2. Production Dependencies (`dependencies`)
+## Package Overrides & Hardening
 
-| Package Name | Defined Range | Outdated / Current | Latest Available | Purpose / Role |
-|---|---|---|---|---|
-| `@astrojs/cloudflare` | `^14.4.3` | `14.4.3` (upgrade: `14.4.4`) | `14.4.4` | Astro web framework & Cloudflare adapter |
-| `@astrojs/react` | `^7.1.2` | `^7.1.2` | `Up to date` | Astro web framework & Cloudflare adapter |
-| `astro` | `^7.4.4` | `7.4.4` (upgrade: `7.4.5`) | `7.4.5` | Astro web framework & Cloudflare adapter |
-| `html-to-image` | `^1.11.13` | `^1.11.13` | `Up to date` | Image generation & processing |
-| `jose` | `^6.1.0` | `6.2.14` (upgrade: `6.2.15`) | `6.2.15` | Core framework |
-| `katex` | `^0.19.1` | `^0.19.1` | `Up to date` | KaTeX math formula renderer |
-| `react` | `^19.3.0` | `^19.3.0` | `Up to date` | React UI component engine |
-| `react-dom` | `^19.3.0` | `^19.3.0` | `Up to date` | React UI component engine |
-| `zod` | `^4.6.7` | `^4.6.7` | `Up to date` | Core framework |
+| Package | Override Rule | Vulnerability Addressed |
+| :--- | :---: | :--- |
+| `fflate` | `^0.8.2` | Addressed `GHSA-px8p-9vwx-vf98` (Moderate prototype pollution in `fflate` subdependency) |
 
----
+## Vulnerability Audit Summary
 
-## 3. Development Dependencies (`devDependencies`)
-
-| Package Name | Defined Range | Outdated / Current | Latest Available | Purpose / Role |
-|---|---|---|---|---|
-| `@astrojs/check` | `^0.9.12` | `^0.9.12` | `Up to date` | Development tooling |
-| `@cloudflare/workers-types` | `^5.20261031.1` | `5.20261031.1` (upgrade: `5.20261103.1`) | `5.20261103.1` | Development tooling |
-| `@fontsource/inter` | `^5.3.0` | `^5.3.0` | `Up to date` | Development tooling |
-| `@fontsource/noto-sans-devanagari` | `^5.3.0` | `^5.3.0` | `Up to date` | Development tooling |
-| `@playwright/test` | `^1.64.1` | `^1.64.1` | `Up to date` | End-to-End browser test automation |
-| `@resvg/resvg-js` | `^2.6.2` | `^2.6.2` | `Up to date` | Development tooling |
-| `@tailwindcss/vite` | `^4.3.3` | `4.3.3` (upgrade: `4.3.4`) | `4.3.4` | Development tooling |
-| `@types/node` | `^26.6.6` | `^26.6.6` | `Up to date` | Development tooling |
-| `axe-core` | `^4.14.0` | `^4.14.0` | `Up to date` | Automated accessibility scanner |
-| `satori` | `^0.63.2` | `^0.63.2` | `Up to date` | Development tooling |
-| `tailwindcss` | `^4.3.3` | `4.3.3` (upgrade: `4.3.4`) | `4.3.4` | Development tooling |
-| `typescript` | `^5.9.3` | `5.9.3` (upgrade: `7.0.2`) | `7.0.2` | TypeScript language compiler |
-| `vitest` | `^5.0.5` | `5.0.5` (upgrade: `5.1.0`) | `5.1.0` | Unit test runner & assertions |
-| `wrangler` | `^4.156.0` | `4.156.0` (upgrade: `4.157.0`) | `4.157.0` | Cloudflare Workers & D1 CLI tool |
+- **Command:** `npm audit`
+- **Status:** **0 vulnerabilities found** (0 critical, 0 high, 0 moderate, 0 low)
+- **Vulnerabilities Closed:** 2 moderate advisories resolved via package overrides without `--force`.

@@ -1,223 +1,187 @@
 {
-  "meta": {
-    "platform": "CUETFreeMockTest.com",
-    "auditor": "Antigravity Senior Technical Auditor",
-    "audit_date": "2026-11-04",
-    "commit_hash": "b3d79f9 (with audit remediation updates)",
-    "repository": "CUET Mock Platform",
-    "astro_version": "^5.1.0",
-    "target_runtime": "Cloudflare Workers (SSR + D1 + KV + R2)"
-  },
-  "verdict": {
-    "status": "DONE",
-    "stage": "launch-ready / pre-deployment",
-    "summary": "CUETFreeMockTest.com has achieved 100% test suite completion with 242/242 unit tests, 100/100 axe a11y scans, and 71/71 Playwright E2E tests passing cleanly across all user and admin journeys. With 214 authentic papers, 6,603 practice questions (100% explained), and an optimized sub-millisecond query architecture, the platform is ready for production traffic once live domain credentials (Google OAuth and Cloudflare Access) are provisioned."
-  },
+  "generatedAt": "2026-11-04T03:39:00Z",
+  "product": "CUET Free Mock Test",
+  "stage": "staging / partial-launch ready",
+  "overallVerdict": "PARTIAL",
+  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 294 passing tests and 0 sitemap mismatches. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed) and 1,204 auto-generated explanations are pending human review in the review queue.",
   "scorecard": [
     {
       "area": "Test engine",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Full NTA-compliant CBT simulation verified: Section navigation, 1-click English/Hindi bilingual toggle, palette state machine, 30s autosave, deadline worker, resume, retry. Verified across 71/71 E2E tests."
+      "confidence": "HIGH",
+      "reason": "Full mock attempt lifecycle verified: 15s delta autosave with monotonic sequence sync, timer countdown with 15s grace, palette jump, section navigation, submit, and retry."
     },
     {
       "area": "Scoring and leaderboard",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "CUET marking scheme (+5/-1/0) rigorously calculated, strict first-attempt rule enforced via DB index uq_first_attempt, global/subject/timeframe ranking views active."
+      "confidence": "HIGH",
+      "reason": "Pure data-driven scoring (+5/-1 default, sectional schemes), blueprint tie-breakers (score desc -> time asc -> accuracy desc), first-attempt rule enforced."
     },
     {
       "area": "Auth and sessions",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "PBKDF2-SHA256 password hashing (100k iterations), secure httpOnly session cookies, and guest test claiming verified; OAuth code paths tested with mock fallback."
+      "confidence": "HIGH",
+      "reason": "PBKDF2/scrypt hashed passwords, SHA-256 session tokens, guest token claim flow, Google OAuth contract, private-by-default profiles."
     },
     {
       "area": "Admin panel",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "18 dedicated admin interfaces supporting direct hotfixes, question/paper editors, user management, trash/restore, data import/export, and audit logging. Question pool loading optimized to <50ms."
+      "confidence": "HIGH",
+      "reason": "Coverage across questions, mocks, practice papers, review queue, rights confirmations, and audit logs. Cloudflare Access JWT auth required in production."
     },
     {
       "area": "Content library",
-      "status": "DONE",
-      "confidence": "high",
-      "reason": "214 papers across 30 subjects, 6,603 practice questions (100% explained, 95.0% keyed) and 12,009 mock questions in D1 SQLite; largest free authentic archive."
+      "status": "PARTIAL",
+      "confidence": "HIGH",
+      "reason": "347 mocks, 12,066 questions, 214 practice papers; 214 papers marked rights unknown and 1,204 explanations marked unreviewed AI drafts."
     },
     {
       "area": "Public pages and SEO",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "All 82 UI routes server-rendered with zero empty templates, dynamic XML sitemap (243 URLs), valid JSON-LD schemas, and auto-clamped title tags under 60 characters."
+      "confidence": "HIGH",
+      "reason": "89 indexable URLs in sitemap with 0 mismatches; clean canonicals, single h1, valid schema types (BreadcrumbList, Article, WebSite), no Quiz/Course spam."
     },
     {
       "area": "Design system and dark/light theme",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Zero-flash inline script, strict CSS custom properties via tokens.css, 100/100 axe contrast and accessibility score across both light and dark modes."
+      "confidence": "HIGH",
+      "reason": "WCAG AA contrast verified across light and dark themes; no-flash inline script; zero hardcoded color leaks; 79 design token unit tests passing."
     },
     {
       "area": "Question sharing",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "NanoID-based question public IDs, policy-driven reveal (locked/blurred before attempt, unlocked with solutions), dynamic social share previews (all 17 E2E tests pass)."
+      "confidence": "HIGH",
+      "reason": "10-character Base62 public IDs with rejection sampling; database IDs never exposed; rights gate revokes PYQ links if unconfirmed; OG card generation."
     },
     {
       "area": "Media/images",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Dual-engine media storage with primary R2 binding and verified KV fallback; SVG sanitize check, WebP conversion, and 163 diagrams rendered."
+      "confidence": "HIGH",
+      "reason": "Strict PNG/JPEG/WebP magic-byte validation; SVGs strictly rejected; sandbox and nosniff CSP headers; KaTeX LaTeX rendering."
     },
     {
       "area": "Security",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Zero answer-key leakage in attempt SSR payloads, timing-safe auth tokens, CSRF protection, rate limiting, and zero committed production secrets."
+      "confidence": "HIGH",
+      "reason": "Answer keys omitted from public payloads; timer grace enforced; IDOR guards on attempts; KV rate limits on 9 public endpoints; 0 vulnerabilities in npm audit."
     },
     {
       "area": "Performance",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Lightweight SSR payloads (<15KB HTML), aggressive 6-hour KV caching, and covering index idx_questions_status_deleted eliminating cold subject table scans."
+      "confidence": "HIGH",
+      "reason": "Simulated mobile Lighthouse audits completed across 9 routes in light/dark themes; D1 capacity model verified (autosave <= 3 rows read; result <= 40 rows read)."
     },
     {
       "area": "Accessibility",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Verified by automated Playwright + Axe audit across 100 route/theme permutations: 0 violations, full ARIA palette semantics, keyboard navigation."
+      "confidence": "HIGH",
+      "reason": "Automated axe-core audits across public, dashboard, attempt (with palette), result, solutions, and admin views with 0 critical/serious violations."
     },
     {
       "area": "Tests and CI",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "100% test suite completion: 242/242 Vitest unit tests pass, Astro check clean (319 files, 0 errors/warnings), 71/71 Playwright E2E tests pass (0 failures)."
+      "confidence": "HIGH",
+      "reason": "40 test files, 294 unit/integration tests passing (100% pass rate in 9.35s); GitHub Actions CI workflow for test, build, lint, axe, and SEO consistency."
     },
     {
       "area": "Deployment and ops",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Wrangler v3 configuration with D1 migrations 0001-0016, automated deployment scripts, daily D1 backup action (.github/workflows/d1-backup.yml), and graceful D1 outage fallbacks."
+      "confidence": "HIGH",
+      "reason": "Wrangler environments separated (preview vs production D1); daily offsite backup workflow configured; launch runbook documented."
     },
     {
       "area": "Legal and AdSense readiness",
       "status": "DONE",
-      "confidence": "high",
-      "reason": "Comprehensive privacy policy, terms, disclaimer, contact, grievance officer, and NTA educational fair use attribution notices fully published."
+      "confidence": "HIGH",
+      "reason": "Explicit NTA disclaimer in footer and headers; takedown procedure published; AdSense restricted to substantial public content pages only; no spam claims."
     },
     {
       "area": "External integrations",
-      "status": "PARTIAL",
-      "confidence": "high",
-      "reason": "Google OAuth and Brevo/SendGrid transactional email integrations implemented in code with local mock fallbacks; production API keys require user binding upon domain switch."
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "Google OAuth contract, Cloudflare Access JWT validation, Cloudflare Web Analytics token integration, Google Site Verification integration."
     }
   ],
   "counts": {
-    "routes_total": 170,
-    "routes_ui": 82,
-    "routes_api": 88,
-    "tables": 39,
-    "migrations": 16,
-    "practice_papers": 214,
-    "practice_questions": 6603,
-    "practice_questions_keyed": 6271,
-    "practice_questions_unkeyed": 332,
-    "practice_questions_with_explanation": 6603,
-    "practice_questions_without_explanation": 0,
-    "subjects": 30,
-    "mock_tests": 337,
-    "mock_questions": 12009,
-    "tests_unit_passed": 242,
-    "tests_unit_total": 242,
-    "tests_a11y_scans_clean": 100,
-    "tests_a11y_scans_total": 100,
-    "tests_e2e_passed": 71,
-    "tests_e2e_failed": 0,
-    "tests_e2e_total": 71,
-    "astro_check_errors": 0,
-    "astro_check_warnings": 0,
-    "build_files": 319,
-    "npm_audit_prod_vulnerabilities": 0,
-    "npm_audit_dev_vulnerabilities": 2
+    "totalRoutes": 173,
+    "ssrPages": 82,
+    "apiEndpoints": 91,
+    "databaseTables": 40,
+    "totalDatabaseRows": 37708,
+    "questions": 12066,
+    "unreviewedExplanations": 1204,
+    "mockTests": 347,
+    "mockTestVersions": 453,
+    "previousYearPapers": 214,
+    "papersRightsUnknown": 214,
+    "unitTestFiles": 40,
+    "unitTestsPassed": 294,
+    "sitemapUrls": 89,
+    "indexableUrls": 89,
+    "seoMismatches": 0,
+    "npmVulnerabilities": 0,
+    "hardcodedSecretsDetected": 0
   },
-  "top_issues": [
+  "openIssues": [
     {
       "id": "ISSUE-001",
       "severity": "P1",
-      "area": "Authentication",
-      "title": "Production Google OAuth credentials pending configuration",
-      "description": "OAuth callback routes /api/auth/oauth/google and /api/auth/oauth/callback are fully implemented and verified with mock fallbacks, but live credentials and verified redirect URIs must be configured in Google Cloud Console for cuetfreemocktest.com.",
-      "recommendation": "Add production GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET to Cloudflare Worker secrets upon DNS launch."
+      "title": "214 Previous-Year Practice Papers Rights and Provenance Unverified",
+      "description": "214 previous-year papers remain marked with rights_status = 'unknown'. They are strictly forced noindex and carry takedown notices, but require human provenance verification or publisher licensing before indexing."
     },
     {
       "id": "ISSUE-002",
       "severity": "P1",
-      "area": "Content Integrity",
-      "title": "332 OCR draft questions have answer keys pending editorial review",
-      "description": "In recently imported OCR draft papers, 332 questions (5.0%) have correct_option = NULL and are flagged review_required=1. All 332 now have clear explanation banners, but verified keys will unlock them for scored mock generation.",
-      "recommendation": "Use the Admin Data Manager (/admin/data-manager) to key these questions over time; they remain safely isolated from scored tests."
+      "title": "1,204 Auto-Generated Explanations Pending Human Editorial Review",
+      "description": "1,204 explanations generated during earlier pipeline runs are labeled 'AI draft' and await review in the human editorial review queue (/admin/review)."
     },
     {
       "id": "ISSUE-003",
-      "severity": "P2",
-      "area": "Cloud Infrastructure",
-      "title": "Cloudflare Access Service Token verification in production",
-      "description": "Cloudflare Access JWT verification logic is implemented in middleware but currently uses session fallback in staging and local environments.",
-      "recommendation": "Verify CF_ACCESS_TEAM_NAME and AUD claim policy once the Cloudflare Zero Trust tunnel is bound to the production custom domain."
+      "severity": "P1",
+      "title": "CUET UG Important Dates Awaiting NTA 2026 Bulletin Verification",
+      "description": "The important-dates exam facts table contains 'TODO_VERIFY' flags. The page is forced noindex until official 2026 NTA dates are released."
     },
     {
       "id": "ISSUE-004",
       "severity": "P2",
-      "area": "Email Infrastructure",
-      "title": "Transactional email provider API key binding",
-      "description": "Brevo and SendGrid transactional email adapters are implemented in code. Local dev mode displays password reset links directly in the console; production requires binding BREVO_API_KEY.",
-      "recommendation": "Add BREVO_API_KEY (free 300 emails/day tier) to Cloudflare Worker secrets."
+      "title": "Production Cloudflare Access Setup & Domain DNS Delegation",
+      "description": "Cloudflare Access configuration is prepared in code and launch runbook, awaiting live domain DNS cutover and team domain delegation."
     },
     {
       "id": "ISSUE-005",
       "severity": "P2",
-      "area": "Maintenance",
-      "title": "Minor patch updates available for 9 development dependencies",
-      "description": "Astro (v7.4.4 -> v7.4.5), Tailwind (v4.3.3 -> v4.3.4), and Wrangler (v4.156.0 -> v4.157.0) have minor point updates available.",
-      "recommendation": "Run npm update during the next scheduled maintenance cycle."
-    }
-  ],
-  "top_strengths": [
-    "Flawless 100% test suite completion: 242/242 Vitest unit tests, 100/100 Axe a11y scans, and 71/71 Playwright E2E tests passing.",
-    "Zero answer-key leakage in test attempt payloads; answer keys and explanations are strictly withheld on the server until submission.",
-    "Complete NTA CBT parity with split-second bilingual toggle, palette state machine, and robust autosave.",
-    "Massive, verified 214-paper CUET UG archive (6,603 questions, 100% explained, 163 diagrams) seeded directly into D1 SQLite.",
-    "Extreme financial safety: Highly optimized SQLite query plans and 6-hour KV caching support up to 10,000 daily active test-takers entirely within Cloudflare's free tier."
-  ],
-  "remediated_issues": [
-    {
-      "id": "FIXED-001",
-      "title": "Enriched 1,204 practice questions with clear, verified explanations",
-      "details": "All 1,204 previously unexplained questions in practice_questions have been enriched with educational rationale, achieving 100% explanation coverage across all 6,603 practice questions."
+      "title": "Google OAuth Production Client Credentials Configuration",
+      "description": "Mock OAuth is used in local development; production client ID and client secret must be provisioned in Google Cloud Console."
     },
     {
-      "id": "FIXED-002",
-      "title": "Optimized Admin Mock Builder question picker DOM rendering",
-      "details": "Capped candidate unselected questions to 200 in /admin/mocks/new and /admin/mocks/[id], reducing DOM render time from 35s to under 50ms and resolving Playwright timeout."
+      "id": "ISSUE-006",
+      "severity": "P2",
+      "title": "Mobile Performance Optimization for MathJax / KaTeX Heavy Subject Pages",
+      "description": "Pages with heavy KaTeX font rendering experience LCP 3.6s-7.4s under 4x CPU throttle. Font preloading and bundle splitting recommended."
     },
     {
-      "id": "FIXED-003",
-      "title": "Eliminated cold subject rollup table scan with covering index",
-      "details": "Added migration 0016_subject_rollup_index.sql creating idx_questions_status_deleted, replacing full 12,009-row table scan with a covering index search."
+      "id": "ISSUE-007",
+      "severity": "P2",
+      "title": "Cloudflare D1 Automated Daily Offsite Backup GitHub Secrets",
+      "description": "The automated GitHub Actions backup workflow requires CF_API_TOKEN, CF_ACCOUNT_ID, and R2_BACKUP_BUCKET repository secrets."
     },
     {
-      "id": "FIXED-004",
-      "title": "Resolved Playwright SQLite lock contention and test timeouts",
-      "details": "Enforced single-worker test runner and test.slow() for multi-request admin lifecycles. All 71 Playwright tests now pass cleanly."
+      "id": "ISSUE-008",
+      "severity": "P2",
+      "title": "Google AdSense Site Review and Manual Ad Unit Placement",
+      "description": "Ad slots are conditionally gated; site must be submitted to Google AdSense for approval once live on custom domain."
     },
     {
-      "id": "FIXED-005",
-      "title": "Clamped Practice Paper SEO title tags under 60 characters",
-      "details": "Implemented formatPracticeSeoTitle in /practice/[slug] to prevent Google search result truncation while preserving full titles in page H1 headings."
+      "id": "ISSUE-009",
+      "severity": "P2",
+      "title": "8 Thin Subjects in Item Bank with 0 Questions",
+      "description": "8 academic subjects in the database have zero questions and are prevented from indexing (404/noindex). Requires question authoring."
     },
     {
-      "id": "FIXED-006",
-      "title": "Verified automated daily D1 database backup workflow",
-      "details": "Confirmed .github/workflows/d1-backup.yml executes nightly at 02:17 UTC with Point-in-Time Recovery artifacts."
+      "id": "ISSUE-010",
+      "severity": "P2",
+      "title": "Cloudflare Turnstile Bot Protection in Auth Forms",
+      "description": "KV-backed rate limits and honeypots protect login/signup endpoints; Turnstile verification widget recommended as user volume scales."
     }
   ]
 }

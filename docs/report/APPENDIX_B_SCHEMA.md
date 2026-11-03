@@ -1,88 +1,66 @@
-# Appendix B: Database Schema and Data Integrity
+# Appendix B: Database Schema & Entity Catalogue
 
-> DDL extracted from `sqlite_master` in Cloudflare D1 local SQLite. Verified across all 39 user and operational tables.
+_Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-11-03T22:04:36.688Z._
 
-## 1. Schema Overview & Table Catalogue
+## Database Overview
 
-| Table Name | Purpose / Domain | Row Count | Primary Key | Soft Delete | Indexes |
-|---|---|---|---|---|---|
-| `admins` | Authentication, RBAC & user accounts | **2** | `id` | Yes (`deleted_at`) | 2 |
-| `announcements` | Core system entity | **0** | `id` | Yes (`deleted_at`) | 0 |
-| `attempt_answers` | Student test attempts & answer audit | **3,917** | `attempt_id, question_id` | No | 2 |
-| `attempts` | Student test attempts & answer audit | **262** | `id` | No | 11 |
-| `audit_log` | Admin audit trail & question versioning | **517** | `id` | No | 2 |
-| `badges` | Gamification & user achievements | **4** | `id` | Yes (`deleted_at`) | 1 |
-| `blog_posts` | Informational content & syllabus | **0** | `id` | Yes (`deleted_at`) | 3 |
-| `bookmarks` | Core system entity | **0** | `user_id, question_id` | No | 1 |
-| `discussion_reports` | Community Q&A and question discussions | **0** | `id` | No | 2 |
-| `discussion_votes` | Community Q&A and question discussions | **0** | `discussion_id, user_id` | No | 1 |
-| `discussions` | Community Q&A and question discussions | **8** | `id` | Yes (`deleted_at`) | 4 |
-| `email_verifications` | Authentication, RBAC & user accounts | **0** | `id` | No | 1 |
-| `exam_info` | Informational content & syllabus | **0** | `key` | No | 1 |
-| `exams` | Informational content & syllabus | **1** | `id` | Yes (`deleted_at`) | 2 |
-| `media_assets` | Core system entity | **0** | `id` | Yes (`deleted_at`) | 4 |
-| `mock_questions` | Mock examination engine & question bank | **11,552** | `version_id, question_id` | No | 3 |
-| `mock_test_versions` | Mock examination engine & question bank | **443** | `id` | No | 2 |
-| `mock_tests` | Mock examination engine & question bank | **337** | `id` | Yes (`deleted_at`) | 5 |
-| `page_seo` | Core system entity | **0** | `path` | No | 1 |
-| `passages` | Core system entity | **234** | `id` | Yes (`deleted_at`) | 0 |
-| `password_resets` | Authentication, RBAC & user accounts | **0** | `id` | No | 1 |
-| `practice_papers` | Previous-year paper practice library | **214** | `id` | Yes (`deleted_at`) | 3 |
-| `practice_passages` | Previous-year paper practice library | **128** | `id` | Yes (`deleted_at`) | 3 |
-| `practice_questions` | Previous-year paper practice library | **6,603** | `id` | Yes (`deleted_at`) | 2 |
-| `pyq_papers` | Core system entity | **0** | `id` | Yes (`deleted_at`) | 2 |
-| `question_public_ids` | Viral question sharing & public views | **76** | `public_id` | No | 2 |
-| `question_reports` | Core system entity | **0** | `id` | No | 1 |
-| `questions` | Core system entity | **12,009** | `id` | Yes (`deleted_at`) | 7 |
-| `rescore_jobs` | Core system entity | **0** | `id` | No | 1 |
-| `revisions` | Admin audit trail & question versioning | **143** | `id` | No | 2 |
-| `sessions` | Authentication, RBAC & user accounts | **474** | `id` | No | 2 |
-| `share_events` | Viral question sharing & public views | **0** | `id` | No | 1 |
-| `site_settings` | Core system entity | **3** | `key` | No | 1 |
-| `slug_redirects` | Core system entity | **0** | `old_slug` | No | 2 |
-| `subjects` | Core system entity | **19** | `id` | Yes (`deleted_at`) | 2 |
-| `topics` | Core system entity | **0** | `id` | Yes (`deleted_at`) | 2 |
-| `user_badges` | Authentication, RBAC & user accounts | **37** | `user_id, badge_id` | No | 1 |
-| `user_stats` | Authentication, RBAC & user accounts | **38** | `user_id, subject_id, topic_id` | No | 1 |
-| `users` | Authentication, RBAC & user accounts | **115** | `id` | Yes (`deleted_at`) | 5 |
+- **Total Catalogued Tables:** 40
+- **Total Database Rows:** 37,708
+- **Applied Migrations:** 20 (from `0001_init.sql` through `0020_exam_info_seed.sql`)
 
-## 2. Data Integrity Checks
+## Table Catalogue Summary
 
-| Integrity Check | Metric / Expected | Actual Measured | Status |
-|---|---|---|---|
-| Orphan Practice Questions (`practice_questions` without paper) | 0 | **0** | ✅ PASS |
-| Orphan Mock Questions (`mock_questions` without version/question) | 0 | **0** | ✅ PASS |
-| Orphan Mock Versions (`mock_test_versions` without mock test) | 0 | **0** | ✅ PASS |
-| Duplicate Practice Paper Slugs (`practice_papers.slug`) | 0 | **0** | ✅ PASS |
-| Duplicate Mock Test Slugs (`mock_tests.slug`) | 0 | **0** | ✅ PASS |
-| Empty Mock Tests (Mock tests with 0 questions in version) | 0 | **0** | ✅ PASS |
-| Unkeyed Practice Questions (`correct_option` is NULL) | Pending reviews only | **332** / 6,603 (95.0% keyed) | ℹ️ Monitored |
-| Questions Missing Explanation (`practice_questions.explanation`) | 0 | **0** / 6,603 (100.0% explained) | ✅ PASS |
+| Table Name | Row Count | Columns | Indexes | Primary Purpose | Soft Delete? |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| `admins` | 2 | 7 | 2 | Admin accounts, roles (super, editor, reviewer, analyst) | Yes (`deleted_at`) |
+| `announcements` | 0 | 10 | 0 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `attempt_answers` | 4,249 | 8 | 2 | User answer submissions per attempt question | No |
+| `attempts` | 275 | 22 | 11 | Attempt instances, scores, deadlines, sequence ordering | No |
+| `audit_log` | 568 | 7 | 2 | Auxiliary / Join Table | No |
+| `badges` | 4 | 5 | 1 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `blog_posts` | 0 | 11 | 3 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `bookmarks` | 0 | 4 | 1 | Auxiliary / Join Table | No |
+| `d1_migrations` | 19 | 3 | 1 | Auxiliary / Join Table | No |
+| `discussion_reports` | 0 | 6 | 2 | Auxiliary / Join Table | No |
+| `discussion_votes` | 0 | 2 | 1 | Auxiliary / Join Table | No |
+| `discussions` | 9 | 12 | 4 | Discussion threads attached to questions | Yes (`deleted_at`) |
+| `email_verifications` | 0 | 5 | 1 | Auxiliary / Join Table | No |
+| `exam_info` | 6 | 4 | 1 | Verified CUET UG exam facts, dates, and patterns | No |
+| `exams` | 1 | 5 | 2 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `media_assets` | 0 | 10 | 4 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `mock_questions` | 11,562 | 4 | 3 | Question-to-mock version mappings with ordering | No |
+| `mock_test_versions` | 453 | 11 | 2 | Immutable versions of mock tests | No |
+| `mock_tests` | 347 | 24 | 5 | Mock tests, published papers, slugs, types | Yes (`deleted_at`) |
+| `page_seo` | 0 | 8 | 1 | Auxiliary / Join Table | No |
+| `passages` | 234 | 7 | 0 | Reading comprehension passages linked to questions | Yes (`deleted_at`) |
+| `password_resets` | 0 | 5 | 1 | Auxiliary / Join Table | No |
+| `practice_papers` | 214 | 24 | 5 | Previous-year practice paper metadata & rights status | Yes (`deleted_at`) |
+| `practice_passages` | 128 | 6 | 3 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `practice_questions` | 6,603 | 24 | 3 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `pyq_papers` | 0 | 12 | 2 | Auxiliary / Join Table | Yes (`deleted_at`) |
+| `question_public_ids` | 85 | 7 | 2 | Base62 public IDs and share policies for questions | No |
+| `question_reports` | 0 | 6 | 1 | Auxiliary / Join Table | No |
+| `questions` | 12,066 | 28 | 8 | Master question item bank with revision tracking | Yes (`deleted_at`) |
+| `rescore_jobs` | 0 | 10 | 1 | Auxiliary / Join Table | No |
+| `revisions` | 158 | 7 | 2 | Auxiliary / Join Table | No |
+| `sessions` | 508 | 4 | 2 | User session tokens, SHA-256 hashes, expiration | No |
+| `share_events` | 0 | 7 | 1 | Auxiliary / Join Table | No |
+| `site_settings` | 3 | 2 | 1 | Auxiliary / Join Table | No |
+| `slug_redirects` | 0 | 4 | 2 | Auxiliary / Join Table | No |
+| `subjects` | 19 | 8 | 2 | Academic domain subjects (English, Physics, etc.) | Yes (`deleted_at`) |
+| `topics` | 0 | 5 | 2 | Syllabus topics under subjects | Yes (`deleted_at`) |
+| `user_badges` | 38 | 3 | 1 | Auxiliary / Join Table | No |
+| `user_stats` | 39 | 6 | 1 | Auxiliary / Join Table | No |
+| `users` | 118 | 17 | 5 | User accounts, auth hashes, ban/mute state, streaks | Yes (`deleted_at`) |
 
-## 3. Migration History
+---
 
-Total migration files in `migrations/`: **15**
+## Complete DDL Schemas (from `sqlite_master`)
 
-- `0001_init.sql`
-- `0002_mock_versions.sql`
-- `0002_seed.sql`
-- `0003_content_and_ops.sql`
-- `0004_immutability_guards.sql`
-- `0005_seo_canonical.sql`
-- `0006_schema_parity.sql`
-- `0007_query_budget_indexes.sql`
-- `0008_archive_placeholder_mock.sql`
-- `0009_admin_full_control.sql`
-- `0010_practice_library.sql`
-- `0011_practice_passage_trash.sql`
-- `0012_question_share.sql`
-- `0013_question_share_indexes.sql`
-- `0015_ranked_practice_library.sql`
+### Table: `admins`
 
-## 4. Detailed Table Definitions (DDL)
-
-### Table `admins` (2 rows)
-**Domain:** Authentication, RBAC & user accounts | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+- **Current Row Count:** 2
+- **Columns:** 7
 
 ```sql
 CREATE TABLE "admins" (
@@ -95,11 +73,15 @@ CREATE TABLE "admins" (
 ```
 
 **Indexes:**
-- `idx_admins_deleted` (unique: False)
-- `sqlite_autoindex_admins_1` (unique: True)
 
-### Table `announcements` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_admins_deleted ON "admins"(deleted_at);
+```
+
+### Table: `announcements`
+
+- **Current Row Count:** 0
+- **Columns:** 10
 
 ```sql
 CREATE TABLE "announcements" (
@@ -112,8 +94,10 @@ CREATE TABLE "announcements" (
 , created_at TEXT, updated_at TEXT, created_by INTEGER REFERENCES admins(id), deleted_at TEXT)
 ```
 
-### Table `attempt_answers` (3,917 rows)
-**Domain:** Student test attempts & answer audit | **Primary Key:** `attempt_id, question_id` | **Soft Delete:** No
+### Table: `attempt_answers`
+
+- **Current Row Count:** 4,249
+- **Columns:** 8
 
 ```sql
 CREATE TABLE "attempt_answers" (
@@ -123,17 +107,22 @@ CREATE TABLE "attempt_answers" (
   time_spent_sec INTEGER NOT NULL DEFAULT 0,
   marked_for_review INTEGER NOT NULL DEFAULT 0,
   updated_at TEXT,
-  is_correct INTEGER,
+  is_correct INTEGER, client_seq INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (attempt_id, question_id)
 )
 ```
 
 **Indexes:**
-- `idx_attempt_answers_question` (unique: False)
-- `sqlite_autoindex_attempt_answers_1` (unique: True)
 
-### Table `attempts` (262 rows)
-**Domain:** Student test attempts & answer audit | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_attempt_answers_question
+  ON "attempt_answers"(question_id);
+```
+
+### Table: `attempts`
+
+- **Current Row Count:** 275
+- **Columns:** 22
 
 ```sql
 CREATE TABLE "attempts" (
@@ -152,26 +141,36 @@ CREATE TABLE "attempts" (
   started_at TEXT NOT NULL,
   deadline_at TEXT NOT NULL,
   submitted_at TEXT,
-  is_first_attempt INTEGER NOT NULL DEFAULT 0, disqualified_at TEXT, disqualified_by INTEGER REFERENCES admins(id), voided_at TEXT, void_reason TEXT, voided_by INTEGER REFERENCES admins(id),
+  is_first_attempt INTEGER NOT NULL DEFAULT 0, disqualified_at TEXT, disqualified_by INTEGER REFERENCES admins(id), voided_at TEXT, void_reason TEXT, voided_by INTEGER REFERENCES admins(id), last_client_seq INTEGER NOT NULL DEFAULT 0, section_summary TEXT,
   CHECK (user_id IS NOT NULL OR guest_token IS NOT NULL)
 )
 ```
 
 **Indexes:**
-- `idx_attempts_status_submitted` (unique: False)
-- `idx_attempts_voided` (unique: False)
-- `idx_attempts_started` (unique: False)
-- `idx_attempts_user_mock_status` (unique: False)
-- `idx_attempts_user_finished` (unique: False)
-- `idx_attempts_disqualified` (unique: False)
-- `uq_first_attempt` (unique: True)
-- `idx_attempts_guest` (unique: False)
-- `idx_attempts_user` (unique: False)
-- `idx_attempts_mock` (unique: False)
-- `idx_attempts_leaderboard` (unique: False)
 
-### Table `audit_log` (517 rows)
-**Domain:** Admin audit trail & question versioning | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_attempts_leaderboard ON "attempts"(version_id, score DESC, time_taken_sec ASC);
+CREATE INDEX idx_attempts_mock ON "attempts"(mock_id, status);
+CREATE INDEX idx_attempts_user ON "attempts"(user_id);
+CREATE INDEX idx_attempts_guest ON "attempts"(guest_token);
+CREATE UNIQUE INDEX uq_first_attempt ON "attempts"(user_id, mock_id) WHERE is_first_attempt = 1;
+CREATE INDEX idx_attempts_disqualified ON "attempts"(disqualified_at);
+CREATE INDEX idx_attempts_user_finished
+  ON "attempts"(user_id, status, submitted_at DESC);
+CREATE INDEX idx_attempts_user_mock_status
+  ON "attempts"(user_id, mock_id, status);
+CREATE INDEX idx_attempts_started
+  ON "attempts"(started_at);
+CREATE INDEX idx_attempts_voided
+  ON "attempts"(voided_at, submitted_at DESC);
+CREATE INDEX idx_attempts_status_submitted
+  ON "attempts"(status, submitted_at DESC);
+```
+
+### Table: `audit_log`
+
+- **Current Row Count:** 568
+- **Columns:** 7
 
 ```sql
 CREATE TABLE "audit_log" (
@@ -186,11 +185,18 @@ CREATE TABLE "audit_log" (
 ```
 
 **Indexes:**
-- `idx_audit_entity` (unique: False)
-- `idx_audit_admin_created` (unique: False)
 
-### Table `badges` (4 rows)
-**Domain:** Gamification & user achievements | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_audit_admin_created
+  ON "audit_log"(admin_id, created_at DESC);
+CREATE INDEX idx_audit_entity
+  ON "audit_log"(entity_type, entity_id, created_at DESC);
+```
+
+### Table: `badges`
+
+- **Current Row Count:** 4
+- **Columns:** 5
 
 ```sql
 CREATE TABLE "badges" (
@@ -201,11 +207,10 @@ CREATE TABLE "badges" (
 , deleted_at TEXT)
 ```
 
-**Indexes:**
-- `sqlite_autoindex_badges_1` (unique: True)
+### Table: `blog_posts`
 
-### Table `blog_posts` (0 rows)
-**Domain:** Informational content & syllabus | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+- **Current Row Count:** 0
+- **Columns:** 11
 
 ```sql
 CREATE TABLE "blog_posts" (
@@ -224,12 +229,17 @@ CREATE TABLE "blog_posts" (
 ```
 
 **Indexes:**
-- `idx_blog_deleted` (unique: False)
-- `idx_blog_posts_status` (unique: False)
-- `sqlite_autoindex_blog_posts_1` (unique: True)
 
-### Table `bookmarks` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `user_id, question_id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_blog_posts_status ON "blog_posts"(status, published_at DESC);
+CREATE INDEX idx_blog_deleted
+  ON "blog_posts"(deleted_at, status);
+```
+
+### Table: `bookmarks`
+
+- **Current Row Count:** 0
+- **Columns:** 4
 
 ```sql
 CREATE TABLE "bookmarks" (
@@ -241,11 +251,23 @@ CREATE TABLE "bookmarks" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_bookmarks_1` (unique: True)
+### Table: `d1_migrations`
 
-### Table `discussion_reports` (0 rows)
-**Domain:** Community Q&A and question discussions | **Primary Key:** `id` | **Soft Delete:** No
+- **Current Row Count:** 19
+- **Columns:** 3
+
+```sql
+CREATE TABLE "d1_migrations"(
+		id         INTEGER PRIMARY KEY AUTOINCREMENT,
+		name       TEXT UNIQUE,
+		applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+)
+```
+
+### Table: `discussion_reports`
+
+- **Current Row Count:** 0
+- **Columns:** 6
 
 ```sql
 CREATE TABLE "discussion_reports" (
@@ -260,11 +282,16 @@ CREATE TABLE "discussion_reports" (
 ```
 
 **Indexes:**
-- `idx_discussion_reports_open` (unique: False)
-- `sqlite_autoindex_discussion_reports_1` (unique: True)
 
-### Table `discussion_votes` (0 rows)
-**Domain:** Community Q&A and question discussions | **Primary Key:** `discussion_id, user_id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_discussion_reports_open
+  ON "discussion_reports"(status, created_at DESC);
+```
+
+### Table: `discussion_votes`
+
+- **Current Row Count:** 0
+- **Columns:** 2
 
 ```sql
 CREATE TABLE "discussion_votes" (
@@ -274,11 +301,10 @@ CREATE TABLE "discussion_votes" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_discussion_votes_1` (unique: True)
+### Table: `discussions`
 
-### Table `discussions` (8 rows)
-**Domain:** Community Q&A and question discussions | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+- **Current Row Count:** 9
+- **Columns:** 12
 
 ```sql
 CREATE TABLE "discussions" (
@@ -297,13 +323,18 @@ CREATE TABLE "discussions" (
 ```
 
 **Indexes:**
-- `idx_discussions_deleted` (unique: False)
-- `idx_disc_top` (unique: False)
-- `idx_disc_question` (unique: False)
-- `idx_disc_mock` (unique: False)
 
-### Table `email_verifications` (0 rows)
-**Domain:** Authentication, RBAC & user accounts | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_disc_mock ON "discussions"(mock_id, status, parent_id, created_at DESC);
+CREATE INDEX idx_disc_question ON "discussions"(question_id, status);
+CREATE INDEX idx_disc_top ON "discussions"(mock_id, status, upvotes DESC);
+CREATE INDEX idx_discussions_deleted ON "discussions"(deleted_at);
+```
+
+### Table: `email_verifications`
+
+- **Current Row Count:** 0
+- **Columns:** 5
 
 ```sql
 CREATE TABLE "email_verifications" (
@@ -315,11 +346,10 @@ CREATE TABLE "email_verifications" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_email_verifications_1` (unique: True)
+### Table: `exam_info`
 
-### Table `exam_info` (0 rows)
-**Domain:** Informational content & syllabus | **Primary Key:** `key` | **Soft Delete:** No
+- **Current Row Count:** 6
+- **Columns:** 4
 
 ```sql
 CREATE TABLE "exam_info" (
@@ -330,11 +360,10 @@ CREATE TABLE "exam_info" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_exam_info_1` (unique: True)
+### Table: `exams`
 
-### Table `exams` (1 rows)
-**Domain:** Informational content & syllabus | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+- **Current Row Count:** 1
+- **Columns:** 5
 
 ```sql
 CREATE TABLE "exams" (
@@ -346,11 +375,15 @@ CREATE TABLE "exams" (
 ```
 
 **Indexes:**
-- `idx_exams_deleted` (unique: False)
-- `sqlite_autoindex_exams_1` (unique: True)
 
-### Table `media_assets` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_exams_deleted ON "exams"(deleted_at);
+```
+
+### Table: `media_assets`
+
+- **Current Row Count:** 0
+- **Columns:** 10
 
 ```sql
 CREATE TABLE "media_assets" (
@@ -367,13 +400,16 @@ CREATE TABLE "media_assets" (
 ```
 
 **Indexes:**
-- `idx_media_deleted` (unique: False)
-- `idx_media_assets_created` (unique: False)
-- `sqlite_autoindex_media_assets_2` (unique: True)
-- `sqlite_autoindex_media_assets_1` (unique: True)
 
-### Table `mock_questions` (11,552 rows)
-**Domain:** Mock examination engine & question bank | **Primary Key:** `version_id, question_id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_media_assets_created ON "media_assets"(created_at DESC);
+CREATE INDEX idx_media_deleted ON "media_assets"(deleted_at);
+```
+
+### Table: `mock_questions`
+
+- **Current Row Count:** 11,562
+- **Columns:** 4
 
 ```sql
 CREATE TABLE "mock_questions" (
@@ -386,12 +422,16 @@ CREATE TABLE "mock_questions" (
 ```
 
 **Indexes:**
-- `idx_mq_question` (unique: False)
-- `idx_mq_version` (unique: False)
-- `sqlite_autoindex_mock_questions_1` (unique: True)
 
-### Table `mock_test_versions` (443 rows)
-**Domain:** Mock examination engine & question bank | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_mq_version ON "mock_questions"(version_id, section, position);
+CREATE INDEX idx_mq_question ON "mock_questions"(question_id);
+```
+
+### Table: `mock_test_versions`
+
+- **Current Row Count:** 453
+- **Columns:** 11
 
 ```sql
 CREATE TABLE "mock_test_versions" (
@@ -412,11 +452,15 @@ CREATE TABLE "mock_test_versions" (
 ```
 
 **Indexes:**
-- `idx_versions_mock` (unique: False)
-- `sqlite_autoindex_mock_test_versions_1` (unique: True)
 
-### Table `mock_tests` (337 rows)
-**Domain:** Mock examination engine & question bank | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_versions_mock ON "mock_test_versions"(mock_id, status);
+```
+
+### Table: `mock_tests`
+
+- **Current Row Count:** 347
+- **Columns:** 24
 
 ```sql
 CREATE TABLE "mock_tests" (
@@ -445,14 +489,20 @@ CREATE TABLE "mock_tests" (
 ```
 
 **Indexes:**
-- `idx_mock_tests_practice_paper` (unique: False)
-- `idx_mocks_updated` (unique: False)
-- `idx_mocks_status_published` (unique: False)
-- `idx_mocks_status` (unique: False)
-- `sqlite_autoindex_mock_tests_1` (unique: True)
 
-### Table `page_seo` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `path` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_mocks_status ON "mock_tests"(status, type);
+CREATE INDEX idx_mocks_status_published ON "mock_tests"(status, published_at DESC);
+CREATE INDEX idx_mocks_updated
+  ON "mock_tests"(updated_at DESC);
+CREATE INDEX idx_mock_tests_practice_paper
+  ON "mock_tests"(practice_paper_slug);
+```
+
+### Table: `page_seo`
+
+- **Current Row Count:** 0
+- **Columns:** 8
 
 ```sql
 CREATE TABLE "page_seo" (
@@ -466,11 +516,10 @@ CREATE TABLE "page_seo" (
 , canonical_url TEXT)
 ```
 
-**Indexes:**
-- `sqlite_autoindex_page_seo_1` (unique: True)
+### Table: `passages`
 
-### Table `passages` (234 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+- **Current Row Count:** 234
+- **Columns:** 7
 
 ```sql
 CREATE TABLE "passages" (
@@ -484,8 +533,10 @@ CREATE TABLE "passages" (
 )
 ```
 
-### Table `password_resets` (0 rows)
-**Domain:** Authentication, RBAC & user accounts | **Primary Key:** `id` | **Soft Delete:** No
+### Table: `password_resets`
+
+- **Current Row Count:** 0
+- **Columns:** 5
 
 ```sql
 CREATE TABLE "password_resets" (
@@ -497,11 +548,10 @@ CREATE TABLE "password_resets" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_password_resets_1` (unique: True)
+### Table: `practice_papers`
 
-### Table `practice_papers` (214 rows)
-**Domain:** Previous-year paper practice library | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+- **Current Row Count:** 214
+- **Columns:** 24
 
 ```sql
 CREATE TABLE "practice_papers" (
@@ -524,16 +574,24 @@ CREATE TABLE "practice_papers" (
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
   updated_at TEXT,
   deleted_at TEXT
-)
+, source_url TEXT, source_type TEXT NOT NULL DEFAULT 'unknown'
+  CHECK (source_type IN ('official_public', 'licensed', 'original', 'unknown')), rights_status TEXT NOT NULL DEFAULT 'unknown'
+  CHECK (rights_status IN ('unknown', 'cleared', 'restricted')), rights_note TEXT, verified_by TEXT, verified_at TEXT)
 ```
 
 **Indexes:**
-- `idx_practice_papers_year` (unique: False)
-- `idx_practice_papers_subject` (unique: False)
-- `sqlite_autoindex_practice_papers_1` (unique: True)
 
-### Table `practice_passages` (128 rows)
-**Domain:** Previous-year paper practice library | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_practice_papers_subject ON "practice_papers"(subject_id);
+CREATE INDEX idx_practice_papers_year ON "practice_papers"(year);
+CREATE INDEX idx_practice_papers_rights ON practice_papers(rights_status);
+CREATE INDEX idx_practice_papers_source_type ON practice_papers(source_type);
+```
+
+### Table: `practice_passages`
+
+- **Current Row Count:** 128
+- **Columns:** 6
 
 ```sql
 CREATE TABLE "practice_passages" (
@@ -547,12 +605,17 @@ CREATE TABLE "practice_passages" (
 ```
 
 **Indexes:**
-- `idx_practice_passages_deleted` (unique: False)
-- `idx_practice_passages_paper` (unique: False)
-- `sqlite_autoindex_practice_passages_1` (unique: True)
 
-### Table `practice_questions` (6,603 rows)
-**Domain:** Previous-year paper practice library | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_practice_passages_paper ON "practice_passages"(paper_slug);
+CREATE INDEX idx_practice_passages_deleted
+  ON "practice_passages"(paper_slug, deleted_at);
+```
+
+### Table: `practice_questions`
+
+- **Current Row Count:** 6,603
+- **Columns:** 24
 
 ```sql
 CREATE TABLE "practice_questions" (
@@ -575,17 +638,24 @@ CREATE TABLE "practice_questions" (
   review_flags_json TEXT NOT NULL DEFAULT '[]',
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
   updated_at TEXT,
-  deleted_at TEXT,
+  deleted_at TEXT, explanation_source TEXT NOT NULL DEFAULT 'none'
+  CHECK (explanation_source IN ('official', 'human', 'ai_draft', 'banner', 'none')), explanation_status TEXT NOT NULL DEFAULT 'unreviewed'
+  CHECK (explanation_status IN ('unreviewed', 'reviewed', 'flagged')), reviewed_by TEXT, reviewed_at TEXT,
   UNIQUE (paper_slug, question_key)
 )
 ```
 
 **Indexes:**
-- `idx_practice_questions_paper` (unique: False)
-- `sqlite_autoindex_practice_questions_1` (unique: True)
 
-### Table `pyq_papers` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_practice_questions_paper ON "practice_questions"(paper_slug, position);
+CREATE INDEX idx_practice_questions_review ON practice_questions(explanation_status, explanation_source);
+```
+
+### Table: `pyq_papers`
+
+- **Current Row Count:** 0
+- **Columns:** 12
 
 ```sql
 CREATE TABLE "pyq_papers" (
@@ -602,11 +672,16 @@ CREATE TABLE "pyq_papers" (
 ```
 
 **Indexes:**
-- `idx_pyq_published` (unique: False)
-- `idx_pyq_year` (unique: False)
 
-### Table `question_public_ids` (76 rows)
-**Domain:** Viral question sharing & public views | **Primary Key:** `public_id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_pyq_year ON "pyq_papers"(year, subject_id, status);
+CREATE INDEX idx_pyq_published ON "pyq_papers"(status, year);
+```
+
+### Table: `question_public_ids`
+
+- **Current Row Count:** 85
+- **Columns:** 7
 
 ```sql
 CREATE TABLE "question_public_ids" (
@@ -622,11 +697,16 @@ CREATE TABLE "question_public_ids" (
 ```
 
 **Indexes:**
-- `uq_qpid_current` (unique: True)
-- `sqlite_autoindex_question_public_ids_1` (unique: True)
 
-### Table `question_reports` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE UNIQUE INDEX uq_qpid_current
+  ON "question_public_ids"(current_question_id);
+```
+
+### Table: `question_reports`
+
+- **Current Row Count:** 0
+- **Columns:** 6
 
 ```sql
 CREATE TABLE "question_reports" (
@@ -640,10 +720,16 @@ CREATE TABLE "question_reports" (
 ```
 
 **Indexes:**
-- `idx_question_reports_status` (unique: False)
 
-### Table `questions` (12,009 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_question_reports_status
+  ON "question_reports"(status, created_at DESC);
+```
+
+### Table: `questions`
+
+- **Current Row Count:** 12,066
+- **Columns:** 28
 
 ```sql
 CREATE TABLE "questions" (
@@ -670,19 +756,32 @@ CREATE TABLE "questions" (
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
   updated_at TEXT,
   deleted_at TEXT
-, assets_json TEXT NOT NULL DEFAULT '[]')
+, assets_json TEXT NOT NULL DEFAULT '[]', explanation_source TEXT NOT NULL DEFAULT 'none'
+  CHECK (explanation_source IN ('official', 'human', 'ai_draft', 'banner', 'none')), explanation_status TEXT NOT NULL DEFAULT 'unreviewed'
+  CHECK (explanation_status IN ('unreviewed', 'reviewed', 'flagged')), reviewed_by TEXT, reviewed_at TEXT)
 ```
 
 **Indexes:**
-- `idx_questions_created_by` (unique: False)
-- `idx_questions_updated` (unique: False)
-- `idx_questions_year_status` (unique: False)
-- `idx_questions_topic_status` (unique: False)
-- `idx_questions_topic` (unique: False)
-- `idx_questions_subject` (unique: False)
 
-### Table `rescore_jobs` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_questions_subject ON "questions"(subject_id, status);
+CREATE INDEX idx_questions_topic ON "questions"(topic_id);
+CREATE INDEX idx_questions_topic_status
+  ON "questions"(topic_id, status, deleted_at);
+CREATE INDEX idx_questions_year_status
+  ON "questions"(year, status, subject_id);
+CREATE INDEX idx_questions_updated
+  ON "questions"(updated_at DESC);
+CREATE INDEX idx_questions_created_by
+  ON "questions"(created_by, deleted_at);
+CREATE INDEX idx_questions_status_deleted ON questions(status, deleted_at, subject_id);
+CREATE INDEX idx_questions_review ON questions(explanation_status, explanation_source);
+```
+
+### Table: `rescore_jobs`
+
+- **Current Row Count:** 0
+- **Columns:** 10
 
 ```sql
 CREATE TABLE "rescore_jobs" (
@@ -701,10 +800,16 @@ CREATE TABLE "rescore_jobs" (
 ```
 
 **Indexes:**
-- `idx_rescore_jobs_status` (unique: False)
 
-### Table `revisions` (143 rows)
-**Domain:** Admin audit trail & question versioning | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_rescore_jobs_status
+  ON "rescore_jobs"(status, created_at DESC);
+```
+
+### Table: `revisions`
+
+- **Current Row Count:** 158
+- **Columns:** 7
 
 ```sql
 CREATE TABLE "revisions" (
@@ -719,11 +824,18 @@ CREATE TABLE "revisions" (
 ```
 
 **Indexes:**
-- `idx_revisions_admin` (unique: False)
-- `idx_revisions_entity` (unique: False)
 
-### Table `sessions` (474 rows)
-**Domain:** Authentication, RBAC & user accounts | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_revisions_entity
+  ON "revisions"(entity_type, entity_id, created_at DESC);
+CREATE INDEX idx_revisions_admin
+  ON "revisions"(admin_id, created_at DESC);
+```
+
+### Table: `sessions`
+
+- **Current Row Count:** 508
+- **Columns:** 4
 
 ```sql
 CREATE TABLE "sessions" (
@@ -735,11 +847,15 @@ CREATE TABLE "sessions" (
 ```
 
 **Indexes:**
-- `idx_sessions_user` (unique: False)
-- `sqlite_autoindex_sessions_1` (unique: True)
 
-### Table `share_events` (0 rows)
-**Domain:** Viral question sharing & public views | **Primary Key:** `id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_sessions_user ON "sessions"(user_id);
+```
+
+### Table: `share_events`
+
+- **Current Row Count:** 0
+- **Columns:** 7
 
 ```sql
 CREATE TABLE "share_events" (
@@ -754,10 +870,16 @@ CREATE TABLE "share_events" (
 ```
 
 **Indexes:**
-- `idx_share_events_pid` (unique: False)
 
-### Table `site_settings` (3 rows)
-**Domain:** Core system entity | **Primary Key:** `key` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_share_events_pid
+  ON "share_events"(public_id, created_at);
+```
+
+### Table: `site_settings`
+
+- **Current Row Count:** 3
+- **Columns:** 2
 
 ```sql
 CREATE TABLE "site_settings" (
@@ -766,11 +888,10 @@ CREATE TABLE "site_settings" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_site_settings_1` (unique: True)
+### Table: `slug_redirects`
 
-### Table `slug_redirects` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `old_slug` | **Soft Delete:** No
+- **Current Row Count:** 0
+- **Columns:** 4
 
 ```sql
 CREATE TABLE "slug_redirects" (
@@ -782,11 +903,16 @@ CREATE TABLE "slug_redirects" (
 ```
 
 **Indexes:**
-- `idx_slug_redirects_entity` (unique: False)
-- `sqlite_autoindex_slug_redirects_1` (unique: True)
 
-### Table `subjects` (19 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_slug_redirects_entity
+  ON "slug_redirects"(entity_type, entity_id);
+```
+
+### Table: `subjects`
+
+- **Current Row Count:** 19
+- **Columns:** 8
 
 ```sql
 CREATE TABLE "subjects" (
@@ -800,11 +926,15 @@ CREATE TABLE "subjects" (
 ```
 
 **Indexes:**
-- `idx_subjects_deleted` (unique: False)
-- `sqlite_autoindex_subjects_1` (unique: True)
 
-### Table `topics` (0 rows)
-**Domain:** Core system entity | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+```sql
+CREATE INDEX idx_subjects_deleted ON "subjects"(deleted_at);
+```
+
+### Table: `topics`
+
+- **Current Row Count:** 0
+- **Columns:** 5
 
 ```sql
 CREATE TABLE "topics" (
@@ -817,11 +947,15 @@ CREATE TABLE "topics" (
 ```
 
 **Indexes:**
-- `idx_topics_deleted` (unique: False)
-- `sqlite_autoindex_topics_1` (unique: True)
 
-### Table `user_badges` (37 rows)
-**Domain:** Authentication, RBAC & user accounts | **Primary Key:** `user_id, badge_id` | **Soft Delete:** No
+```sql
+CREATE INDEX idx_topics_deleted ON "topics"(deleted_at);
+```
+
+### Table: `user_badges`
+
+- **Current Row Count:** 38
+- **Columns:** 3
 
 ```sql
 CREATE TABLE "user_badges" (
@@ -832,11 +966,10 @@ CREATE TABLE "user_badges" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_user_badges_1` (unique: True)
+### Table: `user_stats`
 
-### Table `user_stats` (38 rows)
-**Domain:** Authentication, RBAC & user accounts | **Primary Key:** `user_id, subject_id, topic_id` | **Soft Delete:** No
+- **Current Row Count:** 39
+- **Columns:** 6
 
 ```sql
 CREATE TABLE "user_stats" (
@@ -850,11 +983,10 @@ CREATE TABLE "user_stats" (
 )
 ```
 
-**Indexes:**
-- `sqlite_autoindex_user_stats_1` (unique: True)
+### Table: `users`
 
-### Table `users` (115 rows)
-**Domain:** Authentication, RBAC & user accounts | **Primary Key:** `id` | **Soft Delete:** Yes (`deleted_at`)
+- **Current Row Count:** 118
+- **Columns:** 17
 
 ```sql
 CREATE TABLE "users" (
@@ -877,8 +1009,9 @@ CREATE TABLE "users" (
 ```
 
 **Indexes:**
-- `idx_users_created` (unique: False)
-- `idx_users_banned` (unique: False)
-- `sqlite_autoindex_users_3` (unique: True)
-- `sqlite_autoindex_users_2` (unique: True)
-- `sqlite_autoindex_users_1` (unique: True)
+
+```sql
+CREATE INDEX idx_users_banned ON "users"(banned_at);
+CREATE INDEX idx_users_created
+  ON "users"(created_at DESC);
+```

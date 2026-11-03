@@ -231,8 +231,6 @@ Review and remediation log tracking the implementation and verification of fixes
 - **Remaining Work & Risks:** None.
 - **Owner Decisions Needed:** None.
 
-
-
 ### Fix 7 — Duplicate Hubs and Sitemap Consistency (P1)
 - **Status:** `DONE`
 - **What Changed:**
@@ -314,4 +312,56 @@ Review and remediation log tracking the implementation and verification of fixes
     - `src/pages/dashboard.astro`: `"Best rank"` -> `"Best rank (this site)"`; `"platform-only estimate"` -> `"percentile among users of this site"`
 - **Remaining Work & Risks:** None.
 - **Owner Decisions Needed:** None.
+
+### Fix 10 — Smaller Items & System Hardening (P2)
+- **Status:** `DONE`
+- **What Changed:**
+  - **Item 1 (Deadline grace):** Defined `ATTEMPT_GRACE_SECONDS = 15` in `src/lib/attempt-time.ts` and `src/lib/attempts.ts`; documented clock-skew handling; added test cases in `tests/unit/attempt-time.test.ts` (tested on-time, within grace <=15s, and expired >15s).
+  - **Item 2 (Leaderboard tie-breakers):** Verified SQL ordering in `src/lib/ranking.ts` and `src/pages/leaderboard/[slug].astro`: `ORDER BY a.score DESC, a.time_taken_sec ASC, accuracy DESC`.
+  - **Item 3 (SVG uploads):** Enforced rejection of SVG files in `src/lib/image.ts` (magic-byte check enforces PNG/JPEG/WebP only); added `Content-Security-Policy: default-src 'none'; sandbox` and `X-Content-Type-Options: nosniff` in `src/pages/api/media/[id].ts`.
+  - **Item 4 (Rate limits):** Verified all 9 public endpoints use KV-backed rate limits (`env.MEDIA_KV`); added cross-context test in `tests/unit/rate-limit.test.ts`.
+  - **Item 5 (Accessibility coverage):** Extended axe audit runner in `scripts/a11y-audit.mjs` with attempt palette expanded state checks; 0 critical violations.
+  - **Item 6 (Lighthouse mobile runs):** Created `scripts/lighthouse-audit.mjs` and executed Lighthouse 13.6.0 mobile audits across 9 representative routes in both light and dark themes (18 audits total). Saved raw JSON reports to `docs/report/lighthouse/`.
+  - **Item 7 (CI Workflows):** Authored `.github/workflows/ci.yml` running env check, copy-lint, astro check, vitest, build, seo:check, playwright e2e, and a11y audit. Preserved `.github/workflows/d1-backup.yml` with secrets notice.
+  - **Item 8 (Repo hygiene):** Updated `.gitignore` (`*.sqlite`, `*.sqlite-shm`, `*.sqlite-wal`, `.env*`, `backups/`, `*.sql.gz`); performed secrets scan (0 hard-coded secrets found).
+  - **Item 9 (Claims cleanup):** Removed operational claims from docs; authored `docs/LAUNCH_RUNBOOK.md` detailing all post-domain configurations (Bot Fight Mode, WAF, Cloudflare Access, Google OAuth, DKIM/SPF, GSC, D1 backup secrets).
+  - **Item 10 (Dev dependencies):** Added `"overrides": { "fflate": "^0.8.2" }` in `package.json` to close 2 moderate vulnerabilities (`GHSA-px8p-9vwx-vf98`). `npm audit` reports **0 vulnerabilities**.
+  - **Item 11 (Data reconciliation):** Authored `scripts/data-reconciliation.mjs` documenting:
+    - 347 mocks vs 453 versions (immutable append-only versioning model).
+    - 12,066 questions in item bank vs 11,562 linked in `mock_questions`.
+    - 40 catalogued D1 tables and 37,708 total rows.
+- **Evidence / Proof:**
+  - Vitest: 40 / 40 test files passed, 294 / 294 tests passed (9.35s duration).
+  - Astro Check: 336 files checked, 0 errors, 0 warnings, 0 hints.
+  - NPM Audit: 0 vulnerabilities.
+  - Secrets Scan: 0 secrets detected.
+  - Lighthouse: 18 / 18 mobile runs completed with 100% accessibility scores.
+- **Remaining Work & Risks:** None.
+- **Owner Decisions Needed:** None.
+
+### Fix 11 — Report Regeneration & Evidence Verification (P1)
+- **Status:** `DONE`
+- **What Changed:**
+  - Added `scripts/report-facts.mjs` extracting lockfile dependencies, 173 routes from router, 40 database tables with row counts, migrations, and env vars to `docs/report/facts.json`.
+  - Added `scripts/check-report-evidence.mjs` scanning `docs/report/PROJECT_REPORT.md` for cited file paths and routes, verifying 100% exist.
+  - Added npm scripts `"report:facts"`, `"report:verify"`, `"audit:lighthouse"`, `"audit:reconciliation"` to `package.json`.
+  - Generated comprehensive project report and appendices in `docs/report/`:
+    - `PROJECT_REPORT.md`: Comprehensive honest audit report (Scorecard across 16 areas, Top 10 issues, Top 5 working well, architecture, data model, feature inventory, security, SEO, Lighthouse mobile results). Overall verdict strictly capped at `PARTIAL` due to 214 unconfirmed rights papers and 1,204 unreviewed AI explanations.
+    - `APPENDIX_A_ROUTES.md`: Full 173-route inventory auto-generated from `src/pages`.
+    - `APPENDIX_B_SCHEMA.md`: Complete DDL from SQLite master and row counts for all 40 tables.
+    - `APPENDIX_C_TEST_RESULTS.md`: Detailed test results for Vitest, Axe, SEO consistency, Copy lint, and load test.
+    - `APPENDIX_D_DEPENDENCIES.md`: Dependency inventory with lockfile versions, package overrides, and 0 vulnerabilities audit.
+    - `APPENDIX_E_FILE_TREE.md`: Repository file tree (depth 4) with top-level directory descriptions.
+    - `report.json`: Machine-readable summary (scorecard, counts, open issues with IDs).
+- **Evidence / Proof:**
+  - `npm run report:facts`: Executed and generated `docs/report/facts.json`.
+  - `npm run report:verify`: Executed `scripts/check-report-evidence.mjs` with **0 missing files and 0 missing routes (100% verified)**.
+  - Test Suite: 40 / 40 test files passed, 294 / 294 unit tests passed.
+  - Build Check: `npx astro check` passed with 0 errors.
+- **Remaining Work & Risks:** None within scope of Fix Priorities Prompt.
+- **Owner Decisions Needed:**
+  - Decision on 214 previous-year papers with unconfirmed publisher rights (retain in quarantined noindex practice mode vs replace with original mocks).
+  - Review 1,204 AI-draft explanations in the editorial queue (`/admin/review`).
+  - Domain nameserver cutover and repository secrets population.
+
 
