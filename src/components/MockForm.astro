@@ -103,6 +103,9 @@ const status = mock?.status ?? "draft";
         <label class="label">
           Duration (minutes)
           <input class="field mt-1" data-field="duration_min" type="number" min="1" max="600" required value={mock?.duration_min ?? 60} />
+          <p id="duration-rate-note" class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+            Standard: 1.2 min/q (72s) for Domain/Language, 1.0 min/q (60s) for General Test.
+          </p>
         </label>
         <label class="label">
           Total marks
@@ -259,9 +262,41 @@ const status = mock?.status ?? "draft";
     const tabAll = document.getElementById("tab-all") as HTMLButtonElement | null;
     const tabSelected = document.getElementById("tab-selected") as HTMLButtonElement | null;
     const sectionOrderInput = document.getElementById("section-order") as HTMLTextAreaElement | null;
+    const durationInput = form.querySelector('[data-field="duration_min"]') as HTMLInputElement | null;
+    const subjectSelect = form.querySelector('[data-field="subject_id"]') as HTMLSelectElement | null;
+    const durationRateNote = document.getElementById("duration-rate-note") as HTMLElement | null;
 
     let isSearching = false;
     let currentTab: "all" | "selected" = "all";
+    let durationUserOverridden = false;
+
+    durationInput?.addEventListener("input", () => {
+      durationUserOverridden = true;
+    });
+
+    function syncDuration(force = false) {
+      if (!durationInput) return;
+      const checks = getAllChecks();
+      const count = checks.filter((check) => check.checked).length;
+      const subjectName = subjectSelect?.selectedOptions[0]?.textContent?.trim() || "";
+      const isGeneral = subjectName.toLowerCase().includes("general");
+      const rateSeconds = isGeneral ? 60 : 72;
+      const rateLabel = isGeneral ? "1.0 min/q (60s)" : "1.2 min/q (72s)";
+
+      if (count > 0) {
+        const calculatedMinutes = Math.max(1, Math.round((count * rateSeconds) / 60));
+        if (!durationUserOverridden || force) {
+          durationInput.value = String(calculatedMinutes);
+        }
+        if (durationRateNote) {
+          durationRateNote.textContent = `${count} questions × ${rateLabel} = ${calculatedMinutes} mins total duration.`;
+        }
+      } else {
+        if (durationRateNote) {
+          durationRateNote.textContent = `Standard rate: ${rateLabel}. Select questions to auto-calculate.`;
+        }
+      }
+    }
 
     function field(name: string): string {
       const element = form!.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
@@ -282,10 +317,12 @@ const status = mock?.status ?? "draft";
       if (selectedCount) selectedCount.textContent = String(count);
       if (tabSelectedCount) tabSelectedCount.textContent = String(count);
       if (currentTab === "selected") applyTabFilter();
+      syncDuration();
     }
 
     // Attach listener to all existing checkboxes
     getAllChecks().forEach((check) => check.addEventListener("change", updateCount));
+    subjectSelect?.addEventListener("change", () => syncDuration(true));
     updateCount();
 
     function escapeHtml(str: string): string {

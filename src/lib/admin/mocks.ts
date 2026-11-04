@@ -3,6 +3,7 @@ import { all, first, run } from "../db";
 import { parseOptions, slugify } from "../content";
 import { orderQuestionsBySections } from "./mock-order";
 import { questionSignature } from "./question-import";
+import { calculateMockDuration } from "../exam-timing";
 
 function optionalInteger() {
   return z
@@ -245,13 +246,20 @@ export async function prepareMock(
 ): Promise<{ input: MockPayload; slug: string } | { error: string }> {
   const slug = normalizeSlug(payload.slug, payload.title);
   if (slug.length < 3) return { error: "Add a longer title or slug." };
+  let subjectName: string | null = null;
   if (payload.subject_id) {
-    const subject = await first<{ id: number }>(
-      "SELECT id FROM subjects WHERE id = ? AND exam_id = ? AND is_active = 1",
+    const subject = await first<{ id: number; name: string }>(
+      "SELECT id, name FROM subjects WHERE id = ? AND exam_id = ? AND is_active = 1",
       payload.subject_id,
       examId,
     );
     if (!subject) return { error: "Choose an active subject for this exam." };
+    subjectName = subject.name;
+  }
+
+  // Ensure duration aligns with questions if not specified
+  if (!payload.duration_min || payload.duration_min <= 0) {
+    payload.duration_min = calculateMockDuration(payload.questions.length, subjectName).durationMinutes;
   }
 
   const ids = payload.questions.map((question) => question.question_id);
