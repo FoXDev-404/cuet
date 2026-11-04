@@ -95,6 +95,15 @@ let sqlLines = [
 let totalExportedRows = 0;
 const counts = {};
 
+const TABLE_CUSTOM_QUERIES = {
+  mock_tests: `SELECT * FROM mock_tests WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%' AND slug NOT LIKE '%publish-check%' AND slug NOT LIKE 'slow-network-%' AND LOWER(title) NOT LIKE '%fixture%'`,
+  mock_test_versions: `SELECT * FROM mock_test_versions WHERE mock_id IN (SELECT id FROM mock_tests WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%' AND slug NOT LIKE '%publish-check%' AND slug NOT LIKE 'slow-network-%' AND LOWER(title) NOT LIKE '%fixture%')`,
+  questions: `SELECT * FROM questions WHERE text NOT LIKE '%fixture%' AND text NOT LIKE '%e2e%'`,
+  mock_questions: `SELECT * FROM mock_questions WHERE version_id IN (SELECT id FROM mock_test_versions WHERE mock_id IN (SELECT id FROM mock_tests WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%' AND slug NOT LIKE '%publish-check%' AND slug NOT LIKE 'slow-network-%' AND LOWER(title) NOT LIKE '%fixture%')) AND question_id IN (SELECT id FROM questions WHERE text NOT LIKE '%fixture%' AND text NOT LIKE '%e2e%')`,
+  question_public_ids: `SELECT * FROM question_public_ids WHERE current_question_id IN (SELECT id FROM questions WHERE text NOT LIKE '%fixture%' AND text NOT LIKE '%e2e%')`,
+  blog_posts: `SELECT * FROM blog_posts WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%'`,
+};
+
 for (const table of CONTENT_TABLES) {
   const exists = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name = ?").get(table);
   if (!exists) {
@@ -102,7 +111,8 @@ for (const table of CONTENT_TABLES) {
     continue;
   }
 
-  const rows = db.prepare(`SELECT * FROM ${table}`).all();
+  const query = TABLE_CUSTOM_QUERIES[table] || `SELECT * FROM ${table}`;
+  const rows = db.prepare(query).all();
   counts[table] = rows.length;
   totalExportedRows += rows.length;
 
@@ -130,8 +140,8 @@ writeFileSync(outputPath, sqlLines.join('\n'), 'utf8');
 
 console.log(`\n✅ Successfully exported ${totalExportedRows.toLocaleString()} content rows to ${outputPath}`);
 
-// Strict verification: ensure zero forbidden user rows in export
-console.log('\n🔒 Verifying zero user/session/attempt leaks in export...');
+// Strict verification: ensure zero forbidden user rows AND zero fixture rows in export
+console.log('\n🔒 Verifying zero user/session/attempt leaks and zero fixture leaks in export...');
 const exportedSql = sqlLines.join('\n');
 for (const forbidden of FORBIDDEN_USER_TABLES) {
   if (exportedSql.includes(`INSERT OR REPLACE INTO ${forbidden} `)) {
@@ -139,5 +149,20 @@ for (const forbidden of FORBIDDEN_USER_TABLES) {
     process.exit(1);
   }
 }
-console.log('✅ Leak check passed: Zero user rows, zero session rows, zero attempt rows found in content export.');
+
+const fixturePatterns = [
+  /e2e-local-fixture-mock/i,
+  /e2e-publish-check/i,
+  /e2e-share-mock/i,
+  /slow-network-check/i,
+  /E2E fixture question/i,
+];
+
+for (const pat of fixturePatterns) {
+  if (pat.test(exportedSql)) {
+    console.error(`❌ CRITICAL PURITY ERROR: Export contains fixture pattern: ${pat}`);
+    process.exit(1);
+  }
+}
+console.log('✅ Leak check passed: Zero user rows, zero session rows, zero attempt rows, zero fixtures found in content export.');
 process.exit(0);

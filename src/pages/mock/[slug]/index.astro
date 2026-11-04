@@ -12,8 +12,12 @@ import { hasFinishedAttempt } from "../../../lib/discussions";
 import { parseMarkingScheme } from "../../../lib/content";
 import { breadcrumbJsonLd, type FaqItem } from "../../../lib/seo";
 import { oldSlugRedirect } from "../../../lib/slug-redirects";
+import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
 
 const slug = Astro.params.slug ?? "";
+if (isProductionEnvironment() && isFixtureSlug(slug)) {
+  return new Response("Mock test not found", { status: 404 });
+}
 
 let mock: {
   id: number;
@@ -61,7 +65,7 @@ try {
   mock = fallback ? { ...fallback, practice_paper_slug: null } : null;
   if (!mock) return dbUnavailableResponse();
 }
-if (!mock) {
+if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}`, 301);
   return new Response("Mock test not found", { status: 404 });

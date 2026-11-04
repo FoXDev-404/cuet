@@ -4,6 +4,7 @@ import { rateLimit } from "../../../lib/auth/rate-limit";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { first, run } from "../../../lib/db";
 import { apiError, clientIp, forbiddenOrigin, isSameOrigin, json } from "../../../lib/http";
+import { isFixtureMock, isProductionEnvironment } from "../../../lib/fixtures";
 
 export const POST: APIRoute = async (context) => {
   if (!isSameOrigin(context.request)) return forbiddenOrigin();
@@ -21,19 +22,27 @@ export const POST: APIRoute = async (context) => {
   const mock = await first<{
     id: number;
     title: string;
+    slug: string;
     status: string;
     deleted_at: string | null;
     version_id: number | null;
     duration_min: number | null;
   }>(
-    `SELECT m.id, m.title, m.status, m.deleted_at, m.current_version_id AS version_id,
+    `SELECT m.id, m.title, m.slug, m.status, m.deleted_at, m.current_version_id AS version_id,
             v.duration_min
      FROM mock_tests m
      LEFT JOIN mock_test_versions v ON v.id = m.current_version_id
      WHERE m.id = ?`,
     mockId,
   );
-  if (!mock || mock.deleted_at || mock.status !== "published" || !mock.version_id || !mock.duration_min) {
+  if (
+    !mock ||
+    mock.deleted_at ||
+    mock.status !== "published" ||
+    !mock.version_id ||
+    !mock.duration_min ||
+    (isProductionEnvironment() && isFixtureMock(mock))
+  ) {
     return apiError("This mock test is not available.", 404);
   }
 

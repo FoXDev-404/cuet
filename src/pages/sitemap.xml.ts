@@ -5,6 +5,7 @@ import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
 import { siteUrl } from "../lib/site-url";
 import { getSubjectStats, type SubjectStatRow } from "../lib/subject-stats";
+import { isFixtureMock } from "../lib/fixtures";
 
 type UrlEntry = { loc: string; lastmod?: string | null; changefreq?: string; priority?: string };
 
@@ -63,6 +64,11 @@ export const GET: APIRoute = async ({ request }) => {
                 WHERE a.version_id = m.current_version_id AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL) AS eligible
        FROM mock_tests m
        WHERE m.status = 'published' AND m.deleted_at IS NULL
+         AND m.slug NOT LIKE 'e2e-%'
+         AND m.slug NOT LIKE '%fixture%'
+         AND m.slug NOT LIKE '%publish-check%'
+         AND m.slug NOT LIKE 'slow-network-%'
+         AND LOWER(m.title) NOT LIKE '%fixture%'
          AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
        ORDER BY m.published_at DESC, m.id DESC`,
       [],
@@ -264,6 +270,7 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   for (const mock of mocks) {
+    if (isFixtureMock(mock)) continue;
     // Imported previous-year papers are canonical on /practice/<slug>, so only
     // their leaderboard is a distinct indexable URL.
     if (!mock.practice_paper_slug) {

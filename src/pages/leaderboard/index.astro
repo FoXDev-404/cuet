@@ -18,6 +18,11 @@ const safeRequestedPage = Number.isFinite(requestedPage) && requestedPage > 0 ? 
 const totalRow = await firstOr<{ total: number }>(
   `SELECT COUNT(*) AS total FROM mock_tests m
    WHERE m.status = 'published' AND m.deleted_at IS NULL
+     AND m.slug NOT LIKE 'e2e-%'
+     AND m.slug NOT LIKE '%fixture%'
+     AND m.slug NOT LIKE '%publish-check%'
+     AND m.slug NOT LIKE 'slow-network-%'
+     AND LOWER(m.title) NOT LIKE '%fixture%'
      AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)`, null,
 );
 const total = totalRow?.total ?? 0;
@@ -41,6 +46,11 @@ const mocks = await allOr<{
    FROM mock_tests m
    JOIN mock_test_versions v ON v.id = m.current_version_id
    WHERE m.status = 'published' AND m.deleted_at IS NULL
+     AND m.slug NOT LIKE 'e2e-%'
+     AND m.slug NOT LIKE '%fixture%'
+     AND m.slug NOT LIKE '%publish-check%'
+     AND m.slug NOT LIKE 'slow-network-%'
+     AND LOWER(m.title) NOT LIKE '%fixture%'
      AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
    ORDER BY eligible DESC, m.published_at DESC, m.id DESC
    LIMIT ? OFFSET ?`, [],

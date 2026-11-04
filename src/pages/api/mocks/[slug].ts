@@ -3,6 +3,7 @@ import { all, first } from "../../../lib/db";
 import { apiUnavailableResponse } from "../../../lib/db-resilient";
 import { parseMarkingScheme, parseOptions } from "../../../lib/content";
 import { apiError, json } from "../../../lib/http";
+import { isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
 
 type MockRow = {
   id: number;
@@ -31,7 +32,9 @@ type MockRow = {
  */
 export const GET: APIRoute = async ({ params }) => {
   const slug = (params.slug ?? "").trim();
-  if (!slug) return apiError("Mock test not found.", 404);
+  if (!slug || (isProductionEnvironment() && isFixtureSlug(slug))) {
+    return apiError("Mock test not found.", 404);
+  }
 
   let mock: MockRow | null = null;
   let questions: {

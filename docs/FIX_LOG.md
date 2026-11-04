@@ -364,4 +364,47 @@ Review and remediation log tracking the implementation and verification of fixes
   - Review 1,204 AI-draft explanations in the editorial queue (`/admin/review`).
   - Domain nameserver cutover and repository secrets population.
 
+---
+
+## Round 2 — Verification & Honesty Gaps
+
+### Fix R5 — Fixtures and Test Data Isolation (P0)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **What Changed:**
+  - **Audit Mutations Reversion:** Reverted all mutations injected into local D1 during audits:
+    - Deleted injected admin session `7c00e1e59a79ae087cfdeae7f11a42ddd209669a6a50cae8c5aabe33cc74353c` from `sessions`.
+    - Restored attempts 4 and 605 original guest tokens and expired deadline.
+    - Reverted question 1 (`uPJRyUwJ3s`) `rights_ok = 0`.
+  - **Database Census & Reality Check:**
+    - Total mock rows: 347.
+    - Previous-year practice wrappers (`practice_paper_slug IS NOT NULL`): 214.
+    - Non-practice mock rows (`practice_paper_slug IS NULL`): 133 rows, all of which are synthetic test fixtures (`e2e-local-fixture-mock`, `slow-network-check`, `e2e-publish-check-*`, `e2e-share-mock-*`).
+    - **True count of real, original standalone mocks in database = 0**.
+    - All 214 practice papers have `rights_status = 'unknown'`.
+  - **Isolation Helper (`src/lib/fixtures.ts`):**
+    - Added `isFixtureSlug`, `isFixtureMock`, `isFixtureQuestion`, `isProductionEnvironment`.
+  - **Production Surface Gating:**
+    - `src/pages/sitemap.xml.ts`: Excluded all fixture slugs/titles from SQL queries and loop.
+    - `src/pages/cuet-ug-mock-test.astro`: Excluded all fixture slugs/titles from mock list.
+    - `src/pages/mock/[slug]/index.astro`, `instructions.astro`, `discussion.astro`: Return 404 in production mode if slug/mock is a fixture.
+    - `src/pages/api/mocks/[slug].ts`: Return 404 in production mode if slug/mock is a fixture.
+    - `src/pages/api/attempts/start.ts`: Return 404 in production mode if attempting to start an attempt on a fixture mock.
+    - `src/pages/leaderboard/[slug].astro`: Return 404 in production mode if fixture mock.
+    - `src/pages/leaderboard/index.astro`: Excluded fixture mocks from rankings list.
+    - `src/lib/search.ts`: Excluded fixture mocks from search results.
+    - `src/pages/cuet-mock-test/[slug].astro` and `[subject]/[topic].astro`: Excluded fixtures from subject/topic mock listings.
+    - `src/lib/subject-stats.ts`: Excluded fixtures from mock and question counts.
+    - `scripts/export-content.mjs`: Filtered fixtures out of `mock_tests`, `mock_test_versions`, `questions`, `mock_questions`, `question_public_ids`. Added automated verification asserting 0 fixture pattern matches and 0 user rows in export SQL.
+  - **Tests (`tests/unit/fixtures-isolation.test.ts`):**
+    - 8 unit tests covering slug detection, mock detection, question detection, environment detection, and clean export.
+- **Evidence / Proof:**
+  - `npx vitest run tests/unit/fixtures-isolation.test.ts`: 8 / 8 passed.
+  - `npx vitest run`: 41 / 41 test files passed, 302 / 302 tests passed.
+  - `npx astro check`: 351 files checked, 0 errors, 0 warnings.
+  - `node scripts/export-content.mjs`: Passed with 30,591 clean rows exported; zero user/session/attempt leaks and zero fixture leaks.
+- **Remaining Work & Risks:** None for R5. Next fix is R1 (re-running full verification suite).
+- **Owner Decisions Needed:** None.
+
+
 

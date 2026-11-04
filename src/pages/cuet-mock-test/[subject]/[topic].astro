@@ -38,7 +38,12 @@ const questionCount = await firstOr<{ count: number }>(
    JOIN mock_tests m ON m.id = mq.mock_id
    WHERE q.topic_id = ? AND q.status = 'published' AND q.deleted_at IS NULL
      AND m.status = 'published' AND m.deleted_at IS NULL
-     AND m.practice_paper_slug IS NULL`, null,
+     AND m.practice_paper_slug IS NULL
+     AND m.slug NOT LIKE 'e2e-%'
+     AND m.slug NOT LIKE '%fixture%'
+     AND m.slug NOT LIKE '%publish-check%'
+     AND m.slug NOT LIKE 'slow-network-%'
+     AND LOWER(m.title) NOT LIKE '%fixture%'`, null,
   topic.id,
 );
 const publishedQuestions = questionCount?.count ?? 0;
@@ -65,6 +70,11 @@ const [papers, relatedTopics] = await Promise.all([
      JOIN mock_test_versions v ON v.id = m.current_version_id
      WHERE m.status = 'published' AND m.deleted_at IS NULL
        AND m.practice_paper_slug IS NULL
+       AND m.slug NOT LIKE 'e2e-%'
+       AND m.slug NOT LIKE '%fixture%'
+       AND m.slug NOT LIKE '%publish-check%'
+       AND m.slug NOT LIKE 'slow-network-%'
+       AND LOWER(m.title) NOT LIKE '%fixture%'
        AND EXISTS (
          SELECT 1 FROM mock_questions_current mq JOIN questions q ON q.id = mq.question_id
          WHERE mq.mock_id = m.id AND q.topic_id = ?

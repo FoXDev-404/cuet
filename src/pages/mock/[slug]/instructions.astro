@@ -7,8 +7,12 @@ import { getGuestToken } from "../../../lib/auth/session";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { parseMarkingScheme } from "../../../lib/content";
 import { oldSlugRedirect } from "../../../lib/slug-redirects";
+import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
 
 const slug = Astro.params.slug ?? "";
+if (isProductionEnvironment() && isFixtureSlug(slug)) {
+  return new Response("Mock test not found", { status: 404 });
+}
 
 let mock: {
   id: number;
@@ -46,7 +50,7 @@ try {
   mock = getLocalMockFallback(slug);
   if (!mock) return dbUnavailableResponse();
 }
-if (!mock) {
+if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}/instructions`, 301);
   return new Response("Mock test not found", { status: 404 });
