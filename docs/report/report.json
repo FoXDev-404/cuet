@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-04T17:33:48.710Z",
-  "commitHash": "1f92c11a6f4331e6e408b703ae16f9225da3f4ae",
+  "generatedAt": "2026-11-04T20:13:32.451Z",
+  "commitHash": "b7c855ae13b789a7b6593535dbde3ffb5a106a36",
   "product": "CUET Free Mock Test",
   "siteUrl": "https://cuetfreemocktest.com",
   "stage": "staging / partial-launch ready",
   "overallVerdict": "PARTIAL",
-  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 315 Vitest unit tests (42 files), 70 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
+  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 330 Vitest unit tests (43 files), 72 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
   "scorecard": [
     {
       "area": "Test engine",
@@ -35,7 +35,7 @@
       "area": "Content library",
       "status": "PARTIAL",
       "confidence": "HIGH",
-      "reason": "347 mocks, 12,066 questions, 214 practice papers. Capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (safely isolated and noindexed), 16,533 explanations are unreviewed AI drafts, 1,861 questions have no explanation, and 332 practice questions are unkeyed."
+      "reason": "347 mocks, 12,066 questions, 214 practice papers. Capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (safely isolated and noindexed), 16,533 explanations are unreviewed AI drafts, 2,050 questions have no explanation, and 332 practice questions are unkeyed."
     },
     {
       "area": "Public pages and SEO",
@@ -83,7 +83,7 @@
       "area": "Tests and CI",
       "status": "DONE",
       "confidence": "HIGH",
-      "reason": "315 Vitest unit tests (42 files) passed; 70 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
+      "reason": "330 Vitest unit tests (43 files) passed; 72 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
     },
     {
       "area": "Deployment and ops",
@@ -115,8 +115,8 @@
     {
       "id": "ISSUE-002",
       "severity": "P0",
-      "title": "16,533 AI-generated explanations unreviewed (1,861 questions missing explanations)",
-      "description": "16,533 questions across timed question bank (10288) and practice papers (6245) carry auto-generated explanation drafts marked is_reviewed = 0. In addition, 1,861 questions have no explanation at all, and 332 practice questions are unkeyed. Student-facing pages truthfully disclose this via an unreviewed AI draft banner, but human subject-matter review is pending.",
+      "title": "16,533 AI-generated explanations unreviewed (2,050 questions missing explanations)",
+      "description": "16,533 questions across timed question bank (10288) and practice papers (6245) carry auto-generated explanation drafts marked is_reviewed = 0. In addition, 2,050 questions have no explanation at all, and 332 practice questions are unkeyed. Student-facing pages truthfully disclose this via an unreviewed AI draft banner, but human subject-matter review is pending.",
       "remediation": "Subject experts use the admin explanation review queue (/admin/explanations/review) to audit and approve explanations."
     },
     {
@@ -191,7 +191,7 @@
     },
     {
       "title": "Comprehensive Automated Test & A11y Suite",
-      "description": "315 Vitest unit tests (42 files), 70 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
+      "description": "330 Vitest unit tests (43 files), 72 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
     },
     {
       "title": "Rigorous SEO Quality Gate & Content Isolation",
@@ -206,16 +206,16 @@
     },
     "database": {
       "tables": 40,
-      "totalRows": 40052,
+      "totalRows": 42993,
       "migrations": 20
     },
     "tests": {
-      "unitPassed": 315,
-      "unitTotal": 315,
-      "unitFiles": 42,
-      "e2ePassed": 70,
-      "e2eTotal": 73,
-      "e2eSkipped": 3,
+      "unitPassed": 330,
+      "unitTotal": 330,
+      "unitFiles": 43,
+      "e2ePassed": 72,
+      "e2eTotal": 74,
+      "e2eSkipped": 2,
       "a11yScans": 232,
       "a11yViolations": 0
     },

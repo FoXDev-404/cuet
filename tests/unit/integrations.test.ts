@@ -74,8 +74,8 @@ describe("optional integration flags", () => {
       "/forgot-password",
       "/reset-password/token",
       "/search?q=cuet",
-      "/practice/2022-english-1",
-      "/practice/2022-english-1/take",
+      "/mock-tests/2022-english-1",
+      "/mock-tests/2022-english-1/take",
       "/u/student",
       "https://example.com/cuet-ug-mock-test",
     ]) {

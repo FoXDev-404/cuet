@@ -5,7 +5,7 @@ import PageHero from "../../components/PageHero.astro";
 import LocalPaperCard from "../../components/LocalPaperCard.astro";
 import { getLocalPapers, getLocalPaperYears } from "../../lib/local-papers";
 
-const PATH = "/practice";
+const PATH = "/mock-tests";
 const papers = getLocalPapers();
 const years = getLocalPaperYears();
 const totalScorable = papers.reduce((sum, paper) => sum + paper.scorableQuestionCount, 0);
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "What happens to questions without a printed key?",
     answer:
-      "They are excluded from the ranked paper so the score stays trustworthy. The practice detail page shows exactly how many questions were excluded and how many remain in the ranked attempt.",
+      "They are excluded from the ranked paper so the score stays trustworthy. Each paper page shows exactly how many questions were excluded and how many remain in the ranked attempt.",
   },
   {
     question: "What does the attempt counter count?",
@@ -42,20 +42,20 @@ const structuredData = [
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", site).toString() },
-      { "@type": "ListItem", position: 2, name: "Practice library", item: new URL(PATH, site).toString() },
+      { "@type": "ListItem", position: 2, name: "Mock tests", item: new URL(PATH, site).toString() },
     ],
   },
 ];
 ---
 
 <BaseLayout
-  title="CUET Previous-Year Practice Library — Ranked Subject and Year Papers"
-  description="Take CUET UG previous-year papers by subject and year as ranked, server-timed mocks with saved results, leaderboard rank, percentile and detailed solutions after submit."
+  title="CUET Mock Tests — Ranked Previous-Year Papers"
+  description="Take CUET UG mock tests built from previous-year papers by subject and year, with a server timer, saved results, leaderboard rank, percentile and detailed solutions after submit."
   structuredData={structuredData}
 >
   <PageHero
-    eyebrow="Practice library · ranked previous-year papers"
-    title="Previous-year CUET papers, ranked like the real thing"
+    eyebrow="Mock tests · ranked previous-year papers"
+    title="Mock tests built from previous-year CUET papers"
     intro="Timed, server-graded and ranked. Pick a subject and year, attempt the paper under a server deadline, then review every answer and compare your first attempt on the leaderboard."
   />
 
@@ -135,14 +135,5 @@ const structuredData = [
       </div>
     </section>
 
-    <section class="mt-12 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h2 class="text-xl font-bold">Want a full-length mixed paper?</h2>
-          <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">The main mock library has full-length and subject-wise D1 papers, all using the same ranked engine, saved attempts and first-attempt leaderboards.</p>
-        </div>
-        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-mock-test">Open mock library</a>
-      </div>
-    </section>
   </div>
 </BaseLayout>

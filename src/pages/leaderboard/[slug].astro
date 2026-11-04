@@ -100,7 +100,7 @@ const [rows, summary, mine] = await Promise.all([
 const eligible = summary?.eligible ?? 0;
 const average = summary?.average ?? null;
 const startHref = mock.practice_paper_slug
-  ? `/practice/${mock.practice_paper_slug}`
+  ? `/mock-tests/${mock.practice_paper_slug}`
   : `/mock/${mock.slug}/instructions`;
 const medals = ["🥇", "🥈", "🥉"];
 const myRank = mine?.rank ?? null;

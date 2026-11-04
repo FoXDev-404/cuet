@@ -161,7 +161,7 @@ const status = mock?.status ?? "draft";
       <!-- Question search & database browser -->
       <div class="mt-4 grid gap-2 sm:grid-cols-[1fr_180px_auto]">
         <input class="field text-sm" id="question-filter" type="search" placeholder="Search by text or ID (e.g. 1234)…" />
-        <select class="field text-sm" id="subject-bank-filter">
+        <select class="field text-sm" id="subject-bank-filter" aria-label="Filter question bank by subject">
           <option value="">All subjects</option>
           {subjects.map((s) => (
             <option value={s.id} selected={mock?.subject_id === s.id}>{s.name}</option>

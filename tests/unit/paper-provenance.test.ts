@@ -41,10 +41,10 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
     expect(map.get('unknown')).toBe(214);
   });
 
-  it('adSlotAllowed strictly forbids ads on /practice/* routes', () => {
-    expect(adSlotAllowed('/practice')).toBe(false);
-    expect(adSlotAllowed('/practice/applied-mathematics-2025-06-02-shift-1')).toBe(false);
-    expect(adSlotAllowed('/practice/physics-2025')).toBe(false);
+  it('adSlotAllowed strictly forbids ads on /mock-tests/* routes', () => {
+    expect(adSlotAllowed('/mock-tests')).toBe(false);
+    expect(adSlotAllowed('/mock-tests/applied-mathematics-2025-06-02-shift-1')).toBe(false);
+    expect(adSlotAllowed('/mock-tests/physics-2025')).toBe(false);
   });
 
   it('takedown documentation exists and defines grievance procedures', () => {
@@ -56,7 +56,7 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
   });
 
   it('practice paper page template enforces noindex when rights_status != cleared', () => {
-    const template = readFileSync(resolve(process.cwd(), 'src/pages/practice/[slug].astro'), 'utf8');
+    const template = readFileSync(resolve(process.cwd(), 'src/pages/mock-tests/[slug].astro'), 'utf8');
     expect(template).toContain('const isCleared = (paper as any).rightsStatus === "cleared";');
     expect(template).toContain('const forceNoindex = !isCleared;');
     expect(template).toContain('noindex={forceNoindex}');

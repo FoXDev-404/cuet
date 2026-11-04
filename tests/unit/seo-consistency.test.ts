@@ -16,10 +16,10 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(file).toContain("status: 301");
   });
 
-  it("verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to /practice/[slug]", () => {
+  it("verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to /mock-tests/[slug]", () => {
     const file = readFileSync(join(root, "src/pages/mock/[slug]/index.astro"), "utf8");
     expect(file).toContain("const isPracticeWrapper = Boolean(mock.practice_paper_slug)");
-    expect(file).toContain("const canonical = isPracticeWrapper ? `/practice/${mock.practice_paper_slug}` : undefined");
+    expect(file).toContain("const canonical = isPracticeWrapper ? `/mock-tests/${mock.practice_paper_slug}` : undefined");
     expect(file).toContain("const noindex = totalQuestions === 0 || isPracticeWrapper");
     expect(file).toContain("canonical={canonical}");
     expect(file).toContain("noindex={noindex}");

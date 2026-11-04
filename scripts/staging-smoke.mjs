@@ -167,8 +167,8 @@ try {
   const home = await get("/");
   record("homepage renders", home.status === 200 && /CUET/i.test(home.text), `status ${home.status}`);
 
-  const practice = await get("/practice");
-  const paperHref = practice.text.match(/href="(\/practice\/[^"?#]+)"/)?.[1];
+  const practice = await get("/mock-tests");
+  const paperHref = practice.text.match(/href="(\/mock-tests\/[^"?#]+)"/)?.[1];
   record(
     "practice library renders",
     practice.status === 200 && Boolean(paperHref) && /ranked|previous-year/i.test(practice.text),

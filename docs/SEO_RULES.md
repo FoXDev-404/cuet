@@ -14,10 +14,14 @@ Google enforces strict guidelines regarding schema markup. Markup must accuratel
 | **Home Page** | `/` | `Organization`, `WebSite`, `ItemList` | `Quiz`, `Course`, `FAQPage` | `WebSite` carries site search / branding; `ItemList` lists popular papers. |
 | **Editorial Guides** | `/cuet-ug-exam-pattern`, `/cuet-ug-marking-scheme`, `/cuet-ug-syllabus`, `/cuet-ug-important-dates`, `/blog/:slug` | `Organization`, `BreadcrumbList`, `Article` | `FAQPage`, `Quiz`, `Course` | `Article` schema includes author, publisher (`Organization`), and `dateModified`. |
 | **Hubs & Archives** | `/cuet-ug-mock-test`, `/cuet-mock-test`, `/cuet-ug-previous-year-papers`, `/pyq/:year`, `/leaderboard` | `Organization`, `BreadcrumbList`, `ItemList` | `Quiz`, `Course`, `FAQPage` | `ItemList` lists papers/subjects contained in the archive. |
-| **Paper Details** | `/mock/:slug`, `/practice/:slug` | `Organization`, `BreadcrumbList` | `Quiz`, `Course`, `FAQPage`, `Product` | Single mock/practice landing pages. |
+| **Paper Details** | `/mock/:slug`, `/mock-tests/:slug` | `Organization`, `BreadcrumbList` | `Quiz`, `Course`, `FAQPage`, `Product` | Single mock/practice landing pages. |
 | **Public Questions** | `/q/:slug` | `Organization`, `BreadcrumbList` | `Quiz`, `Question`, `FAQPage` | Standard question sharing page. Breadcrumbs allowed when question is SEO-eligible (`seoEligible = true`). |
 | **Legal / About** | `/about`, `/contact`, `/privacy-policy`, `/terms`, `/disclaimer` | `Organization`, `BreadcrumbList` | `FAQPage`, `Article` | Basic organizational and navigational metadata. |
 | **Private Routes** | `/attempt/*`, `/result/*`, `/dashboard/*`, `/admin/*`, `/dev/*`, `/login`, `/signup` | **NONE** (or `Organization` via base layout) | All Rich Results Schemas | All private routes are strictly gated with `noindex, nofollow`. |
+
+Legacy `/practice`, `/practice/*`, `/mock-test` and `/mock-test/*` paths 301-redirect to
+`/mock-tests` and are never listed in the sitemap; the canonical target is always the
+matching `/mock-tests` URL.
 
 ---
 

@@ -34,13 +34,16 @@ describe('Explanation Honesty and Editorial Review Queue (Fix 4)', () => {
 
   it('proves honest baseline counts: 0 questions marked reviewed without human sign-off', () => {
     const db = getLocalDb();
+    // The local D1 file is live editorial state, so a human may have approved a
+    // row since the content import. The invariant is that no row is marked
+    // reviewed unless a reviewer and timestamp were recorded with it.
     const reviewedPq = db.prepare(
-      "SELECT count(*) as count FROM practice_questions WHERE explanation_status = 'reviewed'"
+      "SELECT count(*) as count FROM practice_questions WHERE explanation_status = 'reviewed' AND (reviewed_by IS NULL OR reviewed_at IS NULL)"
     ).get() as { count: number };
     expect(reviewedPq.count).toBe(0);
 
     const reviewedQ = db.prepare(
-      "SELECT count(*) as count FROM questions WHERE explanation_status = 'reviewed'"
+      "SELECT count(*) as count FROM questions WHERE explanation_status = 'reviewed' AND (reviewed_by IS NULL OR reviewed_at IS NULL)"
     ).get() as { count: number };
     expect(reviewedQ.count).toBe(0);
   });

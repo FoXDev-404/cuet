@@ -37,7 +37,7 @@ function summary(slug: string): LocalPaperSummary {
     reviewRequired: false,
     localPaper: true,
     draft: true,
-    path: `/practice/${slug}`,
+    path: `/mock-tests/${slug}`,
   };
 }
 

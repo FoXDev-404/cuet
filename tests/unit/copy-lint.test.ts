@@ -26,7 +26,7 @@ describe("Fix 8 — Honest Labels, Disclaimers, and Copy-Lint", () => {
   });
 
   it("verifies independent disclaimer on practice paper pages and copyright on disclaimer page", () => {
-    const practicePage = readFileSync(join(root, "src/pages/practice/[slug].astro"), "utf8");
+    const practicePage = readFileSync(join(root, "src/pages/mock-tests/[slug].astro"), "utf8");
     expect(practicePage).toContain("CUET Free Mock Test is not affiliated with NTA");
     const disclaimerPage = readFileSync(join(root, "src/pages/disclaimer.astro"), "utf8");
     expect(disclaimerPage).toContain("Copyright and source policy");

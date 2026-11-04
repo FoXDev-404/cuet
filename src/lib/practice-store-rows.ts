@@ -1,6 +1,5 @@
 import {
   displayDate,
-  LOCAL_DURATION_MINUTES,
   LOCAL_LIBRARY_PATH,
   LOCAL_MARKING_SCHEME,
   type LocalListPair,
@@ -13,6 +12,7 @@ import {
   type LocalQuestionPassage,
   type LocalSubject,
 } from "./practice-normalize";
+import { calculateMockDuration } from "./exam-timing";
 
 /**
  * Row shapes and pure mappers for the D1 practice store.
@@ -106,7 +106,7 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
     date: row.exam_date,
     dateLabel: row.date_label || displayDate(row.exam_date),
     shift: row.shift,
-    durationMinutes: row.duration_min || LOCAL_DURATION_MINUTES,
+    durationMinutes: calculateMockDuration(scorable || questionCount, row.subject_name).durationMinutes,
     markingScheme: { ...LOCAL_MARKING_SCHEME },
     totalQuestions: questionCount,
     sourceQuestionCount: sourceCount,
@@ -199,7 +199,10 @@ export function mapPaperRow(
     date: row.exam_date,
     dateLabel: row.date_label || displayDate(row.exam_date),
     shift: row.shift,
-    durationMinutes: row.duration_min || LOCAL_DURATION_MINUTES,
+    durationMinutes: calculateMockDuration(
+      scorableQuestionCount || normalised.length,
+      row.subject_name,
+    ).durationMinutes,
     sourceFile: row.source_file,
     sourceMethod: row.source_method,
     ...(row.rights_status !== undefined ? { rightsStatus: row.rights_status as any } : {}),

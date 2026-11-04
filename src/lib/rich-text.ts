@@ -130,7 +130,7 @@ function cleanTable(rawTableHtml: string): string {
     return match.replace(/<td/g, "<th").replace(/<\/td>/g, "</th>");
   });
 
-  return `<div class="nta-table-container">${clean}</div>`;
+  return `<div class="nta-table-container" tabindex="0" role="group" aria-label="Scrollable table">${clean}</div>`;
 }
 
 /**

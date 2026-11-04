@@ -42,8 +42,8 @@ const STATIC_PUBLIC_PATHS = [
   "/cuet-ug-marking-scheme",
   "/cuet-ug-important-dates",
   "/cuet-ug-previous-year-papers",
-  "/practice",
-  "/practice/english-2022-08-06-shift-1",
+  "/mock-tests",
+  "/mock-tests/english-2022-08-06-shift-1",
   "/cuet-mock-test/english",
   "/cuet-ug-syllabus/english",
   "/blog",
@@ -313,7 +313,7 @@ async function auditPublic(browser) {
 
   console.log("\nLocal practice pages");
   const localPracticePaths = skipAttempt
-    ? ["/practice/english-2022-08-06-shift-1", "/practice/english-2024-05-15-shift-2"]
+    ? ["/mock-tests/english-2022-08-06-shift-1", "/mock-tests/english-2024-05-15-shift-2"]
     : [
         "/mock/english-2022-08-06-shift-1/instructions",
         "/mock/english-2024-05-15-shift-2/instructions",
@@ -344,11 +344,11 @@ async function auditPublic(browser) {
 
   const slug = await findMockSlug(page);
   if (!slug) {
-    // The public catalogue intentionally serves the refined /practice library;
+    // The public catalogue intentionally serves the refined /mock-tests library;
     // the D1 mock suite may be empty while it is rebuilt. The library pages
     // above are the coverage that matters in that state.
     console.log(
-      "\nNo published D1 mock; mock-specific pages skipped (the refined /practice library is covered above).",
+      "\nNo published D1 mock; mock-specific pages skipped (the refined /mock-tests library is covered above).",
     );
     await context.close();
     return;

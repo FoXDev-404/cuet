@@ -184,7 +184,7 @@ export const GET: APIRoute = async ({ request }) => {
     add("/cuet-ug-previous-year-papers", { changefreq: "monthly", priority: "0.8" });
   }
   if (localPapers.length > 0) {
-    add("/practice", { changefreq: "weekly", priority: "0.8" });
+    add("/mock-tests", { changefreq: "weekly", priority: "0.8" });
   }
   if (posts.length > 0) add("/blog", { changefreq: "weekly", priority: "0.7" });
   add("/leaderboard", { changefreq: "daily", priority: "0.6" });
@@ -240,7 +240,7 @@ export const GET: APIRoute = async ({ request }) => {
 
   for (const mock of mocks) {
     if (isFixtureMock(mock)) continue;
-    // Imported previous-year papers are canonical on /practice/<slug>, so only
+    // Imported previous-year papers are canonical on /mock-tests/<slug>, so only
     // their leaderboard is a distinct indexable URL.
     if (!mock.practice_paper_slug) {
       add(`/mock/${mock.slug}`, {

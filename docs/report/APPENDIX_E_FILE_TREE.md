@@ -1,6 +1,6 @@
 # Appendix E: Repository File Tree (Depth 4)
 
-_Generated on 2026-11-04T12:26:14.522Z._
+_Generated on 2026-11-04T20:12:11.329Z._
 
 ## Top-Level Directory Roles
 
@@ -24,7 +24,6 @@ _Generated on 2026-11-04T12:26:14.522Z._
   ├── workflows/
     └── ci.yml
     └── d1-backup.yml
-├── cuet-astro/
 ├── docs/
   ├── report/
     └── a11y-results.json
@@ -1738,6 +1737,11 @@ _Generated on 2026-11-04T12:26:14.522Z._
         └── q08-figure-4.jpg
         └── q08-figure-5.jpg
         └── q10-figure-1.jpg
+        └── q10-option-a.jpg
+        └── q10-option-b.jpg
+        └── q10-option-c.jpg
+        └── q10-option-d.jpg
+        └── q10-reaction.jpg
         └── q23-exp-1.jpg
         └── q26-figure-1.jpg
         └── q29-exp-1.jpg
@@ -1745,6 +1749,8 @@ _Generated on 2026-11-04T12:26:14.522Z._
         └── q31-figure-2.jpg
         └── q31-figure-3.jpg
         └── q31-figure-4.jpg
+        └── q31-option-a.jpg
+        └── q31-reaction.jpg
         └── q32-exp-1.jpg
         └── q35-exp-1.jpg
         └── q40-figure-1.jpg
@@ -1757,6 +1763,10 @@ _Generated on 2026-11-04T12:26:14.522Z._
         └── q49-figure-4.jpg
         └── q50-figure-1.jpg
         └── q50-figure-2.jpg
+        └── q50-option-a.jpg
+        └── q50-option-b.jpg
+        └── q50-option-c.jpg
+        └── q50-reaction.jpg
       ├── computer-science-2022/
         └── q01-table-1.jpg
         └── q32-figure-1.jpg
@@ -2609,6 +2619,7 @@ _Generated on 2026-11-04T12:26:14.522Z._
   └── favicon.svg
   └── logo.png
   └── logo.svg
+├── scratch/
 ├── scripts/
   ├── lib/
     └── question-og.mjs
@@ -2723,6 +2734,7 @@ _Generated on 2026-11-04T12:26:14.522Z._
     └── discussions.ts
     └── email-config.ts
     └── email.ts
+    └── exam-timing.ts
     └── fixtures.ts
     └── http.ts
     └── image.ts
@@ -2891,7 +2903,7 @@ _Generated on 2026-11-04T12:26:14.522Z._
         └── discussion.astro
         └── index.astro
         └── instructions.astro
-    ├── practice/
+    ├── mock-tests/
       ├── [slug]/
         └── take.astro
       └── [slug].astro
@@ -2943,7 +2955,7 @@ _Generated on 2026-11-04T12:26:14.522Z._
   └── middleware.ts
 ├── test-results/
   └── .last-run.json
-  └── results-theme.spec.ts.json
+  └── mobile-nav-320-dashboard.png
 ├── tests/
   ├── e2e/
     └── admin-flow.spec.ts
@@ -2971,6 +2983,7 @@ _Generated on 2026-11-04T12:26:14.522Z._
     └── email-config.test.ts
     └── env-separation.test.ts
     └── exam-facts.test.ts
+    └── exam-timing.test.ts
     └── explanation-honesty.test.ts
     └── fixtures-isolation.test.ts
     └── image.test.ts

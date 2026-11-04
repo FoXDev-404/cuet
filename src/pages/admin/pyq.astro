@@ -159,7 +159,7 @@ const filteredPapers = practicePapers.filter((p) => {
           <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-800/40" data-paper-id={paper.id}>
             <td class="p-3"><input type="checkbox" class="paper-check" value={paper.id} aria-label={`Select paper ${paper.title}`} /></td>
             <td class="p-3 font-semibold">
-              <a href={`/practice/${paper.slug}`} target="_blank" class="text-brand-700 hover:underline dark:text-brand-300">
+              <a href={`/mock-tests/${paper.slug}`} target="_blank" class="text-brand-700 hover:underline dark:text-brand-300">
                 {paper.title}
               </a>
               {paper.shift ? <span class="ml-1 text-neutral-600 dark:text-neutral-300">({paper.shift})</span> : null}

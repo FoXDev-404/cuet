@@ -1,11 +1,11 @@
 # Appendix B: Database Schema & Entity Catalogue
 
-_Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-11-04T12:26:14.522Z._
+_Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-11-04T20:12:11.329Z._
 
 ## Database Overview
 
 - **Total Catalogued Tables:** 40
-- **Total Database Rows:** 40,052
+- **Total Database Rows:** 42,993
 - **Applied Migrations:** 20 (from `0001_init.sql` through `0020_exam_info_seed.sql`)
 
 ## Table Catalogue Summary
@@ -14,23 +14,23 @@ _Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-1
 | :--- | :---: | :---: | :---: | :--- | :---: |
 | `admins` | 2 | 7 | 2 | Admin accounts, roles (super, editor, moderator, contributor) | Yes (`deleted_at`) |
 | `announcements` | 0 | 10 | 0 | Auxiliary / Join Table | Yes (`deleted_at`) |
-| `attempt_answers` | 6,052 | 8 | 2 | User answer submissions per attempt question | No |
-| `attempts` | 343 | 22 | 11 | Attempt instances, scores, deadlines, sequence ordering | No |
-| `audit_log` | 672 | 7 | 2 | Auxiliary / Join Table | No |
+| `attempt_answers` | 8,278 | 8 | 2 | User answer submissions per attempt question | No |
+| `attempts` | 445 | 22 | 11 | Attempt instances, scores, deadlines, sequence ordering | No |
+| `audit_log` | 797 | 7 | 2 | Auxiliary / Join Table | No |
 | `badges` | 4 | 5 | 1 | Auxiliary / Join Table | Yes (`deleted_at`) |
 | `blog_posts` | 0 | 11 | 3 | Auxiliary / Join Table | Yes (`deleted_at`) |
 | `bookmarks` | 0 | 4 | 1 | Auxiliary / Join Table | No |
 | `d1_migrations` | 19 | 3 | 1 | Auxiliary / Join Table | No |
 | `discussion_reports` | 0 | 6 | 2 | Auxiliary / Join Table | No |
 | `discussion_votes` | 0 | 2 | 1 | Auxiliary / Join Table | No |
-| `discussions` | 13 | 12 | 4 | Discussion threads attached to questions | Yes (`deleted_at`) |
+| `discussions` | 20 | 12 | 4 | Discussion threads attached to questions | Yes (`deleted_at`) |
 | `email_verifications` | 0 | 5 | 1 | Auxiliary / Join Table | No |
 | `exam_info` | 6 | 4 | 1 | Verified CUET UG exam facts, dates, and patterns | No |
 | `exams` | 1 | 5 | 2 | Auxiliary / Join Table | Yes (`deleted_at`) |
 | `media_assets` | 0 | 10 | 4 | Auxiliary / Join Table | Yes (`deleted_at`) |
-| `mock_questions` | 11,586 | 4 | 3 | Question-to-mock version mappings with ordering | No |
-| `mock_test_versions` | 477 | 11 | 2 | Immutable versions of mock tests | No |
-| `mock_tests` | 371 | 24 | 5 | Mock tests, published papers, slugs, types | Yes (`deleted_at`) |
+| `mock_questions` | 11,624 | 4 | 3 | Question-to-mock version mappings with ordering | No |
+| `mock_test_versions` | 515 | 11 | 2 | Immutable versions of mock tests | No |
+| `mock_tests` | 409 | 24 | 5 | Mock tests, published papers, slugs, types | Yes (`deleted_at`) |
 | `page_seo` | 0 | 8 | 1 | Auxiliary / Join Table | No |
 | `passages` | 234 | 7 | 0 | Reading comprehension passages linked to questions | Yes (`deleted_at`) |
 | `password_resets` | 0 | 5 | 1 | Auxiliary / Join Table | No |
@@ -38,20 +38,20 @@ _Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-1
 | `practice_passages` | 128 | 6 | 3 | Auxiliary / Join Table | Yes (`deleted_at`) |
 | `practice_questions` | 6,603 | 24 | 3 | Auxiliary / Join Table | Yes (`deleted_at`) |
 | `pyq_papers` | 0 | 12 | 2 | Auxiliary / Join Table | Yes (`deleted_at`) |
-| `question_public_ids` | 105 | 7 | 2 | Base62 public IDs and share policies for questions | No |
+| `question_public_ids` | 123 | 7 | 2 | Base62 public IDs and share policies for questions | No |
 | `question_reports` | 0 | 6 | 1 | Auxiliary / Join Table | No |
-| `questions` | 12,183 | 28 | 8 | Master question item bank with revision tracking | Yes (`deleted_at`) |
+| `questions` | 12,372 | 28 | 8 | Master question item bank with revision tracking | Yes (`deleted_at`) |
 | `rescore_jobs` | 0 | 10 | 1 | Auxiliary / Join Table | No |
-| `revisions` | 194 | 7 | 2 | Auxiliary / Join Table | No |
-| `sessions` | 598 | 4 | 2 | User session tokens, SHA-256 hashes, expiration | No |
+| `revisions` | 230 | 7 | 2 | Auxiliary / Join Table | No |
+| `sessions` | 685 | 4 | 2 | User session tokens, SHA-256 hashes, expiration | No |
 | `share_events` | 0 | 7 | 1 | Auxiliary / Join Table | No |
-| `site_settings` | 3 | 2 | 1 | Auxiliary / Join Table | No |
+| `site_settings` | 5 | 2 | 1 | Auxiliary / Join Table | No |
 | `slug_redirects` | 0 | 4 | 2 | Auxiliary / Join Table | No |
 | `subjects` | 19 | 8 | 2 | Academic domain subjects (English, Physics, etc.) | Yes (`deleted_at`) |
 | `topics` | 0 | 5 | 2 | Syllabus topics under subjects | Yes (`deleted_at`) |
-| `user_badges` | 42 | 3 | 1 | Auxiliary / Join Table | No |
-| `user_stats` | 43 | 6 | 1 | Auxiliary / Join Table | No |
-| `users` | 140 | 17 | 5 | User accounts, auth hashes, ban/mute state, streaks | Yes (`deleted_at`) |
+| `user_badges` | 50 | 3 | 1 | Auxiliary / Join Table | No |
+| `user_stats` | 51 | 6 | 1 | Auxiliary / Join Table | No |
+| `users` | 159 | 17 | 5 | User accounts, auth hashes, ban/mute state, streaks | Yes (`deleted_at`) |
 
 ---
 
@@ -96,7 +96,7 @@ CREATE TABLE "announcements" (
 
 ### Table: `attempt_answers`
 
-- **Current Row Count:** 6,052
+- **Current Row Count:** 8,278
 - **Columns:** 8
 
 ```sql
@@ -121,7 +121,7 @@ CREATE INDEX idx_attempt_answers_question
 
 ### Table: `attempts`
 
-- **Current Row Count:** 343
+- **Current Row Count:** 445
 - **Columns:** 22
 
 ```sql
@@ -169,7 +169,7 @@ CREATE INDEX idx_attempts_status_submitted
 
 ### Table: `audit_log`
 
-- **Current Row Count:** 672
+- **Current Row Count:** 797
 - **Columns:** 7
 
 ```sql
@@ -303,7 +303,7 @@ CREATE TABLE "discussion_votes" (
 
 ### Table: `discussions`
 
-- **Current Row Count:** 13
+- **Current Row Count:** 20
 - **Columns:** 12
 
 ```sql
@@ -408,7 +408,7 @@ CREATE INDEX idx_media_deleted ON "media_assets"(deleted_at);
 
 ### Table: `mock_questions`
 
-- **Current Row Count:** 11,586
+- **Current Row Count:** 11,624
 - **Columns:** 4
 
 ```sql
@@ -430,7 +430,7 @@ CREATE INDEX idx_mq_question ON "mock_questions"(question_id);
 
 ### Table: `mock_test_versions`
 
-- **Current Row Count:** 477
+- **Current Row Count:** 515
 - **Columns:** 11
 
 ```sql
@@ -459,7 +459,7 @@ CREATE INDEX idx_versions_mock ON "mock_test_versions"(mock_id, status);
 
 ### Table: `mock_tests`
 
-- **Current Row Count:** 371
+- **Current Row Count:** 409
 - **Columns:** 24
 
 ```sql
@@ -680,7 +680,7 @@ CREATE INDEX idx_pyq_published ON "pyq_papers"(status, year);
 
 ### Table: `question_public_ids`
 
-- **Current Row Count:** 105
+- **Current Row Count:** 123
 - **Columns:** 7
 
 ```sql
@@ -728,7 +728,7 @@ CREATE INDEX idx_question_reports_status
 
 ### Table: `questions`
 
-- **Current Row Count:** 12,183
+- **Current Row Count:** 12,372
 - **Columns:** 28
 
 ```sql
@@ -808,7 +808,7 @@ CREATE INDEX idx_rescore_jobs_status
 
 ### Table: `revisions`
 
-- **Current Row Count:** 194
+- **Current Row Count:** 230
 - **Columns:** 7
 
 ```sql
@@ -834,7 +834,7 @@ CREATE INDEX idx_revisions_admin
 
 ### Table: `sessions`
 
-- **Current Row Count:** 598
+- **Current Row Count:** 685
 - **Columns:** 4
 
 ```sql
@@ -878,7 +878,7 @@ CREATE INDEX idx_share_events_pid
 
 ### Table: `site_settings`
 
-- **Current Row Count:** 3
+- **Current Row Count:** 5
 - **Columns:** 2
 
 ```sql
@@ -954,7 +954,7 @@ CREATE INDEX idx_topics_deleted ON "topics"(deleted_at);
 
 ### Table: `user_badges`
 
-- **Current Row Count:** 42
+- **Current Row Count:** 50
 - **Columns:** 3
 
 ```sql
@@ -968,7 +968,7 @@ CREATE TABLE "user_badges" (
 
 ### Table: `user_stats`
 
-- **Current Row Count:** 43
+- **Current Row Count:** 51
 - **Columns:** 6
 
 ```sql
@@ -985,7 +985,7 @@ CREATE TABLE "user_stats" (
 
 ### Table: `users`
 
-- **Current Row Count:** 140
+- **Current Row Count:** 159
 - **Columns:** 17
 
 ```sql

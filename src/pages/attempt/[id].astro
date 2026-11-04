@@ -727,7 +727,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       <div class="exam-accent-line" aria-hidden="true"></div>
       <div class="exam-topbar flex h-14 items-center gap-2 px-2 sm:px-4">
         <div class="flex min-w-0 items-center gap-2">
-          <BrandLogo class="exam-brand shrink-0" size="compact" showTagline={false} link={true} target="_blank" />
+          <BrandLogo class="exam-brand" size="compact" showTagline={false} link={true} target="_blank" />
           <div class="hidden h-7 w-px bg-[var(--border)] md:block" aria-hidden="true"></div>
           <div class="hidden min-w-0 md:block">
             <p class="exam-paper-title truncate text-xs sm:text-sm">{data.mockTitle}</p>
@@ -739,11 +739,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
           <a class="exam-toplink hidden lg:inline-flex" href="#discussion">Discussion</a>
           <div id="timer" class="exam-timer" aria-live="off">--:--:--</div>
           <p id="timer-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></p>
-          {shareDuringAttempt && mockShareUrl ? (
-            <MockShareSheet shareUrl={mockShareUrl} mockId={attempt.mock_id} />
-          ) : null}
-          <ThemeToggle />
-          <button id="submit-attempt" class="exam-submit" type="button">Submit test</button>
+          <button id="submit-attempt" class="exam-submit" type="button"><span class="sm:hidden">Submit</span><span class="hidden sm:inline">Submit test</span></button>
         </div>
       </div>
       <div class="exam-candidatebar flex min-h-11 items-center gap-2 px-2 py-1.5 sm:min-h-12 sm:px-4">
@@ -758,6 +754,10 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         <div class="ml-auto flex shrink-0 items-center gap-1.5">
           <span class="exam-meta-pill hidden sm:inline-flex">✦ {questions.length} questions</span>
           <span class="exam-meta-pill hidden md:inline-flex">Marks +{marking.correct} / {marking.wrong}</span>
+          {shareDuringAttempt && mockShareUrl ? (
+            <MockShareSheet shareUrl={mockShareUrl} mockId={attempt.mock_id} />
+          ) : null}
+          <ThemeToggle />
           <button id="palette-toggle" class="exam-btn lg:hidden" type="button" aria-label="Open question palette">Palette</button>
         </div>
       </div>
@@ -1335,7 +1335,12 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         (document.getElementById("zoom") as HTMLElement).classList.remove("open");
       }
 
-      let clientSeq = Number(data.lastClientSeq || 0);
+      // Seed from the wall clock so a save queued by a page that is being
+      // unloaded can never tie with (and overwrite) a save from the next page.
+      // Ties were possible because both sessions started from the same stored
+      // lastClientSeq, and the unload flush writes `selected: null` for an
+      // unanswered question.
+      let clientSeq = Math.max(Number(data.lastClientSeq || 0), Date.now());
 
       function payloadAnswers(seq = clientSeq) {
         return questions

@@ -34,7 +34,9 @@ describe("rich text", () => {
   it("renders HTML tables cleanly and strips inline style clutter", () => {
     const input = `<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) Sentence</td><td style='text-align: center; word-wrap: break-word;'>(I) Meaning</td></tr></table>`;
     const output = renderRichText(input);
-    expect(output).toContain('<div class="nta-table-container">');
+    expect(output).toContain(
+      '<div class="nta-table-container" tabindex="0" role="group" aria-label="Scrollable table">',
+    );
     expect(output).toContain('<table class="nta-table">');
     expect(output).toContain("<th>List-I</th>");
     expect(output).toContain("<th>List-II</th>");

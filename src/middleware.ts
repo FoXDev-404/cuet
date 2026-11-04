@@ -77,6 +77,16 @@ async function resolveAdmin(context: APIContext) {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  // The library moved from /practice to /mock-tests. Keep old links and
+  // short-form /mock-test URLs working with a permanent redirect.
+  const requestedPath = context.url.pathname;
+  for (const legacyPrefix of ["/practice", "/mock-test"]) {
+    if (requestedPath === legacyPrefix || requestedPath.startsWith(`${legacyPrefix}/`)) {
+      const target = `/mock-tests${requestedPath.slice(legacyPrefix.length)}${context.url.search}`;
+      return context.redirect(target, 301);
+    }
+  }
+
   const { result: response, metrics } = await trackD1Metrics(async () => {
     const { pathname } = context.url;
 

@@ -221,7 +221,7 @@ The local Cloudflare D1 miniflare SQLite database contains **40 catalogued table
 ### 1. Public Site & Hubs
 - **Home (`/`):** `DONE`. Full hero, featured mocks, PYQ shortcuts, search bar, NTA disclaimer.
 - **Hub (`/cuet-ug-mock-test`):** `DONE`. Search, subject filters, year filters, pagination.
-- **Practice Hub (`/practice`):** `DONE`. Previous-year paper practice mode directory.
+- **Mock Tests Hub (`/mock-tests`):** `DONE`. Previous-year paper library with ranked attempts, saved results and leaderboard entry.
 - **PYQ Archive (`/cuet-ug-previous-year-papers`):** `DONE`. Subject and year breakdowns. Thin archive pages gated with `noindex, nofollow`.
 - **Exam Guides (`/cuet-ug-syllabus`, `/cuet-ug-exam-pattern`, `/cuet-ug-marking-scheme`): `DONE`. Data-driven from `exam_info` table.
 

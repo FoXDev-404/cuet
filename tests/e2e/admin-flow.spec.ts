@@ -387,7 +387,7 @@ test("an editor sees which previous-year papers need review", async ({ page }) =
   await expect(page.getByRole("heading", { name: /Pending questions/ })).toBeVisible();
   await expect(page.getByRole("link", { name: "Open paper" })).toHaveAttribute(
     "href",
-    /^\/practice\//,
+    /^\/mock-tests\//,
   );
 
   const editPaper = page.getByRole("link", { name: "Edit paper" });

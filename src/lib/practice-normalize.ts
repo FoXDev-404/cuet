@@ -8,6 +8,8 @@
  * original JSON bundle describe exactly the same questions.
  */
 
+import { calculateMockDuration } from "./exam-timing.ts";
+
 export interface RawOption {
   id?: string | null;
   text?: string | null;
@@ -122,7 +124,7 @@ export interface RawIndex {
   papers?: RawIndexPaper[] | null;
 }
 
-export const LOCAL_LIBRARY_PATH = "/practice";
+export const LOCAL_LIBRARY_PATH = "/mock-tests";
 export const LOCAL_DURATION_MINUTES = 45;
 export const LOCAL_MARKING_SCHEME = { correct: 5, wrong: 1, skipped: 0 } as const;
 export const LOCAL_LIBRARY_ADDED_AT = "2026-10-31T00:00:00.000Z";
@@ -514,6 +516,13 @@ export function buildSummary(raw: RawIndexPaper): LocalPaperSummary | null {
   const scorable = Math.max(0, raw.scorableQuestionCount ?? 0);
   const sourceCount = Math.max(questionCount, raw.sourceQuestionCount ?? 0);
   const year = raw.year ?? (date ? Number(date.slice(0, 4)) : 0);
+  // The stored duration is the printed paper's nominal time. The attempt and
+  // instructions screens scale time to the questions actually scored, so the
+  // summary must use the same rule or the cards disagree with the mock.
+  const durationMinutes =
+    questionCount > 0
+      ? calculateMockDuration(scorable || questionCount, subjectName).durationMinutes
+      : (raw.durationMinutes ?? LOCAL_DURATION_MINUTES);
   return {
     id: cleanText(raw.id) || `local-${slug}`,
     slug,
@@ -529,7 +538,7 @@ export function buildSummary(raw: RawIndexPaper): LocalPaperSummary | null {
     date,
     dateLabel: cleanText(raw.dateLabel) || displayDate(date),
     shift: cleanText(raw.shift) || null,
-    durationMinutes: raw.durationMinutes ?? LOCAL_DURATION_MINUTES,
+    durationMinutes,
     markingScheme: { ...LOCAL_MARKING_SCHEME },
     totalQuestions: questionCount,
     sourceQuestionCount: sourceCount,

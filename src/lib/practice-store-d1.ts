@@ -16,6 +16,13 @@ import {
   type QuestionRow,
 } from "./practice-store-rows";
 
+/**
+ * Index rows describe the paper, not only its playable rows: questions that an
+ * editor soft-deleted (for example an unverifiable answer key) still count
+ * towards `question_count`, while `scorable_count` only counts live keyed rows.
+ * That keeps the "excluded from the ranked paper" disclosure and the paper's
+ * original question count accurate after a review cleanup.
+ */
 const INDEX_SQL = `
   SELECT
     p.slug,
@@ -41,16 +48,16 @@ const INDEX_SQL = `
     s.slug AS subject_slug,
     s.code AS subject_code,
     COUNT(q.id) AS question_count,
-    COALESCE(SUM(CASE WHEN q.correct_option IS NOT NULL THEN 1 ELSE 0 END), 0) AS scorable_count,
-    COALESCE(SUM(CASE WHEN q.assets_json <> '[]' THEN 1 ELSE 0 END), 0) AS image_question_count,
-    COALESCE(SUM(json_array_length(q.assets_json)), 0) AS asset_count,
+    COALESCE(SUM(CASE WHEN q.deleted_at IS NULL AND q.correct_option IS NOT NULL THEN 1 ELSE 0 END), 0) AS scorable_count,
+    COALESCE(SUM(CASE WHEN q.deleted_at IS NULL AND q.assets_json <> '[]' THEN 1 ELSE 0 END), 0) AS image_question_count,
+    COALESCE(SUM(CASE WHEN q.deleted_at IS NULL THEN json_array_length(q.assets_json) ELSE 0 END), 0) AS asset_count,
     (SELECT COUNT(*) FROM attempts a
        JOIN mock_tests m ON m.id = a.mock_id
       WHERE m.slug = p.slug AND a.status IN ('submitted', 'expired')) AS attempt_count
   FROM practice_papers p
   JOIN subjects s ON s.id = p.subject_id
   LEFT JOIN practice_questions q
-    ON q.paper_slug = p.slug AND q.deleted_at IS NULL
+    ON q.paper_slug = p.slug
   WHERE p.deleted_at IS NULL AND p.publication_status = 'published'
   GROUP BY p.id
   ORDER BY p.year DESC, s.name ASC, p.exam_date ASC, p.shift ASC

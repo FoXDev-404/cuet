@@ -88,7 +88,7 @@ describe("local previous-year library", () => {
       expect(paper.recoveredQuestionCount).toBeGreaterThan(0);
       expect(paper.scorableQuestionCount).toBeLessThanOrEqual(paper.recoveredQuestionCount);
       expect(paper.metaDescription.length).toBeGreaterThan(50);
-      expect(paper.path).toBe(`/practice/${paper.slug}`);
+      expect(paper.path).toBe(`/mock-tests/${paper.slug}`);
       expect(paper.localPaper && paper.draft).toBe(true);
     }
   });
@@ -101,7 +101,7 @@ describe("local previous-year library", () => {
       expect(getLocalPapersForYear(entry.year)).toHaveLength(entry.paper_count);
     }
     const first = papers[0];
-    expect(localPaperPath(first.slug)).toBe(`/practice/${first.slug}`);
+    expect(localPaperPath(first.slug)).toBe(`/mock-tests/${first.slug}`);
     expect(isLocalPaperSlug(first.slug)).toBe(true);
     expect(isLocalPaperSlug("missing-paper")).toBe(false);
     expect(getLocalPaperSummary("missing-paper")).toBeNull();
@@ -300,7 +300,7 @@ describe("homepage curation", () => {
       const latestYear = Math.max(...own.map((paper) => paper.year));
       expect(subject.latestYear).toBe(latestYear);
       expect(subject.href).toBe(`/pyq/${latestYear}/${subject.subject.slug}`);
-      expect(subject.latestPaperPath.startsWith("/practice/")).toBe(true);
+      expect(subject.latestPaperPath.startsWith("/mock-tests/")).toBe(true);
     }
   });
 

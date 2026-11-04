@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T12:26:14.522Z",
+  "generatedAt": "2026-11-04T20:12:11.329Z",
   "nodeVersion": "v24.18.0",
   "dependencies": {
     "packageVersion": "0.1.0",
@@ -1125,6 +1125,27 @@
         "type": "page"
       },
       {
+        "path": "/mock-tests",
+        "filePath": "src\\pages\\mock-tests\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/mock-tests/[slug]",
+        "filePath": "src\\pages\\mock-tests\\[slug].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/mock-tests/[slug]/take",
+        "filePath": "src\\pages\\mock-tests\\[slug]\\take.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
         "path": "/mock/[slug]",
         "filePath": "src\\pages\\mock\\[slug]\\index.astro",
         "isApi": false,
@@ -1141,27 +1162,6 @@
       {
         "path": "/mock/[slug]/instructions",
         "filePath": "src\\pages\\mock\\[slug]\\instructions.astro",
-        "isApi": false,
-        "isDynamic": true,
-        "type": "page"
-      },
-      {
-        "path": "/practice",
-        "filePath": "src\\pages\\practice\\index.astro",
-        "isApi": false,
-        "isDynamic": false,
-        "type": "page"
-      },
-      {
-        "path": "/practice/[slug]",
-        "filePath": "src\\pages\\practice\\[slug].astro",
-        "isApi": false,
-        "isDynamic": true,
-        "type": "page"
-      },
-      {
-        "path": "/practice/[slug]/take",
-        "filePath": "src\\pages\\practice\\[slug]\\take.astro",
         "isApi": false,
         "isDynamic": true,
         "type": "page"
@@ -1269,7 +1269,7 @@
   "database": {
     "databasePath": ".wrangler\\state\\v3\\d1\\miniflare-D1DatabaseObject\\9e86a3487f62f60f2005838556d2eb9f94df20a990ccf3e7e9e15550212e2901.sqlite",
     "totalTables": 40,
-    "totalRows": 40052,
+    "totalRows": 42993,
     "tables": [
       {
         "name": "admins",
@@ -1408,7 +1408,7 @@
       },
       {
         "name": "attempt_answers",
-        "rowCount": 6052,
+        "rowCount": 8278,
         "columnsCount": 8,
         "indexesCount": 2,
         "columns": [
@@ -1472,7 +1472,7 @@
       },
       {
         "name": "attempts",
-        "rowCount": 343,
+        "rowCount": 445,
         "columnsCount": 22,
         "indexesCount": 11,
         "columns": [
@@ -1634,7 +1634,7 @@
       },
       {
         "name": "audit_log",
-        "rowCount": 672,
+        "rowCount": 797,
         "columnsCount": 7,
         "indexesCount": 2,
         "columns": [
@@ -1956,7 +1956,7 @@
       },
       {
         "name": "discussions",
-        "rowCount": 13,
+        "rowCount": 20,
         "columnsCount": 12,
         "indexesCount": 4,
         "columns": [
@@ -2248,7 +2248,7 @@
       },
       {
         "name": "mock_questions",
-        "rowCount": 11586,
+        "rowCount": 11624,
         "columnsCount": 4,
         "indexesCount": 3,
         "columns": [
@@ -2284,7 +2284,7 @@
       },
       {
         "name": "mock_test_versions",
-        "rowCount": 477,
+        "rowCount": 515,
         "columnsCount": 11,
         "indexesCount": 2,
         "columns": [
@@ -2369,7 +2369,7 @@
       },
       {
         "name": "mock_tests",
-        "rowCount": 371,
+        "rowCount": 409,
         "columnsCount": 24,
         "indexesCount": 5,
         "columns": [
@@ -3203,7 +3203,7 @@
       },
       {
         "name": "question_public_ids",
-        "rowCount": 105,
+        "rowCount": 123,
         "columnsCount": 7,
         "indexesCount": 2,
         "columns": [
@@ -3310,7 +3310,7 @@
       },
       {
         "name": "questions",
-        "rowCount": 12183,
+        "rowCount": 12372,
         "columnsCount": 28,
         "indexesCount": 8,
         "columns": [
@@ -3592,7 +3592,7 @@
       },
       {
         "name": "revisions",
-        "rowCount": 194,
+        "rowCount": 230,
         "columnsCount": 7,
         "indexesCount": 2,
         "columns": [
@@ -3649,7 +3649,7 @@
       },
       {
         "name": "sessions",
-        "rowCount": 598,
+        "rowCount": 685,
         "columnsCount": 4,
         "indexesCount": 2,
         "columns": [
@@ -3742,7 +3742,7 @@
       },
       {
         "name": "site_settings",
-        "rowCount": 3,
+        "rowCount": 5,
         "columnsCount": 2,
         "indexesCount": 1,
         "columns": [
@@ -3907,7 +3907,7 @@
       },
       {
         "name": "user_badges",
-        "rowCount": 42,
+        "rowCount": 50,
         "columnsCount": 3,
         "indexesCount": 1,
         "columns": [
@@ -3936,7 +3936,7 @@
       },
       {
         "name": "user_stats",
-        "rowCount": 43,
+        "rowCount": 51,
         "columnsCount": 6,
         "indexesCount": 1,
         "columns": [
@@ -3986,7 +3986,7 @@
       },
       {
         "name": "users",
-        "rowCount": 140,
+        "rowCount": 159,
         "columnsCount": 17,
         "indexesCount": 5,
         "columns": [
@@ -4116,20 +4116,20 @@
       "questions": {
         "ai_draft": 10288,
         "banner": 34,
-        "none": 1861,
+        "none": 2050,
         "reviewed": 0
       },
       "practice": {
         "ai_draft": 6245,
         "banner": 358,
         "none": 0,
-        "reviewed": 0
+        "reviewed": 1
       },
       "unkeyedPracticeQuestions": 332,
       "unkeyedQuestions": 0,
       "totalAiDraft": 16533,
-      "totalNoExplanation": 1861,
-      "totalReviewed": 0
+      "totalNoExplanation": 2050,
+      "totalReviewed": 1
     }
   },
   "migrations": {

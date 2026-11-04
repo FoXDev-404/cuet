@@ -1,6 +1,6 @@
 # Appendix A: Complete Route Inventory
 
-_Auto-generated from `src/pages` router on 2026-11-04T12:26:14.522Z._
+_Auto-generated from `src/pages` router on 2026-11-04T20:12:11.329Z._
 
 ## Summary Counts
 
@@ -78,12 +78,12 @@ _Auto-generated from `src/pages` router on 2026-11-04T12:26:14.522Z._
 | `/leaderboard/[slug]` | Page | Yes | [`src\pages\leaderboard\[slug].astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\leaderboard\[slug].astro) | Public |
 | `/login` | Page | No | [`src\pages\login.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\login.astro) | Public |
 | `/maintenance` | Page | No | [`src\pages\maintenance.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\maintenance.astro) | Public |
+| `/mock-tests` | Page | No | [`src\pages\mock-tests\index.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\mock-tests\index.astro) | Public |
+| `/mock-tests/[slug]` | Page | Yes | [`src\pages\mock-tests\[slug].astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\mock-tests\[slug].astro) | Public |
+| `/mock-tests/[slug]/take` | Page | Yes | [`src\pages\mock-tests\[slug]\take.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\mock-tests\[slug]\take.astro) | Public |
 | `/mock/[slug]` | Page | Yes | [`src\pages\mock\[slug]\index.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\mock\[slug]\index.astro) | Public |
 | `/mock/[slug]/discussion` | Page | Yes | [`src\pages\mock\[slug]\discussion.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\mock\[slug]\discussion.astro) | Public |
 | `/mock/[slug]/instructions` | Page | Yes | [`src\pages\mock\[slug]\instructions.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\mock\[slug]\instructions.astro) | Public |
-| `/practice` | Page | No | [`src\pages\practice\index.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\practice\index.astro) | Public |
-| `/practice/[slug]` | Page | Yes | [`src\pages\practice\[slug].astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\practice\[slug].astro) | Public |
-| `/practice/[slug]/take` | Page | Yes | [`src\pages\practice\[slug]\take.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\practice\[slug]\take.astro) | Public |
 | `/privacy-policy` | Page | No | [`src\pages\privacy-policy.astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\privacy-policy.astro) | Public |
 | `/pyq/[year]` | Page | Yes | [`src\pages\pyq\[year].astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\pyq\[year].astro) | Public |
 | `/pyq/[year]/[subject]` | Page | Yes | [`src\pages\pyq\[year]\[subject].astro`](file:///E:/AA Projects/New Full/CUET Mock/src\pages\pyq\[year]\[subject].astro) | Public |

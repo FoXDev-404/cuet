@@ -177,7 +177,7 @@ function extractInternalLinks(html) {
 
 // Classify page group for reporting
 function getPageGroup(path) {
-  if (path === "/" || path === "/cuet-ug-mock-test" || path === "/practice" || path === "/cuet-ug-previous-year-papers") {
+  if (path === "/" || path === "/cuet-ug-mock-test" || path === "/mock-tests" || path === "/cuet-ug-previous-year-papers") {
     return "Home & Hubs";
   }
   if (path.startsWith("/cuet-ug-")) {
@@ -266,7 +266,7 @@ async function main() {
       "/cuet-mock-test",
       "/pyq",
       "/cuet-ug-previous-year-papers",
-      "/practice",
+      "/mock-tests",
       "/cuet-ug-syllabus",
       "/cuet-ug-exam-pattern",
       "/cuet-ug-marking-scheme",
