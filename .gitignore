@@ -7,19 +7,18 @@ playwright-report/
 
 # Local Cloudflare/Wrangler state
 .wrangler/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
 
 # Local secrets
-.env
+.env*
 .dev.vars
 
-# Logs
-*.log
-
-# Generated browser/QA artifacts
-.playwright-mcp/
-
-# D1 exports (workflow artifacts)
+# Local database backups
 backup-*.sql
+backups/
+*.sql.gz
 
 # PaddleOCR raw exports and caches are archived outside the repo.
 # Restore them before rebuilding the practice library from source scans.

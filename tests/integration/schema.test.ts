@@ -17,6 +17,12 @@ const MIGRATIONS = [
   "0011_practice_passage_trash.sql",
   "0012_question_share.sql",
   "0013_question_share_indexes.sql",
+  "0015_ranked_practice_library.sql",
+  "0016_subject_rollup_index.sql",
+  "0017_paper_provenance_and_rights.sql",
+  "0018_explanation_provenance_and_review.sql",
+  "0019_attempt_sequence_and_capacity.sql",
+  "0020_exam_info_seed.sql",
 ];
 
 function apply(db: DatabaseSync, names: string[]): void {

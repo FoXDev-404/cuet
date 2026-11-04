@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import DiscussionPreview from "../../components/DiscussionPreview.astro";
 import { getGuestToken } from "../../lib/auth/session";
-import { allOr, firstOr } from "../../lib/db";
+import { allOr } from "../../lib/db";
 import { dbUnavailableResponse } from "../../lib/db-resilient";
 import {
   canAccessAttempt,
@@ -39,7 +39,7 @@ if (attempt.status === "in_progress") return Astro.redirect(`/attempt/${attempt.
 
 let result: Awaited<ReturnType<typeof loadResult>> = null;
 try {
-  result = await loadResult(attempt);
+  result = await loadResult(attempt, { summaryOnly: true });
 } catch (error) {
   console.error("Result load failed", error);
   return dbUnavailableResponse();
@@ -71,48 +71,38 @@ const scoreTone =
 
 // The individual paper board is shown on every finished attempt, including a
 // retake: the board is the paper's, not the attempt's.
-const [leaderboardRows, boardCount] = await Promise.all([
-  allOr<{
-    rank: number;
-    user_id: number;
-    username: string;
-    score: number;
-    time_taken_sec: number;
-    correct: number;
-    wrong: number;
-  }>(
-    `SELECT rank, user_id, username, score, time_taken_sec, correct, wrong FROM (
-       SELECT a.user_id, u.username, a.score, a.time_taken_sec, a.correct, a.wrong,
-              RANK() OVER (
-                ORDER BY a.score DESC, a.time_taken_sec ASC,
-                         (CASE WHEN a.correct + a.wrong > 0
-                               THEN a.correct * 1.0 / (a.correct + a.wrong)
-                               ELSE 0 END) DESC
-              ) AS rank,
-              ROW_NUMBER() OVER (
-                ORDER BY a.score DESC, a.time_taken_sec ASC,
-                         (CASE WHEN a.correct + a.wrong > 0
-                               THEN a.correct * 1.0 / (a.correct + a.wrong)
-                               ELSE 0 END) DESC
-              ) AS position
-       FROM attempts a JOIN users u ON u.id = a.user_id
-       WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
-         AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
-     ) WHERE position <= 5
-     ORDER BY position`,
-    [],
-    attempt.version_id,
-  ),
-  firstOr<{ count: number }>(
-    `SELECT COUNT(*) AS count
+const leaderboardRows = await allOr<{
+  rank: number;
+  user_id: number;
+  username: string;
+  score: number;
+  time_taken_sec: number;
+  correct: number;
+  wrong: number;
+}>(
+  `SELECT rank, user_id, username, score, time_taken_sec, correct, wrong FROM (
+     SELECT a.user_id, u.username, a.score, a.time_taken_sec, a.correct, a.wrong,
+            RANK() OVER (
+              ORDER BY a.score DESC, a.time_taken_sec ASC,
+                       (CASE WHEN a.correct + a.wrong > 0
+                             THEN a.correct * 1.0 / (a.correct + a.wrong)
+                             ELSE 0 END) DESC
+            ) AS rank,
+            ROW_NUMBER() OVER (
+              ORDER BY a.score DESC, a.time_taken_sec ASC,
+                       (CASE WHEN a.correct + a.wrong > 0
+                             THEN a.correct * 1.0 / (a.correct + a.wrong)
+                             ELSE 0 END) DESC
+            ) AS position
      FROM attempts a JOIN users u ON u.id = a.user_id
      WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1
-       AND a.user_id IS NOT NULL AND u.deleted_at IS NULL`,
-    null,
-    attempt.version_id,
-  ),
-]);
-const boardEligible = boardCount?.count ?? 0;
+       AND a.user_id IS NOT NULL AND u.deleted_at IS NULL
+   ) WHERE position <= 5
+   ORDER BY position`,
+  [],
+  attempt.version_id,
+);
+const boardEligible = eligible;
 const boardMedals = ["🥇", "🥈", "🥉"];
 const myBoardRank = leaderboardRows.find((row) => row.user_id === attempt.user_id)?.rank ?? null;
 ---
@@ -159,11 +149,11 @@ const myBoardRank = leaderboardRows.find((row) => row.user_id === attempt.user_i
           <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{attemptedPercent}% of the paper · {totals.skipped} skipped</p>
         </div>
         <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Rank</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Rank (this site)</p>
           {rank && eligible > 0 ? (
             <>
               <p class="mt-1 text-3xl font-black">#{rank}</p>
-              <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">of {eligible} first attempts · {percentile} percentile</p>
+              <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">of {eligible} registered participants · {percentile} percentile among users</p>
             </>
           ) : (
             <>

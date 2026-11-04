@@ -1,0 +1,40 @@
+{
+  "target": "cuet-d1-staging",
+  "database_id": "c527f20e-4401-4d35-9db0-8b7433105d0f",
+  "measured_at": "2026-11-04T10:56:11.172Z",
+  "colo": "SIN",
+  "served_by": "v3-prod",
+  "per_operation": {
+    "start": {
+      "reads": 7,
+      "writes": 13,
+      "sqlDurationMs": 3.5852
+    },
+    "autosave": {
+      "reads": 4,
+      "writes": 4,
+      "sqlDurationMs": 4.6863
+    },
+    "submit": {
+      "reads": 4,
+      "writes": 7,
+      "sqlDurationMs": 43.7863
+    },
+    "result": {
+      "reads": 5,
+      "writes": 0,
+      "sqlDurationMs": 6.6128
+    },
+    "leaderboard": {
+      "reads": 4,
+      "writes": 0,
+      "sqlDurationMs": 5.865
+    },
+    "colo": "SIN",
+    "servedBy": "v3-prod"
+  },
+  "full_test_15_autosaves": {
+    "rows_read": 80,
+    "rows_written": 80
+  }
+}

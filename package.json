@@ -10,7 +10,19 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:a11y": "node scripts/a11y-audit.mjs",
+    "seo:check": "node scripts/seo-consistency.mjs",
+    "lint:copy": "node scripts/copy-lint.mjs",
+    "check:env": "node scripts/check-env-separation.mjs",
+    "check:migrations-remote": "node scripts/check-migrations-remote.mjs",
+    "export:content": "node scripts/export-content.mjs",
+    "purge:test-data": "node scripts/purge-test-data.mjs",
     "admin:create": "node scripts/admin-create.mjs",
+    "report:facts": "node scripts/report-facts.mjs",
+    "report:verify": "node scripts/check-report-evidence.mjs",
+    "verify:suite": "node scripts/run-verification-suite.mjs",
+    "audit:lighthouse": "node scripts/lighthouse-audit.mjs",
+    "perf:check": "node scripts/check-perf-budget.mjs",
+    "audit:reconciliation": "node scripts/data-reconciliation.mjs",
     "og:questions": "node scripts/generate-question-og.mjs",
     "og:questions:local": "node scripts/generate-question-og.mjs --local",
     "og:questions:remote": "node scripts/generate-question-og.mjs --remote",
@@ -53,5 +65,8 @@
     "typescript": "^5.9.3",
     "vitest": "^5.0.5",
     "wrangler": "^4.156.0"
+  },
+  "overrides": {
+    "fflate": "^0.8.2"
   }
 }

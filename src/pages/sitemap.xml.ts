@@ -1,10 +1,11 @@
 import type { APIRoute } from "astro";
 import { allOr } from "../lib/db";
-import { getLocalPapers, getLocalPaperYears, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
+import { getLocalPapers, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
 import { siteUrl } from "../lib/site-url";
 import { getSubjectStats, type SubjectStatRow } from "../lib/subject-stats";
+import { isFixtureMock } from "../lib/fixtures";
 
 type UrlEntry = { loc: string; lastmod?: string | null; changefreq?: string; priority?: string };
 
@@ -35,13 +36,10 @@ export const GET: APIRoute = async ({ request }) => {
   let syllabusSubjects: { slug: string; topic_count: number; question_count: number }[] = [];
   let topics: { subject_slug: string; topic_slug: string; question_count: number }[] = [];
   let pyqYears: { year: number; playable_count: number }[] = [];
-  let pyqSubjects: { year: number; subject_slug: string; playable_count: number }[] = [];
   let posts: { slug: string; updated_at: string | null; published_at: string | null }[] = [];
   let sharedQuestions: SeoIndexableQuestion[] = [];
   let playablePyqCount = 0;
-  let rankedMockCount = 0;
   const localPapers = getLocalPapers();
-  const localYears = getLocalPaperYears();
   const localSubjectSlugs = new Set(localPapers.map((paper) => paper.subject.slug));
   const hasPracticeContent = (slug: string, questionCount: number, paperCount: number) =>
     questionCount > 0 || paperCount > 0 || localSubjectSlugs.has(slug);
@@ -59,9 +57,15 @@ export const GET: APIRoute = async ({ request }) => {
     mocks = await allOr(
       `SELECT m.slug, m.published_at, m.updated_at, m.practice_paper_slug,
               (SELECT COUNT(*) FROM attempts a
-                WHERE a.mock_id = m.id AND a.status = 'submitted' AND a.is_first_attempt = 1) AS eligible
+                JOIN users u ON u.id = a.user_id
+                WHERE a.version_id = m.current_version_id AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL) AS eligible
        FROM mock_tests m
        WHERE m.status = 'published' AND m.deleted_at IS NULL
+         AND m.slug NOT LIKE 'e2e-%'
+         AND m.slug NOT LIKE '%fixture%'
+         AND m.slug NOT LIKE '%publish-check%'
+         AND m.slug NOT LIKE 'slow-network-%'
+         AND LOWER(m.title) NOT LIKE '%fixture%'
          AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)
        ORDER BY m.published_at DESC, m.id DESC`,
       [],
@@ -121,15 +125,6 @@ export const GET: APIRoute = async ({ request }) => {
        ORDER BY p.year DESC`,
       [],
     );
-    pyqSubjects = await allOr(
-      `SELECT p.year, s.slug AS subject_slug, COUNT(DISTINCT m.id) AS playable_count
-       FROM pyq_papers p
-       JOIN subjects s ON s.id = p.subject_id
-       JOIN mock_tests m ON m.pyq_paper_id = p.id AND m.status = 'published' AND m.deleted_at IS NULL
-       WHERE p.status = 'published' AND p.deleted_at IS NULL
-       GROUP BY p.year, s.slug`,
-      [],
-    );
     posts = await allOr(
       `SELECT slug, updated_at, published_at FROM blog_posts
        WHERE status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
@@ -138,10 +133,37 @@ export const GET: APIRoute = async ({ request }) => {
       [],
     );
     playablePyqCount = pyqYears.reduce((total, year) => total + year.playable_count, 0);
-    rankedMockCount = mocks.filter((mock) => mock.eligible > 0).length;
   } catch (error) {
     console.error("sitemap query failed", error);
   }
+
+  // Rights Policy Gate (Fix 3): Papers with rights_status != 'cleared' are excluded from sitemap
+  let rightsMap = new Map<string, string>();
+  try {
+    const rightsRows = await allOr<{ slug: string; rights_status: string }>(
+      `SELECT slug, rights_status FROM practice_papers WHERE deleted_at IS NULL`,
+      [],
+    );
+    rightsMap = new Map(rightsRows.map((r) => [r.slug, r.rights_status]));
+  } catch (err) {
+    console.error("sitemap rights_status query failed", err);
+  }
+
+  // Exam Info Verification Gate (Fix 5 & Fix 7): Unverified pages with noindex excluded from sitemap
+  let examInfoMap = new Map<string, { value: string; last_verified: string | null }>();
+  try {
+    const examInfoRows = await allOr<{ key: string; value: string; last_verified: string | null }>(
+      `SELECT key, value, last_verified FROM exam_info`,
+      [],
+    );
+    examInfoMap = new Map(examInfoRows.map((r) => [r.key, { value: r.value, last_verified: r.last_verified }]));
+  } catch (err) {
+    console.error("sitemap exam_info query failed", err);
+  }
+  const isExamVerified = (key: string) => {
+    const entry = examInfoMap.get(key);
+    return Boolean(entry && entry.value && entry.value !== "TODO_VERIFY" && entry.last_verified);
+  };
 
   // Kept separate so a sharing-policy failure cannot drop the rest of the
   // sitemap. Shared questions are included only when they pass the same
@@ -154,21 +176,18 @@ export const GET: APIRoute = async ({ request }) => {
 
   add("/", { changefreq: "weekly", priority: "1.0" });
   if (mocks.length > 0 || localPapers.length > 0) add("/cuet-ug-mock-test", { changefreq: "weekly", priority: "0.9" });
-  if (subjects.some((subject) => hasPracticeContent(subject.slug, subject.question_count, subject.mock_count))) {
-    add("/cuet-mock-test", { changefreq: "weekly", priority: "0.8" });
-  }
-  add("/cuet-ug-syllabus", { changefreq: "monthly", priority: "0.9" });
-  add("/cuet-ug-exam-pattern", { changefreq: "monthly", priority: "0.9" });
-  add("/cuet-ug-marking-scheme", { changefreq: "monthly", priority: "0.8" });
-  add("/cuet-ug-important-dates", { changefreq: "weekly", priority: "0.8" });
+  if (isExamVerified("syllabus")) add("/cuet-ug-syllabus", { changefreq: "monthly", priority: "0.9" });
+  if (isExamVerified("exam-pattern")) add("/cuet-ug-exam-pattern", { changefreq: "monthly", priority: "0.9" });
+  if (isExamVerified("marking-scheme")) add("/cuet-ug-marking-scheme", { changefreq: "monthly", priority: "0.8" });
+  if (isExamVerified("important-dates")) add("/cuet-ug-important-dates", { changefreq: "weekly", priority: "0.8" });
   if (playablePyqCount > 0 || localPapers.length > 0) {
     add("/cuet-ug-previous-year-papers", { changefreq: "monthly", priority: "0.8" });
   }
   if (localPapers.length > 0) {
-    add("/practice", { changefreq: "weekly", priority: "0.8" });
+    add("/mock-tests", { changefreq: "weekly", priority: "0.8" });
   }
   if (posts.length > 0) add("/blog", { changefreq: "weekly", priority: "0.7" });
-  if (rankedMockCount > 0) add("/leaderboard", { changefreq: "daily", priority: "0.6" });
+  add("/leaderboard", { changefreq: "daily", priority: "0.6" });
   add("/about", { changefreq: "yearly", priority: "0.4" });
   add("/contact", { changefreq: "yearly", priority: "0.4" });
   add("/privacy-policy", { changefreq: "yearly", priority: "0.3" });
@@ -196,34 +215,19 @@ export const GET: APIRoute = async ({ request }) => {
     }
   }
 
-  const pyqYearPaths = new Set(
-    pyqYears.filter((year) => year.playable_count > 0).map((year) => `/pyq/${year.year}`),
-  );
-  for (const year of localYears) {
-    if (year.playable_count > 0) pyqYearPaths.add(`/pyq/${year.year}`);
-  }
-  for (const path of pyqYearPaths) {
-    add(path, { changefreq: "monthly", priority: "0.6" });
-  }
-
-  const pyqSubjectPaths = new Set(
-    pyqSubjects
-      .filter((paper) => paper.playable_count > 0)
-      .map((paper) => `/pyq/${paper.year}/${paper.subject_slug}`),
-  );
-  for (const paper of localPapers) {
-    pyqSubjectPaths.add(`/pyq/${paper.year}/${paper.subject.slug}`);
-  }
-  for (const path of pyqSubjectPaths) {
-    add(path, { changefreq: "monthly", priority: "0.5" });
-  }
+  // Thin Content & Rights Policy Gate (Fix R7):
+  // PYQ archive list pages (/pyq/:year and /pyq/:year/:subject) are thin content and gated with noindex,
+  // so they are intentionally excluded from sitemap.xml.
 
   for (const paper of localPapers) {
-    add(paper.path, {
-      lastmod: LOCAL_LIBRARY_ADDED_AT,
-      changefreq: "monthly",
-      priority: "0.6",
-    });
+    const rights = rightsMap.get(paper.slug) ?? "unknown";
+    if (rights === "cleared") {
+      add(paper.path, {
+        lastmod: LOCAL_LIBRARY_ADDED_AT,
+        changefreq: "monthly",
+        priority: "0.6",
+      });
+    }
   }
 
   for (const post of posts) {
@@ -235,7 +239,8 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   for (const mock of mocks) {
-    // Imported previous-year papers are canonical on /practice/<slug>, so only
+    if (isFixtureMock(mock)) continue;
+    // Imported previous-year papers are canonical on /mock-tests/<slug>, so only
     // their leaderboard is a distinct indexable URL.
     if (!mock.practice_paper_slug) {
       add(`/mock/${mock.slug}`, {

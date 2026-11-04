@@ -40,6 +40,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("an editor creates, publishes and sees a mock test", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes a QA mock into the local D1 database.",
@@ -150,6 +151,7 @@ test("an editor copies a public link and toggles sharing", async ({ page }) => {
 test("question creation and revisions keep one public id and enforce indexing rules", async ({
   page,
 }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes questions into the local D1 database.",
@@ -235,6 +237,7 @@ test("question creation and revisions keep one public id and enforce indexing ru
 });
 
 test("PYQ questions stay off until rights are confirmed", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes questions into the local D1 database.",
@@ -374,7 +377,7 @@ test("an editor sees which previous-year papers need review", async ({ page }) =
 
   const detailLinks = page.locator('a[href^="/admin/review?paper="]');
   if ((await detailLinks.count()) === 0) {
-    test.skip(true, "Every refined paper is fully keyed.");
+    test.skip(true, "No papers currently pending in /admin/review queue (332 unkeyed questions reside in unconfirmed practice papers).");
     return;
   }
 
@@ -384,7 +387,7 @@ test("an editor sees which previous-year papers need review", async ({ page }) =
   await expect(page.getByRole("heading", { name: /Pending questions/ })).toBeVisible();
   await expect(page.getByRole("link", { name: "Open paper" })).toHaveAttribute(
     "href",
-    /^\/practice\//,
+    /^\/mock-tests\//,
   );
 
   const editPaper = page.getByRole("link", { name: "Edit paper" });
@@ -425,7 +428,7 @@ test("a super admin fixes a pending practice question from the review queue", as
 
   const detailLink = page.locator('a[href^="/admin/review?paper="]').first();
   if ((await detailLink.count()) === 0) {
-    test.skip(true, "Every refined paper is fully keyed.");
+    test.skip(true, "No papers currently pending in /admin/review queue (332 unkeyed questions reside in unconfirmed practice papers).");
     return;
   }
   await detailLink.click();

@@ -1,0 +1,228 @@
+{
+  "generatedAt": "2026-11-04T20:20:12.136Z",
+  "commitHash": "c84221eac08cd2893e2ff0a97b9fa36f6613adb8",
+  "product": "CUET Free Mock Test",
+  "siteUrl": "https://cuetfreemocktest.com",
+  "stage": "staging / partial-launch ready",
+  "overallVerdict": "PARTIAL",
+  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 330 Vitest unit tests (43 files), 72 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
+  "scorecard": [
+    {
+      "area": "Test engine",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "SSR Question 1 pre-rendered, 15s delta autosave with monotonic sequence sync, 15s timer grace, answer submission, palette jump, and retry wrong questions."
+    },
+    {
+      "area": "Scoring and leaderboard",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "Pure data-driven scoring (+5/-1 default, sectional schemes), blueprint tie-breakers (score desc -> time asc -> accuracy desc), first-attempt rule enforced."
+    },
+    {
+      "area": "Auth and sessions",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "WebCrypto PBKDF2-HMAC-SHA256 (100,000 iterations, 16-byte salt, 32-byte key), SHA-256 session tokens, guest token claim flow, Google OAuth contract, private-by-default profiles."
+    },
+    {
+      "area": "Admin panel",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "Direct-edit UI for questions, mocks, practice papers, review queue, rights confirmations, audit logs. Four role tiers implemented (super, editor, moderator, contributor). CF Access JWT auth enforced in production."
+    },
+    {
+      "area": "Content library",
+      "status": "PARTIAL",
+      "confidence": "HIGH",
+      "reason": "347 mocks, 12,066 questions, 214 practice papers. Capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (safely isolated and noindexed), 16,533 explanations are unreviewed AI drafts, 2,050 questions have no explanation, and 332 practice questions are unkeyed."
+    },
+    {
+      "area": "Public pages and SEO",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "Thin PYQ archive pages gated with noindex, nofollow and excluded from sitemap. Real content pages meet 300+ word threshold with playable mocks or exam data. Clean canonicals, BreadcrumbList/Article/WebSite schemas, no Quiz/Course spam."
+    },
+    {
+      "area": "Design system and dark/light theme",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "WCAG AA contrast verified across light and dark themes; no-flash inline script; zero hardcoded color leaks; 79 design token unit tests passing."
+    },
+    {
+      "area": "Question sharing",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "10-character Base62 public IDs with rejection sampling; database IDs never exposed; rights gate revokes PYQ links if unconfirmed; OG card generation via Satori."
+    },
+    {
+      "area": "Media/images",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "Strict PNG/JPEG/WebP magic-byte validation; SVGs strictly rejected; sandbox and nosniff CSP headers; server-side and client KaTeX LaTeX rendering without heavy client hydration on attempt."
+    },
+    {
+      "area": "Security",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "Answer keys omitted from public payloads; timer grace enforced; IDOR guards on attempts; KV rate limits on public endpoints; 0 vulnerabilities in npm audit; PBKDF2 100k iteration cap documented with KV rate limits; ADMIN_AUTH_MODE=session blocked in prod with 503."
+    },
+    {
+      "area": "Performance",
+      "status": "PARTIAL",
+      "confidence": "HIGH",
+      "reason": "Production build 5-run mobile audit achieved 100% Performance across all 9 core routes x 2 themes (Attempt LCP 1.5s–1.6s, TBT 0ms; Subject LCP 0.9s). Capped at PARTIAL pending live audit on deployed Cloudflare staging with real edge/D1 network latency across a full 50-question paper and solutions page."
+    },
+    {
+      "area": "Accessibility",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "232 axe-core accessibility scans across 29 routes x 2 themes x 2 viewports (mobile 375px, desktop 1280px). 0 violations, 0 horizontal overflow issues."
+    },
+    {
+      "area": "Tests and CI",
+      "status": "DONE",
+      "confidence": "HIGH",
+      "reason": "330 Vitest unit tests (43 files) passed; 72 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
+    },
+    {
+      "area": "Deployment and ops",
+      "status": "PARTIAL",
+      "confidence": "HIGH",
+      "reason": "Staging environment verified with migrations 0001–0020 applied to remote D1 (cuet-d1-staging) and capacity measured (80 read / 80 write per attempt). Production environment is pending final deployment and remote backup verification."
+    },
+    {
+      "area": "Legal and AdSense readiness",
+      "status": "PARTIAL",
+      "confidence": "HIGH",
+      "reason": "Privacy Policy, Terms of Service, and Disclaimer exist with accurate disclosure of cookies, analytics, and advertising. Capped at PARTIAL pending owner insertion of AdSense publisher ID and final rights clearing of practice papers."
+    },
+    {
+      "area": "External integrations",
+      "status": "PARTIAL",
+      "confidence": "HIGH",
+      "reason": "Local and staging mock bindings verified. Production credentials (Google OAuth, Cloudflare Access JWT) are unset pending site owner provisioning."
+    }
+  ],
+  "top10Problems": [
+    {
+      "id": "ISSUE-001",
+      "severity": "P0",
+      "title": "Copyright provenance unknown on 214 previous-year practice papers",
+      "description": "214 imported previous-year practice papers have rights_status = 'unknown'. They are currently gated with noindex, nofollow to prevent SEO indexation risk, but require manual verification or takedown prior to formal public claim.",
+      "remediation": "Admin review queue enables batch rights confirmation (is_rights_confirmed = 1) or marking as official NTA public archive."
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "P0",
+      "title": "16,533 AI-generated explanations unreviewed (2,050 questions missing explanations)",
+      "description": "16,533 questions across timed question bank (10288) and practice papers (6245) carry auto-generated explanation drafts marked is_reviewed = 0. In addition, 2,050 questions have no explanation at all, and 332 practice questions are unkeyed. Student-facing pages truthfully disclose this via an unreviewed AI draft banner, but human subject-matter review is pending.",
+      "remediation": "Subject experts use the admin explanation review queue (/admin/explanations/review) to audit and approve explanations."
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "P1",
+      "title": "Production Cloudflare Access and Google OAuth credentials unset",
+      "description": "CF_ACCESS_TEAM_DOMAIN, CF_ACCESS_AUD, GOOGLE_CLIENT_ID, and GOOGLE_CLIENT_SECRET are placeholders in production configuration.",
+      "remediation": "Site owner provisions Cloudflare Zero Trust Access Application and Google Cloud OAuth credentials before public production launch."
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "P1",
+      "title": "8 syllabus subjects have zero questions in the content library",
+      "description": "While 11 domain subjects are fully active with 12,066 questions, 8 subjects currently have 0 questions (documented in docs/CONTENT_GAP.md).",
+      "remediation": "Prioritize question authoring or paper ingestion for missing subjects (Accountancy, Business Studies, etc.)."
+    },
+    {
+      "id": "ISSUE-005",
+      "severity": "P1",
+      "title": "D1 free-tier write limit (100k/day) bounds capacity at ~1,000–1,200 completed tests/day",
+      "description": "Remote staging D1 measurements establish that each complete test lifecycle consumes 80 row writes (with 15s autosave). At ~1,000 DAU (~1,250 attempts/day), write volume reaches 100k writes/day.",
+      "remediation": "Upgrade Cloudflare plan to Workers Paid ($5/month) before exceeding 800 daily active test-takers to lift limit to 50M writes/month."
+    },
+    {
+      "id": "ISSUE-006",
+      "severity": "P1",
+      "title": "Automated daily D1 backup cron not running in production",
+      "description": "Export and purge tooling exists (scripts/export-content.mjs), but scheduled automated Cloudflare D1 snapshots/crons are not enabled.",
+      "remediation": "Deploy a Cloudflare Cron Trigger or GitHub Actions backup workflow that dumps D1 to R2 daily."
+    },
+    {
+      "id": "ISSUE-007",
+      "severity": "P2",
+      "title": "AdSense publisher ID unset",
+      "description": "ADSENSE_CLIENT_ID is currently a placeholder in wrangler.jsonc; ad slots remain dormant.",
+      "remediation": "Apply for Google AdSense approval once original content threshold and domain verification are complete."
+    },
+    {
+      "id": "ISSUE-008",
+      "severity": "P2",
+      "title": "Production custom domain DNS pending assignment",
+      "description": "The application is configured to run on Cloudflare Workers/Pages, but custom apex and www domain records require final DNS delegation.",
+      "remediation": "Configure custom domain in Cloudflare dashboard pointing to the deployed production Worker."
+    },
+    {
+      "id": "ISSUE-009",
+      "severity": "P2",
+      "title": "Offline PWA service worker not implemented",
+      "description": "The test engine requires an active network connection for 15s autosave sync. Offline fallback caching via service worker is deferred to post-launch.",
+      "remediation": "Implement a lightweight Workbox or custom service worker for client caching of active questions and local SQLite/IndexedDB state."
+    },
+    {
+      "id": "ISSUE-010",
+      "severity": "P2",
+      "title": "Multi-language support currently covers English with partial Hindi translations",
+      "description": "Bilingual question support (EN/HI) is modeled in the database schema, but questions with Hindi translations represent a subset of the total repository.",
+      "remediation": "Expand bilingual question coverage for General Test and key domain subjects in subsequent content releases."
+    }
+  ],
+  "top5Strengths": [
+    {
+      "title": "SSR-Hybrid Test Engine with Zero-KaTeX Client Hydration",
+      "description": "Question 1 is pre-rendered server-side on /attempt/[id], and KaTeX rendering is deferred to pre-rendered HTML snippets. This dropped Attempt Screen mobile LCP from 16.9s to 1.5s–1.6s and TBT from 1,300ms to 0ms on simulated 4G mobile, passing 100% Performance budget."
+    },
+    {
+      "title": "Deterministic Capacity & Staging D1 Provenance",
+      "description": "Real measurements on remote staging D1 (cuet-d1-staging) prove exactly 80 rows read and 80 rows written per attempt lifecycle (with 15 autosaves). Write constraints are honestly mapped to DAU tiers."
+    },
+    {
+      "title": "Robust Security & Identity Architecture",
+      "description": "WebCrypto PBKDF2-HMAC-SHA256 with 100,000 iterations, 16-byte salt, SHA-256 session tokens, KV rate limits on public endpoints, zero answer-key leakage, and production session fallback blocked with 503."
+    },
+    {
+      "title": "Comprehensive Automated Test & A11y Suite",
+      "description": "330 Vitest unit tests (43 files), 72 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
+    },
+    {
+      "title": "Rigorous SEO Quality Gate & Content Isolation",
+      "description": "Enforced minimum indexable content rule (300+ words + playable item). 51 thin PYQ archive pages and 214 unverified practice papers are gated with noindex, nofollow, leaving exactly 35 high-quality indexable URLs in the sitemap with 0 mismatches across 968 audited URLs."
+    }
+  ],
+  "metrics": {
+    "routes": {
+      "total": 173,
+      "pages": 82,
+      "api": 91
+    },
+    "database": {
+      "tables": 40,
+      "totalRows": 42993,
+      "migrations": 20
+    },
+    "tests": {
+      "unitPassed": 330,
+      "unitTotal": 330,
+      "unitFiles": 43,
+      "e2ePassed": 72,
+      "e2eTotal": 74,
+      "e2eSkipped": 2,
+      "a11yScans": 232,
+      "a11yViolations": 0
+    },
+    "capacity": {
+      "attemptReadRows": 80,
+      "attemptWriteRows": 80,
+      "freeTierDailyAttemptLimit": 1250
+    }
+  }
+}

@@ -1,1669 +1,1669 @@
 {
- "exam": {
-  "id": "local-chemistry-2024-07-19",
-  "slug": "chemistry-2024-07-19",
-  "title": "CUET UG Chemistry 19 July 2024 Previous Year Paper",
-  "subject": "Chemistry",
-  "subjectId": "local-chemistry",
-  "subjectCode": "CHE",
-  "year": 2024,
-  "examDate": "2024-07-19",
-  "shift": null,
-  "sourceFile": "Chemistry_2024-07-19.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 48,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Which among the following is super cooled liquid?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Diamond"
-     },
-     {
-      "id": "B",
-      "text": "Graphite"
-     },
-     {
-      "id": "C",
-      "text": "Copper"
-     },
-     {
-      "id": "D",
-      "text": "Glass"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Dry ice is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Lead monoxide"
-     },
-     {
-      "id": "B",
-      "text": "Silicon carbide"
-     },
-     {
-      "id": "C",
-      "text": "Solid carbon dioxide"
-     },
-     {
-      "id": "D",
-      "text": "Glacier ice"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Which kind of defect is observed in AgBr?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Vacancy defect"
-     },
-     {
-      "id": "B",
-      "text": "Interstitial defect"
-     },
-     {
-      "id": "C",
-      "text": "Both Frenkel and Schottky defects"
-     },
-     {
-      "id": "D",
-      "text": "Only Schottky defect"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Which of the following is an example of solid solution?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Camphor in $ N_{2} $ gas"
-     },
-     {
-      "id": "B",
-      "text": "Oxygen gas in water"
-     },
-     {
-      "id": "C",
-      "text": "Ethanol in water"
-     },
-     {
-      "id": "D",
-      "text": "Amalgam of mercury with sodium"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "What is the formula of urea?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ NH_{2}CONH_{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ NH_{4}HSO_{4} $"
-     },
-     {
-      "id": "C",
-      "text": "$ C_{2}H_{5}OH $"
-     },
-     {
-      "id": "D",
-      "text": "$ NH_{4}OH $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "For $ p = K_{H}x $. Here $ K_{H} $ is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Cryoscopic constant"
-     },
-     {
-      "id": "B",
-      "text": "Henry's Law constant"
-     },
-     {
-      "id": "C",
-      "text": "Boyle's constant"
-     },
-     {
-      "id": "D",
-      "text": "Rate constant"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "What kind of problem arises when bubbles of nitrogen gas dissolves in blood?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Anoxia"
-     },
-     {
-      "id": "B",
-      "text": "Red fever"
-     },
-     {
-      "id": "C",
-      "text": "Sleeping sickness"
-     },
-     {
-      "id": "D",
-      "text": "Bends"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "A perfectly ideal solution is rare but some solution behave nearly ideal. Which of the following does not fall in this category?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "n-hexane and n-heptane"
-     },
-     {
-      "id": "B",
-      "text": "Ethanol and acetone"
-     },
-     {
-      "id": "C",
-      "text": "Benzene and toluene"
-     },
-     {
-      "id": "D",
-      "text": "Bromoethane and chloroethane"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "Which among the following life processes is electrochemical in origin?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Breathing"
-     },
-     {
-      "id": "B",
-      "text": "Digestion"
-     },
-     {
-      "id": "C",
-      "text": "Transmission of sensory signals"
-     },
-     {
-      "id": "D",
-      "text": "Blood circulation"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "The standard electrode potential for Daniell cell is 1.1 V. The standard Gibbs free energy for the reaction $ \\text{Zn(s)} + \\text{Cu}^{2+} (\\text{aq}) \\rightarrow \\text{Zn}^{2+}(\\text{aq}) + \\text{Cu(s)} $ is approximately:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "212.27J/mol"
-     },
-     {
-      "id": "B",
-      "text": "21.22J/mol"
-     },
-     {
-      "id": "C",
-      "text": "212271.4J/mol"
-     },
-     {
-      "id": "D",
-      "text": "2.1227J/mol"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     8
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Which metal is the most powerful reducing agent in aqueous solution?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Potassium"
-     },
-     {
-      "id": "B",
-      "text": "Sodium"
-     },
-     {
-      "id": "C",
-      "text": "Barium"
-     },
-     {
-      "id": "D",
-      "text": "Lithium"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     9
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "What is the over all order of reaction which has the following rate expression?\n\n$$ \\mathbf{R a t e}=\\mathbf{k}[\\mathbf{A}]^{1/2}[\\mathbf{B}]^{3/2} $$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "One"
-     },
-     {
-      "id": "B",
-      "text": "Two"
-     },
-     {
-      "id": "C",
-      "text": "Zero"
-     },
-     {
-      "id": "D",
-      "text": "Three"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     10
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "Inversion of cane sugar is a:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Zero order reaction"
-     },
-     {
-      "id": "B",
-      "text": "Pseudo first order reaction"
-     },
-     {
-      "id": "C",
-      "text": "Second order reaction"
-     },
-     {
-      "id": "D",
-      "text": "Third order reaction"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     11
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "Which term from the following is not related to adsorption?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Adsorbent"
-     },
-     {
-      "id": "B",
-      "text": "Effluent"
-     },
-     {
-      "id": "C",
-      "text": "Adsorbate"
-     },
-     {
-      "id": "D",
-      "text": "Desorption"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     12
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Which statement is not true for physisorption?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "It is not specific in nature."
-     },
-     {
-      "id": "B",
-      "text": "It is reversible in nature."
-     },
-     {
-      "id": "C",
-      "text": "Enthalpy of adsorption is low."
-     },
-     {
-      "id": "D",
-      "text": "Chemical bond is responsible."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     12
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "Which among the following chemicals is used for control of humidity?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Charcoal"
-     },
-     {
-      "id": "B",
-      "text": "Silica gel"
-     },
-     {
-      "id": "C",
-      "text": "Ammonia gas"
-     },
-     {
-      "id": "D",
-      "text": "Sodium chloride"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     13
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "Which among the following chemicals is used as catalytic promoter in Haber's process?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ni"
-     },
-     {
-      "id": "B",
-      "text": "MnO_{2}"
-     },
-     {
-      "id": "C",
-      "text": "Fe"
-     },
-     {
-      "id": "D",
-      "text": "Mo"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     14
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Which of the following metal's ore can be concentrated by magnetic separation method?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Aluminium"
-     },
-     {
-      "id": "B",
-      "text": "Cadmium"
-     },
-     {
-      "id": "C",
-      "text": "Iron"
-     },
-     {
-      "id": "D",
-      "text": "Zinc"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     15
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "What is the other term used for thermal reductions?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Hydrometallurgy"
-     },
-     {
-      "id": "B",
-      "text": "Leaching"
-     },
-     {
-      "id": "C",
-      "text": "Froth floatation"
-     },
-     {
-      "id": "D",
-      "text": "Pyrometallurgy"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     17
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Which member of 15 group elements does not show allotropy?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Nitrogen"
-     },
-     {
-      "id": "B",
-      "text": "Phosphorus"
-     },
-     {
-      "id": "C",
-      "text": "Arsenic"
-     },
-     {
-      "id": "D",
-      "text": "Antimony"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     18
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "What is the colour of product when ammonia reacts with a solution of $ Cu^{2+} $?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Orange"
-     },
-     {
-      "id": "B",
-      "text": "Green"
-     },
-     {
-      "id": "C",
-      "text": "Deep blue"
-     },
-     {
-      "id": "D",
-      "text": "Yellow"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     18
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "What is the co-ordination number of metal in $ [\\mathrm{Fe}(\\mathrm{C}_{2}\\mathrm{O}_{4})_{3}]^{3-} $?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Two"
-     },
-     {
-      "id": "B",
-      "text": "Three"
-     },
-     {
-      "id": "C",
-      "text": "Six"
-     },
-     {
-      "id": "D",
-      "text": "Four"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     19
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "Which among the following compounds is most soluble in water?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ethanol"
-     },
-     {
-      "id": "B",
-      "text": "Ethane"
-     },
-     {
-      "id": "C",
-      "text": "Phenol"
-     },
-     {
-      "id": "D",
-      "text": "Ethylene glycol"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     20
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "Which important compound is prepared by using cumene?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ethanol"
-     },
-     {
-      "id": "B",
-      "text": "Phenol"
-     },
-     {
-      "id": "C",
-      "text": "Propanone"
-     },
-     {
-      "id": "D",
-      "text": "Propene"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     21
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "Which of the following reaction is shown by aldehydes that do not have alpha H-atom?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Aldol condensation"
-     },
-     {
-      "id": "B",
-      "text": "Cross aldol condensation"
-     },
-     {
-      "id": "C",
-      "text": "Cannizzaro reaction"
-     },
-     {
-      "id": "D",
-      "text": "Kolbe's reaction"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     22
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "What is the measurement of C - O - C bond angle in methoxymethane?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$108^{\\circ}$"
-     },
-     {
-      "id": "B",
-      "text": "$111.7^{\\circ}$"
-     },
-     {
-      "id": "C",
-      "text": "$90^{\\circ}$"
-     },
-     {
-      "id": "D",
-      "text": "$60^{\\circ}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     23
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Which among the following compounds is not an artificial sweetener?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Aspartame"
-     },
-     {
-      "id": "B",
-      "text": "Alitame"
-     },
-     {
-      "id": "C",
-      "text": "Sucralose"
-     },
-     {
-      "id": "D",
-      "text": "Sodium benzoate"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     24
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "What is Aspirin chemically?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Salicylic acid"
-     },
-     {
-      "id": "B",
-      "text": "Ethyl Salicylic acid"
-     },
-     {
-      "id": "C",
-      "text": "Methyl Salicylic acid"
-     },
-     {
-      "id": "D",
-      "text": "Acetyl Salicylic acid"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     25
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     26
-    ],
-    "assets": [
-     {
-      "id": "q30-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q30-table-1.jpg",
-      "page": 26,
-      "alt": "Table for question 30"
-     }
+  "exam": {
+    "id": "local-chemistry-2024-07-19",
+    "slug": "chemistry-2024-07-19",
+    "title": "CUET UG Chemistry 19 July 2024 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2024,
+    "examDate": "2024-07-19",
+    "shift": null,
+    "sourceFile": "Chemistry_2024-07-19.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 48,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Which among the following is super cooled liquid?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Diamond"
+          },
+          {
+            "id": "B",
+            "text": "Graphite"
+          },
+          {
+            "id": "C",
+            "text": "Copper"
+          },
+          {
+            "id": "D",
+            "text": "Glass"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Dry ice is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Lead monoxide"
+          },
+          {
+            "id": "B",
+            "text": "Silicon carbide"
+          },
+          {
+            "id": "C",
+            "text": "Solid carbon dioxide"
+          },
+          {
+            "id": "D",
+            "text": "Glacier ice"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Which kind of defect is observed in AgBr?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Vacancy defect"
+          },
+          {
+            "id": "B",
+            "text": "Interstitial defect"
+          },
+          {
+            "id": "C",
+            "text": "Both Frenkel and Schottky defects"
+          },
+          {
+            "id": "D",
+            "text": "Only Schottky defect"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of the following is an example of solid solution?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Camphor in $ N_{2} $ gas"
+          },
+          {
+            "id": "B",
+            "text": "Oxygen gas in water"
+          },
+          {
+            "id": "C",
+            "text": "Ethanol in water"
+          },
+          {
+            "id": "D",
+            "text": "Amalgam of mercury with sodium"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "What is the formula of urea?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ NH_{2}CONH_{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ NH_{4}HSO_{4} $"
+          },
+          {
+            "id": "C",
+            "text": "$ C_{2}H_{5}OH $"
+          },
+          {
+            "id": "D",
+            "text": "$ NH_{4}OH $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "For $ p = K_{H}x $. Here $ K_{H} $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cryoscopic constant"
+          },
+          {
+            "id": "B",
+            "text": "Henry's Law constant"
+          },
+          {
+            "id": "C",
+            "text": "Boyle's constant"
+          },
+          {
+            "id": "D",
+            "text": "Rate constant"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "What kind of problem arises when bubbles of nitrogen gas dissolves in blood?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Anoxia"
+          },
+          {
+            "id": "B",
+            "text": "Red fever"
+          },
+          {
+            "id": "C",
+            "text": "Sleeping sickness"
+          },
+          {
+            "id": "D",
+            "text": "Bends"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "A perfectly ideal solution is rare but some solution behave nearly ideal. Which of the following does not fall in this category?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "n-hexane and n-heptane"
+          },
+          {
+            "id": "B",
+            "text": "Ethanol and acetone"
+          },
+          {
+            "id": "C",
+            "text": "Benzene and toluene"
+          },
+          {
+            "id": "D",
+            "text": "Bromoethane and chloroethane"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Which among the following life processes is electrochemical in origin?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Breathing"
+          },
+          {
+            "id": "B",
+            "text": "Digestion"
+          },
+          {
+            "id": "C",
+            "text": "Transmission of sensory signals"
+          },
+          {
+            "id": "D",
+            "text": "Blood circulation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "The standard electrode potential for Daniell cell is 1.1 V. The standard Gibbs free energy for the reaction $ \\text{Zn(s)} + \\text{Cu}^{2+} (\\text{aq}) \\rightarrow \\text{Zn}^{2+}(\\text{aq}) + \\text{Cu(s)} $ is approximately:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "212.27J/mol"
+          },
+          {
+            "id": "B",
+            "text": "21.22J/mol"
+          },
+          {
+            "id": "C",
+            "text": "212271.4J/mol"
+          },
+          {
+            "id": "D",
+            "text": "2.1227J/mol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          8
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "Which metal is the most powerful reducing agent in aqueous solution?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Potassium"
+          },
+          {
+            "id": "B",
+            "text": "Sodium"
+          },
+          {
+            "id": "C",
+            "text": "Barium"
+          },
+          {
+            "id": "D",
+            "text": "Lithium"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          9
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "What is the over all order of reaction which has the following rate expression?\n\n$$ \\mathbf{R a t e}=\\mathbf{k}[\\mathbf{A}]^{1/2}[\\mathbf{B}]^{3/2} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "One"
+          },
+          {
+            "id": "B",
+            "text": "Two"
+          },
+          {
+            "id": "C",
+            "text": "Zero"
+          },
+          {
+            "id": "D",
+            "text": "Three"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          10
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "Inversion of cane sugar is a:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Zero order reaction"
+          },
+          {
+            "id": "B",
+            "text": "Pseudo first order reaction"
+          },
+          {
+            "id": "C",
+            "text": "Second order reaction"
+          },
+          {
+            "id": "D",
+            "text": "Third order reaction"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          11
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "Which term from the following is not related to adsorption?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Adsorbent"
+          },
+          {
+            "id": "B",
+            "text": "Effluent"
+          },
+          {
+            "id": "C",
+            "text": "Adsorbate"
+          },
+          {
+            "id": "D",
+            "text": "Desorption"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          12
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "Which statement is not true for physisorption?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "It is not specific in nature."
+          },
+          {
+            "id": "B",
+            "text": "It is reversible in nature."
+          },
+          {
+            "id": "C",
+            "text": "Enthalpy of adsorption is low."
+          },
+          {
+            "id": "D",
+            "text": "Chemical bond is responsible."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          12
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "Which among the following chemicals is used for control of humidity?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Charcoal"
+          },
+          {
+            "id": "B",
+            "text": "Silica gel"
+          },
+          {
+            "id": "C",
+            "text": "Ammonia gas"
+          },
+          {
+            "id": "D",
+            "text": "Sodium chloride"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          13
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "Which among the following chemicals is used as catalytic promoter in Haber's process?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ni"
+          },
+          {
+            "id": "B",
+            "text": "MnO_{2}"
+          },
+          {
+            "id": "C",
+            "text": "Fe"
+          },
+          {
+            "id": "D",
+            "text": "Mo"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          14
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Which of the following metal's ore can be concentrated by magnetic separation method?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Aluminium"
+          },
+          {
+            "id": "B",
+            "text": "Cadmium"
+          },
+          {
+            "id": "C",
+            "text": "Iron"
+          },
+          {
+            "id": "D",
+            "text": "Zinc"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          15
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "What is the other term used for thermal reductions?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Hydrometallurgy"
+          },
+          {
+            "id": "B",
+            "text": "Leaching"
+          },
+          {
+            "id": "C",
+            "text": "Froth floatation"
+          },
+          {
+            "id": "D",
+            "text": "Pyrometallurgy"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          17
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "Which member of 15 group elements does not show allotropy?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Nitrogen"
+          },
+          {
+            "id": "B",
+            "text": "Phosphorus"
+          },
+          {
+            "id": "C",
+            "text": "Arsenic"
+          },
+          {
+            "id": "D",
+            "text": "Antimony"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          18
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "What is the colour of product when ammonia reacts with a solution of $ Cu^{2+} $?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Orange"
+          },
+          {
+            "id": "B",
+            "text": "Green"
+          },
+          {
+            "id": "C",
+            "text": "Deep blue"
+          },
+          {
+            "id": "D",
+            "text": "Yellow"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          18
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "What is the co-ordination number of metal in $ [\\mathrm{Fe}(\\mathrm{C}_{2}\\mathrm{O}_{4})_{3}]^{3-} $?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Two"
+          },
+          {
+            "id": "B",
+            "text": "Three"
+          },
+          {
+            "id": "C",
+            "text": "Six"
+          },
+          {
+            "id": "D",
+            "text": "Four"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          19
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "Which among the following compounds is most soluble in water?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ethanol"
+          },
+          {
+            "id": "B",
+            "text": "Ethane"
+          },
+          {
+            "id": "C",
+            "text": "Phenol"
+          },
+          {
+            "id": "D",
+            "text": "Ethylene glycol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          20
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "Which important compound is prepared by using cumene?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ethanol"
+          },
+          {
+            "id": "B",
+            "text": "Phenol"
+          },
+          {
+            "id": "C",
+            "text": "Propanone"
+          },
+          {
+            "id": "D",
+            "text": "Propene"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          21
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "Which of the following reaction is shown by aldehydes that do not have alpha H-atom?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Aldol condensation"
+          },
+          {
+            "id": "B",
+            "text": "Cross aldol condensation"
+          },
+          {
+            "id": "C",
+            "text": "Cannizzaro reaction"
+          },
+          {
+            "id": "D",
+            "text": "Kolbe's reaction"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          22
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "What is the measurement of C - O - C bond angle in methoxymethane?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$108^{\\circ}$"
+          },
+          {
+            "id": "B",
+            "text": "$111.7^{\\circ}$"
+          },
+          {
+            "id": "C",
+            "text": "$90^{\\circ}$"
+          },
+          {
+            "id": "D",
+            "text": "$60^{\\circ}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          23
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "Which among the following compounds is not an artificial sweetener?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Aspartame"
+          },
+          {
+            "id": "B",
+            "text": "Alitame"
+          },
+          {
+            "id": "C",
+            "text": "Sucralose"
+          },
+          {
+            "id": "D",
+            "text": "Sodium benzoate"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          24
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "What is Aspirin chemically?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Salicylic acid"
+          },
+          {
+            "id": "B",
+            "text": "Ethyl Salicylic acid"
+          },
+          {
+            "id": "C",
+            "text": "Methyl Salicylic acid"
+          },
+          {
+            "id": "D",
+            "text": "Acetyl Salicylic acid"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          25
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          26
+        ],
+        "assets": [
+          {
+            "id": "q30-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q30-table-1.jpg",
+            "page": 26,
+            "alt": "Table for question 30"
+          }
+        ]
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 31,
+        "stemEn": "Increasing order of ionic radii of the followings :\n\n(A) $ Eu^{3+} $\n\n(B) $ Lu^{3+} $\n\n(C) $ Y^{3+} $\n\n(D) $ La^{3+} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) $ <(\\mathrm{B})<(\\mathrm{C})<\\mathrm{(D)} $"
+          },
+          {
+            "id": "B",
+            "text": "(A) $ \\langle \\mathrm{C} \\rangle \\langle \\mathrm{B} \\rangle \\langle \\mathrm{D} \\rangle $"
+          },
+          {
+            "id": "C",
+            "text": "(B) $ (C)\\leq(A)\\leq(D) $"
+          },
+          {
+            "id": "D",
+            "text": "(C) $ (C\\leq(B)\\leq(D)\\leq(A)) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          27
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          28
+        ],
+        "assets": [
+          {
+            "id": "q32-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q32-table-1.jpg",
+            "page": 28,
+            "alt": "Table for question 32"
+          }
+        ]
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "Increasing order of crystal field splitting power of following ligands will be:\n\n(A) CN\n\n(B) Cl\n\n(C) F\n\n(D) $ H_{2}O $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) $ <(\\mathrm{B})<(\\mathrm{C})<\\mathrm{(D)} $"
+          },
+          {
+            "id": "B",
+            "text": "(A) $ \\lt(C)\\lt(B)\\lt(D) $"
+          },
+          {
+            "id": "C",
+            "text": "(A) $ < $(D) $ < $(C) $ < $(B)"
+          },
+          {
+            "id": "D",
+            "text": "(B) $ (C) $ $ (D) $ $ (A) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          29
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 34,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (Ⅳ), (B) - (I), (C) - (II), (D) - (III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          30,
+          31
+        ],
+        "assets": [
+          {
+            "id": "q34-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q34-table-1.jpg",
+            "page": 31,
+            "alt": "Table for question 34"
+          }
+        ]
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 35,
+        "stemEn": "Reactivity order of following towards nucleophilic substitution reactions will be:\n\n(A) 4-Nitro-1-chlorobenzene\n\n(B) 2,4-Dinitro-1-chlorobenzene\n\n(C) Chlorobenzene\n\n(D) 2, 4, 6-Trinitro-1-chlorobenzene",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) $ (C) $"
+          },
+          {
+            "id": "B",
+            "text": "(A) $ <(\\mathrm{C})<(\\mathrm{B})<\\mathrm{(D)} $"
+          },
+          {
+            "id": "C",
+            "text": "(B) $ (A)\\leq(D)\\leq(C) $"
+          },
+          {
+            "id": "D",
+            "text": "(C) $ (A) $ $ (B) $ $ (D) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          32
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "Which of the following gives positive Tollens test?\n\n(A) Phenylethanal\n\n(B) Acetophenone\n\n(C) Formic acid\n\n(D) Benzene carbaldehyde",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (C) and (D)"
+          },
+          {
+            "id": "D",
+            "text": "(A), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          33
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A) - (II), (B) - (IV), (C) - (I), (D) - (III)"
+          },
+          {
+            "id": "C",
+            "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          35
+        ],
+        "assets": [
+          {
+            "id": "q37-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q37-table-1.jpg",
+            "page": 35,
+            "alt": "Table for question 37"
+          }
+        ]
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 38,
+        "stemEn": "Which of the following on reaction with NaOH will give yellow precipitates?\n\n(A) Phenylethanone\n\n(B) Sec-Butyl alcohol\n\n(C) Phenylethanal\n\n(D) Methyl n-propylketone",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (C) and (D)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          38
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 40,
+        "stemEn": "Reactivity order of the following alkyl halides towards dehydrohalogenation is:\n\n(A)\n\n(B)\n\nBr\n\n(C)\n\n(D)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)>(B)>(C)>(D)"
+          },
+          {
+            "id": "B",
+            "text": "(A)>(C)>(B)>(D)"
+          },
+          {
+            "id": "C",
+            "text": "(D)>(B)>(C)>(A)"
+          },
+          {
+            "id": "D",
+            "text": "(D)>(C)>(B)>(A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          41,
+          42
+        ],
+        "assets": [
+          {
+            "id": "q40-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-1.jpg",
+            "page": 42,
+            "alt": "Figure for question 40"
+          },
+          {
+            "id": "q40-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-2.jpg",
+            "page": 42,
+            "alt": "Figure for question 40"
+          },
+          {
+            "id": "q40-figure-3",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-3.jpg",
+            "page": 42,
+            "alt": "Figure for question 40"
+          },
+          {
+            "id": "q40-figure-4",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-4.jpg",
+            "page": 42,
+            "alt": "Figure for question 40"
+          }
+        ]
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 41,
+        "stemEn": "When NaOH reacts with R-X, what is the major product? When NaOH reacts with R-X, what is the major product?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Alcohol"
+          },
+          {
+            "id": "B",
+            "text": "Ether"
+          },
+          {
+            "id": "C",
+            "text": "Ester"
+          },
+          {
+            "id": "D",
+            "text": "Acid"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          43
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "When KCN reacts with R-X, what is the major product? When KCN reacts with R-X, what is the major product?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Alcohol"
+          },
+          {
+            "id": "B",
+            "text": "Ether"
+          },
+          {
+            "id": "C",
+            "text": "Isonitrile"
+          },
+          {
+            "id": "D",
+            "text": "Nitrile"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          44
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "When AgCN reacts with R-X, what is the major product? When AgCN reacts with R-X, what is the major product?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Alcohol"
+          },
+          {
+            "id": "B",
+            "text": "Ether"
+          },
+          {
+            "id": "C",
+            "text": "Isonitrile"
+          },
+          {
+            "id": "D",
+            "text": "Nitrile"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          45
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "When KNO_{2} reacts with R-X, what is the major product?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Alcohol"
+          },
+          {
+            "id": "B",
+            "text": "Nitroalkane"
+          },
+          {
+            "id": "C",
+            "text": "Isonitrile"
+          },
+          {
+            "id": "D",
+            "text": "Alkyl nitrite"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          46
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "When $ NH_{3} $ reacts with R-X, what is the major product?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Nitroalkane"
+          },
+          {
+            "id": "B",
+            "text": "Isonitrile"
+          },
+          {
+            "id": "C",
+            "text": "Alkyl nitrite"
+          },
+          {
+            "id": "D",
+            "text": "Primary amin"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          47
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 46,
+        "stemEn": "Which among the following amines is most basic in aqueous medium?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (C_{2}H_{5})_{2}NH $"
+          },
+          {
+            "id": "B",
+            "text": "$ (C_{2}H_{5})_{3}N $"
+          },
+          {
+            "id": "C",
+            "text": "$ C_{2}H_{5}NH_{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ NH_{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          48
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "Which base among the following is least basic in aqueous medium?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (CH_{3})_{2}NH $"
+          },
+          {
+            "id": "B",
+            "text": "$ CH_{3}NH_{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ (CH_{3})_{3}N $"
+          },
+          {
+            "id": "D",
+            "text": "$ NH_{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          49
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "The most basic amine in gaseous medium is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (CH_{3})_{2}NH $"
+          },
+          {
+            "id": "B",
+            "text": "$ CH_{3}NH_{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ (CH_{3})_{3}N $"
+          },
+          {
+            "id": "D",
+            "text": "NH_{3}"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          50
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "Which factor is not responsible for basic strength of amines?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Conjugation factor"
+          },
+          {
+            "id": "B",
+            "text": "Inductive effect"
+          },
+          {
+            "id": "C",
+            "text": "Solvation effect"
+          },
+          {
+            "id": "D",
+            "text": "Steric hindertance"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          51
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "Hinsberg's reagent is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2,4-dinitrophenol"
+          },
+          {
+            "id": "B",
+            "text": "NaNO_{2}+HCl mixture"
+          },
+          {
+            "id": "C",
+            "text": "HNO_{3}+ H_{2}SO_{4} mixture"
+          },
+          {
+            "id": "D",
+            "text": "Benzenesulphonyl chloride"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          52
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "Increasing order of ionic radii of the followings :\n\n(A) $ Eu^{3+} $\n\n(B) $ Lu^{3+} $\n\n(C) $ Y^{3+} $\n\n(D) $ La^{3+} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) $ <(\\mathrm{B})<(\\mathrm{C})<\\mathrm{(D)} $"
-     },
-     {
-      "id": "B",
-      "text": "(A) $ \\langle \\mathrm{C} \\rangle \\langle \\mathrm{B} \\rangle \\langle \\mathrm{D} \\rangle $"
-     },
-     {
-      "id": "C",
-      "text": "(B) $ (C)\\leq(A)\\leq(D) $"
-     },
-     {
-      "id": "D",
-      "text": "(C) $ (C\\leq(B)\\leq(D)\\leq(A)) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     27
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     28
-    ],
-    "assets": [
-     {
-      "id": "q32-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q32-table-1.jpg",
-      "page": 28,
-      "alt": "Table for question 32"
-     }
-    ]
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Increasing order of crystal field splitting power of following ligands will be:\n\n(A) CN\n\n(B) Cl\n\n(C) F\n\n(D) $ H_{2}O $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) $ <(\\mathrm{B})<(\\mathrm{C})<\\mathrm{(D)} $"
-     },
-     {
-      "id": "B",
-      "text": "(A) $ \\lt(C)\\lt(B)\\lt(D) $"
-     },
-     {
-      "id": "C",
-      "text": "(A) $ < $(D) $ < $(C) $ < $(B)"
-     },
-     {
-      "id": "D",
-      "text": "(B) $ (C) $ $ (D) $ $ (A) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     29
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A) - (I), (B) - (III), (C) - (II), (D) - (IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (Ⅳ), (B) - (I), (C) - (II), (D) - (III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     30,
-     31
-    ],
-    "assets": [
-     {
-      "id": "q34-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q34-table-1.jpg",
-      "page": 31,
-      "alt": "Table for question 34"
-     }
-    ]
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Reactivity order of following towards nucleophilic substitution reactions will be:\n\n(A) 4-Nitro-1-chlorobenzene\n\n(B) 2,4-Dinitro-1-chlorobenzene\n\n(C) Chlorobenzene\n\n(D) 2, 4, 6-Trinitro-1-chlorobenzene",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) $ (C) $"
-     },
-     {
-      "id": "B",
-      "text": "(A) $ <(\\mathrm{C})<(\\mathrm{B})<\\mathrm{(D)} $"
-     },
-     {
-      "id": "C",
-      "text": "(B) $ (A)\\leq(D)\\leq(C) $"
-     },
-     {
-      "id": "D",
-      "text": "(C) $ (A) $ $ (B) $ $ (D) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     32
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "Which of the following gives positive Tollens test?\n\n(A) Phenylethanal\n\n(B) Acetophenone\n\n(C) Formic acid\n\n(D) Benzene carbaldehyde",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (C) and (D)"
-     },
-     {
-      "id": "D",
-      "text": "(A), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     33
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A) - (II), (B) - (IV), (C) - (I), (D) - (III)"
-     },
-     {
-      "id": "C",
-      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     35
-    ],
-    "assets": [
-     {
-      "id": "q37-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q37-table-1.jpg",
-      "page": 35,
-      "alt": "Table for question 37"
-     }
-    ]
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "Which of the following on reaction with NaOH will give yellow precipitates?\n\n(A) Phenylethanone\n\n(B) Sec-Butyl alcohol\n\n(C) Phenylethanal\n\n(D) Methyl n-propylketone",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (C) and (D)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     38
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Reactivity order of the following alkyl halides towards dehydrohalogenation is:\n\n(A)\n\n(B)\n\nBr\n\n(C)\n\n(D)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)>(B)>(C)>(D)"
-     },
-     {
-      "id": "B",
-      "text": "(A)>(C)>(B)>(D)"
-     },
-     {
-      "id": "C",
-      "text": "(D)>(B)>(C)>(A)"
-     },
-     {
-      "id": "D",
-      "text": "(D)>(C)>(B)>(A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     41,
-     42
-    ],
-    "assets": [
-     {
-      "id": "q40-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-1.jpg",
-      "page": 42,
-      "alt": "Figure for question 40"
-     },
-     {
-      "id": "q40-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-2.jpg",
-      "page": 42,
-      "alt": "Figure for question 40"
-     },
-     {
-      "id": "q40-figure-3",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-3.jpg",
-      "page": 42,
-      "alt": "Figure for question 40"
-     },
-     {
-      "id": "q40-figure-4",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-07-19/q40-figure-4.jpg",
-      "page": 42,
-      "alt": "Figure for question 40"
-     }
-    ]
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "When NaOH reacts with R-X, what is the major product? When NaOH reacts with R-X, what is the major product?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Alcohol"
-     },
-     {
-      "id": "B",
-      "text": "Ether"
-     },
-     {
-      "id": "C",
-      "text": "Ester"
-     },
-     {
-      "id": "D",
-      "text": "Acid"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     43
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "When KCN reacts with R-X, what is the major product? When KCN reacts with R-X, what is the major product?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Alcohol"
-     },
-     {
-      "id": "B",
-      "text": "Ether"
-     },
-     {
-      "id": "C",
-      "text": "Isonitrile"
-     },
-     {
-      "id": "D",
-      "text": "Nitrile"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     44
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "When AgCN reacts with R-X, what is the major product? When AgCN reacts with R-X, what is the major product?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Alcohol"
-     },
-     {
-      "id": "B",
-      "text": "Ether"
-     },
-     {
-      "id": "C",
-      "text": "Isonitrile"
-     },
-     {
-      "id": "D",
-      "text": "Nitrile"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     45
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "When KNO_{2} reacts with R-X, what is the major product?\nWhen KNO_{2} reacts with R-X, what is the major product?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Alcohol"
-     },
-     {
-      "id": "B",
-      "text": "Nitroalkane"
-     },
-     {
-      "id": "C",
-      "text": "Isonitrile"
-     },
-     {
-      "id": "D",
-      "text": "Alkyl nitrite"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     46
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "When $ NH_{3} $ reacts with R-X, what is the major product?\nWhen $ NH_{3} $ reacts with R-X, what is the major product?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Nitroalkane"
-     },
-     {
-      "id": "B",
-      "text": "Isonitrile"
-     },
-     {
-      "id": "C",
-      "text": "Alkyl nitrite"
-     },
-     {
-      "id": "D",
-      "text": "Primary amin"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     47
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Which among the following amines is most basic in aqueous medium?\n\nWhich among the following amines is most basic in aqueous medium?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ (C_{2}H_{5})_{2}NH $"
-     },
-     {
-      "id": "B",
-      "text": "$ (C_{2}H_{5})_{3}N $"
-     },
-     {
-      "id": "C",
-      "text": "$ C_{2}H_{5}NH_{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ NH_{3} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     48
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Which base among the following is least basic in aqueous medium?\n\nWhich base among the following is least basic in aqueous medium?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ (CH_{3})_{2}NH $"
-     },
-     {
-      "id": "B",
-      "text": "$ CH_{3}NH_{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ (CH_{3})_{3}N $"
-     },
-     {
-      "id": "D",
-      "text": "$ NH_{3} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     49
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "The most basic amine in gaseous medium is:\nThe most basic amine in gaseous medium is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ (CH_{3})_{2}NH $"
-     },
-     {
-      "id": "B",
-      "text": "$ CH_{3}NH_{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ (CH_{3})_{3}N $"
-     },
-     {
-      "id": "D",
-      "text": "NH_{3}"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     50
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Which factor is not responsible for basic strength of amines?\nWhich factor is not responsible for basic strength of amines?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Conjugation factor"
-     },
-     {
-      "id": "B",
-      "text": "Inductive effect"
-     },
-     {
-      "id": "C",
-      "text": "Solvation effect"
-     },
-     {
-      "id": "D",
-      "text": "Steric hindertance"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     51
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Hinsberg's reagent is:\nHinsberg's reagent is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2,4-dinitrophenol"
-     },
-     {
-      "id": "B",
-      "text": "NaNO_{2}+HCl mixture"
-     },
-     {
-      "id": "C",
-      "text": "HNO_{3}+ H_{2}SO_{4} mixture"
-     },
-     {
-      "id": "D",
-      "text": "Benzenesulphonyl chloride"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     52
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

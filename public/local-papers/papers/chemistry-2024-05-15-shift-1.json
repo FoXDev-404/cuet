@@ -1,1622 +1,1622 @@
 {
- "exam": {
-  "id": "local-chemistry-2024-05-15-shift-1",
-  "slug": "chemistry-2024-05-15-shift-1",
-  "title": "CUET UG Chemistry 15 May 2024 Shift 1 Previous Year Paper",
-  "subject": "Chemistry",
-  "subjectId": "local-chemistry",
-  "subjectCode": "CHE",
-  "year": 2024,
-  "examDate": "2024-05-15",
-  "shift": "Shift 1",
-  "sourceFile": "Chemistry_2024-05-15_Shift_1.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 47,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "The increasing order of acidity of the following compounds based on pKa values is\n\n(A) $ BrCH_{2}COOH $\n\n(B) $ ClCH_{2}COOH $\n\n(C) $ FCH_{2}COOH $\n(D) HCOOH",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(D) $ (A)\\leq(B)\\leq(C) $"
-     },
-     {
-      "id": "B",
-      "text": "(A) $ < $(D) $ < $(C) $ < $(B)"
-     },
-     {
-      "id": "C",
-      "text": "(B) $ -(A) $ < (D) $ -(C) $"
-     },
-     {
-      "id": "D",
-      "text": "(C) $ C(B)C(D)C(A) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "In the following table, match the reactants given in List-I with the correct product in List-II as per the reaction of hydration of alkene under acidic condition.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (III),\\ (D)\\ - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (II),\\ (D)\\ - (IV)"
-     },
-     {
-      "id": "C",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{II}),(\\mathrm{B})-(\\mathrm{I}),(\\mathrm{C})-(\\mathrm{IV}),(\\mathrm{D})-(\\mathrm{III})"
-     },
-     {
-      "id": "D",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{III}),\\ (\\mathrm{B})-(\\mathrm{IV}),\\ (\\mathrm{C})-(\\mathrm{I}),\\ (\\mathrm{D})-(\\mathrm{II})"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1,
-     2
-    ],
-    "assets": [
-     {
-      "id": "q02-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q02-figure-1.jpg",
-      "page": 2,
-      "alt": "Figure for question 2"
-     },
-     {
-      "id": "q02-table-2",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q02-table-2.jpg",
-      "page": 1,
-      "alt": "Table for question 2"
-     }
+  "exam": {
+    "id": "local-chemistry-2024-05-15-shift-1",
+    "slug": "chemistry-2024-05-15-shift-1",
+    "title": "CUET UG Chemistry 15 May 2024 Shift 1 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2024,
+    "examDate": "2024-05-15",
+    "shift": "Shift 1",
+    "sourceFile": "Chemistry_2024-05-15_Shift_1.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 47,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "The increasing order of acidity of the following compounds based on pKa values is\n\n(A) $ BrCH_{2}COOH $\n\n(B) $ ClCH_{2}COOH $\n\n(C) $ FCH_{2}COOH $\n(D) HCOOH",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(D) $ (A)\\leq(B)\\leq(C) $"
+          },
+          {
+            "id": "B",
+            "text": "(A) $ < $(D) $ < $(C) $ < $(B)"
+          },
+          {
+            "id": "C",
+            "text": "(B) $ -(A) $ < (D) $ -(C) $"
+          },
+          {
+            "id": "D",
+            "text": "(C) $ C(B)C(D)C(A) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "In the following table, match the reactants given in List-I with the correct product in List-II as per the reaction of hydration of alkene under acidic condition.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (III),\\ (D)\\ - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (II),\\ (D)\\ - (IV)"
+          },
+          {
+            "id": "C",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{II}),(\\mathrm{B})-(\\mathrm{I}),(\\mathrm{C})-(\\mathrm{IV}),(\\mathrm{D})-(\\mathrm{III})"
+          },
+          {
+            "id": "D",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{III}),\\ (\\mathrm{B})-(\\mathrm{IV}),\\ (\\mathrm{C})-(\\mathrm{I}),\\ (\\mathrm{D})-(\\mathrm{II})"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1,
+          2
+        ],
+        "assets": [
+          {
+            "id": "q02-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q02-figure-1.jpg",
+            "page": 2,
+            "alt": "Figure for question 2"
+          },
+          {
+            "id": "q02-table-2",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q02-table-2.jpg",
+            "page": 1,
+            "alt": "Table for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Which among the following is not an Analgesic?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Morphene"
+          },
+          {
+            "id": "B",
+            "text": "Heroin"
+          },
+          {
+            "id": "C",
+            "text": "Codeine"
+          },
+          {
+            "id": "D",
+            "text": "Ranitidine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "For $ S_{N} $2reaction, the increasing order of the reactivity of the following alkyl halides is:\n\n(A) $ CH_{3}CH_{2}CH_{2}CH_{2}Br $\n\n(B) $ CH_{3}CH_{2}CH(Br)CH_{3} $\n\n(C)(CH_{3})_{3}CBr\n\n(D) $ （CH_{3}）_{2}CHCHCH_{2}Br $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) $ \\langle \\mathrm{B} \\rangle \\langle \\mathrm{C} \\rangle \\langle \\mathrm{D} \\rangle $"
+          },
+          {
+            "id": "B",
+            "text": "(A) $ \\langle\\mathrm{C} \\rangle \\langle\\mathrm{B} \\rangle \\langle\\mathrm{D} \\rangle $"
+          },
+          {
+            "id": "C",
+            "text": "(B) $ (A)\\leq(D)\\leq(C) $"
+          },
+          {
+            "id": "D",
+            "text": "(C) $ (C)\\leq(B)\\leq(D)\\leq(A) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The number of moles of hydrogen oxidised is:\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.33 moles"
+          },
+          {
+            "id": "B",
+            "text": "33.3 moles"
+          },
+          {
+            "id": "C",
+            "text": "3.0 moles"
+          },
+          {
+            "id": "D",
+            "text": "1.33 moles"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The number of moles of electrons produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:\n",
+        "optionsEn": [
+          {
+            "id": "C",
+            "text": "1 mole"
+          },
+          {
+            "id": "D",
+            "text": "6 moles"
+          },
+          {
+            "id": "A",
+            "text": "2 moles"
+          },
+          {
+            "id": "B",
+            "text": "4 moles"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The quantity of electricity produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "96500 C"
+          },
+          {
+            "id": "B",
+            "text": "579000 C"
+          },
+          {
+            "id": "C",
+            "text": "193000 C"
+          },
+          {
+            "id": "D",
+            "text": "48250 C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "If the entire current produced is used for the electrodeposition of Silver (at.wt. 108 g mol $ ^{-1} $) from Silver (I) solution, the amount of silver deposited will be:\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "324 g"
+          },
+          {
+            "id": "B",
+            "text": "648 g"
+          },
+          {
+            "id": "C",
+            "text": "108 g"
+          },
+          {
+            "id": "D",
+            "text": "216 g"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "The source of electrical energy on the Apollo moon flight was:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Lead storage battery"
+          },
+          {
+            "id": "B",
+            "text": "A generator set"
+          },
+          {
+            "id": "C",
+            "text": "Ni-Cd cells"
+          },
+          {
+            "id": "D",
+            "text": "$ H_{2}-O_{2}Fuel $ cell"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Identify the incorrect statement.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Second ionisation enthalpy of Ag is greater than second ionisation enthalpy of Pd."
+          },
+          {
+            "id": "B",
+            "text": "Zr and Hf shares almost identical nuclear properties."
+          },
+          {
+            "id": "C",
+            "text": "Melting point of Mn is lower than that of Cr."
+          },
+          {
+            "id": "D",
+            "text": "Interstitial compounds are non-stoichiometric and neither ionic nor covalent in nature."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          8
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "Which of the following is the correct order of second ionisation enthalpy?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "V > Cr > Mn"
+          },
+          {
+            "id": "B",
+            "text": "V < Cr < Mn"
+          },
+          {
+            "id": "C",
+            "text": "V Mn"
+          },
+          {
+            "id": "D",
+            "text": "V > Cr < Mn"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          9
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "Which of the following pair of compounds exhibits same colour in aqueous solution?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "FeCl_{2}, CuCl_{2}"
+          },
+          {
+            "id": "B",
+            "text": "VOCl_{2}, CuCl_{2}"
+          },
+          {
+            "id": "C",
+            "text": "VOC_{2}, FeCl_{2}"
+          },
+          {
+            "id": "D",
+            "text": "VOCl_{2}, MnCl_{2}"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          9
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "Which metal has the highest oxidation state in the first row transition series?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cr"
+          },
+          {
+            "id": "B",
+            "text": "Fe"
+          },
+          {
+            "id": "C",
+            "text": "Mn"
+          },
+          {
+            "id": "D",
+            "text": "V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          10
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "Why do the actinoids exhibit higher number of oxidation states than lanthanoids?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "4f orbitals are more diffused than the 5f orbitals."
+          },
+          {
+            "id": "B",
+            "text": "Energy difference between 5f and 6d is less with respect to the energy difference between 4f and 5d."
+          },
+          {
+            "id": "C",
+            "text": "Energy difference between 5f and 6d is more with respect to the energy difference between 4f and 5d."
+          },
+          {
+            "id": "D",
+            "text": "Actinoids are more reactive in nature than the lanthanoids."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          11
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "Camphor in nitrogen gas is a type of solution",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Gas - Gas"
+          },
+          {
+            "id": "B",
+            "text": "Solid-Gas"
+          },
+          {
+            "id": "C",
+            "text": "Liquid-Gas"
+          },
+          {
+            "id": "D",
+            "text": "Solid - Liquid"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          11
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "Identify the correct order of organic compounds in the following chemical reaction :\n\n$$ \\underbrace{\\?}_{\\mathrm{~I~}}+\\mathrm{M g}\\xrightarrow{\\mathrm{D r y~E t h e r}}\\underbrace{\\?}_{\\mathrm{~I~}}\\xrightarrow{\\mathrm{H}_{2}\\mathrm{O}}\\underbrace{\\?}_{\\mathrm{~I~}}\\xrightarrow{\\mathrm{C l}_{2},\\mathrm{~\\triangle~}}\\underbrace{\\?}_{\\mathrm{~I~}} $$\n\n(A) $ CH_{3}MgBr $\n\n(B) $ CH_{3}Br $\n\n(C) $ CH_{3}Cl $\n\n(D) $ CH_{4} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C), (B), (D)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (C), (D)"
+          },
+          {
+            "id": "D",
+            "text": "(C), (B), (D), (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          12
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "Consider the following statements regarding osmotic pressure:\n\n(A) Molar mass of a protein can be determined using osmotic pressure method.\n\n(B) The osmotic pressure is proportional to the molarity.\n\n(C) Reverse osmosis occurs when a pressure larger than osmotic pressure is applied to the concentrated solution side.\n\n(D) Edema occurs due to retention of water in tissue cells as a result of osmosis.\n\nChoose the correct statements with reference to osmotic pressure:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (C) and (D)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          13
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Vapour pressures of pure liquids 'A' and 'D' at 50°C are 500 mm Hg and 800 mm Hg respectively. The binary solution of 'A' and 'D' boils at 50°C and 700 mm Hg pressure. The mole percentage of 'D' in the solution is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "33.33 mole percent"
+          },
+          {
+            "id": "B",
+            "text": "66.67 mole percent"
+          },
+          {
+            "id": "C",
+            "text": "25.75 mole percent"
+          },
+          {
+            "id": "D",
+            "text": "75.25 mole percent"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          14
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "For the following reaction:\n\n$$ \\mathrm{A}_{2}(\\mathrm{~g})+\\frac{1}{4}\\mathrm{X}(\\mathrm{~g})\\rightarrow2\\mathrm{~A}_{2}\\mathrm{X}(\\mathrm{~g}) $$\n\nvolume is increased to double its value by decreasing the pressure on it. If the reaction is first order with respect to X and second order with respect to $ A_{2} $, the rate of reaction will:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Decrease by eight times of its initial value"
+          },
+          {
+            "id": "B",
+            "text": "Increase by eight times of its initial value"
+          },
+          {
+            "id": "C",
+            "text": "Increase by four times of its initial value"
+          },
+          {
+            "id": "D",
+            "text": "Remain unchanged"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          14
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "The total number of sigma bonds present in P_{4}O_{10} are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "6"
+          },
+          {
+            "id": "B",
+            "text": "7"
+          },
+          {
+            "id": "C",
+            "text": "16"
+          },
+          {
+            "id": "D",
+            "text": "17"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          15
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "In the electrolysis of alumina to obtain Aluminium metal, the cryolite is added mainly to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "lower the melting point of alumina."
+          },
+          {
+            "id": "B",
+            "text": "dissolve the alumina in the molten cryolite."
+          },
+          {
+            "id": "C",
+            "text": "remove the impurities of alumina."
+          },
+          {
+            "id": "D",
+            "text": "increase the electrical conductivity."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          16
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "Identify the order of reaction if its rate constant is $ k = 2 \\times 10^{-2} \\, s^{-1} $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Zero order"
+          },
+          {
+            "id": "B",
+            "text": "First order"
+          },
+          {
+            "id": "C",
+            "text": "Second order"
+          },
+          {
+            "id": "D",
+            "text": "Half order"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          16
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "For a complex reaction, the order of reaction is equal to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sum of stoichiometric coefficients in balanced chemical reaction"
+          },
+          {
+            "id": "B",
+            "text": "The molecularity of overall reaction"
+          },
+          {
+            "id": "C",
+            "text": "Order of fastest step of the reaction"
+          },
+          {
+            "id": "D",
+            "text": "The molecularity of slowest step of reaction"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          17
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "A molecule X associates in a given solvent as per the following equation:\n\n$$ X\\rightleftharpoons\\left(X\\right)_{n} $$\n\nFor a given concentration of X, the van't Hoff factor was found to be 0.80 and the fraction of associated molecules was 0.3. The correct value of 'n' is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "1"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          17
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "The oxidation number of Co in complex $ [\\mathrm{Co}(\\mathrm{H}_{2}\\mathrm{NCH}_{2}\\mathrm{CH}_{2}\\mathrm{NH}_{2})_{3}]_{2}(\\mathrm{SO}_{4})_{3} $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          18
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "The correct structure of dipeptide, Gly-Ala (glycyl alanine) is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ H_{2}N-CH_{2}-CO-NH-CH(CH_{3})-COOH $"
+          },
+          {
+            "id": "B",
+            "text": "HOOC-CH_{2}-NH-CO-CH(CH_{3})-NH_{2}"
+          },
+          {
+            "id": "C",
+            "text": "HOOC-CH(CH_{3})-NH-CO-CH_{2}-NH_{2}"
+          },
+          {
+            "id": "D",
+            "text": "H_{2}N-CH(CH_{3})-CO-NH-CH_{2}-COOH"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          19
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "The total number of ions produced from the complex $ [\\mathrm{Cr(NH_3)_6}]\\mathrm{Cl}_3 $ in aqueous solution will be _.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          20
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "Arrange the following in decreasing order of number of molecules contained in:\n\n(A) 16 g of $ O_{2} $\n\n(B) 16 g of $ CO_{2} $\n\n(C) 16 g of CO\n\n(D) 16 g of $ H_{2} $\n\nChoose the correct order from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(D), (C), (A), (B)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "D",
+            "text": "(C), (B), (D), (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          20
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "The Cu metal crystallises into fcc lattice with a unit cell edge length of 361 pm. The radius of Cu atom is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "127 pm"
+          },
+          {
+            "id": "B",
+            "text": "181 pm"
+          },
+          {
+            "id": "C",
+            "text": "157 pm"
+          },
+          {
+            "id": "D",
+            "text": "108 pm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          21
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "If 75% of a first order reaction gets completed in 32 minutes, time taken for 50% completion of this reaction is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "16 minutes"
+          },
+          {
+            "id": "B",
+            "text": "78 minutes"
+          },
+          {
+            "id": "C",
+            "text": "8 minutes"
+          },
+          {
+            "id": "D",
+            "text": "4 minutes"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          22
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 31,
+        "stemEn": "Which of the following compounds will be repelled when placed in an external magnetic field?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ Na_{2}[CuCl_{4}] $"
+          },
+          {
+            "id": "B",
+            "text": "Na_{2}[CdCl_{4}]"
+          },
+          {
+            "id": "C",
+            "text": "K_{4}[Fe(Cl)_{6}]"
+          },
+          {
+            "id": "D",
+            "text": "K_{3}[Fe(CN)_{6}]"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          22
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "The spin only magnetic moment of Hexacyanidomanganate(II) ion is BM.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5.90"
+          },
+          {
+            "id": "B",
+            "text": "1.73"
+          },
+          {
+            "id": "C",
+            "text": "4.90"
+          },
+          {
+            "id": "D",
+            "text": "3.87"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          23
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "The correct order of increasing boiling points of the following compounds is:\n\nPentan-1-ol, n-Butane, Pentanal, Ethoxyethane",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ethoxyethane, Pentanal, n-Butane, Pentan-1-ol"
+          },
+          {
+            "id": "B",
+            "text": "Pentanal, n-Butane, Ethoxyethane, Pentan-1-ol"
+          },
+          {
+            "id": "C",
+            "text": "n-Butane, Pentanal, Ethoxyethane, Pentan-1-ol"
+          },
+          {
+            "id": "D",
+            "text": "n-Butane, Ethoxyethane, Pentanal, Pentan-1-ol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          24
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 34,
+        "stemEn": "In the following reaction, identify the product D.\n\n$$ \\begin{aligned}&C_{6}H_{5}-OH\\xrightarrow{Zn dust}A\\xrightarrow{CH_{3}Cl+anhy.AlCl_{3}}B\\\\ &\\xrightarrow{K_{2}Cr_{2}O_{7}+H_{2}SO_{4}}C\\xrightarrow{H_{2}SO_{4}+HNO_{3}}D\\\\ \\end{aligned} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "o-Nitrobenzoic acid"
+          },
+          {
+            "id": "B",
+            "text": "p-Nitrobenzoic acid"
+          },
+          {
+            "id": "C",
+            "text": "o,p-Dinitrobenzoic acid"
+          },
+          {
+            "id": "D",
+            "text": "m-Nitrobenzoic acid"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          24
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "Reaction of aniline with conc. HNO₃ and conc. H₂SO₄ at 298 K will produce 47% of",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "p-Nitroaniline"
+          },
+          {
+            "id": "B",
+            "text": "o-Nitroaniline"
+          },
+          {
+            "id": "C",
+            "text": "m-Nitroaniline"
+          },
+          {
+            "id": "D",
+            "text": "2, 4-Dinitroaniline"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          26
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "What will be increasing order of basic strength of the following compounds?\n\n$$ \\mathrm{C}_{2}\\mathrm{H}_{5}\\mathrm{NH}_{2},(\\mathrm{C}_{2}\\mathrm{H}_{5})_{2}\\mathrm{NH},(\\mathrm{C}_{2}\\mathrm{H}_{5})_{3}\\mathrm{N},\\mathrm{C}_{6}\\mathrm{H}_{5}\\mathrm{NH}_{2} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ C_{2}H_{5}NH_{2} < (C_{2}H_{5})_{2}NH < (C_{2}H_{5})_{3}N < C_{6}H_{5}NH_{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ C_{6}H_{5}NH_{2} < (C_{2}H_{5})_{3}N < C_{2}H_{5}NH_{2} < (C_{2}H_{5})_{2}NH $"
+          },
+          {
+            "id": "C",
+            "text": "$ (C_{2}H_{5})_{3}N < (C_{2}H_{5})_{2}NH < C_{6}H_{5}NH_{2} < C_{2}H_{5}NH_{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ (C_{2}H_{5})_{2}NH < (C_{2}H_{5})_{3}N < C_{2}H_{5}NH_{2} < C_{6}H_{5}NH_{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          27
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 39,
+        "stemEn": "Arrange the following acids in increasing order of their acidic strengths:\n\nHCOOH, $ \\text{FCH}_2\\text{COOH} $, $ \\text{NO}_2\\text{CH}_2\\text{COOH} $, $ \\text{ClCH}_2\\text{COOH} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "HCOOH < FCH_{2}COOH < NO_{2}CH_{2}COOH < ClCH_{2}COOH"
+          },
+          {
+            "id": "B",
+            "text": "HCOOH<NO_{2}CH_{2}COOH<ClCH_{2}COOH<FCH_{2}COOH"
+          },
+          {
+            "id": "C",
+            "text": "NO_{2}CH_{2}COOH<HCOOH<ClCH_{2}COOH<FCH_{2}COOH"
+          },
+          {
+            "id": "D",
+            "text": "HCOOH<ClCH_{2}COOH<FCH_{2}COOH<NO_{2}CH_{2}COOH"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          28
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 40,
+        "stemEn": "In the following compounds, what is the increasing order of their reactivity towards nucleophilic addition reactions?\n\nBenzaldehyde, p-Tolualdehyde, p-Nitrobenzaldehyde, Acetophenone",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Benzaldehyde"
+          },
+          {
+            "id": "B",
+            "text": "Acetophenone"
+          },
+          {
+            "id": "C",
+            "text": "Acetophenone"
+          },
+          {
+            "id": "D",
+            "text": "Benzaldehyde"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          29
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "Formaldehyde undergoes Cannizzaro reaction because\n\n(A) It has alpha-hydrogen atom.\n\n(B) It does not have alpha-hydrogen atom.\n\n(C) It does not undergo self-oxidation and reduction on heating with concentrated alkali.\n\n(D) It undergo self-oxidation and reduction on heating with concentrated alkali.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(B) and (C) only"
+          },
+          {
+            "id": "D",
+            "text": "(A) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          30
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "In the reaction, $ (CH_{3})_{3}C-O-CH_{3} + HI \\rightarrow $ Products\n\nCH₃OH and (CH₃)₃CI are the products and not CH₃I and (CH₃)₃C-OH. It is because,\n\n(A) in step 2 of the reaction the departure of leaving group $ \\mathrm{(HO-CH_{3})} $ creates less stable carbocation.\n\n(B) in step 2 of the reaction the departure of leaving group $ (HO-CH_{3}) $ creates more stable carbocation.\n\n(C) the reaction follows S_{n}1 mechanism.\n\n(D) the reaction follows S_{n}2 mechanism.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(A) and (C) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          31
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "Aniline does not undergo Friedel-Crafts reaction because\n\n(A) It forms salt with the Lewis acid catalyst, $ AlCl_{3} $.\n\n(B) Nitrogen of aniline acquires negative charge.\n\n(C) Nitrogen of aniline acquires positive charge.\n\n(D) Nitrogen acts as a strong deactivating group in the further reaction.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          32
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "Although chlorine is an electron withdrawing group, yet it is ortho- and para-directing in electrophilic aromatic substitution reaction because\n\n(A) Chlorine withdraws electrons through inductive effect.\n\n(B) Chlorine destabilises the intermediate carbocation formed during electrophilic substitution.\n\n(C) Chlorine accepts electrons through resonance.\n\n(D) Chlorine releases electrons through resonance.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          33
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 46,
+        "stemEn": "In Etard reaction, the final product is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Aromatic aldehyde"
+          },
+          {
+            "id": "B",
+            "text": "Aromatic chloride"
+          },
+          {
+            "id": "C",
+            "text": "Aromatic amine"
+          },
+          {
+            "id": "D",
+            "text": "Aromatic alcohol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          34
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          35
+        ],
+        "assets": [
+          {
+            "id": "q47-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q47-table-1.jpg",
+            "page": 35,
+            "alt": "Table for question 47"
+          }
+        ]
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "\\ (A)\\ - (II),\\ (B)\\ - (IV),\\ (C)\\ - (II),\\ (D)\\ - (I)"
+          },
+          {
+            "id": "B",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{IV}),(\\mathrm{B})-(\\mathrm{III}),(\\mathrm{C})-(\\mathrm{I}),(\\mathrm{D})-(\\mathrm{II})"
+          },
+          {
+            "id": "C",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{I}),(\\mathrm{B})-(\\mathrm{IV}),(\\mathrm{C})-(\\mathrm{II}),(\\mathrm{D})-(\\mathrm{III})"
+          },
+          {
+            "id": "D",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{III}),\\ (\\mathrm{B})-(\\mathrm{I}),\\ (\\mathrm{C})-(\\mathrm{IV}),\\ (\\mathrm{D})-(\\mathrm{II})"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          35,
+          36
+        ],
+        "assets": [
+          {
+            "id": "q48-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q48-table-1.jpg",
+            "page": 36,
+            "alt": "Table for question 48"
+          }
+        ]
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (III),\\ (D)\\ - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (II),\\ (D)\\ - (IV)"
+          },
+          {
+            "id": "C",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{I}),\\ (\\mathrm{B})-(\\mathrm{II}),\\ (\\mathrm{C})-(\\mathrm{IV}),\\ (\\mathrm{D})-(\\mathrm{III})"
+          },
+          {
+            "id": "D",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{I I I}),\\ (\\mathrm{B})-(\\mathrm{I V}),\\ (\\mathrm{C})-(\\mathrm{I}),\\ (\\mathrm{D})-(\\mathrm{I I})"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          36
+        ],
+        "assets": [
+          {
+            "id": "q49-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q49-table-1.jpg",
+            "page": 36,
+            "alt": "Table for question 49"
+          }
+        ]
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "\\ (A)\\ - (III),\\ (B)\\ - (II),\\ (C)\\ - (I),\\ (D)\\ - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "\\ (A)\\ -\\ (II),\\ (B)\\ -\\ (III),\\ (C)\\ -\\ (I),\\ (D)\\ -\\ (IV)"
+          },
+          {
+            "id": "C",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{I I I}),\\ (\\mathrm{B})-(\\mathrm{I I}),\\ (\\mathrm{C})-(\\mathrm{I V}),\\ (\\mathrm{D})-(\\mathrm{I})"
+          },
+          {
+            "id": "D",
+            "text": "\\left(\\mathrm{A}\\right)-\\left(\\mathrm{II}\\right),\\left(\\mathrm{B}\\right)-\\left(\\mathrm{III}\\right),\\left(\\mathrm{C}\\right)-\\left(\\mathrm{IV}\\right),\\left(\\mathrm{D}\\right)-\\left(\\mathrm{I}\\right)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          37
+        ],
+        "assets": [
+          {
+            "id": "q50-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q50-table-1.jpg",
+            "page": 37,
+            "alt": "Table for question 50"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Which among the following is not an Analgesic?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Morphene"
-     },
-     {
-      "id": "B",
-      "text": "Heroin"
-     },
-     {
-      "id": "C",
-      "text": "Codeine"
-     },
-     {
-      "id": "D",
-      "text": "Ranitidine"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "For $ S_{N} $2reaction, the increasing order of the reactivity of the following alkyl halides is:\n\n(A) $ CH_{3}CH_{2}CH_{2}CH_{2}Br $\n\n(B) $ CH_{3}CH_{2}CH(Br)CH_{3} $\n\n(C)(CH_{3})_{3}CBr\n\n(D) $ （CH_{3}）_{2}CHCHCH_{2}Br $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) $ \\langle \\mathrm{B} \\rangle \\langle \\mathrm{C} \\rangle \\langle \\mathrm{D} \\rangle $"
-     },
-     {
-      "id": "B",
-      "text": "(A) $ \\langle\\mathrm{C} \\rangle \\langle\\mathrm{B} \\rangle \\langle\\mathrm{D} \\rangle $"
-     },
-     {
-      "id": "C",
-      "text": "(B) $ (A)\\leq(D)\\leq(C) $"
-     },
-     {
-      "id": "D",
-      "text": "(C) $ (C)\\leq(B)\\leq(D)\\leq(A) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "The number of moles of hydrogen oxidised is:\n\nThe number of moles of hydrogen oxidised is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.33 moles"
-     },
-     {
-      "id": "B",
-      "text": "33.3 moles"
-     },
-     {
-      "id": "C",
-      "text": "3.0 moles"
-     },
-     {
-      "id": "D",
-      "text": "1.33 moles"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "The number of moles of electrons produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:\n\nThe number of moles of electrons produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:",
-    "optionsEn": [
-     {
-      "id": "C",
-      "text": "1 mole"
-     },
-     {
-      "id": "D",
-      "text": "6 moles"
-     },
-     {
-      "id": "A",
-      "text": "2 moles"
-     },
-     {
-      "id": "B",
-      "text": "4 moles"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "The quantity of electricity produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:\n\nThe quantity of electricity produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "96500 C"
-     },
-     {
-      "id": "B",
-      "text": "579000 C"
-     },
-     {
-      "id": "C",
-      "text": "193000 C"
-     },
-     {
-      "id": "D",
-      "text": "48250 C"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "If the entire current produced is used for the electrodeposition of Silver (at.wt. 108 g mol $ ^{-1} $) from Silver (I) solution, the amount of silver deposited will be:\n\nIf the entire current produced is used for the electrodeposition of Silver (at.wt. 108 g mol $ ^{-1} $) from Silver (I) solution, the amount of silver deposited will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "324 g"
-     },
-     {
-      "id": "B",
-      "text": "648 g"
-     },
-     {
-      "id": "C",
-      "text": "108 g"
-     },
-     {
-      "id": "D",
-      "text": "216 g"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "The source of electrical energy on the Apollo moon flight was:\nThe source of electrical energy on the Apollo moon flight was:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Lead storage battery"
-     },
-     {
-      "id": "B",
-      "text": "A generator set"
-     },
-     {
-      "id": "C",
-      "text": "Ni-Cd cells"
-     },
-     {
-      "id": "D",
-      "text": "$ H_{2}-O_{2}Fuel $ cell"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Identify the incorrect statement.\nIdentify the incorrect statement.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Second ionisation enthalpy of Ag is greater than second ionisation enthalpy of Pd."
-     },
-     {
-      "id": "B",
-      "text": "Zr and Hf shares almost identical nuclear properties."
-     },
-     {
-      "id": "C",
-      "text": "Melting point of Mn is lower than that of Cr."
-     },
-     {
-      "id": "D",
-      "text": "Interstitial compounds are non-stoichiometric and neither ionic nor covalent in nature."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     8
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Which of the following is the correct order of second ionisation enthalpy?\n\nWhich of the following is the correct order of second ionisation enthalpy?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "V > Cr > Mn"
-     },
-     {
-      "id": "B",
-      "text": "V < Cr < Mn"
-     },
-     {
-      "id": "C",
-      "text": "V Mn"
-     },
-     {
-      "id": "D",
-      "text": "V > Cr < Mn"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     9
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "Which of the following pair of compounds exhibits same colour in aqueous solution?\n\nWhich of the following pair of compounds exhibits same colour in aqueous solution?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "FeCl_{2}, CuCl_{2}"
-     },
-     {
-      "id": "B",
-      "text": "VOCl_{2}, CuCl_{2}"
-     },
-     {
-      "id": "C",
-      "text": "VOC_{2}, FeCl_{2}"
-     },
-     {
-      "id": "D",
-      "text": "VOCl_{2}, MnCl_{2}"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     9
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "Which metal has the highest oxidation state in the first row transition series?\n\nWhich metal has the highest oxidation state in the first row transition series?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Cr"
-     },
-     {
-      "id": "B",
-      "text": "Fe"
-     },
-     {
-      "id": "C",
-      "text": "Mn"
-     },
-     {
-      "id": "D",
-      "text": "V"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     10
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "Why do the actinoids exhibit higher number of oxidation states than lanthanoids?\n\nWhy do the actinoids exhibit higher number of oxidation states than lanthanoids?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "4f orbitals are more diffused than the 5f orbitals."
-     },
-     {
-      "id": "B",
-      "text": "Energy difference between 5f and 6d is less with respect to the energy difference between 4f and 5d."
-     },
-     {
-      "id": "C",
-      "text": "Energy difference between 5f and 6d is more with respect to the energy difference between 4f and 5d."
-     },
-     {
-      "id": "D",
-      "text": "Actinoids are more reactive in nature than the lanthanoids."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     11
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Camphor in nitrogen gas is a type of solution",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Gas - Gas"
-     },
-     {
-      "id": "B",
-      "text": "Solid-Gas"
-     },
-     {
-      "id": "C",
-      "text": "Liquid-Gas"
-     },
-     {
-      "id": "D",
-      "text": "Solid - Liquid"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     11
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "Identify the correct order of organic compounds in the following chemical reaction :\n\n$$ \\underbrace{\\?}_{\\mathrm{~I~}}+\\mathrm{M g}\\xrightarrow{\\mathrm{D r y~E t h e r}}\\underbrace{\\?}_{\\mathrm{~I~}}\\xrightarrow{\\mathrm{H}_{2}\\mathrm{O}}\\underbrace{\\?}_{\\mathrm{~I~}}\\xrightarrow{\\mathrm{C l}_{2},\\mathrm{~\\triangle~}}\\underbrace{\\?}_{\\mathrm{~I~}} $$\n\n(A) $ CH_{3}MgBr $\n\n(B) $ CH_{3}Br $\n\n(C) $ CH_{3}Cl $\n\n(D) $ CH_{4} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C), (B), (D)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (C), (D)"
-     },
-     {
-      "id": "D",
-      "text": "(C), (B), (D), (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     12
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "Consider the following statements regarding osmotic pressure:\n\n(A) Molar mass of a protein can be determined using osmotic pressure method.\n\n(B) The osmotic pressure is proportional to the molarity.\n\n(C) Reverse osmosis occurs when a pressure larger than osmotic pressure is applied to the concentrated solution side.\n\n(D) Edema occurs due to retention of water in tissue cells as a result of osmosis.\n\nChoose the correct statements with reference to osmotic pressure:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (C) and (D)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     13
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Vapour pressures of pure liquids 'A' and 'D' at 50°C are 500 mm Hg and 800 mm Hg respectively. The binary solution of 'A' and 'D' boils at 50°C and 700 mm Hg pressure. The mole percentage of 'D' in the solution is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "33.33 mole percent"
-     },
-     {
-      "id": "B",
-      "text": "66.67 mole percent"
-     },
-     {
-      "id": "C",
-      "text": "25.75 mole percent"
-     },
-     {
-      "id": "D",
-      "text": "75.25 mole percent"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     14
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "For the following reaction:\n\n$$ \\mathrm{A}_{2}(\\mathrm{~g})+\\frac{1}{4}\\mathrm{X}(\\mathrm{~g})\\rightarrow2\\mathrm{~A}_{2}\\mathrm{X}(\\mathrm{~g}) $$\n\nvolume is increased to double its value by decreasing the pressure on it. If the reaction is first order with respect to X and second order with respect to $ A_{2} $, the rate of reaction will:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Decrease by eight times of its initial value"
-     },
-     {
-      "id": "B",
-      "text": "Increase by eight times of its initial value"
-     },
-     {
-      "id": "C",
-      "text": "Increase by four times of its initial value"
-     },
-     {
-      "id": "D",
-      "text": "Remain unchanged"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     14
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "The total number of sigma bonds present in P_{4}O_{10} are:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "6"
-     },
-     {
-      "id": "B",
-      "text": "7"
-     },
-     {
-      "id": "C",
-      "text": "16"
-     },
-     {
-      "id": "D",
-      "text": "17"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     15
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "In the electrolysis of alumina to obtain Aluminium metal, the cryolite is added mainly to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "lower the melting point of alumina."
-     },
-     {
-      "id": "B",
-      "text": "dissolve the alumina in the molten cryolite."
-     },
-     {
-      "id": "C",
-      "text": "remove the impurities of alumina."
-     },
-     {
-      "id": "D",
-      "text": "increase the electrical conductivity."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     16
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Identify the order of reaction if its rate constant is $ k = 2 \\times 10^{-2} \\, s^{-1} $.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Zero order"
-     },
-     {
-      "id": "B",
-      "text": "First order"
-     },
-     {
-      "id": "C",
-      "text": "Second order"
-     },
-     {
-      "id": "D",
-      "text": "Half order"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     16
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "For a complex reaction, the order of reaction is equal to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sum of stoichiometric coefficients in balanced chemical reaction"
-     },
-     {
-      "id": "B",
-      "text": "The molecularity of overall reaction"
-     },
-     {
-      "id": "C",
-      "text": "Order of fastest step of the reaction"
-     },
-     {
-      "id": "D",
-      "text": "The molecularity of slowest step of reaction"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     17
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "A molecule X associates in a given solvent as per the following equation:\n\n$$ X\\rightleftharpoons\\left(X\\right)_{n} $$\n\nFor a given concentration of X, the van't Hoff factor was found to be 0.80 and the fraction of associated molecules was 0.3. The correct value of 'n' is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "1"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     17
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "The oxidation number of Co in complex $ [\\mathrm{Co}(\\mathrm{H}_{2}\\mathrm{NCH}_{2}\\mathrm{CH}_{2}\\mathrm{NH}_{2})_{3}]_{2}(\\mathrm{SO}_{4})_{3} $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "4"
-     },
-     {
-      "id": "C",
-      "text": "2"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     18
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "The correct structure of dipeptide, Gly-Ala (glycyl alanine) is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ H_{2}N-CH_{2}-CO-NH-CH(CH_{3})-COOH $"
-     },
-     {
-      "id": "B",
-      "text": "HOOC-CH_{2}-NH-CO-CH(CH_{3})-NH_{2}"
-     },
-     {
-      "id": "C",
-      "text": "HOOC-CH(CH_{3})-NH-CO-CH_{2}-NH_{2}"
-     },
-     {
-      "id": "D",
-      "text": "H_{2}N-CH(CH_{3})-CO-NH-CH_{2}-COOH"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     19
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "The total number of ions produced from the complex $ [\\mathrm{Cr(NH_3)_6}]\\mathrm{Cl}_3 $ in aqueous solution will be _.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     20
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Arrange the following in decreasing order of number of molecules contained in:\n\n(A) 16 g of $ O_{2} $\n\n(B) 16 g of $ CO_{2} $\n\n(C) 16 g of CO\n\n(D) 16 g of $ H_{2} $\n\nChoose the correct order from the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(D), (C), (A), (B)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "D",
-      "text": "(C), (B), (D), (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     20
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "The Cu metal crystallises into fcc lattice with a unit cell edge length of 361 pm. The radius of Cu atom is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "127 pm"
-     },
-     {
-      "id": "B",
-      "text": "181 pm"
-     },
-     {
-      "id": "C",
-      "text": "157 pm"
-     },
-     {
-      "id": "D",
-      "text": "108 pm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     21
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "If 75% of a first order reaction gets completed in 32 minutes, time taken for 50% completion of this reaction is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "16 minutes"
-     },
-     {
-      "id": "B",
-      "text": "78 minutes"
-     },
-     {
-      "id": "C",
-      "text": "8 minutes"
-     },
-     {
-      "id": "D",
-      "text": "4 minutes"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     22
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "Which of the following compounds will be repelled when placed in an external magnetic field?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ Na_{2}[CuCl_{4}] $"
-     },
-     {
-      "id": "B",
-      "text": "Na_{2}[CdCl_{4}]"
-     },
-     {
-      "id": "C",
-      "text": "K_{4}[Fe(Cl)_{6}]"
-     },
-     {
-      "id": "D",
-      "text": "K_{3}[Fe(CN)_{6}]"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     22
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "The spin only magnetic moment of Hexacyanidomanganate(II) ion is BM.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5.90"
-     },
-     {
-      "id": "B",
-      "text": "1.73"
-     },
-     {
-      "id": "C",
-      "text": "4.90"
-     },
-     {
-      "id": "D",
-      "text": "3.87"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     23
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "The correct order of increasing boiling points of the following compounds is:\n\nPentan-1-ol, n-Butane, Pentanal, Ethoxyethane",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ethoxyethane, Pentanal, n-Butane, Pentan-1-ol"
-     },
-     {
-      "id": "B",
-      "text": "Pentanal, n-Butane, Ethoxyethane, Pentan-1-ol"
-     },
-     {
-      "id": "C",
-      "text": "n-Butane, Pentanal, Ethoxyethane, Pentan-1-ol"
-     },
-     {
-      "id": "D",
-      "text": "n-Butane, Ethoxyethane, Pentanal, Pentan-1-ol"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     24
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "In the following reaction, identify the product D.\n\n$$ \\begin{aligned}&C_{6}H_{5}-OH\\xrightarrow{Zn dust}A\\xrightarrow{CH_{3}Cl+anhy.AlCl_{3}}B\\\\ &\\xrightarrow{K_{2}Cr_{2}O_{7}+H_{2}SO_{4}}C\\xrightarrow{H_{2}SO_{4}+HNO_{3}}D\\\\ \\end{aligned} $$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "o-Nitrobenzoic acid"
-     },
-     {
-      "id": "B",
-      "text": "p-Nitrobenzoic acid"
-     },
-     {
-      "id": "C",
-      "text": "o,p-Dinitrobenzoic acid"
-     },
-     {
-      "id": "D",
-      "text": "m-Nitrobenzoic acid"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     24
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "Reaction of aniline with conc. HNO₃ and conc. H₂SO₄ at 298 K will produce 47% of",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "p-Nitroaniline"
-     },
-     {
-      "id": "B",
-      "text": "o-Nitroaniline"
-     },
-     {
-      "id": "C",
-      "text": "m-Nitroaniline"
-     },
-     {
-      "id": "D",
-      "text": "2, 4-Dinitroaniline"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     26
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "What will be increasing order of basic strength of the following compounds?\n\n$$ \\mathrm{C}_{2}\\mathrm{H}_{5}\\mathrm{NH}_{2},(\\mathrm{C}_{2}\\mathrm{H}_{5})_{2}\\mathrm{NH},(\\mathrm{C}_{2}\\mathrm{H}_{5})_{3}\\mathrm{N},\\mathrm{C}_{6}\\mathrm{H}_{5}\\mathrm{NH}_{2} $$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ C_{2}H_{5}NH_{2} < (C_{2}H_{5})_{2}NH < (C_{2}H_{5})_{3}N < C_{6}H_{5}NH_{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ C_{6}H_{5}NH_{2} < (C_{2}H_{5})_{3}N < C_{2}H_{5}NH_{2} < (C_{2}H_{5})_{2}NH $"
-     },
-     {
-      "id": "C",
-      "text": "$ (C_{2}H_{5})_{3}N < (C_{2}H_{5})_{2}NH < C_{6}H_{5}NH_{2} < C_{2}H_{5}NH_{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ (C_{2}H_{5})_{2}NH < (C_{2}H_{5})_{3}N < C_{2}H_{5}NH_{2} < C_{6}H_{5}NH_{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     27
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "Arrange the following acids in increasing order of their acidic strengths:\n\nHCOOH, $ \\text{FCH}_2\\text{COOH} $, $ \\text{NO}_2\\text{CH}_2\\text{COOH} $, $ \\text{ClCH}_2\\text{COOH} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "HCOOH < FCH_{2}COOH < NO_{2}CH_{2}COOH < ClCH_{2}COOH"
-     },
-     {
-      "id": "B",
-      "text": "HCOOH<NO_{2}CH_{2}COOH<ClCH_{2}COOH<FCH_{2}COOH"
-     },
-     {
-      "id": "C",
-      "text": "NO_{2}CH_{2}COOH<HCOOH<ClCH_{2}COOH<FCH_{2}COOH"
-     },
-     {
-      "id": "D",
-      "text": "HCOOH<ClCH_{2}COOH<FCH_{2}COOH<NO_{2}CH_{2}COOH"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     28
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "In the following compounds, what is the increasing order of their reactivity towards nucleophilic addition reactions?\n\nBenzaldehyde, p-Tolualdehyde, p-Nitrobenzaldehyde, Acetophenone",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Benzaldehyde"
-     },
-     {
-      "id": "B",
-      "text": "Acetophenone"
-     },
-     {
-      "id": "C",
-      "text": "Acetophenone"
-     },
-     {
-      "id": "D",
-      "text": "Benzaldehyde"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     29
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Formaldehyde undergoes Cannizzaro reaction because\n\n(A) It has alpha-hydrogen atom.\n\n(B) It does not have alpha-hydrogen atom.\n\n(C) It does not undergo self-oxidation and reduction on heating with concentrated alkali.\n\n(D) It undergo self-oxidation and reduction on heating with concentrated alkali.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(B) and (C) only"
-     },
-     {
-      "id": "D",
-      "text": "(A) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     30
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "In the reaction, $ (CH_{3})_{3}C-O-CH_{3} + HI \\rightarrow $ Products\n\nCH₃OH and (CH₃)₃CI are the products and not CH₃I and (CH₃)₃C-OH. It is because,\n\n(A) in step 2 of the reaction the departure of leaving group $ \\mathrm{(HO-CH_{3})} $ creates less stable carbocation.\n\n(B) in step 2 of the reaction the departure of leaving group $ (HO-CH_{3}) $ creates more stable carbocation.\n\n(C) the reaction follows S_{n}1 mechanism.\n\n(D) the reaction follows S_{n}2 mechanism.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(A) and (C) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     31
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Aniline does not undergo Friedel-Crafts reaction because\n\n(A) It forms salt with the Lewis acid catalyst, $ AlCl_{3} $.\n\n(B) Nitrogen of aniline acquires negative charge.\n\n(C) Nitrogen of aniline acquires positive charge.\n\n(D) Nitrogen acts as a strong deactivating group in the further reaction.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     32
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Although chlorine is an electron withdrawing group, yet it is ortho- and para-directing in electrophilic aromatic substitution reaction because\n\n(A) Chlorine withdraws electrons through inductive effect.\n\n(B) Chlorine destabilises the intermediate carbocation formed during electrophilic substitution.\n\n(C) Chlorine accepts electrons through resonance.\n\n(D) Chlorine releases electrons through resonance.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     33
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "In Etard reaction, the final product is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Aromatic aldehyde"
-     },
-     {
-      "id": "B",
-      "text": "Aromatic chloride"
-     },
-     {
-      "id": "C",
-      "text": "Aromatic amine"
-     },
-     {
-      "id": "D",
-      "text": "Aromatic alcohol"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     34
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     35
-    ],
-    "assets": [
-     {
-      "id": "q47-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q47-table-1.jpg",
-      "page": 35,
-      "alt": "Table for question 47"
-     }
-    ]
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "\\ (A)\\ - (II),\\ (B)\\ - (IV),\\ (C)\\ - (II),\\ (D)\\ - (I)"
-     },
-     {
-      "id": "B",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{IV}),(\\mathrm{B})-(\\mathrm{III}),(\\mathrm{C})-(\\mathrm{I}),(\\mathrm{D})-(\\mathrm{II})"
-     },
-     {
-      "id": "C",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{I}),(\\mathrm{B})-(\\mathrm{IV}),(\\mathrm{C})-(\\mathrm{II}),(\\mathrm{D})-(\\mathrm{III})"
-     },
-     {
-      "id": "D",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{III}),\\ (\\mathrm{B})-(\\mathrm{I}),\\ (\\mathrm{C})-(\\mathrm{IV}),\\ (\\mathrm{D})-(\\mathrm{II})"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     35,
-     36
-    ],
-    "assets": [
-     {
-      "id": "q48-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q48-table-1.jpg",
-      "page": 36,
-      "alt": "Table for question 48"
-     }
-    ]
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (III),\\ (D)\\ - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "\\ (A)\\ - (I),\\ (B)\\ - (II),\\ (C)\\ - (II),\\ (D)\\ - (IV)"
-     },
-     {
-      "id": "C",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{I}),\\ (\\mathrm{B})-(\\mathrm{II}),\\ (\\mathrm{C})-(\\mathrm{IV}),\\ (\\mathrm{D})-(\\mathrm{III})"
-     },
-     {
-      "id": "D",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{I I I}),\\ (\\mathrm{B})-(\\mathrm{I V}),\\ (\\mathrm{C})-(\\mathrm{I}),\\ (\\mathrm{D})-(\\mathrm{I I})"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     36
-    ],
-    "assets": [
-     {
-      "id": "q49-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q49-table-1.jpg",
-      "page": 36,
-      "alt": "Table for question 49"
-     }
-    ]
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "\\ (A)\\ - (III),\\ (B)\\ - (II),\\ (C)\\ - (I),\\ (D)\\ - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "\\ (A)\\ -\\ (II),\\ (B)\\ -\\ (III),\\ (C)\\ -\\ (I),\\ (D)\\ -\\ (IV)"
-     },
-     {
-      "id": "C",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{I I I}),\\ (\\mathrm{B})-(\\mathrm{I I}),\\ (\\mathrm{C})-(\\mathrm{I V}),\\ (\\mathrm{D})-(\\mathrm{I})"
-     },
-     {
-      "id": "D",
-      "text": "\\left(\\mathrm{A}\\right)-\\left(\\mathrm{II}\\right),\\left(\\mathrm{B}\\right)-\\left(\\mathrm{III}\\right),\\left(\\mathrm{C}\\right)-\\left(\\mathrm{IV}\\right),\\left(\\mathrm{D}\\right)-\\left(\\mathrm{I}\\right)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     37
-    ],
-    "assets": [
-     {
-      "id": "q50-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-15-shift-1/q50-table-1.jpg",
-      "page": 37,
-      "alt": "Table for question 50"
-     }
-    ]
-   }
-  ]
- }
+  }
 }

@@ -31,12 +31,26 @@ const instructions = [
 const metaDescription =
   paper.metaDescription ||
   `Take the ${paper.dateLabel} CUET ${paper.subject.name} paper: ${paper.scorableQuestionCount} ranked questions, ${paper.durationMinutes} minutes, +5/−1 marking, saved result, leaderboard rank and a post-submit review.`;
+
+function formatPracticeSeoTitle(title: string): string {
+  const suffix = " | CUET Mock";
+  const maxBase = 60 - suffix.length;
+  let clean = title.replace(/Question Paper( with Solutions)?/i, "").replace(/^CUET UG/i, "CUET").trim();
+  if (clean.length > maxBase) {
+    clean = clean.slice(0, maxBase - 1).trim() + "…";
+  }
+  return `${clean}${suffix}`;
+}
+const seoTitle = formatPracticeSeoTitle(paper.title);
+const isCleared = (paper as any).rightsStatus === "cleared";
+const forceNoindex = !isCleared;
 ---
 
 <BaseLayout
-  title={`${paper.title} — CUET Previous-Year Practice`}
+  title={seoTitle}
   description={metaDescription}
   structuredData={structuredData}
+  noindex={forceNoindex}
 >
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
@@ -130,6 +144,7 @@ const metaDescription =
         <h2 class="font-bold">Independent practice</h2>
         <p class="mt-2 text-neutral-600 dark:text-neutral-400">CUET Free Mock Test is not affiliated with NTA. Verify official dates, patterns and marking rules against the current NTA bulletin.</p>
         <a class="mt-3 inline-block font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/disclaimer">Read the disclaimer</a>
+        <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Found a mistake or issue? <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/contact#takedown">Report an issue</a></p>
       </aside>
     </div>
   </section>

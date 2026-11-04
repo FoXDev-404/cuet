@@ -93,7 +93,7 @@ const BLOCKED_AD_PATHS: RegExp[] = [
   /^\/reset-password(?:\/|$)/,
   /^\/verify-email(?:\/|$)/,
   /^\/search(?:\/|$)/,
-  /^\/practice(?:\/|$)/,
+  /^\/mock-tests(?:\/|$)/,
   /^\/u(?:\/|$)/,
   /\/take(?:\/|$)/,
 ];

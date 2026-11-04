@@ -9,8 +9,12 @@ import { chatTone, displayInitial, safeAvatarUrl } from "../../../lib/chat";
 import { formatDateTime, renderPlainText, renderRichText } from "../../../lib/content";
 import { getSetting } from "../../../lib/settings";
 import { oldSlugRedirect } from "../../../lib/slug-redirects";
+import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
 
 const slug = Astro.params.slug ?? "";
+if (isProductionEnvironment() && isFixtureSlug(slug)) {
+  return new Response("Mock test not found", { status: 404 });
+}
 let mock: { id: number; title: string; slug: string } | null = null;
 try {
   mock = await first<{ id: number; title: string; slug: string }>(
@@ -26,7 +30,7 @@ try {
   mock = fallback ? { id: fallback.id, title: fallback.title, slug: fallback.slug } : null;
   if (!mock) return dbUnavailableResponse();
 }
-if (!mock) {
+if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}/discussion`, 301);
   return new Response("Discussion not found", { status: 404 });

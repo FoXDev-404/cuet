@@ -223,7 +223,11 @@
           },
           {
             "id": "C",
-            "text": "$ \\left(\\frac{\\mu_{0}}{4\\pi}\\right)\\left(\\frac{i}{r}\\right)(\\pi+1) $\n\n $$ \\frac{\\mu_{0}i}{4\\pi r}(\\pi-2) $$"
+            "text": "$ \\left(\\frac{\\mu_{0}}{4\\pi}\\right)\\left(\\frac{i}{r}\\right)(\\pi+1) $"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\frac{\\mu_{0}i}{4\\pi r}(\\pi-2) $$"
           }
         ],
         "optionsAreImages": false,

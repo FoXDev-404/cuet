@@ -4,6 +4,8 @@ import { rateLimit } from "../../../lib/auth/rate-limit";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { first, run } from "../../../lib/db";
 import { apiError, clientIp, forbiddenOrigin, isSameOrigin, json } from "../../../lib/http";
+import { isFixtureMock, isProductionEnvironment } from "../../../lib/fixtures";
+import { calculateMockDuration } from "../../../lib/exam-timing";
 
 export const POST: APIRoute = async (context) => {
   if (!isSameOrigin(context.request)) return forbiddenOrigin();
@@ -21,19 +23,31 @@ export const POST: APIRoute = async (context) => {
   const mock = await first<{
     id: number;
     title: string;
+    slug: string;
     status: string;
     deleted_at: string | null;
     version_id: number | null;
     duration_min: number | null;
+    subject_name: string | null;
+    question_count: number;
   }>(
-    `SELECT m.id, m.title, m.status, m.deleted_at, m.current_version_id AS version_id,
-            v.duration_min
+    `SELECT m.id, m.title, m.slug, m.status, m.deleted_at, m.current_version_id AS version_id,
+            v.duration_min, s.name AS subject_name,
+            (SELECT COUNT(*) FROM mock_questions mq WHERE mq.version_id = v.id) AS question_count
      FROM mock_tests m
      LEFT JOIN mock_test_versions v ON v.id = m.current_version_id
+     LEFT JOIN subjects s ON s.id = m.subject_id
      WHERE m.id = ?`,
     mockId,
   );
-  if (!mock || mock.deleted_at || mock.status !== "published" || !mock.version_id || !mock.duration_min) {
+  if (
+    !mock ||
+    mock.deleted_at ||
+    mock.status !== "published" ||
+    !mock.version_id ||
+    !mock.duration_min ||
+    (isProductionEnvironment() && isFixtureMock(mock))
+  ) {
     return apiError("This mock test is not available.", 404);
   }
 
@@ -64,8 +78,12 @@ export const POST: APIRoute = async (context) => {
 
   if (!user && !guestToken) guestToken = ensureGuestToken(context.cookies);
 
+  const durationMin = (mock.question_count && mock.question_count > 0)
+    ? calculateMockDuration(mock.question_count, mock.subject_name).durationMinutes
+    : (mock.duration_min ?? 60);
+
   const startedAt = new Date();
-  const deadlineAt = new Date(startedAt.getTime() + mock.duration_min * 60 * 1000);
+  const deadlineAt = new Date(startedAt.getTime() + durationMin * 60 * 1000);
   const result = await run(
     `INSERT INTO attempts (user_id, guest_token, mock_id, version_id, status, started_at, deadline_at)
      VALUES (?, ?, ?, ?, 'in_progress', ?, ?)`,

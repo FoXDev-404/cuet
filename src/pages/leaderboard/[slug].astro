@@ -7,8 +7,12 @@ import { getLocalMockFallback } from "../../lib/local-mock-fallback";
 import { formatDuration } from "../../lib/content";
 import { breadcrumbJsonLd } from "../../lib/seo";
 import { percentileFor } from "../../lib/ranking";
+import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../lib/fixtures";
 
 const slug = Astro.params.slug ?? "";
+if (isProductionEnvironment() && isFixtureSlug(slug)) {
+  return new Response("Leaderboard not found", { status: 404 });
+}
 let mock: {
   id: number;
   title: string;
@@ -52,7 +56,7 @@ try {
     : null;
   if (!mock) return dbUnavailableResponse();
 }
-if (!mock) return new Response("Leaderboard not found", { status: 404 });
+if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) return new Response("Leaderboard not found", { status: 404 });
 
 const [rows, summary, mine] = await Promise.all([
   allOr<{
@@ -96,7 +100,7 @@ const [rows, summary, mine] = await Promise.all([
 const eligible = summary?.eligible ?? 0;
 const average = summary?.average ?? null;
 const startHref = mock.practice_paper_slug
-  ? `/practice/${mock.practice_paper_slug}`
+  ? `/mock-tests/${mock.practice_paper_slug}`
   : `/mock/${mock.slug}/instructions`;
 const medals = ["🥇", "🥈", "🥉"];
 const myRank = mine?.rank ?? null;
@@ -112,7 +116,7 @@ const structuredData = breadcrumbJsonLd(site, [
 <BaseLayout
   title={`${mock.title} Leaderboard — CUET Free Mock Test`}
   description={`First-attempt leaderboard for ${mock.title}. See top scores, accuracy and time among CUET UG mock test students.`}
-  noindex={eligible === 0}
+  noindex={eligible === 0 || isFixtureSlug(mock.slug) || isFixtureMock(mock)}
   structuredData={structuredData}
 >
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">

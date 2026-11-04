@@ -2,13 +2,18 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { first } from "../../../lib/db";
 import { dbUnavailableResponse } from "../../../lib/db-resilient";
+import { calculateMockDuration } from "../../../lib/exam-timing";
 import { getLocalMockFallback } from "../../../lib/local-mock-fallback";
 import { getGuestToken } from "../../../lib/auth/session";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { parseMarkingScheme } from "../../../lib/content";
 import { oldSlugRedirect } from "../../../lib/slug-redirects";
+import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
 
 const slug = Astro.params.slug ?? "";
+if (isProductionEnvironment() && isFixtureSlug(slug)) {
+  return new Response("Mock test not found", { status: 404 });
+}
 
 let mock: {
   id: number;
@@ -20,6 +25,7 @@ let mock: {
   instructions: string | null;
   question_count: number;
   attempt_count: number;
+  subject_name?: string | null;
 } | null = null;
 try {
   mock = await first<{
@@ -32,11 +38,15 @@ try {
     instructions: string | null;
     question_count: number;
     attempt_count: number;
+    subject_name: string | null;
   }>(
     `SELECT m.id, m.title, m.slug, m.duration_min, m.total_marks, m.marking_scheme, m.instructions,
             (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
-            (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count
-     FROM mock_tests m WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
+            (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count,
+            s.name AS subject_name
+     FROM mock_tests m
+     LEFT JOIN subjects s ON s.id = m.subject_id
+     WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
     slug,
   );
 } catch (error) {
@@ -46,7 +56,7 @@ try {
   mock = getLocalMockFallback(slug);
   if (!mock) return dbUnavailableResponse();
 }
-if (!mock) {
+if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}/instructions`, 301);
   return new Response("Mock test not found", { status: 404 });
@@ -68,9 +78,13 @@ try {
   console.error("Attempt lookup failed", error);
   activeAttempt = null;
 }
+const effectiveDurationMin = (mock.question_count && mock.question_count > 0)
+  ? calculateMockDuration(mock.question_count, mock.subject_name).durationMinutes
+  : (mock.duration_min ?? 60);
+
 const lines = (mock.instructions ?? "")
   .split("\n")
-  .map((line) => line.trim())
+  .map((line) => line.trim().replace(/\b\d+\s+minutes\b/i, `${effectiveDurationMin} minutes`))
   .filter(Boolean);
 ---
 
@@ -82,7 +96,7 @@ const lines = (mock.instructions ?? "")
 
     <div class="mt-6 grid gap-3 sm:grid-cols-4">
       <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</p><p class="mt-1 text-2xl font-black">{mock.question_count}</p></div>
-      <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p><p class="mt-1 text-2xl font-black">{mock.duration_min} min</p></div>
+      <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p><p class="mt-1 text-2xl font-black">{effectiveDurationMin} min</p></div>
       <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Total marks</p><p class="mt-1 text-2xl font-black">{mock.total_marks}</p></div>
       <div class="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"><p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Marking</p><p class="mt-1 text-sm font-bold">+{marking.correct} / {marking.wrong}</p></div>
     </div>

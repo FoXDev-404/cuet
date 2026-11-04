@@ -1,1645 +1,1645 @@
 {
- "exam": {
-  "id": "local-physics-2024-05-16-shift-3",
-  "slug": "physics-2024-05-16-shift-3",
-  "title": "CUET UG Physics 16 May 2024 Shift 3 Previous Year Paper",
-  "subject": "Physics",
-  "subjectId": "local-physics",
-  "subjectCode": "PHY",
-  "year": 2024,
-  "examDate": "2024-05-16",
-  "shift": "Shift 3",
-  "sourceFile": "Physics_2024-05-16_Shift_3.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 46,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Two charged particles, placed at a distance d apart in vacuum, exert a force F on each other. Now, each of the charges is doubled. To keep the force unchanged, the distance between the charges should be changed to _.\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "4d"
-     },
-     {
-      "id": "B",
-      "text": "2d"
-     },
-     {
-      "id": "C",
-      "text": "d"
-     },
-     {
-      "id": "D",
-      "text": "d/2"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Two parallel plate capacitors of capacitances 2 µF and 3 µF are joined in series and the combination is connected to a battery of V volts. The values of potential across the two capacitors $ V_1 $ and $ V_2 $ and\n\nenergy stored in the two capacitors $ U_1 $ and $ U_2 $ respectively are related as _. Fill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{U_{1}}{U_{2}} = \\frac{3}{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{U_{1}}{U_{2}} = \\frac{2}{3} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{3}{2} $ and $ \\frac{U_{1}}{U_{2}} = \\frac{2}{3} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{2}{3} $ and $ \\frac{U_{1}}{U_{2}} = \\frac{3}{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Two large plane parallel sheets shown in the figure have equal but opposite surface charge densities +σ and -σ. A point charge q placed at points P₁, P₂ and P₃ experiences forces F₁, F₂ and F₃ respectively. Then\n\n$$ \\begin{aligned}&\\begin{vmatrix}\\\\ &+\\boldsymbol{\\sigma}&+\\\\&+&\\\\&+&\\\\&\\mathbf{q}&+\\\\&\\bullet&+\\\\&\\mathbf{p}_{1}&+\\\\&&+\\\\&&+\\\\&&+\\\\&&+\\\\&\\end{vmatrix}&\\begin{matrix}\\\\ &-\\quad-\\boldsymbol{\\sigma}\\\\&-\\\\&\\mathbf{q}&-\\\\&\\bullet&-\\\\&\\mathbf{p}_{3}&-\\\\&&-\\\\&&-\\\\&&-\\\\&&-\\\\&\\end{matrix}\\\\ \\end{aligned} $$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\overrightarrow{F}_1 = 0, \\overrightarrow{F}_2 = 0, \\overrightarrow{F}_3 = 0 $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\overrightarrow{F}_1 = 0, \\overrightarrow{F}_2 \\neq 0, \\overrightarrow{F}_3 = 0 $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\overrightarrow{F}_1 \\neq 0, \\overrightarrow{F}_2 \\neq 0, \\overrightarrow{F}_3 \\neq 0 $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\overrightarrow{F}_1 = 0, \\overrightarrow{F}_2 = 0, \\overrightarrow{F}_3 \\neq 0 $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Two charged metallic spheres with radii $ R_1 $ and $ R_2 $ are brought in contact and then separated. The ratio of final charges $ Q_1 $ and $ Q_2 $ on the two spheres respectively will be _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{Q_{1}}{Q_{2}} = \\frac{R_{2}}{R_{1}} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{Q_{1}}{Q_{2}} < \\frac{R_{1}}{R_{2}} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{Q_{1}}{Q_{2}} > \\frac{R_{1}}{R_{2}} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{Q_{1}}{Q_{2}} = \\frac{R_{1}}{R_{2}} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Two resistances of $ 100\\Omega $ and $ 200\\Omega $ are connected in series across a $ 20\\ V $ battery as shown in figure below. The reading in a $ 200\\Omega $ voltmeter connected across the $ 200\\Omega $ resistance is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "4 V"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{20}{3}V $"
-     },
-     {
-      "id": "C",
-      "text": "10 V"
-     },
-     {
-      "id": "D",
-      "text": "16 V"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q05-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q05-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 5"
-     }
+  "exam": {
+    "id": "local-physics-2024-05-16-shift-3",
+    "slug": "physics-2024-05-16-shift-3",
+    "title": "CUET UG Physics 16 May 2024 Shift 3 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2024,
+    "examDate": "2024-05-16",
+    "shift": "Shift 3",
+    "sourceFile": "Physics_2024-05-16_Shift_3.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 46,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Two charged particles, placed at a distance d apart in vacuum, exert a force F on each other. Now, each of the charges is doubled. To keep the force unchanged, the distance between the charges should be changed to _.\n\nFill in the blank with the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "4d"
+          },
+          {
+            "id": "B",
+            "text": "2d"
+          },
+          {
+            "id": "C",
+            "text": "d"
+          },
+          {
+            "id": "D",
+            "text": "d/2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Two parallel plate capacitors of capacitances 2 µF and 3 µF are joined in series and the combination is connected to a battery of V volts. The values of potential across the two capacitors $ V_1 $ and $ V_2 $ and\n\nenergy stored in the two capacitors $ U_1 $ and $ U_2 $ respectively are related as _. Fill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{U_{1}}{U_{2}} = \\frac{3}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{U_{1}}{U_{2}} = \\frac{2}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{3}{2} $ and $ \\frac{U_{1}}{U_{2}} = \\frac{2}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{V_{1}}{V_{2}} = \\frac{2}{3} $ and $ \\frac{U_{1}}{U_{2}} = \\frac{3}{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Two large plane parallel sheets shown in the figure have equal but opposite surface charge densities +σ and -σ. A point charge q placed at points P₁, P₂ and P₃ experiences forces F₁, F₂ and F₃ respectively. Then\n\n$$ \\begin{aligned}&\\begin{vmatrix}\\\\ &+\\boldsymbol{\\sigma}&+\\\\&+&\\\\&+&\\\\&\\mathbf{q}&+\\\\&\\bullet&+\\\\&\\mathbf{p}_{1}&+\\\\&&+\\\\&&+\\\\&&+\\\\&&+\\\\&\\end{vmatrix}&\\begin{matrix}\\\\ &-\\quad-\\boldsymbol{\\sigma}\\\\&-\\\\&\\mathbf{q}&-\\\\&\\bullet&-\\\\&\\mathbf{p}_{3}&-\\\\&&-\\\\&&-\\\\&&-\\\\&&-\\\\&\\end{matrix}\\\\ \\end{aligned} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\overrightarrow{F}_1 = 0, \\overrightarrow{F}_2 = 0, \\overrightarrow{F}_3 = 0 $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\overrightarrow{F}_1 = 0, \\overrightarrow{F}_2 \\neq 0, \\overrightarrow{F}_3 = 0 $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\overrightarrow{F}_1 \\neq 0, \\overrightarrow{F}_2 \\neq 0, \\overrightarrow{F}_3 \\neq 0 $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\overrightarrow{F}_1 = 0, \\overrightarrow{F}_2 = 0, \\overrightarrow{F}_3 \\neq 0 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Two charged metallic spheres with radii $ R_1 $ and $ R_2 $ are brought in contact and then separated. The ratio of final charges $ Q_1 $ and $ Q_2 $ on the two spheres respectively will be _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{Q_{1}}{Q_{2}} = \\frac{R_{2}}{R_{1}} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{Q_{1}}{Q_{2}} < \\frac{R_{1}}{R_{2}} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{Q_{1}}{Q_{2}} > \\frac{R_{1}}{R_{2}} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{Q_{1}}{Q_{2}} = \\frac{R_{1}}{R_{2}} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Two resistances of $ 100\\Omega $ and $ 200\\Omega $ are connected in series across a $ 20\\ V $ battery as shown in figure below. The reading in a $ 200\\Omega $ voltmeter connected across the $ 200\\Omega $ resistance is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "4 V"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{20}{3}V $"
+          },
+          {
+            "id": "C",
+            "text": "10 V"
+          },
+          {
+            "id": "D",
+            "text": "16 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q05-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q05-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The current through a 4/3Ω external resistance connected to a parallel combination of two cells of 2 V and 1 V emf and internal resistances of 1 Ω and 2 Ω respectively is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1 A"
+          },
+          {
+            "id": "B",
+            "text": "2/3 A"
+          },
+          {
+            "id": "C",
+            "text": "3/4 A"
+          },
+          {
+            "id": "D",
+            "text": "5/6 A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "A metallic wire of uniform area of cross section has a resistance R, resistivity $ \\rho $ and power rating P at V volts. The wire is uniformly stretched to reduce the radius to half the original radius. The values of resistance, resistivity and power rating at V volts are now denoted by $ R' $, $ \\rho' $ and $ P' $ respectively. The corresponding values are correctly related as _.\n\nFill in the blank with the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\rho' = 2\\rho $, $ R' = 2R $, $ P' = 2P $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\rho' = (1/2)\\rho $, $ R' = (1/2)R $, $ P' = (1/2)P $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\rho' = \\rho $, $ R' = 16R $, $ P' = (1/16)P $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\rho' = \\rho $, $ R' = (1/16)R $, $ P' = 16P $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Three magnetic materials are listed below\n\n(A) paramagnetics\n\n(B) diamagnetics\n\n(C) ferromagnetics\n\nChoose the correct order of the materials in increasingorder of magnetic susceptibility.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C)"
+          },
+          {
+            "id": "B",
+            "text": "(C), (A), (B)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (C)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C), (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Two infinitely long straight parallel conductors carrying currents $ I_{1} $ and $ I_{2} $ are held at a distance d apart in vacuum. The force F on a length L of one of the conductors due to the other is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "proportional to L but independent of $ I_{1} \\times I_{2} $"
+          },
+          {
+            "id": "B",
+            "text": "proportional to $ I_{1} \\times I_{2} $ but independent of length L"
+          },
+          {
+            "id": "C",
+            "text": "proportional to $ I_1 \\times I_2 \\times L $"
+          },
+          {
+            "id": "D",
+            "text": "proportional to $ \\frac{L}{I_1 \\times I_2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          8
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "In the circuit shown below, a current 3 I enters at A. The semicircular parts ABC and ADC have equal radii 'r' but resistances 2R and R respectively. The magnetic field at the center of the circular loop ABCD is _.\n\nFill in the blank with the correct answer from the options given below\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\mu_{0}I}{4r} $ out of the plane"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\mu_{0}I}{4r} $ into the plane"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\mu_{0}3I}{4r} $ out of the plane"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\mu_{0}3I}{4r} $ into the plane"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          8,
+          9
+        ],
+        "assets": [
+          {
+            "id": "q10-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q10-figure-1.jpg",
+            "page": 9,
+            "alt": "Figure for question 10"
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "A square loop with each side 1 cm, carrying a current of 10 A, is placed in a magnetic field of 0.2 T. The direction of magnetic field is parallel to the plane of the loop. The torque experienced by the loop is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "zero"
+          },
+          {
+            "id": "B",
+            "text": "$2\\times10^{-4}\\mathrm{Nm}$"
+          },
+          {
+            "id": "C",
+            "text": "$2\\times10^{-2}\\mathrm{Nm}$"
+          },
+          {
+            "id": "D",
+            "text": "2 Nm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          10
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "In an ac circuit, the current leads the voltageby $ \\pi/2 $. The circuit is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "purely resistive"
+          },
+          {
+            "id": "B",
+            "text": "should have circuit elements with resistance equal to reactance."
+          },
+          {
+            "id": "C",
+            "text": "purely inductive"
+          },
+          {
+            "id": "D",
+            "text": "purely capacitive"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          11
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "In a pair of adjacent coils, for a change of current in one of the coils from 0 A to 10 A in 0.25 s, the magnetic flux in the adjacent coil changes by 15 Wb. The mutual indutance of the coils is\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "120 H"
+          },
+          {
+            "id": "B",
+            "text": "12 H"
+          },
+          {
+            "id": "C",
+            "text": "1.5 H"
+          },
+          {
+            "id": "D",
+            "text": "0.75 H"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          11
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "A wire of irregular shape in figure (a) and a circular loop of wire in figure (b) are placed in different uniform magnetic fields as shown in the figures below. In figure (a), the magnetic field is perpendicular into the plane. In figure (b), the magnetic field is perpendicular out of the plane.\n\nThe wire in figure (a) is turning into a circular loop and that in figure (b) into a narrow straight wire. The direction of induced current will be _.\n\nFill in the blank with the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "clockwise in both (a) and (b)"
+          },
+          {
+            "id": "B",
+            "text": "anticlockwise in both (a) and (b)"
+          },
+          {
+            "id": "C",
+            "text": "clockwise in (a) and anticlockwise in (b)"
+          },
+          {
+            "id": "D",
+            "text": "anticlockwise in (a) and clockwise in (b)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          12
+        ],
+        "assets": [
+          {
+            "id": "q14-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q14-figure-1.jpg",
+            "page": 12,
+            "alt": "Figure for question 14"
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "Match List-I has four graphs showing variation of opposition to flow of ac versus frequency with circuit characteristic in List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          13
+        ],
+        "assets": [
+          {
+            "id": "q15-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q15-table-1.jpg",
+            "page": 13,
+            "alt": "Table for question 15"
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "In an electromagnetic wave, the ratio of energy densities of electric and magnetic fields is _. Fill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1:1"
+          },
+          {
+            "id": "B",
+            "text": "1:c"
+          },
+          {
+            "id": "C",
+            "text": "c:1"
+          },
+          {
+            "id": "D",
+            "text": "1:c^{2}"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          14
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "Of the following, the correct arrangement of electromagnetic spectrum in decreasing order of wavelength is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Radio waves, X-rays, Infrared waves, microwaves, visible waves"
+          },
+          {
+            "id": "B",
+            "text": "Infrared waves, microwaves, Radio waves, X-rays, visible waves"
+          },
+          {
+            "id": "C",
+            "text": "Radio waves, microwaves, Infrared waves, visible waves, X-rays"
+          },
+          {
+            "id": "D",
+            "text": "X-rays, visible waves, Infrared waves, microwaves, Radio wave"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          15
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Match Electromagnetic waves listed in column I with Production method/device in column II.\nThe correctly matched combination is as in option :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "}\\left(\\mathrm{A}\\right)-\\left(\\mathrm{II}\\right),\\left(\\mathrm{B}\\right)-\\left(\\mathrm{III}\\right),\\left(\\mathrm{C}\\right)-\\left(\\mathrm{IV}\\right),\\left(\\mathrm{D}\\right)-\\left(\\mathrm{I}\\right)"
+          },
+          {
+            "id": "C",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{II}),\\ (\\mathrm{B})-(\\mathrm{I}),\\ (\\mathrm{C})-(\\mathrm{IV}),\\ (\\mathrm{D})-(\\mathrm{III})"
+          },
+          {
+            "id": "D",
+            "text": "\\ (\\mathrm{A})-(\\mathrm{III}),\\ (\\mathrm{B})-(\\mathrm{IV}),\\ (\\mathrm{C})-(\\mathrm{I}),\\ (\\mathrm{D})-(\\mathrm{II})"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          15
+        ],
+        "assets": [
+          {
+            "id": "q18-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q18-table-1.jpg",
+            "page": 15,
+            "alt": "Table for question 18"
+          }
+        ]
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "In the figure given below, APB is a curved surface of radius of curvature 10 cm separating air and a transparent material ( $ \\mu = 4/3 $). A point object O is placed in air on the principal axis of the surface 20 cm from P. The distance of the image of O from P will be _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "16 cm left of P in air"
+          },
+          {
+            "id": "B",
+            "text": "16 cm right of P in water"
+          },
+          {
+            "id": "C",
+            "text": "20 cm right of P in water"
+          },
+          {
+            "id": "D",
+            "text": "20 cm left of P in air"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          16
+        ],
+        "assets": [
+          {
+            "id": "q19-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q19-figure-1.jpg",
+            "page": 16,
+            "alt": "Figure for question 19"
+          }
+        ]
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "The graph correctly representing the variation of image distance 'v' for a convex lens of focal length 'f' versus object distance 'u' is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": ""
+          },
+          {
+            "id": "B",
+            "text": ""
+          },
+          {
+            "id": "C",
+            "text": ""
+          },
+          {
+            "id": "D",
+            "text": ""
+          }
+        ],
+        "optionsAreImages": true,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [
+          "image-options"
+        ],
+        "sourcePages": [
+          18
+        ],
+        "assets": [
+          {
+            "id": "q21-options",
+            "kind": "options",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q21-options.jpg",
+            "page": 18,
+            "alt": "Printed answer choices for question 21"
+          }
+        ]
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "Using light from a monochromatic source to study diffraction in a single slit of width 0.1 mm, the linear width of central maxima is measured to be 5 mm on a screen held 50 cm away. The wavelength of light used is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2.5 \\times 10^{-7} $ m"
+          },
+          {
+            "id": "B",
+            "text": "$ 4 \\times 10^{-7} $m"
+          },
+          {
+            "id": "C",
+            "text": "$ 5 \\times 10^{-7} $m"
+          },
+          {
+            "id": "D",
+            "text": "$ 7.5 \\times 10^{-7} $m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          19
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "Radiation of frequency $ 2v_{0} $ is incident on a metal with threshold frequency $ v_{0} $. The correct statement of the following is _\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "No photoelectrons will be emitted"
+          },
+          {
+            "id": "B",
+            "text": "All photoelectrons emitted will have a kinetic energy equal to $ hv_{0} $"
+          },
+          {
+            "id": "C",
+            "text": "Maximum kinetic energy of photoelectrons emitted can be $ hv_{0} $"
+          },
+          {
+            "id": "D",
+            "text": "Maximum kinetic energy of photoelectrons emitted will be $ 2hv_{0} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          20
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "A proton accelerated through a potential difference V has a de Broglie wavelength $ \\square $. On doubling the accelerating potential, de Broglie wavelength of the proton _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "remains unchanged"
+          },
+          {
+            "id": "B",
+            "text": "becomes double"
+          },
+          {
+            "id": "C",
+            "text": "becomes four times"
+          },
+          {
+            "id": "D",
+            "text": "decreases"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          22
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "The kinetic energy of an electron in ground level in hydrogen atom is K units. The values of its potential energy and total energy respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2K; -K"
+          },
+          {
+            "id": "B",
+            "text": "$ ^{+}2K^{-} $; -K"
+          },
+          {
+            "id": "C",
+            "text": "$ -\\mathrm{K},+2\\mathrm{K} $"
+          },
+          {
+            "id": "D",
+            "text": "$ ^{+}K^{+}+2K $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          23
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Two nuclei have mass numbers A and B respectively. The density ratio of the nuclei is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A: B"
+          },
+          {
+            "id": "B",
+            "text": "$ \\sqrt{A}:\\sqrt{B} $"
+          },
+          {
+            "id": "C",
+            "text": "A^{2}:B^{2}"
+          },
+          {
+            "id": "D",
+            "text": "1:1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          23
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "The shortest wavelengths emitted in hydrogen spectrum corresponding to different spectral series are as under:\n\n(A) Pfundseries\n\n(B) Balmer series\n\n(C) Brackett series\n\n(D) Lyman series\n\nThe wavelengths arranged correctly in decreasing order are _\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C), (B), (D)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "D",
+            "text": "(A), (C), (D), (B)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          24
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "Silicon can be doped using one of the following elements as dopant :\n\n(A) Arsenic\n\n(B) Indium\n\n(C) Phosphorus\n\n(D) Boron To get n-type semiconductor, the dopants that can be used are _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) and (C) only"
+          },
+          {
+            "id": "B",
+            "text": "(B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (C) and (D)"
+          },
+          {
+            "id": "D",
+            "text": "(C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          25
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "Given below are V versus I graphs for different types of p-n junction diodes marked A, B, C and D.\n\n(A)\n\n(B)\n\n(C)\n\n(D)\n\nThe correct sequence of graphs corresponding to forward biased p-n junction; Zener diode; Photo diode and Solar cell in order is _\n\nFill in the blank with the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(D), (C), (A), (B)"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C), (B), (D)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "D",
+            "text": "(C), (B), (D), (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          26
+        ],
+        "assets": [
+          {
+            "id": "q30-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-1.jpg",
+            "page": 26,
+            "alt": "Figure for question 30"
+          },
+          {
+            "id": "q30-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-2.jpg",
+            "page": 26,
+            "alt": "Figure for question 30"
+          },
+          {
+            "id": "q30-figure-3",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-3.jpg",
+            "page": 26,
+            "alt": "Figure for question 30"
+          },
+          {
+            "id": "q30-figure-4",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-4.jpg",
+            "page": 26,
+            "alt": "Figure for question 30"
+          }
+        ]
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 31,
+        "stemEn": "A wire carrying current I, bent as shown in the figure, is placed in a uniform field B that emerges normally out from the plane of the figure. The force on this wire is _.\n\nB O\n\nUniform field\n\nPointing outwards\n\nFill in the blank with the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "4BIR, directed vertically downward"
+          },
+          {
+            "id": "B",
+            "text": "3BIR, directed vertically upward"
+          },
+          {
+            "id": "C",
+            "text": "BI (2R + $ \\pi $R), vertically downward"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\pi $ BIR, from P to Q"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          27
+        ],
+        "assets": [
+          {
+            "id": "q31-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q31-figure-1.jpg",
+            "page": 27,
+            "alt": "Figure for question 31"
+          }
+        ]
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "The refractive index of the material of an equilateral prism is $ \\sqrt{2} $. The angle of minimum deviation of that prism is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "60°"
+          },
+          {
+            "id": "B",
+            "text": "75°"
+          },
+          {
+            "id": "C",
+            "text": "30°"
+          },
+          {
+            "id": "D",
+            "text": "90°"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          28
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "The transfer of integral number of _ is one of the evidence of quantization of electric charge.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "photons"
+          },
+          {
+            "id": "B",
+            "text": "nuclei"
+          },
+          {
+            "id": "C",
+            "text": "electrons"
+          },
+          {
+            "id": "D",
+            "text": "neutrons"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          29
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 35,
+        "stemEn": "A copper ball of density 8.0 g/cc and 1 cm in diameter is immersed in oil of density 0.8 g/cc. The charge on the ball if it remains just suspended in oil in an electric field of intensity 600πV/m acting in the upward direction is _.\n\nFill in the blank with the correct answer from the options given below. (Take $ g = 10\\ m/s^{2} $)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2 \\times 10^{-6} $ C"
+          },
+          {
+            "id": "B",
+            "text": "$ 2 \\times 10^{-5} $ C"
+          },
+          {
+            "id": "C",
+            "text": "$ 1 \\times 10^{-5} $ C"
+          },
+          {
+            "id": "D",
+            "text": "$ 1 \\times 10^{-6} $ C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          30
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "A metal wire is subjected to a constant potential difference. When the temperature of the metal wire increases, the drift velocity of the electron in it _\n\nFill in the blank with the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "increases, thermal velocity of the electrons decreases"
+          },
+          {
+            "id": "B",
+            "text": "decreases, thermal velocity of the electrons decreases"
+          },
+          {
+            "id": "C",
+            "text": "increases, thermal velocity of the electrons increases"
+          },
+          {
+            "id": "D",
+            "text": "decreases, thermal velocity of the electrons increases"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          31
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "For the given mixed combination of resistors calculate the total resistance between points A and B.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 9\\Omega $"
+          },
+          {
+            "id": "B",
+            "text": "$ 18\\Omega $"
+          },
+          {
+            "id": "C",
+            "text": "$ 4\\Omega $"
+          },
+          {
+            "id": "D",
+            "text": "$ 14\\Omega $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          31,
+          32
+        ],
+        "assets": [
+          {
+            "id": "q37-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2024-05-16-shift-3/q37-figure-1.jpg",
+            "page": 32,
+            "alt": "Figure for question 37"
+          }
+        ]
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 38,
+        "stemEn": "A cell of emf 1.1 V and internal resistance 0.5 Ω is connected to a wire of resistance 0.5 Ω. Another cell of the same emf is now connected in series with the intention of increasing the current but the current in the wire remains the same. The internal resistance of the second cell is _\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ 1.1A=\\frac{2.2V}{R+r+r_{2}} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ 1.1A=\\frac{2.2V}{0.5\\Omega+0.5\\Omega+r_{2}} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ 1.1A=\\frac{2.2V}{1.0\\Omega+r_{2}} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ 1.0\\Omega+r_{2}=\\frac{2.2V}{1.1A} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          32
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 39,
+        "stemEn": "P, Q, R and S are four wires of resistances 3, 3, 3 and 4Ω respectively. They are connected to form the four arms of a wheatstone bridge circuit. The resistance with which S must be shunted in order that the bridge may be balanced is _.\n\nFill in the blank with the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 14\\Omega $"
+          },
+          {
+            "id": "B",
+            "text": "$ 12\\Omega $"
+          },
+          {
+            "id": "C",
+            "text": "$ 15\\Omega $"
+          },
+          {
+            "id": "D",
+            "text": "$ 7\\Omega $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          33
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 41,
+        "stemEn": "Ferromagnetic material used in Transformers must have _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Low permeability and High Hysteresis loss"
+          },
+          {
+            "id": "B",
+            "text": "High permeability and Low Hysteresis loss"
+          },
+          {
+            "id": "C",
+            "text": "High permeability and High Hysteresis loss"
+          },
+          {
+            "id": "D",
+            "text": "Low permeability and Low Hysteresis loss"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          35
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "A conducting ring of radius r is placed in a varying magnetic field perpendicular to the plane of the ring. If the rate at which the magnetic field varies is x, the electric field intensity at any point of the ring is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "rx"
+          },
+          {
+            "id": "B",
+            "text": "rx/2"
+          },
+          {
+            "id": "C",
+            "text": "2rx"
+          },
+          {
+            "id": "D",
+            "text": "4r/x"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          36
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "A 50 Hz ac current of crest value 1 A flows through the primary of a transformer. If the mutual inductance between the primary and secondary be 0.5 H, the crest voltage induced in the secondary is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "75 V"
+          },
+          {
+            "id": "B",
+            "text": "150 V"
+          },
+          {
+            "id": "C",
+            "text": "100 V"
+          },
+          {
+            "id": "D",
+            "text": "200 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          37
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "A long solenoid of diameter 0.1 m has $ 2 \\times 10^4 $ turns per meter. At the centre of the solenoid a coil of 100 turns and radius 0.01 m is placed with its axis coinciding with the solenoid axis. The current in the solenoid reduces at a constant rate to 0 A from 4 A in 0.05 s. If the resistance of the coil is $ 10\\pi^2\\Omega $, then the total charge flowing through the coil during this time is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$16\\mu C$"
+          },
+          {
+            "id": "B",
+            "text": "$32\\mu C$"
+          },
+          {
+            "id": "C",
+            "text": "$16\\pi\\mu C$"
+          },
+          {
+            "id": "D",
+            "text": "$32\\pi\\mu C$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          37
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "Lower half of a convex lens is made opaque. Which of the following statement describes the image of the object placed in front of the lens?\n\n(A) No change in image\n\n(B) Image will show only half of the object\n\n(C) Intensity of image gets reduced",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) only"
+          },
+          {
+            "id": "B",
+            "text": "(B) only"
+          },
+          {
+            "id": "C",
+            "text": "(C) only"
+          },
+          {
+            "id": "D",
+            "text": "(B) and (C) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          38
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 46,
+        "stemEn": "Two slits are made 0.1 mm apart and the screen is placed 2 m away. The fringe separation when a light of wavelength 500 nm is used is _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1 cm"
+          },
+          {
+            "id": "B",
+            "text": "0.15 cm"
+          },
+          {
+            "id": "C",
+            "text": "1.5 cm"
+          },
+          {
+            "id": "D",
+            "text": "0.1 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          39
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "For an astronomical telescope having objective lens of focal length 10 m and eyepiece lens of focal length 10 cm, telescope's the tube length and magnification respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20 cm, 1"
+          },
+          {
+            "id": "B",
+            "text": "1000 cm, 1"
+          },
+          {
+            "id": "C",
+            "text": "1010 cm, 1"
+          },
+          {
+            "id": "D",
+            "text": "1010 cm, 100"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          40
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "According to Bohr's Model\n\n(A) The radius of the orbiting electron is directly proportional to 'n'.\n\n(B) The speedof the orbiting electron is directly proportional to '1/n'.\n\n(C) The magnitude of the total energy of the orbiting electron is directly proportional to '1/n^2'.\n\n(D) The radius of the orbiting electron is directly proportional to 'n^{2}.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (C) and (D)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          41
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "For a full wave rectifier, if the input frequency is 50 Hz, the output frequency will be _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "50 Hz"
+          },
+          {
+            "id": "B",
+            "text": "100 Hz"
+          },
+          {
+            "id": "C",
+            "text": "25 Hz"
+          },
+          {
+            "id": "D",
+            "text": "0 Hz"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          42
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "For an electric dipole in a non-uniform electric field with dipole moment parallel to direction of the field, the force F and torque $ \\tau $ on the dipole respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ F = 0, \\tau = 0 $"
+          },
+          {
+            "id": "B",
+            "text": "$ F \\neq 0, \\tau = 0 $"
+          },
+          {
+            "id": "C",
+            "text": "$ F = 0, \\tau \\neq 0 $"
+          },
+          {
+            "id": "D",
+            "text": "$ F \\neq 0, \\tau \\neq 0 $ Answer: B"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          42
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "The current through a 4/3Ω external resistance connected to a parallel combination of two cells of 2 V and 1 V emf and internal resistances of 1 Ω and 2 Ω respectively is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1 A"
-     },
-     {
-      "id": "B",
-      "text": "2/3 A"
-     },
-     {
-      "id": "C",
-      "text": "3/4 A"
-     },
-     {
-      "id": "D",
-      "text": "5/6 A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "A metallic wire of uniform area of cross section has a resistance R, resistivity $ \\rho $ and power rating P at V volts. The wire is uniformly stretched to reduce the radius to half the original radius. The values of resistance, resistivity and power rating at V volts are now denoted by $ R' $, $ \\rho' $ and $ P' $ respectively. The corresponding values are correctly related as _.\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\rho' = 2\\rho $, $ R' = 2R $, $ P' = 2P $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\rho' = (1/2)\\rho $, $ R' = (1/2)R $, $ P' = (1/2)P $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\rho' = \\rho $, $ R' = 16R $, $ P' = (1/16)P $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\rho' = \\rho $, $ R' = (1/16)R $, $ P' = 16P $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Three magnetic materials are listed below\n\n(A) paramagnetics\n\n(B) diamagnetics\n\n(C) ferromagnetics\n\nChoose the correct order of the materials in increasingorder of magnetic susceptibility.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C)"
-     },
-     {
-      "id": "B",
-      "text": "(C), (A), (B)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (C)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C), (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "Two infinitely long straight parallel conductors carrying currents $ I_{1} $ and $ I_{2} $ are held at a distance d apart in vacuum. The force F on a length L of one of the conductors due to the other is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "proportional to L but independent of $ I_{1} \\times I_{2} $"
-     },
-     {
-      "id": "B",
-      "text": "proportional to $ I_{1} \\times I_{2} $ but independent of length L"
-     },
-     {
-      "id": "C",
-      "text": "proportional to $ I_1 \\times I_2 \\times L $"
-     },
-     {
-      "id": "D",
-      "text": "proportional to $ \\frac{L}{I_1 \\times I_2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     8
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "In the circuit shown below, a current 3 I enters at A. The semicircular parts ABC and ADC have equal radii 'r' but resistances 2R and R respectively. The magnetic field at the center of the circular loop ABCD is _.\n\nFill in the blank with the correct answer from the options given below\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{\\mu_{0}I}{4r} $ out of the plane"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{\\mu_{0}I}{4r} $ into the plane"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{\\mu_{0}3I}{4r} $ out of the plane"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{\\mu_{0}3I}{4r} $ into the plane"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     8,
-     9
-    ],
-    "assets": [
-     {
-      "id": "q10-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q10-figure-1.jpg",
-      "page": 9,
-      "alt": "Figure for question 10"
-     }
-    ]
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "A square loop with each side 1 cm, carrying a current of 10 A, is placed in a magnetic field of 0.2 T. The direction of magnetic field is parallel to the plane of the loop. The torque experienced by the loop is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "zero"
-     },
-     {
-      "id": "B",
-      "text": "$2\\times10^{-4}\\mathrm{Nm}$"
-     },
-     {
-      "id": "C",
-      "text": "$2\\times10^{-2}\\mathrm{Nm}$"
-     },
-     {
-      "id": "D",
-      "text": "2 Nm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     10
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "In an ac circuit, the current leads the voltageby $ \\pi/2 $. The circuit is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "purely resistive"
-     },
-     {
-      "id": "B",
-      "text": "should have circuit elements with resistance equal to reactance."
-     },
-     {
-      "id": "C",
-      "text": "purely inductive"
-     },
-     {
-      "id": "D",
-      "text": "purely capacitive"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     11
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "In a pair of adjacent coils, for a change of current in one of the coils from 0 A to 10 A in 0.25 s, the magnetic flux in the adjacent coil changes by 15 Wb. The mutual indutance of the coils is\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "120 H"
-     },
-     {
-      "id": "B",
-      "text": "12 H"
-     },
-     {
-      "id": "C",
-      "text": "1.5 H"
-     },
-     {
-      "id": "D",
-      "text": "0.75 H"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     11
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "A wire of irregular shape in figure (a) and a circular loop of wire in figure (b) are placed in different uniform magnetic fields as shown in the figures below. In figure (a), the magnetic field is perpendicular into the plane. In figure (b), the magnetic field is perpendicular out of the plane.\n\nThe wire in figure (a) is turning into a circular loop and that in figure (b) into a narrow straight wire. The direction of induced current will be _.\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "clockwise in both (a) and (b)"
-     },
-     {
-      "id": "B",
-      "text": "anticlockwise in both (a) and (b)"
-     },
-     {
-      "id": "C",
-      "text": "clockwise in (a) and anticlockwise in (b)"
-     },
-     {
-      "id": "D",
-      "text": "anticlockwise in (a) and clockwise in (b)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     12
-    ],
-    "assets": [
-     {
-      "id": "q14-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q14-figure-1.jpg",
-      "page": 12,
-      "alt": "Figure for question 14"
-     }
-    ]
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Match List-I has four graphs showing variation of opposition to flow of ac versus frequency with circuit characteristic in List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     13
-    ],
-    "assets": [
-     {
-      "id": "q15-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q15-table-1.jpg",
-      "page": 13,
-      "alt": "Table for question 15"
-     }
-    ]
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "In an electromagnetic wave, the ratio of energy densities of electric and magnetic fields is _. Fill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1:1"
-     },
-     {
-      "id": "B",
-      "text": "1:c"
-     },
-     {
-      "id": "C",
-      "text": "c:1"
-     },
-     {
-      "id": "D",
-      "text": "1:c^{2}"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     14
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "Of the following, the correct arrangement of electromagnetic spectrum in decreasing order of wavelength is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Radio waves, X-rays, Infrared waves, microwaves, visible waves"
-     },
-     {
-      "id": "B",
-      "text": "Infrared waves, microwaves, Radio waves, X-rays, visible waves"
-     },
-     {
-      "id": "C",
-      "text": "Radio waves, microwaves, Infrared waves, visible waves, X-rays"
-     },
-     {
-      "id": "D",
-      "text": "X-rays, visible waves, Infrared waves, microwaves, Radio wave"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     15
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Match Electromagnetic waves listed in column I with Production method/device in column II.\nThe correctly matched combination is as in option :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "}\\left(\\mathrm{A}\\right)-\\left(\\mathrm{II}\\right),\\left(\\mathrm{B}\\right)-\\left(\\mathrm{III}\\right),\\left(\\mathrm{C}\\right)-\\left(\\mathrm{IV}\\right),\\left(\\mathrm{D}\\right)-\\left(\\mathrm{I}\\right)"
-     },
-     {
-      "id": "C",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{II}),\\ (\\mathrm{B})-(\\mathrm{I}),\\ (\\mathrm{C})-(\\mathrm{IV}),\\ (\\mathrm{D})-(\\mathrm{III})"
-     },
-     {
-      "id": "D",
-      "text": "\\ (\\mathrm{A})-(\\mathrm{III}),\\ (\\mathrm{B})-(\\mathrm{IV}),\\ (\\mathrm{C})-(\\mathrm{I}),\\ (\\mathrm{D})-(\\mathrm{II})"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     15
-    ],
-    "assets": [
-     {
-      "id": "q18-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q18-table-1.jpg",
-      "page": 15,
-      "alt": "Table for question 18"
-     }
-    ]
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "In the figure given below, APB is a curved surface of radius of curvature 10 cm separating air and a transparent material ( $ \\mu = 4/3 $). A point object O is placed in air on the principal axis of the surface 20 cm from P. The distance of the image of O from P will be _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "16 cm left of P in air"
-     },
-     {
-      "id": "B",
-      "text": "16 cm right of P in water"
-     },
-     {
-      "id": "C",
-      "text": "20 cm right of P in water"
-     },
-     {
-      "id": "D",
-      "text": "20 cm left of P in air"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     16
-    ],
-    "assets": [
-     {
-      "id": "q19-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q19-figure-1.jpg",
-      "page": 16,
-      "alt": "Figure for question 19"
-     }
-    ]
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "The graph correctly representing the variation of image distance 'v' for a convex lens of focal length 'f' versus object distance 'u' is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     18
-    ],
-    "assets": [
-     {
-      "id": "q21-options",
-      "kind": "options",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q21-options.jpg",
-      "page": 18,
-      "alt": "Printed answer choices for question 21"
-     }
-    ]
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Using light from a monochromatic source to study diffraction in a single slit of width 0.1 mm, the linear width of central maxima is measured to be 5 mm on a screen held 50 cm away. The wavelength of light used is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 2.5 \\times 10^{-7} $ m"
-     },
-     {
-      "id": "B",
-      "text": "$ 4 \\times 10^{-7} $m"
-     },
-     {
-      "id": "C",
-      "text": "$ 5 \\times 10^{-7} $m"
-     },
-     {
-      "id": "D",
-      "text": "$ 7.5 \\times 10^{-7} $m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     19
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "Radiation of frequency $ 2v_{0} $ is incident on a metal with threshold frequency $ v_{0} $. The correct statement of the following is _\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "No photoelectrons will be emitted"
-     },
-     {
-      "id": "B",
-      "text": "All photoelectrons emitted will have a kinetic energy equal to $ hv_{0} $"
-     },
-     {
-      "id": "C",
-      "text": "Maximum kinetic energy of photoelectrons emitted can be $ hv_{0} $"
-     },
-     {
-      "id": "D",
-      "text": "Maximum kinetic energy of photoelectrons emitted will be $ 2hv_{0} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     20
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "A proton accelerated through a potential difference V has a de Broglie wavelength $ \\square $. On doubling the accelerating potential, de Broglie wavelength of the proton _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "remains unchanged"
-     },
-     {
-      "id": "B",
-      "text": "becomes double"
-     },
-     {
-      "id": "C",
-      "text": "becomes four times"
-     },
-     {
-      "id": "D",
-      "text": "decreases"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     22
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "The kinetic energy of an electron in ground level in hydrogen atom is K units. The values of its potential energy and total energy respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2K; -K"
-     },
-     {
-      "id": "B",
-      "text": "$ ^{+}2K^{-} $; -K"
-     },
-     {
-      "id": "C",
-      "text": "$ -\\mathrm{K},+2\\mathrm{K} $"
-     },
-     {
-      "id": "D",
-      "text": "$ ^{+}K^{+}+2K $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     23
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Two nuclei have mass numbers A and B respectively. The density ratio of the nuclei is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A: B"
-     },
-     {
-      "id": "B",
-      "text": "$ \\sqrt{A}:\\sqrt{B} $"
-     },
-     {
-      "id": "C",
-      "text": "A^{2}:B^{2}"
-     },
-     {
-      "id": "D",
-      "text": "1:1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     23
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "The shortest wavelengths emitted in hydrogen spectrum corresponding to different spectral series are as under:\n\n(A) Pfundseries\n\n(B) Balmer series\n\n(C) Brackett series\n\n(D) Lyman series\n\nThe wavelengths arranged correctly in decreasing order are _\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C), (B), (D)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "D",
-      "text": "(A), (C), (D), (B)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     24
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "Silicon can be doped using one of the following elements as dopant :\n\n(A) Arsenic\n\n(B) Indium\n\n(C) Phosphorus\n\n(D) Boron To get n-type semiconductor, the dopants that can be used are _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) and (C) only"
-     },
-     {
-      "id": "B",
-      "text": "(B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (C) and (D)"
-     },
-     {
-      "id": "D",
-      "text": "(C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     25
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "Given below are V versus I graphs for different types of p-n junction diodes marked A, B, C and D.\n\n(A)\n\n(B)\n\n(C)\n\n(D)\n\nThe correct sequence of graphs corresponding to forward biased p-n junction; Zener diode; Photo diode and Solar cell in order is _\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(D), (C), (A), (B)"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C), (B), (D)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "D",
-      "text": "(C), (B), (D), (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     26
-    ],
-    "assets": [
-     {
-      "id": "q30-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-1.jpg",
-      "page": 26,
-      "alt": "Figure for question 30"
-     },
-     {
-      "id": "q30-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-2.jpg",
-      "page": 26,
-      "alt": "Figure for question 30"
-     },
-     {
-      "id": "q30-figure-3",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-3.jpg",
-      "page": 26,
-      "alt": "Figure for question 30"
-     },
-     {
-      "id": "q30-figure-4",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q30-figure-4.jpg",
-      "page": 26,
-      "alt": "Figure for question 30"
-     }
-    ]
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "A wire carrying current I, bent as shown in the figure, is placed in a uniform field B that emerges normally out from the plane of the figure. The force on this wire is _.\n\nB O\n\nUniform field\n\nPointing outwards\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "4BIR, directed vertically downward"
-     },
-     {
-      "id": "B",
-      "text": "3BIR, directed vertically upward"
-     },
-     {
-      "id": "C",
-      "text": "BI (2R + $ \\pi $R), vertically downward"
-     },
-     {
-      "id": "D",
-      "text": "$ 2\\pi $ BIR, from P to Q"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     27
-    ],
-    "assets": [
-     {
-      "id": "q31-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q31-figure-1.jpg",
-      "page": 27,
-      "alt": "Figure for question 31"
-     }
-    ]
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "The refractive index of the material of an equilateral prism is $ \\sqrt{2} $. The angle of minimum deviation of that prism is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "60°"
-     },
-     {
-      "id": "B",
-      "text": "75°"
-     },
-     {
-      "id": "C",
-      "text": "30°"
-     },
-     {
-      "id": "D",
-      "text": "90°"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     28
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "The transfer of integral number of _ is one of the evidence of quantization of electric charge.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "photons"
-     },
-     {
-      "id": "B",
-      "text": "nuclei"
-     },
-     {
-      "id": "C",
-      "text": "electrons"
-     },
-     {
-      "id": "D",
-      "text": "neutrons"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     29
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "A copper ball of density 8.0 g/cc and 1 cm in diameter is immersed in oil of density 0.8 g/cc. The charge on the ball if it remains just suspended in oil in an electric field of intensity 600πV/m acting in the upward direction is _.\n\nFill in the blank with the correct answer from the options given below. (Take $ g = 10\\ m/s^{2} $)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 2 \\times 10^{-6} $ C"
-     },
-     {
-      "id": "B",
-      "text": "$ 2 \\times 10^{-5} $ C"
-     },
-     {
-      "id": "C",
-      "text": "$ 1 \\times 10^{-5} $ C"
-     },
-     {
-      "id": "D",
-      "text": "$ 1 \\times 10^{-6} $ C"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     30
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "A metal wire is subjected to a constant potential difference. When the temperature of the metal wire increases, the drift velocity of the electron in it _\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "increases, thermal velocity of the electrons decreases"
-     },
-     {
-      "id": "B",
-      "text": "decreases, thermal velocity of the electrons decreases"
-     },
-     {
-      "id": "C",
-      "text": "increases, thermal velocity of the electrons increases"
-     },
-     {
-      "id": "D",
-      "text": "decreases, thermal velocity of the electrons increases"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     31
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "For the given mixed combination of resistors calculate the total resistance between points A and B.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 9\\Omega $"
-     },
-     {
-      "id": "B",
-      "text": "$ 18\\Omega $"
-     },
-     {
-      "id": "C",
-      "text": "$ 4\\Omega $"
-     },
-     {
-      "id": "D",
-      "text": "$ 14\\Omega $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     31,
-     32
-    ],
-    "assets": [
-     {
-      "id": "q37-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2024-05-16-shift-3/q37-figure-1.jpg",
-      "page": 32,
-      "alt": "Figure for question 37"
-     }
-    ]
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "A cell of emf 1.1 V and internal resistance 0.5 Ω is connected to a wire of resistance 0.5 Ω. Another cell of the same emf is now connected in series with the intention of increasing the current but the current in the wire remains the same. The internal resistance of the second cell is _\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$$ 1.1A=\\frac{2.2V}{R+r+r_{2}} $$"
-     },
-     {
-      "id": "B",
-      "text": "$$ 1.1A=\\frac{2.2V}{0.5\\Omega+0.5\\Omega+r_{2}} $$"
-     },
-     {
-      "id": "C",
-      "text": "$$ 1.1A=\\frac{2.2V}{1.0\\Omega+r_{2}} $$"
-     },
-     {
-      "id": "D",
-      "text": "$$ 1.0\\Omega+r_{2}=\\frac{2.2V}{1.1A} $$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     32
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "P, Q, R and S are four wires of resistances 3, 3, 3 and 4Ω respectively. They are connected to form the four arms of a wheatstone bridge circuit. The resistance with which S must be shunted in order that the bridge may be balanced is _.\n\nFill in the blank with the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 14\\Omega $"
-     },
-     {
-      "id": "B",
-      "text": "$ 12\\Omega $"
-     },
-     {
-      "id": "C",
-      "text": "$ 15\\Omega $"
-     },
-     {
-      "id": "D",
-      "text": "$ 7\\Omega $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     33
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Ferromagnetic material used in Transformers must have _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Low permeability and High Hysteresis loss"
-     },
-     {
-      "id": "B",
-      "text": "High permeability and Low Hysteresis loss"
-     },
-     {
-      "id": "C",
-      "text": "High permeability and High Hysteresis loss"
-     },
-     {
-      "id": "D",
-      "text": "Low permeability and Low Hysteresis loss"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     35
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "A conducting ring of radius r is placed in a varying magnetic field perpendicular to the plane of the ring. If the rate at which the magnetic field varies is x, the electric field intensity at any point of the ring is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "rx"
-     },
-     {
-      "id": "B",
-      "text": "rx/2"
-     },
-     {
-      "id": "C",
-      "text": "2rx"
-     },
-     {
-      "id": "D",
-      "text": "4r/x"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     36
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "A 50 Hz ac current of crest value 1 A flows through the primary of a transformer. If the mutual inductance between the primary and secondary be 0.5 H, the crest voltage induced in the secondary is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "75 V"
-     },
-     {
-      "id": "B",
-      "text": "150 V"
-     },
-     {
-      "id": "C",
-      "text": "100 V"
-     },
-     {
-      "id": "D",
-      "text": "200 V"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     37
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "A long solenoid of diameter 0.1 m has $ 2 \\times 10^4 $ turns per meter. At the centre of the solenoid a coil of 100 turns and radius 0.01 m is placed with its axis coinciding with the solenoid axis. The current in the solenoid reduces at a constant rate to 0 A from 4 A in 0.05 s. If the resistance of the coil is $ 10\\pi^2\\Omega $, then the total charge flowing through the coil during this time is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$16\\mu C$"
-     },
-     {
-      "id": "B",
-      "text": "$32\\mu C$"
-     },
-     {
-      "id": "C",
-      "text": "$16\\pi\\mu C$"
-     },
-     {
-      "id": "D",
-      "text": "$32\\pi\\mu C$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     37
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Lower half of a convex lens is made opaque. Which of the following statement describes the image of the object placed in front of the lens?\n\n(A) No change in image\n\n(B) Image will show only half of the object\n\n(C) Intensity of image gets reduced",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) only"
-     },
-     {
-      "id": "B",
-      "text": "(B) only"
-     },
-     {
-      "id": "C",
-      "text": "(C) only"
-     },
-     {
-      "id": "D",
-      "text": "(B) and (C) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     38
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Two slits are made 0.1 mm apart and the screen is placed 2 m away. The fringe separation when a light of wavelength 500 nm is used is _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1 cm"
-     },
-     {
-      "id": "B",
-      "text": "0.15 cm"
-     },
-     {
-      "id": "C",
-      "text": "1.5 cm"
-     },
-     {
-      "id": "D",
-      "text": "0.1 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     39
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "For an astronomical telescope having objective lens of focal length 10 m and eyepiece lens of focal length 10 cm, telescope's the tube length and magnification respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "20 cm, 1"
-     },
-     {
-      "id": "B",
-      "text": "1000 cm, 1"
-     },
-     {
-      "id": "C",
-      "text": "1010 cm, 1"
-     },
-     {
-      "id": "D",
-      "text": "1010 cm, 100"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     40
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "According to Bohr's Model\n\n(A) The radius of the orbiting electron is directly proportional to 'n'.\n\n(B) The speedof the orbiting electron is directly proportional to '1/n'.\n\n(C) The magnitude of the total energy of the orbiting electron is directly proportional to '1/n^2'.\n\n(D) The radius of the orbiting electron is directly proportional to 'n^{2}.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (C) and (D)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     41
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "For a full wave rectifier, if the input frequency is 50 Hz, the output frequency will be _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "50 Hz"
-     },
-     {
-      "id": "B",
-      "text": "100 Hz"
-     },
-     {
-      "id": "C",
-      "text": "25 Hz"
-     },
-     {
-      "id": "D",
-      "text": "0 Hz"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     42
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "For an electric dipole in a non-uniform electric field with dipole moment parallel to direction of the field, the force F and torque $ \\tau $ on the dipole respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ F = 0, \\tau = 0 $"
-     },
-     {
-      "id": "B",
-      "text": "$ F \\neq 0, \\tau = 0 $"
-     },
-     {
-      "id": "C",
-      "text": "$ F = 0, \\tau \\neq 0 $"
-     },
-     {
-      "id": "D",
-      "text": "$ F \\neq 0, \\tau \\neq 0 $ Answer: B"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     42
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { all } from "../../../lib/db";
 import { formatDate, parseOptions, renderRichText } from "../../../lib/content";
+import { parseQuestionAssets } from "../../../lib/attempts";
 import { dashboardNav } from "../../../lib/navigation";
 import { imageDimensionsForUrls } from "../../../lib/media-dimensions";
 
@@ -14,6 +15,7 @@ const rows = await all<{
   options: string;
   image_url: string | null;
   image_alt: string | null;
+  assets_json: string | null;
   subject_name: string;
   wrong_count: number;
   last_wrong: string;
@@ -21,7 +23,7 @@ const rows = await all<{
   passage_image_url: string | null;
   passage_image_alt: string | null;
 }>(
-  `SELECT q.id, q.text, q.options, q.image_url, q.image_alt, s.name AS subject_name,
+  `SELECT q.id, q.text, q.options, q.image_url, q.image_alt, q.assets_json, s.name AS subject_name,
           COUNT(*) AS wrong_count, MAX(a.submitted_at) AS last_wrong,
           p.body AS passage_body, p.image_url AS passage_image_url, p.image_alt AS passage_image_alt
    FROM attempt_answers aa
@@ -42,28 +44,61 @@ const dimensions = await imageDimensionsForUrls(
     row.image_url,
     row.passage_image_url,
     ...parseOptions(row.options).map((option) => option.image_url),
+    ...parseQuestionAssets(row.assets_json).map((asset) => asset.url),
   ]),
 );
-const questions = rows.map((row) => ({
-  ...row,
-  options: parseOptions(row.options).map((option) => {
-    const size = option.image_url ? dimensions.get(option.image_url) : undefined;
-    return {
-      ...option,
-      image_width: size?.width ?? null,
-      image_height: size?.height ?? null,
-    };
-  }),
-  image_width: row.image_url ? dimensions.get(row.image_url)?.width ?? null : null,
-  image_height: row.image_url ? dimensions.get(row.image_url)?.height ?? null : null,
-  passage_image_width: row.passage_image_url
-    ? dimensions.get(row.passage_image_url)?.width ?? null
-    : null,
-  passage_image_height: row.passage_image_url
-    ? dimensions.get(row.passage_image_url)?.height ?? null
-    : null,
-}));
+const questions = rows.map((row) => {
+  const rawAssets = parseQuestionAssets(row.assets_json);
+  const optionAssets = rawAssets.filter((asset) => asset.kind === "options" && !asset.url.includes("-exp-"));
+  return {
+    ...row,
+    options: parseOptions(row.options).map((option) => {
+      const size = option.image_url ? dimensions.get(option.image_url) : undefined;
+      return {
+        ...option,
+        image_width: size?.width ?? null,
+        image_height: size?.height ?? null,
+      };
+    }),
+    option_assets: optionAssets.map((asset) => {
+      const size = dimensions.get(asset.url);
+      return {
+        ...asset,
+        image_width: size?.width ?? null,
+        image_height: size?.height ?? null,
+      };
+    }),
+    image_width: row.image_url ? dimensions.get(row.image_url)?.width ?? null : null,
+    image_height: row.image_url ? dimensions.get(row.image_url)?.height ?? null : null,
+    passage_image_width: row.passage_image_url
+      ? dimensions.get(row.passage_image_url)?.width ?? null
+      : null,
+    passage_image_height: row.passage_image_url
+      ? dimensions.get(row.passage_image_url)?.height ?? null
+      : null,
+  };
+});
 const letters = ["A", "B", "C", "D", "E", "F"];
+
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
 ---
 
 <BaseLayout title="Unranked wrong-question retry — CUET Free Mock Test" description="Retry the questions you answered incorrectly. Unranked and private to your account." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
@@ -112,7 +147,7 @@ const letters = ["A", "B", "C", "D", "E", "F"];
             ) : null}
 
             <div class="mt-3 text-sm leading-7" set:html={renderRichText(question.text)}></div>
-            {question.image_url ? (
+            {question.image_url && !textContainsImage(question.text, question.image_url) ? (
               <img
                 class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
                 src={question.image_url}
@@ -123,13 +158,33 @@ const letters = ["A", "B", "C", "D", "E", "F"];
               />
             ) : null}
 
+            {question.option_assets && question.option_assets.length > 0 ? (
+              <figure class="mt-3 rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900">
+                <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                  Printed answer choices
+                </figcaption>
+                <div class="flex flex-wrap gap-2">
+                  {question.option_assets.map((asset) => (
+                    <img
+                      class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                      src={asset.url}
+                      alt={asset.alt}
+                      width={asset.image_width ?? undefined}
+                      height={asset.image_height ?? undefined}
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              </figure>
+            ) : null}
+
             <div class="mt-4 space-y-2">
               {question.options.map((option, optionIndex) => (
                 <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 px-3 py-2 text-sm hover:bg-neutral-50 dark:border-neutral-800 dark:hover:bg-neutral-950">
                   <input class="mt-1" type="radio" name={`q-${question.id}`} value={optionIndex} />
                   <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-current text-xs font-bold">{letters[optionIndex] ?? optionIndex + 1}</span>
                   <span class="min-w-0 flex-1">
-                    <span set:html={renderRichText(option.text)}></span>
+                    {isPlaceholderText(option.text) ? null : <span set:html={renderRichText(option.text)}></span>}
                     {option.image_url ? (
                       <img
                         class="mt-2 max-h-40 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
@@ -139,7 +194,9 @@ const letters = ["A", "B", "C", "D", "E", "F"];
                         height={option.image_height ?? undefined}
                         loading="lazy"
                       />
-                    ) : null}
+                    ) : (isPlaceholderText(option.text) ? (
+                      <span class="text-neutral-400 dark:text-neutral-500">Option {letters[optionIndex] ?? optionIndex + 1}</span>
+                    ) : null)}
                   </span>
                 </label>
               ))}

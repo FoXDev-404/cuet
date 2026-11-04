@@ -1,0 +1,4319 @@
+{
+  "generatedAt": "2026-11-04T20:12:11.329Z",
+  "nodeVersion": "v24.18.0",
+  "dependencies": {
+    "packageVersion": "0.1.0",
+    "dependencies": {
+      "astro": "7.4.4",
+      "@astrojs/cloudflare": "14.4.3",
+      "tailwindcss": "4.3.3",
+      "@playwright/test": "1.64.1",
+      "vitest": "5.0.5",
+      "satori": "0.63.2",
+      "katex": "0.19.1",
+      "better-sqlite3": "unknown",
+      "wrangler": "4.156.0",
+      "axe-core": "4.14.0",
+      "fflate": "0.8.3"
+    },
+    "allDependencies": {
+      "@astrojs/cloudflare": "^14.4.3",
+      "@astrojs/react": "^7.1.2",
+      "astro": "^7.4.4",
+      "html-to-image": "^1.11.13",
+      "jose": "^6.1.0",
+      "katex": "^0.19.1",
+      "react": "^19.3.0",
+      "react-dom": "^19.3.0",
+      "zod": "^4.6.7"
+    },
+    "devDependencies": {
+      "@astrojs/check": "^0.9.12",
+      "@cloudflare/workers-types": "^5.20261031.1",
+      "@fontsource/inter": "^5.3.0",
+      "@fontsource/noto-sans-devanagari": "^5.3.0",
+      "@playwright/test": "^1.64.1",
+      "@resvg/resvg-js": "^2.6.2",
+      "@tailwindcss/vite": "^4.3.3",
+      "@types/node": "^26.6.6",
+      "axe-core": "^4.14.0",
+      "satori": "^0.63.2",
+      "tailwindcss": "^4.3.3",
+      "typescript": "^5.9.3",
+      "vitest": "^5.0.5",
+      "wrangler": "^4.156.0"
+    },
+    "overrides": {
+      "fflate": "^0.8.2"
+    }
+  },
+  "routes": {
+    "totalRoutes": 173,
+    "pagesCount": 82,
+    "apiCount": 91,
+    "dynamicCount": 65,
+    "routes": [
+      {
+        "path": "/",
+        "filePath": "src\\pages\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/404",
+        "filePath": "src\\pages\\404.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/500",
+        "filePath": "src\\pages\\500.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/about",
+        "filePath": "src\\pages\\about.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin",
+        "filePath": "src\\pages\\admin\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/admins",
+        "filePath": "src\\pages\\admin\\admins.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/announcements",
+        "filePath": "src\\pages\\admin\\announcements.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/attempts",
+        "filePath": "src\\pages\\admin\\attempts\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/attempts/[id]",
+        "filePath": "src\\pages\\admin\\attempts\\[id].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/admin/audit-log",
+        "filePath": "src\\pages\\admin\\audit-log.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/blog",
+        "filePath": "src\\pages\\admin\\blog.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/data",
+        "filePath": "src\\pages\\admin\\data\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/data/[table]",
+        "filePath": "src\\pages\\admin\\data\\[table]\\index.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/admin/data/[table]/row",
+        "filePath": "src\\pages\\admin\\data\\[table]\\row.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/admin/discussions",
+        "filePath": "src\\pages\\admin\\discussions.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/exam-info",
+        "filePath": "src\\pages\\admin\\exam-info.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/leaderboard",
+        "filePath": "src\\pages\\admin\\leaderboard.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/mocks",
+        "filePath": "src\\pages\\admin\\mocks\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/mocks/[id]",
+        "filePath": "src\\pages\\admin\\mocks\\[id].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/admin/mocks/[id]/preview",
+        "filePath": "src\\pages\\admin\\mocks\\[id]\\preview.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/admin/mocks/new",
+        "filePath": "src\\pages\\admin\\mocks\\new.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/moderation",
+        "filePath": "src\\pages\\admin\\moderation.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/passages",
+        "filePath": "src\\pages\\admin\\passages.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/pyq",
+        "filePath": "src\\pages\\admin\\pyq.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/questions",
+        "filePath": "src\\pages\\admin\\questions\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/questions/[id]",
+        "filePath": "src\\pages\\admin\\questions\\[id].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/admin/questions/[id]/preview",
+        "filePath": "src\\pages\\admin\\questions\\[id]\\preview.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/admin/questions/import",
+        "filePath": "src\\pages\\admin\\questions\\import.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/questions/new",
+        "filePath": "src\\pages\\admin\\questions\\new.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/review",
+        "filePath": "src\\pages\\admin\\review.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/search",
+        "filePath": "src\\pages\\admin\\search.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/seo",
+        "filePath": "src\\pages\\admin\\seo.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/settings",
+        "filePath": "src\\pages\\admin\\settings.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/trash",
+        "filePath": "src\\pages\\admin\\trash.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/admin/users",
+        "filePath": "src\\pages\\admin\\users.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/ads.txt",
+        "filePath": "src\\pages\\ads.txt.ts",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/account",
+        "filePath": "src\\pages\\api\\account\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/account/delete",
+        "filePath": "src\\pages\\api\\account\\delete.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/account/export",
+        "filePath": "src\\pages\\api\\account\\export.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/account/password",
+        "filePath": "src\\pages\\api\\account\\password.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/admins",
+        "filePath": "src\\pages\\api\\admin\\admins\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/admins/[id]",
+        "filePath": "src\\pages\\api\\admin\\admins\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/announcements",
+        "filePath": "src\\pages\\api\\admin\\announcements\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/announcements/[id]",
+        "filePath": "src\\pages\\api\\admin\\announcements\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/attempts/[id]",
+        "filePath": "src\\pages\\api\\admin\\attempts\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/audit-log",
+        "filePath": "src\\pages\\api\\admin\\audit-log.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/blog",
+        "filePath": "src\\pages\\api\\admin\\blog\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/blog/[id]",
+        "filePath": "src\\pages\\api\\admin\\blog\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/data/[table]",
+        "filePath": "src\\pages\\api\\admin\\data\\[table].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/data/[table]/[id]",
+        "filePath": "src\\pages\\api\\admin\\data\\[table]\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/data/[table]/export",
+        "filePath": "src\\pages\\api\\admin\\data\\[table]\\export.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/discussions",
+        "filePath": "src\\pages\\api\\admin\\discussions\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/discussions/[id]",
+        "filePath": "src\\pages\\api\\admin\\discussions\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/exam-info",
+        "filePath": "src\\pages\\api\\admin\\exam-info\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/leaderboard",
+        "filePath": "src\\pages\\api\\admin\\leaderboard\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/me",
+        "filePath": "src\\pages\\api\\admin\\me.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/media",
+        "filePath": "src\\pages\\api\\admin\\media.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/mocks",
+        "filePath": "src\\pages\\api\\admin\\mocks\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/mocks/[id]",
+        "filePath": "src\\pages\\api\\admin\\mocks\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/mocks/[id]/archive",
+        "filePath": "src\\pages\\api\\admin\\mocks\\[id]\\archive.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/mocks/[id]/duplicate",
+        "filePath": "src\\pages\\api\\admin\\mocks\\[id]\\duplicate.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/mocks/[id]/publish",
+        "filePath": "src\\pages\\api\\admin\\mocks\\[id]\\publish.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/mocks/[id]/versions",
+        "filePath": "src\\pages\\api\\admin\\mocks\\[id]\\versions.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/passages",
+        "filePath": "src\\pages\\api\\admin\\passages\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/passages/[id]",
+        "filePath": "src\\pages\\api\\admin\\passages\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/practice-papers/rights",
+        "filePath": "src\\pages\\api\\admin\\practice-papers\\rights.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/pyq",
+        "filePath": "src\\pages\\api\\admin\\pyq\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/pyq/[id]",
+        "filePath": "src\\pages\\api\\admin\\pyq\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/questions",
+        "filePath": "src\\pages\\api\\admin\\questions\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/questions/[id]",
+        "filePath": "src\\pages\\api\\admin\\questions\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/questions/[id]/duplicate",
+        "filePath": "src\\pages\\api\\admin\\questions\\[id]\\duplicate.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/questions/[id]/share",
+        "filePath": "src\\pages\\api\\admin\\questions\\[id]\\share.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/questions/bulk",
+        "filePath": "src\\pages\\api\\admin\\questions\\bulk.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/questions/export",
+        "filePath": "src\\pages\\api\\admin\\questions\\export.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/questions/import",
+        "filePath": "src\\pages\\api\\admin\\questions\\import.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/reports",
+        "filePath": "src\\pages\\api\\admin\\reports\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/reports/[id]",
+        "filePath": "src\\pages\\api\\admin\\reports\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/rescore",
+        "filePath": "src\\pages\\api\\admin\\rescore\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/rescore/[id]",
+        "filePath": "src\\pages\\api\\admin\\rescore\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/review/action",
+        "filePath": "src\\pages\\api\\admin\\review\\action.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/review/sample.csv",
+        "filePath": "src\\pages\\api\\admin\\review\\sample.csv.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/revisions",
+        "filePath": "src\\pages\\api\\admin\\revisions\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/revisions/[id]/restore",
+        "filePath": "src\\pages\\api\\admin\\revisions\\[id]\\restore.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/search",
+        "filePath": "src\\pages\\api\\admin\\search.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/seo",
+        "filePath": "src\\pages\\api\\admin\\seo\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/settings",
+        "filePath": "src\\pages\\api\\admin\\settings\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/trash/[table]",
+        "filePath": "src\\pages\\api\\admin\\trash\\[table].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/trash/[table]/[id]",
+        "filePath": "src\\pages\\api\\admin\\trash\\[table]\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/users",
+        "filePath": "src\\pages\\api\\admin\\users\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/admin/users/[id]",
+        "filePath": "src\\pages\\api\\admin\\users\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/attempts/[id]",
+        "filePath": "src\\pages\\api\\attempts\\[id]\\index.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/attempts/[id]/answers",
+        "filePath": "src\\pages\\api\\attempts\\[id]\\answers.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/attempts/[id]/submit",
+        "filePath": "src\\pages\\api\\attempts\\[id]\\submit.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/attempts/start",
+        "filePath": "src\\pages\\api\\attempts\\start.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/auth/forgot",
+        "filePath": "src\\pages\\api\\auth\\forgot.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/auth/google",
+        "filePath": "src\\pages\\api\\auth\\google\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/auth/google/callback",
+        "filePath": "src\\pages\\api\\auth\\google\\callback.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/auth/login",
+        "filePath": "src\\pages\\api\\auth\\login.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/auth/logout",
+        "filePath": "src\\pages\\api\\auth\\logout.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/auth/reset",
+        "filePath": "src\\pages\\api\\auth\\reset.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/auth/signup",
+        "filePath": "src\\pages\\api\\auth\\signup.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/bookmarks",
+        "filePath": "src\\pages\\api\\bookmarks\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/bookmarks/[questionId]",
+        "filePath": "src\\pages\\api\\bookmarks\\[questionId].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/discussions",
+        "filePath": "src\\pages\\api\\discussions\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/discussions/[id]",
+        "filePath": "src\\pages\\api\\discussions\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/discussions/[id]/report",
+        "filePath": "src\\pages\\api\\discussions\\[id]\\report.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/discussions/[id]/vote",
+        "filePath": "src\\pages\\api\\discussions\\[id]\\vote.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/health",
+        "filePath": "src\\pages\\api\\health.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/leaderboards/[mockSlug]",
+        "filePath": "src\\pages\\api\\leaderboards\\[mockSlug].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/me/bookmarks",
+        "filePath": "src\\pages\\api\\me\\bookmarks\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/me/history",
+        "filePath": "src\\pages\\api\\me\\history.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/me/wrong-questions/retry",
+        "filePath": "src\\pages\\api\\me\\wrong-questions\\retry.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/media/[id]",
+        "filePath": "src\\pages\\api\\media\\[id].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/mocks",
+        "filePath": "src\\pages\\api\\mocks\\index.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/mocks/[id]/discussions",
+        "filePath": "src\\pages\\api\\mocks\\[id]\\discussions.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/mocks/[slug]",
+        "filePath": "src\\pages\\api\\mocks\\[slug].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/public-questions/[publicId]",
+        "filePath": "src\\pages\\api\\public-questions\\[publicId].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/public-questions/[publicId]/check",
+        "filePath": "src\\pages\\api\\public-questions\\[publicId]\\check.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/questions/[id]/discussions",
+        "filePath": "src\\pages\\api\\questions\\[id]\\discussions.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/questions/[id]/report",
+        "filePath": "src\\pages\\api\\questions\\[id]\\report.ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/results/[attemptId]",
+        "filePath": "src\\pages\\api\\results\\[attemptId].ts",
+        "isApi": true,
+        "isDynamic": true,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/share-events",
+        "filePath": "src\\pages\\api\\share-events.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/api/subjects",
+        "filePath": "src\\pages\\api\\subjects.ts",
+        "isApi": true,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/attempt/[id]",
+        "filePath": "src\\pages\\attempt\\[id].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/blog",
+        "filePath": "src\\pages\\blog\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/blog/[slug]",
+        "filePath": "src\\pages\\blog\\[slug].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/contact",
+        "filePath": "src\\pages\\contact.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-mock-test",
+        "filePath": "src\\pages\\cuet-mock-test.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-mock-test/[slug]",
+        "filePath": "src\\pages\\cuet-mock-test\\[slug].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-mock-test/[subject]/[topic]",
+        "filePath": "src\\pages\\cuet-mock-test\\[subject]\\[topic].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-ug-exam-pattern",
+        "filePath": "src\\pages\\cuet-ug-exam-pattern.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-ug-important-dates",
+        "filePath": "src\\pages\\cuet-ug-important-dates.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-ug-marking-scheme",
+        "filePath": "src\\pages\\cuet-ug-marking-scheme.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-ug-mock-test",
+        "filePath": "src\\pages\\cuet-ug-mock-test.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-ug-previous-year-papers",
+        "filePath": "src\\pages\\cuet-ug-previous-year-papers.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-ug-syllabus",
+        "filePath": "src\\pages\\cuet-ug-syllabus.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/cuet-ug-syllabus/[subject]",
+        "filePath": "src\\pages\\cuet-ug-syllabus\\[subject].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/dashboard",
+        "filePath": "src\\pages\\dashboard.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dashboard/bookmarks",
+        "filePath": "src\\pages\\dashboard\\bookmarks.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dashboard/discussions",
+        "filePath": "src\\pages\\dashboard\\discussions.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dashboard/history",
+        "filePath": "src\\pages\\dashboard\\history.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dashboard/settings",
+        "filePath": "src\\pages\\dashboard\\settings.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dashboard/wrong-questions",
+        "filePath": "src\\pages\\dashboard\\wrong-questions.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dashboard/wrong-questions/retry",
+        "filePath": "src\\pages\\dashboard\\wrong-questions\\retry.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dev/styleguide",
+        "filePath": "src\\pages\\dev\\styleguide.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/dev/styleguide/frame",
+        "filePath": "src\\pages\\dev\\styleguide\\frame.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/disclaimer",
+        "filePath": "src\\pages\\disclaimer.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/forbidden",
+        "filePath": "src\\pages\\forbidden.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/forgot-password",
+        "filePath": "src\\pages\\forgot-password.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/leaderboard",
+        "filePath": "src\\pages\\leaderboard\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/leaderboard/[slug]",
+        "filePath": "src\\pages\\leaderboard\\[slug].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/login",
+        "filePath": "src\\pages\\login.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/maintenance",
+        "filePath": "src\\pages\\maintenance.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/mock-tests",
+        "filePath": "src\\pages\\mock-tests\\index.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/mock-tests/[slug]",
+        "filePath": "src\\pages\\mock-tests\\[slug].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/mock-tests/[slug]/take",
+        "filePath": "src\\pages\\mock-tests\\[slug]\\take.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/mock/[slug]",
+        "filePath": "src\\pages\\mock\\[slug]\\index.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/mock/[slug]/discussion",
+        "filePath": "src\\pages\\mock\\[slug]\\discussion.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/mock/[slug]/instructions",
+        "filePath": "src\\pages\\mock\\[slug]\\instructions.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/privacy-policy",
+        "filePath": "src\\pages\\privacy-policy.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/pyq",
+        "filePath": "src\\pages\\pyq\\index.ts",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/pyq/[year]",
+        "filePath": "src\\pages\\pyq\\[year].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/pyq/[year]/[subject]",
+        "filePath": "src\\pages\\pyq\\[year]\\[subject].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/q/[slug]",
+        "filePath": "src\\pages\\q\\[slug].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/reset-password/[token]",
+        "filePath": "src\\pages\\reset-password\\[token].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/result/[attemptId]",
+        "filePath": "src\\pages\\result\\[attemptId].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/result/[attemptId]/solutions",
+        "filePath": "src\\pages\\result\\[attemptId]\\solutions.astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      },
+      {
+        "path": "/robots.txt",
+        "filePath": "src\\pages\\robots.txt.ts",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/search",
+        "filePath": "src\\pages\\search.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/signup",
+        "filePath": "src\\pages\\signup.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/sitemap.xml",
+        "filePath": "src\\pages\\sitemap.xml.ts",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "endpoint"
+      },
+      {
+        "path": "/terms",
+        "filePath": "src\\pages\\terms.astro",
+        "isApi": false,
+        "isDynamic": false,
+        "type": "page"
+      },
+      {
+        "path": "/u/[username]",
+        "filePath": "src\\pages\\u\\[username].astro",
+        "isApi": false,
+        "isDynamic": true,
+        "type": "page"
+      }
+    ]
+  },
+  "database": {
+    "databasePath": ".wrangler\\state\\v3\\d1\\miniflare-D1DatabaseObject\\9e86a3487f62f60f2005838556d2eb9f94df20a990ccf3e7e9e15550212e2901.sqlite",
+    "totalTables": 40,
+    "totalRows": 42993,
+    "tables": [
+      {
+        "name": "admins",
+        "rowCount": 2,
+        "columnsCount": 7,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "email",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "role",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "is_active",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "announcements",
+        "rowCount": 0,
+        "columnsCount": 10,
+        "indexesCount": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "message",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "link",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "is_active",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "starts_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "ends_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "created_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "attempt_answers",
+        "rowCount": 8278,
+        "columnsCount": 8,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "attempt_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "question_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 2,
+            "name": "selected",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "time_spent_sec",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "marked_for_review",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "is_correct",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "client_seq",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "attempts",
+        "rowCount": 445,
+        "columnsCount": 22,
+        "indexesCount": 11,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "guest_token",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "mock_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "version_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "score",
+            "type": "REAL",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "correct",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "wrong",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "skipped",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "time_taken_sec",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "started_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "deadline_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "submitted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "is_first_attempt",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "disqualified_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "disqualified_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 17,
+            "name": "voided_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 18,
+            "name": "void_reason",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 19,
+            "name": "voided_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 20,
+            "name": "last_client_seq",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 21,
+            "name": "section_summary",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "audit_log",
+        "rowCount": 797,
+        "columnsCount": 7,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "admin_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "action",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "entity_type",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "entity_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "diff_json",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "badges",
+        "rowCount": 4,
+        "columnsCount": 5,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "code",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "description",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "blog_posts",
+        "rowCount": 0,
+        "columnsCount": 11,
+        "indexesCount": 3,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "title",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "description",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "published_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "created_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "bookmarks",
+        "rowCount": 0,
+        "columnsCount": 4,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "question_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 2,
+            "name": "note",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "d1_migrations",
+        "rowCount": 19,
+        "columnsCount": 3,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "applied_at",
+            "type": "TIMESTAMP",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "discussion_reports",
+        "rowCount": 0,
+        "columnsCount": 6,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "discussion_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "reason",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "discussion_votes",
+        "rowCount": 0,
+        "columnsCount": 2,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "discussion_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          }
+        ]
+      },
+      {
+        "name": "discussions",
+        "rowCount": 20,
+        "columnsCount": 12,
+        "indexesCount": 4,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "mock_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "question_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "parent_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "is_pinned",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "is_best_answer",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "upvotes",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "email_verifications",
+        "rowCount": 0,
+        "columnsCount": 5,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "used_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "exam_info",
+        "rowCount": 6,
+        "columnsCount": 4,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "key",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "value",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "source_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "last_verified",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "exams",
+        "rowCount": 1,
+        "columnsCount": 5,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "is_active",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "media_assets",
+        "rowCount": 0,
+        "columnsCount": 10,
+        "indexesCount": 4,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "object_key",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "alt",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "mime_type",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "width",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "height",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "size_bytes",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "uploaded_by",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "mock_questions",
+        "rowCount": 11624,
+        "columnsCount": 4,
+        "indexesCount": 3,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "version_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "question_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 2,
+            "name": "section",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "position",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "mock_test_versions",
+        "rowCount": 515,
+        "columnsCount": 11,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "mock_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "version_no",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "duration_min",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "total_marks",
+            "type": "REAL",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "marking_scheme",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "instructions",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "published_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "created_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "mock_tests",
+        "rowCount": 409,
+        "columnsCount": 24,
+        "indexesCount": 5,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "exam_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "subject_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "title",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "type",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "duration_min",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "total_marks",
+            "type": "REAL",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "marking_scheme",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "instructions",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "intro_html",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "pyq_year",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "pyq_shift",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "version",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "previous_version_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "published_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 17,
+            "name": "created_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 18,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 19,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 20,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 21,
+            "name": "pyq_paper_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 22,
+            "name": "current_version_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 23,
+            "name": "practice_paper_slug",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "page_seo",
+        "rowCount": 0,
+        "columnsCount": 8,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "path",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "title",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "description",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "intro_html",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "faq_json",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "noindex",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "canonical_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "passages",
+        "rowCount": 234,
+        "columnsCount": 7,
+        "indexesCount": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "subject_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "body_hi",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "image_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "image_alt",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "password_resets",
+        "rowCount": 0,
+        "columnsCount": 5,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "used_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "practice_papers",
+        "rowCount": 214,
+        "columnsCount": 24,
+        "indexesCount": 5,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "title",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "meta_description",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "subject_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "year",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "exam_date",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "date_label",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "shift",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "duration_min",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "source_file",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "source_method",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "source_question_count",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "publication_status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "review_required",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 17,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 18,
+            "name": "source_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 19,
+            "name": "source_type",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 20,
+            "name": "rights_status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 21,
+            "name": "rights_note",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 22,
+            "name": "verified_by",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 23,
+            "name": "verified_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "practice_passages",
+        "rowCount": 128,
+        "columnsCount": 6,
+        "indexesCount": 3,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "paper_slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "passage_key",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "title",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "practice_questions",
+        "rowCount": 6603,
+        "columnsCount": 24,
+        "indexesCount": 3,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "paper_slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "question_key",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "source_question_no",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "position",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "stem",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "options_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "options_are_images",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "correct_option",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "explanation",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "passage_key",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "match_list_json",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "arrangement_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "assets_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "source_pages_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "review_status",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "review_flags_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 17,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 18,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 19,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 20,
+            "name": "explanation_source",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 21,
+            "name": "explanation_status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 22,
+            "name": "reviewed_by",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 23,
+            "name": "reviewed_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "pyq_papers",
+        "rowCount": 0,
+        "columnsCount": 12,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "exam_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "subject_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "year",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "shift",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "title",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "source_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "rights_note",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "question_public_ids",
+        "rowCount": 123,
+        "columnsCount": 7,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "current_question_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "share_enabled",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "reveal_policy",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "seo_indexable",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "rights_ok",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "question_reports",
+        "rowCount": 0,
+        "columnsCount": 6,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "question_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "reason",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "questions",
+        "rowCount": 12372,
+        "columnsCount": 28,
+        "indexesCount": 8,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "subject_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "topic_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "passage_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "text",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "text_hi",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "options",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "options_hi",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "correct_option",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "explanation",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "explanation_hi",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "difficulty",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "year",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "image_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "image_alt",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "explanation_image_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "explanation_image_alt",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 17,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 18,
+            "name": "supersedes_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 19,
+            "name": "created_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 20,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 21,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 22,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 23,
+            "name": "assets_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 24,
+            "name": "explanation_source",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 25,
+            "name": "explanation_status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 26,
+            "name": "reviewed_by",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 27,
+            "name": "reviewed_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "rescore_jobs",
+        "rowCount": 0,
+        "columnsCount": 10,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "scope_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "total",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "processed",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "started_by",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "started_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "finished_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "error",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "revisions",
+        "rowCount": 230,
+        "columnsCount": 7,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "entity_type",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "entity_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "snapshot_json",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "reason",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "admin_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "sessions",
+        "rowCount": 685,
+        "columnsCount": 4,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "expires_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "share_events",
+        "rowCount": 0,
+        "columnsCount": 7,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "mock_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "context",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "channel",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "site_settings",
+        "rowCount": 5,
+        "columnsCount": 2,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "key",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "value",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "slug_redirects",
+        "rowCount": 0,
+        "columnsCount": 4,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "old_slug",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "entity_type",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "entity_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "subjects",
+        "rowCount": 19,
+        "columnsCount": 8,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "exam_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "type",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "is_active",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "code",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "topics",
+        "rowCount": 0,
+        "columnsCount": 5,
+        "indexesCount": 2,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "subject_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "slug",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "user_badges",
+        "rowCount": 50,
+        "columnsCount": 3,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "badge_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 2,
+            "name": "awarded_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "user_stats",
+        "rowCount": 51,
+        "columnsCount": 6,
+        "indexesCount": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "subject_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 2,
+            "name": "topic_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": true
+          },
+          {
+            "cid": 3,
+            "name": "attempted",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "correct",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "avg_time_sec",
+            "type": "REAL",
+            "notnull": true,
+            "pk": false
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "rowCount": 159,
+        "columnsCount": 17,
+        "indexesCount": 5,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "username",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "email",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "password_hash",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "google_id",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "avatar_url",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "bio",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "target_exam_date",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "is_profile_public",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "streak_count",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "last_active_date",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "approved_comments",
+            "type": "INTEGER",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "muted_until",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "deleted_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "banned_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": false,
+            "pk": false
+          }
+        ]
+      }
+    ],
+    "explanationStats": {
+      "questions": {
+        "ai_draft": 10288,
+        "banner": 34,
+        "none": 2050,
+        "reviewed": 0
+      },
+      "practice": {
+        "ai_draft": 6245,
+        "banner": 358,
+        "none": 0,
+        "reviewed": 1
+      },
+      "unkeyedPracticeQuestions": 332,
+      "unkeyedQuestions": 0,
+      "totalAiDraft": 16533,
+      "totalNoExplanation": 2050,
+      "totalReviewed": 1
+    }
+  },
+  "migrations": {
+    "totalMigrations": 20,
+    "migrations": [
+      {
+        "name": "0001_init.sql",
+        "bytes": 10054,
+        "lines": 318
+      },
+      {
+        "name": "0002_mock_versions.sql",
+        "bytes": 7809,
+        "lines": 192
+      },
+      {
+        "name": "0002_seed.sql",
+        "bytes": 3694,
+        "lines": 56
+      },
+      {
+        "name": "0003_content_and_ops.sql",
+        "bytes": 2145,
+        "lines": 49
+      },
+      {
+        "name": "0004_immutability_guards.sql",
+        "bytes": 6483,
+        "lines": 172
+      },
+      {
+        "name": "0005_seo_canonical.sql",
+        "bytes": 187,
+        "lines": 4
+      },
+      {
+        "name": "0006_schema_parity.sql",
+        "bytes": 681,
+        "lines": 16
+      },
+      {
+        "name": "0007_query_budget_indexes.sql",
+        "bytes": 669,
+        "lines": 14
+      },
+      {
+        "name": "0008_archive_placeholder_mock.sql",
+        "bytes": 669,
+        "lines": 15
+      },
+      {
+        "name": "0009_admin_full_control.sql",
+        "bytes": 4078,
+        "lines": 99
+      },
+      {
+        "name": "0010_practice_library.sql",
+        "bytes": 3441,
+        "lines": 83
+      },
+      {
+        "name": "0011_practice_passage_trash.sql",
+        "bytes": 435,
+        "lines": 10
+      },
+      {
+        "name": "0012_question_share.sql",
+        "bytes": 2338,
+        "lines": 54
+      },
+      {
+        "name": "0013_question_share_indexes.sql",
+        "bytes": 680,
+        "lines": 14
+      },
+      {
+        "name": "0015_ranked_practice_library.sql",
+        "bytes": 1368,
+        "lines": 29
+      },
+      {
+        "name": "0016_subject_rollup_index.sql",
+        "bytes": 290,
+        "lines": 6
+      },
+      {
+        "name": "0017_paper_provenance_and_rights.sql",
+        "bytes": 864,
+        "lines": 16
+      },
+      {
+        "name": "0018_explanation_provenance_and_review.sql",
+        "bytes": 1267,
+        "lines": 22
+      },
+      {
+        "name": "0019_attempt_sequence_and_capacity.sql",
+        "bytes": 430,
+        "lines": 9
+      },
+      {
+        "name": "0020_exam_info_seed.sql",
+        "bytes": 2655,
+        "lines": 53
+      }
+    ]
+  },
+  "environments": {
+    "documentedVars": [
+      {
+        "name": "ENV",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "SITE_URL",
+        "status": "set",
+        "source": ".dev.vars"
+      },
+      {
+        "name": "AUTH_SECRET",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "ADMIN_AUTH_MODE",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "ADMIN_ALLOW_SESSION_IN_PROD",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "GOOGLE_CLIENT_ID",
+        "status": "set",
+        "source": ".dev.vars"
+      },
+      {
+        "name": "GOOGLE_CLIENT_SECRET",
+        "status": "set",
+        "source": ".dev.vars"
+      },
+      {
+        "name": "CF_ACCESS_TEAM_DOMAIN",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "CF_ACCESS_AUD",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "BOOTSTRAP_SUPER_ADMIN_EMAIL",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "MEDIA_BUCKET",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "MEDIA_FALLBACK_KV",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "CF_ANALYTICS_TOKEN",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "GOOGLE_SITE_VERIFICATION",
+        "status": "unset",
+        "source": "missing"
+      },
+      {
+        "name": "ADSENSE_CLIENT_ID",
+        "status": "unset",
+        "source": "missing"
+      }
+    ]
+  }
+}

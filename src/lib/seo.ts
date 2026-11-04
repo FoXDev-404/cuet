@@ -50,6 +50,8 @@ export const EXAM_INFO_KEYS = [
   { key: "marking-scheme", label: "Marking scheme (official summary)" },
   { key: "syllabus", label: "Syllabus (official summary)" },
   { key: "important-dates", label: "Important dates" },
+  { key: "eligibility", label: "Eligibility criteria" },
+  { key: "subject-combination", label: "Subject combination rules" },
 ] as const;
 
 export async function getPageSeo(path: string): Promise<PageSeoRow | null> {
@@ -111,18 +113,8 @@ export function formatVerified(value: string | null | undefined): string | null 
   }).format(date);
 }
 
-export function faqJsonLd(faqs: FaqItem[]): Record<string, unknown> | null {
-  if (faqs.length === 0) return null;
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
-}
+// FAQPage schema was intentionally removed per Google Search guidelines (Aug 2023 update restricts FAQ rich results to government and health sites).
+// Quiz and Course schemas are disallowed per /docs/SEO_RULES.md.
 
 export function breadcrumbJsonLd(
   site: URL,

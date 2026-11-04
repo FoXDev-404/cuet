@@ -30,8 +30,9 @@
     }
   ],
   "vars": {
+    "ENV": "development",
     "SITE_URL": "https://cuet-astro.cuet-platform.workers.dev",
-    "DEV_SHOW_RESET_LINK": "",
+    "DEV_SHOW_RESET_LINK": "1",
     "ADMIN_AUTH_MODE": "session",
     "CF_ACCESS_TEAM_DOMAIN": "",
     "CF_ACCESS_AUD": "",
@@ -43,5 +44,81 @@
     "GSC_VERIFICATION": "",
     "ADSENSE_CLIENT": "",
     "ADSENSE_SLOT_ID": ""
+  },
+  "env": {
+    "staging": {
+      "name": "cuet-astro-staging",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "cuet-d1-staging",
+          "database_id": "c527f20e-4401-4d35-9db0-8b7433105d0f",
+          "migrations_dir": "./migrations"
+        }
+      ],
+      "kv_namespaces": [
+        {
+          "binding": "SESSION",
+          "id": "2e758fe3a6ea411da5741750e84900f9"
+        },
+        {
+          "binding": "MEDIA_KV",
+          "id": "3f9c70ce7bb54e0c931f0ecedfdfb3d4"
+        }
+      ],
+      "vars": {
+        "ENV": "staging",
+        "SITE_URL": "https://staging.cuetfreemocktest.com",
+        "DEV_SHOW_RESET_LINK": "1",
+        "ADMIN_AUTH_MODE": "session",
+        "CF_ACCESS_TEAM_DOMAIN": "",
+        "CF_ACCESS_AUD": "",
+        "ACCESS_TEAM_DOMAIN": "",
+        "ACCESS_AUD": "",
+        "EMAIL_PROVIDER": "brevo",
+        "EMAIL_FROM": "support@cuetfreemocktest.com",
+        "CF_ANALYTICS_TOKEN": "",
+        "GSC_VERIFICATION": "",
+        "ADSENSE_CLIENT": "",
+        "ADSENSE_SLOT_ID": ""
+      }
+    },
+    "production": {
+      "name": "cuet-astro-production",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "cuet-blueprint-db",
+          "database_id": "77ed64bd-006b-475b-9389-504c1639ced8",
+          "migrations_dir": "./migrations"
+        }
+      ],
+      "kv_namespaces": [
+        {
+          "binding": "SESSION",
+          "id": "7ea138189e80421db764cab62751e577"
+        },
+        {
+          "binding": "MEDIA_KV",
+          "id": "0c268f3ee06c4ee6928493f58c6e0f46"
+        }
+      ],
+      "vars": {
+        "ENV": "production",
+        "SITE_URL": "https://cuetfreemocktest.com",
+        "DEV_SHOW_RESET_LINK": "",
+        "ADMIN_AUTH_MODE": "access",
+        "CF_ACCESS_TEAM_DOMAIN": "",
+        "CF_ACCESS_AUD": "",
+        "ACCESS_TEAM_DOMAIN": "",
+        "ACCESS_AUD": "",
+        "EMAIL_PROVIDER": "brevo",
+        "EMAIL_FROM": "support@cuetfreemocktest.com",
+        "CF_ANALYTICS_TOKEN": "",
+        "GSC_VERIFICATION": "",
+        "ADSENSE_CLIENT": "",
+        "ADSENSE_SLOT_ID": ""
+      }
+    }
   }
 }

@@ -106,22 +106,25 @@ checks every referenced asset, key and count. Run both after any OCR or parser c
 The build removes stale crops so the published asset tree contains only files a
 surviving question references.
 
-- `/practice` is the `noindex` hub, `/practice/<slug>` is the indexable paper detail,
-  and `/practice/<slug>/take` is the `noindex` timed runner.
+- `/mock-tests` is the library hub, `/mock-tests/<slug>` is the paper detail page
+  (indexable only once its rights status is cleared), and `/mock-tests/<slug>/take`
+  permanently redirects into the ranked `/mock/<slug>/instructions` flow.
+- `/practice`, `/practice/<slug>`, `/mock-test` and `/mock-test/<slug>` permanently
+  redirect to the matching `/mock-tests` URL, preserving the query string, so old
+  links and search results keep working.
 - `/mock/<local-slug>` and `/mock/<local-slug>/instructions` permanently redirect to
-  the matching practice detail page, so old links keep working.
-- The browser stores answers, the deadline and the submitted result in
-  `sessionStorage` under `cuet-practice:v1:<slug>`. Nothing is written to D1: no
-  attempt row, no answers, no leaderboard entry, no dashboard history.
-- `POST /api/practice/<slug>/submit` validates the payload (up to 200 answers), grades
-  it on the server with the paper's +5 / -1 marking, and returns the key only after
-  submission. The take view never includes correct options or explanations.
-- Every page labels the paper as OCR practice and unranked. These papers must never
-  be promoted into first-attempt leaderboards without importing them into D1 with
-  provenance, rights and editorial review.
-- The homepage keeps its hero, Most Popular card and both library cards D1-only. The
-  OCR library appears there as a separate amber strip labelled unranked, not as a
-  popular mock or ranked library row.
+  the matching `/mock-tests/<slug>` detail page, so old links keep working.
+- Previous-year papers run on the same ranked D1 attempt engine as platform mocks:
+  starting a paper creates an attempt with a server deadline, answers autosave to D1,
+  and submitting grades on the server with the paper's +5 / -1 marking. Results appear
+  in dashboard history and the first submitted attempt counts on the leaderboard.
+- Correct options and explanations are never included in the attempt payload; they are
+  returned only after submission.
+- Every paper page labels the paper as OCR-recovered. Papers without cleared rights
+  stay `noindex` and ad-free, and must not be promoted in search until provenance,
+  rights and editorial review are documented.
+- The homepage surfaces the previous-year library through the `/mock-tests` cards; the
+  library count and "ready to score" totals come from the committed paper index.
 
 The JSON is an OCR recovery draft, not a verified question bank. The current build has
 5,322 recovered questions and 4,861 with a matched printed key; the other 461 stay
@@ -249,9 +252,9 @@ Verify after deploy:
 9. A guest attempt stays unranked until claimed; a second ranked attempt is rejected.
 10. `/blog` and `/blog/<slug>` stay out of the sitemap while no guide is published;
     `/search` is always `noindex`.
-11. `/practice` and a local paper open, the old `/mock/<local-slug>` URL redirects,
-    answers survive a reload, and submitting returns an unranked result without a D1
-    attempt row.
+11. `/mock-tests` and a local paper open, `/practice` and `/practice/<slug>` redirect
+    to their `/mock-tests` equivalents, the old `/mock/<local-slug>` URL redirects,
+    answers survive a reload, and submitting creates one ranked D1 attempt.
 12. `/admin/seo?path=%2Fabout` saves an absolute canonical override, `/about` renders it
     in `<link rel="canonical">`, and clearing the field restores the path default.
 13. `/dashboard/wrong-questions/retry` returns the key only after an answer is submitted

@@ -1,6 +1,5 @@
 import {
   displayDate,
-  LOCAL_DURATION_MINUTES,
   LOCAL_LIBRARY_PATH,
   LOCAL_MARKING_SCHEME,
   type LocalListPair,
@@ -13,6 +12,7 @@ import {
   type LocalQuestionPassage,
   type LocalSubject,
 } from "./practice-normalize";
+import { calculateMockDuration } from "./exam-timing";
 
 /**
  * Row shapes and pure mappers for the D1 practice store.
@@ -33,6 +33,12 @@ export interface PaperIndexRow {
   duration_min: number;
   source_file: string | null;
   source_method: string | null;
+  source_url?: string | null;
+  source_type?: string | null;
+  rights_status?: string | null;
+  rights_note?: string | null;
+  verified_by?: string | null;
+  verified_at?: string | null;
   source_question_count: number;
   publication_status: string;
   review_required: number;
@@ -100,7 +106,7 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
     date: row.exam_date,
     dateLabel: row.date_label || displayDate(row.exam_date),
     shift: row.shift,
-    durationMinutes: row.duration_min || LOCAL_DURATION_MINUTES,
+    durationMinutes: calculateMockDuration(scorable || questionCount, row.subject_name).durationMinutes,
     markingScheme: { ...LOCAL_MARKING_SCHEME },
     totalQuestions: questionCount,
     sourceQuestionCount: sourceCount,
@@ -113,6 +119,12 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
     assetCount: Number(row.asset_count) || 0,
     sourceFile: row.source_file,
     sourceMethod: row.source_method,
+    ...(row.rights_status !== undefined ? { rightsStatus: row.rights_status as any } : {}),
+    ...(row.source_type !== undefined ? { sourceType: row.source_type as any } : {}),
+    ...(row.source_url !== undefined ? { sourceUrl: row.source_url } : {}),
+    ...(row.rights_note !== undefined ? { rightsNote: row.rights_note } : {}),
+    ...(row.verified_by !== undefined ? { verifiedBy: row.verified_by } : {}),
+    ...(row.verified_at !== undefined ? { verifiedAt: row.verified_at } : {}),
     publicationStatus: row.publication_status,
     reviewRequired: Boolean(row.review_required),
     localPaper: true,
@@ -187,9 +199,18 @@ export function mapPaperRow(
     date: row.exam_date,
     dateLabel: row.date_label || displayDate(row.exam_date),
     shift: row.shift,
-    durationMinutes: row.duration_min || LOCAL_DURATION_MINUTES,
+    durationMinutes: calculateMockDuration(
+      scorableQuestionCount || normalised.length,
+      row.subject_name,
+    ).durationMinutes,
     sourceFile: row.source_file,
     sourceMethod: row.source_method,
+    ...(row.rights_status !== undefined ? { rightsStatus: row.rights_status as any } : {}),
+    ...(row.source_type !== undefined ? { sourceType: row.source_type as any } : {}),
+    ...(row.source_url !== undefined ? { sourceUrl: row.source_url } : {}),
+    ...(row.rights_note !== undefined ? { rightsNote: row.rights_note } : {}),
+    ...(row.verified_by !== undefined ? { verifiedBy: row.verified_by } : {}),
+    ...(row.verified_at !== undefined ? { verifiedAt: row.verified_at } : {}),
     publicationStatus: row.publication_status,
     reviewRequired: Boolean(row.review_required),
     sourceQuestionCount,

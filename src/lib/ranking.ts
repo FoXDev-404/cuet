@@ -1,4 +1,9 @@
-export type MarkingScheme = { correct: number; wrong: number; skipped: number };
+export type MarkingScheme = {
+  correct: number;
+  wrong: number;
+  skipped: number;
+  sections?: Record<string, { correct: number; wrong: number; skipped: number }>;
+};
 
 export type RankableAttempt = {
   score: number;

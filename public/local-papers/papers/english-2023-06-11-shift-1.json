@@ -1,1678 +1,1678 @@
 {
- "exam": {
-  "id": "local-english-2023-06-11-shift-1",
-  "slug": "english-2023-06-11-shift-1",
-  "title": "CUET UG English 11 June 2023 Shift 1 Previous Year Paper",
-  "subject": "English",
-  "subjectId": "local-english",
-  "subjectCode": "ENG",
-  "year": 2023,
-  "examDate": "2023-06-11",
-  "shift": "Shift 1",
-  "sourceFile": "English_2023-06-11_Shift_1.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 49,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Match List - I with List - II to correctly complete the information given in the table:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q01-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/english-2023-06-11-shift-1/q01-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 1"
-     }
+  "exam": {
+    "id": "local-english-2023-06-11-shift-1",
+    "slug": "english-2023-06-11-shift-1",
+    "title": "CUET UG English 11 June 2023 Shift 1 Previous Year Paper",
+    "subject": "English",
+    "subjectId": "local-english",
+    "subjectCode": "ENG",
+    "year": 2023,
+    "examDate": "2023-06-11",
+    "shift": "Shift 1",
+    "sourceFile": "English_2023-06-11_Shift_1.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 49,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Match List - I with List - II to correctly complete the information given in the table:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q01-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/english-2023-06-11-shift-1/q01-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 1"
+          }
+        ]
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "It can be inferred from the passage that:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Tropical regions occupy only three-fourth of the area of the world."
+          },
+          {
+            "id": "B",
+            "text": "Natural calamities do not change the biodiversity."
+          },
+          {
+            "id": "C",
+            "text": "Exotic species are useful for the environment."
+          },
+          {
+            "id": "D",
+            "text": "Human beings are responsible for the change in biosphere."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Which of the following statements is not true according to the passage:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Natural calamities damage the flora."
+          },
+          {
+            "id": "B",
+            "text": "Animals like tigers hunt other species."
+          },
+          {
+            "id": "C",
+            "text": "Over population has endangered many species."
+          },
+          {
+            "id": "D",
+            "text": "Tropical rain forests contain 50% of the species."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Match the words in List - I with their meaning in List - II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q04-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/english-2023-06-11-shift-1/q04-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Flora and fauna means_.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "flowers and young ones"
+          },
+          {
+            "id": "B",
+            "text": "floors and carpets"
+          },
+          {
+            "id": "C",
+            "text": "plant and animal life"
+          },
+          {
+            "id": "D",
+            "text": "floors and buildings Direction for Q6 to Q10. Read the following passage and answer the question by choosing the correct"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Where did Udham Singh buy the weapon which was used for killing Sir Michael?\n\n(A) Lahore\n\n(B) London\n\n(C) Paris\n\n(D) Berlin",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C) Only"
+          },
+          {
+            "id": "B",
+            "text": "(A) Only"
+          },
+          {
+            "id": "C",
+            "text": "(D) Only"
+          },
+          {
+            "id": "D",
+            "text": "(B) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Udham Singh shot Sir Michael O'Dwyer in:\n\n(A) Jallianwala Bagh\n\n(B) Paris\n\n(C) London\n\n(D) Amritsar",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B) Only"
+          },
+          {
+            "id": "B",
+            "text": "(D) Only"
+          },
+          {
+            "id": "C",
+            "text": "(A) Only"
+          },
+          {
+            "id": "D",
+            "text": "(C) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Udham Singh returned to India in 1928 mainly because he was:\n\n(A) called by Bhagat Singh to India\n\n(B) short of funds to meet his expenses\n\n(C) to procure some arms from Lahore\n\n(D) to escape from the British Police",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B) Only"
+          },
+          {
+            "id": "B",
+            "text": "(A) Only"
+          },
+          {
+            "id": "C",
+            "text": "(D) Only"
+          },
+          {
+            "id": "D",
+            "text": "(C) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "When Udham Singh was arrested in Lahore, he was charged for:\n\n(A) his links with anti-British forces\n\n(B) possessing unlicensed arms and ammunition\n\n(C) concealing his identity\n\n(D) instigating his countrymen against the Britishers",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C) Only"
+          },
+          {
+            "id": "B",
+            "text": "(D) Only"
+          },
+          {
+            "id": "C",
+            "text": "(B) Only"
+          },
+          {
+            "id": "D",
+            "text": "(A) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Udham Singh went to America where he:\n\n(A) mobilised the Indian citizens for the liberation of the motherland\n\n(B) met his fellow citizens working for the same cause\n\n(C) visited the United States for sightseeing\n\n(D) mobilised like-minded Americans against the Britishers",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B) Only"
+          },
+          {
+            "id": "B",
+            "text": "(C) Only"
+          },
+          {
+            "id": "C",
+            "text": "(D) Only"
+          },
+          {
+            "id": "D",
+            "text": "(A) Only Direction for Q11 to Q15. Read the following poem and answer the next five questions by choosing the correct"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "According to the poem, which is the season in which one can make a lot of money?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Winter"
+          },
+          {
+            "id": "B",
+            "text": "Autumn"
+          },
+          {
+            "id": "C",
+            "text": "Rainy"
+          },
+          {
+            "id": "D",
+            "text": "Summer"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "What does the poet mean in the line 'clearing backyards of leaves with a rake :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "dirtying the backyard"
+          },
+          {
+            "id": "B",
+            "text": "cleaning the backyard"
+          },
+          {
+            "id": "C",
+            "text": "looking at the backyard"
+          },
+          {
+            "id": "D",
+            "text": "designing the backyard"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "What is the rhyme scheme of the second stanza of the poem?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "abcc"
+          },
+          {
+            "id": "B",
+            "text": "aabc"
+          },
+          {
+            "id": "C",
+            "text": "acbd"
+          },
+          {
+            "id": "D",
+            "text": "acab"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "Identify the poetic device in: \"The bees are buzzing....\"\n\nChoose the correct option:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Onomatopoeia"
+          },
+          {
+            "id": "B",
+            "text": "Simile"
+          },
+          {
+            "id": "C",
+            "text": "Metaphor"
+          },
+          {
+            "id": "D",
+            "text": "Synecdoche"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "In which season do the leaves turn golden brown?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Summer"
+          },
+          {
+            "id": "B",
+            "text": "Winter"
+          },
+          {
+            "id": "C",
+            "text": "Autumn"
+          },
+          {
+            "id": "D",
+            "text": "Spring"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "Choose the appropriate articles out of the following options to fill in the blanks in the given sentence: _ Lion is _ King of beasts.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "a, the"
+          },
+          {
+            "id": "B",
+            "text": "the, the"
+          },
+          {
+            "id": "C",
+            "text": "a, an"
+          },
+          {
+            "id": "D",
+            "text": "the, a"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "Identify the correct sequence of the parts of a formal letter:\n\n(P) Signature and name\n\n(Q) Salutation\n\n(R) Sender's address\n\n(S) Date\n\n(T) Receiver's post and address",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(P), (Q), (T), (S), (R)"
+          },
+          {
+            "id": "B",
+            "text": "(T), (S), (R), (Q), (P)"
+          },
+          {
+            "id": "C",
+            "text": "(R), (T), (P), (Q), (S)"
+          },
+          {
+            "id": "D",
+            "text": "(R), (S), (T), (Q), (P)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Fill in the blank with the appropriate adverb out of the options given below:\n\nI have never heard of this _.\n\n(A) forward\n\n(B) backward\n\n(C) yesterday\n\n(D) before",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B)"
+          },
+          {
+            "id": "B",
+            "text": "(D)"
+          },
+          {
+            "id": "C",
+            "text": "(A)"
+          },
+          {
+            "id": "D",
+            "text": "(C)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "Choose the correct option to fill in the blank with the appropriate modal in the following sentence:\n\nIf I were a cosmonaut, I _ have taken you to the moon :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "must"
+          },
+          {
+            "id": "B",
+            "text": "would"
+          },
+          {
+            "id": "C",
+            "text": "may"
+          },
+          {
+            "id": "D",
+            "text": "might"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "Identify the exclamatory sentence:\n\n(A) To err is human.\n\n(B) Talking much is a sign of vanity.\n\n(C) What a beautiful dress she is wearing.\n\n(D) My views do not appeal to him.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C)"
+          },
+          {
+            "id": "B",
+            "text": "(A)"
+          },
+          {
+            "id": "C",
+            "text": "(B)"
+          },
+          {
+            "id": "D",
+            "text": "(D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "Rearrange the following phrases to make a meaningful sentence:\n\n(A) to sing in the bus\n\n(B) when Gwen started\n\n(C) to button her lips\n\n(D) everyone told her",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (C), (B), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "C",
+            "text": "(C), (B), (A), (D)"
+          },
+          {
+            "id": "D",
+            "text": "(D), (A), (C), (B)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "Match the blanks in List - I with suitable articles in List - II\n\nList -1\n\n(A) Yesterday _ European (I) an called at my office.\n\n(B) _ sun shines bright. (II) a\n\n(C) Haven't you had _ (III) the dinner yet?\n\n(D) I had _ unexpected (IV) No article encounter.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "Identify the correct sentence out of the following:\n\n(A) The latter part of the book is not interesting.\n\n(B) The later part of the book is not interesting.\n\n(C) The after part of the book is not interesting.\n\n(D) The before part of the book is not interesting.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C)"
+          },
+          {
+            "id": "B",
+            "text": "(A)"
+          },
+          {
+            "id": "C",
+            "text": "(B)"
+          },
+          {
+            "id": "D",
+            "text": "(D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "Choose the alternative that best expresses the meaning of the following idiom:\n\nBury your head in the sand",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "deliberately refuse to accept the truth about something unpleasant."
+          },
+          {
+            "id": "B",
+            "text": "be really determined to find a solution."
+          },
+          {
+            "id": "C",
+            "text": "be greatly irritated by people."
+          },
+          {
+            "id": "D",
+            "text": "be physically exhausted."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "Choose the sentence with tin adjective clause:\n\n(A) The sum is so difficult that I cannot do it.\n\n(B) He ran away because he was afraid.\n\n(C) I shall help him for I like him.\n\n(D) The dog that barks does not bite.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C)"
+          },
+          {
+            "id": "B",
+            "text": "(D)"
+          },
+          {
+            "id": "C",
+            "text": "(A)"
+          },
+          {
+            "id": "D",
+            "text": "(B)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "Match the phrasal verbs in List -1 with their meanings in List - II.\n\nList -1 List - II\n\n(A) Break in (I) continue with something difficult\n\n(B) Phase out (II) eat unwillingly\n\n(C) Pick at (III) remove gradually\n\n(D) Keep at (IV) enter by force",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Choose the suitable option from the given alternatives to represent the subject for a letter placing an order with M/S ABC Musical Instruments:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Seeking information for variety of musical instruments"
+          },
+          {
+            "id": "B",
+            "text": "Enquiring for musical instruments"
+          },
+          {
+            "id": "C",
+            "text": "Placing order for musical instruments"
+          },
+          {
+            "id": "D",
+            "text": "Giving delivery of musical instruments"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "Choose the appropriate passive voice form of the sentence given below:\n\nThis pot contains ink\n\n(A) Ink has been contained in this pot.\n\n(B) Ink contains this pot.\n\n(C) Ink is contained in this pot.\n\n(D) This pot is containing ink.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C) Only"
+          },
+          {
+            "id": "B",
+            "text": "(D) Only"
+          },
+          {
+            "id": "C",
+            "text": "(A) Only"
+          },
+          {
+            "id": "D",
+            "text": "(B) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "Fill in the blank with an appropriate preposition.\n\nCalcutta is _ the banks of river Hooghly.\n\n(A) above\n\n(B) at\n\n(C) over\n\n(D) on",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) Only"
+          },
+          {
+            "id": "B",
+            "text": "(B) Only"
+          },
+          {
+            "id": "C",
+            "text": "(D) Only"
+          },
+          {
+            "id": "D",
+            "text": "(C) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "Match the phrasal verbs in List - I with their meanings in List - II.\n\nChoose the correct answer from the options given below :\n\n(a) (A)-(IV), (B)-(I), (C)-(II), (D)-(III)\n\n(b) (A)-(III), (B)-(IV), (C)-(I), (D)-(II)\n\n(c) (A)-(IV), (B)-(III), (C)-(II), (D)-(I)\n\n(d) (A)-(II), (B)-(III), (C)-(IV), (D)-(I)\n\n\n1. Rearrange the sentences to form a meaningful paragraph:\n\n(A) There I was put in a primary school\n\n(B) But just as at Porbandar, so, here, there is hardly anything to note about my studies.\n\n(C) I can well recollect those days at Rajkot, including the names and other particulars of the teachers who taught me.\n\n(D) I must have been about seven when my father left Porbandar for Rajkot.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C), (B), (D)"
+          },
+          {
+            "id": "C",
+            "text": "(D), (C), (B), (A)"
+          },
+          {
+            "id": "D",
+            "text": "(D), (A), (C), (B)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q30-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/english-2023-06-11-shift-1/q30-table-1.jpg",
+            "page": 4,
+            "alt": "Table for question 30"
+          },
+          {
+            "id": "q30-table-2",
+            "kind": "table",
+            "path": "/local-papers/assets/english-2023-06-11-shift-1/q30-table-2.jpg",
+            "page": 4,
+            "alt": "Table for question 30"
+          }
+        ]
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "Choose the sentence that uses the preposition incorrectly:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Read the poem on page 50."
+          },
+          {
+            "id": "B",
+            "text": "I live on street 10."
+          },
+          {
+            "id": "C",
+            "text": "The kite is flying on the sky."
+          },
+          {
+            "id": "D",
+            "text": "Put on your new clothes."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "Choose the appropriate passive voice form of the sentence given below:\n\nThe masons are building the house.\n\n(A) The house is building by the masons.\n\n(B) The masons have built the house.\n\n(C) The masons had built the house.\n\n(D) The house is being built by the masons.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) Only"
+          },
+          {
+            "id": "B",
+            "text": "(C) Only"
+          },
+          {
+            "id": "C",
+            "text": "(D) Only"
+          },
+          {
+            "id": "D",
+            "text": "(B) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 34,
+        "stemEn": "Fill in the blank with the appropriate modal:\n\nTill 1990, I _ read without glasses.\n\n(A) should\n\n(B) shall\n\n(C) could\n\n(D) will",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C) Only"
+          },
+          {
+            "id": "B",
+            "text": "(B) Only"
+          },
+          {
+            "id": "C",
+            "text": "(A) Only"
+          },
+          {
+            "id": "D",
+            "text": "(D) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 35,
+        "stemEn": "Choose the appropriate indirect form of speech of the sentence given below:\n\nHe said, \"I intend to leave for Delhi tonight\".\n\n(A) He said I intend to leave for Delhi tonight.\n\n(B) He said that he intends to leave for Delhi tonight.\n\n(C) He said that he intended to leave for Delhi that night.\n\n(D) He said that he was intending to leave for Delhi that night.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)"
+          },
+          {
+            "id": "B",
+            "text": "(C)"
+          },
+          {
+            "id": "C",
+            "text": "(B)"
+          },
+          {
+            "id": "D",
+            "text": "(D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "Which of the following expressions means the same as \"DENOUEMENT\"?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "the conclusion of a play"
+          },
+          {
+            "id": "B",
+            "text": "a political representation"
+          },
+          {
+            "id": "C",
+            "text": "an accomplished fact"
+          },
+          {
+            "id": "D",
+            "text": "a tragedy"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "Fill in the blank with the appropriate adverb out of the options given below:\n\nHe works _ quickly than I do.\n\n(A) much\n\n(B) very\n\n(C) more\n\n(D) quite",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)"
+          },
+          {
+            "id": "B",
+            "text": "(D)"
+          },
+          {
+            "id": "C",
+            "text": "(Q)"
+          },
+          {
+            "id": "D",
+            "text": "(B)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 38,
+        "stemEn": "Choose the MISSPELT word out of the following options:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Botanist"
+          },
+          {
+            "id": "B",
+            "text": "Entomologist"
+          },
+          {
+            "id": "C",
+            "text": "Zoologist"
+          },
+          {
+            "id": "D",
+            "text": "Astronomer"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 39,
+        "stemEn": "Choose the meaning of the expression \"Alma mater\":\n\n(A) The house that you live in\n\n(B) Family living together in a rented house\n\n(C) Friends going on a trip\n\n(D) The school, college or university that somebody attended",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C) Only"
+          },
+          {
+            "id": "B",
+            "text": "(A) Only"
+          },
+          {
+            "id": "C",
+            "text": "(D) Only"
+          },
+          {
+            "id": "D",
+            "text": "(B) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 40,
+        "stemEn": "Choose the correct option to change the following assertive sentence into an exclamatory sentence:\n\nIt is a matter of great happiness that we have won the trophy.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Hurrah! we have won the trophy."
+          },
+          {
+            "id": "B",
+            "text": "Alas! we have won the trophy."
+          },
+          {
+            "id": "C",
+            "text": "Hurrah! we won the trophy!"
+          },
+          {
+            "id": "D",
+            "text": "Hay! we had won the trophy!"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 41,
+        "stemEn": "Rearrange the following phrases to make a meaningful sentence:\n\n(A) it has been raining\n\n(B) continuously for the last three days\n\n(C) with water because\n\n(D) the pond is flooded",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C), (B), (A), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(D), (C), (A), (B)"
+          },
+          {
+            "id": "C",
+            "text": "(D), (C), (B), (A)"
+          },
+          {
+            "id": "D",
+            "text": "(A), (C), (D), (B)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "Match the words in List -1 with their synonyms in List -II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(II), (B)-(IV), (C)-(III), (D)-(I)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q42-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/english-2023-06-11-shift-1/q42-table-1.jpg",
+            "page": 5,
+            "alt": "Table for question 42"
+          }
+        ]
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "Choose the appropriate direct form of speech of the sentence given below:\n\nHe said that his master was writing letters:\n\n(A) He said,\" My master was writing letters\".\n\n(B) He said,\" My master has been writing letters\".\n\n(C) He said,\" My master had been writing letters\".\n\n(D) He said,\" My master is writing letters\".",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(D)"
+          },
+          {
+            "id": "B",
+            "text": "(A)"
+          },
+          {
+            "id": "C",
+            "text": "(B)"
+          },
+          {
+            "id": "D",
+            "text": "(C)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "Which among the following pair of words carry the same relationship as:\n\nANTIQUE : MODERN",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "ETERNAL : IMMORTAL"
+          },
+          {
+            "id": "B",
+            "text": "MAMMOTH : ENORMOUS"
+          },
+          {
+            "id": "C",
+            "text": "DEFICIENT : AMPLE"
+          },
+          {
+            "id": "D",
+            "text": "GLOOM : DARKNESS"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "Choose the grammatically correct sentence from the options given below:\n\n(A) He has been sleeping since 3 pm.\n\n(B) He has been sleeping for 3 pm.\n\n(C) He has been sleeping on 3 pm.\n\n(D) He has been sleeping at 3 pm.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C)"
+          },
+          {
+            "id": "B",
+            "text": "(A)"
+          },
+          {
+            "id": "C",
+            "text": "(B)"
+          },
+          {
+            "id": "D",
+            "text": "(D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 46,
+        "stemEn": "Choose the appropriate question tag for the following sentence out of the options given below: Let's have a game of cricket.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "don't we?"
+          },
+          {
+            "id": "B",
+            "text": "did we?"
+          },
+          {
+            "id": "C",
+            "text": "shall we?"
+          },
+          {
+            "id": "D",
+            "text": "when?"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "Fili in the blanks in List - I with the suitable homonyms from List - II.\n\n(A) The car hit into the _ (I) Complements vehicle.\n\n(B) She received many _ (II) Stationery for her melodious voice.\n\n(C) Please get me a pen from the (III) Stationary $ \\underline{\\hspace{2cm}} $ shop.\n\n(D) A good secretary _ the (IV) Compliments work of a chairman.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(I), (B)-(III), (C)-(IV), (D)-(II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "Complete the sentence by using the suitable idiom/phrase from the following options:\n\nHarry boasted about scoring the highest marks in his class but when he saw the results, he had to _.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "cut the mustard"
+          },
+          {
+            "id": "B",
+            "text": "eat the humble pie"
+          },
+          {
+            "id": "C",
+            "text": "full of beans"
+          },
+          {
+            "id": "D",
+            "text": "finger in every pie"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "Select the appropriate antonym for the word CONTEMPT:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "disdain"
+          },
+          {
+            "id": "B",
+            "text": "despise"
+          },
+          {
+            "id": "C",
+            "text": "respect"
+          },
+          {
+            "id": "D",
+            "text": "disrespect"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "Choose the meaning of the Latin expression - \"et al\":\n\n(A) and you\n\n(B) and others\n\n(C) and he\n\n(D) and she",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) Only"
+          },
+          {
+            "id": "B",
+            "text": "(B) Only"
+          },
+          {
+            "id": "C",
+            "text": "(C) Only"
+          },
+          {
+            "id": "D",
+            "text": "(D) Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "It can be inferred from the passage that:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Tropical regions occupy only three-fourth of the area of the world."
-     },
-     {
-      "id": "B",
-      "text": "Natural calamities do not change the biodiversity."
-     },
-     {
-      "id": "C",
-      "text": "Exotic species are useful for the environment."
-     },
-     {
-      "id": "D",
-      "text": "Human beings are responsible for the change in biosphere."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Which of the following statements is not true according to the passage:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Natural calamities damage the flora."
-     },
-     {
-      "id": "B",
-      "text": "Animals like tigers hunt other species."
-     },
-     {
-      "id": "C",
-      "text": "Over population has endangered many species."
-     },
-     {
-      "id": "D",
-      "text": "Tropical rain forests contain 50% of the species."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Match the words in List - I with their meaning in List - II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q04-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/english-2023-06-11-shift-1/q04-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 4"
-     }
-    ]
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Flora and fauna means_.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "flowers and young ones"
-     },
-     {
-      "id": "B",
-      "text": "floors and carpets"
-     },
-     {
-      "id": "C",
-      "text": "plant and animal life"
-     },
-     {
-      "id": "D",
-      "text": "floors and buildings Direction for Q6 to Q10. Read the following passage and answer the question by choosing the correct"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Where did Udham Singh buy the weapon which was used for killing Sir Michael?\n\n(A) Lahore\n\n(B) London\n\n(C) Paris\n\n(D) Berlin",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C) Only"
-     },
-     {
-      "id": "B",
-      "text": "(A) Only"
-     },
-     {
-      "id": "C",
-      "text": "(D) Only"
-     },
-     {
-      "id": "D",
-      "text": "(B) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "Udham Singh shot Sir Michael O'Dwyer in:\n\n(A) Jallianwala Bagh\n\n(B) Paris\n\n(C) London\n\n(D) Amritsar",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B) Only"
-     },
-     {
-      "id": "B",
-      "text": "(D) Only"
-     },
-     {
-      "id": "C",
-      "text": "(A) Only"
-     },
-     {
-      "id": "D",
-      "text": "(C) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Udham Singh returned to India in 1928 mainly because he was:\n\n(A) called by Bhagat Singh to India\n\n(B) short of funds to meet his expenses\n\n(C) to procure some arms from Lahore\n\n(D) to escape from the British Police",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B) Only"
-     },
-     {
-      "id": "B",
-      "text": "(A) Only"
-     },
-     {
-      "id": "C",
-      "text": "(D) Only"
-     },
-     {
-      "id": "D",
-      "text": "(C) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "When Udham Singh was arrested in Lahore, he was charged for:\n\n(A) his links with anti-British forces\n\n(B) possessing unlicensed arms and ammunition\n\n(C) concealing his identity\n\n(D) instigating his countrymen against the Britishers",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C) Only"
-     },
-     {
-      "id": "B",
-      "text": "(D) Only"
-     },
-     {
-      "id": "C",
-      "text": "(B) Only"
-     },
-     {
-      "id": "D",
-      "text": "(A) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Udham Singh went to America where he:\n\n(A) mobilised the Indian citizens for the liberation of the motherland\n\n(B) met his fellow citizens working for the same cause\n\n(C) visited the United States for sightseeing\n\n(D) mobilised like-minded Americans against the Britishers",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B) Only"
-     },
-     {
-      "id": "B",
-      "text": "(C) Only"
-     },
-     {
-      "id": "C",
-      "text": "(D) Only"
-     },
-     {
-      "id": "D",
-      "text": "(A) Only Direction for Q11 to Q15. Read the following poem and answer the next five questions by choosing the correct"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "According to the poem, which is the season in which one can make a lot of money?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Winter"
-     },
-     {
-      "id": "B",
-      "text": "Autumn"
-     },
-     {
-      "id": "C",
-      "text": "Rainy"
-     },
-     {
-      "id": "D",
-      "text": "Summer"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "What does the poet mean in the line 'clearing backyards of leaves with a rake :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "dirtying the backyard"
-     },
-     {
-      "id": "B",
-      "text": "cleaning the backyard"
-     },
-     {
-      "id": "C",
-      "text": "looking at the backyard"
-     },
-     {
-      "id": "D",
-      "text": "designing the backyard"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "What is the rhyme scheme of the second stanza of the poem?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "abcc"
-     },
-     {
-      "id": "B",
-      "text": "aabc"
-     },
-     {
-      "id": "C",
-      "text": "acbd"
-     },
-     {
-      "id": "D",
-      "text": "acab"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "Identify the poetic device in: \"The bees are buzzing....\"\n\nChoose the correct option:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Onomatopoeia"
-     },
-     {
-      "id": "B",
-      "text": "Simile"
-     },
-     {
-      "id": "C",
-      "text": "Metaphor"
-     },
-     {
-      "id": "D",
-      "text": "Synecdoche"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "In which season do the leaves turn golden brown?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Summer"
-     },
-     {
-      "id": "B",
-      "text": "Winter"
-     },
-     {
-      "id": "C",
-      "text": "Autumn"
-     },
-     {
-      "id": "D",
-      "text": "Spring"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "Choose the appropriate articles out of the following options to fill in the blanks in the given sentence: _ Lion is _ King of beasts.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "a, the"
-     },
-     {
-      "id": "B",
-      "text": "the, the"
-     },
-     {
-      "id": "C",
-      "text": "a, an"
-     },
-     {
-      "id": "D",
-      "text": "the, a"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "Identify the correct sequence of the parts of a formal letter:\n\n(P) Signature and name\n\n(Q) Salutation\n\n(R) Sender's address\n\n(S) Date\n\n(T) Receiver's post and address",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(P), (Q), (T), (S), (R)"
-     },
-     {
-      "id": "B",
-      "text": "(T), (S), (R), (Q), (P)"
-     },
-     {
-      "id": "C",
-      "text": "(R), (T), (P), (Q), (S)"
-     },
-     {
-      "id": "D",
-      "text": "(R), (S), (T), (Q), (P)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Fill in the blank with the appropriate adverb out of the options given below:\n\nI have never heard of this _.\n\n(A) forward\n\n(B) backward\n\n(C) yesterday\n\n(D) before",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B)"
-     },
-     {
-      "id": "B",
-      "text": "(D)"
-     },
-     {
-      "id": "C",
-      "text": "(A)"
-     },
-     {
-      "id": "D",
-      "text": "(C)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "Choose the correct option to fill in the blank with the appropriate modal in the following sentence:\n\nIf I were a cosmonaut, I _ have taken you to the moon :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "must"
-     },
-     {
-      "id": "B",
-      "text": "would"
-     },
-     {
-      "id": "C",
-      "text": "may"
-     },
-     {
-      "id": "D",
-      "text": "might"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Identify the exclamatory sentence:\n\n(A) To err is human.\n\n(B) Talking much is a sign of vanity.\n\n(C) What a beautiful dress she is wearing.\n\n(D) My views do not appeal to him.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C)"
-     },
-     {
-      "id": "B",
-      "text": "(A)"
-     },
-     {
-      "id": "C",
-      "text": "(B)"
-     },
-     {
-      "id": "D",
-      "text": "(D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Rearrange the following phrases to make a meaningful sentence:\n\n(A) to sing in the bus\n\n(B) when Gwen started\n\n(C) to button her lips\n\n(D) everyone told her",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (C), (B), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "C",
-      "text": "(C), (B), (A), (D)"
-     },
-     {
-      "id": "D",
-      "text": "(D), (A), (C), (B)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Match the blanks in List - I with suitable articles in List - II\n\nList -1\n\n(A) Yesterday _ European (I) an called at my office.\n\n(B) _ sun shines bright. (II) a\n\n(C) Haven't you had _ (III) the dinner yet?\n\n(D) I had _ unexpected (IV) No article encounter.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "Identify the correct sentence out of the following:\n\n(A) The latter part of the book is not interesting.\n\n(B) The later part of the book is not interesting.\n\n(C) The after part of the book is not interesting.\n\n(D) The before part of the book is not interesting.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C)"
-     },
-     {
-      "id": "B",
-      "text": "(A)"
-     },
-     {
-      "id": "C",
-      "text": "(B)"
-     },
-     {
-      "id": "D",
-      "text": "(D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "Choose the alternative that best expresses the meaning of the following idiom:\n\nBury your head in the sand",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "deliberately refuse to accept the truth about something unpleasant."
-     },
-     {
-      "id": "B",
-      "text": "be really determined to find a solution."
-     },
-     {
-      "id": "C",
-      "text": "be greatly irritated by people."
-     },
-     {
-      "id": "D",
-      "text": "be physically exhausted."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "Choose the sentence with tin adjective clause:\n\n(A) The sum is so difficult that I cannot do it.\n\n(B) He ran away because he was afraid.\n\n(C) I shall help him for I like him.\n\n(D) The dog that barks does not bite.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C)"
-     },
-     {
-      "id": "B",
-      "text": "(D)"
-     },
-     {
-      "id": "C",
-      "text": "(A)"
-     },
-     {
-      "id": "D",
-      "text": "(B)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "Match the phrasal verbs in List -1 with their meanings in List - II.\n\nList -1 List - II\n\n(A) Break in (I) continue with something difficult\n\n(B) Phase out (II) eat unwillingly\n\n(C) Pick at (III) remove gradually\n\n(D) Keep at (IV) enter by force",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Choose the suitable option from the given alternatives to represent the subject for a letter placing an order with M/S ABC Musical Instruments:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Seeking information for variety of musical instruments"
-     },
-     {
-      "id": "B",
-      "text": "Enquiring for musical instruments"
-     },
-     {
-      "id": "C",
-      "text": "Placing order for musical instruments"
-     },
-     {
-      "id": "D",
-      "text": "Giving delivery of musical instruments"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Choose the appropriate passive voice form of the sentence given below:\n\nThis pot contains ink\n\n(A) Ink has been contained in this pot.\n\n(B) Ink contains this pot.\n\n(C) Ink is contained in this pot.\n\n(D) This pot is containing ink.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C) Only"
-     },
-     {
-      "id": "B",
-      "text": "(D) Only"
-     },
-     {
-      "id": "C",
-      "text": "(A) Only"
-     },
-     {
-      "id": "D",
-      "text": "(B) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "Fill in the blank with an appropriate preposition.\n\nCalcutta is _ the banks of river Hooghly.\n\n(A) above\n\n(B) at\n\n(C) over\n\n(D) on",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) Only"
-     },
-     {
-      "id": "B",
-      "text": "(B) Only"
-     },
-     {
-      "id": "C",
-      "text": "(D) Only"
-     },
-     {
-      "id": "D",
-      "text": "(C) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "Match the phrasal verbs in List - I with their meanings in List - II.\n\nChoose the correct answer from the options given below :\n\n(a) (A)-(IV), (B)-(I), (C)-(II), (D)-(III)\n\n(b) (A)-(III), (B)-(IV), (C)-(I), (D)-(II)\n\n(c) (A)-(IV), (B)-(III), (C)-(II), (D)-(I)\n\n(d) (A)-(II), (B)-(III), (C)-(IV), (D)-(I)\n\n(d) (A)-(II), (B)-(III), (C)-(IV), (D)-(I)\n\n1. Rearrange the sentences to form a meaningful paragraph:\n\n(A) There I was put in a primary school\n\n(B) But just as at Porbandar, so, here, there is hardly anything to note about my studies.\n\n(C) I can well recollect those days at Rajkot, including the names and other particulars of the teachers who taught me.\n\n(D) I must have been about seven when my father left Porbandar for Rajkot.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C), (B), (D)"
-     },
-     {
-      "id": "C",
-      "text": "(D), (C), (B), (A)"
-     },
-     {
-      "id": "D",
-      "text": "(D), (A), (C), (B)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q30-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/english-2023-06-11-shift-1/q30-table-1.jpg",
-      "page": 4,
-      "alt": "Table for question 30"
-     },
-     {
-      "id": "q30-table-2",
-      "kind": "table",
-      "path": "/local-papers/assets/english-2023-06-11-shift-1/q30-table-2.jpg",
-      "page": 4,
-      "alt": "Table for question 30"
-     }
-    ]
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Choose the sentence that uses the preposition incorrectly:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Read the poem on page 50."
-     },
-     {
-      "id": "B",
-      "text": "I live on street 10."
-     },
-     {
-      "id": "C",
-      "text": "The kite is flying on the sky."
-     },
-     {
-      "id": "D",
-      "text": "Put on your new clothes."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Choose the appropriate passive voice form of the sentence given below:\n\nThe masons are building the house.\n\n(A) The house is building by the masons.\n\n(B) The masons have built the house.\n\n(C) The masons had built the house.\n\n(D) The house is being built by the masons.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) Only"
-     },
-     {
-      "id": "B",
-      "text": "(C) Only"
-     },
-     {
-      "id": "C",
-      "text": "(D) Only"
-     },
-     {
-      "id": "D",
-      "text": "(B) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Fill in the blank with the appropriate modal:\n\nTill 1990, I _ read without glasses.\n\n(A) should\n\n(B) shall\n\n(C) could\n\n(D) will",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C) Only"
-     },
-     {
-      "id": "B",
-      "text": "(B) Only"
-     },
-     {
-      "id": "C",
-      "text": "(A) Only"
-     },
-     {
-      "id": "D",
-      "text": "(D) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Choose the appropriate indirect form of speech of the sentence given below:\n\nHe said, \"I intend to leave for Delhi tonight\".\n\n(A) He said I intend to leave for Delhi tonight.\n\n(B) He said that he intends to leave for Delhi tonight.\n\n(C) He said that he intended to leave for Delhi that night.\n\n(D) He said that he was intending to leave for Delhi that night.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)"
-     },
-     {
-      "id": "B",
-      "text": "(C)"
-     },
-     {
-      "id": "C",
-      "text": "(B)"
-     },
-     {
-      "id": "D",
-      "text": "(D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "Which of the following expressions means the same as \"DENOUEMENT\"?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "the conclusion of a play"
-     },
-     {
-      "id": "B",
-      "text": "a political representation"
-     },
-     {
-      "id": "C",
-      "text": "an accomplished fact"
-     },
-     {
-      "id": "D",
-      "text": "a tragedy"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Fill in the blank with the appropriate adverb out of the options given below:\n\nHe works _ quickly than I do.\n\n(A) much\n\n(B) very\n\n(C) more\n\n(D) quite",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)"
-     },
-     {
-      "id": "B",
-      "text": "(D)"
-     },
-     {
-      "id": "C",
-      "text": "(Q)"
-     },
-     {
-      "id": "D",
-      "text": "(B)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "Choose the MISSPELT word out of the following options:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Botanist"
-     },
-     {
-      "id": "B",
-      "text": "Entomologist"
-     },
-     {
-      "id": "C",
-      "text": "Zoologist"
-     },
-     {
-      "id": "D",
-      "text": "Astronomer"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "Choose the meaning of the expression \"Alma mater\":\n\n(A) The house that you live in\n\n(B) Family living together in a rented house\n\n(C) Friends going on a trip\n\n(D) The school, college or university that somebody attended",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C) Only"
-     },
-     {
-      "id": "B",
-      "text": "(A) Only"
-     },
-     {
-      "id": "C",
-      "text": "(D) Only"
-     },
-     {
-      "id": "D",
-      "text": "(B) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Choose the correct option to change the following assertive sentence into an exclamatory sentence:\n\nIt is a matter of great happiness that we have won the trophy.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Hurrah! we have won the trophy."
-     },
-     {
-      "id": "B",
-      "text": "Alas! we have won the trophy."
-     },
-     {
-      "id": "C",
-      "text": "Hurrah! we won the trophy!"
-     },
-     {
-      "id": "D",
-      "text": "Hay! we had won the trophy!"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Rearrange the following phrases to make a meaningful sentence:\n\n(A) it has been raining\n\n(B) continuously for the last three days\n\n(C) with water because\n\n(D) the pond is flooded",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C), (B), (A), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(D), (C), (A), (B)"
-     },
-     {
-      "id": "C",
-      "text": "(D), (C), (B), (A)"
-     },
-     {
-      "id": "D",
-      "text": "(A), (C), (D), (B)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Match the words in List -1 with their synonyms in List -II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(II), (B)-(IV), (C)-(III), (D)-(I)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q42-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/english-2023-06-11-shift-1/q42-table-1.jpg",
-      "page": 5,
-      "alt": "Table for question 42"
-     }
-    ]
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "Choose the appropriate direct form of speech of the sentence given below:\n\nHe said that his master was writing letters:\n\n(A) He said,\" My master was writing letters\".\n\n(B) He said,\" My master has been writing letters\".\n\n(C) He said,\" My master had been writing letters\".\n\n(D) He said,\" My master is writing letters\".",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(D)"
-     },
-     {
-      "id": "B",
-      "text": "(A)"
-     },
-     {
-      "id": "C",
-      "text": "(B)"
-     },
-     {
-      "id": "D",
-      "text": "(C)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Which among the following pair of words carry the same relationship as:\n\nANTIQUE : MODERN",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "ETERNAL : IMMORTAL"
-     },
-     {
-      "id": "B",
-      "text": "MAMMOTH : ENORMOUS"
-     },
-     {
-      "id": "C",
-      "text": "DEFICIENT : AMPLE"
-     },
-     {
-      "id": "D",
-      "text": "GLOOM : DARKNESS"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Choose the grammatically correct sentence from the options given below:\n\n(A) He has been sleeping since 3 pm.\n\n(B) He has been sleeping for 3 pm.\n\n(C) He has been sleeping on 3 pm.\n\n(D) He has been sleeping at 3 pm.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C)"
-     },
-     {
-      "id": "B",
-      "text": "(A)"
-     },
-     {
-      "id": "C",
-      "text": "(B)"
-     },
-     {
-      "id": "D",
-      "text": "(D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Choose the appropriate question tag for the following sentence out of the options given below: Let's have a game of cricket.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "don't we?"
-     },
-     {
-      "id": "B",
-      "text": "did we?"
-     },
-     {
-      "id": "C",
-      "text": "shall we?"
-     },
-     {
-      "id": "D",
-      "text": "when?"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Fili in the blanks in List - I with the suitable homonyms from List - II.\n\n(A) The car hit into the _ (I) Complements vehicle.\n\n(B) She received many _ (II) Stationery for her melodious voice.\n\n(C) Please get me a pen from the (III) Stationary $ \\underline{\\hspace{2cm}} $ shop.\n\n(D) A good secretary _ the (IV) Compliments work of a chairman.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(I), (B)-(III), (C)-(IV), (D)-(II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "Complete the sentence by using the suitable idiom/phrase from the following options:\n\nHarry boasted about scoring the highest marks in his class but when he saw the results, he had to _.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "cut the mustard"
-     },
-     {
-      "id": "B",
-      "text": "eat the humble pie"
-     },
-     {
-      "id": "C",
-      "text": "full of beans"
-     },
-     {
-      "id": "D",
-      "text": "finger in every pie"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Select the appropriate antonym for the word CONTEMPT:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "disdain"
-     },
-     {
-      "id": "B",
-      "text": "despise"
-     },
-     {
-      "id": "C",
-      "text": "respect"
-     },
-     {
-      "id": "D",
-      "text": "disrespect"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Choose the meaning of the Latin expression - \"et al\":\n\n(A) and you\n\n(B) and others\n\n(C) and he\n\n(D) and she",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) Only"
-     },
-     {
-      "id": "B",
-      "text": "(B) Only"
-     },
-     {
-      "id": "C",
-      "text": "(C) Only"
-     },
-     {
-      "id": "D",
-      "text": "(D) Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

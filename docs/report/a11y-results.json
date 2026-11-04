@@ -1,0 +1,2331 @@
+{
+  "timestamp": "2026-11-04T20:20:07.188Z",
+  "commitHash": "c84221e",
+  "axeVersion": "4.14.0",
+  "totalScans": 232,
+  "passedScans": 232,
+  "failedScans": 0,
+  "failures": [],
+  "scans": [
+    {
+      "label": "public",
+      "path": "/",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-mock-test",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-mock-test",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-mock-test",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-mock-test",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/leaderboard",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/leaderboard",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/leaderboard",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/leaderboard",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-exam-pattern",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-exam-pattern",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-exam-pattern",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-exam-pattern",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-marking-scheme",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-marking-scheme",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-marking-scheme",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-marking-scheme",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-important-dates",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-important-dates",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-important-dates",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-important-dates",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-previous-year-papers",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-previous-year-papers",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-previous-year-papers",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-previous-year-papers",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests/english-2022-08-06-shift-1",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests/english-2022-08-06-shift-1",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests/english-2022-08-06-shift-1",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/mock-tests/english-2022-08-06-shift-1",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-mock-test/english",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-mock-test/english",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-mock-test/english",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-mock-test/english",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus/english",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus/english",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus/english",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/cuet-ug-syllabus/english",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/blog",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/blog",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/blog",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/blog",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/search?q=english",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/search?q=english",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/search?q=english",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/search?q=english",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/about",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/about",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/about",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/about",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/contact",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/contact",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/contact",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/contact",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/privacy-policy",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/privacy-policy",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/privacy-policy",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/privacy-policy",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/terms",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/terms",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/terms",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/terms",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/disclaimer",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/disclaimer",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/disclaimer",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/disclaimer",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/login",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/login",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/login",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/login",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/signup",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/signup",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/signup",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/signup",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/forgot-password",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/forgot-password",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/forgot-password",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/forgot-password",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public-question",
+      "path": "/q/uPJRyUwJ3s",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public-question",
+      "path": "/q/uPJRyUwJ3s",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public-question",
+      "path": "/q/uPJRyUwJ3s",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public-question",
+      "path": "/q/uPJRyUwJ3s",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2022-08-06-shift-1/instructions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2022-08-06-shift-1/instructions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2022-08-06-shift-1/instructions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2022-08-06-shift-1/instructions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2024-05-15-shift-2/instructions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2024-05-15-shift-2/instructions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2024-05-15-shift-2/instructions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "local-practice",
+      "path": "/mock/english-2024-05-15-shift-2/instructions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/history",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/history",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/history",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/history",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/bookmarks",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/bookmarks",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/bookmarks",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/bookmarks",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions/retry",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions/retry",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions/retry",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/wrong-questions/retry",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/discussions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/discussions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/discussions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/discussions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/settings",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/settings",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/settings",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/dashboard/settings",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/new",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/new",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/new",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/new",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/import",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/import",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/import",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/import",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/12129",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/12129",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/12129",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/questions/12129",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/new",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/new",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/new",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/new",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/pyq",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/pyq",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/pyq",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/pyq",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/users",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/users",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/users",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/users",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/moderation",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/moderation",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/moderation",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/moderation",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/leaderboard",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/leaderboard",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/leaderboard",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/leaderboard",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/announcements",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/announcements",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/announcements",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/announcements",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/blog",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/blog",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/blog",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/blog",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/settings",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/settings",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/settings",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/settings",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/seo",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/seo",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/seo",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/seo",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/exam-info",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/exam-info",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/exam-info",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/exam-info",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/audit-log",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/audit-log",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/audit-log",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/audit-log",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/review",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/review",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/review",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/review",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/data",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/data",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/data",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/data",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/trash",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/trash",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/trash",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/trash",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/attempts",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/attempts",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/attempts",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/attempts",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/admins",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/admins",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/admins",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/admins",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/passages",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/passages",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/passages",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/passages",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/search",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/search",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/search",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/search",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    }
+  ]
+}

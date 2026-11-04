@@ -337,6 +337,83 @@ h4 {
   overflow: hidden;
 }
 
+/* ===== Question & Explanation Rich Text Components ===== */
+
+.nta-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  -webkit-overflow-scrolling: touch;
+}
+
+.nta-table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: transparent;
+}
+
+.nta-table th,
+.nta-table td {
+  border: 1px solid var(--border);
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.nta-table th,
+.nta-table tr:first-child td {
+  font-weight: 700;
+  background-color: var(--surface-3);
+  color: var(--ink);
+  text-align: center;
+}
+
+.nta-table tr:not(:first-child):nth-child(even) td {
+  background-color: var(--surface-2);
+}
+
+.nta-table tr:hover td {
+  background-color: var(--primary-tint);
+}
+
+.nta-figure {
+  display: block;
+  margin: 1.25rem auto;
+  text-align: center;
+}
+
+.nta-figure .nta-image {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--media-bg);
+}
+
+.nta-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 1rem 0 0.4rem;
+}
+
+.nta-instruction {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin: 0.85rem 0 0.35rem;
+}
+
 /* ===== Motion, forced colours, print ===== */
 
 @media (prefers-reduced-motion: reduce) {

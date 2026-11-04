@@ -50,13 +50,13 @@ async function submitAttempt(page: Page): Promise<void> {
 }
 
 test("practice library stays available and routes into the ranked engine", async ({ page }) => {
-  await page.goto("/practice");
+  await page.goto("/mock-tests");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Previous-year CUET papers",
+    "Mock tests built from previous-year CUET papers",
   );
-  await expect(page.locator(`a[href="/practice/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
+  await expect(page.locator(`a[href="/mock-tests/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
 
-  await page.goto(`/practice/${SCORED_PAPER.slug}`);
+  await page.goto(`/mock-tests/${SCORED_PAPER.slug}`);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "CUET UG English 6 August 2022",
   );
@@ -71,7 +71,7 @@ test("practice library stays available and routes into the ranked engine", async
 });
 
 test("practice detail discloses questions excluded from the ranked paper", async ({ page }) => {
-  await page.goto(`/practice/${PENDING_PAPER.slug}`);
+  await page.goto(`/mock-tests/${PENDING_PAPER.slug}`);
 
   await expect(
     page.getByText(
@@ -91,14 +91,26 @@ test("practice detail discloses questions excluded from the ranked paper", async
   );
 });
 
+test("legacy practice URLs permanently redirect to mock-tests", async ({ page }) => {
+  const index = await page.request.get("/practice", { maxRedirects: 0 });
+  expect(index.status()).toBe(301);
+  expect(index.headers().location).toBe("/mock-tests");
+
+  const detail = await page.request.get(`/practice/${SCORED_PAPER.slug}?source=old`, {
+    maxRedirects: 0,
+  });
+  expect(detail.status()).toBe(301);
+  expect(detail.headers().location).toBe(`/mock-tests/${SCORED_PAPER.slug}?source=old`);
+});
+
 test("the retired take URL permanently redirects to ranked instructions", async ({ page }) => {
-  const response = await page.request.get(`/practice/${SCORED_PAPER.slug}/take`, {
+  const response = await page.request.get(`/mock-tests/${SCORED_PAPER.slug}/take`, {
     maxRedirects: 0,
   });
   expect(response.status()).toBe(301);
   expect(response.headers().location).toBe(INSTRUCTIONS);
 
-  await page.goto(`/practice/${SCORED_PAPER.slug}/take`);
+  await page.goto(`/mock-tests/${SCORED_PAPER.slug}/take`);
   await expect(page).toHaveURL(new RegExp(`${INSTRUCTIONS.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`));
   await expect(page.getByRole("heading", { name: "Before you start" })).toBeVisible();
 });
@@ -181,7 +193,7 @@ test("previous-year practice mocks are filtered out of the generic mock bank", a
   expect(await page.locator(`a[href="/mock/${SCORED_PAPER.slug}"]`).count()).toBe(0);
 
   await page.goto(`/cuet-mock-test/${SCORED_PAPER.subject.slug}`);
-  await expect(page.locator(`a[href="/practice/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
+  await expect(page.locator(`a[href="/mock-tests/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
 });
 
 test("the homepage shows refined most-popular papers in the hero and below", async ({ page }) => {
@@ -192,7 +204,7 @@ test("the homepage shows refined most-popular papers in the hero and below", asy
   await expect(
     heroPanel.getByRole("heading", { name: "Most Popular Mock Tests", level: 2 }),
   ).toBeVisible();
-  const heroLinks = heroPanel.locator('a[href^="/practice/"]');
+  const heroLinks = heroPanel.locator('a[href^="/mock-tests/"]');
   expect(await heroLinks.count()).toBeGreaterThan(0);
 
   await expect(
@@ -212,12 +224,12 @@ test("the homepage shows refined most-popular papers in the hero and below", asy
 });
 
 test("practice library copy is ranked and free of public OCR provenance", async ({ page }) => {
-  await page.goto("/practice");
+  await page.goto("/mock-tests");
   const html = await page.content();
   expect(html).not.toMatch(/\bunranked\b/i);
   expect(html).not.toMatch(/PaddleOCR|OCR export|extraction pipeline/i);
 
-  await page.goto(`/practice/${SCORED_PAPER.slug}`);
+  await page.goto(`/mock-tests/${SCORED_PAPER.slug}`);
   const detail = await page.content();
   expect(detail).not.toMatch(/\bunranked\b/i);
   expect(detail).not.toMatch(/PaddleOCR|OCR export|recovered from source/i);

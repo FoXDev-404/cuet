@@ -131,7 +131,11 @@
           },
           {
             "id": "C",
-            "text": "$ A \\to (s) $,  $ B \\to (q) $,  $ C \\to (p) $,  $ D \\to (r) $\n\n $$ A\\to(r),B\\to(p),C\\to(s),D\\to(q) $$"
+            "text": "$ A \\to (s) $,  $ B \\to (q) $,  $ C \\to (p) $,  $ D \\to (r) $"
+          },
+          {
+            "id": "D",
+            "text": "$$ A\\to(r),B\\to(p),C\\to(s),D\\to(q) $$"
           }
         ],
         "optionsAreImages": false,

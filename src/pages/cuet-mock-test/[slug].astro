@@ -77,6 +77,11 @@ const [topics, papers] = await Promise.all([
      FROM mock_tests m
      WHERE m.status = 'published' AND m.deleted_at IS NULL
        AND m.practice_paper_slug IS NULL
+       AND m.slug NOT LIKE 'e2e-%'
+       AND m.slug NOT LIKE '%fixture%'
+       AND m.slug NOT LIKE '%publish-check%'
+       AND m.slug NOT LIKE 'slow-network-%'
+       AND LOWER(m.title) NOT LIKE '%fixture%'
        AND (m.subject_id = ? OR EXISTS (
          SELECT 1 FROM mock_questions_current mq JOIN questions q ON q.id = mq.question_id
          WHERE mq.mock_id = m.id AND q.subject_id = ?
@@ -314,7 +319,7 @@ const structuredData = [
         </div>
         <div class="flex flex-wrap gap-2">
           <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={papers[0] ? `/mock/${papers[0].slug}/instructions` : localPapers[0] ? localPapers[0].path : "/cuet-ug-mock-test"}>
-            {papers[0] ? "Start the first paper" : localPapers[0] ? "Open the practice library" : "Browse all papers"}
+            {papers[0] ? "Start the first paper" : localPapers[0] ? "Open mock tests" : "Browse all papers"}
           </a>
           <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-syllabus">Syllabus guide</a>
         </div>

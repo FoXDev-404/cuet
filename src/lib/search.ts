@@ -28,6 +28,11 @@ export async function searchSite(rawQuery: string): Promise<SearchResults> {
          LEFT JOIN subjects s ON s.id = m.subject_id
          WHERE m.status = 'published' AND m.deleted_at IS NULL
            AND m.practice_paper_slug IS NULL
+           AND m.slug NOT LIKE 'e2e-%'
+           AND m.slug NOT LIKE '%fixture%'
+           AND m.slug NOT LIKE '%publish-check%'
+           AND m.slug NOT LIKE 'slow-network-%'
+           AND LOWER(m.title) NOT LIKE '%fixture%'
            AND (m.title LIKE ? OR COALESCE(s.name, '') LIKE ?)
          ORDER BY m.published_at DESC, m.id DESC LIMIT 10`,
         term,

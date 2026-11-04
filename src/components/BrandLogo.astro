@@ -5,49 +5,53 @@ interface Props {
   tone?: "auto" | "dark";
   size?: "default" | "compact";
   link?: boolean;
+  target?: string;
 }
 
 const {
-  showTagline = true,
+  showTagline = false,
   class: className = "",
   tone = "auto",
   size = "default",
   link = true,
+  target,
 } = Astro.props;
 const compact = size === "compact";
 const wordmark = tone === "dark" ? "text-white" : "text-neutral-900 dark:text-white";
-const suffix = tone === "dark" ? "text-white/55" : "text-neutral-500 dark:text-white/55";
+const suffix = tone === "dark" ? "text-neutral-400" : "text-neutral-500 dark:text-neutral-400";
 const tagline = tone === "dark" ? "text-white/55" : "text-neutral-500 dark:text-white/55";
-const accent = tone === "dark" ? "text-accent-300" : "text-accent-700 dark:text-accent-300";
+const accent = tone === "dark" ? "text-accent-400" : "text-accent-700 dark:text-accent-400";
 ---
 
 {
   link ? (
     <a
       href="/"
-      class:list={["group flex min-w-0 items-center", compact ? "gap-1.5" : "gap-2.5", className]}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      class:list={["group flex min-w-0 items-center", compact ? "gap-2" : "gap-2.5", className]}
       title="CUETFreeMockTest.com — free CUET mock tests"
     >
       <img
         src="/logo.svg"
         alt=""
-        width={compact ? 24 : 36}
-        height={compact ? 24 : 36}
+        width={compact ? 28 : 36}
+        height={compact ? 28 : 36}
         decoding="async"
         class:list={[
-          "shrink-0 rounded-full shadow-[var(--shadow-brand)] ring-1 ring-white/20",
-          compact ? "h-6 w-6" : "h-9 w-9",
+          "shrink-0 rounded-xl shadow-[var(--shadow-brand)] transition-transform group-hover:scale-105",
+          compact ? "h-7 w-7" : "h-9 w-9",
         ]}
       />
       <span class="min-w-0">
         <span
           class:list={[
             "block truncate font-black leading-tight tracking-tight",
-            compact ? "text-[11px] sm:text-[13px]" : "text-[13px] sm:text-[15px]",
+            compact ? "text-[13px] sm:text-[14px]" : "text-[15px] sm:text-[17px]",
             wordmark,
           ]}
         >
-          CUET<span class={accent}>Free</span>MockTest<span class={suffix}>.com</span>
+          CUET<span class={accent}>FreeMockTest</span><span class:list={["font-medium text-xs sm:text-sm ml-0.5", suffix]}>.com</span>
         </span>
         {showTagline && !compact ? (
           <span class:list={["mt-0.5 block truncate text-[8px] font-semibold uppercase tracking-[0.24em]", tagline]}>
@@ -58,7 +62,7 @@ const accent = tone === "dark" ? "text-accent-300" : "text-accent-700 dark:text-
     </a>
   ) : (
     <div
-      class:list={["group flex min-w-0 items-center", compact ? "gap-1.5" : "gap-2.5", className]}
+      class:list={["group flex min-w-0 items-center", compact ? "gap-2" : "gap-2.5", className]}
       title="CUETFreeMockTest.com"
       role="img"
       aria-label="CUETFreeMockTest.com"
@@ -66,23 +70,23 @@ const accent = tone === "dark" ? "text-accent-300" : "text-accent-700 dark:text-
       <img
         src="/logo.svg"
         alt=""
-        width={compact ? 24 : 36}
-        height={compact ? 24 : 36}
+        width={compact ? 28 : 36}
+        height={compact ? 28 : 36}
         decoding="async"
         class:list={[
-          "shrink-0 rounded-full shadow-[var(--shadow-brand)] ring-1 ring-white/20",
-          compact ? "h-6 w-6" : "h-9 w-9",
+          "shrink-0 rounded-xl shadow-[var(--shadow-brand)]",
+          compact ? "h-7 w-7" : "h-9 w-9",
         ]}
       />
       <span class="min-w-0" aria-hidden="true">
         <span
           class:list={[
             "block truncate font-black leading-tight tracking-tight",
-            compact ? "text-[11px] sm:text-[13px]" : "text-[13px] sm:text-[15px]",
+            compact ? "text-[13px] sm:text-[14px]" : "text-[15px] sm:text-[17px]",
             wordmark,
           ]}
         >
-          CUET<span class={accent}>Free</span>MockTest<span class={suffix}>.com</span>
+          CUET<span class={accent}>FreeMockTest</span><span class:list={["font-medium text-xs sm:text-sm ml-0.5", suffix]}>.com</span>
         </span>
         {showTagline && !compact ? (
           <span class:list={["mt-0.5 block truncate text-[8px] font-semibold uppercase tracking-[0.24em]", tagline]}>

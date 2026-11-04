@@ -117,8 +117,103 @@ function paperRow(paper: LocalPaperSummary): PaperRow {
   };
 }
 
-const libraryRows = popularPapers.slice(0, 6).map(paperRow);
-const heroRows = popularPapers.slice(0, 4).map(paperRow);
+function isAround50(count: number): boolean {
+  return count >= 40 && count <= 60;
+}
+
+function compareHomepagePapers(a: LocalPaperSummary, b: LocalPaperSummary): number {
+  // 1. Attempts count: higher attempts rank higher ("baad me to counter ke hisab se upar neeche hota rahta hai")
+  const attDiff = (b.attemptCount || 0) - (a.attemptCount || 0);
+  if (attDiff !== 0) return attDiff;
+
+  // 2. When attempts are 0 (or tied), prioritize papers with ~50 questions (40-60 questions)
+  const aNear50 = isAround50(a.recoveredQuestionCount) ? 1 : 0;
+  const bNear50 = isAround50(b.recoveredQuestionCount) ? 1 : 0;
+  if (bNear50 !== aNear50) return bNear50 - aNear50;
+
+  // 3. Year (prefer newer year: 2026 full papers, then 2025, 2024...)
+  if (b.year !== a.year) return b.year - a.year;
+
+  // 4. Proximity to 50 questions
+  const distA = Math.abs(a.recoveredQuestionCount - 50);
+  const distB = Math.abs(b.recoveredQuestionCount - 50);
+  if (distA !== distB) return distA - distB;
+
+  // 5. Fully keyed (no pending review)
+  const pendA = Number(a.pendingReviewCount > 0);
+  const pendB = Number(b.pendingReviewCount > 0);
+  if (pendA !== pendB) return pendA - pendB;
+
+  // 6. Scorable count
+  if (b.scorableQuestionCount !== a.scorableQuestionCount) {
+    return b.scorableQuestionCount - a.scorableQuestionCount;
+  }
+
+  return a.title.localeCompare(b.title);
+}
+
+function getHomepageFeaturedPapers(papers: LocalPaperSummary[], limit = 6): LocalPaperSummary[] {
+  if (papers.length === 0) return [];
+
+  const sorted = [...papers].sort(compareHomepagePapers);
+
+  const preferredSubjects = [
+    "english",
+    "general-test",
+    "mathematics",
+    "physics",
+    "chemistry",
+    "biology",
+    "computer-science",
+    "history",
+    "geography",
+  ];
+
+  const selected: LocalPaperSummary[] = [];
+  const seenSlugs = new Set<string>();
+  const seenSubjects = new Set<string>();
+
+  // 1. Papers with actual attempts (> 0) naturally lead the list
+  for (const p of sorted) {
+    if (selected.length >= limit) break;
+    if ((p.attemptCount || 0) > 0) {
+      selected.push(p);
+      seenSlugs.add(p.slug);
+      seenSubjects.add(p.subject.slug);
+    }
+  }
+
+  // 2. For remaining slots, pick the highest-ranked mock for preferred core subjects
+  // This ensures diverse subjects with ~50 questions (around 50 questions, latest year)
+  for (const subjSlug of preferredSubjects) {
+    if (selected.length >= limit) break;
+    if (seenSubjects.has(subjSlug)) continue;
+
+    const match = sorted.find((p) => p.subject.slug === subjSlug && !seenSlugs.has(p.slug));
+    if (match) {
+      selected.push(match);
+      seenSlugs.add(match.slug);
+      seenSubjects.add(subjSlug);
+    }
+  }
+
+  // 3. If still space, fill with remaining highest-ranked papers
+  for (const p of sorted) {
+    if (selected.length >= limit) break;
+    if (!seenSlugs.has(p.slug)) {
+      selected.push(p);
+      seenSlugs.add(p.slug);
+    }
+  }
+
+  return selected.slice(0, limit);
+}
+
+const heroPapers = getHomepageFeaturedPapers(localPapers, 4);
+const libraryPapers = getHomepageFeaturedPapers(localPapers, 6);
+
+const libraryRows = libraryPapers.map(paperRow);
+const heroRows = heroPapers.map(paperRow);
 const libraryCount = localPapers.length;
 
 const seo = await getPageSeo(PATH);
@@ -195,7 +290,7 @@ const featureLinks = [
     icon: "history",
   },
   {
-    href: "/dashboard/history",
+    href: "/dashboard",
     title: "Progress insights",
     hint: "Scores and trends",
     icon: "chart",
@@ -223,7 +318,7 @@ const rhythmSteps = [
     number: "03",
     title: "Learn from each try",
     body: "Review your performance, spot topics to revisit, and use what you learned to plan your next session.",
-    href: "/dashboard/history",
+    href: "/dashboard",
     cta: "View analytics",
     icon: "chart",
   },
@@ -239,7 +334,7 @@ const focusCards = [
   {
     title: "Focused question sets",
     body: "Select a subject or a topic and work through practice questions at your own pace.",
-    href: "/cuet-mock-test",
+    href: "/cuet-ug-mock-test",
     icon: "grid",
   },
   {
@@ -251,7 +346,7 @@ const focusCards = [
   {
     title: "A clearer review",
     body: "Use your results to decide what to strengthen next.",
-    href: "/dashboard/history",
+    href: "/dashboard",
     icon: "chart",
   },
 ];
@@ -301,7 +396,7 @@ const focusCards = [
 
         <div class="mt-8 flex flex-wrap gap-3">
           <a
-            href="/practice"
+            href="/mock-tests"
             class="group inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-brand)] transition-colors hover:bg-brand-600"
           >
             Start a Mock Test
@@ -343,11 +438,11 @@ const focusCards = [
         <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white/85 shadow-xl shadow-neutral-900/10 backdrop-blur dark:border-white/10 dark:bg-white/[0.035] dark:shadow-2xl dark:shadow-black/40">
           <div class="flex items-start justify-between gap-4 border-b border-neutral-200 px-5 py-4 dark:border-white/10">
             <div>
-              <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500 dark:text-white/35">From the 2021–2025 previous-year library</p>
+              <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500 dark:text-white/35">From the 2021–2026 previous-year library</p>
               <h2 class="mt-1 text-base font-bold" id="popular-heading">Most Popular Mock Tests</h2>
             </div>
             <a
-              href="/practice"
+              href="/mock-tests"
               class="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:border-white/10 dark:text-white/50 dark:hover:bg-white/10 dark:hover:text-white"
               aria-label="View all mock tests"
             >
@@ -389,10 +484,10 @@ const focusCards = [
           )}
 
           <a
-            href="/practice"
+            href="/mock-tests"
             class="flex items-center justify-center gap-2 px-5 py-3.5 text-[11px] font-bold text-brand-700 transition-colors hover:text-brand-900 dark:text-brand-300 dark:hover:text-white"
           >
-            View All Mock Tests
+            View All Mock Tests ({libraryCount} papers)
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -436,7 +531,7 @@ const focusCards = [
           <div class="px-4 pb-1 pt-4">
             <h3 class="text-lg font-bold">Most Popular Mock Tests</h3>
             <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
-              Fully keyed papers first, then the newest and deepest sets.
+              Full-length previous-year practice papers with answer keys, server timer and instant scorecards.
             </p>
           </div>
 
@@ -472,8 +567,8 @@ const focusCards = [
             )}
           </div>
 
-          <a href="/practice" class="flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]">
-            View All Mock Tests
+          <a href="/mock-tests" class="flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]">
+            View All Mock Tests ({libraryCount} papers)
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -495,7 +590,7 @@ const focusCards = [
           <div class="px-4 pb-1 pt-4">
             <h3 class="text-lg font-bold">Most Popular Subject Practice</h3>
             <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
-              Open a subject to compare its papers across 2021–2025.
+              Open a subject to compare its papers across 2021–2026.
             </p>
           </div>
 
@@ -566,7 +661,7 @@ const focusCards = [
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-300">
-              Full library · 2021–2025
+              Full library · 2021–2026
             </p>
             <h2 class="mt-2 text-2xl font-black tracking-tight" id="local-practice-heading">
               Browse every previous-year paper by year
@@ -576,10 +671,10 @@ const focusCards = [
             </p>
           </div>
           <a
-            href="/practice"
+            href="/mock-tests"
             class="inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-white px-4 py-2.5 text-sm font-bold text-amber-900 transition-colors hover:border-amber-400 hover:bg-amber-50 dark:border-amber-500/30 dark:bg-white/[0.04] dark:text-amber-200 dark:hover:bg-white/[0.08]"
           >
-            Browse the practice library
+            Browse mock tests
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -648,7 +743,7 @@ const focusCards = [
         <p class="mt-4 max-w-sm text-sm leading-7 text-neutral-600 dark:text-white/55">
           Find the right place to begin, take a mock when you are ready, and revisit the areas that need another look.
         </p>
-        <a href="/cuet-mock-test" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600">
+        <a href="/cuet-ug-mock-test" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600">
           Browse subjects and categories
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14"></path>
@@ -705,8 +800,8 @@ const focusCards = [
               <path d="m13 6 6 6-6 6"></path>
             </svg>
           </a>
-          <a href="/practice" class="inline-flex items-center gap-2 rounded-xl border border-white/40 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10">
-            Explore Practice
+          <a href="/mock-tests" class="inline-flex items-center gap-2 rounded-xl border border-white/40 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10">
+            Explore Mock Tests
           </a>
         </div>
       </div>

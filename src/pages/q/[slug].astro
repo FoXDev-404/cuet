@@ -74,6 +74,26 @@ const shareAnswer = view.canCheck
     }
   : null;
 const shareUrl = new URL(view.path, site).toString();
+
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
 ---
 
 <BaseLayout
@@ -140,7 +160,7 @@ const shareUrl = new URL(view.path, site).toString();
       {view.textHi ? <span data-lang-text="hi" hidden set:html={renderRichText(view.textHi)} /> : null}
     </h1>
 
-    {view.imageUrl ? (
+    {view.imageUrl && !textContainsImage(view.text, view.imageUrl) ? (
       <img class="mt-4 max-h-[32rem] w-auto rounded-xl border border-neutral-200 dark:border-neutral-800" src={view.imageUrl} alt={view.imageAlt ?? "Question image"} loading="lazy" />
     ) : null}
 
@@ -161,11 +181,11 @@ const shareUrl = new URL(view.path, site).toString();
                   {option.letter}
                 </span>
                 <span class="min-w-0 flex-1 text-sm leading-6">
-                  <span data-lang-text="en" set:html={renderRichText(option.text)} />
-                  {hasHindi ? <span data-lang-text="hi" hidden set:html={renderRichText(hindiText)} /> : null}
+                  {isPlaceholderText(option.text) ? null : <span data-lang-text="en" set:html={renderRichText(option.text)} />}
+                  {hasHindi && !isPlaceholderText(hindiText) ? <span data-lang-text="hi" hidden set:html={renderRichText(hindiText)} /> : null}
                   {option.imageUrl ? (
                     <img class="mt-2 max-h-48 w-auto rounded-lg" src={option.imageUrl} alt={option.alt ?? `Option ${option.letter}`} loading="lazy" />
-                  ) : null}
+                  ) : (isPlaceholderText(option.text) ? <span class="text-neutral-400 dark:text-neutral-500">Option {option.letter}</span> : null)}
                 </span>
               </label>
             );

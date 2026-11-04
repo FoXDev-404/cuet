@@ -75,14 +75,92 @@ const withDimensions = <T extends { image_url: string | null }>(option: T): T & 
     image_height: size?.height ?? null,
   };
 };
+
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function isSameImage(url1: string | null | undefined, url2: string | null | undefined): boolean {
+  if (!url1 || !url2) return false;
+  if (url1 === url2) return true;
+  const f1 = imageFileName(url1);
+  const f2 = imageFileName(url2);
+  return Boolean(f1 && f2 && f1 === f2);
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
+
 const questions = result.questions.map((question, index) => {
-  const options = parseOptions(question.options).map(withDimensions);
+  let options = parseOptions(question.options);
+  let questionImageUrl = question.image_url;
+  const rawAssets = assetSets[index];
+
+  // Defensive auto-mapping for placeholder options with assets
+  const allPlaceholder =
+    options.length >= 2 && options.every((opt) => isPlaceholderText(opt.text) && !opt.image_url);
+  if (allPlaceholder && rawAssets.length >= options.length) {
+    if (rawAssets.length === options.length) {
+      options = options.map((opt, i) => ({
+        ...opt,
+        image_url: rawAssets[i].url,
+        alt: rawAssets[i].alt || `Option ${i + 1}`,
+      }));
+      questionImageUrl = null;
+    } else if (rawAssets.length === options.length + 1) {
+      questionImageUrl = rawAssets[0].url;
+      options = options.map((opt, i) => ({
+        ...opt,
+        image_url: rawAssets[i + 1].url,
+        alt: rawAssets[i + 1].alt || `Option ${i + 1}`,
+      }));
+    }
+  }
+
+  if (questionImageUrl && textContainsImage(question.text, questionImageUrl)) {
+    questionImageUrl = null;
+  }
+
   const centred = question.selected !== null && question.selected === question.correct_option;
+  const filteredAssets = rawAssets.filter((asset) => {
+    if (asset.kind === "options" || asset.kind === "explanation") return false;
+    if (asset.url.includes("-exp-")) return false;
+    if (questionImageUrl && isSameImage(asset.url, questionImageUrl)) return false;
+    if (textContainsImage(question.text, asset.url)) return false;
+    if (options.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+    return true;
+  });
+
+  const optionAssets = rawAssets.filter((asset) => {
+    if (asset.kind !== "options") return false;
+    if (asset.url.includes("-exp-")) return false;
+    if (options.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+    return true;
+  });
+
+  const explanationAsset = rawAssets.find(
+    (asset) => asset.kind === "explanation" || asset.url.includes("-exp-"),
+  );
+
   return {
     ...question,
-    options,
+    image_url: questionImageUrl,
+    options: options.map(withDimensions),
     optionsHi: parseOptions(question.options_hi).map(withDimensions),
-    assets: assetSets[index].map((asset) => {
+    assets: filteredAssets.map((asset) => {
       const size = dimensions.get(asset.url);
       return {
         ...asset,
@@ -90,8 +168,24 @@ const questions = result.questions.map((question, index) => {
         image_height: size?.height ?? null,
       };
     }),
-    image_width: question.image_url ? dimensions.get(question.image_url)?.width ?? null : null,
-    image_height: question.image_url ? dimensions.get(question.image_url)?.height ?? null : null,
+    option_assets: optionAssets.map((asset) => {
+      const size = dimensions.get(asset.url);
+      return {
+        ...asset,
+        image_width: size?.width ?? null,
+        image_height: size?.height ?? null,
+      };
+    }),
+    explanation_asset: explanationAsset
+      ? {
+          url: explanationAsset.url,
+          alt: explanationAsset.alt,
+          image_width: dimensions.get(explanationAsset.url)?.width ?? null,
+          image_height: dimensions.get(explanationAsset.url)?.height ?? null,
+        }
+      : null,
+    image_width: questionImageUrl ? dimensions.get(questionImageUrl)?.width ?? null : null,
+    image_height: questionImageUrl ? dimensions.get(questionImageUrl)?.height ?? null : null,
     passage_image_width: question.passage_image_url
       ? dimensions.get(question.passage_image_url)?.width ?? null
       : null,
@@ -271,7 +365,7 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
           ) : null}
 
           <div class="mt-3 text-sm leading-7" set:html={renderRichText(question.text)}></div>
-          {question.image_url ? (
+          {question.image_url && !textContainsImage(question.text, question.image_url) ? (
             <img
               class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
               src={question.image_url}
@@ -282,46 +376,42 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
             />
           ) : null}
 
-          {question.assets.some((asset) => asset.kind !== "options" && asset.url !== question.image_url) ? (
+          {question.assets.length > 0 ? (
             <figure class="mt-3 rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900">
               <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
                 Figure / table
               </figcaption>
               <div class="flex flex-wrap gap-2">
-                {question.assets
-                  .filter((asset) => asset.kind !== "options" && asset.url !== question.image_url)
-                  .map((asset) => (
-                    <img
-                      class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
-                      src={asset.url}
-                      alt={asset.alt}
-                      width={asset.image_width ?? undefined}
-                      height={asset.image_height ?? undefined}
-                      loading="lazy"
-                    />
-                  ))}
+                {question.assets.map((asset) => (
+                  <img
+                    class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                    src={asset.url}
+                    alt={asset.alt}
+                    width={asset.image_width ?? undefined}
+                    height={asset.image_height ?? undefined}
+                    loading="lazy"
+                  />
+                ))}
               </div>
             </figure>
           ) : null}
 
-          {question.assets.some((asset) => asset.kind === "options") ? (
+          {question.option_assets && question.option_assets.length > 0 ? (
             <figure class="mt-3 rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900">
               <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
                 Printed answer choices
               </figcaption>
               <div class="flex flex-wrap gap-2">
-                {question.assets
-                  .filter((asset) => asset.kind === "options")
-                  .map((asset) => (
-                    <img
-                      class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
-                      src={asset.url}
-                      alt={asset.alt}
-                      width={asset.image_width ?? undefined}
-                      height={asset.image_height ?? undefined}
-                      loading="lazy"
-                    />
-                  ))}
+                {question.option_assets.map((asset) => (
+                  <img
+                    class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                    src={asset.url}
+                    alt={asset.alt}
+                    width={asset.image_width ?? undefined}
+                    height={asset.image_height ?? undefined}
+                    loading="lazy"
+                  />
+                ))}
               </div>
             </figure>
           ) : null}
@@ -345,7 +435,7 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
                     {letters[optionIndex] ?? optionIndex + 1}
                   </span>
                   <span class="min-w-0 flex-1">
-                    <span set:html={renderRichText(option.text)}></span>
+                    {isPlaceholderText(option.text) ? null : <span set:html={renderRichText(option.text)}></span>}
                     {option.image_url ? (
                       <img
                         class="mt-2 max-h-40 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
@@ -355,7 +445,9 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
                         height={option.image_height ?? undefined}
                         loading="lazy"
                       />
-                    ) : null}
+                    ) : (isPlaceholderText(option.text) ? (
+                      <span class="text-neutral-400 dark:text-neutral-500">Option {letters[optionIndex] ?? optionIndex + 1}</span>
+                    ) : null)}
                     <span class="mt-1 block text-xs font-semibold">
                       {isCorrectOption ? <span class="text-brand-700 dark:text-brand-300">Correct answer</span> : null}
                       {isChosen && !isCorrectOption ? <span class="text-red-700 dark:text-red-400">Your answer</span> : null}
@@ -382,7 +474,18 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
           ) : null}
 
           <div class="mt-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950">
-            <p class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Explanation</p>
+            <div class="flex items-center gap-2">
+              <p class="text-xs font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Explanation</p>
+              {question.explanation_status === "unreviewed" || question.explanation_source === "ai_draft" ? (
+                <span class="inline-flex items-center rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
+                  Unreviewed explanation
+                </span>
+              ) : question.explanation_source === "banner" ? (
+                <span class="inline-flex items-center rounded bg-neutral-200 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
+                  Key pending review
+                </span>
+              ) : null}
+            </div>
             <div class="mt-2 text-sm leading-7" set:html={renderRichText(question.explanation)}></div>
             {question.explanation_image_url ? (
               <img
@@ -391,6 +494,15 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
                 alt={question.explanation_image_alt ?? ""}
                 width={question.explanation_image_width ?? undefined}
                 height={question.explanation_image_height ?? undefined}
+                loading="lazy"
+              />
+            ) : question.explanation_asset ? (
+              <img
+                class="mt-3 max-h-64 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                src={question.explanation_asset.url}
+                alt={question.explanation_asset.alt ?? ""}
+                width={question.explanation_asset.image_width ?? undefined}
+                height={question.explanation_asset.image_height ?? undefined}
                 loading="lazy"
               />
             ) : null}

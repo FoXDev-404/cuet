@@ -7,10 +7,12 @@ import { getSessionUser } from "./lib/auth/session";
 import { ensurePracticeLibrary, setPracticeLibraryStore } from "./lib/practice-library";
 import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
+import { trackD1Metrics } from "./lib/db";
 
 setPracticeLibraryStore(practiceLibraryD1Store);
 
 const NOINDEX_PREFIXES = [
+  "/dev",
   "/admin",
   "/api/admin",
   "/api/attempts",
@@ -75,7 +77,51 @@ async function resolveAdmin(context: APIContext) {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  const { pathname } = context.url;
+  // The library moved from /practice to /mock-tests. Keep old links and
+  // short-form /mock-test URLs working with a permanent redirect.
+  const requestedPath = context.url.pathname;
+  for (const legacyPrefix of ["/practice", "/mock-test"]) {
+    if (requestedPath === legacyPrefix || requestedPath.startsWith(`${legacyPrefix}/`)) {
+      const target = `/mock-tests${requestedPath.slice(legacyPrefix.length)}${context.url.search}`;
+      return context.redirect(target, 301);
+    }
+  }
+
+  const { result: response, metrics } = await trackD1Metrics(async () => {
+    const { pathname } = context.url;
+
+  const envRecord = (env as unknown as Record<string, unknown>) || {};
+  const currentEnv = String(envRecord.ENV ?? process.env.ENV ?? "").trim().toLowerCase();
+
+  // Production Guard 1: /dev/* routes must 404 in production
+  if (pathname === "/dev" || pathname.startsWith("/dev/")) {
+    if (currentEnv === "production") {
+      return new Response("Not found", {
+        status: 404,
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
+      });
+    }
+  }
+
+  // Production Guard 2: Admin routes require Cloudflare Access in production unless overridden
+  if (isAdminPath(pathname) || isAdminApi(pathname)) {
+    const adminAuthMode = String(envRecord.ADMIN_AUTH_MODE ?? process.env.ADMIN_AUTH_MODE ?? "session").trim().toLowerCase();
+    const allowSessionInProd = String(envRecord.ADMIN_ALLOW_SESSION_IN_PROD ?? process.env.ADMIN_ALLOW_SESSION_IN_PROD ?? "").trim() === "1";
+
+    if (currentEnv === "production" && adminAuthMode === "session" && !allowSessionInProd) {
+      const errorMsg = "Admin access via session cookie is disabled in production. Cloudflare Access (JWT) authentication is required. (Set ADMIN_ALLOW_SESSION_IN_PROD=1 to override).";
+      if (isAdminApi(pathname)) {
+        return new Response(JSON.stringify({ error: errorMsg }), {
+          status: 503,
+          headers: { "content-type": "application/json", "cache-control": "no-store" },
+        });
+      }
+      return new Response(errorMsg, {
+        status: 503,
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
+      });
+    }
+  }
 
   try {
     await ensurePracticeLibrary();
@@ -130,17 +176,34 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  const response = await next();
+    const response = await next();
 
-  response.headers.set("x-content-type-options", "nosniff");
-  response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
-  response.headers.set("x-frame-options", "SAMEORIGIN");
-  response.headers.set(
-    "permissions-policy",
-    "camera=(), microphone=(), geolocation=(), payment=()",
-  );
-  if (isPrivatePath(pathname)) {
-    response.headers.set("x-robots-tag", "noindex, nofollow");
+    response.headers.set("x-content-type-options", "nosniff");
+    response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
+    response.headers.set("x-frame-options", "SAMEORIGIN");
+    response.headers.set(
+      "permissions-policy",
+      "camera=(), microphone=(), geolocation=(), payment=()",
+    );
+    if (isPrivatePath(pathname)) {
+      response.headers.set("x-robots-tag", "noindex, nofollow");
+    }
+
+    return response;
+  }, context.url.pathname);
+
+  // Attach D1 instrumentation headers for measurement and observability
+  response.headers.set("x-d1-rows-read", String(metrics.rowsRead));
+  response.headers.set("x-d1-rows-written", String(metrics.rowsWritten));
+  response.headers.set("x-d1-queries", String(metrics.queryCount));
+
+  if (
+    metrics.queryCount > 0 &&
+    (import.meta.env.DEV || (typeof env !== "undefined" && (env as unknown as Record<string, unknown>).ENV !== "production"))
+  ) {
+    console.log(
+      `[D1] ${context.request.method} ${context.url.pathname} -> read=${metrics.rowsRead} written=${metrics.rowsWritten} queries=${metrics.queryCount}`,
+    );
   }
 
   return response;

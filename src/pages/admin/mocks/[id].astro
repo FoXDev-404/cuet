@@ -30,13 +30,40 @@ const locked = version.status === "published" || version.status === "superseded"
 const subjects = await all<{ id: number; name: string }>(
   "SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name",
 );
-const everything = await all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
-  `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
-   FROM questions q JOIN subjects s ON s.id = q.subject_id
-   WHERE q.deleted_at IS NULL
-   ORDER BY s.name, q.id`,
-);
-const questions = everything.filter((question) => question.status === "published" || selected[question.id]);
+const selectedIds = Object.keys(selected).map(Number);
+const selectedQuestions = selectedIds.length > 0
+  ? await all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
+      `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
+       FROM questions q JOIN subjects s ON s.id = q.subject_id
+       WHERE q.id IN (${selectedIds.join(",")})`,
+    )
+  : [];
+
+const poolQuestions = mock.subject_id
+  ? await all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
+      `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
+       FROM questions q JOIN subjects s ON s.id = q.subject_id
+       WHERE q.deleted_at IS NULL AND q.status = 'published' AND q.subject_id = ?
+       ORDER BY q.id DESC
+       LIMIT 100`,
+      mock.subject_id,
+    )
+  : await all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
+      `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
+       FROM questions q JOIN subjects s ON s.id = q.subject_id
+       WHERE q.deleted_at IS NULL AND q.status = 'published'
+       ORDER BY q.id DESC
+       LIMIT 100`,
+    );
+
+const seen = new Set<number>();
+const questions: typeof poolQuestions = [];
+for (const q of [...selectedQuestions, ...poolQuestions]) {
+  if (!seen.has(q.id)) {
+    seen.add(q.id);
+    questions.push(q);
+  }
+}
 const canPublish = can(admin.role, "mocks.publish");
 const issues = await inspectQuestionsForPublish(linked.map((item) => item.question_id));
 const issueGroups = new Map<string, { label: string; count: number; ids: number[] }>();

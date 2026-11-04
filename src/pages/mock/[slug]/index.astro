@@ -12,8 +12,13 @@ import { hasFinishedAttempt } from "../../../lib/discussions";
 import { parseMarkingScheme } from "../../../lib/content";
 import { breadcrumbJsonLd, type FaqItem } from "../../../lib/seo";
 import { oldSlugRedirect } from "../../../lib/slug-redirects";
+import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
+import { calculateMockDuration } from "../../../lib/exam-timing";
 
 const slug = Astro.params.slug ?? "";
+if (isProductionEnvironment() && isFixtureSlug(slug)) {
+  return new Response("Mock test not found", { status: 404 });
+}
 
 let mock: {
   id: number;
@@ -27,6 +32,7 @@ let mock: {
   intro_html: string | null;
   subject_name: string | null;
   published_at: string | null;
+  practice_paper_slug: string | null;
 } | null = null;
 try {
   mock = await first<{
@@ -41,9 +47,11 @@ try {
     intro_html: string | null;
     subject_name: string | null;
     published_at: string | null;
+    practice_paper_slug: string | null;
   }>(
     `SELECT m.id, m.title, m.slug, m.type, v.duration_min, v.total_marks, v.marking_scheme,
-            v.instructions, m.intro_html, s.name AS subject_name, v.published_at
+            v.instructions, m.intro_html, s.name AS subject_name, v.published_at,
+            m.practice_paper_slug
      FROM mock_tests m
      JOIN mock_test_versions v ON v.id = m.current_version_id
      LEFT JOIN subjects s ON s.id = m.subject_id
@@ -54,10 +62,11 @@ try {
   // D1 is unreachable (for example the daily row-read quota is spent). A
   // practice paper can still describe itself from the bundled library.
   console.error("Mock overview lookup failed", error);
-  mock = getLocalMockFallback(slug);
+  const fallback = getLocalMockFallback(slug);
+  mock = fallback ? { ...fallback, practice_paper_slug: null } : null;
   if (!mock) return dbUnavailableResponse();
 }
-if (!mock) {
+if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
   if (target) return Astro.redirect(`/mock/${target}`, 301);
   return new Response("Mock test not found", { status: 404 });
@@ -104,9 +113,13 @@ const discussionAccess =
     },
   ));
 
+const effectiveDurationMin = totalQuestions > 0
+  ? calculateMockDuration(totalQuestions, mock.subject_name).durationMinutes
+  : (mock.duration_min ?? 60);
+
 const intro =
   mock.intro_html?.trim() ||
-  `This ${mock.subject_name ? `${mock.subject_name} ` : ""}mock follows the CUET UG practice format with ${totalQuestions} questions over ${mock.duration_min} minutes. It is scored on the server after you submit, and every question includes a written solution.`;
+  `This ${mock.subject_name ? `${mock.subject_name} ` : ""}mock follows the CUET UG practice format with ${totalQuestions} questions over ${effectiveDurationMin} minutes. It is scored on the server after you submit, and every question includes a written solution.`;
 const instructions = (mock.instructions ?? "")
   .split("\n")
   .map((line) => line.trim())
@@ -115,7 +128,7 @@ const instructions = (mock.instructions ?? "")
 const faqs: FaqItem[] = [
   {
     question: `How long is ${mock.title}?`,
-    answer: `The paper runs for ${mock.duration_min} minutes and contains ${totalQuestions} question${totalQuestions === 1 ? "" : "s"}. The countdown starts on the server when you begin, so refreshing the page cannot add time.`,
+    answer: `The paper runs for ${effectiveDurationMin} minutes and contains ${totalQuestions} question${totalQuestions === 1 ? "" : "s"}. The countdown starts on the server when you begin, so refreshing the page cannot add time.`,
   },
   {
     question: "What is the marking scheme for this paper?",
@@ -146,9 +159,14 @@ const structuredData = [
     { name: mock.title, path: `/mock/${mock.slug}` },
   ]),
 ].filter((item): item is Record<string, unknown> => Boolean(item));
+
+const isPracticeWrapper = Boolean(mock.practice_paper_slug);
+const isFixture = isFixtureSlug(mock.slug) || isFixtureMock(mock);
+const canonical = isPracticeWrapper ? `/mock-tests/${mock.practice_paper_slug}` : undefined;
+const noindex = totalQuestions === 0 || isPracticeWrapper || isFixture;
 ---
 
-<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${mock.duration_min} minutes. Free server-scored CUET UG mock with solutions.`} noindex={totalQuestions === 0} structuredData={structuredData}>
+<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${effectiveDurationMin} minutes. Free server-scored CUET UG mock with solutions.`} noindex={noindex} canonical={canonical} structuredData={structuredData}>
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
       <div>
@@ -168,7 +186,7 @@ const structuredData = [
           </div>
           <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
             <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p>
-            <p class="mt-1 text-xl font-black">{mock.duration_min} min</p>
+            <p class="mt-1 text-xl font-black">{effectiveDurationMin} min</p>
           </div>
           <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
             <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempts</p>

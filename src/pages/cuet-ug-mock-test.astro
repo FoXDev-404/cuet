@@ -70,6 +70,9 @@ const mocks = await allOr<{
    WHERE m.status = 'published' AND m.deleted_at IS NULL
      AND m.practice_paper_slug IS NULL
      AND m.slug NOT LIKE 'e2e-%'
+     AND m.slug NOT LIKE '%fixture%'
+     AND m.slug NOT LIKE '%publish-check%'
+     AND m.slug NOT LIKE 'slow-network-%'
      AND LOWER(m.title) NOT LIKE '%fixture%'
    ORDER BY m.published_at DESC, m.id DESC`, [],
 );
@@ -153,14 +156,14 @@ const structuredData = [
 
     {mocks.length === 0 ? (
       <div class="mt-6 rounded-2xl border border-dashed border-neutral-300 p-12 text-center dark:border-neutral-700">
-        <h3 class="font-bold">{localPapers.length > 0 ? "The practice library is ready." : "Papers are being prepared."}</h3>
+        <h3 class="font-bold">{localPapers.length > 0 ? "The mock test library is ready." : "Papers are being prepared."}</h3>
         <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
           {localPapers.length > 0
-            ? `${localPapers.length} previous-year practice papers are available below with server grading. The ranked D1 bank is being rebuilt separately.`
+            ? `${localPapers.length} previous-year papers are available below as ranked mock tests with server grading.`
             : "The first original CUET UG mock will appear here after editorial review. Meanwhile, read the syllabus and exam-pattern guide."}
         </p>
         {localPapers.length > 0 ? (
-          <a class="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/practice">Open the practice library →</a>
+          <a class="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/mock-tests">Open the mock test library →</a>
         ) : null}
       </div>
     ) : null}
@@ -171,12 +174,12 @@ const structuredData = [
       <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
         <div class="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 class="text-xl font-bold text-amber-900 dark:text-amber-200">Previous-year practice library</h2>
+            <h2 class="text-xl font-bold text-amber-900 dark:text-amber-200">Previous-year mock tests</h2>
             <p class="mt-1 max-w-2xl text-sm leading-6 text-amber-900 dark:text-amber-100">
               {localPapers.length} papers across {new Set(localPapers.map((paper) => paper.subject.name)).size} subjects, all attempted on the same ranked engine, with saved results and first-attempt leaderboards.
             </p>
           </div>
-          <a class="text-sm font-bold text-amber-900 underline dark:text-amber-200" href="/practice">Open practice library →</a>
+          <a class="text-sm font-bold text-amber-900 underline dark:text-amber-200" href="/mock-tests">Open mock tests →</a>
         </div>
         <div class="mt-4 flex flex-wrap gap-2">
           {localPapers.slice(0, 8).map((paper) => (
@@ -184,7 +187,7 @@ const structuredData = [
               {paper.year} · {paper.subject.name}{paper.shift ? ` · ${paper.shift}` : ""}
             </a>
           ))}
-          <a class="rounded-full bg-amber-900 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-amber-950 dark:bg-amber-200 dark:text-amber-950" href="/practice">View all {localPapers.length} papers →</a>
+          <a class="rounded-full bg-amber-900 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-amber-950 dark:bg-amber-200 dark:text-amber-950" href="/mock-tests">View all {localPapers.length} papers →</a>
         </div>
       </div>
     </section>

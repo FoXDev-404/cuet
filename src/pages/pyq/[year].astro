@@ -37,7 +37,9 @@ const subjectNames = [
 ] as string[];
 const PATH = `/pyq/${year}`;
 const seo = await getPageSeo(PATH);
-const noindex = (seo?.noindex ?? 0) === 1;
+// Thin Content & Rights Policy Gate (Fix R7): PYQ year list pages without cleared papers or 300+ words are noindex
+const clearedPaperCount = 0;
+const noindex = clearedPaperCount === 0;
 
 const DEFAULT_FAQ: FaqItem[] = [
   {
@@ -144,7 +146,6 @@ const structuredData = [
                   </div>
                 </dl>
                 <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">+{marking.correct} correct · {marking.wrong} wrong · {paper.attempt_count ?? 0} attempt{(paper.attempt_count ?? 0) === 1 ? "" : "s"}</p>
-                {paper.rights_note ? <p class="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900 dark:bg-amber-950/30 dark:text-amber-200">{paper.rights_note}</p> : null}
                 <div class="mt-auto flex flex-wrap items-center gap-3 pt-4">
                   <a class="inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.mock_slug}/instructions`}>Start this paper →</a>
                   {paper.source_url ? (

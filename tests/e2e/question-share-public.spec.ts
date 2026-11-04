@@ -1145,12 +1145,17 @@ test("live attempts share only the mock link and keep the timer and autosave run
   });
   expect(started.status()).toBe(201);
   const { attemptId } = (await started.json()) as { attemptId: number };
+  const timer = page.locator("#timer");
 
+  // The setting is global D1 state; pin it so the first assertion does not
+  // depend on whatever an earlier local run left behind.
+  setAttemptShareSetting("false");
   await page.goto(`/attempt/${attemptId}`);
   await expect(page.locator("[data-mock-share-trigger]")).toHaveCount(0);
 
   setAttemptShareSetting("true");
   await page.reload();
+  await expect(timer).not.toHaveText("--:--:--");
   const trigger = page.locator("[data-mock-share-trigger]");
   await expect(trigger).toBeVisible();
   await trigger.click();
@@ -1168,7 +1173,6 @@ test("live attempts share only the mock link and keep the timer and autosave run
   );
   expect(whatsapp ?? "").not.toContain("/q/");
 
-  const timer = page.locator("#timer");
   await expect(timer).not.toHaveText("--:--:--");
   const before = ((await timer.textContent()) ?? "").trim();
   await expect
@@ -1189,6 +1193,9 @@ test("live attempts share only the mock link and keep the timer and autosave run
   setAttemptShareSetting("false");
   await page.reload();
   await expect(page.locator("[data-mock-share-trigger]")).toHaveCount(0);
+  // The option buttons exist in the server HTML before the island hydrates, so
+  // wait for the timer to leave its SSR placeholder before clicking an answer.
+  await expect(timer).not.toHaveText("--:--:--");
 
   const saveResponse = page.waitForResponse((res) => {
     if (

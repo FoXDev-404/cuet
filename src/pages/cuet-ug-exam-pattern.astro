@@ -15,6 +15,7 @@ import {
   parseFaq,
   type FaqItem,
 } from "../lib/seo";
+import { SECTION_TIME_ALLOCATIONS } from "../lib/exam-timing";
 
 const PATH = "/cuet-ug-exam-pattern";
 const DEFAULT_TITLE = "CUET UG Exam Pattern — Sections, Timing and Interface";
@@ -82,7 +83,8 @@ const description = seo?.description || DEFAULT_DESCRIPTION;
 const customFaq = parseFaq(seo?.faq_json);
 const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
 const verified = formatVerified(info?.last_verified);
-const noindex = (seo?.noindex ?? 0) === 1;
+const isVerified = Boolean(info && info.value && info.value !== "TODO_VERIFY" && info.last_verified);
+const noindex = (seo?.noindex ?? 0) === 1 || !isVerified;
 const site = siteUrl(Astro.url);
 
 const structuredData = [
@@ -156,6 +158,39 @@ const stageCards = [
       ) : null}
     </section>
 
+    <!-- Section-Wise Time Allocation table matching official NTA pattern -->
+    <section class="mt-10">
+      <div class="flex items-center gap-2.5">
+        <span class="text-2xl" aria-hidden="true">⏱️</span>
+        <h2 class="text-2xl font-bold tracking-tight">Section-Wise Time Allocation</h2>
+      </div>
+      <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+        Official CUET UG time allocations for each section. Mock test timers on this platform dynamically adapt based on these exact per-question allowances.
+      </p>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" tabindex="0" role="region" aria-label="Section-wise time allocation table">
+        <table class="w-full text-left text-sm">
+          <thead class="border-b border-neutral-200 bg-neutral-50 text-xs font-bold uppercase tracking-wider text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950/60 dark:text-neutral-400">
+            <tr>
+              <th scope="col" class="px-5 py-3.5">Section / Paper</th>
+              <th scope="col" class="px-5 py-3.5">Total Questions</th>
+              <th scope="col" class="px-5 py-3.5">Total Duration</th>
+              <th scope="col" class="px-5 py-3.5">Time Per Question</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800">
+            {SECTION_TIME_ALLOCATIONS.map((alloc) => (
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-800/40">
+                <td class="px-5 py-4 font-semibold text-neutral-900 dark:text-white">{alloc.sectionPaper}</td>
+                <td class="px-5 py-4 text-neutral-700 dark:text-neutral-300">{alloc.totalQuestionsLabel}</td>
+                <td class="px-5 py-4 text-neutral-700 dark:text-neutral-300">{alloc.totalDurationLabel}</td>
+                <td class="px-5 py-4 font-bold text-neutral-900 dark:text-white">{alloc.timePerQuestionLabel}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="mt-10">
       <h2 class="text-2xl font-bold tracking-tight">The three section families</h2>
       <p class="mt-2 max-w-3xl text-sm leading-7 text-neutral-600 dark:text-neutral-400">
@@ -200,7 +235,7 @@ const stageCards = [
           No paper is published yet. The first paper's real section list, duration and marking scheme will appear here automatically.
         </div>
       ) : (
-        <div class="mt-5 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="mt-5 overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900" tabindex="0" role="region" aria-label="Paper section table">
           <table class="w-full min-w-[760px] text-left text-sm">
             <thead class="border-b border-neutral-200 bg-neutral-50 text-xs uppercase tracking-wide text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
               <tr>

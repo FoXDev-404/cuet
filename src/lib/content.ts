@@ -147,14 +147,35 @@ export function validateQuestionContent(question: QuestionPayload): string[] {
   return errors;
 }
 
-export function parseMarkingScheme(raw: string): { correct: number; wrong: number; skipped: number } {
+export function parseMarkingScheme(raw: string): {
+  correct: number;
+  wrong: number;
+  skipped: number;
+  sections?: Record<string, { correct: number; wrong: number; skipped: number }>;
+} {
   try {
     const parsed = JSON.parse(raw) as Record<string, unknown>;
     const correct = Number(parsed.correct);
     const wrong = Number(parsed.wrong);
     const skipped = Number(parsed.skipped ?? 0);
     if (![correct, wrong, skipped].every(Number.isFinite)) throw new Error("invalid");
-    return { correct, wrong, skipped };
+
+    let sections: Record<string, { correct: number; wrong: number; skipped: number }> | undefined;
+    if (parsed.sections && typeof parsed.sections === "object") {
+      sections = {};
+      for (const [secName, secScheme] of Object.entries(parsed.sections as Record<string, unknown>)) {
+        if (secScheme && typeof secScheme === "object") {
+          const s = secScheme as Record<string, unknown>;
+          const sCorrect = Number(s.correct);
+          const sWrong = Number(s.wrong);
+          const sSkipped = Number(s.skipped ?? 0);
+          if ([sCorrect, sWrong, sSkipped].every(Number.isFinite)) {
+            sections[secName] = { correct: sCorrect, wrong: sWrong, skipped: sSkipped };
+          }
+        }
+      }
+    }
+    return { correct, wrong, skipped, ...(sections && Object.keys(sections).length > 0 ? { sections } : {}) };
   } catch {
     return { correct: 5, wrong: -1, skipped: 0 };
   }

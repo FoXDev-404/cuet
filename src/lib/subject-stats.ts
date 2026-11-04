@@ -54,6 +54,11 @@ const MOCK_QUESTIONS_SQL = `
   JOIN mock_tests m ON m.id = mq.mock_id
   WHERE q.status = 'published' AND q.deleted_at IS NULL
     AND m.status = 'published' AND m.deleted_at IS NULL
+    AND m.slug NOT LIKE 'e2e-%'
+    AND m.slug NOT LIKE '%fixture%'
+    AND m.slug NOT LIKE '%publish-check%'
+    AND m.slug NOT LIKE 'slow-network-%'
+    AND LOWER(m.title) NOT LIKE '%fixture%'
 `;
 
 const MOCKS_SQL = `
@@ -61,6 +66,11 @@ const MOCKS_SQL = `
          CASE WHEN practice_paper_slug IS NULL THEN 0 ELSE 1 END AS practice
   FROM mock_tests
   WHERE status = 'published' AND deleted_at IS NULL
+    AND slug NOT LIKE 'e2e-%'
+    AND slug NOT LIKE '%fixture%'
+    AND slug NOT LIKE '%publish-check%'
+    AND slug NOT LIKE 'slow-network-%'
+    AND LOWER(title) NOT LIKE '%fixture%'
 `;
 
 /** How long the rollup may be reused before D1 is consulted again. */

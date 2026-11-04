@@ -4,6 +4,7 @@ export type ScoringQuestion = {
   id: number;
   subject_id: number;
   topic_id?: number | null;
+  section?: string;
   correct_option: number;
 };
 
@@ -61,13 +62,18 @@ export function scoreAttempt(
     const isCorrect = selected === null ? null : selected === question.correct_option;
     correctness.set(question.id, isCorrect === null ? null : isCorrect ? 1 : 0);
 
-    if (selected === null) skipped += 1;
-    else if (isCorrect) {
+    // Dynamic marking scheme: resolves per-section rule if specified, or overall paper scheme
+    const scheme = (question.section && marking.sections?.[question.section]) || marking;
+
+    if (selected === null) {
+      skipped += 1;
+      score += scheme.skipped ?? 0;
+    } else if (isCorrect) {
       correct += 1;
-      score += marking.correct;
+      score += scheme.correct;
     } else {
       wrong += 1;
-      score += marking.wrong;
+      score += scheme.wrong;
     }
 
     const stat = subjectStats.get(question.subject_id) ?? {

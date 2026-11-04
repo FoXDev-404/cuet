@@ -17,9 +17,12 @@ import {
 import { getGuestToken } from "../../lib/auth/session";
 import { dbUnavailableResponse } from "../../lib/db-resilient";
 import { parseMarkingScheme, parseOptions } from "../../lib/content";
+import { renderRichText } from "../../lib/rich-text";
 import { imageDimensionsForUrls } from "../../lib/media-dimensions";
 import { getSetting } from "../../lib/settings";
 import { siteUrl } from "../../lib/site-url";
+import { calculateMockDuration } from "../../lib/exam-timing";
+import { run } from "../../lib/db";
 
 const id = Number(Astro.params.id);
 if (!Number.isInteger(id) || id <= 0) return new Response("Attempt not found", { status: 404 });
@@ -51,9 +54,13 @@ const [mock, rawQuestions, savedAnswers] = await Promise.all([
       practice_paper_slug: string | null;
       total_marks: number;
       marking_scheme: string;
+      duration_min: number;
+      subject_name: string | null;
     }>(
-      `SELECT m.title, m.slug, m.practice_paper_slug, v.total_marks, v.marking_scheme
+      `SELECT m.title, m.slug, m.practice_paper_slug, v.total_marks, v.marking_scheme,
+              v.duration_min, s.name AS subject_name
        FROM mock_tests m JOIN mock_test_versions v ON v.id = ?
+       LEFT JOIN subjects s ON s.id = m.subject_id
        WHERE m.id = ?`,
       attempt!.version_id,
       attempt!.mock_id,
@@ -115,35 +122,132 @@ const withDimensions = <T extends { image_url: string | null }>(option: T): T & 
   };
 };
 
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function isSameImage(url1: string | null | undefined, url2: string | null | undefined): boolean {
+  if (!url1 || !url2) return false;
+  if (url1 === url2) return true;
+  const f1 = imageFileName(url1);
+  const f2 = imageFileName(url2);
+  return Boolean(f1 && f2 && f1 === f2);
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
+
 const questions = rawQuestions.map((question, index) => {
   const sets = optionSets[index];
-  const image = question.image_url ? imageDimensions.get(question.image_url) : undefined;
+  let optionsList = sets.options;
+  let questionImageUrl = question.image_url;
+  const rawAssets = assetSets[index];
+
+  // Defensive auto-mapping: if all options have placeholder text with no images,
+  // but assets contain candidate figures, wire them to options and clean up
+  const allPlaceholder =
+    optionsList.length >= 2 &&
+    optionsList.every((opt) => isPlaceholderText(opt.text) && !opt.image_url);
+  if (allPlaceholder && rawAssets.length >= optionsList.length) {
+    if (rawAssets.length === optionsList.length) {
+      optionsList = optionsList.map((opt, i) => ({
+        ...opt,
+        image_url: rawAssets[i].url,
+        alt: rawAssets[i].alt || `Option ${i + 1}`,
+      }));
+      questionImageUrl = null;
+    } else if (rawAssets.length === optionsList.length + 1) {
+      questionImageUrl = rawAssets[0].url;
+      optionsList = optionsList.map((opt, i) => ({
+        ...opt,
+        image_url: rawAssets[i + 1].url,
+        alt: rawAssets[i + 1].alt || `Option ${i + 1}`,
+      }));
+    }
+  }
+
+  // Deduplicate stem image: If question.text already contains questionImageUrl, clear it
+  if (questionImageUrl && textContainsImage(question.text, questionImageUrl)) {
+    questionImageUrl = null;
+  }
+
+  const image = questionImageUrl ? imageDimensions.get(questionImageUrl) : undefined;
   const passageImage = question.passage_image_url
     ? imageDimensions.get(question.passage_image_url)
     : undefined;
+  const passageBody = question.passage_body;
+  const passageBodyHi = question.passage_body_hi;
+
+  const filteredAssets = rawAssets.filter((asset) => {
+    if (asset.kind === "options" || asset.kind === "explanation") return false;
+    if (asset.url.includes("-exp-")) return false;
+    if (questionImageUrl && isSameImage(asset.url, questionImageUrl)) return false;
+    if (textContainsImage(question.text, asset.url)) return false;
+    if (optionsList.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+    return true;
+  });
+
+  const optionAssets = rawAssets.filter((asset) => {
+    if (asset.kind !== "options") return false;
+    if (asset.url.includes("-exp-")) return false;
+    if (optionsList.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+    return true;
+  });
+
   return {
     id: question.id,
     section: question.section,
     position: question.position,
     text: question.text,
     text_hi: question.text_hi,
-    options: sets.options.map(withDimensions),
-    options_hi: sets.optionsHi.map(withDimensions),
-    image_url: question.image_url,
+    rendered_text: renderRichText(question.text),
+    rendered_text_hi: renderRichText(question.text_hi),
+    options: optionsList.map(withDimensions).map((opt) => ({
+      ...opt,
+      rendered_text: opt.text ? renderRichText(opt.text) : "",
+    })),
+    options_hi: sets.optionsHi.map(withDimensions).map((opt) => ({
+      ...opt,
+      rendered_text: opt.text ? renderRichText(opt.text) : "",
+    })),
+    image_url: questionImageUrl,
     image_alt: question.image_alt,
     image_width: image?.width ?? null,
     image_height: image?.height ?? null,
-    passage: question.passage_body
+    passage: passageBody
       ? {
-          body: question.passage_body,
-          body_hi: question.passage_body_hi,
+          body: passageBody,
+          body_hi: passageBodyHi,
+          rendered_body: renderRichText(passageBody),
+          rendered_body_hi: renderRichText(passageBodyHi),
           image_url: question.passage_image_url,
           image_alt: question.passage_image_alt,
           image_width: passageImage?.width ?? null,
           image_height: passageImage?.height ?? null,
         }
       : null,
-    assets: assetSets[index].map((asset) => {
+    assets: filteredAssets.map((asset) => {
+      const size = imageDimensions.get(asset.url);
+      return {
+        ...asset,
+        image_width: size?.width ?? null,
+        image_height: size?.height ?? null,
+      };
+    }),
+    option_assets: optionAssets.map((asset) => {
       const size = imageDimensions.get(asset.url);
       return {
         ...asset,
@@ -158,6 +262,18 @@ const sections = [...new Set(questions.map((question) => question.section))];
 const hasHindiContent = questions.some(
   (question) => Boolean(question.text_hi) || question.options_hi.length > 0 || Boolean(question.passage?.body_hi),
 );
+const effectiveDurationMin = questions.length > 0
+  ? calculateMockDuration(questions.length, mock?.subject_name).durationMinutes
+  : (mock?.duration_min ?? 60);
+
+// Align deadline with question-based duration if misaligned
+const expectedDeadlineMs = Date.parse(attempt.started_at) + effectiveDurationMin * 60 * 1000;
+if (Math.abs(Date.parse(attempt.deadline_at) - expectedDeadlineMs) > 60_000) {
+  const correctedDeadline = new Date(expectedDeadlineMs).toISOString();
+  await run("UPDATE attempts SET deadline_at = ? WHERE id = ?", correctedDeadline, attempt.id).catch(() => {});
+  attempt.deadline_at = correctedDeadline;
+}
+
 const data = {
   attemptId: attempt.id,
   mockTitle: mock?.title ?? "CUET Mock Test",
@@ -172,6 +288,7 @@ const data = {
   candidate: Astro.locals.user?.username ?? "Guest",
   totalMarks: mock?.total_marks ?? 0,
   marking,
+  lastClientSeq: attempt.last_client_seq ?? 0,
 };
 const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
 ---
@@ -349,6 +466,22 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       .nta-zoom img { max-width: 95vw; max-height: 90vh; background: var(--media-bg); border-radius: 0.5rem; }
 
       /* ---- KnowledgeGate-style exam shell ---- */
+      html {
+        scroll-padding-top: 7rem;
+      }
+      #question-area {
+        scroll-margin-top: 7rem;
+      }
+      #discussion {
+        scroll-margin-top: 7rem;
+      }
+      #exam-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--surface-2);
+        box-shadow: var(--shadow);
+      }
       .exam-frame {
         background:
           radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 28rem),
@@ -368,9 +501,13 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         letter-spacing: -0.01em;
       }
       .exam-subtitle { color: var(--muted); }
-      .exam-brand > span { display: none; }
-      @media (min-width: 640px) {
-        .exam-brand > span { display: block; }
+      .exam-brand {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      .exam-brand > span {
+        display: inline-block;
       }
       .exam-toplink {
         align-items: center;
@@ -586,43 +723,47 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
   </head>
   <body class="min-h-[100dvh] bg-[var(--surface)] text-[var(--ink)] antialiased">
     <h1 class="sr-only">{data.mockTitle} attempt</h1>
-    <div class="exam-frame flex h-[100dvh] flex-col overflow-hidden">
-      <header class="shrink-0">
-        <div class="exam-accent-line" aria-hidden="true"></div>
-        <div class="exam-topbar flex h-14 items-center gap-2 px-2 sm:px-4">
-          <div class="flex min-w-0 items-center gap-2">
-            <BrandLogo class="exam-brand" size="compact" showTagline={false} link={false} />
-            <div class="hidden h-7 w-px bg-[var(--border)] sm:block" aria-hidden="true"></div>
-            <div class="min-w-0">
-              <p class="exam-paper-title truncate text-xs sm:text-sm">{data.mockTitle}</p>
-              <p class="exam-subtitle hidden truncate text-[10px] sm:block">CUET (UG) · {questions.length} questions · {sections.length} section{sections.length === 1 ? "" : "s"}</p>
-            </div>
-          </div>
-          <div class="ml-auto flex shrink-0 items-center gap-1.5">
-            <a class="exam-toplink hidden md:inline-flex" href={`/mock/${mock?.slug}/instructions`}>Instructions</a>
-            <a class="exam-toplink hidden lg:inline-flex" href="#discussion">Discussion</a>
-            <div id="timer" class="exam-timer" aria-live="off">--:--:--</div>
-            <p id="timer-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></p>
-            {shareDuringAttempt && mockShareUrl ? (
-              <MockShareSheet shareUrl={mockShareUrl} mockId={attempt.mock_id} />
-            ) : null}
-            <ThemeToggle />
-            <button id="submit-attempt" class="exam-submit" type="button">Submit test</button>
+    <header id="exam-header" class="sticky top-0 z-50 shrink-0">
+      <div class="exam-accent-line" aria-hidden="true"></div>
+      <div class="exam-topbar flex h-14 items-center gap-2 px-2 sm:px-4">
+        <div class="flex min-w-0 items-center gap-2">
+          <BrandLogo class="exam-brand" size="compact" showTagline={false} link={true} target="_blank" />
+          <div class="hidden h-7 w-px bg-[var(--border)] md:block" aria-hidden="true"></div>
+          <div class="hidden min-w-0 md:block">
+            <p class="exam-paper-title truncate text-xs sm:text-sm">{data.mockTitle}</p>
+            <p class="exam-subtitle truncate text-[10px]">CUET (UG) · {questions.length} questions · {sections.length} section{sections.length === 1 ? "" : "s"}</p>
           </div>
         </div>
-        <div class="exam-candidatebar flex min-h-12 flex-wrap items-center gap-2 px-2 py-1.5 sm:px-4">
-          <span class="exam-avatar" aria-hidden="true">{data.candidate.slice(0, 1).toUpperCase()}</span>
-          <div class="min-w-0">
-            <p class="exam-candidate-label">Candidate</p>
-            <p class="exam-candidate-name truncate">{data.candidate}</p>
-          </div>
-          <div class="ml-auto flex items-center gap-1.5">
-            <span class="exam-meta-pill hidden sm:inline-flex">✦ {questions.length} questions</span>
-            <span class="exam-meta-pill hidden md:inline-flex">Marks +{marking.correct} / {marking.wrong}</span>
-            <button id="palette-toggle" class="exam-btn lg:hidden" type="button" aria-label="Open question palette">Palette</button>
-          </div>
+        <div class="ml-auto flex shrink-0 items-center gap-1.5">
+          <a class="exam-toplink hidden md:inline-flex" href={`/mock/${mock?.slug}/instructions`}>Instructions</a>
+          <a class="exam-toplink hidden lg:inline-flex" href="#discussion">Discussion</a>
+          <div id="timer" class="exam-timer" aria-live="off">--:--:--</div>
+          <p id="timer-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></p>
+          <button id="submit-attempt" class="exam-submit" type="button"><span class="sm:hidden">Submit</span><span class="hidden sm:inline">Submit test</span></button>
         </div>
-      </header>
+      </div>
+      <div class="exam-candidatebar flex min-h-11 items-center gap-2 px-2 py-1.5 sm:min-h-12 sm:px-4">
+        <span class="exam-avatar shrink-0" aria-hidden="true">{data.candidate.slice(0, 1).toUpperCase()}</span>
+        <div class="min-w-0 shrink-0">
+          <p class="exam-candidate-label">Candidate</p>
+          <p class="exam-candidate-name truncate text-xs">{data.candidate}</p>
+        </div>
+        <div class="min-w-0 flex-1 pl-1 md:hidden">
+          <p class="exam-paper-title truncate text-xs" title={data.mockTitle}>{data.mockTitle}</p>
+        </div>
+        <div class="ml-auto flex shrink-0 items-center gap-1.5">
+          <span class="exam-meta-pill hidden sm:inline-flex">✦ {questions.length} questions</span>
+          <span class="exam-meta-pill hidden md:inline-flex">Marks +{marking.correct} / {marking.wrong}</span>
+          {shareDuringAttempt && mockShareUrl ? (
+            <MockShareSheet shareUrl={mockShareUrl} mockId={attempt.mock_id} />
+          ) : null}
+          <ThemeToggle />
+          <button id="palette-toggle" class="exam-btn lg:hidden" type="button" aria-label="Open question palette">Palette</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="exam-frame flex min-h-[calc(100dvh-6.75rem)] lg:h-[calc(100dvh-6.75rem)] flex-col overflow-hidden">
 
       <div class="relative flex min-h-0 flex-1 overflow-hidden">
         <main class="flex min-w-0 flex-1 flex-col">
@@ -633,7 +774,92 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
             <span id="save-state" class="ml-auto whitespace-nowrap pl-2 text-[10px] font-semibold text-[var(--muted)]" role="status" aria-live="polite" aria-atomic="true">Ready</span>
           </div>
 
-          <div id="question-area" class="exam-question-scroll min-h-0 flex-1 overflow-y-auto p-3 sm:p-5 lg:px-7"></div>
+          <div id="question-area" class="exam-question-scroll min-h-0 flex-1 overflow-y-auto p-3 sm:p-5 lg:px-7">
+            {questions[0] && (
+              <article class="exam-question-card" aria-label="Question 1">
+                <header class="exam-question-head">
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <span class="exam-question-number">Question 1</span>
+                    <span class="exam-marks">{`${marking.correct >= 0 ? "+" : ""}${marking.correct} / ${marking.wrong}`}</span>
+                    <span class="exam-badge">{questions[0].section}</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    {answerMap[questions[0].id]?.marked ? <span class="exam-badge review">Marked for review</span> : null}
+                    <span class="exam-badge">1 / {questions.length}</span>
+                  </div>
+                </header>
+                {questions[0].passage && (
+                  <div class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 text-sm leading-7">
+                    <Fragment set:html={questions[0].passage.rendered_body || questions[0].passage.body} />
+                    {questions[0].passage.image_url && (
+                      <img class="nta-image mt-3" src={questions[0].passage.image_url} alt={questions[0].passage.image_alt || ""} loading="lazy" />
+                    )}
+                  </div>
+                )}
+                <div class="mt-5 flex gap-2.5">
+                  <span class="shrink-0 text-[15px] font-semibold text-[var(--ink)]">1.</span>
+                  <div class="nta-question-text min-w-0 flex-1">
+                    <Fragment set:html={questions[0].rendered_text || questions[0].text} />
+                  </div>
+                </div>
+                {questions[0].image_url && !textContainsImage(questions[0].text, questions[0].image_url) && (
+                  <img class="nta-image mt-4" src={questions[0].image_url} alt={questions[0].image_alt || ""} />
+                )}
+                {questions[0].assets.length > 0 && (
+                  <figure class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3">
+                    <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--muted)]">Figure / table</figcaption>
+                    <div class="flex flex-wrap gap-2">
+                      {questions[0].assets.map((asset) => (
+                        <img class="nta-image" src={asset.url} alt={asset.alt || ""} loading="lazy" />
+                      ))}
+                    </div>
+                  </figure>
+                )}
+                {questions[0].option_assets && questions[0].option_assets.length > 0 && (
+                  <figure class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3">
+                    <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--muted)]">Printed answer choices</figcaption>
+                    <div class="flex flex-wrap gap-2">
+                      {questions[0].option_assets.map((asset) => (
+                        <img class="nta-image" src={asset.url} alt={asset.alt || ""} loading="lazy" />
+                      ))}
+                    </div>
+                  </figure>
+                )}
+                <div class="mt-5 space-y-1" role="radiogroup" aria-label="Answer options">
+                  {questions[0].options.map((option, idx) => {
+                    const isSelected = answerMap[questions[0].id]?.selected === idx;
+                    const isPlaceholder = isPlaceholderText(option.text);
+                    const bodyText = isPlaceholder ? null : (option.rendered_text ? option.rendered_text : option.text);
+                    return (
+                      <button
+                        type="button"
+                        class={`nta-option ${isSelected ? "selected" : ""}`}
+                        data-option={idx}
+                        role="radio"
+                        aria-checked={isSelected ? "true" : "false"}
+                      >
+                        <span class="nta-radio" aria-hidden="true" />
+                        <span class="shrink-0 text-[15px] font-semibold">{idx + 1}.</span>
+                        <span class="min-w-0">
+                          {bodyText ? (
+                            option.rendered_text ? <Fragment set:html={option.rendered_text} /> : bodyText
+                          ) : null}
+                          {option.image_url ? (
+                            <img class="nta-image mt-2" src={option.image_url} alt={option.alt || ""} loading="lazy" />
+                          ) : (!bodyText ? (
+                            <span class="text-[var(--muted)]">Option {idx + 1}</span>
+                          ) : null)}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+                <p class="mt-4 text-[10px] font-medium text-[var(--muted)]">
+                  {marking.wrong} for a wrong answer · {marking.skipped} for unattempted · Saved automatically
+                </p>
+              </article>
+            )}
+          </div>
 
           <footer class="exam-footer flex shrink-0 flex-wrap items-center gap-1.5 px-2 py-2 sm:px-4">
             <button id="previous" class="exam-btn" type="button">← Previous</button>
@@ -691,7 +917,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
     </div>
 
     <section id="discussion" class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <div class="sticky top-0 z-20 mb-3 flex flex-wrap items-end justify-between gap-3 bg-white/95 py-2 backdrop-blur supports-[backdrop-filter]:bg-white/85 dark:bg-neutral-950/95 dark:supports-[backdrop-filter]:bg-neutral-950/85">
+      <div class="mb-3 flex flex-wrap items-end justify-between gap-3 py-2">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">Live with this attempt</p>
           <h2 class="mt-1 text-xl font-black tracking-tight">Discussion &amp; chat</h2>
@@ -722,15 +948,15 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
 
     <script type="application/json" id="attempt-data" set:html={serialized}></script>
     <script>
-      import { renderRichText } from "../../lib/rich-text";
-
-      type Option = { text: string; image_url: string | null; alt: string | null; image_width: number | null; image_height: number | null };
+      type Option = { text: string; rendered_text?: string; image_url: string | null; alt: string | null; image_width: number | null; image_height: number | null };
       type Question = {
         id: number;
         section: string;
         position: number;
         text: string;
         text_hi: string | null;
+        rendered_text?: string;
+        rendered_text_hi?: string | null;
         options: Option[];
         options_hi: Option[];
         image_url: string | null;
@@ -738,7 +964,8 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         image_width: number | null;
         image_height: number | null;
         assets: { url: string; alt: string; kind: string; image_width: number | null; image_height: number | null }[];
-        passage: { body: string; body_hi: string | null; image_url: string | null; image_alt: string | null; image_width: number | null; image_height: number | null } | null;
+        option_assets?: { url: string; alt: string; kind: string; image_width: number | null; image_height: number | null }[];
+        passage: { body: string; body_hi: string | null; rendered_body?: string; rendered_body_hi?: string | null; image_url: string | null; image_alt: string | null; image_width: number | null; image_height: number | null } | null;
       };
       type Answer = { selected: number | null; marked: number; time: number };
       type AttemptData = {
@@ -755,6 +982,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         candidate: string;
         totalMarks: number;
         marking: { correct: number; wrong: number; skipped: number };
+        lastClientSeq?: number;
       };
 
       const data = JSON.parse((document.getElementById("attempt-data") as HTMLElement).textContent || "{}") as AttemptData;
@@ -832,6 +1060,34 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         });
       }
 
+      function imageFileName(url: string | null | undefined): string {
+        if (!url) return "";
+        const clean = url.split("?")[0].split("#")[0];
+        const parts = clean.split("/");
+        return parts[parts.length - 1] || "";
+      }
+
+      function isSameImage(url1: string | null | undefined, url2: string | null | undefined): boolean {
+        if (!url1 || !url2) return false;
+        if (url1 === url2) return true;
+        const f1 = imageFileName(url1);
+        const f2 = imageFileName(url2);
+        return Boolean(f1 && f2 && f1 === f2);
+      }
+
+      function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+        if (!text || !url) return false;
+        if (text.includes(url)) return true;
+        const f = imageFileName(url);
+        return Boolean(f && text.includes(f));
+      }
+
+      function isPlaceholderText(text: string | null | undefined): boolean {
+        if (!text) return true;
+        const trimmed = text.trim();
+        return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+      }
+
       function flushTime() {
         const now = Date.now();
         const seconds = Math.floor((now - state.enteredAt) / 1000);
@@ -901,7 +1157,8 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         const options = state.language === "hi" && question.options_hi.length ? question.options_hi : question.options;
         const selected = answers[question.id].selected;
         return options.map((option, index) => {
-          const body = option.text ? renderRichText(option.text) : "";
+          const isPlaceholder = isPlaceholderText(option.text);
+          const body = isPlaceholder ? "" : (option.rendered_text || (option.text ? escapeHtml(option.text) : ""));
           const dimensions =
             option.image_width && option.image_height
               ? ` width="${option.image_width}" height="${option.image_height}"`
@@ -909,10 +1166,13 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
           const image = option.image_url
             ? `<img class="nta-image mt-2" src="${option.image_url}" alt="${(option.alt || "").replace(/"/g, "&quot;")}"${dimensions} loading="lazy" />`
             : "";
+          const content = body
+            ? `${body}${image ? `<div class="mt-2">${image}</div>` : ""}`
+            : (image ? image : `<span class="text-[var(--muted)]">Option ${index + 1}</span>`);
           return `<button type="button" class="nta-option ${selected === index ? "selected" : ""}" data-option="${index}" role="radio" aria-checked="${selected === index}" ${state.timeUp ? "disabled" : ""}>
             <span class="nta-radio" aria-hidden="true"></span>
             <span class="shrink-0 text-[15px] font-semibold">${index + 1}.</span>
-            <span class="min-w-0">${body || `<span class="text-[var(--muted)]">Option ${index + 1}</span>`}${image}</span>
+            <span class="min-w-0">${content}</span>
           </button>`;
         }).join("");
       }
@@ -944,17 +1204,26 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         const answer = answers[question.id];
         const passage = question.passage
           ? `<div class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 text-sm leading-7">
-              ${renderRichText(state.language === "hi" && question.passage.body_hi ? question.passage.body_hi : question.passage.body)}
+              ${state.language === "hi" && question.passage.rendered_body_hi ? question.passage.rendered_body_hi : (question.passage.rendered_body || escapeHtml(question.passage.body))}
               ${question.passage.image_url ? `<img class="nta-image mt-3" src="${question.passage.image_url}" alt="${(question.passage.image_alt || "").replace(/"/g, "&quot;")}"${question.passage.image_width && question.passage.image_height ? ` width="${question.passage.image_width}" height="${question.passage.image_height}"` : ""} loading="lazy" />` : ""}
             </div>`
           : "";
-        const text = renderRichText(state.language === "hi" && question.text_hi ? question.text_hi : question.text);
-        const image = question.image_url
+        const text = state.language === "hi" && question.rendered_text_hi ? question.rendered_text_hi : (question.rendered_text || escapeHtml(question.text));
+        const shouldRenderStemImage = Boolean(question.image_url && !textContainsImage(text, question.image_url));
+        const image = shouldRenderStemImage
           ? `<img class="nta-image mt-4" src="${question.image_url}" alt="${(question.image_alt || "").replace(/"/g, "&quot;")}"${question.image_width && question.image_height ? ` width="${question.image_width}" height="${question.image_height}"` : ""} />`
           : "";
-        const extraAssets = question.assets.filter((asset) => asset.url !== question.image_url);
-        const optionAssets = extraAssets.filter((asset) => asset.kind === "options");
-        const bodyAssets = extraAssets.filter((asset) => asset.kind !== "options");
+        const bodyAssets = question.assets.filter((asset) => {
+          if (asset.kind === "options" || asset.kind === "explanation") return false;
+          if (asset.url.includes("-exp-")) return false;
+          if (question.image_url && isSameImage(asset.url, question.image_url)) return false;
+          if (textContainsImage(text, asset.url)) return false;
+          if (question.options.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+          return true;
+        });
+        const optionAssets = (question.option_assets && question.option_assets.length)
+          ? question.option_assets
+          : question.assets.filter((asset) => asset.kind === "options");
         const marksLabel = `${data.marking.correct >= 0 ? "+" : ""}${data.marking.correct} / ${data.marking.wrong}`;
         area.innerHTML = `
           <article class="exam-question-card" aria-label="Question ${state.index + 1}">
@@ -1037,6 +1306,9 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       function goTo(index: number) {
         if (index < 0 || index >= questions.length) return;
         flushTime();
+        if (dirtyAnswers.size > 0) {
+          void saveAnswers(true);
+        }
         state.index = index;
         renderQuestion();
         area.scrollTop = 0;
@@ -1063,7 +1335,14 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         (document.getElementById("zoom") as HTMLElement).classList.remove("open");
       }
 
-      function payloadAnswers() {
+      // Seed from the wall clock so a save queued by a page that is being
+      // unloaded can never tie with (and overwrite) a save from the next page.
+      // Ties were possible because both sessions started from the same stored
+      // lastClientSeq, and the unload flush writes `selected: null` for an
+      // unanswered question.
+      let clientSeq = Math.max(Number(data.lastClientSeq || 0), Date.now());
+
+      function payloadAnswers(seq = clientSeq) {
         return questions
           .filter((question) => dirtyAnswers.has(question.id))
           .map((question) => ({
@@ -1071,13 +1350,15 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
             selected: answers[question.id].selected,
             time_spent_sec: answers[question.id].time,
             marked_for_review: answers[question.id].marked,
+            client_seq: seq,
           }));
       }
 
       async function saveAnswers(silent = true) {
         flushTime();
         if (state.timeUp || state.submitting) return;
-        const sent = payloadAnswers();
+        const seq = ++clientSeq;
+        const sent = payloadAnswers(seq);
         if (sent.length === 0) {
           saveState.textContent = "Saved";
           return;
@@ -1087,7 +1368,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
           const response = await fetch(`/api/attempts/${data.attemptId}/answers`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ answers: sent }),
+            body: JSON.stringify({ answers: sent, seq }),
           });
           const result = (await response.json()) as { error?: string; redirect?: string; status?: string };
           if (response.status === 409 && result.redirect) {
@@ -1266,7 +1547,20 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         if (event.key === "Escape") closeZoom();
       });
       document.addEventListener("visibilitychange", () => {
-        if (document.hidden) showToast("Tab switch noted — this is a warning only.");
+        if (document.hidden) {
+          showToast("Tab switch noted — this is a warning only.");
+          if (dirtyAnswers.size > 0) {
+            void saveAnswers(true);
+          }
+        }
+      });
+      window.addEventListener("pagehide", () => {
+        flushTime();
+        if (dirtyAnswers.size > 0 && typeof navigator.sendBeacon === "function") {
+          const payload = JSON.stringify({ answers: payloadAnswers(), seq: ++clientSeq });
+          const blob = new Blob([payload], { type: "application/json" });
+          navigator.sendBeacon(`/api/attempts/${data.attemptId}/answers`, blob);
+        }
       });
       window.addEventListener("beforeunload", (event) => {
         flushTime();
@@ -1274,7 +1568,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
           fetch(`/api/attempts/${data.attemptId}/answers`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ answers: payloadAnswers() }),
+            body: JSON.stringify({ answers: payloadAnswers(), seq: ++clientSeq }),
             keepalive: true,
           });
         } catch {}
@@ -1289,7 +1583,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       renderQuestion();
       tick();
       window.setInterval(tick, 1000);
-      window.setInterval(() => saveAnswers(true), 10000);
+      window.setInterval(() => saveAnswers(true), 15000);
     </script>
   </body>
 </html>
