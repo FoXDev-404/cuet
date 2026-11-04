@@ -71,9 +71,9 @@ const filteredPapers = practicePapers.filter((p) => {
   <!-- Rights Status Counts Dashboard -->
   <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
     <div class="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-      <p class="text-xs font-bold uppercase tracking-wider text-neutral-500">Total Papers</p>
+      <p class="text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Total Papers</p>
       <p class="mt-2 text-3xl font-black">{totalCount}</p>
-      <p class="mt-1 text-xs text-neutral-400">In practice library</p>
+      <p class="mt-1 text-xs text-neutral-600 dark:text-neutral-400">In practice library</p>
     </div>
     <div class="rounded-2xl border border-amber-300 bg-amber-50/50 p-4 shadow-sm dark:border-amber-800 dark:bg-amber-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">Unknown / Pending</p>
@@ -142,9 +142,9 @@ const filteredPapers = practicePapers.filter((p) => {
   <!-- Papers Table -->
   <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
     <table class="w-full text-left text-xs">
-      <thead class="border-b border-neutral-200 bg-neutral-50 uppercase text-neutral-500 dark:border-neutral-800 dark:bg-neutral-950">
+      <thead class="border-b border-neutral-200 bg-neutral-50 uppercase text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300">
         <tr>
-          <th class="p-3"><input type="checkbox" id="check-all" /></th>
+          <th class="p-3"><input type="checkbox" id="check-all" aria-label="Select all papers" /></th>
           <th class="p-3">Paper Title & Shift</th>
           <th class="p-3">Subject</th>
           <th class="p-3">Year</th>
@@ -157,12 +157,12 @@ const filteredPapers = practicePapers.filter((p) => {
       <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800">
         {filteredPapers.map((paper) => (
           <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-800/40" data-paper-id={paper.id}>
-            <td class="p-3"><input type="checkbox" class="paper-check" value={paper.id} /></td>
+            <td class="p-3"><input type="checkbox" class="paper-check" value={paper.id} aria-label={`Select paper ${paper.title}`} /></td>
             <td class="p-3 font-semibold">
               <a href={`/practice/${paper.slug}`} target="_blank" class="text-brand-700 hover:underline dark:text-brand-300">
                 {paper.title}
               </a>
-              {paper.shift ? <span class="ml-1 text-neutral-400">({paper.shift})</span> : null}
+              {paper.shift ? <span class="ml-1 text-neutral-600 dark:text-neutral-300">({paper.shift})</span> : null}
             </td>
             <td class="p-3">{paper.subject_name}</td>
             <td class="p-3 font-mono">{paper.year}</td>
@@ -181,14 +181,14 @@ const filteredPapers = practicePapers.filter((p) => {
                 </span>
               )}
             </td>
-            <td class="p-3 text-neutral-600 dark:text-neutral-400">
+            <td class="p-3 text-neutral-600 dark:text-neutral-300">
               {paper.source_url ? (
                 <a href={paper.source_url} target="_blank" class="underline">Source link</a>
               ) : (
-                <span class="text-neutral-400">{paper.source_file || "NTA Archive"}</span>
+                <span class="text-neutral-600 dark:text-neutral-300">{paper.source_file || "NTA Archive"}</span>
               )}
             </td>
-            <td class="p-3 text-neutral-500">
+            <td class="p-3 text-neutral-600 dark:text-neutral-400">
               {paper.verified_by ? `${paper.verified_by} (${paper.verified_at?.slice(0, 10)})` : "Unverified"}
             </td>
             <td class="p-3">

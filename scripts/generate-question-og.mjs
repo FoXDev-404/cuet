@@ -18,7 +18,7 @@
  * script is idempotent and only needs write access to public/.
  */
 import { spawnSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { isValidPublicId } from "../src/lib/share/public-id.ts";
@@ -197,10 +197,15 @@ if (eligible.length === 0) {
 
 const fonts = loadQuestionOgFonts(ROOT);
 mkdirSync(OUT_DIR, { recursive: true });
+const distDir = join(ROOT, "dist", "client", "og", "questions");
 let written = 0;
 for (const question of eligible) {
   const png = await renderQuestionOgPng(question, fonts);
   writeFileSync(join(OUT_DIR, `${question.publicId}.png`), png);
+  if (existsSync(join(ROOT, "dist", "client"))) {
+    mkdirSync(distDir, { recursive: true });
+    writeFileSync(join(distDir, `${question.publicId}.png`), png);
+  }
   written += 1;
   console.log(`  ${question.publicId}.png (${Math.round(png.length / 1024)} KB)`);
 }

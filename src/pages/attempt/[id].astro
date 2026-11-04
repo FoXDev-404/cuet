@@ -172,6 +172,7 @@ const data = {
   candidate: Astro.locals.user?.username ?? "Guest",
   totalMarks: mock?.total_marks ?? 0,
   marking,
+  lastClientSeq: attempt.last_client_seq ?? 0,
 };
 const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
 ---
@@ -755,6 +756,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         candidate: string;
         totalMarks: number;
         marking: { correct: number; wrong: number; skipped: number };
+        lastClientSeq?: number;
       };
 
       const data = JSON.parse((document.getElementById("attempt-data") as HTMLElement).textContent || "{}") as AttemptData;
@@ -1066,9 +1068,9 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         (document.getElementById("zoom") as HTMLElement).classList.remove("open");
       }
 
-      let clientSeq = 0;
+      let clientSeq = Number(data.lastClientSeq || 0);
 
-      function payloadAnswers() {
+      function payloadAnswers(seq = clientSeq) {
         return questions
           .filter((question) => dirtyAnswers.has(question.id))
           .map((question) => ({
@@ -1076,21 +1078,21 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
             selected: answers[question.id].selected,
             time_spent_sec: answers[question.id].time,
             marked_for_review: answers[question.id].marked,
-            client_seq: clientSeq,
+            client_seq: seq,
           }));
       }
 
       async function saveAnswers(silent = true) {
         flushTime();
         if (state.timeUp || state.submitting) return;
-        const sent = payloadAnswers();
+        const seq = ++clientSeq;
+        const sent = payloadAnswers(seq);
         if (sent.length === 0) {
           saveState.textContent = "Saved";
           return;
         }
         saveState.textContent = "Saving…";
         try {
-          const seq = ++clientSeq;
           const response = await fetch(`/api/attempts/${data.attemptId}/answers`, {
             method: "PUT",
             headers: { "content-type": "application/json" },

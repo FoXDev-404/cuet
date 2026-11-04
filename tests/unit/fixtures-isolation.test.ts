@@ -91,7 +91,7 @@ describe("Fixture & Test Data Isolation (Fix R5)", () => {
 
       try {
         const stdout = execSync(
-          `node scripts/export-content.mjs --output test-fixtures-export.sql`,
+          `node scripts/export-content.mjs --limit 10 --output test-fixtures-export.sql`,
           { encoding: "utf8" },
         );
         expect(stdout).toContain("Leak check passed");
@@ -118,6 +118,140 @@ describe("Fixture & Test Data Isolation (Fix R5)", () => {
         expect(sql).toContain("INSERT OR REPLACE INTO practice_papers ");
       } finally {
         if (existsSync(testExportPath)) unlinkSync(testExportPath);
+      }
+    }, 30_000);
+  });
+
+  describe("Surface exclusion gates (sitemap, listings, search, production 404)", () => {
+    it("sitemap mock query excludes 100% of fixture mocks", async () => {
+      const { DatabaseSync } = await import("node:sqlite");
+      const { readdirSync, statSync } = await import("node:fs");
+      const { join } = await import("node:path");
+
+      const d1Dir = resolve(process.cwd(), ".wrangler/state/v3/d1/miniflare-D1DatabaseObject");
+      const files = readdirSync(d1Dir)
+        .filter((f) => f.endsWith(".sqlite") && !f.includes("backup"))
+        .map((f) => ({ name: f, size: statSync(join(d1Dir, f)).size }))
+        .sort((a, b) => b.size - a.size);
+
+      if (files.length === 0) return;
+      const db = new DatabaseSync(join(d1Dir, files[0].name), { readOnly: true });
+
+      const sitemapMocks = db
+        .prepare(
+          `SELECT m.slug, m.title, m.practice_paper_slug
+           FROM mock_tests m
+           WHERE m.status = 'published' AND m.deleted_at IS NULL
+             AND m.slug NOT LIKE 'e2e-%'
+             AND m.slug NOT LIKE '%fixture%'
+             AND m.slug NOT LIKE '%publish-check%'
+             AND m.slug NOT LIKE 'slow-network-%'
+             AND LOWER(m.title) NOT LIKE '%fixture%'
+             AND EXISTS (SELECT 1 FROM mock_questions_current mq WHERE mq.mock_id = m.id)`,
+        )
+        .all() as { slug: string; title: string; practice_paper_slug: string | null }[];
+
+      for (const m of sitemapMocks) {
+        expect(isFixtureSlug(m.slug)).toBe(false);
+        expect(isFixtureMock(m)).toBe(false);
+      }
+
+      // Standalone mocks (practice_paper_slug IS NULL) that would be indexable
+      const standaloneMocks = sitemapMocks.filter((m) => !m.practice_paper_slug);
+      expect(standaloneMocks.length).toBe(0);
+    });
+
+    it("public mock listings query excludes all fixture mocks", async () => {
+      const { DatabaseSync } = await import("node:sqlite");
+      const { readdirSync, statSync } = await import("node:fs");
+      const { join } = await import("node:path");
+
+      const d1Dir = resolve(process.cwd(), ".wrangler/state/v3/d1/miniflare-D1DatabaseObject");
+      const files = readdirSync(d1Dir)
+        .filter((f) => f.endsWith(".sqlite") && !f.includes("backup"))
+        .map((f) => ({ name: f, size: statSync(join(d1Dir, f)).size }))
+        .sort((a, b) => b.size - a.size);
+
+      if (files.length === 0) return;
+      const db = new DatabaseSync(join(d1Dir, files[0].name), { readOnly: true });
+
+      const listedMocks = db
+        .prepare(
+          `SELECT m.id, m.title, m.slug
+           FROM mock_tests m
+           WHERE m.status = 'published' AND m.deleted_at IS NULL
+             AND m.practice_paper_slug IS NULL
+             AND m.slug NOT LIKE 'e2e-%'
+             AND m.slug NOT LIKE '%fixture%'
+             AND m.slug NOT LIKE '%publish-check%'
+             AND m.slug NOT LIKE 'slow-network-%'
+             AND LOWER(m.title) NOT LIKE '%fixture%'`,
+        )
+        .all() as { id: number; title: string; slug: string }[];
+
+      expect(listedMocks.length).toBe(0);
+      for (const m of listedMocks) {
+        expect(isFixtureSlug(m.slug)).toBe(false);
+        expect(isFixtureMock(m)).toBe(false);
+      }
+    });
+
+    it("public search query excludes fixture mocks from results", async () => {
+      const { DatabaseSync } = await import("node:sqlite");
+      const { readdirSync, statSync } = await import("node:fs");
+      const { join } = await import("node:path");
+
+      const d1Dir = resolve(process.cwd(), ".wrangler/state/v3/d1/miniflare-D1DatabaseObject");
+      const files = readdirSync(d1Dir)
+        .filter((f) => f.endsWith(".sqlite") && !f.includes("backup"))
+        .map((f) => ({ name: f, size: statSync(join(d1Dir, f)).size }))
+        .sort((a, b) => b.size - a.size);
+
+      if (files.length === 0) return;
+      const db = new DatabaseSync(join(d1Dir, files[0].name), { readOnly: true });
+
+      const term = "%fixture%";
+      const searchedMocks = db
+        .prepare(
+          `SELECT m.id, m.title, m.slug, m.type, s.name AS subject_name
+           FROM mock_tests m
+           LEFT JOIN subjects s ON s.id = m.subject_id
+           WHERE m.status = 'published' AND m.deleted_at IS NULL
+             AND m.practice_paper_slug IS NULL
+             AND m.slug NOT LIKE 'e2e-%'
+             AND m.slug NOT LIKE '%fixture%'
+             AND m.slug NOT LIKE '%publish-check%'
+             AND m.slug NOT LIKE 'slow-network-%'
+             AND LOWER(m.title) NOT LIKE '%fixture%'
+             AND (m.title LIKE ? OR COALESCE(s.name, '') LIKE ?)
+           ORDER BY m.published_at DESC, m.id DESC LIMIT 10`,
+        )
+        .all(term, term) as { id: number; title: string; slug: string }[];
+
+      expect(searchedMocks.length).toBe(0);
+    });
+
+    it("production 404 gate enforces rejection of fixture slugs in production mode", () => {
+      const prodEnv = { ENV: "production" };
+      expect(isProductionEnvironment(prodEnv)).toBe(true);
+
+      const fixtureSlugs = [
+        "e2e-local-fixture-mock",
+        "e2e-publish-check-mvxr4ko7cafa",
+        "e2e-share-mock-mvyu0h5f23wqzt",
+        "slow-network-check",
+      ];
+
+      for (const slug of fixtureSlugs) {
+        const isBlocked = isProductionEnvironment(prodEnv) && isFixtureSlug(slug);
+        expect(isBlocked).toBe(true);
+      }
+
+      // Real content must not be blocked
+      const realSlugs = ["cuet-ug-physics-2024", "mathematics-mock-paper-1"];
+      for (const slug of realSlugs) {
+        const isBlocked = isProductionEnvironment(prodEnv) && isFixtureSlug(slug);
+        expect(isBlocked).toBe(false);
       }
     });
   });

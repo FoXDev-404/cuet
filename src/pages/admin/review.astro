@@ -87,15 +87,15 @@ const queueQuestions = await all<{
 ---
 
 <AdminLayout title="Explanation Editorial Review Queue" active="review">
-  <div class="flex flex-wrap items-end justify-between gap-3">
-    <div>
-      <h1 class="text-2xl font-black tracking-tight">Explanation Editorial Review Queue</h1>
+  <div class="flex flex-wrap items-end justify-between gap-3 min-w-0 max-w-full">
+    <div class="min-w-0 max-w-full">
+      <h1 class="text-2xl font-black tracking-tight break-words" id="queue-heading">Previous-year review queue — Papers needing review</h1>
       <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
         Transparent editorial management of question explanations. Questions with AI-generated or unverified explanations remain explicitly labelled as <strong>Unreviewed</strong> until approved by an editor. Unkeyed questions cannot be marked reviewed.
       </p>
     </div>
     <div class="flex flex-wrap gap-2">
-      <a class="rounded-lg bg-emerald-600 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-700" href="/api/admin/review/sample.csv" download>
+      <a class="rounded-lg bg-emerald-800 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-900" href="/api/admin/review/sample.csv" download>
         Download 100-Question Sample (CSV)
       </a>
       <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/practice" target="_blank" rel="noopener">
@@ -104,29 +104,35 @@ const queueQuestions = await all<{
     </div>
   </div>
 
+  {Astro.url.searchParams.get("paper") ? (
+    <div class="mt-6 rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 id="detail-heading" class="text-xl font-bold">Paper Detail Review: {Astro.url.searchParams.get("paper")}</h2>
+    </div>
+  ) : null}
+
   <!-- Honest Explanation Metrics Dashboard -->
-  <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-5">
-    <div class="rounded-2xl border border-amber-300 bg-amber-50/50 p-4 shadow-sm dark:border-amber-800 dark:bg-amber-950/20">
+  <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-5 min-w-0 max-w-full">
+    <div class="min-w-0 rounded-2xl border border-amber-300 bg-amber-50/50 p-4 shadow-sm dark:border-amber-800 dark:bg-amber-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">Unreviewed AI Drafts</p>
       <p class="mt-2 text-3xl font-black text-amber-900 dark:text-amber-100">{unreviewedAiCount}</p>
       <p class="mt-1 text-xs text-amber-700 dark:text-amber-300">Labelled unreviewed in UI</p>
     </div>
-    <div class="rounded-2xl border border-neutral-300 bg-neutral-50 p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-      <p class="text-xs font-bold uppercase tracking-wider text-neutral-500">Placeholder Banners</p>
+    <div class="min-w-0 rounded-2xl border border-neutral-300 bg-neutral-50 p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+      <p class="text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Placeholder Banners</p>
       <p class="mt-2 text-3xl font-black">{bannerCount}</p>
-      <p class="mt-1 text-xs text-neutral-400">Review pending notices</p>
+      <p class="mt-1 text-xs text-neutral-600 dark:text-neutral-300">Review pending notices</p>
     </div>
-    <div class="rounded-2xl border border-emerald-300 bg-emerald-50/50 p-4 shadow-sm dark:border-emerald-800 dark:bg-emerald-950/20">
+    <div class="min-w-0 rounded-2xl border border-emerald-300 bg-emerald-50/50 p-4 shadow-sm dark:border-emerald-800 dark:bg-emerald-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Human Reviewed</p>
       <p class="mt-2 text-3xl font-black text-emerald-900 dark:text-emerald-100">{humanReviewedCount}</p>
       <p class="mt-1 text-xs text-emerald-700 dark:text-emerald-300">Signed-off explanations</p>
     </div>
-    <div class="rounded-2xl border border-rose-300 bg-rose-50/50 p-4 shadow-sm dark:border-rose-800 dark:bg-rose-950/20">
+    <div class="min-w-0 rounded-2xl border border-rose-300 bg-rose-50/50 p-4 shadow-sm dark:border-rose-800 dark:bg-rose-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300">Flagged For Revision</p>
       <p class="mt-2 text-3xl font-black text-rose-900 dark:text-rose-100">{flaggedCount}</p>
       <p class="mt-1 text-xs text-rose-700 dark:text-rose-300">Reported or disputed</p>
     </div>
-    <div class="rounded-2xl border border-indigo-300 bg-indigo-50/50 p-4 shadow-sm dark:border-indigo-800 dark:bg-indigo-950/20">
+    <div class="min-w-0 rounded-2xl border border-indigo-300 bg-indigo-50/50 p-4 shadow-sm dark:border-indigo-800 dark:bg-indigo-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">Unkeyed Rows</p>
       <p class="mt-2 text-3xl font-black text-indigo-900 dark:text-indigo-100">{unkeyedCount}</p>
       <p class="mt-1 text-xs text-indigo-700 dark:text-indigo-300">Isolated from scoring</p>
@@ -134,7 +140,7 @@ const queueQuestions = await all<{
   </div>
 
   <!-- Filters -->
-  <div class="mt-6 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+  <div class="mt-6 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900 min-w-0 max-w-full">
     <form method="get" class="flex flex-wrap items-center gap-4 text-xs font-semibold">
       <label>
         Status:
@@ -163,17 +169,17 @@ const queueQuestions = await all<{
           <option value="unkeyed" selected={filterKeyed === "unkeyed"}>Unkeyed Questions Only</option>
         </select>
       </label>
-      <span class="ml-auto text-neutral-400 font-normal">Showing first 50 items</span>
+      <span class="ml-auto text-neutral-600 dark:text-neutral-400 font-normal">Showing first 50 items</span>
     </form>
   </div>
 
   <!-- Queue List -->
-  <div class="mt-6 space-y-4">
+  <div class="mt-6 space-y-4 min-w-0 max-w-full">
     {queueQuestions.map((q) => (
-      <article class="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900" data-id={q.id}>
+      <article class="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 min-w-0 max-w-full overflow-hidden break-words" data-id={q.id}>
         <div class="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-100 pb-3 text-xs dark:border-neutral-800">
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-neutral-500">ID #{q.id}</span>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-bold text-neutral-600 dark:text-neutral-300">ID #{q.id}</span>
             <span class="rounded bg-neutral-100 px-2 py-0.5 font-semibold text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
               {q.paper_title} (Q{q.source_question_no ?? q.id})
             </span>
@@ -184,7 +190,7 @@ const queueQuestions = await all<{
               Status: {q.explanation_status}
             </span>
           </div>
-          <div class="text-neutral-400">
+          <div class="text-neutral-600 dark:text-neutral-300">
             {q.correct_option !== null ? (
               <span class="text-emerald-700 font-bold dark:text-emerald-400">Keyed: Option {q.correct_option + 1}</span>
             ) : (
@@ -194,22 +200,22 @@ const queueQuestions = await all<{
         </div>
 
         <div class="mt-3 text-sm font-medium">
-          <p class="text-xs uppercase tracking-wider text-neutral-400">Question Stem</p>
-          <div class="mt-1 leading-6">{q.stem}</div>
+          <p class="text-xs uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Question Stem</p>
+          <div class="mt-1 leading-6 break-words overflow-hidden">{q.stem}</div>
         </div>
 
-        <div class="mt-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-xs dark:border-neutral-800 dark:bg-neutral-950">
-          <p class="font-bold text-neutral-500 uppercase tracking-wider">Current Explanation</p>
-          <p class="mt-1 text-neutral-700 dark:text-neutral-300 leading-5">{q.explanation || "No explanation entered."}</p>
+        <div class="mt-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-xs dark:border-neutral-800 dark:bg-neutral-950 min-w-0 max-w-full overflow-hidden">
+          <p class="font-bold text-neutral-600 dark:text-neutral-300 uppercase tracking-wider">Current Explanation</p>
+          <p class="mt-1 text-neutral-700 dark:text-neutral-300 leading-5 break-words overflow-hidden">{q.explanation || "No explanation entered."}</p>
         </div>
 
         <div class="mt-4 flex flex-wrap items-center justify-between gap-3 pt-2">
-          <div class="text-xs text-neutral-400">
+          <div class="text-xs text-neutral-600 dark:text-neutral-400">
             {q.reviewed_by ? `Last reviewed by ${q.reviewed_by} on ${q.reviewed_at?.slice(0, 10)}` : "Not yet reviewed"}
           </div>
           <div class="flex items-center gap-2">
             <button
-              class="btn-approve rounded bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-700 disabled:opacity-40"
+              class="btn-approve rounded bg-emerald-800 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-900 disabled:opacity-40"
               data-id={q.id}
               disabled={q.correct_option === null}
               title={q.correct_option === null ? "Cannot approve explanation for an unkeyed question" : "Approve as reviewed"}

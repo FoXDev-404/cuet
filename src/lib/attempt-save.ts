@@ -77,11 +77,11 @@ export async function saveAttemptAnswers(
           (attempt_id, question_id, selected, time_spent_sec, marked_for_review, client_seq, updated_at)
          VALUES (?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT(attempt_id, question_id) DO UPDATE SET
-           selected = CASE WHEN excluded.client_seq >= attempt_answers.client_seq THEN excluded.selected ELSE attempt_answers.selected END,
-           time_spent_sec = CASE WHEN excluded.client_seq >= attempt_answers.client_seq THEN excluded.time_spent_sec ELSE attempt_answers.time_spent_sec END,
-           marked_for_review = CASE WHEN excluded.client_seq >= attempt_answers.client_seq THEN excluded.marked_for_review ELSE attempt_answers.marked_for_review END,
-           client_seq = CASE WHEN excluded.client_seq >= attempt_answers.client_seq THEN excluded.client_seq ELSE attempt_answers.client_seq END,
-           updated_at = CASE WHEN excluded.client_seq >= attempt_answers.client_seq THEN excluded.updated_at ELSE attempt_answers.updated_at END`,
+           selected = CASE WHEN excluded.client_seq >= COALESCE(attempt_answers.client_seq, 0) THEN excluded.selected ELSE attempt_answers.selected END,
+           time_spent_sec = CASE WHEN excluded.client_seq >= COALESCE(attempt_answers.client_seq, 0) THEN excluded.time_spent_sec ELSE attempt_answers.time_spent_sec END,
+           marked_for_review = CASE WHEN excluded.client_seq >= COALESCE(attempt_answers.client_seq, 0) THEN excluded.marked_for_review ELSE attempt_answers.marked_for_review END,
+           client_seq = CASE WHEN excluded.client_seq >= COALESCE(attempt_answers.client_seq, 0) THEN excluded.client_seq ELSE attempt_answers.client_seq END,
+           updated_at = CASE WHEN excluded.client_seq >= COALESCE(attempt_answers.client_seq, 0) THEN excluded.updated_at ELSE attempt_answers.updated_at END`,
       )
       .bind(
         attemptId,

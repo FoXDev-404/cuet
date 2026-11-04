@@ -116,7 +116,7 @@ const structuredData = breadcrumbJsonLd(site, [
 <BaseLayout
   title={`${mock.title} Leaderboard — CUET Free Mock Test`}
   description={`First-attempt leaderboard for ${mock.title}. See top scores, accuracy and time among CUET UG mock test students.`}
-  noindex={eligible === 0}
+  noindex={eligible === 0 || isFixtureSlug(mock.slug) || isFixtureMock(mock)}
   structuredData={structuredData}
 >
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">

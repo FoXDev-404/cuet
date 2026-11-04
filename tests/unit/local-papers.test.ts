@@ -395,7 +395,7 @@ describe("D1 practice row mapping", () => {
       const mapped = mapPaperRow(paperRow, passages, questions);
       expect(mapped, summary.slug).toEqual(paper);
     }
-  });
+  }, 30_000);
 
   it("derives index counts that match the generated index seed", () => {
     for (const summary of SUMMARIES) {

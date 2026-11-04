@@ -69,6 +69,11 @@ const outputPath = outputArgIdx !== -1 && args[outputArgIdx + 1]
   ? resolve(process.cwd(), args[outputArgIdx + 1])
   : resolve(process.cwd(), 'content-export.sql');
 
+const limitArgIdx = args.indexOf('--limit');
+const rowLimit = limitArgIdx !== -1 && Number(args[limitArgIdx + 1]) > 0
+  ? Number(args[limitArgIdx + 1])
+  : null;
+
 console.log(`📦 Exporting content-only tables from ${sqliteFile}...`);
 console.log(`   Destination: ${outputPath}`);
 
@@ -111,7 +116,10 @@ for (const table of CONTENT_TABLES) {
     continue;
   }
 
-  const query = TABLE_CUSTOM_QUERIES[table] || `SELECT * FROM ${table}`;
+  let query = TABLE_CUSTOM_QUERIES[table] || `SELECT * FROM ${table}`;
+  if (rowLimit) {
+    query += ` LIMIT ${rowLimit}`;
+  }
   const rows = db.prepare(query).all();
   counts[table] = rows.length;
   totalExportedRows += rows.length;

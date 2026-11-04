@@ -70,6 +70,7 @@ async function fetchPage(urlPath) {
   try {
     const res = await fetch(fullUrl, {
       redirect: "manual",
+      signal: AbortSignal.timeout(5000),
       headers: { "user-agent": "CUET-SEO-Consistency-Crawler/1.0" },
     });
     const status = res.status;
@@ -282,9 +283,10 @@ async function main() {
 
     // Seed crawl with worker pool
     const queue = Array.from(discoveredUrls);
+    const enqueued = new Set(discoveredUrls);
     const audited = new Map();
     const visited = new Set();
-    const CONCURRENCY = 6;
+    const CONCURRENCY = 4;
 
     async function worker() {
       while (queue.length > 0) {
@@ -310,7 +312,8 @@ async function main() {
           if (!isPrivate) {
             const links = extractInternalLinks(res.html);
             for (const link of links) {
-              if (!visited.has(link) && !queue.includes(link)) {
+              if (!enqueued.has(link)) {
+                enqueued.add(link);
                 if (!PRIVATE_PREFIXES.some((p) => link.startsWith(p))) {
                   queue.push(link);
                 }

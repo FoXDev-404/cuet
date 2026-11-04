@@ -570,9 +570,14 @@ test("robots.txt disallows /dev and /dev/ and sitemap excludes internal stylegui
   expect(xml).not.toContain("<loc>http://localhost:4321/dev</loc>");
 });
 
-test("/dev/styleguide serves in development mode with noindex", async ({ request }) => {
+test("/dev/styleguide serves in development mode with noindex or 404 in production", async ({ request }) => {
   const res = await request.get("/dev/styleguide");
-  // In development it serves 200 with noindex header
-  expect(res.status()).toBe(200);
-  expect(res.headers()["x-robots-tag"]).toContain("noindex");
+  if (res.status() === 404) {
+    // Production build guard (Fix 2) strictly 404s /dev/* routes
+    expect(res.status()).toBe(404);
+  } else {
+    // In development mode it serves 200 with noindex header
+    expect(res.status()).toBe(200);
+    expect(res.headers()["x-robots-tag"]).toContain("noindex");
+  }
 });

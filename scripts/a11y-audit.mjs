@@ -20,14 +20,16 @@
  */
 import { chromium } from "@playwright/test";
 import { createRequire } from "node:module";
+import { writeFileSync, mkdirSync } from "node:fs";
+import { execSync } from "node:child_process";
 
 const require = createRequire(import.meta.url);
 const axePath = require.resolve("axe-core/axe.min.js");
 
 const baseURL =
   process.env.A11Y_BASE_URL ?? process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:4321";
-const adminEmail = process.env.A11Y_ADMIN_EMAIL;
-const adminPassword = process.env.A11Y_ADMIN_PASSWORD;
+const adminEmail = process.env.A11Y_ADMIN_EMAIL ?? "admin@cuetfreemocktest.com";
+const adminPassword = process.env.A11Y_ADMIN_PASSWORD ?? "AdminPass123!";
 const storageState = process.env.A11Y_STORAGE_STATE;
 const skipAttempt = /^(1|true|yes)$/i.test(process.env.A11Y_SKIP_ATTEMPT ?? "");
 
@@ -97,11 +99,12 @@ const AUTHENTICATED_PATH_TEMPLATES = [
 
 const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22a", "wcag22aa"];
 const VIEWPORTS = [
-  { name: "desktop", width: 1440, height: 900 },
-  { name: "mobile", width: 390, height: 844 },
+  { name: "desktop", width: 1280, height: 800 },
+  { name: "mobile", width: 375, height: 667 },
 ];
 
 const failures = [];
+const allScans = [];
 let scans = 0;
 
 async function runAxe(page) {
@@ -185,6 +188,16 @@ async function auditPath(page, label, path, viewport, waitFor, prepare) {
 
     const result = await runAxe(page);
     scans += 1;
+    allScans.push({
+      label,
+      path,
+      viewport: viewport.name,
+      width: viewport.width,
+      theme,
+      violations: result.violations,
+      overflow: result.overflow,
+      passed: result.violations.length === 0 && result.overflow === 0,
+    });
     if (result.overflow) {
       failures.push({
         label,
@@ -226,15 +239,21 @@ async function findMockId(page, slug) {
 
 async function findSharedQuestionPath(page) {
   const response = await page.request.get(`${baseURL}/sitemap.xml`);
-  if (!response.ok()) return null;
-  const xml = await response.text();
-  const loc = xml.match(/<loc>([^<]*\/q\/[^<]+)<\/loc>/)?.[1];
-  if (!loc) return null;
-  try {
-    return new URL(loc).pathname;
-  } catch {
-    return null;
+  if (response.ok()) {
+    const xml = await response.text();
+    const loc = xml.match(/<loc>([^<]*\/q\/[^<]+)<\/loc>/)?.[1];
+    if (loc) {
+      try {
+        return new URL(loc).pathname;
+      } catch {}
+    }
   }
+  // If sitemap has no question due to rights quarantine, verify fallback public id
+  const fallbackRes = await page.request.get(`${baseURL}/q/uPJRyUwJ3s`);
+  if (fallbackRes.ok() || fallbackRes.status() === 301) {
+    return "/q/uPJRyUwJ3s";
+  }
+  return null;
 }
 
 async function findAdminIds(page) {
@@ -449,6 +468,30 @@ try {
 }
 
 console.log(`\n${scans} axe scans completed.`);
+
+let commitHash = "unknown";
+try {
+  commitHash = execSync("git rev-parse --short HEAD", { encoding: "utf8" }).trim();
+} catch {}
+
+const a11ySummary = {
+  timestamp: new Date().toISOString(),
+  commitHash,
+  axeVersion: "4.14.0",
+  totalScans: scans,
+  passedScans: scans - failures.length,
+  failedScans: failures.length,
+  failures,
+  scans: allScans,
+};
+
+try {
+  mkdirSync("docs/report", { recursive: true });
+  writeFileSync("docs/report/a11y-results.json", JSON.stringify(a11ySummary, null, 2), "utf8");
+  console.log(`Saved machine-readable axe report to docs/report/a11y-results.json`);
+} catch (err) {
+  console.error("Failed to write a11y-results.json:", err.message);
+}
 
 if (failures.length > 0) {
   console.error(`\n${failures.length} issue(s) found:`);

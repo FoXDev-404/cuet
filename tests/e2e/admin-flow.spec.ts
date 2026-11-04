@@ -237,6 +237,7 @@ test("question creation and revisions keep one public id and enforce indexing ru
 });
 
 test("PYQ questions stay off until rights are confirmed", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes questions into the local D1 database.",

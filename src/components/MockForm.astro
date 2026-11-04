@@ -66,15 +66,15 @@ const status = mock?.status ?? "draft";
   }
   .field:focus { border-color: var(--focus); box-shadow: 0 0 0 3px var(--focus-ring); }
   .label { display: block; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.35rem; }
-  .card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); padding: 1.25rem; }
+  .card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); padding: 1.25rem; min-width: 0; max-width: 100%; box-sizing: border-box; }
 </style>
 
 <div id="mock-lock" data-locked={locked ? "true" : "false"} class={locked ? "mb-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200" : "hidden"}>
   This version is published and frozen. Create a new version to make corrections; existing attempts keep their original paper and scores.
 </div>
 
-<form id="mock-form" data-id={mock?.id ?? ""} data-version-id={mock?.version_id ?? ""} class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]" novalidate>
-  <div class="space-y-6">
+<form id="mock-form" data-id={mock?.id ?? ""} data-version-id={mock?.version_id ?? ""} class="grid w-full min-w-0 max-w-full gap-6 lg:grid-cols-[minmax(0,1fr)_380px]" novalidate>
+  <div class="min-w-0 max-w-full space-y-6">
     <p id="mock-error" class="hidden rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/50 dark:text-red-200"></p>
 
     <section class="card space-y-4">
@@ -154,14 +154,14 @@ const status = mock?.status ?? "draft";
         <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">One section per line or comma-separated. Sections render in this order; unknown sections follow afterwards.</span>
       </label>
       <input class="field mt-4" id="question-filter" type="search" placeholder="Filter by text or subject…" />
-      <div class="mt-4 max-h-[32rem] space-y-2 overflow-y-auto pr-1" tabindex="0" role="region" aria-label="Question list">
+      <div class="mt-4 max-h-[32rem] min-w-0 max-w-full space-y-2 overflow-y-auto pr-1" tabindex="0" role="region" aria-label="Question list">
         {questions.map((question) => {
           const isSelected = Object.prototype.hasOwnProperty.call(selected, question.id);
           return (
-            <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50 dark:border-neutral-800 dark:hover:bg-neutral-950" data-question-row data-search={`${question.text} ${question.subject_name}`.toLowerCase()}>
-              <input class="mt-1" type="checkbox" data-question-checkbox value={question.id} data-subject={question.subject_name} checked={isSelected} disabled={locked} />
-              <span class="min-w-0 flex-1">
-                <span class="block text-sm font-medium"><span class="line-clamp-2" set:html={renderRichText(question.text)}></span></span>
+            <label class="flex max-w-full min-w-0 cursor-pointer items-start gap-3 overflow-hidden rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50 dark:border-neutral-800 dark:hover:bg-neutral-950" data-question-row data-search={`${question.text} ${question.subject_name}`.toLowerCase()}>
+              <input class="mt-1 shrink-0" type="checkbox" data-question-checkbox value={question.id} data-subject={question.subject_name} checked={isSelected} disabled={locked} />
+              <span class="min-w-0 flex-1 overflow-hidden">
+                <span class="block text-sm font-medium"><span class="line-clamp-2 break-words" set:html={renderRichText(question.text)}></span></span>
                 <span class="mt-1 flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
                   <span>{question.subject_name}</span>
                   <span>·</span>
@@ -191,7 +191,7 @@ const status = mock?.status ?? "draft";
     </section>
   </div>
 
-  <aside class="space-y-4 lg:sticky lg:top-24 lg:self-start">
+  <aside class="min-w-0 max-w-full space-y-4 lg:sticky lg:top-24 lg:self-start">
     <section class="card space-y-3">
       <button id="save-mock" type="submit" disabled={locked} class="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-50">
         {mock ? "Save mock" : "Create mock"}
