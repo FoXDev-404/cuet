@@ -1,1663 +1,1663 @@
 {
- "exam": {
-  "id": "local-physics-2023-06-09-shift-3",
-  "slug": "physics-2023-06-09-shift-3",
-  "title": "CUET UG Physics 9 June 2023 Shift 3 Previous Year Paper",
-  "subject": "Physics",
-  "subjectId": "local-physics",
-  "subjectCode": "PHY",
-  "year": 2023,
-  "examDate": "2023-06-09",
-  "shift": "Shift 3",
-  "sourceFile": "Physics_2023-06-09_Shift_3.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 48,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "In an LCR circuit, which of the following expression has the dimension of frequency:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\sqrt{\\frac{L}{C}}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{C}{R}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{1}{\\sqrt{RC}}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{1}{\\sqrt{LC}}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Match List - I with List - II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q02-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2023-06-09-shift-3/q02-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 2"
-     }
+  "exam": {
+    "id": "local-physics-2023-06-09-shift-3",
+    "slug": "physics-2023-06-09-shift-3",
+    "title": "CUET UG Physics 9 June 2023 Shift 3 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2023,
+    "examDate": "2023-06-09",
+    "shift": "Shift 3",
+    "sourceFile": "Physics_2023-06-09_Shift_3.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 48,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "In an LCR circuit, which of the following expression has the dimension of frequency:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\sqrt{\\frac{L}{C}}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{C}{R}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{1}{\\sqrt{RC}}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{1}{\\sqrt{LC}}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Match List - I with List - II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2023-06-09-shift-3/q02-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "What is the force between two small charged spheres having charges of $ 4 \\times 10^{-7} $C and $ 6 \\times 10^{-7} $C placed 60 cm apart in air?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3 \\times 10^{-3} N $"
+          },
+          {
+            "id": "B",
+            "text": "$ 4 \\times 10^{-3} N $"
+          },
+          {
+            "id": "C",
+            "text": "$ 6 \\times 10^{-3} N $"
+          },
+          {
+            "id": "D",
+            "text": "$ 9 \\times 10^{-3} N $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of the following scientists has not contributed significantly to photoelectric effect?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Wilhelm Hallwacks"
+          },
+          {
+            "id": "B",
+            "text": "Philipp Lenard"
+          },
+          {
+            "id": "C",
+            "text": "Albert Einstein"
+          },
+          {
+            "id": "D",
+            "text": "C.J. Davission"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Two spheres of silver of same radii, one solid and the other hollow are charged to the same potential, then:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "solid sphere will have more charge"
+          },
+          {
+            "id": "B",
+            "text": "hollow sphere will have more charge"
+          },
+          {
+            "id": "C",
+            "text": "both spheres will have same charge"
+          },
+          {
+            "id": "D",
+            "text": "solid sphere will have charge inside as well as on the surface"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The resistivity of a potentiometer wire is $ 10^{-7} $ Ωm and its cross-section area is $ 10^{-6} $ m². When a current of 0.1 A follows through the wire, its potential gradient is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 10^{-1} $ V/m"
+          },
+          {
+            "id": "B",
+            "text": "$ 10^{-2} $ V/m"
+          },
+          {
+            "id": "C",
+            "text": "$ 10^{-4} $ V/m"
+          },
+          {
+            "id": "D",
+            "text": "10 V/m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "The two coherent monochromatic light beams of intensities I and 4I are superposed. The maximum and minimum possible intensities in the resulting beams are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5 I and I"
+          },
+          {
+            "id": "B",
+            "text": "9 I and I"
+          },
+          {
+            "id": "C",
+            "text": "5 I and 3 I"
+          },
+          {
+            "id": "D",
+            "text": "9 I and 3 I (d) 9 l and 3 l"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "The shortest wavelength present in the Lyman series of spectral lines is:\n\n(Given Rydberg constant $ R = 1.097 \\times 10^{7} $ m $ ^{-1} $)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 9.1 \\times 10^{-8} $ m"
+          },
+          {
+            "id": "B",
+            "text": "$ 1.2 \\times 10^{-7} $ m"
+          },
+          {
+            "id": "C",
+            "text": "$ 8.2 \\times 10^{7} $ m"
+          },
+          {
+            "id": "D",
+            "text": "$ 9.1 \\times 10^{8} $ m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Sodium has a work function of 2 eV. Calculate the maximum energy and speed of the emitted electrons, when sodium is illuminated by radiation of wavelength 150 nm:\n\n(a) $ 7.5 \\times 10^{-19} $ J and $ 3.2 \\times 10^{3} $ m/s\n\n(b) $ 13.2 \\times 10^{-19} $ J and $ 1.5 \\times 10^{6} $ m/s\n\n(c) $ 7 \\times 10^{-15} $ J and $ 1.2 \\times 10^{4} $ m/s\n\n(d) $ 3.5 \\times 10^{-19} $ J and $ 2.4 \\times 10^{6} $ m/s\n\n\nThe metre bridge wire is made of alloys such as nichrome because they have:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "high temperature coefficient of resistance and high resistivity"
+          },
+          {
+            "id": "B",
+            "text": "low temperature coefficient of resistance and low resistivity"
+          },
+          {
+            "id": "C",
+            "text": "low temperature coefficient of resistance and high resistivity"
+          },
+          {
+            "id": "D",
+            "text": "high temperature coefficient of resistance and low resistivity"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "Match List - I with List - II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q11-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2023-06-09-shift-3/q11-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 11"
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "What will be the minimum length of antenna required to transmit a radio signal of frequency 10 MHz?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "30 m"
+          },
+          {
+            "id": "B",
+            "text": "15 m"
+          },
+          {
+            "id": "C",
+            "text": "7.5 m"
+          },
+          {
+            "id": "D",
+            "text": "60 m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "The current flow in the circuit of two battery with internal resistance and two external resistance as shown in figure will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1.5 A"
+          },
+          {
+            "id": "B",
+            "text": "0.67 A"
+          },
+          {
+            "id": "C",
+            "text": "0.9 A"
+          },
+          {
+            "id": "D",
+            "text": "1.0 A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q13-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-06-09-shift-3/q13-figure-1.jpg",
+            "page": 2,
+            "alt": "Figure for question 13"
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "A very long solenoid has 800 turns per unit length. A current of 1.6 A flows through it. Then the magnetic induction in the middle of the solenoid on its axis is approximately:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 16 \\times 10^{-4} $ T"
+          },
+          {
+            "id": "B",
+            "text": "$ 8 \\times 10^{-4} $ T"
+          },
+          {
+            "id": "C",
+            "text": "$ 32 \\times 10^{-4} $ T"
+          },
+          {
+            "id": "D",
+            "text": "$ 4 \\times 10^{-4} $ T"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "The critical angle of a medium for a specific wavelength, if the medium has relative permittivity 3 and relative permeability $ \\frac{4}{3} $ for this wavelength, will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 15^{\\circ} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 30^{\\circ} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 45^{\\circ} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 60^{\\circ} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "An insulating rod of length L carries charge q distributed uniformly on it. The rod is pivoted at one end and is rotated at a frequency f about a fixed perpendicular axis. Then the magnetic dipole moment of the system is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\pi qfL^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{3}\\pi qfL^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "qfL"
+          },
+          {
+            "id": "D",
+            "text": "qfL^{2}"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "The wave length of Red light in the visible region is about 760 nm the energy of photon in that case will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2.43 eV"
+          },
+          {
+            "id": "B",
+            "text": "3.18 eV"
+          },
+          {
+            "id": "C",
+            "text": "1.64 eV"
+          },
+          {
+            "id": "D",
+            "text": "2.68 eV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "A network of three capacitors each 9 µF connected in series and the fourth capacitor of 6 µF is supplied 400 V as shown in figure. The ratio of charge on the capacitor $ C_1 $ to the capacitor $ C_4 $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1:3"
+          },
+          {
+            "id": "B",
+            "text": "1:4"
+          },
+          {
+            "id": "C",
+            "text": "4:1"
+          },
+          {
+            "id": "D",
+            "text": "1:2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "After how many half-lives a radioactive substance will decay to 6.25% of its original value:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "One half life"
+          },
+          {
+            "id": "B",
+            "text": "Two half lives"
+          },
+          {
+            "id": "C",
+            "text": "Three half lives"
+          },
+          {
+            "id": "D",
+            "text": "Four half lives"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "A 20-watt, 50 V lamp is to be connected to AC mains of 250 V, 50 Hz. Calculate the value of series capacitor to run the lamp.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1.4 µF"
+          },
+          {
+            "id": "B",
+            "text": "2.1 µF"
+          },
+          {
+            "id": "C",
+            "text": "3.5 µF"
+          },
+          {
+            "id": "D",
+            "text": "4.9 µF"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "Charge on a conducting metal sphere is present:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "on the surface of the sphere"
+          },
+          {
+            "id": "B",
+            "text": "inside the sphere"
+          },
+          {
+            "id": "C",
+            "text": "outside the sphere"
+          },
+          {
+            "id": "D",
+            "text": "both inside and outside the sphere"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "An a.c. source of 200 V is connected through a diode 'D' to a capacitor as shown in figure. Find the maximum potential difference across the capacitor:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "100 V"
+          },
+          {
+            "id": "B",
+            "text": "200 V"
+          },
+          {
+            "id": "C",
+            "text": "283 V"
+          },
+          {
+            "id": "D",
+            "text": "310 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q22-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-06-09-shift-3/q22-figure-1.jpg",
+            "page": 2,
+            "alt": "Figure for question 22"
+          }
+        ]
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "The electrical conductivity of a semiconductor increases when electromagnetic radiation of wavelength shorter than 2480 nm is incident on it. The band gap for the semiconductor is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.5 eV"
+          },
+          {
+            "id": "B",
+            "text": "0.7 eV"
+          },
+          {
+            "id": "C",
+            "text": "0.9 eV"
+          },
+          {
+            "id": "D",
+            "text": "1.1 eV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "Energy gap between valence band and conduction band of a semiconductor is approximately:\n\n(a) zero\n\n(b) 4 eV\n\n(c) 1 eV\n\n(d) 10 eV",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2,
+          3
+        ],
+        "assets": [
+          {
+            "id": "q24-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2023-06-09-shift-3/q24-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 24"
+          }
+        ]
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "The given combination represents the following gate:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "OR"
+          },
+          {
+            "id": "B",
+            "text": "XOR"
+          },
+          {
+            "id": "C",
+            "text": "NAND"
+          },
+          {
+            "id": "D",
+            "text": "NOR"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q26-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-06-09-shift-3/q26-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 26"
+          }
+        ]
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Heavy water and _ is one of the substances used as moderator in reactors.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sea water"
+          },
+          {
+            "id": "B",
+            "text": "Titanium"
+          },
+          {
+            "id": "C",
+            "text": "Graphite"
+          },
+          {
+            "id": "D",
+            "text": "Cobalt"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "Diameter of the objective lens of a telescope is 250 cm. For light of wavelength 600 nm, coming from a distant object, the limit of resolution of the telescope is close to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1.5 \\times 10^{-7} $ rad"
+          },
+          {
+            "id": "B",
+            "text": "$ 2 \\times 10^{-7} $ rad"
+          },
+          {
+            "id": "C",
+            "text": "$ 3 \\times 10^{-7} $ rad"
+          },
+          {
+            "id": "D",
+            "text": "$ 4.5 \\times 10^{-7} $ rad"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "A source emits sound of frequency 600 Hz inside water. The frequency heard in air (velocity of sound in water is 1500 m/s and velocity of sound in air is 300 m/s) will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "300 Hz"
+          },
+          {
+            "id": "B",
+            "text": "600 Hz"
+          },
+          {
+            "id": "C",
+            "text": "900 Hz"
+          },
+          {
+            "id": "D",
+            "text": "1200 Hz"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "An electron enters a crossed electrical and magnetic field region with a speed of 100 m s $ ^{-1} $ along + x-axis and passes undeviated. The strength of magnetic field is 5.0 T and it acts along + z-axis. Give the electrical field in vector notations indicating its magnitude as well as direction:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (500\\ V\\ m^{-1})j $"
+          },
+          {
+            "id": "B",
+            "text": "$ -(500\\ V\\ m^{-1})\\hat{k} $"
+          },
+          {
+            "id": "C",
+            "text": "$ (100\\ V\\ m^{-1})j $"
+          },
+          {
+            "id": "D",
+            "text": "$ -(100\\ V\\ m^{-1})\\hat{k} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 31,
+        "stemEn": "An AC current is given by $ I = i_{1} \\cos \\omega t + i_{2} \\sin \\omega t $\n\nThe rms current is given by:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{\\sqrt{2}} $ ( $ i_{1} + i_{2} $)"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{\\sqrt{2}} $ ( $ i_{1} + i_{2} $)^{2}"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{\\sqrt{2}} $ ( $ i_{1}^{2} + i_{2}^{2} $)^{\\frac{1}{2}}"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{2} $ ( $ i_{1}^{2} + i_{2}^{2} $)^{\\frac{1}{2}}"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "Frequencies in the UHF range normally propagate by means of:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ground waves"
+          },
+          {
+            "id": "B",
+            "text": "Sky waves"
+          },
+          {
+            "id": "C",
+            "text": "Surface waves"
+          },
+          {
+            "id": "D",
+            "text": "Space waves"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "Which of the following is not an EM wave?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "X-rays"
+          },
+          {
+            "id": "B",
+            "text": "Gamma rays"
+          },
+          {
+            "id": "C",
+            "text": "Microwaves"
+          },
+          {
+            "id": "D",
+            "text": "Cathode rays"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 34,
+        "stemEn": "The least distance of distinct vision of a person is 50 cm. He wants to read a book placed at 25 cm. The focal length of the spectacles would be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "+25 cm"
+          },
+          {
+            "id": "B",
+            "text": "25 cm"
+          },
+          {
+            "id": "C",
+            "text": "+50 cm"
+          },
+          {
+            "id": "D",
+            "text": "50 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 35,
+        "stemEn": "The current flowing through a wire as a function of time is given as: $ I = 3t^{2} + 2t + 5 $ The charge flowing through any cross-section of the wire in first 2 s is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5 C"
+          },
+          {
+            "id": "B",
+            "text": "17 C"
+          },
+          {
+            "id": "C",
+            "text": "16 C"
+          },
+          {
+            "id": "D",
+            "text": "22 C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "When a ray of light enters a glass slab from air:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "its wavelength decreases"
+          },
+          {
+            "id": "B",
+            "text": "its wavelength increases"
+          },
+          {
+            "id": "C",
+            "text": "its frequency increases"
+          },
+          {
+            "id": "D",
+            "text": "neither its wavelength nor its frequency changes"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "Light of two different frequencies whose photons have energies 1 eV and 2.5 eV respectively, illuminate a metal of work function 0.5 eV. The ratio of the maximum KE of the emitted electrons will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1:5"
+          },
+          {
+            "id": "B",
+            "text": "1:4"
+          },
+          {
+            "id": "C",
+            "text": "1:2"
+          },
+          {
+            "id": "D",
+            "text": "1:1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 38,
+        "stemEn": "The capacities of two capacitors are $C_{1}$ and $C_{2}$ and their respective potentials are $V_{1}$ and $V_{2}$. If they are connected with a wire, then the loss of energy is given by:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{C_{1}C_{2}(V_{1}+V_{2})}{2(C_{1}+C_{2})}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{C_{1}C_{2}(V_{1}-V_{2})}{2(C_{1}+C_{2})}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{C_{1}C_{2}(V_{1}-V_{2})^{2}}{2(C_{1}+C_{2})}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{(C_{1}+C_{2})(V_{1}-V_{2})}{C_{1}C_{2}}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 39,
+        "stemEn": "We can reduce eddy currents in the core of transformer by:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "increasing the number of turns in the secondary coil"
+          },
+          {
+            "id": "B",
+            "text": "taking laminated core"
+          },
+          {
+            "id": "C",
+            "text": "making step down transformer"
+          },
+          {
+            "id": "D",
+            "text": "using a weak AC at high potential"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 40,
+        "stemEn": "A piece of copper and another of germanium are cooled from room temperature to 100 K. The resistance of:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "copper increases and germanium decreases"
+          },
+          {
+            "id": "B",
+            "text": "copper decreases and germanium increases"
+          },
+          {
+            "id": "C",
+            "text": "each of them increases"
+          },
+          {
+            "id": "D",
+            "text": "each of them decreases"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 41,
+        "stemEn": "Three charges q, -q, q placed at the vertices of an equilateral triangle as shown in figure. What is the magnitude of force on charge placed at position 3 due to the presence of other two charges?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{2\\pi\\varepsilon_{0}}\\frac{q^{2}}{l} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\sqrt{3}}{4\\pi\\varepsilon_{0}}\\frac{q^{2}}{l^{2}} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\sqrt{5}}{8\\pi\\varepsilon_{0}}\\frac{q}{\\sqrt{l}} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{4\\pi\\varepsilon_{0}}\\frac{q^{2}}{\\sqrt{l}} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q41-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-06-09-shift-3/q41-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 41"
+          }
+        ]
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "Which of the following radiations will have maximum penetration power?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "X-rays"
+          },
+          {
+            "id": "B",
+            "text": "$ \\alpha $-rays"
+          },
+          {
+            "id": "C",
+            "text": "$ \\beta $-rays"
+          },
+          {
+            "id": "D",
+            "text": "$ \\gamma $-rays"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "A hot wire voltmeter measures the voltage across the inductor, the capacitor and the resistor as 150 V, 100 V and 50 V across a series, LCR circuit. If resistance is 100 Ω, the current in the circuit is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1.5 A"
+          },
+          {
+            "id": "B",
+            "text": "1 A"
+          },
+          {
+            "id": "C",
+            "text": "0.5 A"
+          },
+          {
+            "id": "D",
+            "text": "0.7 A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "Speed of Electromagnetic wave is Not the same:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "in all media"
+          },
+          {
+            "id": "B",
+            "text": "for all intensities in vacuum"
+          },
+          {
+            "id": "C",
+            "text": "for all frequencies in vacuum"
+          },
+          {
+            "id": "D",
+            "text": "for all wavelengths in vacuum"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "What uniform magnetic field applied perpendicular to a beam of electrons moving at $ 1.3 \\times 10^6 $ m/s, is required to make the electrons travels in a circular arc of radius 0.35 m?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2.1 \\times 10^{-5} $ G"
+          },
+          {
+            "id": "B",
+            "text": "$ 6 \\times 10^{-5} $ T"
+          },
+          {
+            "id": "C",
+            "text": "$ 2.1 \\times 10^{-5} $ T"
+          },
+          {
+            "id": "D",
+            "text": "$ 6 \\times 10^{-5} $ G"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 46,
+        "stemEn": "In a double slit experiment, the distance between slits is increased 10 times whereas their distance from screen is halved, then what is the fringe width?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "it remains same"
+          },
+          {
+            "id": "B",
+            "text": "become $ \\frac{1}{10} $"
+          },
+          {
+            "id": "C",
+            "text": "become $ \\frac{1}{20} $"
+          },
+          {
+            "id": "D",
+            "text": "become $ \\frac{1}{90} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "A tiny spherical oil drop of mass 8 mg is kept suspended by applying a potential difference of 100 V between two metallic plates kept separated by a distance 1 cm. The number of electrons on the oil drop are: (Take $ g = 10 \\, \\text{ms}^{-2} $)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 5 \\times 10^{10} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 5 \\times 10^{8} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 5 \\times 10^{12} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 5 \\times 10^{13} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "A strong magnetic field is applied on a stationary electron:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "The electron moves in the direction of the field"
+          },
+          {
+            "id": "B",
+            "text": "The electron moves in an opposite direction"
+          },
+          {
+            "id": "C",
+            "text": "The electron remains stationary"
+          },
+          {
+            "id": "D",
+            "text": "The electron starts spinning"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "The focal length of the objective of a microscope if $ f_{o} $ and that of the eye piece if $ f_{e} $. The aperture of objective is $ d_{o} $ and that of eye piece is $ d_{e} $. Which of the following relation is correct?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ f_{0} > f_{e}, d_{0} > d_{e} $"
+          },
+          {
+            "id": "B",
+            "text": "$ f_{0} < f_{e}, d_{0} < d_{e} $"
+          },
+          {
+            "id": "C",
+            "text": "$ f_{0} > f_{e}, d_{0} < d_{e} $"
+          },
+          {
+            "id": "D",
+            "text": "$ f_{0} d_{e} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "Time period of oscillation of a bar magnet in a uniform magnetic field is $T_{0}$. The magnet is cut into 3 equal parts transverse to its length. The new time period of oscillation of one part will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$T_{0}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{T_{0}}{2}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{T_{0}}{3}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{T_{0}}{4}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "What is the force between two small charged spheres having charges of $ 4 \\times 10^{-7} $C and $ 6 \\times 10^{-7} $C placed 60 cm apart in air?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 3 \\times 10^{-3} N $"
-     },
-     {
-      "id": "B",
-      "text": "$ 4 \\times 10^{-3} N $"
-     },
-     {
-      "id": "C",
-      "text": "$ 6 \\times 10^{-3} N $"
-     },
-     {
-      "id": "D",
-      "text": "$ 9 \\times 10^{-3} N $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Which of the following scientists has not contributed significantly to photoelectric effect?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Wilhelm Hallwacks"
-     },
-     {
-      "id": "B",
-      "text": "Philipp Lenard"
-     },
-     {
-      "id": "C",
-      "text": "Albert Einstein"
-     },
-     {
-      "id": "D",
-      "text": "C.J. Davission"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Two spheres of silver of same radii, one solid and the other hollow are charged to the same potential, then:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "solid sphere will have more charge"
-     },
-     {
-      "id": "B",
-      "text": "hollow sphere will have more charge"
-     },
-     {
-      "id": "C",
-      "text": "both spheres will have same charge"
-     },
-     {
-      "id": "D",
-      "text": "solid sphere will have charge inside as well as on the surface"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "The resistivity of a potentiometer wire is $ 10^{-7} $ Ωm and its cross-section area is $ 10^{-6} $ m². When a current of 0.1 A follows through the wire, its potential gradient is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 10^{-1} $ V/m"
-     },
-     {
-      "id": "B",
-      "text": "$ 10^{-2} $ V/m"
-     },
-     {
-      "id": "C",
-      "text": "$ 10^{-4} $ V/m"
-     },
-     {
-      "id": "D",
-      "text": "10 V/m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "The two coherent monochromatic light beams of intensities I and 4I are superposed. The maximum and minimum possible intensities in the resulting beams are:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5 I and I"
-     },
-     {
-      "id": "B",
-      "text": "9 I and I"
-     },
-     {
-      "id": "C",
-      "text": "5 I and 3 I"
-     },
-     {
-      "id": "D",
-      "text": "9 I and 3 I (d) 9 l and 3 l"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "The shortest wavelength present in the Lyman series of spectral lines is:\n\n(Given Rydberg constant $ R = 1.097 \\times 10^{7} $ m $ ^{-1} $)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 9.1 \\times 10^{-8} $ m"
-     },
-     {
-      "id": "B",
-      "text": "$ 1.2 \\times 10^{-7} $ m"
-     },
-     {
-      "id": "C",
-      "text": "$ 8.2 \\times 10^{7} $ m"
-     },
-     {
-      "id": "D",
-      "text": "$ 9.1 \\times 10^{8} $ m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "Sodium has a work function of 2 eV. Calculate the maximum energy and speed of the emitted electrons, when sodium is illuminated by radiation of wavelength 150 nm:\n\n(a) $ 7.5 \\times 10^{-19} $ J and $ 3.2 \\times 10^{3} $ m/s\n\n(b) $ 13.2 \\times 10^{-19} $ J and $ 1.5 \\times 10^{6} $ m/s\n\n(c) $ 7 \\times 10^{-15} $ J and $ 1.2 \\times 10^{4} $ m/s\n\n(d) $ 3.5 \\times 10^{-19} $ J and $ 2.4 \\times 10^{6} $ m/s\n\n(d) $ 3.5 \\times 10^{-19} $ J and $ 2.4 \\times 10^{6} $ m/s\n\nThe metre bridge wire is made of alloys such as nichrome because they have:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "high temperature coefficient of resistance and high resistivity"
-     },
-     {
-      "id": "B",
-      "text": "low temperature coefficient of resistance and low resistivity"
-     },
-     {
-      "id": "C",
-      "text": "low temperature coefficient of resistance and high resistivity"
-     },
-     {
-      "id": "D",
-      "text": "high temperature coefficient of resistance and low resistivity"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Match List - I with List - II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q11-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2023-06-09-shift-3/q11-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 11"
-     }
-    ]
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "What will be the minimum length of antenna required to transmit a radio signal of frequency 10 MHz?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "30 m"
-     },
-     {
-      "id": "B",
-      "text": "15 m"
-     },
-     {
-      "id": "C",
-      "text": "7.5 m"
-     },
-     {
-      "id": "D",
-      "text": "60 m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "The current flow in the circuit of two battery with internal resistance and two external resistance as shown in figure will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1.5 A"
-     },
-     {
-      "id": "B",
-      "text": "0.67 A"
-     },
-     {
-      "id": "C",
-      "text": "0.9 A"
-     },
-     {
-      "id": "D",
-      "text": "1.0 A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q13-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-06-09-shift-3/q13-figure-1.jpg",
-      "page": 2,
-      "alt": "Figure for question 13"
-     }
-    ]
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "A very long solenoid has 800 turns per unit length. A current of 1.6 A flows through it. Then the magnetic induction in the middle of the solenoid on its axis is approximately:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 16 \\times 10^{-4} $ T"
-     },
-     {
-      "id": "B",
-      "text": "$ 8 \\times 10^{-4} $ T"
-     },
-     {
-      "id": "C",
-      "text": "$ 32 \\times 10^{-4} $ T"
-     },
-     {
-      "id": "D",
-      "text": "$ 4 \\times 10^{-4} $ T"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "The critical angle of a medium for a specific wavelength, if the medium has relative permittivity 3 and relative permeability $ \\frac{4}{3} $ for this wavelength, will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 15^{\\circ} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 30^{\\circ} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 45^{\\circ} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 60^{\\circ} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "An insulating rod of length L carries charge q distributed uniformly on it. The rod is pivoted at one end and is rotated at a frequency f about a fixed perpendicular axis. Then the magnetic dipole moment of the system is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\pi qfL^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{1}{3}\\pi qfL^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "qfL"
-     },
-     {
-      "id": "D",
-      "text": "qfL^{2}"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "The wave length of Red light in the visible region is about 760 nm the energy of photon in that case will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2.43 eV"
-     },
-     {
-      "id": "B",
-      "text": "3.18 eV"
-     },
-     {
-      "id": "C",
-      "text": "1.64 eV"
-     },
-     {
-      "id": "D",
-      "text": "2.68 eV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "A network of three capacitors each 9 µF connected in series and the fourth capacitor of 6 µF is supplied 400 V as shown in figure. The ratio of charge on the capacitor $ C_1 $ to the capacitor $ C_4 $ is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1:3"
-     },
-     {
-      "id": "B",
-      "text": "1:4"
-     },
-     {
-      "id": "C",
-      "text": "4:1"
-     },
-     {
-      "id": "D",
-      "text": "1:2"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "After how many half-lives a radioactive substance will decay to 6.25% of its original value:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "One half life"
-     },
-     {
-      "id": "B",
-      "text": "Two half lives"
-     },
-     {
-      "id": "C",
-      "text": "Three half lives"
-     },
-     {
-      "id": "D",
-      "text": "Four half lives"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "A 20-watt, 50 V lamp is to be connected to AC mains of 250 V, 50 Hz. Calculate the value of series capacitor to run the lamp.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1.4 µF"
-     },
-     {
-      "id": "B",
-      "text": "2.1 µF"
-     },
-     {
-      "id": "C",
-      "text": "3.5 µF"
-     },
-     {
-      "id": "D",
-      "text": "4.9 µF"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Charge on a conducting metal sphere is present:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "on the surface of the sphere"
-     },
-     {
-      "id": "B",
-      "text": "inside the sphere"
-     },
-     {
-      "id": "C",
-      "text": "outside the sphere"
-     },
-     {
-      "id": "D",
-      "text": "both inside and outside the sphere"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "An a.c. source of 200 V is connected through a diode 'D' to a capacitor as shown in figure. Find the maximum potential difference across the capacitor:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "100 V"
-     },
-     {
-      "id": "B",
-      "text": "200 V"
-     },
-     {
-      "id": "C",
-      "text": "283 V"
-     },
-     {
-      "id": "D",
-      "text": "310 V"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q22-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-06-09-shift-3/q22-figure-1.jpg",
-      "page": 2,
-      "alt": "Figure for question 22"
-     }
-    ]
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "The electrical conductivity of a semiconductor increases when electromagnetic radiation of wavelength shorter than 2480 nm is incident on it. The band gap for the semiconductor is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.5 eV"
-     },
-     {
-      "id": "B",
-      "text": "0.7 eV"
-     },
-     {
-      "id": "C",
-      "text": "0.9 eV"
-     },
-     {
-      "id": "D",
-      "text": "1.1 eV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "Energy gap between valence band and conduction band of a semiconductor is approximately:\n\n(a) zero\n\n(b) 4 eV\n\n(c) 1 eV\n\n(d) 10 eV",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2,
-     3
-    ],
-    "assets": [
-     {
-      "id": "q24-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2023-06-09-shift-3/q24-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 24"
-     }
-    ]
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "The given combination represents the following gate:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "OR"
-     },
-     {
-      "id": "B",
-      "text": "XOR"
-     },
-     {
-      "id": "C",
-      "text": "NAND"
-     },
-     {
-      "id": "D",
-      "text": "NOR"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q26-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-06-09-shift-3/q26-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 26"
-     }
-    ]
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Heavy water and _ is one of the substances used as moderator in reactors.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sea water"
-     },
-     {
-      "id": "B",
-      "text": "Titanium"
-     },
-     {
-      "id": "C",
-      "text": "Graphite"
-     },
-     {
-      "id": "D",
-      "text": "Cobalt"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Diameter of the objective lens of a telescope is 250 cm. For light of wavelength 600 nm, coming from a distant object, the limit of resolution of the telescope is close to:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 1.5 \\times 10^{-7} $ rad"
-     },
-     {
-      "id": "B",
-      "text": "$ 2 \\times 10^{-7} $ rad"
-     },
-     {
-      "id": "C",
-      "text": "$ 3 \\times 10^{-7} $ rad"
-     },
-     {
-      "id": "D",
-      "text": "$ 4.5 \\times 10^{-7} $ rad"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "A source emits sound of frequency 600 Hz inside water. The frequency heard in air (velocity of sound in water is 1500 m/s and velocity of sound in air is 300 m/s) will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "300 Hz"
-     },
-     {
-      "id": "B",
-      "text": "600 Hz"
-     },
-     {
-      "id": "C",
-      "text": "900 Hz"
-     },
-     {
-      "id": "D",
-      "text": "1200 Hz"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "An electron enters a crossed electrical and magnetic field region with a speed of 100 m s $ ^{-1} $ along + x-axis and passes undeviated. The strength of magnetic field is 5.0 T and it acts along + z-axis. Give the electrical field in vector notations indicating its magnitude as well as direction:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ (500\\ V\\ m^{-1})j $"
-     },
-     {
-      "id": "B",
-      "text": "$ -(500\\ V\\ m^{-1})\\hat{k} $"
-     },
-     {
-      "id": "C",
-      "text": "$ (100\\ V\\ m^{-1})j $"
-     },
-     {
-      "id": "D",
-      "text": "$ -(100\\ V\\ m^{-1})\\hat{k} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "An AC current is given by $ I = i_{1} \\cos \\omega t + i_{2} \\sin \\omega t $\n\nThe rms current is given by:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{1}{\\sqrt{2}} $ ( $ i_{1} + i_{2} $)"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{1}{\\sqrt{2}} $ ( $ i_{1} + i_{2} $)^{2}"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{1}{\\sqrt{2}} $ ( $ i_{1}^{2} + i_{2}^{2} $)^{\\frac{1}{2}}"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{1}{2} $ ( $ i_{1}^{2} + i_{2}^{2} $)^{\\frac{1}{2}}"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Frequencies in the UHF range normally propagate by means of:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ground waves"
-     },
-     {
-      "id": "B",
-      "text": "Sky waves"
-     },
-     {
-      "id": "C",
-      "text": "Surface waves"
-     },
-     {
-      "id": "D",
-      "text": "Space waves"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Which of the following is not an EM wave?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "X-rays"
-     },
-     {
-      "id": "B",
-      "text": "Gamma rays"
-     },
-     {
-      "id": "C",
-      "text": "Microwaves"
-     },
-     {
-      "id": "D",
-      "text": "Cathode rays"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "The least distance of distinct vision of a person is 50 cm. He wants to read a book placed at 25 cm. The focal length of the spectacles would be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "+25 cm"
-     },
-     {
-      "id": "B",
-      "text": "25 cm"
-     },
-     {
-      "id": "C",
-      "text": "+50 cm"
-     },
-     {
-      "id": "D",
-      "text": "50 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "The current flowing through a wire as a function of time is given as: $ I = 3t^{2} + 2t + 5 $ The charge flowing through any cross-section of the wire in first 2 s is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5 C"
-     },
-     {
-      "id": "B",
-      "text": "17 C"
-     },
-     {
-      "id": "C",
-      "text": "16 C"
-     },
-     {
-      "id": "D",
-      "text": "22 C"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "When a ray of light enters a glass slab from air:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "its wavelength decreases"
-     },
-     {
-      "id": "B",
-      "text": "its wavelength increases"
-     },
-     {
-      "id": "C",
-      "text": "its frequency increases"
-     },
-     {
-      "id": "D",
-      "text": "neither its wavelength nor its frequency changes"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Light of two different frequencies whose photons have energies 1 eV and 2.5 eV respectively, illuminate a metal of work function 0.5 eV. The ratio of the maximum KE of the emitted electrons will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1:5"
-     },
-     {
-      "id": "B",
-      "text": "1:4"
-     },
-     {
-      "id": "C",
-      "text": "1:2"
-     },
-     {
-      "id": "D",
-      "text": "1:1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "The capacities of two capacitors are $C_{1}$ and $C_{2}$ and their respective potentials are $V_{1}$ and $V_{2}$. If they are connected with a wire, then the loss of energy is given by:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{C_{1}C_{2}(V_{1}+V_{2})}{2(C_{1}+C_{2})}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{C_{1}C_{2}(V_{1}-V_{2})}{2(C_{1}+C_{2})}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{C_{1}C_{2}(V_{1}-V_{2})^{2}}{2(C_{1}+C_{2})}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{(C_{1}+C_{2})(V_{1}-V_{2})}{C_{1}C_{2}}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "We can reduce eddy currents in the core of transformer by:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "increasing the number of turns in the secondary coil"
-     },
-     {
-      "id": "B",
-      "text": "taking laminated core"
-     },
-     {
-      "id": "C",
-      "text": "making step down transformer"
-     },
-     {
-      "id": "D",
-      "text": "using a weak AC at high potential"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "A piece of copper and another of germanium are cooled from room temperature to 100 K. The resistance of:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "copper increases and germanium decreases"
-     },
-     {
-      "id": "B",
-      "text": "copper decreases and germanium increases"
-     },
-     {
-      "id": "C",
-      "text": "each of them increases"
-     },
-     {
-      "id": "D",
-      "text": "each of them decreases"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Three charges q, -q, q placed at the vertices of an equilateral triangle as shown in figure. What is the magnitude of force on charge placed at position 3 due to the presence of other two charges?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{1}{2\\pi\\varepsilon_{0}}\\frac{q^{2}}{l} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{\\sqrt{3}}{4\\pi\\varepsilon_{0}}\\frac{q^{2}}{l^{2}} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{\\sqrt{5}}{8\\pi\\varepsilon_{0}}\\frac{q}{\\sqrt{l}} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{1}{4\\pi\\varepsilon_{0}}\\frac{q^{2}}{\\sqrt{l}} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q41-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-06-09-shift-3/q41-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 41"
-     }
-    ]
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Which of the following radiations will have maximum penetration power?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "X-rays"
-     },
-     {
-      "id": "B",
-      "text": "$ \\alpha $-rays"
-     },
-     {
-      "id": "C",
-      "text": "$ \\beta $-rays"
-     },
-     {
-      "id": "D",
-      "text": "$ \\gamma $-rays"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "A hot wire voltmeter measures the voltage across the inductor, the capacitor and the resistor as 150 V, 100 V and 50 V across a series, LCR circuit. If resistance is 100 Ω, the current in the circuit is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1.5 A"
-     },
-     {
-      "id": "B",
-      "text": "1 A"
-     },
-     {
-      "id": "C",
-      "text": "0.5 A"
-     },
-     {
-      "id": "D",
-      "text": "0.7 A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Speed of Electromagnetic wave is Not the same:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "in all media"
-     },
-     {
-      "id": "B",
-      "text": "for all intensities in vacuum"
-     },
-     {
-      "id": "C",
-      "text": "for all frequencies in vacuum"
-     },
-     {
-      "id": "D",
-      "text": "for all wavelengths in vacuum"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "What uniform magnetic field applied perpendicular to a beam of electrons moving at $ 1.3 \\times 10^6 $ m/s, is required to make the electrons travels in a circular arc of radius 0.35 m?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 2.1 \\times 10^{-5} $ G"
-     },
-     {
-      "id": "B",
-      "text": "$ 6 \\times 10^{-5} $ T"
-     },
-     {
-      "id": "C",
-      "text": "$ 2.1 \\times 10^{-5} $ T"
-     },
-     {
-      "id": "D",
-      "text": "$ 6 \\times 10^{-5} $ G"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "In a double slit experiment, the distance between slits is increased 10 times whereas their distance from screen is halved, then what is the fringe width?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "it remains same"
-     },
-     {
-      "id": "B",
-      "text": "become $ \\frac{1}{10} $"
-     },
-     {
-      "id": "C",
-      "text": "become $ \\frac{1}{20} $"
-     },
-     {
-      "id": "D",
-      "text": "become $ \\frac{1}{90} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "A tiny spherical oil drop of mass 8 mg is kept suspended by applying a potential difference of 100 V between two metallic plates kept separated by a distance 1 cm. The number of electrons on the oil drop are: (Take $ g = 10 \\, \\text{ms}^{-2} $)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 5 \\times 10^{10} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 5 \\times 10^{8} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 5 \\times 10^{12} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 5 \\times 10^{13} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "A strong magnetic field is applied on a stationary electron:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "The electron moves in the direction of the field"
-     },
-     {
-      "id": "B",
-      "text": "The electron moves in an opposite direction"
-     },
-     {
-      "id": "C",
-      "text": "The electron remains stationary"
-     },
-     {
-      "id": "D",
-      "text": "The electron starts spinning"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "The focal length of the objective of a microscope if $ f_{o} $ and that of the eye piece if $ f_{e} $. The aperture of objective is $ d_{o} $ and that of eye piece is $ d_{e} $. Which of the following relation is correct?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ f_{0} > f_{e}, d_{0} > d_{e} $"
-     },
-     {
-      "id": "B",
-      "text": "$ f_{0} < f_{e}, d_{0} < d_{e} $"
-     },
-     {
-      "id": "C",
-      "text": "$ f_{0} > f_{e}, d_{0} < d_{e} $"
-     },
-     {
-      "id": "D",
-      "text": "$ f_{0} d_{e} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Time period of oscillation of a bar magnet in a uniform magnetic field is $T_{0}$. The magnet is cut into 3 equal parts transverse to its length. The new time period of oscillation of one part will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$T_{0}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{T_{0}}{2}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{T_{0}}{3}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{T_{0}}{4}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

@@ -1,1604 +1,1604 @@
 {
- "exam": {
-  "id": "local-biology-2022-08-30",
-  "slug": "biology-2022-08-30",
-  "title": "CUET UG Biology 30 August 2022 Previous Year Paper",
-  "subject": "Biology",
-  "subjectId": "local-biology",
-  "subjectCode": "BIO",
-  "year": 2022,
-  "examDate": "2022-08-30",
-  "shift": null,
-  "sourceFile": "Biology_2022-08-30.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 46,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-I,B-IV,C-III,D-II"
-     },
-     {
-      "id": "B",
-      "text": "A-II,B-I,C-IV,D-III"
-     },
-     {
-      "id": "C",
-      "text": "A-III,B-IV,C-I,D-II"
-     },
-     {
-      "id": "D",
-      "text": "A-IV,B-II,C-III,D-I"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q02-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q02-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 2"
-     }
+  "exam": {
+    "id": "local-biology-2022-08-30",
+    "slug": "biology-2022-08-30",
+    "title": "CUET UG Biology 30 August 2022 Previous Year Paper",
+    "subject": "Biology",
+    "subjectId": "local-biology",
+    "subjectCode": "BIO",
+    "year": 2022,
+    "examDate": "2022-08-30",
+    "shift": null,
+    "sourceFile": "Biology_2022-08-30.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 46,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I,B-IV,C-III,D-II"
+          },
+          {
+            "id": "B",
+            "text": "A-II,B-I,C-IV,D-III"
+          },
+          {
+            "id": "C",
+            "text": "A-III,B-IV,C-I,D-II"
+          },
+          {
+            "id": "D",
+            "text": "A-IV,B-II,C-III,D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q02-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "A couple is unable to produce a child as the male partner has low sperm count. Infertility caused by this condition can be treated using",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "ZIFT"
+          },
+          {
+            "id": "B",
+            "text": "AI"
+          },
+          {
+            "id": "C",
+            "text": "GIFT"
+          },
+          {
+            "id": "D",
+            "text": "IUT"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of these are the carriers of male gametes in some seed plants?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Microspore mother cells"
+          },
+          {
+            "id": "B",
+            "text": "Pollen Grains"
+          },
+          {
+            "id": "C",
+            "text": "Anthers"
+          },
+          {
+            "id": "D",
+            "text": "Megaspore mother cells"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I, B-II, C-IV, D-III"
+          },
+          {
+            "id": "B",
+            "text": "A-IV, B-III, C-I, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-III, B-II, C-I, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-IV, C-I, D-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q05-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q05-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Arrange the following steps in order for the technique of DNA finger printing.\n\nA. Isolation of DNA.\n\nB. Separation of DNA fragments by gel, electrophoresis.\n\nC. Digestion of DNA by restriction endonucleases.\n\nD. Blotting of separated DNA fragments to nylon membrane.\n\nE. Hybridisation using VNTR probe followed by autoradiography.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A,C,B,D,E"
+          },
+          {
+            "id": "B",
+            "text": "A,B,C,D,E"
+          },
+          {
+            "id": "C",
+            "text": "A,B,D,C,E"
+          },
+          {
+            "id": "D",
+            "text": "A,E,C,B,D"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Long term use of alcohol specially causes-",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Liver cirrhosis"
+          },
+          {
+            "id": "B",
+            "text": "Arthritis"
+          },
+          {
+            "id": "C",
+            "text": "Pulmonary system damage"
+          },
+          {
+            "id": "D",
+            "text": "Premature baldness"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Select the appropriate options with reference to post fertilisation changes in angiosperms.\n\nA. Inner integument of ovule develops into tegmen.\n\nB. Ovary wall forms pericarp\n\nC. Ovule forms fruit\n\nD. Zygote forms endosperm\n\nE. Outer integument of ovule develops into Testa\n\n\nChoose the correct answer from the options given below:\n\n(a) B, E only (b) A, B, E only\n\n(c) C, D, B only (d) A, C, B only\n\nThe part of the human sperm that helps in the fertilisation of the ovum is a cap-like structure called",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Head"
+          },
+          {
+            "id": "B",
+            "text": "Acrosome"
+          },
+          {
+            "id": "C",
+            "text": "Middle piece"
+          },
+          {
+            "id": "D",
+            "text": "Tail"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Rearrange the events of life cycle of a retrovirus.\n\nA. New viral RNA produced by infected cell\n\nB. Reverse transcription\n\nC. New virus particles inject into other cells\n\nD. Viral RNA introduced into the cell\n\nE. Viral DNA incorporates into host genome",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B, D, E, C"
+          },
+          {
+            "id": "B",
+            "text": "B, E, D, A, C"
+          },
+          {
+            "id": "C",
+            "text": "C, A, B, D, E"
+          },
+          {
+            "id": "D",
+            "text": "D, B, E, A, C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "Secondary treatment of sewage involves",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Physical removal of large and small particles from sewage through filtration"
+          },
+          {
+            "id": "B",
+            "text": "Anaerobic sludge digestion"
+          },
+          {
+            "id": "C",
+            "text": "Sedimentation to remove smaller and larger particles"
+          },
+          {
+            "id": "D",
+            "text": "Mechanical agitation coupled with addition of aerobic microbes"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "Given below two statements: one is labelled as assertion A and the other is labelled as Reason R\n\nAssertion A: In F2 generation of a Mendelian cross, the traits seen in the progeny are identical to their parents.\n\nReason R: The progeny of the F2 generation in a Mendelian cross shows no blending of traits.\n\nIn the light of the above statements, chose the most appropriate answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both A and R are correct and R is the correct explanation of A"
+          },
+          {
+            "id": "B",
+            "text": "Both A and R are correct but R is NOT the correct explanation of A"
+          },
+          {
+            "id": "C",
+            "text": "A is correct but R is not correct"
+          },
+          {
+            "id": "D",
+            "text": "A is not correct but R is correct"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "In flowering plants, the egg apparatus consists of:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Three antipodals and one egg cell"
+          },
+          {
+            "id": "B",
+            "text": "Two synergids and one central cell"
+          },
+          {
+            "id": "C",
+            "text": "Two synergids and one egg cell"
+          },
+          {
+            "id": "D",
+            "text": "Three antipodals and two synergids"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "Layers surrounding the ovum from outside to inside are\n\nA. Zona pellucida\n\nB. Vitelline membrane\n\nC. Corona radiata",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, C, B"
+          },
+          {
+            "id": "B",
+            "text": "C, B, A"
+          },
+          {
+            "id": "C",
+            "text": "C, A, B"
+          },
+          {
+            "id": "D",
+            "text": "A, B, C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "The term ribosome is applicable to the following molecule in bacteria",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "mRNA"
+          },
+          {
+            "id": "B",
+            "text": "23S rRNA"
+          },
+          {
+            "id": "C",
+            "text": "5S rRNA"
+          },
+          {
+            "id": "D",
+            "text": "hn RNA"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "After an HIV infection, the body of the patient starts becoming immunodeficient mainly due to :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "The damage caused to secondary lymphoid organs"
+          },
+          {
+            "id": "B",
+            "text": "Rapid multiplication of the virus outside the host cells"
+          },
+          {
+            "id": "C",
+            "text": "Progressive decline in the number of helper T-lymphocytes"
+          },
+          {
+            "id": "D",
+            "text": "Infection by a number of pathogens"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Bioactive molecules like statins are produced by :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Trichoderma polysporum"
+          },
+          {
+            "id": "B",
+            "text": "Monascus purpureus"
+          },
+          {
+            "id": "C",
+            "text": "Acetobacter aceti"
+          },
+          {
+            "id": "D",
+            "text": "Streptococcus"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "The haplodiploid sex-determination system where all the males of the population are haploid and females are diploid, is seen in",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Drosophila"
+          },
+          {
+            "id": "B",
+            "text": "Honey bees"
+          },
+          {
+            "id": "C",
+            "text": "Birds"
+          },
+          {
+            "id": "D",
+            "text": "Grasshoppers"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I, B-II, C-III, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-1, C-II, D-IV"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-III, C-IV, D-II"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-III, C-I, D-IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q20-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q20-table-1.jpg",
+            "page": 2,
+            "alt": "Table for question 20"
+          }
+        ]
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A - II, B - III, C - IV, D - I"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-II, C-III, D-IV"
+          },
+          {
+            "id": "C",
+            "text": "A-III, B-I, C-IV, D-II"
+          },
+          {
+            "id": "D",
+            "text": "A-IV, B-II, C-III, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q21-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q21-table-1.jpg",
+            "page": 2,
+            "alt": "Table for question 21"
+          }
+        ]
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "What happened when heat-killed S cells along with live R cells were injected into mice in Griffith's experiment?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Mice died and showed live R cells in the blood"
+          },
+          {
+            "id": "B",
+            "text": "Mice survived and showed live S cells in the blood"
+          },
+          {
+            "id": "C",
+            "text": "Mice died and showed live S cells in the blood"
+          },
+          {
+            "id": "D",
+            "text": "Mice survived and showed live R cells in the blood"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "Autotrophic microbe for fixing atmospheric nitrogen:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Rhizobium"
+          },
+          {
+            "id": "B",
+            "text": "Aspergillus"
+          },
+          {
+            "id": "C",
+            "text": "Oscillatoria"
+          },
+          {
+            "id": "D",
+            "text": "Trichoderma"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "In humans females at the time of birth, the stage of cell cycle of oocyte is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Prophase-I"
+          },
+          {
+            "id": "B",
+            "text": "Prophase-II"
+          },
+          {
+            "id": "C",
+            "text": "Meiosis-II"
+          },
+          {
+            "id": "D",
+            "text": "Mitosis"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "Calotropis, a weed growing in abandoned fields, produces one of the following biochemicals as a defense against grazers and browsers-",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Nicotine"
+          },
+          {
+            "id": "B",
+            "text": "Opium"
+          },
+          {
+            "id": "C",
+            "text": "Cardiac glycosides"
+          },
+          {
+            "id": "D",
+            "text": "Strychnine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "Calculate the birth rate if there were 60 sparrows in a garden last year and through reproduction 24 new sparrows are added this year",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.4 offsprings per sparrow per year"
+          },
+          {
+            "id": "B",
+            "text": "0.2 offsprings per sparrow per year"
+          },
+          {
+            "id": "C",
+            "text": "0.6 offsprings per sparrow per year"
+          },
+          {
+            "id": "D",
+            "text": "0.1 offsprings per sparrow per year"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Totipotency can be defined as",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Capacity to generate whole plant from any cell/ex-plant"
+          },
+          {
+            "id": "B",
+            "text": "Capacity to survive in unfavourable environment condition"
+          },
+          {
+            "id": "C",
+            "text": "Ability to conduct water in 100 meter tall tree"
+          },
+          {
+            "id": "D",
+            "text": "The duration of dormancy of seeds and other propagules in angiosperms"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-III, B-IV, C-I, D-II"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-III, C-II, D-IV"
+          },
+          {
+            "id": "C",
+            "text": "A-II, B-III, C-I, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-III, B-II, C-I, D-IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q28-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q28-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 28"
+          }
+        ]
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I, B-II, C-IV, D-III"
+          },
+          {
+            "id": "B",
+            "text": "A-Ⅱ, B-Ⅰ, C-Ⅳ, D-Ⅲ"
+          },
+          {
+            "id": "C",
+            "text": "A-II, B-IV, C-I, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-I, B-IV, C-II, D-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q29-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q29-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 29"
+          }
+        ]
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "Restriction endonucleases are used as molecular",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "molecular build up at nucleotides"
+          },
+          {
+            "id": "B",
+            "text": "molecular cement to join DNA sites"
+          },
+          {
+            "id": "C",
+            "text": "molecular knife cut DNA at specific site"
+          },
+          {
+            "id": "D",
+            "text": "molecular degradation to break up the DNA to nucleotides"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I, B-II, C-IV, D-III"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-I, C-IV, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-III, B-IV, C-II, D-I"
+          },
+          {
+            "id": "D",
+            "text": "A-I, B-II, C-III, D-IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q32-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q32-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 32"
+          }
+        ]
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "Cohen and Boyer created the first recombinant DNA using plasmid of",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Escherichia coli"
+          },
+          {
+            "id": "B",
+            "text": "Thermus aquaticus"
+          },
+          {
+            "id": "C",
+            "text": "Salmonella typhimurium"
+          },
+          {
+            "id": "D",
+            "text": "Bacillus thuringiensis"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 34,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-II, B-III, C-I, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-IV, C-III, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-IV, B-III, C-II, D-I"
+          },
+          {
+            "id": "D",
+            "text": "A-III, B-IV, C-II, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q34-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-30/q34-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 34"
+          }
+        ]
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 35,
+        "stemEn": "Identify the correct statements\n\nA. Oogenesis is initiated at puberty\n\nB. Second meiotic division in secondary oocyte occurs in the ovary\n\nC. Middle piece of sperm provides energy for movement\n\nD. Fertilization of gametes occurs in the ampulla isthmic region of oviduct\n\nE. Myometrium helps in muscular contractions of the uterus",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, D, E only"
+          },
+          {
+            "id": "B",
+            "text": "A, B, D only"
+          },
+          {
+            "id": "C",
+            "text": "B, C, D only"
+          },
+          {
+            "id": "D",
+            "text": "C, D, E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "How many gametes will be formed in the pea plant having genotype RrTT?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "One"
+          },
+          {
+            "id": "B",
+            "text": "Two"
+          },
+          {
+            "id": "C",
+            "text": "Four"
+          },
+          {
+            "id": "D",
+            "text": "Eight"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "The detritus food chain (DFC) begins with",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Green plants"
+          },
+          {
+            "id": "B",
+            "text": "Carnivore"
+          },
+          {
+            "id": "C",
+            "text": "Dead Organic matter"
+          },
+          {
+            "id": "D",
+            "text": "Herbivore"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 38,
+        "stemEn": "How many cycles in a PCR will be required for amplifying the genetic material to about one billion times?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10 cycles"
+          },
+          {
+            "id": "B",
+            "text": "15 cycles"
+          },
+          {
+            "id": "C",
+            "text": "30 cycles"
+          },
+          {
+            "id": "D",
+            "text": "35 cycles"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 39,
+        "stemEn": "Gene of which one of the following is present exclusively on the x-chromosome in human being",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Thalassemia"
+          },
+          {
+            "id": "B",
+            "text": "Phenylketonuria"
+          },
+          {
+            "id": "C",
+            "text": "Red and green colour blindness"
+          },
+          {
+            "id": "D",
+            "text": "Sickle cell anaemia"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 40,
+        "stemEn": "Biofortification refers to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sources of proteins for animal and human nutrition"
+          },
+          {
+            "id": "B",
+            "text": "Production of somatic hybrids"
+          },
+          {
+            "id": "C",
+            "text": "Use of mutation breeding"
+          },
+          {
+            "id": "D",
+            "text": "Breeding crops with higher levels of vitamins and minerals, or higher protein and healthier fat CASE STUDY Some strains of Bacillus thuringiensis produce protein that kill certain insects such as lepidopterans (tobacco budworm, armyworm), coleopterans (beetles) and dipterans (flies, mosquitoes). Bacillus thuringiensis forms protein crystals during a particular phase of their growth. These crystals contain a toxic insecticidal protein. The Bt toxin proteins exists as inactive protoxins but once an insect ingests the inactive toxin, it is converted into an active form due to alkaline pH of the gut which solubilise the crystals."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 41,
+        "stemEn": "The Bt toxin acts on _ of insect pest",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Hind gut"
+          },
+          {
+            "id": "B",
+            "text": "Nervous system"
+          },
+          {
+            "id": "C",
+            "text": "Reproductive system"
+          },
+          {
+            "id": "D",
+            "text": "Midgut"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "Some strains of Bacillus thuringiensis produce proteins that kill certain insects such as",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Grasshoppers and mosquitoes"
+          },
+          {
+            "id": "B",
+            "text": "Lepidopterans, coleopterans and dipterans"
+          },
+          {
+            "id": "C",
+            "text": "Coleopterans and nematodes"
+          },
+          {
+            "id": "D",
+            "text": "Meloidegyne incognitia"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "Thuringiensis forms protein crystals during a particular phase of their growth. These crystals contain a toxic.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Proteolytic enzymes"
+          },
+          {
+            "id": "B",
+            "text": "Chitin"
+          },
+          {
+            "id": "C",
+            "text": "Insecticidal protein"
+          },
+          {
+            "id": "D",
+            "text": "Flavoprotein"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "Bt toxin exists as inactive protoxins, it is converted into an active form of toxin due to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Enzymes in insect's gut"
+          },
+          {
+            "id": "B",
+            "text": "Acidic pH of the insect's gut"
+          },
+          {
+            "id": "C",
+            "text": "Binding with collagen in insect's gut"
+          },
+          {
+            "id": "D",
+            "text": "Alkaline pH of the insect's gut"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "The proteins encoded by the genes cryIAc and cryIIAb control",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Corn borers"
+          },
+          {
+            "id": "B",
+            "text": "Cotton bollworms"
+          },
+          {
+            "id": "C",
+            "text": "Mosquitoes"
+          },
+          {
+            "id": "D",
+            "text": "Nematodes The biological wealth of our planet has been declining rapidly and the accusing finger is clearly pointing to human activities. The colonisation of tropical pacific islands by humans is said to have led to extinction of more than 2000 species of native birds. The IUCN red list documents the extinction of 784 species. Since the origin and diversification of life on earth, there were five episodes of mass extinction of species. Current species extinction rate as estimated to be 100-1000 times faster. There are four major causes called \"The Evil quartet\" Habitat loss, over exploitation, Alien species invasion and co-extinction. Conservation efforts are necessary to preserve biodiversity and protect endangered species and their habitats. PASSAGE"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 46,
+        "stemEn": "Tissue culture and cryopreservation are the techniques used",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "In in-situ conservation"
+          },
+          {
+            "id": "B",
+            "text": "To control conservation of medicinal plants only"
+          },
+          {
+            "id": "C",
+            "text": "In ex-situ conservation method"
+          },
+          {
+            "id": "D",
+            "text": "Used in conventional breeding programmes"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "Mr. X wants to understand the 'Evil Quartet' to know the reasons of Biodiversity loss. It is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Habitat loss and fragmentation only"
+          },
+          {
+            "id": "B",
+            "text": "Over exploitation and Alien species invasions only"
+          },
+          {
+            "id": "C",
+            "text": "Co-extinctions and Alien-species invasion"
+          },
+          {
+            "id": "D",
+            "text": "Habitat loss, over exploitation, Alien species invasions and co-extinctions"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "Which one of the following is NOT the reason for decline in biodiversity?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Pollution"
+          },
+          {
+            "id": "B",
+            "text": "Agriculture"
+          },
+          {
+            "id": "C",
+            "text": "Sacred groves"
+          },
+          {
+            "id": "D",
+            "text": "Fishing"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "Select the one which is NOT an ex-situ conservation of biodiversity",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Zoological parks"
+          },
+          {
+            "id": "B",
+            "text": "Botanical gardens"
+          },
+          {
+            "id": "C",
+            "text": "National parks"
+          },
+          {
+            "id": "D",
+            "text": "Seed banks"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "Identify the in-situ ways to conserve biodiversity from the following\n\nA. Zoological parks\n\nB. Eggs fertilised in-vitro\n\nC. Sacred groves\n\nD. Biosphere reserves",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B only"
+          },
+          {
+            "id": "B",
+            "text": "B, C only"
+          },
+          {
+            "id": "C",
+            "text": "C, D only"
+          },
+          {
+            "id": "D",
+            "text": "A, D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "A couple is unable to produce a child as the male partner has low sperm count. Infertility caused by this condition can be treated using",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "ZIFT"
-     },
-     {
-      "id": "B",
-      "text": "AI"
-     },
-     {
-      "id": "C",
-      "text": "GIFT"
-     },
-     {
-      "id": "D",
-      "text": "IUT"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Which of these are the carriers of male gametes in some seed plants?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Microspore mother cells"
-     },
-     {
-      "id": "B",
-      "text": "Pollen Grains"
-     },
-     {
-      "id": "C",
-      "text": "Anthers"
-     },
-     {
-      "id": "D",
-      "text": "Megaspore mother cells"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-I, B-II, C-IV, D-III"
-     },
-     {
-      "id": "B",
-      "text": "A-IV, B-III, C-I, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-III, B-II, C-I, D-IV"
-     },
-     {
-      "id": "D",
-      "text": "A-II, B-IV, C-I, D-III"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q05-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q05-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 5"
-     }
-    ]
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Arrange the following steps in order for the technique of DNA finger printing.\n\nA. Isolation of DNA.\n\nB. Separation of DNA fragments by gel, electrophoresis.\n\nC. Digestion of DNA by restriction endonucleases.\n\nD. Blotting of separated DNA fragments to nylon membrane.\n\nE. Hybridisation using VNTR probe followed by autoradiography.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A,C,B,D,E"
-     },
-     {
-      "id": "B",
-      "text": "A,B,C,D,E"
-     },
-     {
-      "id": "C",
-      "text": "A,B,D,C,E"
-     },
-     {
-      "id": "D",
-      "text": "A,E,C,B,D"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "Long term use of alcohol specially causes-",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Liver cirrhosis"
-     },
-     {
-      "id": "B",
-      "text": "Arthritis"
-     },
-     {
-      "id": "C",
-      "text": "Pulmonary system damage"
-     },
-     {
-      "id": "D",
-      "text": "Premature baldness"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Select the appropriate options with reference to post fertilisation changes in angiosperms.\n\nA. Inner integument of ovule develops into tegmen.\n\nB. Ovary wall forms pericarp\n\nC. Ovule forms fruit\n\nD. Zygote forms endosperm\n\nE. Outer integument of ovule develops into Testa\n\nE. Outer integument of ovule develops into Testa\n\nChoose the correct answer from the options given below:\n\n(a) B, E only (b) A, B, E only\n\n(c) C, D, B only (d) A, C, B only\n\nThe part of the human sperm that helps in the fertilisation of the ovum is a cap-like structure called",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Head"
-     },
-     {
-      "id": "B",
-      "text": "Acrosome"
-     },
-     {
-      "id": "C",
-      "text": "Middle piece"
-     },
-     {
-      "id": "D",
-      "text": "Tail"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Rearrange the events of life cycle of a retrovirus.\n\nA. New viral RNA produced by infected cell\n\nB. Reverse transcription\n\nC. New virus particles inject into other cells\n\nD. Viral RNA introduced into the cell\n\nE. Viral DNA incorporates into host genome",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B, D, E, C"
-     },
-     {
-      "id": "B",
-      "text": "B, E, D, A, C"
-     },
-     {
-      "id": "C",
-      "text": "C, A, B, D, E"
-     },
-     {
-      "id": "D",
-      "text": "D, B, E, A, C"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Secondary treatment of sewage involves",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Physical removal of large and small particles from sewage through filtration"
-     },
-     {
-      "id": "B",
-      "text": "Anaerobic sludge digestion"
-     },
-     {
-      "id": "C",
-      "text": "Sedimentation to remove smaller and larger particles"
-     },
-     {
-      "id": "D",
-      "text": "Mechanical agitation coupled with addition of aerobic microbes"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "Given below two statements: one is labelled as assertion A and the other is labelled as Reason R\n\nAssertion A: In F2 generation of a Mendelian cross, the traits seen in the progeny are identical to their parents.\n\nReason R: The progeny of the F2 generation in a Mendelian cross shows no blending of traits.\n\nIn the light of the above statements, chose the most appropriate answer from the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Both A and R are correct and R is the correct explanation of A"
-     },
-     {
-      "id": "B",
-      "text": "Both A and R are correct but R is NOT the correct explanation of A"
-     },
-     {
-      "id": "C",
-      "text": "A is correct but R is not correct"
-     },
-     {
-      "id": "D",
-      "text": "A is not correct but R is correct"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "In flowering plants, the egg apparatus consists of:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Three antipodals and one egg cell"
-     },
-     {
-      "id": "B",
-      "text": "Two synergids and one central cell"
-     },
-     {
-      "id": "C",
-      "text": "Two synergids and one egg cell"
-     },
-     {
-      "id": "D",
-      "text": "Three antipodals and two synergids"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "Layers surrounding the ovum from outside to inside are\n\nA. Zona pellucida\n\nB. Vitelline membrane\n\nC. Corona radiata",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, C, B"
-     },
-     {
-      "id": "B",
-      "text": "C, B, A"
-     },
-     {
-      "id": "C",
-      "text": "C, A, B"
-     },
-     {
-      "id": "D",
-      "text": "A, B, C"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "The term ribosome is applicable to the following molecule in bacteria",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "mRNA"
-     },
-     {
-      "id": "B",
-      "text": "23S rRNA"
-     },
-     {
-      "id": "C",
-      "text": "5S rRNA"
-     },
-     {
-      "id": "D",
-      "text": "hn RNA"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "After an HIV infection, the body of the patient starts becoming immunodeficient mainly due to :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "The damage caused to secondary lymphoid organs"
-     },
-     {
-      "id": "B",
-      "text": "Rapid multiplication of the virus outside the host cells"
-     },
-     {
-      "id": "C",
-      "text": "Progressive decline in the number of helper T-lymphocytes"
-     },
-     {
-      "id": "D",
-      "text": "Infection by a number of pathogens"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Bioactive molecules like statins are produced by :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Trichoderma polysporum"
-     },
-     {
-      "id": "B",
-      "text": "Monascus purpureus"
-     },
-     {
-      "id": "C",
-      "text": "Acetobacter aceti"
-     },
-     {
-      "id": "D",
-      "text": "Streptococcus"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "The haplodiploid sex-determination system where all the males of the population are haploid and females are diploid, is seen in",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Drosophila"
-     },
-     {
-      "id": "B",
-      "text": "Honey bees"
-     },
-     {
-      "id": "C",
-      "text": "Birds"
-     },
-     {
-      "id": "D",
-      "text": "Grasshoppers"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-I, B-II, C-III, D-IV"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-1, C-II, D-IV"
-     },
-     {
-      "id": "C",
-      "text": "A-I, B-III, C-IV, D-II"
-     },
-     {
-      "id": "D",
-      "text": "A-II, B-III, C-I, D-IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q20-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q20-table-1.jpg",
-      "page": 2,
-      "alt": "Table for question 20"
-     }
-    ]
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A - II, B - III, C - IV, D - I"
-     },
-     {
-      "id": "B",
-      "text": "A-I, B-II, C-III, D-IV"
-     },
-     {
-      "id": "C",
-      "text": "A-III, B-I, C-IV, D-II"
-     },
-     {
-      "id": "D",
-      "text": "A-IV, B-II, C-III, D-I"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q21-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q21-table-1.jpg",
-      "page": 2,
-      "alt": "Table for question 21"
-     }
-    ]
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "What happened when heat-killed S cells along with live R cells were injected into mice in Griffith's experiment?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Mice died and showed live R cells in the blood"
-     },
-     {
-      "id": "B",
-      "text": "Mice survived and showed live S cells in the blood"
-     },
-     {
-      "id": "C",
-      "text": "Mice died and showed live S cells in the blood"
-     },
-     {
-      "id": "D",
-      "text": "Mice survived and showed live R cells in the blood"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "Autotrophic microbe for fixing atmospheric nitrogen:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Rhizobium"
-     },
-     {
-      "id": "B",
-      "text": "Aspergillus"
-     },
-     {
-      "id": "C",
-      "text": "Oscillatoria"
-     },
-     {
-      "id": "D",
-      "text": "Trichoderma"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "In humans females at the time of birth, the stage of cell cycle of oocyte is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Prophase-I"
-     },
-     {
-      "id": "B",
-      "text": "Prophase-II"
-     },
-     {
-      "id": "C",
-      "text": "Meiosis-II"
-     },
-     {
-      "id": "D",
-      "text": "Mitosis"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "Calotropis, a weed growing in abandoned fields, produces one of the following biochemicals as a defense against grazers and browsers-",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Nicotine"
-     },
-     {
-      "id": "B",
-      "text": "Opium"
-     },
-     {
-      "id": "C",
-      "text": "Cardiac glycosides"
-     },
-     {
-      "id": "D",
-      "text": "Strychnine"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "Calculate the birth rate if there were 60 sparrows in a garden last year and through reproduction 24 new sparrows are added this year",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.4 offsprings per sparrow per year"
-     },
-     {
-      "id": "B",
-      "text": "0.2 offsprings per sparrow per year"
-     },
-     {
-      "id": "C",
-      "text": "0.6 offsprings per sparrow per year"
-     },
-     {
-      "id": "D",
-      "text": "0.1 offsprings per sparrow per year"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Totipotency can be defined as",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Capacity to generate whole plant from any cell/ex-plant"
-     },
-     {
-      "id": "B",
-      "text": "Capacity to survive in unfavourable environment condition"
-     },
-     {
-      "id": "C",
-      "text": "Ability to conduct water in 100 meter tall tree"
-     },
-     {
-      "id": "D",
-      "text": "The duration of dormancy of seeds and other propagules in angiosperms"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-III, B-IV, C-I, D-II"
-     },
-     {
-      "id": "B",
-      "text": "A-I, B-III, C-II, D-IV"
-     },
-     {
-      "id": "C",
-      "text": "A-II, B-III, C-I, D-IV"
-     },
-     {
-      "id": "D",
-      "text": "A-III, B-II, C-I, D-IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q28-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q28-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 28"
-     }
-    ]
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-I, B-II, C-IV, D-III"
-     },
-     {
-      "id": "B",
-      "text": "A-Ⅱ, B-Ⅰ, C-Ⅳ, D-Ⅲ"
-     },
-     {
-      "id": "C",
-      "text": "A-II, B-IV, C-I, D-III"
-     },
-     {
-      "id": "D",
-      "text": "A-I, B-IV, C-II, D-III"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q29-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q29-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 29"
-     }
-    ]
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "Restriction endonucleases are used as molecular",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "molecular build up at nucleotides"
-     },
-     {
-      "id": "B",
-      "text": "molecular cement to join DNA sites"
-     },
-     {
-      "id": "C",
-      "text": "molecular knife cut DNA at specific site"
-     },
-     {
-      "id": "D",
-      "text": "molecular degradation to break up the DNA to nucleotides"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-I, B-II, C-IV, D-III"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-I, C-IV, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-III, B-IV, C-II, D-I"
-     },
-     {
-      "id": "D",
-      "text": "A-I, B-II, C-III, D-IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q32-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q32-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 32"
-     }
-    ]
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Cohen and Boyer created the first recombinant DNA using plasmid of",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Escherichia coli"
-     },
-     {
-      "id": "B",
-      "text": "Thermus aquaticus"
-     },
-     {
-      "id": "C",
-      "text": "Salmonella typhimurium"
-     },
-     {
-      "id": "D",
-      "text": "Bacillus thuringiensis"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-II, B-III, C-I, D-IV"
-     },
-     {
-      "id": "B",
-      "text": "A-I, B-IV, C-III, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-IV, B-III, C-II, D-I"
-     },
-     {
-      "id": "D",
-      "text": "A-III, B-IV, C-II, D-I"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q34-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-30/q34-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 34"
-     }
-    ]
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Identify the correct statements\n\nA. Oogenesis is initiated at puberty\n\nB. Second meiotic division in secondary oocyte occurs in the ovary\n\nC. Middle piece of sperm provides energy for movement\n\nD. Fertilization of gametes occurs in the ampulla isthmic region of oviduct\n\nE. Myometrium helps in muscular contractions of the uterus",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, D, E only"
-     },
-     {
-      "id": "B",
-      "text": "A, B, D only"
-     },
-     {
-      "id": "C",
-      "text": "B, C, D only"
-     },
-     {
-      "id": "D",
-      "text": "C, D, E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "How many gametes will be formed in the pea plant having genotype RrTT?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "One"
-     },
-     {
-      "id": "B",
-      "text": "Two"
-     },
-     {
-      "id": "C",
-      "text": "Four"
-     },
-     {
-      "id": "D",
-      "text": "Eight"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "The detritus food chain (DFC) begins with",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Green plants"
-     },
-     {
-      "id": "B",
-      "text": "Carnivore"
-     },
-     {
-      "id": "C",
-      "text": "Dead Organic matter"
-     },
-     {
-      "id": "D",
-      "text": "Herbivore"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "How many cycles in a PCR will be required for amplifying the genetic material to about one billion times?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "10 cycles"
-     },
-     {
-      "id": "B",
-      "text": "15 cycles"
-     },
-     {
-      "id": "C",
-      "text": "30 cycles"
-     },
-     {
-      "id": "D",
-      "text": "35 cycles"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "Gene of which one of the following is present exclusively on the x-chromosome in human being",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Thalassemia"
-     },
-     {
-      "id": "B",
-      "text": "Phenylketonuria"
-     },
-     {
-      "id": "C",
-      "text": "Red and green colour blindness"
-     },
-     {
-      "id": "D",
-      "text": "Sickle cell anaemia"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Biofortification refers to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sources of proteins for animal and human nutrition"
-     },
-     {
-      "id": "B",
-      "text": "Production of somatic hybrids"
-     },
-     {
-      "id": "C",
-      "text": "Use of mutation breeding"
-     },
-     {
-      "id": "D",
-      "text": "Breeding crops with higher levels of vitamins and minerals, or higher protein and healthier fat CASE STUDY Some strains of Bacillus thuringiensis produce protein that kill certain insects such as lepidopterans (tobacco budworm, armyworm), coleopterans (beetles) and dipterans (flies, mosquitoes). Bacillus thuringiensis forms protein crystals during a particular phase of their growth. These crystals contain a toxic insecticidal protein. The Bt toxin proteins exists as inactive protoxins but once an insect ingests the inactive toxin, it is converted into an active form due to alkaline pH of the gut which solubilise the crystals."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "The Bt toxin acts on _ of insect pest",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Hind gut"
-     },
-     {
-      "id": "B",
-      "text": "Nervous system"
-     },
-     {
-      "id": "C",
-      "text": "Reproductive system"
-     },
-     {
-      "id": "D",
-      "text": "Midgut"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Some strains of Bacillus thuringiensis produce proteins that kill certain insects such as",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Grasshoppers and mosquitoes"
-     },
-     {
-      "id": "B",
-      "text": "Lepidopterans, coleopterans and dipterans"
-     },
-     {
-      "id": "C",
-      "text": "Coleopterans and nematodes"
-     },
-     {
-      "id": "D",
-      "text": "Meloidegyne incognitia"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "Thuringiensis forms protein crystals during a particular phase of their growth. These crystals contain a toxic.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Proteolytic enzymes"
-     },
-     {
-      "id": "B",
-      "text": "Chitin"
-     },
-     {
-      "id": "C",
-      "text": "Insecticidal protein"
-     },
-     {
-      "id": "D",
-      "text": "Flavoprotein"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Bt toxin exists as inactive protoxins, it is converted into an active form of toxin due to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Enzymes in insect's gut"
-     },
-     {
-      "id": "B",
-      "text": "Acidic pH of the insect's gut"
-     },
-     {
-      "id": "C",
-      "text": "Binding with collagen in insect's gut"
-     },
-     {
-      "id": "D",
-      "text": "Alkaline pH of the insect's gut"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "The proteins encoded by the genes cryIAc and cryIIAb control",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Corn borers"
-     },
-     {
-      "id": "B",
-      "text": "Cotton bollworms"
-     },
-     {
-      "id": "C",
-      "text": "Mosquitoes"
-     },
-     {
-      "id": "D",
-      "text": "Nematodes The biological wealth of our planet has been declining rapidly and the accusing finger is clearly pointing to human activities. The colonisation of tropical pacific islands by humans is said to have led to extinction of more than 2000 species of native birds. The IUCN red list documents the extinction of 784 species. Since the origin and diversification of life on earth, there were five episodes of mass extinction of species. Current species extinction rate as estimated to be 100-1000 times faster. There are four major causes called \"The Evil quartet\" Habitat loss, over exploitation, Alien species invasion and co-extinction. Conservation efforts are necessary to preserve biodiversity and protect endangered species and their habitats. PASSAGE"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Tissue culture and cryopreservation are the techniques used",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "In in-situ conservation"
-     },
-     {
-      "id": "B",
-      "text": "To control conservation of medicinal plants only"
-     },
-     {
-      "id": "C",
-      "text": "In ex-situ conservation method"
-     },
-     {
-      "id": "D",
-      "text": "Used in conventional breeding programmes"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Mr. X wants to understand the 'Evil Quartet' to know the reasons of Biodiversity loss. It is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Habitat loss and fragmentation only"
-     },
-     {
-      "id": "B",
-      "text": "Over exploitation and Alien species invasions only"
-     },
-     {
-      "id": "C",
-      "text": "Co-extinctions and Alien-species invasion"
-     },
-     {
-      "id": "D",
-      "text": "Habitat loss, over exploitation, Alien species invasions and co-extinctions"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "Which one of the following is NOT the reason for decline in biodiversity?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Pollution"
-     },
-     {
-      "id": "B",
-      "text": "Agriculture"
-     },
-     {
-      "id": "C",
-      "text": "Sacred groves"
-     },
-     {
-      "id": "D",
-      "text": "Fishing"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Select the one which is NOT an ex-situ conservation of biodiversity",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Zoological parks"
-     },
-     {
-      "id": "B",
-      "text": "Botanical gardens"
-     },
-     {
-      "id": "C",
-      "text": "National parks"
-     },
-     {
-      "id": "D",
-      "text": "Seed banks"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Identify the in-situ ways to conserve biodiversity from the following\n\nA. Zoological parks\n\nB. Eggs fertilised in-vitro\n\nC. Sacred groves\n\nD. Biosphere reserves",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B only"
-     },
-     {
-      "id": "B",
-      "text": "B, C only"
-     },
-     {
-      "id": "C",
-      "text": "C, D only"
-     },
-     {
-      "id": "D",
-      "text": "A, D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

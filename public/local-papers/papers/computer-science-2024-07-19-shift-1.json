@@ -1,1628 +1,1628 @@
 {
- "exam": {
-  "id": "local-computer-science-2024-07-19-shift-1",
-  "slug": "computer-science-2024-07-19-shift-1",
-  "title": "CUET UG Computer Science 19 July 2024 Shift 1 Previous Year Paper",
-  "subject": "Computer Science",
-  "subjectId": "local-computer-science",
-  "subjectCode": "CS",
-  "year": 2024,
-  "examDate": "2024-07-19",
-  "shift": "Shift 1",
-  "sourceFile": "Computer Science_2024-07-19_Shift_1.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 47,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Which of the following are used in python exception handling?\n\n(A) try\n\n(B) except\n\n(C) finally\n\n(D) seek",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (C) and (D)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Match List-I with List-II :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A) - $ (\\mathrm{II}) $, (B) - $ (\\mathrm{III}) $, (C) - $ (\\mathrm{IV}) $, (D) - $ (\\mathrm{I}) $"
-     },
-     {
-      "id": "C",
-      "text": "(A) - $ (\\mathrm{III}) $, (B) - $ (\\mathrm{II}) $, (C) - $ (\\mathrm{IV}) $, (D) - $ (\\mathrm{I}) $"
-     },
-     {
-      "id": "D",
-      "text": "(A) - $ (\\mathrm{II}) $, (B) - $ (\\mathrm{III}) $, (C) - $ (\\mathrm{I}) $, (D) - $ (\\mathrm{IV}) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q02-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q02-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 2"
-     }
+  "exam": {
+    "id": "local-computer-science-2024-07-19-shift-1",
+    "slug": "computer-science-2024-07-19-shift-1",
+    "title": "CUET UG Computer Science 19 July 2024 Shift 1 Previous Year Paper",
+    "subject": "Computer Science",
+    "subjectId": "local-computer-science",
+    "subjectCode": "CS",
+    "year": 2024,
+    "examDate": "2024-07-19",
+    "shift": "Shift 1",
+    "sourceFile": "Computer Science_2024-07-19_Shift_1.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 47,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Which of the following are used in python exception handling?\n\n(A) try\n\n(B) except\n\n(C) finally\n\n(D) seek",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (C) and (D)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Match List-I with List-II :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A) - $ (\\mathrm{II}) $, (B) - $ (\\mathrm{III}) $, (C) - $ (\\mathrm{IV}) $, (D) - $ (\\mathrm{I}) $"
+          },
+          {
+            "id": "C",
+            "text": "(A) - $ (\\mathrm{III}) $, (B) - $ (\\mathrm{II}) $, (C) - $ (\\mathrm{IV}) $, (D) - $ (\\mathrm{I}) $"
+          },
+          {
+            "id": "D",
+            "text": "(A) - $ (\\mathrm{II}) $, (B) - $ (\\mathrm{III}) $, (C) - $ (\\mathrm{I}) $, (D) - $ (\\mathrm{IV}) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q02-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q02-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Arrange the following in correct order of exception handling in python :\n\n(A) Write the code that may raise an exception inside a try block\n\n(B) Execute some code regardless of whether the exception occurs or not using the finally block\n\n(C) Handle the specific exception using the except block\n\n(D) Raise the exception using the raise statement if necessary",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C), (B), (D)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "D",
+            "text": "(C), (B), (D), (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Consider the following table called 'Student' Student\n\nHow many candidate keys are possible with above table?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "One"
+          },
+          {
+            "id": "B",
+            "text": "Two"
+          },
+          {
+            "id": "C",
+            "text": "Three"
+          },
+          {
+            "id": "D",
+            "text": "Four"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": [
+          {
+            "id": "q04-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q04-table-1.jpg",
+            "page": 7,
+            "alt": "Table for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Which of the following is not a limitation of file system?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Data Redundancy"
+          },
+          {
+            "id": "B",
+            "text": "Data Inconsistency"
+          },
+          {
+            "id": "C",
+            "text": "Data dependence"
+          },
+          {
+            "id": "D",
+            "text": "Storing Space"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          9
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Match List-I with List-II :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II),(B)-(III),(C)-(IV),(D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(II),(B)-(III),(C)-(I),(D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV),(B)-(II),(C)-(III),(D)-(I)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - $ (\\mathrm{III}) $, (B) - $ (\\mathrm{IV}) $, (C) - $ (\\mathrm{I}) $, (D) - $ (\\mathrm{II}) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          10
+        ],
+        "assets": [
+          {
+            "id": "q06-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q06-table-1.jpg",
+            "page": 10,
+            "alt": "Table for question 6"
+          }
+        ]
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Which of the following is called database instance?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Overall design of the database"
+          },
+          {
+            "id": "B",
+            "text": "The snapshot of the database at any given time."
+          },
+          {
+            "id": "C",
+            "text": "Data about the data"
+          },
+          {
+            "id": "D",
+            "text": "Restriction on the type of data inserted."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          12
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "What is output of the following SQL statement? SELECT MID('CUET2024',2,5)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "UET2"
+          },
+          {
+            "id": "B",
+            "text": "UET20"
+          },
+          {
+            "id": "C",
+            "text": "ET202"
+          },
+          {
+            "id": "D",
+            "text": "CUET2"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          13
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "SQL applies conditions on the groups through _ clause after groups have been formed.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "where"
+          },
+          {
+            "id": "B",
+            "text": "having"
+          },
+          {
+            "id": "C",
+            "text": "new"
+          },
+          {
+            "id": "D",
+            "text": "all"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          14
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Consider the following two tables emp1 and emp2\n\nemp1\n\nemp2\n\nWhat is output of the following query.\nSELECT name from emp1 minus SELECT name from emp2",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "punita"
+          },
+          {
+            "id": "B",
+            "text": "amit"
+          },
+          {
+            "id": "C",
+            "text": "anand"
+          },
+          {
+            "id": "D",
+            "text": "amit punita"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          16
+        ],
+        "assets": [
+          {
+            "id": "q10-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q10-table-1.jpg",
+            "page": 16,
+            "alt": "Table for question 10"
+          },
+          {
+            "id": "q10-table-2",
+            "kind": "table",
+            "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q10-table-2.jpg",
+            "page": 16,
+            "alt": "Table for question 10"
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "Which of the following statement(s) is/are TRUE regarding computer network?\n\n(A) Interspace is a software that allows multiple users in a client-server environment to communicate with each other by sending and receiving data of various types.\n\n(B) IP address is a unique permanent value associated with a network adapter called a NIC.\n\n(C) A computer network is an interconnection among two or more computers or computing devices to share data and resources.\n\n(D) The term Workstation' refers to the most powerful computer of the network that facilitates sharing of data, software and hardware resources on the network and have more memory, processing power and storage than a normal node.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) and (C) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(B) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          18
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "Communication over mobile phone is an example of which type of communication mode?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Simplex"
+          },
+          {
+            "id": "B",
+            "text": "Half-Duplex"
+          },
+          {
+            "id": "C",
+            "text": "Full-Duplex"
+          },
+          {
+            "id": "D",
+            "text": "Double-Duplex"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          20
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "Which of the following device provides the necessary translation of data received from network into a format or protocol recognized by devices with the internal network?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Bridge"
+          },
+          {
+            "id": "B",
+            "text": "Gateway"
+          },
+          {
+            "id": "C",
+            "text": "Router"
+          },
+          {
+            "id": "D",
+            "text": "Modem"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          21
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "A long cable that helps to connect several devices in bus topology having terminators at both end to prevent signal bounce is known as _.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Drop Line"
+          },
+          {
+            "id": "B",
+            "text": "Taps"
+          },
+          {
+            "id": "C",
+            "text": "Analog cable"
+          },
+          {
+            "id": "D",
+            "text": "Backbone"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          22
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          24
+        ],
+        "assets": [
+          {
+            "id": "q15-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q15-table-1.jpg",
+            "page": 24,
+            "alt": "Table for question 15"
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "What is pickling?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "It is used to deSERIALIZE objects i.e. converting the byte stream to object hierarchy"
+          },
+          {
+            "id": "B",
+            "text": "It is used to initialize objects i.e. to convert python object hierarchy to byte stream"
+          },
+          {
+            "id": "C",
+            "text": "It is used to move the file pointer to specific location"
+          },
+          {
+            "id": "D",
+            "text": "It is used in exception handling"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          25
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "Consider the following code and specify the correct order of the statements to be written\n\n(A) f.write(\"CUET EXAMINATION\")\n\n(B) f=open(\"CUET.TXT\", \"w\")\n\n(C) print(\"Data is Written Successfully\")\n\n(D) f.close()",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(B), (A), (C), (D)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (D), (C), (A)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (D), (A), (C)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          26
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Which method from below will take a file pointer to nth character with respect to r position?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "fp.seek(r)"
+          },
+          {
+            "id": "B",
+            "text": "fp.seek(n)"
+          },
+          {
+            "id": "C",
+            "text": "fp.seek(n,r)"
+          },
+          {
+            "id": "D",
+            "text": "seek(n,r).fp"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          28
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "Evaluate the given postfix expression:\n\n$$ \\begin{array}{r} 35\\times6+23\\end{array} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "39"
+          },
+          {
+            "id": "B",
+            "text": "15"
+          },
+          {
+            "id": "C",
+            "text": "9"
+          },
+          {
+            "id": "D",
+            "text": "17"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          30
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "Stack works on the principle of _.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Mid Element First"
+          },
+          {
+            "id": "B",
+            "text": "First In First Out"
+          },
+          {
+            "id": "C",
+            "text": "Last In First Out"
+          },
+          {
+            "id": "D",
+            "text": "Last In Last Out"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          31
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "C",
+            "text": "$$ (A)\\mathrm{-}(I),(B)\\mathrm{-}(II),(C)\\mathrm{-}(IV),(D)\\mathrm{-}(III) $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ (A)\\mathrm{-(II),(B)\\;-}(I),(C)\\;-\\left(III\\right),(D)\\;-\\left(IV\\right) $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          33
+        ],
+        "assets": [
+          {
+            "id": "q21-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q21-table-1.jpg",
+            "page": 33,
+            "alt": "Table for question 21"
+          }
+        ]
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "What will be the sequence of elements removed from the stack after performing the following operations\n\nPUSH(10)\n\nPUSH(20)\n\nPOP()\n\nPOP()\n\nPUSH(30)\n\nPUSH(40)\n\nPOP()\n\nPOP()\n\n(A) 10\n\n(B) 20\n\n(C) 30\n\n(D) 40\nChoose the correct sequence from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (D), (C)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (A), (C), (D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          35
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "In Python, _module need to be imported for implementing Double Ended Queue.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "counter"
+          },
+          {
+            "id": "B",
+            "text": "collections"
+          },
+          {
+            "id": "C",
+            "text": "random"
+          },
+          {
+            "id": "D",
+            "text": "numpy"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          37
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "What will be the position of front and rear after execution of the following statements, the Queue already had the given elements in FIFO order\n\n50 $ \\rightarrow $ 90 $ \\rightarrow $ 7 $ \\rightarrow $ 21 $ \\rightarrow $ 73 $ \\rightarrow $ 77\n\n↑\n\nF\n\nR\n\ndequeue()\n\n\n\n\n\nenqueue(100)\n\ndequeue()",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Front 50, Rear 77"
+          },
+          {
+            "id": "B",
+            "text": "Front 100. Rear 100"
+          },
+          {
+            "id": "C",
+            "text": "Front 77. Rear 100"
+          },
+          {
+            "id": "D",
+            "text": "Front 73, Rear 77"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          39
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "data type is used to implement Queue data structure in Python.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sets"
+          },
+          {
+            "id": "B",
+            "text": "Dictionary"
+          },
+          {
+            "id": "C",
+            "text": "Tuple"
+          },
+          {
+            "id": "D",
+            "text": "List"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          41
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "Choose the statements that are correct.\n\n(A) For Binary Search, all the elements have to be sorted.\n\n(B) For Linear Search, all the elements have to be sorted.\n\n(C) Linear Search takes less time for searching in worst case than binary search's worst case.\n\n(D) Linear Search always gives the fast result whether elements are sorted or not.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) only"
+          },
+          {
+            "id": "B",
+            "text": "(A) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(B) and (C) only"
+          },
+          {
+            "id": "D",
+            "text": "(A), (B) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          43
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Arrange the following in the ascending order of their time complexity.\n\n(A) Worst Case of Linear Search\n\n(B) Best Case of Binary Search\n\n(C) Worst Case of Binary Search\n\n(D) Worst Case of Bubble Sort\nChoose the correct sequence from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(B), (D), (A), (C)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (C), (D)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C), (A), (D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          45
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "How many minimum number of comparison(s) can be required to search an element from 'n' elements, in case of Linear Search?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "n - 1"
+          },
+          {
+            "id": "C",
+            "text": "n"
+          },
+          {
+            "id": "D",
+            "text": "n + 1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          46
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "Which of the statement(s) is/are True for the given question.\n\nData elements are: 7, 5, 17, 13, 9, 27, 31, 25, 35.\n\nHash Table Size: 7\n\nHash Function: $ H(I) = (\\text{Data element}) \\mod (\\text{Hash Table Size}) $\n\n(A) Element 27 will create collision.\n\n(B) Element 25 will create collision.\n\n(C) Element 35 will create collision.\n\n(D) Element 31 will create collision.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "C",
+            "text": "(B), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(A) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          47
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "If a list contain 'n' number of elements and all the\n\nelements by default sorted in ascending order then how\n\nmany comparisons will be required during 1st pass of\n\nbubble sort to arrange the list in ascending order?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "n - 1"
+          },
+          {
+            "id": "D",
+            "text": "n"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          49
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "_ compares neighbouring elements only and swaps them when necessary.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Selection Sort"
+          },
+          {
+            "id": "B",
+            "text": "Bubble Sort"
+          },
+          {
+            "id": "C",
+            "text": "Insertion Sort"
+          },
+          {
+            "id": "D",
+            "text": "Quick Sort"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          53
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "_ are the unorganized facts that can be processed to generate meaningful information.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Information"
+          },
+          {
+            "id": "B",
+            "text": "Data"
+          },
+          {
+            "id": "C",
+            "text": "Blog"
+          },
+          {
+            "id": "D",
+            "text": "contexts"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          54
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 34,
+        "stemEn": "_ is the positive square root of the average of squared difference of each value from the mean.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Mode"
+          },
+          {
+            "id": "B",
+            "text": "Variance"
+          },
+          {
+            "id": "C",
+            "text": "Median"
+          },
+          {
+            "id": "D",
+            "text": "Standard Deviation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          55
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "What is the primary difference between a database and a file system?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Databases are slower than file systems for retrieving data."
+          },
+          {
+            "id": "B",
+            "text": "Databases offer structured data and relationships, while file systems do not."
+          },
+          {
+            "id": "C",
+            "text": "File systems can support complex queries, unlike databases."
+          },
+          {
+            "id": "D",
+            "text": "Both databases and file systems handle data in the same way."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          58
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "A domain in a relational database refers to :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "The overall database structure"
+          },
+          {
+            "id": "B",
+            "text": "A specific set of valid values for an attribute"
+          },
+          {
+            "id": "C",
+            "text": "A table containing multiple records"
+          },
+          {
+            "id": "D",
+            "text": "A relationship between two tables"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          60
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 38,
+        "stemEn": "A relation in a relational database is also known as:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A data type"
+          },
+          {
+            "id": "B",
+            "text": "An attribute"
+          },
+          {
+            "id": "C",
+            "text": "A schema"
+          },
+          {
+            "id": "D",
+            "text": "A table"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          61
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 39,
+        "stemEn": "The primary key is chosen from _.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "The most complex candidate key available."
+          },
+          {
+            "id": "B",
+            "text": "All available candidate keys for a table."
+          },
+          {
+            "id": "C",
+            "text": "The simplest candidate key available."
+          },
+          {
+            "id": "D",
+            "text": "Any attribute within the table."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          62
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 40,
+        "stemEn": "An alternate key is _.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Another name for the primary key"
+          },
+          {
+            "id": "B",
+            "text": "A unique identifier besides the primary key"
+          },
+          {
+            "id": "C",
+            "text": "A relationship between two tables"
+          },
+          {
+            "id": "D",
+            "text": "A synonym for a tuple"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          63
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 41,
+        "stemEn": "Consider the following SQL functions.\n\n(A) CURD ATE()\n\n(B) CURRENT_DATE()\n\n(C) CURRENT_DATE\n\n(D) TODAY()\n\nWhich of the above function/functions returns current date.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B), (C) and (D)"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          65
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "Which of the following is correct syntax for inserting foreign key constraint in a relation?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "ALTER TABLE table_name ADD FOREIGN KEY(attribute name) REFERENCES referenced_table_name(attribute name)"
+          },
+          {
+            "id": "B",
+            "text": "ADD TABLE table_name ADD FOREIGN KEY(attribute name) REFERENCES referenced_table_name(attribute name)"
+          },
+          {
+            "id": "C",
+            "text": "ALTER TABLE table_name REFERENCES referenced_table_name(attribute name) ADD FOREIGN KEY (attribute name)"
+          },
+          {
+            "id": "D",
+            "text": "MODIFY TABLE table_name ADD FOREIGN KEY(attribute name) REFERENCES referenced_table_name(attribute name)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          66
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "What is result of following arithmetic operation in SQL?\nSELECT 5+NULL AS RESULT",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "NULL"
+          },
+          {
+            "id": "C",
+            "text": "0"
+          },
+          {
+            "id": "D",
+            "text": "5NULL"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          68
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "Which of the following expression in SQL would calculate the square root of 16?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "POWER(16,2)"
+          },
+          {
+            "id": "B",
+            "text": "POWER(16, 0.5)"
+          },
+          {
+            "id": "C",
+            "text": "POWER(16, 1)"
+          },
+          {
+            "id": "D",
+            "text": "MOD(16)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          69
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "Which of the following statement(s) is/are TRUE in respect of Media Access Control (MAC) Address?\n\n(A) It can be changed if a node is removed from one network and connected to another network.\n\n(B) Each MAC address is a 12-digit hexadecimal number.\n\n(C) It is a unique value associated with a network adapter called NIC.\n\n(D) It is provided by the Internet Service Provider to locate computers connected to the internet.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B) and (C) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(A) and (B) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          70
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "What is the purpose of Domain Name System Server in networking?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "To encrypt data during transmission."
+          },
+          {
+            "id": "B",
+            "text": "To convert domain names into IP addresses"
+          },
+          {
+            "id": "C",
+            "text": "To regulate network traffic flow."
+          },
+          {
+            "id": "D",
+            "text": "To establish a secure connection between devices."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          74
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "140.168.220.200 is a 32-bit binary number usually represented as 4 decimal values, each representing 8 bits, in the range 0 to 255 separated by decimal points. What is this number called?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "IP Address"
+          },
+          {
+            "id": "B",
+            "text": "Web Address"
+          },
+          {
+            "id": "C",
+            "text": "MAC Address"
+          },
+          {
+            "id": "D",
+            "text": "Port Address"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          75
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "In a _ topology, if there are n devices in a network, each device has n-1 ports for cables.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Mesh"
+          },
+          {
+            "id": "B",
+            "text": "Bus"
+          },
+          {
+            "id": "C",
+            "text": "Star"
+          },
+          {
+            "id": "D",
+            "text": "Ring"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          77
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "Amit wants to be familiar with SQL. One of his friends Anand suggests him to execute the following sql commands.\n\n(A) Create Table Student\n\n(B) Use Database DB\n\n(C) Select * from Student\n\n(D) Insert into Student\n\nIn which order Amit needs to run above commands.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B), (D), (C)"
+          },
+          {
+            "id": "C",
+            "text": "(B), (A), (D), (C)"
+          },
+          {
+            "id": "D",
+            "text": "(C), (B), (D), (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          78
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Arrange the following in correct order of exception handling in python :\n\n(A) Write the code that may raise an exception inside a try block\n\n(B) Execute some code regardless of whether the exception occurs or not using the finally block\n\n(C) Handle the specific exception using the except block\n\n(D) Raise the exception using the raise statement if necessary",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C), (B), (D)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "D",
-      "text": "(C), (B), (D), (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Consider the following table called 'Student' Student\n\nHow many candidate keys are possible with above table?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "One"
-     },
-     {
-      "id": "B",
-      "text": "Two"
-     },
-     {
-      "id": "C",
-      "text": "Three"
-     },
-     {
-      "id": "D",
-      "text": "Four"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": [
-     {
-      "id": "q04-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q04-table-1.jpg",
-      "page": 7,
-      "alt": "Table for question 4"
-     }
-    ]
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Which of the following is not a limitation of file system?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Data Redundancy"
-     },
-     {
-      "id": "B",
-      "text": "Data Inconsistency"
-     },
-     {
-      "id": "C",
-      "text": "Data dependence"
-     },
-     {
-      "id": "D",
-      "text": "Storing Space"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     9
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Match List-I with List-II :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II),(B)-(III),(C)-(IV),(D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(II),(B)-(III),(C)-(I),(D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV),(B)-(II),(C)-(III),(D)-(I)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - $ (\\mathrm{III}) $, (B) - $ (\\mathrm{IV}) $, (C) - $ (\\mathrm{I}) $, (D) - $ (\\mathrm{II}) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     10
-    ],
-    "assets": [
-     {
-      "id": "q06-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q06-table-1.jpg",
-      "page": 10,
-      "alt": "Table for question 6"
-     }
-    ]
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "Which of the following is called database instance?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Overall design of the database"
-     },
-     {
-      "id": "B",
-      "text": "The snapshot of the database at any given time."
-     },
-     {
-      "id": "C",
-      "text": "Data about the data"
-     },
-     {
-      "id": "D",
-      "text": "Restriction on the type of data inserted."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     12
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "What is output of the following SQL statement? SELECT MID('CUET2024',2,5)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "UET2"
-     },
-     {
-      "id": "B",
-      "text": "UET20"
-     },
-     {
-      "id": "C",
-      "text": "ET202"
-     },
-     {
-      "id": "D",
-      "text": "CUET2"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     13
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "SQL applies conditions on the groups through _ clause after groups have been formed.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "where"
-     },
-     {
-      "id": "B",
-      "text": "having"
-     },
-     {
-      "id": "C",
-      "text": "new"
-     },
-     {
-      "id": "D",
-      "text": "all"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     14
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Consider the following two tables emp1 and emp2\n\nemp1\n\nemp2\n\nWhat is output of the following query.\nSELECT name from emp1 minus SELECT name from emp2",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "punita"
-     },
-     {
-      "id": "B",
-      "text": "amit"
-     },
-     {
-      "id": "C",
-      "text": "anand"
-     },
-     {
-      "id": "D",
-      "text": "amit punita"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     16
-    ],
-    "assets": [
-     {
-      "id": "q10-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q10-table-1.jpg",
-      "page": 16,
-      "alt": "Table for question 10"
-     },
-     {
-      "id": "q10-table-2",
-      "kind": "table",
-      "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q10-table-2.jpg",
-      "page": 16,
-      "alt": "Table for question 10"
-     }
-    ]
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Which of the following statement(s) is/are TRUE regarding computer network?\n\n(A) Interspace is a software that allows multiple users in a client-server environment to communicate with each other by sending and receiving data of various types.\n\n(B) IP address is a unique permanent value associated with a network adapter called a NIC.\n\n(C) A computer network is an interconnection among two or more computers or computing devices to share data and resources.\n\n(D) The term Workstation' refers to the most powerful computer of the network that facilitates sharing of data, software and hardware resources on the network and have more memory, processing power and storage than a normal node.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) and (C) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(B) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     18
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "Communication over mobile phone is an example of which type of communication mode?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Simplex"
-     },
-     {
-      "id": "B",
-      "text": "Half-Duplex"
-     },
-     {
-      "id": "C",
-      "text": "Full-Duplex"
-     },
-     {
-      "id": "D",
-      "text": "Double-Duplex"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     20
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "Which of the following device provides the necessary translation of data received from network into a format or protocol recognized by devices with the internal network?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Bridge"
-     },
-     {
-      "id": "B",
-      "text": "Gateway"
-     },
-     {
-      "id": "C",
-      "text": "Router"
-     },
-     {
-      "id": "D",
-      "text": "Modem"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     21
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "A long cable that helps to connect several devices in bus topology having terminators at both end to prevent signal bounce is known as _.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Drop Line"
-     },
-     {
-      "id": "B",
-      "text": "Taps"
-     },
-     {
-      "id": "C",
-      "text": "Analog cable"
-     },
-     {
-      "id": "D",
-      "text": "Backbone"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     22
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     24
-    ],
-    "assets": [
-     {
-      "id": "q15-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q15-table-1.jpg",
-      "page": 24,
-      "alt": "Table for question 15"
-     }
-    ]
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "What is pickling?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "It is used to deSERIALIZE objects i.e. converting the byte stream to object hierarchy"
-     },
-     {
-      "id": "B",
-      "text": "It is used to initialize objects i.e. to convert python object hierarchy to byte stream"
-     },
-     {
-      "id": "C",
-      "text": "It is used to move the file pointer to specific location"
-     },
-     {
-      "id": "D",
-      "text": "It is used in exception handling"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     25
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "Consider the following code and specify the correct order of the statements to be written\n\n(A) f.write(\"CUET EXAMINATION\")\n\n(B) f=open(\"CUET.TXT\", \"w\")\n\n(C) print(\"Data is Written Successfully\")\n\n(D) f.close()",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(B), (A), (C), (D)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (D), (C), (A)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (D), (A), (C)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     26
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Which method from below will take a file pointer to nth character with respect to r position?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "fp.seek(r)"
-     },
-     {
-      "id": "B",
-      "text": "fp.seek(n)"
-     },
-     {
-      "id": "C",
-      "text": "fp.seek(n,r)"
-     },
-     {
-      "id": "D",
-      "text": "seek(n,r).fp"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     28
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "Evaluate the given postfix expression:\n\n$$ \\begin{array}{r} 35\\times6+23\\end{array} $$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "39"
-     },
-     {
-      "id": "B",
-      "text": "15"
-     },
-     {
-      "id": "C",
-      "text": "9"
-     },
-     {
-      "id": "D",
-      "text": "17"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     30
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Stack works on the principle of _.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Mid Element First"
-     },
-     {
-      "id": "B",
-      "text": "First In First Out"
-     },
-     {
-      "id": "C",
-      "text": "Last In First Out"
-     },
-     {
-      "id": "D",
-      "text": "Last In Last Out"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     31
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "C",
-      "text": "$$ (A)\\mathrm{-}(I),(B)\\mathrm{-}(II),(C)\\mathrm{-}(IV),(D)\\mathrm{-}(III) $$"
-     },
-     {
-      "id": "D",
-      "text": "$$ (A)\\mathrm{-(II),(B)\\;-}(I),(C)\\;-\\left(III\\right),(D)\\;-\\left(IV\\right) $$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     33
-    ],
-    "assets": [
-     {
-      "id": "q21-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/computer-science-2024-07-19-shift-1/q21-table-1.jpg",
-      "page": 33,
-      "alt": "Table for question 21"
-     }
-    ]
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "What will be the sequence of elements removed from the stack after performing the following operations\n\nPUSH(10)\n\nPUSH(20)\n\nPOP()\n\nPOP()\n\nPUSH(30)\n\nPUSH(40)\n\nPOP()\n\nPOP()\n\n(A) 10\n\n(B) 20\n\n(C) 30\n\n(D) 40\nChoose the correct sequence from the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (D), (C)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (A), (C), (D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     35
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "In Python, _module need to be imported for implementing Double Ended Queue.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "counter"
-     },
-     {
-      "id": "B",
-      "text": "collections"
-     },
-     {
-      "id": "C",
-      "text": "random"
-     },
-     {
-      "id": "D",
-      "text": "numpy"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     37
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "What will be the position of front and rear after execution of the following statements, the Queue already had the given elements in FIFO order\n\n50 $ \\rightarrow $ 90 $ \\rightarrow $ 7 $ \\rightarrow $ 21 $ \\rightarrow $ 73 $ \\rightarrow $ 77\n\n↑\n\nF\n\nR\n\ndequeue()\n\ndequeue()\n\ndequeue()\n\ndequeue()\n\ndequeue()\n\nenqueue(100)\n\ndequeue()",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Front 50, Rear 77"
-     },
-     {
-      "id": "B",
-      "text": "Front 100. Rear 100"
-     },
-     {
-      "id": "C",
-      "text": "Front 77. Rear 100"
-     },
-     {
-      "id": "D",
-      "text": "Front 73, Rear 77"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     39
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "data type is used to implement Queue data structure in Python.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sets"
-     },
-     {
-      "id": "B",
-      "text": "Dictionary"
-     },
-     {
-      "id": "C",
-      "text": "Tuple"
-     },
-     {
-      "id": "D",
-      "text": "List"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     41
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "Choose the statements that are correct.\n\n(A) For Binary Search, all the elements have to be sorted.\n\n(B) For Linear Search, all the elements have to be sorted.\n\n(C) Linear Search takes less time for searching in worst case than binary search's worst case.\n\n(D) Linear Search always gives the fast result whether elements are sorted or not.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) only"
-     },
-     {
-      "id": "B",
-      "text": "(A) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(B) and (C) only"
-     },
-     {
-      "id": "D",
-      "text": "(A), (B) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     43
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Arrange the following in the ascending order of their time complexity.\n\n(A) Worst Case of Linear Search\n\n(B) Best Case of Binary Search\n\n(C) Worst Case of Binary Search\n\n(D) Worst Case of Bubble Sort\nChoose the correct sequence from the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(B), (D), (A), (C)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (C), (D)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C), (A), (D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     45
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "How many minimum number of comparison(s) can be required to search an element from 'n' elements, in case of Linear Search?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "n - 1"
-     },
-     {
-      "id": "C",
-      "text": "n"
-     },
-     {
-      "id": "D",
-      "text": "n + 1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     46
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "Which of the statement(s) is/are True for the given question.\n\nData elements are: 7, 5, 17, 13, 9, 27, 31, 25, 35.\n\nHash Table Size: 7\n\nHash Function: $ H(I) = (\\text{Data element}) \\mod (\\text{Hash Table Size}) $\n\n(A) Element 27 will create collision.\n\n(B) Element 25 will create collision.\n\n(C) Element 35 will create collision.\n\n(D) Element 31 will create collision.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "C",
-      "text": "(B), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(A) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     47
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "If a list contain 'n' number of elements and all the\n\nelements by default sorted in ascending order then how\n\nmany comparisons will be required during 1st pass of\n\nbubble sort to arrange the list in ascending order?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0"
-     },
-     {
-      "id": "B",
-      "text": "1"
-     },
-     {
-      "id": "C",
-      "text": "n - 1"
-     },
-     {
-      "id": "D",
-      "text": "n"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     49
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "_ compares neighbouring elements only and swaps them when necessary.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Selection Sort"
-     },
-     {
-      "id": "B",
-      "text": "Bubble Sort"
-     },
-     {
-      "id": "C",
-      "text": "Insertion Sort"
-     },
-     {
-      "id": "D",
-      "text": "Quick Sort"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     53
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "_ are the unorganized facts that can be processed to generate meaningful information.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Information"
-     },
-     {
-      "id": "B",
-      "text": "Data"
-     },
-     {
-      "id": "C",
-      "text": "Blog"
-     },
-     {
-      "id": "D",
-      "text": "contexts"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     54
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "_ is the positive square root of the average of squared difference of each value from the mean.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Mode"
-     },
-     {
-      "id": "B",
-      "text": "Variance"
-     },
-     {
-      "id": "C",
-      "text": "Median"
-     },
-     {
-      "id": "D",
-      "text": "Standard Deviation"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     55
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "What is the primary difference between a database and a file system?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Databases are slower than file systems for retrieving data."
-     },
-     {
-      "id": "B",
-      "text": "Databases offer structured data and relationships, while file systems do not."
-     },
-     {
-      "id": "C",
-      "text": "File systems can support complex queries, unlike databases."
-     },
-     {
-      "id": "D",
-      "text": "Both databases and file systems handle data in the same way."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     58
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "A domain in a relational database refers to :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "The overall database structure"
-     },
-     {
-      "id": "B",
-      "text": "A specific set of valid values for an attribute"
-     },
-     {
-      "id": "C",
-      "text": "A table containing multiple records"
-     },
-     {
-      "id": "D",
-      "text": "A relationship between two tables"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     60
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "A relation in a relational database is also known as:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A data type"
-     },
-     {
-      "id": "B",
-      "text": "An attribute"
-     },
-     {
-      "id": "C",
-      "text": "A schema"
-     },
-     {
-      "id": "D",
-      "text": "A table"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     61
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "The primary key is chosen from _.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "The most complex candidate key available."
-     },
-     {
-      "id": "B",
-      "text": "All available candidate keys for a table."
-     },
-     {
-      "id": "C",
-      "text": "The simplest candidate key available."
-     },
-     {
-      "id": "D",
-      "text": "Any attribute within the table."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     62
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "An alternate key is _.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Another name for the primary key"
-     },
-     {
-      "id": "B",
-      "text": "A unique identifier besides the primary key"
-     },
-     {
-      "id": "C",
-      "text": "A relationship between two tables"
-     },
-     {
-      "id": "D",
-      "text": "A synonym for a tuple"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     63
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Consider the following SQL functions.\n\n(A) CURD ATE()\n\n(B) CURRENT_DATE()\n\n(C) CURRENT_DATE\n\n(D) TODAY()\n\nWhich of the above function/functions returns current date.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B), (C) and (D)"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     65
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Which of the following is correct syntax for inserting foreign key constraint in a relation?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "ALTER TABLE table_name ADD FOREIGN KEY(attribute name) REFERENCES referenced_table_name(attribute name)"
-     },
-     {
-      "id": "B",
-      "text": "ADD TABLE table_name ADD FOREIGN KEY(attribute name) REFERENCES referenced_table_name(attribute name)"
-     },
-     {
-      "id": "C",
-      "text": "ALTER TABLE table_name REFERENCES referenced_table_name(attribute name) ADD FOREIGN KEY (attribute name)"
-     },
-     {
-      "id": "D",
-      "text": "MODIFY TABLE table_name ADD FOREIGN KEY(attribute name) REFERENCES referenced_table_name(attribute name)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     66
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "What is result of following arithmetic operation in SQL?\nSELECT 5+NULL AS RESULT",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5"
-     },
-     {
-      "id": "B",
-      "text": "NULL"
-     },
-     {
-      "id": "C",
-      "text": "0"
-     },
-     {
-      "id": "D",
-      "text": "5NULL"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     68
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Which of the following expression in SQL would calculate the square root of 16?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "POWER(16,2)"
-     },
-     {
-      "id": "B",
-      "text": "POWER(16, 0.5)"
-     },
-     {
-      "id": "C",
-      "text": "POWER(16, 1)"
-     },
-     {
-      "id": "D",
-      "text": "MOD(16)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     69
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Which of the following statement(s) is/are TRUE in respect of Media Access Control (MAC) Address?\n\n(A) It can be changed if a node is removed from one network and connected to another network.\n\n(B) Each MAC address is a 12-digit hexadecimal number.\n\n(C) It is a unique value associated with a network adapter called NIC.\n\n(D) It is provided by the Internet Service Provider to locate computers connected to the internet.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B) and (C) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(A) and (B) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     70
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "What is the purpose of Domain Name System Server in networking?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "To encrypt data during transmission."
-     },
-     {
-      "id": "B",
-      "text": "To convert domain names into IP addresses"
-     },
-     {
-      "id": "C",
-      "text": "To regulate network traffic flow."
-     },
-     {
-      "id": "D",
-      "text": "To establish a secure connection between devices."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     74
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "140.168.220.200 is a 32-bit binary number usually represented as 4 decimal values, each representing 8 bits, in the range 0 to 255 separated by decimal points. What is this number called?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "IP Address"
-     },
-     {
-      "id": "B",
-      "text": "Web Address"
-     },
-     {
-      "id": "C",
-      "text": "MAC Address"
-     },
-     {
-      "id": "D",
-      "text": "Port Address"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     75
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "In a _ topology, if there are n devices in a network, each device has n-1 ports for cables.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Mesh"
-     },
-     {
-      "id": "B",
-      "text": "Bus"
-     },
-     {
-      "id": "C",
-      "text": "Star"
-     },
-     {
-      "id": "D",
-      "text": "Ring"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     77
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Amit wants to be familiar with SQL. One of his friends Anand suggests him to execute the following sql commands.\n\n(A) Create Table Student\n\n(B) Use Database DB\n\n(C) Select * from Student\n\n(D) Insert into Student\n\nIn which order Amit needs to run above commands.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B), (D), (C)"
-     },
-     {
-      "id": "C",
-      "text": "(B), (A), (D), (C)"
-     },
-     {
-      "id": "D",
-      "text": "(C), (B), (D), (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     78
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

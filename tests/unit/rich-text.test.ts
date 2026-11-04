@@ -96,4 +96,21 @@ describe("rich text", () => {
     expect(output).toContain("<strong>Key Concept:</strong>");
     expect(output).toContain("<em>critical</em>");
   });
+
+  it("deduplicates repeated question prompt lines and redundant numbers", () => {
+    const input = "Rearrange the following phrases to form a meaningful sentence:\n\n13. Rearrange the following phrases to form a meaningful sentence.\n\n(A) most roads and routes across Delhi NCR";
+    const output = renderRichText(input);
+    expect(output).toContain("Rearrange the following phrases to form a meaningful sentence:");
+    expect(output).toContain("(A) most roads and routes across Delhi NCR");
+    // Verify it only appears once
+    const occurrences = (output.match(/Rearrange the following phrases/g) || []).length;
+    expect(occurrences).toBe(1);
+  });
+
+  it("deduplicates consecutive identical sentences in question stems", () => {
+    const input = "Which of the following is not a Sexually Transmitted Disease?\n\nWhich of the following is not a Sexually Transmitted Disease?";
+    const output = renderRichText(input);
+    const occurrences = (output.match(/Sexually Transmitted Disease/g) || []).length;
+    expect(occurrences).toBe(1);
+  });
 });

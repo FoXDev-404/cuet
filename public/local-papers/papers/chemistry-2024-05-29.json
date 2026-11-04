@@ -1,1725 +1,1725 @@
 {
- "exam": {
-  "id": "local-chemistry-2024-05-29",
-  "slug": "chemistry-2024-05-29",
-  "title": "CUET UG Chemistry 29 May 2024 Previous Year Paper",
-  "subject": "Chemistry",
-  "subjectId": "local-chemistry",
-  "subjectCode": "CHE",
-  "year": 2024,
-  "examDate": "2024-05-29",
-  "shift": null,
-  "sourceFile": "Chemistry_2024-05-29.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 49,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Which of the following gases at 298 K and 1 atm pressure is having maximum solubility in water?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Methanal, $ K_{H}=0.000018 $"
-     },
-     {
-      "id": "B",
-      "text": "Argon, $ K_{H}=40.3 $"
-     },
-     {
-      "id": "C",
-      "text": "Methane,K_{H}=0.41"
-     },
-     {
-      "id": "D",
-      "text": "$ CO_{2}, K_{H}=1.6 $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Which of the following is/are the bases of DNA?\n\n(A) Adenine\n\n(B) Uracil\n\n(C) Thymine\n\n(D) Cytosine",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (C) only"
-     },
-     {
-      "id": "B",
-      "text": "(B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(A) and (B) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(II),(B)-(IV),(C)-(I),(D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q03-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q03-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 3"
-     }
+  "exam": {
+    "id": "local-chemistry-2024-05-29",
+    "slug": "chemistry-2024-05-29",
+    "title": "CUET UG Chemistry 29 May 2024 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2024,
+    "examDate": "2024-05-29",
+    "shift": null,
+    "sourceFile": "Chemistry_2024-05-29.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 49,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Which of the following gases at 298 K and 1 atm pressure is having maximum solubility in water?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Methanal, $ K_{H}=0.000018 $"
+          },
+          {
+            "id": "B",
+            "text": "Argon, $ K_{H}=40.3 $"
+          },
+          {
+            "id": "C",
+            "text": "Methane,K_{H}=0.41"
+          },
+          {
+            "id": "D",
+            "text": "$ CO_{2}, K_{H}=1.6 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Which of the following is/are the bases of DNA?\n\n(A) Adenine\n\n(B) Uracil\n\n(C) Thymine\n\n(D) Cytosine",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (C) only"
+          },
+          {
+            "id": "B",
+            "text": "(B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(A) and (B) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(II),(B)-(IV),(C)-(I),(D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q03-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q03-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 3"
+          }
+        ]
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of the following solvents is having its lowest Ebullioscopic constant?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Chloroform"
+          },
+          {
+            "id": "B",
+            "text": "Diethyl Ether"
+          },
+          {
+            "id": "C",
+            "text": "Benzene"
+          },
+          {
+            "id": "D",
+            "text": "Carbon disulphide"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q04-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q04-table-1.jpg",
+            "page": 4,
+            "alt": "Table for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Which among the following compound is formed, when aldehyde reacts with HCN in presence of base?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cyanide"
+          },
+          {
+            "id": "B",
+            "text": "Isocyanide"
+          },
+          {
+            "id": "C",
+            "text": "Cyanohydrin"
+          },
+          {
+            "id": "D",
+            "text": "Hydrogen cyanide"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The correct decreasing order of basic strength of following amines in aqueous solution is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$$ \\mathrm{CH}_{3}\\mathrm{NH}_{2},(\\mathrm{CH}_{3})_{2}\\mathrm{NH},(\\mathrm{CH}_{3})_{3}\\mathrm{N},\\mathrm{NH}_{3} $$"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\mathrm{CH}_{3}\\mathrm{NH}_{2},(\\mathrm{CH}_{3})_{2}\\mathrm{NH},(\\mathrm{CH}_{3})_{3}\\mathrm{N},\\mathrm{NH}_{3} $$"
+          },
+          {
+            "id": "C",
+            "text": "$$ NH_{3}>(CH_{3})_{3}N>(CH_{3})_{2}NH>CH_{3}NH_{2} $$"
+          },
+          {
+            "id": "D",
+            "text": "$$ \\mathrm{D}.(\\mathrm{CH}_{3})_{2}\\mathrm{NH}>\\mathrm{CH}_{3}\\mathrm{NH}_{2}>(\\mathrm{CH}_{3})_{3}\\mathrm{N}>\\mathrm{NH}_{3} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "A new C-C bond formation is possible in :\n\n(A) Cannizzaro reaction\n\n(B) Friedel-Crafts alkylation\n\n(C) Clemmensen reduction\n\n(D) Riemer-Tiemann reaction\n\nChoose the correct answer from the options given below:\n\nA new C-C bond formation is possible in :\n\n(A) Cannizzaro reaction\n\n(B) Friedel-Crafts alkylation\n\n(C) Clemmensen reduction\n\n(D) Riemer-Tiemann reaction",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "C",
+            "text": "(B), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(A), (B), (C) and (D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          8
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which of the following will respond to Tollen's test?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ethanoic acid"
+          },
+          {
+            "id": "B",
+            "text": "Methanoic acid"
+          },
+          {
+            "id": "C",
+            "text": "Propanoic acid"
+          },
+          {
+            "id": "D",
+            "text": "Butanoic acid"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          9
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "The order of reactivity of the given haloalkanes towards nucleophile is\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "RI > RBr > RCl"
+          },
+          {
+            "id": "B",
+            "text": "RCl > RBr > RI"
+          },
+          {
+            "id": "C",
+            "text": "RBr > RCl > RI"
+          },
+          {
+            "id": "D",
+            "text": "RBr > RI > RCl"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          11
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Which transition metal is liquid at room temperature? Which transition metal is liquid at room temperature?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Hg"
+          },
+          {
+            "id": "B",
+            "text": "Cu"
+          },
+          {
+            "id": "C",
+            "text": "Ag"
+          },
+          {
+            "id": "D",
+            "text": "Au"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          12
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "Which is the hardest metal?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Zn"
+          },
+          {
+            "id": "B",
+            "text": "Cu"
+          },
+          {
+            "id": "C",
+            "text": "Hg"
+          },
+          {
+            "id": "D",
+            "text": "Cd"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          13
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "In any row, melting points of these metals rise to a maximum at $ d^{5} $. Which transition metal is an exception?\n",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ti"
+          },
+          {
+            "id": "B",
+            "text": "V"
+          },
+          {
+            "id": "C",
+            "text": "Cr"
+          },
+          {
+            "id": "D",
+            "text": "Mn"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          14
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "How many electrons are needed in reduction of Cr_{2}O_{7}^{2-} to Cr^{3+}?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "One"
+          },
+          {
+            "id": "B",
+            "text": "Six"
+          },
+          {
+            "id": "C",
+            "text": "Five"
+          },
+          {
+            "id": "D",
+            "text": "Eight"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          15
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "Which among the following compounds show metal excess defect due to anionic vacancy?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "ZnO"
+          },
+          {
+            "id": "B",
+            "text": "NaCl"
+          },
+          {
+            "id": "C",
+            "text": "FeO"
+          },
+          {
+            "id": "D",
+            "text": "CdO"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          16
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "Molal elevation constant is also known as:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ebullioscopic constant"
+          },
+          {
+            "id": "B",
+            "text": "Gas constant"
+          },
+          {
+            "id": "C",
+            "text": "Henry's constant"
+          },
+          {
+            "id": "D",
+            "text": "Cryoscopic constant"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          17
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "What is the overall order of the reaction?\n\nRate = k[A] $ ^{1/2} $[B] $ ^{3/2} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "0"
+          },
+          {
+            "id": "C",
+            "text": "1"
+          },
+          {
+            "id": "D",
+            "text": "0.5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          18
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Which term of molar conductivity is used when the concentration of electrolyte approaches to zero?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Infinite molar conductivity"
+          },
+          {
+            "id": "B",
+            "text": "Zero molar conductivity"
+          },
+          {
+            "id": "C",
+            "text": "Standard molar conductivity"
+          },
+          {
+            "id": "D",
+            "text": "Limiting molar conductivity"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          19
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "Kohlrausch law is related to which of the following term?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Osmosis"
+          },
+          {
+            "id": "B",
+            "text": "Diffusion"
+          },
+          {
+            "id": "C",
+            "text": "Effusion"
+          },
+          {
+            "id": "D",
+            "text": "Migration of ions"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          20
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "Which factor in Arrhenius equation, corresponds to fraction of molecules having kinetic energy greater than activation energy?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\ln k $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\ln A $"
+          },
+          {
+            "id": "C",
+            "text": "RT"
+          },
+          {
+            "id": "D",
+            "text": "$ e^{-} $Ea/RT"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          20
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "What is the another term used for probability factor (P) in collision theory?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Temperature factor"
+          },
+          {
+            "id": "B",
+            "text": "Compressibility factor"
+          },
+          {
+            "id": "C",
+            "text": "Steric factor"
+          },
+          {
+            "id": "D",
+            "text": "Concentration factor"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          21
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "Why does Fluorine exhibit only -1 oxidation state?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "It is a halogen."
+          },
+          {
+            "id": "B",
+            "text": "It is a non-metal."
+          },
+          {
+            "id": "C",
+            "text": "It is small in size."
+          },
+          {
+            "id": "D",
+            "text": "It has no d orbitals."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          22
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "Which among the following halogen exists in liquid state at room temperature?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Fluorine"
+          },
+          {
+            "id": "B",
+            "text": "Chlorine"
+          },
+          {
+            "id": "C",
+            "text": "Bromine"
+          },
+          {
+            "id": "D",
+            "text": "Iodine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          23
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "The central atoms/ions in the coordination compounds are referred as _.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Lewis base"
+          },
+          {
+            "id": "B",
+            "text": "Lewis acid"
+          },
+          {
+            "id": "C",
+            "text": "Bronded acid"
+          },
+          {
+            "id": "D",
+            "text": "Bronsted base"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          24
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "What is the IUPAC name of $ [PtNH_{3})_{2}Cl(NO_{2})] $?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Diamminechloridonitrito-N-platinum(II)"
+          },
+          {
+            "id": "B",
+            "text": "Diamminechloridenitrito-N-platinum(III)"
+          },
+          {
+            "id": "C",
+            "text": "Diamminechloridonitrito-O-platinum(II)"
+          },
+          {
+            "id": "D",
+            "text": "Diammonia chloridonitrito-N-platinum(II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          24
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "What product is obtained when chloroform reacts with oxygen in presence of light?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Phosgene gas"
+          },
+          {
+            "id": "B",
+            "text": "Phosphine gas"
+          },
+          {
+            "id": "C",
+            "text": "Chlorine gas"
+          },
+          {
+            "id": "D",
+            "text": "Hydrogen gas"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          25
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Which among the following is a trihydric alcohol?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ethanol"
+          },
+          {
+            "id": "B",
+            "text": "Glycerol"
+          },
+          {
+            "id": "C",
+            "text": "Ethylene Glycol"
+          },
+          {
+            "id": "D",
+            "text": "Phenol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          26
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "Aspirin is also known as:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Salicylic acid"
+          },
+          {
+            "id": "B",
+            "text": "Ethyl Salicylic acid"
+          },
+          {
+            "id": "C",
+            "text": "Methyl Salicylic acid"
+          },
+          {
+            "id": "D",
+            "text": "Acetyl Salicylic acid"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          27
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "What is the IUPAC name of picric acid?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2-Nitrophenol"
+          },
+          {
+            "id": "B",
+            "text": "2,4,6-Trinitrophenol"
+          },
+          {
+            "id": "C",
+            "text": "Ethyl Salicylic acid"
+          },
+          {
+            "id": "D",
+            "text": "2 aminophenol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          28
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "What is the product when glucose reacts with bromine water?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Gluconic acid"
+          },
+          {
+            "id": "B",
+            "text": "Glyceraldehyde"
+          },
+          {
+            "id": "C",
+            "text": "Saccharic acid"
+          },
+          {
+            "id": "D",
+            "text": "Oxime"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          29
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 31,
+        "stemEn": "Match List I with List II for the oxidation state of central atoms:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A) - (IV), (B) - (III), (C) - (II), (D) - (I)"
+          },
+          {
+            "id": "C",
+            "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (IV), (B) - (I), (C) - (III), (D) - (II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "pending",
+        "reviewFlags": [],
+        "sourcePages": [
+          30
+        ],
+        "assets": [
+          {
+            "id": "q31-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q31-table-1.jpg",
+            "page": 30,
+            "alt": "Table for question 31"
+          }
+        ]
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 32,
+        "stemEn": "What is the colour of copper compound formed in Fehling's test for aliphatic aldehydes?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Green"
+          },
+          {
+            "id": "B",
+            "text": "Blue"
+          },
+          {
+            "id": "C",
+            "text": "Yellow"
+          },
+          {
+            "id": "D",
+            "text": "Red brown"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          31
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 33,
+        "stemEn": "What is the major product formed when diazonium salt undergoes Gatterman reaction?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Haloarene"
+          },
+          {
+            "id": "B",
+            "text": "Aryl amine"
+          },
+          {
+            "id": "C",
+            "text": "Phenol"
+          },
+          {
+            "id": "D",
+            "text": "Diphenyl ether"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          32
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 34,
+        "stemEn": "What is the major product of Carbylamine reaction?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cyanide"
+          },
+          {
+            "id": "B",
+            "text": "Isocyanide"
+          },
+          {
+            "id": "C",
+            "text": "Nitrile"
+          },
+          {
+            "id": "D",
+            "text": "Alkane"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          33
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 35,
+        "stemEn": "Which among the following is an essential amino acid?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Glycine"
+          },
+          {
+            "id": "B",
+            "text": "Alanine"
+          },
+          {
+            "id": "C",
+            "text": "Valine"
+          },
+          {
+            "id": "D",
+            "text": "Serine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          34
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 36,
+        "stemEn": "Arrange the following in increasing order of their pH values :\n\n(A) p-Nitrophenol\n\n(B) m-Cresol\n\n(C) m-Nitrophenol\n\n(D) Phenol",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) < (B) < (C) < (D)"
+          },
+          {
+            "id": "B",
+            "text": "(A) < (C) < (D) < (B)"
+          },
+          {
+            "id": "C",
+            "text": "(B) < (A) < (D) < (C)"
+          },
+          {
+            "id": "D",
+            "text": "(C) < (B) < (D) < (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          35
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 37,
+        "stemEn": "Which among the following is a biodegradable polymer?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "PVC"
+          },
+          {
+            "id": "B",
+            "text": "Freon"
+          },
+          {
+            "id": "C",
+            "text": "Nylon"
+          },
+          {
+            "id": "D",
+            "text": "PHBV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          36
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 38,
+        "stemEn": "Which among the following is an antacid?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Aspirin"
+          },
+          {
+            "id": "B",
+            "text": "Zantac"
+          },
+          {
+            "id": "C",
+            "text": "Equanil"
+          },
+          {
+            "id": "D",
+            "text": "Noradrenaline"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          37
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 39,
+        "stemEn": "What is the numerical value of one Faraday in Coloumbs?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "96587"
+          },
+          {
+            "id": "B",
+            "text": "96487"
+          },
+          {
+            "id": "C",
+            "text": "99500"
+          },
+          {
+            "id": "D",
+            "text": "6.023"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          38
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 40,
+        "stemEn": "A first order reaction has a half-life of 693 sec. What will be its rate constant?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.01sec $ ^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "1sec $ ^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "0.001sec $ ^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "0.1sec $ ^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          39
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 41,
+        "stemEn": "For S_{N}2 reaction, the increasing order of the reactivity of the following alkyl halides is:\n\n(A) $ CH_{3}CH_{2}CH_{2}CH_{2}Br $\n\n(B) $ CH_{3}CH_{2}CH(Br)CH_{3} $\n\n(C)(CH_{3})_{3}CBr\n\n(D) $ (\\mathrm{CH}_{3})_{2}\\mathrm{CHCH}_{2}\\mathrm{Br} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)<(B)<(C)<(D)"
+          },
+          {
+            "id": "B",
+            "text": "(A)<(C)<(B)<(D)"
+          },
+          {
+            "id": "C",
+            "text": "(B)<(A)<(D)<(C)"
+          },
+          {
+            "id": "D",
+            "text": "(C)<(B)<(D)<(A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          40
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 42,
+        "stemEn": "Which among the following is a strong field ligand?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "I"
+          },
+          {
+            "id": "B",
+            "text": "Cl"
+          },
+          {
+            "id": "C",
+            "text": "NH_{3}"
+          },
+          {
+            "id": "D",
+            "text": "SCN"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          41
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 43,
+        "stemEn": "Arrange the following in increasing order of their osmotic pressure generation at 298 K:\n\n(The cell wall is permeable to water and not to the solute molecules)\n\n(A) If a cell containing 0.5 moles of solute dissolved in 1 L of water is immersed in pure water.\n\n(B) If a cell containing 0.25 moles of solute dissolved in 1 L of water is immersed in pure water.\n\n(C) If a cell containing 0.1 moles of solute dissolved in 0.01 L of water is immersed in pure water.\n\n(D) If a cell containing 0.2 moles of solute dissolved in 0.05 L of water is immersed in pure water.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C)<(B)<(A)<(D)"
+          },
+          {
+            "id": "B",
+            "text": "(D)<(A)<(B)<(C)"
+          },
+          {
+            "id": "C",
+            "text": "(B)<(A)<(D)<(C)"
+          },
+          {
+            "id": "D",
+            "text": "(C)<(A)<(B)<(D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          42
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 44,
+        "stemEn": "Arrange the following rate constant units in increasing order of their order of reaction:\n\n(A) $ sec^{-1} $\n\n(B) M $ ^{-1} $ sec $ ^{-1} $\n\n(C) mol $ ^{-1} $L sec $ ^{-1} $\n\n(D) mol $ ^{-2} $L $ ^{2} $ sec $ ^{-1} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C) $ （ $A $ ） $ $ （ $B $ $ （ $ $（D）"
+          },
+          {
+            "id": "B",
+            "text": "(C) $ (C)\\leq(B)\\leq(A)\\leq(D) $"
+          },
+          {
+            "id": "C",
+            "text": "(B) $ (_{\\mathrm{A}})<_{\\mathrm{C}}<_{\\mathrm{D}}) $"
+          },
+          {
+            "id": "D",
+            "text": "(A) $ (B)=(C) $(D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          43
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 45,
+        "stemEn": "Which of the following compounds will undergo Aldol condensation reaction?\n\n(A)\n\n(B)\n\n(C) $ CH_{3}-CH_{2}-C(CH_{3})_{2}-CH_{2}-CHO $\n(D) HCHO",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(B) and (C) only"
+          },
+          {
+            "id": "C",
+            "text": "(B), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(A), (B), (C) and (D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          44,
+          45
+        ],
+        "assets": [
+          {
+            "id": "q45-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q45-figure-1.jpg",
+            "page": 45,
+            "alt": "Figure for question 45"
+          },
+          {
+            "id": "q45-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q45-figure-2.jpg",
+            "page": 45,
+            "alt": "Figure for question 45"
+          }
+        ]
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 46,
+        "stemEn": "Consider the following compounds:\n\n(A)\n\n(B)\n\n(C)\n\n(D)\n\nArrange these compounds in the increasing order of rate of hydrolysis:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(B)<(D)<(C)<(A)"
+          },
+          {
+            "id": "B",
+            "text": "(B)<(D)<(A)<(C)"
+          },
+          {
+            "id": "C",
+            "text": "(D)<(B)<(A)<(C)"
+          },
+          {
+            "id": "D",
+            "text": "(A) $ (D) $ $ (B) $ $ (C) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          46
+        ],
+        "assets": [
+          {
+            "id": "q46-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-1.jpg",
+            "page": 46,
+            "alt": "Figure for question 46"
+          },
+          {
+            "id": "q46-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-2.jpg",
+            "page": 46,
+            "alt": "Figure for question 46"
+          },
+          {
+            "id": "q46-figure-3",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-3.jpg",
+            "page": 46,
+            "alt": "Figure for question 46"
+          },
+          {
+            "id": "q46-figure-4",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-4.jpg",
+            "page": 46,
+            "alt": "Figure for question 46"
+          }
+        ]
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 47,
+        "stemEn": "Which of the following ions will be coloured in the aqueous solution?\n\n(A) Ti^{3+}\n\n(B) $ \\mathrm{Nb^{3+}} $\n\n(C) $ Cu^{3+} $\n\n(D) $ Y^{3+} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "C",
+            "text": "(A) and (B) only"
+          },
+          {
+            "id": "D",
+            "text": "(A), (B), (C) and (D)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          47
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 48,
+        "stemEn": "The correct statement/statements from the options given below is/are:\n\n(A) Diazonium salts of aromatic amines are morestable than diazonium salts of aliphatic amines.\n\n(B) Ethylamine is insoluble in water.\n\n(C) Gabriel phthalimide synthesis can be used to prepare primary amines.\n\n(D) Beacuse of +R-effect of -NH₂ group, aniline will undergo Friedel-Crafts acylation reaction.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) and (B) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "C",
+            "text": "(A) and (C) only"
+          },
+          {
+            "id": "D",
+            "text": "(B), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          48
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 49,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) - (Ⅳ), (B) - (Ⅲ), (C) - (Ⅱ), (D) - (Ⅰ)"
+          },
+          {
+            "id": "B",
+            "text": "(A) - (II), (B) - (III), (C) - (I), (D) - (IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A) - (Ⅳ), (B) - (Ⅲ), (C) - (Ⅰ), (D) - (Ⅱ)"
+          },
+          {
+            "id": "D",
+            "text": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          50
+        ],
+        "assets": [
+          {
+            "id": "q49-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q49-table-1.jpg",
+            "page": 50,
+            "alt": "Table for question 49"
+          }
+        ]
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 50,
+        "stemEn": "Match List-I with List-II:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)- $ (\\mathrm{II}) $, (B)- $ (\\mathrm{I}) $, (C)- $ (\\mathrm{IV}) $, (D)- $ (\\mathrm{III}) $"
+          },
+          {
+            "id": "B",
+            "text": "(A)- $ (\\mathrm{II}) $, (B)-(I), (C)- $ (\\mathrm{III}) $, (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "$$ (A)-(I),(B)-(II),(C)-(III),(D)-(IV) $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          50,
+          51
+        ],
+        "assets": [
+          {
+            "id": "q50-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/chemistry-2024-05-29/q50-table-1.jpg",
+            "page": 51,
+            "alt": "Table for question 50"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Which of the following solvents is having its lowest Ebullioscopic constant?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Chloroform"
-     },
-     {
-      "id": "B",
-      "text": "Diethyl Ether"
-     },
-     {
-      "id": "C",
-      "text": "Benzene"
-     },
-     {
-      "id": "D",
-      "text": "Carbon disulphide"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q04-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q04-table-1.jpg",
-      "page": 4,
-      "alt": "Table for question 4"
-     }
-    ]
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Which among the following compound is formed, when aldehyde reacts with HCN in presence of base?\n\nWhich among the following compound is formed, when aldehyde reacts with HCN in presence of base?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Cyanide"
-     },
-     {
-      "id": "B",
-      "text": "Isocyanide"
-     },
-     {
-      "id": "C",
-      "text": "Cyanohydrin"
-     },
-     {
-      "id": "D",
-      "text": "Hydrogen cyanide"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "The correct decreasing order of basic strength of following amines in aqueous solution is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$$ \\mathrm{CH}_{3}\\mathrm{NH}_{2},(\\mathrm{CH}_{3})_{2}\\mathrm{NH},(\\mathrm{CH}_{3})_{3}\\mathrm{N},\\mathrm{NH}_{3} $$"
-     },
-     {
-      "id": "B",
-      "text": "$$ \\mathrm{CH}_{3}\\mathrm{NH}_{2},(\\mathrm{CH}_{3})_{2}\\mathrm{NH},(\\mathrm{CH}_{3})_{3}\\mathrm{N},\\mathrm{NH}_{3} $$"
-     },
-     {
-      "id": "C",
-      "text": "$$ NH_{3}>(CH_{3})_{3}N>(CH_{3})_{2}NH>CH_{3}NH_{2} $$"
-     },
-     {
-      "id": "D",
-      "text": "$$ \\mathrm{D}.(\\mathrm{CH}_{3})_{2}\\mathrm{NH}>\\mathrm{CH}_{3}\\mathrm{NH}_{2}>(\\mathrm{CH}_{3})_{3}\\mathrm{N}>\\mathrm{NH}_{3} $$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "A new C-C bond formation is possible in :\n\n(A) Cannizzaro reaction\n\n(B) Friedel-Crafts alkylation\n\n(C) Clemmensen reduction\n\n(D) Riemer-Tiemann reaction\n\nChoose the correct answer from the options given below:\n\nA new C-C bond formation is possible in :\n\n(A) Cannizzaro reaction\n\n(B) Friedel-Crafts alkylation\n\n(C) Clemmensen reduction\n\n(D) Riemer-Tiemann reaction",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "C",
-      "text": "(B), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(A), (B), (C) and (D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     8
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Which of the following will respond to Tollen's test?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ethanoic acid"
-     },
-     {
-      "id": "B",
-      "text": "Methanoic acid"
-     },
-     {
-      "id": "C",
-      "text": "Propanoic acid"
-     },
-     {
-      "id": "D",
-      "text": "Butanoic acid"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     9
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "The order of reactivity of the given haloalkanes towards nucleophile is\n\nThe order of reactivity of the given haloalkanes towards nucleophile is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "RI > RBr > RCl"
-     },
-     {
-      "id": "B",
-      "text": "RCl > RBr > RI"
-     },
-     {
-      "id": "C",
-      "text": "RBr > RCl > RI"
-     },
-     {
-      "id": "D",
-      "text": "RBr > RI > RCl"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     11
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Which transition metal is liquid at room temperature? Which transition metal is liquid at room temperature?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Hg"
-     },
-     {
-      "id": "B",
-      "text": "Cu"
-     },
-     {
-      "id": "C",
-      "text": "Ag"
-     },
-     {
-      "id": "D",
-      "text": "Au"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     12
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Which is the hardest metal?\nWhich is the hardest metal?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Zn"
-     },
-     {
-      "id": "B",
-      "text": "Cu"
-     },
-     {
-      "id": "C",
-      "text": "Hg"
-     },
-     {
-      "id": "D",
-      "text": "Cd"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     13
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "In any row, melting points of these metals rise to a maximum at $ d^{5} $. Which transition metal is an exception?\n\nIn any row, melting points of these metals rise to a maximum at $ d^{5} $. Which transition metal is an exception?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ti"
-     },
-     {
-      "id": "B",
-      "text": "V"
-     },
-     {
-      "id": "C",
-      "text": "Cr"
-     },
-     {
-      "id": "D",
-      "text": "Mn"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     14
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "How many electrons are needed in reduction of Cr_{2}O_{7}^{2-} to Cr^{3+}?\nHow many electrons are needed in reduction of Cr_{2}O_{7}^{2-} to Cr^{3+}?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "One"
-     },
-     {
-      "id": "B",
-      "text": "Six"
-     },
-     {
-      "id": "C",
-      "text": "Five"
-     },
-     {
-      "id": "D",
-      "text": "Eight"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     15
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Which among the following compounds show metal excess defect due to anionic vacancy?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "ZnO"
-     },
-     {
-      "id": "B",
-      "text": "NaCl"
-     },
-     {
-      "id": "C",
-      "text": "FeO"
-     },
-     {
-      "id": "D",
-      "text": "CdO"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     16
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "Molal elevation constant is also known as:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ebullioscopic constant"
-     },
-     {
-      "id": "B",
-      "text": "Gas constant"
-     },
-     {
-      "id": "C",
-      "text": "Henry's constant"
-     },
-     {
-      "id": "D",
-      "text": "Cryoscopic constant"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     17
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "What is the overall order of the reaction?\n\nRate = k[A] $ ^{1/2} $[B] $ ^{3/2} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2"
-     },
-     {
-      "id": "B",
-      "text": "0"
-     },
-     {
-      "id": "C",
-      "text": "1"
-     },
-     {
-      "id": "D",
-      "text": "0.5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     18
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Which term of molar conductivity is used when the concentration of electrolyte approaches to zero?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Infinite molar conductivity"
-     },
-     {
-      "id": "B",
-      "text": "Zero molar conductivity"
-     },
-     {
-      "id": "C",
-      "text": "Standard molar conductivity"
-     },
-     {
-      "id": "D",
-      "text": "Limiting molar conductivity"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     19
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "Kohlrausch law is related to which of the following term?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Osmosis"
-     },
-     {
-      "id": "B",
-      "text": "Diffusion"
-     },
-     {
-      "id": "C",
-      "text": "Effusion"
-     },
-     {
-      "id": "D",
-      "text": "Migration of ions"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     20
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Which factor in Arrhenius equation, corresponds to fraction of molecules having kinetic energy greater than activation energy?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\ln k $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\ln A $"
-     },
-     {
-      "id": "C",
-      "text": "RT"
-     },
-     {
-      "id": "D",
-      "text": "$ e^{-} $Ea/RT"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     20
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "What is the another term used for probability factor (P) in collision theory?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Temperature factor"
-     },
-     {
-      "id": "B",
-      "text": "Compressibility factor"
-     },
-     {
-      "id": "C",
-      "text": "Steric factor"
-     },
-     {
-      "id": "D",
-      "text": "Concentration factor"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     21
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Why does Fluorine exhibit only -1 oxidation state?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "It is a halogen."
-     },
-     {
-      "id": "B",
-      "text": "It is a non-metal."
-     },
-     {
-      "id": "C",
-      "text": "It is small in size."
-     },
-     {
-      "id": "D",
-      "text": "It has no d orbitals."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     22
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "Which among the following halogen exists in liquid state at room temperature?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Fluorine"
-     },
-     {
-      "id": "B",
-      "text": "Chlorine"
-     },
-     {
-      "id": "C",
-      "text": "Bromine"
-     },
-     {
-      "id": "D",
-      "text": "Iodine"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     23
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "The central atoms/ions in the coordination compounds are referred as _.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Lewis base"
-     },
-     {
-      "id": "B",
-      "text": "Lewis acid"
-     },
-     {
-      "id": "C",
-      "text": "Bronded acid"
-     },
-     {
-      "id": "D",
-      "text": "Bronsted base"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     24
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "What is the IUPAC name of $ [PtNH_{3})_{2}Cl(NO_{2})] $?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Diamminechloridonitrito-N-platinum(II)"
-     },
-     {
-      "id": "B",
-      "text": "Diamminechloridenitrito-N-platinum(III)"
-     },
-     {
-      "id": "C",
-      "text": "Diamminechloridonitrito-O-platinum(II)"
-     },
-     {
-      "id": "D",
-      "text": "Diammonia chloridonitrito-N-platinum(II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     24
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "What product is obtained when chloroform reacts with oxygen in presence of light?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Phosgene gas"
-     },
-     {
-      "id": "B",
-      "text": "Phosphine gas"
-     },
-     {
-      "id": "C",
-      "text": "Chlorine gas"
-     },
-     {
-      "id": "D",
-      "text": "Hydrogen gas"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     25
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Which among the following is a trihydric alcohol?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ethanol"
-     },
-     {
-      "id": "B",
-      "text": "Glycerol"
-     },
-     {
-      "id": "C",
-      "text": "Ethylene Glycol"
-     },
-     {
-      "id": "D",
-      "text": "Phenol"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     26
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Aspirin is also known as:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Salicylic acid"
-     },
-     {
-      "id": "B",
-      "text": "Ethyl Salicylic acid"
-     },
-     {
-      "id": "C",
-      "text": "Methyl Salicylic acid"
-     },
-     {
-      "id": "D",
-      "text": "Acetyl Salicylic acid"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     27
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "What is the IUPAC name of picric acid?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2-Nitrophenol"
-     },
-     {
-      "id": "B",
-      "text": "2,4,6-Trinitrophenol"
-     },
-     {
-      "id": "C",
-      "text": "Ethyl Salicylic acid"
-     },
-     {
-      "id": "D",
-      "text": "2 aminophenol"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     28
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "What is the product when glucose reacts with bromine water?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Gluconic acid"
-     },
-     {
-      "id": "B",
-      "text": "Glyceraldehyde"
-     },
-     {
-      "id": "C",
-      "text": "Saccharic acid"
-     },
-     {
-      "id": "D",
-      "text": "Oxime"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     29
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "Match List I with List II for the oxidation state of central atoms:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A) - (IV), (B) - (III), (C) - (II), (D) - (I)"
-     },
-     {
-      "id": "C",
-      "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (IV), (B) - (I), (C) - (III), (D) - (II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     30
-    ],
-    "assets": [
-     {
-      "id": "q31-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q31-table-1.jpg",
-      "page": 30,
-      "alt": "Table for question 31"
-     }
-    ]
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "What is the colour of copper compound formed in Fehling's test for aliphatic aldehydes?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Green"
-     },
-     {
-      "id": "B",
-      "text": "Blue"
-     },
-     {
-      "id": "C",
-      "text": "Yellow"
-     },
-     {
-      "id": "D",
-      "text": "Red brown"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     31
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "What is the major product formed when diazonium salt undergoes Gatterman reaction?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Haloarene"
-     },
-     {
-      "id": "B",
-      "text": "Aryl amine"
-     },
-     {
-      "id": "C",
-      "text": "Phenol"
-     },
-     {
-      "id": "D",
-      "text": "Diphenyl ether"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     32
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "What is the major product of Carbylamine reaction?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Cyanide"
-     },
-     {
-      "id": "B",
-      "text": "Isocyanide"
-     },
-     {
-      "id": "C",
-      "text": "Nitrile"
-     },
-     {
-      "id": "D",
-      "text": "Alkane"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     33
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Which among the following is an essential amino acid?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Glycine"
-     },
-     {
-      "id": "B",
-      "text": "Alanine"
-     },
-     {
-      "id": "C",
-      "text": "Valine"
-     },
-     {
-      "id": "D",
-      "text": "Serine"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     34
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "Arrange the following in increasing order of their pH values :\n\n(A) p-Nitrophenol\n\n(B) m-Cresol\n\n(C) m-Nitrophenol\n\n(D) Phenol",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) < (B) < (C) < (D)"
-     },
-     {
-      "id": "B",
-      "text": "(A) < (C) < (D) < (B)"
-     },
-     {
-      "id": "C",
-      "text": "(B) < (A) < (D) < (C)"
-     },
-     {
-      "id": "D",
-      "text": "(C) < (B) < (D) < (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     35
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Which among the following is a biodegradable polymer?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "PVC"
-     },
-     {
-      "id": "B",
-      "text": "Freon"
-     },
-     {
-      "id": "C",
-      "text": "Nylon"
-     },
-     {
-      "id": "D",
-      "text": "PHBV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     36
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "Which among the following is an antacid?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Aspirin"
-     },
-     {
-      "id": "B",
-      "text": "Zantac"
-     },
-     {
-      "id": "C",
-      "text": "Equanil"
-     },
-     {
-      "id": "D",
-      "text": "Noradrenaline"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     37
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "What is the numerical value of one Faraday in Coloumbs?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "96587"
-     },
-     {
-      "id": "B",
-      "text": "96487"
-     },
-     {
-      "id": "C",
-      "text": "99500"
-     },
-     {
-      "id": "D",
-      "text": "6.023"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     38
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "A first order reaction has a half-life of 693 sec. What will be its rate constant?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.01sec $ ^{-1} $"
-     },
-     {
-      "id": "B",
-      "text": "1sec $ ^{-1} $"
-     },
-     {
-      "id": "C",
-      "text": "0.001sec $ ^{-1} $"
-     },
-     {
-      "id": "D",
-      "text": "0.1sec $ ^{-1} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     39
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "For S_{N}2 reaction, the increasing order of the reactivity of the following alkyl halides is:\n\n(A) $ CH_{3}CH_{2}CH_{2}CH_{2}Br $\n\n(B) $ CH_{3}CH_{2}CH(Br)CH_{3} $\n\n(C)(CH_{3})_{3}CBr\n\n(D) $ (\\mathrm{CH}_{3})_{2}\\mathrm{CHCH}_{2}\\mathrm{Br} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)<(B)<(C)<(D)"
-     },
-     {
-      "id": "B",
-      "text": "(A)<(C)<(B)<(D)"
-     },
-     {
-      "id": "C",
-      "text": "(B)<(A)<(D)<(C)"
-     },
-     {
-      "id": "D",
-      "text": "(C)<(B)<(D)<(A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     40
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Which among the following is a strong field ligand?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "I"
-     },
-     {
-      "id": "B",
-      "text": "Cl"
-     },
-     {
-      "id": "C",
-      "text": "NH_{3}"
-     },
-     {
-      "id": "D",
-      "text": "SCN"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     41
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "Arrange the following in increasing order of their osmotic pressure generation at 298 K:\n\n(The cell wall is permeable to water and not to the solute molecules)\n\n(A) If a cell containing 0.5 moles of solute dissolved in 1 L of water is immersed in pure water.\n\n(B) If a cell containing 0.25 moles of solute dissolved in 1 L of water is immersed in pure water.\n\n(C) If a cell containing 0.1 moles of solute dissolved in 0.01 L of water is immersed in pure water.\n\n(D) If a cell containing 0.2 moles of solute dissolved in 0.05 L of water is immersed in pure water.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C)<(B)<(A)<(D)"
-     },
-     {
-      "id": "B",
-      "text": "(D)<(A)<(B)<(C)"
-     },
-     {
-      "id": "C",
-      "text": "(B)<(A)<(D)<(C)"
-     },
-     {
-      "id": "D",
-      "text": "(C)<(A)<(B)<(D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     42
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Arrange the following rate constant units in increasing order of their order of reaction:\n\n(A) $ sec^{-1} $\n\n(B) M $ ^{-1} $ sec $ ^{-1} $\n\n(C) mol $ ^{-1} $L sec $ ^{-1} $\n\n(D) mol $ ^{-2} $L $ ^{2} $ sec $ ^{-1} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C) $ （ $A $ ） $ $ （ $B $ $ （ $ $（D）"
-     },
-     {
-      "id": "B",
-      "text": "(C) $ (C)\\leq(B)\\leq(A)\\leq(D) $"
-     },
-     {
-      "id": "C",
-      "text": "(B) $ (_{\\mathrm{A}})<_{\\mathrm{C}}<_{\\mathrm{D}}) $"
-     },
-     {
-      "id": "D",
-      "text": "(A) $ (B)=(C) $(D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     43
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Which of the following compounds will undergo Aldol condensation reaction?\n\n(A)\n\n(B)\n\n(C) $ CH_{3}-CH_{2}-C(CH_{3})_{2}-CH_{2}-CHO $\n(D) HCHO",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(B) and (C) only"
-     },
-     {
-      "id": "C",
-      "text": "(B), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(A), (B), (C) and (D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     44,
-     45
-    ],
-    "assets": [
-     {
-      "id": "q45-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q45-figure-1.jpg",
-      "page": 45,
-      "alt": "Figure for question 45"
-     },
-     {
-      "id": "q45-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q45-figure-2.jpg",
-      "page": 45,
-      "alt": "Figure for question 45"
-     }
-    ]
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Consider the following compounds:\n\n(A)\n\n(B)\n\n(C)\n\n(D)\n\nArrange these compounds in the increasing order of rate of hydrolysis:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(B)<(D)<(C)<(A)"
-     },
-     {
-      "id": "B",
-      "text": "(B)<(D)<(A)<(C)"
-     },
-     {
-      "id": "C",
-      "text": "(D)<(B)<(A)<(C)"
-     },
-     {
-      "id": "D",
-      "text": "(A) $ (D) $ $ (B) $ $ (C) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     46
-    ],
-    "assets": [
-     {
-      "id": "q46-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-1.jpg",
-      "page": 46,
-      "alt": "Figure for question 46"
-     },
-     {
-      "id": "q46-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-2.jpg",
-      "page": 46,
-      "alt": "Figure for question 46"
-     },
-     {
-      "id": "q46-figure-3",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-3.jpg",
-      "page": 46,
-      "alt": "Figure for question 46"
-     },
-     {
-      "id": "q46-figure-4",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q46-figure-4.jpg",
-      "page": 46,
-      "alt": "Figure for question 46"
-     }
-    ]
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Which of the following ions will be coloured in the aqueous solution?\n\n(A) Ti^{3+}\n\n(B) $ \\mathrm{Nb^{3+}} $\n\n(C) $ Cu^{3+} $\n\n(D) $ Y^{3+} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "C",
-      "text": "(A) and (B) only"
-     },
-     {
-      "id": "D",
-      "text": "(A), (B), (C) and (D)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     47
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "The correct statement/statements from the options given below is/are:\n\n(A) Diazonium salts of aromatic amines are morestable than diazonium salts of aliphatic amines.\n\n(B) Ethylamine is insoluble in water.\n\n(C) Gabriel phthalimide synthesis can be used to prepare primary amines.\n\n(D) Beacuse of +R-effect of -NH₂ group, aniline will undergo Friedel-Crafts acylation reaction.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) and (B) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "C",
-      "text": "(A) and (C) only"
-     },
-     {
-      "id": "D",
-      "text": "(B), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     48
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) - (Ⅳ), (B) - (Ⅲ), (C) - (Ⅱ), (D) - (Ⅰ)"
-     },
-     {
-      "id": "B",
-      "text": "(A) - (II), (B) - (III), (C) - (I), (D) - (IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A) - (Ⅳ), (B) - (Ⅲ), (C) - (Ⅰ), (D) - (Ⅱ)"
-     },
-     {
-      "id": "D",
-      "text": "(A) - (I), (B) - (III), (C) - (IV), (D) - (II)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     50
-    ],
-    "assets": [
-     {
-      "id": "q49-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q49-table-1.jpg",
-      "page": 50,
-      "alt": "Table for question 49"
-     }
-    ]
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Match List-I with List-II:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)- $ (\\mathrm{II}) $, (B)- $ (\\mathrm{I}) $, (C)- $ (\\mathrm{IV}) $, (D)- $ (\\mathrm{III}) $"
-     },
-     {
-      "id": "B",
-      "text": "(A)- $ (\\mathrm{II}) $, (B)-(I), (C)- $ (\\mathrm{III}) $, (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "$$ (A)-(I),(B)-(II),(C)-(III),(D)-(IV) $$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     50,
-     51
-    ],
-    "assets": [
-     {
-      "id": "q50-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2024-05-29/q50-table-1.jpg",
-      "page": 51,
-      "alt": "Table for question 50"
-     }
-    ]
-   }
-  ]
- }
+  }
 }

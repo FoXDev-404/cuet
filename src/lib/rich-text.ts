@@ -25,6 +25,64 @@ function escapeRichTextContent(value: string): string {
     .replace(/"/g, "&quot;");
 }
 
+function normalizeLineForDeduplication(line: string): string {
+  return line
+    .replace(/^#{1,6}\s*/, "")
+    .replace(/^\d+[\.\)]\s*/, "")
+    .replace(/^[\u2022\u25cf\-\*]\s*/, "")
+    .replace(/[:.\-–—\s]+$/, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+/**
+ * Strips consecutive duplicate lines/prompts that occurred during PDF/OCR extraction,
+ * such as a section instruction followed immediately by the question prompt with a question number.
+ */
+function deduplicateConsecutiveLines(text: string): string {
+  if (!text) return "";
+  const lines = text.split("\n");
+  const cleaned: string[] = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      cleaned.push(line);
+      continue;
+    }
+
+    let prevIdx = cleaned.length - 1;
+    while (prevIdx >= 0 && !cleaned[prevIdx].trim()) {
+      prevIdx -= 1;
+    }
+
+    if (prevIdx >= 0) {
+      const prevLine = cleaned[prevIdx].trim();
+      const normCurr = normalizeLineForDeduplication(trimmed);
+      const normPrev = normalizeLineForDeduplication(prevLine);
+
+      if (normCurr.length > 8 && normCurr === normPrev) {
+        // If current line has a redundant question number (e.g. "13. Rearrange...") and previous doesn't, skip current
+        if (/^\d+[\.\)]\s+/.test(trimmed) && !/^\d+[\.\)]\s+/.test(prevLine)) {
+          continue;
+        }
+        // If previous had the number and current is clean, keep the clean one
+        if (/^\d+[\.\)]\s+/.test(prevLine) && !/^\d+[\.\)]\s+/.test(trimmed)) {
+          cleaned[prevIdx] = line;
+          continue;
+        }
+        // Identical lines, skip duplicate
+        continue;
+      }
+    }
+
+    cleaned.push(line);
+  }
+
+  return cleaned.join("\n");
+}
+
 /**
  * Sanitizes and cleans an HTML table block for NTA questions.
  * Strips obsolete inline presentation styles and creates responsive,
@@ -92,6 +150,7 @@ export function renderRichText(value: string | null | undefined): string {
   // 1. Normalize line breaks and decode common entities like &#x27; -> '
   source = source.replace(/\r\n/g, "\n");
   source = decodeCommonEntities(source);
+  source = deduplicateConsecutiveLines(source);
 
   // 2. Extract and render KaTeX math ($...$ or $$...$$)
   const mathBlocks: string[] = [];

@@ -1,5 +1,5 @@
 -- CUET Mock Platform Content-Only Export
--- Generated: 2026-11-04T13:16:09.997Z
+-- Generated: 2026-11-04T13:29:48.128Z
 -- Foreign-key safe, zero user/session/attempt data included
 PRAGMA foreign_keys = OFF;
 BEGIN TRANSACTION;
@@ -168450,8 +168450,7 @@ Why Others Are Wrong:
 
 Option 4: Syphilis $ \rightarrow $ caused by Treponema pallidum, sexually transmitted.', NULL, 'null', '[]', '[]', '[12]', 'keyed', '[]', '2026-11-03T18:36:22.119Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (16988, 'biology-2025-05-20-shift-2', 'q18', 18, 18, 'The disease phenylketonuria is caused by mutation in the gene that codes for -
-
-The disease phenylketonuria is caused by mutation in the gene that codes for -', '[{"id":"A","text":"Phenylalanine dehydrogenase"},{"id":"B","text":"Phenylalanine carboxylase"},{"id":"C","text":"Phenylalanine hydroxylase"},{"id":"D","text":"Phenylalanine hydrogenase"}]', 0, 'C', '- Phenylketonuria (PKU) is caused by mutation in the PAH gene, which codes for phenylalanine hydroxylase, leading to accumulation of phenylalanine and mental retardation if untreated.
+', '[{"id":"A","text":"Phenylalanine dehydrogenase"},{"id":"B","text":"Phenylalanine carboxylase"},{"id":"C","text":"Phenylalanine hydroxylase"},{"id":"D","text":"Phenylalanine hydrogenase"}]', 0, 'C', '- Phenylketonuria (PKU) is caused by mutation in the PAH gene, which codes for phenylalanine hydroxylase, leading to accumulation of phenylalanine and mental retardation if untreated.
 
 Why Others Are Wrong:
 
@@ -170010,7 +170009,6 @@ INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "
 (A) Calculate mid = (first + last) / 2
 
 (B) SET first = 0, last = n-1
-(C) PRINT "Search unsuccessful"
 (C) PRINT "Search unsuccessful"
 IF numList[mid] = key DRIIT "Flempt found at position" mid+1
 STOP
@@ -173370,7 +173368,6 @@ INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "
 
 (C) सिन्धु सा विस्तृत और अथाह ।
 
-(C) सिन्धु सा विस्तृत और अथाह ।
 नीचे दिए गए विकल्पों से सही उत्तर चुनीए -', '[{"id":"A","text":"(A), (C) (B), (D)"},{"id":"B","text":"(A), (B), (C), (D)"},{"id":"C","text":"(B), (A), (C), (D)"},{"id":"D","text":"(A), (C), (D), (B)"}]', 0, 'D', '**Correct Option: (D)** (A), (C), (D), (B)
 
 **Solution & Key Rationale:**
@@ -177847,8 +177844,7 @@ INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "
 
 (A) Finally, calculate the difference between the observed distance and the actual distance. This difference is the correction to be applied to the observed distance.', NULL, 'null', '[]', '[{"id":"q37-figure-1","kind":"figure","path":"/local-papers/assets/physics-2025-05-21-shift-2/q37-figure-1.jpg","page":25,"alt":"Figure for question 37"}]', '[24,25]', 'keyed', '[]', '2026-11-03T18:36:22.184Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17881, 'physics-2025-05-21-shift-2', 'q38', 38, 38, 'The force between two small charged spheres having charges of $ 2 \times 10^{-7} $ C and $ 3 \times 10^{-7} $ C, respectively, placed 30 cm apart in air would be.
-
-The force between two small charged spheres having charges of $ 2 \times 10^{-7} $ C and $ 3 \times 10^{-7} $ C, respectively, placed 30 cm apart in air would be.', '[{"id":"A","text":"$ 2 \\times 10^{-3} $ N"},{"id":"B","text":"$ 6 \\times 10^{-7} $ N"},{"id":"C","text":"$ 6 \\times 10^{-3} $ N"},{"id":"D","text":"$ 5 \\times 10^{-7} $ N"}]', 0, 'C', 'The correct answer is $3.6 \times 10^{-3}$ N
+', '[{"id":"A","text":"$ 2 \\times 10^{-3} $ N"},{"id":"B","text":"$ 6 \\times 10^{-7} $ N"},{"id":"C","text":"$ 6 \\times 10^{-3} $ N"},{"id":"D","text":"$ 5 \\times 10^{-7} $ N"}]', 0, 'C', 'The correct answer is $3.6 \times 10^{-3}$ N
 
 The force between two charged spheres is given by Coulomb''s law:
 
@@ -178598,8 +178594,7 @@ D. Net Primary Productivity (NPP)
 - It is the amount of biomass available for the consumption of heterotrophs i.e., organic matter in excess of the respiratory utilization by the plants.
 
 - It can be expressed as: NPP = GPP - R, where GPP is Gross primary productivity and R denotes Respiratory losses.', NULL, 'null', '[]', '[{"id":"q28-table-1","kind":"table","path":"/local-papers/assets/biology-2024-05-15-shift-1/q28-table-1.jpg","page":30,"alt":"Table for question 28"},{"id":"q28-table-2","kind":"table","path":"/local-papers/assets/biology-2024-05-15-shift-1/q28-table-2.jpg","page":31,"alt":"Table for question 28"}]', '[30,31]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17922, 'biology-2024-05-15-shift-1', 'q29', 29, 29, 'Which of the following is not a Sexually Transmitted Disease?
-Which of the following is not a Sexually Transmitted Disease?', '[{"id":"A","text":"Chlamydiasis"},{"id":"B","text":"Filariasis"},{"id":"C","text":"Genital herpes"},{"id":"D","text":"Trichomoniasis"}]', 0, 'B', 'The correct answer is Filariasis
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17922, 'biology-2024-05-15-shift-1', 'q29', 29, 29, 'Which of the following is not a Sexually Transmitted Disease?', '[{"id":"A","text":"Chlamydiasis"},{"id":"B","text":"Filariasis"},{"id":"C","text":"Genital herpes"},{"id":"D","text":"Trichomoniasis"}]', 0, 'B', 'The correct answer is Filariasis
 $ \underline{\text{Concept}} $:
 
 • Infections or diseases which are transmitted through sexual intercourse are collectively called sexually transmitted infections (STI) or venereal diseases (VD) or reproductive tract infections (RTI).
@@ -178621,8 +178616,7 @@ The infection is chronic and remains in the body for life, with periodic outbrea
 
 • Trichomoniasis: This is a parasitic infection caused by Trichomonas vaginalis. It is the most common curable STI.', NULL, 'null', '[]', '[]', '[32]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17923, 'biology-2024-05-15-shift-1', 'q30', 30, 30, 'Which of the following statements is incorrect with respect to Medical Termination of Pregnancy?
-
-Which of the following statements is incorrect with respect to Medical Termination of Pregnancy?', '[{"id":"A","text":"They are considered safe during the first trimester."},{"id":"B","text":"It is legalised in India from 1971"},{"id":"C","text":"MTPs can be performed even after 24 weeks, but with the opinion of 2 registered medical practitioners on specific grounds."},{"id":"D","text":"About 20% of the total number of conceived pregnancies undergo MTP in a year globally."}]', 0, 'C', 'The correct answer is MTPs can be performed even after 24 weeks, but with the opinion of 2 registered medical practitioners on specific grounds.
+', '[{"id":"A","text":"They are considered safe during the first trimester."},{"id":"B","text":"It is legalised in India from 1971"},{"id":"C","text":"MTPs can be performed even after 24 weeks, but with the opinion of 2 registered medical practitioners on specific grounds."},{"id":"D","text":"About 20% of the total number of conceived pregnancies undergo MTP in a year globally."}]', 0, 'C', 'The correct answer is MTPs can be performed even after 24 weeks, but with the opinion of 2 registered medical practitioners on specific grounds.
 $ \underline{\text{Explanation}} $:
 
 • Medical Termination of Pregnancy (MTP) refers to the intentional or voluntary termination of pregnancy before full term.
@@ -178654,8 +178648,7 @@ $ \underline{\text{Explanation:}} $
 - IUI (Intra-uterine insemination): In this technique, the semen collected either from the husband or a healthy donor is artificially introduced either into the vagina or into the uterus of the female.
 
 • IUT (Intra uterine transfer): Embryos with more than 8 blastomeres, into the uterusto complete its further development.', NULL, 'null', '[]', '[{"id":"q31-table-1","kind":"table","path":"/local-papers/assets/biology-2024-05-15-shift-1/q31-table-1.jpg","page":34,"alt":"Table for question 31"},{"id":"q31-table-2","kind":"table","path":"/local-papers/assets/biology-2024-05-15-shift-1/q31-table-2.jpg","page":34,"alt":"Table for question 31"}]', '[34]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17925, 'biology-2024-05-15-shift-1', 'q32', 32, 32, 'Which of the following methods of contraception is not meant for females?
-Which of the following methods of contraception is not meant for females?', '[{"id":"A","text":"IUDs"},{"id":"B","text":"Lactational amenorrhea"},{"id":"C","text":"Vasectomy"},{"id":"D","text":"Condoms"}]', 0, 'C', 'The correct answer is Vasectomy
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17925, 'biology-2024-05-15-shift-1', 'q32', 32, 32, 'Which of the following methods of contraception is not meant for females?', '[{"id":"A","text":"IUDs"},{"id":"B","text":"Lactational amenorrhea"},{"id":"C","text":"Vasectomy"},{"id":"D","text":"Condoms"}]', 0, 'C', 'The correct answer is Vasectomy
 $ \underline{\text{Explanation:}} $
 
 Vasectomy is the surgical method of contraception performed in males. During this procedure, the vas deferens (the tubes that carry sperm from the testicles to the urethra) are cut, tied, or sealed. This prevents sperm from mixing with semen that is ejaculated from the penis, thus preventing pregnancy.
@@ -178669,8 +178662,7 @@ $ \underline{\text{Other Options}} $
 
 - Tubectomy is the surgical method of contraception in females, where the fallopian tubes are cut or sealed to prevent eggs from reaching the uterus.', NULL, 'null', '[]', '[]', '[35]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17926, 'biology-2024-05-15-shift-1', 'q33', 33, 33, '''Saheli'' - an oral contraceptive pill, also known as the ''Once a week'' pill, was developed by :
-
-''Saheli'' - an oral contraceptive pill, also known as the ''Once a week'' pill, was developed by :', '[{"id":"A","text":"AIMS"},{"id":"B","text":"NBRI"},{"id":"C","text":"CDRI"},{"id":"D","text":"NBPGR"}]', 0, 'C', 'The correct answer is CDRI
+', '[{"id":"A","text":"AIMS"},{"id":"B","text":"NBRI"},{"id":"C","text":"CDRI"},{"id":"D","text":"NBPGR"}]', 0, 'C', 'The correct answer is CDRI
 Explanation:
 
 - The Central Drug Research Institute(CDRI) in Lucknow, India, developed an oral contraceptive pill for females called "Saheli."
@@ -178679,8 +178671,7 @@ Explanation:
 
 • It is a once a week pill', NULL, 'null', '[]', '[]', '[36]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17927, 'biology-2024-05-15-shift-1', 'q34', 34, 34, 'Which of the following is not a characteristic of a stable biological community?
-
-Which of the following is not a characteristic of a stable biological community?', '[{"id":"A","text":"It must be resistant to invasions by alien species."},{"id":"B","text":"It should not show too much variation in productivity from year to year"},{"id":"C","text":"All the species are equally important in a stable community and absence of any one leads to its unstability."},{"id":"D","text":"It is resilient to occasional disturbances, whether natural or man-made."}]', 0, 'C', 'The correct answer is All the species are equally important in a stable community and absence of any one leads to its unstability.
+', '[{"id":"A","text":"It must be resistant to invasions by alien species."},{"id":"B","text":"It should not show too much variation in productivity from year to year"},{"id":"C","text":"All the species are equally important in a stable community and absence of any one leads to its unstability."},{"id":"D","text":"It is resilient to occasional disturbances, whether natural or man-made."}]', 0, 'C', 'The correct answer is All the species are equally important in a stable community and absence of any one leads to its unstability.
 $ \underline{\text{Concept}} $:
 
 - A stable community should not show too much variation in productivity from year to year; it must be either resistant or resilient to occasional disturbances (natural or man-made), and it must also be resistant to invasions by alien species.
@@ -178695,8 +178686,7 @@ Explanation:
 
 - It is resilient to occasional disturbances, whether natural or man-made: Resilience to disturbances is a key feature of a stable biological community, as it allows the community to recover from disruptions and maintain its structure and function.', NULL, 'null', '[]', '[]', '[37]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17928, 'biology-2024-05-15-shift-1', 'q35', 35, 35, 'In ''rivet popper hypothesis'' the ''rivet'' signifies :
-
-In ''rivet popper hypothesis'' the ''rivet'' signifies :', '[{"id":"A","text":"Key species"},{"id":"B","text":"Endemic species"},{"id":"C","text":"Community"},{"id":"D","text":"Species"}]', 0, 'D', 'The correct answer is Species
+', '[{"id":"A","text":"Key species"},{"id":"B","text":"Endemic species"},{"id":"C","text":"Community"},{"id":"D","text":"Species"}]', 0, 'D', 'The correct answer is Species
 Explanation:
 
 • The "rivet popper hypothesis" was proposed by ecologist Paul Ehrlich to explain the importance of species in an ecosystem.
@@ -178711,8 +178701,7 @@ Explanation:
 
 Loss of rivets on the wings (key species that drive major ecosystem functions) is obviously a more serious threat to flight safety than loss of a few rivets on the seats or windows inside the plane.', NULL, 'null', '[]', '[]', '[38]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17929, 'biology-2024-05-15-shift-1', 'q36', 36, 36, 'The scientist who proved that species richness directly correlates with the stability of a community, was _.
-
-The scientist who proved that species richness directly correlates with the stability of a community, was _.', '[{"id":"A","text":"Paul Ehrlich"},{"id":"B","text":"David Tilman"},{"id":"C","text":"Robert May"},{"id":"D","text":"Edward Wilson"}]', 0, 'B', 'The correct answer is David Tilman
+', '[{"id":"A","text":"Paul Ehrlich"},{"id":"B","text":"David Tilman"},{"id":"C","text":"Robert May"},{"id":"D","text":"Edward Wilson"}]', 0, 'B', 'The correct answer is David Tilman
 $ \underline{\text{Explanation:}} $
 
 - David Tilman: He studied the role of biodiversity in ecosystem stability. He also showed that in his experiments, increased diversity contributed to higher productivity. Tilman found that plots with more species showed less year-to-year variation in total biomass.
@@ -178735,8 +178724,7 @@ $ \underline{\text{Explanation}} $:
 
 - Birds and reptiles also have substantial species diversity, but they do not surpass the species richness found in fishes.', NULL, 'null', '[]', '[]', '[40]', 'keyed', '[]', '2026-11-03T18:36:26.894Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17931, 'biology-2024-05-15-shift-1', 'q38', 38, 38, 'The following are the various hypotheses proposed in explaining the greatest biological diversity in tropics except :
-
-The following are the various hypotheses proposed in explaining the greatest biological diversity in tropics except:', '[{"id":"A","text":"Temperate regions are subjected to glaciations, but tropical latitudes have remained relatively undisturbed."},{"id":"B","text":"Tropical environments have more humidity/moisture which helps the diversity to flourish."},{"id":"C","text":"Tropical environments are less seasonal and more constant."},{"id":"D","text":"There is more solar energy available in the tropics which contributes to higher productivity and hence, biodiversity. Answer: B"}]', 0, 'B', 'The correct answer is Tropical environments have more humidity/moisture which helps the diversity to flourish.
+', '[{"id":"A","text":"Temperate regions are subjected to glaciations, but tropical latitudes have remained relatively undisturbed."},{"id":"B","text":"Tropical environments have more humidity/moisture which helps the diversity to flourish."},{"id":"C","text":"Tropical environments are less seasonal and more constant."},{"id":"D","text":"There is more solar energy available in the tropics which contributes to higher productivity and hence, biodiversity. Answer: B"}]', 0, 'B', 'The correct answer is Tropical environments have more humidity/moisture which helps the diversity to flourish.
 Explanation:
 
 Biologists have proposed various hypotheses; some important ones are
@@ -179596,8 +179584,7 @@ Funicle: This is a stalk that attaches the ovule (megasporangium) to the ovary w
 
 - Micropyle: This is a small opening in the integuments of the ovule. It allows the pollen tube to enter and deliver sperm cells for fertilization.', NULL, 'null', '[]', '[]', '[33]', 'keyed', '[]', '2026-11-03T18:36:26.897Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17975, 'biology-2024-05-29-shift-1', 'q32', 32, 32, 'Which of the following does not constitute accessory duct of female reproductive system?
-
-Which of the following does not constitute accessory duct of female reproductive system?', '[{"id":"A","text":"Fallopian tubes"},{"id":"B","text":"Uterus"},{"id":"C","text":"Cervix"},{"id":"D","text":"Vagina"}]', 0, 'C', 'The correct answer is C. Vervix
+', '[{"id":"A","text":"Fallopian tubes"},{"id":"B","text":"Uterus"},{"id":"C","text":"Cervix"},{"id":"D","text":"Vagina"}]', 0, 'C', 'The correct answer is C. Vervix
 $ \underline{\text{Concept}} $:
 
 - The female reproductive system consists of primary reproductive organs (ovaries) and accessory ducts. The accessory ducts include structures that assist in the transport and development of the egg and fetus.
@@ -179660,8 +179647,7 @@ $ \underline{\text{Incorrect Options:}} $
 
 - Cervix: This is the lower part of the uterus that opens into the vagina. It is an internal structure and not part of the external genitalia.', NULL, 'null', '[]', '[]', '[35]', 'keyed', '[]', '2026-11-03T18:36:26.897Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17977, 'biology-2024-05-29-shift-1', 'q34', 34, 34, 'Select the organ of female reproductive system where the sperm is not transported at the time of coitus :
-
-Select the organ of female reproductive system where the sperm is not transported at the time of coitus :', '[{"id":"A","text":"Cervix"},{"id":"B","text":"Ovary"},{"id":"C","text":"Uterus"},{"id":"D","text":"Fallopian tube"}]', 0, 'B', 'The correct answer is Ovary
+', '[{"id":"A","text":"Cervix"},{"id":"B","text":"Ovary"},{"id":"C","text":"Uterus"},{"id":"D","text":"Fallopian tube"}]', 0, 'B', 'The correct answer is Ovary
 $ \underline{\text{Explanation:}} $
 
 - The female reproductive system is composed of several organs, including the ovaries, fallopian tubes, uterus, cervix, and vagina.
@@ -179675,8 +179661,7 @@ $ \underline{\text{Explanation:}} $
 - Uterus: The uterus is a muscular organ where a fertilized egg can implant and develop into a fetus. After passing through the cervix, sperm can travel into the uterus.
 
 • Fallopian Tube: The fallopian tubes connect the ovaries to the uterus. Sperm travels through the uterus to reach the fallopian tubes, where fertilization of the egg usually occurs.', NULL, 'null', '[]', '[]', '[36]', 'keyed', '[]', '2026-11-03T18:36:26.897Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17978, 'biology-2024-05-29-shift-1', 'q35', 35, 35, 'Which of the following does not take place before ovulation in human female?
-Which of the following does not take place before ovulation in human female?', '[{"id":"A","text":"The secretion of LH and FSH increases during follicular phase."},{"id":"B","text":"The corpus luteum secretes large amounts of progesterone."},{"id":"C","text":"LH and FSH attains a peak level in the middle of the cycle"},{"id":"D","text":"Maximum secretion of LH induces rupture of Graafian follicle."}]', 0, 'B', 'The correct answer is The corpus luteum secretes large amounts of progesterone.
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17978, 'biology-2024-05-29-shift-1', 'q35', 35, 35, 'Which of the following does not take place before ovulation in human female?', '[{"id":"A","text":"The secretion of LH and FSH increases during follicular phase."},{"id":"B","text":"The corpus luteum secretes large amounts of progesterone."},{"id":"C","text":"LH and FSH attains a peak level in the middle of the cycle"},{"id":"D","text":"Maximum secretion of LH induces rupture of Graafian follicle."}]', 0, 'B', 'The correct answer is The corpus luteum secretes large amounts of progesterone.
 
 Explanation:
 
@@ -179690,8 +179675,7 @@ The menstrual cycle is divided into several phases: the follicular phase, ovulat
 
 - Maximum secretion of LH induces the rupture of the Graafian follicle: This statement is true. The surge in LH levels leads to the rupture of the Graafian follicle and the release of the ovum, which is the process of ovulation.', NULL, 'null', '[]', '[]', '[37]', 'keyed', '[]', '2026-11-03T18:36:26.897Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17979, 'biology-2024-05-29-shift-1', 'q37', 37, 36, 'Name the population interaction which takes place when one species is benefitted and another species has no effect (no benefit no harm).
-
-Name the population interaction which takes place when one species is benefitted and another species has no effect (no benefit no harm).', '[{"id":"A","text":"Competition"},{"id":"B","text":"Predation"},{"id":"C","text":"Commensalism"},{"id":"D","text":"Amensalism"}]', 0, 'C', 'The correct answer is Commensalism
+', '[{"id":"A","text":"Competition"},{"id":"B","text":"Predation"},{"id":"C","text":"Commensalism"},{"id":"D","text":"Amensalism"}]', 0, 'C', 'The correct answer is Commensalism
 $ \underline{\text{Explanation}} $:
 
 Population interactions refer to the various ways species within an ecosystem interact with one another. These interactions can have positive, negative, or neutral effects on the species involved.
@@ -179711,8 +179695,7 @@ Other Options:
 
 Table: Population Interactions', NULL, 'null', '[]', '[]', '[41]', 'keyed', '[]', '2026-11-03T18:36:26.897Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17980, 'biology-2024-05-29-shift-1', 'q38', 38, 37, 'Identify the incorrect matching from the following population interaction:
-
-Identify the incorrect matching from the following population interaction:', '[{"id":"A","text":"1"},{"id":"B","text":"2"},{"id":"C","text":"3"},{"id":"D","text":"4"}]', 0, 'C', 'The correct answer isPredation
+', '[{"id":"A","text":"1"},{"id":"B","text":"2"},{"id":"C","text":"3"},{"id":"D","text":"4"}]', 0, 'C', 'The correct answer isPredation
 
 Explanation:
 
@@ -179785,8 +179768,7 @@ Explanation:
 
 - The relationship between the fig tree and the wasp is mutualistic. The wasp pollinates the fig tree while laying its eggs inside the fig fruit, providing a habitat and food source for its larvae.', NULL, 'null', '[]', '[{"id":"q40-table-1","kind":"table","path":"/local-papers/assets/biology-2024-05-29-shift-1/q40-table-1.jpg","page":45,"alt":"Table for question 40"},{"id":"q40-table-2","kind":"table","path":"/local-papers/assets/biology-2024-05-29-shift-1/q40-table-2.jpg","page":45,"alt":"Table for question 40"},{"id":"q40-table-3","kind":"table","path":"/local-papers/assets/biology-2024-05-29-shift-1/q40-table-3.jpg","page":46,"alt":"Table for question 40"}]', '[45,46]', 'keyed', '[]', '2026-11-03T18:36:26.897Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17983, 'biology-2024-05-29-shift-1', 'q41', 41, 40, 'Select the incorrect pair in response to abiotic factors :
-
-Select the incorrect pair in response to abiotic factors :', '[{"id":"A","text":"We maintain a constant body temperature of $ 37^{\\circ} $C - Conformer"},{"id":"B","text":"Every winter Keoladeo National Park hosts the birds coming from Siberia - Migration"},{"id":"C","text":"Under unfavourable conditions many zooplankton species in ponds enter the stage of suspended development - Diapause"},{"id":"D","text":"If a predator is too efficient it overexploits its prey - Extinction If a predator is too efficient it overexploits its prey - Extinction Answer: A"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
+', '[{"id":"A","text":"We maintain a constant body temperature of $ 37^{\\circ} $C - Conformer"},{"id":"B","text":"Every winter Keoladeo National Park hosts the birds coming from Siberia - Migration"},{"id":"C","text":"Under unfavourable conditions many zooplankton species in ponds enter the stage of suspended development - Diapause"},{"id":"D","text":"If a predator is too efficient it overexploits its prey - Extinction If a predator is too efficient it overexploits its prey - Extinction Answer: A"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
 
 This question is transcribed from authentic NTA examination papers. The verified answer key and detailed step-by-step derivation are currently undergoing review. No negative marks are deducted for this item during practice.', NULL, 'null', '[]', '[]', '[47]', 'pending', '[]', '2026-11-03T18:36:26.897Z', NULL, NULL, 'banner', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (17984, 'biology-2024-05-29-shift-1', 'q42', 42, 41, 'Which one is the correct example of hermaphrodites?', '[{"id":"A","text":"Tapeworm and leech"},{"id":"B","text":"Cockroach and frog"},{"id":"C","text":"Cockroach and earthworm"},{"id":"D","text":"Carp fish and pigeon"}]', 0, 'A', 'The correct answer is Tapeworm and leech
@@ -180782,8 +180764,7 @@ Explanation:
 
 Statement (D): This statement is incorrect. Culturing in bioreactors is part of the upstream processing, which involves the preparation and cultivation of cells or microorganisms. Downstream processing refers to the steps taken after culturing to purify and process the desired product.', NULL, 'null', '[]', '[]', '[40]', 'keyed', '[]', '2026-11-03T18:36:26.901Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18033, 'biology-2024-07-19', 'q41', 41, 41, 'What is the first sign of growing foetus?
-
-What is the first sign of growing foetus?', '[{"id":"A","text":"Development of limbs and digits"},{"id":"B","text":"Movement of foetus"},{"id":"C","text":"Formation of heart"},{"id":"D","text":"Development of head"}]', 0, 'C', 'The correct answer is Formation of heart
+', '[{"id":"A","text":"Development of limbs and digits"},{"id":"B","text":"Movement of foetus"},{"id":"C","text":"Formation of heart"},{"id":"D","text":"Development of head"}]', 0, 'C', 'The correct answer is Formation of heart
 
 Explanation:
 
@@ -180810,8 +180791,7 @@ $ \underline{\text{Explanation}} $:
 
 - The process of meiosis in primary spermatocytes results in the formation of secondary spermatocytes, which are haploid, containing 23 chromosomes.', NULL, 'null', '[]', '[]', '[43]', 'keyed', '[]', '2026-11-03T18:36:26.901Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18035, 'biology-2024-07-19', 'q43', 43, 43, 'The transformation of spermatids into spermatozoa is known as ;
-
-The transformation of spermatids into spermatozoa is known as ;', '[{"id":"A","text":"Spermiation"},{"id":"B","text":"Spermiogenesis"},{"id":"C","text":"Spermatogenesis"},{"id":"D","text":"Spermatogoniasis"}]', 0, 'B', 'The correct answer is Spermiogenesis
+', '[{"id":"A","text":"Spermiation"},{"id":"B","text":"Spermiogenesis"},{"id":"C","text":"Spermatogenesis"},{"id":"D","text":"Spermatogoniasis"}]', 0, 'B', 'The correct answer is Spermiogenesis
 
 Explanation:
 
@@ -180820,8 +180800,7 @@ Spermiogenesis: This is the final stage of spermatogenesis where spermatids tran
 Spermiation: After spermiogenesis, sperm heads become embedded in the Sertoli cells, and are finally released from the seminiferous tubules by the process called spermiation.
 
 - Spermatogenesis: Spermatogenesis is the overall process of the production and development of sperm cells from the primordial germ cells in the testes. It includes several stages: mitotic division of spermatogonia, meiotic division to form spermatids, and finally, the transformation of these spermatids into mature spermatozoa (spermiogenesis).', NULL, 'null', '[]', '[]', '[44]', 'keyed', '[]', '2026-11-03T18:36:26.901Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18036, 'biology-2024-07-19', 'q44', 44, 44, 'Which hormone is essential for maintenance of endometrium during luteal phase?
-Which hormone is essential for maintenance of endometrium during luteal phase?', '[{"id":"A","text":"Lutinising Hormone"},{"id":"B","text":"Relaxin"},{"id":"C","text":"Progesterone"},{"id":"D","text":"Follicle Stimulating Hormone"}]', 0, 'C', 'The correct answer is Progesterone
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18036, 'biology-2024-07-19', 'q44', 44, 44, 'Which hormone is essential for maintenance of endometrium during luteal phase?', '[{"id":"A","text":"Lutinising Hormone"},{"id":"B","text":"Relaxin"},{"id":"C","text":"Progesterone"},{"id":"D","text":"Follicle Stimulating Hormone"}]', 0, 'C', 'The correct answer is Progesterone
 
 $ \underline{\text{Explanation}} $:
 
@@ -180840,8 +180819,7 @@ $ \underline{\text{Other Options:}} $
 
 - Follicle Stimulating Hormone (FSH): This hormone is primarily involved in the growth of ovarian follicles before ovulation and does not play a direct role in maintaining the endometrium during the luteal phase.', NULL, 'null', '[]', '[]', '[45]', 'keyed', '[]', '2026-11-03T18:36:26.901Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18037, 'biology-2024-07-19', 'q45', 45, 45, 'The nucleus is present in _ of human sperm.
-
-The nucleus is present in _ of human sperm.', '[{"id":"A","text":"Middle piece"},{"id":"B","text":"Acrosome"},{"id":"C","text":"Head"},{"id":"D","text":"Tail"}]', 0, 'C', 'The correct answer is Head
+', '[{"id":"A","text":"Middle piece"},{"id":"B","text":"Acrosome"},{"id":"C","text":"Head"},{"id":"D","text":"Tail"}]', 0, 'C', 'The correct answer is Head
 Explanation:
 
 A sperm has three main parts:
@@ -180858,8 +180836,7 @@ These enzymes help the sperm penetrate the outer layers of the egg, facilitating
 
 - The tail of the sperm moves like a propeller, around and around. This tail is a long flagellum that pushes the sperm forward.', NULL, 'null', '[]', '[]', '[46]', 'keyed', '[]', '2026-11-03T18:36:26.901Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18038, 'biology-2024-07-19', 'q46', 46, 46, 'Which of the following is correct among the following statements related to species interaction?
-
-Which of the following is correct among the following statements related to species interaction?', '[{"id":"A","text":"Calotropis releases a strong smell to prevent cattle and goats to eat its leaves"},{"id":"B","text":"Predators help in maintaining species diversity in a community"},{"id":"C","text":"Totally unrelated species never compete for the same resource"},{"id":"D","text":"Closely related species competing for the same resources cannot co-exist indefinitely even if the resources are unlimited Answer: B"}]', 0, 'B', 'The correct answer is Predators help in maintaining species diversity in a community
+', '[{"id":"A","text":"Calotropis releases a strong smell to prevent cattle and goats to eat its leaves"},{"id":"B","text":"Predators help in maintaining species diversity in a community"},{"id":"C","text":"Totally unrelated species never compete for the same resource"},{"id":"D","text":"Closely related species competing for the same resources cannot co-exist indefinitely even if the resources are unlimited Answer: B"}]', 0, 'B', 'The correct answer is Predators help in maintaining species diversity in a community
 Explanation:
 
 Species interactions are the relationships between species in a community. These interactions can be beneficial, harmful, or neutral to the organisms involved. They include predation, competition, mutualism, commensalism, and parasitism. Calotropis releases a strong smell to prevent cattle and goats from eating its leaves: This statement is incorrect. Calotropis does release toxic substances, but the primary defense mechanism is its milky latex which contains cardiac glycosides, making it unpalatable and toxic to herbivores.
@@ -180940,8 +180917,7 @@ $ \underline{\text{Other Options}} $:
 • Predation: This is an interaction where one species (the predator) hunts and consumes another species (the prey). The fitness of the predator is increased while the fitness of the prey is decreased.
 
 - Commensalism: This is a type of interaction where one species benefits while the other is neither helped nor harmed. There is no competition for resources in this interaction.', NULL, 'null', '[]', '[]', '[50]', 'keyed', '[]', '2026-11-03T18:36:26.902Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18041, 'biology-2024-07-19', 'q50', 50, 49, 'Which of the following is not associated with realistic growth model?
-Which of the following is not associated with realistic growth model?', '[{"id":"A","text":"Sigmoid shaped growth curve"},{"id":"B","text":"J-shaped growth curve"},{"id":"C","text":"Verhulst - Pearl logistic growth"},{"id":"D","text":"Logistic Growth"}]', 0, 'B', 'The correct answer is J-shaped growth curve
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18041, 'biology-2024-07-19', 'q50', 50, 49, 'Which of the following is not associated with realistic growth model?', '[{"id":"A","text":"Sigmoid shaped growth curve"},{"id":"B","text":"J-shaped growth curve"},{"id":"C","text":"Verhulst - Pearl logistic growth"},{"id":"D","text":"Logistic Growth"}]', 0, 'B', 'The correct answer is J-shaped growth curve
 Explanation:
 
 Verhulst-Pearl logistic growth, also simply known as logistic growth, is a model of population growth that describes how a population grows more slowly as it approaches its carrying capacity.
@@ -181072,8 +181048,7 @@ o (A) CH3CH2CH2CH2Br: Primary alkyl halide, least steric hindrance, most reactiv
 
 Therefore, the correct answer is option 4.', NULL, 'null', '[]', '[]', '[4]', 'keyed', '[]', '2026-11-03T18:36:26.903Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18046, 'chemistry-2024-05-15-shift-1', 'q05', 5, 5, 'The number of moles of hydrogen oxidised is:
-
-The number of moles of hydrogen oxidised is:', '[{"id":"A","text":"0.33 moles"},{"id":"B","text":"33.3 moles"},{"id":"C","text":"3.0 moles"},{"id":"D","text":"1.33 moles"}]', 0, 'C', '$ \underline{\text{CONCEPT}} $:
+', '[{"id":"A","text":"0.33 moles"},{"id":"B","text":"33.3 moles"},{"id":"C","text":"3.0 moles"},{"id":"D","text":"1.33 moles"}]', 0, 'C', '$ \underline{\text{CONCEPT}} $:
 
 Moles and Volume of a Gas at STP
 
@@ -181090,8 +181065,7 @@ EXPLANATION:
 
 Therefore, the number of moles of hydrogen oxidised is 3.0 moles, and the correct answer is 3) 3.0 moles.', NULL, 'null', '[]', '[]', '[4]', 'keyed', '[]', '2026-11-03T18:36:26.903Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18047, 'chemistry-2024-05-15-shift-1', 'q06', 6, 6, 'The number of moles of electrons produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:
-
-The number of moles of electrons produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:', '[{"id":"C","text":"1 mole"},{"id":"D","text":"6 moles"},{"id":"A","text":"2 moles"},{"id":"B","text":"4 moles"}]', 0, 'D', '$ \underline{\text{CONCEPT}} $:
+', '[{"id":"C","text":"1 mole"},{"id":"D","text":"6 moles"},{"id":"A","text":"2 moles"},{"id":"B","text":"4 moles"}]', 0, 'D', '$ \underline{\text{CONCEPT}} $:
 
 Oxidation Reaction and Moles of Electrons
 
@@ -181114,8 +181088,7 @@ Therefore, 3 moles of $ H_{2} $ will produce:
 
 Therefore, the number of moles of electrons produced in the oxidation of 67.2 L of $ H_{2} $ at STP is 6 moles, and the correct answer is 6 moles.', NULL, 'null', '[]', '[]', '[5]', 'keyed', '[]', '2026-11-03T18:36:26.903Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18048, 'chemistry-2024-05-15-shift-1', 'q07', 7, 7, 'The quantity of electricity produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:
-
-The quantity of electricity produced in the oxidation of 67.2 L of $ H_{2} $ at STP is:', '[{"id":"A","text":"96500 C"},{"id":"B","text":"579000 C"},{"id":"C","text":"193000 C"},{"id":"D","text":"48250 C"}]', 0, 'B', 'CONCEPT:
+', '[{"id":"A","text":"96500 C"},{"id":"B","text":"579000 C"},{"id":"C","text":"193000 C"},{"id":"D","text":"48250 C"}]', 0, 'B', 'CONCEPT:
 
 Faraday''s Laws of Electrolysis
 
@@ -181154,8 +181127,7 @@ Q = n $ \times $ F = 6 mol e $ ^{-} $ $ \times $ 96500 C/mol = 579000 C
 
 Therefore, the quantity of electricity produced in the oxidation of 67.2 L of $ H_{2} $ at STP is 579000 C.', NULL, 'null', '[]', '[]', '[6]', 'keyed', '[]', '2026-11-03T18:36:26.903Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18049, 'chemistry-2024-05-15-shift-1', 'q08', 8, 8, 'If the entire current produced is used for the electrodeposition of Silver (at.wt. 108 g mol $ ^{-1} $) from Silver (I) solution, the amount of silver deposited will be:
-
-If the entire current produced is used for the electrodeposition of Silver (at.wt. 108 g mol $ ^{-1} $) from Silver (I) solution, the amount of silver deposited will be:', '[{"id":"A","text":"324 g"},{"id":"B","text":"648 g"},{"id":"C","text":"108 g"},{"id":"D","text":"216 g"}]', 0, 'B', 'CONCEPT:
+', '[{"id":"A","text":"324 g"},{"id":"B","text":"648 g"},{"id":"C","text":"108 g"},{"id":"D","text":"216 g"}]', 0, 'B', 'CONCEPT:
 Electrodeposition and Amount of Substance Deposited
 
 - The amount of a substance deposited or liberated during electrolysis is directly proportional to the quantity of electricity passed through the solution.
@@ -181188,8 +181160,7 @@ $ = 579000 \times 108 / 96500 $
 $ = 648 \, \text{g} $
 
 Therefore, the amount of silver deposited will be 648 g.', NULL, 'null', '[]', '[]', '[7]', 'keyed', '[]', '2026-11-03T18:36:26.903Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18050, 'chemistry-2024-05-15-shift-1', 'q09', 9, 9, 'The source of electrical energy on the Apollo moon flight was:
-The source of electrical energy on the Apollo moon flight was:', '[{"id":"A","text":"Lead storage battery"},{"id":"B","text":"A generator set"},{"id":"C","text":"Ni-Cd cells"},{"id":"D","text":"$ H_{2}-O_{2}Fuel $ cell"}]', 0, 'D', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18050, 'chemistry-2024-05-15-shift-1', 'q09', 9, 9, 'The source of electrical energy on the Apollo moon flight was:', '[{"id":"A","text":"Lead storage battery"},{"id":"B","text":"A generator set"},{"id":"C","text":"Ni-Cd cells"},{"id":"D","text":"$ H_{2}-O_{2}Fuel $ cell"}]', 0, 'D', 'CONCEPT:
 
 $ H_{2}-O_{2} $ Fuel Cell
 
@@ -181213,8 +181184,7 @@ o Efficiency: Fuel cells are highly efficient at converting chemical energy dire
 2H_{2}(g) + O_{2}(g) \rightarrow 2H_{2}O(l) + Energy (electricity + heat)
 
 Therefore, the source of electrical energy on the Apollo moon flight was the $ H_{2}-O_{2} $ fuel cell.', NULL, 'null', '[]', '[]', '[7]', 'keyed', '[]', '2026-11-03T18:36:26.903Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18051, 'chemistry-2024-05-15-shift-1', 'q10', 10, 10, 'Identify the incorrect statement.
-Identify the incorrect statement.', '[{"id":"A","text":"Second ionisation enthalpy of Ag is greater than second ionisation enthalpy of Pd."},{"id":"B","text":"Zr and Hf shares almost identical nuclear properties."},{"id":"C","text":"Melting point of Mn is lower than that of Cr."},{"id":"D","text":"Interstitial compounds are non-stoichiometric and neither ionic nor covalent in nature."}]', 0, 'B', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18051, 'chemistry-2024-05-15-shift-1', 'q10', 10, 10, 'Identify the incorrect statement.', '[{"id":"A","text":"Second ionisation enthalpy of Ag is greater than second ionisation enthalpy of Pd."},{"id":"B","text":"Zr and Hf shares almost identical nuclear properties."},{"id":"C","text":"Melting point of Mn is lower than that of Cr."},{"id":"D","text":"Interstitial compounds are non-stoichiometric and neither ionic nor covalent in nature."}]', 0, 'B', 'CONCEPT:
 
 Ionisation Enthalpy and Nuclear Properties
 
@@ -181241,8 +181211,7 @@ o Mn (Manganese) has a melting point of $ 1246^{\circ} $C, which is indeed lower
 
 Therefore, the correct answer is option 2, as Zr and Hf do indeed share almost identical nuclear properties.', NULL, 'null', '[]', '[]', '[8]', 'keyed', '[]', '2026-11-03T18:36:26.903Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18052, 'chemistry-2024-05-15-shift-1', 'q11', 11, 11, 'Which of the following is the correct order of second ionisation enthalpy?
-
-Which of the following is the correct order of second ionisation enthalpy?', '[{"id":"A","text":"V > Cr > Mn"},{"id":"B","text":"V < Cr < Mn"},{"id":"C","text":"V Mn"},{"id":"D","text":"V > Cr < Mn"}]', 0, 'C', '$ \underline{\text{CONCEPT}} $
+', '[{"id":"A","text":"V > Cr > Mn"},{"id":"B","text":"V < Cr < Mn"},{"id":"C","text":"V Mn"},{"id":"D","text":"V > Cr < Mn"}]', 0, 'C', '$ \underline{\text{CONCEPT}} $
 
 Second Ionisation Enthalpy
 
@@ -181271,8 +181240,7 @@ $ \circ $ Mn $ ^{2+} $: [Ar] 3d $ ^{5} $
 
 Therefore, the correct order of second ionization enthalpy is V Mn.', NULL, 'null', '[]', '[]', '[9]', 'keyed', '[]', '2026-11-03T18:36:26.904Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18053, 'chemistry-2024-05-15-shift-1', 'q12', 12, 12, 'Which of the following pair of compounds exhibits same colour in aqueous solution?
-
-Which of the following pair of compounds exhibits same colour in aqueous solution?', '[{"id":"A","text":"FeCl_{2}, CuCl_{2}"},{"id":"B","text":"VOCl_{2}, CuCl_{2}"},{"id":"C","text":"VOC_{2}, FeCl_{2}"},{"id":"D","text":"VOCl_{2}, MnCl_{2}"}]', 0, 'B', 'CONCEPT:
+', '[{"id":"A","text":"FeCl_{2}, CuCl_{2}"},{"id":"B","text":"VOCl_{2}, CuCl_{2}"},{"id":"C","text":"VOC_{2}, FeCl_{2}"},{"id":"D","text":"VOCl_{2}, MnCl_{2}"}]', 0, 'B', 'CONCEPT:
 Color of Aqueous Solutions of Transition Metal Compounds
 
 • Transition metal ions exhibit characteristic colors in aqueous solutions due to d-d electronic transitions.
@@ -181299,8 +181267,7 @@ Pairs Analysis:
 
 Therefore, the correct pair of compounds exhibiting the same color (blue) in aqueous solution is VOCl $ _{2} $ and CuCl $ _{2} $, which corresponds to option 2.', NULL, 'null', '[]', '[]', '[9]', 'keyed', '[]', '2026-11-03T18:36:26.904Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18054, 'chemistry-2024-05-15-shift-1', 'q13', 13, 13, 'Which metal has the highest oxidation state in the first row transition series?
-
-Which metal has the highest oxidation state in the first row transition series?', '[{"id":"A","text":"Cr"},{"id":"B","text":"Fe"},{"id":"C","text":"Mn"},{"id":"D","text":"V"}]', 0, 'C', 'CONCEPT:
+', '[{"id":"A","text":"Cr"},{"id":"B","text":"Fe"},{"id":"C","text":"Mn"},{"id":"D","text":"V"}]', 0, 'C', 'CONCEPT:
 
 Oxidation States in Transition Metals
 
@@ -181315,8 +181282,7 @@ EXPLANATION:
 
 Manganese can have an oxidation state of +7 in compounds like $ MnO_{4}^{-} $ (permanganate ion).', NULL, 'null', '[]', '[]', '[10]', 'keyed', '[]', '2026-11-03T18:36:26.904Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18055, 'chemistry-2024-05-15-shift-1', 'q14', 14, 14, 'Why do the actinoids exhibit higher number of oxidation states than lanthanoids?
-
-Why do the actinoids exhibit higher number of oxidation states than lanthanoids?', '[{"id":"A","text":"4f orbitals are more diffused than the 5f orbitals."},{"id":"B","text":"Energy difference between 5f and 6d is less with respect to the energy difference between 4f and 5d."},{"id":"C","text":"Energy difference between 5f and 6d is more with respect to the energy difference between 4f and 5d."},{"id":"D","text":"Actinoids are more reactive in nature than the lanthanoids."}]', 0, 'B', 'CONCEPT:
+', '[{"id":"A","text":"4f orbitals are more diffused than the 5f orbitals."},{"id":"B","text":"Energy difference between 5f and 6d is less with respect to the energy difference between 4f and 5d."},{"id":"C","text":"Energy difference between 5f and 6d is more with respect to the energy difference between 4f and 5d."},{"id":"D","text":"Actinoids are more reactive in nature than the lanthanoids."}]', 0, 'B', 'CONCEPT:
 Oxidation States of Actinoids and Lanthanoids
 
 - Oxidation states are the charges that an atom can acquire in a compound through gain or loss of electrons.
@@ -182436,8 +182402,7 @@ o Carbon disulphide: 319.4 K
 
 Therefore, the solvent with the lowest Ebullioscopic constant is Diethyl Ether.', NULL, 'null', '[]', '[{"id":"q04-table-1","kind":"table","path":"/local-papers/assets/chemistry-2024-05-29/q04-table-1.jpg","page":4,"alt":"Table for question 4"}]', '[4]', 'keyed', '[]', '2026-11-03T18:36:26.907Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18093, 'chemistry-2024-05-29', 'q05', 5, 5, 'Which among the following compound is formed, when aldehyde reacts with HCN in presence of base?
-
-Which among the following compound is formed, when aldehyde reacts with HCN in presence of base?', '[{"id":"A","text":"Cyanide"},{"id":"B","text":"Isocyanide"},{"id":"C","text":"Cyanohydrin"},{"id":"D","text":"Hydrogen cyanide"}]', 0, 'C', '$ \underline{\text{CONCEPT}} $:
+', '[{"id":"A","text":"Cyanide"},{"id":"B","text":"Isocyanide"},{"id":"C","text":"Cyanohydrin"},{"id":"D","text":"Hydrogen cyanide"}]', 0, 'C', '$ \underline{\text{CONCEPT}} $:
 Cyanohydrin Formation
 
 • When an aldehyde reacts with hydrogen cyanide (HCN) in the presence of a base, a cyanohydrin compound is formed.
@@ -182548,8 +182513,7 @@ Therefore, the only compound among the options that will respond to Tollen''s te
 
 Therefore, the correct answer is Methanoic acid.', NULL, 'null', '[]', '[]', '[9]', 'keyed', '[]', '2026-11-03T18:36:26.907Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18097, 'chemistry-2024-05-29', 'q09', 9, 9, 'The order of reactivity of the given haloalkanes towards nucleophile is
-
-The order of reactivity of the given haloalkanes towards nucleophile is', '[{"id":"A","text":"RI > RBr > RCl"},{"id":"B","text":"RCl > RBr > RI"},{"id":"C","text":"RBr > RCl > RI"},{"id":"D","text":"RBr > RI > RCl"}]', 0, 'A', 'CONCEPT:
+', '[{"id":"A","text":"RI > RBr > RCl"},{"id":"B","text":"RCl > RBr > RI"},{"id":"C","text":"RBr > RCl > RI"},{"id":"D","text":"RBr > RI > RCl"}]', 0, 'A', 'CONCEPT:
 Reactivity of Haloalkanes towards Nucleophiles
 
 • Haloalkanes (alkyl halides) react with nucleophiles in nucleophilic substitution reactions.
@@ -182579,8 +182543,7 @@ This is due to its unique electronic configuration and weak metallic bonding com
 o Copper (Cu), Silver (Ag), and Gold (Au) are all solid at room temperature.
 
 Therefore, the correct answer is Hg (Mercury).', NULL, 'null', '[]', '[]', '[12]', 'keyed', '[]', '2026-11-03T18:36:26.907Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18099, 'chemistry-2024-05-29', 'q11', 11, 11, 'Which is the hardest metal?
-Which is the hardest metal?', '[{"id":"A","text":"Zn"},{"id":"B","text":"Cu"},{"id":"C","text":"Hg"},{"id":"D","text":"Cd"}]', 0, 'B', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18099, 'chemistry-2024-05-29', 'q11', 11, 11, 'Which is the hardest metal?', '[{"id":"A","text":"Zn"},{"id":"B","text":"Cu"},{"id":"C","text":"Hg"},{"id":"D","text":"Cd"}]', 0, 'B', 'CONCEPT:
 Hardness of Metals
 
 • Hardness is a measure of a material''s resistance to deformation, typically by indentation.
@@ -182606,8 +182569,7 @@ o Cadmium (Cd) has a Mohs hardness of about 2.0.
 
 Therefore, the hardest metal among the given options is Copper (Cu), and the correct answer is option 2.', NULL, 'null', '[]', '[]', '[13]', 'keyed', '[]', '2026-11-03T18:36:26.907Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18100, 'chemistry-2024-05-29', 'q12', 12, 12, 'In any row, melting points of these metals rise to a maximum at $ d^{5} $. Which transition metal is an exception?
-
-In any row, melting points of these metals rise to a maximum at $ d^{5} $. Which transition metal is an exception?', '[{"id":"A","text":"Ti"},{"id":"B","text":"V"},{"id":"C","text":"Cr"},{"id":"D","text":"Mn"}]', 0, 'D', 'CONCEPT:
+', '[{"id":"A","text":"Ti"},{"id":"B","text":"V"},{"id":"C","text":"Cr"},{"id":"D","text":"Mn"}]', 0, 'D', 'CONCEPT:
 
 Melting Points of Transition Metals
 
@@ -182633,8 +182595,7 @@ Cr (Chromium): d5 configuration
 - This anomaly is due to the half-filled d-subshell of Mn, which results in weaker metallic bonds compared to other d5 metals.
 
 Therefore, the transition metal that is an exception to the rule is Manganese (Mn).', NULL, 'null', '[]', '[]', '[14]', 'keyed', '[]', '2026-11-03T18:36:26.907Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18101, 'chemistry-2024-05-29', 'q14', 14, 13, 'How many electrons are needed in reduction of Cr_{2}O_{7}^{2-} to Cr^{3+}?
-How many electrons are needed in reduction of Cr_{2}O_{7}^{2-} to Cr^{3+}?', '[{"id":"A","text":"One"},{"id":"B","text":"Six"},{"id":"C","text":"Five"},{"id":"D","text":"Eight"}]', 0, 'B', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18101, 'chemistry-2024-05-29', 'q14', 14, 13, 'How many electrons are needed in reduction of Cr_{2}O_{7}^{2-} to Cr^{3+}?', '[{"id":"A","text":"One"},{"id":"B","text":"Six"},{"id":"C","text":"Five"},{"id":"D","text":"Eight"}]', 0, 'B', 'CONCEPT:
 Reduction and Oxidation in Redox Reactions
 
 • Reduction is the gain of electrons by a molecule, atom, or ion.
@@ -184583,8 +184544,7 @@ o This results in the formation of isonitrile (R-NC) and silver halide (AgX).
 • Since the carbon atom of the cyanide group is more nucleophilic, the major product is isonitrile (R-NC).
 
 Therefore, the major product of the reaction between AgCN and R-X is isonitrile (R-NC).', NULL, 'null', '[]', '[]', '[45]', 'keyed', '[]', '2026-11-03T18:36:26.913Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18179, 'chemistry-2024-07-19', 'q44', 44, 42, 'When KNO_{2} reacts with R-X, what is the major product?
-When KNO_{2} reacts with R-X, what is the major product?', '[{"id":"A","text":"Alcohol"},{"id":"B","text":"Nitroalkane"},{"id":"C","text":"Isonitrile"},{"id":"D","text":"Alkyl nitrite"}]', 0, 'D', 'Reaction of KNO₂ with Alkyl Halides (R-X)
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18179, 'chemistry-2024-07-19', 'q44', 44, 42, 'When KNO_{2} reacts with R-X, what is the major product?', '[{"id":"A","text":"Alcohol"},{"id":"B","text":"Nitroalkane"},{"id":"C","text":"Isonitrile"},{"id":"D","text":"Alkyl nitrite"}]', 0, 'D', 'Reaction of KNO₂ with Alkyl Halides (R-X)
 
 • KNO₂ (potassium nitrite) reacts with alkyl halides (R-X) to form alkyl nitrites (R-ONO).
 
@@ -184610,8 +184570,7 @@ o KX is the by-product, where X is the halide ion.
 - As the nitrite ion $ (\mathrm{NO}_{2}^{-}) $ attacks through the oxygen atom, the major product is an alkyl nitrite rather than a nitroalkane or any other compound.
 
 Therefore, the major product when KNO_{2} reacts with R-X is an alkyl nitrite.', NULL, 'null', '[]', '[]', '[46]', 'keyed', '[]', '2026-11-03T18:36:26.913Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18180, 'chemistry-2024-07-19', 'q45', 45, 43, 'When $ NH_{3} $ reacts with R-X, what is the major product?
-When $ NH_{3} $ reacts with R-X, what is the major product?', '[{"id":"A","text":"Nitroalkane"},{"id":"B","text":"Isonitrile"},{"id":"C","text":"Alkyl nitrite"},{"id":"D","text":"Primary amin"}]', 0, 'D', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18180, 'chemistry-2024-07-19', 'q45', 45, 43, 'When $ NH_{3} $ reacts with R-X, what is the major product?', '[{"id":"A","text":"Nitroalkane"},{"id":"B","text":"Isonitrile"},{"id":"C","text":"Alkyl nitrite"},{"id":"D","text":"Primary amin"}]', 0, 'D', 'CONCEPT:
 
 Reaction of Ammonia (NH₃) with Alkyl Halides (R-X)
 
@@ -184632,8 +184591,7 @@ Ammonia (NH₃) attacks the alkyl halide (R-X), leading to the formation of a pr
 
 Therefore, the major product of the reaction between NH $ _{3} $ and R-X is a primary amine.', NULL, 'null', '[]', '[]', '[47]', 'keyed', '[]', '2026-11-03T18:36:26.913Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18181, 'chemistry-2024-07-19', 'q46', 46, 44, 'Which among the following amines is most basic in aqueous medium?
-
-Which among the following amines is most basic in aqueous medium?', '[{"id":"A","text":"$ (C_{2}H_{5})_{2}NH $"},{"id":"B","text":"$ (C_{2}H_{5})_{3}N $"},{"id":"C","text":"$ C_{2}H_{5}NH_{2} $"},{"id":"D","text":"$ NH_{3} $"}]', 0, 'A', 'CONCEPT:
+', '[{"id":"A","text":"$ (C_{2}H_{5})_{2}NH $"},{"id":"B","text":"$ (C_{2}H_{5})_{3}N $"},{"id":"C","text":"$ C_{2}H_{5}NH_{2} $"},{"id":"D","text":"$ NH_{3} $"}]', 0, 'A', 'CONCEPT:
 Basicity of Amines in Aqueous Medium
 
 - The basicity of amines depends on:
@@ -184654,12 +184612,10 @@ Aromatic amines Ethylamine (C₂H₅NH₂) > Triethylamine (C₂H₅)₃N > Ammo
 
 The correct answer is $ (C_{2}H_{5})_{2}NH $ (Diethylamine)', NULL, 'null', '[]', '[]', '[48]', 'keyed', '[]', '2026-11-03T18:36:26.913Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18182, 'chemistry-2024-07-19', 'q47', 47, 45, 'Which base among the following is least basic in aqueous medium?
-
-Which base among the following is least basic in aqueous medium?', '[{"id":"A","text":"$ (CH_{3})_{2}NH $"},{"id":"B","text":"$ CH_{3}NH_{2} $"},{"id":"C","text":"$ (CH_{3})_{3}N $"},{"id":"D","text":"$ NH_{3} $"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
+', '[{"id":"A","text":"$ (CH_{3})_{2}NH $"},{"id":"B","text":"$ CH_{3}NH_{2} $"},{"id":"C","text":"$ (CH_{3})_{3}N $"},{"id":"D","text":"$ NH_{3} $"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
 
 This question is transcribed from authentic NTA examination papers. The verified answer key and detailed step-by-step derivation are currently undergoing review. No negative marks are deducted for this item during practice.', NULL, 'null', '[]', '[]', '[49]', 'pending', '[]', '2026-11-03T18:36:26.913Z', NULL, NULL, 'banner', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18183, 'chemistry-2024-07-19', 'q48', 48, 46, 'The most basic amine in gaseous medium is:
-The most basic amine in gaseous medium is:', '[{"id":"A","text":"$ (CH_{3})_{2}NH $"},{"id":"B","text":"$ CH_{3}NH_{2} $"},{"id":"C","text":"$ (CH_{3})_{3}N $"},{"id":"D","text":"NH_{3}"}]', 0, 'A', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18183, 'chemistry-2024-07-19', 'q48', 48, 46, 'The most basic amine in gaseous medium is:', '[{"id":"A","text":"$ (CH_{3})_{2}NH $"},{"id":"B","text":"$ CH_{3}NH_{2} $"},{"id":"C","text":"$ (CH_{3})_{3}N $"},{"id":"D","text":"NH_{3}"}]', 0, 'A', 'CONCEPT:
 Basicity of Amines in Gaseous Medium
 
 • In the gaseous phase, the basicity of amines is determined mainly by the +I (Inductive Effect).
@@ -184700,8 +184656,7 @@ Final Order of Basicity in Gaseous Phase:
 Triethylamine (C₂H₅)₃N > Diethylamine (C₂H₅)₂NH > Ethylamine (C₂H₅NH₂) > Ammonia (NH₃)
 
 Correct Answer is(C₂H₅)₃N (Triethylamine)', NULL, 'null', '[]', '[]', '[50]', 'keyed', '[]', '2026-11-03T18:36:26.913Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18184, 'chemistry-2024-07-19', 'q49', 49, 47, 'Which factor is not responsible for basic strength of amines?
-Which factor is not responsible for basic strength of amines?', '[{"id":"A","text":"Conjugation factor"},{"id":"B","text":"Inductive effect"},{"id":"C","text":"Solvation effect"},{"id":"D","text":"Steric hindertance"}]', 0, 'A', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18184, 'chemistry-2024-07-19', 'q49', 49, 47, 'Which factor is not responsible for basic strength of amines?', '[{"id":"A","text":"Conjugation factor"},{"id":"B","text":"Inductive effect"},{"id":"C","text":"Solvation effect"},{"id":"D","text":"Steric hindertance"}]', 0, 'A', 'CONCEPT:
 
 Factors Affecting the Basic Strength of Amines
 
@@ -184745,8 +184700,7 @@ Tertiary amines, despite having a strong +I effect, have lower basicity due to s
 Final Answer: Conjugation Factor is not responsible for the basic strength of amines.
 
 Correct Answer: Conjugation Factor', NULL, 'null', '[]', '[]', '[51]', 'keyed', '[]', '2026-11-03T18:36:26.913Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18185, 'chemistry-2024-07-19', 'q50', 50, 48, 'Hinsberg''s reagent is:
-Hinsberg''s reagent is:', '[{"id":"A","text":"2,4-dinitrophenol"},{"id":"B","text":"NaNO_{2}+HCl mixture"},{"id":"C","text":"HNO_{3}+ H_{2}SO_{4} mixture"},{"id":"D","text":"Benzenesulphonyl chloride"}]', 0, 'D', 'CONCEPT:
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18185, 'chemistry-2024-07-19', 'q50', 50, 48, 'Hinsberg''s reagent is:', '[{"id":"A","text":"2,4-dinitrophenol"},{"id":"B","text":"NaNO_{2}+HCl mixture"},{"id":"C","text":"HNO_{3}+ H_{2}SO_{4} mixture"},{"id":"D","text":"Benzenesulphonyl chloride"}]', 0, 'D', 'CONCEPT:
 
 Hinsberg''s Reagent
 
@@ -185389,13 +185343,9 @@ R
 
 dequeue()
 
-dequeue()
 
-dequeue()
 
-dequeue()
 
-dequeue()
 
 enqueue(100)
 
@@ -190948,8 +190898,7 @@ His concept of "pays" (regions) and the study of "genres de vie" (ways of life) 
 
 - Blache''s work influenced subsequent geographers and helped shift the focus from environmental determinism to a more balanced and integrative view of human-environment relationships.', NULL, 'null', '[]', '[]', '[20]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18450, 'geography-2024-05-17-shift-1', 'q17', 17, 17, 'Jhabua district is located in which agro-climatic zone of Madhya Pradesh?
-
-Jhabua district is located in which agro-climatic zone of Madhya Pradesh?', '[{"id":"A","text":"Northernmost"},{"id":"B","text":"Southernmost"},{"id":"C","text":"Easternmost"},{"id":"D","text":"Westernmost"}]', 0, 'D', 'The correct answer is ''Westernmost''
+', '[{"id":"A","text":"Northernmost"},{"id":"B","text":"Southernmost"},{"id":"C","text":"Easternmost"},{"id":"D","text":"Westernmost"}]', 0, 'D', 'The correct answer is ''Westernmost''
 Key Points
 
 • Jhabua District and its Agro-climatic Zone:
@@ -190981,8 +190930,7 @@ The easternmost zone includes areas towards the eastern boundary of Madhya Prade
 
 o It features distinct agricultural practices suited to its climatic conditions and soil types.', NULL, 'null', '[]', '[]', '[21]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18451, 'geography-2024-05-17-shift-1', 'q18', 18, 18, 'Which among the following was not used by Bhils to revitalise Common Property Resources?
-
-Which among the following was not used by Bhils to revitalise Common Property Resources?', '[{"id":"A","text":"Plantation of fodder grass"},{"id":"B","text":"Plantation of trees"},{"id":"C","text":"Open grazing"},{"id":"D","text":"Social-fencing"}]', 0, 'C', 'The correct answer is ''Open grazing''
+', '[{"id":"A","text":"Plantation of fodder grass"},{"id":"B","text":"Plantation of trees"},{"id":"C","text":"Open grazing"},{"id":"D","text":"Social-fencing"}]', 0, 'C', 'The correct answer is ''Open grazing''
 Key Points
 
 • Revitalisation of Common Property Resources by Bhils:
@@ -191010,7 +190958,6 @@ Additional Information
 
 This practice is generally counterproductive to the goal of revitalising and sustaining common property resources, as it can prevent the regeneration of vegetation and lead to soil erosion.', NULL, 'null', '[]', '[]', '[22]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18452, 'geography-2024-05-17-shift-1', 'q19', 19, 19, 'The Watershed Management Programmes, which have been successfully implemented in Jhabua were funded by _.
-The Watershed Management Programmes, which have been successfully implemented in Jhabua were funded by _.
 Fill in the blank with the correct option', '[{"id":"A","text":"Ministry of Tourism"},{"id":"B","text":"Ministries of Rural Development and Agriculture"},{"id":"C","text":"Ministry of Road Transport and Highways"},{"id":"D","text":"Ministry of Tribal Affairs Answer: B"}]', 0, 'B', 'The correct answer is ''Ministries of Rural Development and Agriculture.''
 Key Points
 
@@ -191041,8 +190988,7 @@ The Ministry of Tribal Affairs works towards the socio-economic development of t
 
 While it does engage in various developmental projects, it is not the main funding source for watershed management programmes, which are primarily supported by the Ministries of Rural Development and Agriculture.', NULL, 'null', '[]', '[]', '[23]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18453, 'geography-2024-05-17-shift-1', 'q20', 20, 20, 'Which tribal community has high concentration in the district of Jhabua?
-
-Which tribal community has high concentration in the district of Jhabua?', '[{"id":"A","text":"Bhils"},{"id":"B","text":"Munda"},{"id":"C","text":"Santhal"},{"id":"D","text":"Meena"}]', 0, 'A', 'The correct answer is ''Bhils''
+', '[{"id":"A","text":"Bhils"},{"id":"B","text":"Munda"},{"id":"C","text":"Santhal"},{"id":"D","text":"Meena"}]', 0, 'A', 'The correct answer is ''Bhils''
 Key Points
 
 • Bhils:
@@ -191078,8 +191024,7 @@ The Meena tribe primarily resides in the state of Rajasthan and parts of Madhya 
 
 They have a distinct cultural identity and are known for their traditional practices and societal structure.', NULL, 'null', '[]', '[]', '[25]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18454, 'geography-2024-05-17-shift-1', 'q21', 21, 21, 'Petlawad block of Jhabua is located in which part of the district?
-
-Petlawad block of Jhabua is located in which part of the district?', '[{"id":"A","text":"Southernmost"},{"id":"B","text":"Westernmost"},{"id":"C","text":"Northernmost"},{"id":"D","text":"Easternmost"}]', 0, 'C', 'The correct answer is ''Northernmost''
+', '[{"id":"A","text":"Southernmost"},{"id":"B","text":"Westernmost"},{"id":"C","text":"Northernmost"},{"id":"D","text":"Easternmost"}]', 0, 'C', 'The correct answer is ''Northernmost''
 Key Points
 
 • Petlawad block in Jhabua District:
@@ -191108,8 +191053,7 @@ The easternmost part of the Jhabua district lies towards the eastern boundary, a
 
 o Administrative blocks in the easternmost part have different geographical and cultural contexts.', NULL, 'null', '[]', '[]', '[26]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18455, 'geography-2024-05-17-shift-1', 'q22', 22, 22, 'Which of the following is not a product of cottage industry?
-
-Which of the following is not a product of cottage industry?', '[{"id":"A","text":"Mat"},{"id":"B","text":"Shoes"},{"id":"C","text":"Car"},{"id":"D","text":"Basket"}]', 0, 'C', 'The correct answer is ''Car''
+', '[{"id":"A","text":"Mat"},{"id":"B","text":"Shoes"},{"id":"C","text":"Car"},{"id":"D","text":"Basket"}]', 0, 'C', 'The correct answer is ''Car''
 
 Key Points
 
@@ -191143,7 +191087,6 @@ INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "
 
 Large scale manufacturing is not.
 
-Large scale manufacturing is not.
 
 Fill in the blank with the correct option.', '[{"id":"A","text":"capital intensive"},{"id":"B","text":"energy intensive"},{"id":"C","text":"technology intensive"},{"id":"D","text":"labour intensive"}]', 0, 'D', 'The correct answer is ''labour intensive''
 Key Points
@@ -191181,8 +191124,7 @@ Energy costs can be a major component of the overall production costs in large s
 
 o The use of technology helps in reducing errors and increasing the speed of production.', NULL, 'null', '[]', '[]', '[28]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18457, 'geography-2024-05-17-shift-1', 'q24', 24, 24, 'From the following, identify the feature of the cottage industry:
-
-From the following, identify the feature of the cottage industry:', '[{"id":"A","text":"Use of advanced technology"},{"id":"B","text":"Specialized workers"},{"id":"C","text":"Finished products may be for consumption in the same household"},{"id":"D","text":"Mass production"}]', 0, 'C', 'The correct answer is ''Finished products may be for consumption in the same household''
+', '[{"id":"A","text":"Use of advanced technology"},{"id":"B","text":"Specialized workers"},{"id":"C","text":"Finished products may be for consumption in the same household"},{"id":"D","text":"Mass production"}]', 0, 'C', 'The correct answer is ''Finished products may be for consumption in the same household''
 Key Points
 
 • Finished products may be for consumption in the same household:
@@ -191212,8 +191154,7 @@ Mass production involves producing large quantities of standardized products, us
 
 Cottage industries are known for their uniqueness and the handcrafted nature of their products, rather than mass production.', NULL, 'null', '[]', '[]', '[29]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18458, 'geography-2024-05-17-shift-1', 'q25', 25, 25, 'Which one of the following is not a feature of small scale manufacturing?
-
-Which one of the following is not a feature of small scale manufacturing?', '[{"id":"A","text":"It engages semi-skilled labour force."},{"id":"B","text":"It provides employment and raises local purchasing power."},{"id":"C","text":"The artisans produce goods in their homes with the help of their family members or part-time labour."},{"id":"D","text":"It is labour intensive manufacturing"}]', 0, 'C', 'The correct answer is ''The artisans produce goods in their homes with the help of their family members or part-time labour.''
+', '[{"id":"A","text":"It engages semi-skilled labour force."},{"id":"B","text":"It provides employment and raises local purchasing power."},{"id":"C","text":"The artisans produce goods in their homes with the help of their family members or part-time labour."},{"id":"D","text":"It is labour intensive manufacturing"}]', 0, 'C', 'The correct answer is ''The artisans produce goods in their homes with the help of their family members or part-time labour.''
 Key Points
 
 • Small Scale Manufacturing:
@@ -191230,7 +191171,6 @@ It provides employment and raises local purchasing power by creating job opportu
 
 It is labour-intensive manufacturing, which means that it relies more on human labour rather than automation and machinery, making it a significant source of employment.', NULL, 'null', '[]', '[]', '[30]', 'keyed', '[]', '2026-11-03T18:36:26.934Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18459, 'geography-2024-05-17-shift-1', 'q26', 26, 26, 'The small scale manufacturing and the cottage manufacturing are distinguished on the basis of _.
-The small scale manufacturing and the cottage manufacturing are distinguished on the basis of _.
 
 Fill in the blank with the correct option.', '[{"id":"A","text":"raw materials"},{"id":"B","text":"quantity of production"},{"id":"C","text":"production techniques"},{"id":"D","text":"scale of profits"}]', 0, 'C', 'The correct answer is ''production techniques''.
 Key Points
@@ -195365,8 +195305,7 @@ o Encouraged the political organization of the Muslim community.
 
 o Set a precedent for further communal electorate provisions in later reforms.', NULL, 'null', '[]', '[]', '[40]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18562, 'history-2024-05-18-shift-1', 'q29', 29, 29, 'Mughal chronicles viewed the emperors as supreme sovereign because
-
-Mughal chronicles viewed the emperors as supreme sovereign because', '[{"id":"A","text":"Nobility wanted him to be one."},{"id":"B","text":"Vision of empire viewed the emperor as the sole ruler."},{"id":"C","text":"Chronicles were a rich source of history."},{"id":"D","text":"Imperial administration was weak."}]', 0, 'B', 'The correct answer is: Vision of empire viewed the emperor as the sole ruler.
+', '[{"id":"A","text":"Nobility wanted him to be one."},{"id":"B","text":"Vision of empire viewed the emperor as the sole ruler."},{"id":"C","text":"Chronicles were a rich source of history."},{"id":"D","text":"Imperial administration was weak."}]', 0, 'B', 'The correct answer is: Vision of empire viewed the emperor as the sole ruler.
 Key Points
 
 - Mughal chronicles portrayed the emperor as the supreme sovereign because the Mughal vision of empire emphasized absolute monarchy.
@@ -195417,8 +195356,7 @@ o Mughal rulers commissioned court historians to write chronicles like Akbarnama
 
 - These works glorified the emperor, emphasizing his wisdom, justice, and military strength.', NULL, 'null', '[]', '[]', '[41]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18563, 'history-2024-05-18-shift-1', 'q30', 30, 30, 'Which section of the Mughal Court was viewed as very significant?
-
-Which section of the Mughal Court was viewed as very significant?', '[{"id":"A","text":"Imperial vision"},{"id":"B","text":"The Empire"},{"id":"C","text":"Nobility"},{"id":"D","text":"Mughal Chronicles"}]', 0, 'C', 'The correct answer is: ''C) Nobility''.
+', '[{"id":"A","text":"Imperial vision"},{"id":"B","text":"The Empire"},{"id":"C","text":"Nobility"},{"id":"D","text":"Mughal Chronicles"}]', 0, 'C', 'The correct answer is: ''C) Nobility''.
 Key Points
 
 - The nobility was one of the most significant sections of the Mughal court, playing a crucial role in administration, military, and governance.
@@ -195477,8 +195415,7 @@ o The nobility played a major role in imperial succession disputes, as rival fac
 
 o Powerful nobles often acted as kingmakers, influencing political events within the empire.', NULL, 'null', '[]', '[]', '[42]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18564, 'history-2024-05-18-shift-1', 'q31', 31, 31, 'Which chronicle says that the entire kingdom has to follow the king''s orders?
-
-Which chronicle says that the entire kingdom has to follow the king''s orders?', '[{"id":"A","text":"Urdu Akhbar"},{"id":"B","text":"Badshah Nama"},{"id":"C","text":"Akbar Nama"},{"id":"D","text":"Kitabkhana"}]', 0, 'C', 'Key Points
+', '[{"id":"A","text":"Urdu Akhbar"},{"id":"B","text":"Badshah Nama"},{"id":"C","text":"Akbar Nama"},{"id":"D","text":"Kitabkhana"}]', 0, 'C', 'Key Points
 
 - Akbar Nama, written by Abul Fazl, describes Akbar''s reign and his vision of centralized authority, portraying the emperor as the ultimate ruler whose commands must be followed throughout the empire.
 
@@ -195528,13 +195465,11 @@ o Portrays Akbar as a philosopher-king committed to justice, stability, and cult
 
 o Reinforces the idea that the emperor''s commands were binding on all subjects, ensuring centralized control.', NULL, 'null', '[]', '[]', '[44]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18565, 'history-2024-05-18-shift-1', 'q32', 32, 32, 'The Mughal imperial administrative apparatus was effectively dependent on _
-
-The Mughal imperial administrative apparatus was effectively dependent on _', '[{"id":"A","text":"Travellers"},{"id":"B","text":"Nobles"},{"id":"C","text":"Masses"},{"id":"D","text":"Mir Bakshi"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
+', '[{"id":"A","text":"Travellers"},{"id":"B","text":"Nobles"},{"id":"C","text":"Masses"},{"id":"D","text":"Mir Bakshi"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
 
 This question is transcribed from authentic NTA examination papers. The verified answer key and detailed step-by-step derivation are currently undergoing review. No negative marks are deducted for this item during practice.', NULL, 'null', '[]', '[]', '[45]', 'pending', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'banner', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18566, 'history-2024-05-18-shift-1', 'q33', 33, 33, 'Who is the author of Akbar Nama?
-
-Who is the author of Akbar Nama?', '[{"id":"A","text":"Chandrabhan Barahman"},{"id":"B","text":"Muhammad Kazim"},{"id":"C","text":"Lahori"},{"id":"D","text":"Abu''l Fazl"}]', 0, 'D', 'The correct answer is: ''D) Abu''l Fazl''.
+', '[{"id":"A","text":"Chandrabhan Barahman"},{"id":"B","text":"Muhammad Kazim"},{"id":"C","text":"Lahori"},{"id":"D","text":"Abu''l Fazl"}]', 0, 'D', 'The correct answer is: ''D) Abu''l Fazl''.
 Key Points
 
 • Abu''l Fazl was the chief court historian of Emperor Akbar and the author of the Akbar Nama.
@@ -195586,8 +195521,7 @@ He was a staunch supporter of Akbar''s policy of Sulh-i-Kul (universal tolerance
 His writings were highly detailed and glorified Akbar''s rule, often presenting him as a divine ruler.
 
 o Abu''l Fazl''s historical style influenced later Mughal chroniclers, making his work one of the most comprehensive sources of Akbar''s reign.', NULL, 'null', '[]', '[]', '[47]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18567, 'history-2024-05-18-shift-1', 'q34', 34, 34, 'When did the Constitution of India come into force?
-When did the Constitution of India come into force?', '[{"id":"A","text":"26th January, 1950"},{"id":"B","text":"15th August, 1947"},{"id":"C","text":"31st January, 1929"},{"id":"D","text":"6th November, 1949"}]', 0, 'A', 'The correct answer is: ''A) 26th January, 1950''.
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18567, 'history-2024-05-18-shift-1', 'q34', 34, 34, 'When did the Constitution of India come into force?', '[{"id":"A","text":"26th January, 1950"},{"id":"B","text":"15th August, 1947"},{"id":"C","text":"31st January, 1929"},{"id":"D","text":"6th November, 1949"}]', 0, 'A', 'The correct answer is: ''A) 26th January, 1950''.
 Key Points
 
 - The Constitution of India came into force on 26th January 1950, marking the official birth of the Republic of India.
@@ -195642,8 +195576,7 @@ o It upholds fundamental rights and duties, ensuring democracy, secularism, and 
 
 o The first Republic Day parade was held in 1950 at Irwin Stadium (now National Stadium), Delhi.', NULL, 'null', '[]', '[]', '[48]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18568, 'history-2024-05-18-shift-1', 'q35', 35, 35, 'Why is the Constitution of India described as the longest document in the world?
-
-Why is the Constitution of India described as the longest document in the world?', '[{"id":"A","text":"It is a painstakingly drafted document."},{"id":"B","text":"It is carefully worked out."},{"id":"C","text":"It imbibes culture of hierarchy."},{"id":"D","text":"The country size and diversity impact"}]', 0, 'C', 'The correct answer is: It imbibes culture of hierarchy.
+', '[{"id":"A","text":"It is a painstakingly drafted document."},{"id":"B","text":"It is carefully worked out."},{"id":"C","text":"It imbibes culture of hierarchy."},{"id":"D","text":"The country size and diversity impact"}]', 0, 'C', 'The correct answer is: It imbibes culture of hierarchy.
 Key Points
 
 - The Indian Constitution is described as the longest document in the world because it imbibes a culture of hierarchy, ensuring a structured legal and administrative framework.
@@ -195693,8 +195626,7 @@ o The Constitution provides affirmative action for Scheduled Castes, Scheduled T
 o Judicial hierarchy is established through District Courts, High Courts, and the Supreme Court.
 
 o Bureaucratic hierarchy ensures that officials work under strict administrative rules, following a chain of command.', NULL, 'null', '[]', '[]', '[50]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18569, 'history-2024-05-18-shift-1', 'q36', 36, 36, 'How can we say that the Constitution of India seeks to unify India?
-How can we say that the Constitution of India seeks to unify India?', '[{"id":"A","text":"It deals with the country''s problems."},{"id":"B","text":"The area of the subcontinent was under its control."},{"id":"C","text":"It was designed to keep the country''s divided classes, communities and castes together."},{"id":"D","text":"It was to nurture democratic institutions."}]', 0, 'C', 'The correct answer is: ''It was designed to keep the country''s divided classes, communities and castes together.''
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18569, 'history-2024-05-18-shift-1', 'q36', 36, 36, 'How can we say that the Constitution of India seeks to unify India?', '[{"id":"A","text":"It deals with the country''s problems."},{"id":"B","text":"The area of the subcontinent was under its control."},{"id":"C","text":"It was designed to keep the country''s divided classes, communities and castes together."},{"id":"D","text":"It was to nurture democratic institutions."}]', 0, 'C', 'The correct answer is: ''It was designed to keep the country''s divided classes, communities and castes together.''
 Key Points
 
 - The Constitution of India was framed with the objective of unifying the nation by accommodating its diverse population.
@@ -195745,8 +195677,7 @@ o The Constitution declares India a secular state, ensuring no discrimination ba
 
 - By promoting religious freedom and tolerance, it fosters harmony among different communities, contributing to national unity.', NULL, 'null', '[]', '[]', '[51]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18570, 'history-2024-05-18-shift-1', 'q37', 37, 37, 'In which body was the Constitution of India deliberated upon?
-
-In which body was the Constitution of India deliberated upon?', '[{"id":"A","text":"Parliament of India"},{"id":"B","text":"Through Newspaper coverage"},{"id":"C","text":"Constituent Assembly"},{"id":"D","text":"Princely States"}]', 0, 'C', 'The correct answer is: Constituent Assembly.
+', '[{"id":"A","text":"Parliament of India"},{"id":"B","text":"Through Newspaper coverage"},{"id":"C","text":"Constituent Assembly"},{"id":"D","text":"Princely States"}]', 0, 'C', 'The correct answer is: Constituent Assembly.
 Key Points
 
 - The Constitution of India was deliberated upon and drafted by the Constituent Assembly, which was established in 1946.
@@ -195797,8 +195728,7 @@ o Ensured comprehensive debates on governance, federalism, and individual rights
 
 o Incorporated ideas from various sources, including the Government of India Act, 1935, and constitutions of other nations.', NULL, 'null', '[]', '[]', '[53]', 'keyed', '[]', '2026-11-03T18:36:26.944Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18571, 'history-2024-05-18-shift-1', 'q38', 38, 38, 'The nature of the Constitution imbibed the right to _.
-
-The nature of the Constitution imbibed the right to _.', '[{"id":"A","text":"Cultural Rights"},{"id":"B","text":"Educational Rights"},{"id":"C","text":"Equality"},{"id":"D","text":"Religion"}]', 0, 'C', 'The correct answer is: ''Equality''
+', '[{"id":"A","text":"Cultural Rights"},{"id":"B","text":"Educational Rights"},{"id":"C","text":"Equality"},{"id":"D","text":"Religion"}]', 0, 'C', 'The correct answer is: ''Equality''
 
 Correct answer provided in the official answer key is: 1,2,3,4
 Key Points
@@ -200571,8 +200501,7 @@ The correct option is (3).', NULL, 'null', '[]', '[]', '[8]', 'keyed', '[]', '20
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (18693, 'physics-2024-05-16-shift-3', 'q10', 10, 10, 'In the circuit shown below, a current 3 I enters at A. The semicircular parts ABC and ADC have equal radii ''r'' but resistances 2R and R respectively. The magnetic field at the center of the circular loop ABCD is _.
 
 Fill in the blank with the correct answer from the options given below
-
-Fill in the blank with the correct answer from the options given below', '[{"id":"A","text":"$ \\frac{\\mu_{0}I}{4r} $ out of the plane"},{"id":"B","text":"$ \\frac{\\mu_{0}I}{4r} $ into the plane"},{"id":"C","text":"$ \\frac{\\mu_{0}3I}{4r} $ out of the plane"},{"id":"D","text":"$ \\frac{\\mu_{0}3I}{4r} $ into the plane"}]', 0, 'C', 'Concept:
+', '[{"id":"A","text":"$ \\frac{\\mu_{0}I}{4r} $ out of the plane"},{"id":"B","text":"$ \\frac{\\mu_{0}I}{4r} $ into the plane"},{"id":"C","text":"$ \\frac{\\mu_{0}3I}{4r} $ out of the plane"},{"id":"D","text":"$ \\frac{\\mu_{0}3I}{4r} $ into the plane"}]', 0, 'C', 'Concept:
 
 The magnetic field at the center of a circular loop carrying current can be determined using the Biot-Savart law. For a current I flowing through a circular loop of radius r, the magnetic field at the center of the loop is given by:
 
@@ -205380,7 +205309,6 @@ In this type of aromatic electrophilic substitution, the aryldiazonium cation ac
 C. This is an example of Nucleophilic substitution reaction.', NULL, 'null', '[]', '[{"id":"q19-table-1","kind":"table","path":"/local-papers/assets/chemistry-2023-06-07-shift-3/q19-table-1.jpg","page":3,"alt":"Table for question 19"}]', '[2,3]', 'keyed', '[]', '2026-11-03T18:36:32.147Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (19317, 'chemistry-2023-06-07-shift-3', 'q20', 20, 20, 'A + B → Nylon 6, 6
 
-A + B → Nylon 6, 6
 
 Predict A and B:', '[{"id":"A","text":"Ethylene glycol + adipic acid"},{"id":"B","text":"Pentamethylene diamine + adipic acid"},{"id":"C","text":"Hexamethylene amine + tartaric acid"},{"id":"D","text":"Hexamethylene diamine + adipic acid"}]', 0, 'D', 'Nylon 6,6 is obtained by condensation polymerisation of adipic acid and hexamethylenediamine, Nylon 6, 6 is used in making sheets, bristles for brushes and in the textile industry.', NULL, 'null', '[]', '[]', '[3]', 'keyed', '[]', '2026-11-03T18:36:32.147Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (19318, 'chemistry-2023-06-07-shift-3', 'q21', 21, 21, 'Match List - I with List - II.', '[{"id":"A","text":"(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"},{"id":"B","text":"(A)-(I), (B)-(IV), (C)-(III), (D)-(II)"},{"id":"C","text":"(A)-(II), (B)-(IV), (C)-(III), (D)-(I)"},{"id":"D","text":"(A)-(I), (B)-(III), (C)-(IV), (D)-(II)"}]', 0, 'C', 'A. $ [CoF_{6}]^{3-} $ is an outer complex having sp $ ^{3} $d $ ^{2} $ hybridization because the complex ion contains weak field ligand so electrons are not paired up and will contain 4 unpaired electrons. Hence the compound is said to be paramagnetic.
@@ -206547,7 +206475,6 @@ $ \ce{CH3} $
 
 $ (\mathrm{CH}_{3})_{3}\mathrm{C} \stackrel{\mathrm{C}=\mathrm{O}}{=} $
 
-$ (\mathrm{CH}_{3})_{3}\mathrm{C} \stackrel{\mathrm{C}=\mathrm{O}}{=} $
 
 (A) (I) > (III) > (II) > (IV)
 
@@ -208952,7 +208879,6 @@ Choose the correct answer from the options given below :
 
 (d) (A)-(II), (B)-(III), (C)-(IV), (D)-(I)
 
-(d) (A)-(II), (B)-(III), (C)-(IV), (D)-(I)
 
 1. Rearrange the sentences to form a meaningful paragraph:
 
@@ -211003,8 +210929,7 @@ III. All Banana are Orange is a possibility', '[{"id":"A","text":"Only I follow"
 
 **Solution & Key Rationale:**
 According to the official NTA examination answer key, option (C) is the correct response for this question.', NULL, 'null', '[]', '[]', '[2]', 'keyed', '[]', '2026-11-03T18:36:38.017Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (20277, 'general-test-2023-06-10-shift-3', 'q26', 26, 26, 'Match List-I with List-II:
-Match List-I with List-II:', '[{"id":"A","text":"(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"},{"id":"B","text":"(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"},{"id":"C","text":"(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"},{"id":"D","text":"(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"}]', 0, 'B', '(A)-(III), (B)-(IV), (C)-(I), (D)-(II)', NULL, 'null', '[]', '[{"id":"q26-table-1","kind":"table","path":"/local-papers/assets/general-test-2023-06-10-shift-3/q26-table-1.jpg","page":3,"alt":"Table for question 26"}]', '[3]', 'keyed', '[]', '2026-11-03T18:36:38.017Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
+INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (20277, 'general-test-2023-06-10-shift-3', 'q26', 26, 26, 'Match List-I with List-II:', '[{"id":"A","text":"(A)-(IV), (B)-(III), (C)-(II), (D)-(I)"},{"id":"B","text":"(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"},{"id":"C","text":"(A)-(I), (B)-(III), (C)-(II), (D)-(IV)"},{"id":"D","text":"(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"}]', 0, 'B', '(A)-(III), (B)-(IV), (C)-(I), (D)-(II)', NULL, 'null', '[]', '[{"id":"q26-table-1","kind":"table","path":"/local-papers/assets/general-test-2023-06-10-shift-3/q26-table-1.jpg","page":3,"alt":"Table for question 26"}]', '[3]', 'keyed', '[]', '2026-11-03T18:36:38.017Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (20278, 'general-test-2023-06-10-shift-3', 'q27', 27, 27, 'Choose the assumption which is implicit in context of the given statement.
 
 Statement-"Z-perfume is ideal as a gift for someone you love" - An Advertisement
@@ -212971,7 +212896,6 @@ INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "
 
 (d) $ 3.5 \times 10^{-19} $ J and $ 2.4 \times 10^{6} $ m/s
 
-(d) $ 3.5 \times 10^{-19} $ J and $ 2.4 \times 10^{6} $ m/s
 
 The metre bridge wire is made of alloys such as nichrome because they have:', '[{"id":"A","text":"high temperature coefficient of resistance and high resistivity"},{"id":"B","text":"low temperature coefficient of resistance and low resistivity"},{"id":"C","text":"low temperature coefficient of resistance and high resistivity"},{"id":"D","text":"high temperature coefficient of resistance and low resistivity"}]', 0, 'B', 'Work Function $\left(\Phi\right)=2.0\,\mathrm{eV}$
 
@@ -214057,7 +213981,6 @@ D. Zygote forms endosperm
 
 E. Outer integument of ovule develops into Testa
 
-E. Outer integument of ovule develops into Testa
 
 Choose the correct answer from the options given below:
 
@@ -220693,9 +220616,8 @@ Choose the correct answer from the options given below:
 (c) (A)-(ii), (B)-(iii), (C)-(iv), (D)-(i)
 
 (d) (A)-(i), (B)-(ii), (C)-(iii), (D)-(iv)
-15. Match List-I with List-II
-
 Match List-I With List-II
+
 
 List-I List-II
 
@@ -220724,7 +220646,6 @@ Areas
 (d) (A)-(iv), (B)-(iii), (C)-(i), (D)-(ii)
 Regions Production Places Iron and Steel Industries
 
-Regions Production Places Iron and Steel Industries
 
 (A) Appalachian (i) Morisville
 
@@ -222495,8 +222416,7 @@ B. $ \int_{-1}^{1}\sin^{5}x\cos^{4}x dx $
 C. $ \int_{1}^{\sqrt{3}}\frac{dx}{1+x^{2}} $ D. $ \int_{2}^{3}x^{2}dx $
 
 Choose the correct option answer from the option given below:
-
-Choose the correct option answer from the option given below:', '[{"id":"A","text":"A < B < C < D"},{"id":"B","text":"B < C < A < D"},{"id":"C","text":"C < A < B < D"},{"id":"D","text":"D < C < B < A"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
+', '[{"id":"A","text":"A < B < C < D"},{"id":"B","text":"B < C < A < D"},{"id":"C","text":"C < A < B < D"},{"id":"D","text":"D < C < B < A"}]', 0, NULL, '**Answer Key Status: Editorial Review in Progress**
 
 This question is transcribed from authentic NTA examination papers. The verified answer key and detailed step-by-step derivation are currently undergoing review. No negative marks are deducted for this item during practice.', NULL, 'null', '[]', '[]', '[3]', 'pending', '[]', '2026-11-03T18:36:43.577Z', NULL, NULL, 'banner', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (21843, 'mathematics-2022-08-22', 'q33', 33, 30, 'The solution of differential equation $ xy \, dy = (x^2 + y^2) \, dx \, is $', '[{"id":"A","text":"$ y^2 = -x^2 \\log(Cx) $"},{"id":"B","text":"$ y = x^2 \\log x $"},{"id":"C","text":"$ y^2 = x \\log(Cx) $"},{"id":"D","text":"$ y^2 = 2x^2 \\log(Cx) $"}]', 0, 'D', '$ \frac{dy}{dx} = \frac{x^{2} + y^{2}}{xy} $
@@ -225325,7 +225245,6 @@ Hence,
 Quick Tip: To find limiting molar conductivity of an electrolyte, simply add the ionic conductivities of all ions produced after dissociation, taking stoichiometric coefficients into account.', NULL, 'null', '[]', '[]', '[1]', 'keyed', '[]', '2026-11-03T18:36:43.615Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (22154, 'chemistry-2026-06-06-shift-1', 'q07', 7, 7, 'Arrange the compounds in order of their increasing boiling points.
 
-7. Arrange the compounds in order of their increasing boiling points.
 
 (A) 1-bromoethane
 
@@ -234420,7 +234339,6 @@ shining, silver, spoons, serving
 Quick Tip: If several nearby words begin with the same consonant sound, the figure of speech is usually Alliteration. Reading the sentence aloud often helps identify such sound patterns quickly.', NULL, 'null', '[]', '[]', '[1]', 'keyed', '[]', '2026-11-03T18:36:48.375Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (22379, 'english-2026-06-06-shift-1', 'q13', 13, 13, 'Rearrange the following phrases to form a meaningful sentence:
 
-13. Rearrange the following phrases to form a meaningful sentence.
 
 (A) most roads and routes across Delhi NCR
 
@@ -235376,7 +235294,6 @@ Ethnology = Human races and cultures.
 Ergonomics = Work environment study.', NULL, 'null', '[]', '[]', '[1]', 'keyed', '[]', '2026-11-03T18:36:48.378Z', NULL, NULL, 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (22401, 'english-2026-06-06-shift-1', 'q35', 35, 35, 'Fill in the blanks with the appropriate Phrasal Verbs from the options given below:
 
-35. Fill in the blanks with the appropriate Phrasal verbs from the options given below:
 
 “The representative walked out as the negotiation broke ___ and no compromise could be made.”', '[{"id":"A","text":"down"},{"id":"B","text":"in"},{"id":"C","text":"off"},{"id":"D","text":"with"}]', 0, 'A', 'Concept:
 
@@ -237439,8 +237356,7 @@ C. including the great Charles Darwin who gave the theory of evolution,
 D. and throughout history
 
 Choose the correct answer from the options given below:
-
-Choose the correct answer from the options given below:', '[{"id":"A","text":"A, C, B, D"},{"id":"B","text":"C, A, B, D"},{"id":"C","text":"C, A, D, B"},{"id":"D","text":"A, B, D, C"}]', 0, 'C', 'Concept:
+', '[{"id":"A","text":"A, C, B, D"},{"id":"B","text":"C, A, B, D"},{"id":"C","text":"C, A, D, B"},{"id":"D","text":"A, B, D, C"}]', 0, 'C', 'Concept:
 
 Sentence rearrangement and syntactic coherence require an understanding of how complex
 
@@ -237874,7 +237790,6 @@ INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "
 This question is transcribed from authentic NTA examination papers. The verified answer key and detailed step-by-step derivation are currently undergoing review. No negative marks are deducted for this item during practice.', NULL, 'null', '[]', '[]', '[1]', 'pending', '["missing_answer_key"]', '2026-11-03T18:36:48.382Z', NULL, NULL, 'banner', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO practice_questions ("id", "paper_slug", "question_key", "source_question_no", "position", "stem", "options_json", "options_are_images", "correct_option", "explanation", "passage_key", "match_list_json", "arrangement_json", "assets_json", "source_pages_json", "review_status", "review_flags_json", "created_at", "updated_at", "deleted_at", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (22453, 'english-2026-05-11-shift-1', 'q17', 17, 17, 'Fill in the blank with the correctly spelled word from the options given below:
 
-17. Fill in the blank with the correctly spelled word from the options given below:
 
 After signing the agreement with the authorities, the mood of the company''s director became _____.', '[{"id":"A","text":"ebulient"},{"id":"B","text":"ebullient"},{"id":"C","text":"ebbulient"},{"id":"D","text":"ebulient"}]', 0, 'B', '##### Concept:
 
