@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { allOr } from "../lib/db";
-import { getLocalPapers, getLocalPaperYears, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
+import { getLocalPapers, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
 import { siteUrl } from "../lib/site-url";
@@ -36,13 +36,10 @@ export const GET: APIRoute = async ({ request }) => {
   let syllabusSubjects: { slug: string; topic_count: number; question_count: number }[] = [];
   let topics: { subject_slug: string; topic_slug: string; question_count: number }[] = [];
   let pyqYears: { year: number; playable_count: number }[] = [];
-  let pyqSubjects: { year: number; subject_slug: string; playable_count: number }[] = [];
   let posts: { slug: string; updated_at: string | null; published_at: string | null }[] = [];
   let sharedQuestions: SeoIndexableQuestion[] = [];
   let playablePyqCount = 0;
-  let rankedMockCount = 0;
   const localPapers = getLocalPapers();
-  const localYears = getLocalPaperYears();
   const localSubjectSlugs = new Set(localPapers.map((paper) => paper.subject.slug));
   const hasPracticeContent = (slug: string, questionCount: number, paperCount: number) =>
     questionCount > 0 || paperCount > 0 || localSubjectSlugs.has(slug);
@@ -128,15 +125,6 @@ export const GET: APIRoute = async ({ request }) => {
        ORDER BY p.year DESC`,
       [],
     );
-    pyqSubjects = await allOr(
-      `SELECT p.year, s.slug AS subject_slug, COUNT(DISTINCT m.id) AS playable_count
-       FROM pyq_papers p
-       JOIN subjects s ON s.id = p.subject_id
-       JOIN mock_tests m ON m.pyq_paper_id = p.id AND m.status = 'published' AND m.deleted_at IS NULL
-       WHERE p.status = 'published' AND p.deleted_at IS NULL
-       GROUP BY p.year, s.slug`,
-      [],
-    );
     posts = await allOr(
       `SELECT slug, updated_at, published_at FROM blog_posts
        WHERE status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
@@ -145,7 +133,6 @@ export const GET: APIRoute = async ({ request }) => {
       [],
     );
     playablePyqCount = pyqYears.reduce((total, year) => total + year.playable_count, 0);
-    rankedMockCount = mocks.filter((mock) => mock.eligible > 0).length;
   } catch (error) {
     console.error("sitemap query failed", error);
   }
@@ -229,23 +216,8 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   // Thin Content & Rights Policy Gate (Fix R7):
-  // PYQ archive list pages (/pyq/:year and /pyq/:year/:subject) are only included in the sitemap
-  // if they contain cleared papers and meet the 300-word substantive content threshold.
-  const pyqYearPaths = new Set<string>();
-  for (const year of pyqYears) {
-    if ((year.cleared_count ?? 0) > 0) pyqYearPaths.add(`/pyq/${year.year}`);
-  }
-  for (const path of pyqYearPaths) {
-    add(path, { changefreq: "monthly", priority: "0.6" });
-  }
-
-  const pyqSubjectPaths = new Set<string>();
-  for (const paper of pyqSubjects) {
-    if ((paper.cleared_count ?? 0) > 0) pyqSubjectPaths.add(`/pyq/${paper.year}/${paper.subject_slug}`);
-  }
-  for (const path of pyqSubjectPaths) {
-    add(path, { changefreq: "monthly", priority: "0.5" });
-  }
+  // PYQ archive list pages (/pyq/:year and /pyq/:year/:subject) are thin content and gated with noindex,
+  // so they are intentionally excluded from sitemap.xml.
 
   for (const paper of localPapers) {
     const rights = rightsMap.get(paper.slug) ?? "unknown";

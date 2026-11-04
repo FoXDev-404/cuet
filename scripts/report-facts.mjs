@@ -149,11 +149,61 @@ function getDatabaseFacts() {
     });
   }
 
+  // Extract real explanation counts and unkeyed counts directly from database
+  const explanationStats = {
+    questions: { ai_draft: 0, banner: 0, none: 0, reviewed: 0 },
+    practice: { ai_draft: 0, banner: 0, none: 0, reviewed: 0 },
+    unkeyedPracticeQuestions: 0,
+    unkeyedQuestions: 0,
+    totalAiDraft: 0,
+    totalNoExplanation: 0,
+    totalReviewed: 0,
+  };
+
+  try {
+    const qRows = db
+      .prepare(
+        "SELECT explanation_source, explanation_status, COUNT(*) as c FROM questions GROUP BY explanation_source, explanation_status"
+      )
+      .all();
+    for (const r of qRows) {
+      if (r.explanation_source === "ai_draft") explanationStats.questions.ai_draft += Number(r.c);
+      if (r.explanation_source === "banner") explanationStats.questions.banner += Number(r.c);
+      if (r.explanation_source === "none") explanationStats.questions.none += Number(r.c);
+      if (r.explanation_status === "reviewed") explanationStats.questions.reviewed += Number(r.c);
+    }
+
+    const pqRows = db
+      .prepare(
+        "SELECT explanation_source, explanation_status, COUNT(*) as c FROM practice_questions GROUP BY explanation_source, explanation_status"
+      )
+      .all();
+    for (const r of pqRows) {
+      if (r.explanation_source === "ai_draft") explanationStats.practice.ai_draft += Number(r.c);
+      if (r.explanation_source === "banner") explanationStats.practice.banner += Number(r.c);
+      if (r.explanation_source === "none") explanationStats.practice.none += Number(r.c);
+      if (r.explanation_status === "reviewed") explanationStats.practice.reviewed += Number(r.c);
+    }
+
+    explanationStats.totalAiDraft = explanationStats.questions.ai_draft + explanationStats.practice.ai_draft;
+    explanationStats.totalNoExplanation = explanationStats.questions.none + explanationStats.practice.none;
+    explanationStats.totalReviewed = explanationStats.questions.reviewed + explanationStats.practice.reviewed;
+
+    const unkeyedQ = db.prepare("SELECT COUNT(*) as c FROM questions WHERE correct_option IS NULL").get();
+    explanationStats.unkeyedQuestions = Number(unkeyedQ?.c ?? 0);
+
+    const unkeyedPQ = db.prepare("SELECT COUNT(*) as c FROM practice_questions WHERE correct_option IS NULL").get();
+    explanationStats.unkeyedPracticeQuestions = Number(unkeyedPQ?.c ?? 0);
+  } catch (err) {
+    console.warn("Could not query explanation stats:", err.message);
+  }
+
   return {
     databasePath: dbPath.replace(ROOT + "\\", "").replace(ROOT + "/", ""),
     totalTables: tableFacts.length,
     totalRows,
     tables: tableFacts,
+    explanationStats,
   };
 }
 

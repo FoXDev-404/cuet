@@ -1,6 +1,6 @@
 # Appendix E: Repository File Tree (Depth 4)
 
-_Generated on 2026-11-04T11:27:21.647Z._
+_Generated on 2026-11-04T12:26:14.522Z._
 
 ## Top-Level Directory Roles
 

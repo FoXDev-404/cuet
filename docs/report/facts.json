@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T11:27:21.647Z",
+  "generatedAt": "2026-11-04T12:26:14.522Z",
   "nodeVersion": "v24.18.0",
   "dependencies": {
     "packageVersion": "0.1.0",
@@ -1269,7 +1269,7 @@
   "database": {
     "databasePath": ".wrangler\\state\\v3\\d1\\miniflare-D1DatabaseObject\\9e86a3487f62f60f2005838556d2eb9f94df20a990ccf3e7e9e15550212e2901.sqlite",
     "totalTables": 40,
-    "totalRows": 40039,
+    "totalRows": 40052,
     "tables": [
       {
         "name": "admins",
@@ -1408,7 +1408,7 @@
       },
       {
         "name": "attempt_answers",
-        "rowCount": 6042,
+        "rowCount": 6052,
         "columnsCount": 8,
         "indexesCount": 2,
         "columns": [
@@ -1472,7 +1472,7 @@
       },
       {
         "name": "attempts",
-        "rowCount": 342,
+        "rowCount": 343,
         "columnsCount": 22,
         "indexesCount": 11,
         "columns": [
@@ -1634,7 +1634,7 @@
       },
       {
         "name": "audit_log",
-        "rowCount": 671,
+        "rowCount": 672,
         "columnsCount": 7,
         "indexesCount": 2,
         "columns": [
@@ -3649,7 +3649,7 @@
       },
       {
         "name": "sessions",
-        "rowCount": 597,
+        "rowCount": 598,
         "columnsCount": 4,
         "indexesCount": 2,
         "columns": [
@@ -4111,7 +4111,26 @@
           }
         ]
       }
-    ]
+    ],
+    "explanationStats": {
+      "questions": {
+        "ai_draft": 10288,
+        "banner": 34,
+        "none": 1861,
+        "reviewed": 0
+      },
+      "practice": {
+        "ai_draft": 6245,
+        "banner": 358,
+        "none": 0,
+        "reviewed": 0
+      },
+      "unkeyedPracticeQuestions": 332,
+      "unkeyedQuestions": 0,
+      "totalAiDraft": 16533,
+      "totalNoExplanation": 1861,
+      "totalReviewed": 0
+    }
   },
   "migrations": {
     "totalMigrations": 20,

@@ -1,11 +1,11 @@
 # Appendix B: Database Schema & Entity Catalogue
 
-_Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-11-04T11:27:21.647Z._
+_Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-11-04T12:26:14.522Z._
 
 ## Database Overview
 
 - **Total Catalogued Tables:** 40
-- **Total Database Rows:** 40,039
+- **Total Database Rows:** 40,052
 - **Applied Migrations:** 20 (from `0001_init.sql` through `0020_exam_info_seed.sql`)
 
 ## Table Catalogue Summary
@@ -14,9 +14,9 @@ _Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-1
 | :--- | :---: | :---: | :---: | :--- | :---: |
 | `admins` | 2 | 7 | 2 | Admin accounts, roles (super, editor, moderator, contributor) | Yes (`deleted_at`) |
 | `announcements` | 0 | 10 | 0 | Auxiliary / Join Table | Yes (`deleted_at`) |
-| `attempt_answers` | 6,042 | 8 | 2 | User answer submissions per attempt question | No |
-| `attempts` | 342 | 22 | 11 | Attempt instances, scores, deadlines, sequence ordering | No |
-| `audit_log` | 671 | 7 | 2 | Auxiliary / Join Table | No |
+| `attempt_answers` | 6,052 | 8 | 2 | User answer submissions per attempt question | No |
+| `attempts` | 343 | 22 | 11 | Attempt instances, scores, deadlines, sequence ordering | No |
+| `audit_log` | 672 | 7 | 2 | Auxiliary / Join Table | No |
 | `badges` | 4 | 5 | 1 | Auxiliary / Join Table | Yes (`deleted_at`) |
 | `blog_posts` | 0 | 11 | 3 | Auxiliary / Join Table | Yes (`deleted_at`) |
 | `bookmarks` | 0 | 4 | 1 | Auxiliary / Join Table | No |
@@ -43,7 +43,7 @@ _Extracted directly from local Cloudflare D1 miniflare SQLite database on 2026-1
 | `questions` | 12,183 | 28 | 8 | Master question item bank with revision tracking | Yes (`deleted_at`) |
 | `rescore_jobs` | 0 | 10 | 1 | Auxiliary / Join Table | No |
 | `revisions` | 194 | 7 | 2 | Auxiliary / Join Table | No |
-| `sessions` | 597 | 4 | 2 | User session tokens, SHA-256 hashes, expiration | No |
+| `sessions` | 598 | 4 | 2 | User session tokens, SHA-256 hashes, expiration | No |
 | `share_events` | 0 | 7 | 1 | Auxiliary / Join Table | No |
 | `site_settings` | 3 | 2 | 1 | Auxiliary / Join Table | No |
 | `slug_redirects` | 0 | 4 | 2 | Auxiliary / Join Table | No |
@@ -96,7 +96,7 @@ CREATE TABLE "announcements" (
 
 ### Table: `attempt_answers`
 
-- **Current Row Count:** 6,042
+- **Current Row Count:** 6,052
 - **Columns:** 8
 
 ```sql
@@ -121,7 +121,7 @@ CREATE INDEX idx_attempt_answers_question
 
 ### Table: `attempts`
 
-- **Current Row Count:** 342
+- **Current Row Count:** 343
 - **Columns:** 22
 
 ```sql
@@ -169,7 +169,7 @@ CREATE INDEX idx_attempts_status_submitted
 
 ### Table: `audit_log`
 
-- **Current Row Count:** 671
+- **Current Row Count:** 672
 - **Columns:** 7
 
 ```sql
@@ -834,7 +834,7 @@ CREATE INDEX idx_revisions_admin
 
 ### Table: `sessions`
 
-- **Current Row Count:** 597
+- **Current Row Count:** 598
 - **Columns:** 4
 
 ```sql

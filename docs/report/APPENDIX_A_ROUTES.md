@@ -1,6 +1,6 @@
 # Appendix A: Complete Route Inventory
 
-_Auto-generated from `src/pages` router on 2026-11-04T11:27:21.647Z._
+_Auto-generated from `src/pages` router on 2026-11-04T12:26:14.522Z._
 
 ## Summary Counts
 

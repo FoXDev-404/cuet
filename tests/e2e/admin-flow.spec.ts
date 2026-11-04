@@ -377,7 +377,7 @@ test("an editor sees which previous-year papers need review", async ({ page }) =
 
   const detailLinks = page.locator('a[href^="/admin/review?paper="]');
   if ((await detailLinks.count()) === 0) {
-    test.skip(true, "Every refined paper is fully keyed.");
+    test.skip(true, "No papers currently pending in /admin/review queue (332 unkeyed questions reside in unconfirmed practice papers).");
     return;
   }
 
@@ -428,7 +428,7 @@ test("a super admin fixes a pending practice question from the review queue", as
 
   const detailLink = page.locator('a[href^="/admin/review?paper="]').first();
   if ((await detailLink.count()) === 0) {
-    test.skip(true, "Every refined paper is fully keyed.");
+    test.skip(true, "No papers currently pending in /admin/review queue (332 unkeyed questions reside in unconfirmed practice papers).");
     return;
   }
   await detailLink.click();

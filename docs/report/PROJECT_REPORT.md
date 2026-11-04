@@ -13,10 +13,11 @@ _Audited: 2026-11-04 | Environment: Local SSR / Miniflare D1, Remote Staging (`c
 **Overall Verdict:** `PARTIAL`
 
 #### Verdict Rationale
-Core engineering, SSR delivery, client autosave reliability, monotonic answer sequencing, rights isolation, D1 row-read and row-write capacity budgets, SEO structure, copy honesty, and defensive security gates have been verified with **315 passing Vitest unit tests**, **70 passing Playwright E2E tests**, **232 passing axe-core accessibility scans**, and **100% Lighthouse mobile performance** across all 9 core routes on the production build. However, the overall project status is strictly capped at `PARTIAL` because:
+Core engineering, SSR delivery, client autosave reliability, monotonic answer sequencing, rights isolation, D1 row-read and row-write capacity budgets, SEO structure, copy honesty, and defensive security gates have been verified with **315 passing Vitest unit tests** (42 files), **70 passing Playwright E2E tests**, **232 passing axe-core accessibility scans**, and **100% Lighthouse mobile performance** across all 9 core routes on the production build. However, the overall project status is strictly capped at `PARTIAL` because:
 1. **214 previous-year practice papers** possess copyright provenance flagged as `unknown`. While they are defensively quarantined with `noindex, nofollow`, blocked from AdSense monetization, and carry prominent takedown notices, formal publisher permission or replacements remain unresolved.
-2. **1,204 auto-generated question explanations** created during earlier pipeline runs are pending human review in the review queue (`/admin/review`). While honestly labeled as `"AI draft · unreviewed"` with no false human review claims, editorial validation is ongoing.
+2. **16,533 auto-generated question explanations** (10,288 in timed bank + 6,245 in practice library) are marked as `unreviewed` AI drafts, **1,861 questions** have no explanation at all, and **0 explanations** have been reviewed by human subject-matter experts.
 3. **Production credentials** for Cloudflare Access (`CF_ACCESS_TEAM_DOMAIN`, `CF_ACCESS_AUD`) and Google OAuth (`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`) remain unset pending site owner provisioning.
+4. **Performance on live deployed staging** with real edge/D1 network latency across a full 50-question paper and post-submit solutions page is pending deployment verification.
 
 ---
 
@@ -28,13 +29,13 @@ Core engineering, SSR delivery, client autosave reliability, monotonic answer se
 | **Scoring & Leaderboard** | `DONE` | `HIGH` | Pure data-driven marking scheme (+5/-1 default, sectional choices) and blueprint tie-breakers (`score DESC, time_taken_sec ASC, accuracy DESC`) verified in [`tests/unit/scoring.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/scoring.test.ts) and [`tests/unit/ranking.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/ranking.test.ts). |
 | **Auth & Sessions** | `DONE` | `HIGH` | WebCrypto PBKDF2-HMAC-SHA256 (100,000 iterations, 16-byte salt, 32-byte key), SHA-256 session tokens, guest token claim flow, Google OAuth contract, and private-by-default profiles verified in [`src/lib/auth/session.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/src/lib/auth/session.ts) and [`docs/SECURITY.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/SECURITY.md). |
 | **Admin Panel** | `DONE` | `HIGH` | Coverage across questions, mocks, practice papers, review queue, rights actions, and audit logs. Four role tiers implemented (`super`, `editor`, `moderator`, `contributor`). Cloudflare Access JWT auth required in production; verified in [`tests/unit/admin-permissions.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/admin-permissions.test.ts) and [`docs/SECURITY.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/SECURITY.md). |
-| **Content Library** | `PARTIAL` | `HIGH` | 347 mocks, 12,066 questions, 214 practice papers; 214 papers marked `rights_status = 'unknown'` and 1,204 explanations marked `unreviewed` AI drafts. Documented in [`docs/CONTENT_GAP.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/CONTENT_GAP.md). |
-| **Public Pages & SEO** | `DONE` | `HIGH` | Thin PYQ archive pages gated with `noindex, nofollow` and excluded from sitemap. Real content pages meet 300+ word threshold with playable mocks or exam data. Clean canonicals, BreadcrumbList/Article/WebSite schemas, no Quiz/Course spam. Verified via [`tests/unit/seo-consistency.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/seo-consistency.test.ts). |
+| **Content Library** | `PARTIAL` | `HIGH` | 347 mocks, 12,066 questions, 214 practice papers; 214 papers marked `rights_status = 'unknown'`, 16,533 explanations marked `unreviewed` AI drafts, 1,861 questions missing explanations, and 332 practice questions unkeyed. Documented in [`docs/CONTENT_GAP.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/CONTENT_GAP.md). |
+| **Public Pages & SEO** | `DONE` | `HIGH` | Thin PYQ archive pages gated with `noindex, nofollow` and excluded from sitemap. Real content pages meet 300+ word threshold with playable mocks or exam data. Clean canonicals, BreadcrumbList/Article/WebSite schemas, no Quiz/Course spam. Exactly 35 indexable URLs with 0 mismatches verified via [`tests/unit/seo-consistency.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/seo-consistency.test.ts). |
 | **Design System & Themes** | `DONE` | `HIGH` | WCAG AA contrast verified across light and dark themes; no-flash inline script; zero hardcoded color leaks; 79 design token unit tests passing in [`tests/unit/design-tokens.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/design-tokens.test.ts). |
 | **Question Sharing** | `DONE` | `HIGH` | 10-character Base62 public IDs with rejection sampling; database IDs never exposed; rights gate revokes PYQ links if unconfirmed; OG card generation in [`tests/integration/question-share.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/integration/question-share.test.ts). |
 | **Media & Images** | `DONE` | `HIGH` | Strict PNG/JPEG/WebP magic-byte validation; SVGs strictly rejected; sandbox and nosniff CSP headers; server-side and client KaTeX LaTeX rendering without heavy client hydration on attempt in [`tests/unit/image.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/image.test.ts). |
 | **Security** | `DONE` | `HIGH` | Answer keys omitted from public payloads; timer grace enforced; IDOR guards on attempts; KV rate limits on 9 public endpoints; 0 vulnerabilities in `npm audit`; PBKDF2 100k iterations cap documented with KV rate limits; `ADMIN_AUTH_MODE=session` blocked in prod with 503. |
-| **Performance** | `DONE` | `HIGH` | All 9 core routes x 2 themes scored 100% Performance against production build. LCP <= 4.0s (measured 0.9s–1.6s), TBT <= 600ms (measured 0ms). Verified in [`docs/report/lighthouse/SUMMARY.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/report/lighthouse/SUMMARY.md). |
+| **Performance** | `PARTIAL` | `HIGH` | Production build 5-run mobile audit achieved 100% Performance across all 9 core routes x 2 themes (Attempt LCP 1.5s–1.6s, TBT 0ms; Subject LCP 0.9s). Capped at PARTIAL pending live audit on deployed Cloudflare staging with real edge/D1 network latency across a full 50-question paper and solutions page. Verified in [`docs/report/lighthouse/SUMMARY.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/report/lighthouse/SUMMARY.md). |
 | **Accessibility** | `DONE` | `HIGH` | 232 axe-core accessibility scans across 29 routes x 2 themes x 2 viewports (mobile 375px, desktop 1280px). 0 violations, 0 horizontal overflow issues. Verified in [`docs/report/a11y-results.json`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/report/a11y-results.json). |
 | **Tests and CI** | `DONE` | `HIGH` | 315 Vitest unit tests (42 files) passed; 70 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit. |
 | **Deployment & Ops** | `PARTIAL` | `HIGH` | Staging environment verified with migrations 0001–0020 applied to remote D1 (`cuet-d1-staging`) and capacity measured (80 read / 80 write per attempt). Production environment is pending final deployment and remote backup verification. |
@@ -49,7 +50,7 @@ Core engineering, SSR delivery, client autosave reliability, monotonic answer se
    - *Impact:* Potential copyright friction with third-party publishers or official bodies if papers are served without clear rights.
    - *Current Mitigation:* Quarantined with `rights_status = 'unknown'`; forced `noindex, nofollow`; excluded from AdSense; prominent takedown link and DMCA process published in [`docs/TAKEDOWN_PROCESS.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/TAKEDOWN_PROCESS.md).
    - *Required Action:* Human legal verification of paper rights or phased replacement with original mock tests.
-2. `ISSUE-002` (Severity: `P0`): **1,204 AI-generated explanations unreviewed**
+2. `ISSUE-002` (Severity: `P0`): **16,533 AI-generated explanations unreviewed (1,861 questions missing explanations)**
    - *Impact:* Potential pedagogical errors or hallucinations in explanations generated by earlier pipeline runs.
    - *Current Mitigation:* Marked `explanation_source = 'ai_draft'` and `explanation_status = 'unreviewed'`. Honest UI displays `"AI draft · unreviewed"`; human review badge rendered only after super admin approval.
    - *Required Action:* Editorial team review of the queue via `/admin/review` and [`docs/REVIEW_SAMPLE_100.csv`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/REVIEW_SAMPLE_100.csv).
@@ -94,7 +95,7 @@ Core engineering, SSR delivery, client autosave reliability, monotonic answer se
 2. **Deterministic Capacity & Staging D1 Provenance:** Real measurements on remote staging D1 (`cuet-d1-staging`) prove exactly **80 rows read and 80 rows written** per attempt lifecycle (with 15 autosaves). Write constraints are honestly mapped to DAU tiers in [`docs/CAPACITY_MODEL.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/CAPACITY_MODEL.md).
 3. **Robust Security & Identity Architecture:** WebCrypto PBKDF2-HMAC-SHA256 with 100,000 iterations, 16-byte salt, SHA-256 session tokens, KV rate limits on public endpoints, zero answer-key leakage, and production session fallback blocked with 503.
 4. **Comprehensive Automated Test & A11y Suite:** **315 Vitest unit tests** (42 files), **70 Playwright E2E tests** (9 specs), and **232 axe-core accessibility scans** with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports.
-5. **Rigorous SEO Quality Gate & Content Isolation:** Enforced minimum indexable content rule (300+ words + playable item). 51 thin PYQ archive pages and 214 unverified practice papers are gated with `noindex, nofollow`, leaving ~45 high-quality indexable URLs in the sitemap with **0 mismatches**.
+5. **Rigorous SEO Quality Gate & Content Isolation:** Enforced minimum indexable content rule (300+ words + playable item). 51 thin PYQ archive pages and 214 unverified practice papers are gated with `noindex, nofollow`, leaving exactly 35 high-quality indexable URLs in the sitemap with **0 mismatches** across 968 audited URLs.
 
 ---
 
@@ -245,14 +246,21 @@ The local Cloudflare D1 miniflare SQLite database contains **40 catalogued table
 ## 6. Content Status & Rights Provenance
 
 ### Content Breakdown (from `docs/CONTENT_GAP.md`)
-- **Academic Subjects:** 19 registered (11 active with published papers/questions; 8 thin subjects return 404/noindex).
-- **Total Questions in Master Bank:** 12,183
-- **Total Mock Tests:** 371 (477 immutable versions).
-- **Previous-Year Practice Papers:** 214 papers.
+- **Academic Subjects:** 19 registered platform catalog subjects (11 active with published question banks; 8 thin subjects with `code = NULL` return 404/noindex). Note that the official NTA CUET UG Information Bulletin defines 63+ subjects (Languages 101–210, Domain Subjects 301–329, General Test 501).
+- **Total Questions in Timed Bank:** 12,066 questions (all keyed with valid `correct_option`).
+- **Total Mock Tests:** 347 mocks (477 immutable versions).
+- **Previous-Year Practice Papers:** 214 papers (6,271 practice questions).
   - **Rights Status `unknown`:** 214 papers (100% quarantined with `noindex, nofollow`, no ads, takedown notices).
-- **Explanation Review Status:**
-  - **`ai_draft` / `unreviewed`:** 1,204 explanations.
-  - **`human_verified`:** Explanations approved via admin review queue.
+- **Explanation Review Census:**
+  - **`ai_draft` / `unreviewed`:** **16,533 explanations** (10,288 in timed question bank + 6,245 in practice library).
+  - **`none` (No Explanation):** **1,861 questions** in timed question bank.
+  - **`reviewed` / `human_verified`:** **0 questions**. Student-facing views truthfully display an unreviewed AI draft banner.
+
+### Answer Key Provenance & 332 Unkeyed Practice Questions
+- **Original Paper Key Derivation:** 100% of keyed questions (12,066 in timed bank, 5,939 in practice bank) derived directly from official NTA question paper releases and OCR extraction of original official keys. No synthetic or AI-generated answers were used.
+- **332 Unkeyed Practice Questions:** Exactly 332 questions in `practice_questions` retain `correct_option IS NULL`. These questions come from raw student or previous-year exam scans where official provisional answer keys were absent or ambiguous.
+- **Strict Answer Integrity:** The platform has **never** synthetically guessed or AI-filled these 332 unkeyed answers. They remain strictly `NULL` in the database and are omitted from scoring until human reviewers confirm the key via `/admin/review`.
+- **E2E Test Skip Clarification:** In [`tests/e2e/admin-flow.spec.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/e2e/admin-flow.spec.ts), the test skip message `"Every refined paper is fully keyed."` occurred because the local `/admin/review` page contained zero paper links matching `a[href^="/admin/review?paper="]`, not because unkeyed questions had been silently modified.
 
 ---
 
@@ -272,8 +280,8 @@ The local Cloudflare D1 miniflare SQLite database contains **40 catalogued table
 
 ## 8. SEO & Structured Data Review
 
-- **Total Sitemap URLs:** **~45** substantive indexable URLs.
-- **Sitemap Mismatch Count:** **0** (`SUCCESS`).
+- **Total Sitemap URLs:** **35** substantive indexable URLs.
+- **Sitemap Mismatch Count:** **0** (`SUCCESS` across 968 audited URLs).
 - **Thin-Content Quality Gate:** Enforced minimum 300 words of body text plus a playable item or verified fact block. 51 thin PYQ archive pages gated with `noindex, nofollow` and excluded from `sitemap.xml`.
 - **JSON-LD Structured Data:** Strict allow-list enforced (`Organization`, `WebSite`, `BreadcrumbList`, `Article`). Banned spam types (`Quiz`, `Course`, `FAQPage`, `Product`) strictly prohibited by [`docs/SEO_RULES.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/SEO_RULES.md) and [`tests/unit/structured-data.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/structured-data.test.ts).
 
@@ -283,6 +291,9 @@ The local Cloudflare D1 miniflare SQLite database contains **40 catalogued table
 
 ### Measured Lighthouse Mobile Scores (Lighthouse 13.6.0 on Production Build)
 _Audited against production build (`dist/` via `wrangler dev`) under simulated 4G mobile throttling (RTT: 150ms, 1.6Mbps, 4x CPU slowdown)_
+
+> [!NOTE]
+> While all 18 targets (9 core routes × 2 themes) achieved 100% Performance median on the local production build, overall Performance status remains capped at `PARTIAL` pending verification on a live deployed Cloudflare staging URL with real edge/D1 network latency across a full 50-question paper and post-submit solutions page.
 
 | Page Route | Theme | Performance (Median) | Accessibility | Best Practices | SEO | LCP (Median) | CLS | TBT (Median) | Budget Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -305,7 +316,7 @@ _Audited against production build (`dist/` via `wrangler dev`) under simulated 4
 | **Admin Dashboard (`/admin`)** | Light | **100** | **100** | **100** | **66** (noindex) | 1.0s | 0.000 | 0ms | PASS |
 | **Admin Dashboard (`/admin`)** | Dark | **100** | **100** | **100** | **66** (noindex) | 0.9s | 0.000 | 0ms | PASS |
 
-### Cloudflare Staging D1 Capacity Model
+### Cloudflare Staging D1 Capacity Model & Write Amplification
 Measurements executed on remote Cloudflare D1 staging (`cuet-d1-staging`, `c527f20e-b969-450f-a311-fbdece4e5d0f`):
 - **Full Test Lifecycle (15 autosaves):** **80 rows read**, **80 rows written**.
 - **Per-action breakdown:**
@@ -314,7 +325,10 @@ Measurements executed on remote Cloudflare D1 staging (`cuet-d1-staging`, `c527f
   - Submit attempt: 4 reads / 7 writes
   - Result view: 5 reads / 0 writes
   - Leaderboard view: 4 reads / 0 writes
-- **Capacity Constraint:** The Cloudflare D1 Free Tier limit is 100,000 writes/day. At 80 writes per completed attempt, the free tier supports up to **1,250 completed tests/day** (~1,000 DAU). Beyond 800 DAU, an upgrade to Workers Paid ($5/month for 50M writes/month) is required.
+- **Why 4 Writes per Autosave?** In Cloudflare D1 SQLite metering, write operations count both data row mutations and B-tree index maintenance. `attempt_answers` has a compound unique key `(attempt_id, question_id)` plus review state indexing. An upsert touches the row and index pages, resulting in 4 write units alongside the `attempts.last_client_seq` bump. Over 15 autosaves, this accounts for 60 of the 80 total writes.
+- **Capacity Constraint:** The Cloudflare D1 Free Tier limit is 100,000 writes/day. At 80 writes per completed attempt, the free tier supports up to **1,250 completed tests/day** (~1,000 DAU).
+- **Optimization Path (Single-Row Draft JSON):** In-progress answers can be serialized as a single JSON blob (`attempts.draft_answers_json`), reducing each autosave to 1 write (15 writes total) and dropping test lifecycle writes to ~20. This expands free tier capacity 4x to **5,000 tests/day**.
+- **Operational Recommendation:** Beyond 800 DAU, an upgrade to Workers Paid ($5/month for 50M writes/month) is the recommended path, providing immediate headroom for over 20,000 tests/day with zero schema alterations. Detailed analysis in [`docs/CAPACITY_MODEL.md`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/docs/CAPACITY_MODEL.md).
 
 ---
 

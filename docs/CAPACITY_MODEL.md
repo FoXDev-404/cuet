@@ -106,6 +106,27 @@ With delta autosaves and KV question caching:
 3. **Persisted Section Summary**: Result view reads are reduced to **5 rows read**.
 4. **Primary Constraint Inversion**: Read quota is no longer the bottleneck. **Daily writes (100k/day) are the bounding constraint**.
 
+### 4.1. Index Write Amplification in Cloudflare D1
+Why does a single delta autosave write measure **4 rows written** in D1 metadata?
+In Cloudflare D1's serverless SQLite metering:
+- Every table row mutation (INSERT or UPDATE) is counted.
+- Additionally, D1 meters SQLite index B-tree modifications. The `attempt_answers` table contains a composite primary key / unique index on `(attempt_id, question_id)` plus index entries for review state.
+- When an answer is upserted (`INSERT ... ON CONFLICT(attempt_id, question_id) DO UPDATE`), SQLite updates the data row and synchronizes the associated B-tree indexes, alongside updating `attempts.last_client_seq`.
+- Consequently, each 15s autosave pulse registers **4 write units** in D1 response telemetry. Over 15 autosaves, this accounts for **60 writes** out of the 80 total writes per attempt.
+
+### 4.2. Optimization Blueprint: Single-Row JSON Answer Snapshot (4x Capacity Boost)
+To drastically reduce write amplification on the free tier without sacrificing reliability:
+1. **In-Progress State**: During the 45-minute test, store student answer state in a single column: `attempts.draft_answers_json` (e.g. `{"q1":"A","q2":"C",...}`) alongside `attempts.last_client_seq`.
+2. **Single Row Mutation**: Each 15s delta autosave updates only the single `attempts` record by primary key (`UPDATE attempts SET draft_answers_json = ?, last_client_seq = ? WHERE id = ?`). Because the attempt primary key B-tree is unmodified, this consumes only **1 write operation** per autosave.
+3. **Submit Unpack**: On final submission (`POST /api/test/submit`), the backend validates the test, scores the submission, and unpacks `draft_answers_json` into normalized `attempt_answers` rows in a single batch transaction.
+4. **Impact on Capacity**:
+   - Autosave writes drop from 60 writes (15 × 4) down to **15 writes** (15 × 1).
+   - Total attempt lifecycle drops from **80 writes down to ~20 writes**.
+   - Free tier daily capacity expands from **1,250 tests/day to 5,000 tests/day** (a **4x expansion** to ~3,300 DAU).
+
+### 4.3. Paid Upgrade Alternative ($5/month)
+While the single-row JSON optimization extends the free tier to 5,000 tests/day, the operational recommendation remains activating **Workers Paid ($5/month)** once DAU consistently approaches 800–1,000. Workers Paid provides **50,000,000 writes/month** (~1,670,000 writes/day), which provides immediate headroom for **over 20,000 tests/day** under the existing schema with zero code risk.
+
 ---
 
 ## 5. Alert Thresholds & Upgrade Triggers

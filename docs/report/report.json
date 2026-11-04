@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-04T11:55:56.065Z",
-  "commitHash": "75ea44f9693af9a6661c1feabcecf615dfd17870",
+  "generatedAt": "2026-11-04T12:31:22.452Z",
+  "commitHash": "7e92b8b6e9b43409d95cbdf4557f09fabb1315b1",
   "product": "CUET Free Mock Test",
   "siteUrl": "https://cuetfreemocktest.com",
   "stage": "staging / partial-launch ready",
   "overallVerdict": "PARTIAL",
-  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 306 Vitest unit tests, 70 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed) and 1,204 auto-generated explanations are pending human review in the review queue.",
+  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 315 Vitest unit tests (42 files), 70 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
   "scorecard": [
     {
       "area": "Test engine",
@@ -35,7 +35,7 @@
       "area": "Content library",
       "status": "PARTIAL",
       "confidence": "HIGH",
-      "reason": "347 mocks, 12,066 questions, 214 practice papers. Capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (safely isolated and noindexed) and 1,204 explanations are unreviewed AI drafts."
+      "reason": "347 mocks, 12,066 questions, 214 practice papers. Capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (safely isolated and noindexed), 16,533 explanations are unreviewed AI drafts, 1,861 questions have no explanation, and 332 practice questions are unkeyed."
     },
     {
       "area": "Public pages and SEO",
@@ -69,9 +69,9 @@
     },
     {
       "area": "Performance",
-      "status": "DONE",
+      "status": "PARTIAL",
       "confidence": "HIGH",
-      "reason": "All 9 core routes x 2 themes scored 100% Performance against production build. LCP <= 4.0s (measured 0.9s–1.6s), TBT <= 600ms (measured 0ms)."
+      "reason": "Production build 5-run mobile audit achieved 100% Performance across all 9 core routes x 2 themes (Attempt LCP 1.5s–1.6s, TBT 0ms; Subject LCP 0.9s). Capped at PARTIAL pending live audit on deployed Cloudflare staging with real edge/D1 network latency across a full 50-question paper and solutions page."
     },
     {
       "area": "Accessibility",
@@ -83,7 +83,7 @@
       "area": "Tests and CI",
       "status": "DONE",
       "confidence": "HIGH",
-      "reason": "306 Vitest unit tests (41 files) passed; 70 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
+      "reason": "315 Vitest unit tests (42 files) passed; 70 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
     },
     {
       "area": "Deployment and ops",
@@ -115,8 +115,8 @@
     {
       "id": "ISSUE-002",
       "severity": "P0",
-      "title": "1,204 AI-generated explanations unreviewed",
-      "description": "1,204 questions carry auto-generated explanation drafts marked is_reviewed = 0. While student-facing pages truthfully disclose this via an unreviewed AI draft banner, human subject-matter review is pending.",
+      "title": "16,533 AI-generated explanations unreviewed (1,861 questions missing explanations)",
+      "description": "16,533 questions across timed question bank (10288) and practice papers (6245) carry auto-generated explanation drafts marked is_reviewed = 0. In addition, 1,861 questions have no explanation at all, and 332 practice questions are unkeyed. Student-facing pages truthfully disclose this via an unreviewed AI draft banner, but human subject-matter review is pending.",
       "remediation": "Subject experts use the admin explanation review queue (/admin/explanations/review) to audit and approve explanations."
     },
     {
@@ -191,11 +191,11 @@
     },
     {
       "title": "Comprehensive Automated Test & A11y Suite",
-      "description": "306 Vitest unit tests (41 files), 70 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
+      "description": "315 Vitest unit tests (42 files), 70 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
     },
     {
       "title": "Rigorous SEO Quality Gate & Content Isolation",
-      "description": "Enforced minimum indexable content rule (300+ words + playable item). 51 thin PYQ archive pages and 214 unverified practice papers are gated with noindex, nofollow, leaving ~45 high-quality indexable URLs in the sitemap with 0 mismatches."
+      "description": "Enforced minimum indexable content rule (300+ words + playable item). 51 thin PYQ archive pages and 214 unverified practice papers are gated with noindex, nofollow, leaving exactly 35 high-quality indexable URLs in the sitemap with 0 mismatches across 968 audited URLs."
     }
   ],
   "metrics": {
@@ -206,13 +206,13 @@
     },
     "database": {
       "tables": 40,
-      "totalRows": 40039,
+      "totalRows": 40052,
       "migrations": 20
     },
     "tests": {
       "unitPassed": 315,
       "unitTotal": 315,
-      "unitFiles": 112,
+      "unitFiles": 42,
       "e2ePassed": 70,
       "e2eTotal": 73,
       "e2eSkipped": 3,
