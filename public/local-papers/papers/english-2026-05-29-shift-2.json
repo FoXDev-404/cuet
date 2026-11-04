@@ -317,8 +317,12 @@
       {
         "id": "q10",
         "sourceQuestionNo": 10,
-        "stemEn": "Rearrange the given phrases to form a coherent sentence:\n\nP: her assignment ahead of time | Q: despite facing several interruptions | R: managed to complete | S: the diligent student\n\n##### (A) SRQP",
+        "stemEn": "Rearrange the given phrases to form a coherent sentence:\n\nP: her assignment ahead of time | Q: despite facing several interruptions | R: managed to complete | S: the diligent student",
         "optionsEn": [
+          {
+            "id": "A",
+            "text": "SRQP"
+          },
           {
             "id": "B",
             "text": "SRPQ"

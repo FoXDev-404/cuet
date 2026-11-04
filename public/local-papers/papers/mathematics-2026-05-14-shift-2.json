@@ -195,7 +195,11 @@
           },
           {
             "id": "B",
-            "text": "$ X = \\begin{pmatrix} 0 & 5 \\\\ 1 & 4 \\end{pmatrix} $ and  $ Y = \\begin{pmatrix} -1 & -1 \\\\ -1 & 2 \\end{pmatrix} $\n\n $$ \\left(\\mathrm{C}\\right)X=\\begin{pmatrix}6&2\\\\ 1&5\\end{pmatrix}and Y=\\begin{pmatrix}-1&-1\\\\ -1&2\\end{pmatrix} $$"
+            "text": "$ X = \\begin{pmatrix} 0 & 5 \\\\ 1 & 4 \\end{pmatrix} $ and  $ Y = \\begin{pmatrix} -1 & -1 \\\\ -1 & 2 \\end{pmatrix} $"
+          },
+          {
+            "id": "C",
+            "text": "$$ X=\\begin{pmatrix}6&2\\\\ 1&5\\end{pmatrix}and Y=\\begin{pmatrix}-1&-1\\\\ -1&2\\end{pmatrix} $$"
           },
           {
             "id": "D",

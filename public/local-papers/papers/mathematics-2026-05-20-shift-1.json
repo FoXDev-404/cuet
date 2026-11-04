@@ -53,8 +53,12 @@
       {
         "id": "q02",
         "sourceQuestionNo": 2,
-        "stemEn": "Which of the following set of constraints represents the feasible region (shaded portion) in the figure given below?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/mathematics-2026-05-20-shift-1/q02-figure-1.jpg\" alt=\"Figure 1 for question 2\" />\n</div>\n\n\n $$ (A)\\ x+y\\leq2,\\ x+2y\\leq3,\\ x\\geq0,\\ y\\geq0 $$",
+        "stemEn": "Which of the following set of constraints represents the feasible region (shaded portion) in the figure given below?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/mathematics-2026-05-20-shift-1/q02-figure-1.jpg\" alt=\"Figure 1 for question 2\" />\n</div>",
         "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\ x+y\\leq2,\\ x+2y\\leq3,\\ x\\geq0,\\ y\\geq0 $"
+          },
           {
             "id": "B",
             "text": "$ x + y \\geq 2 $,  $ x + 2y \\leq 3 $,  $ x \\geq 0 $,  $ y \\geq 0 $"
@@ -189,8 +193,12 @@
       {
         "id": "q06",
         "sourceQuestionNo": 6,
-        "stemEn": "Matrix  $ A = [a_{ij}]_{3 \\times 3} $ where\n\n $$ a_{ij}=\\left\\{\\begin{aligned}&i+j,&&i\\neq j\\\\ &i-j,&&i=j\\end{aligned}\\right. $$ \n\nFind matrix A.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) |A|</td><td style='text-align: center; word-wrap: break-word;'>(I) 176</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) |2A|</td><td style='text-align: center; word-wrap: break-word;'>(II) 10648</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) |adjA|</td><td style='text-align: center; word-wrap: break-word;'>(III) 22</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) |A(adjA)|</td><td style='text-align: center; word-wrap: break-word;'>(IV) 484</td></tr></table>\n\n\n $$ \\mathrm{(A)}\\mathrm{(A)}-\\mathrm{(I I I)},\\mathrm{(B)}-\\mathrm{(I V)},\\mathrm{(C)}-\\mathrm{(I)},\\mathrm{(D)}-\\mathrm{(I I)} $$",
+        "stemEn": "Matrix  $ A = [a_{ij}]_{3 \\times 3} $ where\n\n $$ a_{ij}=\\left\\{\\begin{aligned}&i+j,&&i\\neq j\\\\ &i-j,&&i=j\\end{aligned}\\right. $$ \n\nFind matrix A.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) |A|</td><td style='text-align: center; word-wrap: break-word;'>(I) 176</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) |2A|</td><td style='text-align: center; word-wrap: break-word;'>(II) 10648</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) |adjA|</td><td style='text-align: center; word-wrap: break-word;'>(III) 22</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) |A(adjA)|</td><td style='text-align: center; word-wrap: break-word;'>(IV) 484</td></tr></table>",
         "optionsEn": [
+          {
+            "id": "A",
+            "text": "\\mathrm{(A)}-\\mathrm{(I I I)},\\mathrm{(B)}-\\mathrm{(I V)},\\mathrm{(C)}-\\mathrm{(I)},\\mathrm{(D)}-\\mathrm{(I I)}"
+          },
           {
             "id": "B",
             "text": "(A)-(III),(B)-(I),(C)-(IV),(D)-(II)"

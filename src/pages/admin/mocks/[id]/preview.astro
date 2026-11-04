@@ -2,7 +2,7 @@
 import AdminLayout from "../../../../layouts/AdminLayout.astro";
 import { can } from "../../../../lib/auth/admin";
 import { findMock, latestVersion } from "../../../../lib/admin/mocks";
-import { attemptQuestions } from "../../../../lib/attempts";
+import { attemptQuestions, parseQuestionAssets } from "../../../../lib/attempts";
 import { parseMarkingScheme, parseOptions, renderRichText } from "../../../../lib/content";
 import { imageDimensionsForUrls, withImageDimensions } from "../../../../lib/media-dimensions";
 
@@ -17,6 +17,26 @@ if (!mock || mock.deleted_at) return new Response("Mock not found", { status: 40
 const version = await latestVersion(id);
 if (!version) return new Response("Mock version missing", { status: 500 });
 
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
+
 const rows = await attemptQuestions(version.id);
 const dimensions = await imageDimensionsForUrls(
   rows.flatMap((question) => [
@@ -24,22 +44,50 @@ const dimensions = await imageDimensionsForUrls(
     question.passage_image_url,
     ...parseOptions(question.options).map((option) => option.image_url),
     ...parseOptions(question.options_hi).map((option) => option.image_url),
+    ...parseQuestionAssets(question.assets_json).map((asset) => asset.url),
   ]),
 );
-const questions = rows.map((question) => ({
-  ...question,
-  image_width: question.image_url ? dimensions.get(question.image_url)?.width ?? null : null,
-  image_height: question.image_url ? dimensions.get(question.image_url)?.height ?? null : null,
-  passage_image_width: question.passage_image_url
-    ? dimensions.get(question.passage_image_url)?.width ?? null
-    : null,
-  passage_image_height: question.passage_image_url
-    ? dimensions.get(question.passage_image_url)?.height ?? null
-    : null,
-  options: parseOptions(question.options).map((option) =>
+const questions = rows.map((question) => {
+  const rawAssets = parseQuestionAssets(question.assets_json);
+  const options = parseOptions(question.options).map((option) =>
     withImageDimensions(option, dimensions),
-  ),
-}));
+  );
+  let questionImageUrl = question.image_url;
+  if (questionImageUrl && textContainsImage(question.text, questionImageUrl)) {
+    questionImageUrl = null;
+  }
+  const filteredAssets = rawAssets.filter((asset) => {
+    if (asset.kind === "options" || asset.kind === "explanation") return false;
+    if (asset.url.includes("-exp-")) return false;
+    if (questionImageUrl && textContainsImage(question.text, asset.url)) return false;
+    if (options.some((opt) => opt.image_url && asset.url.includes(imageFileName(opt.image_url)))) return false;
+    return true;
+  });
+  const optionAssets = rawAssets.filter((asset) => asset.kind === "options" && !asset.url.includes("-exp-"));
+  return {
+    ...question,
+    image_url: questionImageUrl,
+    image_width: questionImageUrl ? dimensions.get(questionImageUrl)?.width ?? null : null,
+    image_height: questionImageUrl ? dimensions.get(questionImageUrl)?.height ?? null : null,
+    passage_image_width: question.passage_image_url
+      ? dimensions.get(question.passage_image_url)?.width ?? null
+      : null,
+    passage_image_height: question.passage_image_url
+      ? dimensions.get(question.passage_image_url)?.height ?? null
+      : null,
+    options,
+    assets: filteredAssets.map((asset) => ({
+      ...asset,
+      image_width: dimensions.get(asset.url)?.width ?? null,
+      image_height: dimensions.get(asset.url)?.height ?? null,
+    })),
+    option_assets: optionAssets.map((asset) => ({
+      ...asset,
+      image_width: dimensions.get(asset.url)?.width ?? null,
+      image_height: dimensions.get(asset.url)?.height ?? null,
+    })),
+  };
+});
 const sections = [...new Set(questions.map((question) => question.section))];
 const marking = parseMarkingScheme(version.marking_scheme);
 const letters = ["A", "B", "C", "D", "E", "F"];
@@ -113,7 +161,7 @@ const letters = ["A", "B", "C", "D", "E", "F"];
                 </div>
               ) : null}
               <div class="mt-3 text-sm leading-7" set:html={renderRichText(question.text)}></div>
-              {question.image_url ? (
+              {question.image_url && !textContainsImage(question.text, question.image_url) ? (
                 <img
                   class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
                   src={question.image_url}
@@ -123,12 +171,50 @@ const letters = ["A", "B", "C", "D", "E", "F"];
                   loading="lazy"
                 />
               ) : null}
+              {question.assets.length > 0 ? (
+                <figure class="mt-3 rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900">
+                  <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                    Figure / table
+                  </figcaption>
+                  <div class="flex flex-wrap gap-2">
+                    {question.assets.map((asset) => (
+                      <img
+                        class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                        src={asset.url}
+                        alt={asset.alt}
+                        width={asset.image_width ?? undefined}
+                        height={asset.image_height ?? undefined}
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                </figure>
+              ) : null}
+              {question.option_assets.length > 0 ? (
+                <figure class="mt-3 rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900">
+                  <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                    Printed answer choices
+                  </figcaption>
+                  <div class="flex flex-wrap gap-2">
+                    {question.option_assets.map((asset) => (
+                      <img
+                        class="max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
+                        src={asset.url}
+                        alt={asset.alt}
+                        width={asset.image_width ?? undefined}
+                        height={asset.image_height ?? undefined}
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                </figure>
+              ) : null}
               <ol class="mt-4 space-y-2">
                 {question.options.map((option, optionIndex) => (
                   <li class="flex items-start gap-3 rounded-xl border border-neutral-200 px-3 py-2 text-sm dark:border-neutral-800">
                     <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-current text-xs font-bold">{letters[optionIndex] ?? optionIndex + 1}</span>
                     <span class="min-w-0 flex-1">
-                      <span set:html={renderRichText(option.text)}></span>
+                      {isPlaceholderText(option.text) ? null : <span set:html={renderRichText(option.text)}></span>}
                       {option.image_url ? (
                         <img
                           class="mt-2 max-h-40 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
@@ -138,7 +224,9 @@ const letters = ["A", "B", "C", "D", "E", "F"];
                           height={option.image_height ?? undefined}
                           loading="lazy"
                         />
-                      ) : null}
+                      ) : (isPlaceholderText(option.text) ? (
+                        <span class="text-neutral-400 dark:text-neutral-500">Option {letters[optionIndex] ?? optionIndex + 1}</span>
+                      ) : null)}
                     </span>
                   </li>
                 ))}

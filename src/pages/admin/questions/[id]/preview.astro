@@ -15,6 +15,26 @@ if (!question || question.deleted_at) return new Response("Question not found", 
 const options = parseOptions(question.options);
 const optionsHi = question.options_hi ? parseOptions(question.options_hi) : [];
 const letters = ["A", "B", "C", "D", "E", "F"];
+
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
 ---
 
 <AdminLayout title={`Preview question #${question.id}`} active="questions">
@@ -48,7 +68,7 @@ const letters = ["A", "B", "C", "D", "E", "F"];
     <div class="mt-5 text-base leading-7" set:html={renderRichText(question.text)}></div>
     {question.text_hi ? <div class="mt-3 text-base leading-7" lang="hi" dir="auto" set:html={renderRichText(question.text_hi)}></div> : null}
 
-    {question.image_url ? (
+    {question.image_url && !textContainsImage(question.text, question.image_url) ? (
       <figure class="media-frame mt-4">
         <img src={question.image_url} alt={question.image_alt ?? ""} loading="lazy" />
         {question.image_alt ? <figcaption class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">{question.image_alt}</figcaption> : null}
@@ -60,8 +80,8 @@ const letters = ["A", "B", "C", "D", "E", "F"];
         <li class:list={["flex items-start gap-3 rounded-xl border p-3", index === question.correct_option ? "border-emerald-400 bg-emerald-50 dark:border-emerald-700 dark:bg-emerald-950/30" : "border-neutral-200 dark:border-neutral-800"]}>
           <span class="font-bold">{letters[index]}.</span>
           <span class="min-w-0 flex-1">
-            <span set:html={renderRichText(option.text)}></span>
-            {option.image_url ? <img class="media-frame mt-2 max-h-48" src={option.image_url} alt={option.alt ?? ""} loading="lazy" /> : null}
+            {isPlaceholderText(option.text) ? null : <span set:html={renderRichText(option.text)}></span>}
+            {option.image_url ? <img class="media-frame mt-2 max-h-48" src={option.image_url} alt={option.alt ?? ""} loading="lazy" /> : (isPlaceholderText(option.text) ? <span class="text-neutral-400 dark:text-neutral-500">Option {letters[index] ?? index + 1}</span> : null)}
           </span>
           {index === question.correct_option ? <span class="shrink-0 rounded-full bg-emerald-700 px-2 py-0.5 text-[10px] font-bold uppercase text-white">Correct</span> : null}
         </li>

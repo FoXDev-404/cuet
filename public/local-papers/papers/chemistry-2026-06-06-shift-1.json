@@ -1214,7 +1214,11 @@
           },
           {
             "id": "C",
-            "text": "A = CH_{3}CH_{2}NC, B = CH_{3}CH_{2}NC\n\n $$  (D)\\;A=CH_{3}CH_{2}NC,B=CH_{3}CH_{2}CN $$"
+            "text": "A = CH_{3}CH_{2}NC, B = CH_{3}CH_{2}NC"
+          },
+          {
+            "id": "D",
+            "text": "A=CH_{3}CH_{2}NC,B=CH_{3}CH_{2}CN"
           }
         ],
         "optionsAreImages": false,
@@ -1670,7 +1674,11 @@
           },
           {
             "id": "B",
-            "text": "$ C_2H_5NH_2 > (C_2H_5)_3N > (C_2H_5)_2NH > NH_3 $\n\n $$ NH_{3}>C_{2}H_{5}NH_{2}>(C_{2}H_{5})_{2}NH>(C_{2}H_{5})_{3}N $$"
+            "text": "$ C_2H_5NH_2 > (C_2H_5)_3N > (C_2H_5)_2NH > NH_3 $"
+          },
+          {
+            "id": "C",
+            "text": "$$ NH_{3}>C_{2}H_{5}NH_{2}>(C_{2}H_{5})_{2}NH>(C_{2}H_{5})_{3}N $$"
           },
           {
             "id": "D",

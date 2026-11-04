@@ -101,9 +101,16 @@ function galleryAssets(question) {
     }));
 }
 
-function primaryAsset(assets, options = []) {
+function primaryAsset(assets, options = [], stem = "") {
   const optionUrls = new Set(options.map((o) => o.image_url).filter(Boolean));
-  const available = assets.filter((asset) => !optionUrls.has(asset.url) && asset.kind !== "explanation" && !asset.url.includes("-exp-"));
+  const available = assets.filter((asset) => {
+    if (optionUrls.has(asset.url)) return false;
+    if (asset.kind === "explanation" || asset.url.includes("-exp-")) return false;
+    const clean = asset.url.split("?")[0].split("#")[0];
+    const fname = clean.split("/").pop();
+    if (fname && stem.includes(fname)) return false;
+    return true;
+  });
   return (
     available.find((asset) => asset.kind === "figure") ??
     available.find((asset) => asset.kind === "table") ??
@@ -203,7 +210,7 @@ for (const summary of summaries) {
       image_url: option.image_url ?? null,
       alt: null,
     }));
-    const primary = primaryAsset(assets, options);
+    const primary = primaryAsset(assets, options, question.stemEn || "");
     const correctOption = question.options.findIndex((option) => option.id === question.correctAnswer);
     if (correctOption < 0) {
       warnings.push(`${paper.slug}/${question.id}: correct option is not in the option list.`);

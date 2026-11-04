@@ -22,6 +22,7 @@ import { imageDimensionsForUrls } from "../../lib/media-dimensions";
 import { getSetting } from "../../lib/settings";
 import { siteUrl } from "../../lib/site-url";
 import { calculateMockDuration } from "../../lib/exam-timing";
+import { run } from "../../lib/db";
 
 const id = Number(Astro.params.id);
 if (!Number.isInteger(id) || id <= 0) return new Response("Attempt not found", { status: 404 });
@@ -178,6 +179,11 @@ const questions = rawQuestions.map((question, index) => {
     }
   }
 
+  // Deduplicate stem image: If question.text already contains questionImageUrl, clear it
+  if (questionImageUrl && textContainsImage(question.text, questionImageUrl)) {
+    questionImageUrl = null;
+  }
+
   const image = questionImageUrl ? imageDimensions.get(questionImageUrl) : undefined;
   const passageImage = question.passage_image_url
     ? imageDimensions.get(question.passage_image_url)
@@ -190,6 +196,13 @@ const questions = rawQuestions.map((question, index) => {
     if (asset.url.includes("-exp-")) return false;
     if (questionImageUrl && isSameImage(asset.url, questionImageUrl)) return false;
     if (textContainsImage(question.text, asset.url)) return false;
+    if (optionsList.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+    return true;
+  });
+
+  const optionAssets = rawAssets.filter((asset) => {
+    if (asset.kind !== "options") return false;
+    if (asset.url.includes("-exp-")) return false;
     if (optionsList.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
     return true;
   });
@@ -234,6 +247,14 @@ const questions = rawQuestions.map((question, index) => {
         image_height: size?.height ?? null,
       };
     }),
+    option_assets: optionAssets.map((asset) => {
+      const size = imageDimensions.get(asset.url);
+      return {
+        ...asset,
+        image_width: size?.width ?? null,
+        image_height: size?.height ?? null,
+      };
+    }),
   };
 });
 
@@ -249,9 +270,7 @@ const effectiveDurationMin = questions.length > 0
 const expectedDeadlineMs = Date.parse(attempt.started_at) + effectiveDurationMin * 60 * 1000;
 if (Math.abs(Date.parse(attempt.deadline_at) - expectedDeadlineMs) > 60_000) {
   const correctedDeadline = new Date(expectedDeadlineMs).toISOString();
-  import("../../lib/db").then(({ run }) =>
-    run("UPDATE attempts SET deadline_at = ? WHERE id = ?", correctedDeadline, attempt!.id)
-  ).catch(() => {});
+  await run("UPDATE attempts SET deadline_at = ? WHERE id = ?", correctedDeadline, attempt.id).catch(() => {});
   attempt.deadline_at = correctedDeadline;
 }
 
@@ -796,6 +815,16 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
                     </div>
                   </figure>
                 )}
+                {questions[0].option_assets && questions[0].option_assets.length > 0 && (
+                  <figure class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3">
+                    <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--muted)]">Printed answer choices</figcaption>
+                    <div class="flex flex-wrap gap-2">
+                      {questions[0].option_assets.map((asset) => (
+                        <img class="nta-image" src={asset.url} alt={asset.alt || ""} loading="lazy" />
+                      ))}
+                    </div>
+                  </figure>
+                )}
                 <div class="mt-5 space-y-1" role="radiogroup" aria-label="Answer options">
                   {questions[0].options.map((option, idx) => {
                     const isSelected = answerMap[questions[0].id]?.selected === idx;
@@ -935,6 +964,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         image_width: number | null;
         image_height: number | null;
         assets: { url: string; alt: string; kind: string; image_width: number | null; image_height: number | null }[];
+        option_assets?: { url: string; alt: string; kind: string; image_width: number | null; image_height: number | null }[];
         passage: { body: string; body_hi: string | null; rendered_body?: string; rendered_body_hi?: string | null; image_url: string | null; image_alt: string | null; image_width: number | null; image_height: number | null } | null;
       };
       type Answer = { selected: number | null; marked: number; time: number };
@@ -1191,7 +1221,9 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
           if (question.options.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
           return true;
         });
-        const optionAssets = question.assets.filter((asset) => asset.kind === "options");
+        const optionAssets = (question.option_assets && question.option_assets.length)
+          ? question.option_assets
+          : question.assets.filter((asset) => asset.kind === "options");
         const marksLabel = `${data.marking.correct >= 0 ? "+" : ""}${data.marking.correct} / ${data.marking.wrong}`;
         area.innerHTML = `
           <article class="exam-question-card" aria-label="Question ${state.index + 1}">

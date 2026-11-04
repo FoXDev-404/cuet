@@ -143,8 +143,12 @@
       {
         "id": "q04",
         "sourceQuestionNo": 4,
-        "stemEn": "Three capacitors have capacitances  $ 2\\mu F $,  $ 4\\mu F $ and  $ 8\\mu F $. When they are connected in a way to give minimum capacitance, their effective capacitance is:\n\n $$ (A)\\;8\\mu F $$",
+        "stemEn": "Three capacitors have capacitances  $ 2\\mu F $,  $ 4\\mu F $ and  $ 8\\mu F $. When they are connected in a way to give minimum capacitance, their effective capacitance is:",
         "optionsEn": [
+          {
+            "id": "A",
+            "text": "8\\mu F"
+          },
           {
             "id": "B",
             "text": "$ 14\\mu F $"
