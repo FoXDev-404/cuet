@@ -1,6 +1,6 @@
 # Appendix E: Repository File Tree (Depth 4)
 
-_Generated on 2026-11-03T22:04:36.688Z._
+_Generated on 2026-11-04T11:27:21.647Z._
 
 ## Top-Level Directory Roles
 
@@ -27,31 +27,38 @@ _Generated on 2026-11-03T22:04:36.688Z._
 ├── cuet-astro/
 ├── docs/
   ├── report/
+    └── a11y-results.json
     └── APPENDIX_A_ROUTES.md
     └── APPENDIX_B_SCHEMA.md
     └── APPENDIX_C_TEST_RESULTS.md
     └── APPENDIX_D_DEPENDENCIES.md
     └── APPENDIX_E_FILE_TREE.md
+    └── d1-staging-capacity.json
     └── facts.json
+    └── playwright-results.json
     └── PROJECT_REPORT.md
     └── report.json
+    └── vitest-results.json
   └── ADMIN_DIAGNOSIS.md
   └── ADMIN_GUIDE.md
   └── ASTRO-DEPLOYMENT.md
   └── AUDIT.md
   └── BLUEPRINT-V2-COMPLIANCE.md
   └── CAPACITY_MODEL.md
+  └── CONTENT_GAP.md
   └── CUET_MOCK_TEST_BLUEPRINT_v2.md
   └── DESIGN_AUDIT.md
   └── ENVIRONMENTS.md
   └── EXTERNAL_SETUP.md
   └── FIX_LOG.md
   └── FIX_PRIORITIES_AGENT_PROMPT.md
+  └── FIX_ROUND2_AGENT_PROMPT.md
   └── LAUNCH_RUNBOOK.md
   └── LAUNCH-RUNBOOK.md
   └── PROGRESS.md
   └── PROJECT_REPORT_PROMPT.md
   └── REVIEW_SAMPLE_100.csv
+  └── SECURITY.md
   └── SEO_RULES.md
   └── SHARE_FEATURE.md
   └── TAKEDOWN_PROCESS.md
@@ -2610,19 +2617,27 @@ _Generated on 2026-11-03T22:04:36.688Z._
   └── backfill-explanation-provenance.mjs
   └── backfill-question-public-ids.mjs
   └── check-env-separation.mjs
+  └── check-migrations-remote.mjs
+  └── check-perf-budget.mjs
   └── check-report-evidence.mjs
   └── copy-lint.mjs
   └── data-reconciliation.mjs
   └── export-content.mjs
   └── generate-appendices.mjs
+  └── generate-appendix-c.mjs
+  └── generate-content-gap.mjs
   └── generate-question-og.mjs
   └── generate-review-sample.mjs
   └── import-practice-library.mjs
   └── import-ranked-practice.mjs
   └── lighthouse-audit.mjs
   └── load-test.mjs
+  └── measure-staging-capacity.mjs
   └── purge-test-data.mjs
+  └── record-e2e-results.mjs
   └── report-facts.mjs
+  └── run-verification-suite.mjs
+  └── scorecard.mjs
   └── seo-consistency.mjs
   └── staging-smoke.mjs
 ├── src/
@@ -2708,6 +2723,7 @@ _Generated on 2026-11-03T22:04:36.688Z._
     └── discussions.ts
     └── email-config.ts
     └── email.ts
+    └── fixtures.ts
     └── http.ts
     └── image.ts
     └── integrations.ts
@@ -2927,6 +2943,7 @@ _Generated on 2026-11-03T22:04:36.688Z._
   └── middleware.ts
 ├── test-results/
   └── .last-run.json
+  └── results-theme.spec.ts.json
 ├── tests/
   ├── e2e/
     └── admin-flow.spec.ts
@@ -2955,11 +2972,13 @@ _Generated on 2026-11-03T22:04:36.688Z._
     └── env-separation.test.ts
     └── exam-facts.test.ts
     └── explanation-honesty.test.ts
+    └── fixtures-isolation.test.ts
     └── image.test.ts
     └── integrations.test.ts
     └── local-mock-fallback.test.ts
     └── local-papers.test.ts
     └── local-subject-fallback.test.ts
+    └── lockfile-and-scorecard.test.ts
     └── mock-order.test.ts
     └── moderation.test.ts
     └── oauth-config.test.ts
@@ -3107,11 +3126,12 @@ _Generated on 2026-11-03T22:04:36.688Z._
 └── .gitignore
 └── .ignore
 └── astro.config.mjs
+└── content-export.sql
 └── package-lock.json
 └── package.json
+└── performance-budget.json
 └── playwright.config.ts
 └── README.md
-└── test-lh.json
 └── tsconfig.json
 └── vitest.config.ts
 └── wrangler.jsonc

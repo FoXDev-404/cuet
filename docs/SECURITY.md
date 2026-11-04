@@ -77,3 +77,4 @@ The following automated guards prevent accidental privilege escalation, data lea
 - Public mock detail endpoints (`GET /api/mocks/:slug`) and server-rendered HTML payloads omit `correct_option` and `explanation`.
 - Active mock attempts (`/attempt/:id`) never send answer keys to the client. Scoring is performed exclusively on the server upon `POST /api/attempts/:id/submit`.
 - Verified in E2E security suite: [`tests/e2e/api-contracts.spec.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/e2e/api-contracts.spec.ts) and [`tests/e2e/security.spec.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/e2e/security.spec.ts).
+

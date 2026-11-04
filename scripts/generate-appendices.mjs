@@ -101,7 +101,7 @@ function generateAppendixB() {
     const hasSoftDelete = t.columns.some((c) => c.name === "deleted_at") ? "Yes (`deleted_at`)" : "No";
     let purpose = "Auxiliary / Join Table";
     if (t.name === "users") purpose = "User accounts, auth hashes, ban/mute state, streaks";
-    else if (t.name === "admins") purpose = "Admin accounts, roles (super, editor, reviewer, analyst)";
+    else if (t.name === "admins") purpose = "Admin accounts, roles (super, editor, moderator, contributor)";
     else if (t.name === "sessions") purpose = "User session tokens, SHA-256 hashes, expiration";
     else if (t.name === "subjects") purpose = "Academic domain subjects (English, Physics, etc.)";
     else if (t.name === "topics") purpose = "Syllabus topics under subjects";

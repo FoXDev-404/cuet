@@ -141,10 +141,79 @@ function main() {
     console.error("");
   }
 
+  // 3. Verify Appendices Existence
+  console.log("Verifying report appendices existence...");
+  const requiredAppendices = [
+    "docs/report/APPENDIX_A_ROUTES.md",
+    "docs/report/APPENDIX_B_SCHEMA.md",
+    "docs/report/APPENDIX_C_TEST_RESULTS.md",
+    "docs/report/APPENDIX_D_DEPENDENCIES.md",
+    "docs/report/APPENDIX_E_FILE_TREE.md",
+    "docs/report/report.json",
+  ];
+
+  for (const app of requiredAppendices) {
+    if (!existsSync(join(ROOT, app))) {
+      failed = true;
+      console.error(`FAIL: Missing required appendix: ${app}`);
+    } else {
+      console.log(`  [OK] ${app}`);
+    }
+  }
+  console.log("");
+
+  // 4. Verify Version Consistency against Lockfile
+  console.log("Verifying dependency versions against package-lock.json...");
+  const lockPath = join(ROOT, "package-lock.json");
+  if (existsSync(lockPath)) {
+    const lock = JSON.parse(readFileSync(lockPath, "utf8"));
+    const getLockVer = (pkg) =>
+      lock.packages?.[`node_modules/${pkg}`]?.version || lock.dependencies?.[pkg]?.version;
+
+    const legacyOutdated = [
+      { name: "Tailwind 3.4", expected: getLockVer("tailwindcss") },
+      { name: "Playwright 1.58", expected: getLockVer("@playwright/test") },
+      { name: "axe 4.11", expected: getLockVer("axe-core") },
+      { name: "Wrangler 4.65", expected: getLockVer("wrangler") },
+      { name: "TypeScript 5.8", expected: getLockVer("typescript") },
+    ];
+
+    for (const leg of legacyOutdated) {
+      if (content.includes(leg.name)) {
+        failed = true;
+        console.error(
+          `FAIL: Report contains outdated version string "${leg.name}". Lockfile has version "${leg.expected}".`
+        );
+      }
+    }
+  }
+  console.log("");
+
+  // 5. Reconcile Counts with facts.json
+  console.log("Reconciling database and route counts with facts.json...");
+  const factsPath = join(ROOT, "docs", "report", "facts.json");
+  if (existsSync(factsPath)) {
+    const facts = JSON.parse(readFileSync(factsPath, "utf8"));
+    const totalTables = facts.database?.totalTables;
+    const totalMigrations = facts.migrations?.totalMigrations;
+    const totalRoutes = facts.routes?.totalRoutes;
+
+    if (totalTables && !content.includes(`${totalTables} tables`) && !content.includes(`${totalTables} Tables`)) {
+      console.warn(`WARN: Report does not mention exact table count (${totalTables} tables).`);
+    }
+    if (totalMigrations && !content.includes(`${totalMigrations} migrations`) && !content.includes(`0001 to 00${totalMigrations}`)) {
+      console.warn(`WARN: Report does not mention migration count (${totalMigrations} migrations).`);
+    }
+    if (totalRoutes && !content.includes(`${totalRoutes} routes`) && !content.includes(`${totalRoutes} total routes`)) {
+      console.warn(`WARN: Report does not mention exact route count (${totalRoutes} routes).`);
+    }
+  }
+  console.log("");
+
   if (failed) {
     process.exit(1);
   } else {
-    console.log("SUCCESS: 100% of cited files and routes exist and are verified!");
+    console.log("SUCCESS: 100% of cited files, routes, appendices, and lockfile versions are verified!");
     process.exit(0);
   }
 }

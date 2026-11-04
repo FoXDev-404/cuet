@@ -9,7 +9,7 @@ _Machine-verified environment mapping and boundary separation for CUETFreeMockTe
 | Environment | D1 Database Name (ID) | KV Namespaces (Session / Media) | R2 or Fallback | Deployed? | Last Applied Migration | Seeded with Content? | Auth Mode |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Local** | `local-d1-db`<br>`(.wrangler/...sqlite)` | Local Miniflare<br>`SESSION` / `MEDIA_KV` | Fallback<br>(KV-backed `MEDIA_KV`) | **Local runtime**<br>(Miniflare / `wrangler dev` :4321) | `0020_exam_info_seed.sql`<br>**(20 / 20 applied)** | **Yes**<br>(214 practice papers, 16,846 questions) | `session` |
-| **Staging** | `cuet-d1-staging`<br>(`c527f20e...5d0f`) | Remote Cloudflare KV<br>`2e758fe3...00f9` / `3f9c70ce...3d4` | Fallback<br>(KV-backed `MEDIA_KV`) | **Configured**<br>(Worker `cuet-astro-staging`) | `0000_none`<br>**(0001–0020 pending apply)** | **Pending seed**<br>(Clean target for `export-content.mjs`) | `session` |
+| **Staging** | `cuet-d1-staging`<br>(`c527f20e...5d0f`) | Remote Cloudflare KV<br>`2e758fe3...00f9` / `3f9c70ce...3d4` | Fallback<br>(KV-backed `MEDIA_KV`) | **Configured**<br>(Worker `cuet-astro-staging`) | `0020_exam_info_seed.sql`<br>**(20 / 20 applied)** | **Seeded**<br>(Capacity testing & clean practice set) | `session` |
 | **Production** | `cuet-blueprint-db`<br>(`77ed64bd...ced8`) | Remote Cloudflare KV<br>`7ea13818...e577` / `0c268f3e...0f46` | Fallback<br>(KV-backed `MEDIA_KV`) | **Live Worker**<br>(Worker `cuet-astro-production`) | `0015_ranked_practice_library.sql`<br>**(0016–0020 pending apply)** | **Yes**<br>(0 user rows, baseline content) | `access`<br>(Cloudflare Access) |
 
 ---
@@ -22,7 +22,8 @@ Remote migration checks executed via `npm run check:migrations-remote` (`node sc
 - **Binding:** `DB` in `env.staging`
 - **Database ID:** `c527f20e-4401-4d35-9db0-8b7433105d0f`
 - **Wrangler Status:** Online and queried.
-- **Pending Migrations:** `0001_init.sql` through `0020_exam_info_seed.sql` (20 migrations pending apply).
+- **Applied Migrations:** `0001_init.sql` through `0020_exam_info_seed.sql` (20 / 20 applied; `No migrations to apply`).
+- **Seeded Content:** Capacity measurement items and schema initialized.
 
 ### Production Database (`cuet-blueprint-db`)
 - **Binding:** `DB` in root / production

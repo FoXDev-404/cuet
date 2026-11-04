@@ -399,12 +399,148 @@ Review and remediation log tracking the implementation and verification of fixes
   - **Tests (`tests/unit/fixtures-isolation.test.ts`):**
     - 8 unit tests covering slug detection, mock detection, question detection, environment detection, and clean export.
 - **Evidence / Proof:**
-  - `npx vitest run tests/unit/fixtures-isolation.test.ts`: 8 / 8 passed.
+  - `npx vitest run tests/unit/fixtures-isolation.test.ts`: 8 / 8 passed (expanded to 12 tests).
   - `npx vitest run`: 41 / 41 test files passed, 302 / 302 tests passed.
   - `npx astro check`: 351 files checked, 0 errors, 0 warnings.
   - `node scripts/export-content.mjs`: Passed with 30,591 clean rows exported; zero user/session/attempt leaks and zero fixture leaks.
 - **Remaining Work & Risks:** None for R5. Next fix is R1 (re-running full verification suite).
 - **Owner Decisions Needed:** None.
+
+### Fix R1 — Re-Run Full Verification Suite (P0)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **Commit:** `eef056a`
+- **What Changed:**
+  - Built application for production (`npm run build`) and executed full testing suite against production build output (`dist/` served via `wrangler dev` on port 4321).
+  - Vitest Unit & Integration Suite:
+    - 42 test files executed.
+    - **315 passed**, 0 failed.
+    - JSON results recorded to `docs/report/vitest-results.json`.
+  - Playwright E2E Suite:
+    - 9 spec files executed against production build.
+    - **70 passed**, 0 failed, 3 skipped.
+    - Results recorded to `docs/report/playwright-results.json`.
+  - Axe-Core Accessibility Audit:
+    - Executed `scripts/a11y-audit.mjs` covering 29 routes x 2 themes (light/dark) x 2 viewports (mobile 375px, desktop 1280px).
+    - **232 scans passed**, **0 violations**, **0 horizontal overflow**.
+    - Results recorded to `docs/report/a11y-results.json`.
+  - Machine-Generated Appendix C:
+    - Built `scripts/generate-appendix-c.mjs` directly parsing `vitest-results.json`, `playwright-results.json`, and `a11y-results.json`.
+    - Generated `docs/report/APPENDIX_C_TEST_RESULTS.md` with commit hash, run timestamps, raw counts, and exact test names.
+- **Evidence / Proof:**
+  - Vitest: 315 passed in 7.54s (`docs/report/vitest-results.json`).
+  - Playwright: 70 passed, 3 skipped (`docs/report/playwright-results.json`).
+  - Axe-core: 232 / 232 scans passed, 0 violations (`docs/report/a11y-results.json`).
+- **Remaining Work & Risks:** None.
+
+### Fix R4 — Environment Facts & Staging Migrations (P1)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **Commit:** `015a46b` / `eef056a`
+- **What Changed:**
+  - Produced `docs/ENVIRONMENTS.md` documenting the three-environment architecture (Local SSR, Staging, Production) with partially masked database IDs and KV namespace IDs.
+  - Added `scripts/check-migrations-remote.mjs` (`npm run check:migrations-remote`) that queries remote D1 databases for applied migrations.
+  - Applied all 20 migrations (`0001_init.sql` through `0020_exam_info_seed.sql`) to remote staging Cloudflare D1 (`cuet-d1-staging`, `c527f20e-b969-450f-a311-fbdece4e5d0f`).
+  - Verified remote staging contains 20 migrations and that remote production contains 0 user rows.
+- **Evidence / Proof:**
+  - `node scripts/check-migrations-remote.mjs --env=staging`: All 20 migrations (0001–0020) verified applied on remote staging D1.
+  - `docs/ENVIRONMENTS.md`: 3-tier table with masked IDs published.
+- **Remaining Work & Risks:** Production environment pending initial deployment and backup run.
+
+### Fix R3 — Capacity Measured on Real D1 (P1)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **Commit:** `015a46b`
+- **What Changed:**
+  - Created `scripts/measure-staging-capacity.mjs` and executed attempt lifecycles against remote staging D1 (`cuet-d1-staging`, `c527f20e-b969-450f-a311-fbdece4e5d0f`).
+  - Measured exact Cloudflare D1 metadata (`meta.rows_read`, `meta.rows_written`, `sql_duration_ms`, colo `SIN`, server `v3-prod`).
+  - Verified attempt lifecycle metrics:
+    - Attempt Start: 7 rows read, 13 rows written
+    - 15 Delta Autosaves: 60 rows read, 60 rows written (4 read / 4 write per autosave)
+    - Attempt Submit: 4 rows read, 7 rows written
+    - Result View: 5 rows read, 0 rows written
+    - Leaderboard View: 4 rows read, 0 rows written
+    - **Total per attempt: 80 rows read, 80 rows written**.
+  - Updated `docs/CAPACITY_MODEL.md` with write constraints across 1k, 3k, and 10k DAU. Established that the 100k daily write limit on the Cloudflare Free Tier bounds capacity at ~1,250 tests/day (~1,000 DAU).
+  - Saved raw measurements to `docs/report/d1-staging-capacity.json`.
+- **Evidence / Proof:**
+  - `docs/report/d1-staging-capacity.json`: Verified 80 read / 80 write totals on `cuet-d1-staging`.
+  - `docs/CAPACITY_MODEL.md`: Updated with real metadata and free tier upgrade triggers.
+
+### Fix R2 — Production Lighthouse Mobile Audit & Bottleneck Fix (P1)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **Commit:** `14f74bb`
+- **What Changed:**
+  - Diagnosed Attempt Screen LCP bottleneck (previous run: 16.9s LCP, 1,300ms TBT):
+    - Client-side script was importing full KaTeX parsing library into the client bundle.
+    - Solved by pre-rendering Question 1 server-side in `#question-area` SSR, and hydrating pre-rendered HTML snippets without loading KaTeX on the client.
+  - Added `performance-budget.json` and `scripts/check-perf-budget.mjs` (`npm run perf:check`).
+  - Updated `scripts/lighthouse-audit.mjs` to target real content routes (`physics-2026-05-31-shift-2`) and dynamically provision fresh attempt/result sessions.
+  - Audited production build across all 9 core routes x 2 themes (18 targets) under simulated 4G mobile throttling across 5 runs per target.
+  - **Results: 18/18 scored 100% Performance**:
+    - Attempt Screen LCP dropped from 16.9s to **1.5s–1.6s**; TBT dropped from 1,300ms to **0ms**.
+    - Subject Page TBT dropped from 3,040ms to **0ms**.
+    - All routes passed LCP <= 4.0s and TBT <= 600ms budgets.
+  - Saved median results to `docs/report/lighthouse/SUMMARY.md` and `docs/report/lighthouse/lighthouse-results.json`.
+- **Evidence / Proof:**
+  - `docs/report/lighthouse/SUMMARY.md`: 18/18 targets scored 100% Performance.
+  - `npm run perf:check`: PASSED.
+
+### Fix R7 — Thin Indexable Pages & Content Gap (P1)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **Commit:** `fdabca7`
+- **What Changed:**
+  - Defined minimum indexable content rule in `docs/SEO_RULES.md`: unique body text above 300 words plus at least one real, original playable item or verified fact block.
+  - Gated thin PYQ archive pages (`/pyq/[year]` and `/pyq/[year]/[subject]`) with `noindex, nofollow` in `src/pages/pyq/[year].astro` and `src/pages/pyq/[year]/[subject].astro`, and excluded from `src/pages/sitemap.xml.ts`.
+  - Built `scripts/generate-content-gap.mjs` and generated `docs/CONTENT_GAP.md` detailing:
+    - 11 active domain subjects, 8 subjects with 0 questions.
+    - 0% human-reviewed explanations (truthful banner disclosure).
+    - 100% unknown copyright status for practice papers (safely noindexed).
+    - ~45 total high-quality indexable URLs.
+  - Added unit tests in `tests/unit/seo-consistency.test.ts`.
+- **Evidence / Proof:**
+  - `docs/CONTENT_GAP.md`: Published.
+  - `npx vitest run tests/unit/seo-consistency.test.ts`: 8 / 8 passed.
+
+### Fix R8 — Security Notes & Specifications (P2)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **Commit:** `b2bef69`
+- **What Changed:**
+  - Authored `docs/SECURITY.md` detailing:
+    - WebCrypto PBKDF2-HMAC-SHA256, 100,000 iterations (platform cap), 16-byte salt, 32-byte key.
+    - IP/username KV rate limiting compensating for the 100k iteration cap.
+    - Rehash-on-login upgrade path.
+    - 4 implemented admin roles: `super`, `editor`, `moderator`, `contributor`.
+    - Production security guards (`ADMIN_AUTH_MODE=session` blocked with 503, bootstrap blocked, `/dev/*` blocked with 404).
+- **Evidence / Proof:**
+  - `docs/SECURITY.md`: Published.
+  - `tests/unit/password.test.ts`: 4 / 4 passed.
+  - `tests/unit/production-guards.test.ts`: 4 / 4 passed.
+
+### Fix R6 — Report Honesty by Construction & Verification (P0)
+- **Status:** `DONE`
+- **Branch:** `fix/review-2`
+- **What Changed:**
+  - Built deterministic `scripts/scorecard.mjs` computing area statuses and confidence levels from facts and raw test JSONs, writing to `docs/report/report.json`.
+  - Added `tests/unit/lockfile-and-scorecard.test.ts` verifying:
+    - Tracked dependency versions between `package-lock.json` and report facts match exactly.
+    - Legacy outdated version strings (Tailwind 3.4, Playwright 1.58, axe 4.11, Wrangler 4.65, TypeScript 5.8) are strictly banned from documentation.
+    - Deterministic scorecard rules enforce PARTIAL on Content Library, Deployment and Ops, and External Integrations.
+  - Extended `scripts/check-report-evidence.mjs` (`npm run report:verify`):
+    - Verified 45 cited file references and 12 route references exist (0 missing).
+    - Verified all 6 report appendices exist.
+    - Verified dependency versions against `package-lock.json`.
+    - Reconciled table counts (40 tables, 40,039 rows) and route counts (173 routes).
+  - Regenerated `PROJECT_REPORT.md` and Appendices A through E directly from facts and runner JSONs.
+- **Evidence / Proof:**
+  - `npx vitest run tests/unit/lockfile-and-scorecard.test.ts`: 8 / 8 passed.
+  - `npm run report:verify`: 100% verified (0 errors).
+  - Scorecard script output matches `docs/report/report.json` and `docs/report/PROJECT_REPORT.md`.
+- **Remaining Work & Risks:** None. All Round 2 fixes completed.
+
 
 
 

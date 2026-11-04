@@ -1,6 +1,6 @@
 # Appendix D: Dependencies & Security Audit
 
-_Extracted from `package.json` and `package-lock.json` on 2026-11-03T22:04:36.688Z._
+_Extracted from `package.json` and `package-lock.json` on 2026-11-04T11:27:21.647Z._
 
 ## Production Dependencies
 
