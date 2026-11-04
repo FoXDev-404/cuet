@@ -63,3 +63,18 @@ A page is automatically assigned `noindex, nofollow` if ANY of the following con
 3. **Fact Verification Gate**: For exam guide pages, the corresponding `exam_info` key has `value = 'TODO_VERIFY'` or `last_verified = NULL`.
 4. **Thin Content Gate**: A subject or topic landing page with fewer than 3 available practice questions.
 
+---
+
+## 5. Thin Content & Minimum Indexable Content Rule (Fix R7)
+
+To protect the platform against Google thin-content algorithm penalties and AdSense rejection, indexability is strictly governed by substantive content requirements:
+
+1. **Minimum Word Count**: Every indexable page must contain at least **300 words of unique, substantive body copy** (excluding standard navigation bars, header/footer chrome, and lists of card links).
+2. **Substantive Content Requirement**: In addition to the word count, the page must provide:
+   - At least one real, original, playable item (e.g. an original cleared mock paper), OR
+   - A verified official examination facts block (with `source_url` and recent `last_verified` date).
+3. **Application to Archive & List Pages**:
+   - `/pyq/:year` and `/pyq/:year/:subject` archive pages are marked `noindex, nofollow` and excluded from `sitemap.xml` until they feature cleared playable papers and substantive editorial guidance.
+   - Subjects with 0 available questions are automatically marked `noindex, nofollow` and excluded from `sitemap.xml`.
+4. **Automated Enforcement**: Enforced by `scripts/seo-consistency.mjs` and verified in unit tests (`tests/unit/seo-consistency.test.ts`).
+

@@ -51,5 +51,12 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
       expect(regex.test(file)).toBe(false);
     }
   });
+
+  it("verifies thin-page gate noindexes /pyq/:year and /pyq/:year/:subject without cleared papers (Fix R7)", () => {
+    const yearFile = readFileSync(join(root, "src/pages/pyq/[year].astro"), "utf8");
+    expect(yearFile).toContain("clearedPaperCount === 0");
+    const subjFile = readFileSync(join(root, "src/pages/pyq/[year]/[subject].astro"), "utf8");
+    expect(subjFile).toContain("clearedPaperCount === 0");
+  });
 });
 

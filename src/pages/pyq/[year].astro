@@ -37,7 +37,9 @@ const subjectNames = [
 ] as string[];
 const PATH = `/pyq/${year}`;
 const seo = await getPageSeo(PATH);
-const noindex = (seo?.noindex ?? 0) === 1;
+// Thin Content & Rights Policy Gate (Fix R7): PYQ year list pages without cleared papers or 300+ words are noindex
+const clearedPaperCount = allPapers.filter((p) => p.rights_status === "cleared").length;
+const noindex = (seo?.noindex ?? 0) === 1 || clearedPaperCount === 0;
 
 const DEFAULT_FAQ: FaqItem[] = [
   {

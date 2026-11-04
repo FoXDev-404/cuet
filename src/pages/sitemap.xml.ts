@@ -228,23 +228,20 @@ export const GET: APIRoute = async ({ request }) => {
     }
   }
 
-  const pyqYearPaths = new Set(
-    pyqYears.filter((year) => year.playable_count > 0).map((year) => `/pyq/${year.year}`),
-  );
-  for (const year of localYears) {
-    if (year.playable_count > 0) pyqYearPaths.add(`/pyq/${year.year}`);
+  // Thin Content & Rights Policy Gate (Fix R7):
+  // PYQ archive list pages (/pyq/:year and /pyq/:year/:subject) are only included in the sitemap
+  // if they contain cleared papers and meet the 300-word substantive content threshold.
+  const pyqYearPaths = new Set<string>();
+  for (const year of pyqYears) {
+    if ((year.cleared_count ?? 0) > 0) pyqYearPaths.add(`/pyq/${year.year}`);
   }
   for (const path of pyqYearPaths) {
     add(path, { changefreq: "monthly", priority: "0.6" });
   }
 
-  const pyqSubjectPaths = new Set(
-    pyqSubjects
-      .filter((paper) => paper.playable_count > 0)
-      .map((paper) => `/pyq/${paper.year}/${paper.subject_slug}`),
-  );
-  for (const paper of localPapers) {
-    pyqSubjectPaths.add(`/pyq/${paper.year}/${paper.subject.slug}`);
+  const pyqSubjectPaths = new Set<string>();
+  for (const paper of pyqSubjects) {
+    if ((paper.cleared_count ?? 0) > 0) pyqSubjectPaths.add(`/pyq/${paper.year}/${paper.subject_slug}`);
   }
   for (const path of pyqSubjectPaths) {
     add(path, { changefreq: "monthly", priority: "0.5" });
