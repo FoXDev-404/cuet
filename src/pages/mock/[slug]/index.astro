@@ -13,6 +13,7 @@ import { parseMarkingScheme } from "../../../lib/content";
 import { breadcrumbJsonLd, type FaqItem } from "../../../lib/seo";
 import { oldSlugRedirect } from "../../../lib/slug-redirects";
 import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
+import { calculateMockDuration } from "../../../lib/exam-timing";
 
 const slug = Astro.params.slug ?? "";
 if (isProductionEnvironment() && isFixtureSlug(slug)) {
@@ -112,9 +113,13 @@ const discussionAccess =
     },
   ));
 
+const effectiveDurationMin = totalQuestions > 0
+  ? calculateMockDuration(totalQuestions, mock.subject_name).durationMinutes
+  : (mock.duration_min ?? 60);
+
 const intro =
   mock.intro_html?.trim() ||
-  `This ${mock.subject_name ? `${mock.subject_name} ` : ""}mock follows the CUET UG practice format with ${totalQuestions} questions over ${mock.duration_min} minutes. It is scored on the server after you submit, and every question includes a written solution.`;
+  `This ${mock.subject_name ? `${mock.subject_name} ` : ""}mock follows the CUET UG practice format with ${totalQuestions} questions over ${effectiveDurationMin} minutes. It is scored on the server after you submit, and every question includes a written solution.`;
 const instructions = (mock.instructions ?? "")
   .split("\n")
   .map((line) => line.trim())
@@ -123,7 +128,7 @@ const instructions = (mock.instructions ?? "")
 const faqs: FaqItem[] = [
   {
     question: `How long is ${mock.title}?`,
-    answer: `The paper runs for ${mock.duration_min} minutes and contains ${totalQuestions} question${totalQuestions === 1 ? "" : "s"}. The countdown starts on the server when you begin, so refreshing the page cannot add time.`,
+    answer: `The paper runs for ${effectiveDurationMin} minutes and contains ${totalQuestions} question${totalQuestions === 1 ? "" : "s"}. The countdown starts on the server when you begin, so refreshing the page cannot add time.`,
   },
   {
     question: "What is the marking scheme for this paper?",
@@ -161,7 +166,7 @@ const canonical = isPracticeWrapper ? `/practice/${mock.practice_paper_slug}` : 
 const noindex = totalQuestions === 0 || isPracticeWrapper || isFixture;
 ---
 
-<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${mock.duration_min} minutes. Free server-scored CUET UG mock with solutions.`} noindex={noindex} canonical={canonical} structuredData={structuredData}>
+<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${effectiveDurationMin} minutes. Free server-scored CUET UG mock with solutions.`} noindex={noindex} canonical={canonical} structuredData={structuredData}>
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
       <div>
@@ -181,7 +186,7 @@ const noindex = totalQuestions === 0 || isPracticeWrapper || isFixture;
           </div>
           <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
             <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p>
-            <p class="mt-1 text-xl font-black">{mock.duration_min} min</p>
+            <p class="mt-1 text-xl font-black">{effectiveDurationMin} min</p>
           </div>
           <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
             <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempts</p>

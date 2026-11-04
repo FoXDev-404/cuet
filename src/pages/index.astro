@@ -117,17 +117,45 @@ function paperRow(paper: LocalPaperSummary): PaperRow {
   };
 }
 
-function getTop2026Papers(papers: LocalPaperSummary[], limit = 6): LocalPaperSummary[] {
-  const p2026 = papers.filter((p) => p.year === 2026);
-  if (p2026.length === 0) return [];
+function isAround50(count: number): boolean {
+  return count >= 40 && count <= 60;
+}
 
-  const sorted = [...p2026].sort(
-    (a, b) =>
-      Number(a.pendingReviewCount > 0) - Number(b.pendingReviewCount > 0) ||
-      b.scorableQuestionCount - a.scorableQuestionCount ||
-      b.recoveredQuestionCount - a.recoveredQuestionCount ||
-      a.title.localeCompare(b.title),
-  );
+function compareHomepagePapers(a: LocalPaperSummary, b: LocalPaperSummary): number {
+  // 1. Attempts count: higher attempts rank higher ("baad me to counter ke hisab se upar neeche hota rahta hai")
+  const attDiff = (b.attemptCount || 0) - (a.attemptCount || 0);
+  if (attDiff !== 0) return attDiff;
+
+  // 2. When attempts are 0 (or tied), prioritize papers with ~50 questions (40-60 questions)
+  const aNear50 = isAround50(a.recoveredQuestionCount) ? 1 : 0;
+  const bNear50 = isAround50(b.recoveredQuestionCount) ? 1 : 0;
+  if (bNear50 !== aNear50) return bNear50 - aNear50;
+
+  // 3. Year (prefer newer year: 2026 full papers, then 2025, 2024...)
+  if (b.year !== a.year) return b.year - a.year;
+
+  // 4. Proximity to 50 questions
+  const distA = Math.abs(a.recoveredQuestionCount - 50);
+  const distB = Math.abs(b.recoveredQuestionCount - 50);
+  if (distA !== distB) return distA - distB;
+
+  // 5. Fully keyed (no pending review)
+  const pendA = Number(a.pendingReviewCount > 0);
+  const pendB = Number(b.pendingReviewCount > 0);
+  if (pendA !== pendB) return pendA - pendB;
+
+  // 6. Scorable count
+  if (b.scorableQuestionCount !== a.scorableQuestionCount) {
+    return b.scorableQuestionCount - a.scorableQuestionCount;
+  }
+
+  return a.title.localeCompare(b.title);
+}
+
+function getHomepageFeaturedPapers(papers: LocalPaperSummary[], limit = 6): LocalPaperSummary[] {
+  if (papers.length === 0) return [];
+
+  const sorted = [...papers].sort(compareHomepagePapers);
 
   const preferredSubjects = [
     "english",
@@ -135,37 +163,54 @@ function getTop2026Papers(papers: LocalPaperSummary[], limit = 6): LocalPaperSum
     "mathematics",
     "physics",
     "chemistry",
+    "biology",
     "computer-science",
     "history",
     "geography",
-    "biology",
   ];
 
   const selected: LocalPaperSummary[] = [];
+  const seenSlugs = new Set<string>();
   const seenSubjects = new Set<string>();
 
-  for (const slug of preferredSubjects) {
-    const match = sorted.find((p) => p.subject.slug === slug && !seenSubjects.has(p.subject.slug));
-    if (match) {
-      seenSubjects.add(match.subject.slug);
-      selected.push(match);
+  // 1. Papers with actual attempts (> 0) naturally lead the list
+  for (const p of sorted) {
+    if (selected.length >= limit) break;
+    if ((p.attemptCount || 0) > 0) {
+      selected.push(p);
+      seenSlugs.add(p.slug);
+      seenSubjects.add(p.subject.slug);
     }
   }
 
+  // 2. For remaining slots, pick the highest-ranked mock for preferred core subjects
+  // This ensures diverse subjects with ~50 questions (around 50 questions, latest year)
+  for (const subjSlug of preferredSubjects) {
+    if (selected.length >= limit) break;
+    if (seenSubjects.has(subjSlug)) continue;
+
+    const match = sorted.find((p) => p.subject.slug === subjSlug && !seenSlugs.has(p.slug));
+    if (match) {
+      selected.push(match);
+      seenSlugs.add(match.slug);
+      seenSubjects.add(subjSlug);
+    }
+  }
+
+  // 3. If still space, fill with remaining highest-ranked papers
   for (const p of sorted) {
     if (selected.length >= limit) break;
-    if (!selected.some((s) => s.slug === p.slug)) {
+    if (!seenSlugs.has(p.slug)) {
       selected.push(p);
+      seenSlugs.add(p.slug);
     }
   }
 
   return selected.slice(0, limit);
 }
 
-const papers2026 = localPapers.filter((paper) => paper.year === 2026);
-const featured2026 = getTop2026Papers(localPapers, 6);
-const heroPapers = featured2026.length >= 4 ? featured2026.slice(0, 4) : popularPapers.slice(0, 4);
-const libraryPapers = featured2026.length >= 6 ? featured2026 : popularPapers.slice(0, 6);
+const heroPapers = getHomepageFeaturedPapers(localPapers, 4);
+const libraryPapers = getHomepageFeaturedPapers(localPapers, 6);
 
 const libraryRows = libraryPapers.map(paperRow);
 const heroRows = heroPapers.map(paperRow);
@@ -245,7 +290,7 @@ const featureLinks = [
     icon: "history",
   },
   {
-    href: "/dashboard/history",
+    href: "/dashboard",
     title: "Progress insights",
     hint: "Scores and trends",
     icon: "chart",
@@ -273,7 +318,7 @@ const rhythmSteps = [
     number: "03",
     title: "Learn from each try",
     body: "Review your performance, spot topics to revisit, and use what you learned to plan your next session.",
-    href: "/dashboard/history",
+    href: "/dashboard",
     cta: "View analytics",
     icon: "chart",
   },
@@ -301,7 +346,7 @@ const focusCards = [
   {
     title: "A clearer review",
     body: "Use your results to decide what to strengthen next.",
-    href: "/dashboard/history",
+    href: "/dashboard",
     icon: "chart",
   },
 ];
@@ -397,9 +442,9 @@ const focusCards = [
               <h2 class="mt-1 text-base font-bold" id="popular-heading">Most Popular Mock Tests</h2>
             </div>
             <a
-              href="/pyq/2026"
+              href="/practice"
               class="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:border-white/10 dark:text-white/50 dark:hover:bg-white/10 dark:hover:text-white"
-              aria-label="View all 2026 mock tests"
+              aria-label="View all mock tests"
             >
               <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M7 17 17 7"></path>
@@ -439,10 +484,10 @@ const focusCards = [
           )}
 
           <a
-            href="/pyq/2026"
+            href="/practice"
             class="flex items-center justify-center gap-2 px-5 py-3.5 text-[11px] font-bold text-brand-700 transition-colors hover:text-brand-900 dark:text-brand-300 dark:hover:text-white"
           >
-            View All 2026 Mock Tests ({papers2026.length} papers)
+            View All Mock Tests ({libraryCount} papers)
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -486,7 +531,7 @@ const focusCards = [
           <div class="px-4 pb-1 pt-4">
             <h3 class="text-lg font-bold">Most Popular Mock Tests</h3>
             <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
-              Latest 2026 previous-year papers with full answer keys, server timer and instant scorecards.
+              Full-length previous-year practice papers with answer keys, server timer and instant scorecards.
             </p>
           </div>
 
@@ -522,8 +567,8 @@ const focusCards = [
             )}
           </div>
 
-          <a href="/pyq/2026" class="flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]">
-            View All 2026 Mock Tests ({papers2026.length} papers)
+          <a href="/practice" class="flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]">
+            View All Mock Tests ({libraryCount} papers)
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>

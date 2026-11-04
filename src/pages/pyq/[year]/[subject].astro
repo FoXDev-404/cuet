@@ -137,7 +137,6 @@ const structuredData = [
             <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
               {paper.question_count ?? 0} questions · {paper.duration_min ?? "—"} minutes · {paper.total_marks ?? "—"} marks · +{marking.correct}/{marking.wrong} · {paper.attempt_count ?? 0} attempt{(paper.attempt_count ?? 0) === 1 ? "" : "s"}
             </p>
-            {paper.rights_note ? <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900 dark:bg-amber-950/30 dark:text-amber-200">{paper.rights_note}</p> : null}
             <div class="mt-4 flex flex-wrap items-center gap-3">
               <a class="inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.mock_slug}/instructions`}>Start this paper →</a>
               <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/mock/${paper.mock_slug}`}>Paper details</a>

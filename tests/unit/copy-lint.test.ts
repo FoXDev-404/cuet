@@ -25,10 +25,11 @@ describe("Fix 8 — Honest Labels, Disclaimers, and Copy-Lint", () => {
     expect(layout).toContain("href=\"/about\"");
   });
 
-  it("verifies independent disclaimer on practice paper pages", () => {
+  it("verifies independent disclaimer on practice paper pages and copyright on disclaimer page", () => {
     const practicePage = readFileSync(join(root, "src/pages/practice/[slug].astro"), "utf8");
     expect(practicePage).toContain("CUET Free Mock Test is not affiliated with NTA");
-    expect(practicePage).toContain("Indian Copyright Act, 1957");
+    const disclaimerPage = readFileSync(join(root, "src/pages/disclaimer.astro"), "utf8");
+    expect(disclaimerPage).toContain("Copyright and source policy");
   });
 
   it("verifies rank cards explicitly indicate 'among users of this site'", () => {

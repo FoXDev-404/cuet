@@ -43,7 +43,6 @@ function formatPracticeSeoTitle(title: string): string {
 }
 const seoTitle = formatPracticeSeoTitle(paper.title);
 const isCleared = (paper as any).rightsStatus === "cleared";
-const sourceUrl = (paper as any).sourceUrl ?? null;
 const forceNoindex = !isCleared;
 ---
 
@@ -81,31 +80,6 @@ const forceNoindex = !isCleared;
             {paper.pendingReviewCount} question{paper.pendingReviewCount === 1 ? " is" : "s are"} not included in the ranked paper because the printed answer key could not be verified. The ranked attempt contains {paper.scorableQuestionCount} scored questions.
           </p>
         ) : null}
-
-        <div class="mt-4 max-w-2xl rounded-xl border border-neutral-200 bg-white p-4 text-xs leading-5 text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <span class="font-bold text-neutral-900 dark:text-neutral-100">Source:</span>{" "}
-              {sourceUrl ? (
-                <a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-700 underline dark:text-brand-300">
-                  Official Public Archive
-                </a>
-              ) : (
-                <span>National Testing Agency (NTA) Public Release</span>
-              )}
-              <span class="mx-1.5">•</span>
-              <span class="inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
-                Rights: {isCleared ? "Cleared" : "Educational Review Pending"}
-              </span>
-            </div>
-            <a href="/contact#takedown" class="font-semibold text-brand-700 hover:underline dark:text-brand-300">
-              Report a problem / Takedown →
-            </a>
-          </div>
-          <p class="mt-2 text-[11px] text-neutral-500 dark:text-neutral-400">
-            Reproduced for non-commercial student evaluation and examination practice under Section 52(1)(i) of the Indian Copyright Act, 1957. Original question copyright remains with the National Testing Agency.
-          </p>
-        </div>
 
         <div class="mt-6 grid max-w-2xl grid-cols-2 gap-3 text-sm sm:grid-cols-4">
           <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
@@ -170,6 +144,7 @@ const forceNoindex = !isCleared;
         <h2 class="font-bold">Independent practice</h2>
         <p class="mt-2 text-neutral-600 dark:text-neutral-400">CUET Free Mock Test is not affiliated with NTA. Verify official dates, patterns and marking rules against the current NTA bulletin.</p>
         <a class="mt-3 inline-block font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/disclaimer">Read the disclaimer</a>
+        <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Found a mistake or issue? <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/contact#takedown">Report an issue</a></p>
       </aside>
     </div>
   </section>

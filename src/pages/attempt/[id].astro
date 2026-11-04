@@ -21,6 +21,7 @@ import { renderRichText } from "../../lib/rich-text";
 import { imageDimensionsForUrls } from "../../lib/media-dimensions";
 import { getSetting } from "../../lib/settings";
 import { siteUrl } from "../../lib/site-url";
+import { calculateMockDuration } from "../../lib/exam-timing";
 
 const id = Number(Astro.params.id);
 if (!Number.isInteger(id) || id <= 0) return new Response("Attempt not found", { status: 404 });
@@ -52,9 +53,13 @@ const [mock, rawQuestions, savedAnswers] = await Promise.all([
       practice_paper_slug: string | null;
       total_marks: number;
       marking_scheme: string;
+      duration_min: number;
+      subject_name: string | null;
     }>(
-      `SELECT m.title, m.slug, m.practice_paper_slug, v.total_marks, v.marking_scheme
+      `SELECT m.title, m.slug, m.practice_paper_slug, v.total_marks, v.marking_scheme,
+              v.duration_min, s.name AS subject_name
        FROM mock_tests m JOIN mock_test_versions v ON v.id = ?
+       LEFT JOIN subjects s ON s.id = m.subject_id
        WHERE m.id = ?`,
       attempt!.version_id,
       attempt!.mock_id,
@@ -171,6 +176,20 @@ const sections = [...new Set(questions.map((question) => question.section))];
 const hasHindiContent = questions.some(
   (question) => Boolean(question.text_hi) || question.options_hi.length > 0 || Boolean(question.passage?.body_hi),
 );
+const effectiveDurationMin = questions.length > 0
+  ? calculateMockDuration(questions.length, mock?.subject_name).durationMinutes
+  : (mock?.duration_min ?? 60);
+
+// Align deadline with question-based duration if misaligned
+const expectedDeadlineMs = Date.parse(attempt.started_at) + effectiveDurationMin * 60 * 1000;
+if (Math.abs(Date.parse(attempt.deadline_at) - expectedDeadlineMs) > 60_000) {
+  const correctedDeadline = new Date(expectedDeadlineMs).toISOString();
+  import("../../lib/db").then(({ run }) =>
+    run("UPDATE attempts SET deadline_at = ? WHERE id = ?", correctedDeadline, attempt!.id)
+  ).catch(() => {});
+  attempt.deadline_at = correctedDeadline;
+}
+
 const data = {
   attemptId: attempt.id,
   mockTitle: mock?.title ?? "CUET Mock Test",
