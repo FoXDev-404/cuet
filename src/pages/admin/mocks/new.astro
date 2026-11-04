@@ -5,15 +5,26 @@ import { all } from "../../../lib/db";
 import { can } from "../../../lib/auth/admin";
 
 const admin = Astro.locals.admin!;
+const requestedSubject = Number(Astro.url.searchParams.get("subject") ?? "0");
+
 const [subjects, questions] = await Promise.all([
   all<{ id: number; name: string }>("SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name"),
-  all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
-    `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
-     FROM questions q JOIN subjects s ON s.id = q.subject_id
-     WHERE q.deleted_at IS NULL AND q.status = 'published'
-     ORDER BY s.name, q.id
-     LIMIT 200`,
-  ),
+  requestedSubject > 0
+    ? all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
+        `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
+         FROM questions q JOIN subjects s ON s.id = q.subject_id
+         WHERE q.deleted_at IS NULL AND q.status = 'published' AND q.subject_id = ?
+         ORDER BY q.id DESC
+         LIMIT 100`,
+        requestedSubject,
+      )
+    : all<{ id: number; text: string; subject_name: string; status: string; explanation: string | null }>(
+        `SELECT q.id, q.text, s.name AS subject_name, q.status, q.explanation
+         FROM questions q JOIN subjects s ON s.id = q.subject_id
+         WHERE q.deleted_at IS NULL AND q.status = 'published'
+         ORDER BY q.id DESC
+         LIMIT 100`,
+      ),
 ]);
 const canPublish = can(admin.role, "mocks.publish");
 ---

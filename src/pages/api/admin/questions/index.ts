@@ -8,8 +8,11 @@ import { all } from "../../../../lib/db";
 import { apiError, forbiddenOrigin, isSameOrigin, json } from "../../../../lib/http";
 
 export const GET: APIRoute = async (context) => {
-  const guard = requirePermission(context, "questions.write");
-  if (guard.response) return guard.response;
+  const admin = context.locals.admin;
+  if (!admin) return apiError("Admin authentication required.", 401);
+  if (!can(admin.role, "questions.write") && !can(admin.role, "mocks.write")) {
+    return apiError("Your role cannot perform this action.", 403);
+  }
 
   const url = new URL(context.request.url);
   const page = Math.max(1, Number(url.searchParams.get("page") ?? "1") || 1);
@@ -28,8 +31,14 @@ export const GET: APIRoute = async (context) => {
   const where = ["q.deleted_at IS NULL"];
   const params: (string | number)[] = [];
   if (query) {
-    where.push("q.text LIKE ? ESCAPE '\\'");
-    params.push(`%${query.replace(/[\\%_]/g, "\\$&")}%`);
+    const numericId = Number(query.replace(/^#/, ""));
+    if (Number.isInteger(numericId) && numericId > 0) {
+      where.push("(q.id = ? OR q.text LIKE ? ESCAPE '\\')");
+      params.push(numericId, `%${query.replace(/[\\%_]/g, "\\$&")}%`);
+    } else {
+      where.push("q.text LIKE ? ESCAPE '\\'");
+      params.push(`%${query.replace(/[\\%_]/g, "\\$&")}%`);
+    }
   }
   if (allowed.has(status)) {
     where.push("q.status = ?");
@@ -61,9 +70,11 @@ export const GET: APIRoute = async (context) => {
     created_at: string;
     updated_at: string | null;
     supersedes_id: number | null;
+    explanation: string | null;
   }>(
     `SELECT q.id, q.subject_id, s.name AS subject_name, q.topic_id, t.name AS topic_name,
-            q.text, q.status, q.difficulty, q.year, q.created_at, q.updated_at, q.supersedes_id
+            q.text, q.status, q.difficulty, q.year, q.created_at, q.updated_at, q.supersedes_id,
+            q.explanation
      FROM questions q
      JOIN subjects s ON s.id = q.subject_id
      LEFT JOIN topics t ON t.id = q.topic_id
@@ -87,6 +98,7 @@ export const GET: APIRoute = async (context) => {
       status: row.status,
       difficulty: row.difficulty,
       year: row.year,
+      explanation: row.explanation,
       createdAt: row.created_at,
       updatedAt: row.updated_at,
       supersedesId: row.supersedes_id,

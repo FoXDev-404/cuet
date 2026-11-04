@@ -144,17 +144,46 @@ const status = mock?.status ?? "draft";
       <div class="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 class="font-bold">Questions</h2>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400">Only published questions are offered. Select at least one.</p>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Browse and select questions from the entire database across all subjects.</p>
         </div>
         <p class="text-sm font-semibold"><span data-selected-count>0</span> selected</p>
       </div>
+
       <label class="label mt-4">
         Section order
         <textarea class="field mt-1 font-mono text-xs" id="section-order" rows="2" placeholder="Language, Domain, General Test" disabled={locked}>{sectionOrder}</textarea>
         <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">One section per line or comma-separated. Sections render in this order; unknown sections follow afterwards.</span>
       </label>
-      <input class="field mt-4" id="question-filter" type="search" placeholder="Filter by text or subject…" />
-      <div class="mt-4 max-h-[32rem] min-w-0 max-w-full space-y-2 overflow-y-auto pr-1" tabindex="0" role="region" aria-label="Question list">
+
+      <!-- Question search & database browser -->
+      <div class="mt-4 grid gap-2 sm:grid-cols-[1fr_180px_auto]">
+        <input class="field text-sm" id="question-filter" type="search" placeholder="Search by text or ID (e.g. 1234)…" />
+        <select class="field text-sm" id="subject-bank-filter">
+          <option value="">All subjects</option>
+          {subjects.map((s) => (
+            <option value={s.id} selected={mock?.subject_id === s.id}>{s.name}</option>
+          ))}
+        </select>
+        <button
+          type="button"
+          id="search-db-btn"
+          class="rounded-lg border border-neutral-300 px-3 py-2 text-xs font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800"
+        >
+          Search DB
+        </button>
+      </div>
+
+      <!-- Quick filters: All vs Selected Only -->
+      <div class="mt-3 flex items-center justify-between border-b border-neutral-200 pb-2 text-xs dark:border-neutral-800">
+        <div class="flex items-center gap-3">
+          <button type="button" id="tab-all" class="font-semibold text-brand-600 dark:text-brand-400 underline cursor-pointer">All loaded</button>
+          <span>·</span>
+          <button type="button" id="tab-selected" class="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white cursor-pointer">Selected only (<span data-selected-tab-count>0</span>)</button>
+        </div>
+        <span id="search-status" class="text-xs text-neutral-500 dark:text-neutral-400"></span>
+      </div>
+
+      <div id="question-list-container" class="mt-4 max-h-[32rem] min-w-0 max-w-full space-y-2 overflow-y-auto pr-1" tabindex="0" role="region" aria-label="Question list">
         {questions.map((question) => {
           const isSelected = Object.prototype.hasOwnProperty.call(selected, question.id);
           return (
@@ -185,7 +214,7 @@ const status = mock?.status ?? "draft";
       </div>
       {questions.length === 0 ? (
         <p class="mt-4 rounded-xl border border-dashed border-neutral-300 p-6 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
-          No published questions yet. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/questions/new">Create and publish questions first</a>.
+          No questions loaded yet. Use the subject filter or search box above to fetch questions from the database.
         </p>
       ) : null}
     </section>
@@ -218,31 +247,190 @@ const status = mock?.status ?? "draft";
     const errorBox = document.getElementById("mock-error") as HTMLElement;
     const saveButton = document.getElementById("save-mock") as HTMLButtonElement;
     const mockId = form.dataset.id || "";
-    const rows = [...form.querySelectorAll("[data-question-row]")] as HTMLElement[];
-    const checks = [...form.querySelectorAll("[data-question-checkbox]")] as HTMLInputElement[];
     const selectedCount = form.querySelector("[data-selected-count]") as HTMLElement;
+    const tabSelectedCount = form.querySelector("[data-selected-tab-count]") as HTMLElement;
     const titleInput = form.querySelector('[data-field="title"]') as HTMLInputElement;
     const slugInput = form.querySelector('[data-field="slug"]') as HTMLInputElement;
     const filterInput = document.getElementById("question-filter") as HTMLInputElement;
+    const subjectBankFilter = document.getElementById("subject-bank-filter") as HTMLSelectElement | null;
+    const searchDbBtn = document.getElementById("search-db-btn") as HTMLButtonElement | null;
+    const searchStatus = document.getElementById("search-status") as HTMLElement | null;
+    const container = document.getElementById("question-list-container") as HTMLElement | null;
+    const tabAll = document.getElementById("tab-all") as HTMLButtonElement | null;
+    const tabSelected = document.getElementById("tab-selected") as HTMLButtonElement | null;
     const sectionOrderInput = document.getElementById("section-order") as HTMLTextAreaElement | null;
+
+    let isSearching = false;
+    let currentTab: "all" | "selected" = "all";
 
     function field(name: string): string {
       const element = form!.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
       return element.value.trim();
     }
 
-    function updateCount() {
-      const count = checks.filter((check) => check.checked).length;
-      selectedCount.textContent = String(count);
+    function getAllChecks(): HTMLInputElement[] {
+      return [...form!.querySelectorAll("[data-question-checkbox]")] as HTMLInputElement[];
     }
-    checks.forEach((check) => check.addEventListener("change", updateCount));
+
+    function getAllRows(): HTMLElement[] {
+      return [...form!.querySelectorAll("[data-question-row]")] as HTMLElement[];
+    }
+
+    function updateCount() {
+      const checks = getAllChecks();
+      const count = checks.filter((check) => check.checked).length;
+      if (selectedCount) selectedCount.textContent = String(count);
+      if (tabSelectedCount) tabSelectedCount.textContent = String(count);
+      if (currentTab === "selected") applyTabFilter();
+    }
+
+    // Attach listener to all existing checkboxes
+    getAllChecks().forEach((check) => check.addEventListener("change", updateCount));
     updateCount();
 
+    function escapeHtml(str: string): string {
+      const div = document.createElement("div");
+      div.textContent = str || "";
+      return div.innerHTML;
+    }
+
+    function escapeAttr(str: string): string {
+      return (str || "").replace(/"/g, "&quot;");
+    }
+
+    function applyTabFilter() {
+      const rows = getAllRows();
+      if (currentTab === "selected") {
+        tabAll?.classList.remove("font-semibold", "text-brand-600", "dark:text-brand-400", "underline");
+        tabAll?.classList.add("text-neutral-500", "dark:text-neutral-400");
+        tabSelected?.classList.add("font-semibold", "text-brand-600", "dark:text-brand-400", "underline");
+        tabSelected?.classList.remove("text-neutral-500", "dark:text-neutral-400");
+        rows.forEach((row) => {
+          const chk = row.querySelector("[data-question-checkbox]") as HTMLInputElement | null;
+          row.classList.toggle("hidden", !chk?.checked);
+        });
+      } else {
+        tabSelected?.classList.remove("font-semibold", "text-brand-600", "dark:text-brand-400", "underline");
+        tabSelected?.classList.add("text-neutral-500", "dark:text-neutral-400");
+        tabAll?.classList.add("font-semibold", "text-brand-600", "dark:text-brand-400", "underline");
+        tabAll?.classList.remove("text-neutral-500", "dark:text-neutral-400");
+        const term = filterInput?.value.trim().toLowerCase() || "";
+        rows.forEach((row) => {
+          row.classList.toggle("hidden", Boolean(term) && !row.dataset.search?.includes(term));
+        });
+      }
+    }
+
+    tabAll?.addEventListener("click", () => {
+      currentTab = "all";
+      applyTabFilter();
+    });
+
+    tabSelected?.addEventListener("click", () => {
+      currentTab = "selected";
+      applyTabFilter();
+    });
+
+    // Client-side quick filter on current rows
     filterInput?.addEventListener("input", () => {
-      const term = filterInput.value.trim().toLowerCase();
-      rows.forEach((row) => {
-        row.classList.toggle("hidden", Boolean(term) && !row.dataset.search?.includes(term));
+      if (currentTab === "all") {
+        const term = filterInput.value.trim().toLowerCase();
+        getAllRows().forEach((row) => {
+          row.classList.toggle("hidden", Boolean(term) && !row.dataset.search?.includes(term));
+        });
+      }
+    });
+
+    // Database search across ALL questions in the entire database
+    async function searchDatabase() {
+      if (isSearching) return;
+      isSearching = true;
+      if (searchStatus) searchStatus.textContent = "Searching DB…";
+
+      const term = filterInput?.value.trim() || "";
+      const subjectId = subjectBankFilter?.value || "";
+      const params = new URLSearchParams({
+        status: "published",
+        limit: "50",
       });
+      if (term) params.set("q", term);
+      if (subjectId) params.set("subject", subjectId);
+
+      try {
+        const response = await fetch(`/api/admin/questions?${params.toString()}`);
+        if (!response.ok) throw new Error("Database query failed");
+        const data = (await response.json()) as {
+          ok: boolean;
+          count: number;
+          questions: Array<{
+            id: number;
+            text: string;
+            subject: { id: number; name: string };
+            status: string;
+            explanation: string | null;
+          }>;
+        };
+
+        let newCount = 0;
+        if (data.questions && container) {
+          data.questions.forEach((q) => {
+            const existing = container.querySelector(`[data-question-checkbox][value="${q.id}"]`);
+            if (existing) {
+              const row = existing.closest("[data-question-row]") as HTMLElement | null;
+              if (row && currentTab === "all") row.classList.remove("hidden");
+            } else {
+              newCount++;
+              const label = document.createElement("label");
+              label.className = "flex max-w-full min-w-0 cursor-pointer items-start gap-3 overflow-hidden rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50 dark:border-neutral-800 dark:hover:bg-neutral-950";
+              label.setAttribute("data-question-row", "");
+              label.setAttribute("data-search", `${q.text} ${q.subject.name}`.toLowerCase());
+              label.innerHTML = `
+                <input class="mt-1 shrink-0" type="checkbox" data-question-checkbox value="${q.id}" data-subject="${escapeAttr(q.subject.name)}" />
+                <span class="min-w-0 flex-1 overflow-hidden">
+                  <span class="block text-sm font-medium"><span class="line-clamp-2 break-words">${escapeHtml(q.text)}</span></span>
+                  <span class="mt-1 flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+                    <span>${escapeHtml(q.subject.name)}</span>
+                    <span>·</span>
+                    <span>#${q.id}</span>
+                    ${!q.explanation ? '<span class="rounded-full bg-amber-100 px-2 py-0.5 font-semibold text-amber-900 dark:bg-amber-950/50 dark:text-amber-200">No explanation</span>' : ''}
+                  </span>
+                  <span class="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_7rem]">
+                    <span>
+                      <span class="sr-only">Section for question ${q.id}</span>
+                      <input class="field text-xs" type="text" maxlength="100" data-section value="${escapeAttr(q.subject.name)}" placeholder="Section" />
+                    </span>
+                    <span>
+                      <span class="sr-only">Order for question ${q.id}</span>
+                      <input class="field text-xs" type="number" min="1" max="500" step="1" data-order value="" placeholder="Order" />
+                    </span>
+                  </span>
+                </span>
+              `;
+              const chk = label.querySelector("[data-question-checkbox]") as HTMLInputElement | null;
+              chk?.addEventListener("change", updateCount);
+              container.appendChild(label);
+            }
+          });
+        }
+
+        if (searchStatus) {
+          searchStatus.textContent = `Found ${data.count} in DB (${newCount} new added)`;
+        }
+        updateCount();
+      } catch (err) {
+        if (searchStatus) searchStatus.textContent = "Error querying DB";
+      } finally {
+        isSearching = false;
+      }
+    }
+
+    searchDbBtn?.addEventListener("click", searchDatabase);
+    subjectBankFilter?.addEventListener("change", searchDatabase);
+    filterInput?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        searchDatabase();
+      }
     });
 
     let slugTouched = Boolean(slugInput.value);
@@ -269,6 +457,7 @@ const status = mock?.status ?? "draft";
         for (const section of sectionOrder) {
           if (!sectionRank.has(section)) sectionRank.set(section, sectionRank.size);
         }
+        const checks = getAllChecks();
         const questions = checks
           .filter((check) => check.checked)
           .map((check, index) => {
