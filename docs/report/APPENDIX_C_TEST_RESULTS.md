@@ -1,13 +1,13 @@
 # Appendix C: Comprehensive Test & Verification Results
 
-_Machine-generated from test runner outputs at commit `b7c855a` on 2026-11-04T20:12:33.543Z._
+_Machine-generated from test runner outputs at commit `c84221e` on 2026-11-04T20:20:12.286Z._
 
 ---
 
 ## 1. Unit & Integration Test Suite (Vitest)
 
-- **Commit Hash:** `b7c855a`
-- **Timestamp:** `2026-11-04T20:12:33.543Z`
+- **Commit Hash:** `c84221e`
+- **Timestamp:** `2026-11-04T20:20:12.286Z`
 - **Test Runner:** Vitest v5.0.5
 - **Execution Target:** Local unit & integration test files
 - **Total Test Files:** **43 passed** of 43
@@ -66,8 +66,8 @@ _Machine-generated from test runner outputs at commit `b7c855a` on 2026-11-04T20
 
 ## 2. End-to-End Test Suite (Playwright)
 
-- **Commit Hash:** `b7c855a`
-- **Timestamp:** `2026-11-04T20:12:33.543Z`
+- **Commit Hash:** `c84221e`
+- **Timestamp:** `2026-11-04T20:20:12.286Z`
 - **Test Runner:** Playwright v1.64.1
 - **Execution Target:** Production Build Server (`wrangler dev` on `dist/` at `http://127.0.0.1:4321`)
 - **Total E2E Specs:** **9 files**
@@ -92,8 +92,8 @@ _Machine-generated from test runner outputs at commit `b7c855a` on 2026-11-04T20
 
 ## 3. Autonomous Accessibility Audit (`axe-core` v4.14.0)
 
-- **Commit Hash:** `b7c855a`
-- **Timestamp:** `2026-11-04T19:47:45.557Z`
+- **Commit Hash:** `c84221e`
+- **Timestamp:** `2026-11-04T20:20:07.188Z`
 - **Axe Version:** axe-core v4.14.0
 - **Standards Evaluated:** WCAG 2.0 A/AA, WCAG 2.1 A/AA, WCAG 2.2 A/AA
 - **Viewports:** Desktop (1280x800), Mobile (375x667)
@@ -120,8 +120,8 @@ _Machine-generated from test runner outputs at commit `b7c855a` on 2026-11-04T20
 
 ## 4. Autonomous SEO Consistency Audit (`scripts/seo-consistency.mjs`)
 
-- **Commit Hash:** `b7c855a`
-- **Timestamp:** `2026-11-04T20:12:33.543Z`
+- **Commit Hash:** `c84221e`
+- **Timestamp:** `2026-11-04T20:20:12.286Z`
 - **Audit Target:** Local SSR Server (`http://localhost:4321`)
 - **Indexable Public URLs Found:** **89**
 - **Total URLs in `sitemap.xml`:** **89**
@@ -145,8 +145,8 @@ _Machine-generated from test runner outputs at commit `b7c855a` on 2026-11-04T20
 
 ## 5. Editorial Copy-Lint Audit (`scripts/copy-lint.mjs`)
 
-- **Commit Hash:** `b7c855a`
-- **Timestamp:** `2026-11-04T20:12:33.543Z`
+- **Commit Hash:** `c84221e`
+- **Timestamp:** `2026-11-04T20:20:12.286Z`
 - **Purpose:** Enforce honesty in product claims, prevent unverified marketing superlatives, and guard NTA disclaimers.
 - **Banned Superlatives Checked:** `national`, `official`, `verified`, `authentic`, `largest`, `100%`, `guarantee`, `NTA`.
 - **Files Scanned:** **272 source files** across `src/pages`, `src/components`, `src/layouts`, `src/lib`.

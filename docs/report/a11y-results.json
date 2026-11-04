@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-04T19:47:45.557Z",
-  "commitHash": "b7c855a",
+  "timestamp": "2026-11-04T20:20:07.188Z",
+  "commitHash": "c84221e",
   "axeVersion": "4.14.0",
   "totalScans": 232,
   "passedScans": 232,
@@ -1569,7 +1569,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/506",
+      "path": "/admin/mocks/511",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1579,47 +1579,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/506",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/506",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/506",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/506/preview",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/506/preview",
+      "path": "/admin/mocks/511",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1629,7 +1589,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/506/preview",
+      "path": "/admin/mocks/511",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1639,7 +1599,47 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/506/preview",
+      "path": "/admin/mocks/511",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/511/preview",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
