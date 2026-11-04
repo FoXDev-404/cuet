@@ -21,6 +21,7 @@
     "report:verify": "node scripts/check-report-evidence.mjs",
     "verify:suite": "node scripts/run-verification-suite.mjs",
     "audit:lighthouse": "node scripts/lighthouse-audit.mjs",
+    "perf:check": "node scripts/check-perf-budget.mjs",
     "audit:reconciliation": "node scripts/data-reconciliation.mjs",
     "og:questions": "node scripts/generate-question-og.mjs",
     "og:questions:local": "node scripts/generate-question-og.mjs --local",

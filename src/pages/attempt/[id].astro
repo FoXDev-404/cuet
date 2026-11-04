@@ -17,6 +17,7 @@ import {
 import { getGuestToken } from "../../lib/auth/session";
 import { dbUnavailableResponse } from "../../lib/db-resilient";
 import { parseMarkingScheme, parseOptions } from "../../lib/content";
+import { renderRichText } from "../../lib/rich-text";
 import { imageDimensionsForUrls } from "../../lib/media-dimensions";
 import { getSetting } from "../../lib/settings";
 import { siteUrl } from "../../lib/site-url";
@@ -121,22 +122,34 @@ const questions = rawQuestions.map((question, index) => {
   const passageImage = question.passage_image_url
     ? imageDimensions.get(question.passage_image_url)
     : undefined;
+  const passageBody = question.passage_body;
+  const passageBodyHi = question.passage_body_hi;
   return {
     id: question.id,
     section: question.section,
     position: question.position,
     text: question.text,
     text_hi: question.text_hi,
-    options: sets.options.map(withDimensions),
-    options_hi: sets.optionsHi.map(withDimensions),
+    rendered_text: renderRichText(question.text),
+    rendered_text_hi: renderRichText(question.text_hi),
+    options: sets.options.map(withDimensions).map((opt) => ({
+      ...opt,
+      rendered_text: opt.text ? renderRichText(opt.text) : "",
+    })),
+    options_hi: sets.optionsHi.map(withDimensions).map((opt) => ({
+      ...opt,
+      rendered_text: opt.text ? renderRichText(opt.text) : "",
+    })),
     image_url: question.image_url,
     image_alt: question.image_alt,
     image_width: image?.width ?? null,
     image_height: image?.height ?? null,
-    passage: question.passage_body
+    passage: passageBody
       ? {
-          body: question.passage_body,
-          body_hi: question.passage_body_hi,
+          body: passageBody,
+          body_hi: passageBodyHi,
+          rendered_body: renderRichText(passageBody),
+          rendered_body_hi: renderRichText(passageBodyHi),
           image_url: question.passage_image_url,
           image_alt: question.passage_image_alt,
           image_width: passageImage?.width ?? null,
@@ -634,7 +647,66 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
             <span id="save-state" class="ml-auto whitespace-nowrap pl-2 text-[10px] font-semibold text-[var(--muted)]" role="status" aria-live="polite" aria-atomic="true">Ready</span>
           </div>
 
-          <div id="question-area" class="exam-question-scroll min-h-0 flex-1 overflow-y-auto p-3 sm:p-5 lg:px-7"></div>
+          <div id="question-area" class="exam-question-scroll min-h-0 flex-1 overflow-y-auto p-3 sm:p-5 lg:px-7">
+            {questions[0] && (
+              <article class="exam-question-card" aria-label="Question 1">
+                <header class="exam-question-head">
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <span class="exam-question-number">Question 1</span>
+                    <span class="exam-marks">{`${marking.correct >= 0 ? "+" : ""}${marking.correct} / ${marking.wrong}`}</span>
+                    <span class="exam-badge">{questions[0].section}</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    {answerMap[questions[0].id]?.marked ? <span class="exam-badge review">Marked for review</span> : null}
+                    <span class="exam-badge">1 / {questions.length}</span>
+                  </div>
+                </header>
+                {questions[0].passage && (
+                  <div class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 text-sm leading-7">
+                    <Fragment set:html={questions[0].passage.rendered_body || questions[0].passage.body} />
+                    {questions[0].passage.image_url && (
+                      <img class="nta-image mt-3" src={questions[0].passage.image_url} alt={questions[0].passage.image_alt || ""} loading="lazy" />
+                    )}
+                  </div>
+                )}
+                <div class="mt-5 flex gap-2.5">
+                  <span class="shrink-0 text-[15px] font-semibold text-[var(--ink)]">1.</span>
+                  <div class="nta-question-text min-w-0 flex-1">
+                    <Fragment set:html={questions[0].rendered_text || questions[0].text} />
+                  </div>
+                </div>
+                {questions[0].image_url && (
+                  <img class="nta-image mt-4" src={questions[0].image_url} alt={questions[0].image_alt || ""} />
+                )}
+                <div class="mt-5 space-y-1" role="radiogroup" aria-label="Answer options">
+                  {questions[0].options.map((option, idx) => {
+                    const isSelected = answerMap[questions[0].id]?.selected === idx;
+                    return (
+                      <button
+                        type="button"
+                        class={`nta-option ${isSelected ? "selected" : ""}`}
+                        data-option={idx}
+                        role="radio"
+                        aria-checked={isSelected ? "true" : "false"}
+                      >
+                        <span class="nta-radio" aria-hidden="true" />
+                        <span class="shrink-0 text-[15px] font-semibold">{idx + 1}.</span>
+                        <span class="min-w-0">
+                          {option.rendered_text ? <Fragment set:html={option.rendered_text} /> : (option.text || <span class="text-[var(--muted)]">Option {idx + 1}</span>)}
+                          {option.image_url && (
+                            <img class="nta-image mt-2" src={option.image_url} alt={option.alt || ""} loading="lazy" />
+                          )}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+                <p class="mt-4 text-[10px] font-medium text-[var(--muted)]">
+                  {marking.wrong} for a wrong answer · {marking.skipped} for unattempted · Saved automatically
+                </p>
+              </article>
+            )}
+          </div>
 
           <footer class="exam-footer flex shrink-0 flex-wrap items-center gap-1.5 px-2 py-2 sm:px-4">
             <button id="previous" class="exam-btn" type="button">← Previous</button>
@@ -723,15 +795,15 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
 
     <script type="application/json" id="attempt-data" set:html={serialized}></script>
     <script>
-      import { renderRichText } from "../../lib/rich-text";
-
-      type Option = { text: string; image_url: string | null; alt: string | null; image_width: number | null; image_height: number | null };
+      type Option = { text: string; rendered_text?: string; image_url: string | null; alt: string | null; image_width: number | null; image_height: number | null };
       type Question = {
         id: number;
         section: string;
         position: number;
         text: string;
         text_hi: string | null;
+        rendered_text?: string;
+        rendered_text_hi?: string | null;
         options: Option[];
         options_hi: Option[];
         image_url: string | null;
@@ -739,7 +811,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         image_width: number | null;
         image_height: number | null;
         assets: { url: string; alt: string; kind: string; image_width: number | null; image_height: number | null }[];
-        passage: { body: string; body_hi: string | null; image_url: string | null; image_alt: string | null; image_width: number | null; image_height: number | null } | null;
+        passage: { body: string; body_hi: string | null; rendered_body?: string; rendered_body_hi?: string | null; image_url: string | null; image_alt: string | null; image_width: number | null; image_height: number | null } | null;
       };
       type Answer = { selected: number | null; marked: number; time: number };
       type AttemptData = {
@@ -903,7 +975,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         const options = state.language === "hi" && question.options_hi.length ? question.options_hi : question.options;
         const selected = answers[question.id].selected;
         return options.map((option, index) => {
-          const body = option.text ? renderRichText(option.text) : "";
+          const body = option.rendered_text || (option.text ? escapeHtml(option.text) : "");
           const dimensions =
             option.image_width && option.image_height
               ? ` width="${option.image_width}" height="${option.image_height}"`
@@ -946,11 +1018,11 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         const answer = answers[question.id];
         const passage = question.passage
           ? `<div class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 text-sm leading-7">
-              ${renderRichText(state.language === "hi" && question.passage.body_hi ? question.passage.body_hi : question.passage.body)}
+              ${state.language === "hi" && question.passage.rendered_body_hi ? question.passage.rendered_body_hi : (question.passage.rendered_body || escapeHtml(question.passage.body))}
               ${question.passage.image_url ? `<img class="nta-image mt-3" src="${question.passage.image_url}" alt="${(question.passage.image_alt || "").replace(/"/g, "&quot;")}"${question.passage.image_width && question.passage.image_height ? ` width="${question.passage.image_width}" height="${question.passage.image_height}"` : ""} loading="lazy" />` : ""}
             </div>`
           : "";
-        const text = renderRichText(state.language === "hi" && question.text_hi ? question.text_hi : question.text);
+        const text = state.language === "hi" && question.rendered_text_hi ? question.rendered_text_hi : (question.rendered_text || escapeHtml(question.text));
         const image = question.image_url
           ? `<img class="nta-image mt-4" src="${question.image_url}" alt="${(question.image_alt || "").replace(/"/g, "&quot;")}"${question.image_width && question.image_height ? ` width="${question.image_width}" height="${question.image_height}"` : ""} />`
           : "";

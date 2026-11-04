@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json.schemastore.org/performance-budget.json",
+  "name": "CUET Mock Test Platform Performance Budgets",
+  "version": "1.0.0",
+  "limits": {
+    "totalJsKb": 150,
+    "totalCssKb": 100,
+    "maxInitialDomNodes": 1200
+  },
+  "metrics": {
+    "mobileSimulated4G": {
+      "lcpMs": 4000,
+      "tbtMs": 600,
+      "cls": 0.1,
+      "fcpMs": 2000,
+      "speedIndexMs": 3500
+    }
+  },
+  "routeBudgets": {
+    "/": {
+      "name": "Home",
+      "maxTransferKb": 250,
+      "targetScore": 85
+    },
+    "/cuet-ug-mock-test": {
+      "name": "Mock Test Hub",
+      "maxTransferKb": 250,
+      "targetScore": 85
+    },
+    "/cuet-mock-test/english": {
+      "name": "Subject Hub",
+      "maxTransferKb": 250,
+      "targetScore": 80
+    },
+    "/mock/[slug]": {
+      "name": "Mock Detail",
+      "maxTransferKb": 200,
+      "targetScore": 85
+    },
+    "/mock/[slug]/instructions": {
+      "name": "Instructions",
+      "maxTransferKb": 200,
+      "targetScore": 85
+    },
+    "/attempt/[id]": {
+      "name": "Attempt Screen",
+      "maxTransferKb": 300,
+      "targetScore": 75,
+      "maxLcpMs": 4000,
+      "maxTbtMs": 600
+    },
+    "/result/[id]": {
+      "name": "Result Summary",
+      "maxTransferKb": 250,
+      "targetScore": 85
+    },
+    "/q/[id]": {
+      "name": "Public Shared Question",
+      "maxTransferKb": 200,
+      "targetScore": 85
+    },
+    "/admin": {
+      "name": "Admin Portal",
+      "maxTransferKb": 300,
+      "targetScore": 75
+    }
+  }
+}
+
