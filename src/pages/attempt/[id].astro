@@ -382,6 +382,22 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       .nta-zoom img { max-width: 95vw; max-height: 90vh; background: var(--media-bg); border-radius: 0.5rem; }
 
       /* ---- KnowledgeGate-style exam shell ---- */
+      html {
+        scroll-padding-top: 7rem;
+      }
+      #question-area {
+        scroll-margin-top: 7rem;
+      }
+      #discussion {
+        scroll-margin-top: 7rem;
+      }
+      #exam-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--surface-2);
+        box-shadow: var(--shadow);
+      }
       .exam-frame {
         background:
           radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 28rem),
@@ -401,9 +417,13 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         letter-spacing: -0.01em;
       }
       .exam-subtitle { color: var(--muted); }
-      .exam-brand > span { display: none; }
-      @media (min-width: 640px) {
-        .exam-brand > span { display: block; }
+      .exam-brand {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      .exam-brand > span {
+        display: inline-block;
       }
       .exam-toplink {
         align-items: center;
@@ -619,43 +639,47 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
   </head>
   <body class="min-h-[100dvh] bg-[var(--surface)] text-[var(--ink)] antialiased">
     <h1 class="sr-only">{data.mockTitle} attempt</h1>
-    <div class="exam-frame flex h-[100dvh] flex-col overflow-hidden">
-      <header class="shrink-0">
-        <div class="exam-accent-line" aria-hidden="true"></div>
-        <div class="exam-topbar flex h-14 items-center gap-2 px-2 sm:px-4">
-          <div class="flex min-w-0 items-center gap-2">
-            <BrandLogo class="exam-brand" size="compact" showTagline={false} link={false} />
-            <div class="hidden h-7 w-px bg-[var(--border)] sm:block" aria-hidden="true"></div>
-            <div class="min-w-0">
-              <p class="exam-paper-title truncate text-xs sm:text-sm">{data.mockTitle}</p>
-              <p class="exam-subtitle hidden truncate text-[10px] sm:block">CUET (UG) · {questions.length} questions · {sections.length} section{sections.length === 1 ? "" : "s"}</p>
-            </div>
-          </div>
-          <div class="ml-auto flex shrink-0 items-center gap-1.5">
-            <a class="exam-toplink hidden md:inline-flex" href={`/mock/${mock?.slug}/instructions`}>Instructions</a>
-            <a class="exam-toplink hidden lg:inline-flex" href="#discussion">Discussion</a>
-            <div id="timer" class="exam-timer" aria-live="off">--:--:--</div>
-            <p id="timer-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></p>
-            {shareDuringAttempt && mockShareUrl ? (
-              <MockShareSheet shareUrl={mockShareUrl} mockId={attempt.mock_id} />
-            ) : null}
-            <ThemeToggle />
-            <button id="submit-attempt" class="exam-submit" type="button">Submit test</button>
+    <header id="exam-header" class="sticky top-0 z-50 shrink-0">
+      <div class="exam-accent-line" aria-hidden="true"></div>
+      <div class="exam-topbar flex h-14 items-center gap-2 px-2 sm:px-4">
+        <div class="flex min-w-0 items-center gap-2">
+          <BrandLogo class="exam-brand shrink-0" size="compact" showTagline={false} link={true} target="_blank" />
+          <div class="hidden h-7 w-px bg-[var(--border)] md:block" aria-hidden="true"></div>
+          <div class="hidden min-w-0 md:block">
+            <p class="exam-paper-title truncate text-xs sm:text-sm">{data.mockTitle}</p>
+            <p class="exam-subtitle truncate text-[10px]">CUET (UG) · {questions.length} questions · {sections.length} section{sections.length === 1 ? "" : "s"}</p>
           </div>
         </div>
-        <div class="exam-candidatebar flex min-h-12 flex-wrap items-center gap-2 px-2 py-1.5 sm:px-4">
-          <span class="exam-avatar" aria-hidden="true">{data.candidate.slice(0, 1).toUpperCase()}</span>
-          <div class="min-w-0">
-            <p class="exam-candidate-label">Candidate</p>
-            <p class="exam-candidate-name truncate">{data.candidate}</p>
-          </div>
-          <div class="ml-auto flex items-center gap-1.5">
-            <span class="exam-meta-pill hidden sm:inline-flex">✦ {questions.length} questions</span>
-            <span class="exam-meta-pill hidden md:inline-flex">Marks +{marking.correct} / {marking.wrong}</span>
-            <button id="palette-toggle" class="exam-btn lg:hidden" type="button" aria-label="Open question palette">Palette</button>
-          </div>
+        <div class="ml-auto flex shrink-0 items-center gap-1.5">
+          <a class="exam-toplink hidden md:inline-flex" href={`/mock/${mock?.slug}/instructions`}>Instructions</a>
+          <a class="exam-toplink hidden lg:inline-flex" href="#discussion">Discussion</a>
+          <div id="timer" class="exam-timer" aria-live="off">--:--:--</div>
+          <p id="timer-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></p>
+          {shareDuringAttempt && mockShareUrl ? (
+            <MockShareSheet shareUrl={mockShareUrl} mockId={attempt.mock_id} />
+          ) : null}
+          <ThemeToggle />
+          <button id="submit-attempt" class="exam-submit" type="button">Submit test</button>
         </div>
-      </header>
+      </div>
+      <div class="exam-candidatebar flex min-h-11 items-center gap-2 px-2 py-1.5 sm:min-h-12 sm:px-4">
+        <span class="exam-avatar shrink-0" aria-hidden="true">{data.candidate.slice(0, 1).toUpperCase()}</span>
+        <div class="min-w-0 shrink-0">
+          <p class="exam-candidate-label">Candidate</p>
+          <p class="exam-candidate-name truncate text-xs">{data.candidate}</p>
+        </div>
+        <div class="min-w-0 flex-1 pl-1 md:hidden">
+          <p class="exam-paper-title truncate text-xs" title={data.mockTitle}>{data.mockTitle}</p>
+        </div>
+        <div class="ml-auto flex shrink-0 items-center gap-1.5">
+          <span class="exam-meta-pill hidden sm:inline-flex">✦ {questions.length} questions</span>
+          <span class="exam-meta-pill hidden md:inline-flex">Marks +{marking.correct} / {marking.wrong}</span>
+          <button id="palette-toggle" class="exam-btn lg:hidden" type="button" aria-label="Open question palette">Palette</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="exam-frame flex min-h-[calc(100dvh-6.75rem)] lg:h-[calc(100dvh-6.75rem)] flex-col overflow-hidden">
 
       <div class="relative flex min-h-0 flex-1 overflow-hidden">
         <main class="flex min-w-0 flex-1 flex-col">
@@ -783,7 +807,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
     </div>
 
     <section id="discussion" class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <div class="sticky top-0 z-20 mb-3 flex flex-wrap items-end justify-between gap-3 bg-white/95 py-2 backdrop-blur supports-[backdrop-filter]:bg-white/85 dark:bg-neutral-950/95 dark:supports-[backdrop-filter]:bg-neutral-950/85">
+      <div class="mb-3 flex flex-wrap items-end justify-between gap-3 py-2">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">Live with this attempt</p>
           <h2 class="mt-1 text-xl font-black tracking-tight">Discussion &amp; chat</h2>

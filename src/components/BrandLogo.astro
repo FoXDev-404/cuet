@@ -5,6 +5,7 @@ interface Props {
   tone?: "auto" | "dark";
   size?: "default" | "compact";
   link?: boolean;
+  target?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   tone = "auto",
   size = "default",
   link = true,
+  target,
 } = Astro.props;
 const compact = size === "compact";
 const wordmark = tone === "dark" ? "text-white" : "text-neutral-900 dark:text-white";
@@ -25,6 +27,8 @@ const accent = tone === "dark" ? "text-accent-400" : "text-accent-500 dark:text-
   link ? (
     <a
       href="/"
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       class:list={["group flex min-w-0 items-center", compact ? "gap-2" : "gap-2.5", className]}
       title="CUETFreeMockTest.com — free CUET mock tests"
     >
