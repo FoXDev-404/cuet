@@ -1,5 +1,5 @@
 -- CUET Mock Platform Content-Only Export
--- Generated: 2026-11-04T15:15:23.678Z
+-- Generated: 2026-11-04T16:58:53.106Z
 -- Foreign-key safe, zero user/session/attempt data included
 PRAGMA foreign_keys = OFF;
 BEGIN TRANSACTION;
@@ -115681,26 +115681,7 @@ Both p-toluidine and 2,4,6-tribromoaniline contain  $ -NH_{2} $ group.
 Therefore they are primary amines.
 
 Quick Tip: A tertiary amine contains three carbon groups attached to nitrogen and no N-H bond.', NULL, NULL, 2026, NULL, NULL, NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.549Z', NULL, NULL, '[]', 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10873, 5, NULL, 232, 'The final structure of amine produced by Hoffmann degradation of m-bromobenzamide is:
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-1.jpg" alt="Figure 1 for question 49" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-2.jpg" alt="Figure 2 for question 49" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-3.jpg" alt="Figure 3 for question 49" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-4.jpg" alt="Figure 4 for question 49" />
-</div>', NULL, '[{"text":"m-Bromobenzylamine","image_url":null,"alt":null},{"text":"m-Bromoaniline","image_url":null,"alt":null},{"text":"m-Bromotoluene derivatives","image_url":null,"alt":null},{"text":"Aniline","image_url":null,"alt":null}]', NULL, 1, 'Concept:
+INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10873, 5, NULL, 232, 'The final structure of amine produced by Hoffmann degradation of m-bromobenzamide is:', NULL, '[{"text": "m-Bromobenzylamine", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-1.jpg", "alt": null}, {"text": "m-Bromoaniline", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-2.jpg", "alt": null}, {"text": "m-Bromotoluene derivatives", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-3.jpg", "alt": null}, {"text": "Aniline", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-4.jpg", "alt": null}]', NULL, 1, 'Concept:
 
 Hoffmann bromamide degradation converts an amide into an amine containing one carbon atom less.
 
@@ -115730,17 +115711,12 @@ Quick Tip: Hoffmann bromamide degradation:
 
  $$ RCONH_{2}\rightarrow RNH_{2} $$ 
 
-One carbon atom is lost during the reaction.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-1.jpg', 'Figure 1 for question 49', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.549Z', NULL, NULL, '[{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-1.jpg","alt":"Figure 1 for question 49","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-2.jpg","alt":"Figure 2 for question 49","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-3.jpg","alt":"Figure 3 for question 49","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-4.jpg","alt":"Figure 4 for question 49","kind":"figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
+One carbon atom is lost during the reaction.', NULL, NULL, 2026, NULL, NULL, NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.549Z', NULL, NULL, '[]', 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10874, 5, NULL, 232, 'What would be the structure of final product X in the following chemical reaction?
 
 <div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-1.jpg" alt="Figure 1 for question 50" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-2.jpg" alt="Figure 2 for question 50" />
-</div>', NULL, '[{"text":"figA","image_url":null,"alt":null},{"text":"figB","image_url":null,"alt":null},{"text":"figC","image_url":null,"alt":null},{"text":"figD","image_url":null,"alt":null}]', NULL, 1, 'Concept:
+<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q50-reaction.jpg" alt="Reaction diagram for question 50" />
+</div>', NULL, '[{"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-option-a.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-option-b.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-option-c.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-2.jpg", "alt": null}]', NULL, 2, 'Concept:
 
 Tertiary aromatic amines do not form diazonium salts with nitrous acid. Instead, electrophilic substitution occurs on the aromatic ring producing para-nitroso derivatives.
 
@@ -115768,7 +115744,7 @@ Step 4: Final answer.
 
 p-Nitroso-N, N-dimethylaniline
 
-Quick Tip: Primary aromatic amines form diazonium salts, secondary amines form N-nitrosoamines, while tertiary aromatic amines undergo para-nitrosation.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-1.jpg', 'Figure 1 for question 50', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.551Z', NULL, NULL, '[{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-1.jpg","alt":"Figure 1 for question 50","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-2.jpg","alt":"Figure 2 for question 50","kind":"figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
+Quick Tip: Primary aromatic amines form diazonium salts, secondary amines form N-nitrosoamines, while tertiary aromatic amines undergo para-nitrosation.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q50-reaction.jpg', 'Reaction diagram for question 50', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.551Z', NULL, NULL, '[{"url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-reaction.jpg", "alt": "Reaction diagram for question 50", "kind": "figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10875, 5, NULL, NULL, 'For the following reaction choose the incorrect expression of rate of reaction.
 
  $$ 5\mathrm{B r}^{-}(a q.)+\mathrm{B r O}_{3}^{-}(a q.)+6\mathrm{H}^{+}(a q.)\to3\mathrm{B r}_{2}(a q.)+3\mathrm{H}_{2}\mathrm{O}(l) $$', NULL, '[{"text":"Rate = $ -\\frac{1}{5}\\frac{\\Delta[\\mathrm{Br}^{-}]}{\\Delta t} $","image_url":null,"alt":null},{"text":"Rate = $ -\\frac{1}{6}\\frac{\\Delta[\\mathrm{H}^{+}]}{\\Delta t} $","image_url":null,"alt":null},{"text":"Rate = $ -\\frac{1}{3}\\frac{\\Delta[\\mathrm{Br}_{2}]}{\\Delta t} $","image_url":null,"alt":null},{"text":"Rate = $ -\\frac{\\Delta[\\mathrm{BrO}_{3}^{-}]}{\\Delta t} $","image_url":null,"alt":null}]', NULL, 2, 'Concept:
@@ -115838,26 +115814,7 @@ The only expression that violates the sign convention for products is option (C)
  $$ -\frac{1}{3}\frac{\Delta[\mathrm{Br}_{2}]}{\Delta t} $$ 
 
 Quick Tip: Always remember: reactants are consumed, so their rate terms carry a negative sign, while products are formed, so their rate terms carry a positive sign.', NULL, NULL, 2026, NULL, NULL, NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.551Z', NULL, NULL, '[]', 'ai_draft', 'unreviewed', NULL, NULL);
-INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10876, 5, NULL, NULL, 'What would be the correct structure of thymine base?
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-1.jpg" alt="Figure 1 for question 2" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-2.jpg" alt="Figure 2 for question 2" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-3.jpg" alt="Figure 3 for question 2" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-4.jpg" alt="Figure 4 for question 2" />
-</div>', NULL, '[{"text":"figA","image_url":null,"alt":null},{"text":"figB","image_url":null,"alt":null},{"text":"figC","image_url":null,"alt":null},{"text":"figD","image_url":null,"alt":null}]', NULL, 1, 'Concept:
+INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10876, 5, NULL, NULL, 'What would be the correct structure of thymine base?', NULL, '[{"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-1.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-2.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-3.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-4.jpg", "alt": null}]', NULL, 1, 'Concept:
 
 Thymine is one of the pyrimidine nitrogenous bases present in DNA. The pyrimidine bases are:
 
@@ -115895,7 +115852,7 @@ Since thymine is 5-methyl uracil, its correct IUPAC description is
 
 5-methyl-1H-pyrimidine-2,4-dione
 
-Quick Tip: A simple memory trick is: Thymine = Uracil + Methyl group at the 5-position.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-1.jpg', 'Figure 1 for question 2', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.551Z', NULL, NULL, '[{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-1.jpg","alt":"Figure 1 for question 2","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-2.jpg","alt":"Figure 2 for question 2","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-3.jpg","alt":"Figure 3 for question 2","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-4.jpg","alt":"Figure 4 for question 2","kind":"figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
+Quick Tip: A simple memory trick is: Thymine = Uracil + Methyl group at the 5-position.', NULL, NULL, 2026, NULL, NULL, NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.551Z', NULL, NULL, '[]', 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10877, 5, NULL, NULL, 'What is the product Y in the following chemical reaction?
 
 <div style="text-align: center;">
@@ -116085,28 +116042,8 @@ Quick Tip: For alkyl halides of comparable molecular mass, greater branching mea
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10881, 5, NULL, NULL, 'Write the major product A in the following chemical reaction.
 
 <div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg" alt="Figure 1 for question 8" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-2.jpg" alt="Figure 2 for question 8" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-3.jpg" alt="Figure 3 for question 8" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-4.jpg" alt="Figure 4 for question 8" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-5.jpg" alt="Figure 5 for question 8" />
-</div>', NULL, '[{"text":"figA","image_url":null,"alt":null},{"text":"figB","image_url":null,"alt":null},{"text":"figC","image_url":null,"alt":null},{"text":"figD","image_url":null,"alt":null}]', NULL, 1, 'Concept:
+<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg" alt="Reaction diagram for question 8" />
+</div>', NULL, '[{"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-2.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-3.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-4.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-5.jpg", "alt": null}]', NULL, 1, 'Concept:
 
 In the presence of peroxide, addition of HBr to an alkene proceeds through a free radical mechanism and follows anti-Markovnikov orientation. This is known as the Peroxide Effect or Kharasch Effect.
 
@@ -116126,7 +116063,7 @@ Step 3: Write the product.
 
 Hence option (B) is correct.
 
-Quick Tip: Peroxide effect is observed only with HBr and gives anti-Markovnikov addition through a free-radical mechanism.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg', 'Figure 1 for question 8', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.553Z', NULL, NULL, '[{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg","alt":"Figure 1 for question 8","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-2.jpg","alt":"Figure 2 for question 8","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-3.jpg","alt":"Figure 3 for question 8","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-4.jpg","alt":"Figure 4 for question 8","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-5.jpg","alt":"Figure 5 for question 8","kind":"figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
+Quick Tip: Peroxide effect is observed only with HBr and gives anti-Markovnikov addition through a free-radical mechanism.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg', 'Reaction diagram for question 8', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.553Z', NULL, NULL, '[{"url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg", "alt": "Reaction diagram for question 8", "kind": "figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10882, 5, NULL, NULL, 'The complex  $ [\mathrm{Co(NH_{3})_{6}}]^{3+} $ is:', NULL, '[{"text":"$ sp^{3}d^{2} $ hybridised and paramagnetic","image_url":null,"alt":null},{"text":"$ sp^{3}d^{2} $ hybridised and diamagnetic","image_url":null,"alt":null},{"text":"$ d^{2}sp^{3} $ hybridised and paramagnetic","image_url":null,"alt":null},{"text":"$ d^{2}sp^{3} $ hybridised and diamagnetic","image_url":null,"alt":null}]', NULL, 3, 'Concept:
 
 The hybridisation and magnetic behaviour of coordination compounds can be determined from the electronic configuration of the central metal ion and the strength of the ligand.
@@ -116179,8 +116116,8 @@ Quick Tip:  $ [\mathrm{Co}(\mathrm{NH}_{3})_{6}]^{3+} $ is a classic low-spin  $
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10883, 5, NULL, NULL, 'The major product Z in the following chemical reaction is:
 
 <div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q10-figure-1.jpg" alt="Figure 1 for question 10" />
-</div>', NULL, '[{"text":"figA","image_url":null,"alt":null},{"text":"figB","image_url":null,"alt":null},{"text":"figC","image_url":null,"alt":null},{"text":"figD","image_url":null,"alt":null}]', NULL, 0, 'Concept:
+<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q10-reaction.jpg" alt="Reaction diagram for question 10" />
+</div>', NULL, '[{"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-a.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-b.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-c.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-d.jpg", "alt": null}]', NULL, 0, 'Concept:
 
 Phenol reacts with chloroform and aqueous sodium hydroxide to give salicylaldehyde. This reaction is known as the Reimer-Tiemann reaction.
 
@@ -116212,7 +116149,7 @@ commonly known as salicylaldehyde.
 
 Salicylaldehyde
 
-Quick Tip: Remember the name pair: Phenol + CHCl_{3} + NaOH → Salicylaldehyde. This is the famous Reimer-Tiemann reaction.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q10-figure-1.jpg', 'Figure 1 for question 10', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.553Z', NULL, NULL, '[{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q10-figure-1.jpg","alt":"Figure 1 for question 10","kind":"figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
+Quick Tip: Remember the name pair: Phenol + CHCl_{3} + NaOH → Salicylaldehyde. This is the famous Reimer-Tiemann reaction.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q10-reaction.jpg', 'Reaction diagram for question 10', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.553Z', NULL, NULL, '[{"url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-reaction.jpg", "alt": "Reaction diagram for question 10", "kind": "figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10884, 5, NULL, NULL, 'Arrange the following 3d-series elements in decreasing order of their second ionisation enthalpy:
 
 (A) Ti(Z=22)
@@ -117161,23 +117098,8 @@ Quick Tip: Aldehydes having at least one  $ \alpha $-hydrogen generally undergo 
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10904, 5, NULL, NULL, 'What would be the major product A?
 
 <div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-1.jpg" alt="Figure 1 for question 31" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-2.jpg" alt="Figure 2 for question 31" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-3.jpg" alt="Figure 3 for question 31" />
-</div>
-
-
-<div style="text-align: center;">
-<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-4.jpg" alt="Figure 4 for question 31" />
-</div>', NULL, '[{"text":"figA","image_url":null,"alt":null},{"text":"figB","image_url":null,"alt":null},{"text":"figC","image_url":null,"alt":null},{"text":"figD","image_url":null,"alt":null}]', NULL, 2, 'Concept:
+<img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q31-reaction.jpg" alt="Reaction diagram for question 31" />
+</div>', NULL, '[{"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-option-a.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-2.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-3.jpg", "alt": null}, {"text": "", "image_url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-4.jpg", "alt": null}]', NULL, 3, 'Concept:
 
 The reaction of an aromatic compound with an acyl chloride in the presence of anhydrous  $ AlCl_{3} $ is known as Friedel-Crafts acylation.
 
@@ -117213,7 +117135,7 @@ The acetyl group enters the para position with respect to chlorine.
 
 Hence the major product is:
 
-Quick Tip: Halogens are deactivating but ortho-para directing. In electrophilic substitution reactions, para products are often major because of lower steric hindrance.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-1.jpg', 'Figure 1 for question 31', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.559Z', NULL, NULL, '[{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-1.jpg","alt":"Figure 1 for question 31","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-2.jpg","alt":"Figure 2 for question 31","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-3.jpg","alt":"Figure 3 for question 31","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-4.jpg","alt":"Figure 4 for question 31","kind":"figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
+Quick Tip: Halogens are deactivating but ortho-para directing. In electrophilic substitution reactions, para products are often major because of lower steric hindrance.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q31-reaction.jpg', 'Reaction diagram for question 31', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.559Z', NULL, NULL, '[{"url": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-reaction.jpg", "alt": "Reaction diagram for question 31", "kind": "figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10905, 5, NULL, NULL, 'Which of the following statements are incorrect for the thermodynamic properties?
 
 (A) Both  $ E_{cell} $ and  $ \Delta_{r}G $ of reaction are extensive properties.
@@ -117650,7 +117572,7 @@ INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", 
 <table border=1 style=''margin: auto; word-wrap: break-word;''><tr><td style=''text-align: center; word-wrap: break-word;''>List I</td><td style=''text-align: center; word-wrap: break-word;''>List-II</td></tr><tr><td style=''text-align: center; word-wrap: break-word;''>Structure</td><td style=''text-align: center; word-wrap: break-word;''>Common Name</td></tr><tr><td style=''text-align: center; word-wrap: break-word;''>(A) <img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-1.jpg" alt="Figure 1 for question 40" /></td><td style=''text-align: center; word-wrap: break-word;''>(I) Allyl chloride</td></tr><tr><td style=''text-align: center; word-wrap: break-word;''>(B) <img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-2.jpg" alt="Figure 2 for question 40" /></td><td style=''text-align: center; word-wrap: break-word;''>(II) Ethylene dichloride</td></tr><tr><td style=''text-align: center; word-wrap: break-word;''><img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-3.jpg" alt="Figure 3 for question 40" /></td><td style=''text-align: center; word-wrap: break-word;''>(III) Vinyl chloride</td></tr><tr><td style=''text-align: center; word-wrap: break-word;''>(D) <img src="/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-4.jpg" alt="Figure 4 for question 40" /></td><td style=''text-align: center; word-wrap: break-word;''>(IV) Ethylidene chloride</td></tr></table>
 
 
-Choose the correct answer from the options given below:', NULL, '[{"text":"(A)-(I), (B)-(IV), (C)-(II), (D)-(III)","image_url":null,"alt":null},{"text":"(A)-(I), (B)-(II), (C)-(IV), (D)-(III)","image_url":null,"alt":null},{"text":"(A)-(III), (B)-(IV), (C)-(II), (D)-(I)","image_url":null,"alt":null},{"text":"(A)-(III), (B)-(II), (C)-(IV), (D)-(I)","image_url":null,"alt":null}]', NULL, 0, 'Concept:
+Choose the correct answer from the options given below:', NULL, '[{"text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)", "image_url": null, "alt": null}, {"text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)", "image_url": null, "alt": null}, {"text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)", "image_url": null, "alt": null}, {"text": "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)", "image_url": null, "alt": null}]', NULL, 0, 'Concept:
 
 Several halo compounds are widely known by their common names. Matching the structure with the traditional name is important.
 
@@ -117714,7 +117636,7 @@ Read the given passage and answer the questions that follow:
 
 There are several ways by which concentration of solution is quantitatively described: molality, molarity, mole fraction, ppm, mass % etc. Liquid-liquid solutions can be classified as ideal and non-ideal solutions on the basis of Raoult''s law. Suppose the molecules of two components are represented by A and B respectively. In pure components, the intermolecular attractive interaction will be of types A–A and B–B, whereas in the binary solution, A–B type of interactions will also be present. If intermolecular attractive forces between the A–A and B–B are nearly equal to those between A–B, ideal solution is formed.
 
-The properties of solution which depend on the number of solute particles irrespective of their nature relative to the total number of particles present in the solution are called colligative properties.', NULL, NULL, 2026, '/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-1.jpg', 'Figure 1 for question 40', NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.561Z', NULL, NULL, '[{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-1.jpg","alt":"Figure 1 for question 40","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-2.jpg","alt":"Figure 2 for question 40","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-3.jpg","alt":"Figure 3 for question 40","kind":"figure"},{"url":"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-4.jpg","alt":"Figure 4 for question 40","kind":"figure"}]', 'ai_draft', 'unreviewed', NULL, NULL);
+The properties of solution which depend on the number of solute particles irrespective of their nature relative to the total number of particles present in the solution are called colligative properties.', NULL, NULL, 2026, NULL, NULL, NULL, NULL, 'published', NULL, NULL, '2026-11-03T18:37:45.561Z', NULL, NULL, '[]', 'ai_draft', 'unreviewed', NULL, NULL);
 INSERT OR REPLACE INTO questions ("id", "subject_id", "topic_id", "passage_id", "text", "text_hi", "options", "options_hi", "correct_option", "explanation", "explanation_hi", "difficulty", "year", "image_url", "image_alt", "explanation_image_url", "explanation_image_alt", "status", "supersedes_id", "created_by", "created_at", "updated_at", "deleted_at", "assets_json", "explanation_source", "explanation_status", "reviewed_by", "reviewed_at") VALUES (10914, 5, NULL, NULL, 'When blood cells are placed in 1% (w/v) NaCl aqueous solution:', NULL, '[{"text":"Cell will burst","image_url":null,"alt":null},{"text":"Cell will shrink","image_url":null,"alt":null},{"text":"Cell will swell","image_url":null,"alt":null},{"text":"Cell remains as such","image_url":null,"alt":null}]', NULL, 1, 'The behavior of blood cells when placed in a solution of varying concentration is governed by the principle of osmosis. Osmosis is the net movement of solvent molecules (in this case, water) through a selectively permeable membrane from a region of higher solvent concentration (lower solute concentration) to a region of lower solvent concentration (higher solute concentration). Blood cells have a semipermeable membrane.
 
 The concentration of the solution is given as 1

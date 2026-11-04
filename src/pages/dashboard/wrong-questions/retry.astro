@@ -64,6 +64,26 @@ const questions = rows.map((row) => ({
     : null,
 }));
 const letters = ["A", "B", "C", "D", "E", "F"];
+
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
 ---
 
 <BaseLayout title="Unranked wrong-question retry — CUET Free Mock Test" description="Retry the questions you answered incorrectly. Unranked and private to your account." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
@@ -112,7 +132,7 @@ const letters = ["A", "B", "C", "D", "E", "F"];
             ) : null}
 
             <div class="mt-3 text-sm leading-7" set:html={renderRichText(question.text)}></div>
-            {question.image_url ? (
+            {question.image_url && !textContainsImage(question.text, question.image_url) ? (
               <img
                 class="mt-3 max-h-72 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
                 src={question.image_url}
@@ -129,7 +149,7 @@ const letters = ["A", "B", "C", "D", "E", "F"];
                   <input class="mt-1" type="radio" name={`q-${question.id}`} value={optionIndex} />
                   <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-current text-xs font-bold">{letters[optionIndex] ?? optionIndex + 1}</span>
                   <span class="min-w-0 flex-1">
-                    <span set:html={renderRichText(option.text)}></span>
+                    {isPlaceholderText(option.text) ? null : <span set:html={renderRichText(option.text)}></span>}
                     {option.image_url ? (
                       <img
                         class="mt-2 max-h-40 max-w-full rounded-lg border border-neutral-200 bg-white object-contain p-1 dark:border-neutral-700"
@@ -139,7 +159,9 @@ const letters = ["A", "B", "C", "D", "E", "F"];
                         height={option.image_height ?? undefined}
                         loading="lazy"
                       />
-                    ) : null}
+                    ) : (isPlaceholderText(option.text) ? (
+                      <span class="text-neutral-400 dark:text-neutral-500">Option {letters[optionIndex] ?? optionIndex + 1}</span>
+                    ) : null)}
                   </span>
                 </label>
               ))}

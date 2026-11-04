@@ -121,14 +121,79 @@ const withDimensions = <T extends { image_url: string | null }>(option: T): T & 
   };
 };
 
+function imageFileName(url: string | null | undefined): string {
+  if (!url) return "";
+  const clean = url.split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || "";
+}
+
+function isSameImage(url1: string | null | undefined, url2: string | null | undefined): boolean {
+  if (!url1 || !url2) return false;
+  if (url1 === url2) return true;
+  const f1 = imageFileName(url1);
+  const f2 = imageFileName(url2);
+  return Boolean(f1 && f2 && f1 === f2);
+}
+
+function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+  if (!text || !url) return false;
+  if (text.includes(url)) return true;
+  const f = imageFileName(url);
+  return Boolean(f && text.includes(f));
+}
+
+function isPlaceholderText(text: string | null | undefined): boolean {
+  if (!text) return true;
+  const trimmed = text.trim();
+  return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+}
+
 const questions = rawQuestions.map((question, index) => {
   const sets = optionSets[index];
-  const image = question.image_url ? imageDimensions.get(question.image_url) : undefined;
+  let optionsList = sets.options;
+  let questionImageUrl = question.image_url;
+  const rawAssets = assetSets[index];
+
+  // Defensive auto-mapping: if all options have placeholder text with no images,
+  // but assets contain candidate figures, wire them to options and clean up
+  const allPlaceholder =
+    optionsList.length >= 2 &&
+    optionsList.every((opt) => isPlaceholderText(opt.text) && !opt.image_url);
+  if (allPlaceholder && rawAssets.length >= optionsList.length) {
+    if (rawAssets.length === optionsList.length) {
+      optionsList = optionsList.map((opt, i) => ({
+        ...opt,
+        image_url: rawAssets[i].url,
+        alt: rawAssets[i].alt || `Option ${i + 1}`,
+      }));
+      questionImageUrl = null;
+    } else if (rawAssets.length === optionsList.length + 1) {
+      questionImageUrl = rawAssets[0].url;
+      optionsList = optionsList.map((opt, i) => ({
+        ...opt,
+        image_url: rawAssets[i + 1].url,
+        alt: rawAssets[i + 1].alt || `Option ${i + 1}`,
+      }));
+    }
+  }
+
+  const image = questionImageUrl ? imageDimensions.get(questionImageUrl) : undefined;
   const passageImage = question.passage_image_url
     ? imageDimensions.get(question.passage_image_url)
     : undefined;
   const passageBody = question.passage_body;
   const passageBodyHi = question.passage_body_hi;
+
+  const filteredAssets = rawAssets.filter((asset) => {
+    if (asset.kind === "options" || asset.kind === "explanation") return false;
+    if (asset.url.includes("-exp-")) return false;
+    if (questionImageUrl && isSameImage(asset.url, questionImageUrl)) return false;
+    if (textContainsImage(question.text, asset.url)) return false;
+    if (optionsList.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+    return true;
+  });
+
   return {
     id: question.id,
     section: question.section,
@@ -137,7 +202,7 @@ const questions = rawQuestions.map((question, index) => {
     text_hi: question.text_hi,
     rendered_text: renderRichText(question.text),
     rendered_text_hi: renderRichText(question.text_hi),
-    options: sets.options.map(withDimensions).map((opt) => ({
+    options: optionsList.map(withDimensions).map((opt) => ({
       ...opt,
       rendered_text: opt.text ? renderRichText(opt.text) : "",
     })),
@@ -145,7 +210,7 @@ const questions = rawQuestions.map((question, index) => {
       ...opt,
       rendered_text: opt.text ? renderRichText(opt.text) : "",
     })),
-    image_url: question.image_url,
+    image_url: questionImageUrl,
     image_alt: question.image_alt,
     image_width: image?.width ?? null,
     image_height: image?.height ?? null,
@@ -161,7 +226,7 @@ const questions = rawQuestions.map((question, index) => {
           image_height: passageImage?.height ?? null,
         }
       : null,
-    assets: assetSets[index].map((asset) => {
+    assets: filteredAssets.map((asset) => {
       const size = imageDimensions.get(asset.url);
       return {
         ...asset,
@@ -718,12 +783,24 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
                     <Fragment set:html={questions[0].rendered_text || questions[0].text} />
                   </div>
                 </div>
-                {questions[0].image_url && (
+                {questions[0].image_url && !textContainsImage(questions[0].text, questions[0].image_url) && (
                   <img class="nta-image mt-4" src={questions[0].image_url} alt={questions[0].image_alt || ""} />
+                )}
+                {questions[0].assets.length > 0 && (
+                  <figure class="mt-4 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3">
+                    <figcaption class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--muted)]">Figure / table</figcaption>
+                    <div class="flex flex-wrap gap-2">
+                      {questions[0].assets.map((asset) => (
+                        <img class="nta-image" src={asset.url} alt={asset.alt || ""} loading="lazy" />
+                      ))}
+                    </div>
+                  </figure>
                 )}
                 <div class="mt-5 space-y-1" role="radiogroup" aria-label="Answer options">
                   {questions[0].options.map((option, idx) => {
                     const isSelected = answerMap[questions[0].id]?.selected === idx;
+                    const isPlaceholder = isPlaceholderText(option.text);
+                    const bodyText = isPlaceholder ? null : (option.rendered_text ? option.rendered_text : option.text);
                     return (
                       <button
                         type="button"
@@ -735,10 +812,14 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
                         <span class="nta-radio" aria-hidden="true" />
                         <span class="shrink-0 text-[15px] font-semibold">{idx + 1}.</span>
                         <span class="min-w-0">
-                          {option.rendered_text ? <Fragment set:html={option.rendered_text} /> : (option.text || <span class="text-[var(--muted)]">Option {idx + 1}</span>)}
-                          {option.image_url && (
+                          {bodyText ? (
+                            option.rendered_text ? <Fragment set:html={option.rendered_text} /> : bodyText
+                          ) : null}
+                          {option.image_url ? (
                             <img class="nta-image mt-2" src={option.image_url} alt={option.alt || ""} loading="lazy" />
-                          )}
+                          ) : (!bodyText ? (
+                            <span class="text-[var(--muted)]">Option {idx + 1}</span>
+                          ) : null)}
                         </span>
                       </button>
                     );
@@ -949,6 +1030,34 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         });
       }
 
+      function imageFileName(url: string | null | undefined): string {
+        if (!url) return "";
+        const clean = url.split("?")[0].split("#")[0];
+        const parts = clean.split("/");
+        return parts[parts.length - 1] || "";
+      }
+
+      function isSameImage(url1: string | null | undefined, url2: string | null | undefined): boolean {
+        if (!url1 || !url2) return false;
+        if (url1 === url2) return true;
+        const f1 = imageFileName(url1);
+        const f2 = imageFileName(url2);
+        return Boolean(f1 && f2 && f1 === f2);
+      }
+
+      function textContainsImage(text: string | null | undefined, url: string | null | undefined): boolean {
+        if (!text || !url) return false;
+        if (text.includes(url)) return true;
+        const f = imageFileName(url);
+        return Boolean(f && text.includes(f));
+      }
+
+      function isPlaceholderText(text: string | null | undefined): boolean {
+        if (!text) return true;
+        const trimmed = text.trim();
+        return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
+      }
+
       function flushTime() {
         const now = Date.now();
         const seconds = Math.floor((now - state.enteredAt) / 1000);
@@ -1018,7 +1127,8 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         const options = state.language === "hi" && question.options_hi.length ? question.options_hi : question.options;
         const selected = answers[question.id].selected;
         return options.map((option, index) => {
-          const body = option.rendered_text || (option.text ? escapeHtml(option.text) : "");
+          const isPlaceholder = isPlaceholderText(option.text);
+          const body = isPlaceholder ? "" : (option.rendered_text || (option.text ? escapeHtml(option.text) : ""));
           const dimensions =
             option.image_width && option.image_height
               ? ` width="${option.image_width}" height="${option.image_height}"`
@@ -1026,10 +1136,13 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
           const image = option.image_url
             ? `<img class="nta-image mt-2" src="${option.image_url}" alt="${(option.alt || "").replace(/"/g, "&quot;")}"${dimensions} loading="lazy" />`
             : "";
+          const content = body
+            ? `${body}${image ? `<div class="mt-2">${image}</div>` : ""}`
+            : (image ? image : `<span class="text-[var(--muted)]">Option ${index + 1}</span>`);
           return `<button type="button" class="nta-option ${selected === index ? "selected" : ""}" data-option="${index}" role="radio" aria-checked="${selected === index}" ${state.timeUp ? "disabled" : ""}>
             <span class="nta-radio" aria-hidden="true"></span>
             <span class="shrink-0 text-[15px] font-semibold">${index + 1}.</span>
-            <span class="min-w-0">${body || `<span class="text-[var(--muted)]">Option ${index + 1}</span>`}${image}</span>
+            <span class="min-w-0">${content}</span>
           </button>`;
         }).join("");
       }
@@ -1066,12 +1179,19 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
             </div>`
           : "";
         const text = state.language === "hi" && question.rendered_text_hi ? question.rendered_text_hi : (question.rendered_text || escapeHtml(question.text));
-        const image = question.image_url
+        const shouldRenderStemImage = Boolean(question.image_url && !textContainsImage(text, question.image_url));
+        const image = shouldRenderStemImage
           ? `<img class="nta-image mt-4" src="${question.image_url}" alt="${(question.image_alt || "").replace(/"/g, "&quot;")}"${question.image_width && question.image_height ? ` width="${question.image_width}" height="${question.image_height}"` : ""} />`
           : "";
-        const extraAssets = question.assets.filter((asset) => asset.url !== question.image_url);
-        const optionAssets = extraAssets.filter((asset) => asset.kind === "options");
-        const bodyAssets = extraAssets.filter((asset) => asset.kind !== "options");
+        const bodyAssets = question.assets.filter((asset) => {
+          if (asset.kind === "options" || asset.kind === "explanation") return false;
+          if (asset.url.includes("-exp-")) return false;
+          if (question.image_url && isSameImage(asset.url, question.image_url)) return false;
+          if (textContainsImage(text, asset.url)) return false;
+          if (question.options.some((opt) => opt.image_url && isSameImage(opt.image_url, asset.url))) return false;
+          return true;
+        });
+        const optionAssets = question.assets.filter((asset) => asset.kind === "options");
         const marksLabel = `${data.marking.correct >= 0 ? "+" : ""}${data.marking.correct} / ${data.marking.wrong}`;
         area.innerHTML = `
           <article class="exam-question-card" aria-label="Question ${state.index + 1}">

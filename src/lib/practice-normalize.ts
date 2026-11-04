@@ -11,6 +11,8 @@
 export interface RawOption {
   id?: string | null;
   text?: string | null;
+  image?: string | null;
+  image_url?: string | null;
 }
 
 export interface RawAsset {
@@ -157,6 +159,7 @@ export interface LocalSubject {
 export interface LocalQuestionOption {
   id: string;
   text: string;
+  image_url?: string | null;
 }
 
 export interface LocalQuestionPassage {
@@ -391,9 +394,11 @@ export function buildQuestion(
   const usedLabels = new Set<string>();
   const options: LocalQuestionOption[] = [];
   for (const [optionIndex, option] of (raw.optionsEn ?? []).entries()) {
+    const rawImage = option.image_url || option.image;
     options.push({
       id: optionLabel(option.id, optionIndex, usedLabels),
       text: normalizeOptionText(option.text),
+      ...(rawImage ? { image_url: cleanText(rawImage) } : {}),
     });
   }
 

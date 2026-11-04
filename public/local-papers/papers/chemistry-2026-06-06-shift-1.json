@@ -64,27 +64,31 @@
       {
         "id": "q02",
         "sourceQuestionNo": 2,
-        "stemEn": "What would be the correct structure of thymine base?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-1.jpg\" alt=\"Figure 1 for question 2\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-2.jpg\" alt=\"Figure 2 for question 2\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-3.jpg\" alt=\"Figure 3 for question 2\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-4.jpg\" alt=\"Figure 4 for question 2\" />\n</div>",
+        "stemEn": "What would be the correct structure of thymine base?",
         "optionsEn": [
           {
             "id": "A",
-            "text": "figA"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-1.jpg"
           },
           {
             "id": "B",
-            "text": "figB"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-2.jpg"
           },
           {
             "id": "C",
-            "text": "figC"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-3.jpg"
           },
           {
             "id": "D",
-            "text": "figD"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-4.jpg"
           }
         ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
+        "optionsAreImages": true,
+        "correctAnswer": "B",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -92,36 +96,7 @@
         "sourcePages": [
           1
         ],
-        "assets": [
-          {
-            "id": "q02-figure-1",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 2"
-          },
-          {
-            "id": "q02-figure-2",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-2.jpg",
-            "page": 1,
-            "alt": "Figure 2 for question 2"
-          },
-          {
-            "id": "q02-figure-3",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-3.jpg",
-            "page": 1,
-            "alt": "Figure 3 for question 2"
-          },
-          {
-            "id": "q02-figure-4",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q02-figure-4.jpg",
-            "page": 1,
-            "alt": "Figure 4 for question 2"
-          }
-        ]
+        "assets": []
       },
       {
         "id": "q03",
@@ -301,27 +276,31 @@
       {
         "id": "q08",
         "sourceQuestionNo": 8,
-        "stemEn": "Write the major product A in the following chemical reaction.\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg\" alt=\"Figure 1 for question 8\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-2.jpg\" alt=\"Figure 2 for question 8\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-3.jpg\" alt=\"Figure 3 for question 8\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-4.jpg\" alt=\"Figure 4 for question 8\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-5.jpg\" alt=\"Figure 5 for question 8\" />\n</div>",
+        "stemEn": "Write the major product A in the following chemical reaction.\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg\" alt=\"Reaction diagram for question 8\" />\n</div>",
         "optionsEn": [
           {
             "id": "A",
-            "text": "figA"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-2.jpg"
           },
           {
             "id": "B",
-            "text": "figB"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-3.jpg"
           },
           {
             "id": "C",
-            "text": "figC"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-4.jpg"
           },
           {
             "id": "D",
-            "text": "figD"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-5.jpg"
           }
         ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
+        "optionsAreImages": true,
+        "correctAnswer": "B",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -335,35 +314,7 @@
             "kind": "figure",
             "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg",
             "page": 1,
-            "alt": "Figure 1 for question 8"
-          },
-          {
-            "id": "q08-figure-2",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-2.jpg",
-            "page": 1,
-            "alt": "Figure 2 for question 8"
-          },
-          {
-            "id": "q08-figure-3",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-3.jpg",
-            "page": 1,
-            "alt": "Figure 3 for question 8"
-          },
-          {
-            "id": "q08-figure-4",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-4.jpg",
-            "page": 1,
-            "alt": "Figure 4 for question 8"
-          },
-          {
-            "id": "q08-figure-5",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-5.jpg",
-            "page": 1,
-            "alt": "Figure 5 for question 8"
+            "alt": "Reaction diagram for question 8"
           }
         ]
       },
@@ -403,27 +354,31 @@
       {
         "id": "q10",
         "sourceQuestionNo": 10,
-        "stemEn": "The major product Z in the following chemical reaction is:\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q10-figure-1.jpg\" alt=\"Figure 1 for question 10\" />\n</div>",
+        "stemEn": "The major product Z in the following chemical reaction is:\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q10-reaction.jpg\" alt=\"Reaction diagram for question 10\" />\n</div>",
         "optionsEn": [
           {
             "id": "A",
-            "text": "figA"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-a.jpg"
           },
           {
             "id": "B",
-            "text": "figB"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-b.jpg"
           },
           {
             "id": "C",
-            "text": "figC"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-c.jpg"
           },
           {
             "id": "D",
-            "text": "figD"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-option-d.jpg"
           }
         ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
+        "optionsAreImages": true,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -433,11 +388,11 @@
         ],
         "assets": [
           {
-            "id": "q10-figure-1",
+            "id": "q10-reaction",
             "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-figure-1.jpg",
+            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q10-reaction.jpg",
             "page": 1,
-            "alt": "Figure 1 for question 10"
+            "alt": "Reaction diagram for question 10"
           }
         ]
       },
@@ -871,7 +826,7 @@
         "assets": [
           {
             "id": "q23-exp-1",
-            "kind": "figure",
+            "kind": "explanation",
             "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q23-exp-1.jpg",
             "page": 1,
             "alt": "Figure 1 for question 23"
@@ -1085,7 +1040,7 @@
         "assets": [
           {
             "id": "q29-exp-1",
-            "kind": "figure",
+            "kind": "explanation",
             "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q29-exp-1.jpg",
             "page": 1,
             "alt": "Figure 1 for question 29"
@@ -1128,27 +1083,31 @@
       {
         "id": "q31",
         "sourceQuestionNo": 31,
-        "stemEn": "What would be the major product A?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-1.jpg\" alt=\"Figure 1 for question 31\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-2.jpg\" alt=\"Figure 2 for question 31\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-3.jpg\" alt=\"Figure 3 for question 31\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-4.jpg\" alt=\"Figure 4 for question 31\" />\n</div>",
+        "stemEn": "What would be the major product A?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-reaction.jpg\" alt=\"Reaction diagram for question 31\" />\n</div>",
         "optionsEn": [
           {
             "id": "A",
-            "text": "figA"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-option-a.jpg"
           },
           {
             "id": "B",
-            "text": "figB"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-2.jpg"
           },
           {
             "id": "C",
-            "text": "figC"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-3.jpg"
           },
           {
             "id": "D",
-            "text": "figD"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-4.jpg"
           }
         ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
+        "optionsAreImages": true,
+        "correctAnswer": "D",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -1158,32 +1117,11 @@
         ],
         "assets": [
           {
-            "id": "q31-figure-1",
+            "id": "q31-reaction",
             "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-1.jpg",
+            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-reaction.jpg",
             "page": 1,
-            "alt": "Figure 1 for question 31"
-          },
-          {
-            "id": "q31-figure-2",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-2.jpg",
-            "page": 1,
-            "alt": "Figure 2 for question 31"
-          },
-          {
-            "id": "q31-figure-3",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-3.jpg",
-            "page": 1,
-            "alt": "Figure 3 for question 31"
-          },
-          {
-            "id": "q31-figure-4",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q31-figure-4.jpg",
-            "page": 1,
-            "alt": "Figure 4 for question 31"
+            "alt": "Reaction diagram for question 31"
           }
         ]
       },
@@ -1221,7 +1159,7 @@
         "assets": [
           {
             "id": "q32-exp-1",
-            "kind": "figure",
+            "kind": "explanation",
             "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q32-exp-1.jpg",
             "page": 1,
             "alt": "Figure 1 for question 32"
@@ -1324,7 +1262,7 @@
         "assets": [
           {
             "id": "q35-exp-1",
-            "kind": "figure",
+            "kind": "explanation",
             "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q35-exp-1.jpg",
             "page": 1,
             "alt": "Figure 1 for question 35"
@@ -1494,36 +1432,7 @@
         "sourcePages": [
           1
         ],
-        "assets": [
-          {
-            "id": "q40-figure-1",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 40"
-          },
-          {
-            "id": "q40-figure-2",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-2.jpg",
-            "page": 1,
-            "alt": "Figure 2 for question 40"
-          },
-          {
-            "id": "q40-figure-3",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-3.jpg",
-            "page": 1,
-            "alt": "Figure 3 for question 40"
-          },
-          {
-            "id": "q40-figure-4",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-4.jpg",
-            "page": 1,
-            "alt": "Figure 4 for question 40"
-          }
-        ]
+        "assets": []
       },
       {
         "id": "q41",
@@ -1784,26 +1693,30 @@
       {
         "id": "q49",
         "sourceQuestionNo": 49,
-        "stemEn": "The final structure of amine produced by Hoffmann degradation of m-bromobenzamide is:\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-1.jpg\" alt=\"Figure 1 for question 49\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-2.jpg\" alt=\"Figure 2 for question 49\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-3.jpg\" alt=\"Figure 3 for question 49\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-4.jpg\" alt=\"Figure 4 for question 49\" />\n</div>",
+        "stemEn": "The final structure of amine produced by Hoffmann degradation of m-bromobenzamide is:",
         "optionsEn": [
           {
             "id": "A",
-            "text": "m-Bromobenzylamine"
+            "text": "m-Bromobenzylamine",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-1.jpg"
           },
           {
             "id": "B",
-            "text": "m-Bromoaniline"
+            "text": "m-Bromoaniline",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-2.jpg"
           },
           {
             "id": "C",
-            "text": "m-Bromotoluene derivatives"
+            "text": "m-Bromotoluene derivatives",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-3.jpg"
           },
           {
             "id": "D",
-            "text": "Aniline"
+            "text": "Aniline",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-4.jpg"
           }
         ],
-        "optionsAreImages": false,
+        "optionsAreImages": true,
         "correctAnswer": null,
         "explanationEn": null,
         "passageId": "passage-46-50",
@@ -1812,61 +1725,36 @@
         "sourcePages": [
           1
         ],
-        "assets": [
-          {
-            "id": "q49-figure-1",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 49"
-          },
-          {
-            "id": "q49-figure-2",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-2.jpg",
-            "page": 1,
-            "alt": "Figure 2 for question 49"
-          },
-          {
-            "id": "q49-figure-3",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-3.jpg",
-            "page": 1,
-            "alt": "Figure 3 for question 49"
-          },
-          {
-            "id": "q49-figure-4",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q49-figure-4.jpg",
-            "page": 1,
-            "alt": "Figure 4 for question 49"
-          }
-        ]
+        "assets": []
       },
       {
         "id": "q50",
         "sourceQuestionNo": 50,
-        "stemEn": "What would be the structure of final product X in the following chemical reaction?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-1.jpg\" alt=\"Figure 1 for question 50\" />\n</div>\n\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-2.jpg\" alt=\"Figure 2 for question 50\" />\n</div>",
+        "stemEn": "What would be the structure of final product X in the following chemical reaction?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q50-reaction.jpg\" alt=\"Reaction diagram for question 50\" />\n</div>",
         "optionsEn": [
           {
             "id": "A",
-            "text": "figA"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-option-a.jpg"
           },
           {
             "id": "B",
-            "text": "figB"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-option-b.jpg"
           },
           {
             "id": "C",
-            "text": "figC"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-option-c.jpg"
           },
           {
             "id": "D",
-            "text": "figD"
+            "text": "",
+            "image": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-2.jpg"
           }
         ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
+        "optionsAreImages": true,
+        "correctAnswer": "C",
         "explanationEn": null,
         "passageId": "passage-46-50",
         "reviewStatus": "keyed",
@@ -1876,18 +1764,11 @@
         ],
         "assets": [
           {
-            "id": "q50-figure-1",
+            "id": "q50-reaction",
             "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-1.jpg",
+            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-reaction.jpg",
             "page": 1,
-            "alt": "Figure 1 for question 50"
-          },
-          {
-            "id": "q50-figure-2",
-            "kind": "figure",
-            "path": "/local-papers/assets/chemistry-2026-06-06-shift-1/q50-figure-2.jpg",
-            "page": 1,
-            "alt": "Figure 2 for question 50"
+            "alt": "Reaction diagram for question 50"
           }
         ]
       }

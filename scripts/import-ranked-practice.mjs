@@ -92,18 +92,22 @@ function instructionsFor(count, durationMinutes) {
 }
 
 function galleryAssets(question) {
-  return question.assets.map((asset) => ({
-    url: asset.path,
-    alt: asset.alt || `${asset.kind} for question ${question.number}`,
-    kind: asset.kind,
-  }));
+  return question.assets
+    .filter((asset) => asset.kind !== "explanation" && !asset.path.includes("-exp-"))
+    .map((asset) => ({
+      url: asset.path,
+      alt: asset.alt || `${asset.kind} for question ${question.number}`,
+      kind: asset.kind,
+    }));
 }
 
-function primaryAsset(assets) {
+function primaryAsset(assets, options = []) {
+  const optionUrls = new Set(options.map((o) => o.image_url).filter(Boolean));
+  const available = assets.filter((asset) => !optionUrls.has(asset.url) && asset.kind !== "explanation" && !asset.url.includes("-exp-"));
   return (
-    assets.find((asset) => asset.kind === "figure") ??
-    assets.find((asset) => asset.kind === "table") ??
-    assets.find((asset) => asset.kind !== "options") ??
+    available.find((asset) => asset.kind === "figure") ??
+    available.find((asset) => asset.kind === "table") ??
+    available.find((asset) => asset.kind !== "options") ??
     null
   );
 }
@@ -194,12 +198,12 @@ for (const summary of summaries) {
 
   const insertQuestion = (question, passageExpr) => {
     const assets = galleryAssets(question);
-    const primary = primaryAsset(assets);
     const options = question.options.map((option) => ({
       text: option.text,
-      image_url: null,
+      image_url: option.image_url ?? null,
       alt: null,
     }));
+    const primary = primaryAsset(assets, options);
     const correctOption = question.options.findIndex((option) => option.id === question.correctAnswer);
     if (correctOption < 0) {
       warnings.push(`${paper.slug}/${question.id}: correct option is not in the option list.`);
