@@ -242,7 +242,24 @@ function renderKatexBlock(
       strict: "ignore",
       output: "htmlAndMathml",
     });
-    mathBlocks.push(rendered);
+    // Display equations are horizontally scrollable on narrow screens. A
+    // scrollable region must be keyboard reachable, so make the KaTeX display
+    // wrapper focusable and give it an accessible name.
+    let accessible = rendered;
+    if (displayMode) {
+      accessible = rendered.replace(
+        '<span class="katex-display">',
+        '<span class="katex-display" tabindex="0" role="group" aria-label="Scrollable equation">',
+      );
+    } else if (expression.length > 40) {
+      // A long formula stored without display delimiters still overflows a
+      // phone. Give it its own scroll container and keyboard focus target.
+      accessible = rendered.replace(
+        '<span class="katex">',
+        '<span class="katex katex-scroll" tabindex="0" role="group" aria-label="Scrollable equation">',
+      );
+    }
+    mathBlocks.push(accessible);
     return `\u0000MATH_${mathBlocks.length - 1}\u0000`;
   } catch {
     return null;
@@ -375,7 +392,8 @@ function renderLeftRightSpans(value: string, mathBlocks: string[]): string {
 
     output += value.slice(cursor, start);
     const span = value.slice(start, end);
-    output += renderKatexBlock(span, false, mathBlocks, true) ?? span;
+    const spanDisplay = /\\begin\{/.test(span) || span.length > 140;
+    output += renderKatexBlock(span, spanDisplay, mathBlocks, true) ?? span;
     cursor = end;
   }
 
@@ -385,7 +403,7 @@ function renderLeftRightSpans(value: string, mathBlocks: string[]): string {
 function renderEnvironmentSpans(value: string, mathBlocks: string[]): string {
   return value.replace(
     /\\begin\{([a-zA-Z*]+)\}[\s\S]*?\\end\{\1\}/g,
-    (match) => renderKatexBlock(match, false, mathBlocks, true) ?? match,
+    (match) => renderKatexBlock(match, true, mathBlocks, true) ?? match,
   );
 }
 
@@ -617,12 +635,17 @@ function renderMathWithRepair(
   displayMode: boolean,
   mathBlocks: string[],
 ): string | null {
-  const direct = renderKatexBlock(expression, displayMode, mathBlocks, true);
+  // A long or environment-based formula cannot fit on a phone as inline math.
+  // Promote it to display mode so the scroll container and focus target apply
+  // instead of widening the page.
+  const effectiveDisplay =
+    displayMode || /\\begin\{/.test(expression) || expression.length > 140;
+  const direct = renderKatexBlock(expression, effectiveDisplay, mathBlocks, true);
   if (direct) return direct;
 
   const repaired = repairMathExpression(expression);
   if (repaired !== expression) {
-    return renderKatexBlock(repaired, displayMode, mathBlocks, true);
+    return renderKatexBlock(repaired, effectiveDisplay, mathBlocks, true);
   }
   return null;
 }

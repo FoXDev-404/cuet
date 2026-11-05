@@ -339,6 +339,27 @@ h4 {
 
 /* ===== Question & Explanation Rich Text Components ===== */
 
+/* Long display equations must scroll inside their block on mobile instead of
+   widening the whole page (axe horizontal-overflow check on result solutions). */
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+.katex-display > .katex {
+  max-width: 100%;
+}
+
+.katex.katex-scroll {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
+
 .nta-table-container {
   width: 100%;
   overflow-x: auto;
