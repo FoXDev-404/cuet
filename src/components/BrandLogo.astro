@@ -6,6 +6,7 @@ interface Props {
   size?: "default" | "compact";
   link?: boolean;
   target?: string;
+  loading?: "eager" | "lazy";
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   size = "default",
   link = true,
   target,
+  loading = tone === "dark" ? "lazy" : "eager",
 } = Astro.props;
 const compact = size === "compact";
 const wordmark = tone === "dark" ? "text-white" : "text-neutral-900 dark:text-white";
@@ -37,6 +39,7 @@ const accent = tone === "dark" ? "text-accent-400" : "text-accent-700 dark:text-
         alt=""
         width={compact ? 28 : 36}
         height={compact ? 28 : 36}
+        loading={loading}
         decoding="async"
         class:list={[
           "shrink-0 rounded-xl shadow-[var(--shadow-brand)] transition-transform group-hover:scale-105",
@@ -72,6 +75,7 @@ const accent = tone === "dark" ? "text-accent-400" : "text-accent-700 dark:text-
         alt=""
         width={compact ? 28 : 36}
         height={compact ? 28 : 36}
+        loading={loading}
         decoding="async"
         class:list={[
           "shrink-0 rounded-xl shadow-[var(--shadow-brand)]",
