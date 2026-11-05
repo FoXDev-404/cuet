@@ -26,7 +26,7 @@ function paperBySlug(slug: string): LocalIndexPaper {
 }
 
 const SCORED_PAPER = paperBySlug("english-2022-08-06-shift-1");
-const PENDING_PAPER = paperBySlug("biology-2025-05-20-shift-2");
+const DETAIL_PAPER = paperBySlug("biology-2025-05-20-shift-2");
 const INSTRUCTIONS = `/mock/${SCORED_PAPER.slug}/instructions`;
 
 test.beforeEach(async ({ page }) => {
@@ -50,9 +50,11 @@ async function submitAttempt(page: Page): Promise<void> {
 }
 
 test("practice library stays available and routes into the ranked engine", async ({ page }) => {
-  await page.goto("/mock-tests");
+  // The unfiltered library is sorted by paper size and paginated, so filter to
+  // the fixture paper's year before asserting its row is linked.
+  await page.goto("/mock-tests?year=2022");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Mock tests built from previous-year CUET papers",
+    "Practice with previous-year CUET mock tests",
   );
   await expect(page.locator(`a[href="/mock-tests/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
 
@@ -70,24 +72,20 @@ test("practice library stays available and routes into the ranked engine", async
   );
 });
 
-test("practice detail discloses questions excluded from the ranked paper", async ({ page }) => {
-  await page.goto(`/mock-tests/${PENDING_PAPER.slug}`);
+test("practice detail reports the scored count when no questions are excluded", async ({
+  page,
+}) => {
+  await page.goto(`/mock-tests/${DETAIL_PAPER.slug}`);
 
-  await expect(
-    page.getByText(
-      new RegExp(
-        `${PENDING_PAPER.pendingReviewCount} questions are not included in the ranked paper`,
-      ),
-    ),
-  ).toBeVisible();
-  await expect(
-    page.getByText(
-      `The ranked attempt contains ${PENDING_PAPER.scorableQuestionCount} scored questions.`,
-    ),
-  ).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "CUET UG Biology 20 May 2025",
+  );
+  await expect(page.getByText(/not included in the ranked paper/)).toHaveCount(0);
+  const scoredCard = page.getByText("in the ranked paper").locator("..");
+  await expect(scoredCard).toContainText(String(DETAIL_PAPER.scorableQuestionCount));
   await expect(page.getByRole("link", { name: /Start ranked paper/ })).toHaveAttribute(
     "href",
-    `/mock/${PENDING_PAPER.slug}/instructions`,
+    `/mock/${DETAIL_PAPER.slug}/instructions`,
   );
 });
 
