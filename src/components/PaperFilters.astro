@@ -38,7 +38,7 @@ let activeFilterCount = 0;
 if (params.q) activeFilterCount += 1;
 if (params.year !== "all") activeFilterCount += 1;
 if (params.subject !== "all") activeFilterCount += 1;
-if (params.type !== "full") activeFilterCount += 1;
+if (params.type !== "all") activeFilterCount += 1;
 if (params.sort !== "newest") activeFilterCount += 1;
 ---
 
@@ -65,7 +65,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
       <!-- Hidden fields to preserve state on search submit without JS -->
       {params.year !== "all" && <input type="hidden" name="year" value={params.year} />}
       {params.subject !== "all" && <input type="hidden" name="subject" value={params.subject} />}
-      {params.type !== "full" && <input type="hidden" name="type" value={params.type} />}
+      {params.type !== "all" && <input type="hidden" name="type" value={params.type} />}
       {params.sort !== "newest" && <input type="hidden" name="sort" value={params.sort} />}
 
       <!-- Search Submit Button (accessible without JS) -->

@@ -125,7 +125,7 @@ describe("paper-list module", () => {
       expect(params.q).toBe("");
       expect(params.year).toBe("all");
       expect(params.subject).toBe("all");
-      expect(params.type).toBe("full"); // Full papers by default
+      expect(params.type).toBe("all"); // All papers by default so no papers are hidden
       expect(params.sort).toBe("newest"); // Newest by default
       expect(params.page).toBe(1);
     });
@@ -159,7 +159,7 @@ describe("paper-list module", () => {
       const params = sanitizeParams(search, [2025, 2026], ["english"]);
       expect(params.year).toBe("all");
       expect(params.subject).toBe("all");
-      expect(params.type).toBe("full");
+      expect(params.type).toBe("all");
       expect(params.sort).toBe("newest");
       expect(params.page).toBe(1);
     });
@@ -175,7 +175,7 @@ describe("paper-list module", () => {
       expect(isFiltered({ ...sanitizeParams(new URLSearchParams()), q: "bio" })).toBe(true);
       expect(isFiltered({ ...sanitizeParams(new URLSearchParams()), year: 2025 })).toBe(true);
       expect(isFiltered({ ...sanitizeParams(new URLSearchParams()), subject: "chemistry" })).toBe(true);
-      expect(isFiltered({ ...sanitizeParams(new URLSearchParams()), type: "all" })).toBe(true);
+      expect(isFiltered({ ...sanitizeParams(new URLSearchParams()), type: "mini" })).toBe(true);
       expect(isFiltered({ ...sanitizeParams(new URLSearchParams()), sort: "oldest" })).toBe(true);
       expect(isFiltered({ ...sanitizeParams(new URLSearchParams()), page: 2 })).toBe(true);
     });
@@ -206,8 +206,13 @@ describe("paper-list module", () => {
       }),
     ];
 
-    it("filters by type: full papers only by default", () => {
+    it("shows all papers by default so mini papers are not hidden", () => {
       const filtered = applyFilters(papers, sanitizeParams(new URLSearchParams()));
+      expect(filtered.map((p) => p.slug)).toEqual(["p1", "p2", "p3"]);
+    });
+
+    it("filters by type: full papers", () => {
+      const filtered = applyFilters(papers, sanitizeParams(new URLSearchParams({ type: "full" })));
       expect(filtered.map((p) => p.slug)).toEqual(["p1", "p3"]);
     });
 

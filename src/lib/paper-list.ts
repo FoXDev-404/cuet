@@ -129,7 +129,7 @@ export function sanitizeParams(
   }
 
   const rawType = (get("type") || "").trim().toLowerCase();
-  let type: PaperTypeFilter = "full"; // Default is Full papers
+  let type: PaperTypeFilter = "all"; // Default is All so no papers are hidden
   if (rawType === "mini" || rawType === "all" || rawType === "full") {
     type = rawType;
   }
@@ -158,7 +158,7 @@ export function isFiltered(params: PaperFilterParams): boolean {
     params.q.length > 0 ||
       params.year !== "all" ||
       params.subject !== "all" ||
-      params.type !== "full" ||
+      params.type !== "all" ||
       params.sort !== "newest" ||
       params.page > 1
   );
@@ -290,7 +290,7 @@ export function buildFilterUrl(
   if (merged.q) sp.set("q", merged.q);
   if (merged.year !== "all") sp.set("year", String(merged.year));
   if (merged.subject !== "all") sp.set("subject", merged.subject);
-  if (merged.type !== "full") sp.set("type", merged.type);
+  if (merged.type !== "all") sp.set("type", merged.type);
   if (merged.sort !== "newest") sp.set("sort", merged.sort);
   if (merged.page > 1) sp.set("page", String(merged.page));
 
@@ -304,23 +304,24 @@ export function buildFilterUrl(
  * English and General Test preferred.
  */
 export function recommendPapers(papers: LocalPaperSummary[], limit = 3): LocalPaperSummary[] {
-  // Only full papers with full key
-  const candidates = papers.filter(
-    (p) => classifyPaper(p) === "full" && getKeyStatus(p).isFullKey
-  );
+  // Candidate pool: full papers preferred with full key, then highest scorable ratio
+  const fullPapers = papers.filter((p) => classifyPaper(p) === "full");
+  const candidates = fullPapers.length > 0 ? fullPapers : papers;
 
-  // Score candidate: English (+20), General Test (+10), newest date
   const scored = candidates.map((p) => {
     let prefScore = 0;
     const sub = p.subject.slug.toLowerCase();
     if (sub.includes("english")) prefScore += 20;
     else if (sub.includes("general")) prefScore += 10;
-    return { paper: p, prefScore };
+    if (getKeyStatus(p).isFullKey) prefScore += 50;
+    const scorableRatio = (p.scorableQuestionCount || 1) / (p.recoveredQuestionCount || 1);
+    return { paper: p, prefScore, scorableRatio };
   });
 
   scored.sort(
     (a, b) =>
       b.prefScore - a.prefScore ||
+      b.scorableRatio - a.scorableRatio ||
       b.paper.year - a.paper.year ||
       (b.paper.date ?? "").localeCompare(a.paper.date ?? "") ||
       a.paper.title.localeCompare(b.paper.title)

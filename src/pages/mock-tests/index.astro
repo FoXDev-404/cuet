@@ -35,9 +35,16 @@ const filteredPapers = applyFilters(allPapers, params);
 const sortedPapers = sortPapers(filteredPapers, params.sort);
 const pagination = paginate(sortedPapers, params.page, 24);
 
-// Recommended papers for "Start here" (only on page 1 with default view)
-const showStartHere = params.page === 1 && !params.q && params.year === "all" && params.subject === "all";
-const recommendedPapers = showStartHere ? recommendPapers(allPapers, 2) : [];
+// Recommended papers for "Start here" (shown on page 1 when not searching and subject is all)
+const candidatesForRecommendation = params.year !== "all" ? filteredPapers : allPapers;
+let recommendedPapers =
+  params.page === 1 && !params.q && params.subject === "all" && params.type === "all"
+    ? recommendPapers(candidatesForRecommendation, 2)
+    : [];
+if (recommendedPapers.length === 0 && params.page === 1 && !params.q && params.subject === "all" && params.type === "all") {
+  recommendedPapers = recommendPapers(allPapers, 2);
+}
+const showStartHere = recommendedPapers.length > 0;
 
 // Facts summary
 const totalPapersCount = allPapers.length;
