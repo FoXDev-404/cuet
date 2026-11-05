@@ -89,15 +89,20 @@ Optional public integrations are inert unless configured:
 Both KV namespaces are declared explicitly, including `SESSION`. Without an explicit
 `id`, remote preview sessions fail with `SESSION bindings must have an "id" field`.
 
-## OCR previous-year practice library
+## Previous-year practice library
 
-The unranked practice library holds 106 CUET/CUCET papers from 2021–2025 across 11
-subjects. `src/data/local-papers/index.json` is the paper index;
+The practice library holds 245 CUET/CUCET papers (2021–2026) / 7,527 scorable
+questions. `src/data/local-papers/index.json` is the paper index;
 `src/data/local-papers/keys.json` (server-only) holds printed keys and explanations;
 each paper's public JSON lives under `public/local-papers/papers/` and its exact
-printed-page crops under `public/local-papers/assets/<slug>/`. The library is loaded at
-module scope, so it needs no D1 migration, seed or upload step. Changing a paper is a
-code change and a redeploy.
+printed-page crops under `public/local-papers/assets/<slug>/`.
+
+The JSON files are the **import seed**, not the runtime source of truth. Apply
+`npm run db:migrate:local` (or `:remote`), then run
+`npm run db:import:practice:local` and `npm run db:import:ranked-practice:local`
+(or the `:remote` variants). Run `node scripts/backfill-explanation-provenance.mjs`
+after the import so explanation provenance is classified. A paper change is a seed
+change plus an import; publishing a new ranked version keeps prior attempts frozen.
 
 `tools/ocr/_build_local_papers.py` regenerates the whole library from the PaddleOCR-VL
 export that must first be restored into `tools/ocr/OCR DATA` (raw exports are

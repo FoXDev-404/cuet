@@ -75,12 +75,14 @@ npm run test:e2e  # Playwright end-to-end suite
 npm run db:migrate:remote
 npm run db:import:practice:remote
 npm run db:import:ranked-practice:remote
-npm run build
-npx wrangler deploy
+node scripts/backfill-explanation-provenance.mjs
+npm run deploy
 ```
 
-The Worker name and production hostname are intentionally unchanged from the Astro
-project's original deployment. The legacy Next.js project and its Cloudflare
+`npm run deploy` builds with the production env and deploys via
+`scripts/deploy-production.mjs`; do not run raw `npx wrangler deploy` or you can ship
+development vars. The Worker name and production hostname are intentionally unchanged
+from the Astro project's original deployment. The legacy Next.js project and its Cloudflare
 resources have been retired.
 
 ## Documentation

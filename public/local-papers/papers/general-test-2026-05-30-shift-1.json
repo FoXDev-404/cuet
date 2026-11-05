@@ -73,11 +73,13 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": "D",
+        "correctAnswer": null,
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
-        "reviewFlags": [],
+        "reviewFlags": [
+          "key_conflict_review"
+        ],
         "sourcePages": [
           1
         ],

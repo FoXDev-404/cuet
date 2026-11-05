@@ -964,12 +964,12 @@ the 5,322 real questions, not only the empty ranked bank.
 - Added `scripts/import-cuet-json-output.mjs`, which converts the PaddleOCR-VL
   `CUET_JSON_OUTPUT` bundle (180 papers, 8,366 extracted questions) into the
   refined practice-library seed.
-- Imported 31 new scorable papers and 1,240 questions from Accountancy, Business
+- Imported 31 new scorable papers and 1,236 questions from Accountancy, Business
   Studies, Economics, Political Science, History, Legal Studies, Psychology and
   Sociology. Existing curated papers were never overwritten; 105 overlapping
   paper slugs kept their library copy.
 - Imported only questions with a printed answer that exists among the printed
-  options. 2,004 unkeyed questions, 88 structurally broken OCR rows and 33
+  options. 2,004 unkeyed questions, 92 structurally broken OCR rows and 33
   duplicate prompts were rejected and counted in
   `docs/DATASET_IMPORT_2026-11-06.md`.
 - Did not import the bundle's model-generated explanations. Spot checks found

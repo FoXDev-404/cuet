@@ -101,9 +101,15 @@ sanitised diff. The super-admin page `/admin/audit-log` is backed by the read-on
 `entity_type`, `entity_id` and actor-email filters. The feed is `noindex`, requires
 `audit.view`, and never returns password hashes, tokens or full private payloads.
 
-## OCR previous-year practice library (unranked)
+## OCR previous-year practice library (historical snapshot)
 
-106 CUET/CUCET papers from 2021–2025 across 11 subjects are bundled as JSON.
+> **Superseded 2026-11-06.** This section describes the original unranked,
+> JSON-only library. The library is now imported into D1 and runs as ranked
+> mocks; see the 2026-11-06 update at the end of this document and
+> `docs/DATASET_IMPORT_2026-11-06.md`. The paragraphs below are retained as
+> history and should not be used as current architecture guidance.
+
+Originally, 106 CUET/CUCET papers from 2021–2025 across 11 subjects were bundled as JSON.
 `src/data/local-papers/index.json` is the index, `src/data/local-papers/keys.json`
 (server-only) holds printed keys, and `public/local-papers/papers/` plus
 `public/local-papers/assets/` hold the app-loadable paper JSON and exact page crops.
@@ -305,7 +311,7 @@ and the live Worker emitted none of the optional tags, returned 404 for `/ads.tx
 | P0–P9 code complete | Yes |
 | P10 automated QA | Yes: 104 unit/integration and 36 E2E tests including editor publish, canonical SEO override, signed-in attempt IDOR, autosave idempotency, ignored client timer fields, comment escaping/nesting/mute/rate limits, upload-spoof and 500 KB cap rejection, moderator role boundaries, optional integrations absent/present and the throttled mobile attempt; 236 local and 240 staging axe scans with no WCAG A/AA violations; 30-check staging smoke; D1 query-budget review with migration `0007` and constant-query submit; security checks, restore drill |
 | P10 launch operations | No: real-phone pass, production domain, OAuth redirect URIs, email credentials, Access application, analytics/Search Console values, AdSense approval and backup secrets |
-| Content parity with legacy six-paper library | Complete: 106 OCR papers from 2021–2025 are browseable in the unranked practice library; the ranked D1 library is still the starter mock |
+| Content parity with legacy six-paper library | Updated 2026-11-06: 245 CUET/CUCET papers (2021–2026) / 7,527 scorable questions imported into D1 and published as 245 ranked mocks; the original 106-paper JSON-only snapshot is superseded |
 | Rollback path | Next.js Worker and its D1 remain deployed and untouched |
 
 The Astro app is ready for continued staging review, not for production cutover. The

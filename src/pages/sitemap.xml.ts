@@ -187,7 +187,11 @@ export const GET: APIRoute = async ({ request }) => {
     add("/mock-tests", { changefreq: "weekly", priority: "0.8" });
   }
   if (posts.length > 0) add("/blog", { changefreq: "weekly", priority: "0.7" });
-  add("/leaderboard", { changefreq: "daily", priority: "0.6" });
+  // The leaderboard index marks itself noindex while it has no ranked
+  // attempts, so list it only once at least one mock has a first attempt.
+  if (mocks.some((mock) => !isFixtureMock(mock) && mock.eligible > 0)) {
+    add("/leaderboard", { changefreq: "daily", priority: "0.6" });
+  }
   add("/about", { changefreq: "yearly", priority: "0.4" });
   add("/contact", { changefreq: "yearly", priority: "0.4" });
   add("/privacy-policy", { changefreq: "yearly", priority: "0.3" });

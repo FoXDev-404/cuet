@@ -88,7 +88,7 @@
           }
         ],
         "optionsAreImages": true,
-        "correctAnswer": "B",
+        "correctAnswer": null,
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -265,7 +265,7 @@
           }
         ],
         "optionsAreImages": true,
-        "correctAnswer": "B",
+        "correctAnswer": null,
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -343,7 +343,7 @@
           }
         ],
         "optionsAreImages": true,
-        "correctAnswer": "A",
+        "correctAnswer": null,
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -1072,11 +1072,13 @@
           }
         ],
         "optionsAreImages": true,
-        "correctAnswer": "D",
+        "correctAnswer": null,
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
-        "reviewFlags": [],
+        "reviewFlags": [
+          "key_conflict_review"
+        ],
         "sourcePages": [
           1
         ],
@@ -1665,11 +1667,13 @@
           }
         ],
         "optionsAreImages": true,
-        "correctAnswer": "C",
+        "correctAnswer": null,
         "explanationEn": null,
         "passageId": "passage-46-50",
         "reviewStatus": "keyed",
-        "reviewFlags": [],
+        "reviewFlags": [
+          "key_conflict_review"
+        ],
         "sourcePages": [
           1
         ],
