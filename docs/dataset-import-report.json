@@ -1,0 +1,1702 @@
+{
+  "generatedAt": "2026-11-05T20:13:49.312Z",
+  "dataset": "/tmp/cuet_ds/CUET_JSON_OUTPUT",
+  "policy": {
+    "minScorable": 2,
+    "scorableOnly": true,
+    "overlapsSkipped": true
+  },
+  "totals": {
+    "questionsInBundle": 8366,
+    "papersScanned": 180,
+    "papersAdded": 31,
+    "papersSkipped": 44,
+    "papersOverlapping": 105,
+    "questionsScanned": 3366,
+    "questionsAdded": 1236,
+    "questionsSkippedUnkeyed": 2004,
+    "questionsSkippedInvalid": 92,
+    "duplicateQuestions": 33,
+    "explanationsImported": 0,
+    "assetsCopied": 6,
+    "assetBytes": 1283609,
+    "assetsDeduped": 0,
+    "assetsMissing": 0
+  },
+  "added": [
+    {
+      "slug": "accountancy-2022",
+      "title": "CUET UG Accountancy 2022 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2022,
+      "questions": 35,
+      "sourceQuestions": 59,
+      "unkeyedExcluded": 23,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 42
+    },
+    {
+      "slug": "accountancy-2023-06-01-shift-1",
+      "title": "CUET UG Accountancy 1 June 2023 Shift 1 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2023,
+      "questions": 39,
+      "sourceQuestions": 49,
+      "unkeyedExcluded": 8,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 2,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 47
+    },
+    {
+      "slug": "accountancy-2023-06-02-shift-1",
+      "title": "CUET UG Accountancy 2 June 2023 Shift 1 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2023,
+      "questions": 49,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 59
+    },
+    {
+      "slug": "accountancy-2023-06-05-shift-1",
+      "title": "CUET UG Accountancy 5 June 2023 Shift 1 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2023,
+      "questions": 42,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 6,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 50
+    },
+    {
+      "slug": "accountancy-2023-06-07-shift-1",
+      "title": "CUET UG Accountancy 7 June 2023 Shift 1 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2023,
+      "questions": 43,
+      "sourceQuestions": 46,
+      "unkeyedExcluded": 0,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 2,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 52
+    },
+    {
+      "slug": "accountancy-2023-06-10-shift-3",
+      "title": "CUET UG Accountancy 10 June 2023 Shift 3 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2023,
+      "questions": 30,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 19,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 1,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 36
+    },
+    {
+      "slug": "accountancy-2023-06-12-shift-3",
+      "title": "CUET UG Accountancy 12 June 2023 Shift 3 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2023,
+      "questions": 45,
+      "sourceQuestions": 48,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 2,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 54
+    },
+    {
+      "slug": "accountancy-2024-05-17-shift-2",
+      "title": "CUET UG Accountancy 17 May 2024 Shift 2 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2024,
+      "questions": 48,
+      "sourceQuestions": 49,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 58
+    },
+    {
+      "slug": "accountancy-2024-07-19-shift-1",
+      "title": "CUET UG Accountancy 19 July 2024 Shift 1 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2024,
+      "questions": 47,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 2,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 1,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 56
+    },
+    {
+      "slug": "accountancy-2025-06-02-shift-2",
+      "title": "CUET UG Accountancy 2 June 2025 Shift 2 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2025,
+      "questions": 34,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 8,
+      "invalidExcluded": 8,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 41
+    },
+    {
+      "slug": "accountancy-2025-06-03-shift-2",
+      "title": "CUET UG Accountancy 3 June 2025 Shift 2 Previous Year Paper",
+      "subject": "Accountancy",
+      "year": 2025,
+      "questions": 35,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 3,
+      "invalidExcluded": 10,
+      "duplicateExcluded": 2,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 42
+    },
+    {
+      "slug": "business-studies-2022",
+      "title": "CUET UG Business Studies 2022 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2022,
+      "questions": 31,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 17,
+      "invalidExcluded": 2,
+      "duplicateExcluded": 0,
+      "imageQuestions": 3,
+      "assets": 3,
+      "durationMinutes": 37
+    },
+    {
+      "slug": "business-studies-2023-06-10-shift-3",
+      "title": "CUET UG Business Studies 10 June 2023 Shift 3 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2023,
+      "questions": 46,
+      "sourceQuestions": 48,
+      "unkeyedExcluded": 0,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 1,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 55
+    },
+    {
+      "slug": "business-studies-2023-06-11-shift-3",
+      "title": "CUET UG Business Studies 11 June 2023 Shift 3 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2023,
+      "questions": 43,
+      "sourceQuestions": 47,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 3,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 52
+    },
+    {
+      "slug": "business-studies-2023-06-12-shift-2",
+      "title": "CUET UG Business Studies 12 June 2023 Shift 2 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2023,
+      "questions": 44,
+      "sourceQuestions": 48,
+      "unkeyedExcluded": 0,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 3,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 53
+    },
+    {
+      "slug": "business-studies-2023-06-12-shift-3",
+      "title": "CUET UG Business Studies 12 June 2023 Shift 3 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2023,
+      "questions": 41,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 0,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 8,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 49
+    },
+    {
+      "slug": "business-studies-2024-05-17-shift-2",
+      "title": "CUET UG Business Studies 17 May 2024 Shift 2 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2024,
+      "questions": 48,
+      "sourceQuestions": 49,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 58
+    },
+    {
+      "slug": "business-studies-2025-05-30-shift-1",
+      "title": "CUET UG Business Studies 30 May 2025 Shift 1 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2025,
+      "questions": 40,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 8,
+      "invalidExcluded": 2,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 48
+    },
+    {
+      "slug": "business-studies-2025-05-30-shift-2",
+      "title": "CUET UG Business Studies 30 May 2025 Shift 2 Previous Year Paper",
+      "subject": "Business Studies",
+      "year": 2025,
+      "questions": 39,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 5,
+      "invalidExcluded": 6,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 47
+    },
+    {
+      "slug": "economics-2022",
+      "title": "CUET UG Economics 2022 Previous Year Paper",
+      "subject": "Economics",
+      "year": 2022,
+      "questions": 29,
+      "sourceQuestions": 48,
+      "unkeyedExcluded": 19,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 35
+    },
+    {
+      "slug": "economics-2024-05-16-shift-1",
+      "title": "CUET UG Economics 16 May 2024 Shift 1 Previous Year Paper",
+      "subject": "Economics",
+      "year": 2024,
+      "questions": 48,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 0,
+      "imageQuestions": 1,
+      "assets": 1,
+      "durationMinutes": 58
+    },
+    {
+      "slug": "economics-2025-05-30-shift-1",
+      "title": "CUET UG Economics 30 May 2025 Shift 1 Previous Year Paper",
+      "subject": "Economics",
+      "year": 2025,
+      "questions": 21,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 12,
+      "invalidExcluded": 15,
+      "duplicateExcluded": 2,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 25
+    },
+    {
+      "slug": "economics-2025-05-30-shift-2",
+      "title": "CUET UG Economics 30 May 2025 Shift 2 Previous Year Paper",
+      "subject": "Economics",
+      "year": 2025,
+      "questions": 26,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 10,
+      "invalidExcluded": 12,
+      "duplicateExcluded": 2,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 31
+    },
+    {
+      "slug": "history-2022",
+      "title": "CUET UG History 2022 Previous Year Paper",
+      "subject": "History",
+      "year": 2022,
+      "questions": 36,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 12,
+      "invalidExcluded": 2,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 43
+    },
+    {
+      "slug": "legal-studies-2022",
+      "title": "CUET UG Legal Studies 2022 Previous Year Paper",
+      "subject": "Legal Studies",
+      "year": 2022,
+      "questions": 38,
+      "sourceQuestions": 48,
+      "unkeyedExcluded": 8,
+      "invalidExcluded": 2,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 46
+    },
+    {
+      "slug": "political-science-2022",
+      "title": "CUET UG Political Science 2022 Previous Year Paper",
+      "subject": "Political Science",
+      "year": 2022,
+      "questions": 46,
+      "sourceQuestions": 49,
+      "unkeyedExcluded": 2,
+      "invalidExcluded": 1,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 55
+    },
+    {
+      "slug": "political-science-2024-05-18-shift-2",
+      "title": "CUET UG Political Science 18 May 2024 Shift 2 Previous Year Paper",
+      "subject": "Political Science",
+      "year": 2024,
+      "questions": 50,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 0,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 60
+    },
+    {
+      "slug": "political-science-2025-06-20-shift-1",
+      "title": "CUET UG Political Science 20 June 2025 Shift 1 Previous Year Paper",
+      "subject": "Political Science",
+      "year": 2025,
+      "questions": 35,
+      "sourceQuestions": 49,
+      "unkeyedExcluded": 6,
+      "invalidExcluded": 8,
+      "duplicateExcluded": 0,
+      "imageQuestions": 1,
+      "assets": 2,
+      "durationMinutes": 42
+    },
+    {
+      "slug": "political-science-2025-06-27-shift-2",
+      "title": "CUET UG Political Science 27 June 2025 Shift 2 Previous Year Paper",
+      "subject": "Political Science",
+      "year": 2025,
+      "questions": 29,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 10,
+      "invalidExcluded": 11,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 35
+    },
+    {
+      "slug": "psychology-2024-07-19-shift-1",
+      "title": "CUET UG Psychology 19 July 2024 Shift 1 Previous Year Paper",
+      "subject": "Psychology",
+      "year": 2024,
+      "questions": 50,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 0,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 60
+    },
+    {
+      "slug": "sociology-2024-05-18-shift-3",
+      "title": "CUET UG Sociology 18 May 2024 Shift 3 Previous Year Paper",
+      "subject": "Sociology",
+      "year": 2024,
+      "questions": 49,
+      "sourceQuestions": 50,
+      "unkeyedExcluded": 1,
+      "invalidExcluded": 0,
+      "duplicateExcluded": 0,
+      "imageQuestions": 0,
+      "assets": 0,
+      "durationMinutes": 59
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "accountancy-2023-06-16-shift-3",
+      "subject": "Accountancy",
+      "year": 2023,
+      "reason": "no printed answers",
+      "questions": 49,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "accountancy-2023-06-20-shift-2",
+      "subject": "Accountancy",
+      "year": 2023,
+      "reason": "no printed answers",
+      "questions": 50,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "accountancy-2025",
+      "subject": "Accountancy",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 5,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "agriculture-2022",
+      "subject": "Agriculture",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 50,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "agriculture-2023-05-26",
+      "subject": "Agriculture",
+      "year": 2023,
+      "reason": "no printed answers",
+      "questions": 50,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "agriculture-2024-07-19",
+      "subject": "Agriculture",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 50,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "agriculture-2025",
+      "subject": "Agriculture",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 50,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "anthropology-2025",
+      "subject": "Anthropology",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 49,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "biology-2025",
+      "subject": "Biology",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 87,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "business-studies-2022-10-06-shift-1",
+      "subject": "Business Studies",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "business-studies-2023-06-16-shift-3",
+      "subject": "Business Studies",
+      "year": 2023,
+      "reason": "no printed answers",
+      "questions": 49,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "business-studies-2025",
+      "subject": "Business Studies",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 1,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "cucet-2021-09-23-shift-1",
+      "subject": "CUCET",
+      "year": 2021,
+      "reason": "no printed answers",
+      "questions": 117,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "cucet-2021-09-23-shift-2",
+      "subject": "CUCET",
+      "year": 2021,
+      "reason": "no printed answers",
+      "questions": 78,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "chemistry-2025",
+      "subject": "Chemistry",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 91,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "economics-2024-05-16-shift-1a",
+      "subject": "Economics",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 51,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "economics-2025",
+      "subject": "Economics",
+      "year": 2025,
+      "reason": "fewer than 2 scorable questions",
+      "questions": 4,
+      "answers": 4,
+      "scorable": 1
+    },
+    {
+      "slug": "engineering-graphics-2022-09-11-shift-1",
+      "subject": "Engineering Graphics",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "english-2022-09-16-shift-1",
+      "subject": "English",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "english-2025",
+      "subject": "English",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 88,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "entrepreneurship-2022-08-30-shift-1",
+      "subject": "Entrepreneurship",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "environmental-science-2025",
+      "subject": "Environmental Science",
+      "year": 2025,
+      "reason": "no question passed validation",
+      "questions": 4,
+      "answers": 1,
+      "scorable": 0
+    },
+    {
+      "slug": "fine-arts-2025",
+      "subject": "Fine Arts",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 49,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "general-test-2024-05-15-shift-2",
+      "subject": "General Test",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "general-test-2025",
+      "subject": "General Test",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 91,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "geography-2024-05-17-shift-1a",
+      "subject": "Geography",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 21,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "geography-2025",
+      "subject": "Geography",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 47,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "hindi-2024-05-16-shift-1",
+      "subject": "Hindi",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "history-2024-05-18-shift-1a",
+      "subject": "History",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 31,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "history-2025",
+      "subject": "History",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 62,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "home-science-2025",
+      "subject": "Home Science",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 87,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "knowledge-tradition-and-practices-india-2025",
+      "subject": "Knowledge Tradition & Practices India",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 50,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "legal-studies-2022-09-11-shift-1",
+      "subject": "Legal Studies",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "mass-media-2025",
+      "subject": "Mass Media",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 50,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "mathematics-2024-05-16-shift-2",
+      "subject": "Mathematics",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 49,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "mathematics-2025",
+      "subject": "Mathematics",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 96,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "performing-arts-2025",
+      "subject": "Performing Arts",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 139,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "physical-education-2024-05-17-shift-1",
+      "subject": "Physical Education",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "physics-2024-05-16-shift-2",
+      "subject": "Physics",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 49,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "physics-2025",
+      "subject": "Physics",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 45,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "political-science-and-sociology-2022-08-25-shift-2",
+      "subject": "Political Science & Sociology",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 4,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "political-science-2024-05-18-shift-1",
+      "subject": "Political Science",
+      "year": 2024,
+      "reason": "no printed answers",
+      "questions": 32,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "political-science-2025",
+      "subject": "Political Science",
+      "year": 2025,
+      "reason": "no printed answers",
+      "questions": 4,
+      "answers": 0,
+      "scorable": 0
+    },
+    {
+      "slug": "sociology-2022-08-25-shift-1",
+      "subject": "Sociology",
+      "year": 2022,
+      "reason": "no printed answers",
+      "questions": 0,
+      "answers": 0,
+      "scorable": 0
+    }
+  ],
+  "overlapping": [
+    {
+      "slug": "applied-mathematics-2025-06-02-shift-1",
+      "title": "CUET UG Applied Mathematics 2 June 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 47,
+      "datasetAnswers": 37,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "applied-mathematics-2025-06-03-shift-2",
+      "title": "CUET UG Applied Mathematics 3 June 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 44,
+      "datasetAnswers": 39,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "biology-2022-08-18",
+      "title": "CUET UG Biology 18 August 2022 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 49,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "biology-2022-08-20",
+      "title": "CUET UG Biology 20 August 2022 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "biology-2022-08-23-shift-2",
+      "title": "CUET UG Biology 23 August 2022 Shift 2 Previous Year Paper",
+      "datasetQuestions": 0,
+      "datasetAnswers": 0,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "biology-2022-08-30",
+      "title": "CUET UG Biology 30 August 2022 Previous Year Paper",
+      "datasetQuestions": 1,
+      "datasetAnswers": 1,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "biology-2023-05-22-shift-1",
+      "title": "CUET UG Biology 22 May 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 49,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "biology-2023-05-28-shift-1",
+      "title": "CUET UG Biology 28 May 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 0,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "biology-2023-05-30-shift-1",
+      "title": "CUET UG Biology 30 May 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 47,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "biology-2023-05-30-shift-2",
+      "title": "CUET UG Biology 30 May 2023 Shift 2 Previous Year Paper",
+      "datasetQuestions": 47,
+      "datasetAnswers": 47,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "biology-2023-05-31-shift-3",
+      "title": "CUET UG Biology 31 May 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 0,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "biology-2023-06-01-shift-3",
+      "title": "CUET UG Biology 1 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 47,
+      "datasetAnswers": 47,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "biology-2023-06-05-shift-3",
+      "title": "CUET UG Biology 5 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 45,
+      "datasetAnswers": 0,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "biology-2023-06-10-shift-1",
+      "title": "CUET UG Biology 10 June 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 38,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "biology-2023-06-10-shift-3",
+      "title": "CUET UG Biology 10 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 48,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "biology-2024-05-15-shift-1",
+      "title": "CUET UG Biology 15 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 46,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "biology-2024-05-29-shift-1",
+      "title": "CUET UG Biology 29 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 44,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "biology-2024-07-19",
+      "title": "CUET UG Biology 19 July 2024 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "biology-2025-05-20-shift-1",
+      "title": "CUET UG Biology 20 May 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 42,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "biology-2025-05-20-shift-2",
+      "title": "CUET UG Biology 20 May 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 46,
+      "libraryQuestions": 42,
+      "libraryScorable": 42
+    },
+    {
+      "slug": "chemistry-2022-08-17",
+      "title": "CUET UG Chemistry 17 August 2022 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 47,
+      "libraryQuestions": 43,
+      "libraryScorable": 43
+    },
+    {
+      "slug": "chemistry-2022-08-18",
+      "title": "CUET UG Chemistry 18 August 2022 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 43,
+      "libraryQuestions": 42,
+      "libraryScorable": 42
+    },
+    {
+      "slug": "chemistry-2022-08-23",
+      "title": "CUET UG Chemistry 23 August 2022 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 46,
+      "libraryQuestions": 40,
+      "libraryScorable": 40
+    },
+    {
+      "slug": "chemistry-2023-06-02-shift-3",
+      "title": "CUET UG Chemistry 2 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 47,
+      "datasetAnswers": 47,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "chemistry-2023-06-05-shift-1",
+      "title": "CUET UG Chemistry 5 June 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 49,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "chemistry-2023-06-07-shift-3",
+      "title": "CUET UG Chemistry 7 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 39,
+      "datasetAnswers": 0,
+      "libraryQuestions": 40,
+      "libraryScorable": 40
+    },
+    {
+      "slug": "chemistry-2023-06-08-shift-3",
+      "title": "CUET UG Chemistry 8 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 45,
+      "datasetAnswers": 0,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "chemistry-2023-06-10-shift-1",
+      "title": "CUET UG Chemistry 10 June 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 46,
+      "datasetAnswers": 0,
+      "libraryQuestions": 43,
+      "libraryScorable": 43
+    },
+    {
+      "slug": "chemistry-2023-06-11-shift-3",
+      "title": "CUET UG Chemistry 11 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 47,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "chemistry-2023-06-13-shift-3",
+      "title": "CUET UG Chemistry 13 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 47,
+      "datasetAnswers": 45,
+      "libraryQuestions": 42,
+      "libraryScorable": 42
+    },
+    {
+      "slug": "chemistry-2023-06-15-shift-1",
+      "title": "CUET UG Chemistry 15 June 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 0,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "chemistry-2024-05-15-shift-1",
+      "title": "CUET UG Chemistry 15 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 48,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "chemistry-2024-05-29",
+      "title": "CUET UG Chemistry 29 May 2024 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 48,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "chemistry-2024-07-19",
+      "title": "CUET UG Chemistry 19 July 2024 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "chemistry-2025-05-21-shift-2",
+      "title": "CUET UG Chemistry 21 May 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 41,
+      "libraryQuestions": 43,
+      "libraryScorable": 43
+    },
+    {
+      "slug": "chemistry-2025-05-23-shift-2",
+      "title": "CUET UG Chemistry 23 May 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 41,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "computer-science-2022",
+      "title": "CUET UG Computer Science 2022 Previous Year Paper",
+      "datasetQuestions": 46,
+      "datasetAnswers": 37,
+      "libraryQuestions": 39,
+      "libraryScorable": 39
+    },
+    {
+      "slug": "computer-science-2024-07-19-shift-1",
+      "title": "CUET UG Computer Science 19 July 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 48,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "computer-science-2025",
+      "title": "CUET UG Computer Science 2025 Previous Year Paper",
+      "datasetQuestions": 4,
+      "datasetAnswers": 4,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "english-2022-08-06-shift-1",
+      "title": "CUET UG English 6 August 2022 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 50,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "english-2022-08-10",
+      "title": "CUET UG English 10 August 2022 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "english-2022-08-16-shift-1",
+      "title": "CUET UG English 16 August 2022 Shift 1 Previous Year Paper",
+      "datasetQuestions": 47,
+      "datasetAnswers": 47,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "english-2022-08-18",
+      "title": "CUET UG English 18 August 2022 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 49,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "english-2022-08-22",
+      "title": "CUET UG English 22 August 2022 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 50,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "english-2023-05-21-shift-1",
+      "title": "CUET UG English 21 May 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "english-2023-06-02-shift-3",
+      "title": "CUET UG English 2 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 48,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "english-2023-06-05-shift-3",
+      "title": "CUET UG English 5 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 26,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "english-2023-06-06-shift-2",
+      "title": "CUET UG English 6 June 2023 Shift 2 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 47,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "english-2023-06-09-shift-2",
+      "title": "CUET UG English 9 June 2023 Shift 2 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 50,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "english-2023-06-10-shift-2",
+      "title": "CUET UG English 10 June 2023 Shift 2 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 50,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "english-2023-06-11-shift-1",
+      "title": "CUET UG English 11 June 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "english-2023-06-13-shift-3",
+      "title": "CUET UG English 13 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 45,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "english-2023-06-15-shift-3",
+      "title": "CUET UG English 15 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 50,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "english-2024-05-15-shift-2",
+      "title": "CUET UG English 15 May 2024 Shift 2 Previous Year Paper",
+      "datasetQuestions": 39,
+      "datasetAnswers": 0,
+      "libraryQuestions": 33,
+      "libraryScorable": 33
+    },
+    {
+      "slug": "english-2024-05-29-shift-1",
+      "title": "CUET UG English 29 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 36,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "english-2025-05-20-shift-1",
+      "title": "CUET UG English 20 May 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 42,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "english-2025-05-20-shift-2",
+      "title": "CUET UG English 20 May 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 43,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "general-test-2022-08-06",
+      "title": "CUET UG General Test 6 August 2022 Previous Year Paper",
+      "datasetQuestions": 75,
+      "datasetAnswers": 69,
+      "libraryQuestions": 70,
+      "libraryScorable": 70
+    },
+    {
+      "slug": "general-test-2022-08-08-shift-1",
+      "title": "CUET UG General Test 8 August 2022 Shift 1 Previous Year Paper",
+      "datasetQuestions": 75,
+      "datasetAnswers": 62,
+      "libraryQuestions": 61,
+      "libraryScorable": 61
+    },
+    {
+      "slug": "general-test-2022-08-18",
+      "title": "CUET UG General Test 18 August 2022 Previous Year Paper",
+      "datasetQuestions": 75,
+      "datasetAnswers": 65,
+      "libraryQuestions": 66,
+      "libraryScorable": 66
+    },
+    {
+      "slug": "general-test-2022-08-22",
+      "title": "CUET UG General Test 22 August 2022 Previous Year Paper",
+      "datasetQuestions": 71,
+      "datasetAnswers": 63,
+      "libraryQuestions": 62,
+      "libraryScorable": 62
+    },
+    {
+      "slug": "general-test-2022-08-23-shift-1",
+      "title": "CUET UG General Test 23 August 2022 Shift 1 Previous Year Paper",
+      "datasetQuestions": 73,
+      "datasetAnswers": 64,
+      "libraryQuestions": 71,
+      "libraryScorable": 71
+    },
+    {
+      "slug": "general-test-2022-10-06-shift-1",
+      "title": "CUET UG General Test 6 October 2022 Shift 1 Previous Year Paper",
+      "datasetQuestions": 72,
+      "datasetAnswers": 0,
+      "libraryQuestions": 69,
+      "libraryScorable": 69
+    },
+    {
+      "slug": "general-test-2023-05-21-shift-1",
+      "title": "CUET UG General Test 21 May 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 59,
+      "datasetAnswers": 0,
+      "libraryQuestions": 58,
+      "libraryScorable": 58
+    },
+    {
+      "slug": "general-test-2023-05-27-shift-1",
+      "title": "CUET UG General Test 27 May 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 59,
+      "datasetAnswers": 59,
+      "libraryQuestions": 58,
+      "libraryScorable": 58
+    },
+    {
+      "slug": "general-test-2023-06-05-shift-1",
+      "title": "CUET UG General Test 5 June 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 60,
+      "datasetAnswers": 0,
+      "libraryQuestions": 57,
+      "libraryScorable": 57
+    },
+    {
+      "slug": "general-test-2023-06-09-shift-2",
+      "title": "CUET UG General Test 9 June 2023 Shift 2 Previous Year Paper",
+      "datasetQuestions": 60,
+      "datasetAnswers": 0,
+      "libraryQuestions": 60,
+      "libraryScorable": 60
+    },
+    {
+      "slug": "general-test-2023-06-10-shift-3",
+      "title": "CUET UG General Test 10 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 59,
+      "datasetAnswers": 59,
+      "libraryQuestions": 59,
+      "libraryScorable": 59
+    },
+    {
+      "slug": "general-test-2024-05-15-shift-3",
+      "title": "CUET UG General Test 15 May 2024 Shift 3 Previous Year Paper",
+      "datasetQuestions": 60,
+      "datasetAnswers": 54,
+      "libraryQuestions": 53,
+      "libraryScorable": 53
+    },
+    {
+      "slug": "general-test-2024-05-29-shift-1",
+      "title": "CUET UG General Test 29 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 60,
+      "datasetAnswers": 55,
+      "libraryQuestions": 53,
+      "libraryScorable": 53
+    },
+    {
+      "slug": "general-test-2025-05-20-shift-1",
+      "title": "CUET UG General Test 20 May 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 36,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "general-test-2025-05-20-shift-2",
+      "title": "CUET UG General Test 20 May 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 32,
+      "libraryQuestions": 44,
+      "libraryScorable": 44
+    },
+    {
+      "slug": "geography-2022",
+      "title": "CUET UG Geography 2022 Previous Year Paper",
+      "datasetQuestions": 46,
+      "datasetAnswers": 46,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "geography-2024-05-17-shift-1",
+      "title": "CUET UG Geography 17 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 48,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "geography-2025-05-16-shift-1",
+      "title": "CUET UG Geography 16 May 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 43,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "geography-2025-05-20-shift-1",
+      "title": "CUET UG Geography 20 May 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 41,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "hindi-2022-08-30-shift-2",
+      "title": "CUET UG Hindi 30 August 2022 Shift 2 Previous Year Paper",
+      "datasetQuestions": 0,
+      "datasetAnswers": 0,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "hindi-2024-05-16-shift-2",
+      "title": "CUET UG Hindi 16 May 2024 Shift 2 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "hindi-2025",
+      "title": "CUET UG Hindi 2025 Previous Year Paper",
+      "datasetQuestions": 4,
+      "datasetAnswers": 0,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "history-2022-08-21-shift-1",
+      "title": "CUET UG History 21 August 2022 Shift 1 Previous Year Paper",
+      "datasetQuestions": 5,
+      "datasetAnswers": 0,
+      "libraryQuestions": 40,
+      "libraryScorable": 40
+    },
+    {
+      "slug": "history-2022-08-21-shift-2",
+      "title": "CUET UG History 21 August 2022 Shift 2 Previous Year Paper",
+      "datasetQuestions": 0,
+      "datasetAnswers": 0,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "history-2024-05-18-shift-1",
+      "title": "CUET UG History 18 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 50,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "history-2025-05-16-shift-1",
+      "title": "CUET UG History 16 May 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 46,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "history-2025-05-20-shift-1",
+      "title": "CUET UG History 20 May 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 44,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "history-2025-06-03-shift-2",
+      "title": "CUET UG History 3 June 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 41,
+      "libraryQuestions": 42,
+      "libraryScorable": 42
+    },
+    {
+      "slug": "history-2025-06-21-shift-1",
+      "title": "CUET UG History 21 June 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 44,
+      "libraryQuestions": 44,
+      "libraryScorable": 44
+    },
+    {
+      "slug": "mathematics-2022-08-17",
+      "title": "CUET UG Mathematics 17 August 2022 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 44,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "mathematics-2022-08-22",
+      "title": "CUET UG Mathematics 22 August 2022 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 45,
+      "libraryQuestions": 42,
+      "libraryScorable": 42
+    },
+    {
+      "slug": "mathematics-2022-08-30",
+      "title": "CUET UG Mathematics 30 August 2022 Previous Year Paper",
+      "datasetQuestions": 45,
+      "datasetAnswers": 43,
+      "libraryQuestions": 40,
+      "libraryScorable": 40
+    },
+    {
+      "slug": "mathematics-2024-05-16-shift-1",
+      "title": "CUET UG Mathematics 16 May 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 45,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    },
+    {
+      "slug": "mathematics-2024-07-19-shift-1",
+      "title": "CUET UG Mathematics 19 July 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 48,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "mathematics-2025-06-02-shift-1",
+      "title": "CUET UG Mathematics 2 June 2025 Shift 1 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 39,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "mathematics-2025-06-03-shift-2",
+      "title": "CUET UG Mathematics 3 June 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 38,
+      "libraryQuestions": 46,
+      "libraryScorable": 46
+    },
+    {
+      "slug": "physics-2022-08-06",
+      "title": "CUET UG Physics 6 August 2022 Previous Year Paper",
+      "datasetQuestions": 48,
+      "datasetAnswers": 46,
+      "libraryQuestions": 40,
+      "libraryScorable": 40
+    },
+    {
+      "slug": "physics-2022-08-22",
+      "title": "CUET UG Physics 22 August 2022 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 41,
+      "libraryQuestions": 47,
+      "libraryScorable": 47
+    },
+    {
+      "slug": "physics-2022-08-26",
+      "title": "CUET UG Physics 26 August 2022 Previous Year Paper",
+      "datasetQuestions": 45,
+      "datasetAnswers": 44,
+      "libraryQuestions": 38,
+      "libraryScorable": 38
+    },
+    {
+      "slug": "physics-2023-05-21-shift-3",
+      "title": "CUET UG Physics 21 May 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 49,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "physics-2023-05-22-shift-3",
+      "title": "CUET UG Physics 22 May 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 48,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "physics-2023-05-25-shift-3",
+      "title": "CUET UG Physics 25 May 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 0,
+      "libraryQuestions": 49,
+      "libraryScorable": 49
+    },
+    {
+      "slug": "physics-2023-05-30-shift-1",
+      "title": "CUET UG Physics 30 May 2023 Shift 1 Previous Year Paper",
+      "datasetQuestions": 46,
+      "datasetAnswers": 44,
+      "libraryQuestions": 45,
+      "libraryScorable": 45
+    },
+    {
+      "slug": "physics-2023-06-09-shift-3",
+      "title": "CUET UG Physics 9 June 2023 Shift 3 Previous Year Paper",
+      "datasetQuestions": 46,
+      "datasetAnswers": 45,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "physics-2024-05-16-shift-3",
+      "title": "CUET UG Physics 16 May 2024 Shift 3 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 46,
+      "libraryQuestions": 44,
+      "libraryScorable": 44
+    },
+    {
+      "slug": "physics-2024-07-19-shift-1",
+      "title": "CUET UG Physics 19 July 2024 Shift 1 Previous Year Paper",
+      "datasetQuestions": 50,
+      "datasetAnswers": 50,
+      "libraryQuestions": 43,
+      "libraryScorable": 43
+    },
+    {
+      "slug": "physics-2025-05-20-shift-2",
+      "title": "CUET UG Physics 20 May 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 37,
+      "libraryQuestions": 48,
+      "libraryScorable": 48
+    },
+    {
+      "slug": "physics-2025-05-21-shift-2",
+      "title": "CUET UG Physics 21 May 2025 Shift 2 Previous Year Paper",
+      "datasetQuestions": 49,
+      "datasetAnswers": 41,
+      "libraryQuestions": 50,
+      "libraryScorable": 50
+    }
+  ]
+}

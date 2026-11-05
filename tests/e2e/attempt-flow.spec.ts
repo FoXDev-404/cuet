@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 
-const MOCK_LIST_PATH = "/cuet-ug-mock-test";
+const MOCK_LIST_PATHS = ["/mock-tests", "/cuet-ug-mock-test"];
 const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
 
 /** Keeps repeated local runs out of the shared rate-limit bucket. */
@@ -45,9 +45,18 @@ function expireAttemptInLocalD1(attemptId: number): void {
  * when neither is available.
  */
 async function openFirstMockInstructions(page: Page): Promise<void> {
-  await page.goto(MOCK_LIST_PATH);
-  const mockLink = page.locator('a[href^="/mock/"]').first();
-  let href = (await mockLink.count()) > 0 ? await mockLink.getAttribute("href") : null;
+  let href: string | null = null;
+  for (const path of MOCK_LIST_PATHS) {
+    await page.goto(path);
+    const mockLink = page.locator('a[href^="/mock/"]').first();
+    href = (await mockLink.count()) > 0 ? await mockLink.getAttribute("href") : null;
+    if (href) {
+      // The library card links straight to /instructions; normalise back to the
+      // mock root so the helper always appends the instructions path once.
+      href = href.replace(/\/instructions$/, "");
+      break;
+    }
+  }
 
   if (!href && !process.env.PLAYWRIGHT_BASE_URL) {
     const fixture = await page.goto("/mock/e2e-local-fixture-mock/instructions");

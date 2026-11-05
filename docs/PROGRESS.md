@@ -1,6 +1,6 @@
 # Progress — Astro build
 
-Last updated: 2026-11-02. Question sharing Phases 1–6 are complete and live on
+Last updated: 2026-11-06. Question sharing Phases 1–6 are complete and live on
 the production Worker `https://cuet-astro.cuet-platform.workers.dev`. The
 production rollout published original ranked and standalone content, ran the
 authenticated accessibility audit and fixed every issue it found, and cleaned
@@ -15,7 +15,7 @@ Current deployed version: `60f28021-ae55-4815-87cf-2adada96e631`.
 | B — Schema and data safety | Complete | Migrations `0001`–`0007` applied local/remote; 27 blueprint tables; 0 missing columns; `uq_first_attempt`; immutability/sync triggers; blueprint-parsing schema test plus populated legacy→v2 migration test (scores, answers and version pin unchanged) | None |
 | C - Security and test engine | Complete | No pre-submit keys, server deadline/scoring, signed-in and guest IDOR boundaries, idempotent autosave, CSRF, login/comment rate limits, exact role matrix, upload spoof and size rejection; security specs 6/6, full suite 104 unit/integration and 36 E2E tests | Physical-device pass |
 | D — SEO | Partial | D1 sitemap, robots, noindex, runtime `SITE_URL` canonical origin, canonical overrides, JSON-LD, exam-info gating, Lighthouse mobile baseline | Verified-data eligibility/subject-combination/cutoff pages (calculators are post-launch per blueprint §15) |
-| E - Content pipeline | Partial | Draft → review → publish, import preview/export, soft delete, audit log, frozen versions, unranked OCR library | Editorial review and D1 import of the OCR papers; ranked library still 1 mock / 2 questions |
+| E - Content pipeline | Complete for the 2026-11-06 dataset import | Draft → review → publish, import preview/export, soft delete, audit log, frozen versions; 245 practice papers / 7,527 scorable questions imported into D1; 245 published ranked mocks; 2,004 unkeyed questions remain in the OCR bundle for review | Editorial review of unkeyed questions; explanations for new papers; remote D1 import |
 | F — External integrations | Code complete; accounts pending | Env-gated Cloudflare Analytics, Search Console meta, AdSense loader/slot/`ads.txt`; Resend/Brevo reset email with production disable; Google button hidden when unconfigured; `CF_ACCESS_*` aliases; backup skip guard; `docs/EXTERNAL_SETUP.md` and `docs/LAUNCH-RUNBOOK.md`; 104 unit/integration and 36 E2E tests | Provider accounts/credentials, domain, Access app, R2, AdSense approval |
 | G — Final QA | Partial | `astro check` 0 errors over 224 files; 104 unit/integration and 36 Playwright E2E tests; staging slow-network attempt at 390×844 with 400 ms latency, 400 kbps and 4× CPU; 240 staging axe scans clean; 30/30 staging smoke; D1 rows-read table and top 5 queries; migration `0007` bounds submit/detail reads; attempt submit is constant-query and autosave sends only changed answers | Real-phone / real-network pass; Lighthouse not re-run after the Phase G label/autosave change |
 | H — Admin full control + design system | Complete (staging) | Migration `0009` applied local/remote; 192/192 unit tests; 46 Playwright passed + 1 skipped; 232 axe scans clean including authenticated admin pages; `astro check` 0 errors over 273 files; production sitemap 182/182 HTTP 200; `/dev/styleguide` 404 in production | Live Google sign-in check by the owner; content decisions for the 168 unscored questions |
@@ -955,3 +955,59 @@ the 5,322 real questions, not only the empty ranked bank.
    launch scope; do not invent official facts.
 3. When the external accounts exist, follow `docs/LAUNCH-RUNBOOK.md` and record the
    production version and provider evidence.
+
+
+## Phase Q — Question-paper dataset and ranked mocks (2026-11-06)
+
+### What changed
+
+- Added `scripts/import-cuet-json-output.mjs`, which converts the PaddleOCR-VL
+  `CUET_JSON_OUTPUT` bundle (180 papers, 8,366 extracted questions) into the
+  refined practice-library seed.
+- Imported 31 new scorable papers and 1,240 questions from Accountancy, Business
+  Studies, Economics, Political Science, History, Legal Studies, Psychology and
+  Sociology. Existing curated papers were never overwritten; 105 overlapping
+  paper slugs kept their library copy.
+- Imported only questions with a printed answer that exists among the printed
+  options. 2,004 unkeyed questions, 88 structurally broken OCR rows and 33
+  duplicate prompts were rejected and counted in
+  `docs/DATASET_IMPORT_2026-11-06.md`.
+- Did not import the bundle's model-generated explanations. Spot checks found
+  cross-question contamination; explanations remain an editorial task and the
+  solutions page shows an explicit "being reviewed" fallback.
+- Copied only question-linked, non-decorative assets (6 files, 1.3 MB). No
+  answer key or explanation was written into any public paper JSON.
+- Regenerated the practice index (245 papers / 7,527 scorable questions) and the
+  ranked mock library (245 published mocks / 7,527 mock questions).
+- Fixed the content-export fixture filter, which was dropping a legitimate
+  English question containing the word "fixtures"; the export now contains all
+  7,527 questions.
+- Added a clear explanation fallback on the solutions page and updated the E2E
+  mock-list helper for the current `/mock-tests` links.
+
+### Evidence
+
+- `npm test`: 377/377 passed across 44 files.
+- `npm run build`: `astro check` 0 errors, 0 warnings, 9 hints; production build
+  completed.
+- Playwright against the running app (`PLAYWRIGHT_BASE_URL`): guest attempt and
+  autosave-resume flows passed; a browser run of the new
+  `psychology-2024-07-19-shift-1` mock started, autosaved, submitted, scored
+  5/250 and rendered the solutions page with the printed key.
+- D1 local check: 245 practice papers, 245 published mock versions, 7,527
+  practice/mock questions, 0 unkeyed rows in the new mocks.
+- `/mock-tests` reports 245 papers across 18 subjects; new subject pages return
+  200 and the sitemap includes their subject hubs.
+
+### Remaining
+
+- Run the full Playwright suite result recorded in this session before pushing.
+- Remote D1 has not been updated: `wrangler` is unauthenticated in this
+  environment. Run `npm run db:migrate:remote`,
+  `npm run db:import:practice:remote` and
+  `npm run db:import:ranked-practice:remote` after authenticating.
+- Rights clearance is still required before new papers become indexable. They
+  enter as `rights_status = 'unknown'` and stay noindex per the existing
+  provenance gate.
+- The 44 skipped papers (2,004 unkeyed questions) remain in the OCR bundle for
+  editorial review; they are not playable because the server cannot score them.
