@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_GAT_May19_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "The average of 8 consecutive even numbers is 35. The largest number is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "40"
-          },
-          {
-            "id": "B",
-            "text": "42"
-          },
-          {
-            "id": "C",
-            "text": "44"
-          },
-          {
-            "id": "D",
-            "text": "46"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 2,
         "stemEn": "If (15:x = 25:35), then the value of (x) is:",
         "optionsEn": [
           {
@@ -120,7 +85,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "A train running at 72 km/h crosses a pole in 20 seconds. The length of the train is:",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "The probability of getting a prime number on rolling a fair die is:",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Find the missing term: 3, 9, 27, 81, ___",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "A and B together can complete a piece of work in 12 days. A alone can complete it in 20 days. In how many days can B alone complete the work?",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "The simple interest on a sum for 3 years at 8% per annum is 720. The principal amount is:",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "If in a code language, “PAPER” is written as “QBQFS”, then “MANGO” is written as:",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "The volume of a cube with side 6 cm is:",
         "optionsEn": [
           {

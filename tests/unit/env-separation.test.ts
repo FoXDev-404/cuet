@@ -43,6 +43,29 @@ describe('Environment Separation & Guard Policies', () => {
     }
   });
 
+  it('keeps local development on the top-level config and production in env.production', () => {
+    const raw = readFileSync(resolve(process.cwd(), 'wrangler.jsonc'), 'utf8');
+    const config = JSON.parse(stripJsoncComments(raw));
+
+    // Local dev and Playwright must not run with production fixture filtering.
+    expect(config.vars?.ENV).toBe('development');
+    expect(config.vars?.DEV_SHOW_RESET_LINK).toBe('1');
+
+    // The live worker keeps its name so the workers.dev URL stays stable.
+    expect(config.env?.production?.name).toBe('cuet-astro');
+    expect(config.env?.production?.vars?.ENV).toBe('production');
+    expect(config.env?.production?.vars?.DEV_SHOW_RESET_LINK).toBe('');
+    // Cloudflare Access is not configured yet, so session admin access stays
+    // available only because the override is intentional and explicit.
+    expect(config.env?.production?.vars?.ADMIN_AUTH_MODE).toBe('session');
+    expect(config.env?.production?.vars?.ADMIN_ALLOW_SESSION_IN_PROD).toBe('1');
+  });
+
+  it('routes npm run deploy through the production environment build', () => {
+    const pkg = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json'), 'utf8'));
+    expect(pkg.scripts?.deploy).toContain('scripts/deploy-production.mjs');
+  });
+
   it('check-env-separation.mjs script passes and exits with code 0', () => {
     const output = execSync('node scripts/check-env-separation.mjs', { encoding: 'utf8' });
     expect(output).toContain('Environment separation check PASSED');

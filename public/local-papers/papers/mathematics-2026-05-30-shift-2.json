@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Mathematics_May30_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -216,43 +216,8 @@
         "assets": []
       },
       {
-        "id": "q07",
-        "sourceQuestionNo": 7,
-        "stemEn": "A bag contains 5 red balls, 4 blue balls and 3 green balls. Two balls are drawn at random without replacement. The probability that both balls are red is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ \\frac{5}{33} $"
-          },
-          {
-            "id": "B",
-            "text": "$ \\frac{10}{33} $"
-          },
-          {
-            "id": "C",
-            "text": "$ \\frac{20}{33} $"
-          },
-          {
-            "id": "D",
-            "text": "$ \\frac{5}{12} $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Find the equation of the tangent to\n\n $$ y=x^{3}-3x+1 $$ \n\nat the point where x = 2.",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "If\n\n $$ \\sin^{-1}x+\\cos^{-1}x=\\theta $$ \n\nfind  $ \\theta $.",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Find the shortest distance between the skew lines\n\n $$ \\vec{r}=(1,0,0)+\\lambda(1,1,0) $$ \n\nand\n\n $$ \\vec{r}=(0,1,1)+\\mu(0,1,1) $$",
         "optionsEn": [
           {

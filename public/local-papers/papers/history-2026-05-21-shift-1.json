@@ -11,50 +11,15 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_History_May21_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 5,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "Match the following (Land Categories in Mughal India):\n\nA. Polaj I. Land left uncultivated temporarily\n\nB. Parauti II. Cultivated every year\n\nC. Banjar III. Uncultivable wasteland",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A-II, B-I, C-III"
-          },
-          {
-            "id": "B",
-            "text": "A-III, B-II, C-I"
-          },
-          {
-            "id": "C",
-            "text": "A-I, B-III, C-II"
-          },
-          {
-            "id": "D",
-            "text": "A-II, B-III, C-I"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "Who was the Viceroy of India during the Salt March (1930)?",
         "optionsEn": [
           {
@@ -86,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "Arrange the following events in chronological order:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Non-Cooperation Movement"
-          },
-          {
-            "id": "B",
-            "text": "Quit India Movement"
-          },
-          {
-            "id": "C",
-            "text": "Third Battle of Panipat"
-          },
-          {
-            "id": "D",
-            "text": "Civil Disobedience Movement"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 2,
         "stemEn": "Arab conquest of Sindh\n\n(A)  $ 4 \\rightarrow 3 \\rightarrow 1 \\rightarrow 2 $\n\n(B)  $ 3 \\rightarrow 4 \\rightarrow 1 \\rightarrow 2 $\n\n(C)  $ 4 \\rightarrow 1 \\rightarrow 3 \\rightarrow 2 $\n\n(D) $ 1\\to4\\to3\\to2 $\n\n4. The Tamil work on statecraft Amuktamalyada was written by:",
         "optionsEn": [
           {
@@ -162,51 +92,8 @@
         ]
       },
       {
-        "id": "q05",
-        "sourceQuestionNo": 5,
-        "stemEn": "Which Buddhist text contains the rules and teachings of the Buddha in discourse form?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Vinaya Pitaka"
-          },
-          {
-            "id": "B",
-            "text": "Abhidhamma Pitaka"
-          },
-          {
-            "id": "C",
-            "text": "Sutta Pitaka"
-          },
-          {
-            "id": "D",
-            "text": "Jataka"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": [
-          {
-            "id": "q05-exp-1",
-            "kind": "explanation",
-            "path": "/local-papers/assets/history-2026-05-21-shift-1/q05-exp-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 5"
-          }
-        ]
-      },
-      {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 3,
         "stemEn": "Match the following travellers with their countries:\n\nA. Ibn Battuta I. France\n\nB. Marco Polo II. Morocco\n\nC. François Bernier III. Italy",
         "optionsEn": [
           {
@@ -238,51 +125,8 @@
         "assets": []
       },
       {
-        "id": "q07",
-        "sourceQuestionNo": 7,
-        "stemEn": "Who introduced the Permanent Settlement in Bengal?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Lord Wellesley"
-          },
-          {
-            "id": "B",
-            "text": "Lord Cornwallis"
-          },
-          {
-            "id": "C",
-            "text": "Thomas Munro"
-          },
-          {
-            "id": "D",
-            "text": "Holt Mackenzie"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": [
-          {
-            "id": "q07-exp-1",
-            "kind": "explanation",
-            "path": "/local-papers/assets/history-2026-05-21-shift-1/q07-exp-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 7"
-          }
-        ]
-      },
-      {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 4,
         "stemEn": "“Mulk Abadi” referred to:",
         "optionsEn": [
           {
@@ -323,7 +167,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 5,
         "stemEn": "Who is known as the “Father of Indian Archaeology”?",
         "optionsEn": [
           {
@@ -359,49 +203,6 @@
             "path": "/local-papers/assets/history-2026-05-21-shift-1/q09-exp-1.jpg",
             "page": 1,
             "alt": "Figure 1 for question 9"
-          }
-        ]
-      },
-      {
-        "id": "q10",
-        "sourceQuestionNo": 10,
-        "stemEn": "The treatise containing the conversations and teachings of the Chishti saint Nizamuddin Auliya was written by:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Amir Khusrau"
-          },
-          {
-            "id": "B",
-            "text": "Ziauddin Barani"
-          },
-          {
-            "id": "C",
-            "text": "Hasan Sijzi"
-          },
-          {
-            "id": "D",
-            "text": "Minhaj-us-Siraj"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": [
-          {
-            "id": "q10-exp-1",
-            "kind": "explanation",
-            "path": "/local-papers/assets/history-2026-05-21-shift-1/q10-exp-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 10"
           }
         ]
       }

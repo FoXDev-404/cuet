@@ -149,9 +149,24 @@ const lines = (mock.instructions ?? "")
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ mockId: Number(button.dataset.mockId) }),
         });
-        const result = (await response.json()) as { error?: string; redirect?: string };
-        if (!response.ok) throw new Error(result.error || "Could not start the test.");
-        location.href = result.redirect || "/cuet-ug-mock-test";
+        // A failed API call can return an HTML error page, so never assume JSON.
+        const raw = await response.text();
+        let result: { error?: string; redirect?: string } = {};
+        try {
+          result = JSON.parse(raw) as { error?: string; redirect?: string };
+        } catch {
+          // Keep the friendly fallback below instead of leaking a JSON parse error.
+        }
+        if (!response.ok) {
+          throw new Error(
+            result.error ||
+              (response.status >= 500
+                ? "The test service is temporarily unavailable. Please try again in a few minutes."
+                : "Could not start the test."),
+          );
+        }
+        if (!result.redirect) throw new Error("Could not start the test.");
+        location.href = result.redirect;
       } catch (error) {
         if (errorBox) {
           errorBox.textContent = error instanceof Error ? error.message : "Could not start the test.";

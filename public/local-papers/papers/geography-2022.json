@@ -11,7 +11,7 @@
     "shift": null,
     "sourceFile": "Geography_2022.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 46,
+    "questionCount": 45,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -481,7 +481,7 @@
       },
       {
         "id": "q18",
-        "sourceQuestionNo": 18,
+        "sourceQuestionNo": 15,
         "stemEn": "Which one of the following is the most important crop is western part of Indo-Gangetic plain?",
         "optionsEn": [
           {
@@ -514,7 +514,7 @@
       },
       {
         "id": "q19",
-        "sourceQuestionNo": 19,
+        "sourceQuestionNo": 16,
         "stemEn": "Which one of the following is an appropriate reason for low productivity per labour in intensive subsistence farming?",
         "optionsEn": [
           {
@@ -547,7 +547,7 @@
       },
       {
         "id": "q20",
-        "sourceQuestionNo": 20,
+        "sourceQuestionNo": 17,
         "stemEn": "Which one of the following crop grown in intensive subsistence agriculture in wet regions of monsoonal Asia?",
         "optionsEn": [
           {
@@ -580,7 +580,7 @@
       },
       {
         "id": "q21",
-        "sourceQuestionNo": 21,
+        "sourceQuestionNo": 18,
         "stemEn": "Intensive Subsistence Agriculture means:",
         "optionsEn": [
           {
@@ -612,41 +612,8 @@
         "assets": []
       },
       {
-        "id": "q22",
-        "sourceQuestionNo": 22,
-        "stemEn": "Which one of the following is NOT a characteristics of intensive subsistence agriculture?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Largely found in densely populated region"
-          },
-          {
-            "id": "B",
-            "text": "Categorized into paddy and other than paddy cultivation"
-          },
-          {
-            "id": "C",
-            "text": "Found only in those region where high rainfall in dominant"
-          },
-          {
-            "id": "D",
-            "text": "More people are involved in agriculture"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          2
-        ],
-        "assets": []
-      },
-      {
         "id": "q23",
-        "sourceQuestionNo": 23,
+        "sourceQuestionNo": 19,
         "stemEn": "Paper industry is associated with which of the following industries?",
         "optionsEn": [
           {
@@ -679,7 +646,7 @@
       },
       {
         "id": "q24",
-        "sourceQuestionNo": 24,
+        "sourceQuestionNo": 20,
         "stemEn": "Which one of the following activity is not a tertiary activity?",
         "optionsEn": [
           {
@@ -712,7 +679,7 @@
       },
       {
         "id": "q25",
-        "sourceQuestionNo": 25,
+        "sourceQuestionNo": 21,
         "stemEn": "Identify the country from the below given options, where milk is supplied through pipelines from farms to factories:",
         "optionsEn": [
           {
@@ -745,7 +712,7 @@
       },
       {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 22,
         "stemEn": "Arrange the events in order of land transport development:\n\n(A) Animals were used as beasts of burden.\n\n(B) Invention of wheel, use of carts and wagons.\n\n(C) Railway line development and transport.\n\n(D) Human beings as carriers.\n\nChoose the correct answer from the options given below:\n\n(a) (D), (A), (B), (C) (b) (A), (D), (B), (C)\n\n(c) (D), (B), (A), (C) (d) (A), (D), (C), (B)\n\n(27. Match List-I with List-II\n\nList-I\n\nTerms\n\n(A) Network links\n\n(B) Nodes\n\n(C) Developed Network links\n\n(D) Link\n\n(ii) Madeup of nodes and link\n\n(iii) Every road that joins two nodes\n\n(iv) Meeting point of two or more routes",
         "optionsEn": [
           {
@@ -778,7 +745,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 23,
         "stemEn": "Which one of the following does not fall on trans-Siberian Railway Route?\n\n(A) Irkutsk (B) Baku\n\n(C) Moscow (D) Khabarovsk\n\n(E) Ulan Bator",
         "optionsEn": [
           {
@@ -811,7 +778,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 24,
         "stemEn": "Match List-I with List-II\n\n(A) ASEAN (i) Belgium\n\n(B) OPEC (ii) Uruguay\n\n(C) EU (iii) Indonesia\n\n(D) LAIA (iv) Austria",
         "optionsEn": [
           {
@@ -844,7 +811,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 25,
         "stemEn": "Which one of the following are types of international trade?\n\n(A) Bilateral trade (B) Unilateral trade\n\n(C) Multi-lateral trade (D) Collateral trade",
         "optionsEn": [
           {
@@ -877,7 +844,7 @@
       },
       {
         "id": "q31",
-        "sourceQuestionNo": 31,
+        "sourceQuestionNo": 26,
         "stemEn": "The first complete population census in India was conducted in which one of the following years?",
         "optionsEn": [
           {
@@ -910,7 +877,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 27,
         "stemEn": "Arrange the following states in ascending order in terms of their literacy rate according to (census 2011):\n\n(A) Gujarat (B) Uttar Pradesh\n\n(C) Bihar (D) Punjab",
         "optionsEn": [
           {
@@ -943,7 +910,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 28,
         "stemEn": "Identify the major cause of female migration in India:",
         "optionsEn": [
           {
@@ -976,7 +943,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 29,
         "stemEn": "Arrange the trend of migration from India in chronological order.\n\n(A) Highly qualified professionals\n\n(B) Professional artisans and traders\n\n(C) Indentured labourers\n\n(D) Out flow of entrepreneurs",
         "optionsEn": [
           {
@@ -1009,7 +976,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 30,
         "stemEn": "In which one of the following states, people live in compact villages for security and defence purposes?",
         "optionsEn": [
           {
@@ -1042,7 +1009,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 31,
         "stemEn": "Where do we find Linear Rural Settlement Pattern?",
         "optionsEn": [
           {
@@ -1075,7 +1042,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 32,
         "stemEn": "Which one of the following option is NOT true for the transformation of previously thinly populated areas into moderate to high concentration of population areas currently?",
         "optionsEn": [
           {
@@ -1108,7 +1075,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 33,
         "stemEn": "Identify the type of settlement which are fragmented and separated?",
         "optionsEn": [
           {
@@ -1141,7 +1108,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 34,
         "stemEn": "Green Revolution is successful in North Western part of the country, select the reasons.",
         "optionsEn": [
           {
@@ -1174,7 +1141,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 35,
         "stemEn": "The highest proportion of the total water used in the country is in which one of the following sectors?",
         "optionsEn": [
           {
@@ -1207,7 +1174,7 @@
       },
       {
         "id": "q41",
-        "sourceQuestionNo": 41,
+        "sourceQuestionNo": 36,
         "stemEn": "Match List-I with List-II\n\nList-I List-II\n\nWater Resource of India Characteristics\n\n(A) India's percentage of (i) 1,869 cubic km\n\nWorld's Water Resource\n\n(B) Annual volume of available (ii) 4 percent water from precipitation\n\n(C) Availability from surface (iii) 4,000 cubic km water and replenishable ground water\n\n(D) Total utilisable water (iv) 1,122 cubic km",
         "optionsEn": [
           {
@@ -1240,7 +1207,7 @@
       },
       {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 37,
         "stemEn": "Which one of the following is not a broad belt of mineral mines?",
         "optionsEn": [
           {
@@ -1273,7 +1240,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 38,
         "stemEn": "Which of the following sector is labour-intensive and provide employment to semi-skilled workers?",
         "optionsEn": [
           {
@@ -1306,7 +1273,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 39,
         "stemEn": "From the given options below, identify the programme NOT directed for spatial target areas development:",
         "optionsEn": [
           {
@@ -1339,7 +1306,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 40,
         "stemEn": "Which one of the following is not a part of watershed management programme in India?",
         "optionsEn": [
           {
@@ -1372,7 +1339,7 @@
       },
       {
         "id": "q46",
-        "sourceQuestionNo": 46,
+        "sourceQuestionNo": 41,
         "stemEn": "Choose the correct option for the availability of specialised goods and services.",
         "optionsEn": [
           {
@@ -1405,7 +1372,7 @@
       },
       {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 42,
         "stemEn": "Which one of the following is not a part of Indian railway?",
         "optionsEn": [
           {
@@ -1438,7 +1405,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 43,
         "stemEn": "Which one of the following roads constitutes highest percent of total road length in country?",
         "optionsEn": [
           {
@@ -1471,7 +1438,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 44,
         "stemEn": "Which of the following continent has highest \"Highways\" road density?",
         "optionsEn": [
           {
@@ -1504,7 +1471,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 45,
         "stemEn": "Arrange the following Radio broadcasting development in chronological order:\n\n(A) Radio broadcasting started by the Radio club of Bombay.\n\n(B) Changed to Akashwani\n\n(C) Changed to All India Radio\n\n(D) Broadcasting system adopted\n\nChoose the correct answer from the options given below:\n\n(a) (D)(A)(B)(C)(b) (A)(D)(C)(B)",
         "optionsEn": [
           {

@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Mathematics_May20_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 85,
+    "questionCount": 78,
     "sourceQuestionCount": 85,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -818,43 +818,8 @@
         "assets": []
       },
       {
-        "id": "q25",
-        "sourceQuestionNo": 25,
-        "stemEn": "Match List-I (Inverse Trigonometric function Principal values) with List-II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Inverse Trigonometric function</td><td style='text-align: center; word-wrap: break-word;'>Principal values</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)  $ \\sec^{-1}(-2) $</td><td style='text-align: center; word-wrap: break-word;'>(I)  $ \\frac{5\\pi}{6} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)  $ \\csc^{-1}(-\\sqrt{2}) $</td><td style='text-align: center; word-wrap: break-word;'>(II)  $ \\frac{2\\pi}{3} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)  $ \\csc^{-1}(2) $</td><td style='text-align: center; word-wrap: break-word;'>(III)  $ -\\frac{\\pi}{4} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)  $ \\sec^{-1}\\left(-\\frac{2}{\\sqrt{3}}\\right) $</td><td style='text-align: center; word-wrap: break-word;'>(IV)  $ \\frac{\\pi}{6} $</td></tr></table>",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "(A)-(IV), (B)-(III), (C)-(I), (D)-(II)"
-          },
-          {
-            "id": "B",
-            "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
-          },
-          {
-            "id": "C",
-            "text": "(A)-(II), (B)-(IV), (C)-(I), (D)-(III)"
-          },
-          {
-            "id": "D",
-            "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 25,
         "stemEn": "Let  $ R = \\{(1,1),(2,2),(3,3),(1,2)\\} $ be a relation on  $ \\{1,2,3\\} $. The minimum number of elements to be added so that R is an equivalence relation is:",
         "optionsEn": [
           {
@@ -887,7 +852,7 @@
       },
       {
         "id": "q27",
-        "sourceQuestionNo": 27,
+        "sourceQuestionNo": 26,
         "stemEn": "If  $ A_1, A_2, A_3 $ are independent events such that  $ P(A_i) = \\frac{1}{i+1} $, then probability that none occurs is:",
         "optionsEn": [
           {
@@ -920,7 +885,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 27,
         "stemEn": "Let $\\mathbb{N},\\mathbb{Z}$ and $\\mathbb{R}$ be the set of natural numbers, integers and real numbers respectively, [$\\cdot$] denotes the greatest integer function. Match List-I with List-II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)  $ f $:  $ \\mathbb{N} \\rightarrow \\mathbb{N}, f(x) = x^{2} $</td><td style='text-align: center; word-wrap: break-word;'>(I) One-one and onto</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)  $ f $:  $ \\mathbb{R} \\rightarrow \\mathbb{R}, f(x) = x^{2} $</td><td style='text-align: center; word-wrap: break-word;'>(II) One-one but not onto</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)  $ f $:  $ \\mathbb{R} \\rightarrow \\mathbb{R}, f(x) = 2x + 3 $</td><td style='text-align: center; word-wrap: break-word;'>(III) Not one-one but onto</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)  $ f $:  $ \\mathbb{R} \\rightarrow \\mathbb{Z}, f(x) = [x] $</td><td style='text-align: center; word-wrap: break-word;'>(IV) Neither one-one nor onto</td></tr></table>",
         "optionsEn": [
           {
@@ -953,7 +918,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 28,
         "stemEn": "The determinant  $ \\begin{vmatrix} \\lambda & \\sin\\theta & \\cos\\theta \\\\ -\\sin\\theta & -\\lambda & 1 \\\\ \\cos\\theta & 1 & \\lambda \\end{vmatrix} $ is equal to:",
         "optionsEn": [
           {
@@ -986,7 +951,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 29,
         "stemEn": "Let  $ \\vec{a} $ and  $ \\vec{b} $ be two unit vectors such that  $ \\vec{a} + \\vec{b} $ is also a unit vector. Then which of the following are TRUE?\n\n(A)  $ |\\vec{a}-\\vec{b}|=0 $\n\n(B)  $ |\\vec{a}-\\vec{b}|=\\sqrt{3} $\n\n(C) Angle between  $ \\vec{a} $ and  $ \\vec{b}=\\frac{2\\pi}{3} $\n\n(D) Angle between  $ \\vec{a} $ and  $ \\vec{b}=\\frac{\\pi}{3} $",
         "optionsEn": [
           {
@@ -1019,7 +984,7 @@
       },
       {
         "id": "q31",
-        "sourceQuestionNo": 31,
+        "sourceQuestionNo": 30,
         "stemEn": "If  $ \\vec{a} $ and  $ \\vec{b} $ are two vectors such that  $ |\\vec{a}| = 2 $,  $ |\\vec{b}| = 1 $ and  $ \\vec{a} \\cdot \\vec{b} = \\sqrt{3} $ then the angle between  $ 2\\vec{b} $ and  $ -\\vec{a} $ is:",
         "optionsEn": [
           {
@@ -1052,7 +1017,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 31,
         "stemEn": "If  $ \\int \\frac{1+\\cos\\theta}{\\tan2\\theta-\\cot2\\theta}d\\theta = \\lambda\\cos\\theta + c $, then  $ \\lambda $ is equal to (where c is constant of integration)",
         "optionsEn": [
           {
@@ -1085,7 +1050,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 32,
         "stemEn": "The maximum value of the linear programming problem, max.  $ z = 3x + 4y $ subject to the constraints:  $ x - y \\leq -1 $,  $ x \\geq y $, x, y  $ \\geq $ 0 is",
         "optionsEn": [
           {
@@ -1118,7 +1083,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 33,
         "stemEn": "If  $ f(x)=\\begin{cases}\\frac{x-2}{|x-2|}+a, & x<2 \\\\ a+b, & x=2\\end{cases} $ is continuous at x=2, then  $ \\frac{x-2}{|x-2|}+b, \\quad x>2 $",
         "optionsEn": [
           {
@@ -1151,7 +1116,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 34,
         "stemEn": "General solution of the differential equation  $ (x+2y^{3})dy=ydx $ is (Where C is an arbitrary constant)",
         "optionsEn": [
           {
@@ -1184,7 +1149,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 35,
         "stemEn": "If A, B and C are square matrices of order n x n, then which of the following are TRUE?\n\n[Where  $ A^{T} $ is transpose of matrix A]\n\n(A)  $ (A+B)^{T}=A^{T}+B^{T} $\n\n(B)  $ (AB)^{T} = A^{T}B^{T} $\n\n(C)  $ (ABC)^{T}=C^{T}B^{T}A^{T} $\n\n(D)  $ (BA)^{T} = A^{T}B^{T} $\n\nChoose the correct answer:",
         "optionsEn": [
           {
@@ -1217,7 +1182,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 36,
         "stemEn": "The integral  $ \\int \\frac{\\cos 5x + \\cos 4x}{1 - 2\\cos 3x} \\, dx $ is equal to (where C is an arbitrary constant):",
         "optionsEn": [
           {
@@ -1250,7 +1215,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 37,
         "stemEn": "If $A = \\begin{bmatrix} 1 & 2 & -1 \\\\ -1 & 1 & 2 \\\\ 2 & -1 & 1 \\end{bmatrix}$ then $|adj(adjA)|$ is equal to",
         "optionsEn": [
           {
@@ -1283,7 +1248,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 38,
         "stemEn": "The solution set of the inequation $2x + 3y > 12$ is",
         "optionsEn": [
           {
@@ -1316,7 +1281,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 39,
         "stemEn": "The solution of the differential equation  $ (x-1)\\frac{dx}{dy}+(y-2)=0 $, given x=1, y=1 represents a",
         "optionsEn": [
           {
@@ -1349,7 +1314,7 @@
       },
       {
         "id": "q41",
-        "sourceQuestionNo": 41,
+        "sourceQuestionNo": 40,
         "stemEn": "The area bounded by the lines  $ y = 1 + |x + 1| $, x = -3, x = 3 and y = 0 is",
         "optionsEn": [
           {
@@ -1382,7 +1347,7 @@
       },
       {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 41,
         "stemEn": "If A and B are two independent events and P(A) = 1/2, P(B) = 1/3, then Match List-I with List-II\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) P(A \\cup B)</td><td style='text-align: center; word-wrap: break-word;'>(I)  $ \\frac{5}{6} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) P(A \\cap  $ \\overline{B} $)</td><td style='text-align: center; word-wrap: break-word;'>(II)  $ \\frac{1}{6} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) P( $ \\overline{A} $ \\cap B)</td><td style='text-align: center; word-wrap: break-word;'>(III)  $ \\frac{2}{3} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) P( $ \\overline{A}\\cap B $)</td><td style='text-align: center; word-wrap: break-word;'>(IV)  $ \\frac{1}{3} $</td></tr></table>",
         "optionsEn": [
           {
@@ -1415,7 +1380,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 42,
         "stemEn": "Solution of  $ \\frac{x^2 - 4x + 7}{x^2 - 7x + 12} \\leq \\frac{2}{3} $ is/are:\n\nChoose the correct answer:",
         "optionsEn": [
           {
@@ -1448,7 +1413,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 43,
         "stemEn": "If a machine is correctly set up, it produces 80% acceptable items. If it is incorrectly set up, it produces only 30% acceptable items. From the past experience it was known that 90% of the setups are correctly done. If after a certain setup, the machine produces 2 acceptable items then the probability that the machine was correctly set up, is:",
         "optionsEn": [
           {
@@ -1481,7 +1446,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 44,
         "stemEn": "A line passes through (2, 1, 3) and (1, 2, -1), then\n\n(A) Equation is  $ \\frac{x-2}{1}=\\frac{y-1}{1}=\\frac{z-3}{4} $\n\n(B) Equation is  $ \\frac{x+2}{-1} = \\frac{y+1}{1} = \\frac{z+3}{4} $\n\n(C) Equation is  $ \\vec{r} = 2\\vec{i} + \\vec{j} + 3\\vec{k} + \\lambda(\\vec{i} - \\vec{j} + 4\\vec{k}) $\n\n(D) Equation is  $ \\frac{x-1}{1} = \\frac{y-2}{-1} = \\frac{z+1}{4} $\n\nChoose the correct answer:",
         "optionsEn": [
           {
@@ -1514,7 +1479,7 @@
       },
       {
         "id": "q46",
-        "sourceQuestionNo": 46,
+        "sourceQuestionNo": 45,
         "stemEn": "The probability of drawing a one-rupee coin from a purse with two compartments, one of which contains 3 fifty paise coins and 2 one-rupee coins and other contains 2 fifty paise coins and 3 one-rupee coins, is",
         "optionsEn": [
           {
@@ -1547,7 +1512,7 @@
       },
       {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 46,
         "stemEn": "The function  $ f(x)=\\sum_{k=1}^{7}(x-k)^2 $ has minimum value at x = a, then a is equal to:",
         "optionsEn": [
           {
@@ -1580,7 +1545,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 47,
         "stemEn": "The integral of  $ \\int_{-2}^{2}x^{4}dx $ denominator  $ (1+5x^{2}) $ is:",
         "optionsEn": [
           {
@@ -1613,7 +1578,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 48,
         "stemEn": "If  $ A = \\begin{bmatrix} \\cos \\alpha & \\sin \\alpha \\\\ -\\sin \\alpha & \\cos \\alpha \\end{bmatrix} $ then  $ A^2 - (2\\cos \\alpha)A $ is equal to: (Where I is identity matrix of order 2)",
         "optionsEn": [
           {
@@ -1646,7 +1611,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 49,
         "stemEn": "If  $ y = \\frac{x^2}{1+x^{b-a}+x^{c-a}} + \\frac{x^2}{1+x^{a-b}+x^{c-b}} + \\frac{x^2}{1+x^{a-c}+x^{b-c}} $, then  $ \\frac{dy}{dx} $ is:",
         "optionsEn": [
           {
@@ -1679,7 +1644,7 @@
       },
       {
         "id": "q51",
-        "sourceQuestionNo": 51,
+        "sourceQuestionNo": 50,
         "stemEn": "A firm anticipates an expenditure of Rs.5,000,000 for plant modernization at the end of 10 years from now, then the amount the company should deposit at the end of each year into a sinking fund earning interest 5% per annum is [use (1.05) $ ^{1} $ = 1.629]:",
         "optionsEn": [
           {
@@ -1712,7 +1677,7 @@
       },
       {
         "id": "q52",
-        "sourceQuestionNo": 52,
+        "sourceQuestionNo": 51,
         "stemEn": "A function $f(x)$ is given by, $f(x) = 12x^{4/3} - 6x^{1/3}$, $x \\in [-1,1]$, then which of the following are TRUE?\n\n(A)  $ f(x) $ has a critical point x = 1/8\n\n(B) Absolute maximum value of $f(x)$ is 18\n\n(C) Absolute maximum value of $f(x)$ is 6\n\n(D) Absolute minimum value of  $ f(x) $ is -9/4",
         "optionsEn": [
           {
@@ -1745,7 +1710,7 @@
       },
       {
         "id": "q53",
-        "sourceQuestionNo": 53,
+        "sourceQuestionNo": 52,
         "stemEn": "M is a square matrix of order 3. If  $ M(adjM) = \\begin{bmatrix} 5 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix} $, then the value of  $ |M + adjM| $ is equal to:",
         "optionsEn": [
           {
@@ -1777,43 +1742,8 @@
         "assets": []
       },
       {
-        "id": "q54",
-        "sourceQuestionNo": 54,
-        "stemEn": "Mr. Sanjay borrowed Rs.10,000,000 from a bank to purchase a car on reducing balance payment for a period of 10 years. If bank charges interest at 9% per annum compounded monthly and EMI is Rs.12,658 to be paid by him. Then principal outstanding after payment of 12th EMI is: (Use  $ (1.0075)^{12} = 1.0938 $)",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Rs.9,54,898"
-          },
-          {
-            "id": "B",
-            "text": "Rs.9,35,405"
-          },
-          {
-            "id": "C",
-            "text": "Rs.8,87,410"
-          },
-          {
-            "id": "D",
-            "text": "Rs.9,39,486"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q55",
-        "sourceQuestionNo": 55,
+        "sourceQuestionNo": 53,
         "stemEn": "A measurable characteristic of a sample is known as:",
         "optionsEn": [
           {
@@ -1846,7 +1776,7 @@
       },
       {
         "id": "q56",
-        "sourceQuestionNo": 56,
+        "sourceQuestionNo": 54,
         "stemEn": "If A and B are non-singular square matrices of order n, match List-I with List-II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)  $ |\\left(\\boldsymbol{A}^{\\mathrm{T}}\\right)^{-1}| $</td><td style='text-align: center; word-wrap: break-word;'>(I) adj A</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) adj(AB)</td><td style='text-align: center; word-wrap: break-word;'>$ \\frac{1}{|\\boldsymbol{A}|} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) A (adj A)</td><td style='text-align: center; word-wrap: break-word;'>(III)  $ |\\boldsymbol{A}| $  $ I_{n} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)  $ A^{-1}|\\boldsymbol{A}| $</td><td style='text-align: center; word-wrap: break-word;'>(IV) adj B. adj A</td></tr></table>",
         "optionsEn": [
           {
@@ -1879,7 +1809,7 @@
       },
       {
         "id": "q57",
-        "sourceQuestionNo": 57,
+        "sourceQuestionNo": 55,
         "stemEn": "A container contains 100 litres of apple juice. From this container, 10 litres of apple juice was taken out and replaced by water. This process was further repeated twice. How much apple juice is left in the container?",
         "optionsEn": [
           {
@@ -1912,7 +1842,7 @@
       },
       {
         "id": "q58",
-        "sourceQuestionNo": 58,
+        "sourceQuestionNo": 56,
         "stemEn": "The probability of a girl hitting a target is  $ 1/2 $. How many times must she fire so that the probability of hitting the target at least once is more than 90%?",
         "optionsEn": [
           {
@@ -1944,43 +1874,8 @@
         "assets": []
       },
       {
-        "id": "q59",
-        "sourceQuestionNo": 59,
-        "stemEn": "The remainder, when  $ 2^{100} $ is divided by 11, is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "2"
-          },
-          {
-            "id": "B",
-            "text": "1"
-          },
-          {
-            "id": "C",
-            "text": "3"
-          },
-          {
-            "id": "D",
-            "text": "5"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q60",
-        "sourceQuestionNo": 60,
+        "sourceQuestionNo": 57,
         "stemEn": "If a girl takes twice as long to row a distance against the stream as to row the same distance in the direction of the stream, then the ratio of speed of the girl in still water to the speed of stream is:",
         "optionsEn": [
           {
@@ -2013,7 +1908,7 @@
       },
       {
         "id": "q61",
-        "sourceQuestionNo": 61,
+        "sourceQuestionNo": 58,
         "stemEn": "The area bounded by curves  $ y = -\\frac{2}{3}x + 2 $, x = -1, x = 2 and the x-axis is:",
         "optionsEn": [
           {
@@ -2046,7 +1941,7 @@
       },
       {
         "id": "q62",
-        "sourceQuestionNo": 62,
+        "sourceQuestionNo": 59,
         "stemEn": "If  $ \\begin{bmatrix} 1 & -4 \\\\ 3 & -2 \\end{bmatrix} A = \\begin{bmatrix} -16 & -6 \\\\ 7 & 2 \\end{bmatrix} $, then the matrix A is:",
         "optionsEn": [
           {
@@ -2063,11 +1958,11 @@
           },
           {
             "id": "D",
-            "text": ""
+            "text": "$$ \\begin{bmatrix} 2 & 6 \\\\ 2 & 11/2 \\end{bmatrix} $$"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -2079,7 +1974,7 @@
       },
       {
         "id": "q63",
-        "sourceQuestionNo": 63,
+        "sourceQuestionNo": 60,
         "stemEn": "Which of the following statements are correct for Maximize $Z = 50x + 40y$ subject to $1000x + 1200y \\leq 7600$, $3x + 2y \\leq 18$, $x, y \\geq 0$?\n\n(A) The LPP has a unique optimal solution at (4, 3) only.\n\n(B) The feasible region is bounded.\n\n(C) The maximum value is unique, but there are infinite optimal solutions.\n\n(D) The feasible region is bounded with corner points  $ (0,0) $,  $ (6,0) $,  $ (4,3) $ and  $ (0,19/3) $.",
         "optionsEn": [
           {
@@ -2112,7 +2007,7 @@
       },
       {
         "id": "q64",
-        "sourceQuestionNo": 64,
+        "sourceQuestionNo": 61,
         "stemEn": "The present value of a perpetuity of Rs.7500 payable at the end of each year, if money is worth 5% compounded annually is:",
         "optionsEn": [
           {
@@ -2145,7 +2040,7 @@
       },
       {
         "id": "q65",
-        "sourceQuestionNo": 65,
+        "sourceQuestionNo": 62,
         "stemEn": "Consider the following hypothesis test $H_0: \\mu = 18$, $H_a: \\mu \\neq 18$. A sample of 81 provided a sample mean $\\bar{x} = 17$ and a population standard deviation $\\sigma = 4.5$. The value of test statistic and degree of freedom are:",
         "optionsEn": [
           {
@@ -2178,7 +2073,7 @@
       },
       {
         "id": "q66",
-        "sourceQuestionNo": 66,
+        "sourceQuestionNo": 63,
         "stemEn": "In a game, A can give 20 points to B, A can give 32 points to C and B can give 15 points to C. How many points make the game?",
         "optionsEn": [
           {
@@ -2211,7 +2106,7 @@
       },
       {
         "id": "q67",
-        "sourceQuestionNo": 67,
+        "sourceQuestionNo": 64,
         "stemEn": "Which of the following are the methods of measuring trends of time series?\n\n(A) Graphical method\n\n(B) Method of least squares\n\n(C) Method of cyclic component\n\n(D) Moving averages method",
         "optionsEn": [
           {
@@ -2243,43 +2138,8 @@
         "assets": []
       },
       {
-        "id": "q68",
-        "sourceQuestionNo": 68,
-        "stemEn": "For a function  $ f(x) = -x^{2} - 2x + 30 $, which of the following statements are TRUE?\n\n(A)  $ f(x) $ is increasing on  $ (-\\infty, -1) $\n\n(B)  $ f(x) $ is increasing on  $ (-1, \\infty) $\n\n(C)  $ f(x) $ is decreasing on  $ (-\\infty, -1) $\n\n(D)  $ f(x) $ is decreasing on  $ (-1, \\infty) $",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "(B) and (D) only"
-          },
-          {
-            "id": "B",
-            "text": "(B) and (C) only"
-          },
-          {
-            "id": "C",
-            "text": "(A) and (C) only"
-          },
-          {
-            "id": "D",
-            "text": "(A) and (D) only"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q69",
-        "sourceQuestionNo": 69,
+        "sourceQuestionNo": 65,
         "stemEn": "A die is thrown again and again until three 5's are obtained. The probability of obtaining the third 5 in the seventh throw of the die is:",
         "optionsEn": [
           {
@@ -2312,7 +2172,7 @@
       },
       {
         "id": "q70",
-        "sourceQuestionNo": 70,
+        "sourceQuestionNo": 66,
         "stemEn": "Match List-I with List-II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-IDeterminant</td><td style='text-align: center; word-wrap: break-word;'>List-IIValue</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) $ \\left|\\begin{matrix}6&amp;2\\\\ 4&amp;3\\end{matrix}\\right|= $</td><td style='text-align: center; word-wrap: break-word;'>(I) 0</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) $ \\left|\\begin{matrix}x&amp;x+1\\\\ x-1&amp;x\\end{matrix}\\right|= $</td><td style='text-align: center; word-wrap: break-word;'>(II) -1</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) $ \\left|\\begin{matrix}1&amp;\\log_{a}b\\\\ \\log_{b}a&amp;1\\end{matrix}\\right|= $</td><td style='text-align: center; word-wrap: break-word;'>(III) 10</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) $ \\left|\\begin{matrix}x-1&amp;1\\\\ x^{3}&amp;x^{2}+x+1\\end{matrix}\\right|= $</td><td style='text-align: center; word-wrap: break-word;'>(IV) 1</td></tr></table>",
         "optionsEn": [
           {
@@ -2345,7 +2205,7 @@
       },
       {
         "id": "q71",
-        "sourceQuestionNo": 71,
+        "sourceQuestionNo": 67,
         "stemEn": "For any square matrix A, A - A^{T} is always:",
         "optionsEn": [
           {
@@ -2378,7 +2238,7 @@
       },
       {
         "id": "q72",
-        "sourceQuestionNo": 72,
+        "sourceQuestionNo": 68,
         "stemEn": "Water is leaking from the bottom of a conical funnel at the rate of  $ 0.15\\pi\\ cm^3/s $. If the radius of the base is 10 cm and height is 20 cm, the rate at which the water level is dropping when it is 5 cm from the top is:",
         "optionsEn": [
           {
@@ -2411,7 +2271,7 @@
       },
       {
         "id": "q73",
-        "sourceQuestionNo": 73,
+        "sourceQuestionNo": 69,
         "stemEn": "Mr. X has two investment options: A (8% p.a. compounded semi-annually) or B (7.6% p.a. compounded quarterly). Which of the following are TRUE?\n\n(A) Effective rate for option A is 8.16%\n\n(B) Effective rate for option B is 7.82%\n\n(C) Effective rate for option B is 8.82%\n\n(D) Option A is better than option B as an investment.",
         "optionsEn": [
           {
@@ -2444,7 +2304,7 @@
       },
       {
         "id": "q74",
-        "sourceQuestionNo": 74,
+        "sourceQuestionNo": 70,
         "stemEn": "The integral  $ \\int \\frac{x^5}{\\sqrt{1+x^3}} dx $ is equal to:",
         "optionsEn": [
           {
@@ -2477,7 +2337,7 @@
       },
       {
         "id": "q75",
-        "sourceQuestionNo": 75,
+        "sourceQuestionNo": 71,
         "stemEn": "Match List-I with List-II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) The mean of the Binomial distribution  $ B \\left(10, \\frac{1}{5}\\right) $ is</td><td style='text-align: center; word-wrap: break-word;'>(I) 1.6</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) The Variance of the Binomial distribution  $ B \\left(12, \\frac{1}{2}\\right) $ is</td><td style='text-align: center; word-wrap: break-word;'>(II) 10</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) The standard deviation of the Binomial distribution  $ B \\left(16, \\frac{1}{5}\\right) $ is</td><td style='text-align: center; word-wrap: break-word;'>(III) 2</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) The mean of the Binomial distribution  $ B \\left(25, \\frac{2}{5}\\right) $ is</td><td style='text-align: center; word-wrap: break-word;'>(IV) 3</td></tr></table>",
         "optionsEn": [
           {
@@ -2510,7 +2370,7 @@
       },
       {
         "id": "q76",
-        "sourceQuestionNo": 76,
+        "sourceQuestionNo": 72,
         "stemEn": "The solution set of the linear inequation  $ \\frac{3}{x-2} < 1 $ is:",
         "optionsEn": [
           {
@@ -2543,7 +2403,7 @@
       },
       {
         "id": "q77",
-        "sourceQuestionNo": 77,
+        "sourceQuestionNo": 73,
         "stemEn": "The second order derivative of which of the following functions is  $ 20^{x} $?",
         "optionsEn": [
           {
@@ -2576,7 +2436,7 @@
       },
       {
         "id": "q78",
-        "sourceQuestionNo": 78,
+        "sourceQuestionNo": 74,
         "stemEn": "A cab hire firm has two cabs, which it hires out day by day. The number of demands for cabs on each day follows a Poisson distribution with mean of 1.5. The probability of days on which neither cab is used is  $ (\\text{Use } e^{-1.5} = 0.2231) $:",
         "optionsEn": [
           {
@@ -2608,43 +2468,8 @@
         "assets": []
       },
       {
-        "id": "q79",
-        "sourceQuestionNo": 79,
-        "stemEn": "The order of the differential equation  $ \\left(\\frac{d^{5}y}{dx^{5}}\\right)^{2}+\\frac{dy}{dx}+y^{2}=0 $ is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "1"
-          },
-          {
-            "id": "B",
-            "text": "Not defined"
-          },
-          {
-            "id": "C",
-            "text": "5"
-          },
-          {
-            "id": "D",
-            "text": "2"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q80",
-        "sourceQuestionNo": 80,
+        "sourceQuestionNo": 75,
         "stemEn": "A TV set costing Rs.55,000 has a useful life of 8 years. If annual depreciation is Rs.5,000, then the scrap value by straight line method is:",
         "optionsEn": [
           {
@@ -2677,7 +2502,7 @@
       },
       {
         "id": "q81",
-        "sourceQuestionNo": 81,
+        "sourceQuestionNo": 76,
         "stemEn": "A pump can fill a tank in 2 hours. Because of a leak, it took  $ \\frac{2}{3} $ hours (or 7/3 hours) to fill the tank. In how many hours can the leak drain all the water?",
         "optionsEn": [
           {
@@ -2710,7 +2535,7 @@
       },
       {
         "id": "q82",
-        "sourceQuestionNo": 82,
+        "sourceQuestionNo": 77,
         "stemEn": "For the given 5 values, 35, 70, 30, 62, 58, the 3-year moving averages are:",
         "optionsEn": [
           {
@@ -2742,43 +2567,8 @@
         "assets": []
       },
       {
-        "id": "q83",
-        "sourceQuestionNo": 83,
-        "stemEn": "A simple random sample consists of five observations: 4, 5, 9, 10  12. What is the point estimate of population standard deviation?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "3.4"
-          },
-          {
-            "id": "B",
-            "text": "3"
-          },
-          {
-            "id": "C",
-            "text": "4.4"
-          },
-          {
-            "id": "D",
-            "text": "5.2"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q84",
-        "sourceQuestionNo": 84,
+        "sourceQuestionNo": 78,
         "stemEn": "Match List-I with List-II regarding Linear Programming Problems (LPP):\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) In an linear programming problem (LPP), the linear inequalities or restrictions on the variables are called.</td><td style='text-align: center; word-wrap: break-word;'>(I). Feasible Region</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) In an LPP, the linear function which has to be maximised or minimised is called a</td><td style='text-align: center; word-wrap: break-word;'>(II) Convex set</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) The common region determined by all the linear constraints of an LPP is called</td><td style='text-align: center; word-wrap: break-word;'>(III) Linear objective function</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) The feasible region, for an LPP is always a</td><td style='text-align: center; word-wrap: break-word;'>(IV) Linear Constraints</td></tr></table>",
         "optionsEn": [
           {
@@ -2804,41 +2594,6 @@
         "passageId": null,
         "reviewStatus": "keyed",
         "reviewFlags": [],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q85",
-        "sourceQuestionNo": 85,
-        "stemEn": "A person invested Rs.15,000 in a mutual fund; it became Rs.25,000. If CAGR is 8.88%, then the number of years n is: [Use  $ -\\log 1.667 = 0.2219 $;  $ \\log 1.089 = 0.0370 $]",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "2"
-          },
-          {
-            "id": "B",
-            "text": "4"
-          },
-          {
-            "id": "C",
-            "text": "7"
-          },
-          {
-            "id": "D",
-            "text": "6"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
         "sourcePages": [
           1
         ],

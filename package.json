@@ -28,7 +28,7 @@
     "og:questions:remote": "node scripts/generate-question-og.mjs --remote",
     "smoke:staging": "node scripts/staging-smoke.mjs",
     "preview": "astro preview",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "node scripts/deploy-production.mjs",
     "db:migrate:local": "wrangler d1 migrations apply cuet-blueprint-db --local",
     "db:migrate:remote": "wrangler d1 migrations apply cuet-blueprint-db --remote",
     "db:seed:local": "wrangler d1 execute cuet-blueprint-db --local --file=./migrations/0002_seed.sql",
@@ -37,6 +37,7 @@
     "db:import:practice:remote": "node scripts/import-practice-library.mjs --remote",
     "db:import:ranked-practice:local": "node scripts/import-ranked-practice.mjs --local",
     "db:import:ranked-practice:remote": "node scripts/import-ranked-practice.mjs --remote",
+    "db:import:cuet-json": "node scripts/import-cuet-json-output.mjs",
     "types": "wrangler types"
   },
   "dependencies": {

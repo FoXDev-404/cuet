@@ -152,7 +152,7 @@
       {
         "id": "q05",
         "sourceQuestionNo": 5,
-        "stemEn": "Fill in the blank with the correct option.\n\n3. Fin in the blank with the correct option.\n\nThe church bells began to ___ loudly at noon.",
+        "stemEn": "Fill in the blank with the correct option:\n\nThe church bells began to ___ loudly at noon.",
         "optionsEn": [
           {
             "id": "A",
@@ -172,7 +172,7 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "B",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",

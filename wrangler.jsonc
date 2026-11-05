@@ -29,6 +29,9 @@
       "id": "0c268f3ee06c4ee6928493f58c6e0f46"
     }
   ],
+  // Top-level values are for local development. Production deploys build with
+  // CLOUDFLARE_ENV=production (see scripts/deploy-production.mjs) so the
+  // env.production vars below are what reach the live worker.
   "vars": {
     "ENV": "development",
     "SITE_URL": "https://cuet-astro.cuet-platform.workers.dev",
@@ -84,7 +87,7 @@
       }
     },
     "production": {
-      "name": "cuet-astro-production",
+      "name": "cuet-astro",
       "d1_databases": [
         {
           "binding": "DB",
@@ -105,15 +108,18 @@
       ],
       "vars": {
         "ENV": "production",
-        "SITE_URL": "https://cuetfreemocktest.com",
+        "SITE_URL": "https://cuet-astro.cuet-platform.workers.dev",
         "DEV_SHOW_RESET_LINK": "",
-        "ADMIN_AUTH_MODE": "access",
+        // Cloudflare Access is not configured yet. Keep session admin auth,
+        // but require the explicit production override so the intent is clear.
+        "ADMIN_AUTH_MODE": "session",
+        "ADMIN_ALLOW_SESSION_IN_PROD": "1",
         "CF_ACCESS_TEAM_DOMAIN": "",
         "CF_ACCESS_AUD": "",
         "ACCESS_TEAM_DOMAIN": "",
         "ACCESS_AUD": "",
-        "EMAIL_PROVIDER": "brevo",
-        "EMAIL_FROM": "support@cuetfreemocktest.com",
+        "EMAIL_PROVIDER": "",
+        "EMAIL_FROM": "",
         "CF_ANALYTICS_TOKEN": "",
         "GSC_VERIFICATION": "",
         "ADSENSE_CLIENT": "",

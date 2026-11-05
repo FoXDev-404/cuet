@@ -103,9 +103,9 @@ const counts = {};
 const TABLE_CUSTOM_QUERIES = {
   mock_tests: `SELECT * FROM mock_tests WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%' AND slug NOT LIKE '%publish-check%' AND slug NOT LIKE 'slow-network-%' AND LOWER(title) NOT LIKE '%fixture%'`,
   mock_test_versions: `SELECT * FROM mock_test_versions WHERE mock_id IN (SELECT id FROM mock_tests WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%' AND slug NOT LIKE '%publish-check%' AND slug NOT LIKE 'slow-network-%' AND LOWER(title) NOT LIKE '%fixture%')`,
-  questions: `SELECT * FROM questions WHERE text NOT LIKE '%fixture%' AND text NOT LIKE '%e2e%'`,
-  mock_questions: `SELECT * FROM mock_questions WHERE version_id IN (SELECT id FROM mock_test_versions WHERE mock_id IN (SELECT id FROM mock_tests WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%' AND slug NOT LIKE '%publish-check%' AND slug NOT LIKE 'slow-network-%' AND LOWER(title) NOT LIKE '%fixture%')) AND question_id IN (SELECT id FROM questions WHERE text NOT LIKE '%fixture%' AND text NOT LIKE '%e2e%')`,
-  question_public_ids: `SELECT * FROM question_public_ids WHERE current_question_id IN (SELECT id FROM questions WHERE text NOT LIKE '%fixture%' AND text NOT LIKE '%e2e%')`,
+  questions: `SELECT * FROM questions WHERE text NOT LIKE 'E2E fixture question%'`,
+  mock_questions: `SELECT * FROM mock_questions WHERE version_id IN (SELECT id FROM mock_test_versions WHERE mock_id IN (SELECT id FROM mock_tests WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%' AND slug NOT LIKE '%publish-check%' AND slug NOT LIKE 'slow-network-%' AND LOWER(title) NOT LIKE '%fixture%')) AND question_id IN (SELECT id FROM questions WHERE text NOT LIKE 'E2E fixture question%')`,
+  question_public_ids: `SELECT * FROM question_public_ids WHERE current_question_id IN (SELECT id FROM questions WHERE text NOT LIKE 'E2E fixture question%')`,
   blog_posts: `SELECT * FROM blog_posts WHERE slug NOT LIKE 'e2e-%' AND slug NOT LIKE '%fixture%'`,
 };
 

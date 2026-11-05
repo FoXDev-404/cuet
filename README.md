@@ -9,7 +9,8 @@ Production: <https://cuet-astro.cuet-platform.workers.dev>
 
 - NTA-style timed mock tests with autosave, marking, review and server scoring
 - Ranked practice papers with per-paper and cross-paper leaderboards
-- Previous-year practice library (106 CUET/CUCET papers, 2021-2025)
+- Previous-year practice library (245 CUET/CUCET papers, 2021-2026, 7,527 scorable questions)
+- New dataset import adds Accountancy, Business Studies, Economics, Political Science, Psychology, Sociology and Legal Studies papers
 - Student accounts, dashboard, attempt history, bookmarks and wrong-question retry
 - Live mock discussions, replies, reports and admin moderation
 - Admin panel for mocks, questions, review queue, media, SEO and audit log
@@ -95,4 +96,5 @@ resources have been retired.
 - [Design audit](docs/DESIGN_AUDIT.md)
 - [Share feature](docs/SHARE_FEATURE.md)
 - [Progress log](docs/PROGRESS.md)
+- [Dataset import report (2026-11-06)](docs/DATASET_IMPORT_2026-11-06.md)
 - [Project report prompt](docs/PROJECT_REPORT_PROMPT.md)

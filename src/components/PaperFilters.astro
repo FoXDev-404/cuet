@@ -1,0 +1,370 @@
+---
+import type { LocalSubjectSummary } from "../lib/local-papers";
+import {
+  buildFilterUrl,
+  isFiltered,
+  type PaperFilterParams,
+  type PaperTypeFilter,
+} from "../lib/paper-list";
+import YearChips from "./YearChips.astro";
+
+interface Props {
+  basePath: string;
+  params: PaperFilterParams;
+  years: number[];
+  subjects: LocalSubjectSummary[];
+  totalFiltered: number;
+  startIndex: number;
+  endIndex: number;
+  class?: string;
+}
+
+const {
+  basePath,
+  params,
+  years,
+  subjects,
+  totalFiltered,
+  startIndex,
+  endIndex,
+  class: className = "",
+} = Astro.props;
+
+const hasActiveFilters = isFiltered(params);
+const clearHref = basePath;
+
+// Count active filters for mobile badge
+let activeFilterCount = 0;
+if (params.q) activeFilterCount += 1;
+if (params.year !== "all") activeFilterCount += 1;
+if (params.subject !== "all") activeFilterCount += 1;
+if (params.type !== "all") activeFilterCount += 1;
+if (params.sort !== "newest") activeFilterCount += 1;
+---
+
+<div class:list={["sticky top-16 z-30 bg-white/95 pb-3 pt-3 backdrop-blur-md dark:bg-neutral-900/95 border-b border-neutral-200 dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.04)] dark:shadow-none", className]}>
+  <form id="paper-filter-form" method="GET" action={basePath} class="space-y-3">
+    <!-- Row 1: Search bar (Desktop & Mobile) -->
+    <div class="flex items-center gap-2">
+      <div class="relative flex-1">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input
+          type="search"
+          name="q"
+          value={params.q}
+          placeholder="Search subject or date, e.g. physics 2026"
+          class="block w-full rounded-xl border border-neutral-300 bg-white py-2.5 pl-10 pr-4 text-sm text-neutral-900 placeholder-neutral-500 shadow-sm transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-100 dark:placeholder-neutral-400 dark:focus:border-brand-400"
+          aria-label="Search previous-year mock tests"
+        />
+      </div>
+
+      <!-- Hidden fields to preserve state on search submit without JS -->
+      {params.year !== "all" && <input type="hidden" name="year" value={params.year} />}
+      {params.subject !== "all" && <input type="hidden" name="subject" value={params.subject} />}
+      {params.type !== "all" && <input type="hidden" name="type" value={params.type} />}
+      {params.sort !== "newest" && <input type="hidden" name="sort" value={params.sort} />}
+
+      <!-- Search Submit Button (accessible without JS) -->
+      <button
+        type="submit"
+        class="inline-flex items-center rounded-xl bg-brand-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-brand-700 md:hidden"
+      >
+        Search
+      </button>
+
+      <!-- Mobile Filters Sheet Trigger (< 768px) -->
+      <button
+        type="button"
+        id="open-filters-sheet-btn"
+        class="inline-flex md:hidden items-center gap-1.5 rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-xs font-bold text-neutral-700 shadow-sm dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
+        aria-expanded="false"
+        aria-controls="mobile-filters-sheet"
+      >
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+        </svg>
+        <span>Filters</span>
+        {activeFilterCount > 0 && (
+          <span class="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-600 px-1 text-[10px] font-bold text-white">
+            {activeFilterCount}
+          </span>
+        )}
+      </button>
+    </div>
+
+    <!-- Row 2: Desktop Filter Bar (>= 768px) -->
+    <div class="hidden md:flex flex-wrap items-center justify-between gap-3 pt-1">
+      <!-- Year Chips -->
+      <YearChips
+        years={years}
+        selectedYear={params.year}
+        basePath={basePath}
+        params={params}
+      />
+
+      <!-- Controls Group: Subject, Sort, Type Segmented Control -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <!-- Subject Select -->
+        <div class="relative">
+          <label for="desktop-subject-select" class="sr-only">Subject</label>
+          <select
+            id="desktop-subject-select"
+            name="subject"
+            class="rounded-xl border border-neutral-300 bg-white py-2 pl-3 pr-8 text-xs font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200 dark:hover:border-brand-600"
+            data-auto-submit
+          >
+            <option value="all" selected={params.subject === "all"}>All subjects</option>
+            {subjects.map((s) => (
+              <option value={s.subject.slug} selected={params.subject === s.subject.slug}>
+                {s.subject.name} ({s.paperCount})
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="relative">
+          <label for="desktop-sort-select" class="sr-only">Sort by</label>
+          <select
+            id="desktop-sort-select"
+            name="sort"
+            class="rounded-xl border border-neutral-300 bg-white py-2 pl-3 pr-8 text-xs font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200 dark:hover:border-brand-600"
+            data-auto-submit
+          >
+            <option value="newest" selected={params.sort === "newest"}>Newest</option>
+            <option value="questions" selected={params.sort === "questions"}>Most questions</option>
+            <option value="oldest" selected={params.sort === "oldest"}>Oldest</option>
+            <option value="attempts" selected={params.sort === "attempts"}>Most attempted</option>
+            <option value="keys" selected={params.sort === "keys"}>Fully keyed first</option>
+          </select>
+        </div>
+
+        <!-- Type Segmented Control: Full papers (default) / Mini papers / All -->
+        <div class="inline-flex rounded-xl border border-neutral-200 bg-neutral-100 p-1 text-xs font-semibold dark:border-neutral-800 dark:bg-neutral-950" role="group" aria-label="Filter by paper length">
+          {(["full", "mini", "all"] as PaperTypeFilter[]).map((t) => {
+            const isSelected = params.type === t;
+            const label = t === "full" ? "Full papers" : t === "mini" ? "Mini papers" : "All";
+            const href = buildFilterUrl(basePath, params, { type: t });
+            return (
+              <a
+                href={href}
+                class:list={[
+                  "rounded-lg px-3 py-1.5 text-xs transition-all",
+                  isSelected
+                    ? "bg-white font-bold text-brand-700 shadow-sm dark:bg-neutral-800 dark:text-brand-300"
+                    : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white",
+                ]}
+                aria-current={isSelected ? "page" : undefined}
+              >
+                {label}
+              </a>
+            );
+          })}
+        </div>
+
+        <!-- Submit for non-JS users -->
+        <noscript>
+          <button type="submit" class="rounded-xl bg-brand-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm">Apply</button>
+        </noscript>
+      </div>
+    </div>
+  </form>
+
+  <!-- Status & Count Line (Results Summary) -->
+  <div class="mt-2.5 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
+    <div aria-live="polite" class="font-medium">
+      {totalFiltered > 0 ? (
+        <span>Showing {startIndex} to {endIndex} of {totalFiltered}</span>
+      ) : (
+        <span>No matching papers</span>
+      )}
+    </div>
+
+    {hasActiveFilters && (
+      <a
+        href={clearHref}
+        class="font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 hover:underline"
+      >
+        Clear filters
+      </a>
+    )}
+  </div>
+</div>
+
+<!-- Mobile Collapsible Filters Bottom Sheet (< 768px) -->
+<div
+  id="mobile-filters-sheet"
+  class="fixed inset-0 z-50 hidden md:hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Filter mock tests"
+>
+  <!-- Backdrop -->
+  <div id="filters-sheet-backdrop" class="fixed inset-0 bg-neutral-950/60 backdrop-blur-sm transition-opacity"></div>
+
+  <!-- Sheet Content -->
+  <div class="fixed inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-3xl border-t border-neutral-200 bg-white p-5 shadow-2xl dark:border-neutral-800 dark:bg-neutral-900 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+    <div class="flex items-center justify-between border-b border-neutral-100 pb-3 dark:border-neutral-800">
+      <h2 class="text-base font-bold text-neutral-900 dark:text-white">Filters & Sort</h2>
+      <button
+        type="button"
+        id="close-filters-sheet-btn"
+        class="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800"
+        aria-label="Close filters"
+      >
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <form method="GET" action={basePath} class="mt-4 space-y-4">
+      {params.q && <input type="hidden" name="q" value={params.q} />}
+
+      <!-- Year Options -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Exam Year</label>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <label class:list={[
+            "inline-flex cursor-pointer items-center rounded-full border px-3 py-1.5 text-xs font-semibold shadow-sm transition-colors",
+            params.year === "all"
+              ? "border-brand-600 bg-brand-50 text-brand-700 dark:border-brand-500 dark:bg-brand-950/40 dark:text-brand-300"
+              : "border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+          ]}>
+            <input type="radio" name="year" value="all" checked={params.year === "all"} class="sr-only" />
+            <span>All years</span>
+          </label>
+          {years.map((y) => (
+            <label class:list={[
+              "inline-flex cursor-pointer items-center rounded-full border px-3 py-1.5 text-xs font-semibold shadow-sm transition-colors",
+              params.year === y
+                ? "border-brand-600 bg-brand-50 text-brand-700 dark:border-brand-500 dark:bg-brand-950/40 dark:text-brand-300"
+                : "border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+            ]}>
+              <input type="radio" name="year" value={String(y)} checked={params.year === y} class="sr-only" />
+              <span>{y}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <!-- Subject Options -->
+      <div>
+        <label for="mobile-subject-select" class="block text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Subject</label>
+        <select
+          id="mobile-subject-select"
+          name="subject"
+          class="mt-1.5 block w-full rounded-xl border border-neutral-300 bg-white p-2.5 text-sm font-semibold text-neutral-800 shadow-sm dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
+        >
+          <option value="all" selected={params.subject === "all"}>All subjects</option>
+          {subjects.map((s) => (
+            <option value={s.subject.slug} selected={params.subject === s.subject.slug}>
+              {s.subject.name} ({s.paperCount})
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Type Options -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Paper Type</label>
+        <div class="mt-2 grid grid-cols-3 gap-2 text-center text-xs font-semibold">
+          {(["full", "mini", "all"] as PaperTypeFilter[]).map((t) => {
+            const isSelected = params.type === t;
+            const label = t === "full" ? "Full papers" : t === "mini" ? "Mini papers" : "All";
+            return (
+              <label class:list={[
+                "block cursor-pointer rounded-xl border py-2.5 shadow-sm transition-colors",
+                isSelected
+                  ? "border-brand-600 bg-brand-50 text-brand-700 dark:border-brand-500 dark:bg-brand-950/40 dark:text-brand-300 font-bold"
+                  : "border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-300"
+              ]}>
+                <input type="radio" name="type" value={t} checked={isSelected} class="sr-only" />
+                <span>{label}</span>
+              </label>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Sort Options -->
+      <div>
+        <label for="mobile-sort-select" class="block text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Sort By</label>
+        <select
+          id="mobile-sort-select"
+          name="sort"
+          class="mt-1.5 block w-full rounded-xl border border-neutral-300 bg-white p-2.5 text-sm font-semibold text-neutral-800 shadow-sm dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
+        >
+          <option value="newest" selected={params.sort === "newest"}>Newest</option>
+          <option value="questions" selected={params.sort === "questions"}>Most questions</option>
+          <option value="oldest" selected={params.sort === "oldest"}>Oldest</option>
+          <option value="attempts" selected={params.sort === "attempts"}>Most attempted</option>
+          <option value="keys" selected={params.sort === "keys"}>Fully keyed first</option>
+        </select>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-6 flex items-center gap-3 pt-3 border-t border-neutral-100 dark:border-neutral-800">
+        <a
+          href={clearHref}
+          class="flex-1 rounded-xl border border-neutral-300 py-3 text-center text-xs font-bold text-neutral-700 shadow-sm hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800"
+        >
+          Reset
+        </a>
+        <button
+          type="submit"
+          class="flex-1 rounded-xl bg-brand-600 py-3 text-center text-xs font-bold text-white shadow-sm hover:bg-brand-700 transition-colors"
+        >
+          Apply Filters
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Mobile bottom sheet toggle and focus trap
+  const openBtn = document.getElementById("open-filters-sheet-btn");
+  const closeBtn = document.getElementById("close-filters-sheet-btn");
+  const backdrop = document.getElementById("filters-sheet-backdrop");
+  const sheet = document.getElementById("mobile-filters-sheet");
+
+  function openSheet() {
+    if (!sheet || !openBtn) return;
+    sheet.classList.remove("hidden");
+    openBtn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+    closeBtn?.focus();
+  }
+
+  function closeSheet() {
+    if (!sheet || !openBtn) return;
+    sheet.classList.add("hidden");
+    openBtn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    openBtn.focus();
+  }
+
+  openBtn?.addEventListener("click", openSheet);
+  closeBtn?.addEventListener("click", closeSheet);
+  backdrop?.addEventListener("click", closeSheet);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sheet && !sheet.classList.contains("hidden")) {
+      closeSheet();
+    }
+  });
+
+  // Auto-submit dropdowns on desktop when JS is active
+  const autoSubmits = document.querySelectorAll("[data-auto-submit]");
+  autoSubmits.forEach((element) => {
+    element.addEventListener("change", () => {
+      const form = element.closest("form");
+      if (form) form.submit();
+    });
+  });
+</script>

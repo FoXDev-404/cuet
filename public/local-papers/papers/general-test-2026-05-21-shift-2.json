@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_GAT_May21_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -249,43 +249,8 @@
         "assets": []
       },
       {
-        "id": "q08",
-        "sourceQuestionNo": 8,
-        "stemEn": "Four women and three men appear for an interview. Three persons have to be selected. Find the probability of selecting one man and two women in the team.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "13/25"
-          },
-          {
-            "id": "B",
-            "text": "18/35"
-          },
-          {
-            "id": "C",
-            "text": "19/45"
-          },
-          {
-            "id": "D",
-            "text": "9/25"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "16 workers working 8 hours per day can demolish a building in 32 days. In how many days\n\n24 workers working 12 hours per day can demolish the same building?",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "There are 52 cards in a pack. All jacks are removed from the pack. Two cards are chosen at a random without replacement. Find the probability that both cards are spade.",
         "optionsEn": [
           {

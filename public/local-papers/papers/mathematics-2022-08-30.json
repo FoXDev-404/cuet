@@ -1,1450 +1,1342 @@
 {
- "exam": {
-  "id": "local-mathematics-2022-08-30",
-  "slug": "mathematics-2022-08-30",
-  "title": "CUET UG Mathematics 30 August 2022 Previous Year Paper",
-  "subject": "Mathematics",
-  "subjectId": "local-mathematics",
-  "subjectCode": "MAT",
-  "year": 2022,
-  "examDate": "2022-08-30",
-  "shift": null,
-  "sourceFile": "Mathematics_2022-08-30.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 43,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Assume $P$, $Q$, $R$ and $S$ are matrices of order $2 \\times m$, $k \\times n$, $m \\times 2$ and $2 \\times 3$ respectively. The restrictions on $k$, $m$ and $n$, so that $PQ + RS$ is defined are",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$m=3, n=2$"
-     },
-     {
-      "id": "B",
-      "text": "$m=n, k$ is arbitrary"
-     },
-     {
-      "id": "C",
-      "text": "$m=k$ $n$ is arbitrary"
-     },
-     {
-      "id": "D",
-      "text": "$m=k=2, n=3$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "The system of equations 3x + 4y = 5, 6x + 7y = -8 is written in matrix from as",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\begin{bmatrix} 3 & 4 \\\\ 6 & 7 \\end{bmatrix}[x \\quad y] = [5 - 8] $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\begin{bmatrix}3&6\\\\ 4&7\\end{bmatrix}\\begin{bmatrix}x\\\\ y\\end{bmatrix}=\\begin{bmatrix}5\\\\ -8\\end{bmatrix} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\begin{bmatrix} x \\\\ y \\end{bmatrix} \\begin{bmatrix} 3 & 4 \\\\ 6 & 7 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ -8 \\end{bmatrix} $"
-     },
-     {
-      "id": "D",
-      "text": "$ [x\\ y]\\begin{bmatrix}3\\ 6\\\\ 4\\ 7\\end{bmatrix}=[5\\ -8] $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "If $ 2\\begin{bmatrix}a&d\\\\ b&c\\end{bmatrix}+3\\begin{bmatrix}1&-1\\\\ 0&2\\end{bmatrix}=3\\begin{bmatrix}3&5\\\\ 4&6\\end{bmatrix} $, then the value of $ \\left|a+b-c-d\\right| $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "24"
-     },
-     {
-      "id": "C",
-      "text": "6"
-     },
-     {
-      "id": "D",
-      "text": "16"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Consider the function $f(x)=x^{\\frac{1}{x}}$. Its",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "minimum value is $e^{\\frac{1}{e}}$"
-     },
-     {
-      "id": "B",
-      "text": "maximum value is $e^{\\frac{1}{e}}$"
-     },
-     {
-      "id": "C",
-      "text": "minimum value is $e^{e}$"
-     },
-     {
-      "id": "D",
-      "text": "maximum value is $\\left(\\frac{1}{e}\\right)^{e}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "The given function $f(x)=x^{5}-5x^{4}+5x^{3}-1$; has/have\n\n(a) Local maxima at $x=1$\n\n(b) Local maximum value is 0\n\n(c) Local minimum at $x=3$\n\n(d) Local minimum value is $-28$\n\n(e) The point of inflexion is $x=1$\n\nChoose the correct answer from the options given below\n\n(a) (a), (b) only\n\n(b) (a), (b), (c) only\n\n(c)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ","
-     },
-     {
-      "id": "B",
-      "text": ","
-     },
-     {
-      "id": "C",
-      "text": ","
-     },
-     {
-      "id": "D",
-      "text": "only (d) (a), (c), (e) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Match List-I with List-II\n\n(A) If $x = t^{2}$ and $y = t^{3}$\n\n(B) then $\\frac{d^{2}y}{dx^{2}}$ at $t=1$\n\n(C) (D) (E) (F) (G) (H) (I)\n\nList-I\n\nList-II\n\n(i) -2\n\n(B) If $ f(x) = \\sqrt{x} + 1 $, (ii) -1 the $ f''(1) $\n\n(C) The minimum value (iii) $ \\frac{3}{4} $\n\n$ \\text{off}(x)=9x^{2}+12x+2 $ is\n\n(D) The point of inflexion (iv) $ -\\frac{1}{4} $ of the function $ f(x)=(x-2)^{4} $ $ (x+1)^{3} $ is\n\nChoose the correct answer from the options given below\n\n(a) (A)-(i), (B)-(iii), (C)-(ii), (D)-(iv)\n\n(b) (A)-(ii), (B)-(iii), (C)-(i), (D)-(iv)\n\n(c) (A)-(iii), (B)-(iv), (C)-(i), (D)-(ii)\n\n(d) (A)-(iv), (B)-(i), (C)-(iii), (D)-(ii)\n\nThe area enclosed by the curve $ y^{2}=4ax $ and its latus rectum is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{8}{3}a^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{4}{3}a^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{1}{3}a^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{1}{12}a^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "$ \\int \\frac{xe^{x}}{(x+1)^{2}} dx = $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{e^{x}}{x+1} + c $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{e^{x}}{x-1} + c $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{x}{x+1} + c $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{x}{x-1} + c $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "The solution of the differential equation\n\n$ (x+1)\\frac{dy}{dx}=1+y\\text{ is} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{1+y+y^{2}}{1+x^{2}}=C $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\log(x+1)-\\log\\left(y+\\frac{1}{2}\\right)=C $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{x+1}{y+1}=C $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\log(1+y)-\\frac{\\sqrt{3}}{2}\\log(x+1)=C $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Derivative of $ x^{3} + 1 $ with respect to $ x^{2} + 1 $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{2x}{3} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{x}{3} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{x}{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{3x}{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "Solution of the differential equation $ (x + xy)dy - y(1-x^2)dx = 0 $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ y = \\log \\frac{x}{y} - \\frac{x^2}{2} + C $"
-     },
-     {
-      "id": "B",
-      "text": "$ y = \\log \\frac{x}{y} + \\frac{x^2}{2} + C $"
-     },
-     {
-      "id": "C",
-      "text": "$ y = \\log xy - \\frac{x^2}{2} + C $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{x^2}{2} + \\frac{x^2}{2} + C $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "In linear programming, the optimal function is attained at the points given by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "intersection of the inequalities with the x-axis only"
-     },
-     {
-      "id": "B",
-      "text": "intersection of the inequalities with the axes only"
-     },
-     {
-      "id": "C",
-      "text": "corner points of the feasible region"
-     },
-     {
-      "id": "D",
-      "text": "intersection of the inequalities with the y-axis only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "If R is a relation on Z (set of all integers) defined by xRy, iff |x - y| ≤ 1, then\n\n(1) R is reflexive (2) R is symmetric\n\n(3) R is transitive (4) R is not transitive\n\n(5) R is not transitive",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(1) and (4) only"
-     },
-     {
-      "id": "B",
-      "text": "(1), (2) and (3) only"
-     },
-     {
-      "id": "C",
-      "text": "(2) and (3) only"
-     },
-     {
-      "id": "D",
-      "text": "(1), (2) and (5) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "If the vertices of a triangle $ ABC $ are $ A(1,2,1) $, $ B(4,2,3) $ and $ C(2,3,1) $, then the equation of the median passing through the vertex A, is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{x-1}{2}=\\frac{y-2}{1}=\\frac{z-1}{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ x-2=\\frac{y-2}{1}=z-1 $"
-     },
-     {
-      "id": "C",
-      "text": "x-1=2y-4=z-1"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{x-1}{2}=2y-4=z-1 $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "A line makes the angle \\theta with each of the x and z axes. If the angle \\beta which it makes with y-axis is such that \\sin^{2}\\beta = 3\\sin^{2}\\theta, then the value of \\cos^{2}\\theta is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{2}{5} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{1}{5} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{3}{5} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{2}{5} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "If $ x = 2 \\sin \\theta $ and $ y = 2 \\cos \\theta $, then the value of $ \\frac{d^2 y}{dx^2} $ at $ \\theta = 0 $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ -\\frac{1}{2} $"
-     },
-     {
-      "id": "B",
-      "text": "1"
-     },
-     {
-      "id": "C",
-      "text": "0"
-     },
-     {
-      "id": "D",
-      "text": "1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "If $ x = e^{y + e^{y + \\cdots}} $, x > 0, then $ \\frac{dy}{dx} $ is equal to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{x}{1+x} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{1}{x} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{1-x}{x} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{1+x}{x} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "$ \\sin^{-1}(1-x)-2\\sin^{-1}x=\\frac{\\pi}{2} $, then x is equal to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0"
-     },
-     {
-      "id": "B",
-      "text": "1"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{1}{2} $"
-     },
-     {
-      "id": "D",
-      "text": "2 Choose the most appropriate answer from the options given below: (a) (a) and (b) only (b) (a) and (c) only (c) (a) only (d) (c) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "The smaller of the areas enclosed by the circle $ x^{2}+y^{2}=4 $ and the line $ x+y=2 $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 2(\\pi-2) $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\pi-2 $"
-     },
-     {
-      "id": "C",
-      "text": "$ 2\\pi-1 $"
-     },
-     {
-      "id": "D",
-      "text": "$ 2\\pi+2 $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "If $ 0 < x < \\pi $ and the matrix $ \\begin{bmatrix} 4\\sin x & -1 \\\\ -3 & \\sin x \\end{bmatrix} $ is\n\nsingular, then the values of x are:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{\\pi}{3}, \\frac{2\\pi}{3} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{\\pi}{6}, \\frac{5\\pi}{6} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{\\pi}{6}, \\frac{\\pi}{3} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{\\pi}{6}, \\frac{2\\pi}{3} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "$ \\int_{\\frac{1}{3}}^{1}\\frac{(x-x^{3})^{\\frac{1}{3}}}{x^{4}}dx= $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "4"
-     },
-     {
-      "id": "C",
-      "text": "6"
-     },
-     {
-      "id": "D",
-      "text": "0"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "The function $f(x)=e^{|x|}$ is\n\n(A) continuous everywhere on $\\mathbb{R}$\n\n(B) not continuous at $x=0$\n\n(C) Differentiable everywhere on $\\mathbb{R}$\n\n(D) not differentiable at $x=0$\n\n(E) continuous and differentiable on $\\mathbb{R}$\n\nChoose the most appropriate answer from the options given below:\n\n(a) (E) only (b) (B) and (C) only\n\n(c) (A) and (D) only (d) (B) and (D) only\n\nWhich of the following is true on the basis of above diagram?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "'f' is a function from $A \\to B$"
-     },
-     {
-      "id": "B",
-      "text": "'f' is one-one function from $A \\to B$"
-     },
-     {
-      "id": "C",
-      "text": "'f' is onto function from $A \\to B$"
-     },
-     {
-      "id": "D",
-      "text": "'f' is not a function from $A \\to B$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     2,
-     3
-    ],
-    "assets": [
-     {
-      "id": "q26-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/mathematics-2022-08-30/q26-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 26"
-     }
+  "exam": {
+    "id": "local-mathematics-2022-08-30",
+    "slug": "mathematics-2022-08-30",
+    "title": "CUET UG Mathematics 30 August 2022 Previous Year Paper",
+    "subject": "Mathematics",
+    "subjectId": "local-mathematics",
+    "subjectCode": "MAT",
+    "year": 2022,
+    "examDate": "2022-08-30",
+    "shift": null,
+    "sourceFile": "Mathematics_2022-08-30.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 40,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Assume $P$, $Q$, $R$ and $S$ are matrices of order $2 \\times m$, $k \\times n$, $m \\times 2$ and $2 \\times 3$ respectively. The restrictions on $k$, $m$ and $n$, so that $PQ + RS$ is defined are",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$m=3, n=2$"
+          },
+          {
+            "id": "B",
+            "text": "$m=n, k$ is arbitrary"
+          },
+          {
+            "id": "C",
+            "text": "$m=k$ $n$ is arbitrary"
+          },
+          {
+            "id": "D",
+            "text": "$m=k=2, n=3$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "The system of equations 3x + 4y = 5, 6x + 7y = -8 is written in matrix from as",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\begin{bmatrix} 3 & 4 \\\\ 6 & 7 \\end{bmatrix}[x \\quad y] = [5 - 8] $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\begin{bmatrix}3&6\\\\ 4&7\\end{bmatrix}\\begin{bmatrix}x\\\\ y\\end{bmatrix}=\\begin{bmatrix}5\\\\ -8\\end{bmatrix} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\begin{bmatrix} x \\\\ y \\end{bmatrix} \\begin{bmatrix} 3 & 4 \\\\ 6 & 7 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ -8 \\end{bmatrix} $"
+          },
+          {
+            "id": "D",
+            "text": "$ [x\\ y]\\begin{bmatrix}3\\ 6\\\\ 4\\ 7\\end{bmatrix}=[5\\ -8] $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "If $ 2\\begin{bmatrix}a&d\\\\ b&c\\end{bmatrix}+3\\begin{bmatrix}1&-1\\\\ 0&2\\end{bmatrix}=3\\begin{bmatrix}3&5\\\\ 4&6\\end{bmatrix} $, then the value of $ \\left|a+b-c-d\\right| $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "24"
+          },
+          {
+            "id": "C",
+            "text": "6"
+          },
+          {
+            "id": "D",
+            "text": "16"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Consider the function $f(x)=x^{\\frac{1}{x}}$. Its",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "minimum value is $e^{\\frac{1}{e}}$"
+          },
+          {
+            "id": "B",
+            "text": "maximum value is $e^{\\frac{1}{e}}$"
+          },
+          {
+            "id": "C",
+            "text": "minimum value is $e^{e}$"
+          },
+          {
+            "id": "D",
+            "text": "maximum value is $\\left(\\frac{1}{e}\\right)^{e}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The given function $f(x)=x^{5}-5x^{4}+5x^{3}-1$; has/have\n\n(a) Local maxima at $x=1$\n\n(b) Local maximum value is 0\n\n(c) Local minimum at $x=3$\n\n(d) Local minimum value is $-28$\n\n(e) The point of inflexion is $x=1$\n\nChoose the correct answer from the options given below\n\n(a) (a), (b) only\n\n(b) (a), (b), (c) only\n\n(c)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": ","
+          },
+          {
+            "id": "B",
+            "text": ","
+          },
+          {
+            "id": "C",
+            "text": ","
+          },
+          {
+            "id": "D",
+            "text": "only (d) (a), (c), (e) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Match List-I with List-II\n\n(A) If $x = t^{2}$ and $y = t^{3}$\n\n(B) then $\\frac{d^{2}y}{dx^{2}}$ at $t=1$\n\n(C) (D) (E) (F) (G) (H) (I)\n\nList-I\n\nList-II\n\n(i) -2\n\n(B) If $ f(x) = \\sqrt{x} + 1 $, (ii) -1 the $ f''(1) $\n\n(C) The minimum value (iii) $ \\frac{3}{4} $\n\n$ \\text{off}(x)=9x^{2}+12x+2 $ is\n\n(D) The point of inflexion (iv) $ -\\frac{1}{4} $ of the function $ f(x)=(x-2)^{4} $ $ (x+1)^{3} $ is\n\nChoose the correct answer from the options given below\n\n(a) (A)-(i), (B)-(iii), (C)-(ii), (D)-(iv)\n\n(b) (A)-(ii), (B)-(iii), (C)-(i), (D)-(iv)\n\n(c) (A)-(iii), (B)-(iv), (C)-(i), (D)-(ii)\n\n(d) (A)-(iv), (B)-(i), (C)-(iii), (D)-(ii)\n\nThe area enclosed by the curve $ y^{2}=4ax $ and its latus rectum is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{8}{3}a^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{4}{3}a^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{3}a^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{12}a^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 7,
+        "stemEn": "$ \\int \\frac{xe^{x}}{(x+1)^{2}} dx = $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{e^{x}}{x+1} + c $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{e^{x}}{x-1} + c $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{x}{x+1} + c $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{x}{x-1} + c $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 8,
+        "stemEn": "The solution of the differential equation\n\n$ (x+1)\\frac{dy}{dx}=1+y\\text{ is} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1+y+y^{2}}{1+x^{2}}=C $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\log(x+1)-\\log\\left(y+\\frac{1}{2}\\right)=C $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{x+1}{y+1}=C $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\log(1+y)-\\frac{\\sqrt{3}}{2}\\log(x+1)=C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 9,
+        "stemEn": "Derivative of $ x^{3} + 1 $ with respect to $ x^{2} + 1 $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{2x}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{x}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{x}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{3x}{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 10,
+        "stemEn": "Solution of the differential equation $ (x + xy)dy - y(1-x^2)dx = 0 $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ y = \\log \\frac{x}{y} - \\frac{x^2}{2} + C $"
+          },
+          {
+            "id": "B",
+            "text": "$ y = \\log \\frac{x}{y} + \\frac{x^2}{2} + C $"
+          },
+          {
+            "id": "C",
+            "text": "$ y = \\log xy - \\frac{x^2}{2} + C $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{x^2}{2} + \\frac{x^2}{2} + C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 11,
+        "stemEn": "In linear programming, the optimal function is attained at the points given by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "intersection of the inequalities with the x-axis only"
+          },
+          {
+            "id": "B",
+            "text": "intersection of the inequalities with the axes only"
+          },
+          {
+            "id": "C",
+            "text": "corner points of the feasible region"
+          },
+          {
+            "id": "D",
+            "text": "intersection of the inequalities with the y-axis only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 12,
+        "stemEn": "A line makes the angle \\theta with each of the x and z axes. If the angle \\beta which it makes with y-axis is such that \\sin^{2}\\beta = 3\\sin^{2}\\theta, then the value of \\cos^{2}\\theta is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{2}{5} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{5} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{3}{5} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{2}{5} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 13,
+        "stemEn": "If $ x = 2 \\sin \\theta $ and $ y = 2 \\cos \\theta $, then the value of $ \\frac{d^2 y}{dx^2} $ at $ \\theta = 0 $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ -\\frac{1}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "0"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 14,
+        "stemEn": "If $ x = e^{y + e^{y + \\cdots}} $, x > 0, then $ \\frac{dy}{dx} $ is equal to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{x}{1+x} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{x} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1-x}{x} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1+x}{x} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 15,
+        "stemEn": "$ \\sin^{-1}(1-x)-2\\sin^{-1}x=\\frac{\\pi}{2} $, then x is equal to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "2 Choose the most appropriate answer from the options given below: (a) (a) and (b) only (b) (a) and (c) only (c) (a) only (d) (c) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 16,
+        "stemEn": "The smaller of the areas enclosed by the circle $ x^{2}+y^{2}=4 $ and the line $ x+y=2 $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2(\\pi-2) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\pi-2 $"
+          },
+          {
+            "id": "C",
+            "text": "$ 2\\pi-1 $"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\pi+2 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 17,
+        "stemEn": "If $ 0 < x < \\pi $ and the matrix $ \\begin{bmatrix} 4\\sin x & -1 \\\\ -3 & \\sin x \\end{bmatrix} $ is\n\nsingular, then the values of x are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\pi}{3}, \\frac{2\\pi}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\pi}{6}, \\frac{5\\pi}{6} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\pi}{6}, \\frac{\\pi}{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\pi}{6}, \\frac{2\\pi}{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 18,
+        "stemEn": "$ \\int_{\\frac{1}{3}}^{1}\\frac{(x-x^{3})^{\\frac{1}{3}}}{x^{4}}dx= $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "6"
+          },
+          {
+            "id": "D",
+            "text": "0"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 19,
+        "stemEn": "If the points $(2, -3)$, $(\\lambda, -1)$ and $(0, 4)$ are collinear, then the value of $\\lambda$ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{7}{10}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{3}{10}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{7}{3}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{10}{7}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 20,
+        "stemEn": "The value of $\\sin\\left[2\\cot^{-1}\\left(\\frac{-5}{12}\\right)\\right]$ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{120}{169}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{-120}{169}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{-60}{169}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{60}{169}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 21,
+        "stemEn": "Let $y = m \\sin rx + n \\cos rx$. What is the value of $\\frac{d^2 y}{dy^2}$?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ry$"
+          },
+          {
+            "id": "B",
+            "text": "$-ry$"
+          },
+          {
+            "id": "C",
+            "text": "$ry^2 y$"
+          },
+          {
+            "id": "D",
+            "text": "$-r^2 y$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 22,
+        "stemEn": "The integrating factor of the differential equation \\cos x\\frac{dy}{dx}+y\\sin x=1 is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\sec x $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\cos x $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sec x + \\tan x $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\tan x $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 23,
+        "stemEn": "The order and degree of the differential equation $ \\left[\\left(\\frac{d^{2}y}{dx^{2}}\\right)-3\\right]^{\\frac{1}{3}}=2\\left(\\frac{dy}{dx}\\right)^{\\frac{1}{4}} $ are\n\n(a) order=2, degree=2 (b) order=2, degree=4\n\n(c) order=2, degree=8 (d) order=1, degree=1\n\n$$ \\int\\sqrt{1-49x^{2}} $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{x}{2}\\left(\\sqrt{1-49x^{2}}\\right)+\\frac{1}{98}\\sin^{-1}7x+C $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{7x}{2}\\sqrt{1+49x^{2}}+\\frac{1}{49}\\sin^{-1}x+C $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{x}{2}\\sqrt{1+\\frac{1}{7x^{2}}}-\\frac{1}{49}\\sin^{-1}7x+C $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{x}{2}\\sqrt{1-49x^{2}}+\\frac{1}{14}\\sin^{-1}7x+C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 24,
+        "stemEn": "The shortest distances of the point $(1,2,3)$ from $x$, $y$, $z$ axes respectively are",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$1,2,3$"
+          },
+          {
+            "id": "B",
+            "text": "$\\sqrt{5},\\sqrt{13},\\sqrt{10}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\sqrt{10},\\sqrt{13},\\sqrt{5}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\sqrt{13},\\sqrt{10},\\sqrt{5}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 25,
+        "stemEn": "Distance between two planes $x+2y-z=5$ and $2x+4y-2z+2=0$ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\sqrt{6}$ unit"
+          },
+          {
+            "id": "B",
+            "text": "7 unit"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{5}{\\sqrt{6}}$ unit"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{4}{\\sqrt{6}}$ unit"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 26,
+        "stemEn": "If $\\overrightarrow{a}=a_{1}\\hat{i}+a_{2}\\hat{j}+a_{3}\\hat{k}$ and $\\overrightarrow{b}=b_{1}\\hat{i}+b_{2}\\hat{j}+b_{3}\\hat{k}$ are two non zero vectors inclined at an angle $\\theta$, then identify the correct option out of the given options\n\n(A) $\\cos\\theta=\\frac{\\overrightarrow{a}\\cdot\\overrightarrow{b}}{|\\overrightarrow{a}|\\cdot|\\overrightarrow{b}|}$\n\n(B) $\\overrightarrow{a}$ and $\\overrightarrow{b}$ are perpendicular, if $a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3}=0$\n\n(C) $\\overrightarrow{a}$ and $\\overrightarrow{b}$ are perpendicular, $\\frac{a_{1}}{b_{1}}=\\frac{a_{2}}{b_{2}}\\neq\\frac{c_{1}}{c_{2}}$\n\n(D) for $\\theta=\\pi,\\overrightarrow{a}\\times\\overrightarrow{b}=0$\n\n(E) $\\cos\\theta=\\frac{|\\overrightarrow{a}\\times\\overrightarrow{b}|}{|\\overrightarrow{a}|\\cdot|\\overrightarrow{b}|}$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (E) only"
+          },
+          {
+            "id": "C",
+            "text": "(B), (D) and (E) only"
+          },
+          {
+            "id": "D",
+            "text": "(A) and (B) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 27,
+        "stemEn": "If $ \\overline{p} = \\hat{i} + \\hat{j} - 2\\hat{k} $ and $ \\vec{q} = 2\\hat{i} + \\hat{j} - \\hat{k} $, then the area of parallelogram having diagonals $ (\\overline{p} + \\overline{q}) $ and $ (\\overline{p} - \\overline{q}) $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 4\\sqrt{11} $ sq. unit"
+          },
+          {
+            "id": "B",
+            "text": "$ \\sqrt{44} $ sq. unit"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sqrt{11} $ sq. unit"
+          },
+          {
+            "id": "D",
+            "text": "$ 3\\sqrt{11} $ sq. unit"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 28,
+        "stemEn": "If $ \\overrightarrow{a}, \\overrightarrow{b} $ and $ \\overrightarrow{c} $ are three unit vectors such that $ \\overrightarrow{a} + \\overrightarrow{b} + \\overrightarrow{c} = 0 $ then the value of $ \\overrightarrow{a} \\cdot \\overrightarrow{b} + \\overrightarrow{b} \\cdot \\overrightarrow{c} + \\overrightarrow{c} \\cdot \\overrightarrow{a} $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "$ -\\frac{3}{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{3}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ -\\frac{1}{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 29,
+        "stemEn": "The corner points of the feasible region for an $L.P.P.$ are $(0, 10), (5, 5), (15, 15)$ and $(0, 20)$. If the objective function is $z = px + qy; p, q > 0$, then the condition on $p$ and $q$ so that the maximum of zoccurs at $(15, 15)$ and $(0, 20)$ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$p = q$"
+          },
+          {
+            "id": "B",
+            "text": "$p = 2q$"
+          },
+          {
+            "id": "C",
+            "text": "q = 3p"
+          },
+          {
+            "id": "D",
+            "text": "q = 2p"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 30,
+        "stemEn": "$ \\int x\\sqrt{x+2} $ is equal to:\n\n$$ \\frac{ 贰 }{ 贰 } $$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{2}{5}(x+2)^{\\frac{5}{2}}-\\frac{4}{3}(x+2)^{\\frac{3}{2}}+C $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{2}{5}(x+2)^{\\frac{5}{2}}+\\frac{4}{3}(x+2)^{\\frac{3}{2}}+C $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{5}(x+2)^{\\frac{5}{2}}+\\frac{2}{3}(x+2)^{\\frac{3}{2}}+C $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{2}{5}(x+2)^{\\frac{5}{2}}+\\frac{4}{3}(x+2)^{\\frac{3}{2}}+C $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 31,
+        "stemEn": "Three urns contain 6 red, 4 black; 4 red, 6 black and 5 red, 5 black marbles respectively. One of the urns is selected at random and a marble is drawn from it. If the marble drawn is red, then the probability that it is drawn from the first urn is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{6}{10} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{4}{10} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{5}{10} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{2}{5} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 32,
+        "stemEn": "Three persons A, B and C were given a task, whose probabilities of completion their task on time are $ \\frac{1}{3}, \\frac{1}{4} $, and $ \\frac{1}{5} $ respectively. They were asked to complete the task on time independently. The probability that exactly one of them complete the task on time is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{2}{15} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{2}{5} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{3}{20} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{13}{20} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 33,
+        "stemEn": "Read the text carefully and answer the questions: Three persons A, B and C were given a task, whose probabilities of completion their task on time are $\\frac{1}{3},\\frac{1}{4}$ and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently. The probability that exactly two of them complete the task on time is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{3}{20}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{13}{20}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{1}{5}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{2}{15}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 34,
+        "stemEn": "Read the text carefully and answer the questions: Three persons $A, B$ and $C$ were given a task, whose probabilities of completion their task on time are $\\frac{1}{3}, \\frac{1}{4}$ and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently. The probability that $B$ alone completes the task on time is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{13}{30}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{3}{30}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{2}{5}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{2}{15}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 35,
+        "stemEn": "Read the text carefully and answer the questions: Three persons A, B and C were given a task, whose probabilities of completion their task on time are $\\frac{1}{3},\\frac{1}{4}$, and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently. The probability that the task is completed on time by none of them is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{3}{20}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{2}{5}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{13}{20}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{2}{15}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 36,
+        "stemEn": "Read the text carefully and answer the questions: Three persons A, B and C were given a task, whose probabilities of completion their task on time are $\\frac{1}{3}, \\frac{1}{4}$ and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently.\n\nThe probability that task is completed on time by at least one of them is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{2}{5}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{3}{20}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{3}{5}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{2}{15}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 37,
+        "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe equations in terms of x and y are:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$x-y=50, 2x+y=550$"
+          },
+          {
+            "id": "B",
+            "text": "$x+y=40, 2x-y=550$"
+          },
+          {
+            "id": "C",
+            "text": "$x-y=10, 2x+y=50$"
+          },
+          {
+            "id": "D",
+            "text": "$x-y=30, 2x+y=505$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 38,
+        "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe value x is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "150 m"
+          },
+          {
+            "id": "B",
+            "text": "100 m"
+          },
+          {
+            "id": "C",
+            "text": "200 m"
+          },
+          {
+            "id": "D",
+            "text": "300 m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 39,
+        "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe value of the expression $ \\frac{x^{2}+y^{2}}{x-y} $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "625"
+          },
+          {
+            "id": "B",
+            "text": "1250"
+          },
+          {
+            "id": "C",
+            "text": "312.5"
+          },
+          {
+            "id": "D",
+            "text": "3125"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 40,
+        "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe area of rectangular field is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "30000 sq. m"
+          },
+          {
+            "id": "B",
+            "text": "3000 sq. m"
+          },
+          {
+            "id": "C",
+            "text": "300000 sq. m"
+          },
+          {
+            "id": "D",
+            "text": "60000 sq. m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "If the points $(2, -3)$, $(\\lambda, -1)$ and $(0, 4)$ are collinear, then the value of $\\lambda$ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{7}{10}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{3}{10}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{7}{3}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{10}{7}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "The value of $\\sin\\left[2\\cot^{-1}\\left(\\frac{-5}{12}\\right)\\right]$ is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{120}{169}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{-120}{169}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{-60}{169}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{60}{169}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "Let $y = m \\sin rx + n \\cos rx$. What is the value of $\\frac{d^2 y}{dy^2}$?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ry$"
-     },
-     {
-      "id": "B",
-      "text": "$-ry$"
-     },
-     {
-      "id": "C",
-      "text": "$ry^2 y$"
-     },
-     {
-      "id": "D",
-      "text": "$-r^2 y$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "The integrating factor of the differential equation \\cos x\\frac{dy}{dx}+y\\sin x=1 is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\sec x $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\cos x $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\sec x + \\tan x $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\tan x $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "The order and degree of the differential equation $ \\left[\\left(\\frac{d^{2}y}{dx^{2}}\\right)-3\\right]^{\\frac{1}{3}}=2\\left(\\frac{dy}{dx}\\right)^{\\frac{1}{4}} $ are\n\n(a) order=2, degree=2 (b) order=2, degree=4\n\n(c) order=2, degree=8 (d) order=1, degree=1\n\n$$ \\int\\sqrt{1-49x^{2}} $$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{x}{2}\\left(\\sqrt{1-49x^{2}}\\right)+\\frac{1}{98}\\sin^{-1}7x+C $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{7x}{2}\\sqrt{1+49x^{2}}+\\frac{1}{49}\\sin^{-1}x+C $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{x}{2}\\sqrt{1+\\frac{1}{7x^{2}}}-\\frac{1}{49}\\sin^{-1}7x+C $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{x}{2}\\sqrt{1-49x^{2}}+\\frac{1}{14}\\sin^{-1}7x+C $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "The shortest distances of the point $(1,2,3)$ from $x$, $y$, $z$ axes respectively are",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$1,2,3$"
-     },
-     {
-      "id": "B",
-      "text": "$\\sqrt{5},\\sqrt{13},\\sqrt{10}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\sqrt{10},\\sqrt{13},\\sqrt{5}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\sqrt{13},\\sqrt{10},\\sqrt{5}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Distance between two planes $x+2y-z=5$ and $2x+4y-2z+2=0$ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\sqrt{6}$ unit"
-     },
-     {
-      "id": "B",
-      "text": "7 unit"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{5}{\\sqrt{6}}$ unit"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{4}{\\sqrt{6}}$ unit"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "If $\\overrightarrow{a}=a_{1}\\hat{i}+a_{2}\\hat{j}+a_{3}\\hat{k}$ and $\\overrightarrow{b}=b_{1}\\hat{i}+b_{2}\\hat{j}+b_{3}\\hat{k}$ are two non zero vectors inclined at an angle $\\theta$, then identify the correct option out of the given options\n\n(A) $\\cos\\theta=\\frac{\\overrightarrow{a}\\cdot\\overrightarrow{b}}{|\\overrightarrow{a}|\\cdot|\\overrightarrow{b}|}$\n\n(B) $\\overrightarrow{a}$ and $\\overrightarrow{b}$ are perpendicular, if $a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3}=0$\n\n(C) $\\overrightarrow{a}$ and $\\overrightarrow{b}$ are perpendicular, $\\frac{a_{1}}{b_{1}}=\\frac{a_{2}}{b_{2}}\\neq\\frac{c_{1}}{c_{2}}$\n\n(D) for $\\theta=\\pi,\\overrightarrow{a}\\times\\overrightarrow{b}=0$\n\n(E) $\\cos\\theta=\\frac{|\\overrightarrow{a}\\times\\overrightarrow{b}|}{|\\overrightarrow{a}|\\cdot|\\overrightarrow{b}|}$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (E) only"
-     },
-     {
-      "id": "C",
-      "text": "(B), (D) and (E) only"
-     },
-     {
-      "id": "D",
-      "text": "(A) and (B) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "If $ \\overline{p} = \\hat{i} + \\hat{j} - 2\\hat{k} $ and $ \\vec{q} = 2\\hat{i} + \\hat{j} - \\hat{k} $, then the area of parallelogram having diagonals $ (\\overline{p} + \\overline{q}) $ and $ (\\overline{p} - \\overline{q}) $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 4\\sqrt{11} $ sq. unit"
-     },
-     {
-      "id": "B",
-      "text": "$ \\sqrt{44} $ sq. unit"
-     },
-     {
-      "id": "C",
-      "text": "$ \\sqrt{11} $ sq. unit"
-     },
-     {
-      "id": "D",
-      "text": "$ 3\\sqrt{11} $ sq. unit"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "If $ \\overrightarrow{a}, \\overrightarrow{b} $ and $ \\overrightarrow{c} $ are three unit vectors such that $ \\overrightarrow{a} + \\overrightarrow{b} + \\overrightarrow{c} = 0 $ then the value of $ \\overrightarrow{a} \\cdot \\overrightarrow{b} + \\overrightarrow{b} \\cdot \\overrightarrow{c} + \\overrightarrow{c} \\cdot \\overrightarrow{a} $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "$ -\\frac{3}{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{3}{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ -\\frac{1}{3} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "The corner points of the feasible region for an $L.P.P.$ are $(0, 10), (5, 5), (15, 15)$ and $(0, 20)$. If the objective function is $z = px + qy; p, q > 0$, then the condition on $p$ and $q$ so that the maximum of zoccurs at $(15, 15)$ and $(0, 20)$ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$p = q$"
-     },
-     {
-      "id": "B",
-      "text": "$p = 2q$"
-     },
-     {
-      "id": "C",
-      "text": "q = 3p"
-     },
-     {
-      "id": "D",
-      "text": "q = 2p"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "$ \\int x\\sqrt{x+2} $ is equal to:\n\n$$ \\frac{ 贰 }{ 贰 } $$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{2}{5}(x+2)^{\\frac{5}{2}}-\\frac{4}{3}(x+2)^{\\frac{3}{2}}+C $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{2}{5}(x+2)^{\\frac{5}{2}}+\\frac{4}{3}(x+2)^{\\frac{3}{2}}+C $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{1}{5}(x+2)^{\\frac{5}{2}}+\\frac{2}{3}(x+2)^{\\frac{3}{2}}+C $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{2}{5}(x+2)^{\\frac{5}{2}}+\\frac{4}{3}(x+2)^{\\frac{3}{2}}+C $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Three urns contain 6 red, 4 black; 4 red, 6 black and 5 red, 5 black marbles respectively. One of the urns is selected at random and a marble is drawn from it. If the marble drawn is red, then the probability that it is drawn from the first urn is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{6}{10} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{4}{10} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{5}{10} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{2}{5} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Three persons A, B and C were given a task, whose probabilities of completion their task on time are $ \\frac{1}{3}, \\frac{1}{4} $, and $ \\frac{1}{5} $ respectively. They were asked to complete the task on time independently. The probability that exactly one of them complete the task on time is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{2}{15} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{2}{5} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{3}{20} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{13}{20} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Read the text carefully and answer the questions: Three persons A, B and C were given a task, whose probabilities of completion their task on time are $\\frac{1}{3},\\frac{1}{4}$ and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently. The probability that exactly two of them complete the task on time is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{3}{20}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{13}{20}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{1}{5}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{2}{15}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "Read the text carefully and answer the questions: Three persons $A, B$ and $C$ were given a task, whose probabilities of completion their task on time are $\\frac{1}{3}, \\frac{1}{4}$ and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently. The probability that $B$ alone completes the task on time is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{13}{30}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{3}{30}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{2}{5}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{2}{15}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Read the text carefully and answer the questions: Three persons A, B and C were given a task, whose probabilities of completion their task on time are $\\frac{1}{3},\\frac{1}{4}$, and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently. The probability that the task is completed on time by none of them is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{3}{20}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{2}{5}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{13}{20}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{2}{15}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Read the text carefully and answer the questions: Three persons A, B and C were given a task, whose probabilities of completion their task on time are $\\frac{1}{3}, \\frac{1}{4}$ and $\\frac{1}{5}$ respectively. They were asked to complete the task on time independently.\n\nThe probability that task is completed on time by at least one of them is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{2}{5}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{3}{20}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{3}{5}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{2}{15}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe equations in terms of x and y are:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$x-y=50, 2x+y=550$"
-     },
-     {
-      "id": "B",
-      "text": "$x+y=40, 2x-y=550$"
-     },
-     {
-      "id": "C",
-      "text": "$x-y=10, 2x+y=50$"
-     },
-     {
-      "id": "D",
-      "text": "$x-y=30, 2x+y=505$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe value x is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "150 m"
-     },
-     {
-      "id": "B",
-      "text": "100 m"
-     },
-     {
-      "id": "C",
-      "text": "200 m"
-     },
-     {
-      "id": "D",
-      "text": "300 m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe value of the expression $ \\frac{x^{2}+y^{2}}{x-y} $ is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "625"
-     },
-     {
-      "id": "B",
-      "text": "1250"
-     },
-     {
-      "id": "C",
-      "text": "312.5"
-     },
-     {
-      "id": "D",
-      "text": "3125"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Read the text carefully and answer the questions:\n\nMohan wants to donate a rectangular plot of land for a hospital in his village. When he was asked to give dimensions of the plot, he told that if its length (x) is decreased by 50 m and breadth (y) is increased by 50 m, then its area will remain same, but if length is decreased by 10 m and breadth is decreased by 20 m, then its area will decrease by 5300 m².\n\nThe area of rectangular field is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "30000 sq. m"
-     },
-     {
-      "id": "B",
-      "text": "3000 sq. m"
-     },
-     {
-      "id": "C",
-      "text": "300000 sq. m"
-     },
-     {
-      "id": "D",
-      "text": "60000 sq. m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

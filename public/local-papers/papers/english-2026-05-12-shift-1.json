@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_English_May12_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -84,43 +84,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "A \"Dipsomaniac\" is a person who: ___.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Loves reading books"
-          },
-          {
-            "id": "B",
-            "text": "Has an uncontrollable craving for alcohol"
-          },
-          {
-            "id": "C",
-            "text": "Suffers from insomnia"
-          },
-          {
-            "id": "D",
-            "text": "Speaks many languages"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "Rearrange the following sentences to form a meaningful paragraph:\n\nA. Finally, the results were announced.\n\nB. The students entered the examination hall.\n\nC. They started writing their answers carefully.\n\nD. The invigilator distributed the question papers.",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "Rearrange the following words to make a meaningful sentence:\n\nA. always\n\nB. honesty\n\nC. the best policy\n\nD. is",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Rearrange the following sentences correctly:\n\nA. The rain stopped after an hour.\n\nB. Dark clouds gathered in the sky.\n\nC. Children started playing outside again.\n\nD. Soon, it began to rain heavily.",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "Identify the poetic device used in the line: “The wind whispered through the trees.”",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Which poetic device is used in the phrase: “Time is a thief.”",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "Identify the poetic device in the line: “She sells seashells on the seashore.”",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Match the following phobias correctly:\n\nA. Xenophobia — P. Fear of strangers/foreigners\n\nB. Gerascophobia — Q. Fear of growing old\n\nC. Necrophobia — R. Fear of dead bodies/death",
         "optionsEn": [
           {

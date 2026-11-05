@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Chemistry_May12_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -216,43 +216,8 @@
         "assets": []
       },
       {
-        "id": "q07",
-        "sourceQuestionNo": 7,
-        "stemEn": "Identify the correct order of acidic strength:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$$ CH_{3}COOH>C_{2}H_{5}OH>H_{2}O $$"
-          },
-          {
-            "id": "B",
-            "text": "$$ H_{2}O>CH_{3}COOH>C_{2}H_{5}OH $$"
-          },
-          {
-            "id": "C",
-            "text": "$$ C H_{3}COOH>H_{2}O>C_{2}H_{5}OH $$"
-          },
-          {
-            "id": "D",
-            "text": "$$ C_{2}H_{5}OH>H_{2}O>CH_{3}COOH $$"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Which quantum number determines the shape of an orbital?",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "Which of the following polymers is formed by addition polymerization?",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "The reagent used in the conversion of alcohol into aldehyde is:",
         "optionsEn": [
           {

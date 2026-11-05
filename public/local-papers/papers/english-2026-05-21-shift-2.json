@@ -11,50 +11,15 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_English_May21_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 6,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "Identify the Metaphors.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Life is a journey."
-          },
-          {
-            "id": "B",
-            "text": "He fought like a tiger."
-          },
-          {
-            "id": "C",
-            "text": "The classroom was a zoo."
-          },
-          {
-            "id": "D",
-            "text": "The stars danced in the sky."
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "\"Beat a dead horse\" means:",
         "optionsEn": [
           {
@@ -86,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "\"On tenterhooks\" means:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Nervous"
-          },
-          {
-            "id": "B",
-            "text": "Relaxed"
-          },
-          {
-            "id": "C",
-            "text": "Anxious"
-          },
-          {
-            "id": "D",
-            "text": "Excited with worry"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 2,
         "stemEn": "\"Stand out\" means:",
         "optionsEn": [
           {
@@ -155,7 +85,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 3,
         "stemEn": "Choose the correctly spelled words.",
         "optionsEn": [
           {
@@ -188,7 +118,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "Choose the correct pair.",
         "optionsEn": [
           {
@@ -220,43 +150,8 @@
         "assets": []
       },
       {
-        "id": "q07",
-        "sourceQuestionNo": 7,
-        "stemEn": "Synonyms of \"Offspring\"",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Progeny"
-          },
-          {
-            "id": "B",
-            "text": "Descendants"
-          },
-          {
-            "id": "C",
-            "text": "Ancestors"
-          },
-          {
-            "id": "D",
-            "text": "Children"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 5,
         "stemEn": "Choose the correct active/passive voice conversions.",
         "optionsEn": [
           {
@@ -288,43 +183,8 @@
         "assets": []
       },
       {
-        "id": "q09",
-        "sourceQuestionNo": 9,
-        "stemEn": "Correct use of \"Council\" and \"Counsel\"",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "The council passed a law."
-          },
-          {
-            "id": "B",
-            "text": "He sought legal counsel."
-          },
-          {
-            "id": "C",
-            "text": "The counsel members met today."
-          },
-          {
-            "id": "D",
-            "text": "She gave wise counsel."
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 6,
         "stemEn": "Fill in the blanks with suitable phrasal verbs.\n\nA. Please _____ the meeting till tomorrow.\n\nB. Good friends always _____ each other.\n\nC. Her talent helped her _____ in the competition.\n\nD. We should never _____ others.",
         "optionsEn": [
           {

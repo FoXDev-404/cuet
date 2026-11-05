@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_English_May23_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -309,41 +309,6 @@
         "passageId": null,
         "reviewStatus": "keyed",
         "reviewFlags": [],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q10",
-        "sourceQuestionNo": 10,
-        "stemEn": "Rearrange the fragments to form a logical sentence:\n\nP: the complex constitution regulations\n\nQ: with meticulous care\n\nR: the legal research team\n\nS: analyzed every clause of",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "PRSQ"
-          },
-          {
-            "id": "B",
-            "text": "RSPQ"
-          },
-          {
-            "id": "C",
-            "text": "QSPR"
-          },
-          {
-            "id": "D",
-            "text": "RQSP"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
         "sourcePages": [
           1
         ],

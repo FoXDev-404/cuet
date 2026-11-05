@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_English_May11_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -309,41 +309,6 @@
         "passageId": null,
         "reviewStatus": "keyed",
         "reviewFlags": [],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q10",
-        "sourceQuestionNo": 10,
-        "stemEn": "Which of the following best explains the meaning of the word METAMORPHOSIS?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A man flaunts his new car to impress his neighbours"
-          },
-          {
-            "id": "B",
-            "text": "A woman throws out old clothes from her wardrobe"
-          },
-          {
-            "id": "C",
-            "text": "A garden full of weeds is converted into a lovely green lawn"
-          },
-          {
-            "id": "D",
-            "text": "A man paints his new home in bright colours"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
         "sourcePages": [
           1
         ],

@@ -11,50 +11,15 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Chemistry_May18_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "The Henry’s law constant ($K_H$) values for four gases $W, X, Y$, and $Z$ in water at 298 K are $4.0 \\times 10^4$, $2.5 \\times 10^{-2}$, $1.5 \\times 10^3$, and $8.0 \\times 10^1$ bar, respectively. What is the correct order of their solubility in water under the same partial pressure?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "W > Y > Z > X"
-          },
-          {
-            "id": "B",
-            "text": "X > Z > Y > W"
-          },
-          {
-            "id": "C",
-            "text": "X > Y > Z > W"
-          },
-          {
-            "id": "D",
-            "text": "W > Z > Y > X"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "Which of the following organic compounds is expected to have the highest boiling point?",
         "optionsEn": [
           {
@@ -87,7 +52,7 @@
       },
       {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 2,
         "stemEn": "Why do aquatic species, such as fish, generally feel more comfortable in cold water than in warm water?",
         "optionsEn": [
           {
@@ -120,7 +85,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "What are the starting materials used in the industrial synthesis of the pesticide DDT?",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "Which of the following statements is TRUE regarding the transition state of a bimolecular nucleophilic substitution ( $ S_{N}2 $) reaction?",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Ethylene glycol (ethane-1,2-diol) is widely added to car radiators as an antifreeze agent. How does its addition protect the engine in extreme climates?",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "Which of the following oxidizing agents is mild enough to selectively oxidize an aldehyde to a carboxylic acid without cleaving other sensitive carbon-carbon single bonds?",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "What are the primary reagents and catalysts required to carry out the Gattermann-Koch reaction?",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "Among the given pairs of isomeric organic compounds, which pair is correctly arranged in order of INCREASING boiling point?",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "When benzaldehyde is subjected to oxidation using acidified potassium permanganate ( $ KMnO_{4} $), what organic product is formed?",
         "optionsEn": [
           {

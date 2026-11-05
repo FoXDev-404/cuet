@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Geography_May13_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -100,43 +100,8 @@
         ]
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "Which of the following is a Quaternary activity?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Teaching in a school"
-          },
-          {
-            "id": "B",
-            "text": "Working in a call center (BPO)"
-          },
-          {
-            "id": "C",
-            "text": "Software Development/Information Research"
-          },
-          {
-            "id": "D",
-            "text": "Operating a CNC machine"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "Arrange the following modes of transport in terms of their historical emergence (Earliest to Latest):\n\n1. Railways\n\n2. Pipelines\n\n3. Air Transport\n\n4. Steam Ships",
         "optionsEn": [
           {
@@ -177,7 +142,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "Statement I: Outsourcing helps in reducing costs and increasing efficiency.\n\nStatement II: KPO (Knowledge Process Outsourcing) involves more high-end tasks than BPO.",
         "optionsEn": [
           {
@@ -217,51 +182,8 @@
         ]
       },
       {
-        "id": "q06",
-        "sourceQuestionNo": 6,
-        "stemEn": "Which of the following pairs is INCORRECT?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Trans-Siberian Railway: St. Petersburg to Vladivostok"
-          },
-          {
-            "id": "B",
-            "text": "Canadian Pacific Railway: Halifax to Vancouver"
-          },
-          {
-            "id": "C",
-            "text": "Union and Pacific Railway: New York to San Francisco"
-          },
-          {
-            "id": "D",
-            "text": "Australian Trans-Continental Railway: Perth to Sydney"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": [
-          {
-            "id": "q06-exp-1",
-            "kind": "explanation",
-            "path": "/local-papers/assets/geography-2026-05-13-shift-1/q06-exp-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 6"
-          }
-        ]
-      },
-      {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "Match the Canal with the Water Bodies it connects:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Canal</td><td colspan=\"2\">Connection</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)</td><td style='text-align: center; word-wrap: break-word;'>Suez Canal</td><td style='text-align: center; word-wrap: break-word;'>(1)</td><td style='text-align: center; word-wrap: break-word;'>Atlantic Ocean to Pacific Ocean</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)</td><td style='text-align: center; word-wrap: break-word;'>Panama Canal</td><td style='text-align: center; word-wrap: break-word;'>(2)</td><td style='text-align: center; word-wrap: break-word;'>Mediterranean Sea to Red Sea</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)</td><td style='text-align: center; word-wrap: break-word;'>Rhine Waterway</td><td style='text-align: center; word-wrap: break-word;'>(3)</td><td style='text-align: center; word-wrap: break-word;'>Switzerland to North Sea</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)</td><td style='text-align: center; word-wrap: break-word;'>Volga Waterway</td><td style='text-align: center; word-wrap: break-word;'>(4)</td><td style='text-align: center; word-wrap: break-word;'>Caspian Sea</td></tr></table>",
         "optionsEn": [
           {
@@ -302,7 +224,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "Which of the following are the 'Gateways of International Trade'?",
         "optionsEn": [
           {
@@ -343,7 +265,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "Consider these statements regarding WTO:\n\n1. It succeeded the GATT in 1995.\n\n2. It is the only global organization dealing with the rules of trade between nations.\n\n3. Its headquarters are in New York.\n\nWhich is/are CORRECT?",
         "optionsEn": [
           {
@@ -384,7 +306,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "Identify the 'Entrepot Port' among the following:",
         "optionsEn": [
           {

@@ -119,27 +119,27 @@
       {
         "id": "q04",
         "sourceQuestionNo": 4,
-        "stemEn": "Evaluate:\n\n $$ \\int\\frac{x^{2}+1}{x^{4}+1}dx $$ \n\n(A)  $ \\frac{1}{\\sqrt{2}}\\tan^{-1}\\left(\\frac{x^{2}-1}{\\sqrt{2}x}\\right)+C $\n\n(B) $ \\tan^{-1}x+C $\n\n(C)  $ \\frac{1}{2}\\ln(x^{2}+1)+C $\n\n(D) $ \\frac{x}{x^{2}+1}+C $\n\n $$ \\vec{a}=2\\hat{i}-\\hat{j}+\\hat{k},\\qquad\\vec{b}=\\hat{i}+2\\hat{j}-\\hat{k}, $$ \n\nand\n\n $$ \\vec{c}=\\lambda\\hat{i}+\\mu\\hat{j}+3\\hat{k}. $$ \n\nIf\n\n $$ [\\vec{a}\\ \\vec{b}\\ \\vec{c}]=0 $$ \n\nand\n\n $$ \\vec{c}\\cdot(\\vec{a}+\\vec{b})=10, $$ \n\nthen find the value of $\\lambda + \\mu$.",
+        "stemEn": "Evaluate:\n\n $$ \\int\\frac{x^{2}+1}{x^{4}+1}dx $$",
         "optionsEn": [
           {
             "id": "A",
-            "text": "1"
+            "text": "$ \\frac{1}{\\sqrt{2}}\\tan^{-1}\\left(\\frac{x^{2}-1}{\\sqrt{2}x}\\right)+C $"
           },
           {
             "id": "B",
-            "text": "2"
+            "text": "$ \\tan^{-1}x+C $"
           },
           {
             "id": "C",
-            "text": "3"
+            "text": "$ \\frac{1}{2}\\ln(x^{2}+1)+C $"
           },
           {
             "id": "D",
-            "text": "4"
+            "text": "$ \\frac{x}{x^{2}+1}+C $"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -321,7 +321,7 @@
         "optionsEn": [
           {
             "id": "A",
-            "text": "$ \\sqrt{2} $\n\n $$ y\\left[\\sec^{2}x\\sin x\\ln x+\\tan x\\cos x\\ln x+\\frac{\\tan x\\sin x}{x}\\right] $$"
+            "text": "$$ y\\left[\\sec^{2}x\\sin x\\ln x+\\tan x\\cos x\\ln x+\\frac{\\tan x\\sin x}{x}\\right] $$"
           },
           {
             "id": "B",
@@ -337,7 +337,7 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",

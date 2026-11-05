@@ -11,7 +11,7 @@
     "shift": null,
     "sourceFile": "Chemistry_2024-05-29.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 49,
+    "questionCount": 48,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -431,7 +431,7 @@
       },
       {
         "id": "q14",
-        "sourceQuestionNo": 14,
+        "sourceQuestionNo": 13,
         "stemEn": "How many electrons are needed in reduction of Cr_{2}O_{7}^{2-} to Cr^{3+}?",
         "optionsEn": [
           {
@@ -464,7 +464,7 @@
       },
       {
         "id": "q15",
-        "sourceQuestionNo": 15,
+        "sourceQuestionNo": 14,
         "stemEn": "Which among the following compounds show metal excess defect due to anionic vacancy?",
         "optionsEn": [
           {
@@ -497,7 +497,7 @@
       },
       {
         "id": "q16",
-        "sourceQuestionNo": 16,
+        "sourceQuestionNo": 15,
         "stemEn": "Molal elevation constant is also known as:",
         "optionsEn": [
           {
@@ -530,7 +530,7 @@
       },
       {
         "id": "q17",
-        "sourceQuestionNo": 17,
+        "sourceQuestionNo": 16,
         "stemEn": "What is the overall order of the reaction?\n\nRate = k[A] $ ^{1/2} $[B] $ ^{3/2} $",
         "optionsEn": [
           {
@@ -563,7 +563,7 @@
       },
       {
         "id": "q18",
-        "sourceQuestionNo": 18,
+        "sourceQuestionNo": 17,
         "stemEn": "Which term of molar conductivity is used when the concentration of electrolyte approaches to zero?",
         "optionsEn": [
           {
@@ -596,7 +596,7 @@
       },
       {
         "id": "q19",
-        "sourceQuestionNo": 19,
+        "sourceQuestionNo": 18,
         "stemEn": "Kohlrausch law is related to which of the following term?",
         "optionsEn": [
           {
@@ -629,7 +629,7 @@
       },
       {
         "id": "q20",
-        "sourceQuestionNo": 20,
+        "sourceQuestionNo": 19,
         "stemEn": "Which factor in Arrhenius equation, corresponds to fraction of molecules having kinetic energy greater than activation energy?",
         "optionsEn": [
           {
@@ -662,7 +662,7 @@
       },
       {
         "id": "q21",
-        "sourceQuestionNo": 21,
+        "sourceQuestionNo": 20,
         "stemEn": "What is the another term used for probability factor (P) in collision theory?",
         "optionsEn": [
           {
@@ -695,7 +695,7 @@
       },
       {
         "id": "q22",
-        "sourceQuestionNo": 22,
+        "sourceQuestionNo": 21,
         "stemEn": "Why does Fluorine exhibit only -1 oxidation state?",
         "optionsEn": [
           {
@@ -728,7 +728,7 @@
       },
       {
         "id": "q23",
-        "sourceQuestionNo": 23,
+        "sourceQuestionNo": 22,
         "stemEn": "Which among the following halogen exists in liquid state at room temperature?",
         "optionsEn": [
           {
@@ -761,7 +761,7 @@
       },
       {
         "id": "q24",
-        "sourceQuestionNo": 24,
+        "sourceQuestionNo": 23,
         "stemEn": "The central atoms/ions in the coordination compounds are referred as _.",
         "optionsEn": [
           {
@@ -794,7 +794,7 @@
       },
       {
         "id": "q25",
-        "sourceQuestionNo": 25,
+        "sourceQuestionNo": 24,
         "stemEn": "What is the IUPAC name of $ [PtNH_{3})_{2}Cl(NO_{2})] $?",
         "optionsEn": [
           {
@@ -827,7 +827,7 @@
       },
       {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 25,
         "stemEn": "What product is obtained when chloroform reacts with oxygen in presence of light?",
         "optionsEn": [
           {
@@ -860,7 +860,7 @@
       },
       {
         "id": "q27",
-        "sourceQuestionNo": 27,
+        "sourceQuestionNo": 26,
         "stemEn": "Which among the following is a trihydric alcohol?",
         "optionsEn": [
           {
@@ -893,7 +893,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 27,
         "stemEn": "Aspirin is also known as:",
         "optionsEn": [
           {
@@ -926,7 +926,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 28,
         "stemEn": "What is the IUPAC name of picric acid?",
         "optionsEn": [
           {
@@ -959,7 +959,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 29,
         "stemEn": "What is the product when glucose reacts with bromine water?",
         "optionsEn": [
           {
@@ -991,49 +991,8 @@
         "assets": []
       },
       {
-        "id": "q31",
-        "sourceQuestionNo": 31,
-        "stemEn": "Match List I with List II for the oxidation state of central atoms:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "(A) - (I), (B) - (II), (C) - (III), (D) - (IV)"
-          },
-          {
-            "id": "B",
-            "text": "(A) - (IV), (B) - (III), (C) - (II), (D) - (I)"
-          },
-          {
-            "id": "C",
-            "text": "(A) - (I), (B) - (II), (C) - (IV), (D) - (III)"
-          },
-          {
-            "id": "D",
-            "text": "(A) - (IV), (B) - (I), (C) - (III), (D) - (II)"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          30
-        ],
-        "assets": [
-          {
-            "id": "q31-table-1",
-            "kind": "table",
-            "path": "/local-papers/assets/chemistry-2024-05-29/q31-table-1.jpg",
-            "page": 30,
-            "alt": "Table for question 31"
-          }
-        ]
-      },
-      {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 30,
         "stemEn": "What is the colour of copper compound formed in Fehling's test for aliphatic aldehydes?",
         "optionsEn": [
           {
@@ -1066,7 +1025,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 31,
         "stemEn": "What is the major product formed when diazonium salt undergoes Gatterman reaction?",
         "optionsEn": [
           {
@@ -1099,7 +1058,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 32,
         "stemEn": "What is the major product of Carbylamine reaction?",
         "optionsEn": [
           {
@@ -1132,7 +1091,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 33,
         "stemEn": "Which among the following is an essential amino acid?",
         "optionsEn": [
           {
@@ -1165,7 +1124,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 34,
         "stemEn": "Arrange the following in increasing order of their pH values :\n\n(A) p-Nitrophenol\n\n(B) m-Cresol\n\n(C) m-Nitrophenol\n\n(D) Phenol",
         "optionsEn": [
           {
@@ -1198,7 +1157,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 35,
         "stemEn": "Which among the following is a biodegradable polymer?",
         "optionsEn": [
           {
@@ -1231,7 +1190,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 36,
         "stemEn": "Which among the following is an antacid?",
         "optionsEn": [
           {
@@ -1264,7 +1223,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 37,
         "stemEn": "What is the numerical value of one Faraday in Coloumbs?",
         "optionsEn": [
           {
@@ -1297,7 +1256,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 38,
         "stemEn": "A first order reaction has a half-life of 693 sec. What will be its rate constant?",
         "optionsEn": [
           {
@@ -1330,7 +1289,7 @@
       },
       {
         "id": "q41",
-        "sourceQuestionNo": 41,
+        "sourceQuestionNo": 39,
         "stemEn": "For S_{N}2 reaction, the increasing order of the reactivity of the following alkyl halides is:\n\n(A) $ CH_{3}CH_{2}CH_{2}CH_{2}Br $\n\n(B) $ CH_{3}CH_{2}CH(Br)CH_{3} $\n\n(C)(CH_{3})_{3}CBr\n\n(D) $ (\\mathrm{CH}_{3})_{2}\\mathrm{CHCH}_{2}\\mathrm{Br} $",
         "optionsEn": [
           {
@@ -1363,7 +1322,7 @@
       },
       {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 40,
         "stemEn": "Which among the following is a strong field ligand?",
         "optionsEn": [
           {
@@ -1396,7 +1355,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 41,
         "stemEn": "Arrange the following in increasing order of their osmotic pressure generation at 298 K:\n\n(The cell wall is permeable to water and not to the solute molecules)\n\n(A) If a cell containing 0.5 moles of solute dissolved in 1 L of water is immersed in pure water.\n\n(B) If a cell containing 0.25 moles of solute dissolved in 1 L of water is immersed in pure water.\n\n(C) If a cell containing 0.1 moles of solute dissolved in 0.01 L of water is immersed in pure water.\n\n(D) If a cell containing 0.2 moles of solute dissolved in 0.05 L of water is immersed in pure water.",
         "optionsEn": [
           {
@@ -1429,7 +1388,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 42,
         "stemEn": "Arrange the following rate constant units in increasing order of their order of reaction:\n\n(A) $ sec^{-1} $\n\n(B) M $ ^{-1} $ sec $ ^{-1} $\n\n(C) mol $ ^{-1} $L sec $ ^{-1} $\n\n(D) mol $ ^{-2} $L $ ^{2} $ sec $ ^{-1} $",
         "optionsEn": [
           {
@@ -1462,7 +1421,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 43,
         "stemEn": "Which of the following compounds will undergo Aldol condensation reaction?\n\n(A)\n\n(B)\n\n(C) $ CH_{3}-CH_{2}-C(CH_{3})_{2}-CH_{2}-CHO $\n(D) HCHO",
         "optionsEn": [
           {
@@ -1511,7 +1470,7 @@
       },
       {
         "id": "q46",
-        "sourceQuestionNo": 46,
+        "sourceQuestionNo": 44,
         "stemEn": "Consider the following compounds:\n\n(A)\n\n(B)\n\n(C)\n\n(D)\n\nArrange these compounds in the increasing order of rate of hydrolysis:",
         "optionsEn": [
           {
@@ -1573,7 +1532,7 @@
       },
       {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 45,
         "stemEn": "Which of the following ions will be coloured in the aqueous solution?\n\n(A) Ti^{3+}\n\n(B) $ \\mathrm{Nb^{3+}} $\n\n(C) $ Cu^{3+} $\n\n(D) $ Y^{3+} $",
         "optionsEn": [
           {
@@ -1606,7 +1565,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 46,
         "stemEn": "The correct statement/statements from the options given below is/are:\n\n(A) Diazonium salts of aromatic amines are morestable than diazonium salts of aliphatic amines.\n\n(B) Ethylamine is insoluble in water.\n\n(C) Gabriel phthalimide synthesis can be used to prepare primary amines.\n\n(D) Beacuse of +R-effect of -NH₂ group, aniline will undergo Friedel-Crafts acylation reaction.",
         "optionsEn": [
           {
@@ -1639,7 +1598,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 47,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1680,7 +1639,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 48,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {

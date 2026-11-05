@@ -11,7 +11,7 @@
     "shift": null,
     "sourceFile": "Biology_2024-07-19.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 49,
+    "questionCount": 48,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -908,41 +908,8 @@
         ]
       },
       {
-        "id": "q26",
-        "sourceQuestionNo": 26,
-        "stemEn": "Which of the following product is not developed by the use of biotechnology?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Bt cotton"
-          },
-          {
-            "id": "B",
-            "text": "DNA vaccine"
-          },
-          {
-            "id": "C",
-            "text": "Human protein enriched milk"
-          },
-          {
-            "id": "D",
-            "text": "Basmati Rice"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          26
-        ],
-        "assets": []
-      },
-      {
         "id": "q27",
-        "sourceQuestionNo": 27,
+        "sourceQuestionNo": 26,
         "stemEn": "Identify the missing restriction sites (A, B and C) in the given E. coli cloning vector pBR322.",
         "optionsEn": [
           {
@@ -983,7 +950,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 27,
         "stemEn": "Arrange the following steps in recombinant DNA technology on the basis of their sequence of occurrence:\n\n(A) Isolation of desired DNA fragments\n\n(B) Culturing the host cells\n\n(C) Extraction of desired product\n\n(D) Ligation of DNA fragment into vector\n(E) Transferring of recombinant DNA to host",
         "optionsEn": [
           {
@@ -1016,7 +983,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 28,
         "stemEn": "Which of the following is not a cause of biodiversity loss?",
         "optionsEn": [
           {
@@ -1049,7 +1016,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 29,
         "stemEn": "For which of the following human disease, transgenic model was not developed?",
         "optionsEn": [
           {
@@ -1082,7 +1049,7 @@
       },
       {
         "id": "q31",
-        "sourceQuestionNo": 31,
+        "sourceQuestionNo": 30,
         "stemEn": "Transposons are :",
         "optionsEn": [
           {
@@ -1115,7 +1082,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 31,
         "stemEn": "Identify the incorrect statements.\n\n(A) Bacillus thuringiensis is a transgenic organism.\n\n(B) Bt toxin enter the testes or the ovaries of the insect pest, sterilize it and thus prevent it's multiplication.\n\n(C) Proteins encoded by crylAc and cryllAb control cotton bollworms.\n\n(D) Bt protein exists as active toxin in the Bacillus.\n\n(E) Alkaline pH of the insect gut solubilizes the toxin protein crystals.",
         "optionsEn": [
           {
@@ -1148,7 +1115,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 32,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1189,7 +1156,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 33,
         "stemEn": "In which of the following ecosystems, detritus food chain (DFC) is the major conduit for energy flow?",
         "optionsEn": [
           {
@@ -1222,7 +1189,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 34,
         "stemEn": "Which one of the following statements is wrong regarding ecological pyramids?",
         "optionsEn": [
           {
@@ -1255,7 +1222,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 35,
         "stemEn": "The total energy fixed by a green plant is called :",
         "optionsEn": [
           {
@@ -1288,7 +1255,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 36,
         "stemEn": "Tropical regions account for greater biological diversity because of the following reasons, except:",
         "optionsEn": [
           {
@@ -1321,7 +1288,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 37,
         "stemEn": "Deserts, rain forests, mangroves, coral reefs, wetlands, estuaries and alpine meadows in India represent :",
         "optionsEn": [
           {
@@ -1354,7 +1321,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 38,
         "stemEn": "The increase in rate of species loss in the world is due to:\n\n(A) Less use of natural resources\n\n(B) Introduction of alien species\n\n(C) Species confined to a particular area\n\n(D) Removal of one species from co-existed species\n\n(E) Destruction of large landscape into small area",
         "optionsEn": [
           {
@@ -1387,7 +1354,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 39,
         "stemEn": "Choose the following statements which are correct with respect to continuous culture systems:\n\n(A) In simple stirred tank bioreactor, the stirring happens through sparging of air bubbles\n\n(B) Bioreactor has an agitator system, oxygen delivery system and foam control system\n\n(C) Sampling ports provides vents to withdraw small volumes of culture periodically\n\n(D) Culturing in bio reactors is classified as downstream processing",
         "optionsEn": [
           {
@@ -1420,7 +1387,7 @@
       },
       {
         "id": "q41",
-        "sourceQuestionNo": 41,
+        "sourceQuestionNo": 40,
         "stemEn": "What is the first sign of growing foetus?\n",
         "optionsEn": [
           {
@@ -1453,7 +1420,7 @@
       },
       {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 41,
         "stemEn": "How many chromosomes are present in human primary spermatocytes?",
         "optionsEn": [
           {
@@ -1486,7 +1453,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 42,
         "stemEn": "The transformation of spermatids into spermatozoa is known as ;\n",
         "optionsEn": [
           {
@@ -1519,7 +1486,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 43,
         "stemEn": "Which hormone is essential for maintenance of endometrium during luteal phase?",
         "optionsEn": [
           {
@@ -1552,7 +1519,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 44,
         "stemEn": "The nucleus is present in _ of human sperm.\n",
         "optionsEn": [
           {
@@ -1585,7 +1552,7 @@
       },
       {
         "id": "q46",
-        "sourceQuestionNo": 46,
+        "sourceQuestionNo": 45,
         "stemEn": "Which of the following is correct among the following statements related to species interaction?\n",
         "optionsEn": [
           {
@@ -1618,7 +1585,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 46,
         "stemEn": "Which of the following is not classified into the category of parasites?",
         "optionsEn": [
           {
@@ -1651,7 +1618,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 47,
         "stemEn": "The process in which the fitness of one species (measured in terms of its 'r', the intrinsic rate of increase) is significantly\n\nlower in the presence of another species is known as :\n\nThe process in which the fitness of one species (measured in terms of its 'r', the intrinsic rate of increase) is significantly lower in the presence of another species is known as :",
         "optionsEn": [
           {
@@ -1684,7 +1651,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 48,
         "stemEn": "Which of the following is not associated with realistic growth model?",
         "optionsEn": [
           {

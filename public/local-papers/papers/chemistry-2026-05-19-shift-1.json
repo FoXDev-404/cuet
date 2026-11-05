@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Chemistry_May19_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -309,41 +309,6 @@
         "passageId": null,
         "reviewStatus": "keyed",
         "reviewFlags": [],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q10",
-        "sourceQuestionNo": 10,
-        "stemEn": "When phenol is treated with chloroform (CHCl_{3}) in the presence of an aqueous sodium hydroxide solution followed by acidification, a prominent aromatic aldehyde is generated. What is the name of this organic reaction?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Kolbe's Reaction"
-          },
-          {
-            "id": "B",
-            "text": "Reimer-Tiemann Reaction"
-          },
-          {
-            "id": "C",
-            "text": "Rosenmund Reduction"
-          },
-          {
-            "id": "D",
-            "text": "Friedel-Crafts Acylation"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
         "sourcePages": [
           1
         ],

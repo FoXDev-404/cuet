@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_GAT_June6_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 4,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,7 +51,7 @@
         "assets": []
       },
       {
-        "id": "q02",
+        "id": "q06",
         "sourceQuestionNo": 2,
         "stemEn": "Find the smallest number which should be added to the smallest number divisible by 6, 9 and 15 to make it a perfect square.",
         "optionsEn": [
@@ -73,151 +73,7 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "A household appliances company offers two successive discounts of 20% and 35% on the sale of a food processor. What is the final sale price (in Rs, to the nearest rupee) of a food processor costing Rs. 4580?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "2519"
-          },
-          {
-            "id": "B",
-            "text": "2977"
-          },
-          {
-            "id": "C",
-            "text": "2382"
-          },
-          {
-            "id": "D",
-            "text": "3664"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "In triangle ABC, the bisector of angle BAC meets BC at point D in such a way that AB = 10 cm, AC = 15 cm and BD = 6 cm. Find the length of BC (in cm).",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "17"
-          },
-          {
-            "id": "B",
-            "text": "11"
-          },
-          {
-            "id": "C",
-            "text": "15"
-          },
-          {
-            "id": "D",
-            "text": "9"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q05",
-        "sourceQuestionNo": 5,
-        "stemEn": "Three positive numbers are in the ratio 2 : 3 : 4. The sum of their squares is 2349. The average of the first two numbers is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "36"
-          },
-          {
-            "id": "B",
-            "text": "27.5"
-          },
-          {
-            "id": "C",
-            "text": "18"
-          },
-          {
-            "id": "D",
-            "text": "22.5"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q06",
-        "sourceQuestionNo": 6,
-        "stemEn": "Comparing the options, Japan, India, and Australia are active members, whereas China is not.\n\nStep 3: Final Answer:\n\nChina is the country that is not a member of the QUAD.\n\nQuick Tip: To easily remember the four QUAD members, associate them with the participants of the Malabar naval exercise: India, USA, Japan, and Australia.",
-        "optionsEn": [
-          {
-            "id": "B",
-            "text": "Find the smallest number which should be added to the smallest number divisible by 6, 9 and 15 to make it a perfect square."
-          },
-          {
-            "id": "A",
-            "text": "10"
-          },
-          {
-            "id": "B",
-            "text": "9"
-          },
-          {
-            "id": "C",
-            "text": "19"
-          },
-          {
-            "id": "D",
-            "text": "21"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -228,78 +84,8 @@
         "assets": []
       },
       {
-        "id": "q07",
-        "sourceQuestionNo": 7,
-        "stemEn": "Which are the correct examples of Newton's 3rd law motion?\n\n(A) Recoil of a gun\n\n(B) Running horse stops suddenly, the rider bends forward\n\n(C) Motion of rocket\n\n(D) It gives the definition of force\n\n(E) Swimming\n\nChoose the correct answer from the options given below:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "(A), (B) and (C) only"
-          },
-          {
-            "id": "B",
-            "text": "(A), (C) and (E) only"
-          },
-          {
-            "id": "C",
-            "text": "(B), (C) and (D) only"
-          },
-          {
-            "id": "D",
-            "text": "(C), (D) and (E) only"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q08",
-        "sourceQuestionNo": 8,
-        "stemEn": "Who was the founder of Arya Samaj?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Raja Ram Mohan Roy"
-          },
-          {
-            "id": "B",
-            "text": "Swami Vivekananda"
-          },
-          {
-            "id": "C",
-            "text": "Swami Dayanand Saraswati"
-          },
-          {
-            "id": "D",
-            "text": "Keshab Chandra Sen"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 3,
         "stemEn": "The Vice-Chancellor of a State University is appointed by which authority?",
         "optionsEn": [
           {
@@ -332,7 +118,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 4,
         "stemEn": "What is the pH range of milk?",
         "optionsEn": [
           {

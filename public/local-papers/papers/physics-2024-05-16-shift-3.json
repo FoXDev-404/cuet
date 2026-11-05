@@ -11,7 +11,7 @@
     "shift": "Shift 3",
     "sourceFile": "Physics_2024-05-16_Shift_3.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 46,
+    "questionCount": 44,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -695,7 +695,7 @@
       },
       {
         "id": "q21",
-        "sourceQuestionNo": 21,
+        "sourceQuestionNo": 20,
         "stemEn": "The graph correctly representing the variation of image distance 'v' for a convex lens of focal length 'f' versus object distance 'u' is _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -738,7 +738,7 @@
       },
       {
         "id": "q22",
-        "sourceQuestionNo": 22,
+        "sourceQuestionNo": 21,
         "stemEn": "Using light from a monochromatic source to study diffraction in a single slit of width 0.1 mm, the linear width of central maxima is measured to be 5 mm on a screen held 50 cm away. The wavelength of light used is _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -771,7 +771,7 @@
       },
       {
         "id": "q23",
-        "sourceQuestionNo": 23,
+        "sourceQuestionNo": 22,
         "stemEn": "Radiation of frequency $ 2v_{0} $ is incident on a metal with threshold frequency $ v_{0} $. The correct statement of the following is _\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -804,7 +804,7 @@
       },
       {
         "id": "q25",
-        "sourceQuestionNo": 25,
+        "sourceQuestionNo": 23,
         "stemEn": "A proton accelerated through a potential difference V has a de Broglie wavelength $ \\square $. On doubling the accelerating potential, de Broglie wavelength of the proton _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -837,7 +837,7 @@
       },
       {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 24,
         "stemEn": "The kinetic energy of an electron in ground level in hydrogen atom is K units. The values of its potential energy and total energy respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -869,41 +869,8 @@
         "assets": []
       },
       {
-        "id": "q27",
-        "sourceQuestionNo": 27,
-        "stemEn": "Two nuclei have mass numbers A and B respectively. The density ratio of the nuclei is _.\n\nFill in the blank with the correct answer from the options given below.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A: B"
-          },
-          {
-            "id": "B",
-            "text": "$ \\sqrt{A}:\\sqrt{B} $"
-          },
-          {
-            "id": "C",
-            "text": "A^{2}:B^{2}"
-          },
-          {
-            "id": "D",
-            "text": "1:1"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          23
-        ],
-        "assets": []
-      },
-      {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 25,
         "stemEn": "The shortest wavelengths emitted in hydrogen spectrum corresponding to different spectral series are as under:\n\n(A) Pfundseries\n\n(B) Balmer series\n\n(C) Brackett series\n\n(D) Lyman series\n\nThe wavelengths arranged correctly in decreasing order are _\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -936,7 +903,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 26,
         "stemEn": "Silicon can be doped using one of the following elements as dopant :\n\n(A) Arsenic\n\n(B) Indium\n\n(C) Phosphorus\n\n(D) Boron To get n-type semiconductor, the dopants that can be used are _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -969,7 +936,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 27,
         "stemEn": "Given below are V versus I graphs for different types of p-n junction diodes marked A, B, C and D.\n\n(A)\n\n(B)\n\n(C)\n\n(D)\n\nThe correct sequence of graphs corresponding to forward biased p-n junction; Zener diode; Photo diode and Solar cell in order is _\n\nFill in the blank with the correct answer from the options given below",
         "optionsEn": [
           {
@@ -1031,7 +998,7 @@
       },
       {
         "id": "q31",
-        "sourceQuestionNo": 31,
+        "sourceQuestionNo": 28,
         "stemEn": "A wire carrying current I, bent as shown in the figure, is placed in a uniform field B that emerges normally out from the plane of the figure. The force on this wire is _.\n\nB O\n\nUniform field\n\nPointing outwards\n\nFill in the blank with the correct answer from the options given below",
         "optionsEn": [
           {
@@ -1072,7 +1039,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 29,
         "stemEn": "The refractive index of the material of an equilateral prism is $ \\sqrt{2} $. The angle of minimum deviation of that prism is _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1105,7 +1072,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 30,
         "stemEn": "The transfer of integral number of _ is one of the evidence of quantization of electric charge.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1138,7 +1105,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 31,
         "stemEn": "A copper ball of density 8.0 g/cc and 1 cm in diameter is immersed in oil of density 0.8 g/cc. The charge on the ball if it remains just suspended in oil in an electric field of intensity 600πV/m acting in the upward direction is _.\n\nFill in the blank with the correct answer from the options given below. (Take $ g = 10\\ m/s^{2} $)",
         "optionsEn": [
           {
@@ -1171,7 +1138,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 32,
         "stemEn": "A metal wire is subjected to a constant potential difference. When the temperature of the metal wire increases, the drift velocity of the electron in it _\n\nFill in the blank with the correct answer from the options given below",
         "optionsEn": [
           {
@@ -1204,7 +1171,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 33,
         "stemEn": "For the given mixed combination of resistors calculate the total resistance between points A and B.",
         "optionsEn": [
           {
@@ -1246,7 +1213,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 34,
         "stemEn": "A cell of emf 1.1 V and internal resistance 0.5 Ω is connected to a wire of resistance 0.5 Ω. Another cell of the same emf is now connected in series with the intention of increasing the current but the current in the wire remains the same. The internal resistance of the second cell is _\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1279,7 +1246,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 35,
         "stemEn": "P, Q, R and S are four wires of resistances 3, 3, 3 and 4Ω respectively. They are connected to form the four arms of a wheatstone bridge circuit. The resistance with which S must be shunted in order that the bridge may be balanced is _.\n\nFill in the blank with the correct answer from the options given below",
         "optionsEn": [
           {
@@ -1312,7 +1279,7 @@
       },
       {
         "id": "q41",
-        "sourceQuestionNo": 41,
+        "sourceQuestionNo": 36,
         "stemEn": "Ferromagnetic material used in Transformers must have _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1345,7 +1312,7 @@
       },
       {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 37,
         "stemEn": "A conducting ring of radius r is placed in a varying magnetic field perpendicular to the plane of the ring. If the rate at which the magnetic field varies is x, the electric field intensity at any point of the ring is _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1378,7 +1345,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 38,
         "stemEn": "A 50 Hz ac current of crest value 1 A flows through the primary of a transformer. If the mutual inductance between the primary and secondary be 0.5 H, the crest voltage induced in the secondary is _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1411,7 +1378,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 39,
         "stemEn": "A long solenoid of diameter 0.1 m has $ 2 \\times 10^4 $ turns per meter. At the centre of the solenoid a coil of 100 turns and radius 0.01 m is placed with its axis coinciding with the solenoid axis. The current in the solenoid reduces at a constant rate to 0 A from 4 A in 0.05 s. If the resistance of the coil is $ 10\\pi^2\\Omega $, then the total charge flowing through the coil during this time is _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1444,7 +1411,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 40,
         "stemEn": "Lower half of a convex lens is made opaque. Which of the following statement describes the image of the object placed in front of the lens?\n\n(A) No change in image\n\n(B) Image will show only half of the object\n\n(C) Intensity of image gets reduced",
         "optionsEn": [
           {
@@ -1476,41 +1443,8 @@
         "assets": []
       },
       {
-        "id": "q46",
-        "sourceQuestionNo": 46,
-        "stemEn": "Two slits are made 0.1 mm apart and the screen is placed 2 m away. The fringe separation when a light of wavelength 500 nm is used is _.\n\nFill in the blank with the correct answer from the options given below.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "1 cm"
-          },
-          {
-            "id": "B",
-            "text": "0.15 cm"
-          },
-          {
-            "id": "C",
-            "text": "1.5 cm"
-          },
-          {
-            "id": "D",
-            "text": "0.1 cm"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          39
-        ],
-        "assets": []
-      },
-      {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 41,
         "stemEn": "For an astronomical telescope having objective lens of focal length 10 m and eyepiece lens of focal length 10 cm, telescope's the tube length and magnification respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1543,7 +1477,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 42,
         "stemEn": "According to Bohr's Model\n\n(A) The radius of the orbiting electron is directly proportional to 'n'.\n\n(B) The speedof the orbiting electron is directly proportional to '1/n'.\n\n(C) The magnitude of the total energy of the orbiting electron is directly proportional to '1/n^2'.\n\n(D) The radius of the orbiting electron is directly proportional to 'n^{2}.",
         "optionsEn": [
           {
@@ -1576,7 +1510,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 43,
         "stemEn": "For a full wave rectifier, if the input frequency is 50 Hz, the output frequency will be _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {
@@ -1609,7 +1543,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 44,
         "stemEn": "For an electric dipole in a non-uniform electric field with dipole moment parallel to direction of the field, the force F and torque $ \\tau $ on the dipole respectively are _.\n\nFill in the blank with the correct answer from the options given below.",
         "optionsEn": [
           {

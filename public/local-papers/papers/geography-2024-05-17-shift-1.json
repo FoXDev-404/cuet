@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "Geography_2024-05-17_Shift_1.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 50,
+    "questionCount": 49,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -249,41 +249,8 @@
         "assets": []
       },
       {
-        "id": "q08",
-        "sourceQuestionNo": 8,
-        "stemEn": "Which of the following is not a push factor for the migration of the rural population in India?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "High population pressure on the land"
-          },
-          {
-            "id": "B",
-            "text": "Availability of regular work"
-          },
-          {
-            "id": "C",
-            "text": "Lack of basic infrastructural facilities like health care, education, etc"
-          },
-          {
-            "id": "D",
-            "text": "Local conflicts"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          9
-        ],
-        "assets": []
-      },
-      {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "What is the pattern of settlement that develops around a lake?",
         "optionsEn": [
           {
@@ -316,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "In which country is milk transported from farms to factories through pipelines?",
         "optionsEn": [
           {
@@ -349,7 +316,7 @@
       },
       {
         "id": "q11",
-        "sourceQuestionNo": 11,
+        "sourceQuestionNo": 10,
         "stemEn": "Which of the following is not one of the pillars of Human Development?",
         "optionsEn": [
           {
@@ -382,7 +349,7 @@
       },
       {
         "id": "q12",
-        "sourceQuestionNo": 12,
+        "sourceQuestionNo": 11,
         "stemEn": "Which of the following approaches was initially proposed by the International Labour Organization?",
         "optionsEn": [
           {
@@ -415,7 +382,7 @@
       },
       {
         "id": "q13",
-        "sourceQuestionNo": 13,
+        "sourceQuestionNo": 12,
         "stemEn": "Which of the following country's population does not have triangular shaped age-sex pyramid?",
         "optionsEn": [
           {
@@ -448,7 +415,7 @@
       },
       {
         "id": "q14",
-        "sourceQuestionNo": 14,
+        "sourceQuestionNo": 13,
         "stemEn": "Which of the following geographers described the 'state/country' as a 'living organism'?",
         "optionsEn": [
           {
@@ -481,7 +448,7 @@
       },
       {
         "id": "q15",
-        "sourceQuestionNo": 15,
+        "sourceQuestionNo": 14,
         "stemEn": "\"Geography is the study of human beings and environment where nature is supreme that dictates the lifestyle of human beings.\" Identify the geographical approach referred to in this statement from the following",
         "optionsEn": [
           {
@@ -514,7 +481,7 @@
       },
       {
         "id": "q16",
-        "sourceQuestionNo": 16,
+        "sourceQuestionNo": 15,
         "stemEn": "Who, of the following, defined Human Geography as \"Conception resulting from a more synthetic knowledge of the physical laws governing our earth and of the relations between the living beings which inhabit it\"?",
         "optionsEn": [
           {
@@ -547,7 +514,7 @@
       },
       {
         "id": "q17",
-        "sourceQuestionNo": 17,
+        "sourceQuestionNo": 16,
         "stemEn": "Jhabua district is located in which agro-climatic zone of Madhya Pradesh?\n",
         "optionsEn": [
           {
@@ -580,7 +547,7 @@
       },
       {
         "id": "q18",
-        "sourceQuestionNo": 18,
+        "sourceQuestionNo": 17,
         "stemEn": "Which among the following was not used by Bhils to revitalise Common Property Resources?\n",
         "optionsEn": [
           {
@@ -613,7 +580,7 @@
       },
       {
         "id": "q19",
-        "sourceQuestionNo": 19,
+        "sourceQuestionNo": 18,
         "stemEn": "The Watershed Management Programmes, which have been successfully implemented in Jhabua were funded by _.\nFill in the blank with the correct option",
         "optionsEn": [
           {
@@ -646,7 +613,7 @@
       },
       {
         "id": "q20",
-        "sourceQuestionNo": 20,
+        "sourceQuestionNo": 19,
         "stemEn": "Which tribal community has high concentration in the district of Jhabua?\n",
         "optionsEn": [
           {
@@ -679,7 +646,7 @@
       },
       {
         "id": "q21",
-        "sourceQuestionNo": 21,
+        "sourceQuestionNo": 20,
         "stemEn": "Petlawad block of Jhabua is located in which part of the district?\n",
         "optionsEn": [
           {
@@ -712,7 +679,7 @@
       },
       {
         "id": "q22",
-        "sourceQuestionNo": 22,
+        "sourceQuestionNo": 21,
         "stemEn": "Which of the following is not a product of cottage industry?\n",
         "optionsEn": [
           {
@@ -745,7 +712,7 @@
       },
       {
         "id": "q23",
-        "sourceQuestionNo": 23,
+        "sourceQuestionNo": 22,
         "stemEn": "Fill in the blank with the correct option.\n\nLarge scale manufacturing is not.\n\n\nFill in the blank with the correct option.",
         "optionsEn": [
           {
@@ -778,7 +745,7 @@
       },
       {
         "id": "q24",
-        "sourceQuestionNo": 24,
+        "sourceQuestionNo": 23,
         "stemEn": "From the following, identify the feature of the cottage industry:\n",
         "optionsEn": [
           {
@@ -811,7 +778,7 @@
       },
       {
         "id": "q25",
-        "sourceQuestionNo": 25,
+        "sourceQuestionNo": 24,
         "stemEn": "Which one of the following is not a feature of small scale manufacturing?\n",
         "optionsEn": [
           {
@@ -844,7 +811,7 @@
       },
       {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 25,
         "stemEn": "The small scale manufacturing and the cottage manufacturing are distinguished on the basis of _.\n\nFill in the blank with the correct option.",
         "optionsEn": [
           {
@@ -877,7 +844,7 @@
       },
       {
         "id": "q27",
-        "sourceQuestionNo": 27,
+        "sourceQuestionNo": 26,
         "stemEn": "Identify from the following, the correct statements about transportation in India.\n\n(A) Atal Tunnel passes through Pir Panjal Range.\n\n(B) About 80% Indian Railway track is of metre gauge.\n\n(C) The Inland Waterways Authority was set up in 1986.\n\n(D) Konkan Railway connects Roha in Karnataka to Mangalore in Kerala.",
         "optionsEn": [
           {
@@ -910,7 +877,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 27,
         "stemEn": "Identify from the following, the correct statements with reference to oil refineries in India.\n\n(A) Digboi is an example of market-based oil refinery.\n\n(B) Tatipaka Oil Refinery is located in Andhra Pradesh.\n\n(C) Numaligarh Oil Refinery is located in north-east India.\n\n(D) Bina Oil Refinery is located in Madhya Pradesh.",
         "optionsEn": [
           {
@@ -943,7 +910,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 28,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -984,7 +951,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 29,
         "stemEn": "Identify from the following, the correct statements with reference to the metropolis.\n\n(A) It is often the chief centre or seat of some form of activity.\n\n(B) It could be administrative, commercial or industrial centre.\n\n(C) It generally serves a small hinterland.\n\n(D) It is a very large city or agglomeration of population.",
         "optionsEn": [
           {
@@ -1017,7 +984,7 @@
       },
       {
         "id": "q31",
-        "sourceQuestionNo": 31,
+        "sourceQuestionNo": 30,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1058,7 +1025,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 31,
         "stemEn": "Arrange the following states in the descending order of their population density as per Census of India, 2011 :\n\n(A) West Bengal\n\n(B) Uttar Pradesh\n\n(C) Kerala\n\n(D) Tamil Nadu",
         "optionsEn": [
           {
@@ -1091,7 +1058,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 32,
         "stemEn": "Identify from the following the statement which is not correct about the Rhine waterways.",
         "optionsEn": [
           {
@@ -1124,7 +1091,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 33,
         "stemEn": "Which of the following statements are correct with respect to land degradation?\n\n(A) All degraded lands are wasteland.\n\n(B) All degraded lands may not be wasteland, but unchecked process of development may lead the conversion to wasteland.\n\n(C) Land degradation is permanent or temporary decline in productive capacity of the land.\n\n(D) Waterlogged, marshy areas and gullied lands are different types of degraded lands.",
         "optionsEn": [
           {
@@ -1157,7 +1124,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 34,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1198,7 +1165,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 35,
         "stemEn": "Arrange the agricultural development of India in chronological order from Independence to the present day:\n\n(A) Green Revolution\n\n(B) Agro-Climatic Planning\n\n(C) Intensive Agricultural District Programme\n\n(D) National Mission for Sustainable Agriculture",
         "optionsEn": [
           {
@@ -1231,7 +1198,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 36,
         "stemEn": "Arrange the following copper mines in North to South direction :\n\n(A) Alwar\n\n(B) Bhilwara\n\n(C) Khetri\n\n(D) Udaipur",
         "optionsEn": [
           {
@@ -1264,7 +1231,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 37,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1305,7 +1272,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 38,
         "stemEn": "Arrange the following as per the stages of demographic transition model :\n\n(A) Population growth is slow due to high birth and high death rate.\n\n(B) Fertility remains high, but mortality declines at a faster pace.\n\n(C) Fertility declines at a faster pace, but mortality declines gradually.\n\n(D) Population growth is slow due to low birth and low death rate.",
         "optionsEn": [
           {
@@ -1338,7 +1305,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 39,
         "stemEn": "Arrange the following agricultural regions from equator to pole :\n\n(A) Commercialgrain farming in the Prairies\n\n(B) Reindeer rearing by the Eskimos\n\n(C) Tea plantations of north-east India\n\n(D) Primitive subsistence farming in Indonesia",
         "optionsEn": [
           {
@@ -1371,7 +1338,7 @@
       },
       {
         "id": "q41",
-        "sourceQuestionNo": 41,
+        "sourceQuestionNo": 40,
         "stemEn": "Identify from the following, the correct statements with reference to the characteristics of intensive subsistence agriculture dominated by wet paddy cultivation.\n\n(A) Land holdings are very small due to the high density of population.\n\n(B) Farmers work with the help of family labour leading to intensive use of land.\n\n(C) Farm yard manure is used to maintain the fertility of the soil.\n\n(D) The yield per unit area is low, but productivity per labour is high.",
         "optionsEn": [
           {
@@ -1404,7 +1371,7 @@
       },
       {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 41,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1445,7 +1412,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 42,
         "stemEn": "Canberra was planned by _.\nFill in the blank with the correct option.",
         "optionsEn": [
           {
@@ -1478,7 +1445,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 43,
         "stemEn": "Fill in the blank with the correct option.",
         "optionsEn": [
           {
@@ -1511,7 +1478,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 44,
         "stemEn": "The total utilisable water resources in India is about $ \\underline{\\hspace{2cm}} $ cubic km.\n\nFill in the blank with the correct option.",
         "optionsEn": [
           {
@@ -1544,7 +1511,7 @@
       },
       {
         "id": "q46",
-        "sourceQuestionNo": 46,
+        "sourceQuestionNo": 45,
         "stemEn": "Pykara Hydroelectric Plant was built in _.\nFill in the blank with the correct option",
         "optionsEn": [
           {
@@ -1577,7 +1544,7 @@
       },
       {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 46,
         "stemEn": "The General Agreement on Tariffs and Trade (GATT) was transformed into the World Trade Organization in _.\n\nFill in the blank with the correct option.",
         "optionsEn": [
           {
@@ -1610,7 +1577,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 47,
         "stemEn": "Where is the headquarter of the 'Organisation of the Petroleum Exporting Countries' (OPEC)?",
         "optionsEn": [
           {
@@ -1643,7 +1610,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 48,
         "stemEn": "Which of the following ports is confronted with the problem of silt accumulation?",
         "optionsEn": [
           {
@@ -1676,7 +1643,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 49,
         "stemEn": "Which of the following is a land-locked harbour?",
         "optionsEn": [
           {

@@ -21,6 +21,7 @@ declare namespace Cloudflare {
     GOOGLE_CLIENT_SECRET?: string;
     DEV_SHOW_RESET_LINK?: string;
     ADMIN_AUTH_MODE?: string;
+    ADMIN_ALLOW_SESSION_IN_PROD?: string;
     CF_ACCESS_TEAM_DOMAIN?: string;
     CF_ACCESS_AUD?: string;
     /** Legacy aliases retained during the Access variable rename. */

@@ -11,50 +11,15 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Chemistry_May22_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "A first-order reaction has a specific rate constant (k) equal to  $ 2.303 \\times 10^{-3} $ s $ ^{-1} $. Calculate the exact time required for the initial concentration of the reactant to be reduced to exactly  $ \\frac{1}{10} $th of its original value.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "100 s"
-          },
-          {
-            "id": "B",
-            "text": "2303 s"
-          },
-          {
-            "id": "C",
-            "text": "1000 s"
-          },
-          {
-            "id": "D",
-            "text": "693 s"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "Which of the following carbonyl compounds will undergo a self-oxidation and self-reduction reaction (Cannizzaro Reaction) when treated with a concentrated solution of a strong base (NaOH)?",
         "optionsEn": [
           {
@@ -87,7 +52,7 @@
       },
       {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 2,
         "stemEn": "Determine the spin-only magnetic moment value for a central divalent manganese gaseous ion ( $ Mn^{2+} $) based on its d-orbital electron distribution. (Atomic Number of Mn = 25)",
         "optionsEn": [
           {
@@ -120,7 +85,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "An organic amine compound 'X' reacts smoothly with Hinsberg's reagent (Benzenesulfonyl chloride) to form a solid precipitate. This precipitate remains completely insoluble when treated with an aqueous sodium hydroxide (NaOH) solution. Classify the amine 'X'.",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "According to IUPAC coordination nomenclature rules, what is the correct official name for the coordination compound represented by  $ [\\mathrm{Co}(\\mathrm{NH}_{3})_{5}(\\mathrm{Cl})]\\mathrm{Cl}_{2} $?",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Which of the following statement options accurately describes the structural carbohydrate linkages present inside a standard molecule of Sucrose?",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "What is the correct official unit measurement scale used to represent Molar Conductivity\n\n( $ \\Lambda_{m} $) profiles within electrolytic systems?",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "The steady, progressive decrease in the atomic and ionic radii of transition metals along the lanthanide series (Lanthanide Contraction) is primarily caused by:",
         "optionsEn": [
           {
@@ -293,7 +258,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "Identify which of the following heterocyclic nitrogenous bases is found exclusively within the macromolecular structure of RNA, and is completely absent in standard double-stranded DNA structures.",
         "optionsEn": [
           {
@@ -326,7 +291,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "During an electrochemistry lab session, a student uses the Nernst Equation to calculate the cell potential ( $ E_{cell} $) of a galvanic system at a non-standard temperature. Which parameter option accurately defines the scaling behavior of the cell potential relative to changes in the reaction quotient (Q)?",
         "optionsEn": [
           {

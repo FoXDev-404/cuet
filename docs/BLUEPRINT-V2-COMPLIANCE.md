@@ -310,3 +310,26 @@ and the live Worker emitted none of the optional tags, returned 404 for `/ads.tx
 
 The Astro app is ready for continued staging review, not for production cutover. The
 remaining work is operational plus the explicit content-parity decision above.
+
+
+## Update 2026-11-06 — question-paper dataset and ranked mocks
+
+- The practice library is now **245 CUET/CUCET papers / 7,527 scorable questions**
+  across 18 subjects (2021–2026), up from 214 papers / 6,291 questions.
+- The import source is the 180-paper PaddleOCR-VL `CUET_JSON_OUTPUT` bundle. 105
+  paper slugs already existed in the curated library and were not overwritten; 31
+  new papers were added; 44 papers were skipped because they had no printed answer
+  or fewer than two valid scorable questions.
+- Each practice paper has a published, immutable ranked mock: 245 mocks /
+  7,527 `mock_questions` rows. Answer keys remain in D1 and in server-only
+  `src/data/local-papers/keys.json`; public paper JSON has no key or explanation.
+- 2,004 unkeyed questions and 92 structurally broken OCR rows were deliberately
+  excluded. They remain candidate work for the editorial review queue.
+- Explanations from the OCR bundle were not imported; spot checks found
+  cross-question contamination. The solutions page shows an explicit
+  "being reviewed" fallback until an editor supplies verified prose.
+- Evidence: 377/377 Vitest tests, `astro check` 0 errors / 0 warnings / 9 hints,
+  production build, guest and resume Playwright flows, and a full start → autosave
+  → submit → solutions run on `psychology-2024-07-19-shift-1`.
+- Details: `docs/DATASET_IMPORT_2026-11-06.md`; import script:
+  `scripts/import-cuet-json-output.mjs`.

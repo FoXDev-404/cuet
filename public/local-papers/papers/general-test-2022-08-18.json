@@ -1,2483 +1,2302 @@
 {
- "exam": {
-  "id": "local-general-test-2022-08-18",
-  "slug": "general-test-2022-08-18",
-  "title": "CUET UG General Test 18 August 2022 Previous Year Paper",
-  "subject": "General Test",
-  "subjectId": "local-general-test",
-  "subjectCode": "GT",
-  "year": 2022,
-  "examDate": "2022-08-18",
-  "shift": null,
-  "sourceFile": "General Test_2022-08-18.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 71,
-  "sourceQuestionCount": 75,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "HCF of first five odd natural numbers is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "2"
-     },
-     {
-      "id": "D",
-      "text": "1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "The value of $4-3\\div3+5$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5"
-     },
-     {
-      "id": "B",
-      "text": "0"
-     },
-     {
-      "id": "C",
-      "text": "7"
-     },
-     {
-      "id": "D",
-      "text": "8"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Common factor of $2a^{2}b$, $4ab^{2}$, $6ac^{2}$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2ab"
-     },
-     {
-      "id": "B",
-      "text": "2a"
-     },
-     {
-      "id": "C",
-      "text": "2abc"
-     },
-     {
-      "id": "D",
-      "text": "2b"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "The average of 3 consecutive odd numbers is 65. What is the ratio of these numbers?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "61:63:65"
-     },
-     {
-      "id": "B",
-      "text": "59:61:63"
-     },
-     {
-      "id": "C",
-      "text": "63:65:67"
-     },
-     {
-      "id": "D",
-      "text": "65:67:69"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "The sum of the ages of father and his son is 45 years. Five years ago, the product of their ages was 34. The age of father is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "40 years"
-     },
-     {
-      "id": "B",
-      "text": "45 years"
-     },
-     {
-      "id": "C",
-      "text": "39 years"
-     },
-     {
-      "id": "D",
-      "text": "38 years"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Sum of the ages of 4 children bom at the intervals of 4 years each is 52 years. What is the age of the eldest one?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "7 years"
-     },
-     {
-      "id": "B",
-      "text": "14 years"
-     },
-     {
-      "id": "C",
-      "text": "19 years"
-     },
-     {
-      "id": "D",
-      "text": "24 years"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "What is the value of x. if x% of 142 + 30% of 280 = 368",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "150"
-     },
-     {
-      "id": "B",
-      "text": "200"
-     },
-     {
-      "id": "C",
-      "text": "175"
-     },
-     {
-      "id": "D",
-      "text": "225"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "If 0.03 is X% of 0.3, then the value of X is:\n\n(a) 30\n\n(b) 10\n\n(c) 3\n\n(d) 9\n\nSimple interest of ₹ 9000 at 5% per annum for 6 months is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "₹ 235"
-     },
-     {
-      "id": "B",
-      "text": "₹ 245"
-     },
-     {
-      "id": "C",
-      "text": "₹ 205"
-     },
-     {
-      "id": "D",
-      "text": "₹ 225"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "A can complete a work in 16 days. B can complete the same work in 8 days. If both of them come together, then in how many days can they complete the same work?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 2\\frac{1}{3} $ days"
-     },
-     {
-      "id": "B",
-      "text": "$ 5\\frac{1}{3} $ days"
-     },
-     {
-      "id": "C",
-      "text": "$ 7\\frac{1}{3} $ days"
-     },
-     {
-      "id": "D",
-      "text": "$ 6\\frac{1}{3} $ days"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "A train 420 m long passes a pole in 20 seconds. What is the speed of the train?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "20 m/s"
-     },
-     {
-      "id": "B",
-      "text": "22 m/s"
-     },
-     {
-      "id": "C",
-      "text": "21 m/s"
-     },
-     {
-      "id": "D",
-      "text": "24 m/s"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "If 900 m long train crosses 700 in long platform in 1 minute, then speed of the train in kilometer per hour is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{80}{3} $ km/h"
-     },
-     {
-      "id": "B",
-      "text": "96 km/h"
-     },
-     {
-      "id": "C",
-      "text": "15 km/h"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{35}{3} $ km/h"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "If $ x^{2} + 9y^{2} - 6xy = 0 $, then x: y is equal to:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3:2"
-     },
-     {
-      "id": "B",
-      "text": "1:3"
-     },
-     {
-      "id": "C",
-      "text": "3:1"
-     },
-     {
-      "id": "D",
-      "text": "2:3"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "In the formula \"Work = Fs cos θ\", if angle θ between force and displacement is more than 90°, the net work done will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Double"
-     },
-     {
-      "id": "B",
-      "text": "Positive but not double"
-     },
-     {
-      "id": "C",
-      "text": "Negative"
-     },
-     {
-      "id": "D",
-      "text": "Zero"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "The factors of $4x^{2}-8x+3$ are",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$(2x-3)(2x+1)$"
-     },
-     {
-      "id": "B",
-      "text": "$(2x+3)(2x-1)$"
-     },
-     {
-      "id": "C",
-      "text": "$(2x+3)(2x+1)$"
-     },
-     {
-      "id": "D",
-      "text": "$(2x-3)(2x-1)$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "If the edge of a cube is 17 cm. then the volume is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 4813 \\, cm^{3} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 4913 \\, cm^{3} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 4713 \\, cm^{3} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 5913 \\, cm^{3} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "If the base radius of a cone is 7 cm and height of it is 14 cm. then:\n\nA. Slant height = $6\\sqrt{5}$ cm\n\nB. Slant height = $7\\sqrt{5}$ cm\n\nC. Volume = $718.67\\mathrm{~cm}^{3}$\n\nD. Volume = $708.66\\mathrm{~cm}^{3}$\n\nE. Ratio of height and slant height = 2:$\\sqrt{5}$",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, C and D only"
-     },
-     {
-      "id": "B",
-      "text": "B, C and E only"
-     },
-     {
-      "id": "C",
-      "text": "B and C only"
-     },
-     {
-      "id": "D",
-      "text": "A, C and E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "In the given figure AOB is a straight line. the value of x is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "60"
-     },
-     {
-      "id": "B",
-      "text": "70"
-     },
-     {
-      "id": "C",
-      "text": "50"
-     },
-     {
-      "id": "D",
-      "text": "45"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q19-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-18/q19-figure-1.jpg",
-      "page": 1,
-      "alt": "Figure for question 19"
-     }
+  "exam": {
+    "id": "local-general-test-2022-08-18",
+    "slug": "general-test-2022-08-18",
+    "title": "CUET UG General Test 18 August 2022 Previous Year Paper",
+    "subject": "General Test",
+    "subjectId": "local-general-test",
+    "subjectCode": "GT",
+    "year": 2022,
+    "examDate": "2022-08-18",
+    "shift": null,
+    "sourceFile": "General Test_2022-08-18.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 66,
+    "sourceQuestionCount": 75,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "HCF of first five odd natural numbers is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "The value of $4-3\\div3+5$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "0"
+          },
+          {
+            "id": "C",
+            "text": "7"
+          },
+          {
+            "id": "D",
+            "text": "8"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Common factor of $2a^{2}b$, $4ab^{2}$, $6ac^{2}$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2ab"
+          },
+          {
+            "id": "B",
+            "text": "2a"
+          },
+          {
+            "id": "C",
+            "text": "2abc"
+          },
+          {
+            "id": "D",
+            "text": "2b"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "The average of 3 consecutive odd numbers is 65. What is the ratio of these numbers?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "61:63:65"
+          },
+          {
+            "id": "B",
+            "text": "59:61:63"
+          },
+          {
+            "id": "C",
+            "text": "63:65:67"
+          },
+          {
+            "id": "D",
+            "text": "65:67:69"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "The sum of the ages of father and his son is 45 years. Five years ago, the product of their ages was 34. The age of father is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "40 years"
+          },
+          {
+            "id": "B",
+            "text": "45 years"
+          },
+          {
+            "id": "C",
+            "text": "39 years"
+          },
+          {
+            "id": "D",
+            "text": "38 years"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Sum of the ages of 4 children bom at the intervals of 4 years each is 52 years. What is the age of the eldest one?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7 years"
+          },
+          {
+            "id": "B",
+            "text": "14 years"
+          },
+          {
+            "id": "C",
+            "text": "19 years"
+          },
+          {
+            "id": "D",
+            "text": "24 years"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "What is the value of x. if x% of 142 + 30% of 280 = 368",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "150"
+          },
+          {
+            "id": "B",
+            "text": "200"
+          },
+          {
+            "id": "C",
+            "text": "175"
+          },
+          {
+            "id": "D",
+            "text": "225"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "If 0.03 is X% of 0.3, then the value of X is:\n\n(a) 30\n\n(b) 10\n\n(c) 3\n\n(d) 9\n\nSimple interest of ₹ 9000 at 5% per annum for 6 months is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "₹ 235"
+          },
+          {
+            "id": "B",
+            "text": "₹ 245"
+          },
+          {
+            "id": "C",
+            "text": "₹ 205"
+          },
+          {
+            "id": "D",
+            "text": "₹ 225"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 9,
+        "stemEn": "A can complete a work in 16 days. B can complete the same work in 8 days. If both of them come together, then in how many days can they complete the same work?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 2\\frac{1}{3} $ days"
+          },
+          {
+            "id": "B",
+            "text": "$ 5\\frac{1}{3} $ days"
+          },
+          {
+            "id": "C",
+            "text": "$ 7\\frac{1}{3} $ days"
+          },
+          {
+            "id": "D",
+            "text": "$ 6\\frac{1}{3} $ days"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 10,
+        "stemEn": "A train 420 m long passes a pole in 20 seconds. What is the speed of the train?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20 m/s"
+          },
+          {
+            "id": "B",
+            "text": "22 m/s"
+          },
+          {
+            "id": "C",
+            "text": "21 m/s"
+          },
+          {
+            "id": "D",
+            "text": "24 m/s"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 11,
+        "stemEn": "If 900 m long train crosses 700 in long platform in 1 minute, then speed of the train in kilometer per hour is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{80}{3} $ km/h"
+          },
+          {
+            "id": "B",
+            "text": "96 km/h"
+          },
+          {
+            "id": "C",
+            "text": "15 km/h"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{35}{3} $ km/h"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 12,
+        "stemEn": "If $ x^{2} + 9y^{2} - 6xy = 0 $, then x: y is equal to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3:2"
+          },
+          {
+            "id": "B",
+            "text": "1:3"
+          },
+          {
+            "id": "C",
+            "text": "3:1"
+          },
+          {
+            "id": "D",
+            "text": "2:3"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 13,
+        "stemEn": "In the formula \"Work = Fs cos θ\", if angle θ between force and displacement is more than 90°, the net work done will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Double"
+          },
+          {
+            "id": "B",
+            "text": "Positive but not double"
+          },
+          {
+            "id": "C",
+            "text": "Negative"
+          },
+          {
+            "id": "D",
+            "text": "Zero"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 14,
+        "stemEn": "The factors of $4x^{2}-8x+3$ are",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$(2x-3)(2x+1)$"
+          },
+          {
+            "id": "B",
+            "text": "$(2x+3)(2x-1)$"
+          },
+          {
+            "id": "C",
+            "text": "$(2x+3)(2x+1)$"
+          },
+          {
+            "id": "D",
+            "text": "$(2x-3)(2x-1)$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 15,
+        "stemEn": "If the edge of a cube is 17 cm. then the volume is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 4813 \\, cm^{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 4913 \\, cm^{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 4713 \\, cm^{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 5913 \\, cm^{3} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 16,
+        "stemEn": "If the base radius of a cone is 7 cm and height of it is 14 cm. then:\n\nA. Slant height = $6\\sqrt{5}$ cm\n\nB. Slant height = $7\\sqrt{5}$ cm\n\nC. Volume = $718.67\\mathrm{~cm}^{3}$\n\nD. Volume = $708.66\\mathrm{~cm}^{3}$\n\nE. Ratio of height and slant height = 2:$\\sqrt{5}$",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, C and D only"
+          },
+          {
+            "id": "B",
+            "text": "B, C and E only"
+          },
+          {
+            "id": "C",
+            "text": "B and C only"
+          },
+          {
+            "id": "D",
+            "text": "A, C and E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 17,
+        "stemEn": "In the given figure AOB is a straight line. the value of x is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "60"
+          },
+          {
+            "id": "B",
+            "text": "70"
+          },
+          {
+            "id": "C",
+            "text": "50"
+          },
+          {
+            "id": "D",
+            "text": "45"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q19-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-18/q19-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure for question 19"
+          }
+        ]
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 18,
+        "stemEn": "Area of the triangular region FDE is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1000 \\, m^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 1250 \\, m^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 2400 \\, m^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 1600 \\, m^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 19,
+        "stemEn": "Area of region ACDF is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3750 \\, m^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 3500 \\, m^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 3250 \\, m^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 3000 \\, m^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 20,
+        "stemEn": "Area of whole figure is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7000 m $ ^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "7200 m $ ^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "7400 m $ ^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "7500 m $ ^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 21,
+        "stemEn": "Percentage of students who are interested in cricket and hockey.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "40%"
+          },
+          {
+            "id": "B",
+            "text": "33%"
+          },
+          {
+            "id": "C",
+            "text": "50%"
+          },
+          {
+            "id": "D",
+            "text": "36%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 22,
+        "stemEn": "How many more students are interested in football than badminton?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "15"
+          },
+          {
+            "id": "B",
+            "text": "30"
+          },
+          {
+            "id": "C",
+            "text": "20"
+          },
+          {
+            "id": "D",
+            "text": "10"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 23,
+        "stemEn": "Number of students who are not interested in cricket and football is.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "90"
+          },
+          {
+            "id": "B",
+            "text": "70"
+          },
+          {
+            "id": "C",
+            "text": "50"
+          },
+          {
+            "id": "D",
+            "text": "80 General Mental Ability & Logical and Analytical Reasoning"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 24,
+        "stemEn": "The best description of the following terms is:\n\nMagenta : Sea green : Turquoise",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "They are marine creatures"
+          },
+          {
+            "id": "B",
+            "text": "They are migratory birds"
+          },
+          {
+            "id": "C",
+            "text": "They are precious and semi precious stones"
+          },
+          {
+            "id": "D",
+            "text": "They are colours"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 25,
+        "stemEn": "From the following pairs, select the combination of right pair.\n\nA. USA: Washington. D.C\n\nB. Japan: Moscow\n\nC. Italy: Rome\n\nD. Canada: Madrid\n\nE. Portugal: Lisbon",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, C and D only"
+          },
+          {
+            "id": "B",
+            "text": "A, C and E only"
+          },
+          {
+            "id": "C",
+            "text": "C, A and D, R only"
+          },
+          {
+            "id": "D",
+            "text": "E, B and C only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 26,
+        "stemEn": "There are three words given which have something in common among themselves. Out of the four options. choose the most appropriate description about these words.\n\nGnu : Emu : Curlew",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "These are fast runners"
+          },
+          {
+            "id": "B",
+            "text": "These are birds"
+          },
+          {
+            "id": "C",
+            "text": "These are small insects"
+          },
+          {
+            "id": "D",
+            "text": "These are animal pests"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 27,
+        "stemEn": "Among the options, three have similar properties. Find the word not matching with others.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Eyes"
+          },
+          {
+            "id": "B",
+            "text": "Ears"
+          },
+          {
+            "id": "C",
+            "text": "Throat"
+          },
+          {
+            "id": "D",
+            "text": "Legs"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 28,
+        "stemEn": "Among the options, three have same properties, Find the word not matching with others.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Shares"
+          },
+          {
+            "id": "B",
+            "text": "Salary"
+          },
+          {
+            "id": "C",
+            "text": "Insurance"
+          },
+          {
+            "id": "D",
+            "text": "Provident Fund"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 29,
+        "stemEn": "Among the options, three have similar properties. Find out the word not matching with others.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Pallavas"
+          },
+          {
+            "id": "B",
+            "text": "Cheras"
+          },
+          {
+            "id": "C",
+            "text": "Cholas"
+          },
+          {
+            "id": "D",
+            "text": "Chandelas"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 30,
+        "stemEn": "Among the four options, three have same properties. Find the odd one out.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Quart"
+          },
+          {
+            "id": "B",
+            "text": "Foot"
+          },
+          {
+            "id": "C",
+            "text": "Yard"
+          },
+          {
+            "id": "D",
+            "text": "Inch"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 31,
+        "stemEn": "If NIGHT can be coded as 29.19.15.17, 41. then 'COLD' will be coded as:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7, 25, 31, 9"
+          },
+          {
+            "id": "B",
+            "text": "7, 31, 25, 9"
+          },
+          {
+            "id": "C",
+            "text": "7, 9, 31, 25"
+          },
+          {
+            "id": "D",
+            "text": "7, 27, 31, 11"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 32,
+        "stemEn": "Which letter is exactly midway between G and Q if English alphabets are written in order?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "K"
+          },
+          {
+            "id": "B",
+            "text": "L"
+          },
+          {
+            "id": "C",
+            "text": "M"
+          },
+          {
+            "id": "D",
+            "text": "N"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 33,
+        "stemEn": "Pointing out a picture of old man. Deepak said. \"His son is my son's uncle\". How is the old man related to Deepak?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Uncle"
+          },
+          {
+            "id": "B",
+            "text": "Grandfather"
+          },
+          {
+            "id": "C",
+            "text": "Brother"
+          },
+          {
+            "id": "D",
+            "text": "Father"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 34,
+        "stemEn": "Mita goes towards North. turn right, then right again and then goes to the left. In which direction is she now?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "East"
+          },
+          {
+            "id": "B",
+            "text": "West"
+          },
+          {
+            "id": "C",
+            "text": "North"
+          },
+          {
+            "id": "D",
+            "text": "South"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 35,
+        "stemEn": "Find the number of squares",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9"
+          },
+          {
+            "id": "B",
+            "text": "12"
+          },
+          {
+            "id": "C",
+            "text": "14"
+          },
+          {
+            "id": "D",
+            "text": "16"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q39-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-18/q39-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 39"
+          }
+        ]
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 36,
+        "stemEn": "Continue the given series and find for ? the right option.\n\n(c)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": ""
+          },
+          {
+            "id": "B",
+            "text": ""
+          },
+          {
+            "id": "C",
+            "text": ""
+          },
+          {
+            "id": "D",
+            "text": ""
+          }
+        ],
+        "optionsAreImages": true,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [
+          "image-options"
+        ],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q41-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-18/q41-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 41"
+          },
+          {
+            "id": "q41-options",
+            "kind": "options",
+            "path": "/local-papers/assets/general-test-2022-08-18/q41-options.jpg",
+            "page": 3,
+            "alt": "Printed answer choices for question 41"
+          }
+        ]
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 37,
+        "stemEn": "If A > R P > K and K > L, then which of the following conclusion is definitely wrong?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A > K"
+          },
+          {
+            "id": "B",
+            "text": "P > L"
+          },
+          {
+            "id": "C",
+            "text": "L > P"
+          },
+          {
+            "id": "D",
+            "text": "A > L"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 38,
+        "stemEn": "If A means '+' B means '×' C means '÷' and D means '-'.\n\nthen find the value of 17A12B20C5D15 = ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "50"
+          },
+          {
+            "id": "B",
+            "text": "42"
+          },
+          {
+            "id": "C",
+            "text": "101"
+          },
+          {
+            "id": "D",
+            "text": "98"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 39,
+        "stemEn": "Arrange the given words in the sequence in which they occur in the dictionary.\n\nA. Praise B. Practical\n\nC. Prank D. Prayer\n\nE. Practice",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B.E.A.C.D"
+          },
+          {
+            "id": "B",
+            "text": "A.B.C.D.E"
+          },
+          {
+            "id": "C",
+            "text": "B.C.A.D.E"
+          },
+          {
+            "id": "D",
+            "text": "E.A.C.B"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 40,
+        "stemEn": "Arrange the following words that would be a meaningful order of the following.\n\nA. Heel B. Skull\n\nC. Shoulder D. Thigh\n\nE. Stomach",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, C, E, D, A"
+          },
+          {
+            "id": "B",
+            "text": "B, E, C, D, A"
+          },
+          {
+            "id": "C",
+            "text": "B, C, D, E, A"
+          },
+          {
+            "id": "D",
+            "text": "C, B, D, E, A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 41,
+        "stemEn": "Which one of the given responses would be a meaningful order of the following words?\n\nA. Income B. Education\n\nC. Fame D. Employment",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, A, C, D"
+          },
+          {
+            "id": "B",
+            "text": "B, A, D, C"
+          },
+          {
+            "id": "C",
+            "text": "B, D, A, C"
+          },
+          {
+            "id": "D",
+            "text": "A, B, C, D"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 42,
+        "stemEn": "Which one of the given responses would be a meaningful order of the following?\n\nA. Mother B. Crying\n\nC. Smiling D. Infant\n\nE. Milk",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, D, A, E, C"
+          },
+          {
+            "id": "B",
+            "text": "B, D, A, E, C"
+          },
+          {
+            "id": "C",
+            "text": "D, B, A, C, E"
+          },
+          {
+            "id": "D",
+            "text": "B, D, A, C, E"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 43,
+        "stemEn": "Arrange the following in a sequence.\n\nA. Curd B. Ghee\n\nC. Gow D. Milk\n\nE. Butter",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "C, D, A, B, E"
+          },
+          {
+            "id": "B",
+            "text": "D, C, B, A, E"
+          },
+          {
+            "id": "C",
+            "text": "C, D, A, E, B"
+          },
+          {
+            "id": "D",
+            "text": "C, D, E, A, B"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 44,
+        "stemEn": "Which of the following diagram best depicts the relationship between Pen. Pencil. Eraser?\n\nA. B. C. D.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A"
+          },
+          {
+            "id": "B",
+            "text": "B"
+          },
+          {
+            "id": "C",
+            "text": "C"
+          },
+          {
+            "id": "D",
+            "text": "D"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 45,
+        "stemEn": "Which one of the following diagram best depicts the relationship among Planets, Saturn and Sun?\n\nA. B. C. D.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A"
+          },
+          {
+            "id": "B",
+            "text": "B"
+          },
+          {
+            "id": "C",
+            "text": "C"
+          },
+          {
+            "id": "D",
+            "text": "D"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q50-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 50"
+          },
+          {
+            "id": "q50-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-2.jpg",
+            "page": 4,
+            "alt": "Figure for question 50"
+          },
+          {
+            "id": "q50-figure-3",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-3.jpg",
+            "page": 4,
+            "alt": "Figure for question 50"
+          },
+          {
+            "id": "q50-figure-4",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-4.jpg",
+            "page": 4,
+            "alt": "Figure for question 50"
+          }
+        ]
+      },
+      {
+        "id": "q51",
+        "sourceQuestionNo": 46,
+        "stemEn": "Identify the region representing girls who are employed but unmarried.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q52",
+        "sourceQuestionNo": 47,
+        "stemEn": "Identify the region representing girls who are employed.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q53",
+        "sourceQuestionNo": 48,
+        "stemEn": "Identify the region representing girls who are unmarried.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "6"
+          },
+          {
+            "id": "D",
+            "text": "1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q54",
+        "sourceQuestionNo": 49,
+        "stemEn": "Identify the region representing the group who are employed as well as unmarried.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5 General Knowledge & Current Affairs"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q55",
+        "sourceQuestionNo": 50,
+        "stemEn": "Match List I with List II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A - IV, B - III, C - I, D - II"
+          },
+          {
+            "id": "B",
+            "text": "A-IV, B-I, C-III, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-II, C-IV, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-I. B-III, C-IV, D-II"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q55-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-18/q55-table-1.jpg",
+            "page": 4,
+            "alt": "Table for question 55"
+          }
+        ]
+      },
+      {
+        "id": "q56",
+        "sourceQuestionNo": 51,
+        "stemEn": "Arrange the following rulers in the chronological order:\n\nA. Qutub-ud-in-Aibak B. Mohd. Ghori\n\nC. Timur D. Ghiyasuddin Tughlaq\n\nE. Jalaluddin Firuz Khalji",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, D, B, C, E"
+          },
+          {
+            "id": "B",
+            "text": "A, B, D, E, C"
+          },
+          {
+            "id": "C",
+            "text": "B, A, E, D, C"
+          },
+          {
+            "id": "D",
+            "text": "B, D, E, A, C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q57",
+        "sourceQuestionNo": 52,
+        "stemEn": "Harshvardhana was defeated by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Prabhakaravardhana"
+          },
+          {
+            "id": "B",
+            "text": "Pulakesin II"
+          },
+          {
+            "id": "C",
+            "text": "Narasimhasvarma Pallava"
+          },
+          {
+            "id": "D",
+            "text": "Sasanka"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q58",
+        "sourceQuestionNo": 53,
+        "stemEn": "Match List I with List II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A - I, B - III, C - IV, D - II"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-III, C-II, D-IV"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-IV, C-II, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-IV, B-I, C-II, D-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q58-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-18/q58-table-1.jpg",
+            "page": 4,
+            "alt": "Table for question 58"
+          }
+        ]
+      },
+      {
+        "id": "q60",
+        "sourceQuestionNo": 54,
+        "stemEn": "Who was elected as the president of the Constituent Assembly of India in 1946?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Dr. S. Radhakrishnan"
+          },
+          {
+            "id": "B",
+            "text": "Dr. Bhimrao Ramji Ambedkar"
+          },
+          {
+            "id": "C",
+            "text": "Dr. Rajendra Prasad"
+          },
+          {
+            "id": "D",
+            "text": "Pt. Jawaharlal Nehru (d) Pt. Jawaharlal Nehru"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q61",
+        "sourceQuestionNo": 55,
+        "stemEn": "The first woman Prime Minister of India was:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Margret Thatcher"
+          },
+          {
+            "id": "B",
+            "text": "Indira Gandhi"
+          },
+          {
+            "id": "C",
+            "text": "Sirimavo Bandarnaike"
+          },
+          {
+            "id": "D",
+            "text": "Benazir Bhutto"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q62",
+        "sourceQuestionNo": 56,
+        "stemEn": "Match list I with list II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-IV, B-I, C-II, D-III"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-II, C-III, D-IV"
+          },
+          {
+            "id": "C",
+            "text": "A-II, B-I, C-III, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-III, B-II, C-I, D-IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q62-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-18/q62-table-1.jpg",
+            "page": 5,
+            "alt": "Table for question 62"
+          }
+        ]
+      },
+      {
+        "id": "q63",
+        "sourceQuestionNo": 57,
+        "stemEn": "Isobars have:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Same number of protons"
+          },
+          {
+            "id": "B",
+            "text": "Same atomic number"
+          },
+          {
+            "id": "C",
+            "text": "Same number of Electrons"
+          },
+          {
+            "id": "D",
+            "text": "Same mass number"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q64",
+        "sourceQuestionNo": 58,
+        "stemEn": "The time taken by moonlight to reach the Earth is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "8 seconds"
+          },
+          {
+            "id": "B",
+            "text": "2.6 seconds"
+          },
+          {
+            "id": "C",
+            "text": "4.3 seconds"
+          },
+          {
+            "id": "D",
+            "text": "1.3 seconds"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q67",
+        "sourceQuestionNo": 59,
+        "stemEn": "In terms of Purchasing Power Parity (PPP), the place of the economy of India is _ in the world.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3^{rd} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 4^{th} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 5^{th} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 6^{th} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q68",
+        "sourceQuestionNo": 60,
+        "stemEn": "The book titled 'Human Rights and Terrorism in India' is authored by:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Satvindar Juss"
+          },
+          {
+            "id": "B",
+            "text": "Subramanian Swamy"
+          },
+          {
+            "id": "C",
+            "text": "V.R. Krishna Iyer"
+          },
+          {
+            "id": "D",
+            "text": "Karel Vasak"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q69",
+        "sourceQuestionNo": 61,
+        "stemEn": "In India, the 'Antyodaya Diwas' is observed every year on September 25. to mark the birth anniversary of:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Pandit Madan Mohan Malwiya"
+          },
+          {
+            "id": "B",
+            "text": "Pandit Jawahar Lal Nehru"
+          },
+          {
+            "id": "C",
+            "text": "Pandit Deendayal Upadhyay"
+          },
+          {
+            "id": "D",
+            "text": "Pandit Ravishankar Prasad"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q70",
+        "sourceQuestionNo": 62,
+        "stemEn": "Each year the International Day of Peace' is observed around the world on:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20 April"
+          },
+          {
+            "id": "B",
+            "text": "25 May"
+          },
+          {
+            "id": "C",
+            "text": "20 August"
+          },
+          {
+            "id": "D",
+            "text": "21 September"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q71",
+        "sourceQuestionNo": 63,
+        "stemEn": "Which district has become the first district in the entire country with a population of more than 10 lakh to inoculate 100% eligible population with the first dose of Covid-19 vaccine?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Indore, Madhya Pradesh"
+          },
+          {
+            "id": "B",
+            "text": "Prayagraj, Uttar Pradesh"
+          },
+          {
+            "id": "C",
+            "text": "Bhopal, Madhya Pradesh"
+          },
+          {
+            "id": "D",
+            "text": "Varanasi, Uttar Pradesh"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q72",
+        "sourceQuestionNo": 64,
+        "stemEn": "World football body. FIFA' has unveiled the official mascot of the U-17 Women's World Cup India 2022 \"1BHA\" an Asiatic lioness representing:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Enlightenment"
+          },
+          {
+            "id": "B",
+            "text": "Gender Equality"
+          },
+          {
+            "id": "C",
+            "text": "Sustainable Development"
+          },
+          {
+            "id": "D",
+            "text": "Women Empowerment"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q73",
+        "sourceQuestionNo": 65,
+        "stemEn": "Match List I with List II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-II, B-III, C-IV, D-I"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-IV, C-II, D-I"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-II, C-III, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-IV, B-III, C-I, D-II"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q73-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-18/q73-table-1.jpg",
+            "page": 5,
+            "alt": "Table for question 73"
+          }
+        ]
+      },
+      {
+        "id": "q74",
+        "sourceQuestionNo": 66,
+        "stemEn": "Match List I with List II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-I, B-IV, C-II, D-III"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-II, C-IV, D-I"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-IV, C-II, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-IV. B-I, C-II, D-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q74-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-18/q74-table-1.jpg",
+            "page": 5,
+            "alt": "Table for question 74"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Area of the triangular region FDE is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 1000 \\, m^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 1250 \\, m^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 2400 \\, m^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 1600 \\, m^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Area of region ACDF is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 3750 \\, m^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 3500 \\, m^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 3250 \\, m^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 3000 \\, m^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "Area of whole figure is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "7000 m $ ^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "7200 m $ ^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "7400 m $ ^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "7500 m $ ^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "Percentage of students who are interested in cricket and hockey.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "40%"
-     },
-     {
-      "id": "B",
-      "text": "33%"
-     },
-     {
-      "id": "C",
-      "text": "50%"
-     },
-     {
-      "id": "D",
-      "text": "36%"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "How many more students are interested in football than badminton?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "15"
-     },
-     {
-      "id": "B",
-      "text": "30"
-     },
-     {
-      "id": "C",
-      "text": "20"
-     },
-     {
-      "id": "D",
-      "text": "10"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "Number of students who are not interested in cricket and football is.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "90"
-     },
-     {
-      "id": "B",
-      "text": "70"
-     },
-     {
-      "id": "C",
-      "text": "50"
-     },
-     {
-      "id": "D",
-      "text": "80 General Mental Ability & Logical and Analytical Reasoning"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "The best description of the following terms is:\n\nMagenta : Sea green : Turquoise",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "They are marine creatures"
-     },
-     {
-      "id": "B",
-      "text": "They are migratory birds"
-     },
-     {
-      "id": "C",
-      "text": "They are precious and semi precious stones"
-     },
-     {
-      "id": "D",
-      "text": "They are colours"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "From the following pairs, select the combination of right pair.\n\nA. USA: Washington. D.C\n\nB. Japan: Moscow\n\nC. Italy: Rome\n\nD. Canada: Madrid\n\nE. Portugal: Lisbon",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, C and D only"
-     },
-     {
-      "id": "B",
-      "text": "A, C and E only"
-     },
-     {
-      "id": "C",
-      "text": "C, A and D, R only"
-     },
-     {
-      "id": "D",
-      "text": "E, B and C only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "There are three words given which have something in common among themselves. Out of the four options. choose the most appropriate description about these words.\n\nGnu : Emu : Curlew",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "These are fast runners"
-     },
-     {
-      "id": "B",
-      "text": "These are birds"
-     },
-     {
-      "id": "C",
-      "text": "These are small insects"
-     },
-     {
-      "id": "D",
-      "text": "These are animal pests"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "Among the options, three have similar properties. Find the word not matching with others.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Eyes"
-     },
-     {
-      "id": "B",
-      "text": "Ears"
-     },
-     {
-      "id": "C",
-      "text": "Throat"
-     },
-     {
-      "id": "D",
-      "text": "Legs"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "Among the options, three have same properties, Find the word not matching with others.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Shares"
-     },
-     {
-      "id": "B",
-      "text": "Salary"
-     },
-     {
-      "id": "C",
-      "text": "Insurance"
-     },
-     {
-      "id": "D",
-      "text": "Provident Fund"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Among the options, three have similar properties. Find out the word not matching with others.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Pallavas"
-     },
-     {
-      "id": "B",
-      "text": "Cheras"
-     },
-     {
-      "id": "C",
-      "text": "Cholas"
-     },
-     {
-      "id": "D",
-      "text": "Chandelas"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Among the four options, three have same properties. Find the odd one out.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Quart"
-     },
-     {
-      "id": "B",
-      "text": "Foot"
-     },
-     {
-      "id": "C",
-      "text": "Yard"
-     },
-     {
-      "id": "D",
-      "text": "Inch"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "If NIGHT can be coded as 29.19.15.17, 41. then 'COLD' will be coded as:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "7, 25, 31, 9"
-     },
-     {
-      "id": "B",
-      "text": "7, 31, 25, 9"
-     },
-     {
-      "id": "C",
-      "text": "7, 9, 31, 25"
-     },
-     {
-      "id": "D",
-      "text": "7, 27, 31, 11"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Which letter is exactly midway between G and Q if English alphabets are written in order?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "K"
-     },
-     {
-      "id": "B",
-      "text": "L"
-     },
-     {
-      "id": "C",
-      "text": "M"
-     },
-     {
-      "id": "D",
-      "text": "N"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "P introduces K saying. 'He is the husband of the grand daughter of the father of my father.' How is K related to P?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Brother"
-     },
-     {
-      "id": "B",
-      "text": "Son-in-Law"
-     },
-     {
-      "id": "C",
-      "text": "Brother-in-Law"
-     },
-     {
-      "id": "D",
-      "text": "Son"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Pointing out a picture of old man. Deepak said. \"His son is my son's uncle\". How is the old man related to Deepak?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Uncle"
-     },
-     {
-      "id": "B",
-      "text": "Grandfather"
-     },
-     {
-      "id": "C",
-      "text": "Brother"
-     },
-     {
-      "id": "D",
-      "text": "Father"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "Mita goes towards North. turn right, then right again and then goes to the left. In which direction is she now?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "East"
-     },
-     {
-      "id": "B",
-      "text": "West"
-     },
-     {
-      "id": "C",
-      "text": "North"
-     },
-     {
-      "id": "D",
-      "text": "South"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "Find the number of squares",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "9"
-     },
-     {
-      "id": "B",
-      "text": "12"
-     },
-     {
-      "id": "C",
-      "text": "14"
-     },
-     {
-      "id": "D",
-      "text": "16"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q39-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-18/q39-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 39"
-     }
-    ]
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Continue the given series and find for ? the right option.\n\n(c)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q41-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-18/q41-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 41"
-     },
-     {
-      "id": "q41-options",
-      "kind": "options",
-      "path": "/local-papers/assets/general-test-2022-08-18/q41-options.jpg",
-      "page": 3,
-      "alt": "Printed answer choices for question 41"
-     }
-    ]
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "If A > R P > K and K > L, then which of the following conclusion is definitely wrong?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A > K"
-     },
-     {
-      "id": "B",
-      "text": "P > L"
-     },
-     {
-      "id": "C",
-      "text": "L > P"
-     },
-     {
-      "id": "D",
-      "text": "A > L"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "If A means '+' B means '×' C means '÷' and D means '-'.\n\nthen find the value of 17A12B20C5D15 = ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "50"
-     },
-     {
-      "id": "B",
-      "text": "42"
-     },
-     {
-      "id": "C",
-      "text": "101"
-     },
-     {
-      "id": "D",
-      "text": "98"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Arrange the given words in the sequence in which they occur in the dictionary.\n\nA. Praise B. Practical\n\nC. Prank D. Prayer\n\nE. Practice",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B.E.A.C.D"
-     },
-     {
-      "id": "B",
-      "text": "A.B.C.D.E"
-     },
-     {
-      "id": "C",
-      "text": "B.C.A.D.E"
-     },
-     {
-      "id": "D",
-      "text": "E.A.C.B"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Arrange the following words that would be a meaningful order of the following.\n\nA. Heel B. Skull\n\nC. Shoulder D. Thigh\n\nE. Stomach",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, C, E, D, A"
-     },
-     {
-      "id": "B",
-      "text": "B, E, C, D, A"
-     },
-     {
-      "id": "C",
-      "text": "B, C, D, E, A"
-     },
-     {
-      "id": "D",
-      "text": "C, B, D, E, A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Which one of the given responses would be a meaningful order of the following words?\n\nA. Income B. Education\n\nC. Fame D. Employment",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, A, C, D"
-     },
-     {
-      "id": "B",
-      "text": "B, A, D, C"
-     },
-     {
-      "id": "C",
-      "text": "B, D, A, C"
-     },
-     {
-      "id": "D",
-      "text": "A, B, C, D"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Which one of the given responses would be a meaningful order of the following?\n\nA. Mother B. Crying\n\nC. Smiling D. Infant\n\nE. Milk",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, D, A, E, C"
-     },
-     {
-      "id": "B",
-      "text": "B, D, A, E, C"
-     },
-     {
-      "id": "C",
-      "text": "D, B, A, C, E"
-     },
-     {
-      "id": "D",
-      "text": "B, D, A, C, E"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "Arrange the following in a sequence.\n\nA. Curd B. Ghee\n\nC. Gow D. Milk\n\nE. Butter",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "C, D, A, B, E"
-     },
-     {
-      "id": "B",
-      "text": "D, C, B, A, E"
-     },
-     {
-      "id": "C",
-      "text": "C, D, A, E, B"
-     },
-     {
-      "id": "D",
-      "text": "C, D, E, A, B"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Which of the following diagram best depicts the relationship between Pen. Pencil. Eraser?\n\nA. B. C. D.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A"
-     },
-     {
-      "id": "B",
-      "text": "B"
-     },
-     {
-      "id": "C",
-      "text": "C"
-     },
-     {
-      "id": "D",
-      "text": "D"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Which one of the following diagram best depicts the relationship among Planets, Saturn and Sun?\n\nA. B. C. D.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A"
-     },
-     {
-      "id": "B",
-      "text": "B"
-     },
-     {
-      "id": "C",
-      "text": "C"
-     },
-     {
-      "id": "D",
-      "text": "D"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q50-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 50"
-     },
-     {
-      "id": "q50-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-2.jpg",
-      "page": 4,
-      "alt": "Figure for question 50"
-     },
-     {
-      "id": "q50-figure-3",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-3.jpg",
-      "page": 4,
-      "alt": "Figure for question 50"
-     },
-     {
-      "id": "q50-figure-4",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-18/q50-figure-4.jpg",
-      "page": 4,
-      "alt": "Figure for question 50"
-     }
-    ]
-   },
-   {
-    "id": "q51",
-    "sourceQuestionNo": 51,
-    "stemEn": "Identify the region representing girls who are employed but unmarried.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q52",
-    "sourceQuestionNo": 52,
-    "stemEn": "Identify the region representing girls who are employed.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q53",
-    "sourceQuestionNo": 53,
-    "stemEn": "Identify the region representing girls who are unmarried.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "6"
-     },
-     {
-      "id": "D",
-      "text": "1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q54",
-    "sourceQuestionNo": 54,
-    "stemEn": "Identify the region representing the group who are employed as well as unmarried.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "5 General Knowledge & Current Affairs"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q55",
-    "sourceQuestionNo": 55,
-    "stemEn": "Match List I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A - IV, B - III, C - I, D - II"
-     },
-     {
-      "id": "B",
-      "text": "A-IV, B-I, C-III, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-I, B-II, C-IV, D-III"
-     },
-     {
-      "id": "D",
-      "text": "A-I. B-III, C-IV, D-II"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q55-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-18/q55-table-1.jpg",
-      "page": 4,
-      "alt": "Table for question 55"
-     }
-    ]
-   },
-   {
-    "id": "q56",
-    "sourceQuestionNo": 56,
-    "stemEn": "Arrange the following rulers in the chronological order:\n\nA. Qutub-ud-in-Aibak B. Mohd. Ghori\n\nC. Timur D. Ghiyasuddin Tughlaq\n\nE. Jalaluddin Firuz Khalji",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, D, B, C, E"
-     },
-     {
-      "id": "B",
-      "text": "A, B, D, E, C"
-     },
-     {
-      "id": "C",
-      "text": "B, A, E, D, C"
-     },
-     {
-      "id": "D",
-      "text": "B, D, E, A, C"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q57",
-    "sourceQuestionNo": 57,
-    "stemEn": "Harshvardhana was defeated by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Prabhakaravardhana"
-     },
-     {
-      "id": "B",
-      "text": "Pulakesin II"
-     },
-     {
-      "id": "C",
-      "text": "Narasimhasvarma Pallava"
-     },
-     {
-      "id": "D",
-      "text": "Sasanka"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q58",
-    "sourceQuestionNo": 58,
-    "stemEn": "Match List I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A - I, B - III, C - IV, D - II"
-     },
-     {
-      "id": "B",
-      "text": "A-I, B-III, C-II, D-IV"
-     },
-     {
-      "id": "C",
-      "text": "A-I, B-IV, C-II, D-III"
-     },
-     {
-      "id": "D",
-      "text": "A-IV, B-I, C-II, D-III"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q58-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-18/q58-table-1.jpg",
-      "page": 4,
-      "alt": "Table for question 58"
-     }
-    ]
-   },
-   {
-    "id": "q59",
-    "sourceQuestionNo": 59,
-    "stemEn": "Match List I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-IV, B-III, C-I, D-II"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-IV, C-II, D-I"
-     },
-     {
-      "id": "C",
-      "text": "A-IV, B-III, C-II, D-I"
-     },
-     {
-      "id": "D",
-      "text": "A-II. B-III, C-IV, D-I"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q59-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-18/q59-table-1.jpg",
-      "page": 4,
-      "alt": "Table for question 59"
-     }
-    ]
-   },
-   {
-    "id": "q60",
-    "sourceQuestionNo": 60,
-    "stemEn": "Who was elected as the president of the Constituent Assembly of India in 1946?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Dr. S. Radhakrishnan"
-     },
-     {
-      "id": "B",
-      "text": "Dr. Bhimrao Ramji Ambedkar"
-     },
-     {
-      "id": "C",
-      "text": "Dr. Rajendra Prasad"
-     },
-     {
-      "id": "D",
-      "text": "Pt. Jawaharlal Nehru (d) Pt. Jawaharlal Nehru"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q61",
-    "sourceQuestionNo": 61,
-    "stemEn": "The first woman Prime Minister of India was:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Margret Thatcher"
-     },
-     {
-      "id": "B",
-      "text": "Indira Gandhi"
-     },
-     {
-      "id": "C",
-      "text": "Sirimavo Bandarnaike"
-     },
-     {
-      "id": "D",
-      "text": "Benazir Bhutto"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q62",
-    "sourceQuestionNo": 62,
-    "stemEn": "Match list I with list II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-IV, B-I, C-II, D-III"
-     },
-     {
-      "id": "B",
-      "text": "A-I, B-II, C-III, D-IV"
-     },
-     {
-      "id": "C",
-      "text": "A-II, B-I, C-III, D-IV"
-     },
-     {
-      "id": "D",
-      "text": "A-III, B-II, C-I, D-IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q62-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-18/q62-table-1.jpg",
-      "page": 5,
-      "alt": "Table for question 62"
-     }
-    ]
-   },
-   {
-    "id": "q63",
-    "sourceQuestionNo": 63,
-    "stemEn": "Isobars have:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Same number of protons"
-     },
-     {
-      "id": "B",
-      "text": "Same atomic number"
-     },
-     {
-      "id": "C",
-      "text": "Same number of Electrons"
-     },
-     {
-      "id": "D",
-      "text": "Same mass number"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q64",
-    "sourceQuestionNo": 64,
-    "stemEn": "The time taken by moonlight to reach the Earth is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "8 seconds"
-     },
-     {
-      "id": "B",
-      "text": "2.6 seconds"
-     },
-     {
-      "id": "C",
-      "text": "4.3 seconds"
-     },
-     {
-      "id": "D",
-      "text": "1.3 seconds"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q65",
-    "sourceQuestionNo": 65,
-    "stemEn": "Which of the following disease is not caused due to bacteria?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Tuberculosis (TB)"
-     },
-     {
-      "id": "B",
-      "text": "Polio"
-     },
-     {
-      "id": "C",
-      "text": "Cholera"
-     },
-     {
-      "id": "D",
-      "text": "Typhoid"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q66",
-    "sourceQuestionNo": 66,
-    "stemEn": "Which unit of a computer performs all logical and arithmetical operations?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "ALU"
-     },
-     {
-      "id": "B",
-      "text": "OU"
-     },
-     {
-      "id": "C",
-      "text": "CU"
-     },
-     {
-      "id": "D",
-      "text": "IU"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q67",
-    "sourceQuestionNo": 67,
-    "stemEn": "In terms of Purchasing Power Parity (PPP), the place of the economy of India is _ in the world.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 3^{rd} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 4^{th} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 5^{th} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 6^{th} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q68",
-    "sourceQuestionNo": 68,
-    "stemEn": "The book titled 'Human Rights and Terrorism in India' is authored by:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Satvindar Juss"
-     },
-     {
-      "id": "B",
-      "text": "Subramanian Swamy"
-     },
-     {
-      "id": "C",
-      "text": "V.R. Krishna Iyer"
-     },
-     {
-      "id": "D",
-      "text": "Karel Vasak"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q69",
-    "sourceQuestionNo": 69,
-    "stemEn": "In India, the 'Antyodaya Diwas' is observed every year on September 25. to mark the birth anniversary of:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Pandit Madan Mohan Malwiya"
-     },
-     {
-      "id": "B",
-      "text": "Pandit Jawahar Lal Nehru"
-     },
-     {
-      "id": "C",
-      "text": "Pandit Deendayal Upadhyay"
-     },
-     {
-      "id": "D",
-      "text": "Pandit Ravishankar Prasad"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q70",
-    "sourceQuestionNo": 70,
-    "stemEn": "Each year the International Day of Peace' is observed around the world on:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "20 April"
-     },
-     {
-      "id": "B",
-      "text": "25 May"
-     },
-     {
-      "id": "C",
-      "text": "20 August"
-     },
-     {
-      "id": "D",
-      "text": "21 September"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q71",
-    "sourceQuestionNo": 71,
-    "stemEn": "Which district has become the first district in the entire country with a population of more than 10 lakh to inoculate 100% eligible population with the first dose of Covid-19 vaccine?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Indore, Madhya Pradesh"
-     },
-     {
-      "id": "B",
-      "text": "Prayagraj, Uttar Pradesh"
-     },
-     {
-      "id": "C",
-      "text": "Bhopal, Madhya Pradesh"
-     },
-     {
-      "id": "D",
-      "text": "Varanasi, Uttar Pradesh"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q72",
-    "sourceQuestionNo": 72,
-    "stemEn": "World football body. FIFA' has unveiled the official mascot of the U-17 Women's World Cup India 2022 \"1BHA\" an Asiatic lioness representing:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Enlightenment"
-     },
-     {
-      "id": "B",
-      "text": "Gender Equality"
-     },
-     {
-      "id": "C",
-      "text": "Sustainable Development"
-     },
-     {
-      "id": "D",
-      "text": "Women Empowerment"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q73",
-    "sourceQuestionNo": 73,
-    "stemEn": "Match List I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-II, B-III, C-IV, D-I"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-IV, C-II, D-I"
-     },
-     {
-      "id": "C",
-      "text": "A-I, B-II, C-III, D-IV"
-     },
-     {
-      "id": "D",
-      "text": "A-IV, B-III, C-I, D-II"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q73-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-18/q73-table-1.jpg",
-      "page": 5,
-      "alt": "Table for question 73"
-     }
-    ]
-   },
-   {
-    "id": "q74",
-    "sourceQuestionNo": 74,
-    "stemEn": "Match List I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-I, B-IV, C-II, D-III"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-II, C-IV, D-I"
-     },
-     {
-      "id": "C",
-      "text": "A-I, B-IV, C-II, D-III"
-     },
-     {
-      "id": "D",
-      "text": "A-IV. B-I, C-II, D-III"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q74-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-18/q74-table-1.jpg",
-      "page": 5,
-      "alt": "Table for question 74"
-     }
-    ]
-   },
-   {
-    "id": "q75",
-    "sourceQuestionNo": 75,
-    "stemEn": "Match List I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-IV, B-I, C-II, D-III"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-IV, C-I, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-IV, B-II, C-III, D-I"
-     },
-     {
-      "id": "D",
-      "text": "A-I, B-III, C-IV, D-II"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q75-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-18/q75-table-1.jpg",
-      "page": 5,
-      "alt": "Table for question 75"
-     }
-    ]
-   }
-  ]
- }
+  }
 }

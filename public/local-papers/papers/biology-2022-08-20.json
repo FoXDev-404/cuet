@@ -1,1687 +1,1654 @@
 {
- "exam": {
-  "id": "local-biology-2022-08-20",
-  "slug": "biology-2022-08-20",
-  "title": "CUET UG Biology 20 August 2022 Previous Year Paper",
-  "subject": "Biology",
-  "subjectId": "local-biology",
-  "subjectCode": "BIO",
-  "year": 2022,
-  "examDate": "2022-08-20",
-  "shift": null,
-  "sourceFile": "Biology_2022-08-20.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 49,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Arrange the following options in a sequential manner to demonstrate degradation caused by improper resource utilisation and maintenance.\n\nA. Barren patches of land that become large and lead to desertification\n\nB. Fertile top soil can be removed easily by over cultivation\n\nC. Deposition of thin crust of salt on land surface\n\nD. Unrestricted grazing of animals\n\nE. Irrigation without proper drainage of water leading to water logging in the soil",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B, C, D, E"
-     },
-     {
-      "id": "B",
-      "text": "C, D, A, B, E"
-     },
-     {
-      "id": "C",
-      "text": "B, D, E, C, A"
-     },
-     {
-      "id": "D",
-      "text": "E, D, B, C, A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-IV, B-I, C-II, D-III"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-IV, C-I, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-1, B-II, C-IV, D-III"
-     },
-     {
-      "id": "D",
-      "text": "A-II, B-III, C-I, D-IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q02-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-20/q02-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 2"
-     }
+  "exam": {
+    "id": "local-biology-2022-08-20",
+    "slug": "biology-2022-08-20",
+    "title": "CUET UG Biology 20 August 2022 Previous Year Paper",
+    "subject": "Biology",
+    "subjectId": "local-biology",
+    "subjectCode": "BIO",
+    "year": 2022,
+    "examDate": "2022-08-20",
+    "shift": null,
+    "sourceFile": "Biology_2022-08-20.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 48,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Arrange the following options in a sequential manner to demonstrate degradation caused by improper resource utilisation and maintenance.\n\nA. Barren patches of land that become large and lead to desertification\n\nB. Fertile top soil can be removed easily by over cultivation\n\nC. Deposition of thin crust of salt on land surface\n\nD. Unrestricted grazing of animals\n\nE. Irrigation without proper drainage of water leading to water logging in the soil",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B, C, D, E"
+          },
+          {
+            "id": "B",
+            "text": "C, D, A, B, E"
+          },
+          {
+            "id": "C",
+            "text": "B, D, E, C, A"
+          },
+          {
+            "id": "D",
+            "text": "E, D, B, C, A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-IV, B-I, C-II, D-III"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-IV, C-I, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-1, B-II, C-IV, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-III, C-I, D-IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-20/q02-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Mucosa associated lymphoid tissue constitutes",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10%"
+          },
+          {
+            "id": "B",
+            "text": "20%"
+          },
+          {
+            "id": "C",
+            "text": "40%"
+          },
+          {
+            "id": "D",
+            "text": "50%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of the following is INCORRECT statement?\n\nA. In IUD's, released Cu ions increases sperm motility and fertilising capacity of sperms\n\nB. Multiload 375 is medicated IUD\n\nC. Lippes loop is non-medicated IUD\n\nD. LNG-20 is hormones releasing IUD\n\nE. Vault is an IUD.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A & E only"
+          },
+          {
+            "id": "B",
+            "text": "A & B only"
+          },
+          {
+            "id": "C",
+            "text": "B & D only"
+          },
+          {
+            "id": "D",
+            "text": "B & C only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Which of the following is not a vegetation propagation?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Runner of grass"
+          },
+          {
+            "id": "B",
+            "text": "Offset of water hyacinth"
+          },
+          {
+            "id": "C",
+            "text": "Rhizome of Ginger"
+          },
+          {
+            "id": "D",
+            "text": "Bud of Hydra"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Select the correct sequence of development of following stages in a primary succession\n\nA. Scrub Stage\n\nB. Marsh-meadow stage\n\nC. Submerged free floating plant stage\n\nD. Reed-swamp stage\n\nE. Submerged plant stage",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "C, E, B, D, A"
+          },
+          {
+            "id": "B",
+            "text": "E, C, D, B, A"
+          },
+          {
+            "id": "C",
+            "text": "D, E, B, C, A"
+          },
+          {
+            "id": "D",
+            "text": "E, C, D, A, B"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Which of the following process involves the theory of antigen-antibody interaction?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "PCR"
+          },
+          {
+            "id": "B",
+            "text": "ELISA"
+          },
+          {
+            "id": "C",
+            "text": "Gene Therapy"
+          },
+          {
+            "id": "D",
+            "text": "Gel electrophoresis"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Following are the animals that recently became extinct, except",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Dodo"
+          },
+          {
+            "id": "B",
+            "text": "Quagga"
+          },
+          {
+            "id": "C",
+            "text": "Thylacine"
+          },
+          {
+            "id": "D",
+            "text": "Clarias garipinus"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "Given below are two statements\n\nStatement 1: Baculoviruses belonging to genus Nucleopolyhedrovirus are used as biological control agent.\n\nStatement 2: These viruses are used as they are species-specific and have narrow spectrum insecticidal applications, so can be a good insecticide.\n\nIn the light of above statements, choose the most appropriate answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both statement 1 and statement 2 are correct"
+          },
+          {
+            "id": "B",
+            "text": "Both statement 1 and statement 2 are incorrect"
+          },
+          {
+            "id": "C",
+            "text": "Statement 1 is correct and statement 2 is incorrect"
+          },
+          {
+            "id": "D",
+            "text": "Statement 1 is incorrect and statement 2 is correct"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Complete the analogy\n\nMigration Siberian Cranes :: Bear",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Regulation"
+          },
+          {
+            "id": "B",
+            "text": "Hibernation"
+          },
+          {
+            "id": "C",
+            "text": "Aestivation"
+          },
+          {
+            "id": "D",
+            "text": "Diapause"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "Development of analogous structure or organs are a result of _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Divergent evolution"
+          },
+          {
+            "id": "B",
+            "text": "Convergent evolution"
+          },
+          {
+            "id": "C",
+            "text": "Adaptive radiation"
+          },
+          {
+            "id": "D",
+            "text": "Saltation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "The treatment of the bacterial cell with divalent cations leads to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Increase in hydrophilic nature of DNA molecule"
+          },
+          {
+            "id": "B",
+            "text": "Decreases efficiency with which DNA enters the bacterium"
+          },
+          {
+            "id": "C",
+            "text": "Change in permeability of cell wall"
+          },
+          {
+            "id": "D",
+            "text": "Increased efficiency with which DNA enters the bacterium"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "A person complaining of stomach ache, weakness and sustained high fever was recommended Widal test by the doctor. Identify the pathogen responsible for the disease the person is suffering from:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Streptococcus pneumonia"
+          },
+          {
+            "id": "B",
+            "text": "Rhino Virus"
+          },
+          {
+            "id": "C",
+            "text": "Salmonella typhi"
+          },
+          {
+            "id": "D",
+            "text": "Plasmodium vivax"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "If 100 deaths take place in a population of 10,00,000 per year, then the death rate will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.001 per person per year"
+          },
+          {
+            "id": "B",
+            "text": "0.0001 per person per year"
+          },
+          {
+            "id": "C",
+            "text": "0.1 per person per year"
+          },
+          {
+            "id": "D",
+            "text": "1 per person per year"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "The genetic variation shown by medicinal plant Rauwolfia vomitoria growing in Himalayan ranges, is an example of",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ecosystem Diversity"
+          },
+          {
+            "id": "B",
+            "text": "Ecological Diversity"
+          },
+          {
+            "id": "C",
+            "text": "Species Diversity"
+          },
+          {
+            "id": "D",
+            "text": "Genetic Diversity"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "Prime contaminant of lake for eutrophication is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Dissolved oxygen"
+          },
+          {
+            "id": "B",
+            "text": "Algal bloom"
+          },
+          {
+            "id": "C",
+            "text": "Nitrate and phosphate"
+          },
+          {
+            "id": "D",
+            "text": "Fungi and Bacteria"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "In Verhulst Pearl logistic growth curve equation, $ \\frac{\\mathrm{d}N}{\\mathrm{d}t} = rN\\left(\\frac{K-N}{K}\\right) $, 'r' refers to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Population density at time t"
+          },
+          {
+            "id": "B",
+            "text": "Population density at time Zero"
+          },
+          {
+            "id": "C",
+            "text": "Intrinsic rate of natural increase"
+          },
+          {
+            "id": "D",
+            "text": "Carrying capacity"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "In the life cycle of Plasmodium, the gametocytes develop in",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "WBC of human host"
+          },
+          {
+            "id": "B",
+            "text": "RBC of human host"
+          },
+          {
+            "id": "C",
+            "text": "Gut of mosquito"
+          },
+          {
+            "id": "D",
+            "text": "Saliva of anopheles mosquito"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "Match List-I with List-II\n\nChoose the correct answer form the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-1, B-III, C-IV, D-11"
+          },
+          {
+            "id": "B",
+            "text": "A-Ⅱ, B-VI, C-I, D-III"
+          },
+          {
+            "id": "C",
+            "text": "A-11, B-III, C-I, D-II"
+          },
+          {
+            "id": "D",
+            "text": "A-IV, B-III, C-I, D-II"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q19-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-20/q19-table-1.jpg",
+            "page": 2,
+            "alt": "Table for question 19"
+          }
+        ]
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "Identify the step involved in polymerase chain reaction from the given figure below.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Primer extension"
+          },
+          {
+            "id": "B",
+            "text": "Denaturation"
+          },
+          {
+            "id": "C",
+            "text": "Extension"
+          },
+          {
+            "id": "D",
+            "text": "Annealing"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "'Rivet popper' hypothesis was proposed by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Alexander Von Humboldt"
+          },
+          {
+            "id": "B",
+            "text": "Paul Ehrlich"
+          },
+          {
+            "id": "C",
+            "text": "Edward Wilson"
+          },
+          {
+            "id": "D",
+            "text": "Robert May"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "Which of the following genes control corn borer disease?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "amp $ ^{R} $"
+          },
+          {
+            "id": "B",
+            "text": "cry I Ac"
+          },
+          {
+            "id": "C",
+            "text": "cry / Ab"
+          },
+          {
+            "id": "D",
+            "text": "cry II Ab"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "The rate of decomposition in a particular climatic condition is quicker, if detritus is rich in _ & _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sugars, Phosphorus"
+          },
+          {
+            "id": "B",
+            "text": "Lignin, Phosphorous"
+          },
+          {
+            "id": "C",
+            "text": "Sugars, Nitrogen"
+          },
+          {
+            "id": "D",
+            "text": "Lignin, Chitin"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "Which of the following is a natural method of birth control?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Condoms"
+          },
+          {
+            "id": "B",
+            "text": "Lactational amenorrhea"
+          },
+          {
+            "id": "C",
+            "text": "IUD"
+          },
+          {
+            "id": "D",
+            "text": "Diaphragms"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "The Graafian follicle ruptures to release the ovum from the ovary by the process called",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ovulation"
+          },
+          {
+            "id": "B",
+            "text": "Menstruation"
+          },
+          {
+            "id": "C",
+            "text": "Implantation"
+          },
+          {
+            "id": "D",
+            "text": "Copulation"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "Match List-I with List-II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-III, B-I, C-II, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-IV, B-III, C-I, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-IV, B-I, C-III, D-II"
+          },
+          {
+            "id": "D",
+            "text": "A-IV, B-II, C-III, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q26-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-20/q26-table-1.jpg",
+            "page": 2,
+            "alt": "Table for question 26"
+          }
+        ]
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Select the statement that are correct for GM plants with genetic modifications.\n\nA. Made crops tolerant to abiotic stresses\n\nB. Increased the reliance on chemical pesticides\n\nC. Helped to reduce post-harvest losses\n\nD. Decrease efficiency of mineral usage by plants\n\nE. Enhanced nutritional value of food",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "C and E only"
+          },
+          {
+            "id": "B",
+            "text": "B and C only"
+          },
+          {
+            "id": "C",
+            "text": "A, C and E only"
+          },
+          {
+            "id": "D",
+            "text": "C, D and E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 28,
+        "stemEn": "The embryo with 8 to 16 blastomeres is called _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Morula"
+          },
+          {
+            "id": "B",
+            "text": "Blastula"
+          },
+          {
+            "id": "C",
+            "text": "Zygote"
+          },
+          {
+            "id": "D",
+            "text": "Foetus"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 29,
+        "stemEn": "The species that invades a bare area is called _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Serial stage"
+          },
+          {
+            "id": "B",
+            "text": "Allien species"
+          },
+          {
+            "id": "C",
+            "text": "Endemic species"
+          },
+          {
+            "id": "D",
+            "text": "Pioneer species"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 30,
+        "stemEn": "Mr. X wants to start Bee-keeping. Important points for successful bee-keeping are _.\n\nA. Selection of suitable location for keeping beehives\n\nB. Beehives can be kept in fruit orchards\n\nC. Catching and hiving of swarms\n\nD. Management of beehives during rainy season\n\nE. Regular visit by veterinary doctor is mandatory",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B, C and E"
+          },
+          {
+            "id": "B",
+            "text": "A, B and C"
+          },
+          {
+            "id": "C",
+            "text": "A, B, D and E"
+          },
+          {
+            "id": "D",
+            "text": "A, C, D and E"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 31,
+        "stemEn": "Given below are two statements; one is labelled as assertion A and other is labelled as Reason R\n\nAssertion (A): In gel-electrophoresis, DNA fragments are separated.\n\nReason (R): DNA is negatively charged, so it moves towards the cathode under the influence of electric field.\n\nIn the light of the above sentences, choose the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "id": "B",
+            "text": "Both A and R are true and R is not the correct explanation of A"
+          },
+          {
+            "id": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "id": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 32,
+        "stemEn": "Identify the drug shown below in the diagram",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cocaine"
+          },
+          {
+            "id": "B",
+            "text": "Heroin"
+          },
+          {
+            "id": "C",
+            "text": "Cannabinoid"
+          },
+          {
+            "id": "D",
+            "text": "Morphine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q33-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/biology-2022-08-20/q33-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 33"
+          }
+        ]
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 33,
+        "stemEn": "Which of the following does not show ecological diversity?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Coral reef"
+          },
+          {
+            "id": "B",
+            "text": "Alpine meadows"
+          },
+          {
+            "id": "C",
+            "text": "Wetlands"
+          },
+          {
+            "id": "D",
+            "text": "Rauwolfia vomitoria"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 34,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-1, B-III, C-IV, D-II"
+          },
+          {
+            "id": "B",
+            "text": "A-II, B-III, C-IV, D-I"
+          },
+          {
+            "id": "C",
+            "text": "A-II, B-IV, C-III, D-I"
+          },
+          {
+            "id": "D",
+            "text": "A-III, B-II, C-IV, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q35-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-20/q35-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 35"
+          }
+        ]
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 35,
+        "stemEn": "The first restriction endonuclease isolated was",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Eco RI"
+          },
+          {
+            "id": "B",
+            "text": "pBR 322"
+          },
+          {
+            "id": "C",
+            "text": "Hind II"
+          },
+          {
+            "id": "D",
+            "text": "Bam HI"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 36,
+        "stemEn": "Which of the following are true, caused due to Inbreeding depression?\n\nA. Reduces fertility and productivity\n\nB. Helps in accumulation of inferior genes\n\nC. Helps to evolve a hybrid in any animal\n\nD. Increases productivity inbreed population\n\nE. Retention of less desirable genes.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B and C only"
+          },
+          {
+            "id": "B",
+            "text": "A and D only"
+          },
+          {
+            "id": "C",
+            "text": "C and E only"
+          },
+          {
+            "id": "D",
+            "text": "B and E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 37,
+        "stemEn": "Select the correct statements from the following\n\nA. The presence of Thymine at the place of Uracil gives more stability to DNA\n\nB. Both nucleic acids, i.e., DNA and RNA mutate\n\nC. DNA is dependent on RNA for synthesis of proteins\n\nD. RNA mutate at slower rate than DNA\n\nE. DNA is better genetic material",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A and D only"
+          },
+          {
+            "id": "B",
+            "text": "A and B only"
+          },
+          {
+            "id": "C",
+            "text": "A, B, C and D only"
+          },
+          {
+            "id": "D",
+            "text": "A, B, C and E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 38,
+        "stemEn": "Mr. X had purchased a fruit juice bottle from the market and is puzzled to see that is completely clear. It is due to",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Lipase and Pectinase"
+          },
+          {
+            "id": "B",
+            "text": "Amylase and Polymerase"
+          },
+          {
+            "id": "C",
+            "text": "Pectinase and Protease"
+          },
+          {
+            "id": "D",
+            "text": "Protease and Ligase"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 39,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-1, B-III, C-II, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-I, B-III, C-IV, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-II, B-I, C-III, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-III, C-I, D-IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q41-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/biology-2022-08-20/q41-table-1.jpg",
+            "page": 4,
+            "alt": "Table for question 41"
+          }
+        ]
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 40,
+        "stemEn": "Yucca plant shows _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Flower with non-sticky pollen grains"
+          },
+          {
+            "id": "B",
+            "text": "Water pollination"
+          },
+          {
+            "id": "C",
+            "text": "Large feather stigma"
+          },
+          {
+            "id": "D",
+            "text": "Moth is partner to complete life cycles"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 41,
+        "stemEn": "_ is aquatic plant showing insect pollination",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Hydrilla"
+          },
+          {
+            "id": "B",
+            "text": "Vallisneria"
+          },
+          {
+            "id": "C",
+            "text": "Zostera"
+          },
+          {
+            "id": "D",
+            "text": "Water hyacinth"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 42,
+        "stemEn": "Which of the following is NOT a feature of insect pollinated plant?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Light and non-sticky pollen grains"
+          },
+          {
+            "id": "B",
+            "text": "Flowers are large and colourful"
+          },
+          {
+            "id": "C",
+            "text": "Presence of nectar"
+          },
+          {
+            "id": "D",
+            "text": "Flower with fragrance"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 43,
+        "stemEn": "Grasses show pollination by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Water"
+          },
+          {
+            "id": "B",
+            "text": "Insect"
+          },
+          {
+            "id": "C",
+            "text": "Wind"
+          },
+          {
+            "id": "D",
+            "text": "Animals PASSAGE Read the sentence and answer the questions. The process of replication requires a set of catalyst (enzymes). The main enzyme is referred to as DNA dependent DNA Polymerase. E.coli that has only $4.6 \\times 10^{6}$ bp (compare it with human whose diploid content is $6.6 \\times 10^{6}$ bp), completes the process of replication within 18 minutes, that means the average rate of polymerisation has to be approximately 2000 bp per second these polymerase also have catalase the reaction with high degree of accuracy. Deoxyribonucleoside Triphosphates serve dual purposes. In addition to DNA dependent DNA polymerases, many additional enzymes are required to complete the process of replication with high degree of accuracy. For long DNA molecules, since the two strands of DNA cannot be separated in its entire length (due to very high energy requirement), the replication occur with in a small opening of the DNA helix, referred to as replication fork. The DNA-dependent DNA polymerase catalyse polymerisation only in one direction, that $5^{\\prime}-3^{\\prime}$. This creates some additional complications at the replicating fork. Consequently, on one strand (the template with polarity $3^{\\prime}-5^{\\prime}$) the replication is continuous, which on the others (the template with polarity $5^{\\prime}-3^{\\prime}$), it is the discontinuous. The non-continuously synthesized fragments are later joined by the enzyme DNA ligase."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 44,
+        "stemEn": "The DNA dependent-DNA polymerase catalyser is a DNA polymerase in one direction only that is _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5'-3' of DNA"
+          },
+          {
+            "id": "B",
+            "text": "3'-5' of DNA"
+          },
+          {
+            "id": "C",
+            "text": "5'-3' of RNA"
+          },
+          {
+            "id": "D",
+            "text": "3'-5' of RNA"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 45,
+        "stemEn": "In human beings DNA polymerase complete the process of replication in _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "25 Minutes"
+          },
+          {
+            "id": "B",
+            "text": "16 Minutes"
+          },
+          {
+            "id": "C",
+            "text": "12 Minutes"
+          },
+          {
+            "id": "D",
+            "text": "18 Minutes"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 46,
+        "stemEn": "The number of nucleotides in E. coli is _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1.2 \\times 10^{6} $ bp"
+          },
+          {
+            "id": "B",
+            "text": "$ 2.3 \\times 10^{6} $ bp"
+          },
+          {
+            "id": "C",
+            "text": "$ 4.6 \\times 10^{6} $ bp"
+          },
+          {
+            "id": "D",
+            "text": "$ 6.6 \\times 10^{6} $ bp"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 47,
+        "stemEn": "In E. coli the main enzyme required to catalyze the polymerisation of deoxynucleotide is _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "DNA-Dependent DNA Polymerase"
+          },
+          {
+            "id": "B",
+            "text": "DNA-Dependent RNA Polymerase"
+          },
+          {
+            "id": "C",
+            "text": "RNA-Dependent DNA Polymerase"
+          },
+          {
+            "id": "D",
+            "text": "RNA-Dependent DNA Polymerase"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 48,
+        "stemEn": "Which of the following statements are correct?\n\nA. DNA dependent DNA polymerase is a slow catalyst\n\nB. Deoxyribonucleoside triphosphate provide energy for polymerisation\n\nC. Replication fork is a small opening of the DNA helix\n\nD. The replication is discontinuous on DNA template with polarity 3'-5'\n\nE. The replication is continuous on DNA template with polarity 3'-5'",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A and B only"
+          },
+          {
+            "id": "B",
+            "text": "B and C only"
+          },
+          {
+            "id": "C",
+            "text": "A and D only"
+          },
+          {
+            "id": "D",
+            "text": "C and E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Mucosa associated lymphoid tissue constitutes",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "10%"
-     },
-     {
-      "id": "B",
-      "text": "20%"
-     },
-     {
-      "id": "C",
-      "text": "40%"
-     },
-     {
-      "id": "D",
-      "text": "50%"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Which of the following is INCORRECT statement?\n\nA. In IUD's, released Cu ions increases sperm motility and fertilising capacity of sperms\n\nB. Multiload 375 is medicated IUD\n\nC. Lippes loop is non-medicated IUD\n\nD. LNG-20 is hormones releasing IUD\n\nE. Vault is an IUD.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A & E only"
-     },
-     {
-      "id": "B",
-      "text": "A & B only"
-     },
-     {
-      "id": "C",
-      "text": "B & D only"
-     },
-     {
-      "id": "D",
-      "text": "B & C only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Which of the following is not a vegetation propagation?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Runner of grass"
-     },
-     {
-      "id": "B",
-      "text": "Offset of water hyacinth"
-     },
-     {
-      "id": "C",
-      "text": "Rhizome of Ginger"
-     },
-     {
-      "id": "D",
-      "text": "Bud of Hydra"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Select the correct sequence of development of following stages in a primary succession\n\nA. Scrub Stage\n\nB. Marsh-meadow stage\n\nC. Submerged free floating plant stage\n\nD. Reed-swamp stage\n\nE. Submerged plant stage",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "C, E, B, D, A"
-     },
-     {
-      "id": "B",
-      "text": "E, C, D, B, A"
-     },
-     {
-      "id": "C",
-      "text": "D, E, B, C, A"
-     },
-     {
-      "id": "D",
-      "text": "E, C, D, A, B"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "Which of the following process involves the theory of antigen-antibody interaction?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "PCR"
-     },
-     {
-      "id": "B",
-      "text": "ELISA"
-     },
-     {
-      "id": "C",
-      "text": "Gene Therapy"
-     },
-     {
-      "id": "D",
-      "text": "Gel electrophoresis"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Following are the animals that recently became extinct, except",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Dodo"
-     },
-     {
-      "id": "B",
-      "text": "Quagga"
-     },
-     {
-      "id": "C",
-      "text": "Thylacine"
-     },
-     {
-      "id": "D",
-      "text": "Clarias garipinus"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "Given below are two statements\n\nStatement 1: Baculoviruses belonging to genus Nucleopolyhedrovirus are used as biological control agent.\n\nStatement 2: These viruses are used as they are species-specific and have narrow spectrum insecticidal applications, so can be a good insecticide.\n\nIn the light of above statements, choose the most appropriate answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Both statement 1 and statement 2 are correct"
-     },
-     {
-      "id": "B",
-      "text": "Both statement 1 and statement 2 are incorrect"
-     },
-     {
-      "id": "C",
-      "text": "Statement 1 is correct and statement 2 is incorrect"
-     },
-     {
-      "id": "D",
-      "text": "Statement 1 is incorrect and statement 2 is correct"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Complete the analogy\n\nMigration Siberian Cranes :: Bear",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Regulation"
-     },
-     {
-      "id": "B",
-      "text": "Hibernation"
-     },
-     {
-      "id": "C",
-      "text": "Aestivation"
-     },
-     {
-      "id": "D",
-      "text": "Diapause"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "Development of analogous structure or organs are a result of _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Divergent evolution"
-     },
-     {
-      "id": "B",
-      "text": "Convergent evolution"
-     },
-     {
-      "id": "C",
-      "text": "Adaptive radiation"
-     },
-     {
-      "id": "D",
-      "text": "Saltation"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "The treatment of the bacterial cell with divalent cations leads to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Increase in hydrophilic nature of DNA molecule"
-     },
-     {
-      "id": "B",
-      "text": "Decreases efficiency with which DNA enters the bacterium"
-     },
-     {
-      "id": "C",
-      "text": "Change in permeability of cell wall"
-     },
-     {
-      "id": "D",
-      "text": "Increased efficiency with which DNA enters the bacterium"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "A person complaining of stomach ache, weakness and sustained high fever was recommended Widal test by the doctor. Identify the pathogen responsible for the disease the person is suffering from:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Streptococcus pneumonia"
-     },
-     {
-      "id": "B",
-      "text": "Rhino Virus"
-     },
-     {
-      "id": "C",
-      "text": "Salmonella typhi"
-     },
-     {
-      "id": "D",
-      "text": "Plasmodium vivax"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "If 100 deaths take place in a population of 10,00,000 per year, then the death rate will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.001 per person per year"
-     },
-     {
-      "id": "B",
-      "text": "0.0001 per person per year"
-     },
-     {
-      "id": "C",
-      "text": "0.1 per person per year"
-     },
-     {
-      "id": "D",
-      "text": "1 per person per year"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "The genetic variation shown by medicinal plant Rauwolfia vomitoria growing in Himalayan ranges, is an example of",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ecosystem Diversity"
-     },
-     {
-      "id": "B",
-      "text": "Ecological Diversity"
-     },
-     {
-      "id": "C",
-      "text": "Species Diversity"
-     },
-     {
-      "id": "D",
-      "text": "Genetic Diversity"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "Prime contaminant of lake for eutrophication is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Dissolved oxygen"
-     },
-     {
-      "id": "B",
-      "text": "Algal bloom"
-     },
-     {
-      "id": "C",
-      "text": "Nitrate and phosphate"
-     },
-     {
-      "id": "D",
-      "text": "Fungi and Bacteria"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "In Verhulst Pearl logistic growth curve equation, $ \\frac{\\mathrm{d}N}{\\mathrm{d}t} = rN\\left(\\frac{K-N}{K}\\right) $, 'r' refers to:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Population density at time t"
-     },
-     {
-      "id": "B",
-      "text": "Population density at time Zero"
-     },
-     {
-      "id": "C",
-      "text": "Intrinsic rate of natural increase"
-     },
-     {
-      "id": "D",
-      "text": "Carrying capacity"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "In the life cycle of Plasmodium, the gametocytes develop in",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "WBC of human host"
-     },
-     {
-      "id": "B",
-      "text": "RBC of human host"
-     },
-     {
-      "id": "C",
-      "text": "Gut of mosquito"
-     },
-     {
-      "id": "D",
-      "text": "Saliva of anopheles mosquito"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "Match List-I with List-II\n\nChoose the correct answer form the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-1, B-III, C-IV, D-11"
-     },
-     {
-      "id": "B",
-      "text": "A-Ⅱ, B-VI, C-I, D-III"
-     },
-     {
-      "id": "C",
-      "text": "A-11, B-III, C-I, D-II"
-     },
-     {
-      "id": "D",
-      "text": "A-IV, B-III, C-I, D-II"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q19-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-20/q19-table-1.jpg",
-      "page": 2,
-      "alt": "Table for question 19"
-     }
-    ]
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Identify the step involved in polymerase chain reaction from the given figure below.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Primer extension"
-     },
-     {
-      "id": "B",
-      "text": "Denaturation"
-     },
-     {
-      "id": "C",
-      "text": "Extension"
-     },
-     {
-      "id": "D",
-      "text": "Annealing"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "'Rivet popper' hypothesis was proposed by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Alexander Von Humboldt"
-     },
-     {
-      "id": "B",
-      "text": "Paul Ehrlich"
-     },
-     {
-      "id": "C",
-      "text": "Edward Wilson"
-     },
-     {
-      "id": "D",
-      "text": "Robert May"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Which of the following genes control corn borer disease?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "amp $ ^{R} $"
-     },
-     {
-      "id": "B",
-      "text": "cry I Ac"
-     },
-     {
-      "id": "C",
-      "text": "cry / Ab"
-     },
-     {
-      "id": "D",
-      "text": "cry II Ab"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "The rate of decomposition in a particular climatic condition is quicker, if detritus is rich in _ & _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sugars, Phosphorus"
-     },
-     {
-      "id": "B",
-      "text": "Lignin, Phosphorous"
-     },
-     {
-      "id": "C",
-      "text": "Sugars, Nitrogen"
-     },
-     {
-      "id": "D",
-      "text": "Lignin, Chitin"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "Which of the following is a natural method of birth control?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Condoms"
-     },
-     {
-      "id": "B",
-      "text": "Lactational amenorrhea"
-     },
-     {
-      "id": "C",
-      "text": "IUD"
-     },
-     {
-      "id": "D",
-      "text": "Diaphragms"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "The Graafian follicle ruptures to release the ovum from the ovary by the process called",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ovulation"
-     },
-     {
-      "id": "B",
-      "text": "Menstruation"
-     },
-     {
-      "id": "C",
-      "text": "Implantation"
-     },
-     {
-      "id": "D",
-      "text": "Copulation"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "Match List-I with List-II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-III, B-I, C-II, D-IV"
-     },
-     {
-      "id": "B",
-      "text": "A-IV, B-III, C-I, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-IV, B-I, C-III, D-II"
-     },
-     {
-      "id": "D",
-      "text": "A-IV, B-II, C-III, D-I"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q26-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-20/q26-table-1.jpg",
-      "page": 2,
-      "alt": "Table for question 26"
-     }
-    ]
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Select the statement that are correct for GM plants with genetic modifications.\n\nA. Made crops tolerant to abiotic stresses\n\nB. Increased the reliance on chemical pesticides\n\nC. Helped to reduce post-harvest losses\n\nD. Decrease efficiency of mineral usage by plants\n\nE. Enhanced nutritional value of food",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "C and E only"
-     },
-     {
-      "id": "B",
-      "text": "B and C only"
-     },
-     {
-      "id": "C",
-      "text": "A, C and E only"
-     },
-     {
-      "id": "D",
-      "text": "C, D and E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Father's blood group is A and mother's blood group is B. One of their offspring is with group AB. What is the percentage of probability of AB blood group offspring?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "NIL"
-     },
-     {
-      "id": "B",
-      "text": "25%"
-     },
-     {
-      "id": "C",
-      "text": "50%"
-     },
-     {
-      "id": "D",
-      "text": "75%"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "The embryo with 8 to 16 blastomeres is called _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Morula"
-     },
-     {
-      "id": "B",
-      "text": "Blastula"
-     },
-     {
-      "id": "C",
-      "text": "Zygote"
-     },
-     {
-      "id": "D",
-      "text": "Foetus"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "The species that invades a bare area is called _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Serial stage"
-     },
-     {
-      "id": "B",
-      "text": "Allien species"
-     },
-     {
-      "id": "C",
-      "text": "Endemic species"
-     },
-     {
-      "id": "D",
-      "text": "Pioneer species"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "Mr. X wants to start Bee-keeping. Important points for successful bee-keeping are _.\n\nA. Selection of suitable location for keeping beehives\n\nB. Beehives can be kept in fruit orchards\n\nC. Catching and hiving of swarms\n\nD. Management of beehives during rainy season\n\nE. Regular visit by veterinary doctor is mandatory",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B, C and E"
-     },
-     {
-      "id": "B",
-      "text": "A, B and C"
-     },
-     {
-      "id": "C",
-      "text": "A, B, D and E"
-     },
-     {
-      "id": "D",
-      "text": "A, C, D and E"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Given below are two statements; one is labelled as assertion A and other is labelled as Reason R\n\nAssertion (A): In gel-electrophoresis, DNA fragments are separated.\n\nReason (R): DNA is negatively charged, so it moves towards the cathode under the influence of electric field.\n\nIn the light of the above sentences, choose the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Both A and R are true and R is the correct explanation of A"
-     },
-     {
-      "id": "B",
-      "text": "Both A and R are true and R is not the correct explanation of A"
-     },
-     {
-      "id": "C",
-      "text": "A is true but R is false"
-     },
-     {
-      "id": "D",
-      "text": "A is false but R is true"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Identify the drug shown below in the diagram",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Cocaine"
-     },
-     {
-      "id": "B",
-      "text": "Heroin"
-     },
-     {
-      "id": "C",
-      "text": "Cannabinoid"
-     },
-     {
-      "id": "D",
-      "text": "Morphine"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q33-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/biology-2022-08-20/q33-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 33"
-     }
-    ]
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Which of the following does not show ecological diversity?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Coral reef"
-     },
-     {
-      "id": "B",
-      "text": "Alpine meadows"
-     },
-     {
-      "id": "C",
-      "text": "Wetlands"
-     },
-     {
-      "id": "D",
-      "text": "Rauwolfia vomitoria"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-1, B-III, C-IV, D-II"
-     },
-     {
-      "id": "B",
-      "text": "A-II, B-III, C-IV, D-I"
-     },
-     {
-      "id": "C",
-      "text": "A-II, B-IV, C-III, D-I"
-     },
-     {
-      "id": "D",
-      "text": "A-III, B-II, C-IV, D-I"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q35-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-20/q35-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 35"
-     }
-    ]
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "The first restriction endonuclease isolated was",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Eco RI"
-     },
-     {
-      "id": "B",
-      "text": "pBR 322"
-     },
-     {
-      "id": "C",
-      "text": "Hind II"
-     },
-     {
-      "id": "D",
-      "text": "Bam HI"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Which of the following are true, caused due to Inbreeding depression?\n\nA. Reduces fertility and productivity\n\nB. Helps in accumulation of inferior genes\n\nC. Helps to evolve a hybrid in any animal\n\nD. Increases productivity inbreed population\n\nE. Retention of less desirable genes.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B and C only"
-     },
-     {
-      "id": "B",
-      "text": "A and D only"
-     },
-     {
-      "id": "C",
-      "text": "C and E only"
-     },
-     {
-      "id": "D",
-      "text": "B and E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "Select the correct statements from the following\n\nA. The presence of Thymine at the place of Uracil gives more stability to DNA\n\nB. Both nucleic acids, i.e., DNA and RNA mutate\n\nC. DNA is dependent on RNA for synthesis of proteins\n\nD. RNA mutate at slower rate than DNA\n\nE. DNA is better genetic material",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A and D only"
-     },
-     {
-      "id": "B",
-      "text": "A and B only"
-     },
-     {
-      "id": "C",
-      "text": "A, B, C and D only"
-     },
-     {
-      "id": "D",
-      "text": "A, B, C and E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Mr. X had purchased a fruit juice bottle from the market and is puzzled to see that is completely clear. It is due to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Lipase and Pectinase"
-     },
-     {
-      "id": "B",
-      "text": "Amylase and Polymerase"
-     },
-     {
-      "id": "C",
-      "text": "Pectinase and Protease"
-     },
-     {
-      "id": "D",
-      "text": "Protease and Ligase"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-1, B-III, C-II, D-IV"
-     },
-     {
-      "id": "B",
-      "text": "A-I, B-III, C-IV, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-II, B-I, C-III, D-IV"
-     },
-     {
-      "id": "D",
-      "text": "A-II, B-III, C-I, D-IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q41-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/biology-2022-08-20/q41-table-1.jpg",
-      "page": 4,
-      "alt": "Table for question 41"
-     }
-    ]
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Yucca plant shows _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Flower with non-sticky pollen grains"
-     },
-     {
-      "id": "B",
-      "text": "Water pollination"
-     },
-     {
-      "id": "C",
-      "text": "Large feather stigma"
-     },
-     {
-      "id": "D",
-      "text": "Moth is partner to complete life cycles"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "_ is aquatic plant showing insect pollination",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Hydrilla"
-     },
-     {
-      "id": "B",
-      "text": "Vallisneria"
-     },
-     {
-      "id": "C",
-      "text": "Zostera"
-     },
-     {
-      "id": "D",
-      "text": "Water hyacinth"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "Which of the following is NOT a feature of insect pollinated plant?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Light and non-sticky pollen grains"
-     },
-     {
-      "id": "B",
-      "text": "Flowers are large and colourful"
-     },
-     {
-      "id": "C",
-      "text": "Presence of nectar"
-     },
-     {
-      "id": "D",
-      "text": "Flower with fragrance"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Grasses show pollination by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Water"
-     },
-     {
-      "id": "B",
-      "text": "Insect"
-     },
-     {
-      "id": "C",
-      "text": "Wind"
-     },
-     {
-      "id": "D",
-      "text": "Animals PASSAGE Read the sentence and answer the questions. The process of replication requires a set of catalyst (enzymes). The main enzyme is referred to as DNA dependent DNA Polymerase. E.coli that has only $4.6 \\times 10^{6}$ bp (compare it with human whose diploid content is $6.6 \\times 10^{6}$ bp), completes the process of replication within 18 minutes, that means the average rate of polymerisation has to be approximately 2000 bp per second these polymerase also have catalase the reaction with high degree of accuracy. Deoxyribonucleoside Triphosphates serve dual purposes. In addition to DNA dependent DNA polymerases, many additional enzymes are required to complete the process of replication with high degree of accuracy. For long DNA molecules, since the two strands of DNA cannot be separated in its entire length (due to very high energy requirement), the replication occur with in a small opening of the DNA helix, referred to as replication fork. The DNA-dependent DNA polymerase catalyse polymerisation only in one direction, that $5^{\\prime}-3^{\\prime}$. This creates some additional complications at the replicating fork. Consequently, on one strand (the template with polarity $3^{\\prime}-5^{\\prime}$) the replication is continuous, which on the others (the template with polarity $5^{\\prime}-3^{\\prime}$), it is the discontinuous. The non-continuously synthesized fragments are later joined by the enzyme DNA ligase."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "The DNA dependent-DNA polymerase catalyser is a DNA polymerase in one direction only that is _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5'-3' of DNA"
-     },
-     {
-      "id": "B",
-      "text": "3'-5' of DNA"
-     },
-     {
-      "id": "C",
-      "text": "5'-3' of RNA"
-     },
-     {
-      "id": "D",
-      "text": "3'-5' of RNA"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "In human beings DNA polymerase complete the process of replication in _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "25 Minutes"
-     },
-     {
-      "id": "B",
-      "text": "16 Minutes"
-     },
-     {
-      "id": "C",
-      "text": "12 Minutes"
-     },
-     {
-      "id": "D",
-      "text": "18 Minutes"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "The number of nucleotides in E. coli is _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 1.2 \\times 10^{6} $ bp"
-     },
-     {
-      "id": "B",
-      "text": "$ 2.3 \\times 10^{6} $ bp"
-     },
-     {
-      "id": "C",
-      "text": "$ 4.6 \\times 10^{6} $ bp"
-     },
-     {
-      "id": "D",
-      "text": "$ 6.6 \\times 10^{6} $ bp"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "In E. coli the main enzyme required to catalyze the polymerisation of deoxynucleotide is _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "DNA-Dependent DNA Polymerase"
-     },
-     {
-      "id": "B",
-      "text": "DNA-Dependent RNA Polymerase"
-     },
-     {
-      "id": "C",
-      "text": "RNA-Dependent DNA Polymerase"
-     },
-     {
-      "id": "D",
-      "text": "RNA-Dependent DNA Polymerase"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Which of the following statements are correct?\n\nA. DNA dependent DNA polymerase is a slow catalyst\n\nB. Deoxyribonucleoside triphosphate provide energy for polymerisation\n\nC. Replication fork is a small opening of the DNA helix\n\nD. The replication is discontinuous on DNA template with polarity 3'-5'\n\nE. The replication is continuous on DNA template with polarity 3'-5'",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A and B only"
-     },
-     {
-      "id": "B",
-      "text": "B and C only"
-     },
-     {
-      "id": "C",
-      "text": "A and D only"
-     },
-     {
-      "id": "D",
-      "text": "C and E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

@@ -55,8 +55,38 @@ describe('Explanation Honesty and Editorial Review Queue (Fix 4)', () => {
     ).all() as { explanation_source: string; count: number }[];
 
     const pqMap = new Map(pqCounts.map((r) => [r.explanation_source, r.count]));
-    expect(pqMap.get('ai_draft')).toBe(6245);
-    expect(pqMap.get('banner')).toBe(358);
+    const totalRows = (
+      db.prepare('SELECT count(*) as count FROM practice_questions').get() as { count: number }
+    ).count;
+    const withExplanation = (
+      db.prepare(
+        "SELECT count(*) as count FROM practice_questions WHERE explanation IS NOT NULL AND length(trim(explanation)) > 0",
+      ).get() as { count: number }
+    ).count;
+
+    // Counts must partition the live import: every row has exactly one source.
+    expect(pqCounts.reduce((sum, row) => sum + row.count, 0)).toBe(totalRows);
+    // The import contains reviewed-content candidates, so both automated and
+    // banner-labelled explanations must be present and honestly labelled.
+    expect(pqMap.get('ai_draft') ?? 0).toBeGreaterThan(0);
+    expect(pqMap.get('banner') ?? 0).toBeGreaterThan(0);
+    // A non-empty explanation cannot be filed as 'none'.
+    expect(
+      (
+        db.prepare(
+          "SELECT count(*) as count FROM practice_questions WHERE explanation_source = 'none' AND explanation IS NOT NULL AND length(trim(explanation)) > 0",
+        ).get() as { count: number }
+      ).count,
+    ).toBe(0);
+    // ...and an automated/human source cannot be attached to an empty explanation.
+    expect(
+      (
+        db.prepare(
+          "SELECT count(*) as count FROM practice_questions WHERE explanation_source IN ('ai_draft','human','official') AND (explanation IS NULL OR length(trim(explanation)) = 0)",
+        ).get() as { count: number }
+      ).count,
+    ).toBe(0);
+    expect(withExplanation).toBeLessThanOrEqual(totalRows);
   });
 
   it('100-question sample file exists with 101 lines (header + 100 questions)', () => {

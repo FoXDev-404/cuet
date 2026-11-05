@@ -35,10 +35,16 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
 
     const map = new Map(rows.map((r) => [r.rights_status, r.count]));
     const total = rows.reduce((acc, r) => acc + r.count, 0);
+    const librarySize = (
+      JSON.parse(readFileSync(resolve(process.cwd(), 'src/data/local-papers/index.json'), 'utf8')) as {
+        papers: unknown[];
+      }
+    ).papers.length;
 
-    expect(total).toBe(214);
-    // Before human clearance pass, all papers are safely classified as unknown
-    expect(map.get('unknown')).toBe(214);
+    expect(total).toBe(librarySize);
+    // Imported OCR papers enter the library as unknown rights; clearance is a
+    // separate editorial action, so the whole imported set starts unknown.
+    expect(map.get('unknown')).toBe(librarySize);
   });
 
   it('adSlotAllowed strictly forbids ads on /mock-tests/* routes', () => {

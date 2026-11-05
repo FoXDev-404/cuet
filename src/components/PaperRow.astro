@@ -1,0 +1,88 @@
+---
+import type { LocalPaperSummary } from "../lib/local-papers";
+import {
+  classifyPaper,
+  getKeyStatus,
+  formatMarking,
+  formatDateShiftTitle,
+} from "../lib/paper-list";
+import KeyStatusPill from "./KeyStatusPill.astro";
+import PaperTypeTag from "./PaperTypeTag.astro";
+
+interface Props {
+  paper: LocalPaperSummary;
+  class?: string;
+}
+
+const { paper, class: className = "" } = Astro.props;
+
+const paperType = classifyPaper(paper);
+const keyStatus = getKeyStatus(paper);
+const dateShiftTitle = formatDateShiftTitle(paper);
+const markingText = formatMarking(paper.markingScheme);
+const startHref = `/mock/${paper.slug}/instructions`;
+const detailsHref = paper.path;
+
+const sublineParts: string[] = [
+  `${paper.recoveredQuestionCount} question${paper.recoveredQuestionCount === 1 ? "" : "s"}`,
+  `${paper.durationMinutes} min`,
+  markingText,
+];
+
+if (paper.attemptCount >= 1) {
+  sublineParts.push(
+    `${paper.attemptCount.toLocaleString("en-IN")} attempt${paper.attemptCount === 1 ? "" : "s"}`
+  );
+}
+---
+
+<article
+  class:list={[
+    "group flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-4 rounded-2xl border border-neutral-200 bg-white p-4 md:px-5 md:py-3.5 shadow-sm transition-all hover:border-brand-300 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-brand-700",
+    className,
+  ]}
+>
+  <!-- Left: Subject Badge, Short Title, Type Tag, Subline -->
+  <div class="min-w-0 flex-1">
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-bold text-brand-700 border border-brand-200 dark:bg-brand-950/50 dark:text-brand-300 dark:border-brand-800 shrink-0">
+        {paper.subject.name}
+      </span>
+      <h3 class="truncate text-base font-bold text-neutral-900 group-hover:text-brand-600 dark:text-neutral-100 dark:group-hover:text-brand-400 transition-colors">
+        <a href={detailsHref} aria-label={`${dateShiftTitle} — ${paper.title}`} class="hover:underline">
+          {dateShiftTitle}
+        </a>
+      </h3>
+      <PaperTypeTag type={paperType} />
+    </div>
+    <p class="mt-1 md:mt-0.5 text-xs text-neutral-500 dark:text-neutral-400">
+      {sublineParts.join(" · ")}
+    </p>
+  </div>
+
+  <!-- Middle & Right: Key Status and Actions -->
+  <div class="flex items-center justify-between md:justify-end gap-3 pt-2.5 md:pt-0 border-t border-neutral-100 md:border-t-0 dark:border-neutral-800/80 shrink-0">
+    <KeyStatusPill status={keyStatus} />
+
+    <div class="flex items-center gap-2">
+      <a
+        href={startHref}
+        class="inline-flex h-9 items-center justify-center gap-1 rounded-xl bg-brand-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-brand-700 transition-colors"
+        aria-label={`Start ${paper.title}`}
+      >
+        <span>Start</span>
+        <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+      <a
+        href={detailsHref}
+        class="inline-flex h-9 items-center justify-center rounded-xl border border-neutral-200 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+        aria-label={`Details for ${paper.title}`}
+      >
+        Details
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,1508 +1,1409 @@
 {
- "exam": {
-  "id": "local-physics-2022-08-06",
-  "slug": "physics-2022-08-06",
-  "title": "CUET UG Physics 6 August 2022 Previous Year Paper",
-  "subject": "Physics",
-  "subjectId": "local-physics",
-  "subjectCode": "PHY",
-  "year": 2022,
-  "examDate": "2022-08-06",
-  "shift": null,
-  "sourceFile": "Physics_2022-08-06.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 43,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Electric field at the surface, of a conducting shell of radius 'r' is measured as X.\n\nElectric field at a distance 3r from the centre of the shell is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{X}{3} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{X}{6} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{X}{9} $"
-     },
-     {
-      "id": "D",
-      "text": "X"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "The equivalent capacitance between the points A and B in the network given below is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 20\\mu F $"
-     },
-     {
-      "id": "B",
-      "text": "20/3 $ \\mu $F"
-     },
-     {
-      "id": "C",
-      "text": "40/3 $ \\mu $F"
-     },
-     {
-      "id": "D",
-      "text": "$ 10\\mu F $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q02-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-06/q02-figure-1.jpg",
-      "page": 1,
-      "alt": "Figure for question 2"
-     }
+  "exam": {
+    "id": "local-physics-2022-08-06",
+    "slug": "physics-2022-08-06",
+    "title": "CUET UG Physics 6 August 2022 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2022,
+    "examDate": "2022-08-06",
+    "shift": null,
+    "sourceFile": "Physics_2022-08-06.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 40,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Electric field at the surface, of a conducting shell of radius 'r' is measured as X.\n\nElectric field at a distance 3r from the centre of the shell is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{X}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{X}{6} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{X}{9} $"
+          },
+          {
+            "id": "D",
+            "text": "X"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "The equivalent capacitance between the points A and B in the network given below is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 20\\mu F $"
+          },
+          {
+            "id": "B",
+            "text": "20/3 $ \\mu $F"
+          },
+          {
+            "id": "C",
+            "text": "40/3 $ \\mu $F"
+          },
+          {
+            "id": "D",
+            "text": "$ 10\\mu F $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-06/q02-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "A charge +10 μC is placed at (0 mm, 0 mm) Another charge -5 μC is moved from (3 mm, 0 mm) to (0 mm, 3 mm). Work done by the external agency is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0 J"
+          },
+          {
+            "id": "B",
+            "text": "150 J"
+          },
+          {
+            "id": "C",
+            "text": "+150 J"
+          },
+          {
+            "id": "D",
+            "text": "300 J"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 4,
+        "stemEn": "Changing current through IV, cell and through $ 2\\Omega $ resistor respectively is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2A, 1A"
+          },
+          {
+            "id": "B",
+            "text": "1A, 2A"
+          },
+          {
+            "id": "C",
+            "text": "2A, 2A"
+          },
+          {
+            "id": "D",
+            "text": "1A, 1A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 5,
+        "stemEn": "The mobility of charge carriers increases with",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Increase in average collision time interval"
+          },
+          {
+            "id": "B",
+            "text": "Increase in the electric field"
+          },
+          {
+            "id": "C",
+            "text": "Increase in the mass of the charge carriers"
+          },
+          {
+            "id": "D",
+            "text": "Decrease in the charge of the mobile carriers"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 6,
+        "stemEn": "The first particle accelerator of India (37\" cyclotron) was established in the year 1953. Whose vision was behind this project?\n\n(a) Dr. C.V. Raman\n\n(b) Dr. Meghnad Saha\n\n(c) Dr. Jagdish Chandra Bose\n\n(d) Dr. Homi Jahangir Bhabha\n10. Match List-I with List-II\n\nChoose the correct answer from the options given below:\n\n(a) A-IV, B-III, C-I, D-II\n\n(b) A-II, B-III, C-IV, D-I\n\n(c) A-I, B-II, C-III, D-IV\n\n(d) A-IV, B-I, C-II, D-III\n\nGauss law in magnetism signifies that",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Magnetic lines of force can pass through a closed surface"
+          },
+          {
+            "id": "B",
+            "text": "Net flux through closed surface is zero, monopole does not exist"
+          },
+          {
+            "id": "C",
+            "text": "Net flux is always $\\mu_{0}$ times the net charge enclosed"
+          },
+          {
+            "id": "D",
+            "text": "There always exist a monopole"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1,
+          2
+        ],
+        "assets": [
+          {
+            "id": "q09-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2022-08-06/q09-table-1.jpg",
+            "page": 2,
+            "alt": "Table for question 9"
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 7,
+        "stemEn": "A. At the magnetic pole of earth; angle of dip is $ 90^{\\circ} $ and $ B_{H}=0 $.\n\nB. At the magnetic pole of earth; angle of dip is zero and $ B_{v}=0 $.\n\nC. At the magnetic equator of the earth; angle of dip is $ 90^{\\circ} $ and $ B_{H}=0 $.\n\nD. At the magnetic equator of the earth; angle of dip is zero and $ B_{v}=0 $.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A and B only"
+          },
+          {
+            "id": "B",
+            "text": "B and D only"
+          },
+          {
+            "id": "C",
+            "text": "C and D only"
+          },
+          {
+            "id": "D",
+            "text": "A and D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 8,
+        "stemEn": "Faraday's law in integral form is $ \\mu_0 $\n\n(The symbols have their usual meaning)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "E.ds = $ \\frac{Q}{\\varepsilon_0} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\int E.dl = \\frac{-d\\phi}{dt} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\int B.ds = 0 $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\int B.dl = \\mu_0 \\left( i_c + \\varepsilon_0 \\frac{d\\phi}{dt} \\right) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 9,
+        "stemEn": "Four different pairs of physical quantities are given below. Pair having same dimensions will be?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Magnetic flux and magnetic moment"
+          },
+          {
+            "id": "B",
+            "text": "Magnetisation and magnetic intensity"
+          },
+          {
+            "id": "C",
+            "text": "Magnetic field and magnetic permeability"
+          },
+          {
+            "id": "D",
+            "text": "Magnetisation and Magnetic field"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 10,
+        "stemEn": "A current of 5 A is flowing at 220 V in the primary coil of a transformer. If the voltage produced in the secondary coil is 2200 V and 50% of power is lost, then the current in the secondary coil will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.25 A"
+          },
+          {
+            "id": "B",
+            "text": "0.5 A"
+          },
+          {
+            "id": "C",
+            "text": "2.5 A"
+          },
+          {
+            "id": "D",
+            "text": "5 A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 11,
+        "stemEn": "Electric field in plane electromagnetic wave is given by:\n\n$ Ey = 5 \\times 10^{-7} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $\n\nThe magnetic field associated with it is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ B_{x} = 0.5 \\times 10^{-7} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
+          },
+          {
+            "id": "B",
+            "text": "$ B_{x} = 1.66 \\times 10^{-15} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
+          },
+          {
+            "id": "C",
+            "text": "$ B_{x} = 9 \\times 10^{-7} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
+          },
+          {
+            "id": "D",
+            "text": "$ B_{x} = 3.6 \\times 10^{-15} \\cos (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 12,
+        "stemEn": "Nowadays optical fibers are extensively used for transmitting audio and video signals through long distances. The optical fibers work on",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Double refraction"
+          },
+          {
+            "id": "B",
+            "text": "Refraction"
+          },
+          {
+            "id": "C",
+            "text": "Total internal reflection"
+          },
+          {
+            "id": "D",
+            "text": "Reflection"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 13,
+        "stemEn": "Match List-I and List-II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-III, B-II, C-I, D-IV"
+          },
+          {
+            "id": "B",
+            "text": "A-II, B-III, C-IV, D-I"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-III, C-II, D-IV"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-IV, C-I, D-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q20-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2022-08-06/q20-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 20"
+          }
+        ]
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 14,
+        "stemEn": "A convex mirror of focal length F_{1} is placed at a distance d from a convex lens of focal length F_{2}. A beam of light rays coming from infinity falling on convex lens-convex mirror combination and returns black to infinity. Distance d is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (F_{1}+F_{2}) $"
+          },
+          {
+            "id": "B",
+            "text": "$ (F_{1}-F_{2}) $"
+          },
+          {
+            "id": "C",
+            "text": "$ (F_{2}-2F_{1}) $"
+          },
+          {
+            "id": "D",
+            "text": "$ (F_{2}+2F_{1}) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 15,
+        "stemEn": "The graph shows the relationship between object distance (u) and image distance (v) for an equiconvex lens. The focal length of the lens is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.5 cm"
+          },
+          {
+            "id": "B",
+            "text": "0.05 cm"
+          },
+          {
+            "id": "C",
+            "text": "5.00 cm"
+          },
+          {
+            "id": "D",
+            "text": "5.5 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q22-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-06/q22-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 22"
+          }
+        ]
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 16,
+        "stemEn": "A short pulse of white light is incident from air to a glass slab at normal incidence, after travelling through the slab, the first colour to emerge is\n\n(a) Blue (b) Green (c) Violet (d) Red\n\nThere are four light rays incident on a right angled prism. The refractive index of prism material for the rays are 1.43, 1.39, 1.38, 1.21 respectively. The ray that suffers total internal reflection is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "I"
+          },
+          {
+            "id": "B",
+            "text": "II"
+          },
+          {
+            "id": "C",
+            "text": "III"
+          },
+          {
+            "id": "D",
+            "text": "IV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q23-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-06/q23-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 23"
+          }
+        ]
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 17,
+        "stemEn": "A hollow double concave lens is made of very thin transparent material. It can be filled with air or either of the two liquids $L_{1}$ or $L_{2}$ having refractive indices $n_{1}$ and $n_{2}$ respectively ($n_{2} > n_{1} > 1$). The lens will diverge a parallel beam of light if it is filled with",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Air inside and placed in air"
+          },
+          {
+            "id": "B",
+            "text": "Air inside and immersed in $L_{1}$"
+          },
+          {
+            "id": "C",
+            "text": "$L_{1}$ inside and immersed in $L_{2}$"
+          },
+          {
+            "id": "D",
+            "text": "$L_{2}$ inside and immersed in $L_{1}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 18,
+        "stemEn": "A star is seen using a telescope whose objective lens has a diameter of 250 cm. The wavelength of light coming from the star is 500 nm. The limit of resolution of telescope is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 1.2 \\times 10^{-7} $ radians"
+          },
+          {
+            "id": "B",
+            "text": "$ 2.4 \\times 10^{-7} $ radians"
+          },
+          {
+            "id": "C",
+            "text": "$ 1.5 \\times 10^{-7} $ radians"
+          },
+          {
+            "id": "D",
+            "text": "$ 3.9 \\times 10^{-7} $ radians Passage:(Q.No.27-31) Read the information given below to answer In Young's double slit experiment as shown in figure, interference of light waves were observed on the screen. Thomas Young made two pinholes $ S_{1} $ and $ S_{2} $ (very close to each other) on an opaque screen in front of parent source S $ S_{1} $ and $ S_{2} $ behaved as coherent sources, and produced interference patten on the screen which has alternate bright fringe Parent source and dark fringes. This experiment proved Huygen's wave theory of Light."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 19,
+        "stemEn": "In YDSE experiment position of bright fringes and da fringes is given by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ x_n = n \\frac{\\lambda D}{d} $"
+          },
+          {
+            "id": "B",
+            "text": "$ x_n = n \\frac{\\lambda d}{D} $ n = 0, ±1, ±2 _ $ x_n = \\left(n + \\frac{1}{2}\\right) \\frac{\\lambda D}{d} $ n = 0, ±1, ±2 _"
+          },
+          {
+            "id": "C",
+            "text": "$ x_n = n \\lambda $"
+          },
+          {
+            "id": "D",
+            "text": "$ x_n = n \\frac{\\lambda}{d} $ n = 0, ±1, ±2 _ $ x_n = \\left(n + \\frac{1}{2}\\right) \\lambda $ n = 0, ±1, ±2 _ $$ \\mathbf{n}=\\pm1,\\pm2\\underline{\\quad\\quad} $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 20,
+        "stemEn": "Path difference between the waves meeting at point P is given by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{xD}{d} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{xd}{D} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{2xD}{d} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1xd}{2D} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 21,
+        "stemEn": "In YDSE the distance between two consecutive bright fringes is given by 3 mm. What would be the fringe width if YDSE is performed in a medium of refractive index 1.2?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3 mm"
+          },
+          {
+            "id": "B",
+            "text": "1.5 mm"
+          },
+          {
+            "id": "C",
+            "text": "2.5 mm"
+          },
+          {
+            "id": "D",
+            "text": "0.5 mm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 22,
+        "stemEn": "In YDSE as shown, the path difference $ SS_1 - SS_2 = \\frac{\\lambda}{3} $.\n\nThis causes the shift in position of central bright point. The new position of central bright point is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ -\\frac{\\lambda D}{d} $"
+          },
+          {
+            "id": "B",
+            "text": "$ -2 \\frac{\\lambda D}{d} $"
+          },
+          {
+            "id": "C",
+            "text": "$ -3 \\frac{\\lambda D}{d} $"
+          },
+          {
+            "id": "D",
+            "text": "$ -\\frac{1}{3} \\frac{\\lambda D}{d} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 23,
+        "stemEn": "If $\\lambda_{e},\\lambda_{p}$ and $\\lambda_{\\alpha}$, be the de-Broglie wavelength of electron, proton and A-particle, respectively, then",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\lambda_{p} < \\lambda_{\\alpha} < \\lambda_{e}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\lambda_{e} < \\lambda_{\\alpha} < \\lambda_{p}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\lambda_{e} < \\lambda_{p} < \\lambda_{\\alpha}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\lambda_{\\alpha} < \\lambda_{p} < \\lambda_{e}$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 24,
+        "stemEn": "An electron is accelerated to potential V. If mass of electron is m = 9.1 \\times 10^{-31} kg its charge is e = 1.6 \\times 10^{-19} C, then debroglie wavelength of electron is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\lambda = \\frac{125}{\\sqrt{\\mathrm{V}}}\\mathrm{nm} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\lambda = \\frac{1.227}{\\sqrt{\\mathrm{V}}}\\mathrm{nm} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\lambda=\\frac{\\text{eh}}{\\sqrt{2mV}}\\text{nm} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\lambda=\\frac{3.6}{\\sqrt{\\mathrm{V}}}\\text{nm} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 25,
+        "stemEn": "Keeping the frequency of the incident radiation and the accelerating potential fixed, the intensity of light is varied and the resulting photoelectric current is measured each time by the graph",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": ""
+          },
+          {
+            "id": "B",
+            "text": ""
+          },
+          {
+            "id": "C",
+            "text": ""
+          },
+          {
+            "id": "D",
+            "text": ""
+          }
+        ],
+        "optionsAreImages": true,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [
+          "image-options"
+        ],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q34-options",
+            "kind": "options",
+            "path": "/local-papers/assets/physics-2022-08-06/q34-options.jpg",
+            "page": 4,
+            "alt": "Printed answer choices for question 34"
+          }
+        ]
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 26,
+        "stemEn": "The study of hydrogen atom spectrum has mainly five series. Choose the correct sequence of these series in increasing order of their shortest wavelength.\n\nA. Lyman Series\n\nB. Pfund Series\n\nC. Paschen Series\n\nD. Bracket Series\n\nE. Balmer Series",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, A, D, C, E"
+          },
+          {
+            "id": "B",
+            "text": "B, C, D, E, A"
+          },
+          {
+            "id": "C",
+            "text": "A, E, C, D, B"
+          },
+          {
+            "id": "D",
+            "text": "A, C, E, B, D"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 27,
+        "stemEn": "The Bohr model for the spectra of a H-atom\n\nA. Will not be applicable: to hydrogen in the molecular form\n\nB. Will not be applicable as it is for a He-atom\n\nC. Is valid only at room temperature\n\nD. Predicts continuous as well as discrete spectral lines",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B only"
+          },
+          {
+            "id": "B",
+            "text": "A, B, C only"
+          },
+          {
+            "id": "C",
+            "text": "A, B, D only"
+          },
+          {
+            "id": "D",
+            "text": "B, C, D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 28,
+        "stemEn": "Two nuclei have mass number in the ratio 1:27, then the ratio of their radii and densities should be respectively",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1:1 and 1:3"
+          },
+          {
+            "id": "B",
+            "text": "1:9 and 1:1"
+          },
+          {
+            "id": "C",
+            "text": "1:3 and 1:1"
+          },
+          {
+            "id": "D",
+            "text": "1:1 and 1:9 Passage:(Q.No.38-41) Read the information given below to answer In $\\alpha$-decay, the mass number of daughter nucleus is four less than that of decaying nucleus (parent nucleus). While atomic number decreases by two. In general, $\\alpha$-decay of parent nucleus $+2^{He}$ $ _{Z}^{A}X $ results in daughter nucleus $ _{Z-2}^{A-4}Y $ $$ \\mathrm{^{A}_{Z}X}\\xrightarrow{\\quad}\\mathrm{^{A-4}_{Z-2}Y}+2^{\\mathrm{He}^{4}} $$ From Einstein's mass energy equivalence relation and energy conservation, it is clear that this spontaneous decay is possible only when mass of decay products is less than the mass of the products. By referring the table of nuclear masses, one can check that the total mass of daughter nucleus and $ \\alpha $-particle is indeed less than that of parent nucleus. The disintegration energy or the Q value can be calculated by formula $ Q=\\Delta m.c^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 29,
+        "stemEn": "In $\\alpha$-decay, the mass number of the daughter nucleus is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "One more than that of parent nucleus"
+          },
+          {
+            "id": "B",
+            "text": "One less than that of parent nucleus"
+          },
+          {
+            "id": "C",
+            "text": "Two more than that of parent nucleus"
+          },
+          {
+            "id": "D",
+            "text": "Four less than that of parent nucleus"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 30,
+        "stemEn": "$ A \\xrightarrow{\\alpha} B \\xrightarrow{\\beta} C \\xrightarrow{\\beta} D $\n\nIn the process $ A \\rightarrow B $, $ \\alpha $-particle is emitted by nucleus and in process $ B \\rightarrow C $ and $ C \\rightarrow D $ each, one- $ \\beta $-particle is emitted.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B, C are Isobars"
+          },
+          {
+            "id": "B",
+            "text": "B, C, D are Isobars"
+          },
+          {
+            "id": "C",
+            "text": "A, B, C are Isobars"
+          },
+          {
+            "id": "D",
+            "text": "A, B, C, D all are Isotopes"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 31,
+        "stemEn": "α-particle is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Nucleus of Hydrogen atom"
+          },
+          {
+            "id": "B",
+            "text": "Hydrogen atom"
+          },
+          {
+            "id": "C",
+            "text": "Nucleus of Helium atom"
+          },
+          {
+            "id": "D",
+            "text": "Helium atom"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 32,
+        "stemEn": "During the $\\alpha$-decay process, the mass of all decay product is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Equal to the mass of initial nucleus"
+          },
+          {
+            "id": "B",
+            "text": "Less than the mass of initial nucleus"
+          },
+          {
+            "id": "C",
+            "text": "Equal to the mass of $\\alpha$-particle"
+          },
+          {
+            "id": "D",
+            "text": "Greater than the mass of initial nucleus"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 33,
+        "stemEn": "An α-decay process is given by\n\n$ \\ce{^A_{Z}X ->^{A-4}_{Z-2} Y + ^4_{Z-2}He} $\n\nIf mass of nuclei X, Y and He are $ m_x $, $ m_y $ and $ m_{He} $ respectively, then Q-value is given by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ (m_x - m_y - m_{He})c^2 $"
+          },
+          {
+            "id": "B",
+            "text": "$ (m_y + m_{He} - m_x)c^2 $"
+          },
+          {
+            "id": "C",
+            "text": "$ (m_x + m_y - m_{He})c^2 $"
+          },
+          {
+            "id": "D",
+            "text": "$ (m_x - m_y + m_{He})c^2 $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 34,
+        "stemEn": "In the circuit diagram $D_{1}, D_{2}, D_{3}$ and $D_{4}$ are diodes. Choose the correct answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ D_{1} $ and $ D_{2} $ are forward biased"
+          },
+          {
+            "id": "B",
+            "text": "$ D_{1} $ and $ D_{3} $ are forward biased"
+          },
+          {
+            "id": "C",
+            "text": "$ D_{2} $ and $ D_{4} $ are forward biased"
+          },
+          {
+            "id": "D",
+            "text": "All diodes are forward biased"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q43-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-06/q43-figure-1.jpg",
+            "page": 5,
+            "alt": "Figure for question 43"
+          }
+        ]
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 35,
+        "stemEn": "Three amplifiers are connected in series, (cascaded). The first amplifier has voltage gain of 5, second has voltage gain of 10 and $ 3^{rd} $ has voltage gain of 20. If the Input signal is 0.1 V, then the final output of AC signal will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5 V"
+          },
+          {
+            "id": "B",
+            "text": "25 V"
+          },
+          {
+            "id": "C",
+            "text": "100 V"
+          },
+          {
+            "id": "D",
+            "text": "50 V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 36,
+        "stemEn": "Ratio of free electron density to hole density of a p-type semiconductor is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Equal to one"
+          },
+          {
+            "id": "B",
+            "text": "Less than one"
+          },
+          {
+            "id": "C",
+            "text": "Greater than one"
+          },
+          {
+            "id": "D",
+            "text": "Can be less than or greater than one depending upon semiconductor material."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 37,
+        "stemEn": "Which of the following statement is correct?\n\nA. In conductors., the valence and conduction bonds overlap\n\nB. Substances with energy gap of the order of 2 eV are insulators\n\nC. The resistivity of a semiconductor increases with increase in temperature\n\nD. The depletion layer in the pn-junction region is caused by draft of electrons\n\n$$ \\mathrm{A I}=\\frac{\\varsigma}{\\varsigma}=\\Omega\\varsigma(s). $$\n\ndiwylaitnongxo esenotni ydivizsi, atotubnoo al (a) ei eidi (a) moitqo ni yiao stutserqmet ni oestotmi\n\nswane suonni si (a), ob guinogqad\n\n(γωνίσθωναστραμε) ονεια ι' 9', οπεν στυλοεδία 1Α\n\nεα πανίγι πιτιαυς σγαυδς το γιλιδοΜ (ε)\n\ntoomoni zi (b) bus (c), (d) bus toomoni zi (e), and T\n\ngenbugeti moitamulini on zi stod zoz nso ow za (sno)\n\nto laitmozo ai rdiw, 9k bus YK stow mowwtod soemah\n\nsotl guiduloo\n\njinsiltuani zi amb, 02\n\ntoog 9h bided aw moiwi z sds2 bandgaM. 3D (d)\n\nsibil ni moolo3to\n\nbouley wol a gnitomoo yd sbtm ai toommA (b)\n\ntoomonsvlog of lollamq somziest\n\nVI←A,02\n\nconstiest bouley fgd a gnitomoo yd sbtm ai toommlv\n\ntoomonsvlog dtw srtse ni",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A only"
+          },
+          {
+            "id": "B",
+            "text": "B only"
+          },
+          {
+            "id": "C",
+            "text": "C only"
+          },
+          {
+            "id": "D",
+            "text": "A, B, D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": [
+          {
+            "id": "q47-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-06/q47-figure-1.jpg",
+            "page": 6,
+            "alt": "Figure for question 47"
+          }
+        ]
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 38,
+        "stemEn": "The I-V characteristics of an operating photodiode are drawn in",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "First quadrant"
+          },
+          {
+            "id": "B",
+            "text": "Second quadrant"
+          },
+          {
+            "id": "C",
+            "text": "Third quadrant"
+          },
+          {
+            "id": "D",
+            "text": "Fourth quadrant"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 39,
+        "stemEn": "Frequencies in the UHF range normally propagate by means of",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ground waves"
+          },
+          {
+            "id": "B",
+            "text": "Sky waves"
+          },
+          {
+            "id": "C",
+            "text": "Surface waves"
+          },
+          {
+            "id": "D",
+            "text": "Space waves"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 40,
+        "stemEn": "Power radiated by an antenna is directly proportional to (I - length of antenna, $ \\lambda $ - wavelength of electromagnetic wave)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\left(\\frac{1}{\\lambda}\\right)^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{\\lambda} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\left(\\frac{\\lambda}{1}\\right)^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{\\lambda}{1} $ $$ =-\\hat{2}\\mathrm{n C}\\times\\frac{\\psi\\pi\\varepsilon^{0}}{1}\\times10^{\\mathrm{H C}}\\left(\\frac{|\\chi|}{1}-\\frac{|\\bar{\\chi}|}{1}\\right) $$ time $E=|\\langle x|\\operatorname{bus} \\operatorname{time} E=|\\langle x|\\rangle$ $A$ $0=\\operatorname{snob} \\operatorname{show} $ $d\\operatorname{reg}d\\operatorname{ratio}d\\operatorname{lim}aA$ (b) $consecutive \\times 1$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "A charge +10 μC is placed at (0 mm, 0 mm) Another charge -5 μC is moved from (3 mm, 0 mm) to (0 mm, 3 mm). Work done by the external agency is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0 J"
-     },
-     {
-      "id": "B",
-      "text": "150 J"
-     },
-     {
-      "id": "C",
-      "text": "+150 J"
-     },
-     {
-      "id": "D",
-      "text": "300 J"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "In a meter bridge, null point is found at a distance of 20 cm from the end A, then the resistance of 10 Ω is replaced by another resistance of 20 Ω the null",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "20 cm"
-     },
-     {
-      "id": "B",
-      "text": "30 cm"
-     },
-     {
-      "id": "C",
-      "text": "15 cm"
-     },
-     {
-      "id": "D",
-      "text": "40 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Changing current through IV, cell and through $ 2\\Omega $ resistor respectively is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2A, 1A"
-     },
-     {
-      "id": "B",
-      "text": "1A, 2A"
-     },
-     {
-      "id": "C",
-      "text": "2A, 2A"
-     },
-     {
-      "id": "D",
-      "text": "1A, 1A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "The mobility of charge carriers increases with",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Increase in average collision time interval"
-     },
-     {
-      "id": "B",
-      "text": "Increase in the electric field"
-     },
-     {
-      "id": "C",
-      "text": "Increase in the mass of the charge carriers"
-     },
-     {
-      "id": "D",
-      "text": "Decrease in the charge of the mobile carriers"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Consider an infinitely long conductor XY carrying current (x)\n\nA. A rectangular loop carrying current 2 A is placed parallel to\n\nit in the same plane. The two conductors are found to exert a\n\nforce of $ 1.8 \\times 10^{-5} $ N/M. Find the value of x.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.6 A"
-     },
-     {
-      "id": "B",
-      "text": "$ 3\\times10^{2} $ A"
-     },
-     {
-      "id": "C",
-      "text": "3A"
-     },
-     {
-      "id": "D",
-      "text": "$3 \\times 10^{-2}$ A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "The first particle accelerator of India (37\" cyclotron) was established in the year 1953. Whose vision was behind this project?\n\n(a) Dr. C.V. Raman\n\n(b) Dr. Meghnad Saha\n\n(c) Dr. Jagdish Chandra Bose\n\n(d) Dr. Homi Jahangir Bhabha\n10. Match List-I with List-II\n\nChoose the correct answer from the options given below:\n\n(a) A-IV, B-III, C-I, D-II\n\n(b) A-II, B-III, C-IV, D-I\n\n(c) A-I, B-II, C-III, D-IV\n\n(d) A-IV, B-I, C-II, D-III\n\nGauss law in magnetism signifies that",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Magnetic lines of force can pass through a closed surface"
-     },
-     {
-      "id": "B",
-      "text": "Net flux through closed surface is zero, monopole does not exist"
-     },
-     {
-      "id": "C",
-      "text": "Net flux is always $\\mu_{0}$ times the net charge enclosed"
-     },
-     {
-      "id": "D",
-      "text": "There always exist a monopole"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1,
-     2
-    ],
-    "assets": [
-     {
-      "id": "q09-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2022-08-06/q09-table-1.jpg",
-      "page": 2,
-      "alt": "Table for question 9"
-     }
-    ]
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "A. At the magnetic pole of earth; angle of dip is $ 90^{\\circ} $ and $ B_{H}=0 $.\n\nB. At the magnetic pole of earth; angle of dip is zero and $ B_{v}=0 $.\n\nC. At the magnetic equator of the earth; angle of dip is $ 90^{\\circ} $ and $ B_{H}=0 $.\n\nD. At the magnetic equator of the earth; angle of dip is zero and $ B_{v}=0 $.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A and B only"
-     },
-     {
-      "id": "B",
-      "text": "B and D only"
-     },
-     {
-      "id": "C",
-      "text": "C and D only"
-     },
-     {
-      "id": "D",
-      "text": "A and D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "Faraday's law in integral form is $ \\mu_0 $\n\n(The symbols have their usual meaning)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "E.ds = $ \\frac{Q}{\\varepsilon_0} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\int E.dl = \\frac{-d\\phi}{dt} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\int B.ds = 0 $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\int B.dl = \\mu_0 \\left( i_c + \\varepsilon_0 \\frac{d\\phi}{dt} \\right) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "Four different pairs of physical quantities are given below. Pair having same dimensions will be?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Magnetic flux and magnetic moment"
-     },
-     {
-      "id": "B",
-      "text": "Magnetisation and magnetic intensity"
-     },
-     {
-      "id": "C",
-      "text": "Magnetic field and magnetic permeability"
-     },
-     {
-      "id": "D",
-      "text": "Magnetisation and Magnetic field"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "When a 100 V dc is applied across a solenoid, a current of 1 A flows in it. When a 100 V, 50 Hz ac is applied across the same solenoid, the current drops to 0.5 A. The inductance of the solenoid is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.55H"
-     },
-     {
-      "id": "B",
-      "text": "0.86H"
-     },
-     {
-      "id": "C",
-      "text": "1H"
-     },
-     {
-      "id": "D",
-      "text": "0.93H"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "A current of 5 A is flowing at 220 V in the primary coil of a transformer. If the voltage produced in the secondary coil is 2200 V and 50% of power is lost, then the current in the secondary coil will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.25 A"
-     },
-     {
-      "id": "B",
-      "text": "0.5 A"
-     },
-     {
-      "id": "C",
-      "text": "2.5 A"
-     },
-     {
-      "id": "D",
-      "text": "5 A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Electric field in plane electromagnetic wave is given by:\n\n$ Ey = 5 \\times 10^{-7} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $\n\nThe magnetic field associated with it is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ B_{x} = 0.5 \\times 10^{-7} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
-     },
-     {
-      "id": "B",
-      "text": "$ B_{x} = 1.66 \\times 10^{-15} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
-     },
-     {
-      "id": "C",
-      "text": "$ B_{x} = 9 \\times 10^{-7} \\sin (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
-     },
-     {
-      "id": "D",
-      "text": "$ B_{x} = 3.6 \\times 10^{-15} \\cos (0.25 \\times 10^{3}x + 2.5 \\times 10^{11}t) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "Nowadays optical fibers are extensively used for transmitting audio and video signals through long distances. The optical fibers work on",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Double refraction"
-     },
-     {
-      "id": "B",
-      "text": "Refraction"
-     },
-     {
-      "id": "C",
-      "text": "Total internal reflection"
-     },
-     {
-      "id": "D",
-      "text": "Reflection"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Match List-I and List-II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-III, B-II, C-I, D-IV"
-     },
-     {
-      "id": "B",
-      "text": "A-II, B-III, C-IV, D-I"
-     },
-     {
-      "id": "C",
-      "text": "A-I, B-III, C-II, D-IV"
-     },
-     {
-      "id": "D",
-      "text": "A-II, B-IV, C-I, D-III"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q20-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2022-08-06/q20-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 20"
-     }
-    ]
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "A convex mirror of focal length F_{1} is placed at a distance d from a convex lens of focal length F_{2}. A beam of light rays coming from infinity falling on convex lens-convex mirror combination and returns black to infinity. Distance d is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ (F_{1}+F_{2}) $"
-     },
-     {
-      "id": "B",
-      "text": "$ (F_{1}-F_{2}) $"
-     },
-     {
-      "id": "C",
-      "text": "$ (F_{2}-2F_{1}) $"
-     },
-     {
-      "id": "D",
-      "text": "$ (F_{2}+2F_{1}) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "The graph shows the relationship between object distance (u) and image distance (v) for an equiconvex lens. The focal length of the lens is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.5 cm"
-     },
-     {
-      "id": "B",
-      "text": "0.05 cm"
-     },
-     {
-      "id": "C",
-      "text": "5.00 cm"
-     },
-     {
-      "id": "D",
-      "text": "5.5 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q22-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-06/q22-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 22"
-     }
-    ]
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "A short pulse of white light is incident from air to a glass slab at normal incidence, after travelling through the slab, the first colour to emerge is\n\n(a) Blue (b) Green (c) Violet (d) Red\n\nThere are four light rays incident on a right angled prism. The refractive index of prism material for the rays are 1.43, 1.39, 1.38, 1.21 respectively. The ray that suffers total internal reflection is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "I"
-     },
-     {
-      "id": "B",
-      "text": "II"
-     },
-     {
-      "id": "C",
-      "text": "III"
-     },
-     {
-      "id": "D",
-      "text": "IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q23-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-06/q23-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 23"
-     }
-    ]
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "A hollow double concave lens is made of very thin transparent material. It can be filled with air or either of the two liquids $L_{1}$ or $L_{2}$ having refractive indices $n_{1}$ and $n_{2}$ respectively ($n_{2} > n_{1} > 1$). The lens will diverge a parallel beam of light if it is filled with",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Air inside and placed in air"
-     },
-     {
-      "id": "B",
-      "text": "Air inside and immersed in $L_{1}$"
-     },
-     {
-      "id": "C",
-      "text": "$L_{1}$ inside and immersed in $L_{2}$"
-     },
-     {
-      "id": "D",
-      "text": "$L_{2}$ inside and immersed in $L_{1}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "A star is seen using a telescope whose objective lens has a diameter of 250 cm. The wavelength of light coming from the star is 500 nm. The limit of resolution of telescope is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 1.2 \\times 10^{-7} $ radians"
-     },
-     {
-      "id": "B",
-      "text": "$ 2.4 \\times 10^{-7} $ radians"
-     },
-     {
-      "id": "C",
-      "text": "$ 1.5 \\times 10^{-7} $ radians"
-     },
-     {
-      "id": "D",
-      "text": "$ 3.9 \\times 10^{-7} $ radians Passage:(Q.No.27-31) Read the information given below to answer In Young's double slit experiment as shown in figure, interference of light waves were observed on the screen. Thomas Young made two pinholes $ S_{1} $ and $ S_{2} $ (very close to each other) on an opaque screen in front of parent source S $ S_{1} $ and $ S_{2} $ behaved as coherent sources, and produced interference patten on the screen which has alternate bright fringe Parent source and dark fringes. This experiment proved Huygen's wave theory of Light."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "In YDSE experiment position of bright fringes and da fringes is given by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ x_n = n \\frac{\\lambda D}{d} $"
-     },
-     {
-      "id": "B",
-      "text": "$ x_n = n \\frac{\\lambda d}{D} $ n = 0, ±1, ±2 _ $ x_n = \\left(n + \\frac{1}{2}\\right) \\frac{\\lambda D}{d} $ n = 0, ±1, ±2 _"
-     },
-     {
-      "id": "C",
-      "text": "$ x_n = n \\lambda $"
-     },
-     {
-      "id": "D",
-      "text": "$ x_n = n \\frac{\\lambda}{d} $ n = 0, ±1, ±2 _ $ x_n = \\left(n + \\frac{1}{2}\\right) \\lambda $ n = 0, ±1, ±2 _ $$ \\mathbf{n}=\\pm1,\\pm2\\underline{\\quad\\quad} $$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Path difference between the waves meeting at point P is given by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{xD}{d} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{xd}{D} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{2xD}{d} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{1xd}{2D} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "In YDSE the distance between two consecutive bright fringes is given by 3 mm. What would be the fringe width if YDSE is performed in a medium of refractive index 1.2?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3 mm"
-     },
-     {
-      "id": "B",
-      "text": "1.5 mm"
-     },
-     {
-      "id": "C",
-      "text": "2.5 mm"
-     },
-     {
-      "id": "D",
-      "text": "0.5 mm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "In YDSE as shown, the path difference $ SS_1 - SS_2 = \\frac{\\lambda}{3} $.\n\nThis causes the shift in position of central bright point. The new position of central bright point is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ -\\frac{\\lambda D}{d} $"
-     },
-     {
-      "id": "B",
-      "text": "$ -2 \\frac{\\lambda D}{d} $"
-     },
-     {
-      "id": "C",
-      "text": "$ -3 \\frac{\\lambda D}{d} $"
-     },
-     {
-      "id": "D",
-      "text": "$ -\\frac{1}{3} \\frac{\\lambda D}{d} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "If $\\lambda_{e},\\lambda_{p}$ and $\\lambda_{\\alpha}$, be the de-Broglie wavelength of electron, proton and A-particle, respectively, then",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\lambda_{p} < \\lambda_{\\alpha} < \\lambda_{e}$"
-     },
-     {
-      "id": "B",
-      "text": "$\\lambda_{e} < \\lambda_{\\alpha} < \\lambda_{p}$"
-     },
-     {
-      "id": "C",
-      "text": "$\\lambda_{e} < \\lambda_{p} < \\lambda_{\\alpha}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\lambda_{\\alpha} < \\lambda_{p} < \\lambda_{e}$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "An electron is accelerated to potential V. If mass of electron is m = 9.1 \\times 10^{-31} kg its charge is e = 1.6 \\times 10^{-19} C, then debroglie wavelength of electron is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\lambda = \\frac{125}{\\sqrt{\\mathrm{V}}}\\mathrm{nm} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\lambda = \\frac{1.227}{\\sqrt{\\mathrm{V}}}\\mathrm{nm} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\lambda=\\frac{\\text{eh}}{\\sqrt{2mV}}\\text{nm} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\lambda=\\frac{3.6}{\\sqrt{\\mathrm{V}}}\\text{nm} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Keeping the frequency of the incident radiation and the accelerating potential fixed, the intensity of light is varied and the resulting photoelectric current is measured each time by the graph",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q34-options",
-      "kind": "options",
-      "path": "/local-papers/assets/physics-2022-08-06/q34-options.jpg",
-      "page": 4,
-      "alt": "Printed answer choices for question 34"
-     }
-    ]
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "The study of hydrogen atom spectrum has mainly five series. Choose the correct sequence of these series in increasing order of their shortest wavelength.\n\nA. Lyman Series\n\nB. Pfund Series\n\nC. Paschen Series\n\nD. Bracket Series\n\nE. Balmer Series",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, A, D, C, E"
-     },
-     {
-      "id": "B",
-      "text": "B, C, D, E, A"
-     },
-     {
-      "id": "C",
-      "text": "A, E, C, D, B"
-     },
-     {
-      "id": "D",
-      "text": "A, C, E, B, D"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "The Bohr model for the spectra of a H-atom\n\nA. Will not be applicable: to hydrogen in the molecular form\n\nB. Will not be applicable as it is for a He-atom\n\nC. Is valid only at room temperature\n\nD. Predicts continuous as well as discrete spectral lines",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B only"
-     },
-     {
-      "id": "B",
-      "text": "A, B, C only"
-     },
-     {
-      "id": "C",
-      "text": "A, B, D only"
-     },
-     {
-      "id": "D",
-      "text": "B, C, D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Two nuclei have mass number in the ratio 1:27, then the ratio of their radii and densities should be respectively",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1:1 and 1:3"
-     },
-     {
-      "id": "B",
-      "text": "1:9 and 1:1"
-     },
-     {
-      "id": "C",
-      "text": "1:3 and 1:1"
-     },
-     {
-      "id": "D",
-      "text": "1:1 and 1:9 Passage:(Q.No.38-41) Read the information given below to answer In $\\alpha$-decay, the mass number of daughter nucleus is four less than that of decaying nucleus (parent nucleus). While atomic number decreases by two. In general, $\\alpha$-decay of parent nucleus $+2^{He}$ $ _{Z}^{A}X $ results in daughter nucleus $ _{Z-2}^{A-4}Y $ $$ \\mathrm{^{A}_{Z}X}\\xrightarrow{\\quad}\\mathrm{^{A-4}_{Z-2}Y}+2^{\\mathrm{He}^{4}} $$ From Einstein's mass energy equivalence relation and energy conservation, it is clear that this spontaneous decay is possible only when mass of decay products is less than the mass of the products. By referring the table of nuclear masses, one can check that the total mass of daughter nucleus and $ \\alpha $-particle is indeed less than that of parent nucleus. The disintegration energy or the Q value can be calculated by formula $ Q=\\Delta m.c^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "In $\\alpha$-decay, the mass number of the daughter nucleus is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "One more than that of parent nucleus"
-     },
-     {
-      "id": "B",
-      "text": "One less than that of parent nucleus"
-     },
-     {
-      "id": "C",
-      "text": "Two more than that of parent nucleus"
-     },
-     {
-      "id": "D",
-      "text": "Four less than that of parent nucleus"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "$ A \\xrightarrow{\\alpha} B \\xrightarrow{\\beta} C \\xrightarrow{\\beta} D $\n\nIn the process $ A \\rightarrow B $, $ \\alpha $-particle is emitted by nucleus and in process $ B \\rightarrow C $ and $ C \\rightarrow D $ each, one- $ \\beta $-particle is emitted.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B, C are Isobars"
-     },
-     {
-      "id": "B",
-      "text": "B, C, D are Isobars"
-     },
-     {
-      "id": "C",
-      "text": "A, B, C are Isobars"
-     },
-     {
-      "id": "D",
-      "text": "A, B, C, D all are Isotopes"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "α-particle is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Nucleus of Hydrogen atom"
-     },
-     {
-      "id": "B",
-      "text": "Hydrogen atom"
-     },
-     {
-      "id": "C",
-      "text": "Nucleus of Helium atom"
-     },
-     {
-      "id": "D",
-      "text": "Helium atom"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "During the $\\alpha$-decay process, the mass of all decay product is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Equal to the mass of initial nucleus"
-     },
-     {
-      "id": "B",
-      "text": "Less than the mass of initial nucleus"
-     },
-     {
-      "id": "C",
-      "text": "Equal to the mass of $\\alpha$-particle"
-     },
-     {
-      "id": "D",
-      "text": "Greater than the mass of initial nucleus"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "An α-decay process is given by\n\n$ \\ce{^A_{Z}X ->^{A-4}_{Z-2} Y + ^4_{Z-2}He} $\n\nIf mass of nuclei X, Y and He are $ m_x $, $ m_y $ and $ m_{He} $ respectively, then Q-value is given by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ (m_x - m_y - m_{He})c^2 $"
-     },
-     {
-      "id": "B",
-      "text": "$ (m_y + m_{He} - m_x)c^2 $"
-     },
-     {
-      "id": "C",
-      "text": "$ (m_x + m_y - m_{He})c^2 $"
-     },
-     {
-      "id": "D",
-      "text": "$ (m_x - m_y + m_{He})c^2 $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "In the circuit diagram $D_{1}, D_{2}, D_{3}$ and $D_{4}$ are diodes. Choose the correct answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ D_{1} $ and $ D_{2} $ are forward biased"
-     },
-     {
-      "id": "B",
-      "text": "$ D_{1} $ and $ D_{3} $ are forward biased"
-     },
-     {
-      "id": "C",
-      "text": "$ D_{2} $ and $ D_{4} $ are forward biased"
-     },
-     {
-      "id": "D",
-      "text": "All diodes are forward biased"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q43-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-06/q43-figure-1.jpg",
-      "page": 5,
-      "alt": "Figure for question 43"
-     }
-    ]
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Three amplifiers are connected in series, (cascaded). The first amplifier has voltage gain of 5, second has voltage gain of 10 and $ 3^{rd} $ has voltage gain of 20. If the Input signal is 0.1 V, then the final output of AC signal will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5 V"
-     },
-     {
-      "id": "B",
-      "text": "25 V"
-     },
-     {
-      "id": "C",
-      "text": "100 V"
-     },
-     {
-      "id": "D",
-      "text": "50 V"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Ratio of free electron density to hole density of a p-type semiconductor is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Equal to one"
-     },
-     {
-      "id": "B",
-      "text": "Less than one"
-     },
-     {
-      "id": "C",
-      "text": "Greater than one"
-     },
-     {
-      "id": "D",
-      "text": "Can be less than or greater than one depending upon semiconductor material."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Which of the following statement is correct?\n\nA. In conductors., the valence and conduction bonds overlap\n\nB. Substances with energy gap of the order of 2 eV are insulators\n\nC. The resistivity of a semiconductor increases with increase in temperature\n\nD. The depletion layer in the pn-junction region is caused by draft of electrons\n\n$$ \\mathrm{A I}=\\frac{\\varsigma}{\\varsigma}=\\Omega\\varsigma(s). $$\n\ndiwylaitnongxo esenotni ydivizsi, atotubnoo al (a) ei eidi (a) moitqo ni yiao stutserqmet ni oestotmi\n\nswane suonni si (a), ob guinogqad\n\n(γωνίσθωναστραμε) ονεια ι' 9', οπεν στυλοεδία 1Α\n\nεα πανίγι πιτιαυς σγαυδς το γιλιδοΜ (ε)\n\ntoomoni zi (b) bus (c), (d) bus toomoni zi (e), and T\n\ngenbugeti moitamulini on zi stod zoz nso ow za (sno)\n\nto laitmozo ai rdiw, 9k bus YK stow mowwtod soemah\n\nsotl guiduloo\n\njinsiltuani zi amb, 02\n\ntoog 9h bided aw moiwi z sds2 bandgaM. 3D (d)\n\nsibil ni moolo3to\n\nbouley wol a gnitomoo yd sbtm ai toommA (b)\n\ntoomonsvlog of lollamq somziest\n\nVI←A,02\n\nconstiest bouley fgd a gnitomoo yd sbtm ai toommlv\n\ntoomonsvlog dtw srtse ni",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A only"
-     },
-     {
-      "id": "B",
-      "text": "B only"
-     },
-     {
-      "id": "C",
-      "text": "C only"
-     },
-     {
-      "id": "D",
-      "text": "A, B, D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": [
-     {
-      "id": "q47-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-06/q47-figure-1.jpg",
-      "page": 6,
-      "alt": "Figure for question 47"
-     }
-    ]
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "The I-V characteristics of an operating photodiode are drawn in",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "First quadrant"
-     },
-     {
-      "id": "B",
-      "text": "Second quadrant"
-     },
-     {
-      "id": "C",
-      "text": "Third quadrant"
-     },
-     {
-      "id": "D",
-      "text": "Fourth quadrant"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Frequencies in the UHF range normally propagate by means of",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ground waves"
-     },
-     {
-      "id": "B",
-      "text": "Sky waves"
-     },
-     {
-      "id": "C",
-      "text": "Surface waves"
-     },
-     {
-      "id": "D",
-      "text": "Space waves"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Power radiated by an antenna is directly proportional to (I - length of antenna, $ \\lambda $ - wavelength of electromagnetic wave)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\left(\\frac{1}{\\lambda}\\right)^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{1}{\\lambda} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\left(\\frac{\\lambda}{1}\\right)^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{\\lambda}{1} $ $$ =-\\hat{2}\\mathrm{n C}\\times\\frac{\\psi\\pi\\varepsilon^{0}}{1}\\times10^{\\mathrm{H C}}\\left(\\frac{|\\chi|}{1}-\\frac{|\\bar{\\chi}|}{1}\\right) $$ time $E=|\\langle x|\\operatorname{bus} \\operatorname{time} E=|\\langle x|\\rangle$ $A$ $0=\\operatorname{snob} \\operatorname{show} $ $d\\operatorname{reg}d\\operatorname{ratio}d\\operatorname{lim}aA$ (b) $consecutive \\times 1$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω$ $Ω"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }
