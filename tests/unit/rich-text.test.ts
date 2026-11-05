@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { escapeHtml, renderPlainText, renderRichText } from "../../src/lib/rich-text";
 
+function withoutKatexSource(html: string): string {
+  return html.replace(/<annotation[\s\S]*?<\/annotation>/g, "");
+}
+
 describe("rich text", () => {
   it("escapes stored HTML instead of executing it", () => {
     const html = renderRichText('<img src=x onerror="alert(1)">');
@@ -114,5 +118,157 @@ describe("rich text", () => {
     const output = renderRichText(input);
     const occurrences = (output.match(/Sexually Transmitted Disease/g) || []).length;
     expect(occurrences).toBe(1);
+  });
+
+  it("renders bare chemical subscripts and superscripts", () => {
+    const output = renderRichText("HCl > CaCl_{2} > MgSO_{4} > NaCl, 0.55 mol kg^{-1}");
+    expect(output).toContain("CaCl<sub>2</sub>");
+    expect(output).toContain("MgSO<sub>4</sub>");
+    expect(output).toContain("kg<sup>-1</sup>");
+    expect(output).not.toContain("_{2}");
+    expect(output).not.toContain("_{4}");
+    expect(output).not.toContain("^{-1}");
+  });
+
+  it("renders bare LaTeX commands without dollar delimiters", () => {
+    const fraction = withoutKatexSource(
+      renderRichText("The value is \\frac{1}{2} of the total."),
+    );
+    expect(fraction).toContain("katex");
+    expect(fraction).not.toContain("\\frac");
+
+    const chemistry = withoutKatexSource(
+      renderRichText("\\mathrm{CHCl}_{3} + \\mathrm{NaOH}"),
+    );
+    expect(chemistry).toContain("katex");
+    expect(chemistry).not.toContain("\\mathrm");
+    expect(chemistry).not.toContain("_{3}");
+  });
+
+  it("renders bare LaTeX environments as one math block", () => {
+    const output = withoutKatexSource(
+      renderRichText("\\begin{array}{c} a \\\\ b \\end{array}"),
+    );
+    expect(output).toContain("katex");
+    expect(output).not.toContain("\\begin");
+    expect(output).not.toContain("\\end");
+  });
+
+  it("renders bracket and parenthesis math delimiters", () => {
+    const display = withoutKatexSource(renderRichText("\\[ \\frac{a}{b} \\]"));
+    expect(display).toContain("katex-display");
+    expect(display).not.toContain("\\frac");
+
+    const inline = renderRichText("\\( x^2 + y^2 \\)");
+    expect(inline).toContain("katex");
+    expect(inline).not.toContain("\\(");
+  });
+
+  it("converts literal escape sequences into line breaks", () => {
+    const output = renderRichText("first line\\nSecond line\\nthird");
+    expect(output).toContain("first line<br />Second line<br />third");
+  });
+
+  it("renders math in prose that contains words like one =", () => {
+    const output = renderRichText(
+      "$x^2$\n\nHence age of the eldest one = 7+12=19 years",
+    );
+    expect(output).toContain("katex");
+    expect(output).not.toContain("$x^2$");
+  });
+
+  it("repairs malformed math instead of showing raw LaTeX", () => {
+    const transposed = withoutKatexSource(
+      renderRichText("$ \\mathrm{MnO_2, SO_2, HO^- $} $"),
+    );
+    expect(transposed).not.toContain("\\mathrm");
+    expect(transposed).not.toContain("$");
+
+    const extraBraces = withoutKatexSource(
+      renderRichText("$$ h= {\\sqrt{\\frac{175}{7}}}} $$"),
+    );
+    expect(extraBraces).not.toContain("\\sqrt");
+
+    const doubleScript = withoutKatexSource(
+      renderRichText("$$ \\alpha=2.22\\times10^{-3}^{\\circ}C^{-1} $$"),
+    );
+    expect(doubleScript).not.toContain("^{\\circ}");
+
+    const orphanDelimiter = withoutKatexSource(
+      renderRichText("$$ \\frac{(1,2 \\right) + (3,4 \\right)}{\\sqrt{3}} $$"),
+    );
+    expect(orphanDelimiter).not.toContain("\\right");
+  });
+
+  it("repairs text-mode math, chemfig and micro symbols", () => {
+    const textMath = withoutKatexSource(
+      renderRichText("$ \\underline{\\text{v_{1} < v_{2} < v_{3}}} $"),
+    );
+    expect(textMath).not.toContain("\\text");
+    expect(textMath).not.toContain("v_{1}");
+
+    const underscores = withoutKatexSource(
+      renderRichText("$ \\underline{\\text{Option 2: (A),_(C),_(B)}} $"),
+    );
+    expect(underscores).not.toContain("\\text");
+    expect(underscores).not.toContain("$");
+
+    const chem = withoutKatexSource(
+      renderRichText("$ \\ce{ \\chemfig{*6(=-=-=-)} -CH2-OH } $"),
+    );
+    expect(chem).not.toContain("\\chemfig");
+
+    const micro = withoutKatexSource(renderRichText("$$ \\upmu_{0} $$"));
+    expect(micro).not.toContain("\\upmu");
+    expect(micro).toContain("katex");
+  });
+
+  it("renders environments after an unmatched bracket delimiter", () => {
+    const output = withoutKatexSource(
+      renderRichText("\\[\\begin{array}{l} a \\\\ b \\end{array} and x = 1"),
+    );
+    expect(output).not.toContain("\\[");
+    expect(output).not.toContain("\\begin");
+    expect(output).not.toContain("\\end");
+  });
+
+  it("drops alignment tabs outside environments", () => {
+    const output = withoutKatexSource(
+      renderRichText("$$ \\begin{array}{c} a \\end{array} = & 1 $$"),
+    );
+    expect(output).not.toContain("&");
+    expect(output).toContain("katex");
+  });
+
+  it("keeps LaTeX commands that start with n", () => {
+    const output = withoutKatexSource(
+      renderRichText("$ a \\neq b $ and $ \\nabla f $ and $ x \\notin A $"),
+    );
+    expect(output).not.toContain("\\neq");
+    expect(output).not.toContain("\\nabla");
+    expect(output).not.toContain("\\notin");
+    expect(output).not.toContain("$");
+    expect(output).toContain("katex");
+  });
+
+  it("keeps prose identifiers with underscores intact", () => {
+    const output = renderRichText(
+      "Option_2:_(A),_(B)_and_(C)_only. ALTER_TABLE table_name referenced_table_name ________",
+    );
+    expect(output).not.toContain("<sub>");
+    expect(output).toContain("Option_2");
+    expect(output).toContain("ALTER_TABLE");
+    expect(output).toContain("table_name");
+    expect(output).toContain("________");
+  });
+
+  it("renders common unbraced formulas without false positives", () => {
+    const output = renderRichText("C_6H_5SO_2Cl, P_total = P_1 + P_2, x^2, Ca^2+");
+    expect(output).toContain("C<sub>6</sub>H<sub>5</sub>SO<sub>2</sub>Cl");
+    expect(output).toContain("P<sub>total</sub>");
+    expect(output).toContain("P<sub>1</sub>");
+    expect(output).toContain("P<sub>2</sub>");
+    expect(output).toContain("x<sup>2</sup>");
+    expect(output).toContain("Ca<sup>2+</sup>");
   });
 });
