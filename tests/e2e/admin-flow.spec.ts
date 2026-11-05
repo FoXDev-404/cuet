@@ -55,7 +55,13 @@ test("an editor creates, publishes and sees a mock test", async ({ page }) => {
   await page.locator('[data-field="title"]').fill(title);
   await expect(page.locator('[data-field="slug"]')).toHaveValue(/e2e-publish-check/);
   await page.locator("#section-order").fill("General Test, Language");
-  await page.locator("[data-question-checkbox]").first().check();
+  // The builder prioritises explainable questions, but be explicit: a mock
+  // cannot be published while a selected question has no written explanation.
+  const publishableRow = page
+    .locator("[data-question-row]")
+    .filter({ hasNotText: "No explanation" })
+    .first();
+  await publishableRow.locator("[data-question-checkbox]").check();
   await page.getByRole("button", { name: "Create mock" }).click();
   await page.waitForURL(/\/admin\/mocks\/\d+$/);
 
