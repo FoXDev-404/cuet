@@ -30,10 +30,11 @@
     }
   ],
   "vars": {
-    "ENV": "development",
+    "ENV": "production",
     "SITE_URL": "https://cuet-astro.cuet-platform.workers.dev",
-    "DEV_SHOW_RESET_LINK": "1",
+    "DEV_SHOW_RESET_LINK": "",
     "ADMIN_AUTH_MODE": "session",
+    "ADMIN_ALLOW_SESSION_IN_PROD": "1",
     "CF_ACCESS_TEAM_DOMAIN": "",
     "CF_ACCESS_AUD": "",
     "ACCESS_TEAM_DOMAIN": "",

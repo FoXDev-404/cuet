@@ -43,6 +43,18 @@ describe('Environment Separation & Guard Policies', () => {
     }
   });
 
+  it('keeps the deployed top-level worker in production mode with an explicit admin override', () => {
+    const raw = readFileSync(resolve(process.cwd(), 'wrangler.jsonc'), 'utf8');
+    const config = JSON.parse(stripJsoncComments(raw));
+
+    expect(config.vars?.ENV).toBe('production');
+    expect(config.vars?.DEV_SHOW_RESET_LINK).toBe('');
+    // Cloudflare Access is not configured yet, so session admin access stays
+    // available only because the override is intentional and explicit.
+    expect(config.vars?.ADMIN_AUTH_MODE).toBe('session');
+    expect(config.vars?.ADMIN_ALLOW_SESSION_IN_PROD).toBe('1');
+  });
+
   it('check-env-separation.mjs script passes and exits with code 0', () => {
     const output = execSync('node scripts/check-env-separation.mjs', { encoding: 'utf8' });
     expect(output).toContain('Environment separation check PASSED');
