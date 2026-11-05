@@ -136,6 +136,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
             data-auto-submit
           >
             <option value="newest" selected={params.sort === "newest"}>Newest</option>
+            <option value="questions" selected={params.sort === "questions"}>Most questions</option>
             <option value="oldest" selected={params.sort === "oldest"}>Oldest</option>
             <option value="attempts" selected={params.sort === "attempts"}>Most attempted</option>
             <option value="keys" selected={params.sort === "keys"}>Fully keyed first</option>
@@ -299,6 +300,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
           class="mt-1.5 block w-full rounded-xl border border-neutral-300 bg-white p-2.5 text-sm font-semibold text-neutral-800 shadow-sm dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
         >
           <option value="newest" selected={params.sort === "newest"}>Newest</option>
+          <option value="questions" selected={params.sort === "questions"}>Most questions</option>
           <option value="oldest" selected={params.sort === "oldest"}>Oldest</option>
           <option value="attempts" selected={params.sort === "attempts"}>Most attempted</option>
           <option value="keys" selected={params.sort === "keys"}>Fully keyed first</option>

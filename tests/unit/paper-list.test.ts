@@ -4,6 +4,7 @@ import {
   getKeyStatus,
   formatMarking,
   formatShortTitle,
+  formatDateShiftTitle,
   sanitizeParams,
   applyFilters,
   sortPapers,
@@ -116,6 +117,25 @@ describe("paper-list module", () => {
         shift: null,
       });
       expect(formatShortTitle(paper)).toBe("Chemistry · 2025");
+    });
+  });
+
+  describe("formatDateShiftTitle", () => {
+    it("formats date and shift without duplicating subject", () => {
+      const paper = makePaper({
+        dateLabel: "6 June 2026",
+        shift: "Shift 1",
+      });
+      expect(formatDateShiftTitle(paper)).toBe("6 June 2026 · Shift 1");
+    });
+
+    it("falls back to year if dateLabel is empty", () => {
+      const paper = makePaper({
+        dateLabel: "",
+        year: 2025,
+        shift: null,
+      });
+      expect(formatDateShiftTitle(paper)).toBe("2025");
     });
   });
 
@@ -255,6 +275,25 @@ describe("paper-list module", () => {
     it("sorts by keys: full keys first", () => {
       const sorted = sortPapers([p2, p1, p3], "keys");
       expect(sorted[2]?.slug).toBe("p2"); // partial key at end
+    });
+
+    it("prioritizes full papers and higher question counts on newest", () => {
+      const full50 = makePaper({ slug: "full50", year: 2026, recoveredQuestionCount: 50 });
+      const full78 = makePaper({ slug: "full78", year: 2026, recoveredQuestionCount: 78 });
+      const mini10 = makePaper({ slug: "mini10", year: 2026, recoveredQuestionCount: 10 });
+      const mini5 = makePaper({ slug: "mini5", year: 2026, recoveredQuestionCount: 5 });
+
+      const sorted = sortPapers([mini5, full50, mini10, full78], "newest");
+      expect(sorted.map((p) => p.slug)).toEqual(["full78", "full50", "mini10", "mini5"]);
+    });
+
+    it("sorts by questions: most questions first", () => {
+      const p10 = makePaper({ slug: "p10", recoveredQuestionCount: 10 });
+      const p50 = makePaper({ slug: "p50", recoveredQuestionCount: 50 });
+      const p78 = makePaper({ slug: "p78", recoveredQuestionCount: 78 });
+
+      const sorted = sortPapers([p10, p78, p50], "questions");
+      expect(sorted.map((p) => p.slug)).toEqual(["p78", "p50", "p10"]);
     });
   });
 

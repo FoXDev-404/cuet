@@ -4,7 +4,7 @@ import {
   classifyPaper,
   getKeyStatus,
   formatMarking,
-  formatShortTitle,
+  formatDateShiftTitle,
 } from "../lib/paper-list";
 import KeyStatusPill from "./KeyStatusPill.astro";
 import PaperTypeTag from "./PaperTypeTag.astro";
@@ -18,7 +18,7 @@ const { paper, class: className = "" } = Astro.props;
 
 const paperType = classifyPaper(paper);
 const keyStatus = getKeyStatus(paper);
-const shortTitle = formatShortTitle(paper);
+const dateShiftTitle = formatDateShiftTitle(paper);
 const markingText = formatMarking(paper.markingScheme);
 const startHref = `/mock/${paper.slug}/instructions`;
 const detailsHref = paper.path;
@@ -50,7 +50,7 @@ if (paper.attemptCount >= 1) {
       </span>
       <h3 class="truncate text-base font-bold text-neutral-900 group-hover:text-brand-600 dark:text-neutral-100 dark:group-hover:text-brand-400 transition-colors">
         <a href={detailsHref} aria-label={paper.title} class="hover:underline">
-          {shortTitle}
+          {dateShiftTitle}
         </a>
       </h3>
       <PaperTypeTag type={paperType} />

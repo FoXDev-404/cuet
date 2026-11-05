@@ -5,7 +5,7 @@ export const DEFAULT_PAGE_SIZE = 24;
 
 export type PaperType = "full" | "mini";
 export type PaperTypeFilter = "full" | "mini" | "all";
-export type PaperSort = "newest" | "oldest" | "attempts" | "keys";
+export type PaperSort = "newest" | "questions" | "oldest" | "attempts" | "keys";
 
 export interface KeyStatus {
   isFullKey: boolean;
@@ -95,6 +95,24 @@ export function formatShortTitle(
   return parts.join(" · ");
 }
 
+/**
+ * Formats date and shift when subject is rendered in a separate pill: "11 May 2026 · Shift 1"
+ */
+export function formatDateShiftTitle(
+  paper: Pick<LocalPaperSummary, "dateLabel" | "year" | "shift">
+): string {
+  const parts: string[] = [];
+  if (paper.dateLabel) {
+    parts.push(paper.dateLabel);
+  } else if (paper.year) {
+    parts.push(String(paper.year));
+  }
+  if (paper.shift) {
+    parts.push(paper.shift);
+  }
+  return parts.join(" · ");
+}
+
 /** Sanitizes and validates query parameters against allow-lists and bounds. */
 export function sanitizeParams(
   raw: URLSearchParams | Record<string, string | undefined>,
@@ -136,7 +154,7 @@ export function sanitizeParams(
 
   const rawSort = (get("sort") || "").trim().toLowerCase();
   let sort: PaperSort = "newest"; // Default is Newest
-  if (rawSort === "oldest" || rawSort === "attempts" || rawSort === "keys" || rawSort === "newest") {
+  if (rawSort === "questions" || rawSort === "oldest" || rawSort === "attempts" || rawSort === "keys" || rawSort === "newest") {
     sort = rawSort;
   }
 
@@ -205,23 +223,39 @@ export function applyFilters(papers: LocalPaperSummary[], params: PaperFilterPar
 export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalPaperSummary[] {
   const copy = [...papers];
 
-  if (sort === "oldest") {
+  if (sort === "questions") {
     return copy.sort(
       (a, b) =>
+        b.recoveredQuestionCount - a.recoveredQuestionCount ||
+        b.year - a.year ||
+        (b.date ?? "").localeCompare(a.date ?? "") ||
+        a.title.localeCompare(b.title)
+    );
+  }
+
+  if (sort === "oldest") {
+    return copy.sort((a, b) => {
+      const isFullA = classifyPaper(a) === "full" ? 1 : 0;
+      const isFullB = classifyPaper(b) === "full" ? 1 : 0;
+      if (isFullB !== isFullA) return isFullB - isFullA;
+
+      return (
         a.year - b.year ||
+        b.recoveredQuestionCount - a.recoveredQuestionCount ||
         (a.date ?? "").localeCompare(b.date ?? "") ||
         (a.shift ?? "").localeCompare(b.shift ?? "") ||
         a.title.localeCompare(b.title)
-    );
+      );
+    });
   }
 
   if (sort === "attempts") {
     return copy.sort(
       (a, b) =>
         b.attemptCount - a.attemptCount ||
+        b.recoveredQuestionCount - a.recoveredQuestionCount ||
         b.year - a.year ||
         (b.date ?? "").localeCompare(a.date ?? "") ||
-        b.scorableQuestionCount - a.scorableQuestionCount ||
         a.title.localeCompare(b.title)
     );
   }
@@ -230,8 +264,7 @@ export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalP
     return copy.sort(
       (a, b) =>
         Number(a.pendingReviewCount > 0) - Number(b.pendingReviewCount > 0) ||
-        b.scorableQuestionCount / (b.recoveredQuestionCount || 1) -
-          a.scorableQuestionCount / (a.recoveredQuestionCount || 1) ||
+        b.recoveredQuestionCount - a.recoveredQuestionCount ||
         b.year - a.year ||
         (b.date ?? "").localeCompare(a.date ?? "") ||
         a.title.localeCompare(b.title)
@@ -239,16 +272,28 @@ export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalP
   }
 
   // Default: "newest"
-  return copy.sort(
-    (a, b) =>
-      b.year - a.year ||
-      (b.date ?? "").localeCompare(a.date ?? "") ||
-      (b.shift ?? "").localeCompare(a.shift ?? "") ||
-      a.title.localeCompare(b.title)
-  );
+  // Prioritize Full papers on top (>=40 questions), newer years, higher question counts within year, then date
+  return copy.sort((a, b) => {
+    const isFullA = classifyPaper(a) === "full" ? 1 : 0;
+    const isFullB = classifyPaper(b) === "full" ? 1 : 0;
+    if (isFullB !== isFullA) return isFullB - isFullA;
+
+    if (b.year !== a.year) return b.year - a.year;
+
+    if (b.recoveredQuestionCount !== a.recoveredQuestionCount) {
+      return b.recoveredQuestionCount - a.recoveredQuestionCount;
+    }
+
+    const dateComp = (b.date ?? "").localeCompare(a.date ?? "");
+    if (dateComp !== 0) return dateComp;
+
+    const shiftComp = (b.shift ?? "").localeCompare(a.shift ?? "");
+    if (shiftComp !== 0) return shiftComp;
+
+    return a.title.localeCompare(b.title);
+  });
 }
 
-/** Paginate a collection. Safe against out-of-bound pages. */
 export function paginate<T>(items: T[], page = 1, pageSize = DEFAULT_PAGE_SIZE): PaginatedResult<T> {
   const total = items.length;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
