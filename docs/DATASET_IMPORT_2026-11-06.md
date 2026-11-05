@@ -230,12 +230,31 @@ Source: PaddleOCR-VL 1.6 `CUET_JSON_OUTPUT` bundle (180 papers, 8,366 extracted 
 - `physics-2025-05-20-shift-2` (37 printed answers in this bundle vs 48 scorable in the library)
 - `physics-2025-05-21-shift-2` (41 printed answers in this bundle vs 50 scorable in the library)
 
+## Reproduce
+
+The normalized bundle is archival input and is not committed. Point the converter at
+the extracted `CUET_JSON_OUTPUT` directory:
+
+```sh
+node scripts/import-cuet-json-output.mjs --dataset /path/to/CUET_JSON_OUTPUT
+npm run db:migrate:local
+node scripts/import-practice-library.mjs --local
+node scripts/backfill-explanation-provenance.mjs   # after the import
+node scripts/import-ranked-practice.mjs --local
+node scripts/backfill-explanation-provenance.mjs   # after the ranked import
+```
+
+Use `--dry-run` to inspect the counts before writing. Use `--remote` on the two
+import scripts only after authenticating Wrangler and setting the production D1
+binding. Pass `--with-explanations` only after an editor has cleared a batch;
+the default is to ship the printed key without the OCR model's prose.
+
 ## Next steps
 
-1. `npm run db:migrate:local`
-2. `node scripts/import-practice-library.mjs --local`
-3. `node scripts/import-ranked-practice.mjs --local`
-4. Spot-check `/mock-tests` and the new subject pages, then rebuild.
+1. Run the reproduction commands above against a fresh local DB.
+2. Spot-check `/mock-tests` and the new subject pages, then rebuild.
+3. Clear `rights_status` per paper before expecting search indexing; imported
+   papers stay `unknown` and noindex by design.
 
 Unkeyed papers remain candidates for the editorial review queue. They are deliberately
 not playable because the server cannot award or deduct marks without an authoritative key.
