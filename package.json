@@ -28,7 +28,7 @@
     "og:questions:remote": "node scripts/generate-question-og.mjs --remote",
     "smoke:staging": "node scripts/staging-smoke.mjs",
     "preview": "astro preview",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "node scripts/deploy-production.mjs",
     "db:migrate:local": "wrangler d1 migrations apply cuet-blueprint-db --local",
     "db:migrate:remote": "wrangler d1 migrations apply cuet-blueprint-db --remote",
     "db:seed:local": "wrangler d1 execute cuet-blueprint-db --local --file=./migrations/0002_seed.sql",
