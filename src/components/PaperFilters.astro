@@ -42,7 +42,7 @@ if (params.type !== "all") activeFilterCount += 1;
 if (params.sort !== "newest") activeFilterCount += 1;
 ---
 
-<div class:list={["sticky top-16 z-30 bg-white/95 pb-3 pt-3 backdrop-blur-md dark:bg-ink-950/95 border-b border-neutral-200 dark:border-white/10 shadow-[0_1px_3px_rgba(0,0,0,0.04)]", className]}>
+<div class:list={["sticky top-16 z-30 bg-white/95 pb-3 pt-3 backdrop-blur-md dark:bg-neutral-900/95 border-b border-neutral-200 dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.04)] dark:shadow-none", className]}>
   <form id="paper-filter-form" method="GET" action={basePath} class="space-y-3">
     <!-- Row 1: Search bar (Desktop & Mobile) -->
     <div class="flex items-center gap-2">
@@ -57,7 +57,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
           name="q"
           value={params.q}
           placeholder="Search subject or date, e.g. physics 2026"
-          class="block w-full rounded-xl border border-neutral-300 bg-white py-2.5 pl-10 pr-4 text-sm text-neutral-900 placeholder-neutral-500 shadow-sm transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder-neutral-400 dark:focus:border-brand-400"
+          class="block w-full rounded-xl border border-neutral-300 bg-white py-2.5 pl-10 pr-4 text-sm text-neutral-900 placeholder-neutral-500 shadow-sm transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-100 dark:placeholder-neutral-400 dark:focus:border-brand-400"
           aria-label="Search previous-year mock tests"
         />
       </div>
@@ -80,7 +80,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
       <button
         type="button"
         id="open-filters-sheet-btn"
-        class="inline-flex md:hidden items-center gap-1.5 rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-xs font-bold text-neutral-700 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200"
+        class="inline-flex md:hidden items-center gap-1.5 rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-xs font-bold text-neutral-700 shadow-sm dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
         aria-expanded="false"
         aria-controls="mobile-filters-sheet"
       >
@@ -114,7 +114,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
           <select
             id="desktop-subject-select"
             name="subject"
-            class="rounded-xl border border-neutral-300 bg-white py-2 pl-3 pr-8 text-xs font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:border-brand-600"
+            class="rounded-xl border border-neutral-300 bg-white py-2 pl-3 pr-8 text-xs font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200 dark:hover:border-brand-600"
             data-auto-submit
           >
             <option value="all" selected={params.subject === "all"}>All subjects</option>
@@ -132,7 +132,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
           <select
             id="desktop-sort-select"
             name="sort"
-            class="rounded-xl border border-neutral-300 bg-white py-2 pl-3 pr-8 text-xs font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:border-brand-600"
+            class="rounded-xl border border-neutral-300 bg-white py-2 pl-3 pr-8 text-xs font-semibold text-neutral-700 shadow-sm transition-colors hover:border-brand-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200 dark:hover:border-brand-600"
             data-auto-submit
           >
             <option value="newest" selected={params.sort === "newest"}>Newest</option>
@@ -143,7 +143,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
         </div>
 
         <!-- Type Segmented Control: Full papers (default) / Mini papers / All -->
-        <div class="inline-flex rounded-xl border border-neutral-200 bg-neutral-100 p-1 text-xs font-semibold dark:border-neutral-700 dark:bg-neutral-800/80" role="group" aria-label="Filter by paper length">
+        <div class="inline-flex rounded-xl border border-neutral-200 bg-neutral-100 p-1 text-xs font-semibold dark:border-neutral-800 dark:bg-neutral-950" role="group" aria-label="Filter by paper length">
           {(["full", "mini", "all"] as PaperTypeFilter[]).map((t) => {
             const isSelected = params.type === t;
             const label = t === "full" ? "Full papers" : t === "mini" ? "Mini papers" : "All";
@@ -154,7 +154,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
                 class:list={[
                   "rounded-lg px-3 py-1.5 text-xs transition-all",
                   isSelected
-                    ? "bg-white font-bold text-brand-700 shadow-sm dark:bg-neutral-900 dark:text-brand-300"
+                    ? "bg-white font-bold text-brand-700 shadow-sm dark:bg-neutral-800 dark:text-brand-300"
                     : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white",
                 ]}
                 aria-current={isSelected ? "page" : undefined}
@@ -257,7 +257,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
         <select
           id="mobile-subject-select"
           name="subject"
-          class="mt-1.5 block w-full rounded-xl border border-neutral-300 bg-white p-2.5 text-sm font-semibold text-neutral-800 shadow-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+          class="mt-1.5 block w-full rounded-xl border border-neutral-300 bg-white p-2.5 text-sm font-semibold text-neutral-800 shadow-sm dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
         >
           <option value="all" selected={params.subject === "all"}>All subjects</option>
           {subjects.map((s) => (
@@ -280,7 +280,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
                 "block cursor-pointer rounded-xl border py-2.5 shadow-sm transition-colors",
                 isSelected
                   ? "border-brand-600 bg-brand-50 text-brand-700 dark:border-brand-500 dark:bg-brand-950/40 dark:text-brand-300 font-bold"
-                  : "border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+                  : "border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-300"
               ]}>
                 <input type="radio" name="type" value={t} checked={isSelected} class="sr-only" />
                 <span>{label}</span>
@@ -296,7 +296,7 @@ if (params.sort !== "newest") activeFilterCount += 1;
         <select
           id="mobile-sort-select"
           name="sort"
-          class="mt-1.5 block w-full rounded-xl border border-neutral-300 bg-white p-2.5 text-sm font-semibold text-neutral-800 shadow-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+          class="mt-1.5 block w-full rounded-xl border border-neutral-300 bg-white p-2.5 text-sm font-semibold text-neutral-800 shadow-sm dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-200"
         >
           <option value="newest" selected={params.sort === "newest"}>Newest</option>
           <option value="oldest" selected={params.sort === "oldest"}>Oldest</option>
