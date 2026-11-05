@@ -216,6 +216,7 @@ async function main() {
   console.log("================================================================\n");
 
   let spawnedServer = null;
+  let exitCode = 0;
   const isAvailable = await waitForServer(`${BASE_URL}/`, 1500);
 
   if (!isAvailable) {
@@ -476,16 +477,19 @@ async function main() {
       for (const m of mismatches) {
         console.error(`- [${m.rule}] ${m.url}: ${m.details}`);
       }
-      process.exitCode = 1;
+      exitCode = 1;
     } else {
       console.log("SUCCESS: Mismatch count = 0. All sitemap and indexable URLs are 100% consistent!");
-      process.exitCode = 0;
+      exitCode = 0;
     }
   } finally {
     if (spawnedServer) {
       console.log("\nStopping spawned dev server...");
-      spawnedServer.kill();
+      spawnedServer.kill("SIGKILL");
     }
+    // `astro dev` daemonises and can keep inherited pipes open. Exit explicitly
+    // so CI does not wait on the daemon after the audit has already decided.
+    process.exit(exitCode);
   }
 }
 
