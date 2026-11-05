@@ -49,7 +49,7 @@ if (paper.attemptCount >= 1) {
         {paper.subject.name}
       </span>
       <h3 class="truncate text-base font-bold text-neutral-900 group-hover:text-brand-600 dark:text-neutral-100 dark:group-hover:text-brand-400 transition-colors">
-        <a href={detailsHref} aria-label={paper.title} class="hover:underline">
+        <a href={detailsHref} aria-label={`${dateShiftTitle} — ${paper.title}`} class="hover:underline">
           {dateShiftTitle}
         </a>
       </h3>
