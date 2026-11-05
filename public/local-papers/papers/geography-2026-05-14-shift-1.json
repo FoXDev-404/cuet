@@ -11,50 +11,15 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Geography_May14_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 9,
+    "questionCount": 7,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "Match the Town Type with its Example\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Type</td><td style='text-align: center; word-wrap: break-word;'>Example</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A. Garrison Town</td><td style='text-align: center; word-wrap: break-word;'>1. Varanasi</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B. Administrative Town</td><td style='text-align: center; word-wrap: break-word;'>2. Mhow/Ambala</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C. Religious Town</td><td style='text-align: center; word-wrap: break-word;'>3. Chandigarh</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D. Mining Town</td><td style='text-align: center; word-wrap: break-word;'>4. Jharia</td></tr></table>",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A-2, B-3, C-1, D-4"
-          },
-          {
-            "id": "B",
-            "text": "A-1, B-2, C-3, D-4"
-          },
-          {
-            "id": "C",
-            "text": "A-3, B-2, C-1, D-4"
-          },
-          {
-            "id": "D",
-            "text": "A-2, B-1, C-3, D-4"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "Which of the following factors affects the rural settlement patterns?\n\n1. Water Supply\n2. Upland (dry points)\n3. Building Material\n4. Planned Settlements\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -87,7 +52,7 @@
       },
       {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 2,
         "stemEn": "Statement I: Megalopolis is a Greek word meaning 'Great City'.\n\nStatement II: The term was popularized by Jean Gottman in 1957.\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -120,7 +85,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "Match the Census definition of Urban Areas in India (2011):\n\n1. Minimum Population: 5,000\n2. Non-Agri workers: 75%\n3. Density: 400 persons/sq km\n\nWhich of the above are correct criteria?",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "Identify the odd one out based on the 'Golden Quadrilateral' cities:",
         "optionsEn": [
           {
@@ -185,78 +150,8 @@
         "assets": []
       },
       {
-        "id": "q06",
-        "sourceQuestionNo": 6,
-        "stemEn": "Arrange the following states in descending order of their Literacy Rate (as per Census 2011):\n\n1. Kerala\n\n2. Mizoram\n\n3. Goa\n\n4. Tripura",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "1,2,3,4"
-          },
-          {
-            "id": "B",
-            "text": "1,3,2,4"
-          },
-          {
-            "id": "C",
-            "text": "2, 1, 3, 4"
-          },
-          {
-            "id": "D",
-            "text": "1,2,4,3"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q07",
-        "sourceQuestionNo": 7,
-        "stemEn": "Match the Migration Type with the Reason (Census 2011):\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Migration Stream</td><td style='text-align: center; word-wrap: break-word;'>Dominant Reason</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A. Rural to Urban (Male)</td><td style='text-align: center; word-wrap: break-word;'>1. Marriage</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B. Rural to Rural (Female)</td><td style='text-align: center; word-wrap: break-word;'>2. Work/Employment</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C. Urban to Urban</td><td style='text-align: center; word-wrap: break-word;'>3. Better opportunities/Business</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D. Urban to Rural</td><td style='text-align: center; word-wrap: break-word;'>4. Retirement/Health</td></tr></table>",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A-2, B-1, C-3, D-4"
-          },
-          {
-            "id": "B",
-            "text": "A-1, B-2, C-3, D-4"
-          },
-          {
-            "id": "C",
-            "text": "A-2, B-3, C-1, D-4"
-          },
-          {
-            "id": "D",
-            "text": "A-3, B-1, C-2, D-4"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 5,
         "stemEn": "Statement I: The density of population in India is 382 persons per sq km.\n\nStatement II: Arunachal Pradesh has the lowest density of 17 persons per sq km.",
         "optionsEn": [
           {
@@ -289,7 +184,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 6,
         "stemEn": "Which of the following is NOT a 'Main Worker' as per Indian Census?",
         "optionsEn": [
           {
@@ -322,7 +217,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 7,
         "stemEn": "Match the Crop with its leading producer state:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Crop</td><td style='text-align: center; word-wrap: break-word;'>State</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A. Rice</td><td style='text-align: center; word-wrap: break-word;'>1. Uttar Pradesh</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B. Wheat</td><td style='text-align: center; word-wrap: break-word;'>2. West Bengal</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C. Coffee</td><td style='text-align: center; word-wrap: break-word;'>3. Maharashtra</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D. Jowar</td><td style='text-align: center; word-wrap: break-word;'>4. Karnataka</td></tr></table>",
         "optionsEn": [
           {

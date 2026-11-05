@@ -1,1697 +1,1664 @@
 {
- "exam": {
-  "id": "local-physics-2023-05-21-shift-3",
-  "slug": "physics-2023-05-21-shift-3",
-  "title": "CUET UG Physics 21 May 2023 Shift 3 Previous Year Paper",
-  "subject": "Physics",
-  "subjectId": "local-physics",
-  "subjectCode": "PHY",
-  "year": 2023,
-  "examDate": "2023-05-21",
-  "shift": "Shift 3",
-  "sourceFile": "Physics_2023-05-21_Shift_3.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 49,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "The magnetic flux( $ \\Phi $) is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Scalar quantity and its SI unit is $ Wb/m^{2} $."
-     },
-     {
-      "id": "B",
-      "text": "Vector quantity and its SI unit is $ Tm^{2} $."
-     },
-     {
-      "id": "C",
-      "text": "Scalar quantity and its SL unit is $ Tm^{2} $."
-     },
-     {
-      "id": "D",
-      "text": "Vector quantity and its SI unit is $ Wb/m^{2} $."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Some equipotential surfaces are shown. What is the magnitude and direction of electric field?\n\ny(cm)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "200 V/m making an angle of $ 120^{\\circ} $ with x-axis"
-     },
-     {
-      "id": "B",
-      "text": "100 V/m making an angle of $ 30^{\\circ} $ with x-axis"
-     },
-     {
-      "id": "C",
-      "text": "200 V/m making an angle of $ 300^{\\circ} $ with x-axis"
-     },
-     {
-      "id": "D",
-      "text": "100 V/m making an angle of $ 60^{\\circ} $ with x-axis"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q02-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-05-21-shift-3/q02-figure-1.jpg",
-      "page": 1,
-      "alt": "Figure for question 2"
-     }
+  "exam": {
+    "id": "local-physics-2023-05-21-shift-3",
+    "slug": "physics-2023-05-21-shift-3",
+    "title": "CUET UG Physics 21 May 2023 Shift 3 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2023,
+    "examDate": "2023-05-21",
+    "shift": "Shift 3",
+    "sourceFile": "Physics_2023-05-21_Shift_3.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 48,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "The magnetic flux( $ \\Phi $) is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Scalar quantity and its SI unit is $ Wb/m^{2} $."
+          },
+          {
+            "id": "B",
+            "text": "Vector quantity and its SI unit is $ Tm^{2} $."
+          },
+          {
+            "id": "C",
+            "text": "Scalar quantity and its SL unit is $ Tm^{2} $."
+          },
+          {
+            "id": "D",
+            "text": "Vector quantity and its SI unit is $ Wb/m^{2} $."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Some equipotential surfaces are shown. What is the magnitude and direction of electric field?\n\ny(cm)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "200 V/m making an angle of $ 120^{\\circ} $ with x-axis"
+          },
+          {
+            "id": "B",
+            "text": "100 V/m making an angle of $ 30^{\\circ} $ with x-axis"
+          },
+          {
+            "id": "C",
+            "text": "200 V/m making an angle of $ 300^{\\circ} $ with x-axis"
+          },
+          {
+            "id": "D",
+            "text": "100 V/m making an angle of $ 60^{\\circ} $ with x-axis"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-05-21-shift-3/q02-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "A ray is incident normally on the face of an triangular prism of refracting angle of $ 60^{\\circ} $. The refractive index of the prism is $ \\frac{2}{\\sqrt{3}} $. The angle of deviation will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 60^{\\circ} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 30^{\\circ} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 45^{\\circ} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 90^{\\circ} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Which of the following pair of nuclides are Isobars?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ ^{2}_{1}\\text{H}, ^{3}_{1}\\text{H} $"
+          },
+          {
+            "id": "B",
+            "text": "$ ^{3}_{1}\\text{H}, ^{3}_{2}\\text{He} $"
+          },
+          {
+            "id": "C",
+            "text": "$ ^{198}_{80}\\text{Hg}, ^{179}_{79}\\text{Au} $"
+          },
+          {
+            "id": "D",
+            "text": "$ ^{1}_{1}\\text{H}, ^{3}_{1}\\text{H} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Two identical circular wires P and Q each of radius R and carrying current I are kept in perpendicular planes such that they have a common centre as shown in figure. Find the magnitude and direction of the net magnetic field at the common centre of the two coils",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "zero"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\sqrt{3}}{2}\\frac{\\mu_0I}{R} $, $ \\beta = 60^\\circ $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\mu_0 I}{\\sqrt{2} R} $, $ \\beta = 45^\\circ $"
+          },
+          {
+            "id": "D",
+            "text": "$ I, \\beta = 90^{\\circ} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "The increased resistance of a wire if its length is doubled and original cross-sectional area is halved will be:\n\nGiven R - original resistance of wire)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\left(\\frac{3}{4}\\right)R $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{R}{4} $"
+          },
+          {
+            "id": "C",
+            "text": "4R"
+          },
+          {
+            "id": "D",
+            "text": "3R"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Transverse nature of electromagnetic waves are/is evident by:\n\nA. Interference\n\nB. Dispersion\n\nC. Polarisation\n\nD. Diffraction",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A only"
+          },
+          {
+            "id": "B",
+            "text": "C and D only"
+          },
+          {
+            "id": "C",
+            "text": "A and B only"
+          },
+          {
+            "id": "D",
+            "text": "C only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which of the following statements are correct?\n\nA. The relative motion between a magnet and a coil is responsible for induction of electric current in the coil.\n\nB. Magnetic flux is a vector quantity.\n\nC. In a closed coil, the magnitude of emf induced is equal to the time rate of change of magnetic flux.\n\nD. Eddy currents oppose the magnetic braking effect in trains.\n\nE. Lenz's law gives the polarity of the induced emf clearly.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, C and D only"
+          },
+          {
+            "id": "B",
+            "text": "A, B, D and E only"
+          },
+          {
+            "id": "C",
+            "text": "A, B and D only"
+          },
+          {
+            "id": "D",
+            "text": "A, C and E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "A molecule of a substance has a permanent electric dipole moment of magnitude $ 10^{-31} $ Cm. A mole of this substance is 100% polarised by applying a strong\n\nelectrostatic field of magnitude $ 10^{8} Vm^{-1} $. The direction\n\nof field is suddenly changed by all angle of $ 60^{\\circ} $. Find\n\nthe heat released by substance in aligning its dipoles\n\nalong the new direction of the field.\n\n[Take 1 mole = $ 6 \\times 10^{23} $ molecules]",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9 J"
+          },
+          {
+            "id": "B",
+            "text": "3 J"
+          },
+          {
+            "id": "C",
+            "text": "9 J"
+          },
+          {
+            "id": "D",
+            "text": "3 J"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "An electric dipole of dipole moment $ \\bar{P} $ is rotated in an electric field of magnitude E from the most stable orientation to most unstable orientation. The work done in the process is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "pE"
+          },
+          {
+            "id": "B",
+            "text": "2pE"
+          },
+          {
+            "id": "C",
+            "text": "2pE"
+          },
+          {
+            "id": "D",
+            "text": "pE"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "V-I graph for a platinum wire at temperatures $ T_1 $ and $ T_2 $ is shown in the given figure. The temperature difference ( $ T_2 - T_1 $) is proportional to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\sin 2\\theta $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\cos 2\\theta $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\tan 2\\theta $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\cot 2\\theta $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q11-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-05-21-shift-3/q11-figure-1.jpg",
+            "page": 2,
+            "alt": "Figure for question 11"
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "Arrange the following EM waves increasing order of their frequency?\n\nA. Ultraviolet rays\n\nB. Gamma rays\n\nC. Radio waves\n\nD. Infrared waves\n\nE. X-rays\n\nChose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "C < E < A < D < B"
+          },
+          {
+            "id": "B",
+            "text": "B < E < A < D < C"
+          },
+          {
+            "id": "C",
+            "text": "C < D < A < E < B"
+          },
+          {
+            "id": "D",
+            "text": "B < A < C < D < E"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "The amplitude of the magnetic field of a harmonic electromagnetic wave in vacuum is $ B_{0} = 610 \\, nT $. The amplitude of the electric field of the wave is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 5 \\times 10^{14} NC^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 203 \\times 10^{-17} NC^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 183\\ NC^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 610\\ NC^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "Which of the following statements are correct:\n\nA. In semiconductor diodes carriers are generated by photo-excitation.\n\nB. When the photo diode is illuminated with light with energy (E) > Energy gap ( $ E_{g} $) of the semiconductor, then electron-hole pairs are generated.\n\nC. Photovoltaic devices convert electricity into optical radiation.\n\nD. Photodiode can be used as a photodetector to detect optical signal\n\nE. Zener diode specification should be taken as per the required output voltage.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B and C only"
+          },
+          {
+            "id": "B",
+            "text": "B, C and E only"
+          },
+          {
+            "id": "C",
+            "text": "A, B, D and E only"
+          },
+          {
+            "id": "D",
+            "text": "A, C and D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "The anode voltage of a photocell is kept fixed. The wavelength, of light falling on the cathode is gradually changed. The plate currents I of the photocell varies as follows.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": ""
+          },
+          {
+            "id": "B",
+            "text": ""
+          },
+          {
+            "id": "C",
+            "text": ""
+          },
+          {
+            "id": "D",
+            "text": ""
+          }
+        ],
+        "optionsAreImages": true,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [
+          "image-options"
+        ],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q15-options",
+            "kind": "options",
+            "path": "/local-papers/assets/physics-2023-05-21-shift-3/q15-options.jpg",
+            "page": 2,
+            "alt": "Printed answer choices for question 15"
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "The kinetic energy of an electron in the ground state of hydrogen atom is 13.6 eV. The potential energy (PE) and total energy (E) of electron in this state is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "P.E = -13.6 eV, E = 27.2 eV"
+          },
+          {
+            "id": "B",
+            "text": "P.E = +13.6 eV, E = -27.2 eV"
+          },
+          {
+            "id": "C",
+            "text": "P.E = +27.2 eV, E = -13.6 eV"
+          },
+          {
+            "id": "D",
+            "text": "P.E = -27.2 eV, E = -13.6 eV"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "A dentist has a small mirror of focal length 1.6 cm. He observes the cavity in the tooth of a patient by holding the mirror at a distance of 8 mm. from the cavity. The magnification is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "1.5"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "13"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Which of the following frequency would be suitable for the beyond the horizon communication using sky waves?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1000 GHz"
+          },
+          {
+            "id": "B",
+            "text": "1 GHz"
+          },
+          {
+            "id": "C",
+            "text": "10 MHz"
+          },
+          {
+            "id": "D",
+            "text": "10 kHz"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "Match List - I with List - II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q19-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2023-05-21-shift-3/q19-table-1.jpg",
+            "page": 3,
+            "alt": "Table for question 19"
+          }
+        ]
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "In a p-n junction under equilibrium:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Diffusion current dominates"
+          },
+          {
+            "id": "B",
+            "text": "Drift current dominates"
+          },
+          {
+            "id": "C",
+            "text": "No net current flows"
+          },
+          {
+            "id": "D",
+            "text": "Depending upon the semiconductor either diffusion current or drift current dominates."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "Choose the correct statement(s)\n\nA. In photo electric effect, the minimum negative potential to the plate A for which photocurrent is zero is called saturation potential\n\nB. Maximum kinetic energy of photoelectrons is directly proportional to intensity of incident radiation.\n\nC. $ K_{max} = eV_{0} $.\n\nD. Photocurrent becomes zero at stopping potential.\n\nE. For different intensities of light, stopping potential is different.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "C & D on1y"
+          },
+          {
+            "id": "B",
+            "text": "B and E only"
+          },
+          {
+            "id": "C",
+            "text": "D and E only"
+          },
+          {
+            "id": "D",
+            "text": "C, D & E only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "The half-lives of 2 radioactive specimen are $ T_{1}=5 $ years. and $ T_{2}=7.5 $ years. The ratio of their disintegration constants and $ \\lambda_{1} $ and $ \\lambda_{2} $ is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{3}{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{2}{3} $"
+          },
+          {
+            "id": "C",
+            "text": "1:1"
+          },
+          {
+            "id": "D",
+            "text": "0.693"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "The depletion layer has large electrical resistance because:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "It contains few ions as charge carriers."
+          },
+          {
+            "id": "B",
+            "text": "It has few holes as charge carriers."
+          },
+          {
+            "id": "C",
+            "text": "It has no charge carriers."
+          },
+          {
+            "id": "D",
+            "text": "It contains few electrons as charge carriers."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "If the frequency of light in a photoelectric experiment is doubled the stopping potential will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "be doubled"
+          },
+          {
+            "id": "B",
+            "text": "be halved"
+          },
+          {
+            "id": "C",
+            "text": "becomes more than the double"
+          },
+          {
+            "id": "D",
+            "text": "becomes less than the double"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "In the situation shown in the figure, the straight wire is fixed but the loop can move under magnetic farce. The loop will:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "remains stationary"
+          },
+          {
+            "id": "B",
+            "text": "moves towards the wire"
+          },
+          {
+            "id": "C",
+            "text": "moves away from the wire"
+          },
+          {
+            "id": "D",
+            "text": "rotates about the wire"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q25-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-05-21-shift-3/q25-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 25"
+          }
+        ]
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "An a.c voltage is applied to a resistor of resistance $ 5\\Omega $ and an inductor having inductive reactance of $ 5\\Omega $ connected in series. The phase difference between applied voltage and the current in the circuit is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\pi}{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\pi}{4} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\pi}{2} $"
+          },
+          {
+            "id": "D",
+            "text": "Zero"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Which quantity is increased in a step-down transformer?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Power"
+          },
+          {
+            "id": "B",
+            "text": "Current"
+          },
+          {
+            "id": "C",
+            "text": "Frequency"
+          },
+          {
+            "id": "D",
+            "text": "Voltage"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "Magnetic susceptibility $ \\chi $ of a given material is -0.5. Identify the magnetic material.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Paramagnetic"
+          },
+          {
+            "id": "B",
+            "text": "Diamagnetic"
+          },
+          {
+            "id": "C",
+            "text": "Ferromagnetic"
+          },
+          {
+            "id": "D",
+            "text": "Diamagnetic and Ferromagnetic both"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "If $U_{E}$ electric field energy density and $U_{m}$ magnetic field energy density. Then",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$\\frac{U_{E}}{U_{m}} > 1$"
+          },
+          {
+            "id": "B",
+            "text": "$\\frac{U_{E}}{U_{m}} = 1$"
+          },
+          {
+            "id": "C",
+            "text": "$\\frac{U_{E}}{U_{m}} < 1$"
+          },
+          {
+            "id": "D",
+            "text": "$\\frac{U_{E}}{U_{m}}$ is variable"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 30,
+        "stemEn": "Match List - I with List - II\n\nChoose the correct answer from the options given below:\n\n(a) (A)-(IV), (B)-(I), (C)-(II), (D)-(III)\n\n(b) (A)-(I), (B)-(IV), (C)-(III), (D)-(II)\n\n(c) (A)-(II), (B)-(IV), (C)-(I), (D)-(III)\n\n$$ \\left(\\mathrm{d}\\right)\\mathrm{",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "}(\\mathrm{I I I}),\\mathrm{"
+          },
+          {
+            "id": "B",
+            "text": "}(\\mathrm{I I}),\\mathrm{"
+          },
+          {
+            "id": "C",
+            "text": "}(\\mathrm{I V}),\\mathrm{"
+          },
+          {
+            "id": "D",
+            "text": "}(\\mathrm{I})"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q30-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/physics-2023-05-21-shift-3/q30-table-1.jpg",
+            "page": 4,
+            "alt": "Table for question 30"
+          }
+        ]
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 31,
+        "stemEn": "What is the work done in moving a $ \\delta q $ charge from A to B?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{kq\\delta q}{r} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{kq\\delta q}{\\sqrt{2r}} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{2kq}{r} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q32-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2023-05-21-shift-3/q32-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 32"
+          }
+        ]
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 32,
+        "stemEn": "Which of the following is NOT a property of charges?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Quantisation"
+          },
+          {
+            "id": "B",
+            "text": "Scalar"
+          },
+          {
+            "id": "C",
+            "text": "Additive"
+          },
+          {
+            "id": "D",
+            "text": "affected by frames of reference"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 33,
+        "stemEn": "Choose the correct statements:\n\nA. Diamagnetic substances have non-zero resultant magnetic moment.\n\nB. The magnetization of a paramagnetic material is inversely proportional to the absolute temperature $ T $.\n\nC. At high enough temperature, a ferromagnet becomes a paramagnet.\n\nD. Magnetic permeability of ferromagnets: $ \\mu \\gg 1 $\n\nE. Susceptibility of Diamagnetic, $ \\chi \\gg 1 $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A & C only"
+          },
+          {
+            "id": "B",
+            "text": "A, C & D only"
+          },
+          {
+            "id": "C",
+            "text": "D & E only"
+          },
+          {
+            "id": "D",
+            "text": "B, C & D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 34,
+        "stemEn": "If charge is moving parallel to uniform magnetic field, its path will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "straight line"
+          },
+          {
+            "id": "B",
+            "text": "circular"
+          },
+          {
+            "id": "C",
+            "text": "helical"
+          },
+          {
+            "id": "D",
+            "text": "elliptical"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 35,
+        "stemEn": "Using the given information, calculate the mass defect of $ \\frac{16}{8}O $ nucleus in MeV/c $ ^{2} $.\n\nmass of electron, $ m_{e} = 0.00055u $\n\nmass of proton, $ m_{p} = 1.00727u $\n\nmass of neutron, $ m_{n} = 1.00866u $\n\nexperimental mass of nucleus = 15.99053u\n\n1u = 931.5MeV/c $ ^{2} $ (where u = atomic mass unit)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "150.5 MeV/c $ ^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "127.5 MeV/c $ ^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "107.5 MeV/c $ ^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "680.0 MeV/c $ ^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 36,
+        "stemEn": "The capacitance of a capacitor becomes 7/6 times its original value if a dielectric slab of thickness $ t = \\frac{2}{3}d $ is introduced in between the plates: where d is the separation between the plates. The dielectric constant of the slab is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{11}{7} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{7}{11} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{11}{14} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{14}{11} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 37,
+        "stemEn": "A p-n junction diode can be used:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "to convert dc voltage into ac voltage"
+          },
+          {
+            "id": "B",
+            "text": "to convert ac voltage into dc voltage"
+          },
+          {
+            "id": "C",
+            "text": "to decrease the amplitude of ac voltage"
+          },
+          {
+            "id": "D",
+            "text": "to decrease the frequency of ac voltage"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 38,
+        "stemEn": "A telescope has an objective of focal length 30 cm and an eyepiece of focal length 3.0 cm. It is focused on a scale distant 2.0 m. For seeing with relaxed eye, the separation between the objective and eyepiece would be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "35.3 cm"
+          },
+          {
+            "id": "B",
+            "text": "38.3 cm"
+          },
+          {
+            "id": "C",
+            "text": "37 cm"
+          },
+          {
+            "id": "D",
+            "text": "30 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 39,
+        "stemEn": "The colour of the third band of a colour coded carbon resistor of resistance $ 2.3 \\times 10^{2} $ $ \\Omega $ would be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Red"
+          },
+          {
+            "id": "B",
+            "text": "Yellow"
+          },
+          {
+            "id": "C",
+            "text": "Blue"
+          },
+          {
+            "id": "D",
+            "text": "Brown"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 40,
+        "stemEn": "Young's double slit experiment is performed using a source of white light.\n\nA. The center fringe will be white.\n\nB. The fringe next to the center fringe will be violet.\n\nC. The fringe next to the center fringe will be red.\n\nD. There will be no completely dark fringe,\n\nE. The center fringe will be of no colour.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "C, D, E only"
+          },
+          {
+            "id": "B",
+            "text": "A, B, D only"
+          },
+          {
+            "id": "C",
+            "text": "A, C and D only"
+          },
+          {
+            "id": "D",
+            "text": "B, C, D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 41,
+        "stemEn": "A message signal of peak value 2 V is used to modulate a carrier wave of peak value 10 V. The modulation index of the amplitude modulated wave is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.2"
+          },
+          {
+            "id": "B",
+            "text": "5"
+          },
+          {
+            "id": "C",
+            "text": "0.66"
+          },
+          {
+            "id": "D",
+            "text": "1.5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 42,
+        "stemEn": "When the electron in hydrogen atom jumps from the $ 2^{nd} $ orbit to the $ 1^{st} $ orbit, the wavelength of the radiation emitted is $ \\lambda $. When the electron jumps from the $ 3^{rd} $ orbit to $ 1^{st} $ orbit, the wavelength of the radiation is :",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{27}{32}\\lambda $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{27}{5}\\lambda $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{4}{5}\\lambda $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{3}{2}\\lambda $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 43,
+        "stemEn": "What should be the size of an obstacle to observe diffraction?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "has no relation with the wavelength"
+          },
+          {
+            "id": "B",
+            "text": "should be exactly half of the wavelength"
+          },
+          {
+            "id": "C",
+            "text": "should be of the same order as wavelength"
+          },
+          {
+            "id": "D",
+            "text": "should be much larger than the wavelength"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 44,
+        "stemEn": "The bottom of a container is a 6 cm thick glass ( $ \\mu = 1.5 $) slab. The container contains a thick layer of water ( $ \\mu_{w} = 1.33 $), 4 cm on top of the glass. What is the apparent position of a scratch on the outer surface of the bottom of the glass slab when viewed through the container?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1 cm"
+          },
+          {
+            "id": "B",
+            "text": "2 cm"
+          },
+          {
+            "id": "C",
+            "text": "3.5 cm"
+          },
+          {
+            "id": "D",
+            "text": "3 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 45,
+        "stemEn": "The sensitivity of a potentiometer can be increased by:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Decreasing the length of potentiometer wire only."
+          },
+          {
+            "id": "B",
+            "text": "Increasing the potential gradient of the potentiometer u-ire of fixed length."
+          },
+          {
+            "id": "C",
+            "text": "Decreasing the potential gradient of the potentiometer of fixed length."
+          },
+          {
+            "id": "D",
+            "text": "Increasing the current in the potentiometer wire circuit."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 46,
+        "stemEn": "A monochromatic visible light consists of",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "light of a single wavelength with all the colours of spectrum of white light."
+          },
+          {
+            "id": "B",
+            "text": "light of many wavelengths with a single colour."
+          },
+          {
+            "id": "C",
+            "text": "light of many wavelengths with all the colours of spectrum of white light"
+          },
+          {
+            "id": "D",
+            "text": "light of a single colour and single wavelength"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 47,
+        "stemEn": "Current carrying wire produces:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Electric field only"
+          },
+          {
+            "id": "B",
+            "text": "Magnetic field only"
+          },
+          {
+            "id": "C",
+            "text": "Both Electric and Magnetic field"
+          },
+          {
+            "id": "D",
+            "text": "Electric flux only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 48,
+        "stemEn": "Two lenses of power 3D and -ID are kept in contact. The focal length of the combined lens would be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "50 cm"
+          },
+          {
+            "id": "B",
+            "text": "200 cm"
+          },
+          {
+            "id": "C",
+            "text": "100 cm"
+          },
+          {
+            "id": "D",
+            "text": "400 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "A ray is incident normally on the face of an triangular prism of refracting angle of $ 60^{\\circ} $. The refractive index of the prism is $ \\frac{2}{\\sqrt{3}} $. The angle of deviation will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 60^{\\circ} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 30^{\\circ} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 45^{\\circ} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 90^{\\circ} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Which of the following pair of nuclides are Isobars?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ ^{2}_{1}\\text{H}, ^{3}_{1}\\text{H} $"
-     },
-     {
-      "id": "B",
-      "text": "$ ^{3}_{1}\\text{H}, ^{3}_{2}\\text{He} $"
-     },
-     {
-      "id": "C",
-      "text": "$ ^{198}_{80}\\text{Hg}, ^{179}_{79}\\text{Au} $"
-     },
-     {
-      "id": "D",
-      "text": "$ ^{1}_{1}\\text{H}, ^{3}_{1}\\text{H} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Two identical circular wires P and Q each of radius R and carrying current I are kept in perpendicular planes such that they have a common centre as shown in figure. Find the magnitude and direction of the net magnetic field at the common centre of the two coils",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "zero"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{\\sqrt{3}}{2}\\frac{\\mu_0I}{R} $, $ \\beta = 60^\\circ $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{\\mu_0 I}{\\sqrt{2} R} $, $ \\beta = 45^\\circ $"
-     },
-     {
-      "id": "D",
-      "text": "$ I, \\beta = 90^{\\circ} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "The increased resistance of a wire if its length is doubled and original cross-sectional area is halved will be:\n\nGiven R - original resistance of wire)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\left(\\frac{3}{4}\\right)R $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{R}{4} $"
-     },
-     {
-      "id": "C",
-      "text": "4R"
-     },
-     {
-      "id": "D",
-      "text": "3R"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "Transverse nature of electromagnetic waves are/is evident by:\n\nA. Interference\n\nB. Dispersion\n\nC. Polarisation\n\nD. Diffraction",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A only"
-     },
-     {
-      "id": "B",
-      "text": "C and D only"
-     },
-     {
-      "id": "C",
-      "text": "A and B only"
-     },
-     {
-      "id": "D",
-      "text": "C only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Which of the following statements are correct?\n\nA. The relative motion between a magnet and a coil is responsible for induction of electric current in the coil.\n\nB. Magnetic flux is a vector quantity.\n\nC. In a closed coil, the magnitude of emf induced is equal to the time rate of change of magnetic flux.\n\nD. Eddy currents oppose the magnetic braking effect in trains.\n\nE. Lenz's law gives the polarity of the induced emf clearly.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, C and D only"
-     },
-     {
-      "id": "B",
-      "text": "A, B, D and E only"
-     },
-     {
-      "id": "C",
-      "text": "A, B and D only"
-     },
-     {
-      "id": "D",
-      "text": "A, C and E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "A molecule of a substance has a permanent electric dipole moment of magnitude $ 10^{-31} $ Cm. A mole of this substance is 100% polarised by applying a strong\n\nelectrostatic field of magnitude $ 10^{8} Vm^{-1} $. The direction\n\nof field is suddenly changed by all angle of $ 60^{\\circ} $. Find\n\nthe heat released by substance in aligning its dipoles\n\nalong the new direction of the field.\n\n[Take 1 mole = $ 6 \\times 10^{23} $ molecules]",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "9 J"
-     },
-     {
-      "id": "B",
-      "text": "3 J"
-     },
-     {
-      "id": "C",
-      "text": "9 J"
-     },
-     {
-      "id": "D",
-      "text": "3 J"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "An electric dipole of dipole moment $ \\bar{P} $ is rotated in an electric field of magnitude E from the most stable orientation to most unstable orientation. The work done in the process is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "pE"
-     },
-     {
-      "id": "B",
-      "text": "2pE"
-     },
-     {
-      "id": "C",
-      "text": "2pE"
-     },
-     {
-      "id": "D",
-      "text": "pE"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "V-I graph for a platinum wire at temperatures $ T_1 $ and $ T_2 $ is shown in the given figure. The temperature difference ( $ T_2 - T_1 $) is proportional to:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\sin 2\\theta $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\cos 2\\theta $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\tan 2\\theta $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\cot 2\\theta $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q11-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-05-21-shift-3/q11-figure-1.jpg",
-      "page": 2,
-      "alt": "Figure for question 11"
-     }
-    ]
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "Arrange the following EM waves increasing order of their frequency?\n\nA. Ultraviolet rays\n\nB. Gamma rays\n\nC. Radio waves\n\nD. Infrared waves\n\nE. X-rays\n\nChose the correct answer from the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "C < E < A < D < B"
-     },
-     {
-      "id": "B",
-      "text": "B < E < A < D < C"
-     },
-     {
-      "id": "C",
-      "text": "C < D < A < E < B"
-     },
-     {
-      "id": "D",
-      "text": "B < A < C < D < E"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "The amplitude of the magnetic field of a harmonic electromagnetic wave in vacuum is $ B_{0} = 610 \\, nT $. The amplitude of the electric field of the wave is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 5 \\times 10^{14} NC^{-1} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 203 \\times 10^{-17} NC^{-1} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 183\\ NC^{-1} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 610\\ NC^{-1} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "Which of the following statements are correct:\n\nA. In semiconductor diodes carriers are generated by photo-excitation.\n\nB. When the photo diode is illuminated with light with energy (E) > Energy gap ( $ E_{g} $) of the semiconductor, then electron-hole pairs are generated.\n\nC. Photovoltaic devices convert electricity into optical radiation.\n\nD. Photodiode can be used as a photodetector to detect optical signal\n\nE. Zener diode specification should be taken as per the required output voltage.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B and C only"
-     },
-     {
-      "id": "B",
-      "text": "B, C and E only"
-     },
-     {
-      "id": "C",
-      "text": "A, B, D and E only"
-     },
-     {
-      "id": "D",
-      "text": "A, C and D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "The anode voltage of a photocell is kept fixed. The wavelength, of light falling on the cathode is gradually changed. The plate currents I of the photocell varies as follows.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q15-options",
-      "kind": "options",
-      "path": "/local-papers/assets/physics-2023-05-21-shift-3/q15-options.jpg",
-      "page": 2,
-      "alt": "Printed answer choices for question 15"
-     }
-    ]
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "The kinetic energy of an electron in the ground state of hydrogen atom is 13.6 eV. The potential energy (PE) and total energy (E) of electron in this state is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "P.E = -13.6 eV, E = 27.2 eV"
-     },
-     {
-      "id": "B",
-      "text": "P.E = +13.6 eV, E = -27.2 eV"
-     },
-     {
-      "id": "C",
-      "text": "P.E = +27.2 eV, E = -13.6 eV"
-     },
-     {
-      "id": "D",
-      "text": "P.E = -27.2 eV, E = -13.6 eV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "A dentist has a small mirror of focal length 1.6 cm. He observes the cavity in the tooth of a patient by holding the mirror at a distance of 8 mm. from the cavity. The magnification is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "1.5"
-     },
-     {
-      "id": "C",
-      "text": "2"
-     },
-     {
-      "id": "D",
-      "text": "13"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Which of the following frequency would be suitable for the beyond the horizon communication using sky waves?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1000 GHz"
-     },
-     {
-      "id": "B",
-      "text": "1 GHz"
-     },
-     {
-      "id": "C",
-      "text": "10 MHz"
-     },
-     {
-      "id": "D",
-      "text": "10 kHz"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "Match List - I with List - II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV), (B)-(I), (C)-(II), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q19-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2023-05-21-shift-3/q19-table-1.jpg",
-      "page": 3,
-      "alt": "Table for question 19"
-     }
-    ]
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "In a p-n junction under equilibrium:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Diffusion current dominates"
-     },
-     {
-      "id": "B",
-      "text": "Drift current dominates"
-     },
-     {
-      "id": "C",
-      "text": "No net current flows"
-     },
-     {
-      "id": "D",
-      "text": "Depending upon the semiconductor either diffusion current or drift current dominates."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Choose the correct statement(s)\n\nA. In photo electric effect, the minimum negative potential to the plate A for which photocurrent is zero is called saturation potential\n\nB. Maximum kinetic energy of photoelectrons is directly proportional to intensity of incident radiation.\n\nC. $ K_{max} = eV_{0} $.\n\nD. Photocurrent becomes zero at stopping potential.\n\nE. For different intensities of light, stopping potential is different.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "C & D on1y"
-     },
-     {
-      "id": "B",
-      "text": "B and E only"
-     },
-     {
-      "id": "C",
-      "text": "D and E only"
-     },
-     {
-      "id": "D",
-      "text": "C, D & E only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "The half-lives of 2 radioactive specimen are $ T_{1}=5 $ years. and $ T_{2}=7.5 $ years. The ratio of their disintegration constants and $ \\lambda_{1} $ and $ \\lambda_{2} $ is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{3}{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{2}{3} $"
-     },
-     {
-      "id": "C",
-      "text": "1:1"
-     },
-     {
-      "id": "D",
-      "text": "0.693"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "The depletion layer has large electrical resistance because:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "It contains few ions as charge carriers."
-     },
-     {
-      "id": "B",
-      "text": "It has few holes as charge carriers."
-     },
-     {
-      "id": "C",
-      "text": "It has no charge carriers."
-     },
-     {
-      "id": "D",
-      "text": "It contains few electrons as charge carriers."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "If the frequency of light in a photoelectric experiment is doubled the stopping potential will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "be doubled"
-     },
-     {
-      "id": "B",
-      "text": "be halved"
-     },
-     {
-      "id": "C",
-      "text": "becomes more than the double"
-     },
-     {
-      "id": "D",
-      "text": "becomes less than the double"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "In the situation shown in the figure, the straight wire is fixed but the loop can move under magnetic farce. The loop will:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "remains stationary"
-     },
-     {
-      "id": "B",
-      "text": "moves towards the wire"
-     },
-     {
-      "id": "C",
-      "text": "moves away from the wire"
-     },
-     {
-      "id": "D",
-      "text": "rotates about the wire"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q25-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-05-21-shift-3/q25-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 25"
-     }
-    ]
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "An a.c voltage is applied to a resistor of resistance $ 5\\Omega $ and an inductor having inductive reactance of $ 5\\Omega $ connected in series. The phase difference between applied voltage and the current in the circuit is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{\\pi}{3} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{\\pi}{4} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{\\pi}{2} $"
-     },
-     {
-      "id": "D",
-      "text": "Zero"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Which quantity is increased in a step-down transformer?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Power"
-     },
-     {
-      "id": "B",
-      "text": "Current"
-     },
-     {
-      "id": "C",
-      "text": "Frequency"
-     },
-     {
-      "id": "D",
-      "text": "Voltage"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Magnetic susceptibility $ \\chi $ of a given material is -0.5. Identify the magnetic material.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Paramagnetic"
-     },
-     {
-      "id": "B",
-      "text": "Diamagnetic"
-     },
-     {
-      "id": "C",
-      "text": "Ferromagnetic"
-     },
-     {
-      "id": "D",
-      "text": "Diamagnetic and Ferromagnetic both"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "If $U_{E}$ electric field energy density and $U_{m}$ magnetic field energy density. Then",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$\\frac{U_{E}}{U_{m}} > 1$"
-     },
-     {
-      "id": "B",
-      "text": "$\\frac{U_{E}}{U_{m}} = 1$"
-     },
-     {
-      "id": "C",
-      "text": "$\\frac{U_{E}}{U_{m}} < 1$"
-     },
-     {
-      "id": "D",
-      "text": "$\\frac{U_{E}}{U_{m}}$ is variable"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "Match List - I with List - II\n\nChoose the correct answer from the options given below:\n\n(a) (A)-(IV), (B)-(I), (C)-(II), (D)-(III)\n\n(b) (A)-(I), (B)-(IV), (C)-(III), (D)-(II)\n\n(c) (A)-(II), (B)-(IV), (C)-(I), (D)-(III)\n\n$$ \\left(\\mathrm{d}\\right)\\mathrm{",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "}(\\mathrm{I I I}),\\mathrm{"
-     },
-     {
-      "id": "B",
-      "text": "}(\\mathrm{I I}),\\mathrm{"
-     },
-     {
-      "id": "C",
-      "text": "}(\\mathrm{I V}),\\mathrm{"
-     },
-     {
-      "id": "D",
-      "text": "}(\\mathrm{I})"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q30-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/physics-2023-05-21-shift-3/q30-table-1.jpg",
-      "page": 4,
-      "alt": "Table for question 30"
-     }
-    ]
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "A potential difference of 3 V is applied across a conductor of resistance 1.5 Ω. The number of electrons flowing through it in one second would be:\n\n(Given charge of an electron: $ e = 1.6 \\times 10^{19} $ C)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 16 \\times 10^{19} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 4.5 \\times 10^{19} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 1.25 \\times 10^{19} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 4.8 \\times 10^{19} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "What is the work done in moving a $ \\delta q $ charge from A to B?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{kq\\delta q}{r} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{kq\\delta q}{\\sqrt{2r}} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{2kq}{r} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q32-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2023-05-21-shift-3/q32-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 32"
-     }
-    ]
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Which of the following is NOT a property of charges?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Quantisation"
-     },
-     {
-      "id": "B",
-      "text": "Scalar"
-     },
-     {
-      "id": "C",
-      "text": "Additive"
-     },
-     {
-      "id": "D",
-      "text": "affected by frames of reference"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Choose the correct statements:\n\nA. Diamagnetic substances have non-zero resultant magnetic moment.\n\nB. The magnetization of a paramagnetic material is inversely proportional to the absolute temperature $ T $.\n\nC. At high enough temperature, a ferromagnet becomes a paramagnet.\n\nD. Magnetic permeability of ferromagnets: $ \\mu \\gg 1 $\n\nE. Susceptibility of Diamagnetic, $ \\chi \\gg 1 $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A & C only"
-     },
-     {
-      "id": "B",
-      "text": "A, C & D only"
-     },
-     {
-      "id": "C",
-      "text": "D & E only"
-     },
-     {
-      "id": "D",
-      "text": "B, C & D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "If charge is moving parallel to uniform magnetic field, its path will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "straight line"
-     },
-     {
-      "id": "B",
-      "text": "circular"
-     },
-     {
-      "id": "C",
-      "text": "helical"
-     },
-     {
-      "id": "D",
-      "text": "elliptical"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "Using the given information, calculate the mass defect of $ \\frac{16}{8}O $ nucleus in MeV/c $ ^{2} $.\n\nmass of electron, $ m_{e} = 0.00055u $\n\nmass of proton, $ m_{p} = 1.00727u $\n\nmass of neutron, $ m_{n} = 1.00866u $\n\nexperimental mass of nucleus = 15.99053u\n\n1u = 931.5MeV/c $ ^{2} $ (where u = atomic mass unit)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "150.5 MeV/c $ ^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "127.5 MeV/c $ ^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "107.5 MeV/c $ ^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "680.0 MeV/c $ ^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "The capacitance of a capacitor becomes 7/6 times its original value if a dielectric slab of thickness $ t = \\frac{2}{3}d $ is introduced in between the plates: where d is the separation between the plates. The dielectric constant of the slab is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{11}{7} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{7}{11} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{11}{14} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{14}{11} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "A p-n junction diode can be used:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "to convert dc voltage into ac voltage"
-     },
-     {
-      "id": "B",
-      "text": "to convert ac voltage into dc voltage"
-     },
-     {
-      "id": "C",
-      "text": "to decrease the amplitude of ac voltage"
-     },
-     {
-      "id": "D",
-      "text": "to decrease the frequency of ac voltage"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "A telescope has an objective of focal length 30 cm and an eyepiece of focal length 3.0 cm. It is focused on a scale distant 2.0 m. For seeing with relaxed eye, the separation between the objective and eyepiece would be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "35.3 cm"
-     },
-     {
-      "id": "B",
-      "text": "38.3 cm"
-     },
-     {
-      "id": "C",
-      "text": "37 cm"
-     },
-     {
-      "id": "D",
-      "text": "30 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "The colour of the third band of a colour coded carbon resistor of resistance $ 2.3 \\times 10^{2} $ $ \\Omega $ would be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Red"
-     },
-     {
-      "id": "B",
-      "text": "Yellow"
-     },
-     {
-      "id": "C",
-      "text": "Blue"
-     },
-     {
-      "id": "D",
-      "text": "Brown"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Young's double slit experiment is performed using a source of white light.\n\nA. The center fringe will be white.\n\nB. The fringe next to the center fringe will be violet.\n\nC. The fringe next to the center fringe will be red.\n\nD. There will be no completely dark fringe,\n\nE. The center fringe will be of no colour.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "C, D, E only"
-     },
-     {
-      "id": "B",
-      "text": "A, B, D only"
-     },
-     {
-      "id": "C",
-      "text": "A, C and D only"
-     },
-     {
-      "id": "D",
-      "text": "B, C, D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "A message signal of peak value 2 V is used to modulate a carrier wave of peak value 10 V. The modulation index of the amplitude modulated wave is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.2"
-     },
-     {
-      "id": "B",
-      "text": "5"
-     },
-     {
-      "id": "C",
-      "text": "0.66"
-     },
-     {
-      "id": "D",
-      "text": "1.5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "When the electron in hydrogen atom jumps from the $ 2^{nd} $ orbit to the $ 1^{st} $ orbit, the wavelength of the radiation emitted is $ \\lambda $. When the electron jumps from the $ 3^{rd} $ orbit to $ 1^{st} $ orbit, the wavelength of the radiation is :",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{27}{32}\\lambda $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{27}{5}\\lambda $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{4}{5}\\lambda $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{3}{2}\\lambda $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "What should be the size of an obstacle to observe diffraction?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "has no relation with the wavelength"
-     },
-     {
-      "id": "B",
-      "text": "should be exactly half of the wavelength"
-     },
-     {
-      "id": "C",
-      "text": "should be of the same order as wavelength"
-     },
-     {
-      "id": "D",
-      "text": "should be much larger than the wavelength"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "The bottom of a container is a 6 cm thick glass ( $ \\mu = 1.5 $) slab. The container contains a thick layer of water ( $ \\mu_{w} = 1.33 $), 4 cm on top of the glass. What is the apparent position of a scratch on the outer surface of the bottom of the glass slab when viewed through the container?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1 cm"
-     },
-     {
-      "id": "B",
-      "text": "2 cm"
-     },
-     {
-      "id": "C",
-      "text": "3.5 cm"
-     },
-     {
-      "id": "D",
-      "text": "3 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "The sensitivity of a potentiometer can be increased by:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Decreasing the length of potentiometer wire only."
-     },
-     {
-      "id": "B",
-      "text": "Increasing the potential gradient of the potentiometer u-ire of fixed length."
-     },
-     {
-      "id": "C",
-      "text": "Decreasing the potential gradient of the potentiometer of fixed length."
-     },
-     {
-      "id": "D",
-      "text": "Increasing the current in the potentiometer wire circuit."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "A monochromatic visible light consists of",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "light of a single wavelength with all the colours of spectrum of white light."
-     },
-     {
-      "id": "B",
-      "text": "light of many wavelengths with a single colour."
-     },
-     {
-      "id": "C",
-      "text": "light of many wavelengths with all the colours of spectrum of white light"
-     },
-     {
-      "id": "D",
-      "text": "light of a single colour and single wavelength"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "Current carrying wire produces:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Electric field only"
-     },
-     {
-      "id": "B",
-      "text": "Magnetic field only"
-     },
-     {
-      "id": "C",
-      "text": "Both Electric and Magnetic field"
-     },
-     {
-      "id": "D",
-      "text": "Electric flux only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "Two lenses of power 3D and -ID are kept in contact. The focal length of the combined lens would be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "50 cm"
-     },
-     {
-      "id": "B",
-      "text": "200 cm"
-     },
-     {
-      "id": "C",
-      "text": "100 cm"
-     },
-     {
-      "id": "D",
-      "text": "400 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

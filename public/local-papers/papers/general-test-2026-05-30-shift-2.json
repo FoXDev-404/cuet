@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_GAT_May30_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 4,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,183 +51,8 @@
         "assets": []
       },
       {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "A vessel contains milk and water in the ratio 7:3. If 10 litres of the mixture is removed and replaced with pure water, the ratio becomes 7:5. What was the initial quantity of the mixture?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "40 litres"
-          },
-          {
-            "id": "B",
-            "text": "50 litres"
-          },
-          {
-            "id": "C",
-            "text": "60 litres"
-          },
-          {
-            "id": "D",
-            "text": "70 litres"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "A sum amounts to Rs 9,680 in 2 years and Rs 10,648 in 3 years at compound interest. Find the rate of interest per annum.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "8%"
-          },
-          {
-            "id": "B",
-            "text": "10%"
-          },
-          {
-            "id": "C",
-            "text": "12%"
-          },
-          {
-            "id": "D",
-            "text": "15%"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "In a certain code language, MOUNTAIN is written as NQXOUCJP. How will VALLEY be written in the same code?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "WBNMFA"
-          },
-          {
-            "id": "B",
-            "text": "WCMMFA"
-          },
-          {
-            "id": "C",
-            "text": "WBNMFZ"
-          },
-          {
-            "id": "D",
-            "text": "XBNMFA"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q05",
-        "sourceQuestionNo": 5,
-        "stemEn": "Which of the following ocean currents is a cold current?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Gulf Stream"
-          },
-          {
-            "id": "B",
-            "text": "Kuroshio Current"
-          },
-          {
-            "id": "C",
-            "text": "Labrador Current"
-          },
-          {
-            "id": "D",
-            "text": "Brazil Current"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q06",
-        "sourceQuestionNo": 6,
-        "stemEn": "Which Constitutional Amendment Act introduced the Fundamental Duties in the Constitution of India?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "24th Amendment"
-          },
-          {
-            "id": "B",
-            "text": "42nd Amendment"
-          },
-          {
-            "id": "C",
-            "text": "44th Amendment"
-          },
-          {
-            "id": "D",
-            "text": "52nd Amendment"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 2,
         "stemEn": "The Comptroller and Auditor General (CAG) of India submits audit reports directly to:",
         "optionsEn": [
           {
@@ -260,7 +85,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 3,
         "stemEn": "The earliest evidence of rice cultivation in the Indian subcontinent has been found at:",
         "optionsEn": [
           {
@@ -293,7 +118,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 4,
         "stemEn": "A river entering a plain from a mountainous region often forms a depositional feature known as:",
         "optionsEn": [
           {
@@ -319,41 +144,6 @@
         "passageId": null,
         "reviewStatus": "keyed",
         "reviewFlags": [],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q10",
-        "sourceQuestionNo": 10,
-        "stemEn": "Which of the following temples is famous for its Nagara style of architecture?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Brihadeeswara Temple"
-          },
-          {
-            "id": "B",
-            "text": "Shore Temple"
-          },
-          {
-            "id": "C",
-            "text": "Kandariya Mahadeva Temple"
-          },
-          {
-            "id": "D",
-            "text": "Virupaksha Temple"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
         "sourcePages": [
           1
         ],

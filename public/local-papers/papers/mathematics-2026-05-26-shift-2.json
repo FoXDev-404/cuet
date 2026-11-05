@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Mathematics_May26_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,78 +51,8 @@
         "assets": []
       },
       {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "If $y = e^{2x}$, then find $\\frac{dy}{dx}$.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ 2e^{2x} $"
-          },
-          {
-            "id": "B",
-            "text": "$ e^{x} $"
-          },
-          {
-            "id": "C",
-            "text": "$ 2xe^{2x} $"
-          },
-          {
-            "id": "D",
-            "text": "$$ e^{2x}+2 $$"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "Find the value of:\n\n $$ \\int\\frac{1}{x}dx $$",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ \\log x + C $"
-          },
-          {
-            "id": "B",
-            "text": "$$ \\frac{1}{x^{2}}+C $$"
-          },
-          {
-            "id": "C",
-            "text": "$ x \\log x + C $"
-          },
-          {
-            "id": "D",
-            "text": "$$ e^{x}+C $$"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 2,
         "stemEn": "Find the solution of the differential equation:\n\n $$ \\frac{dy}{dx}=3x^{2} $$",
         "optionsEn": [
           {
@@ -155,7 +85,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 3,
         "stemEn": "If\n\n $$ \\frac{dy}{dx}=y $$ \n\nthen which of the following is the correct solution?",
         "optionsEn": [
           {
@@ -188,7 +118,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "Which of the following functions has derivative equal to  $ \\cos x $?",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "Match the following:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>Mathematical Expression</td><td style='text-align: center; word-wrap: break-word;'>List-II</td><td style='text-align: center; word-wrap: break-word;'>Resulting Value</td><td style='text-align: center; word-wrap: break-word;'>Correct Match</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(P)</td><td style='text-align: center; word-wrap: break-word;'>$ \\det \\begin{bmatrix} 1 &amp; 0 \\\\ 0 &amp; 1 \\end{bmatrix} $</td><td style='text-align: center; word-wrap: break-word;'>(I)</td><td style='text-align: center; word-wrap: break-word;'>1</td><td style='text-align: center; word-wrap: break-word;'>P  $ \\rightarrow $ I</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(Q)</td><td style='text-align: center; word-wrap: break-word;'>$ \\int 2x dx $</td><td style='text-align: center; word-wrap: break-word;'>(III)</td><td style='text-align: center; word-wrap: break-word;'>$ x^{2} + C $</td><td style='text-align: center; word-wrap: break-word;'>Q  $ \\rightarrow $ III</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(R)</td><td style='text-align: center; word-wrap: break-word;'>$ \\frac{d}{dx}(x^{2}) $</td><td style='text-align: center; word-wrap: break-word;'>(II)</td><td style='text-align: center; word-wrap: break-word;'>2x</td><td style='text-align: center; word-wrap: break-word;'>R  $ \\rightarrow $ II</td></tr></table>",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "If\n\n $$ \\begin{aligned}&\\boldsymbol{A}=\\begin{bmatrix} \\\\{{{2}}}&{{{1}}} \\\\{{{3}}}&{{{4}}} \\\\\\end{bmatrix}\\\\ \\end{aligned} $$ \n\nthen find |A|.",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "Find the simple interest on Rs 5000 at 10% per annum for 2 years.",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "A shopkeeper earns 20% profit on an article whose cost price is Rs 800. Find the selling price.",
         "optionsEn": [
           {

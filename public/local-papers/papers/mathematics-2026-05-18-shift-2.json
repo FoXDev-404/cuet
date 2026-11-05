@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Mathematics_May18_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -166,51 +166,8 @@
         ]
       },
       {
-        "id": "q05",
-        "sourceQuestionNo": 5,
-        "stemEn": "The value of $\\cos\\left(\\frac{\\pi}{6}-\\cos^{-1}\\left(-\\frac{\\sqrt{3}}{2}\\right)\\right)$ is equal to:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ -\\frac{\\sqrt{1}}{2} $"
-          },
-          {
-            "id": "B",
-            "text": "$ -\\frac{1}{\\sqrt{2}} $"
-          },
-          {
-            "id": "C",
-            "text": "$ -\\frac{1}{2} $"
-          },
-          {
-            "id": "D",
-            "text": "$ \\frac{1}{2} $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": [
-          {
-            "id": "q05-exp-1",
-            "kind": "explanation",
-            "path": "/local-papers/assets/mathematics-2026-05-18-shift-2/q05-exp-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 5"
-          }
-        ]
-      },
-      {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "If $A = \\begin{bmatrix} 2 & 3 \\\\ 5 & -2 \\end{bmatrix}$, then:",
         "optionsEn": [
           {
@@ -251,7 +208,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "The value of  $ \\lambda $ for which the following system of equations has unique solution:\n\n $$ \\lambda x+3y-z=1 $$ \n\n $$ x+2y+z=2 $$ \n\n $$ -\\lambda x+y+2z=-1 $$ \n\nare:",
         "optionsEn": [
           {
@@ -284,7 +241,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "If $B$ is a non-singular $4\\times4$ matrix and $A$ is its adjoint such that $|A|=125$, then $|B|$ is:",
         "optionsEn": [
           {
@@ -325,7 +282,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "If A is a square matrix of order 3 such that  $ |2(\\text{adj}A)| = 288 $, then the value of  $ |A| $ is:",
         "optionsEn": [
           {
@@ -366,7 +323,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "If $A$ is a square matrix of order 3 and $|A| = -3$, then the value of $|2AA^T|$ is:",
         "optionsEn": [
           {

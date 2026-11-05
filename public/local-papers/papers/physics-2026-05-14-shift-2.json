@@ -11,50 +11,15 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Physics_May14_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "What are the respective numbers of $\\alpha$ and $\\beta$ particles emitted respectively in the following radioactive decay?\n\n $$ \\mathrm{\\frac{200}{90}}X \\to \\mathrm{168}\\mathrm{Y} $$",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "8 and 8"
-          },
-          {
-            "id": "B",
-            "text": "8 and 6"
-          },
-          {
-            "id": "C",
-            "text": "6 and 8"
-          },
-          {
-            "id": "D",
-            "text": "6 and 6"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "Consider a parallel plate capacitor of area A of each plate and separation d between the plates. If E is the electric field and  $ \\varepsilon_{0} $ is the permittivity of free space between the plates, then potential energy stored in the capacitor is:",
         "optionsEn": [
           {
@@ -87,7 +52,7 @@
       },
       {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 2,
         "stemEn": "What is the relative decrease in focal length of a lens for an increase in optical power by 0.1 D from 2.5 D?",
         "optionsEn": [
           {
@@ -120,7 +85,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "The Young’s double slit interference experiment is performed using light consisting of 480 nm and 600 nm wavelengths to form interference patterns. The least number of the bright fringes of 480 nm light that are required for the first coincidence with the bright fringes formed by 600 nm light is:",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "A steady current I flows through a long straight wire of radius a. The current is uniformly distributed across its cross-section. The ratio of the magnetic fields due to the wire at distances  $ \\frac{a}{4} $ and 3a respectively from the axis of the wire is:",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Two electrons are moving with different kinetic energies. If the first electron is moving with kinetic energy k and the second electron with kinetic energy 4k, the ratio of their de Broglie wavelengths respectively will be:",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "The distance estimation for which ray optics is a good approximation for an aperture of 3 mm and wavelength 300 nm would be:",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Let a rod AB of length l having resistance r is moving perpendicular to a magnetic field B with constant velocity v. If the ends of the rod are connected to a wire PQRS of negligible resistance, then current passing through the wire will be:",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "A parallel plate capacitor of capacitance 1 μF is charged to a potential difference of 20 V. The distance between plates is 1 μm. The energy density between plates of capacitor is:",
         "optionsEn": [
           {
@@ -311,41 +276,6 @@
         "passageId": null,
         "reviewStatus": "keyed",
         "reviewFlags": [],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q10",
-        "sourceQuestionNo": 10,
-        "stemEn": "Match List-I with List-II.\n\n#### List-I\n\nA. The current lags behind the emf by  $ \\frac{\\pi}{4} $ in phase\n\nB. The e.m.f. lags behind the current by  $ \\frac{\\pi}{4} $ in phase\n\nC. The current lags behind the e.m.f. in phase by  $ \\frac{\\pi}{2} $\n\nD. The e.m.f. lags behind the current in phase by  $ \\frac{\\pi}{2} $\n\n### List-II\n\nI. A.C. circuit containing only an inductor",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A-I, B-III, C-IV, D-II"
-          },
-          {
-            "id": "B",
-            "text": "A-II, B-IV, C-I, D-III"
-          },
-          {
-            "id": "C",
-            "text": "A-II, B-III, C-IV, D-I\n\nII. A.C. circuit with resistance and inductance in series"
-          },
-          {
-            "id": "D",
-            "text": "A-IV, B-II, C-I, D-III\n\nIII. A.C. circuit containing only a capacitor\n\nIV. A.C. circuit with resistance and capacitor in series"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
         "sourcePages": [
           1
         ],

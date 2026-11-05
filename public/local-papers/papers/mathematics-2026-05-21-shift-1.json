@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Mathematics_May21_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -84,43 +84,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "The total area of a parallelogram constructed with adjacent vector sides given by  $ \\vec{a} = \\hat{i} - \\hat{j} + 3\\hat{k} $\n\nand  $ \\vec{b}=2\\hat{i}-7\\hat{j}+\\hat{k} $ is equal to:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ 15\\sqrt{2} $"
-          },
-          {
-            "id": "B",
-            "text": "15"
-          },
-          {
-            "id": "C",
-            "text": "$ \\sqrt{35} $"
-          },
-          {
-            "id": "D",
-            "text": "0"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "A random variable X has the following probability distribution table: Find the exact value\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>X</td><td style='text-align: center; word-wrap: break-word;'>0</td><td style='text-align: center; word-wrap: break-word;'>1</td><td style='text-align: center; word-wrap: break-word;'>2</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>$ P(X) $</td><td style='text-align: center; word-wrap: break-word;'>k</td><td style='text-align: center; word-wrap: break-word;'>2k</td><td style='text-align: center; word-wrap: break-word;'>3k</td></tr></table>\n\n\nof the unknown parameter k.",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "If two vectors  $ \\vec{a} = 2\\hat{i} + \\lambda\\hat{j} + \\hat{k} $ and  $ \\vec{b} = 4\\hat{i} - 2\\hat{j} - 2\\hat{k} $ are perpendicular to each other, determine the value of the scalar constant  $ \\lambda $.",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Evaluate the principal value of the inverse trigonometric expression:  $ \\sin^{-1}\\left(\\sin\\frac{2\\pi}{3}\\right) $",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "If a square matrix A satisfies the condition  $ A^{T} = -A $, then the matrix A is classified as a:",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Find the interval where the function  $ f(x) = x^2 - 4x + 6 $ is strictly decreasing.",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "Simplify the following expression using inverse trigonometric properties:  $ \\tan(\\sin^{-1}x + \\cos^{-1}x) $ where  $ |x| \\leq 1 $.",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Calculate the mean (expected value) of a random variable X given its probability distribution setup below:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>X</td><td style='text-align: center; word-wrap: break-word;'>1</td><td style='text-align: center; word-wrap: break-word;'>2</td><td style='text-align: center; word-wrap: break-word;'>3</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>$ P(X) $</td><td style='text-align: center; word-wrap: break-word;'>0.2</td><td style='text-align: center; word-wrap: break-word;'>0.5</td><td style='text-align: center; word-wrap: break-word;'>0.3</td></tr></table>",
         "optionsEn": [
           {

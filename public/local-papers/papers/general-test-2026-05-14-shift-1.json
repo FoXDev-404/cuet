@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_GAT_May14_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -84,78 +84,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "Potato's per-kilogram price has risen from Rs.18 to Rs.25. What should be the percentage reduction in potato use so that expenditure does NOT increase?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "28%"
-          },
-          {
-            "id": "B",
-            "text": "31%"
-          },
-          {
-            "id": "C",
-            "text": "22%"
-          },
-          {
-            "id": "D",
-            "text": "34%"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "Find the missing character in the given table:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>16</td><td style='text-align: center; word-wrap: break-word;'>210</td><td style='text-align: center; word-wrap: break-word;'>14</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>14</td><td style='text-align: center; word-wrap: break-word;'>156</td><td style='text-align: center; word-wrap: break-word;'>12</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>12</td><td style='text-align: center; word-wrap: break-word;'>?</td><td style='text-align: center; word-wrap: break-word;'>10</td></tr></table>",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "90"
-          },
-          {
-            "id": "B",
-            "text": "100"
-          },
-          {
-            "id": "C",
-            "text": "110"
-          },
-          {
-            "id": "D",
-            "text": "120"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 3,
         "stemEn": "If  $ \\left(\\frac{3}{5}\\right)^{3p-2}=\\left(\\frac{9}{25}\\right)^{8}\\times\\left(\\frac{3}{5}\\right)^{-3} $, then the value of  $ 2p+1 $ is:",
         "optionsEn": [
           {
@@ -188,7 +118,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "Find the next term in the series: M13, O18, ?, S28, U33",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "The area of an equilateral  $ \\triangle ABC $ is  $ 169\\sqrt{3} $ cm $ ^2 $. Find the in-radius of  $ \\triangle ABC $.",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "If the word 'LEADER' is coded as 20-13-9-12-13-26. How would you write \"LIGHT\"?",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "A sum of money becomes 7 times itself in 2 years at a certain rate of simple interest. Find the rate of interest per annum.",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "The difference between the CI and the SI on a sum of money lent for 2 years at 20% interest per annum is 80. The sum is:",
         "optionsEn": [
           {

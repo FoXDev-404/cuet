@@ -11,50 +11,15 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Mathematics_May18_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "Solve:\n\n $$ \\frac{dy}{dx}=y\\tan x $$",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "y = Csecx"
-          },
-          {
-            "id": "B",
-            "text": "y = C  $ \\cos x $"
-          },
-          {
-            "id": "C",
-            "text": "$ y = C \\sin x $"
-          },
-          {
-            "id": "D",
-            "text": "$ y = C \\tan x $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "Solve:\n\n $$ \\frac{dy}{dx}+y=e^{x},\\qquad y(0)=2 $$",
         "optionsEn": [
           {
@@ -86,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "Evaluate:\n\n $$ \\int\\frac{1}{x^{2}+4x+5}dx $$",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ \\tan^{-1}(x+2)+C $"
-          },
-          {
-            "id": "B",
-            "text": "$ \\frac{1}{2}\\tan^{-1}(x+2)+C $"
-          },
-          {
-            "id": "C",
-            "text": "$ \\tan^{-1}(2x+4)+C $"
-          },
-          {
-            "id": "D",
-            "text": "$ \\ln(x^{2}+4x+5)+C $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 2,
         "stemEn": "Evaluate:\n\n $$ \\int_{0}^{1}\\frac{1}{1+x^{2}}dx $$",
         "optionsEn": [
           {
@@ -155,7 +85,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 3,
         "stemEn": "For  $ y = x^{3} - 3x^{2} + 2 $, slope at x = 2:",
         "optionsEn": [
           {
@@ -188,7 +118,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "If\n\n $$ \\begin{aligned}&\\boldsymbol{A}=\\begin{bmatrix} \\\\{{{2}}}&{{{3}}} \\\\{{{1}}}&{{{4}}} \\\\\\end{bmatrix}\\\\ \\end{aligned} $$ \n\nthen  $ A^{-1} = $",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "Solve:\n\n $$ \\begin{aligned}\\left|\\begin{matrix}x&1\\\\ 2&x\\end{matrix}\\right|&=0\\end{aligned} $$",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "If  $ \\vec{a} = 2\\hat{i} + \\hat{j} $,  $ \\vec{b} = \\hat{i} + 3\\hat{j} $, then  $ \\vec{a} \\cdot \\vec{b} = $",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "Distance between  $ A(1,2,3) $ and  $ B(4,6,3) $:",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "Line through  $ (1,2,3) $ parallel to  $ \\hat{i} + 2\\hat{j} + 3\\hat{k} $:",
         "optionsEn": [
           {

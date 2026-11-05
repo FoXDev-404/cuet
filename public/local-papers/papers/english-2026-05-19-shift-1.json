@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_English_May19_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -84,43 +84,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "After the sudden resignation of the manager, the entire office was _____.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "white elephant"
-          },
-          {
-            "id": "B",
-            "text": "at sixes and sevens"
-          },
-          {
-            "id": "C",
-            "text": "eke out"
-          },
-          {
-            "id": "D",
-            "text": "break through"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "The abandoned airport project became a _____ for the government.",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "A long procession, especially for a funeral, is called a:",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Choose the pair of antonyms.",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "An _____ speaker can explain difficult ideas very clearly and skillfully.",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "“Brevity” means:",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "The professor's explanation was so _____ that students lost interest quickly.",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "A person who travels from place to place is known as:",
         "optionsEn": [
           {

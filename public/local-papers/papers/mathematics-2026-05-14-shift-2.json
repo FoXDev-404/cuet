@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Mathematics_May14_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "The integral \\int\\frac{2+x^{4}}{1+x^{2}}dx is equal to",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ \\frac{1}{3}x^{3} + 3\\tan^{-1}x - x + C $"
-          },
-          {
-            "id": "B",
-            "text": "$ \\frac{1}{3}x^{3} + 3\\tan^{-1}x + x + C $"
-          },
-          {
-            "id": "C",
-            "text": "$ \\frac{1}{3}x^{3} - 3\\tan^{-1}x - x + C $"
-          },
-          {
-            "id": "D",
-            "text": "$ \\frac{1}{3}x^{3} - 3\\tan^{-1}x + x + C $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 2,
         "stemEn": "The value of the integral  $ I = \\int_{-3}^{3}(x^{3}-x)dx $ is",
         "optionsEn": [
           {
@@ -120,7 +85,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "The integral  $ \\int e^x (\\tan^{-1} x + \\frac{1}{1+x^2}) dx $ is equal to",
         "optionsEn": [
           {
@@ -153,7 +118,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "The value of  $ \\int_{0}^{2}|x-2|dx= $",
         "optionsEn": [
           {
@@ -186,7 +151,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "If  $ X + Y = \\begin{pmatrix} 5 & 3 \\\\ 0 & 7 \\end{pmatrix} $ and  $ X - Y = \\begin{pmatrix} 7 & 1 \\\\ 2 & 3 \\end{pmatrix} $. Then X and Y are",
         "optionsEn": [
           {
@@ -219,7 +184,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "A certain type of fish has a 4/5 probability of surviving in a pond, while another fish has a 2/5 probability of survival. What is the probability that exactly one of them survives?",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "A card is picked at random from a pack of 52 playing cards. Given that the picked card is a\n\nking, the probability of this card to be a card of spade is:",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "If  $ \\vec{a} $ and  $ \\vec{b} $ are unit vectors, then the angle between  $ \\vec{a} $ and  $ \\vec{b} $ for  $ \\sqrt{3}\\vec{a}-\\vec{b} $ to be a unit vector is given by :",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Consider the function  $ f(x) = -2x^3 - 9x^2 - 12x + 5 $. Then, which of the following is/are correct?",
         "optionsEn": [
           {

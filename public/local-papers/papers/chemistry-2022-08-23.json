@@ -1,1698 +1,1457 @@
 {
- "exam": {
-  "id": "local-chemistry-2022-08-23",
-  "slug": "chemistry-2022-08-23",
-  "title": "CUET UG Chemistry 23 August 2022 Previous Year Paper",
-  "subject": "Chemistry",
-  "subjectId": "local-chemistry",
-  "subjectCode": "CHE",
-  "year": 2022,
-  "examDate": "2022-08-23",
-  "shift": null,
-  "sourceFile": "Chemistry_2022-08-23.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 46,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Which of the following shows both Frenkel as well as Schottky defects?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "AgBr"
-     },
-     {
-      "id": "B",
-      "text": "NaCl"
-     },
-     {
-      "id": "C",
-      "text": "KCl"
-     },
-     {
-      "id": "D",
-      "text": "AgCl"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Which of the following is correct for a hexagonal crystal system?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ a = b \\neq c $, $ \\alpha = \\beta = \\gamma = 90^\\circ $"
-     },
-     {
-      "id": "B",
-      "text": "$ a \\neq b \\neq c $, $ \\alpha = \\beta = \\gamma = 90^\\circ $"
-     },
-     {
-      "id": "C",
-      "text": "$ a = b \\neq c $, $ \\alpha = \\beta = 90^\\circ $, $ \\gamma = 120^\\circ $"
-     },
-     {
-      "id": "D",
-      "text": "$ a \\neq b \\neq c $, $ \\alpha = \\gamma = 90^\\circ $, $ \\beta = 90^\\circ $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Efficiency of packing in body centred cubic structures is found to be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "33%"
-     },
-     {
-      "id": "B",
-      "text": "74%"
-     },
-     {
-      "id": "C",
-      "text": "52.4%"
-     },
-     {
-      "id": "D",
-      "text": "68%"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Observe the given graph and identify the correct statement for the solution.\n\n$ x_1=1 $ Mole Fraction $ x_1=0 $\n\n$ x_2=0 $ $ x_2 \\longrightarrow x_2=1 $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Component 2 is more volatile than component 1"
-     },
-     {
-      "id": "B",
-      "text": "Component 1 is more volatile than component 2"
-     },
-     {
-      "id": "C",
-      "text": "Boiling point of component 1 is lower than that of component 2"
-     },
-     {
-      "id": "D",
-      "text": "Volatility of a component depends upon its mole fraction"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q04-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q04-figure-1.jpg",
-      "page": 1,
-      "alt": "Figure for question 4"
-     }
+  "exam": {
+    "id": "local-chemistry-2022-08-23",
+    "slug": "chemistry-2022-08-23",
+    "title": "CUET UG Chemistry 23 August 2022 Previous Year Paper",
+    "subject": "Chemistry",
+    "subjectId": "local-chemistry",
+    "subjectCode": "CHE",
+    "year": 2022,
+    "examDate": "2022-08-23",
+    "shift": null,
+    "sourceFile": "Chemistry_2022-08-23.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 40,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Which of the following shows both Frenkel as well as Schottky defects?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "AgBr"
+          },
+          {
+            "id": "B",
+            "text": "NaCl"
+          },
+          {
+            "id": "C",
+            "text": "KCl"
+          },
+          {
+            "id": "D",
+            "text": "AgCl"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 2,
+        "stemEn": "Efficiency of packing in body centred cubic structures is found to be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "33%"
+          },
+          {
+            "id": "B",
+            "text": "74%"
+          },
+          {
+            "id": "C",
+            "text": "52.4%"
+          },
+          {
+            "id": "D",
+            "text": "68%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 3,
+        "stemEn": "Observe the given graph and identify the correct statement for the solution.\n\n$ x_1=1 $ Mole Fraction $ x_1=0 $\n\n$ x_2=0 $ $ x_2 \\longrightarrow x_2=1 $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Component 2 is more volatile than component 1"
+          },
+          {
+            "id": "B",
+            "text": "Component 1 is more volatile than component 2"
+          },
+          {
+            "id": "C",
+            "text": "Boiling point of component 1 is lower than that of component 2"
+          },
+          {
+            "id": "D",
+            "text": "Volatility of a component depends upon its mole fraction"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q04-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q04-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 4,
+        "stemEn": "18 g of a non-volatile solution A is dissolved in 1 kg of water, the boiling point of water is raised to 373.51 K. Given $ K_{b} $ for water is 0.52 K kg mol $ ^{-1} $, boiling point for water is 373.15 K at 1.013 bar pressure.\n\nThe molecular weight of the solid A is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 58.0 \\, g \\, mol^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 26.0 \\, g \\, mol^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 55.0 \\, g \\, mol^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 110.0 \\, g \\, mol^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 5,
+        "stemEn": "Based on solute solvent interactions, arrange the following in the order of increasing solubility in n-octane.\n\nA. Cyclohexane\n\nB. KCl\n\nC. $ \\mathrm{CH_{3}OH} $\n\nD. $ \\mathrm{CH_{3}NH_{2}} $\n\nE. $ \\mathrm{CH_{3}CN} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A < B < C < D < E"
+          },
+          {
+            "id": "B",
+            "text": "B < C < E < D < A"
+          },
+          {
+            "id": "C",
+            "text": "C < B < A < E < D"
+          },
+          {
+            "id": "D",
+            "text": "B < C < D < E < A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 6,
+        "stemEn": "In a pseudo first order reaction, the rate constant",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Is independent of the concentration of reactants"
+          },
+          {
+            "id": "B",
+            "text": "Depends on concentration of reactants present in small quantity"
+          },
+          {
+            "id": "C",
+            "text": "Depends on temperature"
+          },
+          {
+            "id": "D",
+            "text": "Depends on concentration of reactants present in excess"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 7,
+        "stemEn": "When the temperature of a reaction is increased by $ 20^{\\circ} $C, the rate of reaction increases by",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3 times"
+          },
+          {
+            "id": "B",
+            "text": "4 times"
+          },
+          {
+            "id": "C",
+            "text": "2 times"
+          },
+          {
+            "id": "D",
+            "text": "1.5 times"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 8,
+        "stemEn": "Observe the given graph. What will be the unit for the rate constant?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\mathrm{mol L^{-1} s^{-1}} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\mathrm{mol^{-1} L s^{-1}} $"
+          },
+          {
+            "id": "C",
+            "text": "$ s^{-1} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\mathrm{mol^{-2} L^{2} s^{-1}} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q09-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q09-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure for question 9"
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 9,
+        "stemEn": "The colloids that cannot be easily coagulated are",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Lyophobic colloids"
+          },
+          {
+            "id": "B",
+            "text": "Lyophilic colloids"
+          },
+          {
+            "id": "C",
+            "text": "Irreversible sols"
+          },
+          {
+            "id": "D",
+            "text": "Associated colloids"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 10,
+        "stemEn": "Which of the following ores can be concentrated using froth floatation process?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Magnetite"
+          },
+          {
+            "id": "B",
+            "text": "Calamine"
+          },
+          {
+            "id": "C",
+            "text": "Copper Pyrites"
+          },
+          {
+            "id": "D",
+            "text": "Bauxite"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 11,
+        "stemEn": "The correct order of boiling points for hydrogen halides is\n\nA. HCl\n\nB. HBr\n\nC. HF\n\nD. HI",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "HF < HI < HBr < HCl"
+          },
+          {
+            "id": "B",
+            "text": "HF < HCl < HBr < HI"
+          },
+          {
+            "id": "C",
+            "text": "HF > HCl > HBr > HI"
+          },
+          {
+            "id": "D",
+            "text": "HF > HI > HBr > HCl"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 12,
+        "stemEn": "In the reaction\n\n$ N_{2}(g) + 3H_{2}(g) \\rightleftharpoons 2NH_{3}(g) $, $ \\Delta_{r}H^{0} = -46.1kJ\\ mol^{-1} $\n\nThe yield of ammonia is expected to be maximum at",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "High temperature and low pressure"
+          },
+          {
+            "id": "B",
+            "text": "High temperature and high pressure"
+          },
+          {
+            "id": "C",
+            "text": "Low temperature and high pressure"
+          },
+          {
+            "id": "D",
+            "text": "Low temperature and low pressure"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 13,
+        "stemEn": "The structure of $SF_{4}$ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Square planar"
+          },
+          {
+            "id": "B",
+            "text": "Tetrahedral"
+          },
+          {
+            "id": "C",
+            "text": "Trigonal bipyramidal"
+          },
+          {
+            "id": "D",
+            "text": "Octahedral"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 14,
+        "stemEn": "Which of the following interhalogen compound does not exist?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "BrF"
+          },
+          {
+            "id": "B",
+            "text": "$ \\mathrm{BrF}_{3} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\mathrm{BrF}_{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\mathrm{BrF}_{5} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 15,
+        "stemEn": "The electronic configuration of Cu in +1 oxidation state is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "[Ar]3d $ ^{10} $"
+          },
+          {
+            "id": "B",
+            "text": "[Ar] $ ^{3} $d $ ^{9} $4s $ ^{1} $"
+          },
+          {
+            "id": "C",
+            "text": "[Ar]3d $ ^{10} $4s $ ^{1} $"
+          },
+          {
+            "id": "D",
+            "text": "[Ar]3d $ ^{9} $4s $ ^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 16,
+        "stemEn": "Chemical formula and colour of manganate ion is _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\mathrm{MnO}_{4}^{2-} $, Green"
+          },
+          {
+            "id": "B",
+            "text": "$ \\mathrm{MnO}_{4}^{-} $, Green"
+          },
+          {
+            "id": "C",
+            "text": "$ \\mathrm{MnO}_{4}^{-} $, Purple"
+          },
+          {
+            "id": "D",
+            "text": "$ \\mathrm{MnO}_{4}^{2-} $, Purple"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 17,
+        "stemEn": "Which of the following elements is not regarded as a transition metal?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Cu"
+          },
+          {
+            "id": "B",
+            "text": "Sc"
+          },
+          {
+            "id": "C",
+            "text": "Mn"
+          },
+          {
+            "id": "D",
+            "text": "Zn"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 18,
+        "stemEn": "Coordination number of central metal ion in $ [Cu(H_{2}O)_{4}] $^{2+} is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "5"
+          },
+          {
+            "id": "D",
+            "text": "6"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 19,
+        "stemEn": "Oxidation number of cobalt ion in $ [CoCl_{2}(en)_{2}]^{+} $ will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 20,
+        "stemEn": "Number of ions produced on hydrolysis of $ \\mathrm{Cr(NH_{3})_{4}Cl_{3}} $ reacting with $ \\mathrm{AgNO_{3}} $ to give 1 mole of AgCl, will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 21,
+        "stemEn": "Hybridisation state of central metal ion in $ [\\mathrm{Fe(NH}_{3})_{4}(\\mathrm{en})]^{2+} $ will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ sp^{3} $"
+          },
+          {
+            "id": "B",
+            "text": "$ dsp^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ d^{2}sp^{3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ sp^{3}d^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 22,
+        "stemEn": "The IUPAC name of glycerol is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2-Methyl phenol"
+          },
+          {
+            "id": "B",
+            "text": "Propane-1,2,3-triol"
+          },
+          {
+            "id": "C",
+            "text": "2-Methylpropan-2-ol"
+          },
+          {
+            "id": "D",
+            "text": "2-Methylcyclopentanol"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 23,
+        "stemEn": "Which set of reagents will be most suitable to bring about the following change?\n\n2,4,6-Trinitochlorobenzene to picric acid",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "NaOH, 623 K, 300 atm"
+          },
+          {
+            "id": "B",
+            "text": "Hot conc sulphuric acid"
+          },
+          {
+            "id": "C",
+            "text": "Warm water"
+          },
+          {
+            "id": "D",
+            "text": "Acidified water"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 24,
+        "stemEn": "$ \\mathrm{RCOCl} + \\mathrm{H}_{2} \\xrightarrow{\\mathrm{Pd, BaSO}_{4}} \\mathrm{X} + \\mathrm{HCl} $\n\nX can be\n\nA. $ \\mathrm{CH}_{3}\\mathrm{COCH}_{3} $\n\nB.\n\nC.\n\nD.\n\n$ CH_{3}CH_{2}COCH_{3} $\n\nE",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, B and C only"
+          },
+          {
+            "id": "B",
+            "text": "B, C and D only"
+          },
+          {
+            "id": "C",
+            "text": "C and E only"
+          },
+          {
+            "id": "D",
+            "text": "B and D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q30-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 30"
+          },
+          {
+            "id": "q30-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-2.jpg",
+            "page": 3,
+            "alt": "Figure for question 30"
+          },
+          {
+            "id": "q30-figure-3",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-3.jpg",
+            "page": 3,
+            "alt": "Figure for question 30"
+          },
+          {
+            "id": "q30-figure-4",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-4.jpg",
+            "page": 3,
+            "alt": "Figure for question 30"
+          }
+        ]
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 25,
+        "stemEn": "$ \\mathrm{pK}_{a} $ value of",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\mathrm{NO}_{2} $ is an electron donating group which increases electron-density on ring."
+          },
+          {
+            "id": "B",
+            "text": "NO $ _{2} $ is an electron-withdrawing group which decreases electron-density on ring."
+          },
+          {
+            "id": "C",
+            "text": "is less acidic than"
+          },
+          {
+            "id": "D",
+            "text": "Hyperconjugation is more in"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q31-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q31-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 31"
+          }
+        ]
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 26,
+        "stemEn": "Which of the following is an oligosaccharide?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Starch"
+          },
+          {
+            "id": "B",
+            "text": "Glucose"
+          },
+          {
+            "id": "C",
+            "text": "Ribose"
+          },
+          {
+            "id": "D",
+            "text": "Maltose"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 27,
+        "stemEn": "During denaturation of proteins",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Secondary and tertiary structures remain intact"
+          },
+          {
+            "id": "B",
+            "text": "Secondary and tertiary structures are destroyed"
+          },
+          {
+            "id": "C",
+            "text": "Primary structures is destroyed"
+          },
+          {
+            "id": "D",
+            "text": "Only tertiary structures remain intact"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 28,
+        "stemEn": "The polymer used as a substitute for wool is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Polyether"
+          },
+          {
+            "id": "B",
+            "text": "Polyacrylonitrile"
+          },
+          {
+            "id": "C",
+            "text": "Polyester"
+          },
+          {
+            "id": "D",
+            "text": "Teflon"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 29,
+        "stemEn": "Which of the following polymers involve cross linkages?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Bakelite"
+          },
+          {
+            "id": "B",
+            "text": "PVC"
+          },
+          {
+            "id": "C",
+            "text": "Nylon 6"
+          },
+          {
+            "id": "D",
+            "text": "Novalac"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 30,
+        "stemEn": "The tranquilizer used to control depression and hypertension is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Equanil"
+          },
+          {
+            "id": "B",
+            "text": "Seldane"
+          },
+          {
+            "id": "C",
+            "text": "Maprobamate"
+          },
+          {
+            "id": "D",
+            "text": "Asprin"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 31,
+        "stemEn": "Which of the following is not an antiseptic?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1% solution of phenol"
+          },
+          {
+            "id": "B",
+            "text": "Tincture of Iodine"
+          },
+          {
+            "id": "C",
+            "text": "Dettol"
+          },
+          {
+            "id": "D",
+            "text": "Iodoform"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 32,
+        "stemEn": "The products formed in the following reaction is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\ce{H-C(=O)-CH2CH3} $, $ \\ce{MgCl(OH)H} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\ce{H3CCH2OH} $, $ \\ce{HCOOH} $"
+          },
+          {
+            "id": "C",
+            "text": "$ H_{3}CCH_{3} $, MgCl(OH)"
+          },
+          {
+            "id": "D",
+            "text": "$ \\mathrm{H}_{3}\\mathrm{CCH}_{2}\\mathrm{CH}_{3} $, MgCl(OH)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q42-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q42-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 42"
+          },
+          {
+            "id": "q42-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q42-figure-2.jpg",
+            "page": 4,
+            "alt": "Figure for question 42"
+          }
+        ]
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 33,
+        "stemEn": "The correct equation from the following representing the preparation of phenyl magnesium bromide is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": ""
+          },
+          {
+            "id": "B",
+            "text": ""
+          },
+          {
+            "id": "C",
+            "text": ""
+          },
+          {
+            "id": "D",
+            "text": ""
+          }
+        ],
+        "optionsAreImages": true,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [
+          "image-options"
+        ],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q43-options",
+            "kind": "options",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q43-options.jpg",
+            "page": 4,
+            "alt": "Printed answer choices for question 43"
+          }
+        ]
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 34,
+        "stemEn": "The product (P) formed in the following reaction is\n\nProduct (P) + MgBr (OH)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\begin{array}{c}OH\\\\H_{3}C-C-CH_{3}\\\\CH_{3}\\end{array} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\begin{array}{c}OH\\\\H_{3}C-C-CH_{3}\\\\H\\end{array} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\ce{H3C-C(=O)-OCH3} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\ce{H3CCH2COOH} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q44-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q44-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 44"
+          }
+        ]
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 35,
+        "stemEn": "The number of alcohols which can be produced from Grignard reagent and formaldehyde from the following is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "3 $$ 1-x\\Leftarrow\\frac{x\\left(1.0\\right)}{\\leq0}=\\frac{1}{5} $$ $ I=0+I=\\gamma+x=\\tau s b o\\mu l s t o\\nu o,o2 $ (III)-G,(I)-C,(VI)-B,(II)-A-(a) od nomos hns obte stipes zbioldo alidqogJ (0) botlogoo g rol boau yllnong zi zsoonq noitassol dort3 (0) estovq toqqos tel boau al bodism sith,o2 asio abilqlus (II)-C,(VI)-C,(I)-B,(III)-A (n) ot sob mtoq gniliod agid yllanoitqoxoo and 7H (b) galbooH-H ulgoloomrni os zsoonq oitrosdoos ms al ssoomns to noitssor4 (c) buwnd sinosom to noitss,no l zovot ousogqot wol brswot ni esovot mtoos,ouzeng gizontol no.noiss sinomms to blsh oit sssont ol noiss al ytomog en,oB boibind/bup at mote 2,92 al (o) labirnsqid langrut ton soub,oB absoomqos usgoladromt llo to uO (o)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q45-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-1.jpg",
+            "page": 5,
+            "alt": "Figure for question 45"
+          },
+          {
+            "id": "q45-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-2.jpg",
+            "page": 5,
+            "alt": "Figure for question 45"
+          },
+          {
+            "id": "q45-figure-3",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-3.jpg",
+            "page": 5,
+            "alt": "Figure for question 45"
+          },
+          {
+            "id": "q45-figure-4",
+            "kind": "figure",
+            "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-4.jpg",
+            "page": 5,
+            "alt": "Figure for question 45"
+          }
+        ]
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 36,
+        "stemEn": "The strongest oxidizing agent amongst the following Ag⁺, Cu²⁺, Fe²⁺, Pb²⁺ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Ag⁺"
+          },
+          {
+            "id": "B",
+            "text": "Cu²⁺"
+          },
+          {
+            "id": "C",
+            "text": "Fe²⁺"
+          },
+          {
+            "id": "D",
+            "text": "Pb²⁺"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 37,
+        "stemEn": "Amongst the following the weakest reducing agent is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Mg"
+          },
+          {
+            "id": "B",
+            "text": "Pb"
+          },
+          {
+            "id": "C",
+            "text": "Fe"
+          },
+          {
+            "id": "D",
+            "text": "Cu"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 38,
+        "stemEn": "The emf of the cell Ag(s) | Ag⁺(1m) || Pb²⁺(1m) | Pb(s), is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.67V"
+          },
+          {
+            "id": "B",
+            "text": "1.06V"
+          },
+          {
+            "id": "C",
+            "text": "0.93V"
+          },
+          {
+            "id": "D",
+            "text": "0.93V"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 39,
+        "stemEn": "When Pb is added to an aqueous solution of a mixture of $ Cu^{2+} $ and $ Mg^{2+} $ ions, it is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ Cu^{2+} $ is reduced"
+          },
+          {
+            "id": "B",
+            "text": "$ Mg^{2+} $ is reduced"
+          },
+          {
+            "id": "C",
+            "text": "Cu is reduced"
+          },
+          {
+            "id": "D",
+            "text": "$ Pb^{2+} $ is reduced"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 40,
+        "stemEn": "The combination of electrodes which will give maximum value of $E^{\\circ}$ cell at 298 K is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Anode Cathode Ag Mg"
+          },
+          {
+            "id": "B",
+            "text": "Anode Cathode Cu Fe"
+          },
+          {
+            "id": "C",
+            "text": "Anode Cathode Mg Ag"
+          },
+          {
+            "id": "D",
+            "text": "Anode Cathode Pb Mg $$ \\mathrm{form} \\cong \\mathrm{M} \\equiv \\frac{81}{1 \\times \\mathrm{A} \\mathrm{M}} \\times 52.0 = 85.0 $$ resonanz realog zweidst skl-svlosozib-sklf et gnibrozoA (b) zweicogz realog-non bns nvoloz zelog dfrw olduloz zs ni zelog-con ei omoo-n imvoloz zelog-non dfrw olduloz zuron (a) In筋柱上的筋柱侧向 $$ \\mathrm{t}=\\frac{k}{200\\mathrm{~S}}=\\frac{0\\left[R\\right]}{\\left[R\\right]}\\mathrm{gal}\\Leftarrow\\frac{0\\left[R\\right]}{\\left[R\\right]}\\mathrm{gal}\\frac{200\\mathrm{~S}}{1}=k $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "18 g of a non-volatile solution A is dissolved in 1 kg of water, the boiling point of water is raised to 373.51 K. Given $ K_{b} $ for water is 0.52 K kg mol $ ^{-1} $, boiling point for water is 373.15 K at 1.013 bar pressure.\n\nThe molecular weight of the solid A is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 58.0 \\, g \\, mol^{-1} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 26.0 \\, g \\, mol^{-1} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 55.0 \\, g \\, mol^{-1} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 110.0 \\, g \\, mol^{-1} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Based on solute solvent interactions, arrange the following in the order of increasing solubility in n-octane.\n\nA. Cyclohexane\n\nB. KCl\n\nC. $ \\mathrm{CH_{3}OH} $\n\nD. $ \\mathrm{CH_{3}NH_{2}} $\n\nE. $ \\mathrm{CH_{3}CN} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A < B < C < D < E"
-     },
-     {
-      "id": "B",
-      "text": "B < C < E < D < A"
-     },
-     {
-      "id": "C",
-      "text": "C < B < A < E < D"
-     },
-     {
-      "id": "D",
-      "text": "B < C < D < E < A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "In a pseudo first order reaction, the rate constant",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Is independent of the concentration of reactants"
-     },
-     {
-      "id": "B",
-      "text": "Depends on concentration of reactants present in small quantity"
-     },
-     {
-      "id": "C",
-      "text": "Depends on temperature"
-     },
-     {
-      "id": "D",
-      "text": "Depends on concentration of reactants present in excess"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "When the temperature of a reaction is increased by $ 20^{\\circ} $C, the rate of reaction increases by",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3 times"
-     },
-     {
-      "id": "B",
-      "text": "4 times"
-     },
-     {
-      "id": "C",
-      "text": "2 times"
-     },
-     {
-      "id": "D",
-      "text": "1.5 times"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "Observe the given graph. What will be the unit for the rate constant?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\mathrm{mol L^{-1} s^{-1}} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\mathrm{mol^{-1} L s^{-1}} $"
-     },
-     {
-      "id": "C",
-      "text": "$ s^{-1} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\mathrm{mol^{-2} L^{2} s^{-1}} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q09-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q09-figure-1.jpg",
-      "page": 1,
-      "alt": "Figure for question 9"
-     }
-    ]
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "For a chemical reaction:\n\nA + B → Products\n\nWhich is the overall order of chemical reaction?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "1"
-     },
-     {
-      "id": "C",
-      "text": "2"
-     },
-     {
-      "id": "D",
-      "text": "0"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q10-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q10-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 10"
-     }
-    ]
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "The colloids that cannot be easily coagulated are",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Lyophobic colloids"
-     },
-     {
-      "id": "B",
-      "text": "Lyophilic colloids"
-     },
-     {
-      "id": "C",
-      "text": "Irreversible sols"
-     },
-     {
-      "id": "D",
-      "text": "Associated colloids"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "Which of the following ores can be concentrated using froth floatation process?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Magnetite"
-     },
-     {
-      "id": "B",
-      "text": "Calamine"
-     },
-     {
-      "id": "C",
-      "text": "Copper Pyrites"
-     },
-     {
-      "id": "D",
-      "text": "Bauxite"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "The correct order of boiling points for hydrogen halides is\n\nA. HCl\n\nB. HBr\n\nC. HF\n\nD. HI",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "HF < HI < HBr < HCl"
-     },
-     {
-      "id": "B",
-      "text": "HF < HCl < HBr < HI"
-     },
-     {
-      "id": "C",
-      "text": "HF > HCl > HBr > HI"
-     },
-     {
-      "id": "D",
-      "text": "HF > HI > HBr > HCl"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "In the reaction\n\n$ N_{2}(g) + 3H_{2}(g) \\rightleftharpoons 2NH_{3}(g) $, $ \\Delta_{r}H^{0} = -46.1kJ\\ mol^{-1} $\n\nThe yield of ammonia is expected to be maximum at",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "High temperature and low pressure"
-     },
-     {
-      "id": "B",
-      "text": "High temperature and high pressure"
-     },
-     {
-      "id": "C",
-      "text": "Low temperature and high pressure"
-     },
-     {
-      "id": "D",
-      "text": "Low temperature and low pressure"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "The structure of $SF_{4}$ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Square planar"
-     },
-     {
-      "id": "B",
-      "text": "Tetrahedral"
-     },
-     {
-      "id": "C",
-      "text": "Trigonal bipyramidal"
-     },
-     {
-      "id": "D",
-      "text": "Octahedral"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Which of the following interhalogen compound does not exist?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "BrF"
-     },
-     {
-      "id": "B",
-      "text": "$ \\mathrm{BrF}_{3} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\mathrm{BrF}_{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\mathrm{BrF}_{5} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "The electronic configuration of Cu in +1 oxidation state is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "[Ar]3d $ ^{10} $"
-     },
-     {
-      "id": "B",
-      "text": "[Ar] $ ^{3} $d $ ^{9} $4s $ ^{1} $"
-     },
-     {
-      "id": "C",
-      "text": "[Ar]3d $ ^{10} $4s $ ^{1} $"
-     },
-     {
-      "id": "D",
-      "text": "[Ar]3d $ ^{9} $4s $ ^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Chemical formula and colour of manganate ion is _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\mathrm{MnO}_{4}^{2-} $, Green"
-     },
-     {
-      "id": "B",
-      "text": "$ \\mathrm{MnO}_{4}^{-} $, Green"
-     },
-     {
-      "id": "C",
-      "text": "$ \\mathrm{MnO}_{4}^{-} $, Purple"
-     },
-     {
-      "id": "D",
-      "text": "$ \\mathrm{MnO}_{4}^{2-} $, Purple"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Which of the following elements is not regarded as a transition metal?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Cu"
-     },
-     {
-      "id": "B",
-      "text": "Sc"
-     },
-     {
-      "id": "C",
-      "text": "Mn"
-     },
-     {
-      "id": "D",
-      "text": "Zn"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Coordination number of central metal ion in $ [Cu(H_{2}O)_{4}] $^{2+} is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "4"
-     },
-     {
-      "id": "C",
-      "text": "5"
-     },
-     {
-      "id": "D",
-      "text": "6"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "Oxidation number of cobalt ion in $ [CoCl_{2}(en)_{2}]^{+} $ will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "Number of ions produced on hydrolysis of $ \\mathrm{Cr(NH_{3})_{4}Cl_{3}} $ reacting with $ \\mathrm{AgNO_{3}} $ to give 1 mole of AgCl, will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "Hybridisation state of central metal ion in $ [\\mathrm{Fe(NH}_{3})_{4}(\\mathrm{en})]^{2+} $ will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ sp^{3} $"
-     },
-     {
-      "id": "B",
-      "text": "$ dsp^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ d^{2}sp^{3} $"
-     },
-     {
-      "id": "D",
-      "text": "$ sp^{3}d^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "The IUPAC name of glycerol is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2-Methyl phenol"
-     },
-     {
-      "id": "B",
-      "text": "Propane-1,2,3-triol"
-     },
-     {
-      "id": "C",
-      "text": "2-Methylpropan-2-ol"
-     },
-     {
-      "id": "D",
-      "text": "2-Methylcyclopentanol"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "Which set of reagents will be most suitable to bring about the following change?\n\n2,4,6-Trinitochlorobenzene to picric acid",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "NaOH, 623 K, 300 atm"
-     },
-     {
-      "id": "B",
-      "text": "Hot conc sulphuric acid"
-     },
-     {
-      "id": "C",
-      "text": "Warm water"
-     },
-     {
-      "id": "D",
-      "text": "Acidified water"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-I, B-III, C-IV, D-II"
-     },
-     {
-      "id": "B",
-      "text": "A-IV, B-I, C-II, D-III"
-     },
-     {
-      "id": "C",
-      "text": "A-II, B-III, C-IV, D-I"
-     },
-     {
-      "id": "D",
-      "text": "A-II, B-III, C-I, D-IV"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q29-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q29-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 29"
-     },
-     {
-      "id": "q29-table-2",
-      "kind": "table",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q29-table-2.jpg",
-      "page": 3,
-      "alt": "Table for question 29"
-     }
-    ]
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "$ \\mathrm{RCOCl} + \\mathrm{H}_{2} \\xrightarrow{\\mathrm{Pd, BaSO}_{4}} \\mathrm{X} + \\mathrm{HCl} $\n\nX can be\n\nA. $ \\mathrm{CH}_{3}\\mathrm{COCH}_{3} $\n\nB.\n\nC.\n\nD.\n\n$ CH_{3}CH_{2}COCH_{3} $\n\nE",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, B and C only"
-     },
-     {
-      "id": "B",
-      "text": "B, C and D only"
-     },
-     {
-      "id": "C",
-      "text": "C and E only"
-     },
-     {
-      "id": "D",
-      "text": "B and D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q30-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 30"
-     },
-     {
-      "id": "q30-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-2.jpg",
-      "page": 3,
-      "alt": "Figure for question 30"
-     },
-     {
-      "id": "q30-figure-3",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-3.jpg",
-      "page": 3,
-      "alt": "Figure for question 30"
-     },
-     {
-      "id": "q30-figure-4",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q30-figure-4.jpg",
-      "page": 3,
-      "alt": "Figure for question 30"
-     }
-    ]
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "$ \\mathrm{pK}_{a} $ value of",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\mathrm{NO}_{2} $ is an electron donating group which increases electron-density on ring."
-     },
-     {
-      "id": "B",
-      "text": "NO $ _{2} $ is an electron-withdrawing group which decreases electron-density on ring."
-     },
-     {
-      "id": "C",
-      "text": "is less acidic than"
-     },
-     {
-      "id": "D",
-      "text": "Hyperconjugation is more in"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q31-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q31-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 31"
-     }
-    ]
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "The structure representing semicarbazone cyclopentanone correctly is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q32-options",
-      "kind": "options",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q32-options.jpg",
-      "page": 4,
-      "alt": "Printed answer choices for question 32"
-     }
-    ]
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Benzenediazonium chloride when heated with warm water, would produce",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "benzene"
-     },
-     {
-      "id": "B",
-      "text": "phenol"
-     },
-     {
-      "id": "C",
-      "text": "chlorobenzene"
-     },
-     {
-      "id": "D",
-      "text": "aniline"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "The reagent used in the Hinsberg test of primary, secondary and tertiary amines, is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q34-options",
-      "kind": "options",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q34-options.jpg",
-      "page": 4,
-      "alt": "Printed answer choices for question 34"
-     }
-    ]
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Which of the following is an oligosaccharide?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Starch"
-     },
-     {
-      "id": "B",
-      "text": "Glucose"
-     },
-     {
-      "id": "C",
-      "text": "Ribose"
-     },
-     {
-      "id": "D",
-      "text": "Maltose"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "During denaturation of proteins",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Secondary and tertiary structures remain intact"
-     },
-     {
-      "id": "B",
-      "text": "Secondary and tertiary structures are destroyed"
-     },
-     {
-      "id": "C",
-      "text": "Primary structures is destroyed"
-     },
-     {
-      "id": "D",
-      "text": "Only tertiary structures remain intact"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "The polymer used as a substitute for wool is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Polyether"
-     },
-     {
-      "id": "B",
-      "text": "Polyacrylonitrile"
-     },
-     {
-      "id": "C",
-      "text": "Polyester"
-     },
-     {
-      "id": "D",
-      "text": "Teflon"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "Which of the following polymers involve cross linkages?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Bakelite"
-     },
-     {
-      "id": "B",
-      "text": "PVC"
-     },
-     {
-      "id": "C",
-      "text": "Nylon 6"
-     },
-     {
-      "id": "D",
-      "text": "Novalac"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "The tranquilizer used to control depression and hypertension is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Equanil"
-     },
-     {
-      "id": "B",
-      "text": "Seldane"
-     },
-     {
-      "id": "C",
-      "text": "Maprobamate"
-     },
-     {
-      "id": "D",
-      "text": "Asprin"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Which of the following is not an antiseptic?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1% solution of phenol"
-     },
-     {
-      "id": "B",
-      "text": "Tincture of Iodine"
-     },
-     {
-      "id": "C",
-      "text": "Dettol"
-     },
-     {
-      "id": "D",
-      "text": "Iodoform"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "The products formed in the following reaction is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\ce{H-C(=O)-CH2CH3} $, $ \\ce{MgCl(OH)H} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\ce{H3CCH2OH} $, $ \\ce{HCOOH} $"
-     },
-     {
-      "id": "C",
-      "text": "$ H_{3}CCH_{3} $, MgCl(OH)"
-     },
-     {
-      "id": "D",
-      "text": "$ \\mathrm{H}_{3}\\mathrm{CCH}_{2}\\mathrm{CH}_{3} $, MgCl(OH)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q42-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q42-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 42"
-     },
-     {
-      "id": "q42-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q42-figure-2.jpg",
-      "page": 4,
-      "alt": "Figure for question 42"
-     }
-    ]
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "The correct equation from the following representing the preparation of phenyl magnesium bromide is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q43-options",
-      "kind": "options",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q43-options.jpg",
-      "page": 4,
-      "alt": "Printed answer choices for question 43"
-     }
-    ]
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "The product (P) formed in the following reaction is\n\nProduct (P) + MgBr (OH)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\begin{array}{c}OH\\\\H_{3}C-C-CH_{3}\\\\CH_{3}\\end{array} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\begin{array}{c}OH\\\\H_{3}C-C-CH_{3}\\\\H\\end{array} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\ce{H3C-C(=O)-OCH3} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\ce{H3CCH2COOH} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q44-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q44-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 44"
-     }
-    ]
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "The number of alcohols which can be produced from Grignard reagent and formaldehyde from the following is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "3 $$ 1-x\\Leftarrow\\frac{x\\left(1.0\\right)}{\\leq0}=\\frac{1}{5} $$ $ I=0+I=\\gamma+x=\\tau s b o\\mu l s t o\\nu o,o2 $ (III)-G,(I)-C,(VI)-B,(II)-A-(a) od nomos hns obte stipes zbioldo alidqogJ (0) botlogoo g rol boau yllnong zi zsoonq noitassol dort3 (0) estovq toqqos tel boau al bodism sith,o2 asio abilqlus (II)-C,(VI)-C,(I)-B,(III)-A (n) ot sob mtoq gniliod agid yllanoitqoxoo and 7H (b) galbooH-H ulgoloomrni os zsoonq oitrosdoos ms al ssoomns to noitssor4 (c) buwnd sinosom to noitss,no l zovot ousogqot wol brswot ni esovot mtoos,ouzeng gizontol no.noiss sinomms to blsh oit sssont ol noiss al ytomog en,oB boibind/bup at mote 2,92 al (o) labirnsqid langrut ton soub,oB absoomqos usgoladromt llo to uO (o)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q45-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-1.jpg",
-      "page": 5,
-      "alt": "Figure for question 45"
-     },
-     {
-      "id": "q45-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-2.jpg",
-      "page": 5,
-      "alt": "Figure for question 45"
-     },
-     {
-      "id": "q45-figure-3",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-3.jpg",
-      "page": 5,
-      "alt": "Figure for question 45"
-     },
-     {
-      "id": "q45-figure-4",
-      "kind": "figure",
-      "path": "/local-papers/assets/chemistry-2022-08-23/q45-figure-4.jpg",
-      "page": 5,
-      "alt": "Figure for question 45"
-     }
-    ]
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "The strongest oxidizing agent amongst the following Ag⁺, Cu²⁺, Fe²⁺, Pb²⁺ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Ag⁺"
-     },
-     {
-      "id": "B",
-      "text": "Cu²⁺"
-     },
-     {
-      "id": "C",
-      "text": "Fe²⁺"
-     },
-     {
-      "id": "D",
-      "text": "Pb²⁺"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "Amongst the following the weakest reducing agent is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Mg"
-     },
-     {
-      "id": "B",
-      "text": "Pb"
-     },
-     {
-      "id": "C",
-      "text": "Fe"
-     },
-     {
-      "id": "D",
-      "text": "Cu"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "The emf of the cell Ag(s) | Ag⁺(1m) || Pb²⁺(1m) | Pb(s), is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.67V"
-     },
-     {
-      "id": "B",
-      "text": "1.06V"
-     },
-     {
-      "id": "C",
-      "text": "0.93V"
-     },
-     {
-      "id": "D",
-      "text": "0.93V"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "When Pb is added to an aqueous solution of a mixture of $ Cu^{2+} $ and $ Mg^{2+} $ ions, it is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ Cu^{2+} $ is reduced"
-     },
-     {
-      "id": "B",
-      "text": "$ Mg^{2+} $ is reduced"
-     },
-     {
-      "id": "C",
-      "text": "Cu is reduced"
-     },
-     {
-      "id": "D",
-      "text": "$ Pb^{2+} $ is reduced"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "The combination of electrodes which will give maximum value of $E^{\\circ}$ cell at 298 K is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Anode Cathode Ag Mg"
-     },
-     {
-      "id": "B",
-      "text": "Anode Cathode Cu Fe"
-     },
-     {
-      "id": "C",
-      "text": "Anode Cathode Mg Ag"
-     },
-     {
-      "id": "D",
-      "text": "Anode Cathode Pb Mg $$ \\mathrm{form} \\cong \\mathrm{M} \\equiv \\frac{81}{1 \\times \\mathrm{A} \\mathrm{M}} \\times 52.0 = 85.0 $$ resonanz realog zweidst skl-svlosozib-sklf et gnibrozoA (b) zweicogz realog-non bns nvoloz zelog dfrw olduloz zs ni zelog-con ei omoo-n imvoloz zelog-non dfrw olduloz zuron (a) In筋柱上的筋柱侧向 $$ \\mathrm{t}=\\frac{k}{200\\mathrm{~S}}=\\frac{0\\left[R\\right]}{\\left[R\\right]}\\mathrm{gal}\\Leftarrow\\frac{0\\left[R\\right]}{\\left[R\\right]}\\mathrm{gal}\\frac{200\\mathrm{~S}}{1}=k $$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

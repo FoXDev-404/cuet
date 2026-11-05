@@ -11,85 +11,15 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_English_May30_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 6,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "Identify the tone of the author based on the following passage:\n\n'We have built cities of concrete that choke the earth, and we celebrate our progress while the rivers turn black with waste and the forests vanish into memory. This is not advancement; it is a slow, documented suicide.'",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Laudatory and proud"
-          },
-          {
-            "id": "B",
-            "text": "Objective and detached"
-          },
-          {
-            "id": "C",
-            "text": "Cynical and condemnatory"
-          },
-          {
-            "id": "D",
-            "text": "Apathetic and indifferent"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "Select the correct option to fill in the blank:\n\n'By the time the rescue team arrives next Monday, the stranded climbers _____ on the mountain for a week.'",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "will be surviving"
-          },
-          {
-            "id": "B",
-            "text": "will have survived"
-          },
-          {
-            "id": "C",
-            "text": "have survived"
-          },
-          {
-            "id": "D",
-            "text": "would survive"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 1,
         "stemEn": "Fill in the blank with the appropriate article or select 'No article':\n\n'He is ___ honorable gentleman who always keeps his word.'",
         "optionsEn": [
           {
@@ -121,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "Choose the analogy that matches the given pair:\n\nRELIABLE : TRUST",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Deceptive: Misleading"
-          },
-          {
-            "id": "B",
-            "text": "Formidable: Fear"
-          },
-          {
-            "id": "C",
-            "text": "Ignorant: Knowledge"
-          },
-          {
-            "id": "D",
-            "text": "Beautiful : Sight"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 2,
         "stemEn": "What is the meaning of the idiom: 'To blow hot and cold'?",
         "optionsEn": [
           {
@@ -190,7 +85,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 3,
         "stemEn": "Find the word that is correctly spelled from the choices below:",
         "optionsEn": [
           {
@@ -223,7 +118,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 4,
         "stemEn": "Substitute the phrase with a single word:\n\n'One who completely abstains from alcoholic beverages'",
         "optionsEn": [
           {
@@ -255,43 +150,8 @@
         "assets": []
       },
       {
-        "id": "q08",
-        "sourceQuestionNo": 8,
-        "stemEn": "Choose the correct preposition to complete the idiomatic expression:\n\nThe suspect was absolved ___ all charges by the high court.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "from"
-          },
-          {
-            "id": "B",
-            "text": "with"
-          },
-          {
-            "id": "C",
-            "text": "at"
-          },
-          {
-            "id": "D",
-            "text": "for"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 5,
         "stemEn": "Choose the option that correctly identifies the meaning of the word: CACOPHONY",
         "optionsEn": [
           {
@@ -324,7 +184,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 6,
         "stemEn": "Choose the option that correctly changes this sentence into direct speech: 'She mentioned that she would join us for dinner the following evening.'",
         "optionsEn": [
           {

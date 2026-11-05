@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_English_May24_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -216,43 +216,8 @@
         "assets": []
       },
       {
-        "id": "q07",
-        "sourceQuestionNo": 7,
-        "stemEn": "Choose the correct use of “counsel.”",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "The city counsel met yesterday."
-          },
-          {
-            "id": "B",
-            "text": "She asked her teacher for counsel."
-          },
-          {
-            "id": "C",
-            "text": "The council defended the criminal."
-          },
-          {
-            "id": "D",
-            "text": "The counsel passed a new law."
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Which sentence is the most logical beginning of a paragraph about digital education?",
         "optionsEn": [
           {
@@ -284,43 +249,8 @@
         "assets": []
       },
       {
-        "id": "q09",
-        "sourceQuestionNo": 9,
-        "stemEn": "Identify the noun in the following options.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Courage"
-          },
-          {
-            "id": "B",
-            "text": "Quickly"
-          },
-          {
-            "id": "C",
-            "text": "Honest"
-          },
-          {
-            "id": "D",
-            "text": "Beautifully"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "Which pair is an example of homophones?",
         "optionsEn": [
           {

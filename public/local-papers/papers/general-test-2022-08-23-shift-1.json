@@ -1,2558 +1,2459 @@
 {
- "exam": {
-  "id": "local-general-test-2022-08-23-shift-1",
-  "slug": "general-test-2022-08-23-shift-1",
-  "title": "CUET UG General Test 23 August 2022 Shift 1 Previous Year Paper",
-  "subject": "General Test",
-  "subjectId": "local-general-test",
-  "subjectCode": "GT",
-  "year": 2022,
-  "examDate": "2022-08-23",
-  "shift": "Shift 1",
-  "sourceFile": "General Test_2022-08-23_Shift_1.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 74,
-  "sourceQuestionCount": 75,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "In which city Major Dhyan Chand Sports University is established?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "New Delhi"
-     },
-     {
-      "id": "B",
-      "text": "Amritsar"
-     },
-     {
-      "id": "C",
-      "text": "Meerut"
-     },
-     {
-      "id": "D",
-      "text": "Ahmedabad"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q02-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q02-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 2"
-     }
+  "exam": {
+    "id": "local-general-test-2022-08-23-shift-1",
+    "slug": "general-test-2022-08-23-shift-1",
+    "title": "CUET UG General Test 23 August 2022 Shift 1 Previous Year Paper",
+    "subject": "General Test",
+    "subjectId": "local-general-test",
+    "subjectCode": "GT",
+    "year": 2022,
+    "examDate": "2022-08-23",
+    "shift": "Shift 1",
+    "sourceFile": "General Test_2022-08-23_Shift_1.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 71,
+    "sourceQuestionCount": 75,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "In which city Major Dhyan Chand Sports University is established?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "New Delhi"
+          },
+          {
+            "id": "B",
+            "text": "Amritsar"
+          },
+          {
+            "id": "C",
+            "text": "Meerut"
+          },
+          {
+            "id": "D",
+            "text": "Ahmedabad"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q02-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q02-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 2"
+          }
+        ]
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The rate at which banks part short-term excess liquidity with RBI, is called.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Repo Rate"
+          },
+          {
+            "id": "B",
+            "text": "Reverse Repo Rate"
+          },
+          {
+            "id": "C",
+            "text": "Bank Rate"
+          },
+          {
+            "id": "D",
+            "text": "Cash Reserve Ratio"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Who has designed the National Flag of India?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sarojini Naidu"
+          },
+          {
+            "id": "B",
+            "text": "Subhash Chandra Bose"
+          },
+          {
+            "id": "C",
+            "text": "Pingali Venkayya"
+          },
+          {
+            "id": "D",
+            "text": "C. Rajagopalachari"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Which among the following are considered as Vedangas?\n\n(A) Kalp\n\n(B) Ayurveda\n\n(C) Vyakaran\n\n(D) Manu Smriti\n\n(E) Jyotish",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(B), (D) and (E) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (C) and (E) only"
+          },
+          {
+            "id": "D",
+            "text": "(A), (C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q06-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q06-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 6"
+          },
+          {
+            "id": "q06-table-2",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q06-table-2.jpg",
+            "page": 1,
+            "alt": "Table for question 6"
+          }
+        ]
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "March List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q07-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q07-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 7"
+          }
+        ]
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q08-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q08-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 8"
+          }
+        ]
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "2021 Yidan Prize for Education Development for improving learning outcomes in schools at scale has been given to:\n\n(A) Eric A. Hanushek\n\n(B) Angeline Murimirwa\n\n(C) Lucky Lake\n\n(D) Dr. Rukmini Banerji",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) and (B) only"
+          },
+          {
+            "id": "B",
+            "text": "(B) and (D) only"
+          },
+          {
+            "id": "C",
+            "text": "(A) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(C) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Which actor (Drama) won the Best actor award of Golden Globe Awards 2022?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Will Smith"
+          },
+          {
+            "id": "B",
+            "text": "Andrew Garfield"
+          },
+          {
+            "id": "C",
+            "text": "Kodi Smit"
+          },
+          {
+            "id": "D",
+            "text": "Jane Campion"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "_ of the total surface area of the Earth is covered with water?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "72.5%"
+          },
+          {
+            "id": "B",
+            "text": "66.7%"
+          },
+          {
+            "id": "C",
+            "text": "70.8%"
+          },
+          {
+            "id": "D",
+            "text": "71.6%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "PROM stands for",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Programmable Read Only Memory"
+          },
+          {
+            "id": "B",
+            "text": "Programmed Random Only Memory"
+          },
+          {
+            "id": "C",
+            "text": "Programmable Random Objective Memory"
+          },
+          {
+            "id": "D",
+            "text": "Programmed Random Objective Memory"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "_ is the structural and functional unit of kidneys.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Nucleon"
+          },
+          {
+            "id": "B",
+            "text": "Ribosome"
+          },
+          {
+            "id": "C",
+            "text": "Nephron"
+          },
+          {
+            "id": "D",
+            "text": "Urochrome"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "The speed of light is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3 \\times 10^{8} $ m/s"
+          },
+          {
+            "id": "B",
+            "text": "$ 3 \\times 10^{3} $ m/s"
+          },
+          {
+            "id": "C",
+            "text": "$ 8 \\times 10^{3} $ m/s"
+          },
+          {
+            "id": "D",
+            "text": "$ 8 \\times 10^{8} $ m/s"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "Who is the first man to climb to Mount Everest without Oxygen?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sherpa Tenzing Norgay"
+          },
+          {
+            "id": "B",
+            "text": "Sir Edmund Hillary"
+          },
+          {
+            "id": "C",
+            "text": "Sir Everest"
+          },
+          {
+            "id": "D",
+            "text": "Messner and Habeler"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "A father said to his child, \"I was as old as you are at the time of your birth\". If the father's age is 48 years now, the child's age six years back was:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "15 years"
+          },
+          {
+            "id": "B",
+            "text": "16 years"
+          },
+          {
+            "id": "C",
+            "text": "17 years"
+          },
+          {
+            "id": "D",
+            "text": "18 years"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "A town has population of 20,000 in 1980. In one year i.e. by 1981 it increased by 25%. Next year i.e. in 1982, it decreased by 20%. The next year in 1983 there was an increase of 30%. What is the population at end of 1983?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "28,000"
+          },
+          {
+            "id": "B",
+            "text": "24,000"
+          },
+          {
+            "id": "C",
+            "text": "26,000"
+          },
+          {
+            "id": "D",
+            "text": "25,000"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "A man can row at 6 kmph in still water. If the velocity of current is 2 kmph and it takes him 3 hours to row to a place and come back, how far is the place?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "8 km"
+          },
+          {
+            "id": "B",
+            "text": "5 km"
+          },
+          {
+            "id": "C",
+            "text": "7 km"
+          },
+          {
+            "id": "D",
+            "text": "4 km"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 19,
+        "stemEn": "A car is sold for ₹85,000 at a loss of 20%. What is the cost price (CP) of the car?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "₹1,07,250"
+          },
+          {
+            "id": "B",
+            "text": "₹1,05,250"
+          },
+          {
+            "id": "C",
+            "text": "₹1,04,250"
+          },
+          {
+            "id": "D",
+            "text": "₹1,06,250"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 20,
+        "stemEn": "If I sell a cycle at ₹3,600, I make a profit of 20%. At what price I need to sell to make a profit of 10%.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "₹3,500"
+          },
+          {
+            "id": "B",
+            "text": "₹3,000"
+          },
+          {
+            "id": "C",
+            "text": "₹3,300"
+          },
+          {
+            "id": "D",
+            "text": "₹3,600"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 21,
+        "stemEn": "A, B and C are in a cycle race of 1,500 meters. A cycle twice as fast as B, C cycles $ \\frac{1}{2} $ as fast as B, C completes the race in 40 minutes. Then, where was B from the finishing line when A finished the race?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "550 m from the finish line"
+          },
+          {
+            "id": "B",
+            "text": "450 m from the finish line"
+          },
+          {
+            "id": "C",
+            "text": "650 m from the finish line"
+          },
+          {
+            "id": "D",
+            "text": "750 m from the finish line"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 22,
+        "stemEn": "Mohan asked 36 men to build his house in 30 days. 50% of the work got completed in just 10 days. So, Mohan removed some workers. Now, how many persons does he need to complete the remaining work in decided time?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20"
+          },
+          {
+            "id": "B",
+            "text": "18"
+          },
+          {
+            "id": "C",
+            "text": "16"
+          },
+          {
+            "id": "D",
+            "text": "14"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 23,
+        "stemEn": "P alone can do a piece of work in 5 days and Q alone in 4 days. P and Q undertook to do it for ₹3,000. With the help of R, they completed the work in 2 days. How much is to be paid to R?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "₹300"
+          },
+          {
+            "id": "B",
+            "text": "₹400"
+          },
+          {
+            "id": "C",
+            "text": "₹500"
+          },
+          {
+            "id": "D",
+            "text": "₹600"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 24,
+        "stemEn": "A tyre has two punctures. The first puncture alone would have made the tyre flat in 6 minutes and the second alone would have done it in 9 minutes. If air leaks out at a constant rate, how long does it take both the punctures together to make it flat?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3\\frac{3}{5} $ minute"
+          },
+          {
+            "id": "B",
+            "text": "$ 4\\frac{3}{5} $ minute"
+          },
+          {
+            "id": "C",
+            "text": "$ 5\\frac{3}{5} $ minute"
+          },
+          {
+            "id": "D",
+            "text": "$ 2\\frac{3}{5} $ minute"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 25,
+        "stemEn": "If length of diagonal of a square is $ 7\\sqrt{2} $ m. The area of the square is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 46\\ m^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 49\\ m^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 39\\ m^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 48\\ m^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 26,
+        "stemEn": "If A: B is 2:5. Then, the value of 2A + 3B: A + B is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "14:5"
+          },
+          {
+            "id": "B",
+            "text": "19:7"
+          },
+          {
+            "id": "C",
+            "text": "3:11"
+          },
+          {
+            "id": "D",
+            "text": "17:15"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 27,
+        "stemEn": "Find the greatest number that will divide 38, 88 and 163 so as to leave the same remainder in each case",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "18"
+          },
+          {
+            "id": "B",
+            "text": "28"
+          },
+          {
+            "id": "C",
+            "text": "25"
+          },
+          {
+            "id": "D",
+            "text": "15"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 28,
+        "stemEn": "If principal = P, Rate, R = R% per annum, T = Time year, SI = Simple interest, then\n\n(A) $ T = \\frac{100 \\times SI}{P \\times R} $\n\n(B) $ SI = \\frac{P \\times R \\times T}{100} $\n\n(C) $ R = \\frac{P \\times SI \\times T}{100} $\n\n(D) $ T = \\frac{P \\times SI \\times T}{100} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A and C only"
+          },
+          {
+            "id": "B",
+            "text": "B, C, and D only"
+          },
+          {
+            "id": "C",
+            "text": "A and B only"
+          },
+          {
+            "id": "D",
+            "text": "C and D only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 29,
+        "stemEn": "Two numbers are in the ratio 4:3. If 2 is added to each of the number the new ratio becomes 5:4. Then, find the numbers",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "20, 15"
+          },
+          {
+            "id": "B",
+            "text": "16, 12"
+          },
+          {
+            "id": "C",
+            "text": "8, 6"
+          },
+          {
+            "id": "D",
+            "text": "12, 9"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 30,
+        "stemEn": "27:729::31?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "961"
+          },
+          {
+            "id": "B",
+            "text": "916"
+          },
+          {
+            "id": "C",
+            "text": "841"
+          },
+          {
+            "id": "D",
+            "text": "814"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 31,
+        "stemEn": "Abundant : Scarce : Artificial : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Manmade"
+          },
+          {
+            "id": "B",
+            "text": "Sparse"
+          },
+          {
+            "id": "C",
+            "text": "Meager"
+          },
+          {
+            "id": "D",
+            "text": "Genuine"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 32,
+        "stemEn": "Contaminated: Sinful: Immense: ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Tiny"
+          },
+          {
+            "id": "B",
+            "text": "Gigantic"
+          },
+          {
+            "id": "C",
+            "text": "Brave"
+          },
+          {
+            "id": "D",
+            "text": "Beautiful"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 33,
+        "stemEn": "Arrange the following words in the sequence they will appear in a dictionary:\n\nA. Mechanics\n\nB. Mathematics\n\nC. Monuments\n\nD. Measurement\n\nE. Magnitude",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, C, A, E, D"
+          },
+          {
+            "id": "B",
+            "text": "A, C, D, E, B"
+          },
+          {
+            "id": "C",
+            "text": "D, A, C, E, B"
+          },
+          {
+            "id": "D",
+            "text": "E, B, D, A, C"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 34,
+        "stemEn": "If 'BHARAT' stands for 'B-8-A-18-A-20 and \"ENGLAND\" stands for E-14-G-12-A-14-D then how will you code the SRILANKA?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "S-18-I-12-A-14-11-A"
+          },
+          {
+            "id": "B",
+            "text": "S-15-I-9-A-11-10-A"
+          },
+          {
+            "id": "C",
+            "text": "S-17-I-11-A-13-K-1"
+          },
+          {
+            "id": "D",
+            "text": "S-18-I-12-A-14-K-1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 35,
+        "stemEn": "Arpit travelled 3 km east from his home, then 2 km north followed by 3 km to east. He took a $ 90^{\\circ} $ right turn and walked 5 km straight, then he again took a right turn and walked 6 km more. How far is he now his home?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5 km"
+          },
+          {
+            "id": "B",
+            "text": "3 km"
+          },
+          {
+            "id": "C",
+            "text": "6 km"
+          },
+          {
+            "id": "D",
+            "text": "2 km"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 36,
+        "stemEn": "Complete the series: 29, 31, 37, 41, 43 _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "45"
+          },
+          {
+            "id": "B",
+            "text": "47"
+          },
+          {
+            "id": "C",
+            "text": "49"
+          },
+          {
+            "id": "D",
+            "text": "51"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 37,
+        "stemEn": "Today is Friday: After 91 days, it will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Wednesday"
+          },
+          {
+            "id": "B",
+            "text": "Thursday"
+          },
+          {
+            "id": "C",
+            "text": "Friday"
+          },
+          {
+            "id": "D",
+            "text": "Saturday"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 38,
+        "stemEn": "Complete the series. 15, 24, 35, 48, 63 _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "80"
+          },
+          {
+            "id": "B",
+            "text": "89"
+          },
+          {
+            "id": "C",
+            "text": "94"
+          },
+          {
+            "id": "D",
+            "text": "99"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 39,
+        "stemEn": "Complete the series: 76, 62, .....34, 20, 6",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "56"
+          },
+          {
+            "id": "B",
+            "text": "48"
+          },
+          {
+            "id": "C",
+            "text": "43"
+          },
+          {
+            "id": "D",
+            "text": "36"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 40,
+        "stemEn": "In this question, four words have been given of which three are alike in some way and one is different. Find the odd one out.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Motorcycle"
+          },
+          {
+            "id": "B",
+            "text": "Metro"
+          },
+          {
+            "id": "C",
+            "text": "Bus"
+          },
+          {
+            "id": "D",
+            "text": "Car"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 41,
+        "stemEn": "How many triangles are in the given shape?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "21"
+          },
+          {
+            "id": "B",
+            "text": "23"
+          },
+          {
+            "id": "C",
+            "text": "27"
+          },
+          {
+            "id": "D",
+            "text": "29"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q44-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q44-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 44"
+          }
+        ]
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 42,
+        "stemEn": "Anita, Baby and Charu are sisters. D is the brother of E and E is the daughter of Baby. How is Anita related to D?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Niece"
+          },
+          {
+            "id": "B",
+            "text": "Sister"
+          },
+          {
+            "id": "C",
+            "text": "Cousin"
+          },
+          {
+            "id": "D",
+            "text": "Aunt"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 43,
+        "stemEn": "Find the value of $ \\frac{5^{2/3} \\times \\sqrt[3]{5^{7}}}{\\sqrt[3]{5^{6}}} $",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "1"
+          },
+          {
+            "id": "C",
+            "text": "$ \\sqrt{5} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 3\\sqrt{5} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 44,
+        "stemEn": "The angle of depression of a point situated at a distance 100 m from the base of a pole is $ 30^{\\circ} $. The height of the pole is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 100(\\sqrt{3} + 1)m $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{100}{3}m $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{100}{3}\\sqrt{3}m $"
+          },
+          {
+            "id": "D",
+            "text": "$ 100\\sqrt{3}m $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 45,
+        "stemEn": "The value of $13.7 \\times 12.7 \\times 0.8$ is _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "13.9193"
+          },
+          {
+            "id": "B",
+            "text": "13.9192"
+          },
+          {
+            "id": "C",
+            "text": "139.192"
+          },
+          {
+            "id": "D",
+            "text": "139.191"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 46,
+        "stemEn": "The sum of greatest five and lowest/smallest four digits number is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "91,999"
+          },
+          {
+            "id": "B",
+            "text": "19,999"
+          },
+          {
+            "id": "C",
+            "text": "10,999"
+          },
+          {
+            "id": "D",
+            "text": "1,00,999"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 47,
+        "stemEn": "If $ \\sqrt[3]{x} = 2y $. Then, the value of $ \\frac{y^3}{x} $ is _",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2/5"
+          },
+          {
+            "id": "C",
+            "text": "1/8"
+          },
+          {
+            "id": "D",
+            "text": "8"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q51",
+        "sourceQuestionNo": 48,
+        "stemEn": "When seen through a mirror, a clock shown 8:30.\n\nWhat is the correct time?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2:30"
+          },
+          {
+            "id": "B",
+            "text": "3:30"
+          },
+          {
+            "id": "C",
+            "text": "5:30"
+          },
+          {
+            "id": "D",
+            "text": "8:30"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q52",
+        "sourceQuestionNo": 49,
+        "stemEn": "The value of $ \\sqrt{0.01} \\times \\sqrt[3]{0.027} - 0.3 $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.1"
+          },
+          {
+            "id": "B",
+            "text": "0.27"
+          },
+          {
+            "id": "C",
+            "text": "0.027"
+          },
+          {
+            "id": "D",
+            "text": "0.1"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q53",
+        "sourceQuestionNo": 50,
+        "stemEn": "2 women and 3 men can do a piece of work in 10 days while 3 women and 2 men can do the same work in 8 days. In how many days can 2 women and 1 man do the work?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 12\\frac{1}{4} $ days"
+          },
+          {
+            "id": "B",
+            "text": "15 days"
+          },
+          {
+            "id": "C",
+            "text": "25 days"
+          },
+          {
+            "id": "D",
+            "text": "$ 12\\frac{1}{2} $ days"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q54",
+        "sourceQuestionNo": 51,
+        "stemEn": "On 7^{th} March, 2005 Monday falls. What was the day of the week on 7^{th} March 2004?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Monday"
+          },
+          {
+            "id": "B",
+            "text": "Saturday"
+          },
+          {
+            "id": "C",
+            "text": "Sunday"
+          },
+          {
+            "id": "D",
+            "text": "Friday"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q55",
+        "sourceQuestionNo": 52,
+        "stemEn": "The value of $ \\frac{(793-232)^{2}-(793-232)^{2}}{793\\times232} $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7930"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "2320"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q56",
+        "sourceQuestionNo": 53,
+        "stemEn": "The simple interest as a sum of money is 4/5th of the principal. Find the rate of interest if both the rate of interest and time are numerically equal.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "46% P.A."
+          },
+          {
+            "id": "B",
+            "text": "$ 4\\sqrt{2} $ & P.A."
+          },
+          {
+            "id": "C",
+            "text": "43% P.A."
+          },
+          {
+            "id": "D",
+            "text": "$ 4\\sqrt{5} $% P.A."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q57",
+        "sourceQuestionNo": 54,
+        "stemEn": "Find the odd number in the series 63, 48, 34, 24, 15, 8, 3",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "24"
+          },
+          {
+            "id": "B",
+            "text": "34"
+          },
+          {
+            "id": "C",
+            "text": "15"
+          },
+          {
+            "id": "D",
+            "text": "8"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q58",
+        "sourceQuestionNo": 55,
+        "stemEn": "The average of the four consecutive odd numbers is\n\n16. What is the third number in the descending order?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "13"
+          },
+          {
+            "id": "B",
+            "text": "15"
+          },
+          {
+            "id": "C",
+            "text": "17"
+          },
+          {
+            "id": "D",
+            "text": "19"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q59",
+        "sourceQuestionNo": 56,
+        "stemEn": "A train running at a speed of 54 km/hr crosses a platform which is double of the length of the train in 18 seconds. What is the length of the platform and train?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "180m and 90 m"
+          },
+          {
+            "id": "B",
+            "text": "90 m and 180m"
+          },
+          {
+            "id": "C",
+            "text": "70 m and 140 m"
+          },
+          {
+            "id": "D",
+            "text": "140 m and 70 m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q60",
+        "sourceQuestionNo": 57,
+        "stemEn": "Find the largest size of a bamboo that can be placed in a square of area 333 m²?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "13 m"
+          },
+          {
+            "id": "B",
+            "text": "13√2 m"
+          },
+          {
+            "id": "C",
+            "text": "26 m"
+          },
+          {
+            "id": "D",
+            "text": "26√2 m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q61",
+        "sourceQuestionNo": 58,
+        "stemEn": "Arrange the following in a logical order:\n\n(A) Frog\n\n(B) Eagle\n\n(C) Grasshopper\n\n(D) Snake\n\n(E) Grass",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A, C, E, B, D"
+          },
+          {
+            "id": "B",
+            "text": "C, D, B, E, A"
+          },
+          {
+            "id": "C",
+            "text": "E, C, A, D, B"
+          },
+          {
+            "id": "D",
+            "text": "E, C, D, B, A"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q62",
+        "sourceQuestionNo": 59,
+        "stemEn": "Which of the following collection of letters will look the same in the simple mirror?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "HIMOSTA"
+          },
+          {
+            "id": "B",
+            "text": "HIMOVTA"
+          },
+          {
+            "id": "C",
+            "text": "AOSVMTA"
+          },
+          {
+            "id": "D",
+            "text": "HVHRTAM"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q63",
+        "sourceQuestionNo": 60,
+        "stemEn": "If 'book' is called 'watch', watch is called 'bag; 'bag' is called 'dictionary' and 'dictionary' is called door: which is used to carry the books?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Watch"
+          },
+          {
+            "id": "B",
+            "text": "Bag"
+          },
+          {
+            "id": "C",
+            "text": "Dictionary"
+          },
+          {
+            "id": "D",
+            "text": "Door"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q64",
+        "sourceQuestionNo": 61,
+        "stemEn": "Find out the figure which will be exactly make up from the sum collection of symbols:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": ""
+          },
+          {
+            "id": "B",
+            "text": ""
+          },
+          {
+            "id": "C",
+            "text": ""
+          },
+          {
+            "id": "D",
+            "text": ""
+          }
+        ],
+        "optionsAreImages": true,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [
+          "image-options"
+        ],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q64-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q64-figure-1.jpg",
+            "page": 5,
+            "alt": "Figure for question 64"
+          },
+          {
+            "id": "q64-options",
+            "kind": "options",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q64-options.jpg",
+            "page": 5,
+            "alt": "Printed answer choices for question 64"
+          }
+        ]
+      },
+      {
+        "id": "q65",
+        "sourceQuestionNo": 62,
+        "stemEn": "Match List-I with List-II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(I), (B)-(IV), (C)-(III), (D)-(II)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q65-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q65-table-1.jpg",
+            "page": 5,
+            "alt": "Table for question 65"
+          },
+          {
+            "id": "q65-table-2",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q65-table-2.jpg",
+            "page": 5,
+            "alt": "Table for question 65"
+          }
+        ]
+      },
+      {
+        "id": "q66",
+        "sourceQuestionNo": 63,
+        "stemEn": "Two different positions Q and R of dice are shown in the figures given below.\n\nQ\n\nR\n\nWhich number lies opposite to number 6?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q66-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q66-figure-1.jpg",
+            "page": 5,
+            "alt": "Figure for question 66"
+          },
+          {
+            "id": "q66-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q66-figure-2.jpg",
+            "page": 5,
+            "alt": "Figure for question 66"
+          }
+        ]
+      },
+      {
+        "id": "q67",
+        "sourceQuestionNo": 64,
+        "stemEn": "Choose the essential word from the options given below.\n\n(a) Tractor\n\n(b) Plough\n\n(c) Land\n\n(d) Spade\n\n68. Statements:\n\nSome Icon are Image\n\nAll Image are File\n\nSome Folder are Icon\n\nConclusions:\n\nI: Some Folder are not File\n\nII: All Folder are File",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "If only conclusion I follows."
+          },
+          {
+            "id": "B",
+            "text": "If only conclusion II follows."
+          },
+          {
+            "id": "C",
+            "text": "If either conclusion I or II follows."
+          },
+          {
+            "id": "D",
+            "text": "If neither conclusion I nor II follows. Direction for questions (69 - 71): In the following diagram, rectangle represent man, triangle represents educated, circle represents urban and square represents government employees."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q69",
+        "sourceQuestionNo": 65,
+        "stemEn": "Which of the following numbers represent Educated man who are not urban?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "14"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "15"
+          },
+          {
+            "id": "D",
+            "text": "25"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q70",
+        "sourceQuestionNo": 66,
+        "stemEn": "Which one of the following represent Urban educated man?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "3"
+          },
+          {
+            "id": "B",
+            "text": "15"
+          },
+          {
+            "id": "C",
+            "text": "5"
+          },
+          {
+            "id": "D",
+            "text": "25"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q71",
+        "sourceQuestionNo": 67,
+        "stemEn": "Which of the following number represents urban men who are government employee?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "5"
+          },
+          {
+            "id": "D",
+            "text": "13 Direction for questions (72 - 75): Study the following table carefully to answer the question. Marks obtained by the students in different subject at board examination."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q72",
+        "sourceQuestionNo": 68,
+        "stemEn": "What is the average of marks obtained by the all students in computer?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "80"
+          },
+          {
+            "id": "B",
+            "text": "90"
+          },
+          {
+            "id": "C",
+            "text": "85"
+          },
+          {
+            "id": "D",
+            "text": "95"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q73",
+        "sourceQuestionNo": 69,
+        "stemEn": "What is the overall percentage of marks obtained by GP in all subjects?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "72.88%"
+          },
+          {
+            "id": "B",
+            "text": "76.75%"
+          },
+          {
+            "id": "C",
+            "text": "74.50%"
+          },
+          {
+            "id": "D",
+            "text": "75.75%"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q74",
+        "sourceQuestionNo": 70,
+        "stemEn": "What is average marks obtained by the all students in Hindi?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "46"
+          },
+          {
+            "id": "B",
+            "text": "48"
+          },
+          {
+            "id": "C",
+            "text": "47.8"
+          },
+          {
+            "id": "D",
+            "text": "45.8"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q75",
+        "sourceQuestionNo": 71,
+        "stemEn": "What is the ratio between total marks obtained in all subjects by RP and FA?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "84:89"
+          },
+          {
+            "id": "B",
+            "text": "50:51"
+          },
+          {
+            "id": "C",
+            "text": "1:1"
+          },
+          {
+            "id": "D",
+            "text": "10:11"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "The rate at which banks part short-term excess liquidity with RBI, is called.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Repo Rate"
-     },
-     {
-      "id": "B",
-      "text": "Reverse Repo Rate"
-     },
-     {
-      "id": "C",
-      "text": "Bank Rate"
-     },
-     {
-      "id": "D",
-      "text": "Cash Reserve Ratio"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Who has designed the National Flag of India?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sarojini Naidu"
-     },
-     {
-      "id": "B",
-      "text": "Subhash Chandra Bose"
-     },
-     {
-      "id": "C",
-      "text": "Pingali Venkayya"
-     },
-     {
-      "id": "D",
-      "text": "C. Rajagopalachari"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Which among the following are considered as Vedangas?\n\n(A) Kalp\n\n(B) Ayurveda\n\n(C) Vyakaran\n\n(D) Manu Smriti\n\n(E) Jyotish",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(B), (D) and (E) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (C) and (E) only"
-     },
-     {
-      "id": "D",
-      "text": "(A), (C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q06-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q06-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 6"
-     },
-     {
-      "id": "q06-table-2",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q06-table-2.jpg",
-      "page": 1,
-      "alt": "Table for question 6"
-     }
-    ]
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "March List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(I), (C)-(IV), (D)-(III)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(IV), (B)-(I), (C)-(III), (D)-(II)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(I), (B)-(IV), (C)-(II), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q07-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q07-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 7"
-     }
-    ]
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(III), (B)-(I), (C)-(II), (D)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(IV), (B)-(II), (C)-(III), (D)-(I)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q08-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q08-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 8"
-     }
-    ]
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "2021 Yidan Prize for Education Development for improving learning outcomes in schools at scale has been given to:\n\n(A) Eric A. Hanushek\n\n(B) Angeline Murimirwa\n\n(C) Lucky Lake\n\n(D) Dr. Rukmini Banerji",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) and (B) only"
-     },
-     {
-      "id": "B",
-      "text": "(B) and (D) only"
-     },
-     {
-      "id": "C",
-      "text": "(A) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(C) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Which actor (Drama) won the Best actor award of Golden Globe Awards 2022?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Will Smith"
-     },
-     {
-      "id": "B",
-      "text": "Andrew Garfield"
-     },
-     {
-      "id": "C",
-      "text": "Kodi Smit"
-     },
-     {
-      "id": "D",
-      "text": "Jane Campion"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "_ of the total surface area of the Earth is covered with water?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "72.5%"
-     },
-     {
-      "id": "B",
-      "text": "66.7%"
-     },
-     {
-      "id": "C",
-      "text": "70.8%"
-     },
-     {
-      "id": "D",
-      "text": "71.6%"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "PROM stands for",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Programmable Read Only Memory"
-     },
-     {
-      "id": "B",
-      "text": "Programmed Random Only Memory"
-     },
-     {
-      "id": "C",
-      "text": "Programmable Random Objective Memory"
-     },
-     {
-      "id": "D",
-      "text": "Programmed Random Objective Memory"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "_ is the structural and functional unit of kidneys.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Nucleon"
-     },
-     {
-      "id": "B",
-      "text": "Ribosome"
-     },
-     {
-      "id": "C",
-      "text": "Nephron"
-     },
-     {
-      "id": "D",
-      "text": "Urochrome"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "The speed of light is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 3 \\times 10^{8} $ m/s"
-     },
-     {
-      "id": "B",
-      "text": "$ 3 \\times 10^{3} $ m/s"
-     },
-     {
-      "id": "C",
-      "text": "$ 8 \\times 10^{3} $ m/s"
-     },
-     {
-      "id": "D",
-      "text": "$ 8 \\times 10^{8} $ m/s"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Who is the first man to climb to Mount Everest without Oxygen?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sherpa Tenzing Norgay"
-     },
-     {
-      "id": "B",
-      "text": "Sir Edmund Hillary"
-     },
-     {
-      "id": "C",
-      "text": "Sir Everest"
-     },
-     {
-      "id": "D",
-      "text": "Messner and Habeler"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "A father said to his child, \"I was as old as you are at the time of your birth\". If the father's age is 48 years now, the child's age six years back was:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "15 years"
-     },
-     {
-      "id": "B",
-      "text": "16 years"
-     },
-     {
-      "id": "C",
-      "text": "17 years"
-     },
-     {
-      "id": "D",
-      "text": "18 years"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "A town has population of 20,000 in 1980. In one year i.e. by 1981 it increased by 25%. Next year i.e. in 1982, it decreased by 20%. The next year in 1983 there was an increase of 30%. What is the population at end of 1983?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "28,000"
-     },
-     {
-      "id": "B",
-      "text": "24,000"
-     },
-     {
-      "id": "C",
-      "text": "26,000"
-     },
-     {
-      "id": "D",
-      "text": "25,000"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "A man can row at 6 kmph in still water. If the velocity of current is 2 kmph and it takes him 3 hours to row to a place and come back, how far is the place?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "8 km"
-     },
-     {
-      "id": "B",
-      "text": "5 km"
-     },
-     {
-      "id": "C",
-      "text": "7 km"
-     },
-     {
-      "id": "D",
-      "text": "4 km"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "A car is sold for ₹85,000 at a loss of 20%. What is the cost price (CP) of the car?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "₹1,07,250"
-     },
-     {
-      "id": "B",
-      "text": "₹1,05,250"
-     },
-     {
-      "id": "C",
-      "text": "₹1,04,250"
-     },
-     {
-      "id": "D",
-      "text": "₹1,06,250"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "If I sell a cycle at ₹3,600, I make a profit of 20%. At what price I need to sell to make a profit of 10%.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "₹3,500"
-     },
-     {
-      "id": "B",
-      "text": "₹3,000"
-     },
-     {
-      "id": "C",
-      "text": "₹3,300"
-     },
-     {
-      "id": "D",
-      "text": "₹3,600"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "A, B and C are in a cycle race of 1,500 meters. A cycle twice as fast as B, C cycles $ \\frac{1}{2} $ as fast as B, C completes the race in 40 minutes. Then, where was B from the finishing line when A finished the race?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "550 m from the finish line"
-     },
-     {
-      "id": "B",
-      "text": "450 m from the finish line"
-     },
-     {
-      "id": "C",
-      "text": "650 m from the finish line"
-     },
-     {
-      "id": "D",
-      "text": "750 m from the finish line"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Mohan asked 36 men to build his house in 30 days. 50% of the work got completed in just 10 days. So, Mohan removed some workers. Now, how many persons does he need to complete the remaining work in decided time?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "20"
-     },
-     {
-      "id": "B",
-      "text": "18"
-     },
-     {
-      "id": "C",
-      "text": "16"
-     },
-     {
-      "id": "D",
-      "text": "14"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "P alone can do a piece of work in 5 days and Q alone in 4 days. P and Q undertook to do it for ₹3,000. With the help of R, they completed the work in 2 days. How much is to be paid to R?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "₹300"
-     },
-     {
-      "id": "B",
-      "text": "₹400"
-     },
-     {
-      "id": "C",
-      "text": "₹500"
-     },
-     {
-      "id": "D",
-      "text": "₹600"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "A tyre has two punctures. The first puncture alone would have made the tyre flat in 6 minutes and the second alone would have done it in 9 minutes. If air leaks out at a constant rate, how long does it take both the punctures together to make it flat?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 3\\frac{3}{5} $ minute"
-     },
-     {
-      "id": "B",
-      "text": "$ 4\\frac{3}{5} $ minute"
-     },
-     {
-      "id": "C",
-      "text": "$ 5\\frac{3}{5} $ minute"
-     },
-     {
-      "id": "D",
-      "text": "$ 2\\frac{3}{5} $ minute"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "If length of diagonal of a square is $ 7\\sqrt{2} $ m. The area of the square is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 46\\ m^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 49\\ m^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 39\\ m^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 48\\ m^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "If A: B is 2:5. Then, the value of 2A + 3B: A + B is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "14:5"
-     },
-     {
-      "id": "B",
-      "text": "19:7"
-     },
-     {
-      "id": "C",
-      "text": "3:11"
-     },
-     {
-      "id": "D",
-      "text": "17:15"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "Find the greatest number that will divide 38, 88 and 163 so as to leave the same remainder in each case",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "18"
-     },
-     {
-      "id": "B",
-      "text": "28"
-     },
-     {
-      "id": "C",
-      "text": "25"
-     },
-     {
-      "id": "D",
-      "text": "15"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "If principal = P, Rate, R = R% per annum, T = Time year, SI = Simple interest, then\n\n(A) $ T = \\frac{100 \\times SI}{P \\times R} $\n\n(B) $ SI = \\frac{P \\times R \\times T}{100} $\n\n(C) $ R = \\frac{P \\times SI \\times T}{100} $\n\n(D) $ T = \\frac{P \\times SI \\times T}{100} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A and C only"
-     },
-     {
-      "id": "B",
-      "text": "B, C, and D only"
-     },
-     {
-      "id": "C",
-      "text": "A and B only"
-     },
-     {
-      "id": "D",
-      "text": "C and D only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "Two numbers are in the ratio 4:3. If 2 is added to each of the number the new ratio becomes 5:4. Then, find the numbers",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "20, 15"
-     },
-     {
-      "id": "B",
-      "text": "16, 12"
-     },
-     {
-      "id": "C",
-      "text": "8, 6"
-     },
-     {
-      "id": "D",
-      "text": "12, 9"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "The average of first 99 positive integers is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "45"
-     },
-     {
-      "id": "B",
-      "text": "50"
-     },
-     {
-      "id": "C",
-      "text": "55"
-     },
-     {
-      "id": "D",
-      "text": "60"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "27:729::31?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "961"
-     },
-     {
-      "id": "B",
-      "text": "916"
-     },
-     {
-      "id": "C",
-      "text": "841"
-     },
-     {
-      "id": "D",
-      "text": "814"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Abundant : Scarce : Artificial : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Manmade"
-     },
-     {
-      "id": "B",
-      "text": "Sparse"
-     },
-     {
-      "id": "C",
-      "text": "Meager"
-     },
-     {
-      "id": "D",
-      "text": "Genuine"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "GFE : KJI :: ONM : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "SRT"
-     },
-     {
-      "id": "B",
-      "text": "SRQ"
-     },
-     {
-      "id": "C",
-      "text": "TSR"
-     },
-     {
-      "id": "D",
-      "text": "RQP"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Contaminated: Sinful: Immense: ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Tiny"
-     },
-     {
-      "id": "B",
-      "text": "Gigantic"
-     },
-     {
-      "id": "C",
-      "text": "Brave"
-     },
-     {
-      "id": "D",
-      "text": "Beautiful"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Ganga : Kanpur :: Narmada : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Bhopal"
-     },
-     {
-      "id": "B",
-      "text": "Amarkantak"
-     },
-     {
-      "id": "C",
-      "text": "Ahmedabad"
-     },
-     {
-      "id": "D",
-      "text": "Jodhpur"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "Arrange the following words in the sequence they will appear in a dictionary:\n\nA. Mechanics\n\nB. Mathematics\n\nC. Monuments\n\nD. Measurement\n\nE. Magnitude",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, C, A, E, D"
-     },
-     {
-      "id": "B",
-      "text": "A, C, D, E, B"
-     },
-     {
-      "id": "C",
-      "text": "D, A, C, E, B"
-     },
-     {
-      "id": "D",
-      "text": "E, B, D, A, C"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "If 'BHARAT' stands for 'B-8-A-18-A-20 and \"ENGLAND\" stands for E-14-G-12-A-14-D then how will you code the SRILANKA?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "S-18-I-12-A-14-11-A"
-     },
-     {
-      "id": "B",
-      "text": "S-15-I-9-A-11-10-A"
-     },
-     {
-      "id": "C",
-      "text": "S-17-I-11-A-13-K-1"
-     },
-     {
-      "id": "D",
-      "text": "S-18-I-12-A-14-K-1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "Arpit travelled 3 km east from his home, then 2 km north followed by 3 km to east. He took a $ 90^{\\circ} $ right turn and walked 5 km straight, then he again took a right turn and walked 6 km more. How far is he now his home?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5 km"
-     },
-     {
-      "id": "B",
-      "text": "3 km"
-     },
-     {
-      "id": "C",
-      "text": "6 km"
-     },
-     {
-      "id": "D",
-      "text": "2 km"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "Complete the series: 29, 31, 37, 41, 43 _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "45"
-     },
-     {
-      "id": "B",
-      "text": "47"
-     },
-     {
-      "id": "C",
-      "text": "49"
-     },
-     {
-      "id": "D",
-      "text": "51"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Today is Friday: After 91 days, it will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Wednesday"
-     },
-     {
-      "id": "B",
-      "text": "Thursday"
-     },
-     {
-      "id": "C",
-      "text": "Friday"
-     },
-     {
-      "id": "D",
-      "text": "Saturday"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Complete the series. 15, 24, 35, 48, 63 _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "80"
-     },
-     {
-      "id": "B",
-      "text": "89"
-     },
-     {
-      "id": "C",
-      "text": "94"
-     },
-     {
-      "id": "D",
-      "text": "99"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Complete the series: 76, 62, .....34, 20, 6",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "56"
-     },
-     {
-      "id": "B",
-      "text": "48"
-     },
-     {
-      "id": "C",
-      "text": "43"
-     },
-     {
-      "id": "D",
-      "text": "36"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "In this question, four words have been given of which three are alike in some way and one is different. Find the odd one out.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Motorcycle"
-     },
-     {
-      "id": "B",
-      "text": "Metro"
-     },
-     {
-      "id": "C",
-      "text": "Bus"
-     },
-     {
-      "id": "D",
-      "text": "Car"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "How many triangles are in the given shape?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "21"
-     },
-     {
-      "id": "B",
-      "text": "23"
-     },
-     {
-      "id": "C",
-      "text": "27"
-     },
-     {
-      "id": "D",
-      "text": "29"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q44-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q44-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 44"
-     }
-    ]
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Anita, Baby and Charu are sisters. D is the brother of E and E is the daughter of Baby. How is Anita related to D?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Niece"
-     },
-     {
-      "id": "B",
-      "text": "Sister"
-     },
-     {
-      "id": "C",
-      "text": "Cousin"
-     },
-     {
-      "id": "D",
-      "text": "Aunt"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "Find the value of $ \\frac{5^{2/3} \\times \\sqrt[3]{5^{7}}}{\\sqrt[3]{5^{6}}} $",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5"
-     },
-     {
-      "id": "B",
-      "text": "1"
-     },
-     {
-      "id": "C",
-      "text": "$ \\sqrt{5} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 3\\sqrt{5} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "The angle of depression of a point situated at a distance 100 m from the base of a pole is $ 30^{\\circ} $. The height of the pole is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 100(\\sqrt{3} + 1)m $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{100}{3}m $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{100}{3}\\sqrt{3}m $"
-     },
-     {
-      "id": "D",
-      "text": "$ 100\\sqrt{3}m $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "The value of $13.7 \\times 12.7 \\times 0.8$ is _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "13.9193"
-     },
-     {
-      "id": "B",
-      "text": "13.9192"
-     },
-     {
-      "id": "C",
-      "text": "139.192"
-     },
-     {
-      "id": "D",
-      "text": "139.191"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "The sum of greatest five and lowest/smallest four digits number is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "91,999"
-     },
-     {
-      "id": "B",
-      "text": "19,999"
-     },
-     {
-      "id": "C",
-      "text": "10,999"
-     },
-     {
-      "id": "D",
-      "text": "1,00,999"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "If $ \\sqrt[3]{x} = 2y $. Then, the value of $ \\frac{y^3}{x} $ is _",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "2/5"
-     },
-     {
-      "id": "C",
-      "text": "1/8"
-     },
-     {
-      "id": "D",
-      "text": "8"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q51",
-    "sourceQuestionNo": 51,
-    "stemEn": "When seen through a mirror, a clock shown 8:30.\n\nWhat is the correct time?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2:30"
-     },
-     {
-      "id": "B",
-      "text": "3:30"
-     },
-     {
-      "id": "C",
-      "text": "5:30"
-     },
-     {
-      "id": "D",
-      "text": "8:30"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q52",
-    "sourceQuestionNo": 52,
-    "stemEn": "The value of $ \\sqrt{0.01} \\times \\sqrt[3]{0.027} - 0.3 $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.1"
-     },
-     {
-      "id": "B",
-      "text": "0.27"
-     },
-     {
-      "id": "C",
-      "text": "0.027"
-     },
-     {
-      "id": "D",
-      "text": "0.1"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q53",
-    "sourceQuestionNo": 53,
-    "stemEn": "2 women and 3 men can do a piece of work in 10 days while 3 women and 2 men can do the same work in 8 days. In how many days can 2 women and 1 man do the work?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 12\\frac{1}{4} $ days"
-     },
-     {
-      "id": "B",
-      "text": "15 days"
-     },
-     {
-      "id": "C",
-      "text": "25 days"
-     },
-     {
-      "id": "D",
-      "text": "$ 12\\frac{1}{2} $ days"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q54",
-    "sourceQuestionNo": 54,
-    "stemEn": "On 7^{th} March, 2005 Monday falls. What was the day of the week on 7^{th} March 2004?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Monday"
-     },
-     {
-      "id": "B",
-      "text": "Saturday"
-     },
-     {
-      "id": "C",
-      "text": "Sunday"
-     },
-     {
-      "id": "D",
-      "text": "Friday"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q55",
-    "sourceQuestionNo": 55,
-    "stemEn": "The value of $ \\frac{(793-232)^{2}-(793-232)^{2}}{793\\times232} $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "7930"
-     },
-     {
-      "id": "B",
-      "text": "4"
-     },
-     {
-      "id": "C",
-      "text": "2"
-     },
-     {
-      "id": "D",
-      "text": "2320"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q56",
-    "sourceQuestionNo": 56,
-    "stemEn": "The simple interest as a sum of money is 4/5th of the principal. Find the rate of interest if both the rate of interest and time are numerically equal.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "46% P.A."
-     },
-     {
-      "id": "B",
-      "text": "$ 4\\sqrt{2} $ & P.A."
-     },
-     {
-      "id": "C",
-      "text": "43% P.A."
-     },
-     {
-      "id": "D",
-      "text": "$ 4\\sqrt{5} $% P.A."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q57",
-    "sourceQuestionNo": 57,
-    "stemEn": "Find the odd number in the series 63, 48, 34, 24, 15, 8, 3",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "24"
-     },
-     {
-      "id": "B",
-      "text": "34"
-     },
-     {
-      "id": "C",
-      "text": "15"
-     },
-     {
-      "id": "D",
-      "text": "8"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q58",
-    "sourceQuestionNo": 58,
-    "stemEn": "The average of the four consecutive odd numbers is\n\n16. What is the third number in the descending order?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "13"
-     },
-     {
-      "id": "B",
-      "text": "15"
-     },
-     {
-      "id": "C",
-      "text": "17"
-     },
-     {
-      "id": "D",
-      "text": "19"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q59",
-    "sourceQuestionNo": 59,
-    "stemEn": "A train running at a speed of 54 km/hr crosses a platform which is double of the length of the train in 18 seconds. What is the length of the platform and train?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "180m and 90 m"
-     },
-     {
-      "id": "B",
-      "text": "90 m and 180m"
-     },
-     {
-      "id": "C",
-      "text": "70 m and 140 m"
-     },
-     {
-      "id": "D",
-      "text": "140 m and 70 m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q60",
-    "sourceQuestionNo": 60,
-    "stemEn": "Find the largest size of a bamboo that can be placed in a square of area 333 m²?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "13 m"
-     },
-     {
-      "id": "B",
-      "text": "13√2 m"
-     },
-     {
-      "id": "C",
-      "text": "26 m"
-     },
-     {
-      "id": "D",
-      "text": "26√2 m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q61",
-    "sourceQuestionNo": 61,
-    "stemEn": "Arrange the following in a logical order:\n\n(A) Frog\n\n(B) Eagle\n\n(C) Grasshopper\n\n(D) Snake\n\n(E) Grass",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A, C, E, B, D"
-     },
-     {
-      "id": "B",
-      "text": "C, D, B, E, A"
-     },
-     {
-      "id": "C",
-      "text": "E, C, A, D, B"
-     },
-     {
-      "id": "D",
-      "text": "E, C, D, B, A"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q62",
-    "sourceQuestionNo": 62,
-    "stemEn": "Which of the following collection of letters will look the same in the simple mirror?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "HIMOSTA"
-     },
-     {
-      "id": "B",
-      "text": "HIMOVTA"
-     },
-     {
-      "id": "C",
-      "text": "AOSVMTA"
-     },
-     {
-      "id": "D",
-      "text": "HVHRTAM"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q63",
-    "sourceQuestionNo": 63,
-    "stemEn": "If 'book' is called 'watch', watch is called 'bag; 'bag' is called 'dictionary' and 'dictionary' is called door: which is used to carry the books?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Watch"
-     },
-     {
-      "id": "B",
-      "text": "Bag"
-     },
-     {
-      "id": "C",
-      "text": "Dictionary"
-     },
-     {
-      "id": "D",
-      "text": "Door"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q64",
-    "sourceQuestionNo": 64,
-    "stemEn": "Find out the figure which will be exactly make up from the sum collection of symbols:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": ""
-     },
-     {
-      "id": "B",
-      "text": ""
-     },
-     {
-      "id": "C",
-      "text": ""
-     },
-     {
-      "id": "D",
-      "text": ""
-     }
-    ],
-    "optionsAreImages": true,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [
-     "image-options"
-    ],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q64-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q64-figure-1.jpg",
-      "page": 5,
-      "alt": "Figure for question 64"
-     },
-     {
-      "id": "q64-options",
-      "kind": "options",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q64-options.jpg",
-      "page": 5,
-      "alt": "Printed answer choices for question 64"
-     }
-    ]
-   },
-   {
-    "id": "q65",
-    "sourceQuestionNo": 65,
-    "stemEn": "Match List-I with List-II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(III), (B)-(II), (C)-(IV), (D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(I), (B)-(IV), (C)-(III), (D)-(II)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q65-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q65-table-1.jpg",
-      "page": 5,
-      "alt": "Table for question 65"
-     },
-     {
-      "id": "q65-table-2",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q65-table-2.jpg",
-      "page": 5,
-      "alt": "Table for question 65"
-     }
-    ]
-   },
-   {
-    "id": "q66",
-    "sourceQuestionNo": 66,
-    "stemEn": "Two different positions Q and R of dice are shown in the figures given below.\n\nQ\n\nR\n\nWhich number lies opposite to number 6?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "4"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q66-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q66-figure-1.jpg",
-      "page": 5,
-      "alt": "Figure for question 66"
-     },
-     {
-      "id": "q66-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-23-shift-1/q66-figure-2.jpg",
-      "page": 5,
-      "alt": "Figure for question 66"
-     }
-    ]
-   },
-   {
-    "id": "q67",
-    "sourceQuestionNo": 67,
-    "stemEn": "Choose the essential word from the options given below.\n\n(a) Tractor\n\n(b) Plough\n\n(c) Land\n\n(d) Spade\n\n68. Statements:\n\nSome Icon are Image\n\nAll Image are File\n\nSome Folder are Icon\n\nConclusions:\n\nI: Some Folder are not File\n\nII: All Folder are File",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "If only conclusion I follows."
-     },
-     {
-      "id": "B",
-      "text": "If only conclusion II follows."
-     },
-     {
-      "id": "C",
-      "text": "If either conclusion I or II follows."
-     },
-     {
-      "id": "D",
-      "text": "If neither conclusion I nor II follows. Direction for questions (69 - 71): In the following diagram, rectangle represent man, triangle represents educated, circle represents urban and square represents government employees."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q69",
-    "sourceQuestionNo": 69,
-    "stemEn": "Which of the following numbers represent Educated man who are not urban?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "14"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "15"
-     },
-     {
-      "id": "D",
-      "text": "25"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q70",
-    "sourceQuestionNo": 70,
-    "stemEn": "Which one of the following represent Urban educated man?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "3"
-     },
-     {
-      "id": "B",
-      "text": "15"
-     },
-     {
-      "id": "C",
-      "text": "5"
-     },
-     {
-      "id": "D",
-      "text": "25"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q71",
-    "sourceQuestionNo": 71,
-    "stemEn": "Which of the following number represents urban men who are government employee?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "10"
-     },
-     {
-      "id": "B",
-      "text": "3"
-     },
-     {
-      "id": "C",
-      "text": "5"
-     },
-     {
-      "id": "D",
-      "text": "13 Direction for questions (72 - 75): Study the following table carefully to answer the question. Marks obtained by the students in different subject at board examination."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q72",
-    "sourceQuestionNo": 72,
-    "stemEn": "What is the average of marks obtained by the all students in computer?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "80"
-     },
-     {
-      "id": "B",
-      "text": "90"
-     },
-     {
-      "id": "C",
-      "text": "85"
-     },
-     {
-      "id": "D",
-      "text": "95"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q73",
-    "sourceQuestionNo": 73,
-    "stemEn": "What is the overall percentage of marks obtained by GP in all subjects?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "72.88%"
-     },
-     {
-      "id": "B",
-      "text": "76.75%"
-     },
-     {
-      "id": "C",
-      "text": "74.50%"
-     },
-     {
-      "id": "D",
-      "text": "75.75%"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q74",
-    "sourceQuestionNo": 74,
-    "stemEn": "What is average marks obtained by the all students in Hindi?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "46"
-     },
-     {
-      "id": "B",
-      "text": "48"
-     },
-     {
-      "id": "C",
-      "text": "47.8"
-     },
-     {
-      "id": "D",
-      "text": "45.8"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q75",
-    "sourceQuestionNo": 75,
-    "stemEn": "What is the ratio between total marks obtained in all subjects by RP and FA?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "84:89"
-     },
-     {
-      "id": "B",
-      "text": "50:51"
-     },
-     {
-      "id": "C",
-      "text": "1:1"
-     },
-     {
-      "id": "D",
-      "text": "10:11"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

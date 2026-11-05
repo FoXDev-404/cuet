@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Physics_May22_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -117,43 +117,8 @@
         "assets": []
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "A circular current loop of radius R is placed inside a square loop of side length  $ L $ ( $ L \\gg R $) such that they are co-planar and their centers coincide. The permeability of free space is  $ \\mu_0 $. The mutual inductance between circular loop and square loop is ___.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ 2\\sqrt{2}\\frac{\\mu_0 L^2}{R} $"
-          },
-          {
-            "id": "B",
-            "text": "$ \\sqrt{2}\\frac{\\mu_0 L^2}{R} $"
-          },
-          {
-            "id": "C",
-            "text": "$ \\sqrt{2}\\frac{\\mu_0 R^2}{L} $"
-          },
-          {
-            "id": "D",
-            "text": "$ 2\\sqrt{2}\\frac{\\mu_0 R^2}{L} $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "The binding energy per nucleon of  $ {}^{209}_{83}Bi $ is ___ MeV.\n\nGiven:  $ m(\\text{}_{83}^{209}\\text{Bi}) = 208.980388 u $,  $ m_p = 1.007825 u $,  $ m_n = 1.008665 u $,\n\n $ 1u = 931\\,\\text{MeV}/c^2 $",
         "optionsEn": [
           {
@@ -185,43 +150,8 @@
         "assets": []
       },
       {
-        "id": "q06",
-        "sourceQuestionNo": 6,
-        "stemEn": "Match the LIST-I with LIST-II:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">List-I</td><td colspan=\"2\">List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>Planck's constant</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>$ ML^{2}T^{-2} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>Stopping potential</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>$ T^{-1} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>Work function</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>$ ML^{2}T^{-2}A^{-1} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>Threshold frequency</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>$ ML^{2}T^{-3}A^{-1} $</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A-III, B-IV, C-I, D-II"
-          },
-          {
-            "id": "B",
-            "text": "A-I, B-II, C-III, D-IV"
-          },
-          {
-            "id": "C",
-            "text": "A-IV, B-III, C-I, D-II"
-          },
-          {
-            "id": "D",
-            "text": "A-I, B-IV, C-III, D-II"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "Given below are two statements: one is labelled as Assertion A and the other is labelled as Reason R.\n\nAssertion A: In electrostatics, a conductor does not store any net charge inside.\n\nReason R: Inside the capacitor (with no dielectric medium), the free charge carriers, if placed between the plates of capacitor, experience force and drift.\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "A solenoid has a core made of material with relative permeability 400. The magnetic field produced in the interior of solenoid is 1.0T. The magnetic intensity in SI units is  $ \\alpha \\times 10^{5} $. The value of  $ \\alpha $ is ___.\n\n $$ \\mathrm{G i v e n}\\colon\\mu_{0}=4\\pi\\times10^{-7}\\mathrm{S I u n i t s} $$",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "A magnetic field vector in an electromagnetic wave is represented by\n\n $$ \\vec{B}=B_{0}\\sin\\left(2\\pi\\nu t-\\frac{2\\pi x}{\\lambda}\\right)\\hat{j} $$ \n\nIts associated electric field vector is ___.",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "A convex lens is made from glass material having refractive index of 1.4 with same radius of curvature on both sides. The ratio of its focal length and radius of curvature is ___.",
         "optionsEn": [
           {

@@ -56,7 +56,7 @@ describe('Explanation Honesty and Editorial Review Queue (Fix 4)', () => {
 
     const pqMap = new Map(pqCounts.map((r) => [r.explanation_source, r.count]));
     expect(pqMap.get('ai_draft')).toBe(6245);
-    expect(pqMap.get('banner')).toBe(358);
+    expect(pqMap.get('banner')).toBe(33);
   });
 
   it('100-question sample file exists with 101 lines (header + 100 questions)', () => {

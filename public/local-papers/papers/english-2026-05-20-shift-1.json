@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_English_May20_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -282,43 +282,8 @@
         "assets": []
       },
       {
-        "id": "q09",
-        "sourceQuestionNo": 9,
-        "stemEn": "It took the family years to ___ the emotional trauma of the disaster.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "get over"
-          },
-          {
-            "id": "B",
-            "text": "get by"
-          },
-          {
-            "id": "C",
-            "text": "get through"
-          },
-          {
-            "id": "D",
-            "text": "get across"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "He promised to ___ the discrepancies in the ledger before the auditors arrived.",
         "optionsEn": [
           {

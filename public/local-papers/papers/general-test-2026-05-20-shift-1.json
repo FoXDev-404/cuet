@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_GAT_May20_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 9,
+    "questionCount": 7,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "If the ratio of boys to girls in a class is 7 : 5 and the total number of students is 48, then the number of girls is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "18"
-          },
-          {
-            "id": "B",
-            "text": "20"
-          },
-          {
-            "id": "C",
-            "text": "22"
-          },
-          {
-            "id": "D",
-            "text": "24"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 2,
         "stemEn": "A shopkeeper gives 10% discount on an article marked at Rs.2500 and still gains 8%. The cost price of the article is:",
         "optionsEn": [
           {
@@ -119,43 +84,8 @@
         "assets": []
       },
       {
-        "id": "q05",
-        "sourceQuestionNo": 5,
-        "stemEn": "If  $ \\sqrt{x+9}=5 $, then the value of x is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "14"
-          },
-          {
-            "id": "B",
-            "text": "15"
-          },
-          {
-            "id": "C",
-            "text": "16"
-          },
-          {
-            "id": "D",
-            "text": "25"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 3,
         "stemEn": "Find the odd one out:",
         "optionsEn": [
           {
@@ -188,7 +118,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 4,
         "stemEn": "A person walks 12 km towards North, then turns right and walks 5 km. He again turns right and walks 12 km. How far is he from the starting point?",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 5,
         "stemEn": "The average of 8 numbers is 24. If two numbers 18 and 30 are removed, the average of the remaining numbers is:",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 6,
         "stemEn": "In a certain code language, “PENCIL” is written as “QFODJM”. How will “MARKER” be written in that code?",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 7,
         "stemEn": "A sum of money becomes Rs.9680 at 10% simple interest per annum in 4 years. The principal amount is:",
         "optionsEn": [
           {

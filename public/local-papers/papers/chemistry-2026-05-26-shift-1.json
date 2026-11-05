@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Chemistry_May26_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 9,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "Which statements are True?\n\nA. In Hoffmann bromamide degradation, 4 moles of NaOH and 2 moles of  $ Br_2 $ are consumed per mole of an amide.\n\nB. Hoffmann bromamide reaction is not given by alkyl amides.\n\nC. Primary amines can be synthesized by Hoffmann bromamide degradation.\n\nD. Secondary amide on reaction with  $ Br_2 $ and NaOH will give secondary amine.\n\nE. The by-products of Hoffmann degradation are  $ Na_2CO_3 $, NaBr and  $ H_2O $.\n\nChoose the correct answer from the options given below:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A, C and E only"
-          },
-          {
-            "id": "B",
-            "text": "B, C and D only"
-          },
-          {
-            "id": "C",
-            "text": "C and E only"
-          },
-          {
-            "id": "D",
-            "text": "C, D and E only"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 2,
         "stemEn": "The incorrect statement from the following with respect to carbohydrates is:",
         "optionsEn": [
           {
@@ -120,7 +85,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "An organic compound (P) on treatment with aqueous ammonia under hot condition forms compound (Q) which on heating with Br_{2} and KOH forms compound (R) having molecular formula C_{6}H_{7}N. Name P, Q and R respectively are :",
         "optionsEn": [
           {
@@ -161,7 +126,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "An organic compound P of molecular formula  $ C_{6}H_{12}O_{3} $ gives positive iodoform test but negative Tollens' test. When P is treated with dilute acid, it produces Q. Q gives positive Tollens' test and also iodoform test. Identify compound P.",
         "optionsEn": [
           {
@@ -194,7 +159,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "$  \\text{MnO}_4^{2-}  $ in acidic medium disproportionates to :",
         "optionsEn": [
           {
@@ -227,7 +192,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "Given below are two statements:\n\nStatement I: Among\n\n $$ [\\mathrm{Cu(NH_{3})_{4}}]^{2+}, [\\mathrm{Ni(CN)_{4}}]^{2-}, [\\mathrm{Ni(NH_{3})_{6}}]^{2+} \\text{ and } [\\mathrm{Mn(H_{2}O)_{6}}]^{2+}, $$ \n\n $[\\mathrm{Mn}(\\mathrm{H}_{2}\\mathrm{O})_{6}]^{2+}$ has the maximum number of unpaired electrons.\n\nStatement II: The number of pairs among\n\n $$ [\\mathrm{NiCl}_{4}]^{2-}, [\\mathrm{Ni(CO)}_{4}] $$ \n\nand\n\n $$ [\\mathrm{Ni(CN)}_{4}]^{2-}, [\\mathrm{Ni(H_{2}O)}_{6}]^{2+} $$ \n\nthat contain only diamagnetic species is two.\n\nIn the light of the above statements, choose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -260,7 +225,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Identify the correct statements.\n\nA. Arginine and Tryptophan are essential amino acids.\n\nB. Histidine does not contain heterocyclic ring in its structure.\n\nC. Proline is a six-membered cyclic ring amino acid.\n\nD. Glycine does not have chiral centre.\n\nE. Cysteine has characteristic feature of side chain as MeS-CH_{2}-CH_{2}-",
         "optionsEn": [
           {
@@ -293,7 +258,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "The correct statements are:\n\nA. Activation energy for enzyme catalysed hydrolysis of sucrose is lower than that of acid catalysed hydrolysis.\n\nB. During denaturation, secondary and tertiary structures of a protein are destroyed but primary structure remains intact.\n\nC. Nucleotides are joined together by glycosidic linkage between  $ C_{1} $ and  $ C_{4} $ carbons of the pentose sugar.\n\nD. Quaternary structure of proteins represents overall folding of the polypeptide chain.",
         "optionsEn": [
           {

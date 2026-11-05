@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_GAT_May21_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -183,43 +183,8 @@
         "assets": []
       },
       {
-        "id": "q06",
-        "sourceQuestionNo": 6,
-        "stemEn": "At what time between 4 and 5 o'clock will the hands of a clock be at right angles? (Approximately)",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "4:05"
-          },
-          {
-            "id": "B",
-            "text": "4:38"
-          },
-          {
-            "id": "C",
-            "text": "4:55"
-          },
-          {
-            "id": "D",
-            "text": "4:45"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "If ‘APPLE’ is coded as ‘BQQMF’, how is ‘ORANGE’ coded in the same way?",
         "optionsEn": [
           {
@@ -252,7 +217,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Pointing to a man, a woman said, \"His mother is the only daughter of my mother.\" How is the woman related to the man?",
         "optionsEn": [
           {
@@ -285,7 +250,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "Which of the following is the longest river in India?",
         "optionsEn": [
           {
@@ -318,7 +283,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Who was appointed as the Chief Justice of India in 2025 (or the most recent as per latest updates)?",
         "optionsEn": [
           {

@@ -1,1436 +1,1329 @@
 {
- "exam": {
-  "id": "local-physics-2022-08-26",
-  "slug": "physics-2022-08-26",
-  "title": "CUET UG Physics 26 August 2022 Previous Year Paper",
-  "subject": "Physics",
-  "subjectId": "local-physics",
-  "subjectCode": "PHY",
-  "year": 2022,
-  "examDate": "2022-08-26",
-  "shift": null,
-  "sourceFile": "Physics_2022-08-26.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 41,
-  "sourceQuestionCount": 50,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Magnitude of electric field due to a point charge + Q experienced by a test charge q at a distance r from the point charge + Q is equal to:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Magnitude of dielectric force experienced by the point charge/Q"
-     },
-     {
-      "id": "B",
-      "text": "Magnitude of electric force experienced by the test charge/q"
-     },
-     {
-      "id": "C",
-      "text": "Magnitude or repulsive force between the point charge and the test charge"
-     },
-     {
-      "id": "D",
-      "text": "Magnitude of electric force experienced by point charge Q multiplied by the magnitude of charge on the test charge"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Point A lies at a distance $r$ on the axis of q short electric dipole. Electric field at this point is $160 \\frac{V}{m}$. Now consider another point $P$ at a distance $2r$ on its axis. The value of electric field at this point will be",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 160\\frac{V}{m} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 40\\frac{V}{m} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 20\\frac{V}{m} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 10\\frac{V}{m} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "A spherical metal body has +Q charge, uniformly distributed over its outer surface. The body has a cavity at its centre. Select proper procedure from those given below which will change the charge on the outer surface of this body from +Q to -Q.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Charge - 2Q is inserted in the cavity and is kept insulated from the inner surface of the cavity"
-     },
-     {
-      "id": "B",
-      "text": "Charge - 2Q is brought closer to the body externally and kept at some small distance away from it"
-     },
-     {
-      "id": "C",
-      "text": "Another metal sphere having total charge - 2Q distributed on its surface is kept in contact with the given spherical body for some time and then the two are separated"
-     },
-     {
-      "id": "D",
-      "text": "A metal body having charge - Q is inserted in the cavity and kept touching the inner surface of the cavity."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "Two point charges $ q_{1}=2\\mu C $ and $ q_{2}=-2\\mu C $ are placed 20 cm apart from each other. Point 'a' is 5 cm away from q, on the line joining $ q_{1} $ and $ q_{2} $ on the side opposite to $ q_{2} $. Point 'b' is 5 cm away from $ q_{2} $, on the line joining $ q_{1} $ and $ q_{2} $, opposite to $ q_{1} $. Point 'c' is at a perpendicular distance of 10 cm from the centre point D of the line joining $ q_{1} $ and $ q_{2} $. Identify the correct statement depicting the situation.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Point C and D are equipotential"
-     },
-     {
-      "id": "B",
-      "text": "Potential at point a, $ V_{a}<V_{b} $, potential at point b"
-     },
-     {
-      "id": "C",
-      "text": "Potential at point a, $ V_{a}<V_{c} $, potential at point c"
-     },
-     {
-      "id": "D",
-      "text": "Potential at point $D, V_{D} > V_{b}$, potential at point $b V_{D} > V_{b}$."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q04-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q04-figure-1.jpg",
-      "page": 1,
-      "alt": "Figure for question 4"
-     }
+  "exam": {
+    "id": "local-physics-2022-08-26",
+    "slug": "physics-2022-08-26",
+    "title": "CUET UG Physics 26 August 2022 Previous Year Paper",
+    "subject": "Physics",
+    "subjectId": "local-physics",
+    "subjectCode": "PHY",
+    "year": 2022,
+    "examDate": "2022-08-26",
+    "shift": null,
+    "sourceFile": "Physics_2022-08-26.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 38,
+    "sourceQuestionCount": 50,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Magnitude of electric field due to a point charge + Q experienced by a test charge q at a distance r from the point charge + Q is equal to:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Magnitude of dielectric force experienced by the point charge/Q"
+          },
+          {
+            "id": "B",
+            "text": "Magnitude of electric force experienced by the test charge/q"
+          },
+          {
+            "id": "C",
+            "text": "Magnitude or repulsive force between the point charge and the test charge"
+          },
+          {
+            "id": "D",
+            "text": "Magnitude of electric force experienced by point charge Q multiplied by the magnitude of charge on the test charge"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Point A lies at a distance $r$ on the axis of q short electric dipole. Electric field at this point is $160 \\frac{V}{m}$. Now consider another point $P$ at a distance $2r$ on its axis. The value of electric field at this point will be",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 160\\frac{V}{m} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 40\\frac{V}{m} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 20\\frac{V}{m} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 10\\frac{V}{m} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "A spherical metal body has +Q charge, uniformly distributed over its outer surface. The body has a cavity at its centre. Select proper procedure from those given below which will change the charge on the outer surface of this body from +Q to -Q.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Charge - 2Q is inserted in the cavity and is kept insulated from the inner surface of the cavity"
+          },
+          {
+            "id": "B",
+            "text": "Charge - 2Q is brought closer to the body externally and kept at some small distance away from it"
+          },
+          {
+            "id": "C",
+            "text": "Another metal sphere having total charge - 2Q distributed on its surface is kept in contact with the given spherical body for some time and then the two are separated"
+          },
+          {
+            "id": "D",
+            "text": "A metal body having charge - Q is inserted in the cavity and kept touching the inner surface of the cavity."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Two point charges $ q_{1}=2\\mu C $ and $ q_{2}=-2\\mu C $ are placed 20 cm apart from each other. Point 'a' is 5 cm away from q, on the line joining $ q_{1} $ and $ q_{2} $ on the side opposite to $ q_{2} $. Point 'b' is 5 cm away from $ q_{2} $, on the line joining $ q_{1} $ and $ q_{2} $, opposite to $ q_{1} $. Point 'c' is at a perpendicular distance of 10 cm from the centre point D of the line joining $ q_{1} $ and $ q_{2} $. Identify the correct statement depicting the situation.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Point C and D are equipotential"
+          },
+          {
+            "id": "B",
+            "text": "Potential at point a, $ V_{a}<V_{b} $, potential at point b"
+          },
+          {
+            "id": "C",
+            "text": "Potential at point a, $ V_{a}<V_{c} $, potential at point c"
+          },
+          {
+            "id": "D",
+            "text": "Potential at point $D, V_{D} > V_{b}$, potential at point $b V_{D} > V_{b}$."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q04-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-26/q04-figure-1.jpg",
+            "page": 1,
+            "alt": "Figure for question 4"
+          }
+        ]
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "A 300 µF capacitor is charged by 90 volt. Once it is charged battery is removed. Now another uncharged capacitor of capacitance 600 µF is connected across it (in parallel). The value of common potential is\n\n(a) 30 volt (b) 60 volt\n\n(c) 120 volt (d) 0 volt\n\nStatement I: Electric potential at every point inside a uniformly charges conducting sphere is equal to that on its surface.\n\nStatement II: Work done by an electrostatic field in moving a charge from one point to another depends on the length of the path taken to go from one point to the other.\n\nIn the light of the above statements, choose the most appropriate answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both Statement I and Statement II are correct"
+          },
+          {
+            "id": "B",
+            "text": "Both Statement I and Statement II are incorrect"
+          },
+          {
+            "id": "C",
+            "text": "Statement I is correct but Statement II is incorrect"
+          },
+          {
+            "id": "D",
+            "text": "Statement I is incorrect but Statement II is correct Passage:(Q.No.:7-11) Potentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $ $ V = K l $ Various uses of potentiometer on: - To measure potential differences between any two points in an electrical network - To compare emf of a cell - To measure emf of a cell - To measure internal resistance of a cell etc: Answer the following question related to potentiometer."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 6,
+        "stemEn": "In the following set up of potentiometer, the value of potential gradient is:\n\nAP is balancing length for the primary cell of emf E, Resistors of AB length of the wire $ P_{AB} = 8\\Omega $, and length AB (L) = 10m.\n\n(a) 1 volt/m\n\n(b) 2 volt/m\n\n(c) 1.6 vol/m\n\n(d) 0.16 vol/m\n8. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $ V = Kl\n\nVarious uses of potentiometer on:\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\n- To measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer.\n\nThe length of potentiometer wire AB is 10 m and its resistance is $ 8 \\Omega $. If balancing length on the potentiometer is 225 cm, the value of emf of the primary cell is:\n\n(a) 0.36 volt\n\n(b) 0.16 volt\n\n(c) 36 volt\n\n(d) 2 volt\n9. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $\n\nVarious uses of potentiometer on:\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\n- To measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer. In the given potentiometer on increasing value of R:\n\n(a) Balancing length will decrease\n\n(b) Balancing length will increases\n\n(c) Balancing length will remain unchanged\n\n(d) Balancing length can be obtained again if polarity of cell E is reversed\n10. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $\n\nVarious uses of potentiometer on :\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\n- To measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer. In the given potentiometer the null point for the primary cell is obtained at P. The effect on the balancing length when resistance X is increased, will be\n\n(a) Balancing length increases\n\n(b) Balancing length remains unchanged\n\n(c) Balancing length decreases\n\n(d) Balancing length first increases and then decreases\n11. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $\n\nVarious uses of potentiometer on :\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\nTo measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer. What happens to the balancing length when resistance S is increased?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Balancing length decreases"
+          },
+          {
+            "id": "B",
+            "text": "Balancing length increases"
+          },
+          {
+            "id": "C",
+            "text": "Balancing length remains unchanged"
+          },
+          {
+            "id": "D",
+            "text": "Balancing length first decreases then increases"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2,
+          3
+        ],
+        "assets": [
+          {
+            "id": "q07-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-26/q07-figure-1.jpg",
+            "page": 2,
+            "alt": "Figure for question 7"
+          },
+          {
+            "id": "q07-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-26/q07-figure-2.jpg",
+            "page": 2,
+            "alt": "Figure for question 7"
+          },
+          {
+            "id": "q07-figure-3",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-26/q07-figure-3.jpg",
+            "page": 2,
+            "alt": "Figure for question 7"
+          },
+          {
+            "id": "q07-figure-4",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-26/q07-figure-4.jpg",
+            "page": 2,
+            "alt": "Figure for question 7"
+          },
+          {
+            "id": "q07-figure-5",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-26/q07-figure-5.jpg",
+            "page": 3,
+            "alt": "Figure for question 7"
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 7,
+        "stemEn": "A charge particle is moving on a helical path in a uniform magnetic field. The correct statement describing the velocity of this charge particle, is:\n\n(1) The particle has non-zero components, of velocity along the parallel as well as perpendicular directions of magnetic field\n\n(2) The particle velocity is in a direction parallel to the direction of magnetic field\n\n(3) The particle velocity is in a direction perpendicular to the direction of magnetic field\n\n(4) The particle is initially at rest while switching the magnetic field on",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 8,
+        "stemEn": "Magnetic flux through any closed surface around magnetic pole is always zero. The correct reason for this fact, is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Magnets always exist in pairs"
+          },
+          {
+            "id": "B",
+            "text": "Magnets are always dipoles"
+          },
+          {
+            "id": "C",
+            "text": "Magnets can exist as monopoles"
+          },
+          {
+            "id": "D",
+            "text": "No magnet exerts force on another magnet"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 9,
+        "stemEn": "A coil of 200 turns, area 0.20 m² is rotated in a uniform magnetic field of 0.4 G perpendicular to the axis of the coil at the rate of 7 rps. The maximum emf induced in the coil is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 3.52 \\times 10^{-2} $ V"
+          },
+          {
+            "id": "B",
+            "text": "$ 4.28 \\times 10^{-2} $ V"
+          },
+          {
+            "id": "C",
+            "text": "$ 6.24 \\times 10^{-2} $ V"
+          },
+          {
+            "id": "D",
+            "text": "$ 7.04 \\times 10^{-2} $ V Passage:(Q.No.19-23) A series LCR circuit connected to an AC source with voltage of the source $ v = v_{m} \\sin \\omega t $. $ V_{L} $ If 'q' is the charge on the capacitor and 'i' is the current, from Kirchhoff's loop rule: $$ L\\frac{di}{dt}+iR+\\frac{q}{c}=V $$ The current in the circuit is given by $ i = I_m \\sin(\\omega t + \\phi) $ where $ \\phi $ is the phase difference between the voltage across the source and current in the circuit. We know $ V_{Rm} = L_m R $; $ V_{Lm} = L_m X_L $; $ V_{Cm} = L_m X_C $; and $$ X_{L}=\\omega L;X_{c}=\\frac{1}{\\omega C} $$ Total impedance in the circuit regulates current. At resonance frequency of the LCR circuit current in the circuit is maximum. A series LCR circuit has resonant frequency of $\\omega_{0}$. If inductance in the circuit is replaced by another one having the same value of inductance but higher value of internal resistance."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q19",
+        "sourceQuestionNo": 10,
+        "stemEn": "Select the statement that explains the change in functioning of the circuit correctly.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Resonant frequency of the circuit will decrease"
+          },
+          {
+            "id": "B",
+            "text": "Amplitude of current at the resonant frequency will increase"
+          },
+          {
+            "id": "C",
+            "text": "Quality factor of the circuit will decrease"
+          },
+          {
+            "id": "D",
+            "text": "Bandwidth of the circuit will decrease"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 11,
+        "stemEn": "Given below are two statements\n\nStatement I: In an LCR series circuit, power dissipated is minimum at resonance.\n\nStatement II: In an LCR circuit, power is dissipated only in the inductor and capacitor.\n\nIn the light of the above statements, choose the most appropriate answer from the options given below",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Both Statement I and Statement II are true"
+          },
+          {
+            "id": "B",
+            "text": "Both Statement I and Statement II are false"
+          },
+          {
+            "id": "C",
+            "text": "Statement I is correct but Statement II is false"
+          },
+          {
+            "id": "D",
+            "text": "Statement I is incorrect but Statement II is true"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 12,
+        "stemEn": "In a series LCR circuit $ L = 4\\text{H} $, $ C = 100\\ \\mu\\text{F} $ and $ R = 25\\ \\Omega $. The circuit is connected to a variable frequency 220 V source.\n\n220 V\n\nThe source angular frequency ( $ \\omega $) which drives the circuit in resonance is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.05 rad s $ ^{-1} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 2 \\, rad \\, s^{-1} $"
+          },
+          {
+            "id": "C",
+            "text": "314rads^{-1}"
+          },
+          {
+            "id": "D",
+            "text": "50 rad s $ ^{-1} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q21-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/physics-2022-08-26/q21-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 21"
+          }
+        ]
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 13,
+        "stemEn": "In a series LCR circuit if frequency of the ac source is increased from resonance value $ f_{0} $ to $ 2f_{0} $. Choose the statement depicting correct situation in the circuit.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Impedance of the circuit would increase"
+          },
+          {
+            "id": "B",
+            "text": "Potential difference across the resistance would increase"
+          },
+          {
+            "id": "C",
+            "text": "rms value of the current in the circuit will increase"
+          },
+          {
+            "id": "D",
+            "text": "Potential difference across the series combination of L & C will become zero"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 14,
+        "stemEn": "A pure inductor of 0.25 mH, a pure capacitor of 250 μF and a resistor of 350 Ω are connected in series. An ac source of amplitude 210 V is connected across this series combination of L, C and R. The impedance and current amplitude in the circuit at resonance will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ Z_{\\min} = 703 \\, \\Omega $ and $ I_{\\max} = 0.30 \\, A $"
+          },
+          {
+            "id": "B",
+            "text": "$ Z_{\\min} = 350 \\, \\Omega $ and $ I_{\\max} = 0.60 \\, A $"
+          },
+          {
+            "id": "C",
+            "text": "$ Z_{\\min} = 850 \\, \\Omega $ and $ I_{\\max} = 0.25 \\, A $"
+          },
+          {
+            "id": "D",
+            "text": "$ Z_{\\min} = 430 \\, \\Omega $ and $ I_{\\max} = 0.5 \\, A $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 15,
+        "stemEn": "Which of the following EM waves can be produced by using Klystron or Magnetrons or Gunn diodes?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Gamma rays"
+          },
+          {
+            "id": "B",
+            "text": "X rays"
+          },
+          {
+            "id": "C",
+            "text": "Microwaves"
+          },
+          {
+            "id": "D",
+            "text": "UV rays"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q25",
+        "sourceQuestionNo": 16,
+        "stemEn": "Electric and Magnetic fields oscillate sinusoidally in an Electromagnetic Waves. The oscillating electric field cannot be represented in this way, where the symbols have there usual meaning:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ E = E_{0} \\sin(\\mathrm{k}z - \\omega t) $"
+          },
+          {
+            "id": "B",
+            "text": "$ E = E_{0} \\sin \\left[ 2\\pi \\left( \\frac{z}{\\lambda} - \\frac{t}{T} \\right) \\right] $"
+          },
+          {
+            "id": "C",
+            "text": "$ E = E_0 \\sin \\left[ \\frac{2\\pi}{\\lambda} (z - vt) \\right] $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\mathrm{E} = \\mathrm{E}_{0} \\sin \\left[ \\frac{2\\pi}{T} (vz - t) \\right] $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 17,
+        "stemEn": "A beam of light converges at a point $M$. Now a concave lens of focal length 32 cm is placed in the path of convergent beam 24 cm from $M$. Now the beam will converge at:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "56 cm from lens"
+          },
+          {
+            "id": "B",
+            "text": "8 cm from lens"
+          },
+          {
+            "id": "C",
+            "text": "+96 cm from lens"
+          },
+          {
+            "id": "D",
+            "text": "32 cm from lens"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 18,
+        "stemEn": "An equiconvex lens of focal length 10 cm is made up of material with refractive index 1.5. The radius of curvature of the each surface is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10 cm"
+          },
+          {
+            "id": "B",
+            "text": "20 cm"
+          },
+          {
+            "id": "C",
+            "text": "40 cm"
+          },
+          {
+            "id": "D",
+            "text": "5 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 19,
+        "stemEn": "A compound microscope has an objective lens of focal length $ f_{o} = 1.0 $ cm, an eyepiece of focal length 2.2 cm and has tube length 22 cm. The magnification produced compound microscope is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "250"
+          },
+          {
+            "id": "B",
+            "text": "200"
+          },
+          {
+            "id": "C",
+            "text": "100"
+          },
+          {
+            "id": "D",
+            "text": "150"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 20,
+        "stemEn": "The working of an optical fibre can be explained on the basis of",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Reflection of light"
+          },
+          {
+            "id": "B",
+            "text": "Refraction of light"
+          },
+          {
+            "id": "C",
+            "text": "Scattering of light"
+          },
+          {
+            "id": "D",
+            "text": "Total internal Reflection of light"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 21,
+        "stemEn": "A light source is kept in air (n ≈ 1) at a distance of 200 cm from a convex spherical glass surface $ \\left(n = \\frac{3}{2}\\right) $ such that light falls on it. If the radius of curvature of the surface is 40 cm, the position of the image is at",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "100 cm"
+          },
+          {
+            "id": "B",
+            "text": "200 cm"
+          },
+          {
+            "id": "C",
+            "text": "+200 cm"
+          },
+          {
+            "id": "D",
+            "text": "+100 cm"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 22,
+        "stemEn": "For what distance is ray optics a good approximation when the aperture is 2 mm wide and the wavelength is 400 nm?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.1m"
+          },
+          {
+            "id": "B",
+            "text": "$ 5 \\times 10^{10} $m"
+          },
+          {
+            "id": "C",
+            "text": "$ 5 \\times 10^{3} $"
+          },
+          {
+            "id": "D",
+            "text": "10m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 23,
+        "stemEn": "In Young's double Slit experiment $ 3^{rd} $ maxima (Bright Band) is obtained at a distance $ d_{1} $ from the central bright fringe when light of wavelength $ \\lambda_{1} $ is used and at a distance $ d_{2} $ when light of wavelength $ \\lambda_{2} $ is used. What will be the ratio of $ d_{1} $ and $ d_{2} $?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{\\lambda_{1}^{2}}{\\lambda_{2}^{2}} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{\\lambda_{2}}{\\lambda_{1}} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{\\lambda_{1}}{\\lambda_{2}} $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\sqrt{\\frac{\\lambda_{2}}{\\lambda_{1}}} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 24,
+        "stemEn": "The brewster's angle for air to water transition is (Refractive index of water = $ \\frac{4}{3} $)",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\sin^{-1}\\left(\\frac{4}{3}\\right) $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\sin^{-1}\\left(\\frac{3}{4}\\right) $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\tan^{-1}\\left(\\frac{4}{3}\\right) $"
+          },
+          {
+            "id": "D",
+            "text": "$ \\tan^{-1}\\left(\\frac{3}{5}\\right) $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 25,
+        "stemEn": "A proton and a triton are accelerated from rest through a potential $V$. The ratio of their de Broglie wavelength is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1:1"
+          },
+          {
+            "id": "B",
+            "text": "1:2"
+          },
+          {
+            "id": "C",
+            "text": "$1:\\sqrt{2}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\sqrt{3}:1$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 26,
+        "stemEn": "In the experimental study of photoelectric effect, a graph of stopping potential versus frequency of incident radiation for two metals A and B is plotted and identical slopes for both are obtained with different cut off frequencies ( $ ^{VDB}>_{VOA} $). So",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Slope for all metals is same = h/e. Here work function of $A$ > work function of $B$"
+          },
+          {
+            "id": "B",
+            "text": "Slope for all metals is same = h/e. Here work function of $B$ > work function of $A$"
+          },
+          {
+            "id": "C",
+            "text": "Slope for all metals is same = h. Here work function of $A$ > work function of $B$"
+          },
+          {
+            "id": "D",
+            "text": "Slope for all metals is same = h. Here work function of $B$ > work function of $A$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 27,
+        "stemEn": "Photoelectric emission occurs only when the incident light has more than a certain minimum",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Intensity"
+          },
+          {
+            "id": "B",
+            "text": "Angle of Incidence"
+          },
+          {
+            "id": "C",
+            "text": "Speed"
+          },
+          {
+            "id": "D",
+            "text": "Frequency"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 28,
+        "stemEn": "For a dynamically stable orbit in a hydrogen atom, according to Rutherford's atomic model the relation between the orbit radius (r) and the electron velocity (v) is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ r = \\frac{e}{4\\pi\\varepsilon_{0}mv^{2}} $"
+          },
+          {
+            "id": "B",
+            "text": "$ r = \\frac{e^{2}}{4\\pi\\varepsilon_{0}mv} $"
+          },
+          {
+            "id": "C",
+            "text": "$ r = \\frac{e^{2}}{4\\pi\\varepsilon_{0}mv^{2}} $"
+          },
+          {
+            "id": "D",
+            "text": "$ r = \\frac{e}{4\\pi\\varepsilon_{0}m^{2}v} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q39",
+        "sourceQuestionNo": 29,
+        "stemEn": "The spectral series to which the emission line belongs, when electron in the hydrogen atom jumps from $4^{\\mathrm{th}}$ energy state to $2^{\\mathrm{nd}}$ energy state, is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Paschen series"
+          },
+          {
+            "id": "B",
+            "text": "Lyman series"
+          },
+          {
+            "id": "C",
+            "text": "Balmer series"
+          },
+          {
+            "id": "D",
+            "text": "Brackett series"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q40",
+        "sourceQuestionNo": 30,
+        "stemEn": "Match List-I with List-II\n\nList-I List-II\n\n(Total energy eV) (States of electron in Hydrogen atom)\n\n1. -3.40 (I) At infinity\n\n2. -13.6 (II) I excited state\n\n3. 0 (III) Ground state\n\n4. -0.85 (IV) III excited state",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(1)-(II), (2)-(III), (3)-(I), (4)-(IV)"
+          },
+          {
+            "id": "B",
+            "text": "(1)-(III), (2)-(I), (3)-(II), (4)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(1)-(IV), (2)-(I), (3)-(III), (4)-(II)"
+          },
+          {
+            "id": "D",
+            "text": "(1)-(I), (2)-(II), (3)-(III), (4)-(IV)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 31,
+        "stemEn": "A particular radioactive sample has a half-life of 12 years. The fraction of it that remains undecayed after 48 years, will be:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ \\frac{1}{4}^{th} $ of its initial amount"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{1}{8}^{th} $ of its initial amount"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{1}{16}^{th} $ of its initial amount"
+          },
+          {
+            "id": "D",
+            "text": "$ \\frac{1}{32}^{th} $ of its initial amount"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 32,
+        "stemEn": "Choose the correct statements from the following based on the properties of atomic nucleus.\n\non the properties of atomic nucleus.\n\nI. Radius of a nucleus of man no. A depends on its mass number as $R \\propto A^{3}$\n\nII. Radius of nucleus and mass number are related as $R \\propto A^{\\frac{1}{3}}$\n\nIII. Density of nuclei is always a constant\n\nIV. Density of nuclei depends on its mass number A\n\nV. Density of nuclei depends on its size, volume",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "I and III only"
+          },
+          {
+            "id": "B",
+            "text": "II and III only"
+          },
+          {
+            "id": "C",
+            "text": "II and IV only"
+          },
+          {
+            "id": "D",
+            "text": "II and V only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 33,
+        "stemEn": "The constancy of the binding energy in the range $30 < A < 170$ in binding energy curve, is a consequence of the given fact:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Nuclear forces are charge independent"
+          },
+          {
+            "id": "B",
+            "text": "Nuclear forces are short ranged"
+          },
+          {
+            "id": "C",
+            "text": "Nuclear forces are the strongest forces"
+          },
+          {
+            "id": "D",
+            "text": "Nuclear forces are the attractive in nature"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 34,
+        "stemEn": "For transistor action, which of the following statements are correct:\n\n(A) The base region must be very thin and lightly doped\n\n(B) Base emitter and collector regions should have same size but different doping concentration\n\n(C) The collector junction is reverse biased and emitter junction is forward biased\n\n(D) Base, emitter and collector regions should have different sizes, but same doping concentration\n\n(E) Both the emitter junction as well as the collector junction are forward biased",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A) and (C) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "C",
+            "text": "(B), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(B) and (C) only (d) (B) and (C) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 35,
+        "stemEn": "The electron and hole concentration in an extrinsic semiconductor in thermal equilibrium is given by:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ n_{e} \\cdot n_{h} = n_{i}^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ \\frac{n_{e}}{n_{n}} = n_{i}^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ \\frac{n_{h}}{n_{e}} = n_{i}^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ n_{e} \\cdot n_{h} = n_{i} $ Where $ n_{e} $ = electron density $ n_{h} $ = hole density $ n_{i} $ = intrinsic charge density $ n_{i} $ = uninsured charge density"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 36,
+        "stemEn": "Match List-I with List-II\n\nList-I\n\n(A) Zener diode (I)\n\n(B) Photo diode (II)\n\nHeavily doped\n\noperates in\n\nforward bias\n\n(Ⅱ) No external bias required\n\n(C) Solar cell\n\n(III) Heavily doped operates in reverse bias as a voltage regulator\n\n(D) Light emitting (IV) Fabricated with a diode transparent window to allow light to fall on it",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV),(B)-(I),(C)-(II),(D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I) baft or lirurio siti sa wolad surgd sdt sau liw sW (b). Jubang listurioq $$ \\therefore\\angle0=\\frac{\\zeta}{01}=\\frac{\\zeta}{8+\\zeta}=1 $$ $$ \\therefore m(V\\partial1.0)=\\frac{\\partial1}{\\partial1}=\\frac{8b^{\\mathrm{T}}}{1}= $$"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 37,
+        "stemEn": "In satellite communication the preferable range of frequency band for down link is:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "88 - 108 MHz"
+          },
+          {
+            "id": "B",
+            "text": "540 - 1600 KHz"
+          },
+          {
+            "id": "C",
+            "text": "5.9 - 6.4 GHz"
+          },
+          {
+            "id": "D",
+            "text": "3.7 - 4.2 GHz"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 38,
+        "stemEn": "In the transmission and receiving of amplitude modulation of a signal, following steps are required. Arrange these in correct sequence.\n\n(A) Modulated signal is fed to an antenna after providing necessary power through power amplifier before transmission\n\n(B) The signal is passed through a rectifier, followed by a envelope detector to receive the message signal\n\n(C) The modulating signal is superimposed on high frequency carrier wave\n\n(D) After receiving antenna the received signal is fed to amplifier and then passed through. If stage where carrier frequency is lowered",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (B), (C), (D)"
+          },
+          {
+            "id": "B",
+            "text": "(B), (C), (D), (A)"
+          },
+          {
+            "id": "C",
+            "text": "(C),(B),(A),(D)"
+          },
+          {
+            "id": "D",
+            "text": "(C),(A),(D),(B) $$ \\frac{q\\Delta}{t_{\\mathrm{~c~g}}}\\lambda=0\\Delta t=3\\tan\\frac{q\\Delta}{t_{\\mathrm{~c~g}}}\\lambda=\\sqrt{3}\\ ,not T. $$ $$ \\frac{1}{8},\\frac{3}{2}:\\frac{3}{2} $$ $$ m(V,0,\\Omega)=\\frac{0@1}{8}=\\frac{3}{8}=3\\leq $$ modiwi stadza lo stino in ognido QL- soniq ow 11 (a) stadza diw tostno a geniskom 30 1 soatmo no ogundo, andT Q5 = ogundo Q5 - yd hoombni ogundo = 5 soatmo no ogundo, or yd boobbni ogundo ="
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          7
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "A 300 µF capacitor is charged by 90 volt. Once it is charged battery is removed. Now another uncharged capacitor of capacitance 600 µF is connected across it (in parallel). The value of common potential is\n\n(a) 30 volt (b) 60 volt\n\n(c) 120 volt (d) 0 volt\n\nStatement I: Electric potential at every point inside a uniformly charges conducting sphere is equal to that on its surface.\n\nStatement II: Work done by an electrostatic field in moving a charge from one point to another depends on the length of the path taken to go from one point to the other.\n\nIn the light of the above statements, choose the most appropriate answer from the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Both Statement I and Statement II are correct"
-     },
-     {
-      "id": "B",
-      "text": "Both Statement I and Statement II are incorrect"
-     },
-     {
-      "id": "C",
-      "text": "Statement I is correct but Statement II is incorrect"
-     },
-     {
-      "id": "D",
-      "text": "Statement I is incorrect but Statement II is correct Passage:(Q.No.:7-11) Potentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $ $ V = K l $ Various uses of potentiometer on: - To measure potential differences between any two points in an electrical network - To compare emf of a cell - To measure emf of a cell - To measure internal resistance of a cell etc: Answer the following question related to potentiometer."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "In the following set up of potentiometer, the value of potential gradient is:\n\nAP is balancing length for the primary cell of emf E, Resistors of AB length of the wire $ P_{AB} = 8\\Omega $, and length AB (L) = 10m.\n\n(a) 1 volt/m\n\n(b) 2 volt/m\n\n(c) 1.6 vol/m\n\n(d) 0.16 vol/m\n8. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $ V = Kl\n\nVarious uses of potentiometer on:\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\n- To measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer.\n\nThe length of potentiometer wire AB is 10 m and its resistance is $ 8 \\Omega $. If balancing length on the potentiometer is 225 cm, the value of emf of the primary cell is:\n\n(a) 0.36 volt\n\n(b) 0.16 volt\n\n(c) 36 volt\n\n(d) 2 volt\n9. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $\n\nVarious uses of potentiometer on:\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\n- To measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer. In the given potentiometer on increasing value of R:\n\n(a) Balancing length will decrease\n\n(b) Balancing length will increases\n\n(c) Balancing length will remain unchanged\n\n(d) Balancing length can be obtained again if polarity of cell E is reversed\n10. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $\n\nVarious uses of potentiometer on :\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\n- To measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer. In the given potentiometer the null point for the primary cell is obtained at P. The effect on the balancing length when resistance X is increased, will be\n\n(a) Balancing length increases\n\n(b) Balancing length remains unchanged\n\n(c) Balancing length decreases\n\n(d) Balancing length first increases and then decreases\n11. Case study-2 based\n\nPotentiometer has multiple uses. It is based on the principle that when constant current flows through a wire of uniform area of cross-section then potential drop along its length is directly proportional to corresponding length. i.e., $ V \\propto l $\n\nVarious uses of potentiometer on :\n\n- To measure potential differences between any two points in an electrical network\n\n- To compare emf of a cell\n\n- To measure emf of a cell\n\nTo measure internal resistance of a cell etc:\n\nAnswer the following question related to potentiometer. What happens to the balancing length when resistance S is increased?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Balancing length decreases"
-     },
-     {
-      "id": "B",
-      "text": "Balancing length increases"
-     },
-     {
-      "id": "C",
-      "text": "Balancing length remains unchanged"
-     },
-     {
-      "id": "D",
-      "text": "Balancing length first decreases then increases"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2,
-     3
-    ],
-    "assets": [
-     {
-      "id": "q07-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q07-figure-1.jpg",
-      "page": 2,
-      "alt": "Figure for question 7"
-     },
-     {
-      "id": "q07-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q07-figure-2.jpg",
-      "page": 2,
-      "alt": "Figure for question 7"
-     },
-     {
-      "id": "q07-figure-3",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q07-figure-3.jpg",
-      "page": 2,
-      "alt": "Figure for question 7"
-     },
-     {
-      "id": "q07-figure-4",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q07-figure-4.jpg",
-      "page": 2,
-      "alt": "Figure for question 7"
-     },
-     {
-      "id": "q07-figure-5",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q07-figure-5.jpg",
-      "page": 3,
-      "alt": "Figure for question 7"
-     }
-    ]
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "A charge particle is moving on a helical path in a uniform magnetic field. The correct statement describing the velocity of this charge particle, is:\n\n(1) The particle has non-zero components, of velocity along the parallel as well as perpendicular directions of magnetic field\n\n(2) The particle velocity is in a direction parallel to the direction of magnetic field\n\n(3) The particle velocity is in a direction perpendicular to the direction of magnetic field\n\n(4) The particle is initially at rest while switching the magnetic field on",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "3"
-     },
-     {
-      "id": "D",
-      "text": "4"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "Magnetic flux through any closed surface around magnetic pole is always zero. The correct reason for this fact, is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Magnets always exist in pairs"
-     },
-     {
-      "id": "B",
-      "text": "Magnets are always dipoles"
-     },
-     {
-      "id": "C",
-      "text": "Magnets can exist as monopoles"
-     },
-     {
-      "id": "D",
-      "text": "No magnet exerts force on another magnet"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "In the magnetic meridian at a certain place the horizontal component of earths magnetic field is 32 G and the angle of dip is $60^{\\circ}$. The total magnetic field of the earth at this location, is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.52G"
-     },
-     {
-      "id": "B",
-      "text": "0.64G"
-     },
-     {
-      "id": "C",
-      "text": "0.54G"
-     },
-     {
-      "id": "D",
-      "text": "0.32G"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Below are mentioned some properties of ferromagnetic substances. Identify the correct ones.\n\n(a) These have strong tendency to move from a region of weak magnetic field to strong magnetic field\n\n(b) In these substances, atomic dipoles align themselves in a common direction over a macroscopic volume called domains\n\n(c) Magnetisation of these materials is inversely, proportional to the absolute temperature\n\n$ M \\propto \\frac{1}{T} $ (Curie's law)\n\n(d) These materials show Meissners' effect super conducting magnets which is used in magnetically leviated superfast trains\n\n(e) The temperature of transition from ferromagnetic to paramagnetic to called Curies law\n\nChoose the correct answer from the options given below:\n\n(1) (A), (B), (E) only (2) (B), (C), (D) only\n\n(3) (C), (D), (E) only (4) (B), (D), (E) only",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "3"
-     },
-     {
-      "id": "D",
-      "text": "4"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "Two conducting rails P and Q are held parallel to each other in the plane of the paper. There is uniform magnetic field 'B' perpendicular to the length of the rails going into the paper. A metal rod is kept touching both the rails and is perpendicular to the rails. A dc source is connected, with switch K, to the ends of the rails on one side as shown in the figure. Select the correct statement describing the situation of the metal rod when the switch K is closed.\n\n(a) The rod will remain stationary\n\n(b) The rod will oscillate along the length of the rails\n\n(c) The rod will move along the rails from in the direction from X to Y.\n\n(d) The rod will move along the rails from in the direction from Y to X.\n17. Match List-I with List-II\n\n(a) Magnetic field (I) NA $ ^{-2} $\n\n(b) Magnetic flux (Ⅱ) NA $ ^{-1} $ m $ ^{-1} $\n\n(c) Magnetic permeability (III) Am $ ^{2} $\n\n(d) Magnetic moment (IV) NmA^{-1}\n\nChoose the correct answer from the options given below:\n\n(1) (A)-(II), (B)-(III), (C)-(I), (D)-(IV)\n\n(2) (A)-(IV),(B)-(II),(C)-(III),(D)-(I)\n\n(3) (A)-(II), (B)-(IV), (C)-(I), (D)-(III)\n\n(4) (A)-(III),(B)-(I),(C)-(IV),(D)-(II)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "3"
-     },
-     {
-      "id": "D",
-      "text": "4"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q16-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q16-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 16"
-     }
-    ]
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "A coil of 200 turns, area 0.20 m² is rotated in a uniform magnetic field of 0.4 G perpendicular to the axis of the coil at the rate of 7 rps. The maximum emf induced in the coil is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 3.52 \\times 10^{-2} $ V"
-     },
-     {
-      "id": "B",
-      "text": "$ 4.28 \\times 10^{-2} $ V"
-     },
-     {
-      "id": "C",
-      "text": "$ 6.24 \\times 10^{-2} $ V"
-     },
-     {
-      "id": "D",
-      "text": "$ 7.04 \\times 10^{-2} $ V Passage:(Q.No.19-23) A series LCR circuit connected to an AC source with voltage of the source $ v = v_{m} \\sin \\omega t $. $ V_{L} $ If 'q' is the charge on the capacitor and 'i' is the current, from Kirchhoff's loop rule: $$ L\\frac{di}{dt}+iR+\\frac{q}{c}=V $$ The current in the circuit is given by $ i = I_m \\sin(\\omega t + \\phi) $ where $ \\phi $ is the phase difference between the voltage across the source and current in the circuit. We know $ V_{Rm} = L_m R $; $ V_{Lm} = L_m X_L $; $ V_{Cm} = L_m X_C $; and $$ X_{L}=\\omega L;X_{c}=\\frac{1}{\\omega C} $$ Total impedance in the circuit regulates current. At resonance frequency of the LCR circuit current in the circuit is maximum. A series LCR circuit has resonant frequency of $\\omega_{0}$. If inductance in the circuit is replaced by another one having the same value of inductance but higher value of internal resistance."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q19",
-    "sourceQuestionNo": 19,
-    "stemEn": "Select the statement that explains the change in functioning of the circuit correctly.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Resonant frequency of the circuit will decrease"
-     },
-     {
-      "id": "B",
-      "text": "Amplitude of current at the resonant frequency will increase"
-     },
-     {
-      "id": "C",
-      "text": "Quality factor of the circuit will decrease"
-     },
-     {
-      "id": "D",
-      "text": "Bandwidth of the circuit will decrease"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "Given below are two statements\n\nStatement I: In an LCR series circuit, power dissipated is minimum at resonance.\n\nStatement II: In an LCR circuit, power is dissipated only in the inductor and capacitor.\n\nIn the light of the above statements, choose the most appropriate answer from the options given below",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Both Statement I and Statement II are true"
-     },
-     {
-      "id": "B",
-      "text": "Both Statement I and Statement II are false"
-     },
-     {
-      "id": "C",
-      "text": "Statement I is correct but Statement II is false"
-     },
-     {
-      "id": "D",
-      "text": "Statement I is incorrect but Statement II is true"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "In a series LCR circuit $ L = 4\\text{H} $, $ C = 100\\ \\mu\\text{F} $ and $ R = 25\\ \\Omega $. The circuit is connected to a variable frequency 220 V source.\n\n220 V\n\nThe source angular frequency ( $ \\omega $) which drives the circuit in resonance is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.05 rad s $ ^{-1} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 2 \\, rad \\, s^{-1} $"
-     },
-     {
-      "id": "C",
-      "text": "314rads^{-1}"
-     },
-     {
-      "id": "D",
-      "text": "50 rad s $ ^{-1} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q21-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/physics-2022-08-26/q21-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 21"
-     }
-    ]
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "In a series LCR circuit if frequency of the ac source is increased from resonance value $ f_{0} $ to $ 2f_{0} $. Choose the statement depicting correct situation in the circuit.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Impedance of the circuit would increase"
-     },
-     {
-      "id": "B",
-      "text": "Potential difference across the resistance would increase"
-     },
-     {
-      "id": "C",
-      "text": "rms value of the current in the circuit will increase"
-     },
-     {
-      "id": "D",
-      "text": "Potential difference across the series combination of L & C will become zero"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "A pure inductor of 0.25 mH, a pure capacitor of 250 μF and a resistor of 350 Ω are connected in series. An ac source of amplitude 210 V is connected across this series combination of L, C and R. The impedance and current amplitude in the circuit at resonance will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ Z_{\\min} = 703 \\, \\Omega $ and $ I_{\\max} = 0.30 \\, A $"
-     },
-     {
-      "id": "B",
-      "text": "$ Z_{\\min} = 350 \\, \\Omega $ and $ I_{\\max} = 0.60 \\, A $"
-     },
-     {
-      "id": "C",
-      "text": "$ Z_{\\min} = 850 \\, \\Omega $ and $ I_{\\max} = 0.25 \\, A $"
-     },
-     {
-      "id": "D",
-      "text": "$ Z_{\\min} = 430 \\, \\Omega $ and $ I_{\\max} = 0.5 \\, A $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "Which of the following EM waves can be produced by using Klystron or Magnetrons or Gunn diodes?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Gamma rays"
-     },
-     {
-      "id": "B",
-      "text": "X rays"
-     },
-     {
-      "id": "C",
-      "text": "Microwaves"
-     },
-     {
-      "id": "D",
-      "text": "UV rays"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q25",
-    "sourceQuestionNo": 25,
-    "stemEn": "Electric and Magnetic fields oscillate sinusoidally in an Electromagnetic Waves. The oscillating electric field cannot be represented in this way, where the symbols have there usual meaning:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ E = E_{0} \\sin(\\mathrm{k}z - \\omega t) $"
-     },
-     {
-      "id": "B",
-      "text": "$ E = E_{0} \\sin \\left[ 2\\pi \\left( \\frac{z}{\\lambda} - \\frac{t}{T} \\right) \\right] $"
-     },
-     {
-      "id": "C",
-      "text": "$ E = E_0 \\sin \\left[ \\frac{2\\pi}{\\lambda} (z - vt) \\right] $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\mathrm{E} = \\mathrm{E}_{0} \\sin \\left[ \\frac{2\\pi}{T} (vz - t) \\right] $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "A beam of light converges at a point $M$. Now a concave lens of focal length 32 cm is placed in the path of convergent beam 24 cm from $M$. Now the beam will converge at:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "56 cm from lens"
-     },
-     {
-      "id": "B",
-      "text": "8 cm from lens"
-     },
-     {
-      "id": "C",
-      "text": "+96 cm from lens"
-     },
-     {
-      "id": "D",
-      "text": "32 cm from lens"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "An equiconvex lens of focal length 10 cm is made up of material with refractive index 1.5. The radius of curvature of the each surface is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "10 cm"
-     },
-     {
-      "id": "B",
-      "text": "20 cm"
-     },
-     {
-      "id": "C",
-      "text": "40 cm"
-     },
-     {
-      "id": "D",
-      "text": "5 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "A compound microscope has an objective lens of focal length $ f_{o} = 1.0 $ cm, an eyepiece of focal length 2.2 cm and has tube length 22 cm. The magnification produced compound microscope is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "250"
-     },
-     {
-      "id": "B",
-      "text": "200"
-     },
-     {
-      "id": "C",
-      "text": "100"
-     },
-     {
-      "id": "D",
-      "text": "150"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "The working of an optical fibre can be explained on the basis of",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Reflection of light"
-     },
-     {
-      "id": "B",
-      "text": "Refraction of light"
-     },
-     {
-      "id": "C",
-      "text": "Scattering of light"
-     },
-     {
-      "id": "D",
-      "text": "Total internal Reflection of light"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "A light source is kept in air (n ≈ 1) at a distance of 200 cm from a convex spherical glass surface $ \\left(n = \\frac{3}{2}\\right) $ such that light falls on it. If the radius of curvature of the surface is 40 cm, the position of the image is at",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "100 cm"
-     },
-     {
-      "id": "B",
-      "text": "200 cm"
-     },
-     {
-      "id": "C",
-      "text": "+200 cm"
-     },
-     {
-      "id": "D",
-      "text": "+100 cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "For what distance is ray optics a good approximation when the aperture is 2 mm wide and the wavelength is 400 nm?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.1m"
-     },
-     {
-      "id": "B",
-      "text": "$ 5 \\times 10^{10} $m"
-     },
-     {
-      "id": "C",
-      "text": "$ 5 \\times 10^{3} $"
-     },
-     {
-      "id": "D",
-      "text": "10m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "In Young's double Slit experiment $ 3^{rd} $ maxima (Bright Band) is obtained at a distance $ d_{1} $ from the central bright fringe when light of wavelength $ \\lambda_{1} $ is used and at a distance $ d_{2} $ when light of wavelength $ \\lambda_{2} $ is used. What will be the ratio of $ d_{1} $ and $ d_{2} $?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{\\lambda_{1}^{2}}{\\lambda_{2}^{2}} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{\\lambda_{2}}{\\lambda_{1}} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{\\lambda_{1}}{\\lambda_{2}} $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\sqrt{\\frac{\\lambda_{2}}{\\lambda_{1}}} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "The brewster's angle for air to water transition is (Refractive index of water = $ \\frac{4}{3} $)",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\sin^{-1}\\left(\\frac{4}{3}\\right) $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\sin^{-1}\\left(\\frac{3}{4}\\right) $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\tan^{-1}\\left(\\frac{4}{3}\\right) $"
-     },
-     {
-      "id": "D",
-      "text": "$ \\tan^{-1}\\left(\\frac{3}{5}\\right) $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "A proton and a triton are accelerated from rest through a potential $V$. The ratio of their de Broglie wavelength is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1:1"
-     },
-     {
-      "id": "B",
-      "text": "1:2"
-     },
-     {
-      "id": "C",
-      "text": "$1:\\sqrt{2}$"
-     },
-     {
-      "id": "D",
-      "text": "$\\sqrt{3}:1$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "In the experimental study of photoelectric effect, a graph of stopping potential versus frequency of incident radiation for two metals A and B is plotted and identical slopes for both are obtained with different cut off frequencies ( $ ^{VDB}>_{VOA} $). So",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Slope for all metals is same = h/e. Here work function of $A$ > work function of $B$"
-     },
-     {
-      "id": "B",
-      "text": "Slope for all metals is same = h/e. Here work function of $B$ > work function of $A$"
-     },
-     {
-      "id": "C",
-      "text": "Slope for all metals is same = h. Here work function of $A$ > work function of $B$"
-     },
-     {
-      "id": "D",
-      "text": "Slope for all metals is same = h. Here work function of $B$ > work function of $A$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Photoelectric emission occurs only when the incident light has more than a certain minimum",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Intensity"
-     },
-     {
-      "id": "B",
-      "text": "Angle of Incidence"
-     },
-     {
-      "id": "C",
-      "text": "Speed"
-     },
-     {
-      "id": "D",
-      "text": "Frequency"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "For a dynamically stable orbit in a hydrogen atom, according to Rutherford's atomic model the relation between the orbit radius (r) and the electron velocity (v) is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ r = \\frac{e}{4\\pi\\varepsilon_{0}mv^{2}} $"
-     },
-     {
-      "id": "B",
-      "text": "$ r = \\frac{e^{2}}{4\\pi\\varepsilon_{0}mv} $"
-     },
-     {
-      "id": "C",
-      "text": "$ r = \\frac{e^{2}}{4\\pi\\varepsilon_{0}mv^{2}} $"
-     },
-     {
-      "id": "D",
-      "text": "$ r = \\frac{e}{4\\pi\\varepsilon_{0}m^{2}v} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q39",
-    "sourceQuestionNo": 39,
-    "stemEn": "The spectral series to which the emission line belongs, when electron in the hydrogen atom jumps from $4^{\\mathrm{th}}$ energy state to $2^{\\mathrm{nd}}$ energy state, is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Paschen series"
-     },
-     {
-      "id": "B",
-      "text": "Lyman series"
-     },
-     {
-      "id": "C",
-      "text": "Balmer series"
-     },
-     {
-      "id": "D",
-      "text": "Brackett series"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q40",
-    "sourceQuestionNo": 40,
-    "stemEn": "Match List-I with List-II\n\nList-I List-II\n\n(Total energy eV) (States of electron in Hydrogen atom)\n\n1. -3.40 (I) At infinity\n\n2. -13.6 (II) I excited state\n\n3. 0 (III) Ground state\n\n4. -0.85 (IV) III excited state",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(1)-(II), (2)-(III), (3)-(I), (4)-(IV)"
-     },
-     {
-      "id": "B",
-      "text": "(1)-(III), (2)-(I), (3)-(II), (4)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(1)-(IV), (2)-(I), (3)-(III), (4)-(II)"
-     },
-     {
-      "id": "D",
-      "text": "(1)-(I), (2)-(II), (3)-(III), (4)-(IV)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "A particular radioactive sample has a half-life of 12 years. The fraction of it that remains undecayed after 48 years, will be:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\frac{1}{4}^{th} $ of its initial amount"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{1}{8}^{th} $ of its initial amount"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{1}{16}^{th} $ of its initial amount"
-     },
-     {
-      "id": "D",
-      "text": "$ \\frac{1}{32}^{th} $ of its initial amount"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "Choose the correct statements from the following based on the properties of atomic nucleus.\n\non the properties of atomic nucleus.\n\nI. Radius of a nucleus of man no. A depends on its mass number as $R \\propto A^{3}$\n\nII. Radius of nucleus and mass number are related as $R \\propto A^{\\frac{1}{3}}$\n\nIII. Density of nuclei is always a constant\n\nIV. Density of nuclei depends on its mass number A\n\nV. Density of nuclei depends on its size, volume",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "I and III only"
-     },
-     {
-      "id": "B",
-      "text": "II and III only"
-     },
-     {
-      "id": "C",
-      "text": "II and IV only"
-     },
-     {
-      "id": "D",
-      "text": "II and V only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "The constancy of the binding energy in the range $30 < A < 170$ in binding energy curve, is a consequence of the given fact:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Nuclear forces are charge independent"
-     },
-     {
-      "id": "B",
-      "text": "Nuclear forces are short ranged"
-     },
-     {
-      "id": "C",
-      "text": "Nuclear forces are the strongest forces"
-     },
-     {
-      "id": "D",
-      "text": "Nuclear forces are the attractive in nature"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "For transistor action, which of the following statements are correct:\n\n(A) The base region must be very thin and lightly doped\n\n(B) Base emitter and collector regions should have same size but different doping concentration\n\n(C) The collector junction is reverse biased and emitter junction is forward biased\n\n(D) Base, emitter and collector regions should have different sizes, but same doping concentration\n\n(E) Both the emitter junction as well as the collector junction are forward biased",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A) and (C) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "C",
-      "text": "(B), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(B) and (C) only (d) (B) and (C) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "The electron and hole concentration in an extrinsic semiconductor in thermal equilibrium is given by:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ n_{e} \\cdot n_{h} = n_{i}^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\frac{n_{e}}{n_{n}} = n_{i}^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\frac{n_{h}}{n_{e}} = n_{i}^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ n_{e} \\cdot n_{h} = n_{i} $ Where $ n_{e} $ = electron density $ n_{h} $ = hole density $ n_{i} $ = intrinsic charge density $ n_{i} $ = uninsured charge density"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "Match List-I with List-II\n\nList-I\n\n(A) Zener diode (I)\n\n(B) Photo diode (II)\n\nHeavily doped\n\noperates in\n\nforward bias\n\n(Ⅱ) No external bias required\n\n(C) Solar cell\n\n(III) Heavily doped operates in reverse bias as a voltage regulator\n\n(D) Light emitting (IV) Fabricated with a diode transparent window to allow light to fall on it",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(I), (B)-(II), (C)-(III), (D)-(IV)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV),(B)-(I),(C)-(II),(D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I) baft or lirurio siti sa wolad surgd sdt sau liw sW (b). Jubang listurioq $$ \\therefore\\angle0=\\frac{\\zeta}{01}=\\frac{\\zeta}{8+\\zeta}=1 $$ $$ \\therefore m(V\\partial1.0)=\\frac{\\partial1}{\\partial1}=\\frac{8b^{\\mathrm{T}}}{1}= $$"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "In satellite communication the preferable range of frequency band for down link is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "88 - 108 MHz"
-     },
-     {
-      "id": "B",
-      "text": "540 - 1600 KHz"
-     },
-     {
-      "id": "C",
-      "text": "5.9 - 6.4 GHz"
-     },
-     {
-      "id": "D",
-      "text": "3.7 - 4.2 GHz"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "In the transmission and receiving of amplitude modulation of a signal, following steps are required. Arrange these in correct sequence.\n\n(A) Modulated signal is fed to an antenna after providing necessary power through power amplifier before transmission\n\n(B) The signal is passed through a rectifier, followed by a envelope detector to receive the message signal\n\n(C) The modulating signal is superimposed on high frequency carrier wave\n\n(D) After receiving antenna the received signal is fed to amplifier and then passed through. If stage where carrier frequency is lowered",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (B), (C), (D)"
-     },
-     {
-      "id": "B",
-      "text": "(B), (C), (D), (A)"
-     },
-     {
-      "id": "C",
-      "text": "(C),(B),(A),(D)"
-     },
-     {
-      "id": "D",
-      "text": "(C),(A),(D),(B) $$ \\frac{q\\Delta}{t_{\\mathrm{~c~g}}}\\lambda=0\\Delta t=3\\tan\\frac{q\\Delta}{t_{\\mathrm{~c~g}}}\\lambda=\\sqrt{3}\\ ,not T. $$ $$ \\frac{1}{8},\\frac{3}{2}:\\frac{3}{2} $$ $$ m(V,0,\\Omega)=\\frac{0@1}{8}=\\frac{3}{8}=3\\leq $$ modiwi stadza lo stino in ognido QL- soniq ow 11 (a) stadza diw tostno a geniskom 30 1 soatmo no ogundo, andT Q5 = ogundo Q5 - yd hoombni ogundo = 5 soatmo no ogundo, or yd boobbni ogundo ="
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     7
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_English_May26_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -282,43 +282,8 @@
         "assets": []
       },
       {
-        "id": "q09",
-        "sourceQuestionNo": 9,
-        "stemEn": "Match the Idioms in Column A with their meanings in Column B.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Column A</td><td colspan=\"2\">Column B</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>1.</td><td style='text-align: center; word-wrap: break-word;'>Bury the hatchet</td><td style='text-align: center; word-wrap: break-word;'>P.</td><td style='text-align: center; word-wrap: break-word;'>A sudden and completely unexpected event</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>2.</td><td style='text-align: center; word-wrap: break-word;'>Bolt from the blue</td><td style='text-align: center; word-wrap: break-word;'>Q.</td><td style='text-align: center; word-wrap: break-word;'>To reveal a secret or disclose information prematurely</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>3.</td><td style='text-align: center; word-wrap: break-word;'>Spill the beans</td><td style='text-align: center; word-wrap: break-word;'>R.</td><td style='text-align: center; word-wrap: break-word;'>To make peace or end a long-standing conflict</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>4.</td><td style='text-align: center; word-wrap: break-word;'>Apple of discord</td><td style='text-align: center; word-wrap: break-word;'>S.</td><td style='text-align: center; word-wrap: break-word;'>A cause or subject of dispute and rivalry</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "1-R, 2-P, 3-Q, 4-S"
-          },
-          {
-            "id": "B",
-            "text": "1-P, 2-R, 3-Q, 4-S"
-          },
-          {
-            "id": "C",
-            "text": "1-R, 2-Q, 3-P, 4-S"
-          },
-          {
-            "id": "D",
-            "text": "1-S, 2-P, 3-Q, 4-R"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Complete the sentence:\n\n\"The candidate was completely ___ by the deceptive questions asked by the interview board.\"",
         "optionsEn": [
           {

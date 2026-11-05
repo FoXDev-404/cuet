@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Chemistry_May31_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -290,43 +290,8 @@
         "assets": []
       },
       {
-        "id": "q09",
-        "sourceQuestionNo": 9,
-        "stemEn": "Phenol is subjected to the following sequence of reactions:\n\n $$ \\mathrm{Phenol}\\xrightarrow[\\mathrm{NaOH}]{\\mathrm{CO}_{2}}A\\xrightarrow[]{\\mathrm{H}^{+}}B\\xrightarrow[\\mathrm{Zn(Hg)}]{\\mathrm{Conc.~HCl}}C\\xrightarrow[\\Delta]{\\mathrm{NH}_{2}\\mathrm{NH}_{2}/\\mathrm{KOH}}D $$ \n\nIf A is formed via Kolbe–Schmitt reaction and the final product D is obtained after the given sequence, then D is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Benzene"
-          },
-          {
-            "id": "B",
-            "text": "Toluene"
-          },
-          {
-            "id": "C",
-            "text": "Cyclohexane"
-          },
-          {
-            "id": "D",
-            "text": "Phenol"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Consider the following statements regarding carbohydrates:\n\nAssertion (A): Sucrose is a non-reducing sugar.\n\nReason (R): In sucrose, both the anomeric carbon atoms of glucose and fructose participate in glycosidic bond formation.\n\nChoose the correct option.",
         "optionsEn": [
           {

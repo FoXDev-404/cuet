@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Chemistry_June6_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 50,
+    "questionCount": 47,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -140,43 +140,8 @@
         ]
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "The order of a reaction whose rate constant  $ k = 0.693 \\times 10^{-6} \\, \\text{L mol}^{-1} \\, \\text{s}^{-1} $ is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "0"
-          },
-          {
-            "id": "B",
-            "text": "2"
-          },
-          {
-            "id": "C",
-            "text": "1"
-          },
-          {
-            "id": "D",
-            "text": "3"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "Choose the Incorrect option regarding valence bond theory of coordination compound.",
         "optionsEn": [
           {
@@ -209,7 +174,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "Limiting molar conductivities for some ions in water at 298 K are given below:\n\n $$ \\lambda_{m}^{\\circ}(\\mathrm{H}^{+})=349.6,\\quad\\lambda_{m}^{\\circ}(\\mathrm{N a}^{+})=50.1,\\quad\\lambda_{m}^{\\circ}(\\mathrm{C a}^{2+})=119.0, $$ \n\n $$ \\lambda_{m}^{\\circ}(\\mathrm{M g}^{2+})=106.0,\\quad\\lambda_{m}^{\\circ}(\\mathrm{C l}^{-})=76.3,\\quad\\lambda_{m}^{\\circ}(\\mathrm{S O}_{4}^{2-})=160.0 $$ \n\nChoose the correct decreasing order of molar conductivity ( $ \\Lambda_{m}^{\\circ} $) for NaCl, HCl, CaCl_{2} and MgSO_{4}.",
         "optionsEn": [
           {
@@ -242,7 +207,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "Arrange the compounds in order of their increasing boiling points.\n\n\n(A) 1-bromoethane\n\n(B) 1-bromobutane\n\n(C) 2-bromo-2-methylpropane\n\n(D) 2-bromobutane",
         "optionsEn": [
           {
@@ -275,7 +240,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 7,
         "stemEn": "Write the major product A in the following chemical reaction.\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q08-figure-1.jpg\" alt=\"Reaction diagram for question 8\" />\n</div>",
         "optionsEn": [
           {
@@ -320,7 +285,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 8,
         "stemEn": "The complex  $ [\\mathrm{Co(NH_{3})_{6}}]^{3+} $ is:",
         "optionsEn": [
           {
@@ -353,7 +318,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "The major product Z in the following chemical reaction is:\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q10-reaction.jpg\" alt=\"Reaction diagram for question 10\" />\n</div>",
         "optionsEn": [
           {
@@ -398,7 +363,7 @@
       },
       {
         "id": "q11",
-        "sourceQuestionNo": 11,
+        "sourceQuestionNo": 10,
         "stemEn": "Arrange the following 3d-series elements in decreasing order of their second ionisation enthalpy:\n\n(A) Ti(Z=22)\n\n(B) V (Z = 23)\n\n(C) Cr(Z=24)\n\n(D) Mn (Z = 25)",
         "optionsEn": [
           {
@@ -431,7 +396,7 @@
       },
       {
         "id": "q12",
-        "sourceQuestionNo": 12,
+        "sourceQuestionNo": 11,
         "stemEn": "The reagent used in the Stephen reaction is:",
         "optionsEn": [
           {
@@ -464,7 +429,7 @@
       },
       {
         "id": "q13",
-        "sourceQuestionNo": 13,
+        "sourceQuestionNo": 12,
         "stemEn": "The following reaction can be best described as:\n\n $$ \\mathrm{3MnO_{4}^{2-}+4H^{+}\\rightarrow2MnO_{4}^{-}+MnO_{2}+2H_{2}O} $$",
         "optionsEn": [
           {
@@ -497,7 +462,7 @@
       },
       {
         "id": "q14",
-        "sourceQuestionNo": 14,
+        "sourceQuestionNo": 13,
         "stemEn": "Match List-I with List-II.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I Quantity</td><td style='text-align: center; word-wrap: break-word;'>List-II Units</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) Conductivity</td><td style='text-align: center; word-wrap: break-word;'>(I) ohm</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) Molar Conductivity</td><td style='text-align: center; word-wrap: break-word;'>(II) S</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) Resistance</td><td style='text-align: center; word-wrap: break-word;'>(III)  $ S \\, cm^{-1} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) Conductance</td><td style='text-align: center; word-wrap: break-word;'>(IV)  $ S \\, cm^{2} \\, mol^{-1} $</td></tr></table>",
         "optionsEn": [
           {
@@ -530,7 +495,7 @@
       },
       {
         "id": "q15",
-        "sourceQuestionNo": 15,
+        "sourceQuestionNo": 14,
         "stemEn": "Select the correct statements related to carbohydrates:\n\n(A) Glucose is also known as dextrose.\n\n(B) In glucose, an aldehydic group is present and it gives Schiff's test.\n\n(C) Glycogen is also known as animal starch.\n\n(D) Lactose is a reducing sugar.",
         "optionsEn": [
           {
@@ -563,7 +528,7 @@
       },
       {
         "id": "q16",
-        "sourceQuestionNo": 16,
+        "sourceQuestionNo": 15,
         "stemEn": "Consider the following statements and choose the correct statements:\n\n(A) The bond angle in methanol is slightly higher than the tetrahedral angle.\n\n(B) The reaction of Grignard reagent with methanol produces a secondary alcohol.\n\n(C) The boiling point of ethanol is higher than methoxymethane.\n\n(D) Acetylation of salicylic acid produces Aspirin.",
         "optionsEn": [
           {
@@ -596,7 +561,7 @@
       },
       {
         "id": "q17",
-        "sourceQuestionNo": 17,
+        "sourceQuestionNo": 16,
         "stemEn": "Arrange the following compounds in increasing order of their acid strength.\n\n(A) Phenol\n\n(B) m-Nitrophenol\n\n(C) p-Nitrophenol\n\n(D) p-Cresol",
         "optionsEn": [
           {
@@ -629,7 +594,7 @@
       },
       {
         "id": "q18",
-        "sourceQuestionNo": 18,
+        "sourceQuestionNo": 17,
         "stemEn": "Which of the following reaction will not result in the formation of C-C bonds?",
         "optionsEn": [
           {
@@ -662,7 +627,7 @@
       },
       {
         "id": "q19",
-        "sourceQuestionNo": 19,
+        "sourceQuestionNo": 18,
         "stemEn": "What is the final product X in the following reaction?\n\n $$  CH_{3}CH_{2}CH_{2}CHO\\xrightarrow[(2)H_{3}O^{+}]{(1)AmmoniacalAgNO_{3}}X $$",
         "optionsEn": [
           {
@@ -695,7 +660,7 @@
       },
       {
         "id": "q20",
-        "sourceQuestionNo": 20,
+        "sourceQuestionNo": 19,
         "stemEn": "Match List-I with List-II.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) Collision Theory</td><td style='text-align: center; word-wrap: break-word;'>(I)  $ k = \\frac{[R]_0 - [R]}{t} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) Arrhenius Equation</td><td style='text-align: center; word-wrap: break-word;'>(II)  $ k = A e^{-E_a / RT} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) Rate constant for zero order</td><td style='text-align: center; word-wrap: break-word;'>(III)  $ k = \\frac{1}{t} \\ln \\frac{[R]_0}{[R]} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) Rate constant for first order</td><td style='text-align: center; word-wrap: break-word;'>(IV)  $ Rate = PZ_{AB} e^{-K_a / RT} $</td></tr></table>",
         "optionsEn": [
           {
@@ -728,7 +693,7 @@
       },
       {
         "id": "q21",
-        "sourceQuestionNo": 21,
+        "sourceQuestionNo": 20,
         "stemEn": "IUPAC name of  $ [\\mathrm{Co}(\\mathrm{NH}_{3})_{4}(\\mathrm{H}_{2}\\mathrm{O})\\mathrm{Cl}]Cl_{2} $",
         "optionsEn": [
           {
@@ -761,7 +726,7 @@
       },
       {
         "id": "q22",
-        "sourceQuestionNo": 22,
+        "sourceQuestionNo": 21,
         "stemEn": "75% of a first-order reaction was completed in 32 minutes. How long will it take to undergo 50% completion? Given:  $ \\log 2 = 0.3010 $",
         "optionsEn": [
           {
@@ -794,7 +759,7 @@
       },
       {
         "id": "q23",
-        "sourceQuestionNo": 23,
+        "sourceQuestionNo": 22,
         "stemEn": "Standard electrode potentials ( $ M^{n+}/M $) of four metals A, B, C and D are given below:\n\n(A) -1.2 V\n\n(B) +0.5 V\n\n(C) +1.2 V\n\n(D) -3.0 V\n\nThe correct increasing order for the reducing power of these metals will be:",
         "optionsEn": [
           {
@@ -835,7 +800,7 @@
       },
       {
         "id": "q24",
-        "sourceQuestionNo": 24,
+        "sourceQuestionNo": 23,
         "stemEn": "Choose the optically inactive amino acid from the following:",
         "optionsEn": [
           {
@@ -868,7 +833,7 @@
       },
       {
         "id": "q25",
-        "sourceQuestionNo": 25,
+        "sourceQuestionNo": 24,
         "stemEn": "Match Ion given in List I with their Magnetic Moment (Calculated) given in List II.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List I</td><td style='text-align: center; word-wrap: break-word;'>List II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Ion</td><td style='text-align: center; word-wrap: break-word;'>Magnetic moment (Calculated)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A)  $ Sc^{3+} $</td><td style='text-align: center; word-wrap: break-word;'>(I) 3.87</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B)  $ Ti^{3+} $</td><td style='text-align: center; word-wrap: break-word;'>(II) 1.73</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C)  $ V^{2+} $</td><td style='text-align: center; word-wrap: break-word;'>(III) 5.92</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D)  $ Mn^{2+} $</td><td style='text-align: center; word-wrap: break-word;'>(IV) 0</td></tr></table>",
         "optionsEn": [
           {
@@ -901,7 +866,7 @@
       },
       {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 25,
         "stemEn": "What would be the product X in the following chemical reaction?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q26-figure-1.jpg\" alt=\"Figure 1 for question 26\" />\n</div>",
         "optionsEn": [
           {
@@ -942,7 +907,7 @@
       },
       {
         "id": "q27",
-        "sourceQuestionNo": 27,
+        "sourceQuestionNo": 26,
         "stemEn": "What are the hydrolysis products of Maltose?",
         "optionsEn": [
           {
@@ -975,7 +940,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 27,
         "stemEn": "Select the correct assumptions in Crystal Field Theory (CFT) from the following:\n\n(A) Ligands are treated as point charge or point dipole.\n\n(B) The five d orbitals in an isolated gaseous metal atom are non-degenerate.\n\n(C) Degeneracy of the  $ d $ orbitals is restored with the approach of ligand towards metal.\n\n(D) Metal-ligand bond is ionic arising purely from electrostatic interactions.\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1008,7 +973,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 28,
         "stemEn": "Choose the symbol of a lanthanoid metal which is well known to exhibit +4 oxidation state.",
         "optionsEn": [
           {
@@ -1049,7 +1014,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 29,
         "stemEn": "Which of the following compounds does not undergo Cannizzaro reaction?",
         "optionsEn": [
           {
@@ -1082,7 +1047,7 @@
       },
       {
         "id": "q31",
-        "sourceQuestionNo": 31,
+        "sourceQuestionNo": 30,
         "stemEn": "What would be the major product A?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q31-reaction.jpg\" alt=\"Reaction diagram for question 31\" />\n</div>",
         "optionsEn": [
           {
@@ -1127,7 +1092,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 31,
         "stemEn": "Which of the following statements are incorrect for the thermodynamic properties?\n\n(A) Both  $ E_{cell} $ and  $ \\Delta_{r}G $ of reaction are extensive properties.\n\n(B) Both  $ E_{cell} $ and  $ \\Delta_{r}G $ of reaction are intensive properties.\n\n(C)  $ E_{cell} $ is an intensive property while  $ \\Delta_{r}G $ of reaction is an extensive property.\n\n(D)  $ E_{\\text{cell}} $ is an extensive property while  $ \\Delta_r G $ of reaction is an intensive property.\n\nChoose the answer from the options given below:",
         "optionsEn": [
           {
@@ -1168,7 +1133,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 32,
         "stemEn": "What would be the geometrical shape of  $ [\\mathrm{NiCl}_4]^{2-} $ and  $ [\\mathrm{PtCl}_4]^{2-} $ compounds?",
         "optionsEn": [
           {
@@ -1201,7 +1166,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 33,
         "stemEn": "The major products A and B formed in the following reaction are:\n\n $$ \\begin{array}{ccc}B&\\xrightarrow{\\mathrm{AgCN}}&\\mathrm{H}_{3}\\mathrm{C}\\text{——}\\mathrm{CH}_{2}\\text{——}\\mathrm{Br}\\quad\\xrightarrow{\\mathrm{KCN}}\\text{→}\\\\\\end{array} $$",
         "optionsEn": [
           {
@@ -1234,7 +1199,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 34,
         "stemEn": "Choose the transition element which exhibits least number of variable oxidation states.",
         "optionsEn": [
           {
@@ -1275,7 +1240,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 35,
         "stemEn": "The standard Gibbs energy for the reaction is  $ -212.27 \\, \\text{kJ mol}^{-1} $.\n\n $$ Zn(s)+Cu^{2+}(aq.)\\rightarrow Zn^{2+}(aq.)+Cu(s) $$ \n\nThe standard electrode potential ( $ E_{cell}^{\\circ} $) for the Daniell cell is:",
         "optionsEn": [
           {
@@ -1308,7 +1273,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 36,
         "stemEn": "Choose the correct statements:\n\n(A) For a gaseous reaction if the concentration of gas is expressed in terms of their partial pressure\n\natm and time in minutes then unit of rate are atm min $ ^{-1} $.\n\n(B) The sum of power of the concentration of the reactants in the rate law expression is called order of that reaction.\n\n(C) The thermal decomposition of HI on gold surface is an example of second order reaction.\n\n(D) The overall rate of the reaction is controlled by the slowest step in a reaction called the rate determining step.\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1341,7 +1306,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 37,
         "stemEn": "Match Reaction with Reagent Required:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List-I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Reaction</td><td style='text-align: center; word-wrap: break-word;'>Reagent Required</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) Glucose to n-Hexane</td><td style='text-align: center; word-wrap: break-word;'>(I)  $ \\mathrm{NH}_{2}\\mathrm{OH} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) Glucose to Oxime</td><td style='text-align: center; word-wrap: break-word;'>(II)  $ \\mathrm{HNO}_{3} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(C) Glucose to Gluconic Acid</td><td style='text-align: center; word-wrap: break-word;'>(III)  $ \\mathrm{HI}, \\Delta $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) Glucose to Saccharic Acid</td><td style='text-align: center; word-wrap: break-word;'>(IV)  $ \\mathrm{Br}_{2}, \\mathrm{H}_{2}\\mathrm{O} $</td></tr></table>\n\n\n#### Choose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1374,7 +1339,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 38,
         "stemEn": "What would be the major product when propene reacts with water in presence of acid catalyst?",
         "optionsEn": [
           {
@@ -1407,7 +1372,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 39,
         "stemEn": "Match Structure with their Common Name:\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>List I</td><td style='text-align: center; word-wrap: break-word;'>List-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Structure</td><td style='text-align: center; word-wrap: break-word;'>Common Name</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(A) <img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-1.jpg\" alt=\"Figure 1 for question 40\" /></td><td style='text-align: center; word-wrap: break-word;'>(I) Allyl chloride</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(B) <img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-2.jpg\" alt=\"Figure 2 for question 40\" /></td><td style='text-align: center; word-wrap: break-word;'>(II) Ethylene dichloride</td></tr><tr><td style='text-align: center; word-wrap: break-word;'><img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-3.jpg\" alt=\"Figure 3 for question 40\" /></td><td style='text-align: center; word-wrap: break-word;'>(III) Vinyl chloride</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>(D) <img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q40-figure-4.jpg\" alt=\"Figure 4 for question 40\" /></td><td style='text-align: center; word-wrap: break-word;'>(IV) Ethylidene chloride</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1440,7 +1405,7 @@
       },
       {
         "id": "q41",
-        "sourceQuestionNo": 41,
+        "sourceQuestionNo": 40,
         "stemEn": "What would be the molality of 1.5 g of ethanoic acid ( $ CH_{3}COOH $) in 75 g of benzene?",
         "optionsEn": [
           {
@@ -1473,7 +1438,7 @@
       },
       {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 41,
         "stemEn": "Which one of the following is not correct for an ideal solution?",
         "optionsEn": [
           {
@@ -1506,7 +1471,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 42,
         "stemEn": "The vapour pressure of pure benzene at  $ 25^{\\circ} $C is 0.950 bar. When a 0.5 g non-volatile, non-electrolyte solute is added to 39.0 g of benzene (molar mass  $ 78\\ g\\ mol^{-1} $), then the vapour pressure of solution becomes 0.945 bar. What is the molar mass of the solute?",
         "optionsEn": [
           {
@@ -1539,7 +1504,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 43,
         "stemEn": "The solution of acetone in ethanol:",
         "optionsEn": [
           {
@@ -1572,7 +1537,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 44,
         "stemEn": "Which of the following concentration term is temperature dependent?",
         "optionsEn": [
           {
@@ -1604,43 +1569,8 @@
         "assets": []
       },
       {
-        "id": "q46",
-        "sourceQuestionNo": 46,
-        "stemEn": "Select the correct order of boiling points of isomeric amines:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$$ n\\text{-}C_{4}H_{9}NH_{2}>(C_{2}H_{5})_{2}NH>C_{2}H_{5}N(CH_{3})_{2} $$"
-          },
-          {
-            "id": "B",
-            "text": "$$ n\\text{-}C_{4}H_{9}NH_{2}<(C_{2}H_{5})_{2}NH<C_{2}H_{5}N(CH_{3})_{2} $$"
-          },
-          {
-            "id": "C",
-            "text": "$$ n\\text{-}C_{4}H_{9}NH_{2}=\\left(C_{2}H_{5}\\right)_{2}NH>C_{2}H_{5}N(CH_{3})_{2} $$"
-          },
-          {
-            "id": "D",
-            "text": "$$ n\\mathrm{-}C_{4}H_{9}NH_{2}>\\left(C_{2}H_{5}\\right)_{2}NH=C_{2}H_{5}N\\left(CH_{3}\\right)_{2} $$"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": "passage-46-50",
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 45,
         "stemEn": "Identify the tertiary amine  $ (3^{\\circ}) $ from the following compounds.",
         "optionsEn": [
           {
@@ -1672,43 +1602,8 @@
         "assets": []
       },
       {
-        "id": "q48",
-        "sourceQuestionNo": 48,
-        "stemEn": "Identify the correct decreasing order of basic strength of amines in aqueous solution.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$$ (C_{2}H_{5})_{3}N>(C_{2}H_{5})_{2}NH>C_{2}H_{5}NH_{2}>NH_{3} $$"
-          },
-          {
-            "id": "B",
-            "text": "$ C_2H_5NH_2 > (C_2H_5)_3N > (C_2H_5)_2NH > NH_3 $"
-          },
-          {
-            "id": "C",
-            "text": "$$ NH_{3}>C_{2}H_{5}NH_{2}>(C_{2}H_{5})_{2}NH>(C_{2}H_{5})_{3}N $$"
-          },
-          {
-            "id": "D",
-            "text": "$ (C_{2}H_{5})_{2}NH > (C_{2}H_{5})_{3}N > C_{2}H_{5}NH_{2} > NH_{3} $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": "passage-46-50",
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 46,
         "stemEn": "The final structure of amine produced by Hoffmann degradation of m-bromobenzamide is:",
         "optionsEn": [
           {
@@ -1745,7 +1640,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 47,
         "stemEn": "What would be the structure of final product X in the following chemical reaction?\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/chemistry-2026-06-06-shift-1/q50-reaction.jpg\" alt=\"Reaction diagram for question 50\" />\n</div>",
         "optionsEn": [
           {

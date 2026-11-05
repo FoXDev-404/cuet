@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_English_May30_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 14,
+    "questionCount": 10,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -51,113 +51,8 @@
         "assets": []
       },
       {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "Choose the correct word to complete the sentence.\n\nWhen fire raged through the hamlet, loud cries ___ the air.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Rend"
-          },
-          {
-            "id": "B",
-            "text": "Rent"
-          },
-          {
-            "id": "C",
-            "text": "Render"
-          },
-          {
-            "id": "D",
-            "text": "Rented\n\n___"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "Choose the correct preposition to complete the sentence.\n\nI think his long silence is tantamount ___ a refusal.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "With"
-          },
-          {
-            "id": "B",
-            "text": "About"
-          },
-          {
-            "id": "C",
-            "text": "By"
-          },
-          {
-            "id": "D",
-            "text": "To"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "Choose the word that best completes the sentence.\n\nHe behaved in a ___ manner and refused to give monetary assistance to his family.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Cowardly"
-          },
-          {
-            "id": "B",
-            "text": "Generous"
-          },
-          {
-            "id": "C",
-            "text": "Compassionate"
-          },
-          {
-            "id": "D",
-            "text": "Niggardly"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 2,
         "stemEn": "Select the option that identifies the antonym(s) of the word \"Munificent.\"\n\na. Penurious\n\nb. Benevolent\n\nc. Generous\n\nd. Frugal",
         "optionsEn": [
           {
@@ -190,7 +85,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 3,
         "stemEn": "Select the correctly spelled word from the options given below.",
         "optionsEn": [
           {
@@ -223,7 +118,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 4,
         "stemEn": "Select the option that best expresses the meaning of the idiom \"Too many irons in the fire.\"",
         "optionsEn": [
           {
@@ -255,43 +150,8 @@
         "assets": []
       },
       {
-        "id": "q08",
-        "sourceQuestionNo": 8,
-        "stemEn": "Choose the correct one-word substitution for the given expression.\n\nA vote by the people of a country on an issue of national importance.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Referendum"
-          },
-          {
-            "id": "B",
-            "text": "Plebiscite"
-          },
-          {
-            "id": "C",
-            "text": "Election"
-          },
-          {
-            "id": "D",
-            "text": "Ballot"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 5,
         "stemEn": "Select the word that is closest in meaning to \"Winsome.\"",
         "optionsEn": [
           {
@@ -324,7 +184,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 6,
         "stemEn": "Choose the word that best matches the following meaning.\n\n\"To obtain or gather information from different sources.\"",
         "optionsEn": [
           {
@@ -357,7 +217,7 @@
       },
       {
         "id": "q11",
-        "sourceQuestionNo": 11,
+        "sourceQuestionNo": 7,
         "stemEn": "Select the word that is closest in meaning to \"Insidious.\"",
         "optionsEn": [
           {
@@ -390,7 +250,7 @@
       },
       {
         "id": "q12",
-        "sourceQuestionNo": 12,
+        "sourceQuestionNo": 8,
         "stemEn": "Choose the correct term for the following.\n\nThe art or science of teaching.",
         "optionsEn": [
           {
@@ -423,7 +283,7 @@
       },
       {
         "id": "q13",
-        "sourceQuestionNo": 13,
+        "sourceQuestionNo": 9,
         "stemEn": "Select the word that is opposite in meaning to \"Cryptic.\"",
         "optionsEn": [
           {
@@ -456,7 +316,7 @@
       },
       {
         "id": "q14",
-        "sourceQuestionNo": 14,
+        "sourceQuestionNo": 10,
         "stemEn": "Identify the figure of speech used in the following sentence.\n\n\"To err is human, to forgive divine.\"",
         "optionsEn": [
           {

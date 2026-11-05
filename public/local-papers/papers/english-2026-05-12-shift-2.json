@@ -11,85 +11,15 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_English_May12_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "The  $ \\underline{honesty} $ of the leader impressed everyone. The underlined word is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Adjective"
-          },
-          {
-            "id": "B",
-            "text": "Verb"
-          },
-          {
-            "id": "C",
-            "text": "Noun"
-          },
-          {
-            "id": "D",
-            "text": "Adverb"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q02",
-        "sourceQuestionNo": 2,
-        "stemEn": "She spoke  $ \\underline{\\text{softly}} $ to calm the child. The underlined word is:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Adjective"
-          },
-          {
-            "id": "B",
-            "text": "Adverb"
-          },
-          {
-            "id": "C",
-            "text": "Noun"
-          },
-          {
-            "id": "D",
-            "text": "Verb"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q03",
-        "sourceQuestionNo": 3,
+        "sourceQuestionNo": 1,
         "stemEn": "He is very fond  $ \\underline{of} $ music. The underlined word is:",
         "optionsEn": [
           {
@@ -122,7 +52,7 @@
       },
       {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 2,
         "stemEn": "$ \\underline{\\text{Wow}} $! That was an amazing performance. The underlined word is:",
         "optionsEn": [
           {
@@ -155,7 +85,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 3,
         "stemEn": "She is  $ \\underline{\\text{smarter}} $ than her brother. The underlined word is:",
         "optionsEn": [
           {
@@ -188,7 +118,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "By the time we reached the station, the train ___.",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "She ___ in Delhi since 2015.",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "If I ___ you, I would apologize.",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "Look! The children _____ in the rain.",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "Rearrange the following parts of a sentence to form a meaningful sentence:\n\n(A) can be seen as an extension of citizenship, starting with\n\n(B) the Factory Acts of the 1840s which protected\n\n(C) the growing importance of social rights for children\n\n(D) children from unrestricted exploitation at work",
         "optionsEn": [
           {

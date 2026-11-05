@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "Computer Science_2024-07-19_Shift_1.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 47,
+    "questionCount": 45,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -659,41 +659,8 @@
         "assets": []
       },
       {
-        "id": "q19",
-        "sourceQuestionNo": 19,
-        "stemEn": "Evaluate the given postfix expression:\n\n$$ \\begin{array}{r} 35\\times6+23\\end{array} $$",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "39"
-          },
-          {
-            "id": "B",
-            "text": "15"
-          },
-          {
-            "id": "C",
-            "text": "9"
-          },
-          {
-            "id": "D",
-            "text": "17"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          30
-        ],
-        "assets": []
-      },
-      {
         "id": "q20",
-        "sourceQuestionNo": 20,
+        "sourceQuestionNo": 19,
         "stemEn": "Stack works on the principle of _.",
         "optionsEn": [
           {
@@ -726,7 +693,7 @@
       },
       {
         "id": "q21",
-        "sourceQuestionNo": 21,
+        "sourceQuestionNo": 20,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -767,7 +734,7 @@
       },
       {
         "id": "q22",
-        "sourceQuestionNo": 22,
+        "sourceQuestionNo": 21,
         "stemEn": "What will be the sequence of elements removed from the stack after performing the following operations\n\nPUSH(10)\n\nPUSH(20)\n\nPOP()\n\nPOP()\n\nPUSH(30)\n\nPUSH(40)\n\nPOP()\n\nPOP()\n\n(A) 10\n\n(B) 20\n\n(C) 30\n\n(D) 40\nChoose the correct sequence from the options given below:",
         "optionsEn": [
           {
@@ -800,7 +767,7 @@
       },
       {
         "id": "q23",
-        "sourceQuestionNo": 23,
+        "sourceQuestionNo": 22,
         "stemEn": "In Python, _module need to be imported for implementing Double Ended Queue.",
         "optionsEn": [
           {
@@ -833,7 +800,7 @@
       },
       {
         "id": "q24",
-        "sourceQuestionNo": 24,
+        "sourceQuestionNo": 23,
         "stemEn": "What will be the position of front and rear after execution of the following statements, the Queue already had the given elements in FIFO order\n\n50 $ \\rightarrow $ 90 $ \\rightarrow $ 7 $ \\rightarrow $ 21 $ \\rightarrow $ 73 $ \\rightarrow $ 77\n\n↑\n\nF\n\nR\n\ndequeue()\n\n\n\n\n\nenqueue(100)\n\ndequeue()",
         "optionsEn": [
           {
@@ -866,7 +833,7 @@
       },
       {
         "id": "q25",
-        "sourceQuestionNo": 25,
+        "sourceQuestionNo": 24,
         "stemEn": "data type is used to implement Queue data structure in Python.",
         "optionsEn": [
           {
@@ -899,7 +866,7 @@
       },
       {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 25,
         "stemEn": "Choose the statements that are correct.\n\n(A) For Binary Search, all the elements have to be sorted.\n\n(B) For Linear Search, all the elements have to be sorted.\n\n(C) Linear Search takes less time for searching in worst case than binary search's worst case.\n\n(D) Linear Search always gives the fast result whether elements are sorted or not.",
         "optionsEn": [
           {
@@ -932,7 +899,7 @@
       },
       {
         "id": "q27",
-        "sourceQuestionNo": 27,
+        "sourceQuestionNo": 26,
         "stemEn": "Arrange the following in the ascending order of their time complexity.\n\n(A) Worst Case of Linear Search\n\n(B) Best Case of Binary Search\n\n(C) Worst Case of Binary Search\n\n(D) Worst Case of Bubble Sort\nChoose the correct sequence from the options given below:",
         "optionsEn": [
           {
@@ -965,7 +932,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 27,
         "stemEn": "How many minimum number of comparison(s) can be required to search an element from 'n' elements, in case of Linear Search?",
         "optionsEn": [
           {
@@ -998,7 +965,7 @@
       },
       {
         "id": "q29",
-        "sourceQuestionNo": 29,
+        "sourceQuestionNo": 28,
         "stemEn": "Which of the statement(s) is/are True for the given question.\n\nData elements are: 7, 5, 17, 13, 9, 27, 31, 25, 35.\n\nHash Table Size: 7\n\nHash Function: $ H(I) = (\\text{Data element}) \\mod (\\text{Hash Table Size}) $\n\n(A) Element 27 will create collision.\n\n(B) Element 25 will create collision.\n\n(C) Element 35 will create collision.\n\n(D) Element 31 will create collision.",
         "optionsEn": [
           {
@@ -1031,7 +998,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 29,
         "stemEn": "If a list contain 'n' number of elements and all the\n\nelements by default sorted in ascending order then how\n\nmany comparisons will be required during 1st pass of\n\nbubble sort to arrange the list in ascending order?",
         "optionsEn": [
           {
@@ -1064,7 +1031,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 30,
         "stemEn": "_ compares neighbouring elements only and swaps them when necessary.",
         "optionsEn": [
           {
@@ -1097,7 +1064,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 31,
         "stemEn": "_ are the unorganized facts that can be processed to generate meaningful information.",
         "optionsEn": [
           {
@@ -1130,7 +1097,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 32,
         "stemEn": "_ is the positive square root of the average of squared difference of each value from the mean.",
         "optionsEn": [
           {
@@ -1163,7 +1130,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 33,
         "stemEn": "What is the primary difference between a database and a file system?",
         "optionsEn": [
           {
@@ -1196,7 +1163,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 34,
         "stemEn": "A domain in a relational database refers to :",
         "optionsEn": [
           {
@@ -1229,7 +1196,7 @@
       },
       {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 35,
         "stemEn": "A relation in a relational database is also known as:",
         "optionsEn": [
           {
@@ -1262,7 +1229,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 36,
         "stemEn": "The primary key is chosen from _.",
         "optionsEn": [
           {
@@ -1295,7 +1262,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 37,
         "stemEn": "An alternate key is _.",
         "optionsEn": [
           {
@@ -1327,41 +1294,8 @@
         "assets": []
       },
       {
-        "id": "q41",
-        "sourceQuestionNo": 41,
-        "stemEn": "Consider the following SQL functions.\n\n(A) CURD ATE()\n\n(B) CURRENT_DATE()\n\n(C) CURRENT_DATE\n\n(D) TODAY()\n\nWhich of the above function/functions returns current date.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "(A), (B) and (D) only"
-          },
-          {
-            "id": "B",
-            "text": "(A), (B) and (C) only"
-          },
-          {
-            "id": "C",
-            "text": "(A), (B), (C) and (D)"
-          },
-          {
-            "id": "D",
-            "text": "(B), (C) and (D) only"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          65
-        ],
-        "assets": []
-      },
-      {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 38,
         "stemEn": "Which of the following is correct syntax for inserting foreign key constraint in a relation?",
         "optionsEn": [
           {
@@ -1394,7 +1328,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 39,
         "stemEn": "What is result of following arithmetic operation in SQL?\nSELECT 5+NULL AS RESULT",
         "optionsEn": [
           {
@@ -1427,7 +1361,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 40,
         "stemEn": "Which of the following expression in SQL would calculate the square root of 16?",
         "optionsEn": [
           {
@@ -1460,7 +1394,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 41,
         "stemEn": "Which of the following statement(s) is/are TRUE in respect of Media Access Control (MAC) Address?\n\n(A) It can be changed if a node is removed from one network and connected to another network.\n\n(B) Each MAC address is a 12-digit hexadecimal number.\n\n(C) It is a unique value associated with a network adapter called NIC.\n\n(D) It is provided by the Internet Service Provider to locate computers connected to the internet.",
         "optionsEn": [
           {
@@ -1493,7 +1427,7 @@
       },
       {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 42,
         "stemEn": "What is the purpose of Domain Name System Server in networking?",
         "optionsEn": [
           {
@@ -1526,7 +1460,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 43,
         "stemEn": "140.168.220.200 is a 32-bit binary number usually represented as 4 decimal values, each representing 8 bits, in the range 0 to 255 separated by decimal points. What is this number called?",
         "optionsEn": [
           {
@@ -1559,7 +1493,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 44,
         "stemEn": "In a _ topology, if there are n devices in a network, each device has n-1 ports for cables.",
         "optionsEn": [
           {
@@ -1592,7 +1526,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 45,
         "stemEn": "Amit wants to be familiar with SQL. One of his friends Anand suggests him to execute the following sql commands.\n\n(A) Create Table Student\n\n(B) Use Database DB\n\n(C) Select * from Student\n\n(D) Insert into Student\n\nIn which order Amit needs to run above commands.",
         "optionsEn": [
           {

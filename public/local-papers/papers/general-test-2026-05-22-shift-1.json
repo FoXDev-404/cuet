@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_GAT_May22_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 7,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -84,78 +84,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "The ratio of the supplementary and the complementary angles of an angle is 3:1. What is the supplementary angle of the given angle?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ 45^{\\circ} $"
-          },
-          {
-            "id": "B",
-            "text": "$ 60^{\\circ} $"
-          },
-          {
-            "id": "C",
-            "text": "$ 120^{\\circ} $"
-          },
-          {
-            "id": "D",
-            "text": "$ 135^{\\circ} $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "A sum becomes five times of itself in 8 years at simple interest. What is the rate of interest per annum?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "37.5%"
-          },
-          {
-            "id": "B",
-            "text": "25%"
-          },
-          {
-            "id": "C",
-            "text": "50%"
-          },
-          {
-            "id": "D",
-            "text": "12.5%"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 3,
         "stemEn": "In how many years shall Rs. 3,500 invested at the rate of 10% simple interest per annum, amount to Rs. 4,500?",
         "optionsEn": [
           {
@@ -187,43 +117,8 @@
         "assets": []
       },
       {
-        "id": "q06",
-        "sourceQuestionNo": 6,
-        "stemEn": "A 9 cm solid metallic cube and a solid metallic cuboid having dimensions 5 cm, 13 cm, 31 cm are melted and recast into a single cube. What is the total surface area (in cm²) of the new cube?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "1362"
-          },
-          {
-            "id": "B",
-            "text": "865"
-          },
-          {
-            "id": "C",
-            "text": "2744"
-          },
-          {
-            "id": "D",
-            "text": "1176"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 4,
         "stemEn": "Let A and B be two cylinders such that the capacity of A is the same as the capacity of B. The ratio of the diameters of A and B is 1:4. What is the ratio of the heights of A and B?",
         "optionsEn": [
           {
@@ -256,7 +151,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 5,
         "stemEn": "A person lent certain sum of money at the annual rate of 5 percent on simple interest. In 4 years, the interest amounted to Rs. 800. What is the sum lent?",
         "optionsEn": [
           {
@@ -289,7 +184,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 6,
         "stemEn": "A diver rowing at the speed of 3 km/h in still water takes double the time going 50 km upstream compared to going 50 km downstream. The speed of the diver downstream is",
         "optionsEn": [
           {
@@ -322,7 +217,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 7,
         "stemEn": "2 dice are thrown in the air. Find the probability of getting a sum less than 11.",
         "optionsEn": [
           {

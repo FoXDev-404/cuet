@@ -1,2460 +1,2130 @@
 {
- "exam": {
-  "id": "local-general-test-2022-08-08-shift-1",
-  "slug": "general-test-2022-08-08-shift-1",
-  "title": "CUET UG General Test 8 August 2022 Shift 1 Previous Year Paper",
-  "subject": "General Test",
-  "subjectId": "local-general-test",
-  "subjectCode": "GT",
-  "year": 2022,
-  "examDate": "2022-08-08",
-  "shift": "Shift 1",
-  "sourceFile": "General Test_2022-08-08_Shift_1.pdf",
-  "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-  "questionCount": 71,
-  "sourceQuestionCount": 75,
-  "publicationStatus": "published",
-  "reviewRequired": true,
-  "passages": [],
-  "questions": [
-   {
-    "id": "q01",
-    "sourceQuestionNo": 1,
-    "stemEn": "Which country is known as the \"Land of the Rising Sun\"?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Korea"
-     },
-     {
-      "id": "B",
-      "text": "Japan"
-     },
-     {
-      "id": "C",
-      "text": "Finland"
-     },
-     {
-      "id": "D",
-      "text": "China"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q02",
-    "sourceQuestionNo": 2,
-    "stemEn": "Arrange the following days in the order of the date of observance in India\n\n(A) National Good Governance Day\n\n(B) Armed Forces Flag Day\n\n(C) Vijay Diwas\n\n(D) Hindi Day\n\n(E) Teacher's Day",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(C), (E), (B), (D), (A)"
-     },
-     {
-      "id": "B",
-      "text": "(C), (E), (D), (B), (A)"
-     },
-     {
-      "id": "C",
-      "text": "(E), (D), (A), (C), (B)"
-     },
-     {
-      "id": "D",
-      "text": "(D), (B), (E), (C), (A)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q03",
-    "sourceQuestionNo": 3,
-    "stemEn": "Which country successfully launched a new satellite named Shijian-21?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "South Korea"
-     },
-     {
-      "id": "B",
-      "text": "Pakistan"
-     },
-     {
-      "id": "C",
-      "text": "China"
-     },
-     {
-      "id": "D",
-      "text": "UAE"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q04",
-    "sourceQuestionNo": 4,
-    "stemEn": "The Reserve Bank of India has authorized _ to collect direct taxes on behalf of the Central Board of Direct Taxes (CBDT).",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Karur Vysya Bank (KVB)"
-     },
-     {
-      "id": "B",
-      "text": "ICICI Bank"
-     },
-     {
-      "id": "C",
-      "text": "HDFC Bank"
-     },
-     {
-      "id": "D",
-      "text": "Axis Bank"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q05",
-    "sourceQuestionNo": 5,
-    "stemEn": "Match the List I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A)-(II), (B)-(IV), (C)-(III), (D)-(I)"
-     },
-     {
-      "id": "B",
-      "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
-     },
-     {
-      "id": "C",
-      "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
-     },
-     {
-      "id": "D",
-      "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": [
-     {
-      "id": "q05-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q05-table-1.jpg",
-      "page": 1,
-      "alt": "Table for question 5"
-     }
+  "exam": {
+    "id": "local-general-test-2022-08-08-shift-1",
+    "slug": "general-test-2022-08-08-shift-1",
+    "title": "CUET UG General Test 8 August 2022 Shift 1 Previous Year Paper",
+    "subject": "General Test",
+    "subjectId": "local-general-test",
+    "subjectCode": "GT",
+    "year": 2022,
+    "examDate": "2022-08-08",
+    "shift": "Shift 1",
+    "sourceFile": "General Test_2022-08-08_Shift_1.pdf",
+    "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
+    "questionCount": 61,
+    "sourceQuestionCount": 75,
+    "publicationStatus": "published",
+    "reviewRequired": true,
+    "passages": [],
+    "questions": [
+      {
+        "id": "q01",
+        "sourceQuestionNo": 1,
+        "stemEn": "Which country is known as the \"Land of the Rising Sun\"?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Korea"
+          },
+          {
+            "id": "B",
+            "text": "Japan"
+          },
+          {
+            "id": "C",
+            "text": "Finland"
+          },
+          {
+            "id": "D",
+            "text": "China"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q02",
+        "sourceQuestionNo": 2,
+        "stemEn": "Arrange the following days in the order of the date of observance in India\n\n(A) National Good Governance Day\n\n(B) Armed Forces Flag Day\n\n(C) Vijay Diwas\n\n(D) Hindi Day\n\n(E) Teacher's Day",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(C), (E), (B), (D), (A)"
+          },
+          {
+            "id": "B",
+            "text": "(C), (E), (D), (B), (A)"
+          },
+          {
+            "id": "C",
+            "text": "(E), (D), (A), (C), (B)"
+          },
+          {
+            "id": "D",
+            "text": "(D), (B), (E), (C), (A)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Which country successfully launched a new satellite named Shijian-21?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "South Korea"
+          },
+          {
+            "id": "B",
+            "text": "Pakistan"
+          },
+          {
+            "id": "C",
+            "text": "China"
+          },
+          {
+            "id": "D",
+            "text": "UAE"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "The Reserve Bank of India has authorized _ to collect direct taxes on behalf of the Central Board of Direct Taxes (CBDT).",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Karur Vysya Bank (KVB)"
+          },
+          {
+            "id": "B",
+            "text": "ICICI Bank"
+          },
+          {
+            "id": "C",
+            "text": "HDFC Bank"
+          },
+          {
+            "id": "D",
+            "text": "Axis Bank"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q05",
+        "sourceQuestionNo": 5,
+        "stemEn": "Match the List I with List II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A)-(II), (B)-(IV), (C)-(III), (D)-(I)"
+          },
+          {
+            "id": "B",
+            "text": "(A)-(III), (B)-(IV), (C)-(II), (D)-(I)"
+          },
+          {
+            "id": "C",
+            "text": "(A)-(IV), (B)-(II), (C)-(I), (D)-(III)"
+          },
+          {
+            "id": "D",
+            "text": "(A)-(I), (B)-(II), (C)-(IV), (D)-(III)"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": [
+          {
+            "id": "q05-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q05-table-1.jpg",
+            "page": 1,
+            "alt": "Table for question 5"
+          }
+        ]
+      },
+      {
+        "id": "q06",
+        "sourceQuestionNo": 6,
+        "stemEn": "Which among the following are the ranks of commissioned officers in army?\n\n(A) General\n\n(B) Commodore\n\n(C) Colonel\n\n(D) Captain\n\n(E) Group Captain",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(B), (C) and (E) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(C), (D) and (E) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q07",
+        "sourceQuestionNo": 7,
+        "stemEn": "Which among the following are the part of forebrain?\n\n(A) Cerebrum\n\n(B) Cerebellum\n\n(C) Medulla oblongata\n\n(D) Hypothalamus\n\n(E) Diencephalon",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (D) and (E) only"
+          },
+          {
+            "id": "B",
+            "text": "(A), (C) and (E) only"
+          },
+          {
+            "id": "C",
+            "text": "(B), (C) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(A), (B) and (D) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q08",
+        "sourceQuestionNo": 8,
+        "stemEn": "Which among the following enzymes is required to digest protein?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Disaccharides"
+          },
+          {
+            "id": "B",
+            "text": "Trypsin"
+          },
+          {
+            "id": "C",
+            "text": "Amylase"
+          },
+          {
+            "id": "D",
+            "text": "Lipase"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q09",
+        "sourceQuestionNo": 9,
+        "stemEn": "What is the name of the largest diamond in the world?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "The Cullinan"
+          },
+          {
+            "id": "B",
+            "text": "The Kohinoor"
+          },
+          {
+            "id": "C",
+            "text": "The Sergio"
+          },
+          {
+            "id": "D",
+            "text": "The Woyie River"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q10",
+        "sourceQuestionNo": 10,
+        "stemEn": "Which among the following countries have lion as their national emblem?\n\n(A) Spain\n\n(B) Belgium\n\n(C) Norway\n\n(D) France\n\n(E) Netherlands",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "(A), (C) and (D) only"
+          },
+          {
+            "id": "B",
+            "text": "(B), (C) and (E) only"
+          },
+          {
+            "id": "C",
+            "text": "(A), (B) and (D) only"
+          },
+          {
+            "id": "D",
+            "text": "(C), (D) and (E) only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q11",
+        "sourceQuestionNo": 11,
+        "stemEn": "First Field Marshal of India was:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "General KM Cariappa"
+          },
+          {
+            "id": "B",
+            "text": "General SHFJ Manekshaw"
+          },
+          {
+            "id": "C",
+            "text": "General V P Malik"
+          },
+          {
+            "id": "D",
+            "text": "General Bipin Rawat"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q12",
+        "sourceQuestionNo": 12,
+        "stemEn": "Which team has won the men's cricket world cup the greatest number of times?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "West Indies"
+          },
+          {
+            "id": "B",
+            "text": "India"
+          },
+          {
+            "id": "C",
+            "text": "England"
+          },
+          {
+            "id": "D",
+            "text": "Australia"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q13",
+        "sourceQuestionNo": 13,
+        "stemEn": "Find the correct option\n\nM × N : 13 × 14 ∵ F × R : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "7 × 19"
+          },
+          {
+            "id": "B",
+            "text": "5 × 17"
+          },
+          {
+            "id": "C",
+            "text": "14 × 15"
+          },
+          {
+            "id": "D",
+            "text": "6 × 18"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q14",
+        "sourceQuestionNo": 14,
+        "stemEn": "_ transforms source code into the machine-readable code by converting into line by line.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Register"
+          },
+          {
+            "id": "B",
+            "text": "Compiler"
+          },
+          {
+            "id": "C",
+            "text": "Cache Memory"
+          },
+          {
+            "id": "D",
+            "text": "Interpreter"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q15",
+        "sourceQuestionNo": 15,
+        "stemEn": "Match the List-I with List II.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-II, B-III, C-IV, D-I"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-IV, C-I, D-II"
+          },
+          {
+            "id": "C",
+            "text": "A-IV, B-II, C-I, D-III"
+          },
+          {
+            "id": "D",
+            "text": "A-I, B-II, C-IV, D-III"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q15-table-1",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q15-table-1.jpg",
+            "page": 2,
+            "alt": "Table for question 15"
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "sourceQuestionNo": 16,
+        "stemEn": "The National Rail University has been established in India at:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Gorakhpur"
+          },
+          {
+            "id": "B",
+            "text": "Varanasi"
+          },
+          {
+            "id": "C",
+            "text": "Malda"
+          },
+          {
+            "id": "D",
+            "text": "Vadodara"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q17",
+        "sourceQuestionNo": 17,
+        "stemEn": "Find the number of rectangles in the below figure:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "25"
+          },
+          {
+            "id": "B",
+            "text": "125"
+          },
+          {
+            "id": "C",
+            "text": "225"
+          },
+          {
+            "id": "D",
+            "text": "55"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q17-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q17-figure-1.jpg",
+            "page": 2,
+            "alt": "Figure for question 17"
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "sourceQuestionNo": 18,
+        "stemEn": "Time appears in the mirror 11:09. Then, what time it will appear in the clock?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1:51"
+          },
+          {
+            "id": "B",
+            "text": "12:09"
+          },
+          {
+            "id": "C",
+            "text": "12:51"
+          },
+          {
+            "id": "D",
+            "text": "1:09"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q20",
+        "sourceQuestionNo": 19,
+        "stemEn": "In the following diagram, police represents circle, corrupt represents triangle, poet represents square and married represents rectangle\n\nThe number representing unmarried police\n\nofficers who are not corrupt but are poets is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "8"
+          },
+          {
+            "id": "B",
+            "text": "9"
+          },
+          {
+            "id": "C",
+            "text": "2"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": [
+          {
+            "id": "q20-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q20-figure-1.jpg",
+            "page": 2,
+            "alt": "Figure for question 20"
+          }
+        ]
+      },
+      {
+        "id": "q21",
+        "sourceQuestionNo": 20,
+        "stemEn": "Arrange the following words in correct order:\n\n(A) Omelete\n\n(B) Hen\n\n(C) Roll\n\n(D) Serve\n\n(E) Egg\n\nChose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "B, E, A, D, C"
+          },
+          {
+            "id": "B",
+            "text": "E, B, A, C, D"
+          },
+          {
+            "id": "C",
+            "text": "B, E, A, C, D"
+          },
+          {
+            "id": "D",
+            "text": "B, A, E, C, D"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          2
+        ],
+        "assets": []
+      },
+      {
+        "id": "q22",
+        "sourceQuestionNo": 21,
+        "stemEn": "Find the angle between the hands of clock at 12:30?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 165^{\\circ} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 170^{\\circ} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 175^{\\circ} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 155^{\\circ} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q23",
+        "sourceQuestionNo": 22,
+        "stemEn": "In a dice, 1, 2, 3 and 4 are written on the adjacent faces, in a clockwise order and 5 and 6 at the top and bottom. When three is at the top, what will be at the bottom?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1"
+          },
+          {
+            "id": "B",
+            "text": "2"
+          },
+          {
+            "id": "C",
+            "text": "3"
+          },
+          {
+            "id": "D",
+            "text": "4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": [
+          {
+            "id": "q23-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q23-figure-1.jpg",
+            "page": 3,
+            "alt": "Figure for question 23"
+          }
+        ]
+      },
+      {
+        "id": "q24",
+        "sourceQuestionNo": 23,
+        "stemEn": "What is the mirror-image of SMILE?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2MIEI"
+          },
+          {
+            "id": "B",
+            "text": "2MIEL"
+          },
+          {
+            "id": "C",
+            "text": "2MIEI"
+          },
+          {
+            "id": "D",
+            "text": "2MIJE"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q26",
+        "sourceQuestionNo": 24,
+        "stemEn": "Who is the dance partner of Reshma?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Insan"
+          },
+          {
+            "id": "B",
+            "text": "Dev"
+          },
+          {
+            "id": "C",
+            "text": "Bharat"
+          },
+          {
+            "id": "D",
+            "text": "Chetan"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q27",
+        "sourceQuestionNo": 25,
+        "stemEn": "If Bharat and Chetan interchange their dance partners, who will dance with Bharat?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Reshma"
+          },
+          {
+            "id": "B",
+            "text": "Parveen"
+          },
+          {
+            "id": "C",
+            "text": "Sudha"
+          },
+          {
+            "id": "D",
+            "text": "Tanu"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q28",
+        "sourceQuestionNo": 26,
+        "stemEn": "If Insan is Dev's son, how Bharat is related to Qazi?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Brother-in-law"
+          },
+          {
+            "id": "B",
+            "text": "Son"
+          },
+          {
+            "id": "C",
+            "text": "Sister-in-law"
+          },
+          {
+            "id": "D",
+            "text": "Cannot be determined"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q29",
+        "sourceQuestionNo": 27,
+        "stemEn": "If such type of dance programme well organized, how many dances are possible that each woman dance with opposite sex?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5"
+          },
+          {
+            "id": "B",
+            "text": "4"
+          },
+          {
+            "id": "C",
+            "text": "51"
+          },
+          {
+            "id": "D",
+            "text": "25"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q30",
+        "sourceQuestionNo": 28,
+        "stemEn": "Find the missing term: 31 : 961 :: ? : 1369",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "33"
+          },
+          {
+            "id": "B",
+            "text": "37"
+          },
+          {
+            "id": "C",
+            "text": "39"
+          },
+          {
+            "id": "D",
+            "text": "43"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q31",
+        "sourceQuestionNo": 29,
+        "stemEn": "ECA : QOM :: KIG : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "SUV"
+          },
+          {
+            "id": "B",
+            "text": "WUS"
+          },
+          {
+            "id": "C",
+            "text": "TRP"
+          },
+          {
+            "id": "D",
+            "text": "XVT"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q32",
+        "sourceQuestionNo": 30,
+        "stemEn": "Acquire : Obtain :: Secure : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Procure"
+          },
+          {
+            "id": "B",
+            "text": "Hover"
+          },
+          {
+            "id": "C",
+            "text": "Humorous"
+          },
+          {
+            "id": "D",
+            "text": "Amusing"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q33",
+        "sourceQuestionNo": 31,
+        "stemEn": "Sweet : Sour :: Less : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "More"
+          },
+          {
+            "id": "B",
+            "text": "High"
+          },
+          {
+            "id": "C",
+            "text": "Up"
+          },
+          {
+            "id": "D",
+            "text": "Full"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q34",
+        "sourceQuestionNo": 32,
+        "stemEn": "Fox : Vixen :: Drake : ?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Bee"
+          },
+          {
+            "id": "B",
+            "text": "Duck"
+          },
+          {
+            "id": "C",
+            "text": "Doe"
+          },
+          {
+            "id": "D",
+            "text": "Drone"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q35",
+        "sourceQuestionNo": 33,
+        "stemEn": "Arrange the following words in the sequence they will appear in the dictionary:\n\n(A) Research\n\n(B) Resurgence\n\n(C) Respiration\n\n(D) Respective\n\n(E) Resources",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "D, C, E, A, B"
+          },
+          {
+            "id": "B",
+            "text": "E, C, D, B, A"
+          },
+          {
+            "id": "C",
+            "text": "A, E, D, C, B"
+          },
+          {
+            "id": "D",
+            "text": "C, D, A, E, B"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q36",
+        "sourceQuestionNo": 34,
+        "stemEn": "If in a certain language, D is coded as 2, I is coded as 1, N is coded as 7, M is coded as 5, A is coded as 0, O is coded as 8, how is DIAMOND coded in that language?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2105872"
+          },
+          {
+            "id": "B",
+            "text": "2015782"
+          },
+          {
+            "id": "C",
+            "text": "2108752"
+          },
+          {
+            "id": "D",
+            "text": "2017582"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          3
+        ],
+        "assets": []
+      },
+      {
+        "id": "q37",
+        "sourceQuestionNo": 35,
+        "stemEn": "Kiya drives her car 20 km west from her home, then turns left and goes 20 km more, then, she turns right and goes 10 km and then she turns right and goes 15 km, finally she goes 30 km more after turning right again. At what distance is she from the starting point?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.5 km"
+          },
+          {
+            "id": "B",
+            "text": "10 km"
+          },
+          {
+            "id": "C",
+            "text": "15 km"
+          },
+          {
+            "id": "D",
+            "text": "25 km"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q38",
+        "sourceQuestionNo": 36,
+        "stemEn": "Complete the series;\n\n52, 58, 60, 66, 68, 74, ...",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "74"
+          },
+          {
+            "id": "B",
+            "text": "76"
+          },
+          {
+            "id": "C",
+            "text": "78"
+          },
+          {
+            "id": "D",
+            "text": "80"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q41",
+        "sourceQuestionNo": 37,
+        "stemEn": "Complete the series; 8192, 2048,...,?..., 128, 32, 8",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "256"
+          },
+          {
+            "id": "B",
+            "text": "248"
+          },
+          {
+            "id": "C",
+            "text": "1024"
+          },
+          {
+            "id": "D",
+            "text": "512"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q42",
+        "sourceQuestionNo": 38,
+        "stemEn": "$ \\underline{\\text{How many squares}} $ are there in a given shape?\n\nQ39. If $ 9^{th} $ day of a month is Sunday. What will be the last day of the month, on which Sunday will fall?\n\n(a) $ 28^{th} $\n\n(b) $ 29^{th} $\n\n(c) $ 30^{th} $\n\n(d) 31th\n\nQ40. Complete the series; 7, 23, 95, 479, 2879, ...\n\n(a) 11519\n\n(b) 14399\n\n(c) 17279\n\n(d) 20159",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "11"
+          },
+          {
+            "id": "B",
+            "text": "12"
+          },
+          {
+            "id": "C",
+            "text": "13"
+          },
+          {
+            "id": "D",
+            "text": "15"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": [
+          {
+            "id": "q42-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q42-figure-1.jpg",
+            "page": 4,
+            "alt": "Figure for question 42"
+          }
+        ]
+      },
+      {
+        "id": "q43",
+        "sourceQuestionNo": 39,
+        "stemEn": "In this question, four words have been given of which three are alike in some way and one is different. Find the odd one out.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Rose"
+          },
+          {
+            "id": "B",
+            "text": "Lotus"
+          },
+          {
+            "id": "C",
+            "text": "Jasmine"
+          },
+          {
+            "id": "D",
+            "text": "Sunflower"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q44",
+        "sourceQuestionNo": 40,
+        "stemEn": "If day before yesterday is a Saturday. What will be sixth day after tomorrow?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Sunday"
+          },
+          {
+            "id": "B",
+            "text": "Saturday"
+          },
+          {
+            "id": "C",
+            "text": "Monday"
+          },
+          {
+            "id": "D",
+            "text": "Tuesday"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q45",
+        "sourceQuestionNo": 41,
+        "stemEn": "Pointing towards a person in the photograph,\n\nMohit said, \"he is the husband of the only daughter\n\nof the father of my sister's brother.\" How is that\n\nperson related to Mohit?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "Uncle"
+          },
+          {
+            "id": "B",
+            "text": "Cousin"
+          },
+          {
+            "id": "C",
+            "text": "Brother-in-law"
+          },
+          {
+            "id": "D",
+            "text": "Brother"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q46",
+        "sourceQuestionNo": 42,
+        "stemEn": "What is the value of x if 4 : x = x : 16",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "16"
+          },
+          {
+            "id": "B",
+            "text": "8"
+          },
+          {
+            "id": "C",
+            "text": "9"
+          },
+          {
+            "id": "D",
+            "text": "12"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q47",
+        "sourceQuestionNo": 43,
+        "stemEn": "If $P = \\text{₹}2000$, $R = 5\\%$ per annual, $T = 5$ year\n\nA. Total sum of amount = ₹2200\n\nB. SI = ₹200\n\nC. SI = ₹500\n\nD. Total sum of amount = 2500",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "C and D Only"
+          },
+          {
+            "id": "B",
+            "text": "A and C Only"
+          },
+          {
+            "id": "C",
+            "text": "B and C Only"
+          },
+          {
+            "id": "D",
+            "text": "A and D Only"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q48",
+        "sourceQuestionNo": 44,
+        "stemEn": "Find the LCM of $ \\frac{3}{5} $, $ \\frac{4}{9} $ and $ \\frac{5}{8} $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "45"
+          },
+          {
+            "id": "B",
+            "text": "55"
+          },
+          {
+            "id": "C",
+            "text": "60"
+          },
+          {
+            "id": "D",
+            "text": "65"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q49",
+        "sourceQuestionNo": 45,
+        "stemEn": "In a swimming pool measuring 80 m × 60 m, 120 men take a dip. If the average displacement of water by a man is 6 m³, then the rise in water level is -",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "0.25 m"
+          },
+          {
+            "id": "B",
+            "text": "0.10 m"
+          },
+          {
+            "id": "C",
+            "text": "0.15 m"
+          },
+          {
+            "id": "D",
+            "text": "0.35 m"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q50",
+        "sourceQuestionNo": 46,
+        "stemEn": "The average age of group of 5 friends is 32 years. The youngest friend amongst them is 4 years old. What was the average age of the group at the time of birth of the youngest friend?",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "36 years"
+          },
+          {
+            "id": "B",
+            "text": "35 years"
+          },
+          {
+            "id": "C",
+            "text": "34 years"
+          },
+          {
+            "id": "D",
+            "text": "33 years"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          4
+        ],
+        "assets": []
+      },
+      {
+        "id": "q55",
+        "sourceQuestionNo": 47,
+        "stemEn": "A and B are two points in a river. Point X and Y divide the line AB in three equal parts. Let the flow of the river is from A to B. The ratio of the time taken to row from point A to Y and from B to Y is 3:4. Find the ratio of the speed of the boat upstream to the flow of the river.",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5:6"
+          },
+          {
+            "id": "B",
+            "text": "6:5"
+          },
+          {
+            "id": "C",
+            "text": "4:5"
+          },
+          {
+            "id": "D",
+            "text": "5:4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q62",
+        "sourceQuestionNo": 48,
+        "stemEn": "If $ x - \\frac{1}{x} = 3 $ then the value of $ x^{2} + \\frac{1}{x^{2}} $ is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "9"
+          },
+          {
+            "id": "B",
+            "text": "11"
+          },
+          {
+            "id": "C",
+            "text": "7"
+          },
+          {
+            "id": "D",
+            "text": "3"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q63",
+        "sourceQuestionNo": 49,
+        "stemEn": "Distance of A to B is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "1.8 unit"
+          },
+          {
+            "id": "B",
+            "text": "1.9 unit"
+          },
+          {
+            "id": "C",
+            "text": "2 unit"
+          },
+          {
+            "id": "D",
+            "text": "2.1 unit"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q63-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q63-figure-1.jpg",
+            "page": 5,
+            "alt": "Figure for question 63"
+          }
+        ]
+      },
+      {
+        "id": "q64",
+        "sourceQuestionNo": 50,
+        "stemEn": "The ratio of the sides of the squares in the given figure is\n\nArea = 1.69 cm^{2}",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "13:4"
+          },
+          {
+            "id": "B",
+            "text": "1:4"
+          },
+          {
+            "id": "C",
+            "text": "4:3"
+          },
+          {
+            "id": "D",
+            "text": "10:4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": [
+          {
+            "id": "q64-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q64-figure-1.jpg",
+            "page": 5,
+            "alt": "Figure for question 64"
+          },
+          {
+            "id": "q64-figure-2",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q64-figure-2.jpg",
+            "page": 5,
+            "alt": "Figure for question 64"
+          }
+        ]
+      },
+      {
+        "id": "q65",
+        "sourceQuestionNo": 51,
+        "stemEn": "Find the mean of 12, 15, 7, 8 and 'x +13', if x = 2",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "11.2"
+          },
+          {
+            "id": "B",
+            "text": "9.2"
+          },
+          {
+            "id": "C",
+            "text": "11.4"
+          },
+          {
+            "id": "D",
+            "text": "12"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5
+        ],
+        "assets": []
+      },
+      {
+        "id": "q66",
+        "sourceQuestionNo": 52,
+        "stemEn": "Match List I with List II",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "A-IV, B-II, C-III, D-I"
+          },
+          {
+            "id": "B",
+            "text": "A-III, B-IV, C-II, D-I"
+          },
+          {
+            "id": "C",
+            "text": "A-I, B-III, C-IV, D-II"
+          },
+          {
+            "id": "D",
+            "text": "A-II, B-III, C-IV, D-I"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          5,
+          6
+        ],
+        "assets": [
+          {
+            "id": "q66-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q66-figure-1.jpg",
+            "page": 6,
+            "alt": "Figure for question 66"
+          },
+          {
+            "id": "q66-table-2",
+            "kind": "table",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q66-table-2.jpg",
+            "page": 6,
+            "alt": "Table for question 66"
+          }
+        ]
+      },
+      {
+        "id": "q67",
+        "sourceQuestionNo": 53,
+        "stemEn": "The diameter of a circle whose area is numerically 110 more than its circumference is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "5 units"
+          },
+          {
+            "id": "B",
+            "text": "7 units"
+          },
+          {
+            "id": "C",
+            "text": "14 units"
+          },
+          {
+            "id": "D",
+            "text": "10 units"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q68",
+        "sourceQuestionNo": 54,
+        "stemEn": "If $m-n=16$ and $m^{2}+n^{2}=400$, the value of mn is =",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "72"
+          },
+          {
+            "id": "B",
+            "text": "25"
+          },
+          {
+            "id": "C",
+            "text": "144"
+          },
+          {
+            "id": "D",
+            "text": "192"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q69",
+        "sourceQuestionNo": 55,
+        "stemEn": "The value of 'y' in the question 2x + 3y - 7 = 0\n\nif x = -3/2",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "10"
+          },
+          {
+            "id": "B",
+            "text": "10/3"
+          },
+          {
+            "id": "C",
+            "text": "4/3"
+          },
+          {
+            "id": "D",
+            "text": "13/3 Direction for question 70 to 72: From the graph given below, answer the following question."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q70",
+        "sourceQuestionNo": 56,
+        "stemEn": "The total number of people owing books more than '40' is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "60"
+          },
+          {
+            "id": "B",
+            "text": "31"
+          },
+          {
+            "id": "C",
+            "text": "14"
+          },
+          {
+            "id": "D",
+            "text": "30"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q71",
+        "sourceQuestionNo": 57,
+        "stemEn": "The number of people owing books more than 20 but less than 60 is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "14"
+          },
+          {
+            "id": "B",
+            "text": "16"
+          },
+          {
+            "id": "C",
+            "text": "30"
+          },
+          {
+            "id": "D",
+            "text": "40"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q72",
+        "sourceQuestionNo": 58,
+        "stemEn": "The total number of people surveyed is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "16"
+          },
+          {
+            "id": "B",
+            "text": "56"
+          },
+          {
+            "id": "C",
+            "text": "54"
+          },
+          {
+            "id": "D",
+            "text": "55 Direction for questions 73 to 75: From the given diagram, answer the following question."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q73",
+        "sourceQuestionNo": 59,
+        "stemEn": "'AC' is 23 cm in the adjoining figure. Consider the figure and answer the questions",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "133 cm²"
+          },
+          {
+            "id": "B",
+            "text": "140 cm²"
+          },
+          {
+            "id": "C",
+            "text": "70 cm²"
+          },
+          {
+            "id": "D",
+            "text": "66.5 cm²"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": [
+          {
+            "id": "q73-figure-1",
+            "kind": "figure",
+            "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q73-figure-1.jpg",
+            "page": 6,
+            "alt": "Figure for question 73"
+          }
+        ]
+      },
+      {
+        "id": "q74",
+        "sourceQuestionNo": 60,
+        "stemEn": "The area of $ \\Delta DBC $ is DB is a straight line",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "$ 32.5 \\, cm^{2} $"
+          },
+          {
+            "id": "B",
+            "text": "$ 65 \\, cm^{2} $"
+          },
+          {
+            "id": "C",
+            "text": "$ 25 \\, cm^{2} $"
+          },
+          {
+            "id": "D",
+            "text": "$ 15 \\, m^{2} $"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      },
+      {
+        "id": "q75",
+        "sourceQuestionNo": 61,
+        "stemEn": "The total area of figure is",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "184.5 cm²"
+          },
+          {
+            "id": "B",
+            "text": "205 cm²"
+          },
+          {
+            "id": "C",
+            "text": "175.5 cm²"
+          },
+          {
+            "id": "D",
+            "text": "153 cm² SOLUTIONS"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": null,
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          6
+        ],
+        "assets": []
+      }
     ]
-   },
-   {
-    "id": "q06",
-    "sourceQuestionNo": 6,
-    "stemEn": "Which among the following are the ranks of commissioned officers in army?\n\n(A) General\n\n(B) Commodore\n\n(C) Colonel\n\n(D) Captain\n\n(E) Group Captain",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(B), (C) and (E) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(C), (D) and (E) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q07",
-    "sourceQuestionNo": 7,
-    "stemEn": "Which among the following are the part of forebrain?\n\n(A) Cerebrum\n\n(B) Cerebellum\n\n(C) Medulla oblongata\n\n(D) Hypothalamus\n\n(E) Diencephalon",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (D) and (E) only"
-     },
-     {
-      "id": "B",
-      "text": "(A), (C) and (E) only"
-     },
-     {
-      "id": "C",
-      "text": "(B), (C) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(A), (B) and (D) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q08",
-    "sourceQuestionNo": 8,
-    "stemEn": "Which among the following enzymes is required to digest protein?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Disaccharides"
-     },
-     {
-      "id": "B",
-      "text": "Trypsin"
-     },
-     {
-      "id": "C",
-      "text": "Amylase"
-     },
-     {
-      "id": "D",
-      "text": "Lipase"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q09",
-    "sourceQuestionNo": 9,
-    "stemEn": "What is the name of the largest diamond in the world?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "The Cullinan"
-     },
-     {
-      "id": "B",
-      "text": "The Kohinoor"
-     },
-     {
-      "id": "C",
-      "text": "The Sergio"
-     },
-     {
-      "id": "D",
-      "text": "The Woyie River"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q10",
-    "sourceQuestionNo": 10,
-    "stemEn": "Which among the following countries have lion as their national emblem?\n\n(A) Spain\n\n(B) Belgium\n\n(C) Norway\n\n(D) France\n\n(E) Netherlands",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "(A), (C) and (D) only"
-     },
-     {
-      "id": "B",
-      "text": "(B), (C) and (E) only"
-     },
-     {
-      "id": "C",
-      "text": "(A), (B) and (D) only"
-     },
-     {
-      "id": "D",
-      "text": "(C), (D) and (E) only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q11",
-    "sourceQuestionNo": 11,
-    "stemEn": "First Field Marshal of India was:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "General KM Cariappa"
-     },
-     {
-      "id": "B",
-      "text": "General SHFJ Manekshaw"
-     },
-     {
-      "id": "C",
-      "text": "General V P Malik"
-     },
-     {
-      "id": "D",
-      "text": "General Bipin Rawat"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     1
-    ],
-    "assets": []
-   },
-   {
-    "id": "q12",
-    "sourceQuestionNo": 12,
-    "stemEn": "Which team has won the men's cricket world cup the greatest number of times?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "West Indies"
-     },
-     {
-      "id": "B",
-      "text": "India"
-     },
-     {
-      "id": "C",
-      "text": "England"
-     },
-     {
-      "id": "D",
-      "text": "Australia"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q13",
-    "sourceQuestionNo": 13,
-    "stemEn": "Find the correct option\n\nM × N : 13 × 14 ∵ F × R : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "7 × 19"
-     },
-     {
-      "id": "B",
-      "text": "5 × 17"
-     },
-     {
-      "id": "C",
-      "text": "14 × 15"
-     },
-     {
-      "id": "D",
-      "text": "6 × 18"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q14",
-    "sourceQuestionNo": 14,
-    "stemEn": "_ transforms source code into the machine-readable code by converting into line by line.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Register"
-     },
-     {
-      "id": "B",
-      "text": "Compiler"
-     },
-     {
-      "id": "C",
-      "text": "Cache Memory"
-     },
-     {
-      "id": "D",
-      "text": "Interpreter"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q15",
-    "sourceQuestionNo": 15,
-    "stemEn": "Match the List-I with List II.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-II, B-III, C-IV, D-I"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-IV, C-I, D-II"
-     },
-     {
-      "id": "C",
-      "text": "A-IV, B-II, C-I, D-III"
-     },
-     {
-      "id": "D",
-      "text": "A-I, B-II, C-IV, D-III"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q15-table-1",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q15-table-1.jpg",
-      "page": 2,
-      "alt": "Table for question 15"
-     }
-    ]
-   },
-   {
-    "id": "q16",
-    "sourceQuestionNo": 16,
-    "stemEn": "The National Rail University has been established in India at:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Gorakhpur"
-     },
-     {
-      "id": "B",
-      "text": "Varanasi"
-     },
-     {
-      "id": "C",
-      "text": "Malda"
-     },
-     {
-      "id": "D",
-      "text": "Vadodara"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q17",
-    "sourceQuestionNo": 17,
-    "stemEn": "Find the number of rectangles in the below figure:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "25"
-     },
-     {
-      "id": "B",
-      "text": "125"
-     },
-     {
-      "id": "C",
-      "text": "225"
-     },
-     {
-      "id": "D",
-      "text": "55"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q17-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q17-figure-1.jpg",
-      "page": 2,
-      "alt": "Figure for question 17"
-     }
-    ]
-   },
-   {
-    "id": "q18",
-    "sourceQuestionNo": 18,
-    "stemEn": "Time appears in the mirror 11:09. Then, what time it will appear in the clock?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1:51"
-     },
-     {
-      "id": "B",
-      "text": "12:09"
-     },
-     {
-      "id": "C",
-      "text": "12:51"
-     },
-     {
-      "id": "D",
-      "text": "1:09"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q20",
-    "sourceQuestionNo": 20,
-    "stemEn": "In the following diagram, police represents circle, corrupt represents triangle, poet represents square and married represents rectangle\n\nThe number representing unmarried police\n\nofficers who are not corrupt but are poets is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "8"
-     },
-     {
-      "id": "B",
-      "text": "9"
-     },
-     {
-      "id": "C",
-      "text": "2"
-     },
-     {
-      "id": "D",
-      "text": "4"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": [
-     {
-      "id": "q20-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q20-figure-1.jpg",
-      "page": 2,
-      "alt": "Figure for question 20"
-     }
-    ]
-   },
-   {
-    "id": "q21",
-    "sourceQuestionNo": 21,
-    "stemEn": "Arrange the following words in correct order:\n\n(A) Omelete\n\n(B) Hen\n\n(C) Roll\n\n(D) Serve\n\n(E) Egg\n\nChose the correct answer from the options given below:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "B, E, A, D, C"
-     },
-     {
-      "id": "B",
-      "text": "E, B, A, C, D"
-     },
-     {
-      "id": "C",
-      "text": "B, E, A, C, D"
-     },
-     {
-      "id": "D",
-      "text": "B, A, E, C, D"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     2
-    ],
-    "assets": []
-   },
-   {
-    "id": "q22",
-    "sourceQuestionNo": 22,
-    "stemEn": "Find the angle between the hands of clock at 12:30?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 165^{\\circ} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 170^{\\circ} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 175^{\\circ} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 155^{\\circ} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q23",
-    "sourceQuestionNo": 23,
-    "stemEn": "In a dice, 1, 2, 3 and 4 are written on the adjacent faces, in a clockwise order and 5 and 6 at the top and bottom. When three is at the top, what will be at the bottom?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1"
-     },
-     {
-      "id": "B",
-      "text": "2"
-     },
-     {
-      "id": "C",
-      "text": "3"
-     },
-     {
-      "id": "D",
-      "text": "4"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": [
-     {
-      "id": "q23-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q23-figure-1.jpg",
-      "page": 3,
-      "alt": "Figure for question 23"
-     }
-    ]
-   },
-   {
-    "id": "q24",
-    "sourceQuestionNo": 24,
-    "stemEn": "What is the mirror-image of SMILE?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2MIEI"
-     },
-     {
-      "id": "B",
-      "text": "2MIEL"
-     },
-     {
-      "id": "C",
-      "text": "2MIEI"
-     },
-     {
-      "id": "D",
-      "text": "2MIJE"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q26",
-    "sourceQuestionNo": 26,
-    "stemEn": "Who is the dance partner of Reshma?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Insan"
-     },
-     {
-      "id": "B",
-      "text": "Dev"
-     },
-     {
-      "id": "C",
-      "text": "Bharat"
-     },
-     {
-      "id": "D",
-      "text": "Chetan"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q27",
-    "sourceQuestionNo": 27,
-    "stemEn": "If Bharat and Chetan interchange their dance partners, who will dance with Bharat?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Reshma"
-     },
-     {
-      "id": "B",
-      "text": "Parveen"
-     },
-     {
-      "id": "C",
-      "text": "Sudha"
-     },
-     {
-      "id": "D",
-      "text": "Tanu"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q28",
-    "sourceQuestionNo": 28,
-    "stemEn": "If Insan is Dev's son, how Bharat is related to Qazi?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Brother-in-law"
-     },
-     {
-      "id": "B",
-      "text": "Son"
-     },
-     {
-      "id": "C",
-      "text": "Sister-in-law"
-     },
-     {
-      "id": "D",
-      "text": "Cannot be determined"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q29",
-    "sourceQuestionNo": 29,
-    "stemEn": "If such type of dance programme well organized, how many dances are possible that each woman dance with opposite sex?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5"
-     },
-     {
-      "id": "B",
-      "text": "4"
-     },
-     {
-      "id": "C",
-      "text": "51"
-     },
-     {
-      "id": "D",
-      "text": "25"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q30",
-    "sourceQuestionNo": 30,
-    "stemEn": "Find the missing term: 31 : 961 :: ? : 1369",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "33"
-     },
-     {
-      "id": "B",
-      "text": "37"
-     },
-     {
-      "id": "C",
-      "text": "39"
-     },
-     {
-      "id": "D",
-      "text": "43"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q31",
-    "sourceQuestionNo": 31,
-    "stemEn": "ECA : QOM :: KIG : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "SUV"
-     },
-     {
-      "id": "B",
-      "text": "WUS"
-     },
-     {
-      "id": "C",
-      "text": "TRP"
-     },
-     {
-      "id": "D",
-      "text": "XVT"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q32",
-    "sourceQuestionNo": 32,
-    "stemEn": "Acquire : Obtain :: Secure : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Procure"
-     },
-     {
-      "id": "B",
-      "text": "Hover"
-     },
-     {
-      "id": "C",
-      "text": "Humorous"
-     },
-     {
-      "id": "D",
-      "text": "Amusing"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q33",
-    "sourceQuestionNo": 33,
-    "stemEn": "Sweet : Sour :: Less : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "More"
-     },
-     {
-      "id": "B",
-      "text": "High"
-     },
-     {
-      "id": "C",
-      "text": "Up"
-     },
-     {
-      "id": "D",
-      "text": "Full"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q34",
-    "sourceQuestionNo": 34,
-    "stemEn": "Fox : Vixen :: Drake : ?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Bee"
-     },
-     {
-      "id": "B",
-      "text": "Duck"
-     },
-     {
-      "id": "C",
-      "text": "Doe"
-     },
-     {
-      "id": "D",
-      "text": "Drone"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q35",
-    "sourceQuestionNo": 35,
-    "stemEn": "Arrange the following words in the sequence they will appear in the dictionary:\n\n(A) Research\n\n(B) Resurgence\n\n(C) Respiration\n\n(D) Respective\n\n(E) Resources",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "D, C, E, A, B"
-     },
-     {
-      "id": "B",
-      "text": "E, C, D, B, A"
-     },
-     {
-      "id": "C",
-      "text": "A, E, D, C, B"
-     },
-     {
-      "id": "D",
-      "text": "C, D, A, E, B"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q36",
-    "sourceQuestionNo": 36,
-    "stemEn": "If in a certain language, D is coded as 2, I is coded as 1, N is coded as 7, M is coded as 5, A is coded as 0, O is coded as 8, how is DIAMOND coded in that language?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "2105872"
-     },
-     {
-      "id": "B",
-      "text": "2015782"
-     },
-     {
-      "id": "C",
-      "text": "2108752"
-     },
-     {
-      "id": "D",
-      "text": "2017582"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     3
-    ],
-    "assets": []
-   },
-   {
-    "id": "q37",
-    "sourceQuestionNo": 37,
-    "stemEn": "Kiya drives her car 20 km west from her home, then turns left and goes 20 km more, then, she turns right and goes 10 km and then she turns right and goes 15 km, finally she goes 30 km more after turning right again. At what distance is she from the starting point?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.5 km"
-     },
-     {
-      "id": "B",
-      "text": "10 km"
-     },
-     {
-      "id": "C",
-      "text": "15 km"
-     },
-     {
-      "id": "D",
-      "text": "25 km"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q38",
-    "sourceQuestionNo": 38,
-    "stemEn": "Complete the series;\n\n52, 58, 60, 66, 68, 74, ...",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "74"
-     },
-     {
-      "id": "B",
-      "text": "76"
-     },
-     {
-      "id": "C",
-      "text": "78"
-     },
-     {
-      "id": "D",
-      "text": "80"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q41",
-    "sourceQuestionNo": 41,
-    "stemEn": "Complete the series; 8192, 2048,...,?..., 128, 32, 8",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "256"
-     },
-     {
-      "id": "B",
-      "text": "248"
-     },
-     {
-      "id": "C",
-      "text": "1024"
-     },
-     {
-      "id": "D",
-      "text": "512"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q42",
-    "sourceQuestionNo": 42,
-    "stemEn": "$ \\underline{\\text{How many squares}} $ are there in a given shape?\n\nQ39. If $ 9^{th} $ day of a month is Sunday. What will be the last day of the month, on which Sunday will fall?\n\n(a) $ 28^{th} $\n\n(b) $ 29^{th} $\n\n(c) $ 30^{th} $\n\n(d) 31th\n\nQ40. Complete the series; 7, 23, 95, 479, 2879, ...\n\n(a) 11519\n\n(b) 14399\n\n(c) 17279\n\n(d) 20159",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "11"
-     },
-     {
-      "id": "B",
-      "text": "12"
-     },
-     {
-      "id": "C",
-      "text": "13"
-     },
-     {
-      "id": "D",
-      "text": "15"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": [
-     {
-      "id": "q42-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q42-figure-1.jpg",
-      "page": 4,
-      "alt": "Figure for question 42"
-     }
-    ]
-   },
-   {
-    "id": "q43",
-    "sourceQuestionNo": 43,
-    "stemEn": "In this question, four words have been given of which three are alike in some way and one is different. Find the odd one out.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Rose"
-     },
-     {
-      "id": "B",
-      "text": "Lotus"
-     },
-     {
-      "id": "C",
-      "text": "Jasmine"
-     },
-     {
-      "id": "D",
-      "text": "Sunflower"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q44",
-    "sourceQuestionNo": 44,
-    "stemEn": "If day before yesterday is a Saturday. What will be sixth day after tomorrow?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Sunday"
-     },
-     {
-      "id": "B",
-      "text": "Saturday"
-     },
-     {
-      "id": "C",
-      "text": "Monday"
-     },
-     {
-      "id": "D",
-      "text": "Tuesday"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q45",
-    "sourceQuestionNo": 45,
-    "stemEn": "Pointing towards a person in the photograph,\n\nMohit said, \"he is the husband of the only daughter\n\nof the father of my sister's brother.\" How is that\n\nperson related to Mohit?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "Uncle"
-     },
-     {
-      "id": "B",
-      "text": "Cousin"
-     },
-     {
-      "id": "C",
-      "text": "Brother-in-law"
-     },
-     {
-      "id": "D",
-      "text": "Brother"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q46",
-    "sourceQuestionNo": 46,
-    "stemEn": "What is the value of x if 4 : x = x : 16",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "16"
-     },
-     {
-      "id": "B",
-      "text": "8"
-     },
-     {
-      "id": "C",
-      "text": "9"
-     },
-     {
-      "id": "D",
-      "text": "12"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q47",
-    "sourceQuestionNo": 47,
-    "stemEn": "If $P = \\text{₹}2000$, $R = 5\\%$ per annual, $T = 5$ year\n\nA. Total sum of amount = ₹2200\n\nB. SI = ₹200\n\nC. SI = ₹500\n\nD. Total sum of amount = 2500",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "C and D Only"
-     },
-     {
-      "id": "B",
-      "text": "A and C Only"
-     },
-     {
-      "id": "C",
-      "text": "B and C Only"
-     },
-     {
-      "id": "D",
-      "text": "A and D Only"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q48",
-    "sourceQuestionNo": 48,
-    "stemEn": "Find the LCM of $ \\frac{3}{5} $, $ \\frac{4}{9} $ and $ \\frac{5}{8} $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "45"
-     },
-     {
-      "id": "B",
-      "text": "55"
-     },
-     {
-      "id": "C",
-      "text": "60"
-     },
-     {
-      "id": "D",
-      "text": "65"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q49",
-    "sourceQuestionNo": 49,
-    "stemEn": "In a swimming pool measuring 80 m × 60 m, 120 men take a dip. If the average displacement of water by a man is 6 m³, then the rise in water level is -",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "0.25 m"
-     },
-     {
-      "id": "B",
-      "text": "0.10 m"
-     },
-     {
-      "id": "C",
-      "text": "0.15 m"
-     },
-     {
-      "id": "D",
-      "text": "0.35 m"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q50",
-    "sourceQuestionNo": 50,
-    "stemEn": "The average age of group of 5 friends is 32 years. The youngest friend amongst them is 4 years old. What was the average age of the group at the time of birth of the youngest friend?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "36 years"
-     },
-     {
-      "id": "B",
-      "text": "35 years"
-     },
-     {
-      "id": "C",
-      "text": "34 years"
-     },
-     {
-      "id": "D",
-      "text": "33 years"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q51",
-    "sourceQuestionNo": 51,
-    "stemEn": "A volume of a wall is 128 cm³. If the height of the wall is 6 times its breadth and the length is 9 times its breadth, find the breadth.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\sqrt[3]{3.45} $ cm"
-     },
-     {
-      "id": "B",
-      "text": "$ \\sqrt[3]{4.74} $ cm"
-     },
-     {
-      "id": "C",
-      "text": "$ \\sqrt[3]{2.37} $ cm"
-     },
-     {
-      "id": "D",
-      "text": "$ \\sqrt[3]{2.38} $ cm"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q52",
-    "sourceQuestionNo": 52,
-    "stemEn": "If = x% of Y and Q = y% of x, then which of following is true?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "P = Q"
-     },
-     {
-      "id": "B",
-      "text": "P > Q"
-     },
-     {
-      "id": "C",
-      "text": "P < Q"
-     },
-     {
-      "id": "D",
-      "text": "Relationship between P and Q cannot be established"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     4
-    ],
-    "assets": []
-   },
-   {
-    "id": "q53",
-    "sourceQuestionNo": 53,
-    "stemEn": "A man makes a profit of 20% after selling a product on 28% discount on the printed price. Find the ratio of printed price to cost price",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "7:3"
-     },
-     {
-      "id": "B",
-      "text": "5:3"
-     },
-     {
-      "id": "C",
-      "text": "4:3"
-     },
-     {
-      "id": "D",
-      "text": "8:3"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q54",
-    "sourceQuestionNo": 54,
-    "stemEn": "Alice is faster than Bob, Alice and Bom each walk 30 km. The sum of their speeds is 8 km/hr and sum of time taken by them is 16 hours. Then Alice's speed is equal to",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5"
-     },
-     {
-      "id": "B",
-      "text": "4"
-     },
-     {
-      "id": "C",
-      "text": "6"
-     },
-     {
-      "id": "D",
-      "text": "8"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q55",
-    "sourceQuestionNo": 55,
-    "stemEn": "A and B are two points in a river. Point X and Y divide the line AB in three equal parts. Let the flow of the river is from A to B. The ratio of the time taken to row from point A to Y and from B to Y is 3:4. Find the ratio of the speed of the boat upstream to the flow of the river.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5:6"
-     },
-     {
-      "id": "B",
-      "text": "6:5"
-     },
-     {
-      "id": "C",
-      "text": "4:5"
-     },
-     {
-      "id": "D",
-      "text": "5:4"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q56",
-    "sourceQuestionNo": 56,
-    "stemEn": "A and B can complete a piece of work in 30 days. B and C in 10 days, which C and A in 5 days. If all of them work together, the time taken in completing the work",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "4 Days"
-     },
-     {
-      "id": "B",
-      "text": "5 Days"
-     },
-     {
-      "id": "C",
-      "text": "6 Days"
-     },
-     {
-      "id": "D",
-      "text": "7 Days"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q57",
-    "sourceQuestionNo": 57,
-    "stemEn": "Suresh covers a distance by a cycle at 10 km/h. He returns to the starting point in a car at a speed of 50 km/h. Find the average speed for the entire journey.",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "36.66 km/h"
-     },
-     {
-      "id": "B",
-      "text": "16.66 km/h"
-     },
-     {
-      "id": "C",
-      "text": "26.66 km/h"
-     },
-     {
-      "id": "D",
-      "text": "46.66 km/h"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q58",
-    "sourceQuestionNo": 58,
-    "stemEn": "A boy secures 70%, 40% and 60% marks in test papers with 100, 50 and 150 respectively as maximum marks. The percentage of his aggregate is:",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "55"
-     },
-     {
-      "id": "B",
-      "text": "60"
-     },
-     {
-      "id": "C",
-      "text": "56.66"
-     },
-     {
-      "id": "D",
-      "text": "70"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q59",
-    "sourceQuestionNo": 59,
-    "stemEn": "Radha sells her scooty for ₹50000 at a loss of 20%.\n\nAt what price she should sell her scooty to make a profit of 10%?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "₹65750"
-     },
-     {
-      "id": "B",
-      "text": "₹64750"
-     },
-     {
-      "id": "C",
-      "text": "₹66750"
-     },
-     {
-      "id": "D",
-      "text": "₹68750"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q60",
-    "sourceQuestionNo": 60,
-    "stemEn": "Ratio between age of P and Q is 5:7. If 2 years ago Q's age was 2 years more than the age of P after 4 years, then find their total age",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "30 years"
-     },
-     {
-      "id": "B",
-      "text": "35 years"
-     },
-     {
-      "id": "C",
-      "text": "42 years"
-     },
-     {
-      "id": "D",
-      "text": "48 years"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q61",
-    "sourceQuestionNo": 61,
-    "stemEn": "$ (a+b)^{2}=5+2\\sqrt{6} $, what can be the possible value of 'b' from the following?",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ \\sqrt{7} $"
-     },
-     {
-      "id": "B",
-      "text": "$ \\sqrt{3} $"
-     },
-     {
-      "id": "C",
-      "text": "$ \\sqrt{6} $"
-     },
-     {
-      "id": "D",
-      "text": "5"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "pending",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q62",
-    "sourceQuestionNo": 62,
-    "stemEn": "If $ x - \\frac{1}{x} = 3 $ then the value of $ x^{2} + \\frac{1}{x^{2}} $ is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "9"
-     },
-     {
-      "id": "B",
-      "text": "11"
-     },
-     {
-      "id": "C",
-      "text": "7"
-     },
-     {
-      "id": "D",
-      "text": "3"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q63",
-    "sourceQuestionNo": 63,
-    "stemEn": "Distance of A to B is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "1.8 unit"
-     },
-     {
-      "id": "B",
-      "text": "1.9 unit"
-     },
-     {
-      "id": "C",
-      "text": "2 unit"
-     },
-     {
-      "id": "D",
-      "text": "2.1 unit"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q63-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q63-figure-1.jpg",
-      "page": 5,
-      "alt": "Figure for question 63"
-     }
-    ]
-   },
-   {
-    "id": "q64",
-    "sourceQuestionNo": 64,
-    "stemEn": "The ratio of the sides of the squares in the given figure is\n\nArea = 1.69 cm^{2}",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "13:4"
-     },
-     {
-      "id": "B",
-      "text": "1:4"
-     },
-     {
-      "id": "C",
-      "text": "4:3"
-     },
-     {
-      "id": "D",
-      "text": "10:4"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": [
-     {
-      "id": "q64-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q64-figure-1.jpg",
-      "page": 5,
-      "alt": "Figure for question 64"
-     },
-     {
-      "id": "q64-figure-2",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q64-figure-2.jpg",
-      "page": 5,
-      "alt": "Figure for question 64"
-     }
-    ]
-   },
-   {
-    "id": "q65",
-    "sourceQuestionNo": 65,
-    "stemEn": "Find the mean of 12, 15, 7, 8 and 'x +13', if x = 2",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "11.2"
-     },
-     {
-      "id": "B",
-      "text": "9.2"
-     },
-     {
-      "id": "C",
-      "text": "11.4"
-     },
-     {
-      "id": "D",
-      "text": "12"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5
-    ],
-    "assets": []
-   },
-   {
-    "id": "q66",
-    "sourceQuestionNo": 66,
-    "stemEn": "Match List I with List II",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "A-IV, B-II, C-III, D-I"
-     },
-     {
-      "id": "B",
-      "text": "A-III, B-IV, C-II, D-I"
-     },
-     {
-      "id": "C",
-      "text": "A-I, B-III, C-IV, D-II"
-     },
-     {
-      "id": "D",
-      "text": "A-II, B-III, C-IV, D-I"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     5,
-     6
-    ],
-    "assets": [
-     {
-      "id": "q66-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q66-figure-1.jpg",
-      "page": 6,
-      "alt": "Figure for question 66"
-     },
-     {
-      "id": "q66-table-2",
-      "kind": "table",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q66-table-2.jpg",
-      "page": 6,
-      "alt": "Table for question 66"
-     }
-    ]
-   },
-   {
-    "id": "q67",
-    "sourceQuestionNo": 67,
-    "stemEn": "The diameter of a circle whose area is numerically 110 more than its circumference is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "5 units"
-     },
-     {
-      "id": "B",
-      "text": "7 units"
-     },
-     {
-      "id": "C",
-      "text": "14 units"
-     },
-     {
-      "id": "D",
-      "text": "10 units"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q68",
-    "sourceQuestionNo": 68,
-    "stemEn": "If $m-n=16$ and $m^{2}+n^{2}=400$, the value of mn is =",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "72"
-     },
-     {
-      "id": "B",
-      "text": "25"
-     },
-     {
-      "id": "C",
-      "text": "144"
-     },
-     {
-      "id": "D",
-      "text": "192"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q69",
-    "sourceQuestionNo": 69,
-    "stemEn": "The value of 'y' in the question 2x + 3y - 7 = 0\n\nif x = -3/2",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "10"
-     },
-     {
-      "id": "B",
-      "text": "10/3"
-     },
-     {
-      "id": "C",
-      "text": "4/3"
-     },
-     {
-      "id": "D",
-      "text": "13/3 Direction for question 70 to 72: From the graph given below, answer the following question."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q70",
-    "sourceQuestionNo": 70,
-    "stemEn": "The total number of people owing books more than '40' is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "60"
-     },
-     {
-      "id": "B",
-      "text": "31"
-     },
-     {
-      "id": "C",
-      "text": "14"
-     },
-     {
-      "id": "D",
-      "text": "30"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q71",
-    "sourceQuestionNo": 71,
-    "stemEn": "The number of people owing books more than 20 but less than 60 is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "14"
-     },
-     {
-      "id": "B",
-      "text": "16"
-     },
-     {
-      "id": "C",
-      "text": "30"
-     },
-     {
-      "id": "D",
-      "text": "40"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q72",
-    "sourceQuestionNo": 72,
-    "stemEn": "The total number of people surveyed is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "16"
-     },
-     {
-      "id": "B",
-      "text": "56"
-     },
-     {
-      "id": "C",
-      "text": "54"
-     },
-     {
-      "id": "D",
-      "text": "55 Direction for questions 73 to 75: From the given diagram, answer the following question."
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q73",
-    "sourceQuestionNo": 73,
-    "stemEn": "'AC' is 23 cm in the adjoining figure. Consider the figure and answer the questions",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "133 cm²"
-     },
-     {
-      "id": "B",
-      "text": "140 cm²"
-     },
-     {
-      "id": "C",
-      "text": "70 cm²"
-     },
-     {
-      "id": "D",
-      "text": "66.5 cm²"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": [
-     {
-      "id": "q73-figure-1",
-      "kind": "figure",
-      "path": "/local-papers/assets/general-test-2022-08-08-shift-1/q73-figure-1.jpg",
-      "page": 6,
-      "alt": "Figure for question 73"
-     }
-    ]
-   },
-   {
-    "id": "q74",
-    "sourceQuestionNo": 74,
-    "stemEn": "The area of $ \\Delta DBC $ is DB is a straight line",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "$ 32.5 \\, cm^{2} $"
-     },
-     {
-      "id": "B",
-      "text": "$ 65 \\, cm^{2} $"
-     },
-     {
-      "id": "C",
-      "text": "$ 25 \\, cm^{2} $"
-     },
-     {
-      "id": "D",
-      "text": "$ 15 \\, m^{2} $"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   },
-   {
-    "id": "q75",
-    "sourceQuestionNo": 75,
-    "stemEn": "The total area of figure is",
-    "optionsEn": [
-     {
-      "id": "A",
-      "text": "184.5 cm²"
-     },
-     {
-      "id": "B",
-      "text": "205 cm²"
-     },
-     {
-      "id": "C",
-      "text": "175.5 cm²"
-     },
-     {
-      "id": "D",
-      "text": "153 cm² SOLUTIONS"
-     }
-    ],
-    "optionsAreImages": false,
-    "correctAnswer": null,
-    "explanationEn": null,
-    "passageId": null,
-    "reviewStatus": "keyed",
-    "reviewFlags": [],
-    "sourcePages": [
-     6
-    ],
-    "assets": []
-   }
-  ]
- }
+  }
 }

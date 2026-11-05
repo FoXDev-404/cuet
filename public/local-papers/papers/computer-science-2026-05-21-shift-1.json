@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_ComputerScience_May21_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -117,78 +117,8 @@
         "assets": []
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "Which search method has logarithmic complexity?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Linear search"
-          },
-          {
-            "id": "B",
-            "text": "Binary search"
-          },
-          {
-            "id": "C",
-            "text": "Sequential search"
-          },
-          {
-            "id": "D",
-            "text": "None"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q05",
-        "sourceQuestionNo": 5,
-        "stemEn": "Who developed Python programming language?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Dennis Ritchie"
-          },
-          {
-            "id": "B",
-            "text": "James Gosling"
-          },
-          {
-            "id": "C",
-            "text": "Guido van Rossum"
-          },
-          {
-            "id": "D",
-            "text": "Bjarne Stroustrup"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "Which keyword is used to define a function in Python?",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "Which operator is used for logical AND?",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "Which one of the following is the Middle element index formula:",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "Which of the following is NOT an element of communication?",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "Linear search is useful when:",
         "optionsEn": [
           {

@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "Chemistry_2024-05-15_Shift_1.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 47,
+    "questionCount": 46,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -1157,7 +1157,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 35,
         "stemEn": "Reaction of aniline with conc. HNO₃ and conc. H₂SO₄ at 298 K will produce 47% of",
         "optionsEn": [
           {
@@ -1190,7 +1190,7 @@
       },
       {
         "id": "q37",
-        "sourceQuestionNo": 37,
+        "sourceQuestionNo": 36,
         "stemEn": "What will be increasing order of basic strength of the following compounds?\n\n$$ \\mathrm{C}_{2}\\mathrm{H}_{5}\\mathrm{NH}_{2},(\\mathrm{C}_{2}\\mathrm{H}_{5})_{2}\\mathrm{NH},(\\mathrm{C}_{2}\\mathrm{H}_{5})_{3}\\mathrm{N},\\mathrm{C}_{6}\\mathrm{H}_{5}\\mathrm{NH}_{2} $$",
         "optionsEn": [
           {
@@ -1223,7 +1223,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 37,
         "stemEn": "Arrange the following acids in increasing order of their acidic strengths:\n\nHCOOH, $ \\text{FCH}_2\\text{COOH} $, $ \\text{NO}_2\\text{CH}_2\\text{COOH} $, $ \\text{ClCH}_2\\text{COOH} $",
         "optionsEn": [
           {
@@ -1255,41 +1255,8 @@
         "assets": []
       },
       {
-        "id": "q40",
-        "sourceQuestionNo": 40,
-        "stemEn": "In the following compounds, what is the increasing order of their reactivity towards nucleophilic addition reactions?\n\nBenzaldehyde, p-Tolualdehyde, p-Nitrobenzaldehyde, Acetophenone",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Benzaldehyde"
-          },
-          {
-            "id": "B",
-            "text": "Acetophenone"
-          },
-          {
-            "id": "C",
-            "text": "Acetophenone"
-          },
-          {
-            "id": "D",
-            "text": "Benzaldehyde"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [],
-        "sourcePages": [
-          29
-        ],
-        "assets": []
-      },
-      {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 38,
         "stemEn": "Formaldehyde undergoes Cannizzaro reaction because\n\n(A) It has alpha-hydrogen atom.\n\n(B) It does not have alpha-hydrogen atom.\n\n(C) It does not undergo self-oxidation and reduction on heating with concentrated alkali.\n\n(D) It undergo self-oxidation and reduction on heating with concentrated alkali.",
         "optionsEn": [
           {
@@ -1322,7 +1289,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 39,
         "stemEn": "In the reaction, $ (CH_{3})_{3}C-O-CH_{3} + HI \\rightarrow $ Products\n\nCH₃OH and (CH₃)₃CI are the products and not CH₃I and (CH₃)₃C-OH. It is because,\n\n(A) in step 2 of the reaction the departure of leaving group $ \\mathrm{(HO-CH_{3})} $ creates less stable carbocation.\n\n(B) in step 2 of the reaction the departure of leaving group $ (HO-CH_{3}) $ creates more stable carbocation.\n\n(C) the reaction follows S_{n}1 mechanism.\n\n(D) the reaction follows S_{n}2 mechanism.",
         "optionsEn": [
           {
@@ -1355,7 +1322,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 40,
         "stemEn": "Aniline does not undergo Friedel-Crafts reaction because\n\n(A) It forms salt with the Lewis acid catalyst, $ AlCl_{3} $.\n\n(B) Nitrogen of aniline acquires negative charge.\n\n(C) Nitrogen of aniline acquires positive charge.\n\n(D) Nitrogen acts as a strong deactivating group in the further reaction.",
         "optionsEn": [
           {
@@ -1388,7 +1355,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 41,
         "stemEn": "Although chlorine is an electron withdrawing group, yet it is ortho- and para-directing in electrophilic aromatic substitution reaction because\n\n(A) Chlorine withdraws electrons through inductive effect.\n\n(B) Chlorine destabilises the intermediate carbocation formed during electrophilic substitution.\n\n(C) Chlorine accepts electrons through resonance.\n\n(D) Chlorine releases electrons through resonance.",
         "optionsEn": [
           {
@@ -1421,7 +1388,7 @@
       },
       {
         "id": "q46",
-        "sourceQuestionNo": 46,
+        "sourceQuestionNo": 42,
         "stemEn": "In Etard reaction, the final product is",
         "optionsEn": [
           {
@@ -1454,7 +1421,7 @@
       },
       {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 43,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1495,7 +1462,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 44,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1537,7 +1504,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 45,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {
@@ -1578,7 +1545,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 46,
         "stemEn": "Match List-I with List-II:",
         "optionsEn": [
           {

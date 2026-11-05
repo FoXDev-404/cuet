@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_English_May11_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 49,
+    "questionCount": 43,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -84,43 +84,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "Rearrange the following phrases to form a meaningful sentence:\n\nA. to understand the cause of difficulties\n\nB. in which the counsellor helps the clients\n\nC. and guide them to sort out issues\n\nD. counselling is an interactive process\n\nChoose the most appropriate answer from the options given below:",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "D, C, A, B"
-          },
-          {
-            "id": "B",
-            "text": "A, B, C, D"
-          },
-          {
-            "id": "C",
-            "text": "D, B, A, C"
-          },
-          {
-            "id": "D",
-            "text": "C, D, B, A"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 3,
         "stemEn": "Rearrange the following phrases to form a meaningful sentence:\n\nA. within the country and internationally, for many reasons\n\nB. with globalization\n\nC. where people travel from one place to another,\n\nD. the world has become a small place\n\nChoose the most appropriate answer from the options given below:",
         "optionsEn": [
           {
@@ -152,43 +117,8 @@
         "assets": []
       },
       {
-        "id": "q05",
-        "sourceQuestionNo": 5,
-        "stemEn": "Rearrange the following phrases to form a meaningful sentence:\n\nA. Rama and Lakshmana accompanying sage Vishwamitra\n\nB. distress the hermits by disturbing their meditative practices\n\nC. to the forests to defeat the demons who would\n\nD. another painting from the same set depicts\n\nChoose the most appropriate answer from the options given below:-",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "A, D, B, C"
-          },
-          {
-            "id": "B",
-            "text": "D, A, C, B"
-          },
-          {
-            "id": "C",
-            "text": "D, C, B, A"
-          },
-          {
-            "id": "D",
-            "text": "C, D, B, A"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "Select the most appropriate word from the given options that has a similar meaning to the word: BRITTLE.",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "Identify the most appropriate word which is similar to the underlined word in the following sentence:\n\nThe first day at the new school is always a  $ \\underline{\\text{MOMENTOUS}} $ day for the students.",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "Select the most appropriate antonym to the underlined word in the sentence given below: The judge appreciated the young speaker for his  $ \\underline{\\text{IMMACULATE}} $ style of speaking.",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "Select the correct pairs of antonyms from the given options:\n\nA. feisty, frisky\n\nB. feasting, starving\n\nC. feline, cunning\n\nD. fecund, barren\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "Choose the most appropriate word from the given options to fill in the blank:\n\nAll the ministers paid homage and placed the _____- on the platform.",
         "optionsEn": [
           {
@@ -353,7 +283,7 @@
       },
       {
         "id": "q11",
-        "sourceQuestionNo": 11,
+        "sourceQuestionNo": 9,
         "stemEn": "Choose the appropriate word from the options to fill in the blank.\n\nAs the structure was illegal, the authorities decided to ___ it.",
         "optionsEn": [
           {
@@ -386,7 +316,7 @@
       },
       {
         "id": "q12",
-        "sourceQuestionNo": 12,
+        "sourceQuestionNo": 10,
         "stemEn": "Select the options that can substitute the given group of words:\n\nOne who cares about and helps others selflessly.\n\nA. Altruist\n\nB. Philanthropist\n\nC. Benevolent\n\nD. Philistine\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -419,7 +349,7 @@
       },
       {
         "id": "q13",
-        "sourceQuestionNo": 13,
+        "sourceQuestionNo": 11,
         "stemEn": "Select the options that can correctly substitute the given phrase: One who likes to fight-\n\nA. cheeky\n\nB. belligerent\n\nC. bellicose\n\nD. flippant\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -452,7 +382,7 @@
       },
       {
         "id": "q14",
-        "sourceQuestionNo": 14,
+        "sourceQuestionNo": 12,
         "stemEn": "Select the correct word from the given options to fill in the blank in the given sentence: I am _____ to solve this problem today.",
         "optionsEn": [
           {
@@ -485,7 +415,7 @@
       },
       {
         "id": "q15",
-        "sourceQuestionNo": 15,
+        "sourceQuestionNo": 13,
         "stemEn": "Choose the correctly spelled word from the given options:",
         "optionsEn": [
           {
@@ -517,43 +447,8 @@
         "assets": []
       },
       {
-        "id": "q16",
-        "sourceQuestionNo": 16,
-        "stemEn": "Fill in the blank with the most suitable word from the options given below:\n\n#### The nurse asked the patient to _____ down and take some rest for speedy recovery.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "lain"
-          },
-          {
-            "id": "B",
-            "text": "lie"
-          },
-          {
-            "id": "C",
-            "text": "lay"
-          },
-          {
-            "id": "D",
-            "text": "laid"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q17",
-        "sourceQuestionNo": 17,
+        "sourceQuestionNo": 14,
         "stemEn": "Fill in the blank with the correctly spelled word from the options given below:\n\n\nAfter signing the agreement with the authorities, the mood of the company's director became _____.",
         "optionsEn": [
           {
@@ -586,7 +481,7 @@
       },
       {
         "id": "q18",
-        "sourceQuestionNo": 18,
+        "sourceQuestionNo": 15,
         "stemEn": "Fill in the blank in the given sentence with the most suitable word from the options given below:\n\nShe'll have a birthday present of one thousand rupees for five _____ years.",
         "optionsEn": [
           {
@@ -619,7 +514,7 @@
       },
       {
         "id": "q19",
-        "sourceQuestionNo": 19,
+        "sourceQuestionNo": 16,
         "stemEn": "Fill in the blank with the most suitable word from the options given below :\n\nThe Principal gave some _____ suggestions to the students and asked them to call off the strike.",
         "optionsEn": [
           {
@@ -652,7 +547,7 @@
       },
       {
         "id": "q20",
-        "sourceQuestionNo": 20,
+        "sourceQuestionNo": 17,
         "stemEn": "Fill in the blank with the most appropriate word from the options given below:\n\nAlthough Sudhir did not get much time to prepare, yet he could present the topic ___ before the board of directors.",
         "optionsEn": [
           {
@@ -685,7 +580,7 @@
       },
       {
         "id": "q21",
-        "sourceQuestionNo": 21,
+        "sourceQuestionNo": 18,
         "stemEn": "Choose the option which is grammatically correct:",
         "optionsEn": [
           {
@@ -718,7 +613,7 @@
       },
       {
         "id": "q22",
-        "sourceQuestionNo": 22,
+        "sourceQuestionNo": 19,
         "stemEn": "Fill in the blanks with the most suitable word from the options given below:\n\nThe desire for revenge is very dangerous_____ it does not diminish with time.",
         "optionsEn": [
           {
@@ -751,7 +646,7 @@
       },
       {
         "id": "q23",
-        "sourceQuestionNo": 23,
+        "sourceQuestionNo": 20,
         "stemEn": "Select the appropriate word to fill in the blank:\n\nRahul thought he had a good chance to get the job _____ his uncle was on the company's board of directors.",
         "optionsEn": [
           {
@@ -784,7 +679,7 @@
       },
       {
         "id": "q24",
-        "sourceQuestionNo": 24,
+        "sourceQuestionNo": 21,
         "stemEn": "Choose the option which best expresses the same sentence in Passive voice:\n\n#### Every Monday, she paid him rent without fail.",
         "optionsEn": [
           {
@@ -817,7 +712,7 @@
       },
       {
         "id": "q25",
-        "sourceQuestionNo": 25,
+        "sourceQuestionNo": 22,
         "stemEn": "Select the option that best expresses the synonym of the given word:\n\n##### Mortify",
         "optionsEn": [
           {
@@ -850,7 +745,7 @@
       },
       {
         "id": "q26",
-        "sourceQuestionNo": 26,
+        "sourceQuestionNo": 23,
         "stemEn": "Select the option which expresses the given sentence in Indirect speech: The visitor said to Sameer,\" Why did your father drag you into this situation?\"",
         "optionsEn": [
           {
@@ -883,7 +778,7 @@
       },
       {
         "id": "q27",
-        "sourceQuestionNo": 27,
+        "sourceQuestionNo": 24,
         "stemEn": "Select the antonym of the given word: Ostentatious",
         "optionsEn": [
           {
@@ -916,7 +811,7 @@
       },
       {
         "id": "q28",
-        "sourceQuestionNo": 28,
+        "sourceQuestionNo": 25,
         "stemEn": "Match the idioms in List-I with their appropriate meanings in List-II\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">LIST-I (IDIOMS)</td><td colspan=\"2\">LIST-II (MEANINGS)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>Black and blue</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>Sudden or unexpected shock</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>Bolt from the blue</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>To be the first to do something</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>Blaze a trial</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>To beat mercilessly</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>Blue blood</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>Belong to the royal family</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -949,7 +844,7 @@
       },
       {
         "id": "q30",
-        "sourceQuestionNo": 30,
+        "sourceQuestionNo": 26,
         "stemEn": "Fill in the blanks in the sentences given in List I with the appropriate idioms given in List II.\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">LIST-I (Sentences)</td><td colspan=\"2\">LIST-II (Idioms)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>Harassed by the repeated rebukes by the manager, the salesman decided to _____.</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>tall order</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>It is a____ to control pollution in the cities.</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>my cup of tea</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>Swimming is not____ as I have no courage.</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>bone of contention</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>The new flat is a____ between the two brothers.</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>put his foot down</td></tr></table>\n\n\n##### Choose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -982,7 +877,7 @@
       },
       {
         "id": "q31",
-        "sourceQuestionNo": 31,
+        "sourceQuestionNo": 27,
         "stemEn": "Select the correct words given in List-I to complete the sentences given in List-II :\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">LIST-I</td><td colspan=\"2\">LIST-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>laid off</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>The wise people always___ money for old age.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>lay up</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>The workers were___ due to financial problems.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>laid out</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>He always violated the rules___ by the office.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>laid down</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>The gardens were___ with lawns and flower beds.</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1015,7 +910,7 @@
       },
       {
         "id": "q32",
-        "sourceQuestionNo": 32,
+        "sourceQuestionNo": 28,
         "stemEn": "Match the phrasal verbs given in List-I with the meanings given in List-II\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">LIST-I</td><td colspan=\"2\">LIST-II</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>Call off</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>visit a place to meet someone</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>Call at</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>Demand</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>Call out</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>Suspend or abandon</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>Call for</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>Ask to come for help</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1048,7 +943,7 @@
       },
       {
         "id": "q33",
-        "sourceQuestionNo": 33,
+        "sourceQuestionNo": 29,
         "stemEn": "Fill in the blanks with the most appropriate option :\n\nKindness is a quality that is alien ___ Harish.",
         "optionsEn": [
           {
@@ -1081,7 +976,7 @@
       },
       {
         "id": "q34",
-        "sourceQuestionNo": 34,
+        "sourceQuestionNo": 30,
         "stemEn": "Fill in the blanks with the most suitable option:\n\nThe two brothers quarreled _____ the share of their ancestral property.",
         "optionsEn": [
           {
@@ -1114,7 +1009,7 @@
       },
       {
         "id": "q35",
-        "sourceQuestionNo": 35,
+        "sourceQuestionNo": 31,
         "stemEn": "Match the Figures of speech given in List-I with their examples in List-II\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">LIST-I (Figures of speech)</td><td colspan=\"2\">LIST-II (Examples)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>Hyperbole</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>Death dwells in every nook and cranny of the slums.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>Simile</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>The fair, funny, fragile looking waif</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>Personification</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>Malicious words are like bullets that tear through you.</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>Alliteration</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>The husband's cruel desertion broke her heart into smithereens.</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1147,7 +1042,7 @@
       },
       {
         "id": "q36",
-        "sourceQuestionNo": 36,
+        "sourceQuestionNo": 32,
         "stemEn": "Match the expressions given in List I with the appropriate figures of speech given in List II :\n\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">LIST-I (Phrases)</td><td colspan=\"2\">LIST-II (Figures of speech)</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>A.</td><td style='text-align: center; word-wrap: break-word;'>Her voice crowds up and down the lawn</td><td style='text-align: center; word-wrap: break-word;'>I.</td><td style='text-align: center; word-wrap: break-word;'>Alliteration</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>B.</td><td style='text-align: center; word-wrap: break-word;'>He makes no friend, who never made a foe.</td><td style='text-align: center; word-wrap: break-word;'>II.</td><td style='text-align: center; word-wrap: break-word;'>Personification</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>C.</td><td style='text-align: center; word-wrap: break-word;'>Singing in summer in full-throated ease</td><td style='text-align: center; word-wrap: break-word;'>III.</td><td style='text-align: center; word-wrap: break-word;'>Hyperbole</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>D.</td><td style='text-align: center; word-wrap: break-word;'>Winter laid its icy hands over the city.</td><td style='text-align: center; word-wrap: break-word;'>IV.</td><td style='text-align: center; word-wrap: break-word;'>Epigram</td></tr></table>\n\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
@@ -1179,43 +1074,8 @@
         "assets": []
       },
       {
-        "id": "q37",
-        "sourceQuestionNo": 37,
-        "stemEn": "Select the appropriate word to replace the given group of words:\n\nThe study of the structure, historical development and a relationship of a language.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Philology"
-          },
-          {
-            "id": "B",
-            "text": "Philately"
-          },
-          {
-            "id": "C",
-            "text": "Petrology"
-          },
-          {
-            "id": "D",
-            "text": "Phonetics"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q38",
-        "sourceQuestionNo": 38,
+        "sourceQuestionNo": 33,
         "stemEn": "Select the appropriate option to fill in the blank:\n\nThe mob was _____ to indulge in a series of acts of arson.",
         "optionsEn": [
           {
@@ -1248,7 +1108,7 @@
       },
       {
         "id": "q39",
-        "sourceQuestionNo": 39,
+        "sourceQuestionNo": 34,
         "stemEn": "Fill in the blank with the correct word:\n\nThe _____ lady followed the sacrosanct rituals with full devotion.",
         "optionsEn": [
           {
@@ -1281,7 +1141,7 @@
       },
       {
         "id": "q40",
-        "sourceQuestionNo": 40,
+        "sourceQuestionNo": 35,
         "stemEn": "Fill in the blank with the appropriate word:\n\nHis folly will surely _____ his ruin.",
         "optionsEn": [
           {
@@ -1313,43 +1173,8 @@
         "assets": []
       },
       {
-        "id": "q41",
-        "sourceQuestionNo": 41,
-        "stemEn": "Dibrugarh Wildlife Sanctuary is attracting tourists because of its-",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Wildlife"
-          },
-          {
-            "id": "B",
-            "text": "Mahanadi River"
-          },
-          {
-            "id": "C",
-            "text": "Community-led Conservation"
-          },
-          {
-            "id": "D",
-            "text": "Engineering Marvel"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q42",
-        "sourceQuestionNo": 42,
+        "sourceQuestionNo": 36,
         "stemEn": "Identify the figure of speech used in the line 'Thousands of bats hang like dark fruits'.",
         "optionsEn": [
           {
@@ -1382,7 +1207,7 @@
       },
       {
         "id": "q43",
-        "sourceQuestionNo": 43,
+        "sourceQuestionNo": 37,
         "stemEn": "Which of the following river runs through the city of Sambalpur?",
         "optionsEn": [
           {
@@ -1415,7 +1240,7 @@
       },
       {
         "id": "q44",
-        "sourceQuestionNo": 44,
+        "sourceQuestionNo": 38,
         "stemEn": "Identify the meaning of the underlined word in the line, 'this is where the famed sambalpuri  $ \\underline{ikat} $ is born.",
         "optionsEn": [
           {
@@ -1448,7 +1273,7 @@
       },
       {
         "id": "q45",
-        "sourceQuestionNo": 45,
+        "sourceQuestionNo": 39,
         "stemEn": "The main profession of the people in sambalpur is—",
         "optionsEn": [
           {
@@ -1480,43 +1305,8 @@
         "assets": []
       },
       {
-        "id": "q46",
-        "sourceQuestionNo": 46,
-        "stemEn": "From the offer made by the narrator's friend, it's evident that the friend is-",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "greedy"
-          },
-          {
-            "id": "B",
-            "text": "an opportunist"
-          },
-          {
-            "id": "C",
-            "text": "a Romanist"
-          },
-          {
-            "id": "D",
-            "text": "an Antiquarian"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q47",
-        "sourceQuestionNo": 47,
+        "sourceQuestionNo": 40,
         "stemEn": "Which among the following was not a topic of conversation between the narrator and his elder brother?",
         "optionsEn": [
           {
@@ -1549,7 +1339,7 @@
       },
       {
         "id": "q48",
-        "sourceQuestionNo": 48,
+        "sourceQuestionNo": 41,
         "stemEn": "The narrator's friend did not want the house to be demolished because it was",
         "optionsEn": [
           {
@@ -1582,7 +1372,7 @@
       },
       {
         "id": "q49",
-        "sourceQuestionNo": 49,
+        "sourceQuestionNo": 42,
         "stemEn": "Choose the best option to explain the given phrase:\n\n##### It struck me",
         "optionsEn": [
           {
@@ -1615,7 +1405,7 @@
       },
       {
         "id": "q50",
-        "sourceQuestionNo": 50,
+        "sourceQuestionNo": 43,
         "stemEn": "Identify the meaning of the phrase ‘kith and kin’",
         "optionsEn": [
           {

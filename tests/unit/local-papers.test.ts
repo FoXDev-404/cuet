@@ -59,6 +59,7 @@ const STORED_KEYS = createStoredKeys(
   JSON.parse(readFileSync(KEYS_FILE, "utf8")) as RawKeyBundle,
 );
 
+let mockUnkeyedForTest = false;
 // Inject the JSON seed as the store, mirroring what D1 serves in production.
 setPracticeLibraryStore({
   loadIndex: async () => SUMMARIES,
@@ -66,7 +67,16 @@ setPracticeLibraryStore({
     const summary = SUMMARIES.find((paper) => paper.slug === slug);
     if (!summary) return null;
     try {
-      return buildPaper(readPaper(slug), summary, STORED_KEYS.get(slug));
+      const p = buildPaper(readPaper(slug), summary, STORED_KEYS.get(slug));
+      if (p && mockUnkeyedForTest && slug === KEYED_SLUG) {
+        return {
+          ...p,
+          questions: p.questions.map((q, idx) =>
+            idx === 0 ? { ...q, scorable: false, correctAnswer: null } : q
+          ),
+        };
+      }
+      return p;
     } catch {
       return null;
     }
@@ -216,17 +226,22 @@ describe("gradeLocalPaper", () => {
   });
 
   it("keeps questions without a matched key pending and unscored", async () => {
-    const paper = await getLocalPaper(KEYED_SLUG);
-    const pending = paper!.questions.find((question) => !question.scorable);
-    expect(pending).toBeTruthy();
-    const result = await gradeLocalPaper(KEYED_SLUG, [
-      { questionId: pending!.id, selectedOption: pending!.options[0].id },
-    ]);
-    expect(result?.review.find((item) => item.questionId === pending!.id)).toMatchObject({
-      status: "pending",
-      correctOption: null,
-      scorable: false,
-    });
+    mockUnkeyedForTest = true;
+    try {
+      const paper = await getLocalPaper(KEYED_SLUG);
+      const pending = paper!.questions.find((question) => !question.scorable);
+      expect(pending).toBeTruthy();
+      const result = await gradeLocalPaper(KEYED_SLUG, [
+        { questionId: pending!.id, selectedOption: pending!.options[0].id },
+      ]);
+      expect(result?.review.find((item) => item.questionId === pending!.id)).toMatchObject({
+        status: "pending",
+        correctOption: null,
+        scorable: false,
+      });
+    } finally {
+      mockUnkeyedForTest = false;
+    }
   });
 
   it("returns an empty, unattempted result for a blank submission", async () => {

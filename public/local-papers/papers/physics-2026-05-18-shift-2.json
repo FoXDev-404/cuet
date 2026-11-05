@@ -11,7 +11,7 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_Physics_May18_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 7,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -133,51 +133,8 @@
         ]
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "Three long, straight parallel wires, carrying current, are arranged as shown in figure. The force experienced by a 25 cm length of wire C is\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-18-shift-2/q04-figure-1.jpg\" alt=\"Figure 1 for question 4\" />\n</div>",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ 10^{-3} $ N"
-          },
-          {
-            "id": "B",
-            "text": "$ 2.5 \\times 10^{-3} $ N"
-          },
-          {
-            "id": "C",
-            "text": "Zero"
-          },
-          {
-            "id": "D",
-            "text": "$ 1.5 \\times 10^{-3} $ N"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": [
-          {
-            "id": "q04-figure-1",
-            "kind": "figure",
-            "path": "/local-papers/assets/physics-2026-05-18-shift-2/q04-figure-1.jpg",
-            "page": 1,
-            "alt": "Figure 1 for question 4"
-          }
-        ]
-      },
-      {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 4,
         "stemEn": "A steady current / flow through a long straight wire of radius 'a'. The current is uniformly\n\ndistributed across its cross section. The ratio of the magnetic fields due to the wire at distance  $ \\frac{a}{4} $ and 3a respectively from the axis of the wire is",
         "optionsEn": [
           {
@@ -210,7 +167,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 5,
         "stemEn": "In the figure shown, the magnetic field induction at the point O will be\n\n<div style=\"text-align: center;\">\n<img src=\"/local-papers/assets/physics-2026-05-18-shift-2/q06-figure-1.jpg\" alt=\"Figure 1 for question 6\" />\n</div>",
         "optionsEn": [
           {
@@ -251,7 +208,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 6,
         "stemEn": "The nucleus of helium atom contains two protons that are separated by a distance  $ 3.0 \\times 10^{-15} $ m. The magnitude of the electrostatic force that each proton exerts on the other is",
         "optionsEn": [
           {
@@ -283,43 +240,8 @@
         "assets": []
       },
       {
-        "id": "q08",
-        "sourceQuestionNo": 8,
-        "stemEn": "Under the action of a given coulombic force the acceleration of an electron is  $ 2.5 \\times 10^{22} $ m s $ ^{-2} $. Then the magnitude of the acceleration of a proton under the action of same force is nearly",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$$ 1.6\\times10^{-19}m s^{-2} $$"
-          },
-          {
-            "id": "B",
-            "text": "$$ 9.1\\times10^{31}\\mathrm{~m~s}^{-2} $$"
-          },
-          {
-            "id": "C",
-            "text": "$$ 1.5\\times10^{19}\\mathrm{~m~s}^{-2} $$"
-          },
-          {
-            "id": "D",
-            "text": "$ 1.6 \\times 10^{27} $ m s $ ^{-2} $"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "If the charge on an object is doubled then electric field becomes",
         "optionsEn": [
           {
@@ -345,41 +267,6 @@
         "passageId": null,
         "reviewStatus": "keyed",
         "reviewFlags": [],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q10",
-        "sourceQuestionNo": 10,
-        "stemEn": "Which of the following statements is not true about electric field lines?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "Electric field lines start from positive charge and end at negative charge."
-          },
-          {
-            "id": "B",
-            "text": "Two electric field lines can never cross each other."
-          },
-          {
-            "id": "C",
-            "text": "Electrostatic field lines do not form any closed loops."
-          },
-          {
-            "id": "D",
-            "text": "Electric field lines cannot be taken as continuous curve"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
         "sourcePages": [
           1
         ],

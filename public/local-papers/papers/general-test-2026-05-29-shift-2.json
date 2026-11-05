@@ -11,50 +11,15 @@
     "shift": "Shift 2",
     "sourceFile": "CUET_UG_2026_GAT_May29_Shift2_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 8,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
     "passages": [],
     "questions": [
       {
-        "id": "q01",
-        "sourceQuestionNo": 1,
-        "stemEn": "Select the odd group of numbers.",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "13 - 159"
-          },
-          {
-            "id": "B",
-            "text": "9 - 71"
-          },
-          {
-            "id": "C",
-            "text": "5 - 31"
-          },
-          {
-            "id": "D",
-            "text": "17 - 279"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q02",
-        "sourceQuestionNo": 2,
+        "sourceQuestionNo": 1,
         "stemEn": "A # B means 'A is the brother of B', A @ B means 'A is the daughter of B', A & B means 'A is the husband of B', A % B means 'A is the wife of B'. If G % M # L @ P & C @ B, then how is L related to B?",
         "optionsEn": [
           {
@@ -86,43 +51,8 @@
         "assets": []
       },
       {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "What is the fourth proportional to $\\sqrt{6}$, $\\sqrt{8}$ and $\\sqrt{21}$?",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$3\\sqrt{7}$"
-          },
-          {
-            "id": "B",
-            "text": "$2\\sqrt{7}$"
-          },
-          {
-            "id": "C",
-            "text": "$8\\sqrt{7}$"
-          },
-          {
-            "id": "D",
-            "text": "$5\\sqrt{7}$"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q04",
-        "sourceQuestionNo": 4,
+        "sourceQuestionNo": 2,
         "stemEn": "In a certain code language, 'INNER' is written as 'SNNWJ' and 'GLASS' is written as 'UPAII'. How will 'MODEL' be written in that language?",
         "optionsEn": [
           {
@@ -155,7 +85,7 @@
       },
       {
         "id": "q05",
-        "sourceQuestionNo": 5,
+        "sourceQuestionNo": 3,
         "stemEn": "The average age of 14 students and their teacher is 20 years. If the teacher is excluded, then their average age reduces by 1.5 years. The teacher's age is:",
         "optionsEn": [
           {
@@ -188,7 +118,7 @@
       },
       {
         "id": "q06",
-        "sourceQuestionNo": 6,
+        "sourceQuestionNo": 4,
         "stemEn": "The radius of the base of a right circular cone is 7 cm and its curved surface area is 550 cm². The volume of the cone is: (use  $ \\pi = 22/7 $)",
         "optionsEn": [
           {
@@ -221,7 +151,7 @@
       },
       {
         "id": "q07",
-        "sourceQuestionNo": 7,
+        "sourceQuestionNo": 5,
         "stemEn": "Successive discounts of 13 percent and 19 percent are equivalent to a single discount of:",
         "optionsEn": [
           {
@@ -254,7 +184,7 @@
       },
       {
         "id": "q08",
-        "sourceQuestionNo": 8,
+        "sourceQuestionNo": 6,
         "stemEn": "What is the angle made by hands of clock at 11 O' clock?",
         "optionsEn": [
           {
@@ -287,7 +217,7 @@
       },
       {
         "id": "q09",
-        "sourceQuestionNo": 9,
+        "sourceQuestionNo": 7,
         "stemEn": "Two unbiased dice are thrown simultaneously. Find the probability of getting a sum 5.",
         "optionsEn": [
           {
@@ -320,7 +250,7 @@
       },
       {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 8,
         "stemEn": "5 bells start commencing together at 9 AM. They ring at the intervals of 12 seconds, 18 seconds.\n\nseconds, 24 seconds, 36 seconds and 45 seconds. At what time do the bells ring together again?",
         "optionsEn": [
           {

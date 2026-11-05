@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_Mathematics_May30_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 50,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -282,43 +282,8 @@
         "assets": []
       },
       {
-        "id": "q09",
-        "sourceQuestionNo": 9,
-        "stemEn": "Calculate\n\n $$ \\int e^{x}dx. $$",
-        "optionsEn": [
-          {
-            "id": "A",
-            "text": "$ e^{x} + C $"
-          },
-          {
-            "id": "B",
-            "text": "$$ e^{x+1}+C $$"
-          },
-          {
-            "id": "C",
-            "text": "$$ \\frac{e^{x}}{x}+C $$"
-          },
-          {
-            "id": "D",
-            "text": "$$ x e^{x}+C $$"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
         "id": "q10",
-        "sourceQuestionNo": 10,
+        "sourceQuestionNo": 9,
         "stemEn": "Find the distance from the point\n\nto the plane\n\n $$ x+y+z=3. $$",
         "optionsEn": [
           {
