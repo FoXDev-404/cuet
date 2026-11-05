@@ -1011,3 +1011,41 @@ the 5,322 real questions, not only the empty ranked bank.
   provenance gate.
 - The 44 skipped papers (2,004 unkeyed questions) remain in the OCR bundle for
   editorial review; they are not playable because the server cannot score them.
+
+
+## Phase R — Production parity and release automation (2026-11-06)
+
+### What changed
+
+- Added `.github/workflows/deploy-production.yml`, a manual-only production
+  release: remote migrations, practice import, ranked-mock import, explanation
+  provenance, `npm run deploy`, and a smoke check of `/api/health`,
+  `/mock-tests`, `/sitemap.xml` and the new Psychology mock. It refuses to run
+  without `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` and a typed `deploy`
+  confirmation.
+- Refactored `scripts/backfill-explanation-provenance.mjs` to support
+  `--remote` (wrangler `d1 execute --file`) while keeping the local SQLite path.
+- Updated the deployment runbook to use `npm run deploy` and to document the
+  245-paper dataset import and rights gate.
+
+### Evidence
+
+- Production worker built and served locally with `wrangler dev` over the local
+  D1: `/api/health` 200, `/mock-tests` "245 papers · 18 subjects · 2021 to 2026",
+  sitemap 48 URLs, Psychology instructions 200, 50 questions in the public API
+  with zero key fields, guest attempt server-scored 5/250, solutions fallback
+  and correct answer rendered.
+- CI at `e3000f8` (run 42124187937) is fully green: 382 unit/integration tests,
+  production build, SEO 48/48, full Playwright E2E, 268 axe scans.
+- Local D1: 245 practice papers / 7,527 practice questions / 245 published mocks
+  / 7,527 ranked questions.
+
+### Remaining
+
+- Dispatch the production workflow after adding the two Cloudflare secrets, or
+  run the documented commands with an authenticated Wrangler. The live Worker
+  still serves the previous 214-paper snapshot and its `/api/health` returned
+  503 during this round (D1 unavailable), so the static fallback is the only
+  working surface until the remote import and deploy complete.
+- Clear `rights_status` for reviewed papers at `/admin/pyq`; the new mock pages
+  stay noindex and out of the sitemap until then.

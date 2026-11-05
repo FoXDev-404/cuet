@@ -212,15 +212,19 @@ count without replacing the KDF or moving hashing off the Worker.
 
 ## First production deployment
 
-```powershell
+```bash
 npm ci
 npm test
-npx playwright test          # requires a published mock in the target database
-npm run test:a11y            # requires a running app; see script header
-npm run build
-npm run db:migrate:remote    # 0001 init, taxonomy seed, mock versions, content/ops
-npx wrangler deploy
+npm run db:migrate:remote
+node scripts/import-practice-library.mjs --remote
+node scripts/import-ranked-practice.mjs --remote
+node scripts/backfill-explanation-provenance.mjs --remote
+npm run deploy
 ```
+
+`npm run deploy` builds with `CLOUDFLARE_ENV=production` and uploads the resolved
+worker configuration. Do not run a raw `npx wrangler deploy` after a development
+build: that can ship development vars.
 
 `db:migrate:remote` applies every file in `migrations/`, including `0002_seed.sql`
 (taxonomy), `0002_mock_versions.sql`, `0003_content_and_ops.sql`,
@@ -229,6 +233,20 @@ npx wrangler deploy
 for re-applying the idempotent taxonomy seed by hand. Do not run the seed against a
 database that has edited exam facts; exam facts belong in `exam_info`, never in the
 seed.
+
+The same sequence is available as the manual **Deploy production** GitHub Actions
+workflow (`.github/workflows/deploy-production.yml`). It requires the repository
+secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, a typed `deploy`
+confirmation, and it smoke-checks `/api/health`, `/mock-tests`, `/sitemap.xml` and the
+new Psychology mock after deploying. It never runs on a push.
+
+### Dataset release (2026-11-06)
+
+The library is 245 papers / 7,527 scorable questions across 18 subjects. Remote D1
+must be imported before the new subject pages and mocks appear; the live Worker will
+continue to serve the previous 214-paper snapshot until then. All imported papers
+enter with `rights_status = 'unknown'`, so their mock pages remain `noindex` and
+outside the sitemap until an editor clears them at `/admin/pyq` (or the rights API).
 
 For a staging deploy, run the same build step and then the repeatable smoke suite
 against the Worker URL. Credentials are read from the environment and are never
