@@ -224,11 +224,15 @@ async function auditPath(page, label, path, viewport, waitFor, prepare) {
 }
 
 async function findMockSlug(page) {
-  await page.goto(`${baseURL}/cuet-ug-mock-test`, { waitUntil: "load" });
-  const href = await page.locator('a[href^="/mock/"]').first().getAttribute("href").catch(() => null);
-  if (!href) return null;
-  const match = href.match(/^\/mock\/([^/?#]+)/);
-  return match?.[1] ?? null;
+  // Try the primary library first; the older catalogue is kept as a fallback.
+  for (const path of ["/mock-tests", "/cuet-ug-mock-test"]) {
+    await page.goto(`${baseURL}${path}`, { waitUntil: "load" });
+    const href = await page.locator('a[href^="/mock/"]').first().getAttribute("href").catch(() => null);
+    if (!href) continue;
+    const match = href.match(/^\/mock\/([^/?#]+)/);
+    if (match?.[1]) return match[1];
+  }
+  return null;
 }
 
 async function findMockId(page, slug) {
