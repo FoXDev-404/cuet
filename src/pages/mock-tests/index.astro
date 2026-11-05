@@ -4,6 +4,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PaperFilters from "../../components/PaperFilters.astro";
 import PaperRow from "../../components/PaperRow.astro";
 import StartHereCard from "../../components/StartHereCard.astro";
+import FaqSection from "../../components/FaqSection.astro";
+import type { FaqItem } from "../../lib/seo";
 import {
   getLocalPapers,
   getLocalPaperYears,
@@ -88,7 +90,7 @@ const prevPageUrl = pagination.prevPage
   ? buildFilterUrl(PATH, params, { page: pagination.prevPage })
   : null;
 
-const faqs = [
+const faqs: FaqItem[] = [
   {
     question: "How does leaderboard ranking work?",
     answer:
@@ -97,7 +99,7 @@ const faqs = [
   {
     question: "What is the difference between Full key and Key N of M?",
     answer:
-      "A 'Full key' badge indicates that 100% of questions in the paper have verified printed answer keys and contribute to your score. A 'Key N of M' badge indicates a paper where certain questions lacked a definitive printed key from the source booklet; those specific questions are excluded from scoring so your percentage and marks remain fair.",
+      "A 'Full key' badge indicates that all questions in the paper have verified printed answer keys and contribute to your score. A 'Key N of M' badge indicates a paper where certain questions lacked a definitive printed key from the source booklet; those specific questions are excluded from scoring so your percentage and marks remain fair.",
   },
   {
     question: "What is the distinction between Full papers and Mini papers?",
@@ -114,30 +116,42 @@ const faqs = [
   noindex={!isIndexedHub}
   structuredData={structuredData}
 >
-  <div class="mx-auto max-w-6xl px-4 pt-8 pb-28 sm:px-6 lg:pb-16 pb-[calc(6rem+env(safe-area-inset-bottom))]">
-    <!-- 1. Compact Intro Header (replaces bulky hero) -->
-    <header class="mb-6">
-      <nav aria-label="Breadcrumb" class="mb-3 flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
+  <!-- Universal Hero Banner -->
+  <section class="border-b border-neutral-200 bg-gradient-to-b from-brand-50 to-white dark:border-neutral-800 dark:from-brand-950/30 dark:to-neutral-950">
+    <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+      <nav aria-label="Breadcrumb" class="mb-4 flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
         <a href="/" class="hover:underline">Home</a>
         <span aria-hidden="true">/</span>
         <span class="font-semibold text-neutral-900 dark:text-neutral-100">Mock tests</span>
       </nav>
 
-      <p class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
-        Mock Tests · Previous-Year Papers
+      <p class="text-xs font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300">
+        CUET UG · Previous-Year Papers
       </p>
-      <h1 class="mt-1.5 text-2xl font-black tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
-        Practice with previous-year CUET papers
+      <h1 class="mt-2 text-3xl font-black tracking-tight sm:text-5xl text-neutral-900 dark:text-white">
+        Practice with previous-year CUET mock tests
       </h1>
-      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
-        Timed, server-graded attempts. Your first attempt counts on the leaderboard.
+      <p class="mt-3 max-w-2xl text-base leading-7 text-neutral-600 sm:text-lg dark:text-neutral-300">
+        Timed, server-graded attempts with authentic exam timing, hidden answer keys, and first-attempt leaderboards.
       </p>
-      <p class="mt-1 text-xs font-medium text-neutral-500 dark:text-neutral-400">
-        {factsLine}
-      </p>
-    </header>
 
-    <!-- 2. Sticky Filter & Search Bar -->
+      <div class="mt-6 flex flex-wrap items-center gap-2.5 text-xs">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-white px-3 py-1 font-semibold text-brand-800 shadow-sm dark:border-brand-800 dark:bg-neutral-900 dark:text-brand-200">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-500 dark:bg-brand-400" aria-hidden="true"></span>
+          {factsLine}
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-3 py-1 font-semibold text-neutral-700 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
+          First attempt counts on leaderboard
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-3 py-1 font-semibold text-neutral-700 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
+          Solutions revealed post-submit
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-10 pb-28 lg:pb-16 pb-[calc(6rem+env(safe-area-inset-bottom))]">
+    <!-- Filter & Search Bar -->
     <PaperFilters
       basePath={PATH}
       params={params}
@@ -148,16 +162,18 @@ const faqs = [
       endIndex={pagination.endIndex}
     />
 
-    <!-- 3. Start Here (Recommended Full Papers) -->
+    <!-- Start Here (Recommended Full Papers) -->
     {showStartHere && recommendedPapers.length > 0 && (
-      <section class="mt-8 mb-10" aria-labelledby="start-here-heading">
-        <div class="flex items-center justify-between mb-3.5">
-          <h2 id="start-here-heading" class="text-lg font-bold text-neutral-900 dark:text-neutral-100">
-            Start here
-          </h2>
-          <span class="text-xs text-neutral-500 dark:text-neutral-400">
-            Recommended full-length papers with complete keys
-          </span>
+      <section class="mt-10 mb-12" aria-labelledby="start-here-heading">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 id="start-here-heading" class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+              Start here
+            </h2>
+            <p class="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400">
+              Recommended full-length papers with complete answer keys
+            </p>
+          </div>
         </div>
         <div class="grid gap-4 sm:grid-cols-2">
           {recommendedPapers.map((paper) => (
@@ -167,20 +183,20 @@ const faqs = [
       </section>
     )}
 
-    <!-- 4. Main Paper List -->
+    <!-- Main Paper List -->
     <main class="mt-8" id="papers-list-section">
       <!-- Section Header -->
       <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-neutral-200 pb-3 dark:border-neutral-800">
         <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
           {listHeading}
         </h2>
-        <div class="text-xs text-neutral-500 dark:text-neutral-400">
+        <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
           Showing {pagination.startIndex} to {pagination.endIndex} of {pagination.total}
         </div>
       </div>
 
       <!-- Papers Container -->
-      <div id="papers-container" class="mt-4 space-y-2.5">
+      <div id="papers-container" class="mt-4 space-y-3">
         {pagination.items.map((paper) => (
           <PaperRow paper={paper} />
         ))}
@@ -201,7 +217,7 @@ const faqs = [
           <div class="mt-6">
             <a
               href={PATH}
-              class="inline-flex rounded-xl bg-brand-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-brand-700"
+              class="inline-flex rounded-xl bg-brand-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-brand-700 transition-colors"
             >
               Clear all filters
             </a>
@@ -246,64 +262,57 @@ const faqs = [
       )}
     </main>
 
-    <!-- 5. Original Explanatory Section (High-Value SEO & User Guidance) -->
-    <section class="mt-16 rounded-2xl border border-neutral-200 bg-neutral-50/70 p-6 sm:p-8 dark:border-neutral-800 dark:bg-neutral-900/50" aria-labelledby="guide-heading">
-      <h2 id="guide-heading" class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        About previous-year CUET mock tests
-      </h2>
-
-      <div class="mt-4 grid gap-6 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 md:grid-cols-3">
+    <!-- Explanatory Practice Guide -->
+    <section class="mt-16 rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm dark:border-neutral-800 dark:bg-neutral-900" aria-labelledby="guide-heading">
+      <div class="flex flex-wrap items-baseline justify-between gap-3 border-b border-neutral-100 pb-4 dark:border-neutral-800">
         <div>
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-100">Realistic test conditions</h3>
-          <p class="mt-1.5">
-            Every test is conducted under server-enforced deadlines with the official CUET UG marking formula (+5 marks for correct answers, −1 mark for incorrect answers). Correct answers and detailed solutions remain hidden until you submit your attempt.
-          </p>
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300">Practice Guide</p>
+          <h2 id="guide-heading" class="mt-1 text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+            How previous-year mock tests work
+          </h2>
         </div>
-
-        <div>
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-100">First-attempt ranking</h3>
-          <p class="mt-1.5">
-            To ensure fair and transparent competition, only your first attempt on any given paper is evaluated for public leaderboard rankings and percentiles. You are free to retake papers at any time to verify improvements and reinforce concept retention.
-          </p>
-        </div>
-
-        <div>
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-100">Full keys vs partial keys</h3>
-          <p class="mt-1.5">
-            Papers labeled <span class="font-semibold text-emerald-700 dark:text-emerald-400">Full key</span> have 100% of their questions scored. Papers with <span class="font-semibold text-amber-700 dark:text-amber-400">Key N of M</span> exclude questions that lacked an authenticated printed key in original exam releases, preserving scoring integrity.
-          </p>
+        <div class="flex flex-wrap gap-3 text-xs font-semibold">
+          <a href="/cuet-ug-syllabus" class="text-brand-600 hover:underline dark:text-brand-400">Syllabus →</a>
+          <a href="/cuet-ug-marking-scheme" class="text-brand-600 hover:underline dark:text-brand-400">Marking scheme →</a>
+          <a href="/cuet-ug-previous-year-papers" class="text-brand-600 hover:underline dark:text-brand-400">PYQ archive →</a>
         </div>
       </div>
 
-      <div class="mt-6 flex flex-wrap items-center gap-4 pt-4 border-t border-neutral-200 dark:border-neutral-800 text-xs font-semibold">
-        <a href="/cuet-ug-syllabus" class="text-brand-600 hover:underline dark:text-brand-400">
-          View official syllabus guidelines →
-        </a>
-        <a href="/cuet-ug-previous-year-papers" class="text-brand-600 hover:underline dark:text-brand-400">
-          Browse all previous-year papers archive →
-        </a>
-      </div>
-    </section>
+      <div class="mt-6 grid gap-6 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 md:grid-cols-3">
+        <div class="rounded-xl border border-neutral-100 bg-neutral-50/60 p-4 dark:border-neutral-800/60 dark:bg-neutral-800/30">
+          <div class="flex items-center gap-2 font-bold text-neutral-900 dark:text-neutral-100">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700 dark:bg-brand-900/60 dark:text-brand-300">1</span>
+            Realistic exam timing
+          </div>
+          <p class="mt-2 text-xs leading-5">
+            Each paper is calibrated to printed NTA exam durations. Answers remain strictly hidden while the timer runs, simulating real test day conditions.
+          </p>
+        </div>
 
-    <!-- 6. Frequently Asked Questions -->
-    <section class="mt-12" aria-labelledby="faq-heading">
-      <h2 id="faq-heading" class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Frequently asked questions
-      </h2>
-      <div class="mt-4 space-y-3">
-        {faqs.map((faq) => (
-          <details class="group rounded-xl border border-neutral-200 bg-white p-4 transition-colors dark:border-neutral-800 dark:bg-neutral-900">
-            <summary class="flex cursor-pointer items-center justify-between font-semibold text-neutral-900 dark:text-neutral-100">
-              <span>{faq.question}</span>
-              <span class="ml-2 text-neutral-400 transition-transform group-open:rotate-180">▼</span>
-            </summary>
-            <p class="mt-2.5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
-              {faq.answer}
-            </p>
-          </details>
-        ))}
+        <div class="rounded-xl border border-neutral-100 bg-neutral-50/60 p-4 dark:border-neutral-800/60 dark:bg-neutral-800/30">
+          <div class="flex items-center gap-2 font-bold text-neutral-900 dark:text-neutral-100">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700 dark:bg-brand-900/60 dark:text-brand-300">2</span>
+            First-attempt leaderboard
+          </div>
+          <p class="mt-2 text-xs leading-5">
+            Only your initial submitted attempt enters the public paper leaderboard for fair ranking. Retakes are saved to your dashboard for concept reinforcement.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-neutral-100 bg-neutral-50/60 p-4 dark:border-neutral-800/60 dark:bg-neutral-800/30">
+          <div class="flex items-center gap-2 font-bold text-neutral-900 dark:text-neutral-100">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-brand-100 text-xs font-bold text-brand-700 dark:bg-brand-900/60 dark:text-brand-300">3</span>
+            Scored vs unscored items
+          </div>
+          <p class="mt-2 text-xs leading-5">
+            Papers labeled <strong>Full key</strong> score every question. Papers labeled <strong>Key N of M</strong> exclude questions with no printed key in original source booklets to protect scoring accuracy.
+          </p>
+        </div>
       </div>
     </section>
+
+    <!-- Frequently Asked Questions using Universal FaqSection -->
+    <FaqSection faqs={faqs} />
   </div>
 
   <script>
