@@ -1,0 +1,33 @@
+---
+import type { KeyStatus } from "../lib/paper-list";
+
+interface Props {
+  status: KeyStatus;
+  class?: string;
+}
+
+const { status, class: className = "" } = Astro.props;
+---
+
+{status.isFullKey ? (
+  <span
+    class:list={[
+      "inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-800 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-300",
+      className,
+    ]}
+  >
+    <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" aria-hidden="true"></span>
+    <span>{status.label}</span>
+  </span>
+) : (
+  <span
+    class:list={[
+      "inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-800 dark:border-amber-800/60 dark:bg-amber-950/40 dark:text-amber-300",
+      className,
+    ]}
+  >
+    <span class="inline-block h-1.5 w-1.5 rounded-full bg-amber-500 dark:bg-amber-400" aria-hidden="true"></span>
+    <span>{status.label}</span>
+  </span>
+)}
+

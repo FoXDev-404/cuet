@@ -228,43 +228,27 @@
       {
         "id": "q07",
         "sourceQuestionNo": 7,
-        "stemEn": "Given below are two statements:\n\nStatement I: Among\n\n $$ [\\mathrm{C u(N H_{3})_{4}}^{2+},[\\mathrm{N i O_{3}}]^{2+},[\\mathrm{N i(N H_{3})_{6}}]^{2+}\\mathrm{a n d}[\\mathrm{M n(H_{2}O)_{6}}]^{2+}. $$ \n\n $ [\\mathrm{Mn}(\\mathrm{H}_{2}\\mathrm{O})_{6}]^{2+} $ has the maximum number of unpaired electrons.\n\nStatement II: The number of pairs among\n\n $$ [{\\mathrm{N i C l}}_{4}]^{2-},[{\\mathrm{N i O}}_{4}]^{2-} $$ \n\nand\n\n $$ [{\\mathrm{N i O_{4}}}],[{\\mathrm{O_{4}}}]^{2-} $$ \n\nthat contain only diamagnetic species is two.\n\nIn the light of the above statements, choose the correct answer from the options given below:\n\n(1) Statement I is false but Statement II is true\n\n(2) Both Statement I and Statement II are true\n\n(3) Both Statement I and Statement II are false\n\n(4) Statement I is true but Statement II is false\n\n3. Identify the correct statements.",
+        "stemEn": "Given below are two statements:\n\nStatement I: Among\n\n $$ [\\mathrm{Cu(NH_{3})_{4}}]^{2+}, [\\mathrm{Ni(CN)_{4}}]^{2-}, [\\mathrm{Ni(NH_{3})_{6}}]^{2+} \\text{ and } [\\mathrm{Mn(H_{2}O)_{6}}]^{2+}, $$ \n\n $[\\mathrm{Mn}(\\mathrm{H}_{2}\\mathrm{O})_{6}]^{2+}$ has the maximum number of unpaired electrons.\n\nStatement II: The number of pairs among\n\n $$ [\\mathrm{NiCl}_{4}]^{2-}, [\\mathrm{Ni(CO)}_{4}] $$ \n\nand\n\n $$ [\\mathrm{Ni(CN)}_{4}]^{2-}, [\\mathrm{Ni(H_{2}O)}_{6}]^{2+} $$ \n\nthat contain only diamagnetic species is two.\n\nIn the light of the above statements, choose the correct answer from the options given below:",
         "optionsEn": [
           {
             "id": "A",
-            "text": "Arginine and Tryptophan are essential amino acids."
+            "text": "Statement I is false but Statement II is true"
           },
           {
             "id": "B",
-            "text": "Histidine does not contain heterocyclic ring in its structure."
+            "text": "Both Statement I and Statement II are true"
           },
           {
             "id": "C",
-            "text": "Proline is a six-membered cyclic ring amino acid."
+            "text": "Both Statement I and Statement II are false"
           },
           {
             "id": "D",
-            "text": "Glycine does not have chiral centre.\n\nE. Cysteine has characteristic feature of side chain as MeS-CH"
-          },
-          {
-            "id": "A",
-            "text": "C and E Only"
-          },
-          {
-            "id": "B",
-            "text": "B and E Only"
-          },
-          {
-            "id": "C",
-            "text": "C and D Only"
-          },
-          {
-            "id": "D",
-            "text": "A and D Only"
+            "text": "Statement I is true but Statement II is false"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "B",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",

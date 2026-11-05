@@ -1,0 +1,20 @@
+---
+interface Props {
+  type: "full" | "mini";
+  class?: string;
+}
+
+const { type, class: className = "" } = Astro.props;
+---
+
+{type === "mini" ? (
+  <span
+    class:list={[
+      "inline-flex items-center rounded-md border border-neutral-300 bg-neutral-100 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
+      className,
+    ]}
+  >
+    Mini
+  </span>
+) : null}
+

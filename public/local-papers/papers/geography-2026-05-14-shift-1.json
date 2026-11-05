@@ -55,34 +55,40 @@
       {
         "id": "q02",
         "sourceQuestionNo": 2,
-        "stemEn": "Which of the following factors affects the rural settlement patterns?",
+        "stemEn": "Which of the following factors affects the rural settlement patterns?\n\n1. Water Supply\n2. Upland (dry points)\n3. Building Material\n4. Planned Settlements\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
             "id": "A",
-            "text": "Water Supply"
+            "text": "1 and 2"
           },
           {
             "id": "B",
-            "text": "Upland (dry points)"
+            "text": "1, 2, and 3"
+          },
+          {
+            "id": "C",
+            "text": "All of the above"
+          },
+          {
+            "id": "D",
+            "text": "1, 2, and 4"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "C",
         "explanationEn": null,
         "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
         "sourcePages": [
           1
         ],
         "assets": []
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "Planned Settlements\n\n(A) 1 and 2\n\n(B) 1, 2, and 3\n\n(C) All of the above\n\n(D) 1, 2, and 4\n\n## 3. Statement I: Megalopolis is a Greek word meaning 'Great City'.\n\nStatement II: The term was popularized by Jean Gottman in 1957.",
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Statement I: Megalopolis is a Greek word meaning 'Great City'.\n\nStatement II: The term was popularized by Jean Gottman in 1957.\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
             "id": "A",
@@ -98,20 +104,25 @@
           },
           {
             "id": "D",
-            "text": "Both are wrong.\n\n## 4. Match the Census definition of Urban Areas in India (2011):"
-          },
-          {
-            "id": "A",
-            "text": "Minimum Population: 5,000"
-          },
-          {
-            "id": "B",
-            "text": "Non-Agri workers: 75%"
-          },
-          {
-            "id": "C",
-            "text": "Density: 400 persons/sq km\n\nWhich are correct?"
-          },
+            "text": "Both are wrong."
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Match the Census definition of Urban Areas in India (2011):\n\n1. Minimum Population: 5,000\n2. Non-Agri workers: 75%\n3. Density: 400 persons/sq km\n\nWhich of the above are correct criteria?",
+        "optionsEn": [
           {
             "id": "A",
             "text": "1 and 2"
@@ -130,7 +141,7 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "D",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",
@@ -159,17 +170,15 @@
           },
           {
             "id": "D",
-            "text": "Kolkata\n\n##### Correct Answer: (C) Bengaluru"
+            "text": "Kolkata"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "C",
         "explanationEn": null,
         "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
         "sourcePages": [
           1
         ],

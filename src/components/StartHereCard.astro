@@ -1,0 +1,65 @@
+---
+import type { LocalPaperSummary } from "../lib/local-papers";
+import { formatMarking, formatShortTitle, getKeyStatus } from "../lib/paper-list";
+import KeyStatusPill from "./KeyStatusPill.astro";
+
+interface Props {
+  paper: LocalPaperSummary;
+  class?: string;
+}
+
+const { paper, class: className = "" } = Astro.props;
+
+const keyStatus = getKeyStatus(paper);
+const markingText = formatMarking(paper.markingScheme);
+const startHref = `/mock/${paper.slug}/instructions`;
+const detailsHref = paper.path;
+
+const titleText = paper.dateLabel
+  ? `${paper.dateLabel}${paper.shift ? ` · ${paper.shift}` : ""}`
+  : formatShortTitle(paper);
+---
+
+<div
+  class:list={[
+    "flex flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-5 transition-shadow hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900",
+    className,
+  ]}
+>
+  <div>
+    <div class="flex items-center justify-between gap-2">
+      <span class="inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-bold text-brand-700 dark:bg-brand-950/50 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+        {paper.subject.name}
+      </span>
+      <KeyStatusPill status={keyStatus} />
+    </div>
+
+    <h3 class="mt-3 text-lg font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+      <a href={detailsHref} class="hover:text-brand-600 dark:hover:text-brand-400 hover:underline">
+        {titleText}
+      </a>
+    </h3>
+
+    <p class="mt-1.5 text-xs text-neutral-500 dark:text-neutral-400">
+      {paper.recoveredQuestionCount} questions · {paper.durationMinutes} min · {markingText}
+    </p>
+  </div>
+
+  <div class="mt-5 flex items-center justify-between gap-3 pt-2 border-t border-neutral-100 dark:border-neutral-800">
+    <a
+      href={startHref}
+      class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-brand-700 transition-colors"
+      aria-label={`Start ${paper.title}`}
+    >
+      Start paper
+    </a>
+    <a
+      href={detailsHref}
+      class="text-xs font-semibold text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200 hover:underline"
+      aria-label={`Details for ${paper.title}`}
+    >
+      Details →
+    </a>
+  </div>
+</div>
+

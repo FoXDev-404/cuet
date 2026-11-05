@@ -53,34 +53,40 @@
       {
         "id": "q02",
         "sourceQuestionNo": 2,
-        "stemEn": "Consider the following statements regarding the phases of population growth in India:",
+        "stemEn": "Consider the following statements regarding the phases of population growth in India:\n\n1. The period between 1901 and 1921 is referred to as a period of stagnant or stationary phase of growth.\n2. The period between 1921 and 1951 is referred to as the period of steady population growth.\n3. The decades 1951-1981 are referred to as the period of population explosion in India.\n4. After 1981 till present, the crude birth rate has started increasing rapidly.\n\nWhich of the statements given above are correct?",
         "optionsEn": [
           {
             "id": "A",
-            "text": "The period between 1901 and 1921 is referred to as a period of stagnant or stationary phase of growth."
+            "text": "1 and 3 only"
           },
           {
             "id": "B",
-            "text": "The period between 1921 and 1951 is referred to as the period of steady population growth."
+            "text": "1, 2 and 3 only"
+          },
+          {
+            "id": "C",
+            "text": "2, 3 and 4 only"
+          },
+          {
+            "id": "D",
+            "text": "1, 2, 3 and 4"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "B",
         "explanationEn": null,
         "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
         "sourcePages": [
           1
         ],
         "assets": []
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "After 1981 till present, the crude birth rate has started increasing rapidly.\n\nWhich of the statements given above are correct?\n\n(A) 1 and 3 only\n\n(B) 1,2 and 3 only\n\n(C) 2, 3 and 4 only\n\n(D) 1, 2, 3 and 4\n\n3. The Integrated Tribal Development Project (ITDP) in Barmour region belongs to which state?",
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "The Integrated Tribal Development Project (ITDP) in Barmour region belongs to which state?",
         "optionsEn": [
           {
             "id": "A",
@@ -96,24 +102,25 @@
           },
           {
             "id": "D",
-            "text": "Arunachal Pradesh\n\n## 4. Consider the following statements regarding Human Settlements in India:"
-          },
-          {
-            "id": "A",
-            "text": "Clustered settlements are distinctively found in the fertile alluvial plains and the northeastern states."
-          },
-          {
-            "id": "B",
-            "text": "Semi-clustered settlements may result from the segregation or fragmentation of a large compact village."
-          },
-          {
-            "id": "C",
-            "text": "Hamleted settlements are locally called Panna, Para, Palli, Nagla, or Dhani in different parts of the country."
-          },
-          {
-            "id": "D",
-            "text": "Dispersed settlements appear in the form of isolated huts in remote jungles or hills.\n\nWhich of the statements given above are correct?"
-          },
+            "text": "Arunachal Pradesh"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": "A",
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Consider the following statements regarding Human Settlements in India:\n\n1. Clustered settlements are distinctively found in the fertile alluvial plains and the northeastern states.\n2. Semi-clustered settlements may result from the segregation or fragmentation of a large compact village.\n3. Hamleted settlements are locally called Panna, Para, Palli, Nagla, or Dhani in different parts of the country.\n4. Dispersed settlements appear in the form of isolated huts in remote jungles or hills.\n\nWhich of the statements given above are correct?",
+        "optionsEn": [
           {
             "id": "A",
             "text": "1 and 4 only"
@@ -132,7 +139,7 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "D",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",

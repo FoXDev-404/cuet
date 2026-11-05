@@ -92,11 +92,19 @@
         "optionsEn": [
           {
             "id": "A",
-            "text": "$ \\log x + C $\n\n $$ \\frac{1}{x^{2}}+C $$"
+            "text": "$ \\log x + C $"
+          },
+          {
+            "id": "B",
+            "text": "$$ \\frac{1}{x^{2}}+C $$"
           },
           {
             "id": "C",
-            "text": "$ x \\log x + C $\n\n $$ e^{x}+C $$"
+            "text": "$ x \\log x + C $"
+          },
+          {
+            "id": "D",
+            "text": "$$ e^{x}+C $$"
           }
         ],
         "optionsAreImages": false,

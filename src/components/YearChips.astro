@@ -1,0 +1,60 @@
+---
+import { buildFilterUrl, type PaperFilterParams } from "../lib/paper-list";
+
+interface Props {
+  years: number[];
+  selectedYear: number | "all";
+  basePath: string;
+  params: PaperFilterParams;
+  class?: string;
+}
+
+const {
+  years,
+  selectedYear,
+  basePath,
+  params,
+  class: className = "",
+} = Astro.props;
+
+const allHref = buildFilterUrl(basePath, params, { year: "all" });
+---
+
+<div class:list={["flex flex-wrap items-center gap-1.5", className]} role="group" aria-label="Filter by year">
+  <span class="mr-1 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+    Year
+  </span>
+
+  <a
+    href={allHref}
+    class:list={[
+      "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600",
+      selectedYear === "all"
+        ? "bg-brand-600 text-white shadow-sm dark:bg-brand-500"
+        : "border border-neutral-200 bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700",
+    ]}
+    aria-current={selectedYear === "all" ? "page" : undefined}
+  >
+    All
+  </a>
+
+  {years.map((y) => {
+    const isSelected = selectedYear === y;
+    const href = buildFilterUrl(basePath, params, { year: y });
+    return (
+      <a
+        href={href}
+        class:list={[
+          "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600",
+          isSelected
+            ? "bg-brand-600 text-white shadow-sm dark:bg-brand-500"
+            : "border border-neutral-200 bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700",
+        ]}
+        aria-current={isSelected ? "page" : undefined}
+      >
+        {y}
+      </a>
+    );
+  })}
+</div>
+

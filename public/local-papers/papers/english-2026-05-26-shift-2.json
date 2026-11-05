@@ -119,16 +119,8 @@
       {
         "id": "q04",
         "sourceQuestionNo": 4,
-        "stemEn": "One Word Substitution: Identify the correct terms for the following two definitions respectively:",
+        "stemEn": "One Word Substitution: Identify the correct terms for the following two definitions respectively:\n\n1. The study and analysis of handwriting.\n2. An instrument that records heart/beat action.",
         "optionsEn": [
-          {
-            "id": "A",
-            "text": "The study and analysis of handwriting."
-          },
-          {
-            "id": "B",
-            "text": "An instrument that records heart/beat action."
-          },
           {
             "id": "A",
             "text": "Numismatics, Stethoscope"
@@ -147,7 +139,7 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "B",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",

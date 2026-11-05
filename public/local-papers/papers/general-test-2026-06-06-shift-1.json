@@ -193,12 +193,8 @@
       {
         "id": "q06",
         "sourceQuestionNo": 6,
-        "stemEn": "Comparing the options, Japan, India, and Australia are active members, whereas China is not.\n\nStep 3: Final Answer:\n\nChina is the country that is not a member of the QUAD.\n\nQuick Tip: To easily remember the four QUAD members, associate them with the participants of the Malabar naval exercise: India, USA, Japan, and Australia.",
+        "stemEn": "Find the smallest number which should be added to the smallest number divisible by 6, 9 and 15 to make it a perfect square.",
         "optionsEn": [
-          {
-            "id": "B",
-            "text": "Find the smallest number which should be added to the smallest number divisible by 6, 9 and 15 to make it a perfect square."
-          },
           {
             "id": "A",
             "text": "10"
@@ -217,7 +213,7 @@
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",

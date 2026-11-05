@@ -127,7 +127,15 @@
           },
           {
             "id": "B",
-            "text": "Methylamine > Dimethylamine > Ammonia > Aniline\n\n $$ \\mathrm{(C)~A m m o n i a>M e t h y l a m i n e>D i m e t h y l a m i n e>A n i l i n e} $$ \n\n $$ \\mathrm{(D)~A n i l i n e>A m m o n i a>M e t h y l a m i n e>D i m e t h y l a m i n e} $$"
+            "text": "Methylamine > Dimethylamine > Ammonia > Aniline"
+          },
+          {
+            "id": "C",
+            "text": "Ammonia > Methylamine > Dimethylamine > Aniline"
+          },
+          {
+            "id": "D",
+            "text": "Aniline > Ammonia > Methylamine > Dimethylamine"
           }
         ],
         "optionsAreImages": false,

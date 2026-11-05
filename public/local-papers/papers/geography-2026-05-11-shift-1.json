@@ -53,34 +53,40 @@
       {
         "id": "q02",
         "sourceQuestionNo": 2,
-        "stemEn": "Which of the following is the correct chronological sequence of the 'Evolution of Geography?",
+        "stemEn": "Which of the following is the correct chronological sequence of the 'Evolution of Geography'?\n\n1. Spatial Organisation\n2. Emergence of Humanistic, Radical and Behavioural schools\n3. Regional analysis\n4. Post-modernism in Geography\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
             "id": "A",
-            "text": "Spatial Organisation"
+            "text": "3, 1, 2, 4"
           },
           {
             "id": "B",
-            "text": "Emergence of Humanistic, Radical and Behavioural schools"
+            "text": "1, 3, 2, 4"
+          },
+          {
+            "id": "C",
+            "text": "3, 2, 1, 4"
+          },
+          {
+            "id": "D",
+            "text": "2, 3, 1, 4"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
-        "reviewStatus": "pending",
-        "reviewFlags": [
-          "missing_answer_key"
-        ],
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
         "sourcePages": [
           1
         ],
         "assets": []
       },
       {
-        "id": "q04",
-        "sourceQuestionNo": 4,
-        "stemEn": "Post-modernism in Geography\n\nChoose the correct answer from the options given below:\n\n(A)3,1,2,4\n\n(B) 1,3,2,4\n\n(C) 3, 2, 1, 4\n\n(D) 2, 3, 1, 4\n\n3. Given below are two statements: one is labelled as Statement I and the other is labelled as Statement II.\n\nStatement I: The Demographic Transition Theory helps us predict the future population of any area.\n\nStatement II: In the first stage, fertility is high but mortality is low due to medical advancements.\n\nChoose the correct answer from the options given below:",
+        "id": "q03",
+        "sourceQuestionNo": 3,
+        "stemEn": "Given below are two statements: one is labelled as Statement I and the other is labelled as Statement II.\n\nStatement I: The Demographic Transition Theory helps us predict the future population of any area.\n\nStatement II: In the first stage, fertility is high but mortality is low due to medical advancements.\n\nChoose the correct answer from the options given below:",
         "optionsEn": [
           {
             "id": "A",
@@ -97,46 +103,43 @@
           {
             "id": "D",
             "text": "Both Statements are incorrect."
-          },
-          {
-            "id": "D",
-            "text": "Arrange the following continents in descending order of their population growth rate (2010–15):"
-          },
-          {
-            "id": "A",
-            "text": "Asia"
-          },
-          {
-            "id": "B",
-            "text": "Africa"
-          },
-          {
-            "id": "C",
-            "text": "Latin America"
-          },
-          {
-            "id": "D",
-            "text": "Europe\n\nChoose the correct answer from the options given below:"
-          },
-          {
-            "id": "A",
-            "text": "2,3,1,4"
-          },
-          {
-            "id": "B",
-            "text": "2,1,3,4"
-          },
-          {
-            "id": "C",
-            "text": "1,2,3,4"
-          },
-          {
-            "id": "D",
-            "text": "3,2,1,4"
           }
         ],
         "optionsAreImages": false,
-        "correctAnswer": null,
+        "correctAnswer": "B",
+        "explanationEn": null,
+        "passageId": null,
+        "reviewStatus": "keyed",
+        "reviewFlags": [],
+        "sourcePages": [
+          1
+        ],
+        "assets": []
+      },
+      {
+        "id": "q04",
+        "sourceQuestionNo": 4,
+        "stemEn": "Arrange the following continents in descending order of their population growth rate (2010–15):\n\n1. Asia\n2. Africa\n3. Latin America\n4. Europe\n\nChoose the correct answer from the options given below:",
+        "optionsEn": [
+          {
+            "id": "A",
+            "text": "2, 3, 1, 4"
+          },
+          {
+            "id": "B",
+            "text": "2, 1, 3, 4"
+          },
+          {
+            "id": "C",
+            "text": "1, 2, 3, 4"
+          },
+          {
+            "id": "D",
+            "text": "3, 2, 1, 4"
+          }
+        ],
+        "optionsAreImages": false,
+        "correctAnswer": "A",
         "explanationEn": null,
         "passageId": null,
         "reviewStatus": "keyed",

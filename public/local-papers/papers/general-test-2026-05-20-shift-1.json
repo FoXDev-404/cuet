@@ -11,7 +11,7 @@
     "shift": "Shift 1",
     "sourceFile": "CUET_UG_2026_GAT_May20_Shift1_QP.pdf",
     "sourceMethod": "PaddleOCR-VL 1.6 text and layout export; exact printed-page crops for diagrams and tables.",
-    "questionCount": 10,
+    "questionCount": 9,
     "sourceQuestionCount": 60,
     "publicationStatus": "published",
     "reviewRequired": true,
@@ -80,43 +80,6 @@
         "reviewFlags": [
           "missing_answer_key"
         ],
-        "sourcePages": [
-          1
-        ],
-        "assets": []
-      },
-      {
-        "id": "q03",
-        "sourceQuestionNo": 3,
-        "stemEn": "To convert speed from m/s to km/h, multiply the value by  $ \\frac{18}{5} $.\n\n#### Step 3: Detailed Explanation:\n\nFrom the given question: Length of the train = 180 m Length of the platform = 320 m Time taken = 25 seconds\n\nFirst, calculate the total distance traveled by the train:\n\n $$ \\mathrm{T o t a l~D i s t a n c e}=180+320=500\\mathrm{m e t e r s} $$ \n\nNext, calculate the speed of the train in meters per second (m/s):\n\n $$  Speed=\\frac{500m}{25s}=20m/s $$ \n\nNow, convert the speed into kilometers per hour (km/h) by multiplying with the standard factor  $ \\frac{18}{5} $:\n\n $$  Speed=20\\times\\frac{18}{5}km/h $$ \n\n $$ Speed=4\\times18=72km/h $$ \n\n##### Step 4: Final Answer:\n\nThe speed of the train is 72 km/h.\n\nQuick Tip: To easily handle speed conversions under exam conditions, remember the standard 5-to-18 ratio table:\n\n $$ 5\\mathrm{~m/s}=18\\mathrm{~km/h} $$ \n\n $$ 10\\ m/s=36\\ km/h $$ \n\n $$ 15\\ m/s=54\\ km/h $$ \n\n $$ 20\\mathrm{~m/s}=72\\mathrm{~km/h} $$ \n\nRecognizing these common pairs saves precious calculation time!",
-        "optionsEn": [
-          {
-            "id": "B",
-            "text": "If the ratio of boys to girls in a class is 7:5 and the total number of students is 48, then the\n\nnumber of girls is:"
-          },
-          {
-            "id": "A",
-            "text": "18"
-          },
-          {
-            "id": "B",
-            "text": "20"
-          },
-          {
-            "id": "C",
-            "text": "22"
-          },
-          {
-            "id": "D",
-            "text": "24"
-          }
-        ],
-        "optionsAreImages": false,
-        "correctAnswer": null,
-        "explanationEn": null,
-        "passageId": null,
-        "reviewStatus": "keyed",
-        "reviewFlags": [],
         "sourcePages": [
           1
         ],
