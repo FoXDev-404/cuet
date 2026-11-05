@@ -33,6 +33,7 @@ jobs:
           npm run db:import:practice:local
           npm run db:import:ranked-practice:local
           node scripts/backfill-explanation-provenance.mjs
+          node scripts/seed-e2e-admin.mjs
 
       - name: Environment Separation & Guard Policy Check
         run: npm run check:env
