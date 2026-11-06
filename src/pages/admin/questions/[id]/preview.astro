@@ -81,7 +81,7 @@ function isPlaceholderText(text: string | null | undefined): boolean {
           <span class="font-bold">{letters[index]}.</span>
           <span class="min-w-0 flex-1">
             {isPlaceholderText(option.text) ? null : <span set:html={renderRichText(option.text)}></span>}
-            {option.image_url ? <img class="media-frame mt-2 max-h-48" src={option.image_url} alt={option.alt ?? ""} loading="lazy" /> : (isPlaceholderText(option.text) ? <span class="text-neutral-400 dark:text-neutral-500">Option {letters[index] ?? index + 1}</span> : null)}
+            {option.image_url ? <img class="media-frame mt-2 max-h-48" src={option.image_url} alt={option.alt ?? ""} loading="lazy" /> : (isPlaceholderText(option.text) ? <span class="text-neutral-500 dark:text-neutral-400">Option {letters[index] ?? index + 1}</span> : null)}
           </span>
           {index === question.correct_option ? <span class="shrink-0 rounded-full bg-emerald-700 px-2 py-0.5 text-[10px] font-bold uppercase text-white">Correct</span> : null}
         </li>

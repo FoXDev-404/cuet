@@ -185,7 +185,7 @@ function isPlaceholderText(text: string | null | undefined): boolean {
                   {hasHindi && !isPlaceholderText(hindiText) ? <span data-lang-text="hi" hidden set:html={renderRichText(hindiText)} /> : null}
                   {option.imageUrl ? (
                     <img class="mt-2 max-h-48 w-auto rounded-lg" src={option.imageUrl} alt={option.alt ?? `Option ${option.letter}`} loading="lazy" />
-                  ) : (isPlaceholderText(option.text) ? <span class="text-neutral-400 dark:text-neutral-500">Option {option.letter}</span> : null)}
+                  ) : (isPlaceholderText(option.text) ? <span class="text-neutral-500 dark:text-neutral-400">Option {option.letter}</span> : null)}
                 </span>
               </label>
             );

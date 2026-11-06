@@ -22,7 +22,7 @@ const visible = Boolean(client && slot && adSlotAllowed(Astro.url.pathname));
 
 {visible ? (
   <aside class="mx-auto my-8 w-full max-w-3xl px-4 sm:px-6" aria-label={label}>
-    <p class="mb-1 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+    <p class="mb-1 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
       {label}
     </p>
     <div class="min-h-[120px] w-full overflow-hidden rounded-xl border border-neutral-200 bg-neutral-50 p-2 dark:border-neutral-800 dark:bg-neutral-900">
