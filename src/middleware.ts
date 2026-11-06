@@ -8,6 +8,7 @@ import { ensurePracticeLibrary, setPracticeLibraryStore } from "./lib/practice-l
 import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
 import { trackD1Metrics } from "./lib/db";
+import { canonicalHostRedirect } from "./lib/canonical-host";
 
 setPracticeLibraryStore(practiceLibraryD1Store);
 
@@ -121,6 +122,17 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // see a second origin. Local development is exempt.
   const hostname = context.url.hostname;
   const localHost = hostname === "localhost" || hostname === "127.0.0.1" || hostname === "[::1]";
+
+  // Alternate hosts (the workers.dev preview URL and www) permanently redirect
+  // to the configured SITE_URL origin. Running before the HTTPS upgrade keeps
+  // plain-HTTP preview requests to a single hop.
+  if (!localHost) {
+    const canonicalTarget = canonicalHostRedirect(context.url, env.SITE_URL);
+    if (canonicalTarget) {
+      return applySecurityHeaders(Response.redirect(canonicalTarget.toString(), 301), requestedPath);
+    }
+  }
+
   if (context.url.protocol === "http:" && !localHost) {
     const httpsUrl = new URL(context.url.toString());
     httpsUrl.protocol = "https:";
