@@ -137,18 +137,6 @@ export const GET: APIRoute = async ({ request }) => {
     console.error("sitemap query failed", error);
   }
 
-  // Rights Policy Gate (Fix 3): Papers with rights_status != 'cleared' are excluded from sitemap
-  let rightsMap = new Map<string, string>();
-  try {
-    const rightsRows = await allOr<{ slug: string; rights_status: string }>(
-      `SELECT slug, rights_status FROM practice_papers WHERE deleted_at IS NULL`,
-      [],
-    );
-    rightsMap = new Map(rightsRows.map((r) => [r.slug, r.rights_status]));
-  } catch (err) {
-    console.error("sitemap rights_status query failed", err);
-  }
-
   // Exam Info Verification Gate (Fix 5 & Fix 7): Unverified pages with noindex excluded from sitemap
   let examInfoMap = new Map<string, { value: string; last_verified: string | null }>();
   try {
@@ -218,19 +206,19 @@ export const GET: APIRoute = async ({ request }) => {
     }
   }
 
-  // Thin Content & Rights Policy Gate (Fix R7):
+  // Thin Content Gate (Fix R7):
   // PYQ archive list pages (/pyq/:year and /pyq/:year/:subject) are thin content and gated with noindex,
   // so they are intentionally excluded from sitemap.xml.
 
+  // Practice papers are indexable; only an explicit rights restriction keeps
+  // one out of search. The paper page itself shows the takedown path.
   for (const paper of localPapers) {
-    const rights = rightsMap.get(paper.slug) ?? "unknown";
-    if (rights === "cleared") {
-      add(paper.path, {
-        lastmod: LOCAL_LIBRARY_ADDED_AT,
-        changefreq: "monthly",
-        priority: "0.6",
-      });
-    }
+    if (paper.rightsStatus === "restricted") continue;
+    add(paper.path, {
+      lastmod: LOCAL_LIBRARY_ADDED_AT,
+      changefreq: "monthly",
+      priority: "0.7",
+    });
   }
 
   for (const post of posts) {

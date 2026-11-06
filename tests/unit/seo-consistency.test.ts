@@ -40,9 +40,9 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(file).toContain('if (isExamVerified("important-dates")) add("/cuet-ug-important-dates"');
   });
 
-  it("verifies sitemap.xml gates un-cleared previous-year papers", () => {
+  it("verifies sitemap.xml includes previous-year papers unless rights are restricted", () => {
     const file = readFileSync(join(root, "src/pages/sitemap.xml.ts"), "utf8");
-    expect(file).toContain('if (rights === "cleared")');
+    expect(file).toContain('if (paper.rightsStatus === "restricted") continue;');
     expect(file).toContain("add(paper.path");
   });
 

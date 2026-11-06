@@ -1,7 +1,7 @@
 ---
 import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getLocalPaperSummary, localPaperPath } from "../../lib/local-papers";
+import { getLocalPaperSummary, getLocalPapersForSubject, localPaperPath } from "../../lib/local-papers";
 import { breadcrumbJsonLd } from "../../lib/seo";
 
 const slug = Astro.params.slug ?? "";
@@ -32,18 +32,25 @@ const metaDescription =
   paper.metaDescription ||
   `Take the ${paper.dateLabel} CUET ${paper.subject.name} paper: ${paper.scorableQuestionCount} ranked questions, ${paper.durationMinutes} minutes, +5/−1 marking, saved result, leaderboard rank and a post-submit review.`;
 
-function formatPracticeSeoTitle(title: string): string {
-  const suffix = " | CUET Mock";
-  const maxBase = 60 - suffix.length;
-  let clean = title.replace(/Question Paper( with Solutions)?/i, "").replace(/^CUET UG/i, "CUET").trim();
-  if (clean.length > maxBase) {
-    clean = clean.slice(0, maxBase - 1).trim() + "…";
-  }
-  return `${clean}${suffix}`;
-}
-const seoTitle = formatPracticeSeoTitle(paper.title);
-const isCleared = (paper as any).rightsStatus === "cleared";
-const forceNoindex = !isCleared;
+const relatedPapers = getLocalPapersForSubject(paper.subject.slug)
+  .filter((candidate) => candidate.slug !== paper.slug && candidate.rightsStatus !== "restricted")
+  .sort(
+    (a, b) =>
+      b.year - a.year ||
+      (b.date ?? "").localeCompare(a.date ?? "") ||
+      a.title.localeCompare(b.title),
+  )
+  .slice(0, 6);
+
+const datePart =
+  paper.dateLabel && paper.dateLabel !== "Date not printed" ? paper.dateLabel : String(paper.year);
+const shiftPart = paper.shift ? ` ${paper.shift}` : "";
+const titleBase = `CUET ${paper.subject.name} ${datePart}${shiftPart} Paper`;
+const seoTitle = `${titleBase} | CUET Mock`.length <= 65 ? `${titleBase} | CUET Mock` : titleBase;
+
+// Imported papers are indexable. Only an explicit rights restriction keeps a
+// paper out of search; `unknown` papers still expose the takedown path below.
+const forceNoindex = paper.rightsStatus === "restricted";
 ---
 
 <BaseLayout
@@ -74,7 +81,7 @@ const forceNoindex = !isCleared;
 
         <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">{paper.title}</h1>
         <p class="mt-4 max-w-2xl leading-7 text-neutral-600 dark:text-neutral-300">
-          A CUET {paper.subject.name} paper from {paper.year}, attempted under a server deadline and ranked like every D1 mock. Your score, rank and percentile are saved to your dashboard, and the first submitted attempt appears on the leaderboard.
+          Attempt the CUET {paper.subject.name} {paper.dateLabel}{paper.shift ? ` ${paper.shift}` : ""} previous-year paper as a free, timed mock test. The ranked paper has {paper.scorableQuestionCount} scored questions and a {paper.durationMinutes}-minute server deadline; your result includes rank, percentile, a per-question review and explanations.
         </p>
         {paper.pendingReviewCount > 0 ? (
           <p class="mt-3 max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
@@ -149,4 +156,38 @@ const forceNoindex = !isCleared;
       </aside>
     </div>
   </section>
+
+  {relatedPapers.length > 0 ? (
+    <section class="border-t border-neutral-200 dark:border-neutral-800">
+      <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 class="text-xl font-bold">More {paper.subject.name} previous-year papers</h2>
+            <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+              Practise another shift or year in the same timed, ranked format.
+            </p>
+          </div>
+          <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/cuet-mock-test/${paper.subject.slug}`}>
+            All {paper.subject.name} mock tests →
+          </a>
+        </div>
+        <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedPapers.map((related) => (
+            <a
+              class="rounded-xl border border-neutral-200 bg-white p-4 transition-colors hover:border-brand-300 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-brand-700"
+              href={related.path}
+            >
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-300">
+                {related.year}{related.shift ? ` · ${related.shift}` : ""}
+              </p>
+              <p class="mt-1 text-sm font-bold leading-6">{related.title}</p>
+              <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+                {related.scorableQuestionCount} scored questions · {related.attemptCount.toLocaleString("en-IN")} attempts
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : null}
 </BaseLayout>

@@ -63,18 +63,16 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
     expect(doc).toContain('rights_status = \'restricted\'');
   });
 
-  it('practice paper page template enforces noindex when rights_status != cleared', () => {
+  it('practice paper page template indexes papers unless rights_status is restricted', () => {
     const template = readFileSync(resolve(process.cwd(), 'src/pages/mock-tests/[slug].astro'), 'utf8');
-    expect(template).toContain('const isCleared = (paper as any).rightsStatus === "cleared";');
-    expect(template).toContain('const forceNoindex = !isCleared;');
+    expect(template).toContain('const forceNoindex = paper.rightsStatus === "restricted";');
     expect(template).toContain('noindex={forceNoindex}');
     expect(template).toContain('/contact#takedown');
   });
 
-  it('sitemap generator excludes practice papers when rights_status != cleared', () => {
+  it('sitemap generator excludes only restricted practice papers', () => {
     const sitemap = readFileSync(resolve(process.cwd(), 'src/pages/sitemap.xml.ts'), 'utf8');
-    expect(sitemap).toContain('SELECT slug, rights_status FROM practice_papers');
-    expect(sitemap).toContain('if (rights === "cleared")');
+    expect(sitemap).toContain('if (paper.rightsStatus === "restricted") continue;');
   });
 });
 
