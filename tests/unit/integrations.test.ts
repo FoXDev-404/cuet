@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   adsTxtRecord,
@@ -6,6 +8,7 @@ import {
   adsenseSlot,
   analyticsToken,
   googleSiteVerification,
+  shouldServeAds,
 } from "../../src/lib/integrations";
 
 const TOKEN = "0123456789abcdef0123456789abcdef";
@@ -60,6 +63,16 @@ describe("optional integration flags", () => {
     expect(adsTxtRecord("ca-pub-not-a-number")).toBeNull();
   });
 
+  it("turns ads on by default for indexable pages and off for noindex pages", () => {
+    expect(shouldServeAds(undefined, "")).toBe(true);
+    expect(shouldServeAds(undefined, "index, follow")).toBe(true);
+    expect(shouldServeAds(undefined, "noindex, follow")).toBe(false);
+    expect(shouldServeAds(undefined, "noindex, nofollow")).toBe(false);
+    // An explicit page decision always wins over the robots default.
+    expect(shouldServeAds(true, "noindex, nofollow")).toBe(true);
+    expect(shouldServeAds(false, "index, follow")).toBe(false);
+  });
+
   it("never allows ad units on private, attempt, result or thin routes", () => {
     for (const path of [
       "/attempt/42",
@@ -77,14 +90,33 @@ describe("optional integration flags", () => {
       "/mock-tests/2022-english-1",
       "/mock-tests/2022-english-1/take",
       "/u/student",
+      "/dev/styleguide",
       "https://example.com/cuet-ug-mock-test",
     ]) {
       expect(adSlotAllowed(path), path).toBe(false);
     }
   });
 
+  it("BaseLayout places the end-of-content slot on every ad-eligible page", () => {
+    const layout = readFileSync(resolve(process.cwd(), "src/layouts/BaseLayout.astro"), "utf8");
+    expect(layout).toContain("shouldServeAds(ads, robots)");
+    expect(layout).toContain("adsCanRender && endAdSlot ? <AdSlot /> : null");
+  });
+
   it("allows substantial public content routes", () => {
     for (const path of [
+      "/",
+      "/about",
+      "/contact",
+      "/privacy-policy",
+      "/terms",
+      "/disclaimer",
+      "/blog",
+      "/leaderboard",
+      "/pyq/2024",
+      "/mock-tests",
+      "/mock-tests/",
+      "/mock-tests?subject=physics",
       "/cuet-ug-mock-test",
       "/cuet-ug-syllabus",
       "/cuet-ug-marking-scheme",

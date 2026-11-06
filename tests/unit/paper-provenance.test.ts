@@ -47,10 +47,12 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
     expect(map.get('unknown')).toBe(librarySize);
   });
 
-  it('adSlotAllowed strictly forbids ads on /mock-tests/* routes', () => {
-    expect(adSlotAllowed('/mock-tests')).toBe(false);
+  it('adSlotAllowed forbids ads on practice papers while allowing the hub', () => {
+    expect(adSlotAllowed('/mock-tests')).toBe(true);
+    expect(adSlotAllowed('/mock-tests/')).toBe(true);
     expect(adSlotAllowed('/mock-tests/applied-mathematics-2025-06-02-shift-1')).toBe(false);
     expect(adSlotAllowed('/mock-tests/physics-2025')).toBe(false);
+    expect(adSlotAllowed('/mock-tests/physics-2025/take')).toBe(false);
   });
 
   it('takedown documentation exists and defines grievance procedures', () => {

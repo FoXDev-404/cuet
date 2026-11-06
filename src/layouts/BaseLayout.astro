@@ -3,6 +3,7 @@ import "../styles/global.css";
 import "katex/dist/katex.min.css";
 import { env } from "cloudflare:workers";
 import BrandLogo from "../components/BrandLogo.astro";
+import AdSlot from "../components/AdSlot.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import { siteUrl } from "../lib/site-url";
 import { getSetting } from "../lib/settings";
@@ -11,6 +12,7 @@ import {
   adSlotAllowed,
   analyticsToken,
   googleSiteVerification,
+  shouldServeAds,
 } from "../lib/integrations";
 
 interface Props {
@@ -23,8 +25,10 @@ interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   sectionLabel?: string;
   sectionNav?: { href: string; label: string }[];
-  /** Explicit opt-in for manual AdSense units on substantial content pages. */
+  /** Manual AdSense units. Defaults to on for indexable public pages. */
   ads?: boolean;
+  /** Standard end-of-content slot. Long pages with their own inline slot can disable it. */
+  endAdSlot?: boolean;
   /** Social preview image URL; falls back to the brand logo. */
   image?: string | null;
 }
@@ -38,7 +42,8 @@ const {
   structuredData = [],
   sectionLabel = "",
   sectionNav = [],
-  ads = false,
+  ads,
+  endAdSlot = true,
   image: imageOverride = null,
 } = Astro.props;
 
@@ -67,10 +72,12 @@ const isAdmin = Boolean(Astro.locals.admin);
 const path = Astro.url.pathname;
 
 // Optional integrations emit nothing unless a valid value is configured.
-// Ads are double-gated: the page must opt in and the path must not be private.
+// Ads are double-gated: the page must be an indexable public route (or opt in
+// explicitly) and the path must not be private.
 const analytics = analyticsToken(env);
 const gscVerification = googleSiteVerification(env);
-const adClient = ads && adSlotAllowed(path) ? adsenseClient(env) : "";
+const adsCanRender = shouldServeAds(ads, robots) && adSlotAllowed(path);
+const adClient = adsCanRender ? adsenseClient(env) : "";
 
 const desktopNav = [
   { href: "/", label: "Home", isHome: true, match: ["/"] },
@@ -343,6 +350,7 @@ const organization = {
 
     <main id="main-content" class="flex-1 pb-20 lg:pb-0">
       <slot />
+      {adsCanRender && endAdSlot ? <AdSlot /> : null}
     </main>
 
     <!-- Mobile Fixed Bottom Navigation Bar (< 1024px) -->

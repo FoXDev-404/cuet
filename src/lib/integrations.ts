@@ -74,12 +74,22 @@ export function adsTxtRecord(client: string): string | null {
 }
 
 /**
+ * Ads are on by default for every indexable public page. Private or thin
+ * pages opt out automatically through `noindex`, and an explicit `ads` prop
+ * still wins when a page needs to override the default.
+ */
+export function shouldServeAds(explicit: boolean | undefined, robots: string): boolean {
+  return explicit ?? !/noindex/i.test(robots);
+}
+
+/**
  * Routes that must never receive an ad unit.
  *
- * This is a second line of defence. Content pages opt in explicitly with the
- * BaseLayout `ads` prop; this guard still blocks private, attempt, result,
- * dashboard, auth, search, practice and user-profile routes if a slot is ever
- * placed too broadly.
+ * This is a second line of defence. Ads default on for public pages, so this
+ * guard blocks private, attempt, result, dashboard, auth, search, styleguide
+ * and user-profile routes even if a slot is placed too broadly. Practice paper
+ * pages stay ad-free until their rights are cleared; the `/mock-tests` hub
+ * itself carries no paper content and may show ads.
  */
 const BLOCKED_AD_PATHS: RegExp[] = [
   /^\/admin(?:\/|$)/,
@@ -93,8 +103,9 @@ const BLOCKED_AD_PATHS: RegExp[] = [
   /^\/reset-password(?:\/|$)/,
   /^\/verify-email(?:\/|$)/,
   /^\/search(?:\/|$)/,
-  /^\/mock-tests(?:\/|$)/,
+  /^\/mock-tests\/.+/,
   /^\/u(?:\/|$)/,
+  /^\/dev(?:\/|$)/,
   /\/take(?:\/|$)/,
 ];
 

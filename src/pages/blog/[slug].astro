@@ -65,7 +65,7 @@ const structuredData = [
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData} ads={!noindex}>
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData} ads={!noindex} endAdSlot={false}>
   <article class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-14">
     <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
       <a class="hover:underline" href="/">Home</a>
