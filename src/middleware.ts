@@ -72,19 +72,27 @@ const CONTENT_SECURITY_POLICY = [
  * page renderer. Headers are idempotent, so asset and API responses share it.
  */
 function applySecurityHeaders(response: Response, pathname: string): Response {
-  response.headers.set("strict-transport-security", "max-age=31536000; includeSubDomains");
-  response.headers.set("content-security-policy", CONTENT_SECURITY_POLICY);
-  response.headers.set("x-content-type-options", "nosniff");
-  response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
-  response.headers.set("x-frame-options", "SAMEORIGIN");
-  response.headers.set(
+  // Response.redirect() (and some runtime-generated responses) expose immutable
+  // headers. Copy them into a mutable set before adding the security policy.
+  const headers = new Headers(response.headers);
+  headers.set("strict-transport-security", "max-age=31536000; includeSubDomains");
+  headers.set("content-security-policy", CONTENT_SECURITY_POLICY);
+  headers.set("x-content-type-options", "nosniff");
+  headers.set("referrer-policy", "strict-origin-when-cross-origin");
+  headers.set("x-frame-options", "SAMEORIGIN");
+  headers.set(
     "permissions-policy",
     "camera=(), microphone=(), geolocation=(), payment=()",
   );
   if (isPrivatePath(pathname)) {
-    response.headers.set("x-robots-tag", "noindex, nofollow");
+    headers.set("x-robots-tag", "noindex, nofollow");
   }
-  return response;
+  const body = response.status === 204 || response.status === 304 ? null : response.body;
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
 }
 
 async function maintenanceEnabled(): Promise<boolean> {
@@ -266,12 +274,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return response;
   }, context.url.pathname);
 
-  applySecurityHeaders(response, requestedPath);
+  // applySecurityHeaders rebuilds the response, so keep the returned copy and
+  // add the D1 instrumentation headers to it rather than the original.
+  const secured = applySecurityHeaders(response, requestedPath);
 
   // Attach D1 instrumentation headers for measurement and observability
-  response.headers.set("x-d1-rows-read", String(metrics.rowsRead));
-  response.headers.set("x-d1-rows-written", String(metrics.rowsWritten));
-  response.headers.set("x-d1-queries", String(metrics.queryCount));
+  secured.headers.set("x-d1-rows-read", String(metrics.rowsRead));
+  secured.headers.set("x-d1-rows-written", String(metrics.rowsWritten));
+  secured.headers.set("x-d1-queries", String(metrics.queryCount));
 
   if (
     metrics.queryCount > 0 &&
@@ -282,5 +292,5 @@ export const onRequest = defineMiddleware(async (context, next) => {
     );
   }
 
-  return response;
+  return secured;
 });
