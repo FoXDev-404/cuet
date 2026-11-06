@@ -8,7 +8,7 @@ import { ensurePracticeLibrary, setPracticeLibraryStore } from "./lib/practice-l
 import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
 import { trackD1Metrics } from "./lib/db";
-import { canonicalHostRedirect } from "./lib/canonical-host";
+import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
 
 setPracticeLibraryStore(practiceLibraryD1Store);
 
@@ -125,8 +125,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   // Alternate hosts (the workers.dev preview URL and www) permanently redirect
   // to the configured SITE_URL origin. Running before the HTTPS upgrade keeps
-  // plain-HTTP preview requests to a single hop.
-  if (!localHost) {
+  // plain-HTTP preview requests to a single hop. Only reads are redirected so a
+  // form POST to a preview host is never converted into a GET.
+  const isReadRequest = context.request.method === "GET" || context.request.method === "HEAD";
+  if (!localHost && isReadRequest) {
     const canonicalTarget = canonicalHostRedirect(context.url, env.SITE_URL);
     if (canonicalTarget) {
       return applySecurityHeaders(Response.redirect(canonicalTarget.toString(), 301), requestedPath);
@@ -137,6 +139,15 @@ export const onRequest = defineMiddleware(async (context, next) => {
     const httpsUrl = new URL(context.url.toString());
     httpsUrl.protocol = "https:";
     return applySecurityHeaders(Response.redirect(httpsUrl.toString(), 301), requestedPath);
+  }
+
+  // Duplicate content: /path/ and /path both returned a self-canonical 200.
+  // Send the slashed variant to the canonical no-slash URL instead.
+  if (!localHost && isReadRequest) {
+    const slashTarget = trailingSlashRedirect(context.url, context.request.method);
+    if (slashTarget) {
+      return applySecurityHeaders(Response.redirect(slashTarget.toString(), 301), requestedPath);
+    }
   }
 
   // The library moved from /practice to /mock-tests. Keep old links and

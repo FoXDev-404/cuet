@@ -56,9 +56,11 @@ const totalPapers = papers.length + localPapers.length;
 
 const PATH = `/pyq/${year}/${subject.slug}`;
 const seo = await getPageSeo(PATH);
-// Thin Content & Rights Policy Gate (Fix R7): PYQ subject list pages without cleared papers or 300+ words are noindex
-const clearedPaperCount = 0;
-const noindex = clearedPaperCount === 0;
+// Subject hubs are indexable whenever a non-restricted paper exists for the
+// year/subject pair. A restricted paper also removes the hub from the sitemap.
+const indexablePaperCount =
+  papers.length + localPapers.filter((paper) => paper.rightsStatus !== "restricted").length;
+const noindex = indexablePaperCount === 0 || (seo?.noindex ?? 0) === 1;
 
 const DEFAULT_FAQ: FaqItem[] = [
   {

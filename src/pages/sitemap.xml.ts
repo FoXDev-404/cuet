@@ -206,10 +206,6 @@ export const GET: APIRoute = async ({ request }) => {
     }
   }
 
-  // Thin Content Gate (Fix R7):
-  // PYQ archive list pages (/pyq/:year and /pyq/:year/:subject) are thin content and gated with noindex,
-  // so they are intentionally excluded from sitemap.xml.
-
   // Practice papers are indexable; only an explicit rights restriction keeps
   // one out of search. The paper page itself shows the takedown path.
   for (const paper of localPapers) {
@@ -218,6 +214,36 @@ export const GET: APIRoute = async ({ request }) => {
       lastmod: LOCAL_LIBRARY_ADDED_AT,
       changefreq: "monthly",
       priority: "0.7",
+    });
+  }
+
+  // PYQ year/subject hubs list those papers and carry a unique intro + FAQ, so
+  // they are indexable too. Restricted papers remove their hub as well.
+  const indexablePyqPapers = localPapers.filter((paper) => paper.rightsStatus !== "restricted");
+  const indexablePyqYears = [...new Set(indexablePyqPapers.map((paper) => paper.year))].sort(
+    (a, b) => b - a,
+  );
+  for (const year of indexablePyqYears) {
+    add(`/pyq/${year}`, {
+      lastmod: LOCAL_LIBRARY_ADDED_AT,
+      changefreq: "monthly",
+      priority: "0.6",
+    });
+  }
+  const pyqSubjects = new Map<string, { year: number; subject: string }>();
+  for (const paper of indexablePyqPapers) {
+    const key = `${paper.year}/${paper.subject.slug}`;
+    if (!pyqSubjects.has(key)) {
+      pyqSubjects.set(key, { year: paper.year, subject: paper.subject.slug });
+    }
+  }
+  for (const entry of [...pyqSubjects.values()].sort(
+    (a, b) => b.year - a.year || a.subject.localeCompare(b.subject),
+  )) {
+    add(`/pyq/${entry.year}/${entry.subject}`, {
+      lastmod: LOCAL_LIBRARY_ADDED_AT,
+      changefreq: "monthly",
+      priority: "0.6",
     });
   }
 

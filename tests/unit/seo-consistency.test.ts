@@ -55,11 +55,16 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     }
   });
 
-  it("verifies thin-page gate noindexes /pyq/:year and /pyq/:year/:subject without cleared papers (Fix R7)", () => {
+  it("verifies PYQ year and subject hubs are indexable when non-restricted papers exist", () => {
     const yearFile = readFileSync(join(root, "src/pages/pyq/[year].astro"), "utf8");
-    expect(yearFile).toContain("clearedPaperCount === 0");
+    expect(yearFile).toContain("const noindex = indexablePaperCount === 0");
+    expect(yearFile).toContain('paper.rightsStatus !== "restricted"');
     const subjFile = readFileSync(join(root, "src/pages/pyq/[year]/[subject].astro"), "utf8");
-    expect(subjFile).toContain("clearedPaperCount === 0");
+    expect(subjFile).toContain("const noindex = indexablePaperCount === 0");
+    expect(subjFile).toContain('paper.rightsStatus !== "restricted"');
+    const sitemap = readFileSync(join(root, "src/pages/sitemap.xml.ts"), "utf8");
+    expect(sitemap).toContain("for (const year of indexablePyqYears)");
+    expect(sitemap).toContain("add(`/pyq/${entry.year}/${entry.subject}`");
   });
 });
 
