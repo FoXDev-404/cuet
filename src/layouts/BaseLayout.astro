@@ -116,6 +116,7 @@ const organization = {
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="canonical" href={canonical} />
     {robots ? <meta name="robots" content={robots} /> : null}
     {gscVerification ? <meta name="google-site-verification" content={gscVerification} /> : null}
@@ -710,6 +711,17 @@ const organization = {
           }
         });
       })();
+    </script>
+    <script is:inline>
+      if (
+        "serviceWorker" in navigator &&
+        location.hostname !== "localhost" &&
+        location.hostname !== "127.0.0.1"
+      ) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/sw.js").catch(function () {});
+        });
+      }
     </script>
     {analytics ? (
       <script

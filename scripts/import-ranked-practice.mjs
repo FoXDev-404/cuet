@@ -154,10 +154,26 @@ for (const summary of summaries) {
     continue;
   }
 
-  const questions = paper.questions.filter((question) => question.scorable);
+  // A ranked attempt is unanswerable if any option has neither readable text
+  // nor an individual option image. Some OCR papers only carry one composite
+  // "printed answer choices" image, which the current player cannot split into
+  // four selectable options; keep those questions out of ranked mocks.
+  const readable = (question) =>
+    question.options.length >= 2 &&
+    question.options.every(
+      (option) => (option.text && option.text.trim().length > 0) || option.image_url,
+    );
+  const readableQuestions = paper.questions.filter(readable);
+  const excludedUnreadable = paper.questions.length - readableQuestions.length;
+  if (excludedUnreadable > 0) {
+    warnings.push(
+      `${summary.slug}: excluded ${excludedUnreadable} unreadable question(s) from the ranked mock.`,
+    );
+  }
+  const questions = readableQuestions.filter((question) => question.scorable);
   const excluded = paper.questions.length - questions.length;
   if (questions.length === 0) {
-    warnings.push(`Skipped ${summary.slug}: no question has an authoritative key.`);
+    warnings.push(`Skipped ${summary.slug}: no readable question has an authoritative key.`);
     continue;
   }
 
@@ -299,6 +315,7 @@ for (const summary of summaries) {
     statements,
     imported: questions.length,
     excluded,
+    excludedUnreadable,
     assets: assetCount,
     imageQuestions: imageQuestionCount,
   });
@@ -309,18 +326,20 @@ const totals = importedPapers.reduce(
     acc.papers += 1;
     acc.questions += paper.imported;
     acc.excluded += paper.excluded;
+    acc.excludedUnreadable += paper.excludedUnreadable;
     acc.assets += paper.assets;
     acc.imageQuestions += paper.imageQuestions;
     return acc;
   },
-  { papers: 0, questions: 0, excluded: 0, assets: 0, imageQuestions: 0 },
+  { papers: 0, questions: 0, excluded: 0, excludedUnreadable: 0, assets: 0, imageQuestions: 0 },
 );
 
 console.log("Ranked practice import");
 console.log(`  target        : ${remote ? "remote" : "local"}${dryRun ? " (dry run)" : ""}`);
 console.log(`  papers        : ${totals.papers} / ${summaries.length}`);
 console.log(`  questions     : ${totals.questions}`);
-console.log(`  excluded      : ${totals.excluded} (no authoritative key)`);
+console.log(`  excluded      : ${totals.excluded} (no authoritative key or unreadable options)
+  unreadable    : ${totals.excludedUnreadable}`);
 console.log(`  assets        : ${totals.assets}`);
 console.log(`  image rows    : ${totals.imageQuestions}`);
 console.log(`  marking       : +${MARKING.correct} / ${MARKING.wrong} / ${MARKING.skipped}`);

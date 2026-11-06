@@ -48,6 +48,44 @@ function isAdminApi(pathname: string): boolean {
   return pathname.startsWith("/api/admin/");
 }
 
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "style-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://www.google.com https://www.googletagmanager.com https://pagead2.googlesyndication.com",
+  "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.google-analytics.com https://region1.google-analytics.com",
+  "frame-src 'self' https://accounts.google.com https://www.google.com https://*.firebaseapp.com",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  "media-src 'self'",
+].join("; ");
+
+/**
+ * Applies the security baseline to every response, including middleware
+ * early-returns (auth failures, maintenance, redirects) that never reach the
+ * page renderer. Headers are idempotent, so asset and API responses share it.
+ */
+function applySecurityHeaders(response: Response, pathname: string): Response {
+  response.headers.set("strict-transport-security", "max-age=31536000; includeSubDomains");
+  response.headers.set("content-security-policy", CONTENT_SECURITY_POLICY);
+  response.headers.set("x-content-type-options", "nosniff");
+  response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
+  response.headers.set("x-frame-options", "SAMEORIGIN");
+  response.headers.set(
+    "permissions-policy",
+    "camera=(), microphone=(), geolocation=(), payment=()",
+  );
+  if (isPrivatePath(pathname)) {
+    response.headers.set("x-robots-tag", "noindex, nofollow");
+  }
+  return response;
+}
+
 async function maintenanceEnabled(): Promise<boolean> {
   return (await getSetting("maintenance_mode", "false")) === "true";
 }
@@ -77,13 +115,24 @@ async function resolveAdmin(context: APIContext) {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  const requestedPath = context.url.pathname;
+
+  // Workers routes are reachable over plain HTTP; browsers and crawlers must not
+  // see a second origin. Local development is exempt.
+  const hostname = context.url.hostname;
+  const localHost = hostname === "localhost" || hostname === "127.0.0.1" || hostname === "[::1]";
+  if (context.url.protocol === "http:" && !localHost) {
+    const httpsUrl = new URL(context.url.toString());
+    httpsUrl.protocol = "https:";
+    return applySecurityHeaders(Response.redirect(httpsUrl.toString(), 301), requestedPath);
+  }
+
   // The library moved from /practice to /mock-tests. Keep old links and
   // short-form /mock-test URLs working with a permanent redirect.
-  const requestedPath = context.url.pathname;
   for (const legacyPrefix of ["/practice", "/mock-test"]) {
     if (requestedPath === legacyPrefix || requestedPath.startsWith(`${legacyPrefix}/`)) {
       const target = `/mock-tests${requestedPath.slice(legacyPrefix.length)}${context.url.search}`;
-      return context.redirect(target, 301);
+      return applySecurityHeaders(context.redirect(target, 301), requestedPath);
     }
   }
 
@@ -176,26 +225,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-    const response = await next();
-
-    response.headers.set("x-content-type-options", "nosniff");
-    response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
-    response.headers.set("x-frame-options", "SAMEORIGIN");
-    response.headers.set(
-      "permissions-policy",
-      "camera=(), microphone=(), geolocation=(), payment=()",
-    );
-    if (isPrivatePath(pathname)) {
-      response.headers.set("x-robots-tag", "noindex, nofollow");
-    }
-
-    return response;
+    return next();
   }, context.url.pathname);
 
-  // Attach D1 instrumentation headers for measurement and observability
-  response.headers.set("x-d1-rows-read", String(metrics.rowsRead));
-  response.headers.set("x-d1-rows-written", String(metrics.rowsWritten));
-  response.headers.set("x-d1-queries", String(metrics.queryCount));
+  applySecurityHeaders(response, requestedPath);
 
   if (
     metrics.queryCount > 0 &&
