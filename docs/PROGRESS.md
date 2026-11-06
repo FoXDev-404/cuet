@@ -1067,3 +1067,41 @@ the 5,322 real questions, not only the empty ranked bank.
   `cuet-astro`/`cuet-blueprint-db` was not touched.
 - New private repository `FoXDev-404/cuet-2026` holds the same code and
   deployment path.
+
+
+## Phase T — Privacy completion and latest Worker release (2026-11-06)
+
+### What changed
+
+- Account deletion now scrubs every user-owned table through one shared
+  helper (`src/lib/user-deletion.ts`) used by both the self-service endpoint
+  and the admin delete action. It removes sessions, password resets, email
+  verifications, bookmarks, discussion/question reports, share events, subject
+  stats and badges, and hides/anonymises the user's comments so replies remain
+  readable without retaining the deleted account's identity.
+- Restored the D1 observability response headers (`x-d1-queries`,
+  `x-d1-rows-read`, `x-d1-rows-written`) that the security-middleware refactor
+  had dropped.
+- Redeployed the separate 2026 Worker with the CSP/HSTS, PWA shell,
+  service-worker registration and richer Article JSON-LD from `712d242`.
+
+### Evidence
+
+- `npm test`: **382/382 passed** across 45 files; `astro check`: 0 errors,
+  0 warnings, 9 hints over 387 files.
+- Deployed `cuet-2026` version `f3fcfced-f9d5-43f7-9b90-d0096b1b98f2`.
+- Live `/api/health` 200; `/`, `/mock-tests`, `/sitemap.xml` (48 URLs),
+  `/manifest.webmanifest`, `/sw.js` and `/offline` 200; `/practice` 301 to
+  `/mock-tests`; private routes keep `x-robots-tag: noindex, nofollow`.
+- Live home sends `strict-transport-security`, the full CSP, the D1 metric
+  headers and the PWA manifest link; `/mock-tests` still reports
+  "245 papers · 18 subjects · 2021 to 2026"; the Psychology instructions,
+  detail and public API routes return 200 with no key or explanation fields.
+
+### Remaining
+
+- The original `cuet-astro` Worker intentionally still serves the 214-paper
+  snapshot; promoting the 245-paper dataset there needs the production deploy
+  workflow and its Cloudflare secrets.
+- Rights review for the imported papers remains an editorial task; the new
+  mocks stay noindex until `rights_status` is cleared.
