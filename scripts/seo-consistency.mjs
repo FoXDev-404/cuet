@@ -293,19 +293,23 @@ async function main() {
     const audited = new Map();
     const visited = new Set();
     const CONCURRENCY = 1;
-    // The catalogue has hundreds of mock/detail pages, most of them noindex and
-    // not in the sitemap. A bounded crawl still validates every sitemap URL and
-    // hub while keeping CI deterministic; set MAX_AUDIT_PAGES=0 to disable.
-    const MAX_AUDIT_PAGES = Number(process.env.MAX_AUDIT_PAGES ?? 70) || 70;
+    // Every sitemap URL plus the fixed hubs is always audited. The optional cap
+    // only bounds extra pages discovered by SEO_DEEP_CRAWL, so a low value can
+    // never silently skip a sitemap URL and report it as unreachable.
+    // 0 or unset means no cap.
+    const MAX_AUDIT_PAGES = Number(process.env.MAX_AUDIT_PAGES ?? 0) || 0;
+    const auditLimit = MAX_AUDIT_PAGES > 0 ? MAX_AUDIT_PAGES : Number.POSITIVE_INFINITY;
+    const seedUrls = new Set(discoveredUrls);
     // Deep link discovery is opt-in: in CI it turns a 60-URL sitemap audit into
     // a multi-thousand-page crawl of noindex detail pages. The default audits
     // every sitemap URL plus the fixed hubs; set SEO_DEEP_CRAWL=1 to discover.
     const DEEP_CRAWL = process.env.SEO_DEEP_CRAWL === "1";
 
     async function worker() {
-      while (queue.length > 0 && audited.size < MAX_AUDIT_PAGES) {
+      while (queue.length > 0) {
         const currentPath = queue.shift();
         if (!currentPath || visited.has(currentPath)) continue;
+        if (audited.size >= auditLimit && !seedUrls.has(currentPath)) continue;
         visited.add(currentPath);
 
         const res = await fetchPage(currentPath);
@@ -330,7 +334,7 @@ async function main() {
                 enqueued.add(link);
                 if (
                   DEEP_CRAWL &&
-                  audited.size < MAX_AUDIT_PAGES &&
+                  audited.size < auditLimit &&
                   !PRIVATE_PREFIXES.some((p) => link.startsWith(p))
                 ) {
                   queue.push(link);
