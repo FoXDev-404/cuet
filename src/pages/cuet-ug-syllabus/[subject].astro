@@ -131,7 +131,7 @@ const DEFAULT_FAQ: FaqItem[] = [
 
 const customFaq = parseFaq(seo?.faq_json);
 const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
-const title = seo?.title || `${subject.name} Syllabus for CUET UG — Topic Map and Practice`;
+const title = seo?.title || `${subject.name} Syllabus for CUET UG - Topic Map`;
 const description =
   seo?.description ||
   `A practical ${subject.name} syllabus map for CUET UG: ${topics.length} mapped topic${topics.length === 1 ? "" : "s"}, ${publishedQuestions} published question${publishedQuestions === 1 ? "" : "s"} and links to timed practice.`;

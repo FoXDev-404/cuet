@@ -74,8 +74,8 @@ const forceNoindex = paper.rightsStatus === "restricted";
         </nav>
 
         <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
-          <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">PYQ · {paper.year}</span>
-          <span class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{paper.subject.name}</span>
+          <a class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 hover:underline dark:bg-brand-900/50 dark:text-brand-200" href={`/pyq/${paper.year}`}>PYQ · {paper.year}</a>
+          <a class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 hover:underline dark:bg-neutral-950 dark:text-neutral-300" href={`/pyq/${paper.year}/${paper.subject.slug}`}>{paper.subject.name}</a>
           {paper.shift ? <span class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{paper.shift}</span> : null}
         </div>
 

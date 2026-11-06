@@ -97,7 +97,7 @@ describe("public question view helpers", () => {
       subjectName: "Mathematics",
       seoEligible: true,
     });
-    expect(title.length).toBeLessThanOrEqual(150);
+    expect(title.length).toBeLessThanOrEqual(70);
     expect(description.length).toBeLessThanOrEqual(158);
     expect(title).toMatch(/CUET Mathematics/);
     expect(description).toMatch(/worked explanation/);

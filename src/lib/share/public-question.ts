@@ -115,9 +115,9 @@ export function publicQuestionTitle(input: {
   subjectName: string;
   seoEligible: boolean;
 }): string {
-  const excerpt = plainExcerpt(input.text, 70);
+  const excerpt = plainExcerpt(input.text, 36);
   if (input.seoEligible) {
-    return `${excerpt} — CUET ${input.subjectName} Practice Question`;
+    return `${excerpt} — CUET ${input.subjectName} Question`;
   }
   return `${excerpt || "CUET practice question"} — CUET ${input.subjectName}`;
 }

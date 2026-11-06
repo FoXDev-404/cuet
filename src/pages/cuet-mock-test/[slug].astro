@@ -95,6 +95,11 @@ const [topics, papers] = await Promise.all([
 
 const localPapers = getLocalPapers().filter((paper) => paper.subject.slug === subject.slug);
 const localSummary = getLocalSubjectSummary(subject.slug);
+// Years that still have a playable, non-restricted paper for this subject. Used
+// to link the subject hub to the matching PYQ year/subject archives.
+const paperYears = [...new Set(
+  localPapers.filter((paper) => paper.rightsStatus !== "restricted").map((paper) => paper.year),
+)].sort((a, b) => b - a);
 const paperCount = papers.length + localPapers.length;
 const seo = await getPageSeo(PATH);
 const subjectStat = (await statsPromise).find((row) => row.slug === subject.slug);
@@ -309,6 +314,25 @@ const structuredData = [
       </ol>
     </section>
 
+    {paperYears.length > 0 ? (
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold tracking-tight">Previous-year {subject.name} papers</h2>
+        <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+          Every year below lists the {subject.name} shifts with a playable, timed paper and a full solution review.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {paperYears.map((year) => (
+            <a
+              class="rounded-full border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold hover:border-brand-300 hover:bg-brand-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:border-brand-700 dark:hover:bg-brand-950/40"
+              href={`/pyq/${year}/${subject.slug}`}
+            >
+              {year} {subject.name} papers
+            </a>
+          ))}
+        </div>
+      </section>
+    ) : null}
+
     <FaqSection faqs={faqs} />
 
     <section class="mt-10 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
@@ -321,7 +345,7 @@ const structuredData = [
           <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={papers[0] ? `/mock/${papers[0].slug}/instructions` : localPapers[0] ? localPapers[0].path : "/mock-tests"}>
             {papers[0] ? "Start the first paper" : localPapers[0] ? "Open mock tests" : "Browse all papers"}
           </a>
-          <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-syllabus">Syllabus guide</a>
+          <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href={`/cuet-ug-syllabus/${subject.slug}`}>{subject.name} syllabus</a>
         </div>
       </div>
     </section>

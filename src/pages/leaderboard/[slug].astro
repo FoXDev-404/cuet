@@ -106,6 +106,12 @@ const medals = ["🥇", "🥈", "🥉"];
 const myRank = mine?.rank ?? null;
 const myPercentile = myRank ? percentileFor(myRank, eligible) : null;
 const site = siteUrl(Astro.url);
+// Keep the document title under ~65 characters so it is not truncated in SERPs.
+const shortMockTitle = mock.title
+  .replace(/^CUET UG\s+/i, "")
+  .replace(/\s+Previous Year Paper$/i, "")
+  .trim();
+const pageTitle = `${shortMockTitle || mock.title} Leaderboard | CUET Mock`;
 const structuredData = breadcrumbJsonLd(site, [
   { name: "Home", path: "/" },
   { name: "Leaderboard", path: "/leaderboard" },
@@ -114,7 +120,7 @@ const structuredData = breadcrumbJsonLd(site, [
 ---
 
 <BaseLayout
-  title={`${mock.title} Leaderboard — CUET Free Mock Test`}
+  title={pageTitle}
   description={`First-attempt leaderboard for ${mock.title}. See top scores, accuracy and time among CUET UG mock test students.`}
   noindex={eligible === 0 || isFixtureSlug(mock.slug) || isFixtureMock(mock)}
   structuredData={structuredData}
