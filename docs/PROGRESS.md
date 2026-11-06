@@ -1049,3 +1049,21 @@ the 5,322 real questions, not only the empty ranked bank.
   working surface until the remote import and deploy complete.
 - Clear `rights_status` for reviewed papers at `/admin/pyq`; the new mock pages
   stay noindex and out of the sitemap until then.
+
+
+## Phase S — Separate 2026 deployment live (2026-11-06)
+
+- Created independent Cloudflare resources in the owner account: Worker
+  `cuet-2026`, D1 `cuet-2026-db`, KV `SESSION`/`MEDIA_KV`.
+- Migrated and imported 245 practice papers / 7,527 questions, 245 ranked mocks
+  and provenance into the new D1; deployed `env.deploy2026`.
+- Live URL: https://cuet-2026.rajpal010304.workers.dev
+- Smoke: `/api/health` 200; `/mock-tests` "245 papers · 18 subjects · 2021 to
+  2026"; sitemap 48 URLs; Psychology instructions 200; public API 50 questions
+  with zero key fields; guest attempt server-scored 5/250 and solutions rendered
+  with no page errors.
+- Added `deploy:2026`, `db:*:2026`, `backfill:2026`, `scripts/deploy-2026.mjs`
+  and `.github/workflows/deploy-separate.yml`. The original production
+  `cuet-astro`/`cuet-blueprint-db` was not touched.
+- New private repository `FoXDev-404/cuet-2026` holds the same code and
+  deployment path.

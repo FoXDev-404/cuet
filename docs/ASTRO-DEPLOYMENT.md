@@ -248,6 +248,32 @@ continue to serve the previous 214-paper snapshot until then. All imported paper
 enter with `rights_status = 'unknown'`, so their mock pages remain `noindex` and
 outside the sitemap until an editor clears them at `/admin/pyq` (or the rights API).
 
+### Separate 2026 deployment (live)
+
+The independent 2026 deployment is live at
+**<https://cuet-2026.rajpal010304.workers.dev>**. It has its own Cloudflare
+resources and never shares production data:
+
+| Resource | Name / id |
+| --- | --- |
+| Worker | `cuet-2026` (`env.deploy2026`) |
+| D1 | `cuet-2026-db` (`0c2345f3-05c0-4fa2-a646-0c8504a9f46f`) |
+| KV | `SESSION` `080aa7c67af747f486cabecb26e21e65`, `MEDIA_KV` `b7c25b7ce2da4dbfa852f887c19b689d` |
+| URL | `https://cuet-2026.rajpal010304.workers.dev` |
+
+Redeploy or refresh it with:
+
+```bash
+npm run db:migrate:2026
+npm run db:import:practice:2026
+npm run db:import:ranked-practice:2026
+npm run backfill:2026
+npm run deploy:2026
+```
+
+The manual **Deploy separate 2026 site** GitHub Actions workflow runs the same
+sequence after `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` are configured.
+
 ### Separate staging deployment
 
 Staging is a completely separate Worker and database (`cuet-astro-staging` /

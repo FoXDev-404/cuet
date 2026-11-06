@@ -43,7 +43,12 @@
     "db:migrate:staging": "wrangler d1 migrations apply cuet-d1-staging --remote",
     "db:import:practice:staging": "node scripts/import-practice-library.mjs --remote --database cuet-d1-staging",
     "db:import:ranked-practice:staging": "node scripts/import-ranked-practice.mjs --remote --database cuet-d1-staging",
-    "backfill:staging": "node scripts/backfill-explanation-provenance.mjs --remote --database cuet-d1-staging"
+    "backfill:staging": "node scripts/backfill-explanation-provenance.mjs --remote --database cuet-d1-staging",
+    "deploy:2026": "node scripts/deploy-2026.mjs",
+    "db:migrate:2026": "wrangler d1 migrations apply cuet-2026-db --remote --env deploy2026",
+    "db:import:practice:2026": "node scripts/import-practice-library.mjs --remote --database cuet-2026-db --env deploy2026",
+    "db:import:ranked-practice:2026": "node scripts/import-ranked-practice.mjs --remote --database cuet-2026-db --env deploy2026",
+    "backfill:2026": "node scripts/backfill-explanation-provenance.mjs --remote --database cuet-2026-db --env deploy2026"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.4.3",

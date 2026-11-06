@@ -4,6 +4,7 @@ Free CUET mock tests, previous-year practice papers, ranked practice and live
 discussions. Built with Astro and deployed on Cloudflare Workers.
 
 Production: <https://cuet-astro.cuet-platform.workers.dev>
+Separate dataset deployment: <https://cuet-2026.rajpal010304.workers.dev>
 
 ## What is included
 

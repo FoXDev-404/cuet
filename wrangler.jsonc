@@ -49,6 +49,39 @@
     "ADSENSE_SLOT_ID": ""
   },
   "env": {
+    // Separate 2026 deployment in the owner's personal account. It has its own
+    // Worker, D1 database and KV namespaces; it never shares production data.
+    "deploy2026": {
+      "name": "cuet-2026",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "cuet-2026-db",
+          "database_id": "0c2345f3-05c0-4fa2-a646-0c8504a9f46f",
+          "migrations_dir": "./migrations"
+        }
+      ],
+      "kv_namespaces": [
+        { "binding": "SESSION", "id": "080aa7c67af747f486cabecb26e21e65" },
+        { "binding": "MEDIA_KV", "id": "b7c25b7ce2da4dbfa852f887c19b689d" }
+      ],
+      "vars": {
+        "ENV": "deploy2026",
+        "SITE_URL": "https://cuet-2026.rajpal010304.workers.dev",
+        "DEV_SHOW_RESET_LINK": "1",
+        "ADMIN_AUTH_MODE": "session",
+        "CF_ACCESS_TEAM_DOMAIN": "",
+        "CF_ACCESS_AUD": "",
+        "ACCESS_TEAM_DOMAIN": "",
+        "ACCESS_AUD": "",
+        "EMAIL_PROVIDER": "",
+        "EMAIL_FROM": "",
+        "CF_ANALYTICS_TOKEN": "",
+        "GSC_VERIFICATION": "",
+        "ADSENSE_CLIENT": "",
+        "ADSENSE_SLOT_ID": ""
+      }
+    },
     "staging": {
       "name": "cuet-astro-staging",
       "d1_databases": [

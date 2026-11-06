@@ -24,6 +24,15 @@ const DATABASE = (() => {
   const index = process.argv.indexOf("--database");
   return index >= 0 ? process.argv[index + 1] : "cuet-blueprint-db";
 })();
+const WRANGLER_ENV = (() => {
+  const index = process.argv.indexOf("--env");
+  return index >= 0 ? process.argv[index + 1] : null;
+})();
+if (WRANGLER_ENV !== null && !/^[a-z0-9][a-z0-9-]{1,62}$/.test(WRANGLER_ENV)) {
+  console.error(`Invalid Wrangler environment: ${WRANGLER_ENV}`);
+  process.exit(1);
+}
+const ENV_ARGS = WRANGLER_ENV ? ["--env", WRANGLER_ENV] : [];
 if (!/^[a-z0-9][a-z0-9-]{1,62}$/.test(DATABASE)) {
   console.error(`Invalid D1 database name: ${DATABASE}`);
   process.exit(1);
@@ -39,14 +48,6 @@ const statements = [
       OR explanation LIKE '%pending%'
       OR explanation LIKE '%editorial review%'
       OR explanation LIKE '%under review%'`,
-  `UPDATE practice_questions
-   SET explanation_source = 'ai_draft', explanation_status = 'unreviewed'
-   WHERE explanation_source != 'banner'
-     AND (
-       explanation LIKE '%National Testing Agency (NTA) official answer key confirms Option%'
-       OR explanation LIKE '%Option % is the correct answer according to the NTA answer key%'
-       OR explanation LIKE '%NTA answer key%'
-     )`,
   `UPDATE practice_questions
    SET explanation_source = 'ai_draft', explanation_status = 'unreviewed'
    WHERE explanation_source = 'none' AND explanation IS NOT NULL AND length(trim(explanation)) > 0`,
@@ -66,7 +67,7 @@ const countQuery = (table) =>
   `SELECT explanation_source, explanation_status, count(*) AS count FROM ${table} GROUP BY explanation_source, explanation_status`;
 
 function wrangler(args, options = {}) {
-  const result = spawnSync("npx", ["wrangler", "d1", "execute", DATABASE, ...args], {
+  const result = spawnSync("npx", ["wrangler", "d1", "execute", DATABASE, ...ENV_ARGS, ...args], {
     cwd: process.cwd(),
     encoding: options.encoding ?? "utf8",
     stdio: options.stdio ?? "inherit",
@@ -93,7 +94,9 @@ console.log(`🔄 Backfilling explanation provenance (${REMOTE ? "remote" : "loc
 if (REMOTE) {
   const dir = mkdtempSync(join(tmpdir(), "cuet-provenance-"));
   const file = join(dir, "backfill.sql");
-  writeFileSync(file, ["BEGIN TRANSACTION;", ...statements.map((sql) => `${sql};`), "COMMIT;"].join("\n"));
+  // D1 rejects explicit BEGIN/COMMIT in uploaded SQL files; the UPDATEs are
+  // idempotent, so a retry is safe if a statement fails.
+  writeFileSync(file, statements.map((sql) => `${sql};`).join("\n"));
   wrangler(["--remote", `--file=${file}`]);
   for (const table of ["practice_questions", "questions"]) {
     const rows = parseWranglerJson(

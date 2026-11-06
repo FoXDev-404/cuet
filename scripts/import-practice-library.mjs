@@ -31,6 +31,15 @@ const DATABASE_ARG = (() => {
   return index >= 0 ? process.argv[index + 1] : null;
 })();
 const DB_NAME = DATABASE_ARG ?? "cuet-blueprint-db";
+const WRANGLER_ENV = (() => {
+  const index = process.argv.indexOf("--env");
+  return index >= 0 ? process.argv[index + 1] : null;
+})();
+if (WRANGLER_ENV !== null && !/^[a-z0-9][a-z0-9-]{1,62}$/.test(WRANGLER_ENV)) {
+  console.error(`Invalid Wrangler environment: ${WRANGLER_ENV}`);
+  process.exit(1);
+}
+const ENV_FLAG = WRANGLER_ENV ? ` --env ${WRANGLER_ENV}` : "";
 if (!/^[a-z0-9][a-z0-9-]{1,62}$/.test(DB_NAME)) {
   console.error(`Invalid D1 database name: ${DB_NAME}`);
   process.exit(1);
@@ -309,7 +318,7 @@ if (dryRun) {
 
 for (const [index, file] of files.entries()) {
   console.log(`\n[${index + 1}/${files.length}] ${file}`);
-  const command = `npx wrangler d1 execute ${DB_NAME} ${target} --file="${file}"`;
+  const command = `npx wrangler d1 execute ${DB_NAME} ${target}${ENV_FLAG} --file="${file}"`;
   const result = spawnSync(command, {
     cwd: ROOT,
     stdio: "inherit",
@@ -337,7 +346,7 @@ const cacheKeyFile = join(OUT_DIR, "practice-cache-keys.txt");
 writeFileSync(cacheKeyFile, `${cacheKeys.join("\n")}\n`, "utf8");
 console.log(`\nPurging ${cacheKeys.length} practice cache key(s)...`);
 const purge = spawnSync(
-  `npx wrangler kv bulk delete "${cacheKeyFile}" --binding MEDIA_KV ${target}`,
+  `npx wrangler kv bulk delete "${cacheKeyFile}" --binding MEDIA_KV ${target}${ENV_FLAG}`,
   { cwd: ROOT, stdio: "inherit", shell: true },
 );
 if (purge.error) throw purge.error;
