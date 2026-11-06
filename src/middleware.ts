@@ -230,6 +230,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   applySecurityHeaders(response, requestedPath);
 
+  // Attach D1 instrumentation headers for measurement and observability
+  response.headers.set("x-d1-rows-read", String(metrics.rowsRead));
+  response.headers.set("x-d1-rows-written", String(metrics.rowsWritten));
+  response.headers.set("x-d1-queries", String(metrics.queryCount));
+
   if (
     metrics.queryCount > 0 &&
     (import.meta.env.DEV || (typeof env !== "undefined" && (env as unknown as Record<string, unknown>).ENV !== "production"))
