@@ -2,19 +2,17 @@
   "id": "/",
   "name": "CUET Free Mock Test",
   "short_name": "CUET Mock",
-  "description": "Free CUET-UG mock tests with NTA-style timing, instant scoring, solutions and percentile analysis.",
+  "description": "Free CUET UG mock tests, previous-year papers, syllabus and exam-pattern guides.",
   "lang": "en-IN",
   "dir": "ltr",
-  "start_url": "/?source=pwa",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#f8fafc",
-  "theme_color": "#4338ca",
-  "categories": [
-    "education",
-    "productivity"
-  ],
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "categories": ["education", "productivity"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -29,6 +27,12 @@
       "purpose": "any"
     },
     {
+      "src": "/icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "/icons/maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
@@ -37,26 +41,25 @@
   ],
   "shortcuts": [
     {
-      "name": "Browse mock tests",
-      "short_name": "Mock tests",
-      "url": "/cuet-mock-tests/",
-      "icons": [
-        {
-          "src": "/icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "name": "Mock Tests",
+      "short_name": "Mock Tests",
+      "description": "Browse full-length CUET UG mock tests.",
+      "url": "/mock-tests",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "My dashboard",
+      "name": "Previous Year Papers",
+      "short_name": "PYQs",
+      "description": "Practice CUET UG previous-year questions.",
+      "url": "/cuet-ug-previous-year-papers",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Dashboard",
       "short_name": "Dashboard",
-      "url": "/dashboard/",
-      "icons": [
-        {
-          "src": "/icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "description": "Review your attempts and performance.",
+      "url": "/dashboard",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }

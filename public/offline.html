@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#1e40af" />
+    <title>You are offline | CUET Free Mock Test</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --muted: #475569;
+        --brand: #1e40af;
+        --brand-strong: #1d4ed8;
+        --accent: #f59e0b;
+      }
+
+      html[data-theme="dark"] {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --border: #334155;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --brand: #93c5fd;
+        --brand-strong: #bfdbfe;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html:not([data-theme="light"]) {
+          --bg: #0f172a;
+          --surface: #1e293b;
+          --border: #334155;
+          --text: #f8fafc;
+          --muted: #cbd5e1;
+          --brand: #93c5fd;
+          --brand-strong: #bfdbfe;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      main {
+        width: min(100%, 460px);
+        padding: 40px 28px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--surface);
+        text-align: center;
+        box-shadow: 0 24px 60px rgb(15 23 42 / 0.12);
+      }
+
+      .mark {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 20px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background: linear-gradient(145deg, #3b82f6, #1e3a8a);
+        color: #ffffff;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.5rem, 5vw, 1.9rem);
+        line-height: 1.2;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .actions {
+        margin-top: 28px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      button,
+      a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        border-radius: 999px;
+        font: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      button {
+        border: 0;
+        background: var(--brand-strong);
+        color: #ffffff;
+      }
+
+      html[data-theme="dark"] button {
+        color: #0f172a;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html:not([data-theme="light"]) button {
+          color: #0f172a;
+        }
+      }
+
+      a {
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .hint {
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mark" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+          <path
+            d="M15.5 9H27v5.5a2 2 0 0 0 2 2h5v20.5a2.5 2.5 0 0 1-2.5 2.5h-16A2.5 2.5 0 0 1 13 37V11.5A2.5 2.5 0 0 1 15.5 9Z"
+            fill="#ffffff"
+          />
+          <path d="M27 9l7 7h-5a2 2 0 0 1-2-2V9Z" fill="#bfdbfe" />
+          <rect x="17" y="19" width="11" height="2.2" rx="1.1" fill="#93c5fd" />
+          <rect x="17" y="24" width="8" height="2.2" rx="1.1" fill="#bfdbfe" />
+          <circle cx="34.5" cy="34" r="9" fill="#f59e0b" stroke="#ffffff" stroke-width="2" />
+          <path d="m30.5 34 2.6 2.6 5-5" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <h1>You are offline</h1>
+      <p>Check your internet connection and try again. Pages you opened earlier may still be available.</p>
+      <div class="actions">
+        <button type="button" onclick="location.reload()">Try again</button>
+        <a href="/">Go to home</a>
+      </div>
+      <p class="hint">CUETFreeMockTest.com</p>
+    </main>
+    <script>
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      } catch (error) {}
+    </script>
+  </body>
+</html>

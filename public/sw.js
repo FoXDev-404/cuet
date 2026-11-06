@@ -1,145 +1,170 @@
 /*
  * CUET Free Mock Test service worker.
  *
- * Strategy:
- *  - app shell and static assets: cache first, refresh in the background
- *  - navigations: network first, fall back to the cached page then /offline/
- *  - public test JSON: stale-while-revalidate
- *  - API, auth proxy and non-GET requests: never cached
+ * Privacy rules:
+ * - Never cache /api responses, admin pages, attempt pages, dashboards, results,
+ *   authentication screens or any other authenticated surface.
+ * - HTML is only cached when the server explicitly marks the anonymous response
+ *   with `x-pwa-cacheable: 1` (see src/middleware.ts). This keeps a logged-in
+ *   user's personalized HTML out of Cache Storage.
  *
- * Bump CACHE_VERSION when the caching rules or the shell change so old
- * caches are removed on activate.
+ * Bump VERSION whenever precached static files change.
  */
-const CACHE_VERSION = '2026-11-06-1';
-const SHELL_CACHE = `cuet-shell-${CACHE_VERSION}`;
-const PAGE_CACHE = `cuet-pages-${CACHE_VERSION}`;
-const ASSET_CACHE = `cuet-assets-${CACHE_VERSION}`;
-const DATA_CACHE = `cuet-data-${CACHE_VERSION}`;
-const OFFLINE_URL = '/offline';
-const PRECACHE = [
+const VERSION = "v1";
+
+const STATIC_CACHE = `cuet-static-${VERSION}`;
+const PAGES_CACHE = `cuet-pages-${VERSION}`;
+const CACHE_PREFIX = "cuet-";
+
+const OFFLINE_URL = "/offline";
+
+const PRECACHE_URLS = [
   OFFLINE_URL,
-  '/',
-  '/mock-tests',
-  '/cuet-ug-mock-test',
-  '/manifest.webmanifest',
-  '/favicon.svg',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
+  "/manifest.webmanifest",
+  "/favicon.svg",
+  "/logo.svg",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
+  "/icons/maskable-192.png",
+  "/icons/maskable-512.png",
 ];
-const PRIVATE_PREFIXES = ["/dashboard", "/admin", "/attempt", "/result", "/login", "/signup", "/forgot-password", "/reset-password", "/verify-email"];
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches
-      .open(SHELL_CACHE)
-      .then((cache) =>
-        Promise.allSettled(PRECACHE.map((url) => cache.add(new Request(url, { cache: 'reload' })))),
-      ),
+const PRIVATE_PREFIXES = [
+  "/api",
+  "/admin",
+  "/attempt",
+  "/dashboard",
+  "/result",
+  "/login",
+  "/signup",
+  "/forgot-password",
+  "/reset-password",
+  "/verify-email",
+  "/dev",
+  "/search",
+];
+
+function isPrivatePath(pathname) {
+  return PRIVATE_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
-});
-
-self.addEventListener('activate', (event) => {
-  const keep = new Set([SHELL_CACHE, PAGE_CACHE, ASSET_CACHE, DATA_CACHE]);
-  event.waitUntil(
-    caches
-      .keys()
-      .then((keys) =>
-        Promise.all(keys.filter((key) => !keep.has(key)).map((key) => caches.delete(key))),
-      )
-      .then(() => self.clients.claim()),
-  );
-});
-
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
-});
-
-function isCacheableResponse(response) {
-  return Boolean(response && response.ok && response.type === 'basic');
 }
 
-async function cacheFirst(request, cacheName) {
-  const cached = await caches.match(request);
+function isCacheableAsset(pathname) {
+  return (
+    pathname.startsWith("/_astro/") ||
+    pathname.startsWith("/icons/") ||
+    pathname.startsWith("/local-papers/") ||
+    pathname.startsWith("/og/") ||
+    pathname === "/favicon.svg" ||
+    pathname === "/logo.svg" ||
+    pathname === "/logo.png" ||
+    pathname === "/apple-touch-icon.png" ||
+    pathname === "/manifest.webmanifest" ||
+    /\.(?:css|js|mjs|woff2?|ttf|otf|png|jpe?g|webp|avif|gif|svg|ico)$/i.test(pathname)
+  );
+}
+
+async function precache() {
+  const cache = await caches.open(STATIC_CACHE);
+  await Promise.allSettled(
+    PRECACHE_URLS.map(async (url) => {
+      const response = await fetch(new Request(url, { cache: "reload" }));
+      if (response.ok) await cache.put(url, response);
+    }),
+  );
+}
+
+async function offlineFallback() {
+  const offline = await caches.match(OFFLINE_URL);
+  if (offline) return offline;
+
+  return new Response("You appear to be offline. Reconnect and try again.", {
+    status: 503,
+    headers: { "content-type": "text/plain; charset=utf-8" },
+  });
+}
+
+async function cacheFirst(request) {
+  const cache = await caches.open(STATIC_CACHE);
+  const cached = await cache.match(request);
   if (cached) return cached;
+
   const response = await fetch(request);
-  if (isCacheableResponse(response)) {
-    const cache = await caches.open(cacheName);
+  if (response.ok && response.type === "basic") {
     await cache.put(request, response.clone());
   }
   return response;
 }
 
-async function staleWhileRevalidate(request) {
-  const cache = await caches.open(DATA_CACHE);
-  const cached = await cache.match(request);
-  const network = fetch(request)
-    .then(async (response) => {
-      if (isCacheableResponse(response)) await cache.put(request, response.clone());
-      return response;
-    })
-    .catch(() => null);
-  if (cached) {
-    network.catch(() => undefined);
-    return cached;
-  }
-  const response = await network;
-  return response || new Response('', { status: 504, statusText: 'Offline' });
-}
-
 async function networkFirstNavigation(request) {
-  const url = new URL(request.url);
-  const isPrivate = PRIVATE_PREFIXES.some((prefix) => url.pathname === prefix || url.pathname.startsWith(prefix + "/"));
-  const pageCache = await caches.open(PAGE_CACHE);
   try {
     const response = await fetch(request);
-    // Never persist private HTML (dashboard, attempts, results, admin, auth).
-    if (!isPrivate && isCacheableResponse(response)) await pageCache.put(request, response.clone());
-    return response;
-  } catch (error) {
-    if (isPrivate) {
-      return new Response('You are offline. Reconnect to view this private page.', {
-        status: 503,
-        headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-      });
+    if (response.ok && response.headers.get("x-pwa-cacheable") === "1") {
+      const cache = await caches.open(PAGES_CACHE);
+      await cache.put(request, response.clone());
     }
-    const cached = await pageCache.match(request);
+    return response;
+  } catch {
+    const cache = await caches.open(PAGES_CACHE);
+    const cached = await cache.match(request, { ignoreSearch: true });
     if (cached) return cached;
-    const shell = await caches.match(request);
-    if (shell) return shell;
-    const offline = await caches.match(OFFLINE_URL);
-    if (offline) return offline;
-    return new Response('You are offline. Reconnect and try again.', {
-      status: 503,
-      headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-    });
+
+    return offlineFallback();
   }
 }
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    (async () => {
+      await precache();
+      await self.skipWaiting();
+    })(),
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys
+          .filter((key) => key.startsWith(CACHE_PREFIX) && key !== STATIC_CACHE && key !== PAGES_CACHE)
+          .map((key) => caches.delete(key)),
+      );
+      await self.clients.claim();
+    })(),
+  );
+});
+
+self.addEventListener("fetch", (event) => {
   const request = event.request;
-  if (request.method !== 'GET') return;
+  if (request.method !== "GET") return;
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
-  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/__/')) return;
-  if (request.headers.has('range')) return;
+  if (request.headers.has("range")) return;
 
-  if (request.mode === 'navigate') {
+  // Private and API routes are never cached. Navigations still receive the
+  // offline fallback when the network is unavailable.
+  if (isPrivatePath(url.pathname)) {
+    if (request.mode === "navigate") {
+      event.respondWith(fetch(request).catch(() => offlineFallback()));
+    }
+    return;
+  }
+
+  if (url.pathname === OFFLINE_URL || url.pathname === "/manifest.webmanifest") {
+    event.respondWith(cacheFirst(request));
+    return;
+  }
+
+  if (request.mode === "navigate") {
     event.respondWith(networkFirstNavigation(request));
     return;
   }
 
-  if (url.pathname.startsWith('/data/')) {
-    event.respondWith(staleWhileRevalidate(request));
-    return;
-  }
-
-  if (
-    url.pathname.startsWith('/_astro/') ||
-    url.pathname.startsWith('/pagefind/') ||
-    url.pathname.startsWith('/icons/') ||
-    /\.(?:css|js|woff2?|png|jpg|jpeg|webp|svg|ico)$/.test(url.pathname)
-  ) {
-    event.respondWith(cacheFirst(request, ASSET_CACHE));
+  if (isCacheableAsset(url.pathname)) {
+    event.respondWith(cacheFirst(request));
   }
 });

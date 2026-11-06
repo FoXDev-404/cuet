@@ -225,7 +225,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-    return next();
+    const response = await next();
+
+    // Only anonymous HTML may enter the PWA page cache. Personalized responses
+    // (logged-in navigation, attempts, results, dashboards) are never marked.
+    const contentType = response.headers.get("content-type") ?? "";
+    if (
+      context.request.method === "GET" &&
+      response.status === 200 &&
+      !context.locals.user &&
+      !isPrivatePath(pathname) &&
+      contentType.includes("text/html")
+    ) {
+      response.headers.set("x-pwa-cacheable", "1");
+    }
+
+    return response;
   }, context.url.pathname);
 
   applySecurityHeaders(response, requestedPath);
