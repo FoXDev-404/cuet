@@ -73,10 +73,8 @@ describe("optional integration flags", () => {
     expect(shouldServeAds(false, "index, follow")).toBe(false);
   });
 
-  it("never allows ad units on private, attempt, result or thin routes", () => {
+  it("never allows ad units on admin, API, dashboard, auth or thin routes", () => {
     for (const path of [
-      "/attempt/42",
-      "/result/42",
       "/dashboard",
       "/dashboard/history",
       "/admin",
@@ -87,7 +85,6 @@ describe("optional integration flags", () => {
       "/forgot-password",
       "/reset-password/token",
       "/search?q=cuet",
-      "/mock-tests/2022-english-1",
       "/mock-tests/2022-english-1/take",
       "/u/student",
       "/dev/styleguide",
@@ -117,6 +114,10 @@ describe("optional integration flags", () => {
       "/mock-tests",
       "/mock-tests/",
       "/mock-tests?subject=physics",
+      "/mock-tests/applied-mathematics-2025-06-02-shift-1",
+      "/attempt/42",
+      "/result/42",
+      "/result/42/solutions",
       "/cuet-ug-mock-test",
       "/cuet-ug-syllabus",
       "/cuet-ug-marking-scheme",
