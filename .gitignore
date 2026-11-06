@@ -28,6 +28,9 @@ tools/ocr/OCR DATA/
 .DS_Store
 Thumbs.db
 
+# Playwright MCP run artifacts (screenshots, page snapshots, console logs)
+/.playwright-mcp/
+
 # graft's local graph cache — regenerable, not committed (run `graft build`).
 /graft/
 

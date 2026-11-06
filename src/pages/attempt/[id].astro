@@ -393,7 +393,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       }
       .nta-palette-btn:hover { border-color: var(--primary); }
       .nta-palette-btn.current { outline: 2px solid var(--ink); outline-offset: 1px; }
-      .nta-palette-btn.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .nta-palette-btn.answered { background: var(--exam-save); border-color: var(--exam-save); color: var(--on-exam-save); }
       .nta-palette-btn.unanswered { background: var(--cta); border-color: var(--cta); color: var(--on-cta); }
       .nta-palette-btn.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
       .nta-palette-btn.marked.answered {
@@ -416,7 +416,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         font-weight: 700;
       }
       .nta-legend-swatch.unanswered { background: var(--cta); border-color: var(--cta); color: var(--on-cta); }
-      .nta-legend-swatch.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .nta-legend-swatch.answered { background: var(--exam-save); border-color: var(--exam-save); color: var(--on-exam-save); }
       .nta-legend-swatch.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
       .nta-legend-swatch.marked-answered {
         background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%);
@@ -533,10 +533,10 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       }
       .exam-toplink:hover { background: var(--surface-3); color: var(--primary); }
       .exam-timer {
-        border: 1px solid var(--border);
+        border: 1px solid var(--exam-timer-bg);
         border-radius: 0.55rem;
-        background: var(--surface);
-        color: var(--ink);
+        background: var(--exam-timer-bg);
+        color: var(--on-exam-timer);
         padding: 0.3rem 0.65rem;
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         font-size: 0.8rem;
@@ -545,16 +545,16 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         line-height: 1.2;
       }
       .exam-submit {
-        border: 1px solid var(--primary);
+        border: 1px solid var(--exam-save);
         border-radius: 0.55rem;
-        background: var(--primary);
-        color: var(--on-primary);
+        background: var(--exam-save);
+        color: var(--on-exam-save);
         padding: 0.45rem 0.85rem;
         font-size: 0.72rem;
         font-weight: 800;
         line-height: 1.2;
       }
-      .exam-submit:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+      .exam-submit:hover { background: var(--exam-save-hover); border-color: var(--exam-save-hover); }
       .exam-candidatebar {
         background: color-mix(in srgb, var(--primary-tint) 70%, var(--surface-2));
         border-bottom: 1px solid var(--border);
@@ -655,12 +655,14 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         text-align: center;
       }
       .exam-btn:hover { background: var(--surface-3); }
-      .exam-btn-primary { border-color: var(--primary); background: var(--primary); color: var(--on-primary); }
-      .exam-btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
-      .exam-btn-review { border-color: color-mix(in srgb, var(--review) 45%, var(--border)); background: color-mix(in srgb, var(--review) 9%, var(--surface-2)); color: var(--review); }
-      .exam-btn-review:hover { background: color-mix(in srgb, var(--review) 16%, var(--surface-2)); }
-      .exam-btn-submit { border-color: var(--wrong); background: var(--wrong); color: var(--on-wrong); }
-      .exam-btn-submit:hover { filter: brightness(0.94); }
+      .exam-btn-primary { border-color: var(--exam-save); background: var(--exam-save); color: var(--on-exam-save); }
+      .exam-btn-primary:hover { background: var(--exam-save-hover); border-color: var(--exam-save-hover); }
+      .exam-btn-mark { border-color: var(--exam-mark); background: var(--exam-mark); color: var(--on-exam-mark); }
+      .exam-btn-mark:hover { background: var(--exam-mark-hover); border-color: var(--exam-mark-hover); }
+      .exam-btn-review { border-color: var(--exam-blue); background: var(--exam-blue); color: var(--on-exam-blue); }
+      .exam-btn-review:hover { background: var(--exam-blue-hover); border-color: var(--exam-blue-hover); }
+      .exam-btn-submit { border-color: var(--exam-save); background: var(--exam-save); color: var(--on-exam-save); }
+      .exam-btn-submit:hover { background: var(--exam-save-hover); border-color: var(--exam-save-hover); }
       .exam-palette {
         background: var(--surface-2);
         border-left: 1px solid var(--border);
@@ -696,7 +698,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       .exam-legend-label { margin-top: 0.2rem; font-size: 0.56rem; font-weight: 800; letter-spacing: 0.02em; }
       .exam-legend-card.notvisited { background: var(--not-visited); border-color: color-mix(in srgb, var(--on-not-visited) 16%, var(--border)); color: var(--on-not-visited); }
       .exam-legend-card.unanswered { background: var(--wrong); border-color: var(--wrong); color: var(--on-wrong); }
-      .exam-legend-card.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .exam-legend-card.answered { background: var(--exam-save); border-color: var(--exam-save); color: var(--on-exam-save); }
       .exam-legend-card.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
       .exam-legend-card.marked-answered { background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%); border-color: var(--review); color: var(--on-correct); }
       .exam-palette-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.35rem; }
@@ -716,7 +718,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       /* Palette states (overrides the older NTA palette colours). */
       .nta-palette-btn { height: 1.75rem; width: 1.75rem; border-radius: 0.35rem; border: 1px solid var(--border); background: var(--not-visited); color: var(--on-not-visited); }
       .nta-palette-btn.unanswered { background: var(--wrong); border-color: var(--wrong); color: var(--on-wrong); }
-      .nta-palette-btn.answered { background: var(--correct); border-color: var(--correct); color: var(--on-correct); }
+      .nta-palette-btn.answered { background: var(--exam-save); border-color: var(--exam-save); color: var(--on-exam-save); }
       .nta-palette-btn.marked { background: var(--review); border-color: var(--review); color: var(--on-review); }
       .nta-palette-btn.marked.answered { background: linear-gradient(135deg, var(--review) 50%, var(--correct) 50%); border-color: var(--review); color: var(--on-correct); }
       .nta-palette-btn.current { outline: 2px solid var(--ink); outline-offset: 1px; }
@@ -879,7 +881,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
             <button id="previous" class="exam-btn" type="button">← Previous</button>
             <div class="ml-auto flex flex-wrap items-center justify-end gap-1.5">
               <button id="clear" class="exam-btn" type="button">Clear response</button>
-              <button id="save-mark" class="exam-btn hidden sm:inline-flex" type="button">Mark for review</button>
+              <button id="save-mark" class="exam-btn exam-btn-mark hidden sm:inline-flex" type="button">Mark for review</button>
               <button id="mark-next" class="exam-btn exam-btn-review hidden xl:inline-flex" type="button">Mark &amp; next</button>
               <button id="save-next" class="exam-btn exam-btn-primary" type="button">Save &amp; next →</button>
               <button id="submit-attempt-bottom" class="exam-btn exam-btn-submit hidden lg:inline-flex" type="button">Submit test</button>

@@ -72,6 +72,18 @@
   --exam-palette-ink: #3f3f46;
   --exam-section-ink: #52525b;
   --exam-hover: #f4f4f5;
+  /* NTA-style test player actions (sampled from the official CUET interface) */
+  --exam-save: #2e7d32;
+  --exam-save-hover: #256a29;
+  --on-exam-save: #ffffff;
+  --exam-mark: #f0c038;
+  --exam-mark-hover: #e2af25;
+  --on-exam-mark: #3b2a00;
+  --exam-blue: #4f6fb5;
+  --exam-blue-hover: #44619e;
+  --on-exam-blue: #ffffff;
+  --exam-timer-bg: #60a0c0;
+  --on-exam-timer: #0b2a38;
 
   /* feedback surfaces (error banners, timer warning) */
   --danger-bg: #fef2f2;
@@ -189,6 +201,18 @@
     --exam-palette-ink: #e5e7eb;
     --exam-section-ink: #94a3b8;
     --exam-hover: #243247;
+    /* NTA-style test player actions (sampled from the official CUET interface) */
+    --exam-save: #4caf50;
+    --exam-save-hover: #5cbb60;
+    --on-exam-save: #0b2a12;
+    --exam-mark: #f0c038;
+    --exam-mark-hover: #f6cd55;
+    --on-exam-mark: #3b2a00;
+    --exam-blue: #7090c8;
+    --exam-blue-hover: #86a3d6;
+    --on-exam-blue: #0b1220;
+    --exam-timer-bg: #60a0c0;
+    --on-exam-timer: #0b2a38;
     --danger-bg: #450a0a;
     --danger-border: #7f1d1d;
     --danger-ink: #fecaca;
@@ -259,6 +283,18 @@
   --exam-palette-ink: #e5e7eb;
   --exam-section-ink: #94a3b8;
   --exam-hover: #243247;
+  /* NTA-style test player actions (sampled from the official CUET interface) */
+  --exam-save: #4caf50;
+  --exam-save-hover: #5cbb60;
+  --on-exam-save: #0b2a12;
+  --exam-mark: #f0c038;
+  --exam-mark-hover: #f6cd55;
+  --on-exam-mark: #3b2a00;
+  --exam-blue: #7090c8;
+  --exam-blue-hover: #86a3d6;
+  --on-exam-blue: #0b1220;
+  --exam-timer-bg: #60a0c0;
+  --on-exam-timer: #0b2a38;
   --danger-bg: #450a0a;
   --danger-border: #7f1d1d;
   --danger-ink: #fecaca;
@@ -334,6 +370,17 @@
     --exam-palette-ink: #111827;
     --exam-section-ink: #475569;
     --exam-hover: #f1f5f9;
+    --exam-save: #2e7d32;
+    --exam-save-hover: #256a29;
+    --on-exam-save: #ffffff;
+    --exam-mark: #f0c038;
+    --exam-mark-hover: #e2af25;
+    --on-exam-mark: #3b2a00;
+    --exam-blue: #4f6fb5;
+    --exam-blue-hover: #44619e;
+    --on-exam-blue: #ffffff;
+    --exam-timer-bg: #60a0c0;
+    --on-exam-timer: #0b2a38;
     --danger-bg: #fef2f2;
     --danger-border: #fca5a5;
     --danger-ink: #7f1d1d;

@@ -139,6 +139,13 @@ const TEXT_PAIRS: Pair[] = [
   ["--exam-subbar-ink", "--exam-subbar-bg"],
   ["--exam-palette-ink", "--exam-palette-bg"],
   ["--exam-section-ink", "--surface-2"],
+  ["--on-exam-save", "--exam-save"],
+  ["--on-exam-save", "--exam-save-hover"],
+  ["--on-exam-mark", "--exam-mark"],
+  ["--on-exam-mark", "--exam-mark-hover"],
+  ["--on-exam-blue", "--exam-blue"],
+  ["--on-exam-blue", "--exam-blue-hover"],
+  ["--on-exam-timer", "--exam-timer-bg"],
 ];
 
 const UI_PAIRS: Pair[] = [
