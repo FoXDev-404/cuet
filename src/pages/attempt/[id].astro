@@ -661,8 +661,6 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       .exam-btn-mark:hover { background: var(--exam-mark-hover); border-color: var(--exam-mark-hover); }
       .exam-btn-review { border-color: var(--exam-blue); background: var(--exam-blue); color: var(--on-exam-blue); }
       .exam-btn-review:hover { background: var(--exam-blue-hover); border-color: var(--exam-blue-hover); }
-      .exam-btn-submit { border-color: var(--exam-save); background: var(--exam-save); color: var(--on-exam-save); }
-      .exam-btn-submit:hover { background: var(--exam-save-hover); border-color: var(--exam-save-hover); }
       .exam-palette {
         background: var(--surface-2);
         border-left: 1px solid var(--border);
@@ -884,7 +882,6 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
               <button id="save-mark" class="exam-btn exam-btn-mark hidden sm:inline-flex" type="button">Mark for review</button>
               <button id="mark-next" class="exam-btn exam-btn-review hidden xl:inline-flex" type="button">Mark &amp; next</button>
               <button id="save-next" class="exam-btn exam-btn-primary" type="button">Save &amp; next →</button>
-              <button id="submit-attempt-bottom" class="exam-btn exam-btn-submit hidden lg:inline-flex" type="button">Submit test</button>
             </div>
           </footer>
         </main>
@@ -1503,7 +1500,6 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         nextQuestion();
       });
       document.getElementById("submit-attempt")?.addEventListener("click", () => { void submitAttempt(); });
-      document.getElementById("submit-attempt-bottom")?.addEventListener("click", () => { void submitAttempt(); });
       document.getElementById("language-toggle")?.addEventListener("click", (event) => {
         state.language = state.language === "en" ? "hi" : "en";
         const label = state.language === "en" ? "EN" : "हिं";
