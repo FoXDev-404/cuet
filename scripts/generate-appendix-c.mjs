@@ -151,7 +151,7 @@ export function generateAppendixC() {
     md += `### Accessibility Coverage Matrix\n\n`;
     md += `| Surface Area | Sample Paths | Viewports | Themes | Axe Violations | Overflow |\n`;
     md += `| :--- | :--- | :--- | :--- | :---: | :---: |\n`;
-    md += `| **Public Pages** | \`/\`, \`/cuet-ug-mock-test\`, \`/leaderboard\`, \`/mock-tests\` | 1280px, 375px | Light, Dark | 0 | 0px |\n`;
+    md += `| **Public Pages** | \`/\`, \`/mock-tests\`, \`/leaderboard\` | 1280px, 375px | Light, Dark | 0 | 0px |\n`;
     md += `| **Exam & Syllabus** | \`/cuet-ug-syllabus\`, \`/cuet-ug-exam-pattern\`, \`/cuet-ug-marking-scheme\` | 1280px, 375px | Light, Dark | 0 | 0px |\n`;
     md += `| **Attempt Flow** | \`/mock/[slug]/instructions\`, \`/attempt/[id]\` | 1280px, 375px | Light, Dark | 0 | 0px |\n`;
     md += `| **Attempt Palette** | \`/attempt/[id]\` (with palette open) | 1280px, 375px | Light, Dark | 0 | 0px |\n`;
@@ -178,7 +178,7 @@ export function generateAppendixC() {
   md += `### Route Group Parity Summary\n\n`;
   md += `| Page Group | Path Prefix | Indexable URLs | In Sitemap? | Status |\n`;
   md += `| :--- | :--- | :---: | :---: | :--- |\n`;
-  md += `| **Home & Hubs** | \`/\`, \`/cuet-ug-mock-test\`, \`/mock-tests\`, \`/cuet-ug-previous-year-papers\` | 4 | 4 / 4 | \`DONE\` |\n`;
+  md += `| **Home & Hubs** | \`/\`, \`/mock-tests\`, \`/cuet-ug-previous-year-papers\` | 3 | 3 / 3 | \`DONE\` |\n`;
   md += `| **Exam Guides** | \`/cuet-ug-syllabus\`, \`/cuet-ug-exam-pattern\`, \`/cuet-ug-marking-scheme\` + 11 syllabi | 14 | 14 / 14 | \`DONE\` |\n`;
   md += `| **Subject Practice** | \`/cuet-mock-test/[subject]\` (active subjects with >=1 paper) | 11 | 11 / 11 | \`DONE\` |\n`;
   md += `| **PYQ Years** | \`/pyq/[year]\` (playable years 2022-2025) | 6 | 6 / 6 | \`DONE\` |\n`;

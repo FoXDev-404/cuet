@@ -86,7 +86,7 @@ const rightsStats = db.prepare(`
 
 // 4. Indexable page count projection
 const indexableBreakdown = [
-  { group: 'Core Landing & Hubs', count: 10, paths: '/, /cuet-ug-mock-test, /mock-tests, /cuet-ug-previous-year-papers, /leaderboard, /about, /contact, /privacy-policy, /terms, /disclaimer' },
+  { group: 'Core Landing & Hubs', count: 9, paths: '/, /mock-tests, /cuet-ug-previous-year-papers, /leaderboard, /about, /contact, /privacy-policy, /terms, /disclaimer' },
   { group: 'Official Exam Guides', count: 3, paths: '/cuet-ug-syllabus, /cuet-ug-exam-pattern, /cuet-ug-marking-scheme' },
   { group: 'Syllabus Subject Guides', count: subjects.length, paths: '/cuet-ug-syllabus/:subject (19 subjects)' },
   { group: 'Substantive Subject Hubs', count: subjects.filter(s => s.bank_questions >= 3 || s.original_mocks > 0).length, paths: '/cuet-mock-test/:subject (subjects with >= 3 questions)' },

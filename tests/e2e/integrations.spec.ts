@@ -48,7 +48,7 @@ test("optional integrations inject nothing when unconfigured", async ({ page, re
     "Local .dev.vars configures an optional integration, so absence cannot be asserted.",
   );
 
-  for (const route of ["/", "/cuet-ug-mock-test", "/cuet-mock-test"]) {
+  for (const route of ["/", "/mock-tests", "/cuet-mock-test"]) {
     await page.goto(route);
     await expect(page.locator('script[src*="cloudflareinsights"]'), route).toHaveCount(0);
     await expect(page.locator('script[src*="adsbygoogle"]'), route).toHaveCount(0);

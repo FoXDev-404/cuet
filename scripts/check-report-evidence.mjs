@@ -75,7 +75,7 @@ function main() {
   // Regex patterns for file citations: e.g. `src/lib/foo.ts` or [text](file:///...) or `migrations/0001_init.sql`
   const fileRegex = /(`|\()((src|scripts|migrations|docs|tests|\.github)\/[a-zA-Z0-9_\-\.\/]+|package\.json|wrangler\.jsonc)(\)|`)/g;
 
-  // Regex patterns for routes: e.g. `/cuet-ug-mock-test`, `/admin`, `/attempt/[id]`
+  // Regex patterns for routes: e.g. `/mock-tests`, `/admin`, `/attempt/[id]`
   const routeRegex = /`(\/(?:[a-zA-Z0-9_\-\[\]]+(?:\/[a-zA-Z0-9_\-\[\]]+)*|\/))`(?!\s*(?:row|rows|sec|ms|s\b|column|table|table_info))/g;
 
   for (let lineNum = 1; lineNum <= lines.length; lineNum++) {

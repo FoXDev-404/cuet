@@ -1,6 +1,6 @@
 ---
-// Canonical redirect (Fix 7): /cuet-ug-mock-test is the mock hub.
-// /cuet-mock-test (index only) 301-redirects to /cuet-ug-mock-test,
-// while /cuet-mock-test/[slug].astro (subject) and [subject]/[topic].astro remain active.
-return Astro.redirect("/cuet-ug-mock-test", 301);
+// Canonical redirect: /cuet-mock-test (index only) points straight at the
+// practice library. /cuet-mock-test/[slug] (subject) and [subject]/[topic]
+// pages remain active.
+return Astro.redirect("/mock-tests", 301);
 ---

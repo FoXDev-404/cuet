@@ -40,7 +40,7 @@ test.beforeEach(async ({ page }) => {
 test("attempt stays usable on a throttled mobile connection", async ({ page }) => {
   test.setTimeout(120_000);
 
-  await page.goto("/cuet-ug-mock-test", { waitUntil: "domcontentloaded" });
+  await page.goto("/mock-tests", { waitUntil: "domcontentloaded" });
   const mockLink = page.locator('a[href^="/mock/"]').first();
   let href = (await mockLink.count()) > 0 ? await mockLink.getAttribute("href") : null;
   if (!href && !process.env.PLAYWRIGHT_BASE_URL) {

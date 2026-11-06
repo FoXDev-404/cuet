@@ -390,7 +390,7 @@ export async function checkPublicQuestion(
       error: "Attempt the full mock to see the solution.",
       cta: mock
         ? { href: `/mock/${mock.slug}/instructions`, label: "Attempt this mock" }
-        : { href: "/cuet-ug-mock-test", label: "Browse CUET mock tests" },
+        : { href: "/mock-tests", label: "Browse CUET mock tests" },
     };
   }
   if (!Number.isInteger(option) || option < 0 || option >= resolved.view.options.length) {

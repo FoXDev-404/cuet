@@ -5,9 +5,11 @@ import { describe, expect, it } from "vitest";
 describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
   const root = process.cwd();
 
-  it("verifies /cuet-mock-test 301-redirects to /cuet-ug-mock-test", () => {
-    const file = readFileSync(join(root, "src/pages/cuet-mock-test.astro"), "utf8");
-    expect(file).toContain('Astro.redirect("/cuet-ug-mock-test", 301)');
+  it("verifies /cuet-mock-test and /cuet-ug-mock-test 301-redirect to /mock-tests", () => {
+    for (const page of ["src/pages/cuet-mock-test.astro", "src/pages/cuet-ug-mock-test.astro"]) {
+      const file = readFileSync(join(root, page), "utf8");
+      expect(file, page).toContain('Astro.redirect("/mock-tests", 301)');
+    }
   });
 
   it("verifies /pyq 301-redirects to /cuet-ug-previous-year-papers", () => {
@@ -25,9 +27,10 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(file).toContain("noindex={noindex}");
   });
 
-  it("verifies sitemap.xml excludes 301 redirects (/cuet-mock-test, /pyq)", () => {
+  it("verifies sitemap.xml excludes 301 redirects (/cuet-mock-test, /cuet-ug-mock-test, /pyq)", () => {
     const file = readFileSync(join(root, "src/pages/sitemap.xml.ts"), "utf8");
     expect(file).not.toContain('add("/cuet-mock-test"');
+    expect(file).not.toContain('add("/cuet-ug-mock-test"');
     expect(file).not.toContain('add("/pyq"');
   });
 

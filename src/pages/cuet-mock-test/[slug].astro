@@ -228,7 +228,7 @@ const structuredData = [
           <p class="mx-auto mt-2 max-w-xl text-sm leading-6 text-neutral-500 dark:text-neutral-400">
             This subject is active in the syllabus map, but the bank has no published paper for it. Try a mixed paper in the meantime, or check another subject.
           </p>
-          <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-mock-test">Browse all papers</a>
+          <a class="mt-4 inline-block rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/mock-tests">Browse all papers</a>
         </div>
       ) : (
         <>
@@ -318,7 +318,7 @@ const structuredData = [
           <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">Answers stay hidden until submit, and the result shows the section breakdown you need for the next revision cycle.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={papers[0] ? `/mock/${papers[0].slug}/instructions` : localPapers[0] ? localPapers[0].path : "/cuet-ug-mock-test"}>
+          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={papers[0] ? `/mock/${papers[0].slug}/instructions` : localPapers[0] ? localPapers[0].path : "/mock-tests"}>
             {papers[0] ? "Start the first paper" : localPapers[0] ? "Open mock tests" : "Browse all papers"}
           </a>
           <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/cuet-ug-syllabus">Syllabus guide</a>

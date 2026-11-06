@@ -35,7 +35,6 @@ const skipAttempt = /^(1|true|yes)$/i.test(process.env.A11Y_SKIP_ATTEMPT ?? "");
 
 const STATIC_PUBLIC_PATHS = [
   "/",
-  "/cuet-ug-mock-test",
   "/leaderboard",
   "/cuet-ug-syllabus",
   "/cuet-ug-exam-pattern",
@@ -225,7 +224,7 @@ async function auditPath(page, label, path, viewport, waitFor, prepare) {
 
 async function findMockSlug(page) {
   // Try the primary library first; the older catalogue is kept as a fallback.
-  for (const path of ["/mock-tests", "/cuet-ug-mock-test"]) {
+  for (const path of ["/mock-tests"]) {
     await page.goto(`${baseURL}${path}`, { waitUntil: "load" });
     const href = await page.locator('a[href^="/mock/"]').first().getAttribute("href").catch(() => null);
     if (!href) continue;

@@ -29,7 +29,6 @@ export type ExamInfoRow = {
 /** Known public pages shown in the admin SEO editor. */
 export const SEO_PATHS = [
   "/",
-  "/cuet-ug-mock-test",
   "/cuet-mock-test",
   "/cuet-ug-syllabus",
   "/cuet-ug-exam-pattern",

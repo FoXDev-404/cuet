@@ -81,7 +81,7 @@ const adClient = adsCanRender ? adsenseClient(env) : "";
 
 const desktopNav = [
   { href: "/", label: "Home", isHome: true, match: ["/"] },
-  { href: "/mock-tests", label: "Mock Tests", match: ["/mock-tests", "/cuet-ug-mock-test", "/mock"] },
+  { href: "/mock-tests", label: "Mock Tests", match: ["/mock-tests", "/mock"] },
   ...(user ? [{ href: "/dashboard", label: "Dashboard", match: ["/dashboard"] }] : []),
   { href: "/cuet-ug-previous-year-papers", label: "PYQs", match: ["/cuet-ug-previous-year-papers"] },
   { href: "/leaderboard", label: "Leaderboard", match: ["/leaderboard"] },
@@ -381,11 +381,11 @@ const organization = {
         href="/mock-tests"
         class:list={[
           "flex flex-1 flex-col items-center justify-center gap-1 py-1 text-center transition-colors",
-          path.startsWith("/mock-tests") || path.startsWith("/mock") || path.startsWith("/cuet-ug-mock-test")
+          path.startsWith("/mock-tests") || path.startsWith("/mock")
             ? "text-brand-600 dark:text-brand-400 font-semibold"
             : "text-neutral-600 hover:text-neutral-900 dark:text-white/60 dark:hover:text-white font-normal",
         ]}
-        aria-current={path.startsWith("/mock-tests") || path.startsWith("/mock") || path.startsWith("/cuet-ug-mock-test") ? "page" : undefined}
+        aria-current={path.startsWith("/mock-tests") || path.startsWith("/mock") ? "page" : undefined}
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -638,7 +638,7 @@ const organization = {
           <div class="text-sm">
             <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">Explore</p>
             <ul class="mt-3 space-y-2 text-white/60">
-              <li><a class="hover:text-accent-300" href="/cuet-ug-mock-test">Subject papers</a></li>
+              <li><a class="hover:text-accent-300" href="/mock-tests">Subject papers</a></li>
               <li><a class="hover:text-accent-300" href="/cuet-ug-syllabus">CUET syllabus</a></li>
               <li><a class="hover:text-accent-300" href="/cuet-ug-exam-pattern">Exam pattern</a></li>
               <li><a class="hover:text-accent-300" href="/cuet-ug-important-dates">Important dates</a></li>

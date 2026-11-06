@@ -88,8 +88,6 @@ describe("Fix 6 — Structured Data (JSON-LD) Governance", () => {
     const testPages = [
       "src/pages/mock/[slug]/index.astro",
       "src/pages/mock-tests/[slug].astro",
-      "src/pages/cuet-ug-mock-test.astro",
-      "src/pages/cuet-mock-test.astro",
       "src/pages/q/[slug].astro",
     ];
 

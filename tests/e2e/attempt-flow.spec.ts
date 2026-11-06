@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 
-const MOCK_LIST_PATHS = ["/mock-tests", "/cuet-ug-mock-test"];
+const MOCK_LIST_PATHS = ["/mock-tests"];
 const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
 
 /** Keeps repeated local runs out of the shared rate-limit bucket. */

@@ -118,7 +118,6 @@ describe("optional integration flags", () => {
       "/attempt/42",
       "/result/42",
       "/result/42/solutions",
-      "/cuet-ug-mock-test",
       "/cuet-ug-syllabus",
       "/cuet-ug-marking-scheme",
       "/mock/starter-mock",

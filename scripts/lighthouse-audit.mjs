@@ -189,7 +189,7 @@ async function main() {
 
   const AUDIT_TARGETS = [
     { id: "home", name: "Home", path: "/" },
-    { id: "hubs", name: "Hubs (Mock Test)", path: "/cuet-ug-mock-test" },
+    { id: "hubs", name: "Hubs (Mock Test)", path: "/mock-tests" },
     { id: "mock-detail", name: "Mock Detail", path: "/mock/physics-2026-05-31-shift-2" },
     { id: "instructions", name: "Instructions", path: "/mock/physics-2026-05-31-shift-2/instructions" },
     { id: "attempt", name: "Attempt Screen", path: attemptPath, headerFile: GUEST_HEADERS_FILE, cookie: "cuet_guest=lighthouse_guest_token_2026" },

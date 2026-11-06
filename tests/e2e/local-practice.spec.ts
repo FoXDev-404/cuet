@@ -185,11 +185,7 @@ test("submitting a practice paper increments the public ranked attempt counter",
   expect(after).toBe(before + 1);
 });
 
-test("previous-year practice mocks are filtered out of the generic mock bank", async ({ page }) => {
-  await page.goto("/cuet-ug-mock-test");
-  expect(await page.locator(`a[href="/mock/${SCORED_PAPER.slug}/instructions"]`).count()).toBe(0);
-  expect(await page.locator(`a[href="/mock/${SCORED_PAPER.slug}"]`).count()).toBe(0);
-
+test("practice papers are linked from their subject hub", async ({ page }) => {
   await page.goto(`/cuet-mock-test/${SCORED_PAPER.subject.slug}`);
   await expect(page.locator(`a[href="/mock-tests/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
 });

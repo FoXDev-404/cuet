@@ -155,7 +155,7 @@ const site = siteUrl(Astro.url);
 const structuredData = [
   breadcrumbJsonLd(site, [
     { name: "Home", path: "/" },
-    { name: "Mock tests", path: "/cuet-ug-mock-test" },
+    { name: "Mock tests", path: "/mock-tests" },
     { name: mock.title, path: `/mock/${mock.slug}` },
   ]),
 ].filter((item): item is Record<string, unknown> => Boolean(item));
@@ -171,7 +171,7 @@ const noindex = totalQuestions === 0 || isPracticeWrapper || isFixture;
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
       <div>
         <div class="flex flex-wrap items-center gap-2 text-xs">
-          <a class="text-neutral-500 hover:underline dark:text-neutral-400" href="/cuet-ug-mock-test">Mock tests</a>
+          <a class="text-neutral-500 hover:underline dark:text-neutral-400" href="/mock-tests">Mock tests</a>
           <span class="text-neutral-400">/</span>
           <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{mock.type}</span>
           {mock.subject_name ? <span class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{mock.subject_name}</span> : null}

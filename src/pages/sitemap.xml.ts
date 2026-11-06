@@ -175,7 +175,6 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   add("/", { changefreq: "weekly", priority: "1.0" });
-  if (mocks.length > 0 || localPapers.length > 0) add("/cuet-ug-mock-test", { changefreq: "weekly", priority: "0.9" });
   if (isExamVerified("syllabus")) add("/cuet-ug-syllabus", { changefreq: "monthly", priority: "0.9" });
   if (isExamVerified("exam-pattern")) add("/cuet-ug-exam-pattern", { changefreq: "monthly", priority: "0.9" });
   if (isExamVerified("marking-scheme")) add("/cuet-ug-marking-scheme", { changefreq: "monthly", priority: "0.8" });

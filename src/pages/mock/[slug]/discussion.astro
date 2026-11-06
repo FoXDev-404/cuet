@@ -117,7 +117,7 @@ function authorBadge(thread: { is_best_answer: number }): string {
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         <a class="rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-bold text-[var(--on-primary)] hover:bg-[var(--primary-hover)]" href={`/mock/${mock.slug}`}>Open the mock</a>
-        <a class="rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)]  " href="/cuet-ug-mock-test">Browse tests</a>
+        <a class="rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)]  " href="/mock-tests">Browse tests</a>
       </div>
     </section>
   ) : !access ? (
@@ -129,13 +129,13 @@ function authorBadge(thread: { is_best_answer: number }): string {
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         <a class="rounded-lg bg-[var(--primary)] px-4 py-2.5 text-sm font-bold text-[var(--on-primary)] hover:bg-[var(--primary-hover)]" href={`/mock/${mock.slug}`}>Open the mock</a>
-        <a class="rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)]  " href="/cuet-ug-mock-test">Browse tests</a>
+        <a class="rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)]  " href="/mock-tests">Browse tests</a>
       </div>
     </section>
   ) : (
     <section class="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:py-10">
       <nav class="flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
-        <a class="hover:underline" href="/cuet-ug-mock-test">Mock tests</a>
+        <a class="hover:underline" href="/mock-tests">Mock tests</a>
         <span aria-hidden="true">/</span>
         <a class="hover:underline" href={`/mock/${mock.slug}`}>{mock.title}</a>
         <span aria-hidden="true">/</span>

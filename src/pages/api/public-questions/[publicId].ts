@@ -19,7 +19,7 @@ export const GET: APIRoute = async (context) => {
       ? null
       : mock
         ? { href: `/mock/${mock.slug}/instructions`, label: "Attempt this mock" }
-        : { href: "/cuet-ug-mock-test", label: "Browse CUET mock tests" },
+        : { href: "/mock-tests", label: "Browse CUET mock tests" },
   });
 };
 

@@ -49,7 +49,7 @@ const robots = view.seoEligible ? "index, follow" : "noindex, follow";
 
 const breadcrumbTrail = [
   { name: "Home", path: "/" },
-  { name: "CUET mock tests", path: "/cuet-ug-mock-test" },
+  { name: "CUET mock tests", path: "/mock-tests" },
   { name: view.subject.name, path: `/cuet-mock-test/${view.subject.slug}` },
   ...(view.topic
     ? [{ name: view.topic.name, path: `/cuet-mock-test/${view.subject.slug}/${view.topic.slug}` }]
@@ -59,7 +59,7 @@ const breadcrumbTrail = [
 const structuredData = view.seoEligible ? [breadcrumbJsonLd(site, breadcrumbTrail)] : [];
 
 const primaryMock = view.relatedMocks[0];
-const ctaHref = primaryMock ? `/mock/${primaryMock.slug}/instructions` : "/cuet-ug-mock-test";
+const ctaHref = primaryMock ? `/mock/${primaryMock.slug}/instructions` : "/mock-tests";
 const ctaLabel = primaryMock ? "Attempt this full mock" : "Browse CUET mock tests";
 const hasHindi =
   Boolean(view.textHi?.trim()) ||

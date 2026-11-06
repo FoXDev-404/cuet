@@ -177,7 +177,7 @@ function extractInternalLinks(html) {
 
 // Classify page group for reporting
 function getPageGroup(path) {
-  if (path === "/" || path === "/cuet-ug-mock-test" || path === "/mock-tests" || path === "/cuet-ug-previous-year-papers") {
+  if (path === "/" || path === "/mock-tests" || path === "/cuet-ug-previous-year-papers") {
     return "Home & Hubs";
   }
   if (path.startsWith("/cuet-ug-")) {
@@ -263,7 +263,6 @@ async function main() {
     console.log("2. Crawling and discovering site URLs...");
     const discoveredUrls = new Set([
       "/",
-      "/cuet-ug-mock-test",
       "/cuet-mock-test",
       "/pyq",
       "/cuet-ug-previous-year-papers",
@@ -371,7 +370,7 @@ async function main() {
         });
       }
 
-      // Handle Redirects (e.g. /cuet-mock-test -> /cuet-ug-mock-test, /pyq -> /cuet-ug-previous-year-papers)
+      // Handle Redirects (e.g. /cuet-mock-test -> /mock-tests, /pyq -> /cuet-ug-previous-year-papers)
       if (record.isRedirect) {
         if (inSitemap) {
           mismatches.push({
