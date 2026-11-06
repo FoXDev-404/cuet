@@ -164,9 +164,15 @@ const isPracticeWrapper = Boolean(mock.practice_paper_slug);
 const isFixture = isFixtureSlug(mock.slug) || isFixtureMock(mock);
 const canonical = isPracticeWrapper ? `/mock-tests/${mock.practice_paper_slug}` : undefined;
 const noindex = totalQuestions === 0 || isPracticeWrapper || isFixture;
+// Trim the database title before adding the brand so the <title> stays inside
+// the ~65-character SERP window. The visible H1 keeps the full title.
+const shortTitle = mock.title.replace(/^CUET UG\s+/i, "").trim();
+const pageTitle = `${shortTitle} — Free CUET Mock Test`.length <= 65
+  ? `${shortTitle} — Free CUET Mock Test`
+  : `${shortTitle} — CUET Mock`;
 ---
 
-<BaseLayout title={`${mock.title} — Free CUET Mock Test`} description={`${mock.title}: ${totalQuestions} questions, ${effectiveDurationMin} minutes. Free server-scored CUET UG mock with solutions.`} noindex={noindex} canonical={canonical} structuredData={structuredData}>
+<BaseLayout title={pageTitle} description={`${mock.title}: ${totalQuestions} questions, ${effectiveDurationMin} minutes. Free server-scored CUET UG mock with solutions.`} noindex={noindex} canonical={canonical} structuredData={structuredData}>
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_340px] lg:py-14">
       <div>
