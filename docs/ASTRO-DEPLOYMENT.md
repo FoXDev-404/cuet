@@ -248,6 +248,24 @@ continue to serve the previous 214-paper snapshot until then. All imported paper
 enter with `rights_status = 'unknown'`, so their mock pages remain `noindex` and
 outside the sitemap until an editor clears them at `/admin/pyq` (or the rights API).
 
+### Separate staging deployment
+
+Staging is a completely separate Worker and database (`cuet-astro-staging` /
+`cuet-d1-staging`); it never touches production. Use it for a new deployment or
+dataset trial:
+
+```bash
+npm run db:migrate:staging
+npm run db:import:practice:staging
+npm run db:import:ranked-practice:staging
+npm run backfill:staging
+npm run deploy:staging
+```
+
+The manual **Deploy staging** GitHub Actions workflow runs the same sequence after
+`CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` are configured. Pass the staging
+Worker URL (custom domain or workers.dev) as the smoke target.
+
 For a staging deploy, run the same build step and then the repeatable smoke suite
 against the Worker URL. Credentials are read from the environment and are never
 stored in the repository:

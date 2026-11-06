@@ -20,7 +20,14 @@ import { join, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 
 const REMOTE = process.argv.includes("--remote");
-const DATABASE = "cuet-blueprint-db";
+const DATABASE = (() => {
+  const index = process.argv.indexOf("--database");
+  return index >= 0 ? process.argv[index + 1] : "cuet-blueprint-db";
+})();
+if (!/^[a-z0-9][a-z0-9-]{1,62}$/.test(DATABASE)) {
+  console.error(`Invalid D1 database name: ${DATABASE}`);
+  process.exit(1);
+}
 const d1Dir = resolve(process.cwd(), ".wrangler/state/v3/d1/miniflare-D1DatabaseObject");
 
 const statements = [

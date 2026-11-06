@@ -1,0 +1,75 @@
+name: Deploy staging
+
+# Manual, separate staging release. This targets cuet-astro-staging and the
+# cuet-d1-staging database only; production cuet-astro/cuet-blueprint-db is
+# never touched. Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID first.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: Type "deploy-staging" to run the staging import and deploy
+        required: true
+        type: string
+      staging_url:
+        description: Staging URL used for the smoke check
+        required: true
+        default: https://staging.cuetfreemocktest.com
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Staging D1 import, deploy and smoke
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      STAGING_URL: ${{ inputs.staging_url }}
+    steps:
+      - name: Confirm staging deployment
+        run: |
+          if [ "${{ inputs.confirm }}" != "deploy-staging" ]; then
+            echo "::error::Type 'deploy-staging' in the confirm input."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Check Cloudflare credentials
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets first."
+            exit 1
+          fi
+      - name: Install dependencies
+        run: npm ci
+      - name: Apply staging migrations
+        run: npm run db:migrate:staging
+      - name: Import staging practice papers
+        run: npm run db:import:practice:staging
+      - name: Import staging ranked mocks
+        run: npm run db:import:ranked-practice:staging
+      - name: Classify staging explanation provenance
+        run: npm run backfill:staging
+      - name: Build and deploy staging
+        run: npm run deploy:staging
+      - name: Smoke test staging
+        run: |
+          set -euo pipefail
+          for path in /api/health /mock-tests /sitemap.xml /mock/psychology-2024-07-19-shift-1/instructions; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$STAGING_URL$path")
+            echo "$path -> $code"
+            test "$code" = "200"
+          done
+          curl -fsS "$STAGING_URL/mock-tests" | grep -q "245 papers"
+          echo "Staging smoke passed."

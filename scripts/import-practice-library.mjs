@@ -26,7 +26,15 @@ const INDEX_FILE = join(ROOT, "src", "data", "local-papers", "index.json");
 const KEYS_FILE = join(ROOT, "src", "data", "local-papers", "keys.json");
 const PAPERS_DIR = join(ROOT, "public", "local-papers", "papers");
 const OUT_DIR = join(ROOT, ".wrangler", "practice-import");
-const DB_NAME = "cuet-blueprint-db";
+const DATABASE_ARG = (() => {
+  const index = process.argv.indexOf("--database");
+  return index >= 0 ? process.argv[index + 1] : null;
+})();
+const DB_NAME = DATABASE_ARG ?? "cuet-blueprint-db";
+if (!/^[a-z0-9][a-z0-9-]{1,62}$/.test(DB_NAME)) {
+  console.error(`Invalid D1 database name: ${DB_NAME}`);
+  process.exit(1);
+}
 const CHUNK_BYTES = 1_500_000;
 
 const args = new Set(process.argv.slice(2));
