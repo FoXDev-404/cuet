@@ -3,6 +3,7 @@ import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getLocalPaperSummary, getLocalPapersForSubject, localPaperPath } from "../../lib/local-papers";
 import { breadcrumbJsonLd } from "../../lib/seo";
+import generatedPaperOgSlugs from "../../data/og-papers.json";
 
 const slug = Astro.params.slug ?? "";
 const paper = getLocalPaperSummary(slug);
@@ -11,6 +12,14 @@ if (!paper) return new Response("Practice paper not found", { status: 404 });
 const path = localPaperPath(paper.slug);
 const rankedPath = `/mock/${paper.slug}/instructions`;
 const site = siteUrl(Astro.url);
+
+// The OG card for this paper exists only when the offline generator rendered
+// it (src/data/og-papers.json is the committed manifest); otherwise the
+// BaseLayout falls back to the generic logo.
+const generatedPaperSlugs: string[] = generatedPaperOgSlugs;
+const paperOgImage = generatedPaperSlugs.includes(paper.slug)
+  ? `/og/papers/${paper.slug}.png`
+  : undefined;
 
 const structuredData = [
   breadcrumbJsonLd(site, [
@@ -58,6 +67,7 @@ const forceNoindex = paper.rightsStatus === "restricted";
   description={metaDescription}
   structuredData={structuredData}
   noindex={forceNoindex}
+  image={paperOgImage}
   ads
 >
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">

@@ -63,7 +63,7 @@ Google's `Quiz` / `PracticeProblem` schema requires specialized multi-step MathM
 
 A page is automatically assigned `noindex, nofollow` if ANY of the following conditions are met:
 1. **Private Prefix**: The URL path starts with `/admin`, `/api`, `/attempt`, `/result`, `/dashboard`, `/dev`, `/login`, `/signup`, `/reset-password`, `/verify-email`.
-2. **Copyright Provenance Gate**: For practice papers, `rights_status != 'cleared'`.
+2. **Copyright Provenance Gate**: For practice papers, `rights_status == 'restricted'`. Papers with `unknown` rights stay indexable by design so the public takedown path remains reachable; the moment an admin marks a paper restricted it is noindexed, dropped from the sitemap, and stripped of ads (see `src/pages/mock-tests/[slug].astro` and `src/pages/sitemap.xml.ts`).
 3. **Fact Verification Gate**: For exam guide pages, the corresponding `exam_info` key has `value = 'TODO_VERIFY'` or `last_verified = NULL`.
 4. **Thin Content Gate**: A subject or topic landing page with fewer than 3 available practice questions.
 
@@ -82,3 +82,20 @@ To protect the platform against Google thin-content algorithm penalties and AdSe
    - Subjects with 0 available questions are automatically marked `noindex, nofollow` and excluded from `sitemap.xml`.
 4. **Automated Enforcement**: Enforced by `scripts/seo-consistency.mjs` and verified in unit tests (`tests/unit/seo-consistency.test.ts`).
 
+
+---
+
+## 6. Social Preview Images (per-page OG images)
+
+- Practice paper pages (`/mock-tests/:slug`) emit a dedicated 1200×630 OG card
+  rendered offline by `scripts/generate-paper-og.mjs` (`npm run og:papers`) —
+  subject chip, paper title, question count and branding — committed to
+  `public/og/papers/:slug.png` with the slug manifest in
+  `src/data/og-papers.json`. Pages check the manifest before emitting the
+  `og:image` URL, so any paper without a generated card falls back to
+  `/logo.png` instead of a broken image reference.
+- Rerun `npm run og:papers` after importing new papers; commit the outputs.
+- Shared questions keep their own OG pipeline (`npm run og:questions`).
+- Blog articles emit `og:type=article`; every page carries
+  `og:site_name` + `og:locale=en_IN`; the homepage WebSite JSON-LD includes a
+  `SearchAction` targeting the working `/search?q=` endpoint.

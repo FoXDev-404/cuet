@@ -233,6 +233,15 @@ const structuredData = [
     description,
     inLanguage: "en-IN",
     publisher: { "@type": "Organization", name: "CUET Free Mock Test", url: site.toString() },
+    // Sitelinks search box: the site has a real working /search endpoint.
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${site.origin}/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   },
   ...(popularPapers.length > 0
     ? [

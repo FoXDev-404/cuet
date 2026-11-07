@@ -1,90 +1,96 @@
 # Appendix C: Comprehensive Test & Verification Results
 
-_Machine-generated from test runner outputs at commit `63c9fea` on 2026-11-04T20:54:08.666Z._
+_Machine-generated from test runner outputs at commit `e7bbfba` on 2026-11-07T13:36:51.201Z._
 
 ---
 
 ## 1. Unit & Integration Test Suite (Vitest)
 
-- **Commit Hash:** `63c9fea`
-- **Timestamp:** `2026-11-04T20:54:08.666Z`
+- **Commit Hash:** `e7bbfba`
+- **Timestamp:** `2026-11-07T13:36:51.201Z`
 - **Test Runner:** Vitest v5.0.5
 - **Execution Target:** Local unit & integration test files
-- **Total Test Files:** **43 passed** of 43
-- **Total Tests:** **330 passed**, **0 failed** of 330
-- **Cumulative Duration:** **5.92s**
+- **Total Test Files:** **49 passed** of 49
+- **Total Tests:** **428 passed**, **0 failed** of 428
+- **Cumulative Duration:** **8.87s**
 
 ### Test File Breakdown (Derived from Runner JSON)
 
 | Test File | Category | Tests | Duration | Derived Test Assertions |
 | :--- | :--- | :---: | :---: | :--- |
-| `tests/integration/question-share.test.ts` | Integration | 6 | 299.9404296875ms | creates the public id and share event tables on an empty database; backfills one unique id per lineage head and keeps PYQ rows off by default; moves the pointer atomically when a revision row is inserted (+3 more) |
-| `tests/integration/schema.test.ts` | Integration | 5 | 448.14599609375ms | applies every migration to an empty database and keeps the blueprint tables and columns; migrates a populated legacy database without changing stored scores; freezes a published version and its question membership (+2 more) |
-| `tests/unit/access-config.test.ts` | Unit | 5 | 6.38720703125ms | prefers the documented CF_ACCESS names; falls back to the legacy names during the rename; is unconfigured unless both a domain and audience exist (+2 more) |
-| `tests/unit/admin-permissions.test.ts` | Unit | 10 | 51.85205078125ms | grants exactly the documented permissions to super; grants exactly the documented permissions to editor; grants exactly the documented permissions to moderator (+7 more) |
-| `tests/unit/admin-practice-schema.test.ts` | Unit | 3 | 4.431640625ms | practice_papers supports edit, soft delete and restore; practice_passages supports edit, soft delete and restore; practice_questions supports edit, soft delete and restore |
-| `tests/unit/attempt-time.test.ts` | Unit | 5 | 4.302490234375ms | verifies ATTEMPT_GRACE_SECONDS constant equals 15 seconds; counts down from the server deadline and never goes negative; allows on-time submissions (before or at deadline) (+2 more) |
-| `tests/unit/capacity-budgets.test.ts` | Unit | 4 | 399.313720703125ms | enforces autosave row-read budget: <= 3 rows read per autosave; enforces autosave sequence ordering and idempotency (last write wins by client sequence); enforces result view row-read budget: <= 40 rows read per result view (+1 more) |
-| `tests/unit/content.test.ts` | Unit | 12 | 42.4697265625ms | reads a stored scheme; falls back to the CUET default on invalid JSON or numbers; lowercases, removes quotes and collapses punctuation into single dashes (+9 more) |
-| `tests/unit/copy-lint.test.ts` | Unit | 5 | 287.6181640625ms | runs copy-lint.mjs script cleanly with 0 violations; verifies public profiles keep is_profile_public = 0 by default; verifies independent NTA disclaimer in BaseLayout footer (+2 more) |
-| `tests/unit/design-colour-leak.test.ts` | Unit | 2 | 61.92529296875ms | keeps literal colours inside tokens.css; uses the shared brand asset instead of recolouring a text badge |
-| `tests/unit/design-tokens.test.ts` | Unit | 79 | 35.130615234375ms | defines every light token in both dark blocks; does not add dark-only tokens that light mode cannot resolve; keeps the OS dark block and the explicit dark block identical (+76 more) |
-| `tests/unit/email-config.test.ts` | Unit | 9 | 51.95751953125ms | stays unconfigured when the provider, key or sender is absent; selects Resend or Brevo with their own key; parses sender names and rejects header injection (+6 more) |
-| `tests/unit/env-separation.test.ts` | Unit | 4 | 538.631591796875ms | guarantees strictly distinct D1 database IDs between staging and production; guarantees distinct KV namespaces between staging and production; check-env-separation.mjs script passes and exits with code 0 (+1 more) |
-| `tests/unit/exam-facts.test.ts` | Unit | 4 | 142.075439453125ms | seeds official exam facts with source_url and last_verified date; stores unverified facts as TODO_VERIFY with null last_verified; enforces policy gate: unverified facts require noindex (+1 more) |
-| `tests/unit/exam-timing.test.ts` | Unit | 4 | 7.381103515625ms | defines the exact official 3-section time allocation table; identifies subject section families accurately; calculates mock duration dynamically based on question count for Language and Domain (72s/q) (+1 more) |
-| `tests/unit/explanation-honesty.test.ts` | Unit | 6 | 24.784423828125ms | schema includes explanation_source and explanation_status on practice_questions and questions; proves honest baseline counts: 0 questions marked reviewed without human sign-off; proves separate counts per source: ai_draft and banner are identified truthfully (+3 more) |
-| `tests/unit/fixtures-isolation.test.ts` | Unit | 12 | 478.5224609375ms | identifies E2E and test fixture slugs correctly; allows real exam and practice slugs; flags synthetic mock records (+9 more) |
-| `tests/unit/image.test.ts` | Unit | 4 | 5.516845703125ms | accepts a real PNG signature and reads its dimensions; rejects scripts, SVG and mislabelled files; rejects a truncated PNG header (+1 more) |
-| `tests/unit/integrations.test.ts` | Unit | 6 | 7.5234375ms | emits nothing for unset or placeholder values; activates analytics only for a plausible beacon token; accepts the three forms of Search Console verification input (+3 more) |
-| `tests/unit/local-mock-fallback.test.ts` | Unit | 3 | 3.69482421875ms | describes a bundled practice paper without D1; stores a marking scheme that parseMarkingScheme understands; returns null for a slug that is not a practice paper |
-| `tests/unit/local-papers.test.ts` | Unit | 18 | 1085.281982421875ms | loads the generated index with unique slugs and usable summaries; filters by year and resolves paths; loads every paper and finds every referenced crop on disk (+15 more) |
-| `tests/unit/local-subject-fallback.test.ts` | Unit | 3 | 6.330078125ms | rebuilds the subject grid from the bundled practice library; classifies language and general subjects; returns cards sorted by name |
-| `tests/unit/lockfile-and-scorecard.test.ts` | Unit | 8 | 1024.339111328125ms | matches tracked dependency versions between package-lock.json and facts.json; ensures old legacy version numbers are not cited in documentation; generates a valid scorecard with all 16 required areas (+5 more) |
-| `tests/unit/mock-order.test.ts` | Unit | 6 | 6.5029296875ms | orders sections before questions and keeps within-section order stable; appends sections that are missing from the order list; preserves submission order when no section list is provided (+3 more) |
-| `tests/unit/moderation.test.ts` | Unit | 2 | 3.39501953125ms | keeps new members in the moderation queue; auto-approves members with three approved comments |
-| `tests/unit/oauth-config.test.ts` | Unit | 1 | 3.190185546875ms | requires both a client id and secret |
-| `tests/unit/paper-provenance.test.ts` | Unit | 6 | 16.5263671875ms | schema includes source and rights columns on practice_papers; measures baseline counts for rights_status across all practice papers; adSlotAllowed strictly forbids ads on /mock-tests/* routes (+3 more) |
-| `tests/unit/password.test.ts` | Unit | 4 | 201.725341796875ms | stores the Workerd-compatible iteration count; verifies a matching password; rejects a wrong password (+1 more) |
-| `tests/unit/practice-library.test.ts` | Unit | 5 | 34.572265625ms | builds a snapshot from the committed index file; keeps the paper counts that the listing pages show; serves the bundled index when the store fails (+2 more) |
-| `tests/unit/production-guards.test.ts` | Unit | 4 | 5.686767578125ms | robots.txt disallows /dev and /dev/; bootstrapSuperAdmin returns null when an active super admin already exists; admin:create script refuses to add super admin in production if one already exists (+1 more) |
-| `tests/unit/public-id.test.ts` | Unit | 6 | 460.583251953125ms | encodes the full 10-character base62 space; generates unique ids in the documented alphabet; parses the id from the end of a slug and rejects malformed values (+3 more) |
-| `tests/unit/public-question.test.ts` | Unit | 7 | 8.405029296875ms | allows public-reveal questions only outside a published ranked mock; requires a submitted attempt for attempted-only questions; allows indexing only when every condition holds (+4 more) |
-| `tests/unit/question-import.test.ts` | Unit | 12 | 16.635009765625ms | handles quoted commas, escaped quotes and multiline fields; rejects an unclosed quoted field; detects and parses a JSON array (+9 more) |
-| `tests/unit/ranking.test.ts` | Unit | 7 | 7.350341796875ms | orders by score, then time, then accuracy; uses accuracy rather than raw correct count as the final tie-breaker; treats two unanswered attempts as an exact tie (+4 more) |
-| `tests/unit/rate-limit.test.ts` | Unit | 1 | 3.139404296875ms | enforces rate limits across separate request contexts sharing the KV namespace |
-| `tests/unit/rich-text.test.ts` | Unit | 14 | 33.1591796875ms | escapes stored HTML instead of executing it; renders inline and display KaTeX; keeps line breaks and handles empty input (+11 more) |
-| `tests/unit/scoring.test.ts` | Unit | 10 | 10.645263671875ms | scores correct, wrong and skipped answers with negative marking; groups totals by subject and keeps per-question time; aggregates topic-level stats only for real topic rows (+7 more) |
-| `tests/unit/seo-consistency.test.ts` | Unit | 8 | 8.80078125ms | verifies /cuet-mock-test 301-redirects to /cuet-ug-mock-test; verifies /pyq 301-redirects to /cuet-ug-previous-year-papers; verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to /mock-tests/[slug] (+5 more) |
-| `tests/unit/share-events.test.ts` | Unit | 4 | 5.427734375ms | accepts a public-page copy event; accepts a live-attempt mock event and rejects question ids there; requires a public id outside the live attempt (+1 more) |
-| `tests/unit/share-message.test.ts` | Unit | 6 | 6.42236328125ms | uses the exact English and Hindi prompts; encodes WhatsApp and Telegram links without attempt or user data; builds the exact live-attempt mock prompt (+3 more) |
-| `tests/unit/share-policy.test.ts` | Unit | 3 | 5.525634765625ms | allows indexing only when every documented condition holds; explains each missing indexing condition; blocks public reveal while the question is in a live ranked mock |
-| `tests/unit/structured-data.test.ts` | Unit | 5 | 60.0712890625ms | strictly disallows Quiz, Course, and FAQPage schemas across the entire codebase; verifies all structured data types in src/lib/seo.ts belong to the approved allow-list; verifies BaseLayout only emits approved Organization schema (+2 more) |
-| `tests/unit/subject-stats.test.ts` | Unit | 2 | 4.472412109375ms | counts distinct questions and mocks without double counting; keeps a subject whose only mock points at it directly |
+| `tests/integration/question-share.test.ts` | Integration | 6 | 474.876220703125ms | creates the public id and share event tables on an empty database; backfills one unique id per lineage head and keeps PYQ rows off by default; moves the pointer atomically when a revision row is inserted (+3 more) |
+| `tests/integration/schema.test.ts` | Integration | 5 | 616.795654296875ms | applies every migration to an empty database and keeps the blueprint tables and columns; migrates a populated legacy database without changing stored scores; freezes a published version and its question membership (+2 more) |
+| `tests/unit/access-config.test.ts` | Unit | 5 | 7.404052734375ms | prefers the documented CF_ACCESS names; falls back to the legacy names during the rename; is unconfigured unless both a domain and audience exist (+2 more) |
+| `tests/unit/admin-permissions.test.ts` | Unit | 10 | 52.77685546875ms | grants exactly the documented permissions to super; grants exactly the documented permissions to editor; grants exactly the documented permissions to moderator (+7 more) |
+| `tests/unit/admin-practice-schema.test.ts` | Unit | 3 | 4.394775390625ms | practice_papers supports edit, soft delete and restore; practice_passages supports edit, soft delete and restore; practice_questions supports edit, soft delete and restore |
+| `tests/unit/answer-key-boundary.test.ts` | Unit | 5 | 26.150634765625ms | loads the full public paper library; never exposes correctAnswer or explanationEn in public paper JSON; keys every question exactly once with a valid option id (+2 more) |
+| `tests/unit/attempt-question-share.test.ts` | Unit | 8 | 7.39501953125ms | prefers the public question page when the lineage has an enabled mapping; falls back to the mock instructions link for questions without a mapping; keeps the attempt page usable when the mock url is missing (+5 more) |
+| `tests/unit/attempt-time.test.ts` | Unit | 5 | 5.3330078125ms | verifies ATTEMPT_GRACE_SECONDS constant equals 15 seconds; counts down from the server deadline and never goes negative; allows on-time submissions (before or at deadline) (+2 more) |
+| `tests/unit/canonical-host.test.ts` | Unit | 11 | 7.403076171875ms | redirects the workers.dev host to the configured domain; redirects the www alias to the apex domain; upgrades http requests to the canonical protocol in one hop (+8 more) |
+| `tests/unit/capacity-budgets.test.ts` | Unit | 4 | 520.02001953125ms | enforces autosave row-read budget: <= 3 rows read per autosave; enforces autosave sequence ordering and idempotency (last write wins by client sequence); enforces result view row-read budget: <= 40 rows read per result view (+1 more) |
+| `tests/unit/content.test.ts` | Unit | 12 | 46.57080078125ms | reads a stored scheme; falls back to the CUET default on invalid JSON or numbers; lowercases, removes quotes and collapses punctuation into single dashes (+9 more) |
+| `tests/unit/copy-lint.test.ts` | Unit | 5 | 609.352783203125ms | runs copy-lint.mjs script cleanly with 0 violations; verifies public profiles keep is_profile_public = 0 by default; verifies independent NTA disclaimer in BaseLayout footer (+2 more) |
+| `tests/unit/design-colour-leak.test.ts` | Unit | 2 | 403.82421875ms | keeps literal colours inside tokens.css; uses the shared brand asset instead of recolouring a text badge |
+| `tests/unit/design-tokens.test.ts` | Unit | 93 | 37.11572265625ms | defines every light token in both dark blocks; does not add dark-only tokens that light mode cannot resolve; keeps the OS dark block and the explicit dark block identical (+90 more) |
+| `tests/unit/email-config.test.ts` | Unit | 9 | 53.854736328125ms | stays unconfigured when the provider, key or sender is absent; selects Resend or Brevo with their own key; parses sender names and rejects header injection (+6 more) |
+| `tests/unit/env-separation.test.ts` | Unit | 6 | 398.70068359375ms | guarantees strictly distinct D1 database IDs between staging and production; guarantees distinct KV namespaces between staging and production; keeps local development on the top-level config and production in env.production (+3 more) |
+| `tests/unit/exam-facts.test.ts` | Unit | 4 | 209.20703125ms | seeds official exam facts with source_url and last_verified date; stores unverified facts as TODO_VERIFY with null last_verified; enforces policy gate: unverified facts require noindex (+1 more) |
+| `tests/unit/exam-timing.test.ts` | Unit | 4 | 6.32568359375ms | defines the exact official 3-section time allocation table; identifies subject section families accurately; calculates mock duration dynamically based on question count for Language and Domain (72s/q) (+1 more) |
+| `tests/unit/explanation-honesty.test.ts` | Unit | 6 | 131.35986328125ms | schema includes explanation_source and explanation_status on practice_questions and questions; proves honest baseline counts: 0 questions marked reviewed without human sign-off; proves separate counts per source: ai_draft and banner are identified truthfully (+3 more) |
+| `tests/unit/fixtures-isolation.test.ts` | Unit | 12 | 349.48828125ms | identifies E2E and test fixture slugs correctly; allows real exam and practice slugs; flags synthetic mock records (+9 more) |
+| `tests/unit/image.test.ts` | Unit | 4 | 5.489501953125ms | accepts a real PNG signature and reads its dimensions; rejects scripts, SVG and mislabelled files; rejects a truncated PNG header (+1 more) |
+| `tests/unit/integrations.test.ts` | Unit | 8 | 10.852294921875ms | emits nothing for unset or placeholder values; activates analytics only for a plausible beacon token; accepts the three forms of Search Console verification input (+5 more) |
+| `tests/unit/local-mock-fallback.test.ts` | Unit | 3 | 3.665771484375ms | describes a bundled practice paper without D1; stores a marking scheme that parseMarkingScheme understands; returns null for a slug that is not a practice paper |
+| `tests/unit/local-papers.test.ts` | Unit | 18 | 3015.37646484375ms | loads the generated index with unique slugs and usable summaries; filters by year and resolves paths; loads every paper and finds every referenced crop on disk (+15 more) |
+| `tests/unit/local-subject-fallback.test.ts` | Unit | 3 | 5.32080078125ms | rebuilds the subject grid from the bundled practice library; classifies language and general subjects; returns cards sorted by name |
+| `tests/unit/lockfile-and-scorecard.test.ts` | Unit | 8 | 561.0634765625ms | matches tracked dependency versions between package-lock.json and facts.json; ensures old legacy version numbers are not cited in documentation; generates a valid scorecard with all 16 required areas (+5 more) |
+| `tests/unit/middleware-headers.test.ts` | Unit | 4 | 3.156005859375ms | copies immutable response headers before adding the security policy; does not attach a body to 204/304 responses; keeps instrumentation headers on the rebuilt response (+1 more) |
+| `tests/unit/mock-order.test.ts` | Unit | 6 | 6.529052734375ms | orders sections before questions and keeps within-section order stable; appends sections that are missing from the order list; preserves submission order when no section list is provided (+3 more) |
+| `tests/unit/moderation.test.ts` | Unit | 2 | 4.4287109375ms | keeps new members in the moderation queue; auto-approves members with three approved comments |
+| `tests/unit/oauth-config.test.ts` | Unit | 1 | 1.728515625ms | requires both a client id and secret |
+| `tests/unit/paper-list.test.ts` | Unit | 32 | 16.235107421875ms | classifies >= 40 questions as full; classifies < 40 questions as mini; returns Full key when all questions are scored and 0 pending (+29 more) |
+| `tests/unit/paper-provenance.test.ts` | Unit | 6 | 24.352783203125ms | schema includes source and rights columns on practice_papers; measures baseline counts for rights_status across all practice papers; adSlotAllowed allows explicitly opted-in practice papers and blocks the take flow (+3 more) |
+| `tests/unit/password.test.ts` | Unit | 4 | 208.30224609375ms | stores the Workerd-compatible iteration count; verifies a matching password; rejects a wrong password (+1 more) |
+| `tests/unit/practice-library.test.ts` | Unit | 5 | 42.592529296875ms | builds a snapshot from the committed index file; keeps the paper counts that the listing pages show; serves the bundled index when the store fails (+2 more) |
+| `tests/unit/production-guards.test.ts` | Unit | 4 | 10.438232421875ms | robots.txt disallows /dev and /dev/; bootstrapSuperAdmin returns null when an active super admin already exists; admin:create script refuses to add super admin in production if one already exists (+1 more) |
+| `tests/unit/public-id.test.ts` | Unit | 6 | 469.468017578125ms | encodes the full 10-character base62 space; generates unique ids in the documented alphabet; parses the id from the end of a slug and rejects malformed values (+3 more) |
+| `tests/unit/public-question.test.ts` | Unit | 7 | 9.388427734375ms | allows public-reveal questions only outside a published ranked mock; requires a submitted attempt for attempted-only questions; allows indexing only when every condition holds (+4 more) |
+| `tests/unit/pwa.test.ts` | Unit | 7 | 20.145751953125ms | declares an installable, scoped manifest; ships 192px and 512px icons for both any and maskable purposes; keeps private surfaces and API responses out of the service worker cache (+4 more) |
+| `tests/unit/question-import.test.ts` | Unit | 12 | 16.624755859375ms | handles quoted commas, escaped quotes and multiline fields; rejects an unclosed quoted field; detects and parses a JSON array (+9 more) |
+| `tests/unit/ranking.test.ts` | Unit | 7 | 7.348876953125ms | orders by score, then time, then accuracy; uses accuracy rather than raw correct count as the final tie-breaker; treats two unanswered attempts as an exact tie (+4 more) |
+| `tests/unit/rate-limit.test.ts` | Unit | 1 | 2.14208984375ms | enforces rate limits across separate request contexts sharing the KV namespace |
+| `tests/unit/rich-text.test.ts` | Unit | 27 | 86.465087890625ms | escapes stored HTML instead of executing it; renders inline and display KaTeX; keeps line breaks and handles empty input (+24 more) |
+| `tests/unit/scoring.test.ts` | Unit | 10 | 10.678466796875ms | scores correct, wrong and skipped answers with negative marking; groups totals by subject and keeps per-question time; aggregates topic-level stats only for real topic rows (+7 more) |
+| `tests/unit/seo-consistency.test.ts` | Unit | 8 | 21.11279296875ms | verifies /cuet-mock-test and /cuet-ug-mock-test 301-redirect to /mock-tests; verifies /pyq 301-redirects to /cuet-ug-previous-year-papers; verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to /mock-tests/[slug] (+5 more) |
+| `tests/unit/share-events.test.ts` | Unit | 4 | 5.409912109375ms | accepts a public-page copy event; accepts a live-attempt mock event and rejects question ids there; requires a public id outside the live attempt (+1 more) |
+| `tests/unit/share-message.test.ts` | Unit | 6 | 7.617919921875ms | uses the exact English and Hindi prompts; encodes WhatsApp and Telegram links without attempt or user data; builds the exact live-attempt mock prompt (+3 more) |
+| `tests/unit/share-policy.test.ts` | Unit | 3 | 5.52783203125ms | allows indexing only when every documented condition holds; explains each missing indexing condition; blocks public reveal while the question is in a live ranked mock |
+| `tests/unit/structured-data.test.ts` | Unit | 5 | 318.005859375ms | strictly disallows Quiz, Course, and FAQPage schemas across the entire codebase; verifies all structured data types in src/lib/seo.ts belong to the approved allow-list; verifies BaseLayout only emits approved Organization schema (+2 more) |
+| `tests/unit/subject-stats.test.ts` | Unit | 2 | 5.52197265625ms | counts distinct questions and mocks without double counting; keeps a subject whose only mock points at it directly |
 
 ---
 
 ## 2. End-to-End Test Suite (Playwright)
 
-- **Commit Hash:** `63c9fea`
-- **Timestamp:** `2026-11-04T20:54:08.666Z`
+- **Commit Hash:** `e7bbfba`
+- **Timestamp:** `2026-11-07T13:36:51.201Z`
 - **Test Runner:** Playwright v1.64.1
 - **Execution Target:** Production Build Server (`wrangler dev` on `dist/` at `http://127.0.0.1:4321`)
 - **Total E2E Specs:** **9 files**
-- **Total E2E Tests:** **72 passed**, **0 failed**, **2 skipped** (Total: 74)
-- **Suite Duration:** **870.83s**
+- **Total E2E Tests:** **59 passed**, **0 failed**, **16 skipped** (Total: 75)
+- **Suite Duration:** **250.55s**
 
 ### Playwright Test Breakdown
 
 | Spec File | Tests | Passed | Failed | Skipped | Status |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| `tests/e2e/admin-flow.spec.ts` | 11 | 9 | 0 | 2 | `PASSED` |
-| `tests/e2e/api-contracts.spec.ts` | 11 | 11 | 0 | 0 | `PASSED` |
-| `tests/e2e/attempt-flow.spec.ts` | 4 | 4 | 0 | 0 | `PASSED` |
-| `tests/e2e/integrations.spec.ts` | 2 | 2 | 0 | 0 | `PASSED` |
+| `tests/e2e/admin-flow.spec.ts` | 11 | 8 | 0 | 3 | `PASSED` |
+| `tests/e2e/api-contracts.spec.ts` | 11 | 8 | 0 | 3 | `PASSED` |
+| `tests/e2e/attempt-flow.spec.ts` | 4 | 3 | 0 | 1 | `PASSED` |
+| `tests/e2e/integrations.spec.ts` | 2 | 1 | 0 | 1 | `PASSED` |
 | `tests/e2e/local-practice.spec.ts` | 10 | 10 | 0 | 0 | `PASSED` |
-| `tests/e2e/question-share-public.spec.ts` | 17 | 17 | 0 | 0 | `PASSED` |
-| `tests/e2e/security.spec.ts` | 10 | 10 | 0 | 0 | `PASSED` |
+| `tests/e2e/question-share-public.spec.ts` | 18 | 18 | 0 | 0 | `PASSED` |
+| `tests/e2e/security.spec.ts` | 10 | 2 | 0 | 8 | `PASSED` |
 | `tests/e2e/slow-network.spec.ts` | 1 | 1 | 0 | 0 | `PASSED` |
 | `tests/e2e/theme.spec.ts` | 8 | 8 | 0 | 0 | `PASSED` |
 
@@ -92,21 +98,21 @@ _Machine-generated from test runner outputs at commit `63c9fea` on 2026-11-04T20
 
 ## 3. Autonomous Accessibility Audit (`axe-core` v4.14.0)
 
-- **Commit Hash:** `63c9fea`
-- **Timestamp:** `2026-11-04T20:53:03.096Z`
+- **Commit Hash:** `e7bbfba`
+- **Timestamp:** `2026-11-07T13:36:39.319Z`
 - **Axe Version:** axe-core v4.14.0
 - **Standards Evaluated:** WCAG 2.0 A/AA, WCAG 2.1 A/AA, WCAG 2.2 A/AA
 - **Viewports:** Desktop (1280x800), Mobile (375x667)
 - **Themes Scanned:** Light and Dark (via `data-theme` attribute)
-- **Total Scans Completed:** **232**
-- **Passed Scans:** **232** (0 violations, 0 overflow)
+- **Total Scans Completed:** **264**
+- **Passed Scans:** **264** (0 violations, 0 overflow)
 - **Violations Detected:** **0**
 
 ### Accessibility Coverage Matrix
 
 | Surface Area | Sample Paths | Viewports | Themes | Axe Violations | Overflow |
 | :--- | :--- | :--- | :--- | :---: | :---: |
-| **Public Pages** | `/`, `/cuet-ug-mock-test`, `/leaderboard`, `/mock-tests` | 1280px, 375px | Light, Dark | 0 | 0px |
+| **Public Pages** | `/`, `/mock-tests`, `/leaderboard` | 1280px, 375px | Light, Dark | 0 | 0px |
 | **Exam & Syllabus** | `/cuet-ug-syllabus`, `/cuet-ug-exam-pattern`, `/cuet-ug-marking-scheme` | 1280px, 375px | Light, Dark | 0 | 0px |
 | **Attempt Flow** | `/mock/[slug]/instructions`, `/attempt/[id]` | 1280px, 375px | Light, Dark | 0 | 0px |
 | **Attempt Palette** | `/attempt/[id]` (with palette open) | 1280px, 375px | Light, Dark | 0 | 0px |
@@ -120,8 +126,8 @@ _Machine-generated from test runner outputs at commit `63c9fea` on 2026-11-04T20
 
 ## 4. Autonomous SEO Consistency Audit (`scripts/seo-consistency.mjs`)
 
-- **Commit Hash:** `63c9fea`
-- **Timestamp:** `2026-11-04T20:54:08.666Z`
+- **Commit Hash:** `e7bbfba`
+- **Timestamp:** `2026-11-07T13:36:51.201Z`
 - **Audit Target:** Local SSR Server (`http://localhost:4321`)
 - **Indexable Public URLs Found:** **89**
 - **Total URLs in `sitemap.xml`:** **89**
@@ -131,7 +137,7 @@ _Machine-generated from test runner outputs at commit `63c9fea` on 2026-11-04T20
 
 | Page Group | Path Prefix | Indexable URLs | In Sitemap? | Status |
 | :--- | :--- | :---: | :---: | :--- |
-| **Home & Hubs** | `/`, `/cuet-ug-mock-test`, `/mock-tests`, `/cuet-ug-previous-year-papers` | 4 | 4 / 4 | `DONE` |
+| **Home & Hubs** | `/`, `/mock-tests`, `/cuet-ug-previous-year-papers` | 3 | 3 / 3 | `DONE` |
 | **Exam Guides** | `/cuet-ug-syllabus`, `/cuet-ug-exam-pattern`, `/cuet-ug-marking-scheme` + 11 syllabi | 14 | 14 / 14 | `DONE` |
 | **Subject Practice** | `/cuet-mock-test/[subject]` (active subjects with >=1 paper) | 11 | 11 / 11 | `DONE` |
 | **PYQ Years** | `/pyq/[year]` (playable years 2022-2025) | 6 | 6 / 6 | `DONE` |
@@ -145,8 +151,8 @@ _Machine-generated from test runner outputs at commit `63c9fea` on 2026-11-04T20
 
 ## 5. Editorial Copy-Lint Audit (`scripts/copy-lint.mjs`)
 
-- **Commit Hash:** `63c9fea`
-- **Timestamp:** `2026-11-04T20:54:08.666Z`
+- **Commit Hash:** `e7bbfba`
+- **Timestamp:** `2026-11-07T13:36:51.201Z`
 - **Purpose:** Enforce honesty in product claims, prevent unverified marketing superlatives, and guard NTA disclaimers.
 - **Banned Superlatives Checked:** `national`, `official`, `verified`, `authentic`, `largest`, `100%`, `guarantee`, `NTA`.
 - **Files Scanned:** **272 source files** across `src/pages`, `src/components`, `src/layouts`, `src/lib`.

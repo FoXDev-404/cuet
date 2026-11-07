@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-11-04T20:53:03.096Z",
-  "commitHash": "63c9fea",
+  "timestamp": "2026-11-07T13:36:39.319Z",
+  "commitHash": "e7bbfba",
   "axeVersion": "4.14.0",
-  "totalScans": 232,
-  "passedScans": 232,
+  "totalScans": 264,
+  "passedScans": 264,
   "failedScans": 0,
   "failures": [],
   "scans": [
@@ -49,46 +49,6 @@
     },
     {
       "label": "public",
-      "path": "/cuet-ug-mock-test",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "public",
-      "path": "/cuet-ug-mock-test",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "public",
-      "path": "/cuet-ug-mock-test",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "public",
-      "path": "/cuet-ug-mock-test",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "public",
       "path": "/leaderboard",
       "viewport": "desktop",
       "width": 1280,
@@ -888,46 +848,6 @@
       "passed": true
     },
     {
-      "label": "public-question",
-      "path": "/q/uPJRyUwJ3s",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "public-question",
-      "path": "/q/uPJRyUwJ3s",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "public-question",
-      "path": "/q/uPJRyUwJ3s",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "public-question",
-      "path": "/q/uPJRyUwJ3s",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
       "label": "local-practice",
       "path": "/mock/english-2022-08-06-shift-1/instructions",
       "viewport": "desktop",
@@ -1000,6 +920,366 @@
     {
       "label": "local-practice",
       "path": "/mock/english-2024-05-15-shift-2/instructions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/leaderboard/english-2026-06-06-shift-1",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/leaderboard/english-2026-06-06-shift-1",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/leaderboard/english-2026-06-06-shift-1",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/leaderboard/english-2026-06-06-shift-1",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/instructions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/instructions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/instructions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/instructions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt",
+      "path": "/attempt/239",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt",
+      "path": "/attempt/239",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt-palette",
+      "path": "/attempt/239",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt-palette",
+      "path": "/attempt/239",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt",
+      "path": "/attempt/239",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt",
+      "path": "/attempt/239",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt-palette",
+      "path": "/attempt/239",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "attempt-palette",
+      "path": "/attempt/239",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239/solutions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239/solutions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239/solutions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/239/solutions",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "mock",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1449,7 +1729,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/questions/12129",
+      "path": "/admin/questions/7485",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1459,7 +1739,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/questions/12129",
+      "path": "/admin/questions/7485",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1469,7 +1749,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/questions/12129",
+      "path": "/admin/questions/7485",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1479,7 +1759,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/questions/12129",
+      "path": "/admin/questions/7485",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1569,7 +1849,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/516",
+      "path": "/admin/mocks/362",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1579,47 +1859,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/516",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/516",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/516",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/516/preview",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/516/preview",
+      "path": "/admin/mocks/362",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1629,7 +1869,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/516/preview",
+      "path": "/admin/mocks/362",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1639,7 +1879,47 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/516/preview",
+      "path": "/admin/mocks/362",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/362/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/362/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/362/preview",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/362/preview",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -2320,6 +2600,46 @@
     {
       "label": "auth",
       "path": "/admin/search",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/mock/english-2026-06-06-shift-1/discussion",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",

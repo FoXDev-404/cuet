@@ -31,6 +31,8 @@ interface Props {
   endAdSlot?: boolean;
   /** Social preview image URL; falls back to the brand logo. */
   image?: string | null;
+  /** Open Graph object type; blog articles pass "article". */
+  ogType?: string;
 }
 
 const {
@@ -45,6 +47,7 @@ const {
   ads,
   endAdSlot = true,
   image: imageOverride = null,
+  ogType: ogTypeOverride = "website",
 } = Astro.props;
 
 const robots = robotsOverride || (noindex ? "noindex, nofollow" : "");
@@ -132,7 +135,9 @@ const organization = {
     <link rel="canonical" href={canonical} />
     {robots ? <meta name="robots" content={robots} /> : null}
     {gscVerification ? <meta name="google-site-verification" content={gscVerification} /> : null}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogTypeOverride} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

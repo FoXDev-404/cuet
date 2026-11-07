@@ -44,7 +44,10 @@ if (!post) return new Response("Guide not found", { status: 404 });
 
 const PATH = `/blog/${post.slug}`;
 const seo = await getPageSeo(PATH);
-const title = seo?.title || `${post.title} — CUET Free Mock Test`;
+// The post title stands alone: a "— brand" suffix pushed editorial titles past
+// the 70-char SERP window, and the brand is already in og:site_name and the
+// visible header.
+const title = seo?.title || post.title;
 const description = seo?.description || post.description;
 const noindex = (seo?.noindex ?? 0) === 1;
 const site = siteUrl(Astro.url);
@@ -65,7 +68,7 @@ const structuredData = [
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData} ads={!noindex} endAdSlot={false}>
+<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData} ogType="article" ads={!noindex} endAdSlot={false}>
   <article class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-14">
     <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
       <a class="hover:underline" href="/">Home</a>
