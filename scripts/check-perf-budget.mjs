@@ -4,6 +4,11 @@
  *
  * Verifies that production build assets (JS, CSS) in dist/client/_astro/
  * stay strictly within the performance budget defined in performance-budget.json.
+ *
+ * Enforced here: the bundle-size limits (totalJsKb, totalCssKb). The
+ * lab-metric budgets (LCP/TBT/CLS, route scores) need a running Lighthouse
+ * audit — see scripts/lighthouse-audit.mjs — so they are printed for
+ * reference only.
  */
 
 import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs';
@@ -42,19 +47,32 @@ for (const file of files) {
   }
 }
 
-const totalJsKb = (totalJsBytes / 1024).toFixed(1);
-const totalCssKb = (totalCssBytes / 1024).toFixed(1);
-
-console.log(`Total Bundled JavaScript: ${totalJsKb} KB (Budget limit: ${budget.limits.totalJsKb} KB)`);
-console.log(`Total Bundled CSS:        ${totalCssKb} KB (Budget limit: ${budget.limits.totalCssKb} KB)\n`);
+const totalJsKb = totalJsBytes / 1024;
+const totalCssKb = totalCssBytes / 1024;
 
 let failed = false;
 
-// Note: total budget check applies to per-chunk or critical thresholds
-console.log('✅ Asset analysis complete.');
-console.log(`- Performance Budget Status: PASS`);
+function checkBudget(label, actualKb, limitKb) {
+  const actual = actualKb.toFixed(1);
+  if (typeof limitKb === 'number' && actualKb > limitKb) {
+    failed = true;
+    console.log(`❌ ${label}: ${actual} KB exceeds the ${limitKb} KB budget (over by ${(actualKb - limitKb).toFixed(1)} KB)`);
+  } else {
+    console.log(`✅ ${label}: ${actual} KB (budget limit: ${limitKb} KB)`);
+  }
+}
+
+checkBudget('Total Bundled JavaScript', totalJsKb, budget.limits.totalJsKb);
+checkBudget('Total Bundled CSS', totalCssKb, budget.limits.totalCssKb);
+
+console.log('\nLab-metric budgets (measured by npm run audit:lighthouse, not here):');
 console.log(`- Mobile LCP Budget: <= ${budget.metrics.mobileSimulated4G.lcpMs} ms`);
-console.log(`- Mobile TBT Budget: <= ${budget.metrics.mobileSimulated4G.tbtMs} ms\n`);
+console.log(`- Mobile TBT Budget: <= ${budget.metrics.mobileSimulated4G.tbtMs} ms`);
 
+if (failed) {
+  console.log('\n- Performance Budget Status: FAIL — trim the bundles above or, if the\n  budget is stale, revise performance-budget.json deliberately.');
+  process.exit(1);
+}
+
+console.log('\n- Performance Budget Status: PASS\n');
 process.exit(0);
-

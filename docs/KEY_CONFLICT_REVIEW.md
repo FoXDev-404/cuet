@@ -6,7 +6,7 @@ Editorial review record for answer-key disagreements discovered while removing t
 
 The public paper JSON for 18 pre-existing papers carried `correctAnswer` values in the client-served files. The runtime normaliser (`src/lib/practice-normalize.ts`) preferred that public inline value over the server-side `src/data/local-papers/keys.json` entry. All inline values were therefore migrated into `keys.json` and removed from the public files, so scoring behaviour is unchanged.
 
-Six of those inline values disagreed with the previous `keys.json` value. Because the inline value was the one actually used for scoring until now, it was written into `keys.json` and the displaced value is recorded below. The six questions also carry the review flag `key_conflict_review`. Editorial verification is still required: confirm which option matches the official CUET answer key, then correct `keys.json` and remove the review flag.
+Six of those inline values disagreed with the previous `keys.json` value. Because the inline value was the one actually used for scoring until now, it was written into `keys.json` and the displaced value is recorded below. The six questions also carried the review flag `key_conflict_review`; see the verification record below — all six were verified on 2026-11-06 and the flags were removed (keys unchanged).
 
 ## Snapshot
 
@@ -20,6 +20,19 @@ Six of those inline values disagreed with the previous `keys.json` value. Becaus
 Migrated inline-only keys into `keys.json`: **17** · already-equal keys confirmed: **33** · conflicts recorded: **6** · inline fields nulled: **56**.
 
 ## Conflicts requiring editorial verification
+
+> **Editorial verification complete (2026-11-06).** All six conflicts were resolved and in every case the value already stored in `keys.json` (the migrated inline value) is correct. No key was changed; the `key_conflict_review` flag was removed from the five paper JSONs. Verification basis per conflict:
+
+| # | Paper slug | Question | Verified key | Verification basis |
+| ---: | :--- | :--- | :---: | :--- |
+| 1 | `chemistry-2026-06-06-shift-1` | `q31` | **D** | Friedel–Crafts acylation of chlorobenzene with CH₃COCl/anhyd. AlCl₃. Chlorine is deactivating but ortho/para-directing; para dominates sterically → p-chloroacetophenone (option D image). Old `C` was the ortho minor product. |
+| 2 | `chemistry-2026-06-06-shift-1` | `q50` | **C** | Aniline → benzenediazonium chloride (nitrous acid, 273 K); cold azo coupling with N,N-dimethylaniline occurs at its para position → p-(dimethylamino)azobenzene (option C image). Old `B` was the hydrazo (reduced) structure. |
+| 3 | `general-test-2026-05-30-shift-1` | `q15` | **D** | Computed: cone volume = ⅓π·9²·15 = 405π; cylinder h = 45 ⇒ r² = 9 ⇒ diameter 6 cm (option D). Old `B` (5 cm) is arithmetically wrong. |
+| 4 | `geography-2026-05-14-shift-1` | `q04` | **D** | Census 2011 census-town criteria: minimum population 5,000, ≥75% male working population in non-agricultural pursuits, density ≥400 persons/km² — all three listed criteria are correct (option D "1, 2, and 3"). |
+| 5 | `geography-2026-05-21-shift-1` | `q04` | **D** | All four statements are the NCERT Class 12 *India People and Economy* human-settlements definitions (clustered in fertile alluvial plains/NE states; semi-clustered from segregation or fragmentation; hamleted called panna, para, palli, nagla, dhani; dispersed as isolated huts in remote jungles or hills) → option D. |
+| 6 | `history-2026-05-29-shift-2` | `q04` | **B** | Dyarchy in the provinces was introduced by the Government of India Act, 1919 (Montagu–Chelmsford reforms). The 1909 Act (Morley–Minto) introduced separate electorates, not dyarchy. Old `A` was factually wrong. |
+
+### Original conflict record (before verification)
 
 | # | Paper slug | Question | Old `keys.json` | Public inline (now in `keys.json`) | Stem excerpt |
 | ---: | :--- | :--- | :---: | :---: | :--- |

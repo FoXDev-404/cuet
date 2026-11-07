@@ -83,6 +83,8 @@ Google Quality Rater Guidelines (E-E-A-T) and platform integrity require that ex
 
 ## 4. Copyright & Previous-Year Paper Rights Status
 
+> **Update (2026-11-06):** The policy below was revised. The code now noindexes only papers with `rights_status = 'restricted'` (`src/pages/mock-tests/[slug].astro`); `unknown` papers are indexable so the public takedown path stays reachable, and they are quarantined the moment an admin marks them restricted. `docs/SEO_RULES.md` §4 reflects the same rule.
+
 Under the platform's Rights Policy Gate (Fix 3), all practice reproductions of previous-year papers must remain `noindex` until their copyright clearance status is documented.
 
 | Rights Status | Paper Count | Search Engine Status | AdSense Ad Slot Status |

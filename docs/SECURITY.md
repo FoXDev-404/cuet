@@ -26,12 +26,10 @@ OperationError: iteration counts above 100000 are not supported
 To ensure predictable edge compute latency (sub-50ms CPU time per request) and prevent worker termination under load, the iteration count is pinned to the maximum platform allowance of 100,000.
 
 ### Brute-Force & Rate-Limiting Compensation
-Because the iteration count is capped at 100,000, offline and online brute-force attacks are counterbalanced through multi-layer rate limiting:
-1. **Workers KV Rate Limiting**: All login attempts (`POST /api/auth/login`) are gated by Cloudflare Workers KV sliding window counters (`src/lib/auth/rate-limit.ts`):
-   - **IP Window**: Maximum 10 failed login attempts per 15 minutes per IP address.
-   - **Account Window**: Maximum 5 failed login attempts per 15 minutes per email address.
-   - **Exceeded Action**: Returns `HTTP 429 Too Many Requests` with `Retry-After` header.
-2. **Rehash-on-Login Path**: The `verifyPassword` function checks whether a legacy hash requires re-encoding. Any future upgrade to alternative algorithms (e.g., Argon2id once WebCrypto/Wasm natively support it in Workers) can be migrated transparently on successful user authentication without mass password resets.
+Because the iteration count is capped at 100,000, online brute-force attacks are counterbalanced by Workers KV rate limiting (`src/lib/auth/rate-limit.ts`):
+1. **Fixed-Window Counters**: Login (`POST /api/auth/login`) is gated by a `login` bucket keyed `ip:email` — maximum 10 attempts per 15 minutes, returning `HTTP 429 Too Many Requests` (response body only; no `Retry-After` header is sent). Other public endpoints (signup, password reset, attempt start/submit, discussions, share checks) carry their own buckets; see the `rateLimit(...)` call sites.
+2. **Known Trade-offs**: The counter is a KV-backed fixed window, not a sliding window, and is eventually consistent under concurrent requests; on a KV error it **fails open** so an outage never locks users out. Treat it as a speed bump rather than a hard lock.
+3. **Fail-Closed Hash Verification**: `verifyPassword` rejects any stored hash with fewer than 100,000 iterations or a malformed/undecodable format, so a legacy or tampered row can never authenticate. There is deliberately no rehash-on-login path; a future algorithm upgrade would be a migration, not a transparent re-encode.
 
 ---
 
@@ -43,10 +41,10 @@ The platform implements exactly four distinct roles:
 
 | Role Name | Scope & Responsibilities | Assigned Permissions |
 | :--- | :--- | :--- |
-| **`super`** | **Super Administrator**.<br>Unrestricted master administrative access. Manages administrator accounts, platform configuration, bulk database imports/exports, direct SQLite hotfixes, and trash restoration. | All 24 system permissions (`questions.*`, `mocks.*`, `taxonomy.*`, `media.*`, `seo.*`, `exam_info.*`, `announcements.*`, `leaderboards.*`, `moderation.*`, `attempts.*`, `users.*`, `admins.manage`, `settings.write`, `data.manage`, `trash.manage`, `revisions.restore`, `audit.*`). |
-| **`editor`** | **Content Editor**.<br>Full question bank and mock test management. Creates, reviews, edits, publishes, and soft-deletes questions, passages, mock tests, syllabi, exam guides, announcements, and media assets. | 16 content permissions (`questions.*`, `mocks.*`, `taxonomy.write`, `media.write`, `seo.write`, `exam_info.write`, `announcements.write`, `leaderboards.write`, `attempts.view`, `revisions.restore`, `audit.own`). |
-| **`moderator`** | **Community Moderator**.<br>Manages user interaction and discussions. Reviews reported comments, mutes abusive accounts, hides inappropriate discussion posts, and inspects user profiles. | 5 moderation permissions (`moderation.write`, `users.view`, `users.mute`, `attempts.view`, `audit.own`). |
-| **`contributor`** | **Content Contributor**.<br>Drafts question propositions and suggests revisions. Cannot publish directly to production. | 3 drafting permissions (`questions.write`, `revisions.restore`, `audit.own`). |
+| **`super`** | **Super Administrator**.<br>Unrestricted master administrative access. Manages administrator accounts, platform configuration, bulk database imports/exports, direct SQLite hotfixes, and trash restoration. | All 25 system permissions (`questions.*`, `mocks.*`, `taxonomy.*`, `media.*`, `seo.*`, `exam_info.*`, `announcements.*`, `leaderboards.*`, `moderation.*`, `attempts.*`, `users.*`, `admins.manage`, `settings.write`, `data.manage`, `trash.manage`, `revisions.restore`, `audit.*`). |
+| **`editor`** | **Content Editor**.<br>Full question bank and mock test management. Creates, reviews, edits, publishes, and soft-deletes questions, passages, mock tests, syllabi, exam guides, announcements, and media assets. | 16 permissions (`questions.write/publish/delete`, `mocks.write/publish`, `taxonomy.write`, `media.write`, `seo.write`, `exam_info.write`, `announcements.write`, `leaderboards.write`, `moderation.write`, `attempts.view`, `users.view`, `revisions.restore`, `audit.own`). |
+| **`moderator`** | **Community Moderator**.<br>Manages user interaction and discussions. Reviews reported comments, mutes abusive accounts, hides inappropriate discussion posts, and inspects user profiles. | 3 permissions (`moderation.write`, `users.view`, `users.mute`). |
+| **`contributor`** | **Content Contributor**.<br>Drafts question propositions and suggests revisions. Cannot publish directly to production. | 2 permissions (`questions.write`, `media.write`). |
 
 *Implementation File*: [`src/lib/auth/admin.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/src/lib/auth/admin.ts)  
 *Unit Tests*: [`tests/unit/admin-permissions.test.ts`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/admin-permissions.test.ts)
@@ -59,9 +57,10 @@ The following automated guards prevent accidental privilege escalation, data lea
 
 ### 1. Rejection of `ADMIN_AUTH_MODE=session` in Production
 - In staging and local development, admin authentication may use browser session cookies (`ADMIN_AUTH_MODE=session`).
-- In production, administrative routes (`/admin/*`) strictly require **Cloudflare Access Zero Trust JWT validation** (`ADMIN_AUTH_MODE=cloudflare_access`).
-- If `ADMIN_AUTH_MODE=session` is erroneously passed to the production worker without explicit override (`ALLOW_SESSION_IN_PROD=1`), `src/middleware.ts` rejects all requests with `HTTP 503 Service Unavailable: Administrative session authentication is disabled in production. Cloudflare Access Zero Trust required.`
+- In production, administrative routes (`/admin/*`) are designed to require **Cloudflare Access Zero Trust JWT validation** (`ADMIN_AUTH_MODE=access`; the value `cloudflare_access` is not accepted by the code).
+- If `ADMIN_AUTH_MODE=session` is passed to the production worker without the explicit override (`ADMIN_ALLOW_SESSION_IN_PROD=1`), `src/middleware.ts` rejects all admin requests with `HTTP 503 Service Unavailable`.
 - Verified in: [`tests/unit/production-guards.test.ts:36-43`](file:///e:/AA%20Projects/New%20Full/CUET%20Mock/tests/unit/production-guards.test.ts#L36-L43).
+- **Current deployment status**: Cloudflare Access is not provisioned yet, so production runs in session mode behind the explicit `ADMIN_ALLOW_SESSION_IN_PROD=1` override (`wrangler.jsonc`). Provisioning Access and removing the override remains a launch-runbook requirement.
 
 ### 2. Super Admin Bootstrap Protection
 - The `bootstrapSuperAdmin()` function and `scripts/admin-create.mjs` script allow creating the initial administrator.

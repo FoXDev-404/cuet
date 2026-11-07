@@ -38,3 +38,9 @@ Thumbs.db
 /export/
 /tools/ocr/dataset_export/
 /CUET_Question_Dataset.zip
+
+# Local scratch space (debug scripts, demo-tunnel binaries, diagnostics).
+/scratch/
+
+# Local ZCode session state.
+/.zcode/

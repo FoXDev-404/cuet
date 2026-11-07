@@ -337,10 +337,12 @@ for (const [index, file] of files.entries()) {
 // The site serves the practice library through a Workers KV cache (see
 // src/lib/practice-cache.ts). A fresh import must not be masked by a cached
 // copy, so drop the index and every cached paper before finishing.
+// Keep these in sync with the keys in src/lib/practice-cache.ts: the index and
+// per-paper payloads are versioned v2 there, while the subject rollup stays v1.
 const cacheKeys = [
-  "cache:practice:index:v1",
+  "cache:practice:index:v2",
   "cache:practice:subjects:v1",
-  ...importedPapers.map((paper) => `cache:practice:paper:v1:${paper.slug}`),
+  ...importedPapers.map((paper) => `cache:practice:paper:v2:${paper.slug}`),
 ];
 const cacheKeyFile = join(OUT_DIR, "practice-cache-keys.txt");
 writeFileSync(cacheKeyFile, `${cacheKeys.join("\n")}\n`, "utf8");
