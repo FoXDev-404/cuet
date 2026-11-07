@@ -1,9 +1,10 @@
 name: Auto deploy production
 
 # Push-to-main code deploys: build with the production environment and upload
-# the worker, applying any pending D1 migrations first (idempotent — only
-# pending files run). Content imports (practice library, ranked papers, blog)
-# and the guarded full release stay in deploy-production.yml.
+# the worker. This workflow deliberately does NOT touch D1 (it needs only the
+# "Edit Cloudflare Workers" token scope). When a migration lands, apply it via
+# the guarded "Deploy production" workflow or `npm run db:migrate:remote`
+# before or right after the deploy.
 #
 # Requires CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets.
 # A commit subject containing [skip deploy] skips the deploy.
@@ -52,9 +53,6 @@ jobs:
       - name: Install dependencies
         if: steps.skip.outputs.skip != 'true'
         run: npm ci
-      - name: Apply pending remote migrations
-        if: steps.skip.outputs.skip != 'true'
-        run: npx wrangler d1 migrations apply cuet-blueprint-db --remote
       - name: Build and deploy
         if: steps.skip.outputs.skip != 'true'
         run: npm run deploy
