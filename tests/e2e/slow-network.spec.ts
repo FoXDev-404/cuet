@@ -56,6 +56,9 @@ test("attempt stays usable on a throttled mobile connection", async ({ page }) =
     return;
   }
 
+  // Listing cards may link to the mock detail page or straight to its
+  // instructions screen; normalize to the mock base before appending.
+  href = href.replace(/\/instructions$/, "");
   await page.goto(`${href}/instructions`, { waitUntil: "domcontentloaded" });
   await expect(page.getByRole("heading", { name: "Before you start" })).toBeVisible({ timeout: 60_000 });
 

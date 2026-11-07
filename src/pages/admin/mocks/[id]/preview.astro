@@ -37,7 +37,7 @@ function isPlaceholderText(text: string | null | undefined): boolean {
   return /^(fig\s*[a-d1-4]|figure\s*[a-d1-4]|\(?[a-d1-4]\)?\s*fig)$/i.test(trimmed);
 }
 
-const rows = await attemptQuestions(version.id);
+const rows = await attemptQuestions(version.id, id);
 const dimensions = await imageDimensionsForUrls(
   rows.flatMap((question) => [
     question.image_url,

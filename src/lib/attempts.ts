@@ -91,8 +91,8 @@ export function canAccessAttempt(
   return false;
 }
 
-export async function attemptQuestions(versionId: number): Promise<AttemptQuestion[]> {
-  return getMockVersionQuestions(versionId);
+export async function attemptQuestions(versionId: number, mockId?: number): Promise<AttemptQuestion[]> {
+  return getMockVersionQuestions(versionId, mockId);
 }
 
 export async function attemptAnswers(attemptId: number): Promise<AttemptAnswer[]> {

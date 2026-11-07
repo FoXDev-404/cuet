@@ -41,13 +41,49 @@ function restoreDatabase() {
         unlinkSync(`${backupFile}-wal`);
       }
       if (existsSync(`${backupFile}-shm`)) {
-        copyFileSync(`${backupFile}-shm`, `${sqliteFile}-shm`);
-        unlinkSync(`${backupFile}-shm`);
+        try {
+          copyFileSync(`${backupFile}-shm`, `${sqliteFile}-shm`);
+          unlinkSync(`${backupFile}-shm`);
+        } catch {
+          // The just-closed workerd can still hold the -shm handle on Windows;
+          // SQLite rebuilds the shared-memory index on next open.
+        }
       }
       console.log("[DB Protection] Restore complete. Working database preserved cleanly.");
     } catch (err) {
       console.error("[DB Protection] Restore failed:", err.message);
     }
+  }
+  purgeMockVersionKVCache();
+}
+
+/**
+ * The D1 restore rolls version ids back while miniflare KV keeps the cached
+ * question payloads the E2E run wrote — a later run can then reuse an id and
+ * read another run's questions. Purge the mock-version cache after every
+ * restore so test isolation never depends on the TTL.
+ */
+function purgeMockVersionKVCache() {
+  try {
+    const list = execSync(
+      'npx wrangler kv key list --binding MEDIA_KV --local --prefix "cache:mock_version:v2:"',
+      { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 120_000 },
+    );
+    const keys = JSON.parse(list.slice(list.indexOf("[")))
+      .map((entry) => entry.name)
+      .filter(Boolean);
+    if (keys.length === 0) return;
+    const keyFile = resolve(process.cwd(), ".wrangler/mock-version-cache-keys.txt");
+    writeFileSync(keyFile, `${keys.join("\n")}\n`, "utf8");
+    execSync(`npx wrangler kv bulk delete "${keyFile}" --binding MEDIA_KV --local`, {
+      cwd: process.cwd(),
+      stdio: "ignore",
+      timeout: 120_000,
+    });
+    unlinkSync(keyFile);
+    console.log(`[KV Protection] Purged ${keys.length} cached mock-version key(s).`);
+  } catch (err) {
+    console.warn("[KV Protection] Mock-version cache purge skipped:", err.message);
   }
 }
 

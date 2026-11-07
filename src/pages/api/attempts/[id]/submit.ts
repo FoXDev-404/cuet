@@ -35,7 +35,7 @@ export const POST: APIRoute = async (context) => {
   }
 
   if (Array.isArray(body.answers)) {
-    const questions = await attemptQuestions(attempt.version_id);
+    const questions = await attemptQuestions(attempt.version_id, attempt.mock_id);
     const normalized = normalizeIncomingAnswers(body.answers, questions);
     if ("error" in normalized) return apiError(normalized.error);
     await saveAttemptAnswers(attempt.id, normalized.answers);

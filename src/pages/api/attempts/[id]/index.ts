@@ -30,7 +30,7 @@ export const GET: APIRoute = async (context) => {
   }
 
   const [questions, answers] = await Promise.all([
-    attemptQuestions(attempt.version_id),
+    attemptQuestions(attempt.version_id, attempt.mock_id),
     attemptAnswers(attempt.id),
   ]);
 

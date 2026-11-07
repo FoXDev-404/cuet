@@ -3,8 +3,14 @@ import { all } from "./db";
 import type { AttemptQuestion } from "./attempts";
 import { parseOptions } from "./content";
 
-const MOCK_VERSION_CACHE_PREFIX = "cache:mock_version:v1:";
-const CACHE_TTL_SECONDS = 604_800; // 7 days (mock versions are immutable)
+const MOCK_VERSION_CACHE_PREFIX = "cache:mock_version:v2:";
+// One hour, not "immutable forever": a D1 restore (backup rollback, re-import)
+// resets the version-id sequence while KV keeps old entries, so a NEW version
+// can reuse an OLD id. The mockId guard catches a different mock, but a
+// restored database can reuse BOTH the version id and the mock id with
+// different content — only a short TTL bounds that window. Re-reading one
+// version's questions once an hour is negligible against the daily budget.
+const CACHE_TTL_SECONDS = 3_600;
 const MAX_VALUE_BYTES = 900_000;
 
 function kvNamespace(): KVNamespace | null {
@@ -19,11 +25,26 @@ export function mockVersionCacheKey(versionId: number): string {
   return `${MOCK_VERSION_CACHE_PREFIX}${versionId}`;
 }
 
+type CachedMockVersion = {
+  /** Mock the cached questions belong to; null for legacy entries. */
+  mockId: number | null;
+  questions: AttemptQuestion[];
+};
+
 /**
  * Loads mock questions for a version, served from Workers KV when cached.
  * Contains only student-facing test fields (no correct_option or explanation).
+ *
+ * `expectedMockId` guards against version-id reuse: version rows are immutable
+ * within a database lifetime, but a D1 restore (backup rollback, re-import)
+ * resets the id sequence while KV keeps the old 7-day entries. When the caller
+ * knows the owning mock, a cached payload for a different mock is treated as
+ * stale and re-read from D1.
  */
-export async function getMockVersionQuestions(versionId: number): Promise<AttemptQuestion[]> {
+export async function getMockVersionQuestions(
+  versionId: number,
+  expectedMockId?: number,
+): Promise<AttemptQuestion[]> {
   const kv = kvNamespace();
   const key = mockVersionCacheKey(versionId);
 
@@ -31,9 +52,15 @@ export async function getMockVersionQuestions(versionId: number): Promise<Attemp
     try {
       const cached = await kv.get(key);
       if (cached) {
-        const parsed = JSON.parse(cached) as AttemptQuestion[];
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+        const parsed = JSON.parse(cached) as Partial<CachedMockVersion> | AttemptQuestion[];
+        const questions = Array.isArray(parsed) ? parsed : parsed.questions;
+        const cachedMockId = Array.isArray(parsed) ? null : (parsed.mockId ?? null);
+        const mockIdMatches =
+          cachedMockId == null ||
+          expectedMockId == null ||
+          cachedMockId === expectedMockId;
+        if (Array.isArray(questions) && questions.length > 0 && mockIdMatches) {
+          return questions;
         }
       }
     } catch {
@@ -56,7 +83,8 @@ export async function getMockVersionQuestions(versionId: number): Promise<Attemp
 
   if (kv && questions.length > 0) {
     try {
-      const serialized = JSON.stringify(questions);
+      const payload: CachedMockVersion = { mockId: expectedMockId ?? null, questions };
+      const serialized = JSON.stringify(payload);
       if (new TextEncoder().encode(serialized).length <= MAX_VALUE_BYTES) {
         await kv.put(key, serialized, { expirationTtl: CACHE_TTL_SECONDS });
       }
@@ -73,8 +101,9 @@ export async function getMockVersionQuestions(versionId: number): Promise<Attemp
  */
 export async function getMockVersionQuestionMeta(
   versionId: number,
+  expectedMockId?: number,
 ): Promise<Map<number, { id: number; optionCount: number }>> {
-  const questions = await getMockVersionQuestions(versionId);
+  const questions = await getMockVersionQuestions(versionId, expectedMockId);
   const map = new Map<number, { id: number; optionCount: number }>();
   for (const q of questions) {
     map.set(q.id, {
@@ -90,11 +119,11 @@ export async function getMockVersionQuestionMeta(
  */
 export async function invalidateMockVersionCache(versionId: number): Promise<void> {
   const kv = kvNamespace();
-  if (!kv) return;
-  try {
-    await kv.delete(mockVersionCacheKey(versionId));
-  } catch {
-    // Non-fatal
+  if (kv) {
+    try {
+      await kv.delete(mockVersionCacheKey(versionId));
+    } catch {
+      // Non-fatal
+    }
   }
 }
-

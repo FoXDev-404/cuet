@@ -49,7 +49,7 @@ export const PUT: APIRoute = async (context) => {
     });
   }
 
-  const metaMap = await getMockVersionQuestionMeta(attempt.version_id);
+  const metaMap = await getMockVersionQuestionMeta(attempt.version_id, attempt.mock_id);
   const normalized = normalizeIncomingAnswers(body.answers, metaMap, clientSeq);
   if ("error" in normalized) return apiError(normalized.error);
 
