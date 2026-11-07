@@ -86,6 +86,15 @@ development vars. The Worker name and production hostname are intentionally unch
 from the Astro project's original deployment. The legacy Next.js project and its Cloudflare
 resources have been retired.
 
+## Continuous deployment
+
+Pushing to `main` auto-deploys the code: the [`auto-deploy` workflow](.github/workflows/auto-deploy.yml)
+builds with the production environment, applies any pending D1 migrations and uploads the
+worker, then smoke-checks the live URL. It needs `CLOUDFLARE_API_TOKEN` and
+`CLOUDFLARE_ACCOUNT_ID` repository secrets, and a commit subject containing
+`[skip deploy]` skips it. Content imports and the guarded full release (with the
+practice-library imports) stay manual in the `Deploy production` workflow.
+
 ## Documentation
 
 - [Astro deployment and backup runbook](docs/ASTRO-DEPLOYMENT.md)
