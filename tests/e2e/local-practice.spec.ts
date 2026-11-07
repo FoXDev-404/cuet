@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { expect, test, type Page } from "@playwright/test";
@@ -18,6 +19,64 @@ type LocalIndex = { papers?: LocalIndexPaper[] | null };
 const LOCAL_INDEX = JSON.parse(
   readFileSync(fileURLToPath(new URL("../../src/data/local-papers/index.json", import.meta.url)), "utf8"),
 ) as LocalIndex;
+
+const DB_NAME = "cuet-blueprint-db";
+const WRANGLER_BIN = fileURLToPath(new URL("../../node_modules/wrangler/bin/wrangler.js", import.meta.url));
+let previousAttemptSetting: string | null = null;
+let attemptSettingCaptured = false;
+
+function sqlString(value: string): string {
+  return `'${value.replace(/'/g, "''")}'`;
+}
+
+/** Runs SQL against the same local D1 file the dev server reads. */
+function localD1(sql: string): void {
+  execFileSync(
+    process.execPath,
+    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--command", sql],
+    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
+  );
+}
+
+function localD1Rows<T>(sql: string): T[] {
+  const output = execFileSync(
+    process.execPath,
+    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--json", "--command", sql],
+    { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 120_000 },
+  );
+  const start = output.indexOf("[");
+  if (start < 0) throw new Error(`wrangler returned no JSON: ${output.slice(0, 200)}`);
+  const parsed = JSON.parse(output.slice(start)) as Array<{ results?: T[] }>;
+  return parsed[0]?.results ?? [];
+}
+
+/** Enables the live-attempt share button and remembers the original setting. */
+function setAttemptShareSetting(value: "true" | "false"): void {
+  if (!attemptSettingCaptured) {
+    const rows = localD1Rows<{ value: string }>(
+      "SELECT value FROM site_settings WHERE key = 'share_question_during_attempt'",
+    );
+    previousAttemptSetting = rows[0]?.value ?? null;
+    attemptSettingCaptured = true;
+  }
+  localD1(
+    `INSERT INTO site_settings (key, value)
+     VALUES ('share_question_during_attempt', ${sqlString(value)})
+     ON CONFLICT(key) DO UPDATE SET value = excluded.value;`,
+  );
+}
+
+test.afterAll(() => {
+  if (!attemptSettingCaptured) return;
+  if (previousAttemptSetting === null) {
+    localD1("DELETE FROM site_settings WHERE key = 'share_question_during_attempt';");
+  } else {
+    localD1(
+      `INSERT INTO site_settings (key, value) VALUES ('share_question_during_attempt', ${sqlString(previousAttemptSetting)})
+       ON CONFLICT(key) DO UPDATE SET value = excluded.value;`,
+    );
+  }
+});
 
 function paperBySlug(slug: string): LocalIndexPaper {
   const paper = (LOCAL_INDEX.papers ?? []).find((entry) => entry.slug === slug);
@@ -87,6 +146,11 @@ test("practice detail reports the scored count when no questions are excluded", 
     "href",
     `/mock/${DETAIL_PAPER.slug}/instructions`,
   );
+  // Every generated paper gets a real OG preview image, not the logo fallback.
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    new RegExp(`/og/papers/${DETAIL_PAPER.slug}\\.png$`),
+  );
 });
 
 test("legacy practice URLs permanently redirect to mock-tests", async ({ page }) => {
@@ -149,16 +213,43 @@ test("a practice paper starts, autosaves, submits and shows a saved ranked resul
   await expect(page.getByText(/Correct answer/i).first()).toBeVisible();
 });
 
-test("practice attempts hide question sharing during the paper and in solutions", async ({
+test("practice attempt sharing follows the admin setting and never links /q/", async ({
   page,
 }) => {
+  test.skip(
+    Boolean(process.env.PLAYWRIGHT_BASE_URL),
+    "This test toggles a site setting in the local D1 database.",
+  );
   const shareUi = '[data-share-sheet], [data-share-trigger], [data-question-share], a[href^="/q/"]';
 
+  // Setting off (the default): no share UI anywhere on the attempt.
+  setAttemptShareSetting("false");
   await page.goto(INSTRUCTIONS);
   await beginAttempt(page);
   expect(await page.locator(shareUi).count()).toBe(0);
+  expect(await page.locator("[data-attempt-share-trigger]").count()).toBe(0);
   expect(await page.getByRole("button", { name: /share/i }).count()).toBe(0);
 
+  // Owner decision 2026-11-06: practice papers share the question image with
+  // the mock instructions link — never a public /q/ URL and never the answer.
+  setAttemptShareSetting("true");
+  await page.reload();
+  await expect(page.locator("[data-attempt-share-trigger]").first()).toBeVisible();
+  expect(await page.locator('a[href^="/q/"]').count()).toBe(0);
+
+  await page.locator("[data-attempt-share-trigger]").first().click();
+  const dialog = page.locator("[data-attempt-share-dialog]");
+  await expect(dialog).toBeVisible();
+  const card = page.locator("[data-attempt-share-card]");
+  await expect(card.locator(".asq-title")).toContainText("CUET UG English 6 August 2022");
+  await expect(card).not.toContainText("Correct answer");
+  await expect(page.locator("[data-attempt-share-preview]")).toBeVisible({ timeout: 30_000 });
+
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+
+  // Solutions still expose no share surface: practice questions have no
+  // public-id lineage, so nothing there is individually linkable.
   await submitAttempt(page);
   await page.getByRole("link", { name: "Review solutions →" }).click();
   await expect(page).toHaveURL(/\/result\/\d+\/solutions$/);

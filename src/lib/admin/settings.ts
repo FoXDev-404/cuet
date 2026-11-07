@@ -42,7 +42,7 @@ export const SETTING_FIELDS: SettingField[] = [
   {
     key: "share_question_during_attempt",
     label: "Share during a live attempt",
-    description: "When on, the live ranked attempt screen shows a link-only Share mock button. The question text and image are never shareable there.",
+    description: "When on, every question in a live mock attempt — ranked mocks and previous-year practice papers — shows a Share button. The shared image shows the question and its options — never the correct answer — and the link opens the public question page when one exists, otherwise the mock instructions page.",
     type: "boolean",
     defaultValue: "false",
   },

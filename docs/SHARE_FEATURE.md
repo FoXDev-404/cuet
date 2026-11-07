@@ -157,28 +157,38 @@ current lineage head through a forward `supersedes_id` walk.
 
 ### Live ranked attempt
 
-A “Share mock” button appears only when
-`site_settings.share_question_during_attempt` is `true` (default `false`). It
-opens a **link-only** sheet for `/mock/{slug}/instructions`:
+Sharing from a live attempt requires
+`site_settings.share_question_during_attempt` to be `true` (default `false`).
 
-- no question text, options, images, answer or explanation;
-- no image generation;
-- opening/closing it does not pause the timer or autosave.
+- **Per-question share** (`src/lib/share/attempt-question-share.ts`): every
+  question header shows a Share button. It renders the current question into a
+  themed 1080px "window" card (three traffic-light dots + the live mock title
+  in the title bar, dark/light following the candidate's theme) and exports it
+  with `html-to-image`. The card carries the question, passage, figure and
+  options — **never the correct option, the candidate's selection, the
+  candidate name or any score** — plus a footer link. The link is the public
+  question page when the lineage has an enabled mapping, otherwise
+  `/mock/{slug}/instructions`, so guests always land somewhere real. Download,
+  Copy link, WhatsApp, Telegram and native share-with-file are offered, and
+  opening the sheet does not pause the timer or autosave.
+- **"Share mock" header button**: the original **link-only** sheet for
+  `/mock/{slug}/instructions` stays available alongside the per-question
+  share.
+- Share events from a live attempt always record `context='attempt'` with the
+  mock id only — the API rejects question-level events from this context, so
+  no `public_id` is ever written during a ranked test.
 
 ### Practice library
 
-Practice-library sharing remains **intentionally unavailable**. The 5,322
-`practice_questions` have no public ids or lineage, and every practice paper is
-PYQ-sourced OCR content, so there is no rights basis to reproduce a question on
-a public URL. Enabling sharing therefore requires two decisions that have not
-been made: confirmed rights for the printed PYQ content, and a public-id plus
-lineage mapping for the practice tables.
-
-The take and review views expose no share button, no share sheet and no `/q/`
-links. A Playwright regression asserts that both the paper page and the take
-view stay free of sharing UI, so an accidental copy-paste of the ranked share
-component cannot enable practice sharing. The share-event schema already accepts
-`context='practice'` so analytics can be added later without a migration.
+Owner decision (2026-11-06): previous-year practice papers are shareable from
+the live attempt under the same `share_question_during_attempt` setting — the
+question image + options with the mock instructions link; the correct answer
+is never included. Practice questions have no public-id lineage and
+`rights_ok = 0`, so the attempt page skips the mapping query entirely and
+every practice share points at `/mock/{slug}/instructions`; no `/q/` URL is
+ever emitted for a practice paper, and the solutions page still exposes no
+share surface (it is lineage-mapping-gated). A Playwright regression pins all
+of this.
 
 ## Share sheet and image
 

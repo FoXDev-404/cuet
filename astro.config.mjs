@@ -16,5 +16,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      // Dev server only: allow temporary demo tunnels (*.trycloudflare.com) to
+      // reach localhost. Production SSR on Workers never uses this option.
+      allowedHosts: true,
+    },
   },
 });

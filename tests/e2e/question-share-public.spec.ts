@@ -73,26 +73,34 @@ function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''")}'`;
 }
 
-/** Runs SQL against the same local D1 file the dev server reads. */
-function localD1(sql: string): void {
-  execFileSync(
-    process.execPath,
-    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--command", sql],
-    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
-  );
-}
-
-function localD1Rows<T>(sql: string): T[] {
-  const output = execFileSync(
-    process.execPath,
-    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--json", "--command", sql],
-    {
+/** Wrangler's CLI occasionally dies with a Windows libuv assertion mid-run;
+ * a single retry turns that flake into a pass without hiding real failures. */
+function runWranglerSql(args: string[]): string {
+  try {
+    return execFileSync(process.execPath, [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", ...args], {
       cwd: process.cwd(),
       encoding: "utf8",
       stdio: ["ignore", "pipe", "pipe"],
       timeout: 120_000,
-    },
-  );
+    });
+  } catch {
+    // The known failure mode is a wrangler crash at exit, not a real D1 error.
+    return execFileSync(process.execPath, [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", ...args], {
+      cwd: process.cwd(),
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+      timeout: 120_000,
+    });
+  }
+}
+
+/** Runs SQL against the same local D1 file the dev server reads. */
+function localD1(sql: string): void {
+  runWranglerSql(["--command", sql]);
+}
+
+function localD1Rows<T>(sql: string): T[] {
+  const output = runWranglerSql(["--json", "--command", sql]);
   const start = output.indexOf("[");
   if (start < 0) throw new Error(`wrangler returned no JSON: ${output.slice(0, 200)}`);
   const parsed = JSON.parse(output.slice(start)) as Array<{ results?: T[] }>;
@@ -242,13 +250,26 @@ function markAttemptSubmitted(email: string): void {
 }
 
 /**
- * Builds a published ranked mock around one fixture question. Membership is
- * inserted while the version is still a draft because migration 0004 freezes
- * a version's questions once it is published.
+ * Builds a published ranked mock around one fixture question (plus optional
+ * extra questions at positions 2..n). Membership is inserted while the version
+ * is still a draft because migration 0004 freezes a version's questions once
+ * it is published.
  */
-function createPublishedMock(questionId: number, stamp: string): number {
+function createPublishedMock(
+  questionId: number,
+  stamp: string,
+  extraQuestionIds: number[] = [],
+): number {
   const slug = `e2e-share-mock-${stamp}`;
   const marking = '{"correct":5,"incorrect":-1,"unattempted":0}';
+  const extraRows = extraQuestionIds
+    .map(
+      (id, index) => `INSERT INTO mock_questions (version_id, question_id, section, position)
+    SELECT v.id, ${id}, 'Section', ${index + 2}
+    FROM mock_test_versions v JOIN mock_tests m ON m.id = v.mock_id
+    WHERE m.slug = ${sqlString(slug)};`,
+    )
+    .join("\n");
   localD1(`
     INSERT INTO mock_tests
       (exam_id, subject_id, title, slug, type, duration_min, total_marks,
@@ -264,6 +285,7 @@ function createPublishedMock(questionId: number, stamp: string): number {
     SELECT v.id, ${questionId}, 'Section', 1
     FROM mock_test_versions v JOIN mock_tests m ON m.id = v.mock_id
     WHERE m.slug = ${sqlString(slug)};
+    ${extraRows}
     UPDATE mock_test_versions
     SET status = 'published', published_at = '2026-01-01T00:00:00.000Z'
     WHERE mock_id = (SELECT id FROM mock_tests WHERE slug = ${sqlString(slug)});
@@ -1131,6 +1153,7 @@ test("live attempts share only the mock link and keep the timer and autosave run
   page,
   context,
 }) => {
+  test.setTimeout(120_000); // several wrangler spawns + a reload; the 30s default is marginal
   const stamp = uniqueStamp();
   const fixture = createFixture({
     text: `E2E live attempt share ${stamp}: which option is Beta?`,
@@ -1226,6 +1249,143 @@ test("live attempts share only the mock link and keep the timer and autosave run
       ),
     )
     .toEqual([{ public_id: null, context: "attempt", channel: "copy" }]);
+});
+
+test("live attempt share renders a question card image with the mock title and link", async ({
+  page,
+  context,
+}) => {
+  test.setTimeout(120_000);
+  const stamp = uniqueStamp();
+  const text = `E2E attempt share card ${stamp}: which option is Gamma?`;
+  const fixture = createFixture({ text, correctOption: 2 });
+  const second = createFixture({
+    text: `E2E attempt share card ${stamp} part two: which option is Delta?`,
+    correctOption: 3,
+  });
+  const mockId = createPublishedMock(fixture.id, stamp, [second.id]);
+  const headers = { "cf-connecting-ip": testClientIp() };
+
+  const started = await page.request.post("/api/attempts/start", {
+    headers,
+    data: { mockId },
+  });
+  expect(started.status()).toBe(201);
+  const { attemptId } = (await started.json()) as { attemptId: number };
+  const timer = page.locator("#timer");
+
+  setAttemptShareSetting("true");
+  // Headless Chromium has no Web Share API, so stub it before load: the sheet
+  // only unhides the native button when navigator.share exists at wire time.
+  await page.addInitScript(() => {
+    const holder = window as unknown as { __sharedPayload?: Record<string, unknown> };
+    Object.defineProperty(navigator, "share", {
+      value: (data: { files?: Array<{ name: string; type: string }>; text?: string }) => {
+        // Files do not survive the evaluate round-trip; copy their identity
+        // here, inside the page context.
+        holder.__sharedPayload = {
+          files: data.files?.map((file) => ({ name: file.name, type: file.type })),
+          text: data.text,
+        };
+        return Promise.resolve();
+      },
+      configurable: true,
+    });
+    Object.defineProperty(navigator, "canShare", { value: () => true, configurable: true });
+  });
+  await page.goto(`/attempt/${attemptId}`);
+  // The trigger is server-rendered, but its handler needs the module script;
+  // hydration is done once the timer leaves its SSR placeholder.
+  await expect(timer).not.toHaveText("--:--:--");
+
+  const trigger = page.locator("[data-attempt-share-trigger]");
+  await expect(trigger).toBeVisible();
+  await trigger.click();
+
+  const dialog = page.locator("[data-attempt-share-dialog]");
+  await expect(dialog).toBeVisible();
+
+  // The card carries the question, its options and the live mock title —
+  // never the correct answer or any attempt/score data.
+  const card = page.locator("[data-attempt-share-card]");
+  await expect(card.locator(".asq-title")).toContainText(`E2E share mock ${stamp}`);
+  await expect(card).toContainText(fixture.text);
+  await expect(card).toContainText("Gamma is the answer");
+  await expect(card).not.toContainText("Correct answer");
+
+  // Image generation completes and shows a preview.
+  await expect(page.locator("[data-attempt-share-preview]")).toBeVisible({ timeout: 30_000 });
+  await expect(dialog.locator("[data-attempt-share-status]")).toContainText("Image ready");
+
+  // The timer kept running while the sheet was open.
+  const before = ((await timer.textContent()) ?? "").trim();
+  await expect
+    .poll(async () => ((await timer.textContent()) ?? "").trim(), { timeout: 5_000 })
+    .not.toBe(before);
+
+  // Copy shares the public question link (the fixture mapping is enabled).
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  const eventResponse = page.waitForResponse(
+    (res) => res.url().endsWith("/api/share-events") && res.request().method() === "POST",
+  );
+  await dialog.locator("[data-attempt-share-copy]").click();
+  expect((await eventResponse).status()).toBe(202);
+  await expect(dialog.locator("[data-attempt-share-status]")).toContainText("Link copied.");
+  const clipboard = await page.evaluate(() => navigator.clipboard.readText());
+  expect(clipboard).toContain(fixture.path);
+
+  // The native share must attach the rendered PNG, not just the link text.
+  await dialog.locator("[data-attempt-share-native]").click();
+  const shared = await page.evaluate(
+    () =>
+      (window as unknown as { __sharedPayload?: { files?: Array<{ name: string; type: string }>; text?: string } })
+        .__sharedPayload,
+  );
+  expect(shared?.files?.[0]?.type).toBe("image/png");
+  expect(shared?.files?.[0]?.name).toMatch(/^cuet-question-[A-Za-z0-9]{10}\.png$/);
+  expect(shared?.text).toContain(fixture.path);
+  await expect(dialog.locator("[data-attempt-share-status]")).toContainText("Shared.");
+
+  // The WhatsApp button routes the same PNG through the Web Share API instead
+  // of opening a link-only wa.me intent.
+  await dialog.locator("[data-attempt-share-whatsapp]").click();
+  const whatsappShared = await page.evaluate(
+    () =>
+      (window as unknown as { __sharedPayload?: { files?: Array<{ name: string; type: string }>; text?: string } })
+        .__sharedPayload,
+  );
+  expect(whatsappShared?.files?.[0]?.type).toBe("image/png");
+  expect(whatsappShared?.text).toContain(fixture.path);
+  await expect(dialog.locator("[data-attempt-share-status]")).toContainText("Shared.");
+
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+
+  // Attempt-context events record the mock id only, never a public id; each
+  // share action lands as one aggregate row.
+  await expect
+    .poll(() =>
+      localD1Rows<{ public_id: string | null; context: string; channel: string }>(
+        `SELECT public_id, context, channel FROM share_events WHERE mock_id = ${mockId} ORDER BY channel`,
+      ),
+    )
+    .toEqual([
+      { public_id: null, context: "attempt", channel: "copy" },
+      { public_id: null, context: "attempt", channel: "native" },
+      { public_id: null, context: "attempt", channel: "whatsapp" },
+    ]);
+
+  // Regression: sharing question 2 must show question 2, never question 1's
+  // cached image — the background prerender advances state.current before its
+  // blob is ready, so the sheet must key its cache on question + language.
+  await page.locator("#save-next").click();
+  await expect(page.locator(".exam-question-number")).toContainText("Question 2");
+  await page.locator("[data-attempt-share-trigger]").first().click();
+  await expect(dialog).toBeVisible();
+  await expect(card).toContainText(second.text, { timeout: 30_000 });
+  await expect(card).toContainText("Question 2");
+  await expect(card).not.toContainText(fixture.text);
+  await expect(page.locator("[data-attempt-share-preview]")).toBeVisible({ timeout: 30_000 });
 });
 
 test("share-event API rejects missing, unknown and live-attempt question events", async ({

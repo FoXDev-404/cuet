@@ -26,6 +26,8 @@ import { siteUrl } from "../../lib/site-url";
 import { calculateMockDuration } from "../../lib/exam-timing";
 import { adsenseClient, adsenseSlot } from "../../lib/integrations";
 import { run } from "../../lib/db";
+import { shareMappingsForQuestionIds } from "../../lib/share/public-question-store";
+import { attemptQuestionShareUrl } from "../../lib/share/attempt-question";
 
 const adClient = adsenseClient(env);
 const showAds = Boolean(adClient && adsenseSlot(env));
@@ -75,7 +77,7 @@ const [mock, rawQuestions, savedAnswers] = await Promise.all([
     console.error("Attempt paper lookup failed", error);
     return null;
   }),
-  attemptQuestions(attempt.version_id).catch((error) => {
+  attemptQuestions(attempt.version_id, attempt.mock_id).catch((error) => {
     console.error("Attempt question lookup failed", error);
     return null;
   }),
@@ -87,7 +89,6 @@ const [mock, rawQuestions, savedAnswers] = await Promise.all([
 if (!rawQuestions || !savedAnswers) return dbUnavailableResponse();
 const marking = parseMarkingScheme(mock?.marking_scheme ?? "");
 const shareDuringAttempt =
-  !mock?.practice_paper_slug &&
   (await getSetting("share_question_during_attempt", "false")) === "true";
 const mockShareUrl = mock?.slug
   ? new URL(`/mock/${mock.slug}/instructions`, siteUrl(Astro.url)).toString()
@@ -148,6 +149,46 @@ function textContainsImage(text: string | null | undefined, url: string | null |
   if (text.includes(url)) return true;
   const f = imageFileName(url);
   return Boolean(f && text.includes(f));
+}
+
+// Per-question share links for the live attempt. When the admin setting is
+// on, each question gets the URL a shared card points at: the public question
+// page when its lineage has an enabled mapping, otherwise the mock
+// instructions page. Practice papers (rights-unknown PYQ content, by owner
+// decision 2026-11-06 shareable as images) have no public question pages, so
+// every share points at the mock instructions page without a mapping query.
+const questionShareEnabled = shareDuringAttempt && Boolean(mockShareUrl);
+const shareSiteOrigin = siteUrl(Astro.url).toString();
+const shareLinks = new Map<number, { url: string; publicId: string | null }>();
+if (questionShareEnabled && mockShareUrl) {
+  if (mock?.practice_paper_slug) {
+    for (const question of rawQuestions) {
+      shareLinks.set(question.id, { url: mockShareUrl, publicId: null });
+    }
+  } else {
+    try {
+      const ids = rawQuestions.map((question) => question.id);
+      const mappings = new Map<number, { publicId: string }>();
+      for (let offset = 0; offset < ids.length; offset += 90) {
+        const chunk = await shareMappingsForQuestionIds(ids.slice(offset, offset + 90));
+        for (const [questionId, mapping] of chunk) mappings.set(questionId, mapping);
+      }
+      for (const question of rawQuestions) {
+        shareLinks.set(
+          question.id,
+          attemptQuestionShareUrl({
+            publicId: mappings.get(question.id)?.publicId ?? null,
+            questionText: question.text,
+            mockUrl: mockShareUrl,
+            siteOrigin: shareSiteOrigin,
+          }),
+        );
+      }
+    } catch (error) {
+      console.error("Attempt share-link resolution failed; falling back to the mock link.", error);
+      shareLinks.clear();
+    }
+  }
 }
 
 function isPlaceholderText(text: string | null | undefined): boolean {
@@ -217,6 +258,7 @@ const questions = rawQuestions.map((question, index) => {
     id: question.id,
     section: question.section,
     position: question.position,
+    share: shareLinks.get(question.id) ?? null,
     text: question.text,
     text_hi: question.text_hi,
     rendered_text: renderRichText(question.text),
@@ -282,6 +324,7 @@ if (Math.abs(Date.parse(attempt.deadline_at) - expectedDeadlineMs) > 60_000) {
 
 const data = {
   attemptId: attempt.id,
+  mockId: attempt.mock_id,
   mockTitle: mock?.title ?? "CUET Mock Test",
   mockSlug: mock?.slug ?? "",
   practicePaperSlug: mock?.practice_paper_slug ?? null,
@@ -733,6 +776,217 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         .exam-question-card { border-radius: 0.7rem; padding: 0.85rem; }
         .exam-palette-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
       }
+      .exam-share-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        background: var(--surface);
+        color: var(--ink-2);
+        cursor: pointer;
+      }
+      .exam-share-btn:hover { background: var(--surface-3); color: var(--primary); border-color: color-mix(in srgb, var(--primary) 40%, var(--border)); }
+      .exam-share-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+
+      /* Live-attempt question share card (1080px export; themed via --asq-*). */
+      .asq-host {
+        position: fixed;
+        top: 0;
+        left: -20000px;
+        width: 1080px;
+        height: 0;
+        overflow: visible;
+        pointer-events: none;
+        z-index: -1;
+      }
+      .asq-card {
+        --share-question-size: 40px;
+        --share-option-size: 34px;
+        display: flex;
+        width: 1080px;
+        min-height: 1080px;
+        max-height: 1920px;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 22px;
+        background: var(--asq-backdrop);
+        color: var(--asq-ink);
+        font-family: var(--font-body);
+        text-align: left;
+      }
+      .asq-window {
+        display: flex;
+        min-height: 0;
+        flex: 1;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--asq-border);
+        border-radius: 34px;
+        background: var(--asq-window);
+        box-shadow: var(--asq-window-shadow);
+      }
+      .asq-titlebar {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 96px;
+        padding: 30px 150px 22px;
+        border-bottom: 1px solid var(--asq-border);
+        background: var(--asq-window-2);
+      }
+      .asq-dots {
+        position: absolute;
+        top: 32px;
+        left: 40px;
+        display: flex;
+        gap: 15px;
+      }
+      .asq-dot {
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 9999px;
+      }
+      .asq-dot:nth-child(1) { background: var(--asq-dot-r); }
+      .asq-dot:nth-child(2) { background: var(--asq-dot-y); }
+      .asq-dot:nth-child(3) { background: var(--asq-dot-g); }
+      .asq-title {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        color: var(--asq-ink);
+        font-family: var(--font-heading);
+        font-size: 33px;
+        font-weight: 800;
+        line-height: 1.25;
+        text-align: center;
+      }
+      .asq-main {
+        display: flex;
+        min-height: 0;
+        flex: 1;
+        flex-direction: column;
+        gap: 28px;
+        overflow: hidden;
+        padding: 40px 52px 30px;
+      }
+      .asq-meta { display: flex; flex-wrap: wrap; gap: 12px; }
+      .asq-chip {
+        display: inline-flex;
+        align-items: center;
+        border: 1.5px solid var(--asq-accent);
+        border-radius: 9999px;
+        background: var(--asq-accent-soft);
+        color: var(--asq-accent);
+        font-size: 23px;
+        font-weight: 800;
+        padding: 6px 20px;
+      }
+      .asq-chip-muted { border-color: var(--asq-border); background: transparent; color: var(--asq-muted); }
+      .asq-block-label {
+        color: var(--asq-muted);
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .asq-passage {
+        border: 1.5px solid var(--asq-border);
+        border-radius: 20px;
+        background: var(--asq-window-2);
+        padding: 24px 26px;
+      }
+      .asq-passage-body { font-size: 29px; line-height: 1.5; overflow-wrap: anywhere; }
+      .asq-question {
+        color: var(--asq-ink);
+        font-size: var(--share-question-size);
+        font-weight: 650;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      .asq-image {
+        display: block;
+        max-width: 100%;
+        max-height: 380px;
+        width: auto;
+        height: auto;
+        border: 1.5px solid var(--asq-border);
+        border-radius: 18px;
+        object-fit: contain;
+      }
+      .asq-options {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .asq-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        border: 1.5px solid var(--asq-border);
+        border-radius: 20px;
+        padding: 16px 20px;
+        background: var(--asq-window-2);
+      }
+      .asq-letter {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        flex: 0 0 auto;
+        border-radius: 9999px;
+        background: var(--asq-accent-soft);
+        color: var(--asq-accent);
+        font-size: 25px;
+        font-weight: 800;
+      }
+      .asq-option-body {
+        min-width: 0;
+        flex: 1;
+        font-size: var(--share-option-size);
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      .asq-option-empty { color: var(--asq-muted); }
+      .asq-option-image {
+        display: block;
+        max-width: 100%;
+        max-height: 200px;
+        margin-top: 10px;
+        width: auto;
+        height: auto;
+        border-radius: 12px;
+        object-fit: contain;
+      }
+      .asq-truncated { color: var(--asq-muted); font-size: 25px; font-style: italic; }
+      .asq-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 26px 52px;
+        background: var(--asq-footer);
+        color: var(--asq-footer-ink);
+      }
+      .asq-brand { flex: 0 0 auto; font-size: 26px; font-weight: 800; }
+      .asq-url {
+        min-width: 0;
+        text-align: right;
+        font-size: 27px;
+        font-weight: 800;
+        overflow-wrap: anywhere;
+      }
+      .asq-card .katex { font-size: 1em; }
+      .asq-card .katex-display { margin: 0.5em 0; overflow: hidden; }
     </style>
   </head>
   <body class="min-h-[100dvh] bg-[var(--surface)] text-[var(--ink)] antialiased">
@@ -798,6 +1052,16 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
                     <span class="exam-badge">{questions[0].section}</span>
                   </div>
                   <div class="flex flex-wrap items-center gap-1.5">
+                    {questionShareEnabled && questions[0].share ? (
+                      <button type="button" class="exam-share-btn" data-attempt-share-trigger aria-label="Share this question" title="Share this question">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <circle cx="18" cy="5" r="3"></circle>
+                          <circle cx="6" cy="12" r="3"></circle>
+                          <circle cx="18" cy="19" r="3"></circle>
+                          <path d="m8.6 10.7 6.8-3.4M8.6 13.3l6.8 3.4"></path>
+                        </svg>
+                      </button>
+                    ) : null}
                     {answerMap[questions[0].id]?.marked ? <span class="exam-badge review">Marked for review</span> : null}
                     <span class="exam-badge">1 / {questions.length}</span>
                   </div>
@@ -958,16 +1222,110 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
 
     {showAds ? <AdSlot /> : null}
 
+    {questionShareEnabled ? (
+      <div data-attempt-share-sheet>
+        <div id="attempt-share-dialog" class="fixed inset-0 z-[60] hidden" data-attempt-share-dialog aria-hidden="true">
+          <div class="absolute inset-0 bg-neutral-950/60" data-attempt-share-backdrop aria-hidden="true"></div>
+          <div
+            class="absolute inset-x-0 bottom-0 max-h-[92dvh] overflow-y-auto rounded-t-2xl border border-[var(--border)] bg-[var(--surface-2)] p-4 text-[var(--ink)] shadow-2xl sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:w-[min(26rem,calc(100vw-2rem))] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="attempt-share-title"
+          >
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h2 id="attempt-share-title" class="text-lg font-bold">Share this question</h2>
+                <p class="mt-1 text-xs leading-5 opacity-70">
+                  The image shows the question and its options — never the correct answer. The link opens this question for whoever receives it.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="-mr-1 -mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-lg text-xl font-semibold opacity-70 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                data-attempt-share-close
+                aria-label="Close share options"
+              >
+                ×
+              </button>
+            </div>
+
+            <div class="mt-3 overflow-hidden rounded-xl border border-[var(--border)] bg-neutral-100 dark:bg-neutral-900">
+              <div class="grid min-h-32 place-items-center p-4 text-center text-sm opacity-70" data-attempt-share-loading>
+                Preparing image…
+              </div>
+              <img class="mx-auto block max-h-64 w-auto" data-attempt-share-preview hidden alt="Preview of the shared question image" />
+            </div>
+
+            <div class="mt-3 grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                class="col-span-2 inline-flex min-h-11 items-center justify-center rounded-lg bg-brand-600 px-4 text-sm font-bold text-white hover:bg-brand-700"
+                data-attempt-share-native
+                hidden
+              >
+                Share…
+              </button>
+              <a
+                class="inline-flex min-h-11 items-center justify-center rounded-lg border border-[var(--border)] px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                data-attempt-share-whatsapp
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+              <a
+                class="inline-flex min-h-11 items-center justify-center rounded-lg border border-[var(--border)] px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                data-attempt-share-telegram
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Telegram
+              </a>
+              <button
+                type="button"
+                class="inline-flex min-h-11 items-center justify-center rounded-lg border border-[var(--border)] px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                data-attempt-share-copy
+              >
+                Copy link
+              </button>
+              <button
+                type="button"
+                class="inline-flex min-h-11 items-center justify-center rounded-lg border border-[var(--border)] px-3 text-sm font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                data-attempt-share-download
+              >
+                Download image
+              </button>
+            </div>
+
+            <p class="mt-3 hidden rounded-lg bg-red-50 px-3 py-2 text-xs text-red-800 dark:bg-red-950/50 dark:text-red-200" data-attempt-share-error role="alert"></p>
+            <p class="mt-2 min-h-5 text-xs font-semibold text-emerald-700 dark:text-emerald-300" data-attempt-share-status role="status" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="asq-host" aria-hidden="true" inert>
+          <div class="asq-card" data-attempt-share-card></div>
+        </div>
+      </div>
+    ) : null}
+
     <div id="toast" class="pointer-events-none fixed bottom-20 left-1/2 z-50 hidden -translate-x-1/2 rounded-lg bg-[var(--footer-bg)] px-4 py-2 text-xs font-medium text-[var(--footer-ink)] shadow-lg"></div>
     <div id="zoom" class="nta-zoom" role="dialog" aria-modal="true" aria-label="Image preview"><img id="zoom-image" alt="" /></div>
 
     <script type="application/json" id="attempt-data" set:html={serialized}></script>
     <script>
+      import {
+        openAttemptQuestionShare,
+        prerenderAttemptQuestionShare,
+      } from "../../lib/share/attempt-question-share";
+
       type Option = { text: string; rendered_text?: string; image_url: string | null; alt: string | null; image_width: number | null; image_height: number | null };
       type Question = {
         id: number;
         section: string;
         position: number;
+        share: { url: string; publicId: string | null } | null;
         text: string;
         text_hi: string | null;
         rendered_text?: string;
@@ -985,6 +1343,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       type Answer = { selected: number | null; marked: number; time: number };
       type AttemptData = {
         attemptId: number;
+        mockId: number;
         mockTitle: string;
         mockSlug: string;
         practicePaperSlug: string | null;
@@ -1249,6 +1608,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
                 <span class="exam-badge">${escapeHtml(question.section)}</span>
               </div>
               <div class="flex flex-wrap items-center gap-1.5">
+                ${question.share ? `<button type="button" class="exam-share-btn" data-attempt-share-trigger aria-label="Share this question" title="Share this question"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 10.7 6.8-3.4M8.6 13.3l6.8 3.4"></path></svg></button>` : ""}
                 ${answer.marked ? `<span class="exam-badge review">Marked for review</span>` : ""}
                 ${state.timeUp ? `<span class="exam-badge danger">Time over</span>` : ""}
                 <span class="exam-badge">${state.index + 1} / ${questions.length}</span>
@@ -1297,6 +1657,33 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         renderPalette();
         updateSectionTabs();
         preloadNextImage();
+        scheduleSharePrerender();
+      }
+
+      /**
+       * Renders the share image for the on-screen question while the candidate
+       * reads it, so tapping Share never waits on generation. Runs in an idle
+       * slot and silently skips if the candidate has already moved on.
+       */
+      function scheduleSharePrerender() {
+        const question = questions[state.index];
+        if (!question?.share || state.timeUp || state.submitting || state.finishing) return;
+        const wantedId = question.id;
+        const wantedIndex = state.index;
+        const run = () => {
+          if (state.timeUp || state.submitting || state.finishing) return;
+          const currentQuestion = questions[state.index];
+          if (!currentQuestion || currentQuestion.id !== wantedId || !currentQuestion.share) return;
+          void prerenderAttemptQuestionShare(shareRequestFor(currentQuestion, wantedIndex));
+        };
+        const idleApi = window as Window & {
+          requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+        };
+        if (typeof idleApi.requestIdleCallback === "function") {
+          idleApi.requestIdleCallback(run, { timeout: 2500 });
+        } else {
+          window.setTimeout(run, 900);
+        }
       }
 
       function updateSectionTabs() {
@@ -1559,6 +1946,40 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       document.getElementById("zoom")?.addEventListener("click", closeZoom);
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closeZoom();
+      });
+      // Share buttons are re-created on every question render, so clicks are
+      // delegated. Sharing never pauses the timer or the autosave loop.
+      function shareRequestFor(question: Question, index: number) {
+        return {
+          question: {
+            id: question.id,
+            number: index + 1,
+            section: question.section,
+            text: question.text,
+            text_hi: question.text_hi,
+            rendered_text: question.rendered_text,
+            rendered_text_hi: question.rendered_text_hi,
+            options: question.options,
+            options_hi: question.options_hi,
+            image_url: question.image_url,
+            image_alt: question.image_alt,
+            passage: question.passage,
+          },
+          language: state.language,
+          mockId: data.mockId,
+          mockTitle: data.mockTitle,
+          mockSlug: data.mockSlug,
+          shareUrl: question.share!.url,
+          publicId: question.share!.publicId,
+        };
+      }
+      document.addEventListener("click", (event) => {
+        const trigger = (event.target as HTMLElement | null)?.closest<HTMLElement>("[data-attempt-share-trigger]");
+        if (!trigger || state.timeUp || state.submitting || state.finishing) return;
+        const question = questions[state.index];
+        if (!question?.share) return;
+        event.preventDefault();
+        void openAttemptQuestionShare(shareRequestFor(question, state.index));
       });
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {

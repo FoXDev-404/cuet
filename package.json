@@ -24,6 +24,8 @@
     "perf:check": "node scripts/check-perf-budget.mjs",
     "audit:reconciliation": "node scripts/data-reconciliation.mjs",
     "og:questions": "node scripts/generate-question-og.mjs",
+    "og:papers": "node scripts/generate-paper-og.mjs",
+    "share:fonts": "node scripts/generate-share-fonts.mjs",
     "og:questions:local": "node scripts/generate-question-og.mjs --local",
     "og:questions:remote": "node scripts/generate-question-og.mjs --remote",
     "smoke:staging": "node scripts/staging-smoke.mjs",

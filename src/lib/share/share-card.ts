@@ -52,18 +52,44 @@ function setAnswer(card: HTMLElement, includeAnswer: boolean): void {
   });
 }
 
+/** Never let a stalled network request (tunnel, weak mobile link) hang the
+ * export: every best-effort wait is capped and degrades gracefully. */
+const IMAGE_WAIT_MS = 5_000;
+const DECODE_WAIT_MS = 2_000;
+const FONTS_WAIT_MS = 3_000;
+const IMAGE_EMBED_TIMEOUT_MS = 10_000;
+
+function withTimeout(promise: Promise<unknown>, ms: number): Promise<void> {
+  return new Promise<void>((resolve) => {
+    const timer = setTimeout(() => resolve(), ms);
+    promise.then(
+      () => {
+        clearTimeout(timer);
+        resolve();
+      },
+      () => {
+        clearTimeout(timer);
+        resolve();
+      },
+    );
+  });
+}
+
 async function waitForImages(card: HTMLElement): Promise<void> {
   const images = [...card.querySelectorAll<HTMLImageElement>("img")];
   await Promise.all(
     images.map(async (image) => {
       if (!image.complete) {
-        await new Promise<void>((resolve) => {
-          image.addEventListener("load", () => resolve(), { once: true });
-          image.addEventListener("error", () => resolve(), { once: true });
-        });
+        await withTimeout(
+          new Promise<void>((resolve) => {
+            image.addEventListener("load", () => resolve(), { once: true });
+            image.addEventListener("error", () => resolve(), { once: true });
+          }),
+          IMAGE_WAIT_MS,
+        );
       }
       try {
-        await image.decode();
+        await withTimeout(image.decode(), DECODE_WAIT_MS);
       } catch {
         // A broken or cross-origin image must not block the export. The
         // caller hides images that failed to decode before measuring.
@@ -75,7 +101,7 @@ async function waitForImages(card: HTMLElement): Promise<void> {
 async function settle(card: HTMLElement): Promise<void> {
   if (typeof document !== "undefined" && document.fonts?.ready) {
     try {
-      await document.fonts.ready;
+      await withTimeout(document.fonts.ready, FONTS_WAIT_MS);
     } catch {
       // Font loading is best-effort; system fallbacks still render.
     }
@@ -164,6 +190,53 @@ function isIosSafari(): boolean {
 }
 
 /**
+ * Embedding the web fonts (KaTeX alone ships ~20 faces) is by far the slowest
+ * part of the export: html-to-image would fetch and base64-encode every font
+ * on every render, which on a phone over a slow link looks like a hang.
+ * scripts/generate-share-fonts.mjs bakes those @font-face rules with data-URI
+ * sources into two lazy JSON files — base text fonts (always needed) and
+ * KaTeX faces (only when the question actually contains math) — so a render
+ * needs zero font network work beyond one small cached download.
+ */
+const fontCache = new Map<string, Promise<string>>();
+
+const FONT_FETCH_TIMEOUT_MS = 12_000;
+
+function fetchFontJson(name: string): Promise<string> {
+  // A stalled fetch (flaky tunnel, weak mobile link) must never hang the
+  // render: cap it, then let html-to-image's own embedding take over — and
+  // drop the cache entry so the next open retries the fast path.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FONT_FETCH_TIMEOUT_MS);
+  return fetch(`/share-fonts-${name}.json`, { signal: controller.signal })
+    .then((response) => (response.ok ? response.json() : Promise.reject(new Error(`missing ${name}`))))
+    .then((value: unknown) => {
+      const data = value as { css?: string };
+      return data.css ?? "";
+    })
+    .catch(() => {
+      fontCache.delete(name);
+      return "";
+    })
+    .finally(() => clearTimeout(timer));
+}
+
+function loadFontJson(name: string): Promise<string> {
+  const existing = fontCache.get(name);
+  if (existing) return existing;
+  const promise = fetchFontJson(name);
+  fontCache.set(name, promise);
+  return promise;
+}
+
+async function fontEmbedCSS(card: HTMLElement): Promise<string> {
+  const base = await loadFontJson("base");
+  if (!card.querySelector(".katex")) return base;
+  const math = await loadFontJson("math");
+  return math ? `${base}\n${math}` : base;
+}
+
+/**
  * Returns a PNG Blob at 1080px wide (2x when the bitmap stays within the pixel
  * cap). iOS Safari occasionally exports a blank first frame after a fresh
  * font/image decode, so it renders twice and keeps the second result.
@@ -172,8 +245,14 @@ export async function renderShareCardPng(
   card: HTMLElement,
   options: ShareCardOptions,
 ): Promise<{ blob: Blob; width: number; height: number }> {
+  const marks =
+    typeof performance !== "undefined" && typeof performance.mark === "function"
+      ? performance.mark.bind(performance)
+      : null;
+  marks?.("share-card:start");
   const { width, height } = await prepareShareCard(card, options);
   const { toBlob } = await import("html-to-image");
+  marks?.("share-card:prepared");
 
   const deviceMemory = (
     navigator as Navigator & { deviceMemory?: number }
@@ -181,14 +260,23 @@ export async function renderShareCardPng(
   const pixelRatio = choosePixelRatio(width, height, deviceMemory);
   const background =
     getComputedStyle(card).backgroundColor || "transparent";
+  // No cacheBust: media URLs are immutable, and busting the cache would force
+  // the browser to refetch every font and figure over the network per render.
+  const fontCSS = await fontEmbedCSS(card);
+  marks?.("share-card:fonts");
 
-  const render = () =>
-    toBlob(card, {
+  const render = () => {
+    // Figure fetches inside html-to-image must not hang the export either:
+    // abort them after a generous window and let the render degrade.
+    const controller = new AbortController();
+    const fetchTimer = setTimeout(() => controller.abort(), IMAGE_EMBED_TIMEOUT_MS);
+    return toBlob(card, {
       width,
       height,
       pixelRatio,
       backgroundColor: background,
-      cacheBust: true,
+      fontEmbedCSS: fontCSS || undefined,
+      fetchRequestInit: { signal: controller.signal },
       style: {
         position: "static",
         left: "0",
@@ -198,9 +286,11 @@ export async function renderShareCardPng(
         height: `${height}px`,
         maxHeight: `${height}px`,
       },
-    });
+    }).finally(() => clearTimeout(fetchTimer));
+  };
 
   let blob = await render();
+  marks?.("share-card:rendered");
   if (isIosSafari()) {
     const second = await render();
     if (second) blob = second;
@@ -208,6 +298,11 @@ export async function renderShareCardPng(
 
   if (!blob) {
     throw new Error("The browser could not create the share image.");
+  }
+  if (marks) {
+    performance.measure("share:prepare", "share-card:start", "share-card:prepared");
+    performance.measure("share:fonts", "share-card:prepared", "share-card:fonts");
+    performance.measure("share:render", "share-card:fonts", "share-card:rendered");
   }
   return { blob, width, height };
 }

@@ -416,3 +416,56 @@
   --share-card-footer-ink: #ffffff;
   --share-card-footer-muted: #cbd5e1;
 }
+
+/* Attempt question share card — themed, unlike the public share card above,
+   because the live-attempt export intentionally follows the candidate's
+   active theme (dark card in dark mode, light card in light mode). Like the
+   share-card block it stays outside the three canonical theme blocks so the
+   theme-parity test does not treat these as canonical theme tokens. */
+:root {
+  --asq-backdrop: #e9eef6;
+  --asq-window: #ffffff;
+  --asq-window-2: #f4f8fc;
+  --asq-ink: #0f172a;
+  --asq-muted: #51617f;
+  --asq-border: #d7e1ef;
+  --asq-accent: #1d4ed8;
+  --asq-accent-soft: #e8effd;
+  --asq-footer: #0f172a;
+  --asq-footer-ink: #ffffff;
+  --asq-footer-muted: #c7d2e4;
+  --asq-dot-r: #ff5f57;
+  --asq-dot-y: #febc2e;
+  --asq-dot-g: #28c840;
+  --asq-window-shadow: 0 30px 70px -40px rgb(2 8 23 / 0.55);
+}
+
+:root[data-theme="dark"] {
+  --asq-backdrop: #0b1322;
+  --asq-window: #121b2e;
+  --asq-window-2: #0e1727;
+  --asq-ink: #e8eefb;
+  --asq-muted: #9aa9c6;
+  --asq-border: #27334d;
+  --asq-accent: #8fb2ff;
+  --asq-accent-soft: #1b2b4c;
+  --asq-footer: #060b16;
+  --asq-footer-ink: #e8eefb;
+  --asq-footer-muted: #8fa0bf;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --asq-backdrop: #0b1322;
+    --asq-window: #121b2e;
+    --asq-window-2: #0e1727;
+    --asq-ink: #e8eefb;
+    --asq-muted: #9aa9c6;
+    --asq-border: #27334d;
+    --asq-accent: #8fb2ff;
+    --asq-accent-soft: #1b2b4c;
+    --asq-footer: #060b16;
+    --asq-footer-ink: #e8eefb;
+    --asq-footer-muted: #8fa0bf;
+  }
+}
