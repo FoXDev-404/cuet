@@ -60,10 +60,20 @@ jobs:
         if: steps.skip.outputs.skip != 'true'
         run: |
           set -euo pipefail
-          sleep 10
-          for path in /api/health /mock-tests /sitemap.xml; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "https://cuetfreemocktest.com$path")
-            echo "$path -> $code"
-            test "$code" = "200"
-          done
+          # The new worker version takes a few seconds to propagate across the
+          # edge, so each path is retried before the deploy is judged.
+          check_path() {
+            for attempt in 1 2 3; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" "https://cuetfreemocktest.com$1")
+              echo "$1 (attempt $attempt) -> $code"
+              if [ "$code" = "200" ]; then return 0; fi
+              sleep 10
+            done
+            echo "::error::$1 never returned 200 after the deploy."
+            return 1
+          }
+          sleep 15
+          check_path "/api/health"
+          check_path "/mock-tests"
+          check_path "/sitemap.xml"
           echo "Auto-deploy smoke passed."
