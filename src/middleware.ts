@@ -339,6 +339,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (cache && secured.status === 200) {
     const contentType = secured.headers.get("content-type") ?? "";
     if (contentType.includes("text/html") && !secured.headers.has("set-cookie")) {
+      // The first anonymous visitor after a cache miss gets the same bounded
+      // browser TTL as the stored copy. Without this, Cloudflare's zone-level
+      // Browser Cache TTL decides how long that visitor keeps stale HTML.
+      secured.headers.set("cache-control", `public, max-age=${EDGE_CACHE_TTL_SECONDS}`);
       try {
         const headers = new Headers(secured.headers);
         headers.delete("set-cookie");

@@ -47,6 +47,15 @@ Worker version after changing secrets or vars.
    all use that origin. A missing or invalid `SITE_URL` fails the request with a clear
    error rather than silently using `workers.dev`.
 
+### Edge and browser cache
+
+`src/lib/edge-cache.ts` stores anonymous public HTML at the edge for 300 seconds.
+Set the zone's **Browser Cache TTL** (`browser_cache_ttl`) to **300 seconds** too. The
+Cloudflare default of 4 hours overrides the Worker's `Cache-Control` header on cache
+hits, so visitors keep stale HTML long after the edge copy expires. Never add a Cache
+Rule that covers `/attempt`, `/result`, `/api`, `/admin`, `/dashboard` or authenticated
+responses; those paths are deliberately excluded in the middleware.
+
 The current `wrangler.jsonc` value points at staging. Replace it for production or use a
 separate Wrangler environment with its own `SITE_URL` and `vars`.
 
