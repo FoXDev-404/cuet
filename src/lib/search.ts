@@ -18,16 +18,38 @@ function likeTerm(query: string): string {
 
 /**
  * Repository guides are bundled with the Worker, so they must be searchable
- * even when D1 is unavailable. Matching runs over title, description and body.
+ * even when D1 is unavailable. Title matches rank above description and body
+ * matches, and every query term contributes, so "mock review" finds the
+ * review guide instead of whichever newest guide mentions both words.
  */
-function searchRepoGuides(query: string): SearchResults["posts"] {
+export function searchRepoGuides(query: string): SearchResults["posts"] {
   const needle = query.toLowerCase();
+  const terms = needle.split(/\s+/).filter((term) => term.length > 0);
   return getRepoGuides()
-    .filter((guide) =>
-      `${guide.title}\n${guide.description}\n${guide.body}`.toLowerCase().includes(needle),
+    .map((guide) => {
+      const title = guide.title.toLowerCase();
+      const description = guide.description.toLowerCase();
+      const body = guide.body.toLowerCase();
+      let score = 0;
+      if (title.includes(needle)) score += 100;
+      if (description.includes(needle)) score += 40;
+      if (body.includes(needle)) score += 10;
+      for (const term of terms) {
+        if (title.includes(term)) score += 8;
+        if (description.includes(term)) score += 3;
+        if (body.includes(term)) score += 1;
+      }
+      return { guide, score };
+    })
+    .filter((entry) => entry.score > 0)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.guide.publishedAt.localeCompare(a.guide.publishedAt) ||
+        a.guide.slug.localeCompare(b.guide.slug),
     )
     .slice(0, 10)
-    .map((guide) => ({
+    .map(({ guide }) => ({
       title: guide.title,
       slug: guide.slug,
       description: guide.description,
