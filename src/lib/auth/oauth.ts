@@ -58,7 +58,13 @@ export async function exchangeGoogleCode(
         grant_type: "authorization_code",
       }),
     });
-    if (!response.ok) return { error: "Google rejected the login request." };
+    if (!response.ok) {
+      // Google's error body (redirect_uri_mismatch, invalid_client,
+      // invalid_grant...) is the only way to diagnose an exchange failure.
+      const detail = await response.text().catch(() => "");
+      console.error("Google token exchange failed", response.status, detail.slice(0, 500));
+      return { error: "Google rejected the login request." };
+    }
     const data = (await response.json()) as { access_token?: string };
     if (!data.access_token) return { error: "Google did not return an access token." };
     return { accessToken: data.access_token };
