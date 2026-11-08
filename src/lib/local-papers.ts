@@ -1,4 +1,5 @@
 import {
+  buildSubjectSummaries,
   copyMatchList,
   LOCAL_LIBRARY_PATH,
   LOCAL_MARKING_SCHEME,
@@ -144,6 +145,30 @@ function copySummary(paper: LocalPaperSummary): LocalPaperSummary {
   };
 }
 
+/**
+ * Papers below this question count stay playable through their direct URLs
+ * (and keep their leaderboard history) but are hidden from every listing
+ * surface — the library hub, PYQ archives, subject hubs, homepage, related
+ * rails and the sitemap. Short section extractions are practice snacks, not
+ * exam simulations, and listing them diluted the full-paper library.
+ */
+export const MIN_LISTED_QUESTIONS = 30;
+
+/**
+ * The practice snapshot as the public listings should see it: papers under
+ * {@link MIN_LISTED_QUESTIONS} removed and the subject rollups rebuilt from
+ * what remains. Detail-page accessors (getLocalPaperSummary, getLocalPaper,
+ * isLocalPaperSlug) deliberately use the full snapshot so direct URLs and
+ * in-flight attempts keep working.
+ */
+function listableSnapshot() {
+  const snapshot = getPracticeSnapshot();
+  const papers = snapshot.papers.filter(
+    (paper) => paper.recoveredQuestionCount >= MIN_LISTED_QUESTIONS,
+  );
+  return { ...snapshot, papers, subjectSummaries: buildSubjectSummaries(papers) };
+}
+
 export function localPaperPath(slug: string): string {
   return `${LOCAL_LIBRARY_PATH}/${slug}`;
 }
@@ -153,7 +178,7 @@ export function isLocalPaperSlug(slug: string): boolean {
 }
 
 export function getLocalPapers(): LocalPaperSummary[] {
-  return getPracticeSnapshot().papers.map(copySummary);
+  return listableSnapshot().papers.map(copySummary);
 }
 
 /**
@@ -163,7 +188,7 @@ export function getLocalPapers(): LocalPaperSummary[] {
  * and library cards.
  */
 export function getPopularLocalPapers(limit = 6): LocalPaperSummary[] {
-  return [...getPracticeSnapshot().papers]
+  return [...listableSnapshot().papers]
     .sort(
       (a, b) =>
         b.attemptCount - a.attemptCount ||
@@ -183,7 +208,7 @@ function copySubjectSummary(summary: LocalSubjectSummary): LocalSubjectSummary {
 }
 
 export function getLocalSubjectSummaries(): LocalSubjectSummary[] {
-  return [...getPracticeSnapshot().subjectSummaries.values()]
+  return [...listableSnapshot().subjectSummaries.values()]
     .sort(
       (a, b) =>
         b.paperCount - a.paperCount ||
@@ -193,9 +218,9 @@ export function getLocalSubjectSummaries(): LocalSubjectSummary[] {
     .map(copySubjectSummary);
 }
 
-/** Rollup for one subject, or null when the library has no paper for it. */
+/** Rollup for one subject, or null when the listings have no paper for it. */
 export function getLocalSubjectSummary(subjectSlug: string): LocalSubjectSummary | null {
-  const summary = getPracticeSnapshot().subjectSummaries.get(subjectSlug);
+  const summary = listableSnapshot().subjectSummaries.get(subjectSlug);
   return summary ? copySubjectSummary(summary) : null;
 }
 

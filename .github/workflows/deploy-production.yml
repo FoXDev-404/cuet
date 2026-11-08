@@ -71,5 +71,5 @@ jobs:
             echo "$path -> $code"
             test "$code" = "200"
           done
-          curl -fsS "$PRODUCTION_URL/mock-tests" | grep -q "245 papers"
+          curl -fsS "$PRODUCTION_URL/mock-tests" | grep -q "137 papers"
           echo "Production smoke passed."
