@@ -87,6 +87,7 @@ const desktopNav = [
   { href: "/mock-tests", label: "Mock Tests", match: ["/mock-tests", "/mock"] },
   ...(user ? [{ href: "/dashboard", label: "Dashboard", match: ["/dashboard"] }] : []),
   { href: "/cuet-ug-previous-year-papers", label: "PYQs", match: ["/cuet-ug-previous-year-papers"] },
+  { href: "/blog", label: "Guides", match: ["/blog"] },
   { href: "/leaderboard", label: "Leaderboard", match: ["/leaderboard"] },
 ];
 
@@ -565,6 +566,19 @@ const organization = {
               <path d="M6 10h10"></path>
             </svg>
             <span>CUET Syllabus</span>
+          </a>
+
+          <a
+            href="/blog"
+            class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-white/5"
+          >
+            <svg class="h-4 w-4 text-neutral-500 dark:text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h13a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4Z"></path>
+              <path d="M8 8h8"></path>
+              <path d="M8 12h8"></path>
+              <path d="M8 16h5"></path>
+            </svg>
+            <span>Preparation guides</span>
           </a>
 
           <a

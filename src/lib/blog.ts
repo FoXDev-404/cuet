@@ -13,6 +13,65 @@ export type BlogPostRow = {
 };
 
 /**
+ * Strip the inline Markdown that headings may contain, for anchor ids and TOCs.
+ */
+function plainInline(value: string): string {
+  return value
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/&amp;/g, "&")
+    .trim();
+}
+
+function uniqueHeadingId(text: string, used: Map<string, number>): string {
+  const base =
+    plainInline(text)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "section";
+  const count = (used.get(base) ?? 0) + 1;
+  used.set(base, count);
+  return count === 1 ? base : `${base}-${count}`;
+}
+
+export type ArticleHeading = {
+  id: string;
+  text: string;
+  level: 2 | 3;
+};
+
+/**
+ * Headings for the in-page table of contents. Ids follow the same sequence as
+ * `renderArticleBody`, including h4 headings taking part in de-duplication.
+ */
+export function articleHeadings(value: string | null | undefined): ArticleHeading[] {
+  if (!value) return [];
+  const lines = String(value).replace(/\r\n/g, "\n").split("\n");
+  const used = new Map<string, number>();
+  const headings: ArticleHeading[] = [];
+  let inCode = false;
+
+  for (const rawLine of lines) {
+    const line = rawLine.trimEnd();
+    if (line.trim().startsWith("```")) {
+      inCode = !inCode;
+      continue;
+    }
+    if (inCode) continue;
+    const heading = line.match(/^(#{2,4})\s+(.+)$/);
+    if (!heading) continue;
+    const level = Math.min(4, heading[1].length) as 2 | 3 | 4;
+    const id = uniqueHeadingId(heading[2], used);
+    if (level === 2 || level === 3) {
+      headings.push({ id, text: plainInline(heading[2]), level });
+    }
+  }
+
+  return headings;
+}
+
+/**
  * A deliberately small Markdown subset for editorial guides: headings, lists,
  * blockquotes, fenced code, bold, inline code and http(s)/relative links.
  * Everything is escaped first, so stored post bodies cannot inject HTML.
@@ -40,6 +99,7 @@ export function renderArticleBody(value: string | null | undefined): string {
   let list: "ul" | "ol" | null = null;
   let quote: string[] = [];
   let code: string[] | null = null;
+  const usedHeadings = new Map<string, number>();
 
   const flushParagraph = () => {
     if (paragraph.length === 0) return;
@@ -89,7 +149,8 @@ export function renderArticleBody(value: string | null | undefined): string {
     if (heading) {
       flushAll();
       const level = Math.min(4, heading[1].length);
-      out.push(`<h${level}>${inline(heading[2])}</h${level}>`);
+      const id = uniqueHeadingId(heading[2], usedHeadings);
+      out.push(`<h${level} id="${id}">${inline(heading[2])}</h${level}>`);
       continue;
     }
 

@@ -1,4 +1,5 @@
 import { all } from "./db";
+import { getRepoGuides } from "./guides";
 
 export type SearchResults = {
   query: string;
@@ -15,10 +16,29 @@ function likeTerm(query: string): string {
   return `%${query.replace(/[%_]/g, " ").trim()}%`;
 }
 
+/**
+ * Repository guides are bundled with the Worker, so they must be searchable
+ * even when D1 is unavailable. Matching runs over title, description and body.
+ */
+function searchRepoGuides(query: string): SearchResults["posts"] {
+  const needle = query.toLowerCase();
+  return getRepoGuides()
+    .filter((guide) =>
+      `${guide.title}\n${guide.description}\n${guide.body}`.toLowerCase().includes(needle),
+    )
+    .slice(0, 10)
+    .map((guide) => ({
+      title: guide.title,
+      slug: guide.slug,
+      description: guide.description,
+    }));
+}
+
 export async function searchSite(rawQuery: string): Promise<SearchResults> {
   const query = rawQuery.trim().slice(0, 80);
   if (query.length < 2) return { ...EMPTY, query };
   const term = likeTerm(query);
+  const repoPosts = searchRepoGuides(query);
 
   try {
     const [mocks, subjects, topics, pyq, posts] = await Promise.all([
@@ -73,10 +93,15 @@ export async function searchSite(rawQuery: string): Promise<SearchResults> {
         term,
       ),
     ]);
-    return { query, mocks, subjects, topics, pyq, posts };
+    const repoSlugs = new Set(repoPosts.map((post) => post.slug));
+    const mergedPosts = [...repoPosts, ...posts.filter((post) => !repoSlugs.has(post.slug))].slice(
+      0,
+      10,
+    );
+    return { query, mocks, subjects, topics, pyq, posts: mergedPosts };
   } catch (error) {
     console.error("search failed", error);
-    return { ...EMPTY, query };
+    return { ...EMPTY, query, posts: repoPosts };
   }
 }
 

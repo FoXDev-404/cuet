@@ -24,6 +24,9 @@ const live = Boolean(
       <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
         Editorial articles for <code>/blog</code>. A guide stays out of search and the sitemap until it is published with at least 400 characters of original body text and an 80-320 character description.
       </p>
+      <p class="mt-2 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Repository guides in <code>src/content/guides</code> are bundled with the Worker and always appear on <code>/blog</code> and the sitemap, even when D1 is unavailable. Guides created below are merged alongside them; on a slug collision the repository copy wins.
+      </p>
     </div>
     <div class="flex flex-wrap gap-2">
       <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/blog" target="_blank" rel="noopener">View public blog</a>

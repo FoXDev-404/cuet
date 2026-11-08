@@ -136,10 +136,12 @@ export function articleJsonLd(input: {
   title: string;
   description: string;
   path: string;
+  published?: string | null;
   updated?: string | null;
 }): Record<string, unknown> {
   const url = new URL(input.path, input.site).toString();
-  const published = input.updated || new Date().toISOString();
+  const published = input.published || input.updated || new Date().toISOString();
+  const modified = input.updated || published;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -149,7 +151,7 @@ export function articleJsonLd(input: {
     mainEntityOfPage: url,
     image: new URL("/logo.png", input.site).toString(),
     datePublished: published,
-    dateModified: published,
+    dateModified: modified,
     author: { "@type": "Organization", name: SITE_NAME, url: input.site.toString() },
     publisher: {
       "@type": "Organization",

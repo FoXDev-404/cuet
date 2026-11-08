@@ -29,6 +29,7 @@ const DIRS_TO_SCAN = [
   "src/components",
   "src/layouts",
   "src/lib",
+  "src/content",
 ];
 
 const BANNED_PATTERNS = [

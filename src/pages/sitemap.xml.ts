@@ -6,6 +6,7 @@ import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/sha
 import { siteUrl } from "../lib/site-url";
 import { getSubjectStats, type SubjectStatRow } from "../lib/subject-stats";
 import { isFixtureMock } from "../lib/fixtures";
+import { getRepoGuides } from "../lib/guides";
 
 type UrlEntry = { loc: string; lastmod?: string | null; changefreq?: string; priority?: string };
 
@@ -40,6 +41,9 @@ export const GET: APIRoute = async ({ request }) => {
   let sharedQuestions: SeoIndexableQuestion[] = [];
   let playablePyqCount = 0;
   const localPapers = getLocalPapers();
+  // Repository guides are bundled with the Worker, so they stay indexable even
+  // when D1 is at its daily row-read limit.
+  const repoGuides = getRepoGuides();
   const localSubjectSlugs = new Set(localPapers.map((paper) => paper.subject.slug));
   const hasPracticeContent = (slug: string, questionCount: number, paperCount: number) =>
     questionCount > 0 || paperCount > 0 || localSubjectSlugs.has(slug);
@@ -173,7 +177,9 @@ export const GET: APIRoute = async ({ request }) => {
   if (localPapers.length > 0) {
     add("/mock-tests", { changefreq: "weekly", priority: "0.8" });
   }
-  if (posts.length > 0) add("/blog", { changefreq: "weekly", priority: "0.7" });
+  if (posts.length > 0 || repoGuides.length > 0) {
+    add("/blog", { changefreq: "weekly", priority: "0.7" });
+  }
   // The leaderboard index marks itself noindex while it has no ranked
   // attempts, so list it only once at least one mock has a first attempt.
   if (mocks.some((mock) => !isFixtureMock(mock) && mock.eligible > 0)) {
@@ -247,7 +253,16 @@ export const GET: APIRoute = async ({ request }) => {
     });
   }
 
+  for (const guide of repoGuides) {
+    add(`/blog/${guide.slug}`, {
+      lastmod: guide.updatedAt ?? guide.publishedAt,
+      changefreq: "monthly",
+      priority: "0.6",
+    });
+  }
+  const repoSlugs = new Set(repoGuides.map((guide) => guide.slug));
   for (const post of posts) {
+    if (repoSlugs.has(post.slug)) continue;
     add(`/blog/${post.slug}`, {
       lastmod: post.updated_at ?? post.published_at,
       changefreq: "monthly",
