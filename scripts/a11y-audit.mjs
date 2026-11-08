@@ -5,13 +5,14 @@
  *   npm run dev
  *   npm run test:a11y
  *
- * Set A11Y_ADMIN_EMAIL and A11Y_ADMIN_PASSWORD to also audit the authenticated
- * pages. Without them the script only scans public pages; no credentials are
- * stored in the repository.
+ * Authenticated pages need a session. On localhost the script seeds a temporary
+ * admin session in the local D1 database, so it matches the E2E suite without a
+ * password form. Against a remote host, set A11Y_STORAGE_STATE; no credentials
+ * are stored in the repository.
  *
  * Set A11Y_STORAGE_STATE to a Playwright storage-state file to reuse an
- * existing session instead of email/password login. This is the safer option
- * for an interactive owner login, especially for Google-only accounts.
+ * existing session instead of the local seed. This is the only supported way
+ * to audit authenticated pages on a deployed host.
  *
  * Set A11Y_SKIP_ATTEMPT=1 to skip the guest attempt/result walk. Use this
  * against production when you do not want the audit to write attempt rows.
@@ -21,17 +22,29 @@
 import { chromium } from "@playwright/test";
 import { createRequire } from "node:module";
 import { writeFileSync, mkdirSync } from "node:fs";
-import { execSync } from "node:child_process";
+import { execSync, execFileSync } from "node:child_process";
+import { createHash, randomBytes } from "node:crypto";
+import path from "node:path";
 
 const require = createRequire(import.meta.url);
 const axePath = require.resolve("axe-core/axe.min.js");
 
 const baseURL =
   process.env.A11Y_BASE_URL ?? process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:4321";
-const adminEmail = process.env.A11Y_ADMIN_EMAIL ?? "admin@cuetfreemocktest.com";
-const adminPassword = process.env.A11Y_ADMIN_PASSWORD ?? "AdminPass123!";
+const adminEmail = process.env.A11Y_ADMIN_EMAIL ?? "";
+const adminPassword = process.env.A11Y_ADMIN_PASSWORD ?? "";
 const storageState = process.env.A11Y_STORAGE_STATE;
 const skipAttempt = /^(1|true|yes)$/i.test(process.env.A11Y_SKIP_ATTEMPT ?? "");
+const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+const isLocalBase = (() => {
+  try {
+    return LOCAL_HOSTS.has(new URL(baseURL).hostname);
+  } catch {
+    return false;
+  }
+})();
+const A11Y_LOCAL_EMAIL = "a11y-local@cuetfreemocktest.test";
 
 const STATIC_PUBLIC_PATHS = [
   "/",
@@ -176,14 +189,22 @@ async function auditPath(page, label, path, viewport, waitFor, prepare) {
     await page.waitForTimeout(150);
   }
   await page.addScriptTag({ path: axePath });
+  // axe computes colour contrast from live computed styles. When the theme
+  // attribute flips, `transition-colors` elements report their start colour
+  // for the first frame while non-transitioned backgrounds already show the
+  // end colour. That transient pair can look like a contrast failure even
+  // though the settled theme is fine. Freeze all motion for the scan so the
+  // theme change applies instantly and deterministically.
+  await page.addStyleTag({
+    content: "*,*::before,*::after{transition:none!important;animation:none!important;}",
+  });
 
   for (const theme of ["light", "dark"]) {
     await page.evaluate((mode) => {
       document.documentElement.setAttribute("data-theme", mode);
     }, theme);
-    // Cards use a 150ms color transition; wait for it to settle before axe
-    // samples computed colors, otherwise it can catch a mid-transition frame.
-    await page.waitForTimeout(300);
+    // Give the browser one frame to apply the (now instant) theme.
+    await page.waitForTimeout(100);
 
     const result = await runAxe(page);
     scans += 1;
@@ -419,6 +440,29 @@ async function auditPublic(browser) {
   await context.close();
 }
 
+/**
+ * Create a disposable admin session in the local D1 database. E2E tests use
+ * the same pattern because the product has no password sign-in form: they seed
+ * the user row and a session whose id is the SHA-256 of the cookie token.
+ */
+function seedLocalAdminSession() {
+  const token = randomBytes(32).toString("hex");
+  const sessionId = createHash("sha256").update(token).digest("hex");
+  const sql = [
+    `DELETE FROM sessions WHERE user_id = (SELECT id FROM users WHERE lower(email) = lower('${A11Y_LOCAL_EMAIL}'));`,
+    `INSERT OR IGNORE INTO users (username, email, password_hash) VALUES ('a11y_local_admin', '${A11Y_LOCAL_EMAIL}', NULL);`,
+    `INSERT OR IGNORE INTO admins (email, role, is_active) VALUES ('${A11Y_LOCAL_EMAIL}', 'super', 1);`,
+    `UPDATE admins SET is_active = 1, role = 'super' WHERE lower(email) = lower('${A11Y_LOCAL_EMAIL}');`,
+    `INSERT INTO sessions (id, user_id, expires_at) SELECT '${sessionId}', id, datetime('now', '+30 days') FROM users WHERE lower(email) = lower('${A11Y_LOCAL_EMAIL}');`,
+  ].join("\n");
+  execFileSync(
+    process.execPath,
+    [WRANGLER_BIN, "d1", "execute", "cuet-blueprint-db", "--local", "--command", sql],
+    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
+  );
+  return token;
+}
+
 async function auditAuthenticated(browser) {
   const context = storageState
     ? await browser.newContext({ storageState })
@@ -427,8 +471,26 @@ async function auditAuthenticated(browser) {
 
   if (storageState) {
     console.log("\nAuthenticated pages (reusing A11Y_STORAGE_STATE)");
-  } else {
+  } else if (isLocalBase) {
+    const token = seedLocalAdminSession();
+    await context.addCookies([
+      {
+        name: "cuet_session",
+        value: token,
+        domain: new URL(baseURL).hostname,
+        path: "/",
+      },
+    ]);
+    console.log("\nAuthenticated pages (seeded local admin session)");
+  } else if (adminEmail && adminPassword) {
     await page.goto(`${baseURL}/login`, { waitUntil: "load" });
+    if ((await page.locator('input[name="email"]').count()) === 0) {
+      console.log(
+        "\nSkipping authenticated pages: sign-in has no password form. Set A11Y_STORAGE_STATE instead.",
+      );
+      await context.close();
+      return;
+    }
     await page.fill('input[name="email"]', adminEmail);
     await page.fill('input[name="password"]', adminPassword);
     await Promise.all([
@@ -436,6 +498,12 @@ async function auditAuthenticated(browser) {
       page.locator('form button[type="submit"]').click(),
     ]);
     console.log("\nAuthenticated pages");
+  } else {
+    console.log(
+      "\nSkipping authenticated pages: set A11Y_STORAGE_STATE, or run against localhost with a local D1 fixture.",
+    );
+    await context.close();
+    return;
   }
   const slug = await findMockSlug(page);
   const ids = await findAdminIds(page);
@@ -459,11 +527,11 @@ const browser = await chromium.launch();
 try {
   console.log(`Accessibility audit against ${baseURL}`);
   await auditPublic(browser);
-  if (storageState || (adminEmail && adminPassword)) {
+  if (storageState || isLocalBase || (adminEmail && adminPassword)) {
     await auditAuthenticated(browser);
   } else {
     console.log(
-      "\nSkipping authenticated pages: set A11Y_STORAGE_STATE or A11Y_ADMIN_EMAIL and A11Y_ADMIN_PASSWORD to include them.",
+      "\nSkipping authenticated pages: set A11Y_STORAGE_STATE to audit a deployed host.",
     );
   }
 } finally {

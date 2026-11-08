@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url";
 import { hashPassword } from "../src/lib/auth/password.ts";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const WRANGLER_BIN = resolve(ROOT, "node_modules/wrangler/bin/wrangler.js");
 const EMAIL = process.env.E2E_ADMIN_EMAIL ?? "admin@cuetfreemocktest.com";
 const PASSWORD = process.env.E2E_ADMIN_PASSWORD ?? "AdminPass123!";
 const DATABASE = "cuet-blueprint-db";
@@ -53,8 +54,8 @@ const sql = [
 ].join("\n");
 
 const result = spawnSync(
-  "npx",
-  ["wrangler", "d1", "execute", DATABASE, "--local", "--command", sql],
+  process.execPath,
+  [WRANGLER_BIN, "d1", "execute", DATABASE, "--local", "--command", sql],
   { cwd: ROOT, stdio: "inherit" },
 );
 
