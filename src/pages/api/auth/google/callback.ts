@@ -39,30 +39,39 @@ export const GET: APIRoute = async ({ request, cookies }) => {
   if (!profile) return fail("google_profile");
   if (!profile.emailVerified) return fail("google_email_unverified");
 
-  let user = await findUserByGoogleId(profile.sub);
-  if (!user) {
-    const existing = await findUserByEmail(profile.email);
-    if (existing) {
-      if (existing.deleted_at) return fail("account_disabled");
-      await linkGoogleUser(existing.id, profile.sub, profile.picture);
-      user = existing;
-    } else {
-      user = await createGoogleUser({
-        email: profile.email,
-        googleId: profile.sub,
-        username: profile.name?.replace(/\s+/g, "_") ?? undefined,
-        avatarUrl: profile.picture,
-      });
+  // Account resolution, session creation and guest claiming all touch D1.
+  // When the database is unavailable (for example the daily free-tier quota is
+  // spent) the sign-in must degrade to a clear error, never a 500 page — the
+  // candidate can simply try again once the quota resets.
+  try {
+    let user = await findUserByGoogleId(profile.sub);
+    if (!user) {
+      const existing = await findUserByEmail(profile.email);
+      if (existing) {
+        if (existing.deleted_at) return fail("account_disabled");
+        await linkGoogleUser(existing.id, profile.sub, profile.picture);
+        user = existing;
+      } else {
+        user = await createGoogleUser({
+          email: profile.email,
+          googleId: profile.sub,
+          username: profile.name?.replace(/\s+/g, "_") ?? undefined,
+          avatarUrl: profile.picture,
+        });
+      }
     }
+    if (user.deleted_at) return fail("account_disabled");
+
+    await createSession(cookies, user.id);
+    const claimed = await claimGuestAttempts(user.id, cookies.get(GUEST_COOKIE)?.value);
+    cookies.delete(GUEST_COOKIE, { path: "/" });
+
+    return new Response(null, {
+      status: 303,
+      headers: { location: claimed > 0 ? withQuery(next, "claimed", String(claimed)) : next },
+    });
+  } catch (error) {
+    console.error("Google sign-in account resolution failed", error);
+    return fail("google_database");
   }
-  if (user.deleted_at) return fail("account_disabled");
-
-  await createSession(cookies, user.id);
-  const claimed = await claimGuestAttempts(user.id, cookies.get(GUEST_COOKIE)?.value);
-  cookies.delete(GUEST_COOKIE, { path: "/" });
-
-  return new Response(null, {
-    status: 303,
-    headers: { location: claimed > 0 ? withQuery(next, "claimed", String(claimed)) : next },
-  });
 };
