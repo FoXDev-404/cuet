@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
+import { seedUser, sessionCookie, sessionTokenFor } from "./auth-helpers";
 
 const MOCK_LIST_PATHS = ["/mock-tests"];
 const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
@@ -109,12 +110,11 @@ test("registered student can start, answer, submit and review a mock", async ({ 
   const username = `e2e_${stamp}`.slice(0, 30);
   const email = `e2e-${stamp}@example.com`;
 
-  await page.goto("/signup");
-  await page.fill('input[name="username"]', username);
-  await page.fill('input[name="email"]', email);
-  await page.fill('input[name="password"]', "E2ePass123!");
-  await page.locator('#signup-form button[type="submit"]').click();
+  // Sign-in is Google-only; tests seed the user and session directly.
+  seedUser({ email, username });
+  await page.context().addCookies([sessionCookie(sessionTokenFor(email))]);
 
+  await page.goto("/dashboard");
   await expect(page).toHaveURL(/\/dashboard$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Hi,");
 

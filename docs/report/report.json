@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-07T15:23:30.873Z",
-  "commitHash": "e7bbfbabea7ae70fd5203dbf0e4bf44a31a2269d",
+  "generatedAt": "2026-11-08T18:09:36.761Z",
+  "commitHash": "3e6465b1ae563776b4996293fa8f5990ff5c3d92",
   "product": "CUET Free Mock Test",
   "siteUrl": "https://cuetfreemocktest.com",
   "stage": "staging / partial-launch ready",
   "overallVerdict": "PARTIAL",
-  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 428 Vitest unit tests (49 files), 60 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
+  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 428 Vitest unit tests (49 files), 58 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
   "scorecard": [
     {
       "area": "Test engine",
@@ -83,7 +83,7 @@
       "area": "Tests and CI",
       "status": "DONE",
       "confidence": "HIGH",
-      "reason": "428 Vitest unit tests (49 files) passed; 60 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
+      "reason": "428 Vitest unit tests (49 files) passed; 58 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
     },
     {
       "area": "Deployment and ops",
@@ -191,7 +191,7 @@
     },
     {
       "title": "Comprehensive Automated Test & A11y Suite",
-      "description": "428 Vitest unit tests (49 files), 60 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
+      "description": "428 Vitest unit tests (49 files), 58 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
     },
     {
       "title": "Rigorous SEO Quality Gate & Content Isolation",
@@ -213,8 +213,8 @@
       "unitPassed": 428,
       "unitTotal": 428,
       "unitFiles": 49,
-      "e2ePassed": 60,
-      "e2eTotal": 75,
+      "e2ePassed": 58,
+      "e2eTotal": 73,
       "e2eSkipped": 15,
       "a11yScans": 232,
       "a11yViolations": 0

@@ -5,6 +5,22 @@
 
 ---
 
+## 0. Sign-in Model (November 2026)
+
+Sign-in is **Google OAuth only**. Email/password signup, login and password-reset
+flows have been retired: their pages redirect to `/login`, the corresponding API
+routes (`/api/auth/signup`, `/api/auth/forgot`, `/api/auth/reset`,
+`/api/account/password`) were removed, and no new password hashes are written.
+The PBKDF2 machinery below is kept for legacy stored hashes only. Consequences:
+
+- **Google OAuth credentials are required** for any sign-in to work
+  (`GOOGLE_CLIENT_ID` + `GOOGLE_CLIENT_SECRET`).
+- Accounts are matched by verified Google email; existing email-registered users
+  reclaim their history by signing in with the same email address.
+- Password-reset email delivery (Brevo) is no longer used by any flow.
+
+---
+
 ## 1. Password Hashing Specification
 
 The application implements standard, zero-dependency WebCrypto password hashing natively compatible with Cloudflare Workers (workerd runtime).

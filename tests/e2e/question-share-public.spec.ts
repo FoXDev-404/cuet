@@ -4,6 +4,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import { generatePublicId, questionSharePath } from "../../src/lib/share/public-id";
+import { seedUser, sessionCookie, sessionTokenFor } from "./auth-helpers";
 
 const require = createRequire(import.meta.url);
 const AXE_PATH = require.resolve("axe-core/axe.min.js");
@@ -195,15 +196,10 @@ function createRevision(input: {
 async function signupStudent(page: Page): Promise<{ email: string }> {
   const stamp = uniqueStamp();
   const email = `e2e-share-${stamp}@example.com`;
-  const response = await page.request.post("/api/auth/signup", {
-    headers: { "cf-connecting-ip": testClientIp() },
-    data: {
-      username: `share_${stamp}`.slice(0, 30),
-      email,
-      password: "SharePass123!",
-    },
-  });
-  expect(response.status()).toBe(200);
+  // Sign-in is Google-only; tests seed the user and attach the session cookie.
+  seedUser({ email, username: `share_${stamp}`.slice(0, 30) });
+  const token = sessionTokenFor(email);
+  await page.context().addCookies([sessionCookie(token)]);
   studentEmails.push(email);
   return { email };
 }

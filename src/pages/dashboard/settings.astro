@@ -13,16 +13,15 @@ const profile = await first<{
   bio: string | null;
   target_exam_date: string | null;
   is_profile_public: number;
-  password_hash: string | null;
   google_id: string | null;
 }>(
-  "SELECT username, email, bio, target_exam_date, is_profile_public, password_hash, google_id FROM users WHERE id = ?",
+  "SELECT username, email, bio, target_exam_date, is_profile_public, google_id FROM users WHERE id = ?",
   user.id,
 );
 if (!profile) return Astro.redirect("/login", 303);
 ---
 
-<BaseLayout title="Account settings — CUET Free Mock Test" description="Profile, privacy, password and account data settings." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
+<BaseLayout title="Account settings — CUET Free Mock Test" description="Profile, privacy, sign-in and account data settings." noindex sectionLabel="Dashboard" sectionNav={dashboardNav}>
   <section class="mx-auto max-w-3xl px-4 py-8 sm:px-6">
     <h1 class="text-2xl font-black tracking-tight">Account settings</h1>
     <p class="mt-2 text-sm text-[var(--muted)]">Your email is private. A public profile shows only your username, join date, activity counts and badges.</p>
@@ -60,17 +59,8 @@ if (!profile) return Astro.redirect("/login", 303);
     </form>
 
     <section class="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5">
-      <h2 class="font-bold">Password</h2>
-      {profile.password_hash ? (
-        <form id="password-form" class="mt-3 grid gap-3 sm:grid-cols-2">
-          <p id="password-status" class="hidden sm:col-span-2 rounded-lg px-3 py-2 text-sm" role="status"></p>
-          <label class="block text-sm font-semibold">Current password<input class="field mt-1" name="current_password" type="password" required autocomplete="current-password" /></label>
-          <label class="block text-sm font-semibold">New password<input class="field mt-1" name="new_password" type="password" minlength="8" required autocomplete="new-password" /></label>
-          <button class="w-fit rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm font-bold hover:bg-[var(--surface-3)] sm:col-span-2" type="submit">Change password</button>
-        </form>
-      ) : (
-        <p class="mt-2 text-sm text-[var(--muted)]">This account signs in with Google. Manage the password with your Google account.</p>
-      )}
+      <h2 class="font-bold">Sign-in</h2>
+      <p class="mt-2 text-sm text-[var(--muted)]">This site signs in with Google only — passwords are never stored here. Manage your Google account security at myaccount.google.com.</p>
     </section>
 
     <section class="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5">
@@ -130,20 +120,6 @@ if (!profile) return Astro.redirect("/login", 303);
     });
     const result = (await response.json()) as { error?: string };
     show(document.getElementById("profile-status"), response.ok ? "Profile saved." : result.error || "Could not save.", response.ok);
-  });
-
-  const passwordForm = document.getElementById("password-form") as HTMLFormElement | null;
-  passwordForm?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const data = new FormData(passwordForm);
-    const response = await fetch("/api/account/password", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ current_password: data.get("current_password"), new_password: data.get("new_password") }),
-    });
-    const result = (await response.json()) as { error?: string };
-    show(document.getElementById("password-status"), response.ok ? "Password changed. Other sessions were signed out." : result.error || "Could not change the password.", response.ok);
-    if (response.ok) passwordForm.reset();
   });
 
   const deleteForm = document.getElementById("delete-form") as HTMLFormElement | null;

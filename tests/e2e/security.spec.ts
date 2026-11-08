@@ -5,6 +5,7 @@ import {
   test,
   type APIRequestContext,
 } from "@playwright/test";
+import { SESSION_COOKIE, seedUser, sessionTokenFor } from "./auth-helpers";
 
 const DB_NAME = "cuet-blueprint-db";
 const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
@@ -28,7 +29,6 @@ type MockSummary = {
 type Student = {
   email: string;
   username: string;
-  password: string;
 };
 
 function testClientIp(): string {
@@ -75,24 +75,22 @@ async function newStudent(
   playwright: ApiRequestFactory,
   baseURL: string | undefined,
 ): Promise<{ context: APIRequestContext; student: Student }> {
-  const context = await playwright.request.newContext({
-    baseURL,
-    extraHTTPHeaders: { "cf-connecting-ip": testClientIp() },
-  });
   const stamp = uniqueStamp();
   const student: Student = {
     email: `e2e-security-${stamp}@example.com`,
     username: `sec_${stamp}`.slice(0, 30),
-    password: "SecurityPass123!",
   };
-  const response = await context.post("/api/auth/signup", {
-    data: student,
-    headers: { "cf-connecting-ip": testClientIp() },
+  // Sign-in is Google-only; tests seed the user + session and attach the
+  // session cookie as a request header.
+  seedUser({ email: student.email, username: student.username });
+  const token = sessionTokenFor(student.email);
+  const context = await playwright.request.newContext({
+    baseURL,
+    extraHTTPHeaders: {
+      "cf-connecting-ip": testClientIp(),
+      cookie: `${SESSION_COOKIE}=${token}`,
+    },
   });
-  if (response.status() !== 200) {
-    await context.dispose();
-    throw new Error(`Student signup failed: ${response.status()} ${await response.text()}`);
-  }
   return { context, student };
 }
 

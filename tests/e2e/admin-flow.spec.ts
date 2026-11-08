@@ -1,10 +1,10 @@
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
+import { seedUser, sessionCookie, sessionTokenFor } from "./auth-helpers";
 
 const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
 const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL ?? "admin@cuetfreemocktest.com";
-const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD ?? "AdminPass123!";
 
 function testClientIp(): string {
   return `198.51.100.${Math.floor(Math.random() * 200) + 1}`;
@@ -28,11 +28,9 @@ function localD1(sql: string): void {
 }
 
 async function loginAsAdmin(page: Page): Promise<void> {
-  await page.goto("/login?next=%2Fadmin");
-  await page.getByLabel("Email").fill(ADMIN_EMAIL);
-  await page.getByLabel("Password").fill(ADMIN_PASSWORD);
-  await page.getByRole("button", { name: "Log in" }).click();
-  await page.waitForURL(/\/admin/);
+  seedUser({ email: ADMIN_EMAIL, username: "e2e_admin", admin: true });
+  const token = sessionTokenFor(ADMIN_EMAIL);
+  await page.context().addCookies([sessionCookie(token)]);
 }
 
 test.beforeEach(async ({ page }) => {
@@ -518,17 +516,11 @@ test("a moderator cannot use editor-only endpoints", async ({ page }) => {
   const email = `moderator-${stamp}@example.com`;
   const username = `mod_${stamp}`.slice(0, 30);
 
-  const signup = await page.request.post("/api/auth/signup", {
-    headers: { "cf-connecting-ip": testClientIp() },
-    data: { username, email, password: "ModeratorPass123!" },
-  });
-  expect(signup.status()).toBe(200);
+  seedUser({ email, username, admin: true, role: "moderator" });
+  const token = sessionTokenFor(email);
+  await page.context().addCookies([sessionCookie(token)]);
 
   try {
-    localD1(
-      `INSERT INTO admins (email, role) VALUES ('${email}', 'moderator')`,
-    );
-
     const moderation = await page.request.get("/api/admin/discussions?status=pending");
     expect(moderation.status()).toBe(200);
 

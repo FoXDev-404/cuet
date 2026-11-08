@@ -1,4 +1,5 @@
 import { expect, test, type APIRequestContext } from "@playwright/test";
+import { SESSION_COOKIE, seedUser, sessionTokenFor } from "./auth-helpers";
 
 type MockSummary = {
   id: number;
@@ -126,25 +127,6 @@ test.describe("API security", () => {
     expect(body.mocks).toHaveLength(0);
   });
 
-  test("login attempts are rate-limited per IP and email", async ({ request }) => {
-    const email = `rate-limit-${Date.now().toString(36)}@example.com`;
-    const headers = {
-      "cf-connecting-ip": `203.0.113.${Math.floor(Math.random() * 200) + 1}`,
-    };
-    for (let attempt = 0; attempt < 10; attempt += 1) {
-      const response = await request.post("/api/auth/login", {
-        headers,
-        data: { email, password: "DefinitelyWrong123!" },
-      });
-      expect(response.status()).toBe(401);
-    }
-    const blocked = await request.post("/api/auth/login", {
-      headers,
-      data: { email, password: "DefinitelyWrong123!" },
-    });
-    expect(blocked.status()).toBe(429);
-  });
-
   test("wrong-question retry requires a session and rejects unseen questions", async ({ request }) => {
     expect(
       (
@@ -155,19 +137,14 @@ test.describe("API security", () => {
     ).toBe(401);
 
     const stamp = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
-    const signup = await request.post("/api/auth/signup", {
-      headers: {
-        "cf-connecting-ip": `203.0.113.${Math.floor(Math.random() * 200) + 1}`,
-      },
-      data: {
-        username: `retry_${stamp}`.slice(0, 30),
-        email: `retry-${stamp}@example.com`,
-        password: "RetryPass123!",
-      },
-    });
-    expect(signup.status()).toBe(200);
+    // Sign-in is Google-only; tests seed the user and pass the session cookie
+    // as a request header.
+    const email = `retry-${stamp}@example.com`;
+    seedUser({ email, username: `retry_${stamp}`.slice(0, 30) });
+    const token = sessionTokenFor(email);
 
     const rejected = await request.post("/api/me/wrong-questions/retry", {
+      headers: { cookie: `${SESSION_COOKIE}=${token}` },
       data: { answers: [{ question_id: 1, selected: 0 }] },
     });
     expect(rejected.status()).toBe(403);
@@ -182,12 +159,6 @@ test.describe("API security", () => {
       data: { mockId: 1 },
     });
     expect(start.status()).toBe(403);
-
-    const login = await request.post("/api/auth/login", {
-      headers: { origin: "https://evil.example" },
-      data: { email: "someone@example.com", password: "Password123!" },
-    });
-    expect(login.status()).toBe(403);
 
     const publish = await request.post("/api/admin/mocks/1/publish", {
       headers: { origin: "https://evil.example" },
@@ -250,23 +221,20 @@ test.describe("API security", () => {
 
   test("signed-in users can read their own attempt history", async ({ request }) => {
     const stamp = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
-    const signup = await request.post("/api/auth/signup", {
-      headers: { "cf-connecting-ip": `198.51.100.${Math.floor(Math.random() * 200) + 1}` },
-      data: {
-        username: `api_${stamp}`.slice(0, 30),
-        email: `api-${stamp}@example.com`,
-        password: "ApiPass123!",
-      },
-    });
-    expect(signup.status()).toBe(200);
+    // Sign-in is Google-only; tests seed the user and pass the session cookie
+    // as a request header.
+    const email = `api-${stamp}@example.com`;
+    seedUser({ email, username: `api_${stamp}`.slice(0, 30) });
+    const token = sessionTokenFor(email);
+    const authHeaders = { cookie: `${SESSION_COOKIE}=${token}` };
 
-    const history = await request.get("/api/me/history");
+    const history = await request.get("/api/me/history", { headers: authHeaders });
     expect(history.status()).toBe(200);
     const body = (await history.json()) as { ok: boolean; attempts: unknown[] };
     expect(body.ok).toBe(true);
     expect(Array.isArray(body.attempts)).toBe(true);
 
-    const bookmarks = await request.get("/api/me/bookmarks");
+    const bookmarks = await request.get("/api/me/bookmarks", { headers: authHeaders });
     expect(bookmarks.status()).toBe(200);
     expect(await bookmarks.json()).toMatchObject({ ok: true, count: 0 });
   });
