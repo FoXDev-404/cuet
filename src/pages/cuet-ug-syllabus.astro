@@ -79,7 +79,12 @@ try {
   console.error("Subject stats unavailable; using the bundled library", error);
 }
 
-const subjectCards = subjects.length > 0
+// Subjects with no questions and no papers would 404, so they never get a
+// card — the syllabus hub must not link pages it knows are empty.
+const withContent = (subject: { question_count: number; mock_count: number }) =>
+  subject.question_count > 0 || subject.mock_count > 0;
+
+const subjectCards = (subjects.length > 0
   ? subjects.map((subject) => {
       const local = getLocalSubjectSummary(subject.slug);
       return {
@@ -89,7 +94,8 @@ const subjectCards = subjects.length > 0
       };
     })
   : // D1 could not answer, so rebuild the grid from the bundled library.
-    getLocalSubjectCards();
+    getLocalSubjectCards()
+).filter(withContent);
 const languages = subjectCards.filter((subject) => subject.type === "language");
 const domains = subjectCards.filter((subject) => subject.type === "domain");
 const general = subjectCards.filter((subject) => subject.type !== "language" && subject.type !== "domain");
