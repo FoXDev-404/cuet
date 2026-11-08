@@ -141,7 +141,7 @@
       ],
       "vars": {
         "ENV": "production",
-        "SITE_URL": "https://cuet-astro.cuet-platform.workers.dev",
+        "SITE_URL": "https://cuetfreemocktest.com",
         "DEV_SHOW_RESET_LINK": "",
         // Cloudflare Access is not configured yet. Keep session admin auth,
         // but require the explicit production override so the intent is clear.
@@ -154,7 +154,7 @@
         "EMAIL_PROVIDER": "",
         "EMAIL_FROM": "",
         "CF_ANALYTICS_TOKEN": "5204130403a849ea96a8507dc81e65ef",
-        "GSC_VERIFICATION": "",
+        "GSC_VERIFICATION": "GFepjVk3ZeZSv3_sGpYtIjxwx8hYOayEEBSU3EXOWAU",
         "ADSENSE_CLIENT": "",
         "ADSENSE_SLOT_ID": ""
       }

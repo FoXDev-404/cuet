@@ -62,7 +62,7 @@ jobs:
           set -euo pipefail
           sleep 10
           for path in /api/health /mock-tests /sitemap.xml; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "https://cuet-astro.cuet-platform.workers.dev$path")
+            code=$(curl -s -o /dev/null -w "%{http_code}" "https://cuetfreemocktest.com$path")
             echo "$path -> $code"
             test "$code" = "200"
           done
