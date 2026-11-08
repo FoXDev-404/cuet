@@ -1,0 +1,78 @@
+import { describe, expect, it } from "vitest";
+import {
+  EDGE_CACHE_TTL_SECONDS,
+  isEdgeCacheablePath,
+  shouldAttemptEdgeCache,
+} from "../../src/lib/edge-cache";
+
+describe("edge cache path rules", () => {
+  it("caches the root and all content prefixes", () => {
+    expect(isEdgeCacheablePath("/")).toBe(true);
+    expect(isEdgeCacheablePath("/mock-tests")).toBe(true);
+    expect(isEdgeCacheablePath("/mock-tests/english-2026-06-06-shift-1")).toBe(true);
+    expect(isEdgeCacheablePath("/blog/how-to-use-cuet-previous-year-papers")).toBe(true);
+    expect(isEdgeCacheablePath("/cuet-ug-syllabus/physics")).toBe(true);
+    expect(isEdgeCacheablePath("/leaderboard/english-2026-06-06-shift-1")).toBe(true);
+    expect(isEdgeCacheablePath("/pyq/2026/english")).toBe(true);
+    expect(isEdgeCacheablePath("/privacy-policy")).toBe(true);
+  });
+
+  it("never caches dynamic, private or exam-flow paths", () => {
+    for (const path of [
+      "/api/health",
+      "/api/attempts/1",
+      "/attempt/5",
+      "/result/9",
+      "/dashboard",
+      "/admin/mocks",
+      "/login",
+      "/signup",
+      "/search?q=english",
+      "/u/someone",
+      "/mock/english-2026-06-06-shift-1/discussion",
+      "/maintenance",
+      "/forbidden",
+    ]) {
+      expect(isEdgeCacheablePath(path), path).toBe(false);
+    }
+  });
+
+  it("does not confuse prefixes with sibling paths", () => {
+    expect(isEdgeCacheablePath("/mock-tests-extra")).toBe(false);
+    expect(isEdgeCacheablePath("/blogroll")).toBe(false);
+  });
+});
+
+describe("edge cache attempt rules", () => {
+  const base = {
+    method: "GET",
+    pathname: "/mock-tests",
+    search: "",
+    hasSessionCookie: false,
+    isProduction: true,
+  };
+
+  it("attempts the cache for anonymous GETs on production", () => {
+    expect(shouldAttemptEdgeCache(base)).toBe(true);
+  });
+
+  it("skips dev, E2E and preview environments entirely", () => {
+    expect(shouldAttemptEdgeCache({ ...base, isProduction: false })).toBe(false);
+  });
+
+  it("skips signed-in users and query strings", () => {
+    expect(shouldAttemptEdgeCache({ ...base, hasSessionCookie: true })).toBe(false);
+    expect(shouldAttemptEdgeCache({ ...base, search: "?year=2026" })).toBe(false);
+  });
+
+  it("skips non-GET methods", () => {
+    expect(shouldAttemptEdgeCache({ ...base, method: "POST" })).toBe(false);
+    expect(shouldAttemptEdgeCache({ ...base, method: "HEAD" })).toBe(true);
+  });
+});
+
+describe("edge cache TTL", () => {
+  it("is five minutes", () => {
+    expect(EDGE_CACHE_TTL_SECONDS).toBe(300);
+  });
+});
