@@ -25,8 +25,13 @@ const PAPER_CACHE_PREFIX = `${CACHE_PREFIX}:paper:v2:`;
 /** Per-subject question/mock rollups used by the syllabus and mock hubs. */
 export const SUBJECT_STATS_CACHE_KEY = `${CACHE_PREFIX}:subjects:v1`;
 
-/** How long a cached payload is served before D1 is consulted again. */
-const FRESH_TTL_SECONDS = 600; // 10 minutes
+/** How long a cached payload is served before D1 is consulted again.
+ * One hour, not ten minutes: the library index rebuild scans every
+ * practice_questions row (~17k on the full dataset), and at a 10-minute
+ * cadence that alone burns millions of the daily 5M row reads on the free
+ * plan. Admin edits purge these keys explicitly, so freshness for editors is
+ * immediate; visitors see at most an hour of lag. */
+const FRESH_TTL_SECONDS = 3_600;
 /** How long an expired payload is kept around as an outage fallback. */
 const STALE_RETENTION_SECONDS = 604_800; // 7 days
 /** Workers KV values are capped at 1 MiB; stay clear of the limit. */
