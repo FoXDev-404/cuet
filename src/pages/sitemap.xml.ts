@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { allOr } from "../lib/db";
+import { all, type BindValue } from "../lib/db";
 import { getLocalPapers, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
@@ -22,6 +22,19 @@ function escapeXml(value: string): string {
 export const GET: APIRoute = async ({ request }) => {
   const base = siteUrl(request.url);
   const urls: UrlEntry[] = [];
+  // A sitemap that silently loses URLs must never enter the 6-hour edge cache.
+  // Every optional read reports failure here; the response is then a 503 with
+  // `no-store`, so crawlers retry instead of indexing a partial map.
+  const failures: string[] = [];
+  const readAll = async <T,>(label: string, sql: string, params: BindValue[] = []): Promise<T[]> => {
+    try {
+      return await all<T>(sql, ...params);
+    } catch (error) {
+      failures.push(label);
+      console.error(`sitemap ${label} query failed`, error);
+      return [];
+    }
+  };
   const add = (path: string, options: { lastmod?: string | null; changefreq?: string; priority?: string } = {}) => {
     urls.push({ loc: new URL(path, base).toString(), ...options });
   };
@@ -54,11 +67,13 @@ export const GET: APIRoute = async ({ request }) => {
   try {
     subjectStats = await getSubjectStats();
   } catch (error) {
+    failures.push("subject-stats");
     console.error("sitemap subject stats failed", error);
   }
 
   try {
-    mocks = await allOr(
+    mocks = await readAll(
+      "mocks",
       `SELECT m.slug, m.published_at, m.updated_at, m.practice_paper_slug,
               EXISTS (SELECT 1 FROM attempts a
                 JOIN users u ON u.id = a.user_id
@@ -80,7 +95,8 @@ export const GET: APIRoute = async ({ request }) => {
       question_count: subject.all_mock_question_count,
       mock_count: subject.all_mock_count,
     }));
-    const topicCountRows = await allOr<{ subject_id: number; topic_count: number }>(
+    const topicCountRows = await readAll<{ subject_id: number; topic_count: number }>(
+      "topic-counts",
       `SELECT subject_id, COUNT(*) AS topic_count FROM topics GROUP BY subject_id`,
       [],
     );
@@ -107,7 +123,8 @@ export const GET: APIRoute = async ({ request }) => {
         question_count: 0,
       }));
     }
-    topics = await allOr(
+    topics = await readAll(
+      "topics",
       `SELECT s.slug AS subject_slug, t.slug AS topic_slug,
               (SELECT COUNT(DISTINCT q.id) FROM questions q
                 JOIN mock_questions_current mq ON mq.question_id = q.id
@@ -120,7 +137,8 @@ export const GET: APIRoute = async ({ request }) => {
        WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
       [],
     );
-    pyqYears = await allOr(
+    pyqYears = await readAll(
+      "pyq-years",
       `SELECT p.year, COUNT(DISTINCT m.id) AS playable_count
        FROM pyq_papers p
        JOIN mock_tests m ON m.pyq_paper_id = p.id AND m.status = 'published' AND m.deleted_at IS NULL
@@ -129,7 +147,8 @@ export const GET: APIRoute = async ({ request }) => {
        ORDER BY p.year DESC`,
       [],
     );
-    posts = await allOr(
+    posts = await readAll(
+      "blog-posts",
       `SELECT slug, updated_at, published_at FROM blog_posts
        WHERE status = 'published' AND published_at IS NOT NULL AND deleted_at IS NULL
          AND length(body) >= 400
@@ -138,18 +157,21 @@ export const GET: APIRoute = async ({ request }) => {
     );
     playablePyqCount = pyqYears.reduce((total, year) => total + year.playable_count, 0);
   } catch (error) {
+    failures.push("core");
     console.error("sitemap query failed", error);
   }
 
   // Exam Info Verification Gate (Fix 5 & Fix 7): Unverified pages with noindex excluded from sitemap
   let examInfoMap = new Map<string, { value: string; last_verified: string | null }>();
   try {
-    const examInfoRows = await allOr<{ key: string; value: string; last_verified: string | null }>(
+    const examInfoRows = await readAll<{ key: string; value: string; last_verified: string | null }>(
+      "exam-info",
       `SELECT key, value, last_verified FROM exam_info`,
       [],
     );
     examInfoMap = new Map(examInfoRows.map((r) => [r.key, { value: r.value, last_verified: r.last_verified }]));
   } catch (err) {
+    failures.push("exam-info");
     console.error("sitemap exam_info query failed", err);
   }
   const isExamVerified = (key: string) => {
@@ -163,6 +185,7 @@ export const GET: APIRoute = async ({ request }) => {
   try {
     sharedQuestions = await listSeoIndexableQuestions();
   } catch (error) {
+    failures.push("shared-questions");
     console.error("sitemap shared-question query failed", error);
   }
 
@@ -310,10 +333,15 @@ ${urls
 </urlset>
 `;
 
+  const degraded = failures.length > 0;
   return new Response(body, {
+    status: degraded ? 503 : 200,
     headers: {
       "content-type": "application/xml; charset=utf-8",
-      "cache-control": "public, max-age=3600",
+      // A 503 is never stored by the edge cache; keep the successful copy
+      // browser-cacheable for an hour while the middleware stores it for six.
+      "cache-control": degraded ? "no-store" : "public, max-age=3600",
+      ...(degraded ? { "x-sitemap-degraded": failures.join(",") } : {}),
     },
   });
 };
