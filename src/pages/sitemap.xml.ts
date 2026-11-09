@@ -333,15 +333,21 @@ ${urls
 </urlset>
 `;
 
+  // Serve 200 even when degraded: Google indexes the URLs that are present and
+  // discovers the rest through links. A 503 would make crawlers retry with no
+  // sitemap at all, which is worse than a partial one during quota windows.
+  // `no-store` prevents the edge cache from pinning a stale partial copy.
   const degraded = failures.length > 0;
   return new Response(body, {
-    status: degraded ? 503 : 200,
+    status: 200,
     headers: {
       "content-type": "application/xml; charset=utf-8",
-      // A 503 is never stored by the edge cache; keep the successful copy
-      // browser-cacheable for an hour while the middleware stores it for six.
-      "cache-control": degraded ? "no-store" : "public, max-age=3600",
-      ...(degraded ? { "x-sitemap-degraded": failures.join(",") } : {}),
+      ...(degraded
+        ? {
+            "cache-control": "no-store",
+            "x-sitemap-degraded": failures.join(","),
+          }
+        : { "cache-control": "public, max-age=3600" }),
     },
   });
 };

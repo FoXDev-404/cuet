@@ -55,11 +55,12 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     }
   });
 
-  it("never lets a degraded sitemap enter the edge cache", () => {
+  it("always serves the sitemap with 200; degraded responses skip edge caching", () => {
     const file = readFileSync(join(root, "src/pages/sitemap.xml.ts"), "utf8");
-    expect(file).toContain("status: degraded ? 503 : 200");
-    expect(file).toContain('degraded ? "no-store"');
+    expect(file).toContain("status: 200");
+    expect(file).toContain('"cache-control": "no-store"');
     expect(file).toContain("failures.push(");
+    expect(file).toContain("x-sitemap-degraded");
   });
 
   it("verifies PYQ year and subject hubs are indexable when non-restricted papers exist", () => {
