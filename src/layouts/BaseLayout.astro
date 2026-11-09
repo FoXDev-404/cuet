@@ -12,6 +12,7 @@ import {
   adSlotAllowed,
   analyticsToken,
   googleSiteVerification,
+  gtmContainerId,
   shouldServeAds,
 } from "../lib/integrations";
 
@@ -79,6 +80,7 @@ const path = Astro.url.pathname;
 // explicitly) and the path must not be private.
 const analytics = analyticsToken(env);
 const gscVerification = googleSiteVerification(env);
+const gtmId = gtmContainerId(env);
 const adsCanRender = shouldServeAds(ads, robots) && adSlotAllowed(path);
 const adClient = adsCanRender ? adsenseClient(env) : "";
 
@@ -121,6 +123,20 @@ const organization = {
         } catch (e) {}
       })();
     </script>
+    {gtmId ? (
+      <script is:inline define:vars={{ gtmId }}>
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0];
+          var j = d.createElement(s);
+          var dl = l !== "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", gtmId);
+      </script>
+    ) : null}
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -159,6 +175,17 @@ const organization = {
     ) : null}
   </head>
   <body class="flex min-h-screen flex-col antialiased">
+    {gtmId ? (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+          aria-hidden="true"
+        ></iframe>
+      </noscript>
+    ) : null}
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/90 text-neutral-900 backdrop-blur-xl dark:border-white/10 dark:bg-ink-950/90 dark:text-white">
       <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">

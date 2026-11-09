@@ -12,12 +12,14 @@ export type IntegrationEnv = {
   GSC_VERIFICATION?: string;
   ADSENSE_CLIENT?: string;
   ADSENSE_SLOT_ID?: string;
+  GTM_CONTAINER_ID?: string;
 };
 
 const PUBLIC_TOKEN = /^[A-Za-z0-9_-]{16,128}$/;
 const GSC_TOKEN = /^[A-Za-z0-9_-]{10,120}$/;
 const ADSENSE_CLIENT = /^ca-pub-\d{10,20}$/;
 const ADSENSE_SLOT = /^\d{6,20}$/;
+const GTM_ID = /^GTM-[A-Z0-9]{4,12}$/;
 
 /** Placeholder strings such as TODO_VERIFY must never activate a script. */
 function clean(value: string | undefined): string {
@@ -31,6 +33,12 @@ function clean(value: string | undefined): string {
 export function analyticsToken(envLike: IntegrationEnv): string {
   const token = clean(envLike.CF_ANALYTICS_TOKEN);
   return PUBLIC_TOKEN.test(token) ? token : "";
+}
+
+/** Google Tag Manager container id, e.g. `GTM-P7XXQ9TF`. */
+export function gtmContainerId(envLike: IntegrationEnv): string {
+  const id = clean(envLike.GTM_CONTAINER_ID);
+  return GTM_ID.test(id) ? id : "";
 }
 
 /**
