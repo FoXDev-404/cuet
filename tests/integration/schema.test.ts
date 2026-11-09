@@ -23,6 +23,9 @@ const MIGRATIONS = [
   "0018_explanation_provenance_and_review.sql",
   "0019_attempt_sequence_and_capacity.sql",
   "0020_exam_info_seed.sql",
+  "0021_repair_question_immutability_guard.sql",
+  "0022_question_supersedes_index.sql",
+  "0023_passage_question_index.sql",
 ];
 
 function apply(db: DatabaseSync, names: string[]): void {
@@ -130,6 +133,23 @@ describe("blueprint v2 migration contract", () => {
       )
       .get() as { sql: string };
     expect(leaderboardIndex.sql).toMatch(/\(version_id, score DESC, time_taken_sec ASC\)/);
+  });
+
+  it("indexes question counts by passage so the admin list never scans the bank", () => {
+    const db = migrate();
+    const index = db
+      .prepare("SELECT sql FROM sqlite_master WHERE type = 'index' AND name = 'idx_questions_passage'")
+      .get() as { sql: string } | undefined;
+    expect(index?.sql).toMatch(/\(passage_id, deleted_at\)/);
+
+    const plan = db
+      .prepare(
+        "EXPLAIN QUERY PLAN SELECT COUNT(*) FROM questions q WHERE q.passage_id = 1 AND q.deleted_at IS NULL",
+      )
+      .all() as { detail: string }[];
+    expect(plan.map((row) => row.detail).join(" ")).toMatch(
+      /USING (COVERING )?INDEX idx_questions_passage/,
+    );
   });
 
   it("migrates a populated legacy database without changing stored scores", () => {
