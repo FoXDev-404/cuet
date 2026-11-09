@@ -13,6 +13,7 @@ export type IntegrationEnv = {
   ADSENSE_CLIENT?: string;
   ADSENSE_SLOT_ID?: string;
   GTM_CONTAINER_ID?: string;
+  GA4_MEASUREMENT_ID?: string;
 };
 
 const PUBLIC_TOKEN = /^[A-Za-z0-9_-]{16,128}$/;
@@ -20,6 +21,7 @@ const GSC_TOKEN = /^[A-Za-z0-9_-]{10,120}$/;
 const ADSENSE_CLIENT = /^ca-pub-\d{10,20}$/;
 const ADSENSE_SLOT = /^\d{6,20}$/;
 const GTM_ID = /^GTM-[A-Z0-9]{4,12}$/;
+const GA4_ID = /^G-[A-Z0-9]{6,12}$/;
 
 /** Placeholder strings such as TODO_VERIFY must never activate a script. */
 function clean(value: string | undefined): string {
@@ -39,6 +41,12 @@ export function analyticsToken(envLike: IntegrationEnv): string {
 export function gtmContainerId(envLike: IntegrationEnv): string {
   const id = clean(envLike.GTM_CONTAINER_ID);
   return GTM_ID.test(id) ? id : "";
+}
+
+/** GA4 measurement id, e.g. `G-Y1JPT7SNQJ`. */
+export function ga4MeasurementId(envLike: IntegrationEnv): string {
+  const id = clean(envLike.GA4_MEASUREMENT_ID);
+  return GA4_ID.test(id) ? id : "";
 }
 
 /**

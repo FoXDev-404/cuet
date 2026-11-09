@@ -11,6 +11,7 @@ import {
   adsenseClient,
   adSlotAllowed,
   analyticsToken,
+  ga4MeasurementId,
   googleSiteVerification,
   gtmContainerId,
   shouldServeAds,
@@ -81,6 +82,9 @@ const path = Astro.url.pathname;
 const analytics = analyticsToken(env);
 const gscVerification = googleSiteVerification(env);
 const gtmId = gtmContainerId(env);
+// GA4 direct gtag.js is used only when GTM isn't managing analytics, so page
+// views are never double-counted across the two pipelines.
+const ga4Id = gtmId ? "" : ga4MeasurementId(env);
 const adsCanRender = shouldServeAds(ads, robots) && adSlotAllowed(path);
 const adClient = adsCanRender ? adsenseClient(env) : "";
 
@@ -136,6 +140,17 @@ const organization = {
           f.parentNode.insertBefore(j, f);
         })(window, document, "script", "dataLayer", gtmId);
       </script>
+    ) : null}
+    {ga4Id ? (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script is:inline define:vars={{ ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag("js", new Date());
+          gtag("config", ga4Id);
+        </script>
+      </>
     ) : null}
     <title>{title}</title>
     <meta name="description" content={description} />
