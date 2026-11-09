@@ -72,8 +72,32 @@ jobs:
             echo "::error::$1 never returned 200 after the deploy."
             return 1
           }
+          # The sitemap deliberately answers 503 with `x-sitemap-degraded` when
+          # a D1 read fails, so a quota-limited render never enters the 6-hour
+          # edge cache. That is a healthy degraded response, not a bad deploy.
+          check_sitemap() {
+            for attempt in 1 2 3; do
+              headers=$(mktemp)
+              code=$(curl -s -D "$headers" -o /dev/null -w "%{http_code}" \
+                "https://cuetfreemocktest.com/sitemap.xml")
+              echo "/sitemap.xml (attempt $attempt) -> $code"
+              if [ "$code" = "200" ]; then
+                rm -f "$headers"
+                return 0
+              fi
+              if [ "$code" = "503" ] && grep -qi '^x-sitemap-degraded:' "$headers"; then
+                echo "/sitemap.xml is degraded (503 guarded by x-sitemap-degraded)."
+                rm -f "$headers"
+                return 0
+              fi
+              rm -f "$headers"
+              sleep 10
+            done
+            echo "::error::/sitemap.xml returned neither 200 nor a guarded 503 after the deploy."
+            return 1
+          }
           sleep 15
           check_path "/api/health"
           check_path "/mock-tests"
-          check_path "/sitemap.xml"
+          check_sitemap
           echo "Auto-deploy smoke passed."
