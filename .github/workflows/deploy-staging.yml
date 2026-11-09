@@ -64,12 +64,4 @@ jobs:
       - name: Build and deploy staging
         run: npm run deploy:staging
       - name: Smoke test staging
-        run: |
-          set -euo pipefail
-          for path in /api/health /mock-tests /sitemap.xml /mock/psychology-2024-07-19-shift-1/instructions; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "$STAGING_URL$path")
-            echo "$path -> $code"
-            test "$code" = "200"
-          done
-          curl -fsS "$STAGING_URL/mock-tests" | grep -q "245 papers"
-          echo "Staging smoke passed."
+        run: node scripts/smoke-check.mjs "$STAGING_URL" --expect "245 papers"

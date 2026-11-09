@@ -64,12 +64,4 @@ jobs:
       - name: Build and deploy
         run: npm run deploy
       - name: Smoke test production
-        run: |
-          set -euo pipefail
-          for path in /api/health /mock-tests /sitemap.xml /mock/psychology-2024-07-19-shift-1/instructions; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "$PRODUCTION_URL$path")
-            echo "$path -> $code"
-            test "$code" = "200"
-          done
-          curl -fsS "$PRODUCTION_URL/mock-tests" | grep -q "137 papers"
-          echo "Production smoke passed."
+        run: node scripts/smoke-check.mjs "$PRODUCTION_URL" --expect "137 papers"

@@ -63,12 +63,4 @@ jobs:
       - name: Build and deploy cuet-2026
         run: npm run deploy:2026
       - name: Smoke test cuet-2026
-        run: |
-          set -euo pipefail
-          for path in /api/health /mock-tests /sitemap.xml /mock/psychology-2024-07-19-shift-1/instructions; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL$path")
-            echo "$path -> $code"
-            test "$code" = "200"
-          done
-          curl -fsS "$SITE_URL/mock-tests" | grep -q "245 papers"
-          echo "Separate deployment smoke passed."
+        run: node scripts/smoke-check.mjs "$SITE_URL" --expect "245 papers"
