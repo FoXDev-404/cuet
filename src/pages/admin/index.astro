@@ -4,6 +4,7 @@ import { all, first } from "../../lib/db";
 import { can } from "../../lib/auth/admin";
 import { formatDateTime } from "../../lib/content";
 import { getLocalPapers } from "../../lib/local-papers";
+import { cachedAdminStats } from "../../lib/admin/stats-cache";
 
 const admin = Astro.locals.admin!;
 const localPapers = getLocalPapers();
@@ -21,35 +22,58 @@ const localPendingQuestions = localPapers.reduce(
 );
 const localFullyKeyed = localPapers.length - localReviewPapers.length;
 
-type CountRow = { count: number };
-const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-const [
-  questions,
-  publishedQuestions,
-  mocks,
-  publishedMocks,
-  users,
-  attemptsToday,
-  newUsers,
-  openReports,
-] = await Promise.all([
-    first<CountRow>("SELECT COUNT(*) AS count FROM questions WHERE deleted_at IS NULL"),
-    first<CountRow>("SELECT COUNT(*) AS count FROM questions WHERE deleted_at IS NULL AND status = 'published'"),
-    first<CountRow>("SELECT COUNT(*) AS count FROM mock_tests WHERE deleted_at IS NULL"),
-    first<CountRow>("SELECT COUNT(*) AS count FROM mock_tests WHERE deleted_at IS NULL AND status = 'published'"),
-    first<CountRow>("SELECT COUNT(*) AS count FROM users WHERE deleted_at IS NULL"),
-    first<CountRow>(
-      "SELECT COUNT(*) AS count FROM attempts WHERE started_at >= ?",
-      `${new Date().toISOString().slice(0, 10)}T00:00:00.000Z`,
-    ),
-    first<CountRow>(
-      "SELECT COUNT(*) AS count FROM users WHERE deleted_at IS NULL AND created_at >= ?",
-      weekAgo,
-    ),
-    first<CountRow>(
-      "SELECT COUNT(*) AS count FROM question_reports WHERE status = 'open'",
-    ),
-  ]);
+type DashboardStats = {
+  questions: { total: number; published: number };
+  mocks: { total: number; published: number };
+  users: { total: number; newThisWeek: number };
+  attemptsToday: number;
+  openReports: number;
+};
+
+// Grouped scans replace four separate full-table counts (the question bank was
+// counted twice), and the card values are shared through KV for a minute.
+const stats = await cachedAdminStats<DashboardStats>(
+  "cache:admin:dashboard-counts:v1",
+  async () => {
+    const todayStart = `${new Date().toISOString().slice(0, 10)}T00:00:00.000Z`;
+    const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const [questionRows, mockRows, userRow, attemptsRow, reportsRow] = await Promise.all([
+      all<{ status: string; count: number }>(
+        "SELECT status, COUNT(*) AS count FROM questions WHERE deleted_at IS NULL GROUP BY status",
+      ),
+      all<{ status: string; count: number }>(
+        "SELECT status, COUNT(*) AS count FROM mock_tests WHERE deleted_at IS NULL GROUP BY status",
+      ),
+      first<{ total: number; new_count: number }>(
+        `SELECT COUNT(*) AS total,
+                SUM(CASE WHEN created_at >= ? THEN 1 ELSE 0 END) AS new_count
+         FROM users WHERE deleted_at IS NULL`,
+        weekAgo,
+      ),
+      first<{ count: number }>(
+        "SELECT COUNT(*) AS count FROM attempts WHERE started_at >= ?",
+        todayStart,
+      ),
+      first<{ count: number }>(
+        "SELECT COUNT(*) AS count FROM question_reports WHERE status = 'open'",
+      ),
+    ]);
+    const sum = (rows: { status: string; count: number }[], status?: string) =>
+      rows
+        .filter((row) => !status || row.status === status)
+        .reduce((total, row) => total + Number(row.count), 0);
+    return {
+      questions: { total: sum(questionRows), published: sum(questionRows, "published") },
+      mocks: { total: sum(mockRows), published: sum(mockRows, "published") },
+      users: {
+        total: Number(userRow?.total ?? 0),
+        newThisWeek: Number(userRow?.new_count ?? 0),
+      },
+      attemptsToday: Number(attemptsRow?.count ?? 0),
+      openReports: Number(reportsRow?.count ?? 0),
+    };
+  },
+);
 
 const recentAttempts = await all<{
   id: number;
@@ -94,10 +118,10 @@ const [recentUsers, popularMocks, pendingReports] = await Promise.all([
 ]);
 
 const cards = [
-  { label: "Questions", value: questions?.count ?? 0, detail: `${publishedQuestions?.count ?? 0} published`, href: "/admin/questions" },
-  { label: "Mock tests", value: mocks?.count ?? 0, detail: `${publishedMocks?.count ?? 0} published`, href: "/admin/mocks" },
-  { label: "Users", value: users?.count ?? 0, detail: `+${newUsers?.count ?? 0} in 7 days`, href: "/admin/users" },
-  { label: "Attempts today", value: attemptsToday?.count ?? 0, detail: "started since midnight UTC", href: "#" },
+  { label: "Questions", value: stats.questions.total, detail: `${stats.questions.published} published`, href: "/admin/questions" },
+  { label: "Mock tests", value: stats.mocks.total, detail: `${stats.mocks.published} published`, href: "/admin/mocks" },
+  { label: "Users", value: stats.users.total, detail: `+${stats.users.newThisWeek} in 7 days`, href: "/admin/users" },
+  { label: "Attempts today", value: stats.attemptsToday, detail: "started since midnight UTC", href: "#" },
 ];
 ---
 
@@ -206,7 +230,7 @@ const cards = [
     <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
       <div class="flex items-center justify-between gap-2">
         <h2 class="font-bold">New users</h2>
-        <span class="rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">+{newUsers?.count ?? 0} this week</span>
+        <span class="rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">+{stats.users.newThisWeek} this week</span>
       </div>
       {recentUsers.length === 0 ? (
         <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">No registered users yet.</p>
@@ -246,7 +270,7 @@ const cards = [
     <section class="min-w-0 rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
       <div class="flex items-center justify-between gap-2">
         <h2 class="font-bold">Pending reports</h2>
-        <span class:list={["rounded-full px-2 py-0.5 text-[10px] font-bold uppercase", (openReports?.count ?? 0) > 0 ? "bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200" : "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"]}>{openReports?.count ?? 0} open</span>
+        <span class:list={["rounded-full px-2 py-0.5 text-[10px] font-bold uppercase", stats.openReports > 0 ? "bg-red-100 text-red-900 dark:bg-red-950/50 dark:text-red-200" : "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"]}>{stats.openReports} open</span>
       </div>
       {pendingReports.length === 0 ? (
         <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">No open question reports. Great.</p>

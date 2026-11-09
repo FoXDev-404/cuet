@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  EDGE_CACHE_SITEMAP_TTL_SECONDS,
   EDGE_CACHE_TTL_SECONDS,
+  edgeCacheTtlForPath,
+  isEdgeCacheableContentType,
   isEdgeCacheablePath,
   shouldAttemptEdgeCache,
 } from "../../src/lib/edge-cache";
@@ -14,6 +17,8 @@ describe("edge cache path rules", () => {
     expect(isEdgeCacheablePath("/cuet-ug-syllabus/physics")).toBe(true);
     expect(isEdgeCacheablePath("/leaderboard/english-2026-06-06-shift-1")).toBe(true);
     expect(isEdgeCacheablePath("/pyq/2026/english")).toBe(true);
+    expect(isEdgeCacheablePath("/q/abc123def456")).toBe(true);
+    expect(isEdgeCacheablePath("/sitemap.xml")).toBe(true);
     expect(isEdgeCacheablePath("/privacy-policy")).toBe(true);
   });
 
@@ -40,6 +45,8 @@ describe("edge cache path rules", () => {
   it("does not confuse prefixes with sibling paths", () => {
     expect(isEdgeCacheablePath("/mock-tests-extra")).toBe(false);
     expect(isEdgeCacheablePath("/blogroll")).toBe(false);
+    expect(isEdgeCacheablePath("/questions")).toBe(false);
+    expect(isEdgeCacheablePath("/sitemap.xml.bak")).toBe(false);
   });
 });
 
@@ -72,7 +79,21 @@ describe("edge cache attempt rules", () => {
 });
 
 describe("edge cache TTL", () => {
-  it("is five minutes", () => {
+  it("is five minutes for pages and six hours for the sitemap", () => {
     expect(EDGE_CACHE_TTL_SECONDS).toBe(300);
+    expect(EDGE_CACHE_SITEMAP_TTL_SECONDS).toBe(21_600);
+    expect(edgeCacheTtlForPath("/blog/guide")).toBe(EDGE_CACHE_TTL_SECONDS);
+    expect(edgeCacheTtlForPath("/sitemap.xml")).toBe(EDGE_CACHE_SITEMAP_TTL_SECONDS);
+  });
+});
+
+describe("edge cache content types", () => {
+  it("stores pages and XML feeds, never JSON APIs", () => {
+    expect(isEdgeCacheableContentType("text/html; charset=utf-8")).toBe(true);
+    expect(isEdgeCacheableContentType("application/xml; charset=utf-8")).toBe(true);
+    expect(isEdgeCacheableContentType("text/xml")).toBe(true);
+    expect(isEdgeCacheableContentType("application/json; charset=utf-8")).toBe(false);
+    expect(isEdgeCacheableContentType("text/plain")).toBe(false);
+    expect(isEdgeCacheableContentType("")).toBe(false);
   });
 });

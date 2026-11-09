@@ -3,45 +3,47 @@ import AdminLayout from "../../layouts/AdminLayout.astro";
 import { can } from "../../lib/auth/admin";
 import { all } from "../../lib/db";
 import { renderRichText } from "../../lib/content";
+import { cachedAdminStats } from "../../lib/admin/stats-cache";
 
 const admin = Astro.locals.admin!;
 if (!can(admin.role, "questions.write") && !can(admin.role, "mocks.write")) {
   return Astro.redirect("/forbidden", 303);
 }
 
-// Real database explanation provenance counts
-const explanationCounts = await all<{
-  explanation_source: string;
-  explanation_status: string;
-  count: number;
-}>(
-  `SELECT explanation_source, explanation_status, COUNT(*) AS count
-   FROM practice_questions
-   WHERE deleted_at IS NULL
-   GROUP BY explanation_source, explanation_status`,
-);
-
-const unreviewedAiCount = explanationCounts
-  .filter((r) => r.explanation_source === "ai_draft" && r.explanation_status === "unreviewed")
-  .reduce((sum, r) => sum + r.count, 0);
-
-const bannerCount = explanationCounts
-  .filter((r) => r.explanation_source === "banner")
-  .reduce((sum, r) => sum + r.count, 0);
-
-const humanReviewedCount = explanationCounts
-  .filter((r) => r.explanation_status === "reviewed")
-  .reduce((sum, r) => sum + r.count, 0);
-
-const flaggedCount = explanationCounts
-  .filter((r) => r.explanation_status === "flagged")
-  .reduce((sum, r) => sum + r.count, 0);
-
-const unkeyedCount = (
-  await all<{ count: number }>(
-    `SELECT COUNT(*) AS count FROM practice_questions WHERE correct_option IS NULL AND deleted_at IS NULL`,
-  )
-)[0]?.count ?? 0;
+// Real database explanation provenance counts. One grouped scan replaces the
+// separate provenance rollup and unkeyed count (7.5k practice rows each), and
+// the metric cards tolerate a minute of staleness.
+const {
+  unreviewedAiCount,
+  bannerCount,
+  humanReviewedCount,
+  flaggedCount,
+  unkeyedCount,
+} = await cachedAdminStats("cache:admin:review-counts:v1", async () => {
+  const rows = await all<{
+    explanation_source: string;
+    explanation_status: string;
+    count: number;
+    unkeyed: number;
+  }>(
+    `SELECT explanation_source, explanation_status, COUNT(*) AS count,
+            SUM(CASE WHEN correct_option IS NULL THEN 1 ELSE 0 END) AS unkeyed
+     FROM practice_questions
+     WHERE deleted_at IS NULL
+     GROUP BY explanation_source, explanation_status`,
+  );
+  const countWhere = (predicate: (row: (typeof rows)[number]) => boolean) =>
+    rows.filter(predicate).reduce((sum, row) => sum + Number(row.count), 0);
+  return {
+    unreviewedAiCount: countWhere(
+      (row) => row.explanation_source === "ai_draft" && row.explanation_status === "unreviewed",
+    ),
+    bannerCount: countWhere((row) => row.explanation_source === "banner"),
+    humanReviewedCount: countWhere((row) => row.explanation_status === "reviewed"),
+    flaggedCount: countWhere((row) => row.explanation_status === "flagged"),
+    unkeyedCount: rows.reduce((sum, row) => sum + Number(row.unkeyed), 0),
+  };
+});
 
 // Filters
 const filterStatus = Astro.url.searchParams.get("status") || "all";

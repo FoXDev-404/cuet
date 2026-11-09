@@ -1,6 +1,7 @@
 ---
 import AdminLayout from "../../../layouts/AdminLayout.astro";
 import { TABLES, type TableDef } from "../../../lib/admin/schema";
+import { cachedAdminStats } from "../../../lib/admin/stats-cache";
 import { can } from "../../../lib/auth/admin";
 import { first } from "../../../lib/db";
 
@@ -12,11 +13,15 @@ const alias = (name: string) => `t_${name.replace(/[^a-z0-9]/g, "_")}`;
 
 let counts: Record<string, number> = {};
 try {
-  const select = TABLES.map((table) => `(SELECT COUNT(*) FROM "${table.name}") AS "${alias(table.name)}"`).join(", ");
-  const row = await first<Record<string, number>>(`SELECT ${select}`);
-  counts = Object.fromEntries(
-    TABLES.map((table) => [table.name, Number(row?.[alias(table.name)] ?? 0)]),
-  );
+  // 23 COUNT(*) subqueries scan every row in the database (about 48k on
+  // production), so the result is shared through KV for a minute.
+  counts = await cachedAdminStats("cache:admin:data-counts:v1", async () => {
+    const select = TABLES.map((table) => `(SELECT COUNT(*) FROM "${table.name}") AS "${alias(table.name)}"`).join(", ");
+    const row = await first<Record<string, number>>(`SELECT ${select}`);
+    return Object.fromEntries(
+      TABLES.map((table) => [table.name, Number(row?.[alias(table.name)] ?? 0)]),
+    );
+  });
 } catch {
   counts = {};
 }

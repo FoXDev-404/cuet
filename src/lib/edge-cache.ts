@@ -11,12 +11,17 @@
  *    so test assertions always see freshly rendered pages.
  *  - Signed-in users skip caching (their header navigation is personalized).
  *  - URLs with query strings skip caching (filters change the result).
- *  - Only content prefixes are cached; attempts, APIs, dashboards, auth pages
+ *  - Only content paths are cached; attempts, APIs, dashboards, auth pages
  *    and user profiles are never stored at the edge.
  *  - TTL is 5 minutes, bounded staleness for admin edits without purge logic.
+ *    The sitemap is rebuilt from many D1 queries and changes slowly, so it
+ *    gets a 6-hour TTL instead of being re-rendered for every crawler hit.
  */
 
 export const EDGE_CACHE_TTL_SECONDS = 300;
+export const EDGE_CACHE_SITEMAP_TTL_SECONDS = 6 * 60 * 60;
+
+const EDGE_CACHEABLE_EXACT_PATHS = new Set(["/sitemap.xml"]);
 
 const EDGE_CACHEABLE_PREFIXES = [
   "/mock-tests",
@@ -30,6 +35,7 @@ const EDGE_CACHEABLE_PREFIXES = [
   "/cuet-mock-test",
   "/leaderboard",
   "/pyq",
+  "/q",
   "/about",
   "/contact",
   "/privacy-policy",
@@ -39,8 +45,26 @@ const EDGE_CACHEABLE_PREFIXES = [
 
 export function isEdgeCacheablePath(pathname: string): boolean {
   if (pathname === "/") return true;
+  if (EDGE_CACHEABLE_EXACT_PATHS.has(pathname)) return true;
   return EDGE_CACHEABLE_PREFIXES.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
+}
+
+/** Per-path edge TTL: the sitemap tolerates longer staleness than a guide. */
+export function edgeCacheTtlForPath(pathname: string): number {
+  return pathname === "/sitemap.xml"
+    ? EDGE_CACHE_SITEMAP_TTL_SECONDS
+    : EDGE_CACHE_TTL_SECONDS;
+}
+
+/** HTML pages and XML feeds (sitemap) are safe to store; APIs are not. */
+export function isEdgeCacheableContentType(contentType: string): boolean {
+  const type = contentType.toLowerCase();
+  return (
+    type.includes("text/html") ||
+    type.includes("application/xml") ||
+    type.includes("text/xml")
   );
 }
 

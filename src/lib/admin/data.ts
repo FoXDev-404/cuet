@@ -1,4 +1,5 @@
 import { all, first, run } from "../db";
+import { cachedAdminStats } from "./stats-cache";
 import {
   editableColumns,
   getTable,
@@ -63,10 +64,20 @@ export async function listRows(
   const direction = options.dir === "asc" ? "ASC" : "DESC";
 
   const whereSql = where.length > 0 ? `WHERE ${where.join(" AND ")}` : "";
-  const countRow = await first<{ count: number }>(
-    `SELECT COUNT(*) AS count FROM "${table.name}" ${whereSql}`,
-    ...params,
-  );
+  const countRows = () =>
+    first<{ count: number }>(
+      `SELECT COUNT(*) AS count FROM "${table.name}" ${whereSql}`,
+      ...params,
+    );
+  // The default table view counts every live row (15.8k for questions), and
+  // the CSV export repeats that count per 100-row chunk. Search results stay
+  // exact; the unfiltered count is shared through KV for a minute.
+  const countRow = term
+    ? await countRows()
+    : await cachedAdminStats(
+        `cache:admin:row-count:v1:${table.name}:${table.softDelete && !options.includeDeleted ? "live" : "all"}`,
+        countRows,
+      );
   const rows = await all<RowRecord>(
     `SELECT ${visible.map((column) => `"${column.name}"`).join(", ")}
      FROM "${table.name}" ${whereSql}

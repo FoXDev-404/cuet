@@ -60,7 +60,7 @@ export const GET: APIRoute = async ({ request }) => {
   try {
     mocks = await allOr(
       `SELECT m.slug, m.published_at, m.updated_at, m.practice_paper_slug,
-              (SELECT COUNT(*) FROM attempts a
+              EXISTS (SELECT 1 FROM attempts a
                 JOIN users u ON u.id = a.user_id
                 WHERE a.version_id = m.current_version_id AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL) AS eligible
        FROM mock_tests m

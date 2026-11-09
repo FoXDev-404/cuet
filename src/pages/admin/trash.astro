@@ -14,10 +14,15 @@ const selectedTable = tables.some((table) => table.name === requestedTable) ? re
 const page = Math.max(Number(params.get("page") ?? 1) || 1, 1);
 const per = 50;
 
-const [counts, listing] = await Promise.all([
-  trashCounts(),
-  listTrash({ table: selectedTable || undefined, limit: per, offset: (page - 1) * per }),
-]);
+// Count once, then reuse the result for the listing total. Both queries used
+// to run their own COUNT(*) over every trash table.
+const counts = await trashCounts();
+const listing = await listTrash({
+  table: selectedTable || undefined,
+  limit: per,
+  offset: (page - 1) * per,
+  counts,
+});
 const totalPages = Math.max(Math.ceil(listing.total / per), 1);
 const totalTrash = Object.values(counts).reduce((sum, count) => sum + count, 0);
 ---

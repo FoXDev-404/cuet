@@ -3,17 +3,32 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 import { all, first } from "../../../lib/db";
 import { formatDateTime, renderRichText } from "../../../lib/content";
 import { can } from "../../../lib/auth/admin";
+import {
+  ADMIN_FILTER_STATS_TTL_SECONDS,
+  cachedAdminStats,
+} from "../../../lib/admin/stats-cache";
 
 const admin = Astro.locals.admin!;
 const canPublish = can(admin.role, "questions.publish");
 
-const subjects = await all<{ id: number; name: string }>(
-  "SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name",
-);
-const years = await all<{ year: number }>(
-  `SELECT DISTINCT year FROM questions
-   WHERE deleted_at IS NULL AND year IS NOT NULL
-   ORDER BY year DESC`,
+// The year list is a DISTINCT scan over the whole bank (15.8k rows) and the
+// subject list barely changes, so both are cached together for an hour.
+const { subjects, years } = await cachedAdminStats(
+  "cache:admin:question-filters:v1",
+  async () => {
+    const [subjects, years] = await Promise.all([
+      all<{ id: number; name: string }>(
+        "SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name",
+      ),
+      all<{ year: number }>(
+        `SELECT DISTINCT year FROM questions
+         WHERE deleted_at IS NULL AND year IS NOT NULL
+         ORDER BY year DESC`,
+      ),
+    ]);
+    return { subjects, years };
+  },
+  ADMIN_FILTER_STATS_TTL_SECONDS,
 );
 const requestedStatus = Astro.url.searchParams.get("status") ?? "";
 const allowedStatuses = ["draft", "in_review", "published"];
@@ -48,8 +63,16 @@ if (search) {
 }
 const whereSql = where.join(" AND ");
 
+const countQuestions = () =>
+  first<{ count: number }>(`SELECT COUNT(*) AS count FROM questions q WHERE ${whereSql}`, ...params);
+
+// The unfiltered count scans the whole bank (15.8k rows). It is the page's
+// default view, so cache it briefly; filtered counts stay exact.
+const hasFilters = Boolean(status || subjectId > 0 || year > 0 || search);
 const [totalRow, questions] = await Promise.all([
-  first<{ count: number }>(`SELECT COUNT(*) AS count FROM questions q WHERE ${whereSql}`, ...params),
+  hasFilters
+    ? countQuestions()
+    : cachedAdminStats("cache:admin:question-count:v1", countQuestions),
   all<{
     id: number;
     text: string;

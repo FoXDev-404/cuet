@@ -26,6 +26,7 @@ const MIGRATIONS = [
   "0021_repair_question_immutability_guard.sql",
   "0022_question_supersedes_index.sql",
   "0023_passage_question_index.sql",
+  "0024_trash_partial_indexes.sql",
 ];
 
 function apply(db: DatabaseSync, names: string[]): void {
@@ -150,6 +151,31 @@ describe("blueprint v2 migration contract", () => {
     expect(plan.map((row) => row.detail).join(" ")).toMatch(
       /USING (COVERING )?INDEX idx_questions_passage/,
     );
+  });
+
+  it("uses partial deleted_at indexes for the admin trash screen", () => {
+    const db = migrate();
+    const index = db
+      .prepare("SELECT sql FROM sqlite_master WHERE type = 'index' AND name = 'idx_trash_questions'")
+      .get() as { sql: string } | undefined;
+    expect(index?.sql).toMatch(/WHERE deleted_at IS NOT NULL/);
+
+    const countPlan = db
+      .prepare("EXPLAIN QUERY PLAN SELECT COUNT(*) FROM questions WHERE deleted_at IS NOT NULL")
+      .all() as { detail: string }[];
+    expect(countPlan.map((row) => row.detail).join(" ")).toMatch(
+      /USING (COVERING )?INDEX idx_trash_questions/,
+    );
+
+    const listPlan = db
+      .prepare(
+        `EXPLAIN QUERY PLAN SELECT id, text, deleted_at FROM questions
+         WHERE deleted_at IS NOT NULL ORDER BY deleted_at DESC LIMIT 50`,
+      )
+      .all() as { detail: string }[];
+    const listDetails = listPlan.map((row) => row.detail).join(" ");
+    expect(listDetails).toMatch(/USING (COVERING )?INDEX idx_trash_questions/);
+    expect(listDetails).not.toMatch(/TEMP B-TREE/);
   });
 
   it("migrates a populated legacy database without changing stored scores", () => {

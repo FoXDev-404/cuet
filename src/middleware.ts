@@ -9,7 +9,7 @@ import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
 import { trackD1Metrics } from "./lib/db";
 import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
-import { EDGE_CACHE_TTL_SECONDS, shouldAttemptEdgeCache } from "./lib/edge-cache";
+import { edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
 
 /**
  * The Workers runtime exposes `caches.default` (the per-colo edge cache),
@@ -179,10 +179,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   // Edge cache: anonymous GETs on production content pages are served from
-  // the Cloudflare edge cache when a recent copy exists (5-minute TTL), and
-  // fresh 200 HTML responses are stored for the next visitor. Cuts the TTFB
-  // of content pages from ~700-1200ms to ~50ms and keeps those D1 reads out
-  // of the daily quota. Dev, preview and E2E environments skip this entirely.
+  // the Cloudflare edge cache when a recent copy exists (5-minute TTL, 6-hour
+  // for the sitemap), and fresh 200 HTML/XML responses are stored for the next
+  // visitor. Cuts the TTFB of content pages from ~700-1200ms to ~50ms and
+  // keeps those D1 reads out of the daily quota. Dev, preview and E2E
+  // environments skip this entirely.
   const currentEnvironment = String(
     (env as unknown as Record<string, unknown>).ENV ?? "",
   ).trim().toLowerCase();
@@ -334,19 +335,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
     );
   }
 
-  // Store fresh anonymous 200 HTML responses in the edge cache for 5 minutes.
-  // Strip Set-Cookie so one visitor's cookies are never served to another.
+  // Store fresh anonymous 200 responses in the edge cache: HTML pages for 5
+  // minutes, the sitemap for 6 hours. Strip Set-Cookie so one visitor's
+  // cookies are never served to another.
   if (cache && secured.status === 200) {
     const contentType = secured.headers.get("content-type") ?? "";
-    if (contentType.includes("text/html") && !secured.headers.has("set-cookie")) {
+    const cacheableType = isEdgeCacheableContentType(contentType);
+    if (cacheableType && !secured.headers.has("set-cookie")) {
+      const cacheTtl = edgeCacheTtlForPath(requestedPath);
       // The first anonymous visitor after a cache miss gets the same bounded
       // browser TTL as the stored copy. Without this, Cloudflare's zone-level
       // Browser Cache TTL decides how long that visitor keeps stale HTML.
-      secured.headers.set("cache-control", `public, max-age=${EDGE_CACHE_TTL_SECONDS}`);
+      secured.headers.set("cache-control", `public, max-age=${cacheTtl}`);
       try {
         const headers = new Headers(secured.headers);
         headers.delete("set-cookie");
-        headers.set("cache-control", `public, max-age=${EDGE_CACHE_TTL_SECONDS}`);
+        headers.set("cache-control", `public, max-age=${cacheTtl}`);
         await cache.put(
           context.request,
           new Response(secured.clone().body, {

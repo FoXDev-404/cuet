@@ -1,29 +1,37 @@
 ---
 import AdminLayout from "../../../layouts/AdminLayout.astro";
 import { all } from "../../../lib/db";
+import { getAdminMockCounts } from "../../../lib/admin/stats-cache";
 import { formatDateTime } from "../../../lib/content";
 
-const mocks = await all<{
-  id: number;
-  title: string;
-  slug: string;
-  type: string;
-  status: string;
-  duration_min: number;
-  total_marks: number;
-  published_at: string | null;
-  updated_at: string | null;
-  question_count: number;
-  attempt_count: number;
-}>(
-  `SELECT m.id, m.title, m.slug, m.type, m.status, m.duration_min, m.total_marks,
-          m.published_at, m.updated_at,
-          (SELECT COUNT(*) FROM mock_questions_current q WHERE q.mock_id = m.id) AS question_count,
-          (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id) AS attempt_count
-   FROM mock_tests m
-   WHERE m.deleted_at IS NULL
-   ORDER BY m.id DESC`,
-);
+const [mockRows, mockCounts] = await Promise.all([
+  all<{
+    id: number;
+    title: string;
+    slug: string;
+    type: string;
+    status: string;
+    duration_min: number;
+    total_marks: number;
+    published_at: string | null;
+    updated_at: string | null;
+  }>(
+    `SELECT m.id, m.title, m.slug, m.type, m.status, m.duration_min, m.total_marks,
+            m.published_at, m.updated_at
+     FROM mock_tests m
+     WHERE m.deleted_at IS NULL
+     ORDER BY m.id DESC`,
+  ),
+  getAdminMockCounts(),
+]);
+
+// Correlated COUNT(*) per mock used to re-read every versioned question for
+// every row. The shared map scans both tables once and is cached for a minute.
+const mocks = mockRows.map((mock) => ({
+  ...mock,
+  question_count: mockCounts.questions[String(mock.id)] ?? 0,
+  attempt_count: mockCounts.attempts[String(mock.id)] ?? 0,
+}));
 
 const statusClass: Record<string, string> = {
   draft: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300",

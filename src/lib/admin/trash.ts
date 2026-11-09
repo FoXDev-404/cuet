@@ -64,21 +64,27 @@ function plainText(value: unknown): string {
 }
 
 export async function trashCounts(): Promise<Record<string, number>> {
-  const entries = await Promise.all(
-    trashTables().map(async (table) => {
-      const row = await first<{ count: number }>(
-        `SELECT COUNT(*) AS count FROM "${table.name}" WHERE deleted_at IS NOT NULL`,
-      );
-      return [table.name, row?.count ?? 0] as const;
-    }),
+  const tables = trashTables();
+  if (tables.length === 0) return {};
+  const alias = (name: string) => `t_${name.replace(/[^a-z0-9]/g, "_")}`;
+  // One statement instead of 16 round trips. Each subquery is answered by the
+  // partial `deleted_at IS NOT NULL` index from migration 0024, so it reads
+  // only trashed rows rather than the whole live table.
+  const select = tables
+    .map((table) => `(SELECT COUNT(*) FROM "${table.name}" WHERE deleted_at IS NOT NULL) AS "${alias(table.name)}"`)
+    .join(", ");
+  const row = await first<Record<string, number>>(`SELECT ${select}`);
+  return Object.fromEntries(
+    tables.map((table) => [table.name, Number(row?.[alias(table.name)] ?? 0)]),
   );
-  return Object.fromEntries(entries);
 }
 
 export async function listTrash(options: {
   table?: string;
   limit?: number;
   offset?: number;
+  /** Precomputed trashCounts() result, so the page does not count twice. */
+  counts?: Record<string, number>;
 }): Promise<{ rows: TrashRow[]; total: number }> {
   const limit = Math.min(Math.max(options.limit ?? 25, 1), 100);
   const offset = Math.max(options.offset ?? 0, 0);
@@ -88,10 +94,15 @@ export async function listTrash(options: {
   const collected: TrashRow[] = [];
   let total = 0;
   for (const table of tables) {
-    const countRow = await first<{ count: number }>(
-      `SELECT COUNT(*) AS count FROM "${table.name}" WHERE deleted_at IS NOT NULL`,
-    );
-    total += countRow?.count ?? 0;
+    const count = options.counts?.[table.name];
+    if (count === undefined) {
+      const countRow = await first<{ count: number }>(
+        `SELECT COUNT(*) AS count FROM "${table.name}" WHERE deleted_at IS NOT NULL`,
+      );
+      total += countRow?.count ?? 0;
+    } else {
+      total += count;
+    }
     const labelColumn = LABEL_COLUMN[table.name] ?? table.pk;
     const rows = await all<Record<string, unknown>>(
       `SELECT "${table.pk}" AS pk, "${labelColumn}" AS label, deleted_at
