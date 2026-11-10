@@ -26,6 +26,13 @@ Turso secrets.
 to OFF while D1 enforces foreign keys. The pragma is issued before the first
 query on every request-scoped connection.
 
+`trackDbMetrics` opens one connection per request and closes it in a `finally`
+block. Worker isolates are reused across requests, so a connection left open
+keeps a server-side stream alive until the isolate dies; roughly 80 open streams
+later every database call fails with a 503. Closing is best-effort: a failed
+close never turns a successful response into an error. Requests that never touch
+the database never open a connection.
+
 ## One-time setup
 
 1. Create the database at <https://app.turso.tech> (GitHub login).
@@ -65,7 +72,7 @@ import failed halfway, pass `--reset` to clear the data (the migrated schema and
 npm run db:turso:import -- --file d1-data.sql --reset
 ```
 
-Two import details matter:
+Three import details matter:
 
 - Migration `0020` seeds the same verified `exam_info` rows that production
   contains, so the importer clears `exam_info` before replaying the dump.

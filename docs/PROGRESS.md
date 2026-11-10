@@ -45,6 +45,10 @@ storage with no daily row-read cap.
   because libSQL defaults FK enforcement to OFF.
 - `src/middleware.ts` reports `x-db-rows-read`, `x-db-rows-written` and
   `x-db-queries`; `/api/health` adds `engine: "turso" | "d1" | "none"`.
+- `trackDbMetrics` closes the request-scoped Turso connection in a `finally`
+  block. Workers isolates are reused, and leaked connections surfaced as
+  production 503s after roughly 80 cache-missing requests. A failed close is
+  ignored so it cannot fail an otherwise successful response.
 - One-off tooling: `scripts/turso-{lib,migrate,import,verify}.mjs` plus
   `db:turso:*` npm scripts. The importer drops the published-version insert
   guard for the historical replay and rebuilds every trigger from the migration
@@ -65,7 +69,15 @@ storage with no daily row-read cap.
   `{"db":"ok","engine":"turso","exams":1}` with the new `x-db-*` headers; home,
   mock, practice-paper, exam-info, PYQ, robots and sitemap responses are 200 and
   read through Turso. Sitemap has 286 URLs with no `/admin/` entries.
-- Deployed worker version: `539226b3-0476-4a1e-90fc-cdad5c43edac`.
+- Connection-close fix verified with 150 cache-busting requests to a DB-backed
+  blog page: 150/150 returned 200 (the pre-fix run failed from request ~80).
+- `npm run seo:check` against production: 286/286 sitemap URLs indexable,
+  self-canonical and present, **0 mismatches**. Extra checks: robots.txt 200
+  with the sitemap directive and no public-path disallows; sitemap XML valid,
+  286 unique https apex URLs, no private paths, all lastmod values well-formed;
+  http→https and www→apex 301s; trailing-slash 301s; unknown URLs 404 + noindex.
+- 462/462 Vitest tests (53 files) after the close tests; deployed worker version:
+  `dedcc0e9-f646-40b1-86b8-3de16e8633f6`.
 
 ### Rollback
 

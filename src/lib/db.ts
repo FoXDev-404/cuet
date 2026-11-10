@@ -39,6 +39,7 @@ export interface DbStatement {
 export interface Db {
   prepare(sql: string): DbStatement;
   batch<T = Record<string, unknown>>(statements: DbStatement[]): Promise<DbResult<T>[]>;
+  close(): Promise<void>;
 }
 
 export const dbMetricsStorage = new AsyncLocalStorage<DbMetrics>();
@@ -85,12 +86,26 @@ export function trackDbMetrics<T>(
     rowsWritten: 0,
     queryCount: 0,
   };
-  return dbMetricsStorage.run(metrics, () =>
-    dbSessionStorage.run({}, async () => {
-      const result = await fn();
-      return { result, metrics };
-    }),
-  );
+  return dbMetricsStorage.run(metrics, () => {
+    const session: DbSession = {};
+    return dbSessionStorage.run(session, async () => {
+      try {
+        const result = await fn();
+        return { result, metrics };
+      } finally {
+        // Workers isolates are reused across requests. A Turso connection left
+        // open keeps its server-side stream alive until the isolate dies, and
+        // roughly 80 open streams later every database call starts failing.
+        // Release it as soon as the request no longer needs it; a failed close
+        // must never turn a successful response into an error.
+        try {
+          await session.db?.close();
+        } catch {
+          // Ignore: the connection is gone either way.
+        }
+      }
+    });
+  });
 }
 
 type RawD1Meta =
@@ -194,6 +209,10 @@ class D1Adapter implements Db {
     const results = await this.db.batch<T>(natives);
     return results.map((result) => resultFromD1<T>(result));
   }
+
+  async close(): Promise<void> {
+    // D1 bindings are managed by the platform; nothing to release.
+  }
 }
 
 class TursoStatement implements DbStatement {
@@ -271,6 +290,15 @@ class TursoAdapter implements Db {
     // contract. Without a mode Turso executes each statement in autocommit.
     const results = (await this.connection.batch(payload, "deferred")) as TursoResultSet[];
     return results.map((result) => resultFromTurso<T>(result));
+  }
+
+  async close(): Promise<void> {
+    try {
+      await this.connection.close();
+    } catch {
+      // Closing is best-effort cleanup; the session is unreachable afterwards
+      // and a network error here must not fail the request that just finished.
+    }
   }
 }
 

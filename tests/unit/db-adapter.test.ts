@@ -7,6 +7,7 @@ const { env, connection, connectMock, d1 } = vi.hoisted(() => {
     run: vi.fn(),
     batch: vi.fn(),
     exec: vi.fn(),
+    close: vi.fn(),
   };
   const connectMock = vi.fn(() => connection);
   const d1 = {
@@ -31,6 +32,7 @@ describe("database adapter", () => {
     connection.all.mockResolvedValue([]);
     connection.run.mockResolvedValue({ changes: 0, lastInsertRowid: 0 });
     connection.batch.mockResolvedValue([]);
+    connection.close.mockResolvedValue(undefined);
   });
 
   it("uses Turso when its URL is configured", () => {
@@ -117,6 +119,44 @@ describe("database adapter", () => {
       rowsWritten: 1 + 1,
       queryCount: 3,
     });
+  });
+
+  it("closes the per-request connection when the request finishes", async () => {
+    await trackDbMetrics(async () => {
+      await all("SELECT 1");
+      expect(connection.close).not.toHaveBeenCalled();
+    });
+
+    expect(connection.close).toHaveBeenCalledTimes(1);
+  });
+
+  it("closes the per-request connection when the request throws", async () => {
+    await expect(
+      trackDbMetrics(async () => {
+        await all("SELECT 1");
+        throw new Error("boom");
+      }),
+    ).rejects.toThrow("boom");
+
+    expect(connection.close).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not open a connection for requests that never query", async () => {
+    await trackDbMetrics(async () => "cached");
+
+    expect(connectMock).not.toHaveBeenCalled();
+    expect(connection.close).not.toHaveBeenCalled();
+  });
+
+  it("keeps the response when closing the connection fails", async () => {
+    connection.close.mockRejectedValueOnce(new Error("network"));
+
+    const { result } = await trackDbMetrics(async () => {
+      await all("SELECT 1");
+      return "ok";
+    });
+
+    expect(result).toBe("ok");
   });
 
   it("falls back to D1 when Turso is not configured", async () => {
