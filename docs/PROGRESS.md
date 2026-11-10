@@ -1,6 +1,6 @@
 # Progress — Astro build
 
-Last updated: 2026-11-06. Question sharing Phases 1–6 are complete and live on
+Last updated: 2026-11-10. Question sharing Phases 1–6 are complete and live on
 the production Worker `https://cuet-astro.cuet-platform.workers.dev`. The
 production rollout published original ranked and standalone content, ran the
 authenticated accessibility audit and fixed every issue it found, and cleaned
@@ -1173,3 +1173,66 @@ the 5,322 real questions, not only the empty ranked bank.
   workflow and its Cloudflare secrets.
 - Rights review for the imported papers remains an editorial task; the new
   mocks stay noindex until `rights_status` is cleared.
+
+
+## Phase U — End-to-end production QA (2026-11-10)
+
+### What changed
+
+- Added `docs/QA_TEST_PLAN.md`, a 12-phase QA plan, and completed the run
+  against the local D1 fixture and live production Turso.
+- Local development and Playwright E2E now default to the local D1 binding.
+  Tests can no longer write to production Turso just because `.dev.vars`
+  contains production credentials; `USE_TURSO_LOCAL=1` is the explicit opt-in
+  and `USE_LOCAL_D1=1` covers built previews.
+- Added the local-only `scripts/seed-e2e-mock.mjs` fixture to CI and Playwright
+  so the attempt, API-contract and security specs stay active instead of
+  silently skipping.
+- The build now removes the adapter-copied `.dev.vars` from `dist/` and fails
+  if any sensitive `.dev.vars` value was inlined into another artifact.
+- Performance budgets now measure gzip transfer sizes; the total JS budget was
+  raised to 200 KB to include lazy-loaded KaTeX/rich-text and React islands.
+- Remote D1 quota/auth failures are reported as `UNVERIFIED`, not migration
+  drift. Turso verification also rejects orphan attempts/answers and duplicate
+  public ids, question pointers and mock slugs.
+- KV cache purges now emit the JSON array format expected by
+  `wrangler kv bulk delete`.
+- Removed the stale `/u/test-user` link-check seed; non-public or missing
+  profiles correctly return 404 and public pages do not link to them.
+- CSP now allows the Cloudflare Insights beacon and GA4 collection hosts, with
+  a middleware regression test.
+
+### Evidence
+
+- Static gates: `check:env` pass; `lint:copy` 289 files / 0 violations;
+  `astro check` 0 errors, 0 warnings, 15 hints; build clean; perf 181.7/200 KB
+  gzip JS and 34.4/100 KB gzip CSS.
+- Tests: 465/465 Vitest across 53 files; Playwright 71 passed, 2 skipped and
+  0 failed (the skips need an admin review-queue fixture); accessibility 268
+  axe scans with 0 violations and 0 horizontal overflow.
+- SEO: local 287 sitemap URLs / 290 audited and production 288 / 291, both
+  0 mismatches; link checker 0/474 internal and 0/5 external broken.
+- Turso: 23 migrations, `integrity_check` ok, `foreign_key_check` 0, 20,111
+  published questions, 0 orphan attempts/answers and 0 duplicate public ids,
+  question pointers or mock slugs.
+- Load: 300 requests at concurrency 15 and 600 at concurrency 30 returned
+  100% HTTP 200 with 0 degraded responses; p95 latency 359 ms and 156 ms.
+  A worker tail during the burst showed 17/17 `outcome: ok` with no exceptions.
+- Attempt probe: start 201, 11 autosaves, submit 200, result page/API 200 and
+  8 parallel starts 201. A browser attempt rendered the timer, questions and
+  palette, survived two reloads and finished with 0 page errors.
+- Post-deploy CSP: live pages show no violations; the Cloudflare beacon returns
+  200 and GA4 collect returns 204.
+- Probe attempts 136–145 and their answers were deleted; the max attempt id is
+  back to 93 and only the 77 real attempts remain.
+- `npm run audit:reconciliation` succeeds. CI Quality Gate run 42807575587 and
+  Auto deploy run 42807575422 both succeeded.
+
+### Remaining
+
+- The remote D1 migration check stays `UNVERIFIED` on the free-tier row-read
+  limit; production Turso is unaffected.
+- Rotate the platform API and database tokens that were shared outside the
+  secret store.
+- The two admin review-queue E2E specs stay skipped until a pending-paper
+  fixture exists.
