@@ -73,9 +73,9 @@ function purgeMockVersionKVCache() {
       .map((entry) => entry.name)
       .filter(Boolean);
     if (keys.length === 0) return;
-    const keyFile = resolve(process.cwd(), ".wrangler/mock-version-cache-keys.txt");
-    writeFileSync(keyFile, `${keys.join("\n")}\n`, "utf8");
-    execSync(`npx wrangler kv bulk delete "${keyFile}" --binding MEDIA_KV --local`, {
+    const keyFile = resolve(process.cwd(), ".wrangler/mock-version-cache-keys.json");
+    writeFileSync(keyFile, JSON.stringify(keys), "utf8");
+    execSync(`npx wrangler kv bulk delete "${keyFile}" --binding MEDIA_KV --local --force`, {
       cwd: process.cwd(),
       stdio: "ignore",
       timeout: 120_000,

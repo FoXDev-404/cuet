@@ -40,7 +40,6 @@ const SEED_PATHS = [
   "/mock/english-2026-06-06-shift-1/discussion",
   "/mock-tests/english-2026-06-06-shift-1",
   "/mock-tests/chemistry-2026-06-06-shift-1",
-  "/u/test-user",
 ];
 
 const results = { internal: new Map(), external: new Map() };

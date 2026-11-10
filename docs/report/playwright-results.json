@@ -101,6 +101,9 @@
     "workers": 1,
     "webServer": {
       "command": "npm run dev",
+      "env": {
+        "USE_LOCAL_D1": "1"
+      },
       "url": "http://localhost:4321",
       "reuseExistingServer": true,
       "timeout": 120000
@@ -138,12 +141,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 36619,
+                  "duration": 16358,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:25:26.573Z",
+                  "startTime": "2026-11-10T10:56:02.326Z",
                   "annotations": [
                     {
                       "type": "slow",
@@ -181,12 +184,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11489,
+                  "duration": 10608,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:26:03.434Z",
+                  "startTime": "2026-11-10T10:56:18.806Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -224,12 +227,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10696,
+                  "duration": 10465,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:26:14.935Z",
+                  "startTime": "2026-11-10T10:56:29.434Z",
                   "annotations": [
                     {
                       "type": "slow",
@@ -276,12 +279,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10538,
+                  "duration": 10156,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:26:25.643Z",
+                  "startTime": "2026-11-10T10:56:39.908Z",
                   "annotations": [
                     {
                       "type": "slow",
@@ -319,12 +322,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12226,
+                  "duration": 11833,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:26:36.194Z",
+                  "startTime": "2026-11-10T10:56:50.076Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -353,12 +356,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9815,
+                  "duration": 9238,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:26:48.433Z",
+                  "startTime": "2026-11-10T10:57:01.920Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -387,12 +390,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9825,
+                  "duration": 9257,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:26:58.262Z",
+                  "startTime": "2026-11-10T10:57:11.167Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -431,12 +434,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "skipped",
-                  "duration": 11926,
+                  "duration": 11037,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:27:08.098Z",
+                  "startTime": "2026-11-10T10:57:20.439Z",
                   "annotations": [
                     {
                       "type": "skip",
@@ -485,12 +488,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "skipped",
-                  "duration": 10997,
+                  "duration": 10390,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:27:20.038Z",
+                  "startTime": "2026-11-10T10:57:31.489Z",
                   "annotations": [
                     {
                       "type": "skip",
@@ -529,12 +532,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 15724,
+                  "duration": 14639,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:27:31.046Z",
+                  "startTime": "2026-11-10T10:57:41.893Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -554,46 +557,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\admin-flow.spec.ts",
-                    "line": 564,
-                    "column": 10
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 9822,
+                  "status": "passed",
+                  "duration": 13053,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:27:46.786Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\admin-flow.spec.ts",
-                        "line": 564,
-                        "column": 10
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T10:57:56.545Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "4fe7fafde167a7a23674-a08c056a9856a25e7d4e",
@@ -632,12 +615,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 158,
+                      "duration": 134,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:27:56.639Z",
+                      "startTime": "2026-11-10T10:58:09.644Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -657,46 +640,26 @@
               "tests": [
                 {
                   "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\api-contracts.spec.ts",
-                        "line": 54,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
                   "results": [
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 44,
+                      "status": "passed",
+                      "duration": 84,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:27:56.805Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "No published mock test is available.",
-                          "location": {
-                            "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\api-contracts.spec.ts",
-                            "line": 54,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-11-10T10:58:09.784Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "aa3677a73aad62004270-7bc09d63aa60a037e4de",
@@ -711,46 +674,26 @@
               "tests": [
                 {
                   "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\api-contracts.spec.ts",
-                        "line": 80,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
                   "results": [
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 42,
+                      "status": "passed",
+                      "duration": 82,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:27:56.855Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "No published mock test is available.",
-                          "location": {
-                            "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\api-contracts.spec.ts",
-                            "line": 80,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-11-10T10:58:09.877Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "aa3677a73aad62004270-025c451531db3a56dab3",
@@ -774,12 +717,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 56,
+                      "duration": 49,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:27:56.908Z",
+                      "startTime": "2026-11-10T10:58:09.968Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -816,12 +759,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 37,
+                      "duration": 34,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:27:56.975Z",
+                      "startTime": "2026-11-10T10:58:10.023Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -850,12 +793,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 8109,
+                      "duration": 7698,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:27:57.021Z",
+                      "startTime": "2026-11-10T10:58:10.064Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -884,12 +827,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 112,
+                      "duration": 109,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:28:05.136Z",
+                      "startTime": "2026-11-10T10:58:17.769Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -918,12 +861,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 181,
+                      "duration": 166,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:28:05.254Z",
+                      "startTime": "2026-11-10T10:58:17.885Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -943,46 +886,26 @@
               "tests": [
                 {
                   "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\api-contracts.spec.ts",
-                        "line": 180,
-                        "column": 10
-                      }
-                    }
-                  ],
-                  "expectedStatus": "skipped",
+                  "annotations": [],
+                  "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
                   "results": [
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "skipped",
-                      "duration": 41,
+                      "status": "passed",
+                      "duration": 294,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:28:05.443Z",
-                      "annotations": [
-                        {
-                          "type": "skip",
-                          "description": "No published mock test is available.",
-                          "location": {
-                            "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\api-contracts.spec.ts",
-                            "line": 180,
-                            "column": 10
-                          }
-                        }
-                      ],
+                      "startTime": "2026-11-10T10:58:18.058Z",
+                      "annotations": [],
                       "attachments": []
                     }
                   ],
-                  "status": "skipped"
+                  "status": "expected"
                 }
               ],
               "id": "aa3677a73aad62004270-c3f62e7925a81bd7b33a",
@@ -1006,12 +929,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 8224,
+                      "duration": 8669,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:28:05.497Z",
+                      "startTime": "2026-11-10T10:58:18.359Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1050,12 +973,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11140,
+                  "duration": 14658,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:13.749Z",
+                  "startTime": "2026-11-10T10:58:27.054Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1084,12 +1007,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1220,
+                  "duration": 1554,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:24.899Z",
+                  "startTime": "2026-11-10T10:58:41.723Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1118,12 +1041,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2387,
+                  "duration": 2718,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:26.128Z",
+                  "startTime": "2026-11-10T10:58:43.290Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1143,46 +1066,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\attempt-flow.spec.ts",
-                    "line": 186,
-                    "column": 10
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 94,
+                  "status": "passed",
+                  "duration": 2353,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:28.527Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\attempt-flow.spec.ts",
-                        "line": 186,
-                        "column": 10
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T10:58:46.021Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "2b33074105b4fa2d8a3d-ad3f88ea8651154c8949",
@@ -1214,12 +1117,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 801,
+                  "duration": 1814,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:28.649Z",
+                  "startTime": "2026-11-10T10:58:48.404Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1256,12 +1159,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 488,
+                  "duration": 805,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:29.481Z",
+                  "startTime": "2026-11-10T10:58:50.264Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1290,12 +1193,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 282,
+                  "duration": 384,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:29.977Z",
+                  "startTime": "2026-11-10T10:58:51.090Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1324,12 +1227,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 108,
+                  "duration": 155,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:30.269Z",
+                  "startTime": "2026-11-10T10:58:51.491Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1358,12 +1261,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 304,
+                  "duration": 496,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:30.386Z",
+                  "startTime": "2026-11-10T10:58:51.662Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1392,12 +1295,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2734,
+                  "duration": 3079,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:30.701Z",
+                  "startTime": "2026-11-10T10:58:52.176Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1426,12 +1329,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7028,
+                  "duration": 7209,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:33.447Z",
+                  "startTime": "2026-11-10T10:58:55.268Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1460,12 +1363,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 908,
+                  "duration": 953,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:40.484Z",
+                  "startTime": "2026-11-10T10:59:02.494Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1494,12 +1397,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 295,
+                  "duration": 405,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:41.404Z",
+                  "startTime": "2026-11-10T10:59:03.458Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1528,12 +1431,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 349,
+                  "duration": 411,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:41.710Z",
+                  "startTime": "2026-11-10T10:59:03.877Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1562,12 +1465,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 432,
+                  "duration": 427,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:42.067Z",
+                  "startTime": "2026-11-10T10:59:04.302Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1604,12 +1507,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 15438,
+                  "duration": 16561,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:44.211Z",
+                  "startTime": "2026-11-10T10:59:06.615Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1638,12 +1541,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 17227,
+                  "duration": 16909,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:28:59.660Z",
+                  "startTime": "2026-11-10T10:59:23.188Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1672,12 +1575,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12345,
+                  "duration": 12483,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:29:16.899Z",
+                  "startTime": "2026-11-10T10:59:40.108Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1715,12 +1618,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 23992,
+                  "duration": 24348,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:29:29.254Z",
+                  "startTime": "2026-11-10T10:59:52.604Z",
                   "annotations": [
                     {
                       "type": "slow",
@@ -1758,12 +1661,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 13485,
+                  "duration": 12587,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:29:53.259Z",
+                  "startTime": "2026-11-10T11:00:16.967Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1792,12 +1695,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 19160,
+                  "duration": 16067,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:30:06.759Z",
+                  "startTime": "2026-11-10T11:00:29.568Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1826,12 +1729,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5961,
+                  "duration": 5720,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:30:25.935Z",
+                  "startTime": "2026-11-10T11:00:45.648Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1860,12 +1763,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6842,
+                  "duration": 6135,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:30:31.910Z",
+                  "startTime": "2026-11-10T11:00:51.377Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1894,12 +1797,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6008,
+                  "duration": 6463,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:30:38.762Z",
+                  "startTime": "2026-11-10T11:00:57.524Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1928,12 +1831,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5891,
+                  "duration": 6020,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:30:44.780Z",
+                  "startTime": "2026-11-10T11:01:03.997Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1962,12 +1865,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5396,
+                  "duration": 5104,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:30:50.686Z",
+                  "startTime": "2026-11-10T11:01:10.031Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1996,12 +1899,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5753,
+                  "duration": 5427,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:30:56.096Z",
+                  "startTime": "2026-11-10T11:01:15.153Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2030,12 +1933,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10908,
+                  "duration": 10202,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:31:01.861Z",
+                  "startTime": "2026-11-10T11:01:20.597Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2064,12 +1967,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 24697,
+                  "duration": 22003,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:31:12.780Z",
+                  "startTime": "2026-11-10T11:01:30.808Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2098,12 +2001,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 21961,
+                  "duration": 19242,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:31:37.491Z",
+                  "startTime": "2026-11-10T11:01:52.820Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2132,12 +2035,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 333,
+                  "duration": 224,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:31:59.480Z",
+                  "startTime": "2026-11-10T11:02:12.075Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2166,12 +2069,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 25330,
+                  "duration": 6670,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:31:59.833Z",
+                  "startTime": "2026-11-10T11:02:12.311Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2209,12 +2112,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11899,
+                  "duration": 7029,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:25.188Z",
+                  "startTime": "2026-11-10T11:02:18.991Z",
                   "annotations": [
                     {
                       "type": "slow",
@@ -2251,46 +2154,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 189,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 233,
+                  "status": "passed",
+                  "duration": 52737,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:37.180Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 189,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:02:26.056Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-035403079e30883e2fdc",
@@ -2305,46 +2188,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 247,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 184,
+                  "status": "passed",
+                  "duration": 27916,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:37.449Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 247,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:03:18.803Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-003395e0745aedf955a2",
@@ -2359,46 +2222,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 321,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 192,
+                  "status": "passed",
+                  "duration": 28273,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:37.665Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 321,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:03:46.735Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-be027f1127521aff8220",
@@ -2413,46 +2256,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 391,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 165,
+                  "status": "passed",
+                  "duration": 29879,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:37.920Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 391,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:04:15.023Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-46de24485c52cc6ed55b",
@@ -2467,46 +2290,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 454,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 176,
+                  "status": "passed",
+                  "duration": 29627,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:38.121Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 454,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:04:44.914Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-1e15b237079ce3d3c5db",
@@ -2521,46 +2324,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 480,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 192,
+                  "status": "passed",
+                  "duration": 25973,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:38.334Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 480,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:05:14.550Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-78cf31578c71a812a6cb",
@@ -2575,46 +2358,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 502,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 143,
+                  "status": "passed",
+                  "duration": 30674,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:38.556Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 502,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:05:40.536Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-d4cf2fc6af8671fdfc49",
@@ -2629,46 +2392,26 @@
           "tests": [
             {
               "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip",
-                  "description": "No published mock test is available in this environment.",
-                  "location": {
-                    "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                    "line": 531,
-                    "column": 8
-                  }
-                }
-              ],
-              "expectedStatus": "skipped",
+              "annotations": [],
+              "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 278,
+                  "status": "passed",
+                  "duration": 29882,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:38.718Z",
-                  "annotations": [
-                    {
-                      "type": "skip",
-                      "description": "No published mock test is available in this environment.",
-                      "location": {
-                        "file": "E:\\AA Projects\\New Full\\CUET Mock\\tests\\e2e\\security.spec.ts",
-                        "line": 531,
-                        "column": 8
-                      }
-                    }
-                  ],
+                  "startTime": "2026-11-10T11:06:11.221Z",
+                  "annotations": [],
                   "attachments": []
                 }
               ],
-              "status": "skipped"
+              "status": "expected"
             }
           ],
           "id": "a7e9410bcc1ef00e9656-eda74c819142e0f20bf9",
@@ -2692,12 +2435,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 515,
+                  "duration": 240,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:39.020Z",
+                  "startTime": "2026-11-10T11:06:41.113Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2726,12 +2469,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 705,
+                  "duration": 292,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:39.554Z",
+                  "startTime": "2026-11-10T11:06:41.364Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2768,12 +2511,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 78552,
+                  "duration": 78407,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:32:40.299Z",
+                  "startTime": "2026-11-10T11:06:41.685Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2810,12 +2553,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 501,
+                  "duration": 325,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:34:02.588Z",
+                  "startTime": "2026-11-10T11:08:02.620Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2844,12 +2587,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 331,
+                  "duration": 227,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-08T19:34:03.102Z",
+                  "startTime": "2026-11-10T11:08:02.960Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -2886,12 +2629,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 400,
+                      "duration": 311,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:33:58.914Z",
+                      "startTime": "2026-11-10T11:08:00.113Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2920,12 +2663,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 348,
+                      "duration": 289,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:33:59.331Z",
+                      "startTime": "2026-11-10T11:08:00.433Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2962,12 +2705,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 449,
+                      "duration": 284,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:33:59.700Z",
+                      "startTime": "2026-11-10T11:08:00.733Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -2996,12 +2739,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 394,
+                      "duration": 296,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:34:00.176Z",
+                      "startTime": "2026-11-10T11:08:01.028Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -3030,12 +2773,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1101,
+                      "duration": 602,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:34:00.595Z",
+                      "startTime": "2026-11-10T11:08:01.335Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -3064,12 +2807,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 853,
+                      "duration": 663,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-08T19:34:01.716Z",
+                      "startTime": "2026-11-10T11:08:01.946Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -3089,10 +2832,10 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-08T19:25:25.726Z",
-    "duration": 517911.297,
-    "expected": 58,
-    "skipped": 15,
+    "startTime": "2026-11-10T10:55:49.927Z",
+    "duration": 733618.968,
+    "expected": 71,
+    "skipped": 2,
     "unexpected": 0,
     "flaky": 0
   }

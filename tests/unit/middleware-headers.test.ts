@@ -33,6 +33,16 @@ describe("middleware security headers", () => {
     expect(source).toContain("if (cache && secured.status === 200 && !degraded)");
   });
 
+  it("allows the configured analytics endpoints", () => {
+    // Cloudflare injects its beacon on the deployed host and GA4 posts events to
+    // analytics.google.com / www.google.com. A missing allowlist entry is silent
+    // in the UI but drops all analytics, so pin both script and connect hosts.
+    expect(source).toContain("https://static.cloudflareinsights.com");
+    expect(source).toContain("https://cloudflareinsights.com");
+    expect(source).toContain("https://analytics.google.com");
+    expect(source).toContain("https://*.google-analytics.com");
+  });
+
   it("routes host and trailing-slash redirects through the header helper", () => {
     expect(source).toContain(
       "applySecurityHeaders(Response.redirect(canonicalTarget.toString(), 301), requestedPath)",

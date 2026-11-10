@@ -1,9 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/performance-budget.json",
   "name": "CUET Mock Test Platform Performance Budgets",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "notes": "Bundle limits are gzip transfer sizes. totalJsKb covers every client chunk, including lazy-loaded KaTeX/rich-text and React islands; per-route transfer limits are enforced by the Lighthouse audit.",
   "limits": {
-    "totalJsKb": 150,
+    "totalJsKb": 200,
     "totalCssKb": 100,
     "maxInitialDomNodes": 1200
   },

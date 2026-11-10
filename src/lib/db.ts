@@ -261,6 +261,17 @@ class TursoAdapter implements Db {
 type TursoConfig = { url: string; token: string };
 
 function getTursoConfig(): TursoConfig | null {
+  const runtimeEnv = env as unknown as Record<string, unknown>;
+  // Local development and E2E must never write to the production Turso
+  // database just because `.dev.vars` contains production credentials. Astro
+  // dev therefore defaults to the local D1 binding. Set USE_TURSO_LOCAL=1 when
+  // a developer deliberately wants to test against Turso, and USE_LOCAL_D1=1
+  // for built previews (wrangler dev) that need the same guarantee.
+  const isLocalDev = import.meta.env.DEV && import.meta.env.MODE !== "test";
+  const forceLocalD1 = runtimeEnv.USE_LOCAL_D1 === "1";
+  const forceLocalTurso = runtimeEnv.USE_TURSO_LOCAL === "1";
+  if (forceLocalD1 || (isLocalDev && !forceLocalTurso)) return null;
+
   const url = typeof env.TURSO_DATABASE_URL === "string" ? env.TURSO_DATABASE_URL.trim() : "";
   if (!url) return null;
   const token = typeof env.TURSO_AUTH_TOKEN === "string" ? env.TURSO_AUTH_TOKEN.trim() : "";

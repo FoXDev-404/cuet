@@ -72,6 +72,72 @@ async function main() {
        (SELECT MAX(id) FROM attempts) AS attempt_id`,
   );
 
+  const dataChecks = {
+    orphanAttempts: Number(
+      (
+        await queryRows(
+          client,
+          `SELECT COUNT(*) AS n FROM attempts a
+           LEFT JOIN mock_tests m ON m.id = a.mock_id
+           LEFT JOIN mock_test_versions v ON v.id = a.version_id
+           WHERE m.id IS NULL OR v.id IS NULL`,
+        )
+      )[0]?.n ?? 0,
+    ),
+    orphanAnswers: Number(
+      (
+        await queryRows(
+          client,
+          `SELECT COUNT(*) AS n FROM attempt_answers aa
+           LEFT JOIN attempts a ON a.id = aa.attempt_id
+           LEFT JOIN questions q ON q.id = aa.question_id
+           WHERE a.id IS NULL OR q.id IS NULL`,
+        )
+      )[0]?.n ?? 0,
+    ),
+    duplicatePublicIds: Number(
+      (
+        await queryRows(
+          client,
+          `SELECT COUNT(*) AS n FROM (
+             SELECT public_id FROM question_public_ids
+             GROUP BY public_id HAVING COUNT(*) > 1
+           )`,
+        )
+      )[0]?.n ?? 0,
+    ),
+    duplicateQuestionPointers: Number(
+      (
+        await queryRows(
+          client,
+          `SELECT COUNT(*) AS n FROM (
+             SELECT current_question_id FROM question_public_ids
+             GROUP BY current_question_id HAVING COUNT(*) > 1
+           )`,
+        )
+      )[0]?.n ?? 0,
+    ),
+    duplicateMockSlugs: Number(
+      (
+        await queryRows(
+          client,
+          `SELECT COUNT(*) AS n FROM (
+             SELECT slug FROM mock_tests GROUP BY slug HAVING COUNT(*) > 1
+           )`,
+        )
+      )[0]?.n ?? 0,
+    ),
+  };
+
+  const failedChecks = Object.entries(dataChecks).filter(([, value]) => value !== 0);
+  if (failedChecks.length > 0) {
+    throw new Error(
+      `Data integrity checks failed: ${failedChecks
+        .map(([name, value]) => `${name}=${value}`)
+        .join(", ")}`,
+    );
+  }
+
   console.log(
     JSON.stringify(
       {
@@ -80,6 +146,7 @@ async function main() {
         foreignKeys: "ok",
         publishedQuestions: Number(published[0]?.n ?? 0),
         maxIds: maxIds[0],
+        dataChecks,
         counts,
       },
       null,

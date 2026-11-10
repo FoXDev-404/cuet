@@ -31,6 +31,8 @@ export default defineConfig({
     ? undefined
     : {
         command: webServerCommand,
+        // Never let local E2E write to production Turso through .dev.vars.
+        env: { USE_LOCAL_D1: "1" },
         url: baseURL,
         reuseExistingServer: true,
         timeout: 120_000,

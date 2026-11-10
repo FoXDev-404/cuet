@@ -344,11 +344,13 @@ const cacheKeys = [
   "cache:practice:subjects:v1",
   ...importedPapers.map((paper) => `cache:practice:paper:v2:${paper.slug}`),
 ];
-const cacheKeyFile = join(OUT_DIR, "practice-cache-keys.txt");
-writeFileSync(cacheKeyFile, `${cacheKeys.join("\n")}\n`, "utf8");
+// `wrangler kv bulk delete` expects a JSON array of key strings, not a
+// newline-separated list (which fails with InvalidSymbol on every key).
+const cacheKeyFile = join(OUT_DIR, "practice-cache-keys.json");
+writeFileSync(cacheKeyFile, JSON.stringify(cacheKeys), "utf8");
 console.log(`\nPurging ${cacheKeys.length} practice cache key(s)...`);
 const purge = spawnSync(
-  `npx wrangler kv bulk delete "${cacheKeyFile}" --binding MEDIA_KV ${target}${ENV_FLAG}`,
+  `npx wrangler kv bulk delete "${cacheKeyFile}" --binding MEDIA_KV --force ${target}${ENV_FLAG}`,
   { cwd: ROOT, stdio: "inherit", shell: true },
 );
 if (purge.error) throw purge.error;

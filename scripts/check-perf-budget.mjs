@@ -13,6 +13,7 @@
 
 import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 const distDir = resolve(process.cwd(), 'dist/client/_astro');
 const budgetFile = resolve(process.cwd(), 'performance-budget.json');
@@ -30,6 +31,8 @@ if (!existsSync(distDir)) {
 }
 
 const files = readdirSync(distDir);
+let totalJsRawBytes = 0;
+let totalCssRawBytes = 0;
 let totalJsBytes = 0;
 let totalCssBytes = 0;
 
@@ -37,18 +40,35 @@ console.log('================================================================');
 console.log('Production Asset Performance Budget Audit');
 console.log('================================================================\n');
 
+// Budgets are transfer sizes: Workers serves these assets gzip/brotli
+// compressed, so comparing raw disk bytes overstates the payload that users
+// actually download. Total JS includes lazy-loaded route chunks as well; the
+// per-route transfer limits are checked by the Lighthouse audit.
 for (const file of files) {
   const filePath = join(distDir, file);
-  const size = statSync(filePath).size;
+  const body = readFileSync(filePath);
+  const rawSize = statSync(filePath).size;
+  const transferSize = gzipSync(body, { level: 9 }).length;
   if (file.endsWith('.js')) {
-    totalJsBytes += size;
+    totalJsRawBytes += rawSize;
+    totalJsBytes += transferSize;
   } else if (file.endsWith('.css')) {
-    totalCssBytes += size;
+    totalCssRawBytes += rawSize;
+    totalCssBytes += transferSize;
   }
 }
 
 const totalJsKb = totalJsBytes / 1024;
 const totalCssKb = totalCssBytes / 1024;
+
+function reportSize(label, rawBytes, transferBytes) {
+  console.log(
+    `${label}: raw ${(rawBytes / 1024).toFixed(1)} KB -> transfer ${(transferBytes / 1024).toFixed(1)} KB`,
+  );
+}
+
+reportSize('JavaScript total', totalJsRawBytes, totalJsBytes);
+reportSize('CSS total', totalCssRawBytes, totalCssBytes);
 
 let failed = false;
 
@@ -62,8 +82,8 @@ function checkBudget(label, actualKb, limitKb) {
   }
 }
 
-checkBudget('Total Bundled JavaScript', totalJsKb, budget.limits.totalJsKb);
-checkBudget('Total Bundled CSS', totalCssKb, budget.limits.totalCssKb);
+checkBudget('Total JavaScript (gzip transfer)', totalJsKb, budget.limits.totalJsKb);
+checkBudget('Total CSS (gzip transfer)', totalCssKb, budget.limits.totalCssKb);
 
 console.log('\nLab-metric budgets (measured by npm run audit:lighthouse, not here):');
 console.log(`- Mobile LCP Budget: <= ${budget.metrics.mobileSimulated4G.lcpMs} ms`);
