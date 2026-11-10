@@ -26,6 +26,13 @@ describe("middleware security headers", () => {
     expect(source).toContain("return secured;");
   });
 
+  it("never caches a response that rendered a database fallback", () => {
+    expect(source).toContain('response.headers.get(DB_DEGRADED_HEADER) === "1"');
+    expect(source).toContain('secured.headers.get(DB_DEGRADED_HEADER) === "1"');
+    expect(source).toContain('secured.headers.set("cache-control", "no-store")');
+    expect(source).toContain("if (cache && secured.status === 200 && !degraded)");
+  });
+
   it("routes host and trailing-slash redirects through the header helper", () => {
     expect(source).toContain(
       "applySecurityHeaders(Response.redirect(canonicalTarget.toString(), 301), requestedPath)",

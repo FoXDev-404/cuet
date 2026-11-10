@@ -1,10 +1,16 @@
 /**
- * Helpers for pages that cannot render without D1.
+ * Helpers for pages that cannot render without the live database.
  *
- * When the daily row-read quota is exhausted (or the database is otherwise
- * unavailable) a page that genuinely needs live data should answer with a
- * short 503 instead of an unhandled 500 stack trace.
+ * When the database is unavailable, a page that genuinely needs live data
+ * should answer with a short 503 instead of an unhandled 500 stack trace.
  */
+
+/**
+ * Set by pages that render a bundled fallback instead of live data. Middleware
+ * must never store such a response in the edge cache: a transient database
+ * failure would otherwise be frozen for every visitor until the TTL expires.
+ */
+export const DB_DEGRADED_HEADER = "x-db-degraded";
 
 export const DB_UNAVAILABLE_MESSAGE =
   "This page needs live data and the practice database is temporarily unavailable. Please retry in a minute.";
@@ -39,7 +45,7 @@ export function apiUnavailableResponse(status = 503): Response {
 }
 
 /**
- * Runs a database-backed loader and returns `fallback` when D1 fails.
+ * Runs a database-backed loader and returns `fallback` when the database fails.
  * The error is logged so the worker tail still shows the root cause.
  */
 export async function orUnavailable<T>(

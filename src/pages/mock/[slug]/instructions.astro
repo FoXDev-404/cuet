@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { first } from "../../../lib/db";
-import { dbUnavailableResponse } from "../../../lib/db-resilient";
+import { DB_DEGRADED_HEADER, dbUnavailableResponse } from "../../../lib/db-resilient";
 import { calculateMockDuration } from "../../../lib/exam-timing";
 import { getLocalMockFallback } from "../../../lib/local-mock-fallback";
 import { getGuestToken } from "../../../lib/auth/session";
@@ -60,6 +60,9 @@ try {
   mock = getLocalMockFallback(slug);
   if (!mock) return dbUnavailableResponse();
   degraded = true;
+  // A bundled fallback is correct while the database is down, but it must not
+  // enter the edge cache: the notice would then outlive the outage.
+  Astro.response.headers.set(DB_DEGRADED_HEADER, "1");
 }
 if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
@@ -125,11 +128,10 @@ const lines = (mock.instructions ?? "")
 
     {degraded ? (
       <div class="mt-6 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300">
-        <p class="font-bold">Starting attempts is temporarily unavailable.</p>
+        <p class="font-bold">Starting a new attempt is temporarily unavailable.</p>
         <p class="mt-1">
-          The site has hit a temporary database limit, so new attempts cannot be created right now —
-          limits reset automatically every night (5:30 AM IST). The paper details above stay browsable;
-          please try again a little later.
+          We could not reach the practice database just now. The paper details above are
+          still available — please refresh this page or try again in a minute.
         </p>
       </div>
     ) : (

@@ -1,69 +1,87 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { env, connection, connectMock, d1 } = vi.hoisted(() => {
+const { env, client, createClientMock, d1 } = vi.hoisted(() => {
   const env: Record<string, unknown> = {};
-  const connection = {
-    all: vi.fn(),
-    run: vi.fn(),
+  const client = {
+    execute: vi.fn(),
     batch: vi.fn(),
-    exec: vi.fn(),
     close: vi.fn(),
   };
-  const connectMock = vi.fn(() => connection);
+  const createClientMock = vi.fn(() => client);
   const d1 = {
     prepare: vi.fn(),
     batch: vi.fn(),
   };
-  return { env, connection, connectMock, d1 };
+  return { env, client, createClientMock, d1 };
 });
 
 vi.mock("cloudflare:workers", () => ({ env }));
-vi.mock("@tursodatabase/serverless", () => ({ connect: connectMock }));
+vi.mock("@libsql/client", () => ({ createClient: createClientMock }));
 
-import { all, batch, getDatabaseEngine, getDb, run, trackDbMetrics } from "../../src/lib/db";
+import { all, batch, getDatabaseEngine, getDb, resetDbConnections, run, trackDbMetrics } from "../../src/lib/db";
+
+function resultSet(
+  columns: string[],
+  rows: unknown[][],
+  extra: { rowsAffected?: number; lastInsertRowid?: number | bigint } = {},
+) {
+  return {
+    columns,
+    columnTypes: columns.map(() => "TEXT"),
+    rows,
+    rowsAffected: extra.rowsAffected ?? 0,
+    lastInsertRowid: extra.lastInsertRowid ?? 0,
+  };
+}
 
 describe("database adapter", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    resetDbConnections();
     env.TURSO_DATABASE_URL = "libsql://cuet-test.turso.io";
     env.TURSO_AUTH_TOKEN = "test-token";
     env.DB = undefined;
-    connection.exec.mockResolvedValue({});
-    connection.all.mockResolvedValue([]);
-    connection.run.mockResolvedValue({ changes: 0, lastInsertRowid: 0 });
-    connection.batch.mockResolvedValue([]);
-    connection.close.mockResolvedValue(undefined);
+    client.execute.mockResolvedValue(resultSet([], []));
+    client.batch.mockResolvedValue([]);
+    client.close.mockResolvedValue(undefined);
   });
 
   it("uses Turso when its URL is configured", () => {
     expect(getDatabaseEngine()).toBe("turso");
     getDb();
-    expect(connectMock).toHaveBeenCalledWith({
+    expect(createClientMock).toHaveBeenCalledWith({
       url: "libsql://cuet-test.turso.io",
       authToken: "test-token",
+      concurrency: 1000,
     });
   });
 
-  it("enables foreign keys once per connection before querying", async () => {
-    connection.all.mockResolvedValue([{ id: 1 }]);
-
-    await trackDbMetrics(async () => {
-      expect(await all<{ id: number }>("SELECT * FROM questions WHERE id = ?", 1)).toEqual([
-        { id: 1 },
-      ]);
-      await all("SELECT * FROM questions WHERE id = ?", 2);
-    });
-
-    expect(connection.exec).toHaveBeenCalledTimes(1);
-    expect(connection.exec).toHaveBeenCalledWith("PRAGMA foreign_keys = ON");
-    expect(connection.all).toHaveBeenLastCalledWith(
-      "SELECT * FROM questions WHERE id = ?",
-      2,
+  it("maps positional Turso rows to objects keyed by column name", async () => {
+    client.execute.mockResolvedValue(
+      resultSet(["id", "title"], [[1, "Grammar"], [2, "Maths"]]),
     );
+
+    await expect(all("SELECT id, title FROM mock_tests")).resolves.toEqual([
+      { id: 1, title: "Grammar" },
+      { id: 2, title: "Maths" },
+    ]);
+  });
+
+  it("sends bound parameters to the stateless HTTP client", async () => {
+    client.execute.mockResolvedValue(resultSet(["id"], [[2]]));
+
+    await all("SELECT id FROM mock_tests WHERE id = ?", 2);
+
+    expect(client.execute).toHaveBeenCalledWith({
+      sql: "SELECT id FROM mock_tests WHERE id = ?",
+      args: [2],
+    });
   });
 
   it("maps insert metadata to D1 field names", async () => {
-    connection.run.mockResolvedValue({ changes: 2, lastInsertRowid: 9 });
+    client.execute.mockResolvedValue(
+      resultSet([], [], { rowsAffected: 2, lastInsertRowid: 9n }),
+    );
 
     const result = await run("UPDATE questions SET status = ? WHERE id = ?", "published", 9);
 
@@ -76,9 +94,9 @@ describe("database adapter", () => {
   });
 
   it("runs batches atomically and preserves per-statement results", async () => {
-    connection.batch.mockResolvedValue([
-      { rows: [{ count: 1 }], rowsAffected: 0, rowsRead: 5, rowsWritten: 0 },
-      { rows: [], rowsAffected: 2, rowsRead: 0, rowsWritten: 2, lastInsertRowid: 7 },
+    client.batch.mockResolvedValue([
+      resultSet(["count"], [[1]]),
+      resultSet([], [], { rowsAffected: 2, lastInsertRowid: 7n }),
     ]);
     const db = getDb();
 
@@ -87,7 +105,7 @@ describe("database adapter", () => {
       db.prepare("INSERT INTO questions (text) VALUES (?)").bind("Question"),
     ]);
 
-    expect(connection.batch).toHaveBeenCalledWith(
+    expect(client.batch).toHaveBeenCalledWith(
       [
         { sql: "SELECT COUNT(*) AS count FROM questions", args: [] },
         { sql: "INSERT INTO questions (text) VALUES (?)", args: ["Question"] },
@@ -95,16 +113,15 @@ describe("database adapter", () => {
       "deferred",
     );
     expect(results[0].results).toEqual([{ count: 1 }]);
-    expect(results[0].meta.rows_read).toBe(5);
+    expect(results[0].meta.rows_read).toBe(1);
     expect(results[1].meta).toMatchObject({ changes: 2, last_row_id: 7, rows_written: 2 });
   });
 
   it("records request metrics across single queries and batches", async () => {
-    connection.all.mockResolvedValue([{ id: 1 }, { id: 2 }]);
-    connection.run.mockResolvedValue({ changes: 1, lastInsertRowid: 3 });
-    connection.batch.mockResolvedValue([
-      { rows: [], rowsAffected: 1, rowsRead: 4, rowsWritten: 1, lastInsertRowid: 4 },
-    ]);
+    client.execute
+      .mockResolvedValueOnce(resultSet(["id"], [[1], [2]]))
+      .mockResolvedValueOnce(resultSet([], [], { rowsAffected: 1, lastInsertRowid: 3n }));
+    client.batch.mockResolvedValue([resultSet([], [], { rowsAffected: 1 })]);
 
     const { metrics } = await trackDbMetrics(async () => {
       await all("SELECT * FROM questions");
@@ -115,48 +132,54 @@ describe("database adapter", () => {
 
     expect(metrics).toMatchObject({
       endpoint: "/test",
-      rowsRead: 2 + 4,
+      rowsRead: 2,
       rowsWritten: 1 + 1,
       queryCount: 3,
     });
   });
 
-  it("closes the per-request connection when the request finishes", async () => {
+  it("reuses one stateless client across requests in the same isolate", async () => {
     await trackDbMetrics(async () => {
       await all("SELECT 1");
-      expect(connection.close).not.toHaveBeenCalled();
+    });
+    await trackDbMetrics(async () => {
+      await all("SELECT 2");
     });
 
-    expect(connection.close).toHaveBeenCalledTimes(1);
+    expect(createClientMock).toHaveBeenCalledTimes(1);
+    expect(client.close).not.toHaveBeenCalled();
   });
 
-  it("closes the per-request connection when the request throws", async () => {
-    await expect(
-      trackDbMetrics(async () => {
-        await all("SELECT 1");
-        throw new Error("boom");
-      }),
-    ).rejects.toThrow("boom");
-
-    expect(connection.close).toHaveBeenCalledTimes(1);
-  });
-
-  it("does not open a connection for requests that never query", async () => {
+  it("does not open a client for requests that never query", async () => {
     await trackDbMetrics(async () => "cached");
 
-    expect(connectMock).not.toHaveBeenCalled();
-    expect(connection.close).not.toHaveBeenCalled();
+    expect(createClientMock).not.toHaveBeenCalled();
   });
 
-  it("keeps the response when closing the connection fails", async () => {
-    connection.close.mockRejectedValueOnce(new Error("network"));
+  it("retries a transient Turso read on a fresh HTTP request", async () => {
+    client.execute
+      .mockRejectedValueOnce(new Error("fetch failed"))
+      .mockResolvedValueOnce(resultSet(["id"], [[1]]));
 
-    const { result } = await trackDbMetrics(async () => {
-      await all("SELECT 1");
-      return "ok";
-    });
+    const { result } = await trackDbMetrics(() =>
+      all<{ id: number }>("SELECT 1"),
+    );
 
-    expect(result).toBe("ok");
+    expect(result).toEqual([{ id: 1 }]);
+    expect(createClientMock).toHaveBeenCalledTimes(1);
+    expect(client.execute).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not retry a deterministic query error", async () => {
+    client.execute.mockRejectedValueOnce(
+      new Error("SQLite error: no such column: nope"),
+    );
+
+    await expect(trackDbMetrics(() => all("SELECT nope"))).rejects.toThrow(
+      "no such column",
+    );
+
+    expect(client.execute).toHaveBeenCalledTimes(1);
   });
 
   it("falls back to D1 when Turso is not configured", async () => {
@@ -182,7 +205,7 @@ describe("database adapter", () => {
       success: true,
       meta: { changes: 0, last_row_id: 0, rows_read: 1, rows_written: 0 },
     });
-    expect(connectMock).not.toHaveBeenCalled();
+    expect(createClientMock).not.toHaveBeenCalled();
   });
 
   it("rejects mixing statements from different engines in one batch", async () => {

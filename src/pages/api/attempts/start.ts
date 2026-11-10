@@ -3,6 +3,7 @@ import { ensureGuestToken, getGuestToken } from "../../../lib/auth/session";
 import { rateLimit } from "../../../lib/auth/rate-limit";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { first, run } from "../../../lib/db";
+import { apiUnavailableResponse } from "../../../lib/db-resilient";
 import { apiError, clientIp, forbiddenOrigin, isSameOrigin, json } from "../../../lib/http";
 import { isFixtureMock, isProductionEnvironment } from "../../../lib/fixtures";
 import { calculateMockDuration } from "../../../lib/exam-timing";
@@ -102,21 +103,8 @@ export const POST: APIRoute = async (context) => {
     );
   } catch (error) {
     console.error("Attempt start failed", error);
-    const message = error instanceof Error ? error.message : String(error);
-    if (message.includes("daily row write limit") || message.includes("7500")) {
-      return json(
-        {
-          error:
-            "Daily attempt creation quota reached on the free database tier. The daily quota resets at midnight UTC (05:30 AM IST).",
-        },
-        503,
-      );
-    }
-    return json(
-      {
-        error: "The test service is temporarily unavailable. Please try again in a few minutes.",
-      },
-      500,
-    );
+    // The database is remote; a transient stream/network failure should invite a
+    // retry instead of surfacing an internal error or a stale quota message.
+    return apiUnavailableResponse();
   }
 };

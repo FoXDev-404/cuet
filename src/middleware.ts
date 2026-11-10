@@ -8,6 +8,7 @@ import { ensurePracticeLibrary, setPracticeLibraryStore } from "./lib/practice-l
 import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
 import { trackDbMetrics } from "./lib/db";
+import { DB_DEGRADED_HEADER } from "./lib/db-resilient";
 import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
 import { edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
 
@@ -300,6 +301,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
     const response = await next();
+    const degraded = response.headers.get(DB_DEGRADED_HEADER) === "1";
 
     // Only anonymous HTML may enter the PWA page cache. Personalized responses
     // (logged-in navigation, attempts, results, dashboards) are never marked.
@@ -307,6 +309,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (
       context.request.method === "GET" &&
       response.status === 200 &&
+      !degraded &&
       !context.locals.user &&
       !isPrivatePath(pathname) &&
       contentType.includes("text/html")
@@ -320,6 +323,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // applySecurityHeaders rebuilds the response, so keep the returned copy and
   // add the database instrumentation headers to it rather than the original.
   const secured = applySecurityHeaders(response, requestedPath);
+
+  // A page that rendered a bundled fallback is still a 200, but its content is
+  // stale by definition. Never let it enter the edge cache or a browser cache.
+  const degraded = secured.headers.get(DB_DEGRADED_HEADER) === "1";
+  if (degraded) {
+    secured.headers.set("cache-control", "no-store");
+    secured.headers.delete("x-pwa-cacheable");
+  }
 
   // Attach database instrumentation headers for measurement and observability
   secured.headers.set("x-db-rows-read", String(metrics.rowsRead));
@@ -338,7 +349,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Store fresh anonymous 200 responses in the edge cache: HTML pages for 5
   // minutes, the sitemap for 6 hours. Strip Set-Cookie so one visitor's
   // cookies are never served to another.
-  if (cache && secured.status === 200) {
+  if (cache && secured.status === 200 && !degraded) {
     const contentType = secured.headers.get("content-type") ?? "";
     const cacheableType = isEdgeCacheableContentType(contentType);
     if (cacheableType && !secured.headers.has("set-cookie")) {

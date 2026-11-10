@@ -37,18 +37,26 @@ storage with no daily row-read cap.
 
 ### What changed
 
-- `src/lib/db.ts` exposes a D1-shaped adapter over the Turso serverless driver:
-  `prepare().bind().all()/run()`, `batch()` inside `BEGIN DEFERRED`/`COMMIT`,
-  and D1-style `meta.changes` / `meta.last_row_id`. `TURSO_DATABASE_URL` selects
-  Turso; without it the existing `DB` D1 binding is used unchanged.
-- `PRAGMA foreign_keys = ON` runs once per request-scoped Turso connection
-  because libSQL defaults FK enforcement to OFF.
+- `src/lib/db.ts` exposes a D1-shaped adapter over `@libsql/client`'s
+  stateless HTTP client (`workerd` export): `prepare().bind().all()/run()`,
+  `batch()` inside `BEGIN DEFERRED`/`COMMIT`, and D1-style `meta.changes` /
+  `meta.last_row_id`. Each query is a single HTTP request that opens, executes
+  and closes its stream, so no server-side session, baton or lock outlives a
+  call. `TURSO_DATABASE_URL` selects Turso; without it the existing `DB` D1
+  binding is used unchanged.
+- Two earlier designs were removed after production testing: opening and
+  closing a connection per request exhausted Turso's connection limit after
+  ~55–85 cache-missing requests, and sharing one connection per isolate
+  deadlocked because the driver's `execLock` made one request await another
+  request's promise, which the Workers runtime cancels as a hung request.
+- Turso enables `foreign_keys` by default on fresh connections (verified:
+  `PRAGMA foreign_keys` returns `1`), so the adapter issues no per-request
+  pragma.
 - `src/middleware.ts` reports `x-db-rows-read`, `x-db-rows-written` and
   `x-db-queries`; `/api/health` adds `engine: "turso" | "d1" | "none"`.
-- `trackDbMetrics` closes the request-scoped Turso connection in a `finally`
-  block. Workers isolates are reused, and leaked connections surfaced as
-  production 503s after roughly 80 cache-missing requests. A failed close is
-  ignored so it cannot fail an otherwise successful response.
+- `trackDbMetrics` only records counters and never owns connection state.
+  Transient Turso read failures retry once on a fresh HTTP request; writes are
+  never retried automatically.
 - One-off tooling: `scripts/turso-{lib,migrate,import,verify}.mjs` plus
   `db:turso:*` npm scripts. The importer drops the published-version insert
   guard for the historical replay and rebuilds every trigger from the migration
@@ -63,21 +71,25 @@ storage with no daily row-read cap.
   `practice_questions` 37,563, `attempts` 87).
 - Two independent D1 exports before cutover were byte-identical, so no
   production writes were lost between export and switch.
-- 458/458 Vitest tests (53 files) pass; `astro check` 0 errors; production
-  build clean; no Turso credentials in `dist/`.
-- Live `https://cuetfreemocktest.com/api/health` returns
-  `{"db":"ok","engine":"turso","exams":1}` with the new `x-db-*` headers; home,
-  mock, practice-paper, exam-info, PYQ, robots and sitemap responses are 200 and
-  read through Turso. Sitemap has 286 URLs with no `/admin/` entries.
-- Connection-close fix verified with 150 cache-busting requests to a DB-backed
-  blog page: 150/150 returned 200 (the pre-fix run failed from request ~80).
+- 464/464 Vitest tests (53 files) pass; `astro check` 0 errors; production
+  build has no Node-only libSQL build and no Turso credentials in `dist/`.
+- Burst test on a DB-backed instructions page: **300 requests at concurrency 15
+  and 600 requests at concurrency 30 returned 300/300 and 600/600 HTTP 200**
+  with 0 degraded responses, both locally on workerd and in production. Worker
+  tail during the burst showed 0 `connections limit` errors, 0 exceptions and
+  0 read retries. The pre-fix run failed from about request 80.
+- Production write probe passed end to end: start 201, attempt page 200 with 5
+  questions, single autosave 200, 10 parallel autosaves 200, submit 200, result
+  200, 8 parallel starts 201.
+- Attempt page browser check: initial load plus two reloads rendered the timer,
+  5-question palette and question body in 20–35 ms with no page or console
+  errors.
 - `npm run seo:check` against production: 286/286 sitemap URLs indexable,
   self-canonical and present, **0 mismatches**. Extra checks: robots.txt 200
   with the sitemap directive and no public-path disallows; sitemap XML valid,
   286 unique https apex URLs, no private paths, all lastmod values well-formed;
   http→https and www→apex 301s; trailing-slash 301s; unknown URLs 404 + noindex.
-- 462/462 Vitest tests (53 files) after the close tests; deployed worker version:
-  `dedcc0e9-f646-40b1-86b8-3de16e8633f6`.
+- Deployed worker version: `ee6b8ce6-1df0-4ecc-9543-963b7122255c`.
 
 ### Rollback
 

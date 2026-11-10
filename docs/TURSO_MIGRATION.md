@@ -18,20 +18,31 @@ Turso secrets.
 | D1 API | Turso implementation |
 | --- | --- |
 | `prepare(sql).bind(...)` | statement wrapper carrying SQL + params |
-| `.all<T>()` | `Connection.all`, rows plus D1-shaped `meta` |
-| `.run()` | `Connection.run`, `meta.changes` / `meta.last_row_id` |
-| `db.batch([...])` | one atomic `CONNECTION.batch(..., "deferred")` request |
+| `.all<T>()` | `@libsql/client` `execute`, rows mapped to D1-shaped objects + `meta` |
+| `.run()` | `execute`, `meta.changes` / `meta.last_row_id` |
+| `db.batch([...])` | one atomic `client.batch(..., "deferred")` HTTP request |
 
-`PRAGMA foreign_keys = ON` runs once per connection because libSQL defaults it
-to OFF while D1 enforces foreign keys. The pragma is issued before the first
-query on every request-scoped connection.
+The production adapter uses `@libsql/client` (the `workerd` export), whose HTTP
+client opens a stream, runs the statement(s) and closes the stream **inside a
+single `fetch`**. It therefore keeps no server-side session between calls.
 
-`trackDbMetrics` opens one connection per request and closes it in a `finally`
-block. Worker isolates are reused across requests, so a connection left open
-keeps a server-side stream alive until the isolate dies; roughly 80 open streams
-later every database call fails with a 503. Closing is best-effort: a failed
-close never turns a successful response into an error. Requests that never touch
-the database never open a connection.
+This is deliberate. The earlier `@tursodatabase/serverless` design kept a
+`baton` (server-side session) per connection. Opening one connection per request
+exhausted Turso's connection limit after roughly 55-85 requests, and closing
+connections inside `trackDbMetrics` ran while Astro was still streaming the
+response body, which could produce a truncated attempt page. A shared
+connection per isolate is not safe either: its `execLock` makes one request
+await a promise owned by another request, which the Workers runtime cancels as
+a hung request. The stateless HTTP client avoids sessions, locks and batons
+entirely, so it is safe to reuse across concurrent requests.
+
+Turso Cloud enables `foreign_keys` by default; the adapter verified
+`PRAGMA foreign_keys` returns `1` on a fresh HTTP connection, so no per-request
+pragma is needed (and a pragma would not survive stateless HTTP anyway).
+`trackDbMetrics` now only records counters; it never owns connection state.
+
+Reads retry once on transient network/HTTP failures because they are
+idempotent. Writes are never retried automatically.
 
 ## One-time setup
 
@@ -101,9 +112,10 @@ curl -s https://cuetfreemocktest.com/api/health
 ```
 
 The `x-db-rows-read`, `x-db-rows-written` and `x-db-queries` response headers
-report per-request database work. Turso's single-statement API does not expose
-server-side row counters, so reads there are a lower bound; use the Turso
-dashboard for billing. Batch results carry exact counters.
+report per-request database work. The stateless HTTP API does not expose
+server-side row counters, so `rows_read` is the number of rows returned (a lower
+bound) and `rows_written` mirrors `rowsAffected`; use the Turso dashboard for
+billing.
 
 ## Rollback
 

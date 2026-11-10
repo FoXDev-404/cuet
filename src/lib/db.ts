@@ -1,6 +1,6 @@
 import { env } from "cloudflare:workers";
 import { AsyncLocalStorage } from "node:async_hooks";
-import { connect, type Connection } from "@tursodatabase/serverless";
+import { createClient, type Client, type ResultSet } from "@libsql/client";
 
 export type BindValue = string | number | null | ArrayBuffer | ArrayBufferView;
 
@@ -44,21 +44,6 @@ export interface Db {
 
 export const dbMetricsStorage = new AsyncLocalStorage<DbMetrics>();
 
-type DbSession = { db?: Db };
-
-/**
- * A per-request Turso connection. The session is created lazily so pages that
- * never touch the database do not pay for a connection or the foreign-key
- * pragma round trip.
- */
-const dbSessionStorage = new AsyncLocalStorage<DbSession>();
-
-const EMPTY_META: DbMeta = {
-  changes: 0,
-  last_row_id: 0,
-  rows_read: 0,
-  rows_written: 0,
-};
 
 export function recordDbMetrics(
   meta?: { rows_read?: number; rows_written?: number } | null,
@@ -86,25 +71,9 @@ export function trackDbMetrics<T>(
     rowsWritten: 0,
     queryCount: 0,
   };
-  return dbMetricsStorage.run(metrics, () => {
-    const session: DbSession = {};
-    return dbSessionStorage.run(session, async () => {
-      try {
-        const result = await fn();
-        return { result, metrics };
-      } finally {
-        // Workers isolates are reused across requests. A Turso connection left
-        // open keeps its server-side stream alive until the isolate dies, and
-        // roughly 80 open streams later every database call starts failing.
-        // Release it as soon as the request no longer needs it; a failed close
-        // must never turn a successful response into an error.
-        try {
-          await session.db?.close();
-        } catch {
-          // Ignore: the connection is gone either way.
-        }
-      }
-    });
+  return dbMetricsStorage.run(metrics, async () => {
+    const result = await fn();
+    return { result, metrics };
   });
 }
 
@@ -136,24 +105,34 @@ function resultFromD1<T>(result: {
   return { results: result.results ?? [], success: true, meta };
 }
 
-type TursoResultSet = {
-  rows?: Array<Record<string, unknown>>;
-  rowsAffected?: number;
-  lastInsertRowid?: number | bigint;
-  rowsRead?: number;
-  rowsWritten?: number;
-};
+/**
+ * libSQL returns rows as hybrid arrays: positional values plus named
+ * properties. D1 call sites expect a plain object keyed by column name.
+ */
+function tursoRows<T>(result: ResultSet): T[] {
+  const columns = result.columns;
+  return result.rows.map((row) => {
+    const record: Record<string, unknown> = {};
+    for (let index = 0; index < columns.length; index += 1) {
+      record[columns[index]] = row[index];
+    }
+    return record as T;
+  });
+}
 
-function resultFromTurso<T>(result: TursoResultSet): DbResult<T> {
+function resultFromTurso<T>(result: ResultSet): DbResult<T> {
   const changes = Number(result.rowsAffected ?? 0);
+  const rows = tursoRows<T>(result);
   const meta: DbMeta = {
     changes,
     last_row_id: Number(result.lastInsertRowid ?? 0),
-    rows_read: result.rowsRead ?? 0,
-    rows_written: result.rowsWritten ?? changes,
+    // The stateless HTTP API does not report server-side row counters; the
+    // returned row count is a lower bound used only for instrumentation.
+    rows_read: rows.length,
+    rows_written: changes,
   };
   recordDbMetrics(meta);
-  return { results: (result.rows ?? []) as T[], success: true, meta };
+  return { results: rows, success: true, meta };
 }
 
 function toTursoValue(value: BindValue): string | number | null | ArrayBuffer | Uint8Array {
@@ -236,47 +215,29 @@ class TursoStatement implements DbStatement {
 }
 
 class TursoAdapter implements Db {
-  constructor(
-    private readonly connection: Connection,
-    private readonly ready: () => Promise<void>,
-  ) {}
+  constructor(private readonly client: Client) {}
 
   prepare(sql: string): DbStatement {
     return new TursoStatement(this, sql, []);
   }
 
   async all<T>(statement: TursoStatement): Promise<DbResult<T>> {
-    await this.ready();
-    const rows = (await this.connection.all(
-      statement.sql,
-      ...statement.params.map(toTursoValue),
-    )) as T[];
-    // The single-statement API returns rows only. Treat the row count as a
-    // lower bound for instrumentation instead of inventing a billing figure.
-    const meta: DbMeta = { ...EMPTY_META, rows_read: rows.length };
-    recordDbMetrics(meta);
-    return { results: rows, success: true, meta };
+    const result = await this.client.execute({
+      sql: statement.sql,
+      args: statement.params.map(toTursoValue),
+    });
+    return resultFromTurso<T>(result);
   }
 
   async run(statement: TursoStatement): Promise<DbResult> {
-    await this.ready();
-    const result = await this.connection.run(
-      statement.sql,
-      ...statement.params.map(toTursoValue),
-    );
-    const changes = Number(result?.changes ?? 0);
-    const meta: DbMeta = {
-      changes,
-      last_row_id: Number(result?.lastInsertRowid ?? 0),
-      rows_read: 0,
-      rows_written: changes,
-    };
-    recordDbMetrics(meta);
-    return { results: [], success: true, meta };
+    const result = await this.client.execute({
+      sql: statement.sql,
+      args: statement.params.map(toTursoValue),
+    });
+    return resultFromTurso(result);
   }
 
-  async batch<T>(statements: DbStatement[]): Promise<DbResult<T>[]> {
-    await this.ready();
+  async batch<T = Record<string, unknown>>(statements: DbStatement[]): Promise<DbResult<T>[]> {
     const payload = statements.map((statement) => {
       if (!(statement instanceof TursoStatement)) {
         throw new Error("Cannot mix D1 and Turso statements in one batch.");
@@ -288,17 +249,12 @@ class TursoAdapter implements Db {
     });
     // `deferred` wraps the batch in BEGIN/COMMIT, matching D1's atomic batch
     // contract. Without a mode Turso executes each statement in autocommit.
-    const results = (await this.connection.batch(payload, "deferred")) as TursoResultSet[];
+    const results = await this.client.batch(payload, "deferred");
     return results.map((result) => resultFromTurso<T>(result));
   }
 
   async close(): Promise<void> {
-    try {
-      await this.connection.close();
-    } catch {
-      // Closing is best-effort cleanup; the session is unreachable afterwards
-      // and a network error here must not fail the request that just finished.
-    }
+    // The stateless HTTP client holds no session between calls.
   }
 }
 
@@ -312,40 +268,33 @@ function getTursoConfig(): TursoConfig | null {
 }
 
 function createTursoDb(config: TursoConfig): Db {
-  const connection = connect({
+  // The web/HTTP client opens a stream, runs the statement and closes it again
+  // inside a single `fetch`, so it keeps no server-side session between calls.
+  // That is what makes it safe to share across requests in a Worker isolate:
+  // the previous driver kept a "baton" alive per connection and exhausted
+  // Turso's connection limit. Concurrency is bounded by the runtime instead of
+  // a client-side queue, which must never span request contexts.
+  const client = createClient({
     url: config.url,
     authToken: config.token || undefined,
+    concurrency: 1000,
   });
-
-  let ready: Promise<void> | null = null;
-  const ensureReady = (): Promise<void> => {
-    if (!ready) {
-      // SQLite/libSQL defaults foreign_keys to OFF, while D1 enforced them.
-      // Enable them once per session, before the first query, so CHECK/FK
-      // cascades and the immutability triggers keep their D1 behaviour.
-      ready = connection.exec("PRAGMA foreign_keys = ON").then(() => undefined);
-      ready.catch(() => {
-        ready = null;
-      });
-    }
-    return ready;
-  };
-
-  return new TursoAdapter(connection, ensureReady);
+  return new TursoAdapter(client);
 }
 
 let sharedD1: { database: D1Database; adapter: Db } | null = null;
 let sharedTurso: { key: string; db: Db } | null = null;
 
+/**
+ * One Turso client per Worker isolate.
+ *
+ * The client is stateless per query (each call is one HTTP request), so unlike
+ * a persistent connection it can be shared without leaking sessions or waiting
+ * on locks owned by another request.
+ */
 export function getDb(): Db {
   const config = getTursoConfig();
   if (config) {
-    const session = dbSessionStorage.getStore();
-    if (session) {
-      session.db ??= createTursoDb(config);
-      return session.db;
-    }
-
     const key = `${config.url}\n${config.token}`;
     if (!sharedTurso || sharedTurso.key !== key) {
       sharedTurso = { key, db: createTursoDb(config) };
@@ -365,18 +314,49 @@ export function getDb(): Db {
   );
 }
 
+/** Test-only: forget the cached isolate connections. */
+export function resetDbConnections(): void {
+  sharedD1 = null;
+  sharedTurso = null;
+}
+
 export function getDatabaseEngine(): "turso" | "d1" | "none" {
   if (getTursoConfig()) return "turso";
   return env.DB ? "d1" : "none";
 }
 
+/**
+ * A Turso HTTP call can fail in transit (fetch error, proxy 502, or a database
+ * briefly at its connection limit). Reads are safe to retry once; a second
+ * attempt is a fresh HTTP request because the client keeps no session state.
+ * Writes never go through this path.
+ */
+const TRANSIENT_READ_ERROR =
+  /fetch failed|network|connection|socket|stream|timed? ?out|timeout|ECONNRESET|ECONNREFUSED|ETIMEDOUT|EAI_AGAIN|SQLITE_BUSY|database is locked|HTTP (?:status )?(?:502|503|504)|status (?:code )?(?:502|503|504)/i;
+
+function isTransientReadError(error: unknown): boolean {
+  if (getDatabaseEngine() !== "turso") return false;
+  const message = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+  return TRANSIENT_READ_ERROR.test(message);
+}
+
+async function readWithRetry<T>(reader: () => Promise<T>): Promise<T> {
+  try {
+    return await reader();
+  } catch (error) {
+    if (!isTransientReadError(error)) throw error;
+    console.warn("Retrying a Turso read after a transient failure.", error);
+    return reader();
+  }
+}
+
 export async function first<T>(sql: string, ...params: BindValue[]): Promise<T | null> {
-  const result = await getDb().prepare(sql).bind(...params).all<T>();
+  const result = await readWithRetry(() => getDb().prepare(sql).bind(...params).all<T>());
   return result.results?.[0] ?? null;
 }
 
 export async function all<T>(sql: string, ...params: BindValue[]): Promise<T[]> {
-  const result = await getDb().prepare(sql).bind(...params).all<T>();
+  const result = await readWithRetry(() => getDb().prepare(sql).bind(...params).all<T>());
   return result.results ?? [];
 }
 

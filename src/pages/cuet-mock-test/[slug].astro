@@ -5,6 +5,7 @@ import PageHero from "../../components/PageHero.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import LocalPaperCard from "../../components/LocalPaperCard.astro";
 import { allOr, firstOr } from "../../lib/db";
+import { DB_DEGRADED_HEADER } from "../../lib/db-resilient";
 import { parseMarkingScheme } from "../../lib/content";
 import { getLocalPapers, getLocalSubjectSummary } from "../../lib/local-papers";
 import { getSubjectStats } from "../../lib/subject-stats";
@@ -37,6 +38,11 @@ const subject =
       }
     : null);
 if (!subject) return new Response("Subject not found", { status: 404 });
+if (!dbSubject && localSubject) {
+  // The page is describing the subject from the committed bundle while the
+  // database is down; never freeze that partial view in the edge cache.
+  Astro.response.headers.set(DB_DEGRADED_HEADER, "1");
+}
 
 const PATH = `/cuet-mock-test/${subject.slug}`;
 // The rollup is cached in KV, so the count no longer needs its own bank scan.
