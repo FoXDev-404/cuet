@@ -1,4 +1,4 @@
-import { all, first, getDb, run } from "../db";
+import { all, first, getDb, run, type DbStatement } from "../db";
 import { questionSignature } from "./question-import";
 import {
   generatePublicId,
@@ -253,7 +253,7 @@ export async function insertQuestionBatch(
   if (inputs.length === 0) return [];
   const db = getDb();
   for (let attempt = 0; attempt < 8; attempt += 1) {
-    const statements: D1PreparedStatement[] = [];
+    const statements: DbStatement[] = [];
     for (const input of inputs) {
       const publicId = generatePublicId();
       statements.push(

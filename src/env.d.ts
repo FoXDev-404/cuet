@@ -12,6 +12,12 @@ declare namespace App {
 declare namespace Cloudflare {
   interface Env {
     DB: D1Database;
+    /**
+     * Turso Cloud credentials. When `TURSO_DATABASE_URL` is present the app
+     * talks to Turso over libSQL and the D1 binding stays as a rollback path.
+     */
+    TURSO_DATABASE_URL?: string;
+    TURSO_AUTH_TOKEN?: string;
     MEDIA_KV: KVNamespace;
     MEDIA_R2?: R2Bucket;
     MEDIA_PUBLIC_URL?: string;

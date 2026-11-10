@@ -35,6 +35,9 @@
     "db:migrate:remote": "wrangler d1 migrations apply cuet-blueprint-db --remote",
     "db:seed:local": "wrangler d1 execute cuet-blueprint-db --local --file=./migrations/0002_seed.sql",
     "db:seed:remote": "wrangler d1 execute cuet-blueprint-db --remote --file=./migrations/0002_seed.sql",
+    "db:turso:migrate": "node --env-file-if-exists=.dev.vars scripts/turso-migrate.mjs",
+    "db:turso:import": "node --env-file-if-exists=.dev.vars scripts/turso-import.mjs",
+    "db:turso:verify": "node --env-file-if-exists=.dev.vars scripts/turso-verify.mjs",
     "db:import:practice:local": "node scripts/import-practice-library.mjs --local",
     "db:import:practice:remote": "node scripts/import-practice-library.mjs --remote",
     "db:import:ranked-practice:local": "node scripts/import-ranked-practice.mjs --local",
@@ -55,6 +58,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^14.4.3",
     "@astrojs/react": "^7.1.2",
+    "@tursodatabase/serverless": "^1.4.1",
     "astro": "^7.4.4",
     "html-to-image": "^1.11.13",
     "jose": "^6.1.0",

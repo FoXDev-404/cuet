@@ -1,14 +1,14 @@
 import type { APIRoute } from "astro";
-import { first } from "../../lib/db";
+import { first, getDatabaseEngine } from "../../lib/db";
 
 /**
  * Liveness probe for the worker itself.
  *
  * The database state is reported in the body rather than deciding the status
- * code: during a daily-quota exhaustion window D1 is unreachable for hours,
- * and marking the whole deployment unhealthy then would page operators for a
- * quota issue the app already degrades around. A persistent `db: "down"` in
- * the body is the signal to watch instead.
+ * code: during a provider quota exhaustion window the database is unreachable
+ * for hours, and marking the whole deployment unhealthy then would page
+ * operators for a quota issue the app already degrades around. A persistent
+ * `db: "down"` in the body is the signal to watch instead.
  */
 export const GET: APIRoute = async () => {
   let db: "ok" | "down" = "down";
@@ -25,6 +25,7 @@ export const GET: APIRoute = async () => {
     JSON.stringify({
       ok: true,
       db,
+      engine: getDatabaseEngine(),
       exams,
       timestamp: new Date().toISOString(),
     }),

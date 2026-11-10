@@ -7,7 +7,7 @@ import { getSessionUser } from "./lib/auth/session";
 import { ensurePracticeLibrary, setPracticeLibraryStore } from "./lib/practice-library";
 import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
-import { trackD1Metrics } from "./lib/db";
+import { trackDbMetrics } from "./lib/db";
 import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
 import { edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
 
@@ -210,7 +210,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  const { result: response, metrics } = await trackD1Metrics(async () => {
+  const { result: response, metrics } = await trackDbMetrics(async () => {
     const { pathname } = context.url;
 
   const envRecord = (env as unknown as Record<string, unknown>) || {};
@@ -318,20 +318,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }, context.url.pathname);
 
   // applySecurityHeaders rebuilds the response, so keep the returned copy and
-  // add the D1 instrumentation headers to it rather than the original.
+  // add the database instrumentation headers to it rather than the original.
   const secured = applySecurityHeaders(response, requestedPath);
 
-  // Attach D1 instrumentation headers for measurement and observability
-  secured.headers.set("x-d1-rows-read", String(metrics.rowsRead));
-  secured.headers.set("x-d1-rows-written", String(metrics.rowsWritten));
-  secured.headers.set("x-d1-queries", String(metrics.queryCount));
+  // Attach database instrumentation headers for measurement and observability
+  secured.headers.set("x-db-rows-read", String(metrics.rowsRead));
+  secured.headers.set("x-db-rows-written", String(metrics.rowsWritten));
+  secured.headers.set("x-db-queries", String(metrics.queryCount));
 
   if (
     metrics.queryCount > 0 &&
     (import.meta.env.DEV || (typeof env !== "undefined" && (env as unknown as Record<string, unknown>).ENV !== "production"))
   ) {
     console.log(
-      `[D1] ${context.request.method} ${context.url.pathname} -> read=${metrics.rowsRead} written=${metrics.rowsWritten} queries=${metrics.queryCount}`,
+      `[DB] ${context.request.method} ${context.url.pathname} -> read=${metrics.rowsRead} written=${metrics.rowsWritten} queries=${metrics.queryCount}`,
     );
   }
 

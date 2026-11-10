@@ -28,6 +28,50 @@ Current deployed version: `60f28021-ae55-4815-87cf-2adada96e631`.
 | O — Production rollout and final verification | Complete | Original ranked mini mock (5 questions, `attempted_only`) and standalone indexable question published; live `/q` pages, sitemap entry, per-question OG image, signed-in answer unlock, guest lock, unknown-id 404 and Google OAuth initiation verified; production smoke 38/38; authenticated axe 256 scans, 10 issues found and fixed, re-run clean; practice no-share regression added; 229/229 unit/integration; `astro check` 0 errors over 309 files; deployed `fd9a99be-a016-4c3d-be1c-1c0079cc872b`; owner Google sign-in completed and owner-authenticated admin/API checks passed; test attempts/answers and share events cleaned up, QA user/admin deactivated | Practice rights/mapping decision |
 | P — Review-queue edit actions | Complete | Paper detail resolves the D1 paper id and links to the Data manager for the paper, all questions and all passages; each pending/unexplained row links to its exact question; the page documents `correct_option`, `explanation` and `publication_status`; admin-flow proves the links plus a real edit/save/restore; 229/229 unit/integration; admin-flow 11/11; `astro check` 0 errors over 309 files; deployed `60f28021-ae55-4815-87cf-2adada96e631`; production smoke 22/22 public checks; production Playwright check confirmed the three edit actions, 14 per-question links, both edit forms and successful saves with a temporary super admin | Editors without `data.manage` still need a super admin for corrections |
 
+## Turso Cloud migration (2026-11-10)
+
+D1's free-tier daily row-read limit took the production database down; the app
+now runs on Turso Cloud (libSQL) while keeping the D1 binding as a rollback
+path. Turso Free includes 500M row reads/month, 10M writes/month and 5GB of
+storage with no daily row-read cap.
+
+### What changed
+
+- `src/lib/db.ts` exposes a D1-shaped adapter over the Turso serverless driver:
+  `prepare().bind().all()/run()`, `batch()` inside `BEGIN DEFERRED`/`COMMIT`,
+  and D1-style `meta.changes` / `meta.last_row_id`. `TURSO_DATABASE_URL` selects
+  Turso; without it the existing `DB` D1 binding is used unchanged.
+- `PRAGMA foreign_keys = ON` runs once per request-scoped Turso connection
+  because libSQL defaults FK enforcement to OFF.
+- `src/middleware.ts` reports `x-db-rows-read`, `x-db-rows-written` and
+  `x-db-queries`; `/api/health` adds `engine: "turso" | "d1" | "none"`.
+- One-off tooling: `scripts/turso-{lib,migrate,import,verify}.mjs` plus
+  `db:turso:*` npm scripts. The importer drops the published-version insert
+  guard for the historical replay and rebuilds every trigger from the migration
+  files afterwards.
+- `docs/TURSO_MIGRATION.md` documents setup, cutover, import/reset and rollback.
+
+### Verification
+
+- 23 migrations applied; 50,695 rows across 26 tables imported from the
+  production D1 export; `integrity_check` ok, `foreign_key_check` clean; 20,111
+  published questions and max ids preserved (`questions` 25,815,
+  `practice_questions` 37,563, `attempts` 87).
+- Two independent D1 exports before cutover were byte-identical, so no
+  production writes were lost between export and switch.
+- 458/458 Vitest tests (53 files) pass; `astro check` 0 errors; production
+  build clean; no Turso credentials in `dist/`.
+- Live `https://cuetfreemocktest.com/api/health` returns
+  `{"db":"ok","engine":"turso","exams":1}` with the new `x-db-*` headers; home,
+  mock, practice-paper, exam-info, PYQ, robots and sitemap responses are 200 and
+  read through Turso. Sitemap has 286 URLs with no `/admin/` entries.
+- Deployed worker version: `539226b3-0476-4a1e-90fc-cdad5c43edac`.
+
+### Rollback
+
+Delete the `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` secrets and redeploy; the
+app immediately returns to the `DB` D1 binding. The D1 database stays intact.
+
 ## Phase P — review-queue edit actions (2026-11-02)
 
 ### What changed

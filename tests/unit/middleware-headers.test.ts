@@ -22,7 +22,7 @@ describe("middleware security headers", () => {
 
   it("keeps instrumentation headers on the rebuilt response", () => {
     expect(source).toContain("const secured = applySecurityHeaders(response, requestedPath);");
-    expect(source).toContain('secured.headers.set("x-d1-rows-read"');
+    expect(source).toContain('secured.headers.set("x-db-rows-read"');
     expect(source).toContain("return secured;");
   });
 
