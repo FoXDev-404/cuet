@@ -284,6 +284,11 @@ test("practice papers are linked from their subject hub", async ({ page }) => {
 test("the homepage shows refined most-popular papers in the hero and below", async ({ page }) => {
   await page.goto("/");
 
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Prepare for CUET UG 2027 with FREE timed practice",
+  );
+  await expect(page.getByText(/No account needed to start/)).toBeVisible();
+
   const heroPanel = page.locator('aside[aria-labelledby="popular-heading"]');
   await expect(heroPanel).toBeVisible();
   await expect(

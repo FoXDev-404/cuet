@@ -371,6 +371,7 @@ test.afterEach(() => {
   // exactly as the admin trash flow does.
   localD1(`
     DELETE FROM share_events WHERE public_id IN (${mappings}) OR mock_id IN (${mocks});
+    DELETE FROM question_reports WHERE question_id IN (${ids});
     DELETE FROM attempt_answers WHERE question_id IN (${ids});
     DELETE FROM attempt_answers WHERE attempt_id IN
       (SELECT id FROM attempts WHERE user_id IN
@@ -415,6 +416,7 @@ test("shared question URLs redirect a wrong slug, 404 unknown ids and hide the a
   await expect(page.locator("article h1")).toContainText(`E2E share URL ${stamp}`);
   await expect(page.getByText("Attempt the full mock to see the solution")).toBeVisible();
   await expect(page.locator("[data-check-button]")).toHaveCount(0);
+  await expect(page.getByText("Report a problem with this question")).toBeVisible();
 
   const html = await page.content();
   expect(html).not.toContain(explanation);
@@ -458,6 +460,26 @@ test("shared question URLs redirect a wrong slug, 404 unknown ids and hide the a
     rightsOk: 0,
   });
   expect((await request.get(pyqWithoutRights.path)).status()).toBe(404);
+});
+
+test("a public question can be reported to the moderation queue", async ({ page }) => {
+  const stamp = uniqueStamp();
+  const fixture = createFixture({
+    text: `E2E report question ${stamp}: which option is Alpha?`,
+  });
+
+  await page.goto(fixture.path);
+  await page.getByText("Report a problem with this question").click();
+  await page.locator("[data-public-question-report] textarea").fill("The explanation has a typo.");
+  await page.locator("[data-public-question-report] button[type=submit]").click();
+  await expect(page.locator("[data-question-report-status]")).toContainText(
+    "Report received. An editor will review it.",
+  );
+
+  const report = localD1Rows<{ reason: string; question_id: number }>(
+    `SELECT reason, question_id FROM question_reports WHERE question_id = ${fixture.id} ORDER BY id DESC LIMIT 1`,
+  )[0];
+  expect(report).toEqual({ reason: "The explanation has a typo.", question_id: fixture.id });
 });
 
 test("attempted-only reveal blocks guests and in-progress users, then unlocks after submit", async ({

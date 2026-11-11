@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-10T11:13:29.494Z",
-  "commitHash": "d9959dc",
+  "timestamp": "2026-11-11T08:58:53.660Z",
+  "commitHash": "9634135",
   "axeVersion": "4.14.0",
   "totalScans": 268,
   "passedScans": 268,
@@ -1129,7 +1129,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1139,7 +1139,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1149,7 +1149,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1159,7 +1159,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1169,7 +1169,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1179,7 +1179,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1189,7 +1189,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1199,7 +1199,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/409",
+      "path": "/attempt/435",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1209,7 +1209,7 @@
     },
     {
       "label": "result",
-      "path": "/result/409",
+      "path": "/result/435",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1219,27 +1219,7 @@
     },
     {
       "label": "result",
-      "path": "/result/409",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "result",
-      "path": "/result/409/solutions",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "result",
-      "path": "/result/409/solutions",
+      "path": "/result/435",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1249,7 +1229,27 @@
     },
     {
       "label": "result",
-      "path": "/result/409",
+      "path": "/result/435/solutions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/435/solutions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/435",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1259,7 +1259,7 @@
     },
     {
       "label": "result",
-      "path": "/result/409",
+      "path": "/result/435",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1269,7 +1269,7 @@
     },
     {
       "label": "result",
-      "path": "/result/409/solutions",
+      "path": "/result/435/solutions",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1279,7 +1279,7 @@
     },
     {
       "label": "result",
-      "path": "/result/409/solutions",
+      "path": "/result/435/solutions",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1889,7 +1889,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/927",
+      "path": "/admin/mocks/933",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1899,47 +1899,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/927",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/927",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/927",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/927/preview",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/927/preview",
+      "path": "/admin/mocks/933",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1949,7 +1909,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/927/preview",
+      "path": "/admin/mocks/933",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1959,7 +1919,47 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/927/preview",
+      "path": "/admin/mocks/933",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/933/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/933/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/933/preview",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/933/preview",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",

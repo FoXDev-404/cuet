@@ -20,8 +20,6 @@ import {
 
 const PATH = "/";
 const DEFAULT_TITLE = "CUET Free Mock Test — Timed Mocks, Real Results, Free Solutions";
-const DEFAULT_DESCRIPTION =
-  "Free CUET UG mock tests with a server timer, instant results and written solutions. Practise by subject and join first-attempt leaderboards.";
 
 const DEFAULT_FAQ: FaqItem[] = [
   {
@@ -84,6 +82,11 @@ try {
 
 const localPapers = getLocalPapers();
 const localYears = getLocalPaperYears();
+const localYearNumbers = localYears.map((summary) => summary.year);
+const availableYearRange = localYears.length
+  ? `${Math.min(...localYearNumbers)}–${Math.max(...localYearNumbers)}`
+  : "previous exam years";
+const DEFAULT_DESCRIPTION = `Prepare for CUET UG 2027 with free timed practice using previous-year papers from ${availableYearRange}. Start as a guest; sign in later to save your attempt.`;
 const popularPapers = getPopularLocalPapers(12);
 const subjectRows = getLocalSubjectSummaries().slice(0, 6);
 const localQuestionCount = localPapers.reduce(
@@ -396,11 +399,11 @@ const focusCards = [
         </p>
 
         <h1 class="mt-6 max-w-2xl text-4xl font-black leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
-          Practice <span class="text-accent-700 dark:text-accent-300">FREE</span> Online CUET 2027 Mock Tests for UG
+          Prepare for CUET UG 2027 with <span class="text-accent-700 dark:text-accent-300">FREE</span> timed practice
         </h1>
 
         <p class="mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8 dark:text-white/55">
-          NTA-pattern practice papers, previous-year questions (PYQs), and time-bound full-length test series for CUET UG. Start practising today.
+          Browse timed practice papers from {availableYearRange}. Each paper shows its question count, duration, and scoring coverage before you begin.
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
@@ -408,7 +411,7 @@ const focusCards = [
             href="/mock-tests"
             class="group inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-brand)] transition-colors hover:bg-brand-600"
           >
-            Start a Mock Test
+            Browse {localPapers.length} Mock Tests
             <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -421,6 +424,10 @@ const focusCards = [
             Browse Previous-Year Papers
           </a>
         </div>
+
+        <p class="mt-3 text-xs text-neutral-500 dark:text-white/50">
+          No account needed to start. Sign in later to save your history and leaderboard attempt.
+        </p>
 
         <ul class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-600 dark:text-white/50">
           <li class="flex items-center gap-2">
