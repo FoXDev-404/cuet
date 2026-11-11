@@ -60,7 +60,7 @@ const [topics, papers] = await Promise.all([
                 AND m.status = 'published' AND m.deleted_at IS NULL
                 AND m.practice_paper_slug IS NULL) AS count
      FROM topics t
-     WHERE t.subject_id = ?
+     WHERE t.subject_id = ? AND t.deleted_at IS NULL
      ORDER BY t.name`, [],
     subject.id,
   ),
@@ -100,6 +100,7 @@ const [topics, papers] = await Promise.all([
 ]);
 
 const localPapers = getLocalPapers().filter((paper) => paper.subject.slug === subject.slug);
+const topicsWithPractice = topics.filter((topic) => topic.count > 0).length;
 const localSummary = getLocalSubjectSummary(subject.slug);
 // Years that still have a playable, non-restricted paper for this subject. Used
 // to link the subject hub to the matching PYQ year/subject archives.
@@ -226,8 +227,8 @@ const structuredData = [
         <p class="mt-1 text-3xl font-black">{paperCount}</p>
       </div>
       <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Topics mapped</p>
-        <p class="mt-1 text-3xl font-black">{topics.length}</p>
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Topics with practice</p>
+        <p class="mt-1 text-3xl font-black">{topicsWithPractice}</p>
       </div>
     </div>
 
@@ -293,7 +294,7 @@ const structuredData = [
       <section class="mt-10">
         <h2 class="text-2xl font-bold tracking-tight">{subject.name} topics</h2>
         <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-          Topic counts cover the timed paper bank. Refined previous-year papers are listed above by year and subject.
+          Based on the CUET UG 2026 syllabus. Counts cover questions currently mapped in the timed paper bank; zero-count units are awaiting question tagging.
         </p>
         <div class="mt-4 grid gap-2 sm:grid-cols-2">
           {topics.map((topic) => (

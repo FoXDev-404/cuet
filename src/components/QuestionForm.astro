@@ -5,11 +5,12 @@ import { parseOptions } from "../lib/content";
 interface Props {
   question?: QuestionRow | null;
   subjects: { id: number; name: string }[];
+  topics: { id: number; subject_id: number; name: string }[];
   canPublish: boolean;
   canHotfix?: boolean;
 }
 
-const { question = null, subjects, canPublish, canHotfix = false } = Astro.props;
+const { question = null, subjects, topics, canPublish, canHotfix = false } = Astro.props;
 const parsed = parseOptions(question?.options);
 const rows = Array.from({ length: 4 }, (_, index) => parsed[index] ?? { text: "", image_url: null, alt: null });
 const letters = ["A", "B", "C", "D"];
@@ -89,6 +90,23 @@ const explanationImage = imageSlot(
               <option value={subject.id} selected={question?.subject_id === subject.id}>{subject.name}</option>
             ))}
           </select>
+        </label>
+        <label class="label">
+          Syllabus topic
+          <select class="field mt-1" data-field="topic_id" aria-describedby="topic-help">
+            <option value="">Not mapped</option>
+            {topics.map((topic) => (
+              <option
+                value={topic.id}
+                data-topic-subject={topic.subject_id}
+                selected={question?.topic_id === topic.id}
+              >{topic.name}</option>
+            ))}
+          </select>
+          <span id="topic-help" class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">
+            {topics.length > 0 ? "Tag this question to power syllabus checklists and focused practice." : "No syllabus topics are seeded yet. Add topics in the data manager."}
+            {topics.length === 0 ? <a class="ml-1 font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/data/topics">Manage topics</a> : null}
+          </span>
         </label>
         <label class="label">
           Status
@@ -250,6 +268,25 @@ const explanationImage = imageSlot(
     const hotfixReason = form.querySelector("[data-hotfix-reason]") as HTMLTextAreaElement | null;
     const hotfixRescore = form.querySelector("[data-hotfix-rescore]") as HTMLInputElement | null;
     const statusSelect = form.querySelector('[data-field="status"]') as HTMLSelectElement | null;
+    const subjectSelect = form.querySelector('[data-field="subject_id"]') as HTMLSelectElement | null;
+    const topicSelect = form.querySelector('[data-field="topic_id"]') as HTMLSelectElement | null;
+
+    function syncTopicOptions() {
+      if (!subjectSelect || !topicSelect) return;
+      const subjectId = subjectSelect.value;
+      const selected = topicSelect.selectedOptions[0];
+      if (selected?.dataset.topicSubject && selected.dataset.topicSubject !== subjectId) {
+        topicSelect.value = "";
+      }
+      for (const option of [...topicSelect.options]) {
+        const optionSubject = option.dataset.topicSubject;
+        const matches = !optionSubject || optionSubject === subjectId;
+        option.hidden = !matches;
+        option.disabled = !matches;
+      }
+    }
+    subjectSelect?.addEventListener("change", syncTopicOptions);
+    syncTopicOptions();
 
     hotfixToggle?.addEventListener("change", () => {
       const enabled = hotfixToggle.checked;
@@ -414,6 +451,7 @@ const explanationImage = imageSlot(
         const correct = form.querySelector('input[name="correct_option"]:checked') as HTMLInputElement | null;
         const payload: Record<string, unknown> = {
           subject_id: field("subject_id"),
+          topic_id: field("topic_id") || null,
           text: field("text"),
           text_hi: field("text_hi"),
           options,

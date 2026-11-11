@@ -8,6 +8,9 @@ const admin = Astro.locals.admin!;
 const subjects = await all<{ id: number; name: string }>(
   "SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name",
 );
+const topics = await all<{ id: number; subject_id: number; name: string }>(
+  "SELECT id, subject_id, name FROM topics WHERE deleted_at IS NULL ORDER BY subject_id, name",
+);
 const canPublish = can(admin.role, "questions.publish");
 ---
 
@@ -21,6 +24,6 @@ const canPublish = can(admin.role, "questions.publish");
   {subjects.length === 0 ? (
     <p class="rounded-xl bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">No active subjects. Apply the seed migration first.</p>
   ) : (
-    <QuestionForm subjects={subjects} canPublish={canPublish} />
+    <QuestionForm subjects={subjects} topics={topics} canPublish={canPublish} />
   )}
 </AdminLayout>

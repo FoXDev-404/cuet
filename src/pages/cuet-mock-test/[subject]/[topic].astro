@@ -25,7 +25,7 @@ const subject = await firstOr<{ id: number; name: string; slug: string; type: st
 if (!subject) return new Response("Topic not found", { status: 404 });
 
 const topic = await firstOr<{ id: number; name: string; slug: string }>(
-  "SELECT id, name, slug FROM topics WHERE slug = ? AND subject_id = ?", null,
+  "SELECT id, name, slug FROM topics WHERE slug = ? AND subject_id = ? AND deleted_at IS NULL", null,
   topicSlug,
   subject.id,
 );
@@ -93,7 +93,7 @@ const [papers, relatedTopics] = await Promise.all([
                 AND m.status = 'published' AND m.deleted_at IS NULL
                 AND m.practice_paper_slug IS NULL) AS count
      FROM topics t
-     WHERE t.subject_id = ? AND t.id != ?
+     WHERE t.subject_id = ? AND t.id != ? AND t.deleted_at IS NULL
      ORDER BY count DESC, t.name
      LIMIT 8`, [],
     subject.id,

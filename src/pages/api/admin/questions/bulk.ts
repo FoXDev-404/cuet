@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { run } from "../../../../lib/db";
+import { all, first, run } from "../../../../lib/db";
 import { requirePermission } from "../../../../lib/auth/guard";
 import { audit } from "../../../../lib/audit";
 import { updateQuestionShare, type SharePatch } from "../../../../lib/admin/share";
@@ -123,7 +123,7 @@ export const POST: APIRoute = async (context) => {
   if (guard.response) return guard.response;
 
   let column = "";
-  let value: string | number = "";
+  let value: string | number | null = "";
 
   if (action === "status") {
     if (!STATUSES.includes(String(body.value))) return apiError("Invalid status.");
@@ -142,8 +142,25 @@ export const POST: APIRoute = async (context) => {
     column = "subject_id";
     value = subjectId;
   } else if (action === "topic") {
-    const topicId = Number(body.value);
-    if (!Number.isInteger(topicId) || topicId < 0) return apiError("Invalid topic.");
+    const topicId = body.value === "clear" || body.value === null ? null : Number(body.value);
+    if (topicId !== null && (!Number.isInteger(topicId) || topicId <= 0)) {
+      return apiError("Invalid topic.");
+    }
+    if (topicId !== null) {
+      const topic = await first<{ subject_id: number }>(
+        "SELECT subject_id FROM topics WHERE id = ? AND deleted_at IS NULL",
+        topicId,
+      );
+      if (!topic) return apiError("That syllabus topic does not exist.");
+      const questions = await all<{ id: number; subject_id: number }>(
+        `SELECT id, subject_id FROM questions WHERE id IN (${placeholders}) AND deleted_at IS NULL`,
+        ...ids,
+      );
+      if (questions.length !== ids.length) return apiError("One or more selected questions no longer exist.");
+      if (questions.some((question) => question.subject_id !== topic.subject_id)) {
+        return apiError("Choose questions from the same subject as the selected topic.");
+      }
+    }
     column = "topic_id";
     value = topicId;
   } else {

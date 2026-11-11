@@ -52,7 +52,7 @@ const topics = await allOr<{ id: number; name: string; slug: string; count: numb
             WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
               AND m.status = 'published' AND m.deleted_at IS NULL
               AND m.practice_paper_slug IS NULL) AS count
-   FROM topics t WHERE t.subject_id = ? ORDER BY t.name`, [],
+   FROM topics t WHERE t.subject_id = ? AND t.deleted_at IS NULL ORDER BY t.name`, [],
   subject.id,
 );
 
@@ -62,6 +62,7 @@ const libraryQuestions = localSummary?.questionCount ?? 0;
 const timedQuestions = subjectStat?.bank_question_count ?? 0;
 const publishedQuestions = timedQuestions + libraryQuestions;
 const papers = (subjectStat?.mock_count ?? 0) + (localSummary?.paperCount ?? 0);
+const topicsWithPractice = topics.filter((topic) => topic.count > 0).length;
 if (topics.length === 0 && publishedQuestions === 0) {
   return new Response("Subject syllabus not published yet", { status: 404 });
 }
@@ -112,7 +113,7 @@ const DEFAULT_FAQ: FaqItem[] = [
   {
     question: `What is the ${subject.name} syllabus for CUET UG?`,
     answer:
-      "The authoritative scope is published by NTA in the current information bulletin. This page lists the topics mapped in this site's question bank and links them to practice; it does not replace the official document.",
+      "The authoritative scope is published by NTA in the current information bulletin. This page organizes the 2026 NTA syllabus topics and shows which ones have questions mapped for practice; it does not replace the official document.",
   },
   {
     question: `How many ${subject.name} questions are published here?`,
@@ -134,7 +135,7 @@ const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
 const title = seo?.title || `${subject.name} Syllabus for CUET UG - Topic Map`;
 const description =
   seo?.description ||
-  `A practical ${subject.name} syllabus map for CUET UG: ${topics.length} mapped topic${topics.length === 1 ? "" : "s"}, ${publishedQuestions} published question${publishedQuestions === 1 ? "" : "s"} and links to timed practice.`;
+  `A practical ${subject.name} syllabus map for CUET UG: ${topics.length} syllabus topics, ${topicsWithPractice} with timed practice, and ${publishedQuestions} published question${publishedQuestions === 1 ? "" : "s"}.`;
 const site = siteUrl(Astro.url);
 
 const structuredData = [
@@ -157,7 +158,7 @@ const structuredData = [
   <PageHero
     eyebrow={`Syllabus · ${subject.name}`}
     title={`${subject.name} syllabus, mapped to practice`}
-    intro={`This page turns the official ${subject.name} scope into a checklist you can act on. Topics come from the site's question bank; the authoritative scope remains the current NTA information bulletin.`}
+    intro={`This checklist follows the CUET UG 2026 syllabus topics for ${subject.name}. Topic counts show how many timed-bank questions are currently mapped to each unit. Check the current NTA bulletin for any later changes.`}
     updated={verified}
   />
 
@@ -176,7 +177,7 @@ const structuredData = [
 
     <div class="mt-5 grid gap-4 sm:grid-cols-3">
       <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Mapped topics</p>
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Syllabus topics</p>
         <p class="mt-1 text-3xl font-black">{topics.length}</p>
       </div>
       <div class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
@@ -192,7 +193,7 @@ const structuredData = [
     <section class="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
       <h2 class="font-bold text-amber-900 dark:text-amber-200">Official scope first</h2>
       <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
-        NTA publishes the authoritative syllabus and any changes in the current information bulletin. This page is an editorial map for practice, not a reproduction of that document.
+        NTA publishes the authoritative syllabus and any changes in the current information bulletin. This topic catalog follows the 2026 syllabus and is an editorial practice map, not a reproduction of that document.
         {verified ? ` The shared syllabus summary was last reviewed on ${verified}.` : " No official syllabus summary has been verified for the current session yet."}
       </p>
       <div class="mt-3 flex flex-wrap gap-2 text-sm">
@@ -213,7 +214,7 @@ const structuredData = [
     <section class="mt-10">
       <h2 class="text-2xl font-bold tracking-tight">{subject.name} topic checklist</h2>
       <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-        {guidance.focus.charAt(0).toUpperCase() + guidance.focus.slice(1)}. A topic becomes a practice link when at least one timed-paper question is mapped to it.
+        {guidance.focus.charAt(0).toUpperCase() + guidance.focus.slice(1)}. A topic becomes a practice link when at least one timed-paper question is mapped to it; zero counts mean tagging is still in progress.
       </p>
       {topics.length === 0 ? (
         <div class="mt-4 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">

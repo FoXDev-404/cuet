@@ -40,6 +40,13 @@ const year =
     ? requestedYear
     : 0;
 const search = (Astro.url.searchParams.get("q") ?? "").trim().slice(0, 100);
+const topicMapping = Astro.url.searchParams.get("mapping") === "unmapped" ? "unmapped" : "";
+const topics = await all<{ id: number; name: string; subject_name: string; subject_id: number }>(
+  `SELECT t.id, t.name, t.subject_id, s.name AS subject_name
+   FROM topics t JOIN subjects s ON s.id = t.subject_id
+   WHERE t.deleted_at IS NULL
+   ORDER BY s.name, t.name`,
+);
 const page = Math.max(Number(Astro.url.searchParams.get("page") ?? 1) || 1, 1);
 const per = Math.min(Math.max(Number(Astro.url.searchParams.get("per") ?? 25) || 25, 10), 100);
 
@@ -61,6 +68,7 @@ if (search) {
   where.push("q.text LIKE ?");
   params.push(`%${search}%`);
 }
+if (topicMapping === "unmapped") where.push("q.topic_id IS NULL");
 const whereSql = where.join(" AND ");
 
 const countQuestions = () =>
@@ -68,7 +76,7 @@ const countQuestions = () =>
 
 // The unfiltered count scans the whole bank (15.8k rows). It is the page's
 // default view, so cache it briefly; filtered counts stay exact.
-const hasFilters = Boolean(status || subjectId > 0 || year > 0 || search);
+const hasFilters = Boolean(status || subjectId > 0 || year > 0 || search || topicMapping);
 const [totalRow, questions] = await Promise.all([
   hasFilters
     ? countQuestions()
@@ -82,9 +90,12 @@ const [totalRow, questions] = await Promise.all([
     updated_at: string | null;
     created_at: string;
     subject_name: string;
+    topic_name: string | null;
   }>(
-    `SELECT q.id, q.text, q.status, q.difficulty, q.year, q.updated_at, q.created_at, s.name AS subject_name
+    `SELECT q.id, q.text, q.status, q.difficulty, q.year, q.updated_at, q.created_at,
+            s.name AS subject_name, t.name AS topic_name
      FROM questions q JOIN subjects s ON s.id = q.subject_id
+     LEFT JOIN topics t ON t.id = q.topic_id AND t.deleted_at IS NULL
      WHERE ${whereSql}
      ORDER BY q.id DESC LIMIT ? OFFSET ?`,
     ...params,
@@ -107,6 +118,7 @@ if (status) exportParams.set("status", status);
 if (subjectId > 0) exportParams.set("subject", String(subjectId));
 if (year > 0) exportParams.set("year", String(year));
 if (search) exportParams.set("q", search);
+if (topicMapping) exportParams.set("mapping", topicMapping);
 const exportQuery = exportParams.toString() ? `&${exportParams.toString()}` : "";
 
 function pageHref(target: number): string {
@@ -134,7 +146,7 @@ function pageHref(target: number): string {
     </div>
   </div>
 
-  <form method="get" class="mt-6 grid gap-3 rounded-2xl border border-neutral-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-[1fr_150px_130px_150px_110px_auto] dark:border-neutral-800 dark:bg-neutral-900">
+  <form method="get" class="mt-6 grid gap-3 rounded-2xl border border-neutral-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-[1fr_150px_130px_150px_150px_110px_auto] dark:border-neutral-800 dark:bg-neutral-900">
     <input class="h-10 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" type="search" name="q" value={search} placeholder="Search question text…" />
     <select class="h-10 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="subject" aria-label="Filter by subject">
       <option value="">All subjects</option>
@@ -147,6 +159,10 @@ function pageHref(target: number): string {
     <select class="h-10 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="status" aria-label="Filter by status">
       <option value="">All statuses</option>
       {allowedStatuses.map((item) => (<option value={item} selected={item === status}>{item.replace("_", " ")}</option>))}
+    </select>
+    <select class="h-10 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="mapping" aria-label="Filter by topic mapping">
+      <option value="">All topic mappings</option>
+      <option value="unmapped" selected={topicMapping === "unmapped"}>Unmapped only</option>
     </select>
     <select class="h-10 rounded-lg border border-neutral-300 bg-white px-3 text-sm dark:border-neutral-700 dark:bg-neutral-950" name="per" aria-label="Rows per page">
       {[25, 50, 100].map((value) => (<option value={value} selected={value === per}>{value} rows</option>))}
@@ -167,6 +183,14 @@ function pageHref(target: number): string {
       <option value="difficulty:easy">Set easy</option>
       <option value="difficulty:medium">Set medium</option>
       <option value="difficulty:hard">Set hard</option>
+      <optgroup label="Syllabus topic mapping">
+        <option value="topic:clear">Clear topic mapping</option>
+        {topics.map((topic) => (
+          <option value={`topic:${topic.id}`}>
+            {topic.subject_name} · {topic.name}
+          </option>
+        ))}
+      </optgroup>
       {canPublish ? (
         <optgroup label="Sharing">
           <option value="share_enabled:1">Enable sharing</option>
@@ -194,6 +218,7 @@ function pageHref(target: number): string {
             <th class="w-10 px-3 py-3"><input id="select-all" type="checkbox" aria-label="Select all questions on this page" /></th>
             <th class="px-3 py-3">Question</th>
             <th class="px-3 py-3">Subject</th>
+            <th class="px-3 py-3">Syllabus topic</th>
             <th class="px-3 py-3">Status</th>
             <th class="px-3 py-3">Difficulty</th>
             <th class="px-3 py-3">Updated</th>
@@ -211,6 +236,7 @@ function pageHref(target: number): string {
                 <span class="mt-1 block text-xs text-neutral-500 dark:text-neutral-400">#{question.id}{question.year ? ` · PYQ ${question.year}` : ""}</span>
               </td>
               <td class="px-3 py-3">{question.subject_name}</td>
+              <td class="px-3 py-3 text-xs">{question.topic_name ?? <span class="font-semibold text-amber-700 dark:text-amber-300">Unmapped</span>}</td>
               <td class="px-3 py-3"><span class={`rounded-full px-2 py-0.5 text-xs font-semibold ${statusClass[question.status] ?? ""}`}>{question.status.replace("_", " ")}</span></td>
               <td class="px-3 py-3 capitalize">{question.difficulty ?? "—"}</td>
               <td class="px-3 py-3 text-xs text-neutral-500 dark:text-neutral-400">{formatDateTime(question.updated_at ?? question.created_at)}</td>

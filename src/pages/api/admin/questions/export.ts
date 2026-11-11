@@ -108,6 +108,7 @@ export const GET: APIRoute = async (context) => {
       ? requestedYear
       : 0;
   const query = (url.searchParams.get("q") ?? "").trim().slice(0, 100);
+  const mapping = url.searchParams.get("mapping") === "unmapped" ? "unmapped" : "";
 
   const where = ["q.deleted_at IS NULL"];
   const params: (string | number)[] = [];
@@ -131,6 +132,7 @@ export const GET: APIRoute = async (context) => {
     where.push("q.text LIKE ? ESCAPE '\\'");
     params.push(`%${query.replace(/[\\%_]/g, "\\$&")}%`);
   }
+  if (mapping === "unmapped") where.push("q.topic_id IS NULL");
 
   const rows = await all<ExportRow>(
     `SELECT q.id, q.subject_id, s.slug AS subject_slug, q.topic_id, q.passage_id,

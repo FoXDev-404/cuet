@@ -21,6 +21,9 @@ if (!question || question.deleted_at) {
 const subjects = await all<{ id: number; name: string }>(
   "SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name",
 );
+const topics = await all<{ id: number; subject_id: number; name: string }>(
+  "SELECT id, subject_id, name FROM topics WHERE deleted_at IS NULL ORDER BY subject_id, name",
+);
 const canPublish = can(admin.role, "questions.publish");
 const canHotfix = admin.role === "super";
 const canRestore = can(admin.role, "revisions.restore");
@@ -48,7 +51,7 @@ const usedIn = await all<{ id: number; title: string; slug: string; status: stri
     </div>
     <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide dark:bg-neutral-800">{question.status.replace("_", " ")}</span>
   </div>
-  <QuestionForm question={question} subjects={subjects} canPublish={canPublish} canHotfix={canHotfix} />
+  <QuestionForm question={question} subjects={subjects} topics={topics} canPublish={canPublish} canHotfix={canHotfix} />
 
   {share ? <QuestionSharePanel share={share} /> : null}
 

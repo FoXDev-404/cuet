@@ -97,7 +97,8 @@ export const GET: APIRoute = async ({ request }) => {
     }));
     const topicCountRows = await readAll<{ subject_id: number; topic_count: number }>(
       "topic-counts",
-      `SELECT subject_id, COUNT(*) AS topic_count FROM topics GROUP BY subject_id`,
+      `SELECT subject_id, COUNT(*) AS topic_count FROM topics
+       WHERE deleted_at IS NULL GROUP BY subject_id`,
       [],
     );
     const topicCounts = new Map(
@@ -134,7 +135,8 @@ export const GET: APIRoute = async ({ request }) => {
        FROM topics t
        JOIN subjects s ON s.id = t.subject_id
        JOIN exams e ON e.id = s.exam_id
-       WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1`,
+       WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1
+         AND t.deleted_at IS NULL`,
       [],
     );
     pyqYears = await readAll(

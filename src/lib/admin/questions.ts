@@ -154,7 +154,7 @@ export async function prepareQuestion(
 
   if (payload.topic_id) {
     const topic = await first<{ id: number }>(
-      "SELECT id FROM topics WHERE id = ? AND subject_id = ?",
+      "SELECT id FROM topics WHERE id = ? AND subject_id = ? AND deleted_at IS NULL",
       payload.topic_id,
       payload.subject_id,
     );
