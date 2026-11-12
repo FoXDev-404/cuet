@@ -4,13 +4,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { renderRichText } from "../lib/content";
+import { DB_DEGRADED_HEADER } from "../lib/db-resilient";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
   formatVerified,
-  getExamInfo,
+  getExamInfoState,
   getPageSeo,
   parseFaq,
+  resolveExamVerification,
   type FaqItem,
 } from "../lib/seo";
 
@@ -53,13 +55,16 @@ const DEFAULT_FAQ: FaqItem[] = [
 ];
 
 const seo = await getPageSeo(PATH);
-const info = (await getExamInfo(["important-dates"]))["important-dates"];
+const examInfo = await getExamInfoState(["important-dates"]);
+if (!examInfo.available) Astro.response.headers.set(DB_DEGRADED_HEADER, "1");
+const info = examInfo.rows["important-dates"];
 const title = seo?.title || DEFAULT_TITLE;
 const description = seo?.description || DEFAULT_DESCRIPTION;
 const customFaq = parseFaq(seo?.faq_json);
 const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
-const verified = formatVerified(info?.last_verified);
-const isVerified = Boolean(info && info.value && info.value !== "TODO_VERIFY" && info.last_verified);
+const verification = resolveExamVerification("important-dates", info, examInfo.available);
+const verified = formatVerified(verification.lastVerified);
+const isVerified = verification.verified;
 const noindex = (seo?.noindex ?? 0) === 1 || !isVerified;
 const site = siteUrl(Astro.url);
 
@@ -73,7 +78,7 @@ const structuredData = [
     title,
     description,
     path: PATH,
-    updated: seo?.updated_at ?? info?.last_verified ?? null,
+    updated: seo?.updated_at ?? verification.lastVerified ?? null,
   }),
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 
@@ -96,7 +101,7 @@ const plan = [
 ];
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow="Important dates"
     title="Plan around verified dates, not forwarded screenshots"

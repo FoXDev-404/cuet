@@ -4,15 +4,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { allOr } from "../lib/db";
+import { DB_DEGRADED_HEADER } from "../lib/db-resilient";
 import { parseMarkingScheme, renderRichText } from "../lib/content";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
   formatVerified,
-  getExamInfo,
+  getExamInfoState,
   getPageSeo,
   itemListJsonLd,
   parseFaq,
+  resolveExamVerification,
   type FaqItem,
 } from "../lib/seo";
 import { SECTION_TIME_ALLOCATIONS } from "../lib/exam-timing";
@@ -77,14 +79,16 @@ const papers = await allOr<{
 );
 
 const seo = await getPageSeo(PATH);
-const info = (await getExamInfo(["exam-pattern"]))["exam-pattern"];
+const examInfo = await getExamInfoState(["exam-pattern"]);
+if (!examInfo.available) Astro.response.headers.set(DB_DEGRADED_HEADER, "1");
+const info = examInfo.rows["exam-pattern"];
 const title = seo?.title || DEFAULT_TITLE;
 const description = seo?.description || DEFAULT_DESCRIPTION;
 const customFaq = parseFaq(seo?.faq_json);
 const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
-const verified = formatVerified(info?.last_verified);
-const isVerified = Boolean(info && info.value && info.value !== "TODO_VERIFY" && info.last_verified);
-const noindex = (seo?.noindex ?? 0) === 1 || !isVerified;
+const verification = resolveExamVerification("exam-pattern", info, examInfo.available);
+const verified = formatVerified(verification.lastVerified);
+const noindex = (seo?.noindex ?? 0) === 1 || !verification.verified;
 const site = siteUrl(Astro.url);
 
 const structuredData = [
@@ -97,7 +101,7 @@ const structuredData = [
     title,
     description,
     path: PATH,
-    updated: seo?.updated_at ?? info?.last_verified ?? null,
+    updated: seo?.updated_at ?? verification.lastVerified ?? null,
   }),
   ...(papers.length > 0
     ? [itemListJsonLd(site, papers.map((paper) => ({ name: paper.title, path: `/mock/${paper.slug}` })))]
@@ -124,7 +128,7 @@ const stageCards = [
 ];
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow="Exam pattern"
     title="Know the paper before the timer starts"

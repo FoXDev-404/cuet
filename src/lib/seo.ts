@@ -1,6 +1,12 @@
 import { all, first } from "./db";
 
 export { normalizeCanonicalUrl } from "./canonical";
+export {
+  EXAM_INFO_FALLBACK_VERIFICATION,
+  isExamInfoVerified,
+  resolveExamVerification,
+} from "./exam-verification";
+export type { ExamVerification, ExamVerificationRow } from "./exam-verification";
 
 export const SITE_NAME = "CUET Free Mock Test";
 export const DEFAULT_SITE_DESCRIPTION =
@@ -65,18 +71,32 @@ export async function getPageSeo(path: string): Promise<PageSeoRow | null> {
   }
 }
 
-export async function getExamInfo(keys: string[]): Promise<Record<string, ExamInfoRow>> {
-  if (keys.length === 0) return {};
+export type ExamInfoState = {
+  rows: Record<string, ExamInfoRow>;
+  /**
+   * False when the `exam_info` query itself failed. Callers must then resolve
+   * indexability with the deploy-time fallback instead of treating empty rows
+   * as "unverified".
+   */
+  available: boolean;
+};
+
+export async function getExamInfoState(keys: string[]): Promise<ExamInfoState> {
+  if (keys.length === 0) return { rows: {}, available: true };
   try {
     const placeholders = keys.map(() => "?").join(",");
     const rows = await all<ExamInfoRow>(
       `SELECT key, value, source_url, last_verified FROM exam_info WHERE key IN (${placeholders})`,
       ...keys,
     );
-    return Object.fromEntries(rows.map((row) => [row.key, row]));
+    return { rows: Object.fromEntries(rows.map((row) => [row.key, row])), available: true };
   } catch {
-    return {};
+    return { rows: {}, available: false };
   }
+}
+
+export async function getExamInfo(keys: string[]): Promise<Record<string, ExamInfoRow>> {
+  return (await getExamInfoState(keys)).rows;
 }
 
 export function parseFaq(raw: string | null | undefined): FaqItem[] {

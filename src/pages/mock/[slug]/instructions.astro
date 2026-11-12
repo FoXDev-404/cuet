@@ -26,6 +26,7 @@ let mock: {
   question_count: number;
   attempt_count: number;
   subject_name?: string | null;
+  practice_paper_slug?: string | null;
 } | null = null;
 // True when D1 is unreachable and the page is describing the paper from the
 // bundled fallback (mock id 0). Starting an attempt is then impossible, so the
@@ -43,11 +44,13 @@ try {
     question_count: number;
     attempt_count: number;
     subject_name: string | null;
+    practice_paper_slug: string | null;
   }>(
     `SELECT m.id, m.title, m.slug, m.duration_min, m.total_marks, m.marking_scheme, m.instructions,
             (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
             (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count,
-            s.name AS subject_name
+            s.name AS subject_name,
+            m.practice_paper_slug
      FROM mock_tests m
      LEFT JOIN subjects s ON s.id = m.subject_id
      WHERE m.slug = ? AND m.status = 'published' AND m.deleted_at IS NULL`,
@@ -94,9 +97,15 @@ const lines = (mock.instructions ?? "")
   .split("\n")
   .map((line) => line.trim().replace(/\b\d+\s+minutes\b/i, `${effectiveDurationMin} minutes`))
   .filter(Boolean);
+// Instructions are a step, not a destination: keep them out of the index but
+// point the canonical at the indexable paper (or overview) they belong to so
+// the duplicate cluster resolves to one URL.
+const canonical = mock.practice_paper_slug
+  ? `/mock-tests/${mock.practice_paper_slug}`
+  : `/mock/${mock.slug}`;
 ---
 
-<BaseLayout title={`Instructions — ${mock.title}`} noindex>
+<BaseLayout title={`Instructions — ${mock.title}`} robots="noindex, follow" canonical={canonical}>
   <section class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
     <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/mock/${mock.slug}`}>← Back to ${mock.title}</a>
     <h1 class="mt-4 text-3xl font-black tracking-tight">Before you start</h1>

@@ -24,7 +24,8 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(file).toContain("const canonical = isPracticeWrapper ? `/mock-tests/${mock.practice_paper_slug}` : undefined");
     expect(file).toContain("const noindex = totalQuestions === 0 || isPracticeWrapper");
     expect(file).toContain("canonical={canonical}");
-    expect(file).toContain("noindex={noindex}");
+    // noindex pages still pass crawl equity: `follow`, not `nofollow`.
+    expect(file).toContain('robots={noindex ? "noindex, follow" : undefined}');
   });
 
   it("verifies sitemap.xml excludes 301 redirects (/cuet-mock-test, /cuet-ug-mock-test, /pyq)", () => {

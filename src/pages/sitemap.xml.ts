@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { all, type BindValue } from "../lib/db";
+import { resolveExamVerification } from "../lib/exam-verification";
 import { getLocalPapers, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
@@ -165,21 +166,22 @@ export const GET: APIRoute = async ({ request }) => {
 
   // Exam Info Verification Gate (Fix 5 & Fix 7): Unverified pages with noindex excluded from sitemap
   let examInfoMap = new Map<string, { value: string; last_verified: string | null }>();
+  let examInfoAvailable = true;
   try {
-    const examInfoRows = await readAll<{ key: string; value: string; last_verified: string | null }>(
-      "exam-info",
+    // Read directly instead of through `readAll`: that helper swallows failures
+    // and returns [], which would look like "every guide is unverified" during
+    // an outage and silently drop indexable URLs from the sitemap.
+    const examInfoRows = await all<{ key: string; value: string; last_verified: string | null }>(
       `SELECT key, value, last_verified FROM exam_info`,
-      [],
     );
     examInfoMap = new Map(examInfoRows.map((r) => [r.key, { value: r.value, last_verified: r.last_verified }]));
   } catch (err) {
+    examInfoAvailable = false;
     failures.push("exam-info");
     console.error("sitemap exam_info query failed", err);
   }
-  const isExamVerified = (key: string) => {
-    const entry = examInfoMap.get(key);
-    return Boolean(entry && entry.value && entry.value !== "TODO_VERIFY" && entry.last_verified);
-  };
+  const isExamVerified = (key: string) =>
+    resolveExamVerification(key, examInfoMap.get(key), examInfoAvailable).verified;
 
   // Kept separate so a sharing-policy failure cannot drop the rest of the
   // sitemap. Shared questions are included only when they pass the same

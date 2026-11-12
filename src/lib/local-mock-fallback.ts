@@ -19,6 +19,11 @@ export interface LocalMockFallback {
   published_at: string | null;
   question_count: number;
   attempt_count: number;
+  /**
+   * Set for practice papers so `/mock/<slug>` keeps its duplicate-wrapper
+   * noindex/canonical behaviour even when this object substitutes for D1.
+   */
+  practice_paper_slug: string | null;
 }
 
 /**
@@ -62,5 +67,6 @@ export function getLocalMockFallback(slug: string): LocalMockFallback | null {
     published_at: null,
     question_count: scored,
     attempt_count: paper.attemptCount,
+    practice_paper_slug: paper.slug,
   };
 }

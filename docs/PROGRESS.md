@@ -1228,6 +1228,34 @@ the 5,322 real questions, not only the empty ranked bank.
 - `npm run audit:reconciliation` succeeds. CI Quality Gate run 42807575587 and
   Auto deploy run 42807575422 both succeeded.
 
+### Search Console noindex follow-up (2026-11-12)
+
+GSC’s “Excluded by ‘noindex’ tag” report listed 39 URLs. The set is 28
+`/mock/*/instructions` pages, five unique practice-paper wrappers
+(`/mock/<slug>`), four zero-entry leaderboards and two core guides.
+`/cuet-ug-important-dates` is correctly noindex because
+`exam_info.important-dates` is `TODO_VERIFY`; `/cuet-ug-marking-scheme` had
+been noindex transiently even though its row is verified.
+
+The verification gate now distinguishes “database answered and said
+unverified” from “database read failed”. The latter uses deploy-time
+last-known-good verification, so an outage cannot flip an indexable guide to
+noindex while Google crawls it, and the response is marked `x-db-degraded` so
+it is never edge-cached. `important-dates` deliberately has no fallback and
+stays noindex. The sitemap uses the same rules.
+
+The intentional duplicates now emit `noindex, follow` instead of
+`noindex, nofollow`. Instructions and wrapper pages canonicalise to
+`/mock-tests/<slug>`; `BaseLayout` resolves path-style overrides against
+`SITE_URL`, which fixes the wrapper self-canonical that the old
+absolute-only `new URL()` call silently ignored.
+
+Verification: Vitest 481/481 across 57 files; Playwright 73 passed, 2 skipped,
+0 failed; local SEO audit 287 sitemap URLs / 290 audited / 0 mismatches;
+`astro check` 0 errors; production build clean. The targeted Playwright run
+committed in `8a0d662` had overwritten `docs/report/playwright-results.json`
+and broken the scorecard test, so the full artifact was regenerated.
+
 ### Remaining
 
 - The remote D1 migration check stays `UNVERIFIED` on the free-tier row-read

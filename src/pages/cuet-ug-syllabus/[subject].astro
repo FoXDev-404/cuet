@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import { allOr, firstOr } from "../../lib/db";
+import { DB_DEGRADED_HEADER } from "../../lib/db-resilient";
 import { getLocalSubjectSummary } from "../../lib/local-papers";
 import { getSubjectStats } from "../../lib/subject-stats";
 import { renderRichText } from "../../lib/content";
@@ -11,9 +12,10 @@ import {
   articleJsonLd,
   breadcrumbJsonLd,
   formatVerified,
-  getExamInfo,
+  getExamInfoState,
   getPageSeo,
   parseFaq,
+  resolveExamVerification,
   type FaqItem,
 } from "../../lib/seo";
 
@@ -69,8 +71,11 @@ if (topics.length === 0 && publishedQuestions === 0) {
 
 const PATH = `/cuet-ug-syllabus/${subject.slug}`;
 const seo = await getPageSeo(PATH);
-const info = (await getExamInfo(["syllabus"]))["syllabus"];
-const verified = formatVerified(info?.last_verified);
+const examInfo = await getExamInfoState(["syllabus"]);
+if (!examInfo.available) Astro.response.headers.set(DB_DEGRADED_HEADER, "1");
+const info = examInfo.rows["syllabus"];
+const verification = resolveExamVerification("syllabus", info, examInfo.available);
+const verified = formatVerified(verification.lastVerified);
 const noindex = (seo?.noindex ?? 0) === 1 || (topics.length === 0 && publishedQuestions === 0);
 
 const subjectGuidance: Record<string, { focus: string; method: string }> = {
@@ -149,12 +154,12 @@ const structuredData = [
     title,
     description,
     path: PATH,
-    updated: seo?.updated_at ?? info?.last_verified ?? null,
+    updated: seo?.updated_at ?? verification.lastVerified ?? null,
   }),
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow={`Syllabus · ${subject.name}`}
     title={`${subject.name} syllabus, mapped to practice`}

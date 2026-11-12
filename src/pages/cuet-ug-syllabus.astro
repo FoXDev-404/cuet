@@ -7,13 +7,15 @@ import { getLocalSubjectSummary } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { getSubjectStats } from "../lib/subject-stats";
 import { renderRichText } from "../lib/content";
+import { DB_DEGRADED_HEADER } from "../lib/db-resilient";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
   formatVerified,
-  getExamInfo,
+  getExamInfoState,
   getPageSeo,
   parseFaq,
+  resolveExamVerification,
   type FaqItem,
 } from "../lib/seo";
 
@@ -101,14 +103,17 @@ const domains = subjectCards.filter((subject) => subject.type === "domain");
 const general = subjectCards.filter((subject) => subject.type !== "language" && subject.type !== "domain");
 
 const seo = await getPageSeo(PATH);
-const info = (await getExamInfo(["syllabus"]))["syllabus"];
+const examInfo = await getExamInfoState(["syllabus"]);
+if (!examInfo.available) Astro.response.headers.set(DB_DEGRADED_HEADER, "1");
+const info = examInfo.rows["syllabus"];
 const title = seo?.title || DEFAULT_TITLE;
 const description = seo?.description || DEFAULT_DESCRIPTION;
 const customFaq = parseFaq(seo?.faq_json);
 const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
-const verified = formatVerified(info?.last_verified);
-const isVerified = Boolean(info && info.value && info.value !== "TODO_VERIFY" && info.last_verified);
-const noindex = (seo?.noindex ?? 0) === 1 || subjectCards.length === 0 || !isVerified;
+const verification = resolveExamVerification("syllabus", info, examInfo.available);
+const verified = formatVerified(verification.lastVerified);
+const noindex =
+  (seo?.noindex ?? 0) === 1 || subjectCards.length === 0 || !verification.verified;
 const site = siteUrl(Astro.url);
 
 const structuredData = [
@@ -121,7 +126,7 @@ const structuredData = [
     title,
     description,
     path: PATH,
-    updated: seo?.updated_at ?? info?.last_verified ?? null,
+    updated: seo?.updated_at ?? verification.lastVerified ?? null,
   }),
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 
@@ -147,7 +152,7 @@ const groups = [
 ].filter((group) => group.items.length > 0);
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow="Syllabus"
     title="The CUET UG syllabus, turned into a study plan"
