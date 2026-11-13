@@ -45,6 +45,7 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     const file = readFileSync(join(root, "src/pages/sitemap.xml.ts"), "utf8");
     expect(file).toContain('if (paper.rightsStatus === "restricted") continue;');
     expect(file).toContain("add(paper.path");
+    expect(file).not.toContain("LOCAL_LIBRARY_ADDED_AT");
   });
 
   it("verifies zero private routes exist in sitemap.xml generator", () => {
@@ -64,16 +65,17 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(file).toContain("x-sitemap-degraded");
   });
 
-  it("verifies PYQ year and subject hubs are indexable when non-restricted papers exist", () => {
+  it("requires substantive SEO copy for indexable PYQ archives in both routes and sitemap", () => {
     const yearFile = readFileSync(join(root, "src/pages/pyq/[year].astro"), "utf8");
-    expect(yearFile).toContain("const noindex = indexablePaperCount === 0");
+    expect(yearFile).toContain("hasSubstantiveSeoIntro(seo?.intro_html)");
     expect(yearFile).toContain('paper.rightsStatus !== "restricted"');
     const subjFile = readFileSync(join(root, "src/pages/pyq/[year]/[subject].astro"), "utf8");
-    expect(subjFile).toContain("const noindex = indexablePaperCount === 0");
+    expect(subjFile).toContain("hasSubstantiveSeoIntro(seo?.intro_html)");
     expect(subjFile).toContain('paper.rightsStatus !== "restricted"');
     const sitemap = readFileSync(join(root, "src/pages/sitemap.xml.ts"), "utf8");
-    expect(sitemap).toContain("for (const year of indexablePyqYears)");
-    expect(sitemap).toContain("add(`/pyq/${entry.year}/${entry.subject}`");
+    expect(sitemap).toContain("indexableArchivePaths");
+    expect(sitemap).toContain("hasSubstantiveSeoIntro(row.intro_html)");
+    expect(sitemap).toContain("if (indexableArchivePaths.has(path))");
   });
 });
 

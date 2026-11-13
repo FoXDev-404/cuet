@@ -121,8 +121,41 @@ const cards = [
   { label: "Questions", value: stats.questions.total, detail: `${stats.questions.published} published`, href: "/admin/questions" },
   { label: "Mock tests", value: stats.mocks.total, detail: `${stats.mocks.published} published`, href: "/admin/mocks" },
   { label: "Users", value: stats.users.total, detail: `+${stats.users.newThisWeek} in 7 days`, href: "/admin/users" },
-  { label: "Attempts today", value: stats.attemptsToday, detail: "started since midnight UTC", href: "#" },
+  { label: "Attempts today", value: stats.attemptsToday, detail: "started since midnight UTC", href: "/admin/attempts" },
 ];
+
+const siteTools = [
+  {
+    label: "Homepage SEO",
+    detail: "Edit the homepage title, description and search intro.",
+    href: "/admin/seo?path=%2F",
+    permission: "seo.write" as const,
+  },
+  {
+    label: "Guides & blog",
+    detail: "Create, update and publish editorial guides.",
+    href: "/admin/blog",
+    permission: "seo.write" as const,
+  },
+  {
+    label: "Exam information",
+    detail: "Review official-source exam facts and dates.",
+    href: "/admin/exam-info",
+    permission: "exam_info.write" as const,
+  },
+  {
+    label: "Announcements",
+    detail: "Manage notices shown to site visitors.",
+    href: "/admin/announcements",
+    permission: "announcements.write" as const,
+  },
+  {
+    label: "Site builder & settings",
+    detail: "Edit shared branding, homepage sections and feature switches.",
+    href: "/admin/settings",
+    permission: "settings.write" as const,
+  },
+].filter((tool) => can(admin.role, tool.permission));
 ---
 
 <AdminLayout title="Dashboard" active="dashboard">
@@ -132,8 +165,12 @@ const cards = [
       <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">P2 content operations. Every write is recorded in the audit log.</p>
     </div>
     <div class="flex gap-2">
-      <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/questions/new">New question</a>
-      <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-900" href="/admin/mocks/new">New mock</a>
+      {can(admin.role, "questions.write") ? (
+        <a class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white hover:bg-brand-700" href="/admin/questions/new">New question</a>
+      ) : null}
+      {can(admin.role, "mocks.write") ? (
+        <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-900" href="/admin/mocks/new">New mock</a>
+      ) : null}
     </div>
   </div>
 
@@ -146,6 +183,32 @@ const cards = [
       </a>
     ))}
   </div>
+
+  {siteTools.length > 0 ? (
+    <section class="mt-8" aria-labelledby="manage-site-heading">
+      <div class="flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <h2 class="text-lg font-black tracking-tight" id="manage-site-heading">Manage your website</h2>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Quick access to the site content and settings you can manage with your role.</p>
+        </div>
+        <a class="text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/" target="_blank" rel="noopener">Open public site →</a>
+      </div>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {siteTools.map((tool) => (
+          <a
+            href={tool.href}
+            class="group rounded-xl border border-neutral-200 bg-white p-4 transition-colors hover:border-brand-400 hover:bg-brand-50/40 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-brand-700 dark:hover:bg-brand-950/20"
+          >
+            <span class="flex items-center justify-between gap-3">
+              <span class="font-bold">{tool.label}</span>
+              <span class="text-brand-700 transition-transform group-hover:translate-x-1 dark:text-brand-300" aria-hidden="true">→</span>
+            </span>
+            <span class="mt-1 block text-xs leading-5 text-neutral-600 dark:text-neutral-400">{tool.detail}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
 
   <section class="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30" aria-labelledby="pyq-review-heading">
     <div class="flex flex-wrap items-start justify-between gap-4">

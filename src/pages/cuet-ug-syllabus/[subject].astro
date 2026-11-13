@@ -140,7 +140,7 @@ const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
 const title = seo?.title || `${subject.name} Syllabus for CUET UG - Topic Map`;
 const description =
   seo?.description ||
-  `A practical ${subject.name} syllabus map for CUET UG: ${topics.length} syllabus topics, ${topicsWithPractice} with timed practice, and ${publishedQuestions} published question${publishedQuestions === 1 ? "" : "s"}.`;
+  `CUET UG ${subject.name} syllabus: ${topics.length} topics, ${topicsWithPractice} with timed practice, and ${publishedQuestions} questions. Use this map to plan revision and find weak areas.`;
 const site = siteUrl(Astro.url);
 
 const structuredData = [

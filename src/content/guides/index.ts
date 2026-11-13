@@ -2,6 +2,7 @@ import { EXAM_BASICS_GUIDES } from "./exam-basics";
 import { PRACTICE_GUIDES } from "./practice";
 import { SUBJECT_GUIDES_A } from "./subjects-a";
 import { SUBJECT_GUIDES_B } from "./subjects-b";
+import { STUDY_STRATEGY_GUIDES } from "./study-strategy";
 import type { StaticGuide } from "./types";
 
 export { GUIDE_CATEGORY_META, GUIDE_CATEGORY_ORDER } from "./types";
@@ -13,6 +14,7 @@ export const STATIC_GUIDES: StaticGuide[] = [
   ...SUBJECT_GUIDES_A,
   ...SUBJECT_GUIDES_B,
   ...PRACTICE_GUIDES,
+  ...STUDY_STRATEGY_GUIDES,
 ].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt) || a.slug.localeCompare(b.slug));
 
 /**

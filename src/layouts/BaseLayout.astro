@@ -6,7 +6,8 @@ import BrandLogo from "../components/BrandLogo.astro";
 import AdSlot from "../components/AdSlot.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import { siteUrl } from "../lib/site-url";
-import { getSetting } from "../lib/settings";
+import { getSettings } from "../lib/settings";
+import { isSafeInternalPath } from "../lib/site-presentation";
 import {
   adsenseClient,
   adSlotAllowed,
@@ -33,6 +34,8 @@ interface Props {
   endAdSlot?: boolean;
   /** Social preview image URL; falls back to the brand logo. */
   image?: string | null;
+  /** Accessible description for the social preview image. */
+  imageAlt?: string;
   /** Open Graph object type; blog articles pass "article". */
   ogType?: string;
 }
@@ -49,6 +52,7 @@ const {
   ads,
   endAdSlot = true,
   image: imageOverride = null,
+  imageAlt = "",
   ogType: ogTypeOverride = "website",
 } = Astro.props;
 
@@ -75,7 +79,25 @@ if (canonicalOverride) {
     // An invalid stored value must never break rendering; keep the self URL.
   }
 }
-const siteName = await getSetting("site_name", "CUET Free Mock Test");
+const presentationSettings = await getSettings([
+  "site_name",
+  "site_tagline",
+  "site_footer_note",
+  "global_notice_enabled",
+  "global_notice_text",
+  "global_notice_href",
+]);
+const siteName = presentationSettings.site_name || "CUET Free Mock Test";
+const siteTagline =
+  presentationSettings.site_tagline ??
+  "A focused space for CUET UG practice: mock tests, previous-year questions and performance reviews, moving forward one step at a time.";
+const siteFooterNote = presentationSettings.site_footer_note ?? "Independent practice resource.";
+const globalNoticeText = presentationSettings.global_notice_text?.trim() ?? "";
+const globalNoticeHref = presentationSettings.global_notice_href?.trim() ?? "";
+const globalNoticeEnabled =
+  (presentationSettings.global_notice_enabled === "true" ||
+    presentationSettings.global_notice_enabled === "1") &&
+  globalNoticeText.length > 0;
 const user = Astro.locals.user;
 const isAdmin = Boolean(Astro.locals.admin);
 const path = Astro.url.pathname;
@@ -178,8 +200,10 @@ const organization = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
+    {imageAlt ? <meta property="og:image:alt" content={imageAlt} /> : null}
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:image" content={socialImage} />
+    {imageAlt ? <meta property="twitter:image:alt" content={imageAlt} /> : null}
     <script type="application/ld+json" set:html={JSON.stringify(organization)} />
     {structuredDataList.map((data) => (
       <script type="application/ld+json" set:html={JSON.stringify(data)} />
@@ -206,9 +230,21 @@ const organization = {
       </noscript>
     ) : null}
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    {globalNoticeEnabled ? (
+      <aside class="border-b border-brand-200 bg-brand-50 text-brand-950 dark:border-brand-500/20 dark:bg-brand-950/60 dark:text-brand-100" aria-label="Site announcement">
+        <div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2 text-sm sm:px-6">
+          <span class="shrink-0 rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-800 dark:bg-brand-500/20 dark:text-brand-200">Notice</span>
+          {globalNoticeHref && isSafeInternalPath(globalNoticeHref) ? (
+            <a class="font-semibold underline underline-offset-2 hover:no-underline" href={globalNoticeHref}>{globalNoticeText}</a>
+          ) : (
+            <p>{globalNoticeText}</p>
+          )}
+        </div>
+      </aside>
+    ) : null}
     <header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/90 text-neutral-900 backdrop-blur-xl dark:border-white/10 dark:bg-ink-950/90 dark:text-white">
       <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <BrandLogo />
+        <BrandLogo brandName={siteName} />
 
         <!-- Desktop Navigation Bar (>= 1024px) -->
         <nav class="hidden items-center gap-1.5 lg:flex" aria-label="Primary">
@@ -677,10 +713,10 @@ const organization = {
       <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
-            <BrandLogo tone="dark" loading="lazy" />
-            <p class="mt-4 max-w-xs text-sm leading-6 text-white/50">
-              A focused space for CUET UG practice: mock tests, previous-year questions and performance reviews, moving forward one step at a time.
-            </p>
+            <BrandLogo tone="dark" brandName={siteName} loading="lazy" />
+            {siteTagline ? (
+              <p class="mt-4 max-w-xs text-sm leading-6 text-white/50">{siteTagline}</p>
+            ) : null}
             <a class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-white/55 hover:text-accent-300" href="/about">
               About the platform
               <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -724,16 +760,16 @@ const organization = {
         </div>
 
         <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 CUETFreeMockTest.com. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
           <div class="flex flex-wrap gap-4">
             <a class="hover:text-white/70" href="/privacy-policy">Privacy</a>
             <a class="hover:text-white/70" href="/terms">Terms</a>
             <a class="hover:text-white/70" href="/disclaimer">Disclaimer</a>
           </div>
         </div>
-        <p class="mt-3 text-[10px] font-medium uppercase tracking-[0.18em] text-white/50">
-          Independent practice resource · Not affiliated with NTA
-        </p>
+        {siteFooterNote ? (
+          <p class="mt-3 text-[10px] font-medium uppercase tracking-[0.18em] text-white/50">{siteFooterNote}</p>
+        ) : null}
       </div>
     </footer>
 

@@ -14,35 +14,97 @@ const { title, active = "", description = "" } = Astro.props;
 const admin = Astro.locals.admin;
 const user = Astro.locals.user;
 
-type NavItem = { href: string; label: string; key: string; permission?: Permission };
+type NavItem = {
+  href: string;
+  label: string;
+  key: string;
+  icon: string;
+  permission?: Permission;
+};
+type NavGroup = { label: string; items: NavItem[] };
 
-const allLinks: NavItem[] = [
-  { href: "/admin", label: "Dashboard", key: "dashboard" },
-  { href: "/admin/questions", label: "Questions", key: "questions", permission: "questions.write" },
-  { href: "/admin/passages", label: "Passages", key: "passages", permission: "taxonomy.write" },
-  { href: "/admin/mocks", label: "Mock builder", key: "mocks", permission: "mocks.write" },
-  { href: "/admin/pyq", label: "PYQ papers", key: "pyq", permission: "mocks.write" },
-  { href: "/admin/review", label: "Review queue", key: "review", permission: "questions.write" },
-  { href: "/admin/attempts", label: "Attempts", key: "attempts", permission: "attempts.view" },
-  { href: "/admin/users", label: "Users", key: "users", permission: "users.view" },
-  { href: "/admin/moderation", label: "Moderation", key: "moderation", permission: "moderation.write" },
-  { href: "/admin/leaderboard", label: "Leaderboard", key: "leaderboard", permission: "leaderboards.write" },
-  { href: "/admin/announcements", label: "Announcements", key: "announcements", permission: "announcements.write" },
-  { href: "/admin/blog", label: "Guides", key: "blog", permission: "seo.write" },
-  { href: "/admin/seo", label: "SEO", key: "seo", permission: "seo.write" },
-  { href: "/admin/exam-info", label: "Exam info", key: "exam-info", permission: "exam_info.write" },
-  { href: "/admin/admins", label: "Admins", key: "admins", permission: "admins.manage" },
-  { href: "/admin/data", label: "Data manager", key: "data", permission: "data.manage" },
-  { href: "/admin/trash", label: "Trash", key: "trash", permission: "trash.manage" },
-  { href: "/admin/settings", label: "Settings", key: "settings", permission: "settings.write" },
-  { href: "/admin/audit-log", label: "Audit log", key: "audit", permission: "audit.view" },
+const groups: NavGroup[] = [
+  {
+    label: "Workspace",
+    items: [
+      { href: "/admin", label: "Dashboard", key: "dashboard", icon: "M3 3h7v7H3z M14 3h7v5h-7z M14 12h7v9h-7z M3 14h7v7H3z" },
+      { href: "/admin/search", label: "Search", key: "search", icon: "m21 21-4.3-4.3 M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" },
+    ],
+  },
+  {
+    label: "Content",
+    items: [
+      { href: "/admin/questions", label: "Questions", key: "questions", icon: "M7 3h10l4 4v14H7z M17 3v5h5 M10 13h8 M10 17h8", permission: "questions.write" },
+      { href: "/admin/passages", label: "Passages", key: "passages", icon: "M4 5h16 M4 10h16 M4 15h10 M4 20h8", permission: "taxonomy.write" },
+      { href: "/admin/mocks", label: "Mock tests", key: "mocks", icon: "M4 5h16v14H4z M8 3v4 M16 3v4 M8 11h3 M8 15h8", permission: "mocks.write" },
+      { href: "/admin/pyq", label: "PYQ library", key: "pyq", icon: "M6 3h12v18H6z M9 8h6 M9 12h6 M9 16h4", permission: "mocks.write" },
+      { href: "/admin/review", label: "Review queue", key: "review", icon: "M9 11l2 2 4-4 M5 4h14v16H5z M8 2v4 M16 2v4", permission: "questions.write" },
+      { href: "/admin/blog", label: "Guides & blog", key: "blog", icon: "M4 4h16v16H4z M8 8h8 M8 12h8 M8 16h5", permission: "seo.write" },
+      { href: "/admin/announcements", label: "Announcements", key: "announcements", icon: "M4 10v4h3l9 5V5l-9 5H4z M7 14l2 6h4l-2-4 M19 9a4 4 0 0 1 0 6", permission: "announcements.write" },
+    ],
+  },
+  {
+    label: "Community",
+    items: [
+      { href: "/admin/attempts", label: "Attempts", key: "attempts", icon: "M4 19V5 M4 19h17 M8 15l4-5 3 2 5-7", permission: "attempts.view" },
+      { href: "/admin/users", label: "Users", key: "users", icon: "M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M20 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75", permission: "users.view" },
+      { href: "/admin/discussions", label: "Discussions", key: "discussions", icon: "M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z", permission: "moderation.write" },
+      { href: "/admin/moderation", label: "Moderation", key: "moderation", icon: "M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z M9 12l2 2 4-4", permission: "moderation.write" },
+      { href: "/admin/leaderboard", label: "Leaderboard", key: "leaderboard", icon: "M8 21h8 M12 17v4 M7 4h10v4a5 5 0 0 1-10 0V4z M7 6H4v2a4 4 0 0 0 4 4 M17 6h3v2a4 4 0 0 1-4 4", permission: "leaderboards.write" },
+    ],
+  },
+  {
+    label: "Site",
+    items: [
+      { href: "/admin/seo", label: "SEO & pages", key: "seo", icon: "M4 4h16v16H4z M8 8h8 M8 12h5 M8 16h8", permission: "seo.write" },
+      { href: "/admin/exam-info", label: "Exam information", key: "exam-info", icon: "M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z M12 11v5 M12 8h.01", permission: "exam_info.write" },
+      { href: "/admin/settings", label: "Site builder & settings", key: "settings", icon: "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.6 2.77-.08-.02a1.7 1.7 0 0 0-1.74.55l-.05.07h-3.2l-.04-.07a1.7 1.7 0 0 0-1.74-.55l-.08.02-1.6-2.77.06-.06A1.7 1.7 0 0 0 10.1 15l-.08-.04v-3.2l.08-.04a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.6-2.77.08.02a1.7 1.7 0 0 0 1.74-.55l.05-.07h3.2l.04.07a1.7 1.7 0 0 0 1.74.55l.08-.02 1.6 2.77-.06.06a1.7 1.7 0 0 0-.34 1.88l.08.04v3.2z", permission: "settings.write" },
+    ],
+  },
+  {
+    label: "Administration",
+    items: [
+      { href: "/admin/admins", label: "Admin accounts", key: "admins", icon: "M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M19 8v6 M22 11h-6", permission: "admins.manage" },
+      { href: "/admin/data", label: "Data manager", key: "data", icon: "M4 5c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2z M4 5v14c0 1.1 3.6 2 8 2s8-.9 8-2V5 M4 12c0 1.1 3.6 2 8 2s8-.9 8-2", permission: "data.manage" },
+      { href: "/admin/trash", label: "Trash", key: "trash", icon: "M3 6h18 M8 6V4h8v2 M19 6l-1 14H6L5 6 M10 11v5 M14 11v5", permission: "trash.manage" },
+      { href: "/admin/audit-log", label: "Activity log", key: "audit", icon: "M4 19V5 M4 19h17 M8 15l4-5 3 2 5-7", permission: "audit.view" },
+    ],
+  },
 ];
 
-const links = allLinks.filter((link) => !link.permission || (admin && can(admin.role, link.permission)));
-const canSeeAudit = Boolean(admin && (can(admin.role, "audit.view") || can(admin.role, "audit.own")));
-if (admin && canSeeAudit && !links.some((link) => link.key === "audit")) {
-  links.push({ href: "/admin/audit-log", label: "Audit log", key: "audit" });
+const visibleGroups = groups
+  .map((group) => ({
+    ...group,
+    items: group.items.filter(
+      (item) => !item.permission || (admin && can(admin.role, item.permission)),
+    ),
+  }))
+  .filter((group) => group.items.length > 0);
+
+const canSeeAudit = Boolean(
+  admin && (can(admin.role, "audit.view") || can(admin.role, "audit.own")),
+);
+if (admin && canSeeAudit && !can(admin.role, "audit.view")) {
+  const activityGroup = visibleGroups.find(
+    (group) => group.label === "Administration" || group.label === "Activity",
+  );
+  const auditLink = {
+    href: "/admin/audit-log",
+    label: "My activity",
+    key: "audit",
+    icon: "M4 19V5 M4 19h17 M8 15l4-5 3 2 5-7",
+  };
+  if (activityGroup) activityGroup.items.push(auditLink);
+  else visibleGroups.push({ label: "Activity", items: [auditLink] });
 }
+
+const initials = (user?.email ?? "A")
+  .split("@")[0]
+  .split(/[._-]/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part) => part[0]?.toUpperCase())
+  .join("");
 ---
 
 <!doctype html>
@@ -69,59 +131,430 @@ if (admin && canSeeAudit && !links.some((link) => link.key === "audit")) {
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
   </head>
-  <body class="min-h-screen bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
+  <body class="admin-app min-h-screen antialiased">
     <a href="#admin-main" class="skip-link">Skip to admin content</a>
-    <header class="admin-band sticky top-0 z-40 border-b border-white/10 backdrop-blur">
-      <div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6">
-        <a href="/admin" class="flex items-center gap-2 font-bold tracking-tight" aria-label="Admin dashboard">
-          <img src="/logo.svg" alt="" width="36" height="36" decoding="async" class="h-9 w-9 rounded-full ring-1 ring-white/20" />
-          <span class="hidden sm:inline" aria-hidden="true">Admin</span>
-        </a>
-        <span class="admin-band-muted hidden rounded-full border border-white/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide sm:inline">
-          {admin?.role}
+    <aside id="admin-sidebar" class="admin-sidebar" aria-label="Admin navigation">
+      <a href="/admin" class="admin-brand" aria-label="CUET Free Mock Test admin dashboard">
+        <img src="/logo.svg" alt="" width="36" height="36" decoding="async" />
+        <span>
+          <strong>CUET Admin</strong>
+          <small>Content workspace</small>
         </span>
+      </a>
 
-        <form class="ml-auto hidden items-center gap-2 sm:flex" action="/admin/search" method="get" role="search">
-          <label for="admin-search" class="sr-only">Search questions, mocks, users and attempts</label>
-          <input
-            id="admin-search"
-            type="search"
-            name="q"
-            placeholder="Search everything…"
-            class="h-10 w-44 rounded-lg border px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-white/70 lg:w-64"
-          />
-        </form>
+      <a href="/" class="admin-site-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M14 3h7v7 M10 14 21 3 M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6" />
+        </svg>
+        View live website
+      </a>
 
-        <div class="ml-auto flex items-center gap-3 text-sm sm:ml-0">
-          <span class="admin-band-muted hidden text-xs xl:inline">{user?.email}</span>
-          <a href="/" class="hidden rounded-lg px-2 py-1.5 font-medium sm:inline">View site</a>
-          <ThemeToggle />
-          <button id="logout-button" class="h-10 rounded-lg bg-accent-500 px-3 font-semibold text-neutral-900 hover:bg-accent-400">Log out</button>
-        </div>
-      </div>
-      <nav class="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 pb-2 sm:px-6" aria-label="Admin sections">
-        <a href="/admin/search" class="whitespace-nowrap rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium sm:hidden">Search</a>
-        {links.map((link) => (
-          <a
-            href={link.href}
-            aria-current={active === link.key ? "page" : undefined}
-            class="whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium"
-          >
-            {link.label}
-          </a>
+      <nav class="admin-nav" aria-label="Admin sections">
+        {visibleGroups.map((group) => (
+          <section class="admin-nav-group" aria-label={group.label}>
+            <h2>{group.label}</h2>
+            <ul>
+              {group.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={active === item.key ? "page" : undefined}
+                    class="admin-nav-link"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d={item.icon} />
+                    </svg>
+                    <span>{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
       </nav>
-    </header>
 
-    <main id="admin-main" class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-      <slot />
-    </main>
+      <div class="admin-sidebar-account">
+        <span class="admin-avatar" aria-hidden="true">{initials || "A"}</span>
+        <span class="admin-account-copy">
+          <strong>{user?.email || "Administrator"}</strong>
+          <small>{admin?.role || "Admin"}</small>
+        </span>
+      </div>
+    </aside>
+
+    <button id="admin-scrim" class="admin-scrim" type="button" aria-label="Close admin navigation" tabindex="-1"></button>
+
+    <div class="admin-main-column">
+      <header class="admin-topbar">
+        <div class="admin-topbar-leading">
+          <button
+            id="admin-menu-toggle"
+            class="admin-icon-button admin-mobile-menu"
+            type="button"
+            aria-label="Open admin navigation"
+            aria-controls="admin-sidebar"
+            aria-expanded="false"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div>
+            <p class="admin-breadcrumb">Admin <span aria-hidden="true">/</span> {title}</p>
+            <p class="admin-page-title">{title}</p>
+          </div>
+        </div>
+
+        <div class="admin-topbar-actions">
+          <form class="admin-search" action="/admin/search" method="get" role="search">
+            <label for="admin-search" class="sr-only">Search questions, mocks, users and attempts</label>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-4-4" />
+            </svg>
+            <input id="admin-search" type="search" name="q" placeholder="Search..." />
+            <kbd>↵</kbd>
+          </form>
+
+          {admin && can(admin.role, "questions.write") ? (
+            <a class="admin-create-button" href="/admin/questions/new" title="Create a question">
+              <span aria-hidden="true">+</span>
+              <span class="admin-create-label">New question</span>
+            </a>
+          ) : null}
+          <ThemeToggle />
+          <button id="logout-button" class="admin-logout-button" type="button">Log out</button>
+        </div>
+      </header>
+
+      <main id="admin-main" class="admin-content">
+        <slot />
+      </main>
+      <footer class="admin-footer">
+        <span>CUET Free Mock Test</span>
+        <span>Changes are role-protected and recorded in the activity log.</span>
+      </footer>
+    </div>
 
     <script is:inline>
-      document.getElementById("logout-button")?.addEventListener("click", async () => {
-        await fetch("/api/auth/logout", { method: "POST" });
-        location.href = "/";
+      document.documentElement.dataset.adminJs = "true";
+
+      const sidebar = document.getElementById("admin-sidebar");
+      const menuToggle = document.getElementById("admin-menu-toggle");
+      const scrim = document.getElementById("admin-scrim");
+      const mobileViewport = window.matchMedia("(max-width: 1023px)");
+
+      function setSidebarOpen(open) {
+        const mobile = window.matchMedia("(max-width: 1023px)").matches;
+        document.body.classList.toggle("admin-sidebar-open", open);
+        menuToggle?.setAttribute("aria-expanded", String(open));
+        menuToggle?.setAttribute("aria-label", open ? "Close admin navigation" : "Open admin navigation");
+        scrim?.setAttribute("tabindex", open ? "0" : "-1");
+        if (sidebar) {
+          sidebar.inert = mobile && !open;
+          sidebar.setAttribute("aria-hidden", String(mobile && !open));
+        }
+        if (open) sidebar?.querySelector("a[href]")?.focus();
+      }
+
+      setSidebarOpen(false);
+      menuToggle?.addEventListener("click", () => {
+        setSidebarOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+      });
+      scrim?.addEventListener("click", () => {
+        setSidebarOpen(false);
+        menuToggle?.focus();
+      });
+      sidebar?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setSidebarOpen(false));
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && document.body.classList.contains("admin-sidebar-open")) {
+          setSidebarOpen(false);
+          menuToggle?.focus();
+        }
+      });
+      mobileViewport.addEventListener("change", () => setSidebarOpen(false));
+
+      document.getElementById("logout-button")?.addEventListener("click", async (event) => {
+        const button = event.currentTarget;
+        if (!(button instanceof HTMLButtonElement)) return;
+        button.disabled = true;
+        button.textContent = "Logging out…";
+        try {
+          const response = await fetch("/api/auth/logout", { method: "POST" });
+          if (!response.ok) throw new Error("Could not log out. Please try again.");
+          location.href = "/";
+        } catch (error) {
+          button.disabled = false;
+          button.textContent = "Log out";
+          window.alert(error instanceof Error ? error.message : "Could not log out. Please try again.");
+        }
       });
     </script>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --admin-sidebar: #1d2327;
+    --admin-sidebar-hover: #2c3338;
+    --admin-sidebar-muted: #a7aaad;
+    --admin-blue: #2271b1;
+    --admin-blue-hover: #135e96;
+    --admin-surface: #fff;
+    --admin-canvas: #f0f0f1;
+    --admin-ink: #1d2327;
+    --admin-muted: #646970;
+    --admin-border: #dcdcde;
+  }
+
+  html[data-theme="dark"] {
+    --admin-surface: #18181b;
+    --admin-canvas: #09090b;
+    --admin-ink: #f4f4f5;
+    --admin-muted: #a1a1aa;
+    --admin-border: #3f3f46;
+  }
+
+  body.admin-app {
+    background: var(--admin-canvas);
+    color: var(--admin-ink);
+  }
+
+  .admin-sidebar {
+    position: fixed;
+    z-index: 60;
+    inset: 0 auto 0 0;
+    display: flex;
+    width: 258px;
+    flex-direction: column;
+    overflow-y: auto;
+    background: var(--admin-sidebar);
+    color: #f0f0f1;
+    transform: translateX(-100%);
+    transition: transform 180ms ease;
+  }
+
+  .admin-brand {
+    display: flex;
+    min-height: 76px;
+    align-items: center;
+    gap: 11px;
+    padding: 16px 19px;
+    border-bottom: 1px solid rgb(255 255 255 / 8%);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .admin-brand img { width: 38px; height: 38px; border-radius: 50%; }
+  .admin-brand strong, .admin-brand small { display: block; }
+  .admin-brand strong { font-size: 14px; letter-spacing: -.01em; }
+  .admin-brand small { margin-top: 2px; color: var(--admin-sidebar-muted); font-size: 11px; }
+
+  .admin-site-link {
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 12px 4px;
+    padding: 0 11px;
+    border: 1px solid rgb(255 255 255 / 13%);
+    border-radius: 5px;
+    color: #dcdcde;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .admin-site-link:hover { border-color: rgb(255 255 255 / 28%); background: var(--admin-sidebar-hover); color: #fff; }
+  .admin-site-link svg { width: 16px; height: 16px; }
+  .admin-nav { flex: 1; padding: 5px 0 18px; }
+  .admin-nav-group { margin-top: 17px; }
+  .admin-nav-group h2 {
+    margin: 0 0 6px;
+    padding: 0 20px;
+    color: #8c8f94;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+  .admin-nav-group ul { margin: 0; padding: 0; list-style: none; }
+  .admin-nav-link {
+    position: relative;
+    display: flex;
+    min-height: 39px;
+    align-items: center;
+    gap: 12px;
+    margin: 1px 8px;
+    padding: 0 12px;
+    border-radius: 4px;
+    color: #c3c4c7;
+    font-size: 12px;
+    font-weight: 550;
+    text-decoration: none;
+    transition: background 120ms ease, color 120ms ease;
+  }
+  .admin-nav-link:hover { background: var(--admin-sidebar-hover); color: #fff; }
+  .admin-nav-link[aria-current="page"] { background: var(--admin-blue); color: #fff; font-weight: 650; }
+  .admin-nav-link[aria-current="page"]::after {
+    position: absolute;
+    top: 0;
+    right: -8px;
+    bottom: 0;
+    width: 3px;
+    background: #72aee6;
+    content: "";
+  }
+  .admin-nav-link svg { width: 17px; height: 17px; flex: 0 0 17px; opacity: .9; }
+
+  .admin-sidebar-account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 66px;
+    padding: 12px 16px;
+    border-top: 1px solid rgb(255 255 255 / 10%);
+  }
+  .admin-avatar {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    place-items: center;
+    border-radius: 50%;
+    background: #3858e9;
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .admin-account-copy { min-width: 0; }
+  .admin-account-copy strong, .admin-account-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .admin-account-copy strong { color: #f0f0f1; font-size: 11px; }
+  .admin-account-copy small { margin-top: 2px; color: var(--admin-sidebar-muted); font-size: 10px; text-transform: capitalize; }
+
+  .admin-scrim { display: none; }
+  .admin-main-column { min-width: 0; min-height: 100vh; }
+  .admin-topbar {
+    position: sticky;
+    z-index: 30;
+    top: 0;
+    display: flex;
+    min-height: 68px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--admin-border);
+    background: var(--admin-surface);
+  }
+  .admin-topbar-leading, .admin-topbar-actions { display: flex; min-width: 0; align-items: center; gap: 12px; }
+  .admin-page-title { margin: 2px 0 0; color: var(--admin-ink); font-size: 17px; font-weight: 700; line-height: 1.25; }
+  .admin-breadcrumb { margin: 0; color: var(--admin-muted); font-size: 10px; line-height: 1.3; }
+  .admin-breadcrumb span { padding: 0 4px; color: #a7aaad; }
+  .admin-topbar-actions { flex: 0 0 auto; }
+  .admin-search {
+    display: none;
+    height: 36px;
+    align-items: center;
+    gap: 8px;
+    padding: 0 9px;
+    border: 1px solid var(--admin-border);
+    border-radius: 5px;
+    background: var(--admin-canvas);
+  }
+  .admin-search svg { width: 15px; height: 15px; color: var(--admin-muted); }
+  .admin-search input { width: 140px; border: 0; outline: 0; background: transparent; color: var(--admin-ink); font-size: 12px; }
+  .admin-search input::placeholder { color: var(--admin-muted); }
+  .admin-search kbd { border: 1px solid var(--admin-border); border-radius: 3px; padding: 0 4px; color: var(--admin-muted); font-size: 10px; }
+  .admin-icon-button {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid var(--admin-border);
+    border-radius: 5px;
+    background: var(--admin-surface);
+    color: var(--admin-ink);
+  }
+  .admin-icon-button svg { width: 19px; height: 19px; }
+  .admin-mobile-menu { flex: 0 0 38px; }
+  .admin-create-button, .admin-logout-button {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0 11px;
+    border: 1px solid var(--admin-blue);
+    border-radius: 4px;
+    background: var(--admin-blue);
+    color: white;
+    font-size: 12px;
+    font-weight: 650;
+    text-decoration: none;
+  }
+  .admin-create-button:hover { border-color: var(--admin-blue-hover); background: var(--admin-blue-hover); color: white; }
+  .admin-create-button > span:first-child { font-size: 17px; line-height: 1; }
+  .admin-logout-button { border-color: var(--admin-border); background: transparent; color: var(--admin-ink); cursor: pointer; }
+  .admin-logout-button:hover { border-color: #b32d2e; color: #b32d2e; }
+  .admin-logout-button:disabled { cursor: wait; opacity: .6; }
+  .admin-topbar .theme-toggle { width: 36px; height: 36px; border-color: var(--admin-border); border-radius: 5px; background: var(--admin-surface); color: var(--admin-ink); }
+  .admin-topbar .theme-toggle:hover { background: var(--admin-canvas); color: var(--admin-ink); }
+  .admin-content { width: 100%; max-width: 1600px; min-height: calc(100vh - 120px); margin: 0 auto; padding: 24px 18px 40px; }
+  .admin-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 14px 20px 20px; color: var(--admin-muted); font-size: 10px; }
+
+  @media (max-width: 1023px) {
+    html[data-admin-js="true"] .admin-sidebar { transform: translateX(-100%); }
+    html[data-admin-js="true"] body.admin-sidebar-open .admin-sidebar { transform: translateX(0); }
+    html[data-admin-js="true"] body.admin-sidebar-open .admin-scrim {
+      position: fixed;
+      z-index: 50;
+      inset: 0;
+      display: block;
+      border: 0;
+      background: rgb(0 0 0 / 48%);
+    }
+    html:not([data-admin-js="true"]) .admin-sidebar {
+      position: relative;
+      width: 100%;
+      max-height: 270px;
+      transform: none;
+    }
+    html:not([data-admin-js="true"]) .admin-sidebar-account { display: none; }
+  }
+
+  @media (min-width: 640px) {
+    .admin-content { padding: 30px 26px 48px; }
+    .admin-topbar { padding-right: 26px; padding-left: 26px; }
+    .admin-search { display: flex; }
+    .admin-search input { width: 170px; }
+  }
+
+  @media (min-width: 1024px) {
+    .admin-sidebar { transform: none; }
+    .admin-main-column { margin-left: 258px; }
+    .admin-mobile-menu { display: none; }
+    .admin-search input { width: 210px; }
+    .admin-content { padding: 34px 34px 52px; }
+    .admin-topbar { padding-right: 34px; padding-left: 34px; }
+  }
+
+  @media (max-width: 480px) {
+    .admin-topbar { gap: 8px; padding-right: 10px; padding-left: 10px; }
+    .admin-topbar-leading, .admin-topbar-actions { gap: 7px; }
+    .admin-page-title { max-width: 145px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; }
+    .admin-create-label { display: none; }
+    .admin-create-button { width: 36px; padding: 0; }
+    .admin-create-button > span:first-child { font-size: 20px; }
+    .admin-logout-button { padding: 0 8px; font-size: 11px; }
+    .admin-topbar .theme-toggle { width: 34px; height: 34px; }
+    .admin-content { padding: 20px 12px 34px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .admin-sidebar, .admin-nav-link { transition: none; }
+  }
+</style>

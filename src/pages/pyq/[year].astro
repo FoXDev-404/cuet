@@ -11,6 +11,7 @@ import {
   breadcrumbJsonLd,
   getPageSeo,
   itemListJsonLd,
+  hasSubstantiveSeoIntro,
   parseFaq,
   type FaqItem,
 } from "../../lib/seo";
@@ -37,11 +38,14 @@ const subjectNames = [
 ] as string[];
 const PATH = `/pyq/${year}`;
 const seo = await getPageSeo(PATH);
-// Year hubs are useful landing pages once at least one paper can be shown.
-// Restricted papers stay noindex and their subject hubs drop out with them.
+// Archive hubs need substantial, editor-written guidance in addition to
+// playable papers; otherwise they remain crawlable but out of search.
 const indexablePaperCount =
   playable.length + localPapers.filter((paper) => paper.rightsStatus !== "restricted").length;
-const noindex = indexablePaperCount === 0 || (seo?.noindex ?? 0) === 1;
+const noindex =
+  indexablePaperCount === 0 ||
+  !hasSubstantiveSeoIntro(seo?.intro_html) ||
+  (seo?.noindex ?? 0) === 1;
 
 const DEFAULT_FAQ: FaqItem[] = [
   {
@@ -86,7 +90,14 @@ const structuredData = [
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout
+  title={title}
+  description={description}
+  noindex={noindex}
+  robots={noindex ? "noindex, follow" : undefined}
+  canonical={seo?.canonical_url}
+  structuredData={structuredData}
+>
   <PageHero
     eyebrow={`PYQ · ${year}`}
     title={`CUET UG ${year} previous-year papers`}

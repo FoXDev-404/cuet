@@ -10,7 +10,7 @@ const PATH = "/leaderboard";
 const PER_PAGE = 24;
 const DEFAULT_TITLE = "CUET Mock Test Leaderboard — Automatic First-Attempt Rankings";
 const DEFAULT_DESCRIPTION =
-  "Automatic public leaderboards for every free CUET UG mock and previous-year paper. Only each student's first submitted attempt is ranked.";
+  "Compare CUET UG mock and previous-year paper scores. First submitted attempts set each public leaderboard rank; retakes stay in your dashboard history.";
 
 const requestedPage = Math.trunc(Number(Astro.url.searchParams.get("page") ?? "1"));
 const safeRequestedPage = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;

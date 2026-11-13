@@ -78,7 +78,7 @@ To protect the platform against Google thin-content algorithm penalties and AdSe
    - At least one real, original, playable item (e.g. an original cleared mock paper), OR
    - A verified official examination facts block (with `source_url` and recent `last_verified` date).
 3. **Application to Archive & List Pages**:
-   - `/pyq/:year` and `/pyq/:year/:subject` archive pages are marked `noindex, nofollow` and excluded from `sitemap.xml` until they feature cleared playable papers and substantive editorial guidance.
+   - `/pyq/:year` and `/pyq/:year/:subject` archive pages are marked `noindex, follow` and excluded from `sitemap.xml` until they feature at least one cleared playable paper and an editor-written intro of at least 300 words. The same intro threshold gates both page robots and sitemap inclusion.
    - Subjects with 0 available questions are automatically marked `noindex, nofollow` and excluded from `sitemap.xml`.
 4. **Automated Enforcement**: Enforced by `scripts/seo-consistency.mjs` and verified in unit tests (`tests/unit/seo-consistency.test.ts`).
 

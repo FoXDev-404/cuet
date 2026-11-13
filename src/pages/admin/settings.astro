@@ -7,16 +7,42 @@ const admin = Astro.locals.admin!;
 if (!can(admin.role, "settings.write")) return Astro.redirect("/forbidden", 303);
 
 const settings = await loadSettings();
-const textFields = SETTING_FIELDS.filter((field) => field.type === "text");
-const booleanFields = SETTING_FIELDS.filter((field) => field.type === "boolean");
+const sections = [
+  {
+    key: "global",
+    title: "Site identity & global notice",
+    description: "These settings apply across the public website.",
+  },
+  {
+    key: "homepage",
+    title: "Homepage copy",
+    description: "Edit the homepage hero and library headings. Text is escaped and never treated as HTML.",
+  },
+  {
+    key: "homepage-sections",
+    title: "Homepage components",
+    description: "Show or hide optional homepage sections without changing their underlying content.",
+  },
+  {
+    key: "features",
+    title: "Feature switches",
+    description: "Control registration, discussions, maintenance and question sharing.",
+  },
+].map((section) => ({
+  ...section,
+  fields: SETTING_FIELDS.filter((field) => field.group === section.key),
+}));
 ---
 
-<AdminLayout title="Settings" active="settings">
-  <div>
-    <h1 class="text-2xl font-black tracking-tight">Settings</h1>
-    <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
-      Site-wide switches for registration, discussions and maintenance. Every change is written to the audit log.
-    </p>
+<AdminLayout title="Site builder & settings" active="settings">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-black tracking-tight">Site builder & settings</h1>
+      <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        Update shared site identity, homepage components and operational switches. Every change is validated and written to the activity log.
+      </p>
+    </div>
+    <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/" target="_blank" rel="noopener">Preview homepage</a>
   </div>
 
   <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
@@ -24,46 +50,64 @@ const booleanFields = SETTING_FIELDS.filter((field) => field.type === "boolean")
     <p class="mt-1">Admin pages and APIs stay reachable while maintenance is on, so you can switch it back off. Test the public site in a private window before scheduling maintenance around an exam.</p>
   </div>
 
-  <form id="settings-form" class="mt-6 max-w-3xl space-y-6">
+  <form id="settings-form" class="mt-6 max-w-4xl space-y-6">
     <p id="settings-status" class="hidden rounded-lg px-3 py-2 text-sm" role="status"></p>
 
-    <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-      <h2 class="text-lg font-bold">Identity</h2>
-      {textFields.map((field) => (
-        <label class="mt-4 block text-sm font-semibold">
-          {field.label}
-          <input
-            class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-950"
-            name={field.key}
-            value={settings[field.key]}
-            maxlength={field.maxLength ?? 80}
-            required
-          />
-          <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">{field.description}</span>
-        </label>
-      ))}
-    </section>
+    {sections.map((section) => (
+      <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="border-b border-neutral-100 pb-4 dark:border-neutral-800">
+          <h2 class="text-lg font-bold">{section.title}</h2>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">{section.description}</p>
+        </div>
+        <div class="mt-4 space-y-4">
+          {section.fields.map((field) => {
+            const value = settings[field.key];
+            if (field.type === "boolean") {
+              const enabled = value === "true";
+              return (
+                <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3 dark:border-neutral-800">
+                  <input class="mt-1" name={field.key} type="checkbox" value="true" checked={enabled} />
+                  <span class="min-w-0">
+                    <span class="block text-sm font-semibold">{field.label}</span>
+                    <span class="mt-0.5 block text-xs leading-5 text-neutral-500 dark:text-neutral-400">{field.description}</span>
+                    <span class:list={["mt-1 inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold", enabled ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200" : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300"]}>
+                      {enabled ? "On" : "Off"}
+                    </span>
+                  </span>
+                </label>
+              );
+            }
 
-    <section class="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-      <h2 class="text-lg font-bold">Feature switches</h2>
-      <div class="mt-4 space-y-4">
-        {booleanFields.map((field) => {
-          const enabled = settings[field.key] === "true";
-          return (
-            <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3 dark:border-neutral-800">
-              <input class="mt-1" name={field.key} type="checkbox" value="true" checked={enabled} />
-              <span class="min-w-0">
-                <span class="block text-sm font-semibold">{field.label}</span>
-                <span class="mt-0.5 block text-xs leading-5 text-neutral-500 dark:text-neutral-400">{field.description}</span>
-                <span class:list={["mt-1 inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold", enabled ? "bg-brand-100 text-brand-900 dark:bg-brand-900/50 dark:text-brand-200" : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300"]}>
-                  {enabled ? "On" : "Off"}
-                </span>
-              </span>
-            </label>
-          );
-        })}
-      </div>
-    </section>
+            return (
+              <label class="block text-sm font-semibold">
+                {field.label}
+                {field.type === "textarea" ? (
+                  <textarea
+                    class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-normal dark:border-neutral-700 dark:bg-neutral-950"
+                    name={field.key}
+                    rows={field.rows ?? 3}
+                    maxlength={field.maxLength ?? 80}
+                    required={!field.allowEmpty}
+                  >{value}</textarea>
+                ) : (
+                  <input
+                    class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-normal dark:border-neutral-700 dark:bg-neutral-950"
+                    name={field.key}
+                    type="text"
+                    inputmode={field.type === "path" ? "url" : undefined}
+                    value={value}
+                    maxlength={field.maxLength ?? 80}
+                    required={!field.allowEmpty}
+                    placeholder={field.type === "path" ? "/mock-tests" : undefined}
+                  />
+                )}
+                <span class="mt-1 block text-xs font-normal text-neutral-500 dark:text-neutral-400">{field.description}</span>
+              </label>
+            );
+          })}
+        </div>
+      </section>
+    ))}
 
     <div class="flex flex-wrap items-center gap-3">
       <button class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">Save settings</button>

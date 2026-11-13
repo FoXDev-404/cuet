@@ -7,6 +7,7 @@ import { estimateReadingMinutes } from "../../lib/blog";
 import {
   getAllGuides,
   groupGuidesByCategory,
+  guideImagePath,
   guidePath,
   type GuidePost,
 } from "../../lib/guides";
@@ -111,13 +112,23 @@ const recent = guides
                 href={guidePath(guide.slug)}
                 class="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5 transition-colors hover:border-brand-300 dark:hover:border-brand-500/40"
               >
+                <img
+                  src={guideImagePath(guide.slug)}
+                  alt=""
+                  aria-hidden="true"
+                  width="1200"
+                  height="630"
+                  loading="lazy"
+                  decoding="async"
+                  class="mb-4 aspect-[40/21] w-full rounded-xl object-cover"
+                />
                 <span
                   class="text-[11px] font-black uppercase tracking-[0.2em] text-brand-600 dark:text-brand-300"
                   aria-hidden="true"
                 >
                   0{index + 1}
                 </span>
-                <h3 class="mt-8 text-lg font-black leading-snug tracking-tight text-[var(--ink)] group-hover:text-[var(--primary)]">
+                <h3 class="mt-2 text-lg font-black leading-snug tracking-tight text-[var(--ink)] group-hover:text-[var(--primary)]">
                   {guide.title}
                 </h3>
                 <p class="mt-2 text-sm leading-6 text-[var(--muted)]">{guide.description}</p>
@@ -162,6 +173,16 @@ const recent = guides
           <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {group.guides.map((guide) => (
               <article class="flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-5 transition-colors hover:border-brand-300 dark:hover:border-brand-500/40">
+                <img
+                  src={guideImagePath(guide.slug)}
+                  alt=""
+                  aria-hidden="true"
+                  width="1200"
+                  height="630"
+                  loading="lazy"
+                  decoding="async"
+                  class="mb-4 aspect-[40/21] w-full rounded-xl object-cover"
+                />
                 <p class="text-[11px] font-semibold uppercase tracking-wide text-[var(--muted)]">
                   {formatDate(guide.publishedAt)} · {estimateReadingMinutes(guide.body)} min read
                 </p>
@@ -196,6 +217,16 @@ const recent = guides
                 href={guidePath(guide.slug)}
                 class="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors hover:border-brand-300 dark:hover:border-brand-500/40"
               >
+                <img
+                  src={guideImagePath(guide.slug)}
+                  alt=""
+                  aria-hidden="true"
+                  width="1200"
+                  height="630"
+                  loading="lazy"
+                  decoding="async"
+                  class="mb-3 aspect-[40/21] w-full rounded-lg object-cover"
+                />
                 <p class="text-[10px] font-bold uppercase tracking-wide text-[var(--muted)]">
                   {formatDate(guide.publishedAt)}
                 </p>

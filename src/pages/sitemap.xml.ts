@@ -1,13 +1,14 @@
 import type { APIRoute } from "astro";
 import { all, type BindValue } from "../lib/db";
 import { resolveExamVerification } from "../lib/exam-verification";
-import { getLocalPapers, LOCAL_LIBRARY_ADDED_AT } from "../lib/local-papers";
+import { getLocalPapers } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
 import { siteUrl } from "../lib/site-url";
 import { getSubjectStats, type SubjectStatRow } from "../lib/subject-stats";
 import { isFixtureMock } from "../lib/fixtures";
 import { getRepoGuides } from "../lib/guides";
+import { hasSubstantiveSeoIntro } from "../lib/seo";
 
 type UrlEntry = { loc: string; lastmod?: string | null; changefreq?: string; priority?: string };
 
@@ -51,6 +52,7 @@ export const GET: APIRoute = async ({ request }) => {
   let syllabusSubjects: { slug: string; topic_count: number; question_count: number }[] = [];
   let topics: { subject_slug: string; topic_slug: string; question_count: number }[] = [];
   let pyqYears: { year: number; playable_count: number }[] = [];
+  let archiveSeoRows: { path: string; intro_html: string | null; noindex: number }[] = [];
   let posts: { slug: string; updated_at: string | null; published_at: string | null }[] = [];
   let sharedQuestions: SeoIndexableQuestion[] = [];
   let playablePyqCount = 0;
@@ -158,6 +160,11 @@ export const GET: APIRoute = async ({ request }) => {
        ORDER BY published_at DESC, id DESC`,
       [],
     );
+    archiveSeoRows = await readAll(
+      "pyq-archive-seo",
+      `SELECT path, intro_html, noindex FROM page_seo WHERE path LIKE '/pyq/%'`,
+      [],
+    );
     playablePyqCount = pyqYears.reduce((total, year) => total + year.playable_count, 0);
   } catch (error) {
     failures.push("core");
@@ -243,25 +250,23 @@ export const GET: APIRoute = async ({ request }) => {
   // one out of search. The paper page itself shows the takedown path.
   for (const paper of localPapers) {
     if (paper.rightsStatus === "restricted") continue;
-    add(paper.path, {
-      lastmod: LOCAL_LIBRARY_ADDED_AT,
-      changefreq: "monthly",
-      priority: "0.7",
-    });
+    add(paper.path, { changefreq: "monthly", priority: "0.7" });
   }
 
-  // PYQ year/subject hubs list those papers and carry a unique intro + FAQ, so
-  // they are indexable too. Restricted papers remove their hub as well.
+  // Keep the indexable archive candidate set aligned with the route-level
+  // substantive-intro and rights gates below.
   const indexablePyqPapers = localPapers.filter((paper) => paper.rightsStatus !== "restricted");
   const indexablePyqYears = [...new Set(indexablePyqPapers.map((paper) => paper.year))].sort(
     (a, b) => b - a,
   );
+  const indexableArchivePaths = new Set(
+    archiveSeoRows
+      .filter((row) => row.noindex !== 1 && hasSubstantiveSeoIntro(row.intro_html))
+      .map((row) => row.path),
+  );
   for (const year of indexablePyqYears) {
-    add(`/pyq/${year}`, {
-      lastmod: LOCAL_LIBRARY_ADDED_AT,
-      changefreq: "monthly",
-      priority: "0.6",
-    });
+    const path = `/pyq/${year}`;
+    if (indexableArchivePaths.has(path)) add(path, { changefreq: "monthly", priority: "0.6" });
   }
   const pyqSubjects = new Map<string, { year: number; subject: string }>();
   for (const paper of indexablePyqPapers) {
@@ -273,11 +278,8 @@ export const GET: APIRoute = async ({ request }) => {
   for (const entry of [...pyqSubjects.values()].sort(
     (a, b) => b.year - a.year || a.subject.localeCompare(b.subject),
   )) {
-    add(`/pyq/${entry.year}/${entry.subject}`, {
-      lastmod: LOCAL_LIBRARY_ADDED_AT,
-      changefreq: "monthly",
-      priority: "0.6",
-    });
+    const path = `/pyq/${entry.year}/${entry.subject}`;
+    if (indexableArchivePaths.has(path)) add(path, { changefreq: "monthly", priority: "0.6" });
   }
 
   for (const guide of repoGuides) {

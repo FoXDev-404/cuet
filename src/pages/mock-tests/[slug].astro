@@ -2,7 +2,7 @@
 import { siteUrl } from "../../lib/site-url";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getLocalPaperSummary, getLocalPapersForSubject, localPaperPath } from "../../lib/local-papers";
-import { breadcrumbJsonLd } from "../../lib/seo";
+import { breadcrumbJsonLd, rankedPaperMetaDescription } from "../../lib/seo";
 import generatedPaperOgSlugs from "../../data/og-papers.json";
 
 const slug = Astro.params.slug ?? "";
@@ -43,11 +43,20 @@ const instructions = [
   "Correct options and explanations appear only after you submit, on the same screen.",
 ];
 
+const generatedMetaDescription = rankedPaperMetaDescription({
+  dateLabel: paper.dateLabel,
+  subject: paper.subject.name,
+  questionCount: rankedQuestionCount,
+  durationMinutes: rankedDurationMinutes,
+});
+const savedMetaDescription = paper.metaDescription?.trim();
 const metaDescription =
-  sourcedQuestionCount > 0
-    ? `Take the ${paper.dateLabel} CUET ${paper.subject.name} ranked mock with ${rankedQuestionCount} scored questions, including keyed questions from other CUET PYQ papers. ${rankedDurationMinutes} minutes, leaderboard rank and post-submit review.`
-    : paper.metaDescription ||
-      `Take the ${paper.dateLabel} CUET ${paper.subject.name} paper: ${rankedQuestionCount} ranked questions, ${rankedDurationMinutes} minutes, +5/−1 marking, saved result, leaderboard rank and a post-submit review.`;
+  sourcedQuestionCount === 0 &&
+  savedMetaDescription &&
+  savedMetaDescription.length >= 120 &&
+  savedMetaDescription.length <= 160
+    ? savedMetaDescription
+    : generatedMetaDescription;
 
 const relatedPapers = getLocalPapersForSubject(paper.subject.slug)
   .filter((candidate) => candidate.slug !== paper.slug && candidate.rightsStatus !== "restricted")

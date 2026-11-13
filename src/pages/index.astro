@@ -4,6 +4,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SeoIntro from "../components/SeoIntro.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { all } from "../lib/db";
+import { getSettings } from "../lib/settings";
+import {
+  HOMEPAGE_PRESENTATION_DEFAULTS,
+  HOMEPAGE_PRESENTATION_KEYS,
+  safeInternalPath,
+} from "../lib/site-presentation";
 import {
   getLocalPaperYears,
   getLocalPapers,
@@ -20,6 +26,38 @@ import {
 
 const PATH = "/";
 const DEFAULT_TITLE = "CUET Free Mock Test Online | CUET UG Mock Test Series & PYQs";
+const presentation: Record<string, string> = {
+  ...HOMEPAGE_PRESENTATION_DEFAULTS,
+  ...(await getSettings([...HOMEPAGE_PRESENTATION_KEYS, "site_name"])),
+};
+
+const heroTitle = presentation.home_hero_title || HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_title;
+const heroHighlightIndex = heroTitle.indexOf("FREE");
+const heroTitleBeforeHighlight =
+  heroHighlightIndex >= 0 ? heroTitle.slice(0, heroHighlightIndex) : "";
+const heroTitleHighlight = heroHighlightIndex >= 0 ? "FREE" : "";
+const heroTitleAfterHighlight =
+  heroHighlightIndex >= 0
+    ? heroTitle.slice(heroHighlightIndex + heroTitleHighlight.length)
+    : heroTitle;
+const homeSectionVisible = {
+  featuredPanel: presentation.home_show_featured_panel === "true",
+  paperLibrary: presentation.home_show_paper_library === "true",
+  shortcuts: presentation.home_show_shortcuts === "true",
+  yearArchive: presentation.home_show_year_archive === "true",
+  studyRhythm: presentation.home_show_study_rhythm === "true",
+  focusCards: presentation.home_show_focus_cards === "true",
+  faq: presentation.home_show_faq === "true",
+  bottomCta: presentation.home_show_bottom_cta === "true",
+};
+const primaryActionHref = safeInternalPath(
+  presentation.home_hero_primary_href,
+  HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_primary_href,
+);
+const secondaryActionHref = safeInternalPath(
+  presentation.home_hero_secondary_href,
+  HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_secondary_href,
+);
 
 const DEFAULT_FAQ: FaqItem[] = [
   {
@@ -228,11 +266,11 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "CUET Free Mock Test",
+    name: presentation.site_name || "CUET Free Mock Test",
     url: site.toString(),
     description,
     inLanguage: "en-IN",
-    publisher: { "@type": "Organization", name: "CUET Free Mock Test", url: site.toString() },
+    publisher: { "@type": "Organization", name: presentation.site_name || "CUET Free Mock Test", url: site.toString() },
     // Sitelinks search box: the site has a real working /search endpoint.
     potentialAction: {
       "@type": "SearchAction",
@@ -388,42 +426,53 @@ const focusCards = [
   ) : null}
 
   <section class="hero-grid hero-fade relative overflow-hidden text-neutral-900 dark:text-white">
-    <div class="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 pb-20 pt-14 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:pb-24 lg:pt-20">
+    <div
+      class:list={[
+        "relative z-10 mx-auto grid max-w-6xl gap-10 px-4 pb-20 pt-14 sm:px-6 lg:items-center lg:pb-24 lg:pt-20",
+        homeSectionVisible.featuredPanel ? "lg:grid-cols-[1.08fr_0.92fr]" : "lg:grid-cols-1",
+      ]}
+    >
       <div class="min-w-0">
         <p class="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/70 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
           <span class="h-1.5 w-1.5 rounded-full bg-accent-500 shadow-[var(--shadow-brand)] dark:bg-accent-400" aria-hidden="true"></span>
-          Full-Length Mock Test · CUET PYQs With solutions
+          {presentation.home_hero_badge}
         </p>
 
         <h1 class="mt-6 max-w-2xl text-3xl font-black leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-5xl">
-          Boost Your CUET UG 2027 Preparation with <span class="text-accent-700 dark:text-accent-300">FREE</span> Online Mock Tests &amp; PYQs
+          {heroTitleHighlight ? (
+            <>
+              {heroTitleBeforeHighlight}
+              <span class="text-accent-700 dark:text-accent-300">{heroTitleHighlight}</span>
+              {heroTitleAfterHighlight}
+            </>
+          ) : heroTitleAfterHighlight}
         </h1>
 
         <p class="mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8 dark:text-white/55">
-          Practice with CUET Mock Test Series based on the NTA Exam Pattern and Previous Year Questions (PYQs) to Build Confidence and Improve Your Exam Readiness.
+          {presentation.home_hero_description}
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
           <a
-            href="/mock-tests"
+            href={primaryActionHref}
             class="group inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-brand)] transition-colors hover:bg-brand-600"
           >
-            Take a <span class="text-amber-300">FREE</span> Mock Test
+            {presentation.home_hero_primary_label}
             <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
             </svg>
           </a>
           <a
-            href="/cuet-ug-previous-year-papers"
+            href={secondaryActionHref}
             class="inline-flex items-center gap-2 rounded-xl border border-neutral-300 bg-white/70 px-5 py-3 text-sm font-bold text-neutral-700 transition-colors hover:bg-white hover:text-neutral-900 dark:border-white/15 dark:bg-white/[0.03] dark:text-white/80 dark:hover:bg-white/[0.08] dark:hover:text-white"
           >
-            Browse CUET PYQs
+            {presentation.home_hero_secondary_label}
           </a>
         </div>
 
         <p class="mt-3 text-xs text-neutral-500 dark:text-white/50">
-          No account needed to start. Sign in later to save your history and leaderboard attempt.
+          {presentation.home_hero_note}
         </p>
 
         <ul class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-600 dark:text-white/50">
@@ -447,12 +496,13 @@ const focusCards = [
         </p>
       </div>
 
+      {homeSectionVisible.featuredPanel ? (
       <aside class="relative z-10 min-w-0" aria-labelledby="popular-heading">
         <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white/85 shadow-xl shadow-neutral-900/10 backdrop-blur dark:border-white/10 dark:bg-white/[0.035] dark:shadow-2xl dark:shadow-black/40">
           <div class="flex items-start justify-between gap-4 border-b border-neutral-200 px-5 py-4 dark:border-white/10">
             <div>
               <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500 dark:text-white/35">From the 2021–2026 previous-year library</p>
-              <h2 class="mt-1 text-base font-bold" id="popular-heading">Most Popular Mock Tests</h2>
+              <h2 class="mt-1 text-base font-bold" id="popular-heading">{presentation.home_featured_heading}</h2>
             </div>
             <a
               href="/mock-tests"
@@ -512,20 +562,22 @@ const focusCards = [
           Independent practice · answers stay hidden until submit
         </p>
       </aside>
+      ) : null}
     </div>
   </section>
 
+  {homeSectionVisible.paperLibrary ? (
   <section class="relative bg-white py-14 dark:bg-ink-950 sm:py-16 lg:py-20" aria-labelledby="library-heading">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-700 dark:text-brand-300">Explore the library</p>
           <h2 class="mt-3 max-w-xl text-3xl font-black tracking-tight sm:text-4xl" id="library-heading">
-            Most Popular Mock Tests and subject-wise practice.
+            {presentation.home_library_heading}
           </h2>
         </div>
         <p class="max-w-xl text-sm leading-7 text-neutral-600 dark:text-white/55 lg:justify-self-end">
-          Every paper below is a previous-year practice paper. Fully scored papers appear first, and every row opens the matching timed test or subject practice.
+          {presentation.home_library_description}
         </p>
       </div>
 
@@ -645,7 +697,9 @@ const focusCards = [
       </div>
     </div>
   </section>
+  ) : null}
 
+  {homeSectionVisible.shortcuts ? (
   <section class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/60" aria-label="Library shortcuts">
     <div class="mx-auto grid max-w-6xl gap-3 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
       {featureLinks.map((feature) => (
@@ -667,7 +721,9 @@ const focusCards = [
       ))}
     </div>
   </section>
+  ) : null}
 
+  {homeSectionVisible.yearArchive ? (
   <section class="border-b border-neutral-200 bg-white py-10 dark:border-white/10 dark:bg-ink-950" aria-labelledby="local-practice-heading">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="rounded-2xl border border-amber-200 bg-amber-50/70 p-5 dark:border-amber-500/20 dark:bg-amber-500/[0.06] sm:p-6">
@@ -711,9 +767,11 @@ const focusCards = [
       </div>
     </div>
   </section>
+  ) : null}
 
   <SeoIntro html={seo?.intro_html} width="wide" />
 
+  {homeSectionVisible.studyRhythm ? (
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20" aria-labelledby="rhythm-heading">
     <div class="grid gap-6 lg:grid-cols-[1fr_0.85fr] lg:items-end">
       <div>
@@ -745,7 +803,9 @@ const focusCards = [
       ))}
     </div>
   </section>
+  ) : null}
 
+  {homeSectionVisible.focusCards ? (
   <section class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/40" aria-labelledby="focus-heading">
     <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:py-20">
       <div>
@@ -787,11 +847,15 @@ const focusCards = [
       </div>
     </div>
   </section>
+  ) : null}
 
+  {homeSectionVisible.faq ? (
   <div class="mx-auto max-w-6xl px-4 pb-4 pt-10 sm:px-6">
     <FaqSection faqs={faqs} intro="Quick answers about accounts, timing, scoring and independence." />
   </div>
+  ) : null}
 
+  {homeSectionVisible.bottomCta ? (
   <section class="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
     <div class="session-glow relative overflow-hidden rounded-3xl p-8 text-center text-white shadow-[var(--shadow-brand)] sm:p-12 lg:p-14">
       <span class="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full border border-white/10" aria-hidden="true"></span>
@@ -820,4 +884,5 @@ const focusCards = [
       </div>
     </div>
   </section>
+  ) : null}
 </BaseLayout>

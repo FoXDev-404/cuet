@@ -1,6 +1,11 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import {
+  hasSubstantiveSeoIntro,
+  limitSeoDescription,
+  rankedPaperMetaDescription,
+} from "../../src/lib/seo-content";
 
 const root = process.cwd();
 const read = (path: string) => readFileSync(join(root, path), "utf8");
@@ -26,6 +31,37 @@ describe("noindex duplicate routes stay crawlable", () => {
     expect(leaderboard).toContain('"noindex, follow"');
     const overview = read("src/pages/mock/[slug]/index.astro");
     expect(overview).toContain('robots={noindex ? "noindex, follow" : undefined}');
+  });
+});
+
+describe("substantive SEO archive content", () => {
+  it("requires at least 300 words of editorial intro, excluding markup and hidden content", () => {
+    const words = Array.from({ length: 300 }, (_, index) => `word${index}`).join(" ");
+    expect(hasSubstantiveSeoIntro(`<p>${words}</p>`)).toBe(true);
+    expect(hasSubstantiveSeoIntro(`<p>${words.split(" ").slice(1).join(" ")}</p>`)).toBe(false);
+    expect(
+      hasSubstantiveSeoIntro(`<p>${Array.from({ length: 299 }, () => "word").join(" ")}</p><script>hidden hidden</script>`),
+    ).toBe(false);
+  });
+
+  it("keeps composed-paper meta descriptions within the documented character range", () => {
+    const description = rankedPaperMetaDescription({
+      dateLabel: "6 June 2026",
+      subject: "Chemistry",
+      questionCount: 50,
+      durationMinutes: 60,
+    });
+    expect(description.length).toBeGreaterThanOrEqual(120);
+    expect(description.length).toBeLessThanOrEqual(160);
+    expect(description).toContain("50 scored questions");
+    expect(description).toContain("60-minute timer");
+  });
+
+  it("trims long editorial descriptions at a word boundary", () => {
+    const description = limitSeoDescription(Array.from({ length: 45 }, () => "guide").join(" "));
+    expect(description.length).toBeLessThanOrEqual(160);
+    expect(description.endsWith("...")).toBe(true);
+    expect(description).not.toContain("gui...");
   });
 });
 
@@ -60,5 +96,13 @@ describe("database outages cannot change exam-info indexability", () => {
     const fallback = read("src/lib/local-mock-fallback.ts");
     expect(fallback).toContain("practice_paper_slug: string | null");
     expect(fallback).toContain("practice_paper_slug: paper.slug");
+  });
+
+  it("keeps PYQ archives out of search until they have substantive guidance", () => {
+    for (const page of ["src/pages/pyq/[year].astro", "src/pages/pyq/[year]/[subject].astro"]) {
+      const file = read(page);
+      expect(file, page).toContain("hasSubstantiveSeoIntro(seo?.intro_html)");
+      expect(file, page).toContain('robots={noindex ? "noindex, follow" : undefined}');
+    }
   });
 });

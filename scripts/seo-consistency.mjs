@@ -6,7 +6,7 @@
  * 1. Every URL in sitemap.xml returns HTTP 200, is indexable (no noindex), and is self-canonical.
  * 2. Every indexable public page on the site is present in sitemap.xml.
  * 3. Zero private, admin, attempt, or unverified pages exist in sitemap.xml.
- * 4. Every indexable page has a single <h1>, valid title (30-70 chars), meta description, and valid structured data.
+ * 4. Every indexable page has a single <h1>, valid title (35-65 chars), meta description (120-160 chars), and valid structured data.
  * 5. Mismatch count must be exactly 0.
  *
  * Usage:
@@ -83,6 +83,20 @@ async function fetchPage(urlPath) {
 }
 
 // Extract metadata from HTML
+function extractMetaContent(html, name) {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  for (const tag of tags) {
+    const attributes = new Map();
+    for (const match of tag.matchAll(/([^\s=/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)) {
+      attributes.set(match[1].toLowerCase(), match[2] ?? match[3] ?? match[4] ?? "");
+    }
+    if (attributes.get("name")?.toLowerCase() === name.toLowerCase()) {
+      return attributes.get("content")?.trim() ?? "";
+    }
+  }
+  return "";
+}
+
 function parsePageMetadata(html, urlPath) {
   // Title
   const titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
@@ -95,15 +109,11 @@ function parsePageMetadata(html, urlPath) {
   const canonical = canonicalMatch ? canonicalMatch[1].trim() : "";
 
   // Robots
-  const robotsMatch = html.match(/<meta[^>]*name=["']robots["'][^>]*content=["']([^"']+)["']/i);
-  const robots = robotsMatch ? robotsMatch[1].trim() : "";
+  const robots = extractMetaContent(html, "robots");
   const isNoindex = /noindex/i.test(robots);
 
   // Description
-  const descMatch =
-    html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i) ||
-    html.match(/<meta[^>]*content=["']([^"']+)["'][^>]*name=["']description["']/i);
-  const description = descMatch ? descMatch[1].trim() : "";
+  const description = extractMetaContent(html, "description");
 
   // H1 count
   const h1Matches = html.match(/<h1[\s>]/gi) || [];
@@ -388,7 +398,16 @@ async function main() {
 
       // Check 200 pages
       if (record.status === 200 && record.meta) {
-        const { isNoindex, isSelfCanonical, canonical, canonicalPath, h1Count, titleLength, jsonLdTypes } = record.meta;
+        const {
+          isNoindex,
+          isSelfCanonical,
+          canonical,
+          canonicalPath,
+          h1Count,
+          titleLength,
+          descriptionLength,
+          jsonLdTypes,
+        } = record.meta;
         const isIndexable = !isPrivate && !isNoindex && isSelfCanonical;
 
         if (isIndexable) {
@@ -409,8 +428,13 @@ async function main() {
           if (h1Count !== 1) {
             console.warn(`[WARN] ${urlPath}: h1 count is ${h1Count} (expected exactly 1)`);
           }
-          if (titleLength < 30 || titleLength > 70) {
-            console.warn(`[WARN] ${urlPath}: title length is ${titleLength} chars (expected 30-70)`);
+          if (titleLength < 35 || titleLength > 65) {
+            console.warn(`[WARN] ${urlPath}: title length is ${titleLength} chars (expected 35-65)`);
+          }
+          if (descriptionLength < 120 || descriptionLength > 160) {
+            console.warn(
+              `[WARN] ${urlPath}: meta description length is ${descriptionLength} chars (expected 120-160)`,
+            );
           }
 
           // Disallowed JSON-LD check

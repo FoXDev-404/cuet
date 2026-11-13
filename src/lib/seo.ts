@@ -12,6 +12,12 @@ export const SITE_NAME = "CUET Free Mock Test";
 export const DEFAULT_SITE_DESCRIPTION =
   "Free CUET UG mock tests with server-scored results, detailed solutions, syllabus and exam-pattern guides.";
 
+export {
+  hasSubstantiveSeoIntro,
+  limitSeoDescription,
+  rankedPaperMetaDescription,
+} from "./seo-content";
+
 export type FaqItem = { question: string; answer: string };
 
 export type PageSeoRow = {
@@ -156,6 +162,7 @@ export function articleJsonLd(input: {
   title: string;
   description: string;
   path: string;
+  image?: string | null;
   published?: string | null;
   updated?: string | null;
 }): Record<string, unknown> {
@@ -169,7 +176,7 @@ export function articleJsonLd(input: {
     description: input.description,
     url,
     mainEntityOfPage: url,
-    image: new URL("/logo.png", input.site).toString(),
+    image: input.image || new URL("/logo.png", input.site).toString(),
     datePublished: published,
     dateModified: modified,
     author: { "@type": "Organization", name: SITE_NAME, url: input.site.toString() },

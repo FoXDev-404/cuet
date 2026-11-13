@@ -1,29 +1,212 @@
 import { getSettings, setSetting } from "../settings";
+import {
+  HOMEPAGE_PRESENTATION_DEFAULTS,
+  isSafeInternalPath,
+  SITE_PRESENTATION_DEFAULTS,
+} from "../site-presentation";
+
+type SettingsGroup = "global" | "homepage" | "homepage-sections" | "features";
 
 export type SettingField = {
   key: string;
   label: string;
   description: string;
-  type: "text" | "boolean";
+  type: "text" | "textarea" | "path" | "boolean";
   defaultValue: string;
+  group: SettingsGroup;
   maxLength?: number;
+  rows?: number;
+  allowEmpty?: boolean;
 };
 
 export const SETTING_FIELDS: SettingField[] = [
   {
     key: "site_name",
     label: "Site name",
-    description: "Shown in the public footer and organization metadata. Keep the real brand name.",
+    description: "Shown in the public header, footer and organization metadata.",
     type: "text",
-    defaultValue: "CUET Free Mock Test",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.site_name,
+    group: "global",
     maxLength: 80,
   },
+  {
+    key: "site_tagline",
+    label: "Footer description",
+    description: "Short text below the brand in the public footer. Leave empty to hide it.",
+    type: "textarea",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.site_tagline,
+    group: "global",
+    maxLength: 240,
+    rows: 3,
+    allowEmpty: true,
+  },
+  {
+    key: "site_footer_note",
+    label: "Footer note",
+    description: "Small closing note at the bottom of the public footer. Leave empty to hide it.",
+    type: "text",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.site_footer_note,
+    group: "global",
+    maxLength: 120,
+    allowEmpty: true,
+  },
+  {
+    key: "global_notice_enabled",
+    label: "Show the site-wide notice",
+    description: "Display a short announcement above the header on public pages.",
+    type: "boolean",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.global_notice_enabled,
+    group: "global",
+  },
+  {
+    key: "global_notice_text",
+    label: "Notice text",
+    description: "Plain text shown in the site-wide notice. Keep it brief and useful.",
+    type: "text",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.global_notice_text,
+    group: "global",
+    maxLength: 180,
+    allowEmpty: true,
+  },
+  {
+    key: "global_notice_href",
+    label: "Notice link",
+    description: "Optional same-site path such as /cuet-ug-important-dates. External and script URLs are rejected.",
+    type: "path",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.global_notice_href,
+    group: "global",
+    maxLength: 300,
+    allowEmpty: true,
+  },
+  {
+    key: "home_hero_badge",
+    label: "Hero badge",
+    description: "Small uppercase label above the homepage headline.",
+    type: "text",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_badge,
+    group: "homepage",
+    maxLength: 100,
+  },
+  {
+    key: "home_hero_title",
+    label: "Hero headline",
+    description: "Main homepage heading. The first occurrence of FREE receives the accent color.",
+    type: "textarea",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_title,
+    group: "homepage",
+    maxLength: 150,
+    rows: 2,
+  },
+  {
+    key: "home_hero_description",
+    label: "Hero description",
+    description: "Supporting copy under the homepage headline.",
+    type: "textarea",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_description,
+    group: "homepage",
+    maxLength: 300,
+    rows: 3,
+  },
+  {
+    key: "home_hero_primary_label",
+    label: "Primary button label",
+    description: "Label for the main homepage call to action.",
+    type: "text",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_primary_label,
+    group: "homepage",
+    maxLength: 50,
+  },
+  {
+    key: "home_hero_primary_href",
+    label: "Primary button destination",
+    description: "Same-site path for the main call to action.",
+    type: "path",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_primary_href,
+    group: "homepage",
+    maxLength: 300,
+  },
+  {
+    key: "home_hero_secondary_label",
+    label: "Secondary button label",
+    description: "Label for the second homepage call to action.",
+    type: "text",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_secondary_label,
+    group: "homepage",
+    maxLength: 50,
+  },
+  {
+    key: "home_hero_secondary_href",
+    label: "Secondary button destination",
+    description: "Same-site path for the second call to action.",
+    type: "path",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_secondary_href,
+    group: "homepage",
+    maxLength: 300,
+  },
+  {
+    key: "home_hero_note",
+    label: "Hero note",
+    description: "Small reassurance line beneath the homepage buttons.",
+    type: "textarea",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_note,
+    group: "homepage",
+    maxLength: 180,
+    rows: 2,
+  },
+  {
+    key: "home_featured_heading",
+    label: "Featured papers heading",
+    description: "Heading above the highlighted mock tests on the hero.",
+    type: "text",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_featured_heading,
+    group: "homepage",
+    maxLength: 80,
+  },
+  {
+    key: "home_library_heading",
+    label: "Practice library heading",
+    description: "Heading for the homepage mock and subject practice library.",
+    type: "text",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_library_heading,
+    group: "homepage",
+    maxLength: 120,
+  },
+  {
+    key: "home_library_description",
+    label: "Practice library description",
+    description: "Supporting copy above the paper and subject cards.",
+    type: "textarea",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_library_description,
+    group: "homepage",
+    maxLength: 300,
+    rows: 3,
+  },
+  ...(
+    [
+      ["home_show_featured_panel", "Featured mock tests", "Show the popular paper panel beside the homepage hero."],
+      ["home_show_paper_library", "Practice library", "Show the mock-test and subject practice cards."],
+      ["home_show_shortcuts", "Library shortcuts", "Show the shortcut row for mocks, PYQs and progress."],
+      ["home_show_year_archive", "Previous-year archive", "Show the year-by-year paper browser."],
+      ["home_show_study_rhythm", "Study rhythm", "Show the three-step study guidance section."],
+      ["home_show_focus_cards", "Practice focus cards", "Show the focused practice card section."],
+      ["home_show_faq", "Frequently asked questions", "Show the homepage FAQ section."],
+      ["home_show_bottom_cta", "Final call to action", "Show the closing homepage practice call to action."],
+    ] as const
+  ).map(([key, label, description]) => ({
+    key,
+    label,
+    description,
+    type: "boolean" as const,
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS[key],
+    group: "homepage-sections" as const,
+  })),
   {
     key: "registration_enabled",
     label: "Registration open",
     description: "When off, new account signups return a closed-registration error. Existing users can still log in.",
     type: "boolean",
     defaultValue: "true",
+    group: "features",
   },
   {
     key: "discussion_enabled",
@@ -31,6 +214,7 @@ export const SETTING_FIELDS: SettingField[] = [
     description: "When off, the discussion pages and posting APIs pause for everyone except admins.",
     type: "boolean",
     defaultValue: "true",
+    group: "features",
   },
   {
     key: "maintenance_mode",
@@ -38,6 +222,7 @@ export const SETTING_FIELDS: SettingField[] = [
     description: "When on, public pages are rewritten to the maintenance notice. Admin pages and APIs stay reachable.",
     type: "boolean",
     defaultValue: "false",
+    group: "features",
   },
   {
     key: "share_question_during_attempt",
@@ -45,6 +230,7 @@ export const SETTING_FIELDS: SettingField[] = [
     description: "When on, every question in a live mock attempt — ranked mocks and previous-year practice papers — shows a Share button. The shared image shows the question and its options — never the correct answer — and the link opens the public question page when one exists, otherwise the mock instructions page.",
     type: "boolean",
     defaultValue: "false",
+    group: "features",
   },
 ];
 
@@ -68,8 +254,14 @@ export function normalizeSettings(input: Record<string, unknown>): Record<string
       continue;
     }
     const value = String(raw ?? "").trim();
-    if (value.length < 2 || value.length > (field.maxLength ?? 80)) {
-      throw new Error(`${field.label} must be 2-${field.maxLength ?? 80} characters.`);
+    const minimumLength = field.allowEmpty ? 0 : 2;
+    if (value.length < minimumLength || value.length > (field.maxLength ?? 80)) {
+      throw new Error(
+        `${field.label} must be ${minimumLength === 0 ? "0" : "2"}-${field.maxLength ?? 80} characters.`,
+      );
+    }
+    if (field.type === "path" && value && !isSafeInternalPath(value)) {
+      throw new Error(`${field.label} must be a same-site path beginning with a single slash.`);
     }
     if (value.includes("<") || value.includes(">")) {
       throw new Error(`${field.label} must be plain text.`);

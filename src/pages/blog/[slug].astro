@@ -4,12 +4,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { dbUnavailableResponse } from "../../lib/db-resilient";
 import { formatDate } from "../../lib/content";
-import { articleJsonLd, breadcrumbJsonLd, getPageSeo } from "../../lib/seo";
+import { articleJsonLd, breadcrumbJsonLd, getPageSeo, limitSeoDescription } from "../../lib/seo";
 import { articleHeadings, estimateReadingMinutes, renderArticleBody } from "../../lib/blog";
 import {
   getAllGuides,
   getGuide,
   getRelatedGuides,
+  guideImagePath,
   guidePath,
   type GuidePost,
 } from "../../lib/guides";
@@ -34,9 +35,10 @@ const seo = await getPageSeo(PATH);
 // the 70-char SERP window, and the brand is already in og:site_name and the
 // visible header.
 const title = seo?.title || post.title;
-const description = seo?.description || post.description;
+const description = limitSeoDescription(seo?.description || post.description);
 const noindex = (seo?.noindex ?? 0) === 1;
 const site = siteUrl(Astro.url);
+const socialImage = new URL(guideImagePath(post.slug), site).toString();
 const category = GUIDE_CATEGORY_META[post.category];
 const headings = articleHeadings(post.body);
 const readingMinutes = estimateReadingMinutes(post.body);
@@ -55,6 +57,7 @@ const structuredData = [
     title,
     description,
     path: PATH,
+    image: socialImage,
     published: post.publishedAt,
     updated: updatedAt,
   }),
@@ -67,6 +70,8 @@ const structuredData = [
   noindex={noindex}
   canonical={seo?.canonical_url}
   structuredData={structuredData}
+  image={socialImage}
+  imageAlt={`Illustration for ${post.title}: a CUET study checklist and progress chart.`}
   ogType="article"
   ads={!noindex}
   endAdSlot={false}
@@ -99,6 +104,19 @@ const structuredData = [
           </h1>
           <p class="mt-3 text-lg leading-8 text-[var(--muted)]">{post.description}</p>
         </header>
+
+        <figure class="mt-6 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)]">
+          <img
+            src={socialImage}
+            alt={`Illustration for ${post.title}: a CUET study checklist and progress chart.`}
+            width="1200"
+            height="630"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            class="block h-auto w-full"
+          />
+        </figure>
 
         {seo?.intro_html ? (
           <div class="mt-6 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100">

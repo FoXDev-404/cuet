@@ -177,7 +177,7 @@ const faqs = customFaq.length > 0 ? customFaq : DEFAULT_FAQ;
 const title = seo?.title || `${subject.name} Mock Tests — Free CUET Practice`;
 const description =
   seo?.description ||
-  `Free ${subject.name} CUET mock tests with a server timer, detailed solutions and section analysis. ${publishedQuestions} question${publishedQuestions === 1 ? "" : "s"} and ${paperCount} paper${paperCount === 1 ? "" : "s"}.`;
+  `Free CUET ${subject.name} mock tests: practise ${publishedQuestions} questions across ${paperCount} papers with a server timer, scores and detailed solutions for revision.`;
 const site = siteUrl(Astro.url);
 
 const structuredData = [
