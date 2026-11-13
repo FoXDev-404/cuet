@@ -285,7 +285,7 @@ test("the homepage shows refined most-popular papers in the hero and below", asy
   await page.goto("/");
 
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Prepare for CUET UG 2027 with FREE timed practice",
+    "Prepare for CUET UG 2027 with FREE online practice",
   );
   await expect(page.getByText(/No account needed to start/)).toBeVisible();
 
