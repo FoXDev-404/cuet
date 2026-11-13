@@ -10,7 +10,7 @@ const settings = await loadSettings();
 const sections = [
   {
     key: "global",
-    title: "Site identity & global notice",
+    title: "Site identity, footer links & global notice",
     description: "These settings apply across the public website.",
   },
   {
@@ -81,7 +81,7 @@ const sections = [
             return (
               <label class="block text-sm font-semibold">
                 {field.label}
-                {field.type === "textarea" ? (
+                {field.type === "textarea" || field.type === "links" ? (
                   <textarea
                     class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-normal dark:border-neutral-700 dark:bg-neutral-950"
                     name={field.key}

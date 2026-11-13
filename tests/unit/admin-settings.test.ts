@@ -6,6 +6,7 @@ vi.mock("../../src/lib/settings", () => ({
 }));
 
 import { normalizeSettings, SETTING_FIELDS } from "../../src/lib/admin/settings";
+import { parseFooterLinks } from "../../src/lib/site-presentation";
 
 function completeSettings(): Record<string, unknown> {
   return Object.fromEntries(SETTING_FIELDS.map((field) => [field.key, field.defaultValue]));
@@ -39,5 +40,23 @@ describe("admin site presentation settings", () => {
   it("allows an intentionally blank optional footer description", () => {
     const result = normalizeSettings({ ...completeSettings(), site_tagline: "   " });
     expect(result.site_tagline).toBe("");
+  });
+
+  it("normalizes safe custom footer links and rejects external or malformed entries", () => {
+    const result = normalizeSettings({
+      ...completeSettings(),
+      footer_custom_links: "Study plan | /cuet-ug-study-plan\nContact | /contact",
+    });
+
+    expect(parseFooterLinks(result.footer_custom_links)).toEqual([
+      { label: "Study plan", href: "/cuet-ug-study-plan" },
+      { label: "Contact", href: "/contact" },
+    ]);
+    expect(() =>
+      normalizeSettings({ ...completeSettings(), footer_custom_links: "External | https://example.com" }),
+    ).toThrow(/same-site path/i);
+    expect(() =>
+      normalizeSettings({ ...completeSettings(), footer_custom_links: "Missing separator" }),
+    ).toThrow(/Label \| \/path/i);
   });
 });

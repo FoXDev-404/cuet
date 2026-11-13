@@ -3,6 +3,7 @@ export const SITE_PRESENTATION_DEFAULTS = {
   site_tagline:
     "A focused space for CUET UG practice: mock tests, previous-year questions and performance reviews, moving forward one step at a time.",
   site_footer_note: "Independent practice resource.",
+  footer_custom_links: "",
   global_notice_enabled: "false",
   global_notice_text: "",
   global_notice_href: "",
@@ -49,4 +50,53 @@ export function isSafeInternalPath(value: string): boolean {
 
 export function safeInternalPath(value: string | undefined, fallback: string): string {
   return value && isSafeInternalPath(value) ? value.trim() : fallback;
+}
+
+export interface SiteLink {
+  label: string;
+  href: string;
+}
+
+export function normalizeFooterLinks(value: string): string {
+  const links = value
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const separator = line.indexOf("|");
+      if (separator < 0 || line.indexOf("|", separator + 1) >= 0) {
+        throw new Error("Each footer link must use the format Label | /path.");
+      }
+
+      const label = line.slice(0, separator).trim();
+      const href = line.slice(separator + 1).trim();
+      if (label.length < 2 || label.length > 40 || /[<>]/.test(label)) {
+        throw new Error("Footer link labels must be 2-40 plain-text characters.");
+      }
+      if (!isSafeInternalPath(href)) {
+        throw new Error("Footer link destinations must be same-site paths beginning with a single slash.");
+      }
+      return { label, href };
+    });
+
+  if (links.length > 8) throw new Error("You can add up to 8 custom footer links.");
+  return links.map(({ label, href }) => `${label} | ${href}`).join("\n");
+}
+
+export function parseFooterLinks(value: string | undefined): SiteLink[] {
+  if (!value) return [];
+  return value
+    .split(/\r?\n/)
+    .map((line) => {
+      const separator = line.indexOf("|");
+      if (separator < 0) return null;
+      const label = line.slice(0, separator).trim();
+      const href = line.slice(separator + 1).trim();
+      if (label.length < 2 || label.length > 40 || /[<>]/.test(label) || !isSafeInternalPath(href)) {
+        return null;
+      }
+      return { label, href };
+    })
+    .filter((link): link is SiteLink => link !== null)
+    .slice(0, 8);
 }

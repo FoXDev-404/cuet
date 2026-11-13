@@ -7,7 +7,7 @@ import AdSlot from "../components/AdSlot.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import { siteUrl } from "../lib/site-url";
 import { getSettings } from "../lib/settings";
-import { isSafeInternalPath } from "../lib/site-presentation";
+import { isSafeInternalPath, parseFooterLinks } from "../lib/site-presentation";
 import {
   adsenseClient,
   adSlotAllowed,
@@ -83,6 +83,7 @@ const presentationSettings = await getSettings([
   "site_name",
   "site_tagline",
   "site_footer_note",
+  "footer_custom_links",
   "global_notice_enabled",
   "global_notice_text",
   "global_notice_href",
@@ -92,6 +93,7 @@ const siteTagline =
   presentationSettings.site_tagline ??
   "A focused space for CUET UG practice: mock tests, previous-year questions and performance reviews, moving forward one step at a time.";
 const siteFooterNote = presentationSettings.site_footer_note ?? "Independent practice resource.";
+const customFooterLinks = parseFooterLinks(presentationSettings.footer_custom_links);
 const globalNoticeText = presentationSettings.global_notice_text?.trim() ?? "";
 const globalNoticeHref = presentationSettings.global_notice_href?.trim() ?? "";
 const globalNoticeEnabled =
@@ -747,6 +749,16 @@ const organization = {
               <li><a class="hover:text-accent-300" href="/dashboard/discussions">Discussions</a></li>
               <li><a class="hover:text-accent-300" href="/blog">Preparation guides</a></li>
             </ul>
+            {customFooterLinks.length > 0 ? (
+              <>
+                <p class="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">More links</p>
+                <ul class="mt-3 space-y-2 text-white/60">
+                  {customFooterLinks.map((item) => (
+                    <li><a class="hover:text-accent-300" href={item.href}>{item.label}</a></li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
           </div>
 
           <div class="text-sm">

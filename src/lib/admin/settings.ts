@@ -2,6 +2,7 @@ import { getSettings, setSetting } from "../settings";
 import {
   HOMEPAGE_PRESENTATION_DEFAULTS,
   isSafeInternalPath,
+  normalizeFooterLinks,
   SITE_PRESENTATION_DEFAULTS,
 } from "../site-presentation";
 
@@ -11,7 +12,7 @@ export type SettingField = {
   key: string;
   label: string;
   description: string;
-  type: "text" | "textarea" | "path" | "boolean";
+  type: "text" | "textarea" | "path" | "links" | "boolean";
   defaultValue: string;
   group: SettingsGroup;
   maxLength?: number;
@@ -48,6 +49,17 @@ export const SETTING_FIELDS: SettingField[] = [
     defaultValue: SITE_PRESENTATION_DEFAULTS.site_footer_note,
     group: "global",
     maxLength: 120,
+    allowEmpty: true,
+  },
+  {
+    key: "footer_custom_links",
+    label: "Additional footer links",
+    description: "Optional links shown under Explore. Add one per line as Label | /path (up to 8).",
+    type: "links",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.footer_custom_links,
+    group: "global",
+    maxLength: 500,
+    rows: 5,
     allowEmpty: true,
   },
   {
@@ -265,6 +277,10 @@ export function normalizeSettings(input: Record<string, unknown>): Record<string
     }
     if (value.includes("<") || value.includes(">")) {
       throw new Error(`${field.label} must be plain text.`);
+    }
+    if (field.type === "links") {
+      output[field.key] = normalizeFooterLinks(value);
+      continue;
     }
     output[field.key] = value;
   }
