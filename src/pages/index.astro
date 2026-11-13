@@ -82,12 +82,8 @@ try {
 
 const localPapers = getLocalPapers();
 const localYears = getLocalPaperYears();
-const localYearNumbers = localYears.map((summary) => summary.year);
-const availableYearRange = localYears.length
-  ? `${Math.min(...localYearNumbers)}–${Math.max(...localYearNumbers)}`
-  : "previous exam years";
 const DEFAULT_DESCRIPTION =
-  "Prepare for CUET UG with FREE Online CUET Mock Tests, NTA-Pattern Practice Papers and CUET Previous Year Questions (PYQs). Boost Your Exam Preparation.";
+  "Practice with CUET Mock Test Series based on the NTA Exam Pattern and Previous Year Questions (PYQs) to Build Confidence and Improve Your Exam Readiness.";
 const popularPapers = getPopularLocalPapers(12);
 const subjectRows = getLocalSubjectSummaries().slice(0, 6);
 const localQuestionCount = localPapers.reduce(
@@ -399,12 +395,12 @@ const focusCards = [
           {localPapers.length} previous-year papers · {localYears.length} exam years
         </p>
 
-        <h1 class="mt-6 max-w-2xl text-4xl font-black leading-[1.05] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
-          Prepare for CUET UG 2027 with <span class="text-accent-700 dark:text-accent-300">FREE</span> timed practice
+        <h1 class="mt-6 max-w-2xl text-3xl font-black leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-5xl">
+          Boost Your CUET UG 2027 Preparation with <span class="text-accent-700 dark:text-accent-300">FREE</span> Online Mock Tests &amp; PYQs
         </h1>
 
         <p class="mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8 dark:text-white/55">
-          Browse timed practice papers from {availableYearRange}. Each paper shows its question count, duration, and scoring coverage before you begin.
+          Practice with CUET Mock Test Series based on the NTA Exam Pattern and Previous Year Questions (PYQs) to Build Confidence and Improve Your Exam Readiness.
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
