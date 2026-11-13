@@ -4,6 +4,7 @@ export const SITE_PRESENTATION_DEFAULTS = {
     "A focused space for CUET UG practice: mock tests, previous-year questions and performance reviews, moving forward one step at a time.",
   site_footer_note: "Independent practice resource.",
   footer_custom_links: "",
+  header_custom_links: "",
   global_notice_enabled: "false",
   global_notice_text: "",
   global_notice_href: "",
@@ -57,7 +58,7 @@ export interface SiteLink {
   href: string;
 }
 
-export function normalizeFooterLinks(value: string): string {
+export function normalizeSiteLinks(value: string, limit = 8): string {
   const links = value
     .split(/\r?\n/)
     .map((line) => line.trim())
@@ -65,25 +66,25 @@ export function normalizeFooterLinks(value: string): string {
     .map((line) => {
       const separator = line.indexOf("|");
       if (separator < 0 || line.indexOf("|", separator + 1) >= 0) {
-        throw new Error("Each footer link must use the format Label | /path.");
+        throw new Error("Each navigation link must use the format Label | /path.");
       }
 
       const label = line.slice(0, separator).trim();
       const href = line.slice(separator + 1).trim();
       if (label.length < 2 || label.length > 40 || /[<>]/.test(label)) {
-        throw new Error("Footer link labels must be 2-40 plain-text characters.");
+        throw new Error("Navigation link labels must be 2-40 plain-text characters.");
       }
       if (!isSafeInternalPath(href)) {
-        throw new Error("Footer link destinations must be same-site paths beginning with a single slash.");
+        throw new Error("Navigation link destinations must be same-site paths beginning with a single slash.");
       }
       return { label, href };
     });
 
-  if (links.length > 8) throw new Error("You can add up to 8 custom footer links.");
+  if (links.length > limit) throw new Error(`You can add up to ${limit} custom navigation links.`);
   return links.map(({ label, href }) => `${label} | ${href}`).join("\n");
 }
 
-export function parseFooterLinks(value: string | undefined): SiteLink[] {
+export function parseSiteLinks(value: string | undefined, limit = 8): SiteLink[] {
   if (!value) return [];
   return value
     .split(/\r?\n/)
@@ -98,5 +99,5 @@ export function parseFooterLinks(value: string | undefined): SiteLink[] {
       return { label, href };
     })
     .filter((link): link is SiteLink => link !== null)
-    .slice(0, 8);
+    .slice(0, limit);
 }

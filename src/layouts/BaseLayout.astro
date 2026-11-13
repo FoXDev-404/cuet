@@ -7,7 +7,7 @@ import AdSlot from "../components/AdSlot.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import { siteUrl } from "../lib/site-url";
 import { getSettings } from "../lib/settings";
-import { isSafeInternalPath, parseFooterLinks } from "../lib/site-presentation";
+import { isSafeInternalPath, parseSiteLinks } from "../lib/site-presentation";
 import {
   adsenseClient,
   adSlotAllowed,
@@ -84,6 +84,7 @@ const presentationSettings = await getSettings([
   "site_tagline",
   "site_footer_note",
   "footer_custom_links",
+  "header_custom_links",
   "global_notice_enabled",
   "global_notice_text",
   "global_notice_href",
@@ -93,7 +94,8 @@ const siteTagline =
   presentationSettings.site_tagline ??
   "A focused space for CUET UG practice: mock tests, previous-year questions and performance reviews, moving forward one step at a time.";
 const siteFooterNote = presentationSettings.site_footer_note ?? "Independent practice resource.";
-const customFooterLinks = parseFooterLinks(presentationSettings.footer_custom_links);
+const customFooterLinks = parseSiteLinks(presentationSettings.footer_custom_links);
+const customHeaderLinks = parseSiteLinks(presentationSettings.header_custom_links, 4);
 const globalNoticeText = presentationSettings.global_notice_text?.trim() ?? "";
 const globalNoticeHref = presentationSettings.global_notice_href?.trim() ?? "";
 const globalNoticeEnabled =
@@ -287,6 +289,32 @@ const organization = {
               </a>
             );
           })}
+          {customHeaderLinks.length > 0 ? (
+            <details class="relative">
+              <summary class="cursor-pointer list-none rounded-lg px-3.5 py-1.5 text-[13px] font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white">
+                More
+              </summary>
+              <div class="absolute right-0 top-full z-50 mt-2 min-w-48 rounded-xl border border-neutral-200 bg-white p-2 shadow-xl dark:border-white/10 dark:bg-ink-950">
+                {customHeaderLinks.map((item) => {
+                  const active = isPathActive([new URL(item.href, site).pathname]);
+                  return (
+                    <a
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      class:list={[
+                        "block rounded-lg px-3 py-2 text-sm transition-colors",
+                        active
+                          ? "bg-brand-500/10 font-semibold text-brand-700 dark:bg-white/10 dark:text-white"
+                          : "text-neutral-700 hover:bg-neutral-100 dark:text-white/80 dark:hover:bg-white/5",
+                      ]}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </details>
+          ) : null}
         </nav>
 
         <!-- Desktop Right Side Controls (Theme, Discussion Bell, Profile Dropdown) -->
@@ -675,6 +703,28 @@ const organization = {
             </svg>
             <span>Exam Pattern</span>
           </a>
+          {customHeaderLinks.length > 0 ? (
+            <>
+              <p class="px-3 pt-3 text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-500 dark:text-white/50">Custom links</p>
+              {customHeaderLinks.map((item) => {
+                const active = isPathActive([new URL(item.href, site).pathname]);
+                return (
+                  <a
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    class:list={[
+                      "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors",
+                      active
+                        ? "bg-brand-500/10 font-semibold text-brand-700 dark:bg-white/10 dark:text-white"
+                        : "font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-white/5",
+                    ]}
+                  >
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })}
+            </>
+          ) : null}
         </div>
 
         <div class="mt-2 border-t border-neutral-100 pt-3 dark:border-white/10">

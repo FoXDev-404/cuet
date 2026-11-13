@@ -6,7 +6,7 @@ vi.mock("../../src/lib/settings", () => ({
 }));
 
 import { normalizeSettings, SETTING_FIELDS } from "../../src/lib/admin/settings";
-import { parseFooterLinks } from "../../src/lib/site-presentation";
+import { parseSiteLinks } from "../../src/lib/site-presentation";
 
 function completeSettings(): Record<string, unknown> {
   return Object.fromEntries(SETTING_FIELDS.map((field) => [field.key, field.defaultValue]));
@@ -48,7 +48,7 @@ describe("admin site presentation settings", () => {
       footer_custom_links: "Study plan | /cuet-ug-study-plan\nContact | /contact",
     });
 
-    expect(parseFooterLinks(result.footer_custom_links)).toEqual([
+    expect(parseSiteLinks(result.footer_custom_links)).toEqual([
       { label: "Study plan", href: "/cuet-ug-study-plan" },
       { label: "Contact", href: "/contact" },
     ]);
@@ -57,6 +57,24 @@ describe("admin site presentation settings", () => {
     ).toThrow(/same-site path/i);
     expect(() =>
       normalizeSettings({ ...completeSettings(), footer_custom_links: "Missing separator" }),
-    ).toThrow(/Label \| \/path/i);
+    ).toThrow(/format Label \| \/path/i);
+  });
+
+  it("supports ordered, limited custom header links for desktop and mobile menus", () => {
+    const result = normalizeSettings({
+      ...completeSettings(),
+      header_custom_links: "Study plan | /cuet-ug-study-plan\nContact | /contact",
+    });
+
+    expect(parseSiteLinks(result.header_custom_links, 4)).toEqual([
+      { label: "Study plan", href: "/cuet-ug-study-plan" },
+      { label: "Contact", href: "/contact" },
+    ]);
+    expect(() =>
+      normalizeSettings({
+        ...completeSettings(),
+        header_custom_links: Array.from({ length: 5 }, (_, index) => `Page ${index + 1} | /page-${index + 1}`).join("\n"),
+      }),
+    ).toThrow(/up to 4/i);
   });
 });

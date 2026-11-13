@@ -2,7 +2,7 @@ import { getSettings, setSetting } from "../settings";
 import {
   HOMEPAGE_PRESENTATION_DEFAULTS,
   isSafeInternalPath,
-  normalizeFooterLinks,
+  normalizeSiteLinks,
   SITE_PRESENTATION_DEFAULTS,
 } from "../site-presentation";
 
@@ -60,6 +60,17 @@ export const SETTING_FIELDS: SettingField[] = [
     group: "global",
     maxLength: 500,
     rows: 5,
+    allowEmpty: true,
+  },
+  {
+    key: "header_custom_links",
+    label: "Additional header links",
+    description: "Shown in a More menu on desktop and the mobile More panel. Order the lines as desired; remove a line to hide it. Up to 4 same-site links.",
+    type: "links",
+    defaultValue: SITE_PRESENTATION_DEFAULTS.header_custom_links,
+    group: "global",
+    maxLength: 300,
+    rows: 4,
     allowEmpty: true,
   },
   {
@@ -279,7 +290,7 @@ export function normalizeSettings(input: Record<string, unknown>): Record<string
       throw new Error(`${field.label} must be plain text.`);
     }
     if (field.type === "links") {
-      output[field.key] = normalizeFooterLinks(value);
+      output[field.key] = normalizeSiteLinks(value, field.key === "header_custom_links" ? 4 : 8);
       continue;
     }
     output[field.key] = value;
