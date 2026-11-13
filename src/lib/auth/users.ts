@@ -114,8 +114,8 @@ export async function claimGuestAttempts(
   guestToken: string | null | undefined,
 ): Promise<number> {
   if (!guestToken) return 0;
-  const rows = await all<{ id: number; mock_id: number; status: string }>(
-    "SELECT id, mock_id, status FROM attempts WHERE guest_token = ? AND user_id IS NULL",
+  const rows = await all<{ id: number; version_id: number; status: string }>(
+    "SELECT id, version_id, status FROM attempts WHERE guest_token = ? AND user_id IS NULL",
     guestToken,
   );
   if (rows.length === 0) return 0;
@@ -132,9 +132,9 @@ export async function claimGuestAttempts(
     if (row.status === "in_progress") continue;
     const earlier = await first<{ count: number }>(
       `SELECT COUNT(*) AS count FROM attempts
-       WHERE user_id = ? AND mock_id = ? AND id != ? AND status IN ('submitted','expired')`,
+       WHERE user_id = ? AND version_id = ? AND id != ? AND status IN ('submitted','expired')`,
       userId,
-      row.mock_id,
+      row.version_id,
       row.id,
     );
     if ((earlier?.count ?? 0) > 0) continue;

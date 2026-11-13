@@ -86,7 +86,7 @@ export async function recentAttempts(mockId: number, limit = 100): Promise<Admin
 
 /**
  * Undo a disqualification. The attempt only returns to the ranked slot when
- * the user has no other ranked attempt on the paper; a retake therefore stays
+ * the user has no other ranked attempt on the version; a retake therefore stays
  * out of the leaderboard even after reinstatement.
  */
 export async function reinstateAttempt(
@@ -96,18 +96,18 @@ export async function reinstateAttempt(
   const attempt = await first<{
     id: number;
     user_id: number | null;
-    mock_id: number;
+    version_id: number;
     status: string;
-  }>("SELECT id, user_id, mock_id, status FROM attempts WHERE id = ?", attemptId);
+  }>("SELECT id, user_id, version_id, status FROM attempts WHERE id = ?", attemptId);
   if (!attempt) throw new Error("Attempt not found.");
   if (attempt.status !== "submitted") throw new Error("Only a submitted attempt can be reinstated.");
 
   const existing = await first<{ id: number }>(
     `SELECT id FROM attempts
-     WHERE user_id = ? AND mock_id = ? AND status = 'submitted'
+     WHERE user_id = ? AND version_id = ? AND status = 'submitted'
        AND is_first_attempt = 1 AND id != ?`,
     attempt.user_id,
-    attempt.mock_id,
+    attempt.version_id,
     attemptId,
   );
   const ranked = Boolean(attempt.user_id) && !existing;

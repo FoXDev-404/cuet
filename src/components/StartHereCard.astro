@@ -12,6 +12,8 @@ const { paper, class: className = "" } = Astro.props;
 
 const keyStatus = getKeyStatus(paper);
 const markingText = formatMarking(paper.markingScheme);
+const rankedQuestionCount = paper.rankedQuestionCount ?? paper.scorableQuestionCount;
+const rankedDurationMinutes = paper.rankedDurationMinutes ?? paper.durationMinutes;
 const startHref = `/mock/${paper.slug}/instructions`;
 const detailsHref = paper.path;
 
@@ -41,7 +43,7 @@ const titleText = paper.dateLabel
     </h3>
 
     <p class="mt-1.5 text-xs text-neutral-500 dark:text-neutral-400">
-      {paper.recoveredQuestionCount} questions · {paper.durationMinutes} min · {markingText}
+      {rankedQuestionCount} ranked questions · {rankedDurationMinutes} min · {markingText}
     </p>
   </div>
 

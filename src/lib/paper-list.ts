@@ -39,17 +39,32 @@ export interface PaginatedResult<T> {
 }
 
 /** Classifies paper as full (>=40 questions) or mini (<40 questions). */
-export function classifyPaper(paper: Pick<LocalPaperSummary, "recoveredQuestionCount">): PaperType {
-  return paper.recoveredQuestionCount >= FULL_PAPER_MIN_QUESTIONS ? "full" : "mini";
+export function classifyPaper(
+  paper: Pick<LocalPaperSummary, "recoveredQuestionCount" | "rankedQuestionCount">,
+): PaperType {
+  return (paper.rankedQuestionCount ?? paper.recoveredQuestionCount) >= FULL_PAPER_MIN_QUESTIONS
+    ? "full"
+    : "mini";
 }
 
 /** Derives key status for presentation. Full key: 100% scored; Partial: Key N of M. */
 export function getKeyStatus(
-  paper: Pick<LocalPaperSummary, "scorableQuestionCount" | "recoveredQuestionCount" | "pendingReviewCount">
+  paper: Pick<
+    LocalPaperSummary,
+    "scorableQuestionCount" | "recoveredQuestionCount" | "pendingReviewCount" | "rankedQuestionCount"
+  >
 ): KeyStatus {
-  const total = paper.recoveredQuestionCount;
-  const scored = paper.scorableQuestionCount;
-  const isFull = paper.pendingReviewCount === 0 && scored > 0 && scored === total;
+  const isComposed =
+    paper.rankedQuestionCount !== undefined &&
+    paper.rankedQuestionCount > paper.scorableQuestionCount;
+  const total = isComposed
+    ? (paper.rankedQuestionCount ?? paper.recoveredQuestionCount)
+    : paper.recoveredQuestionCount;
+  const scored = isComposed
+    ? (paper.rankedQuestionCount ?? paper.scorableQuestionCount)
+    : paper.scorableQuestionCount;
+  const isFull =
+    (isComposed || paper.pendingReviewCount === 0) && scored > 0 && scored === total;
 
   if (isFull) {
     return {
@@ -226,7 +241,8 @@ export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalP
   if (sort === "questions") {
     return copy.sort(
       (a, b) =>
-        b.recoveredQuestionCount - a.recoveredQuestionCount ||
+        (b.rankedQuestionCount ?? b.recoveredQuestionCount) -
+          (a.rankedQuestionCount ?? a.recoveredQuestionCount) ||
         b.year - a.year ||
         (b.date ?? "").localeCompare(a.date ?? "") ||
         a.title.localeCompare(b.title)
@@ -241,7 +257,8 @@ export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalP
 
       return (
         a.year - b.year ||
-        b.recoveredQuestionCount - a.recoveredQuestionCount ||
+        (b.rankedQuestionCount ?? b.recoveredQuestionCount) -
+          (a.rankedQuestionCount ?? a.recoveredQuestionCount) ||
         (a.date ?? "").localeCompare(b.date ?? "") ||
         (a.shift ?? "").localeCompare(b.shift ?? "") ||
         a.title.localeCompare(b.title)
@@ -253,7 +270,8 @@ export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalP
     return copy.sort(
       (a, b) =>
         b.attemptCount - a.attemptCount ||
-        b.recoveredQuestionCount - a.recoveredQuestionCount ||
+        (b.rankedQuestionCount ?? b.recoveredQuestionCount) -
+          (a.rankedQuestionCount ?? a.recoveredQuestionCount) ||
         b.year - a.year ||
         (b.date ?? "").localeCompare(a.date ?? "") ||
         a.title.localeCompare(b.title)
@@ -264,7 +282,8 @@ export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalP
     return copy.sort(
       (a, b) =>
         Number(a.pendingReviewCount > 0) - Number(b.pendingReviewCount > 0) ||
-        b.recoveredQuestionCount - a.recoveredQuestionCount ||
+        (b.rankedQuestionCount ?? b.recoveredQuestionCount) -
+          (a.rankedQuestionCount ?? a.recoveredQuestionCount) ||
         b.year - a.year ||
         (b.date ?? "").localeCompare(a.date ?? "") ||
         a.title.localeCompare(b.title)
@@ -280,8 +299,10 @@ export function sortPapers(papers: LocalPaperSummary[], sort: PaperSort): LocalP
 
     if (b.year !== a.year) return b.year - a.year;
 
-    if (b.recoveredQuestionCount !== a.recoveredQuestionCount) {
-      return b.recoveredQuestionCount - a.recoveredQuestionCount;
+    const rankedCountA = a.rankedQuestionCount ?? a.recoveredQuestionCount;
+    const rankedCountB = b.rankedQuestionCount ?? b.recoveredQuestionCount;
+    if (rankedCountB !== rankedCountA) {
+      return rankedCountB - rankedCountA;
     }
 
     const dateComp = (b.date ?? "").localeCompare(a.date ?? "");

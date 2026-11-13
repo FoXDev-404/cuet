@@ -42,6 +42,8 @@
     "db:import:practice:remote": "node scripts/import-practice-library.mjs --remote",
     "db:import:ranked-practice:local": "node scripts/import-ranked-practice.mjs --local",
     "db:import:ranked-practice:remote": "node scripts/import-ranked-practice.mjs --remote",
+    "db:import:ranked-practice:turso": "node --env-file-if-exists=.dev.vars scripts/import-ranked-practice.mjs --turso",
+    "pyq:compositions": "node scripts/generate-pyq-compositions.mjs",
     "db:import:cuet-json": "node scripts/import-cuet-json-output.mjs",
     "seed:e2e-mock": "node scripts/seed-e2e-mock.mjs",
     "types": "wrangler types",

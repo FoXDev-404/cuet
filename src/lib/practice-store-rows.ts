@@ -47,6 +47,7 @@ export interface PaperIndexRow {
   subject_code: string | null;
   question_count: number;
   scorable_count: number;
+  ranked_question_count?: number | null;
   image_question_count: number;
   asset_count: number;
   attempt_count?: number | null;
@@ -113,6 +114,11 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
     recoveredQuestionCount: questionCount,
     omittedQuestionCount: Math.max(0, sourceCount - questionCount),
     scorableQuestionCount: scorable,
+    rankedQuestionCount: Math.max(scorable, Number(row.ranked_question_count) || scorable),
+    rankedDurationMinutes: calculateMockDuration(
+      Math.max(scorable, Number(row.ranked_question_count) || scorable),
+      row.subject_name,
+    ).durationMinutes,
     pendingReviewCount: Math.max(0, questionCount - scorable),
     attemptCount: Math.max(0, Number(row.attempt_count) || 0),
     imageQuestionCount: Number(row.image_question_count) || 0,

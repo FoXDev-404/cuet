@@ -27,10 +27,13 @@ import {
   createStoredKeys,
   LOCAL_MARKING_SCHEME,
 } from "../src/lib/practice-normalize.ts";
+import { calculateMockDuration } from "../src/lib/exam-timing.ts";
+import { createTursoClient } from "./turso-lib.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const INDEX_FILE = join(ROOT, "src", "data", "local-papers", "index.json");
 const KEYS_FILE = join(ROOT, "src", "data", "local-papers", "keys.json");
+const COMPOSITIONS_FILE = join(ROOT, "src", "data", "local-papers", "pyq-compositions.json");
 const PAPERS_DIR = join(ROOT, "public", "local-papers", "papers");
 const OUT_DIR = join(ROOT, ".wrangler", "ranked-practice-import");
 const DATABASE_ARG = (() => {
@@ -60,7 +63,10 @@ const MARKING = {
 
 const args = new Set(process.argv.slice(2));
 const remote = args.has("--remote");
+const turso = args.has("--turso");
 const dryRun = args.has("--dry-run");
+const onlyShortfall = args.has("--only-shortfall");
+if (turso && remote) throw new Error("Choose either --turso or --remote, not both.");
 const target = remote ? "--remote" : "--local";
 
 function readJson(file) {
@@ -82,6 +88,7 @@ function json(value) {
 
 const index = readJson(INDEX_FILE);
 const keysData = readJson(KEYS_FILE);
+const compositions = readJson(COMPOSITIONS_FILE);
 const storedKeys = createStoredKeys(keysData);
 const paperFiles = new Set(readdirSync(PAPERS_DIR).filter((name) => name.endsWith(".json")));
 
@@ -99,13 +106,39 @@ for (const raw of index.papers ?? []) {
   }
 }
 
-function instructionsFor(count, durationMinutes) {
-  return [
+const summariesBySlug = new Map(summaries.map((summary) => [summary.slug, summary]));
+const importSummaries = onlyShortfall
+  ? summaries.filter((summary) => compositions.papers?.[summary.slug])
+  : summaries;
+const normalizedPapers = new Map();
+
+function loadPaper(summary) {
+  const cached = normalizedPapers.get(summary.slug);
+  if (cached) return cached;
+
+  const raw = readJson(join(PAPERS_DIR, `${summary.slug}.json`));
+  const paper = buildPaper(raw, summary, storedKeys.get(summary.slug));
+  if (!paper) throw new Error(`Could not normalize source paper ${summary.slug}.`);
+  const loaded = { raw, paper };
+  normalizedPapers.set(summary.slug, loaded);
+  return loaded;
+}
+
+function instructionsFor(count, durationMinutes, supplementalCount = 0) {
+  const lines = [
     `${count} questions · ${durationMinutes} minutes.`,
     `Marking: +${MARKING.correct} for a correct answer, ${MARKING.wrong} for a wrong answer, ${MARKING.skipped} for an unattempted question.`,
+  ];
+  if (supplementalCount > 0) {
+    lines.push(
+      `This ranked mock combines this CUET PYQ paper with ${supplementalCount} keyed questions sourced from other CUET PYQ papers.`,
+    );
+  }
+  lines.push(
     "The countdown starts when you begin and the attempt submits automatically at zero.",
     "Correct options and explanations are shown after you submit.",
-  ].join("\n");
+  );
+  return lines.join("\n");
 }
 
 function galleryAssets(question) {
@@ -138,19 +171,13 @@ function primaryAsset(assets, options = [], stem = "") {
 
 /** @type {{ slug: string, statements: string[], imported: number, excluded: number, assets: number, imageQuestions: number }[]} */
 const importedPapers = [];
-for (const summary of summaries) {
-  const file = join(PAPERS_DIR, `${summary.slug}.json`);
-  let raw;
+for (const summary of importSummaries) {
+  let paper;
   try {
-    raw = readJson(file);
-  } catch {
+    paper = loadPaper(summary).paper;
+  } catch (error) {
     warnings.push(`Could not read ${summary.slug}.json`);
-    continue;
-  }
-
-  const paper = buildPaper(raw, summary, storedKeys.get(summary.slug));
-  if (!paper) {
-    warnings.push(`Normalised paper is empty: ${summary.slug}`);
+    console.error(error);
     continue;
   }
 
@@ -177,15 +204,69 @@ for (const summary of summaries) {
     continue;
   }
 
+  const composition = compositions.papers?.[summary.slug];
+  const questionYears = new Map(questions.map((question) => [question.id, paper.year]));
+  if (composition) {
+    if (questions.length !== composition.baseQuestionCount) {
+      throw new Error(
+        `${summary.slug} has ${questions.length} rankable questions, but its composition expects ${composition.baseQuestionCount}. Regenerate the PYQ compositions.`,
+      );
+    }
+
+    for (const reference of composition.questions) {
+      const sourceSummary = summariesBySlug.get(reference.paperSlug);
+      if (!sourceSummary || sourceSummary.subject.slug !== summary.subject.slug) {
+        throw new Error(
+          `Invalid same-subject PYQ source ${reference.paperSlug} for ${summary.slug}.`,
+        );
+      }
+      if (reference.paperSlug === summary.slug) {
+        throw new Error(`A paper cannot supplement itself: ${summary.slug}.`);
+      }
+      const sourcePaper = loadPaper(sourceSummary).paper;
+      const sourceQuestion = sourcePaper.questions.find((question) => question.id === reference.questionId);
+      if (!sourceQuestion || !readable(sourceQuestion) || !sourceQuestion.scorable) {
+        throw new Error(
+          `PYQ source question ${reference.paperSlug}/${reference.questionId} is no longer rankable.`,
+        );
+      }
+
+      const questionId = `${reference.paperSlug}--${reference.questionId}`;
+      if (questions.some((question) => question.id === questionId)) {
+        throw new Error(`Duplicate imported question id ${questionId} in ${summary.slug}.`);
+      }
+      questions.push({
+        ...sourceQuestion,
+        id: questionId,
+        number: questions.length + 1,
+        passage: sourceQuestion.passage
+          ? {
+              ...sourceQuestion.passage,
+              id: `${reference.paperSlug}--${sourceQuestion.passage.id}`,
+            }
+          : null,
+      });
+      questionYears.set(questionId, sourceSummary.year);
+    }
+
+    if (questions.length !== composition.questionCount) {
+      throw new Error(
+        `${summary.slug} composition produced ${questions.length} questions, expected ${composition.questionCount}.`,
+      );
+    }
+  }
+
   const slug = sql(paper.slug);
   const mockExpr = `(SELECT id FROM mock_tests WHERE slug = ${slug})`;
   const versionExpr =
     `(SELECT id FROM mock_test_versions WHERE mock_id = ${mockExpr} ` +
     `ORDER BY version_no DESC LIMIT 1)`;
   const subjectExpr = `(SELECT id FROM subjects WHERE slug = ${sql(paper.subject.slug)})`;
-  const duration = paper.durationMinutes;
+  const duration = calculateMockDuration(questions.length, paper.subject.name).durationMinutes;
   const totalMarks = questions.length * MARKING.correct;
   const section = paper.subject.name;
+  const supplementalCount = composition?.questions.length ?? 0;
+  const instructions = instructionsFor(questions.length, duration, supplementalCount);
   const statements = [];
 
   // A failed earlier run may have left a draft version behind. Draft rows are
@@ -203,7 +284,7 @@ for (const summary of summaries) {
      ) VALUES (
        (SELECT id FROM exams WHERE slug = 'cuet-ug'), ${subjectExpr}, ${sql(paper.title)}, ${slug},
        'pyq', ${duration}, ${totalMarks}, ${sql(JSON.stringify(MARKING))},
-       ${sql(instructionsFor(questions.length, duration))}, ${paper.year}, ${sql(paper.shift)},
+       ${sql(instructions)}, ${paper.year}, ${sql(paper.shift)},
        'draft', ${slug}, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
      )
      ON CONFLICT(slug) DO UPDATE SET
@@ -228,7 +309,7 @@ for (const summary of summaries) {
        ${mockExpr},
        (SELECT COALESCE(MAX(version_no), 0) + 1 FROM mock_test_versions WHERE mock_id = ${mockExpr}),
        ${duration}, ${totalMarks}, ${sql(JSON.stringify(MARKING))},
-       ${sql(instructionsFor(questions.length, duration))}, 'draft'
+       ${sql(instructions)}, 'draft'
      );`,
   );
 
@@ -259,7 +340,7 @@ for (const summary of summaries) {
          image_url, image_alt, status, assets_json, created_at
        ) VALUES (
          ${subjectExpr}, ${passageExpr}, ${sql(question.stemEn || `Question ${question.number}`)},
-         ${json(options)}, ${correctOption}, ${sql(question.explanation)}, ${paper.year},
+         ${json(options)}, ${correctOption}, ${sql(question.explanation)}, ${questionYears.get(question.id) ?? paper.year},
          ${sql(primary?.url ?? null)}, ${sql(primary?.alt ?? null)}, 'published',
          ${json(assets)}, strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
        );
@@ -335,8 +416,8 @@ const totals = importedPapers.reduce(
 );
 
 console.log("Ranked practice import");
-console.log(`  target        : ${remote ? "remote" : "local"}${dryRun ? " (dry run)" : ""}`);
-console.log(`  papers        : ${totals.papers} / ${summaries.length}`);
+console.log(`  target        : ${turso ? "Turso" : remote ? "D1 remote" : "D1 local"}${dryRun ? " (dry run)" : ""}`);
+console.log(`  papers        : ${totals.papers} / ${importSummaries.length}`);
 console.log(`  questions     : ${totals.questions}`);
 console.log(`  excluded      : ${totals.excluded} (no authoritative key or unreadable options)
   unreadable    : ${totals.excludedUnreadable}`);
@@ -352,6 +433,13 @@ if (warnings.length > 0) {
 if (totals.papers === 0) {
   console.error("\nNothing to import.");
   process.exit(1);
+}
+if (onlyShortfall && (compositions.unfilled ?? []).length > 0) {
+  for (const paper of compositions.unfilled) {
+    console.warn(
+      `Skipped ${paper.slug}: no same-subject source paper was available for ${paper.missingCount} question(s).`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -384,7 +472,18 @@ chunks.forEach((statements, index) => {
 
 console.log(`\nGenerated ${files.length} SQL file(s) in ${OUT_DIR}`);
 if (dryRun) {
-  console.log("Dry run: no D1 statements executed.");
+  console.log("Dry run: no database statements executed.");
+  process.exit(0);
+}
+
+if (turso) {
+  const client = createTursoClient();
+  for (const [index, file] of files.entries()) {
+    console.log(`\n[${index + 1}/${files.length}] Applying ${file} to Turso`);
+    const sqlText = readFileSync(file, "utf8");
+    await client.executeMultiple(sqlText);
+  }
+  console.log("\nTurso import complete.");
   process.exit(0);
 }
 

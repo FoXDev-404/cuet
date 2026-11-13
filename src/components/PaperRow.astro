@@ -20,12 +20,14 @@ const paperType = classifyPaper(paper);
 const keyStatus = getKeyStatus(paper);
 const dateShiftTitle = formatDateShiftTitle(paper);
 const markingText = formatMarking(paper.markingScheme);
+const rankedQuestionCount = paper.rankedQuestionCount ?? paper.scorableQuestionCount;
+const rankedDurationMinutes = paper.rankedDurationMinutes ?? paper.durationMinutes;
 const startHref = `/mock/${paper.slug}/instructions`;
 const detailsHref = paper.path;
 
 const sublineParts: string[] = [
-  `${paper.recoveredQuestionCount} question${paper.recoveredQuestionCount === 1 ? "" : "s"}`,
-  `${paper.durationMinutes} min`,
+  `${rankedQuestionCount} ranked questions`,
+  `${rankedDurationMinutes} min`,
   markingText,
 ];
 

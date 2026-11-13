@@ -397,6 +397,7 @@ describe("D1 practice row mapping", () => {
       ...paperRow,
       question_count: questions.length,
       scorable_count: questions.filter((question) => question.correct_option !== null).length,
+      ranked_question_count: summary.rankedQuestionCount,
       image_question_count: paper!.questions.filter((question) => question.assets.length > 0).length,
       asset_count: paper!.questions.reduce((total, question) => total + question.assets.length, 0),
     };

@@ -27,9 +27,11 @@ describe("getLocalMockFallback", () => {
     expect(fallback).not.toBeNull();
     expect(fallback!.slug).toBe(SLUG);
     expect(fallback!.title).toBe(paper!.title);
-    expect(fallback!.duration_min).toBe(paper!.durationMinutes);
+    expect(fallback!.duration_min).toBe(
+      paper!.rankedDurationMinutes ?? paper!.durationMinutes,
+    );
     expect(fallback!.question_count).toBe(
-      paper!.scorableQuestionCount || paper!.totalQuestions,
+      paper!.rankedQuestionCount || paper!.scorableQuestionCount || paper!.totalQuestions,
     );
     expect(fallback!.id).toBe(0);
   });

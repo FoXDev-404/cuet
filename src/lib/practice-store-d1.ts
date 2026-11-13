@@ -49,6 +49,10 @@ const INDEX_SQL = `
     s.code AS subject_code,
     COUNT(q.id) AS question_count,
     COALESCE(SUM(CASE WHEN q.deleted_at IS NULL AND q.correct_option IS NOT NULL THEN 1 ELSE 0 END), 0) AS scorable_count,
+    COALESCE((SELECT COUNT(*)
+      FROM mock_questions_current mq
+      JOIN mock_tests m ON m.id = mq.mock_id
+      WHERE m.practice_paper_slug = p.slug AND m.status = 'published' AND m.deleted_at IS NULL), 0) AS ranked_question_count,
     COALESCE(SUM(CASE WHEN q.deleted_at IS NULL AND q.assets_json <> '[]' THEN 1 ELSE 0 END), 0) AS image_question_count,
     COALESCE(SUM(CASE WHEN q.deleted_at IS NULL THEN json_array_length(q.assets_json) ELSE 0 END), 0) AS asset_count,
     (SELECT COUNT(*) FROM attempts a

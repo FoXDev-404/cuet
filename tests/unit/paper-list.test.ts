@@ -65,6 +65,10 @@ describe("paper-list module", () => {
       expect(classifyPaper({ recoveredQuestionCount: 10 })).toBe("mini");
       expect(classifyPaper({ recoveredQuestionCount: 1 })).toBe("mini");
     });
+
+    it("classifies by ranked count when the ranked version differs from the source paper", () => {
+      expect(classifyPaper({ recoveredQuestionCount: 39, rankedQuestionCount: 50 })).toBe("full");
+    });
   });
 
   describe("getKeyStatus", () => {
@@ -88,6 +92,28 @@ describe("paper-list module", () => {
       expect(status.isFullKey).toBe(false);
       expect(status.label).toBe("Key 6 of 10");
       expect(status.tone).toBe("partial");
+    });
+
+    it("reports a complete key for the fully keyed ranked composition", () => {
+      const status = getKeyStatus({
+        recoveredQuestionCount: 45,
+        scorableQuestionCount: 40,
+        pendingReviewCount: 5,
+        rankedQuestionCount: 50,
+      });
+      expect(status.isFullKey).toBe(true);
+      expect(status.label).toBe("Full key");
+    });
+
+    it("keeps a source paper with unverified questions marked as partial", () => {
+      const status = getKeyStatus({
+        recoveredQuestionCount: 50,
+        scorableQuestionCount: 45,
+        pendingReviewCount: 5,
+        rankedQuestionCount: 45,
+      });
+      expect(status.isFullKey).toBe(false);
+      expect(status.label).toBe("Key 45 of 50");
     });
   });
 

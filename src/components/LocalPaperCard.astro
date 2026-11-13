@@ -6,7 +6,9 @@ interface Props {
 }
 
 const { paper } = Astro.props;
-const scoredLabel = `${paper.scorableQuestionCount} of ${paper.recoveredQuestionCount}`;
+const rankedQuestionCount = paper.rankedQuestionCount ?? paper.scorableQuestionCount;
+const rankedDurationMinutes = paper.rankedDurationMinutes ?? paper.durationMinutes;
+const sourcedQuestionCount = Math.max(0, rankedQuestionCount - paper.scorableQuestionCount);
 const attemptLabel = `${paper.attemptCount.toLocaleString("en-IN")} attempt${paper.attemptCount === 1 ? "" : "s"}`;
 ---
 
@@ -22,28 +24,33 @@ const attemptLabel = `${paper.attemptCount.toLocaleString("en-IN")} attempt${pap
     <a class="hover:text-brand-700 dark:hover:text-brand-300" href={paper.path}>{paper.title}</a>
   </h3>
   <p class="mt-2 text-xs leading-5 text-neutral-500 dark:text-neutral-400">
-    {paper.recoveredQuestionCount} question{paper.recoveredQuestionCount === 1 ? "" : "s"} · {paper.durationMinutes} minutes · +{paper.markingScheme.correct}/{paper.markingScheme.wrong} marking.
+    {rankedQuestionCount} ranked questions · {rankedDurationMinutes} minutes · +{paper.markingScheme.correct}/{paper.markingScheme.wrong} marking.
   </p>
 
   <dl class="mt-4 grid grid-cols-3 gap-2 text-sm">
     <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
-      <dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</dt>
-      <dd class="font-bold">{paper.recoveredQuestionCount}</dd>
+      <dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Ranked</dt>
+      <dd class="font-bold">{rankedQuestionCount}</dd>
     </div>
     <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
       <dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Minutes</dt>
-      <dd class="font-bold">{paper.durationMinutes}</dd>
+      <dd class="font-bold">{rankedDurationMinutes}</dd>
     </div>
     <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
       <dt class="text-[11px] uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Scored</dt>
-      <dd class="font-bold">{paper.scorableQuestionCount}</dd>
+      <dd class="font-bold">{rankedQuestionCount}</dd>
     </div>
   </dl>
 
   <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
-    +{paper.markingScheme.correct} correct · −{paper.markingScheme.wrong} wrong · {scoredLabel} scored
+    +{paper.markingScheme.correct} correct · −{paper.markingScheme.wrong} wrong · {rankedQuestionCount} scored
     {paper.pendingReviewCount > 0 ? ` · ${paper.pendingReviewCount} excluded (no printed key)` : ""}
   </p>
+  {sourcedQuestionCount > 0 ? (
+    <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+      Includes {sourcedQuestionCount} keyed questions from other CUET PYQ papers.
+    </p>
+  ) : null}
 
   <div class="mt-auto flex flex-wrap items-center gap-3 pt-4">
     <a class="inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.slug}/instructions`}>Start ranked paper →</a>

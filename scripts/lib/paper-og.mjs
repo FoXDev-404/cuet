@@ -71,8 +71,10 @@ export function paperOgCard(paper) {
     .filter(Boolean)
     .join("  ·  ");
   const meta = [
-    `${paper.questionCount} questions`,
-    paper.durationMinutes ? `${paper.durationMinutes} min` : null,
+    `${paper.rankedQuestionCount ?? paper.questionCount} questions`,
+    (paper.rankedDurationMinutes ?? paper.durationMinutes)
+      ? `${paper.rankedDurationMinutes ?? paper.durationMinutes} min`
+      : null,
     "Free ranked mock",
   ]
     .filter(Boolean)

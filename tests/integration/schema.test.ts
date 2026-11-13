@@ -26,7 +26,9 @@ const MIGRATIONS = [
   "0021_repair_question_immutability_guard.sql",
   "0022_question_supersedes_index.sql",
   "0023_passage_question_index.sql",
+  "0024_seed_cuet_2026_topics.sql",
   "0024_trash_partial_indexes.sql",
+  "0025_first_attempt_per_version.sql",
 ];
 
 function apply(db: DatabaseSync, names: string[]): void {
@@ -350,17 +352,17 @@ describe("blueprint v2 database invariants", () => {
     expect(rows.map((row) => row.status)).toEqual(["superseded", "published"]);
   });
 
-  it("enforces one ranked first attempt per user and mock", () => {
+  it("enforces one ranked first attempt per user and version", () => {
     const db = migrate();
     const { versionId, userId } = seed(db);
     publish(db, versionId);
 
-    const insert = (first: number) =>
+    const insert = (first: number, attemptVersionId = versionId) =>
       db.exec(`
         INSERT INTO attempts
           (user_id, mock_id, version_id, status, score, correct, wrong, skipped, time_taken_sec,
            started_at, deadline_at, submitted_at, is_first_attempt)
-        VALUES (${userId}, 1, ${versionId}, 'submitted', 10, 3, 1, 0, 60,
+        VALUES (${userId}, 1, ${attemptVersionId}, 'submitted', 10, 3, 1, 0, 60,
                 '2026-10-31T00:00:00.000Z', '2026-10-31T01:00:00.000Z',
                 '2026-10-31T00:30:00.000Z', ${first})
       `);
@@ -368,5 +370,16 @@ describe("blueprint v2 database invariants", () => {
     insert(1);
     expect(() => insert(1)).toThrow(/UNIQUE/i);
     expect(() => insert(0)).not.toThrow();
+
+    db.exec(`
+      INSERT INTO mock_test_versions
+        (mock_id, version_no, duration_min, total_marks, marking_scheme, status)
+        VALUES (1, 2, 60, 100, '{"correct":4,"wrong":-1,"skipped":0}', 'draft')
+    `);
+    const nextVersion = db
+      .prepare("SELECT id FROM mock_test_versions WHERE mock_id = 1 AND version_no = 2")
+      .get() as { id: number };
+    expect(() => insert(1, nextVersion.id)).not.toThrow();
+    expect(() => insert(1, nextVersion.id)).toThrow(/UNIQUE/i);
   });
 });

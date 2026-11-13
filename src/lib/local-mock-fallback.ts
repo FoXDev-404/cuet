@@ -47,13 +47,13 @@ export function getLocalMockFallback(slug: string): LocalMockFallback | null {
     return null;
   }
   if (!paper) return null;
-  const scored = paper.scorableQuestionCount || paper.totalQuestions;
+  const scored = paper.rankedQuestionCount || paper.scorableQuestionCount || paper.totalQuestions;
   return {
     id: 0,
     title: paper.title,
     slug: paper.slug,
     type: "pyq",
-    duration_min: paper.durationMinutes,
+    duration_min: paper.rankedDurationMinutes ?? paper.durationMinutes,
     total_marks: paper.markingScheme.correct * scored,
     // parseMarkingScheme expects the negative penalty that D1 stores.
     marking_scheme: JSON.stringify({

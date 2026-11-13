@@ -87,11 +87,11 @@ const DEFAULT_DESCRIPTION =
 const popularPapers = getPopularLocalPapers(12);
 const subjectRows = getLocalSubjectSummaries().slice(0, 6);
 const localQuestionCount = localPapers.reduce(
-  (sum, paper) => sum + paper.recoveredQuestionCount,
+  (sum, paper) => sum + (paper.rankedQuestionCount ?? paper.recoveredQuestionCount),
   0,
 );
 const localScorableCount = localPapers.reduce(
-  (sum, paper) => sum + paper.scorableQuestionCount,
+  (sum, paper) => sum + (paper.rankedQuestionCount ?? paper.scorableQuestionCount),
   0,
 );
 const localPendingCount = localPapers.reduce(
@@ -110,8 +110,8 @@ function paperRow(paper: LocalPaperSummary): PaperRow {
         ? [{ label: `${paper.pendingReviewCount} pending`, tone: "amber" as const }]
         : []),
     ],
-    count: `${paper.recoveredQuestionCount} question${paper.recoveredQuestionCount === 1 ? "" : "s"}`,
-    meta: `${paper.durationMinutes} min`,
+    count: `${paper.rankedQuestionCount ?? paper.recoveredQuestionCount} ranked questions`,
+    meta: `${paper.rankedDurationMinutes ?? paper.durationMinutes} min`,
   };
 }
 
@@ -125,16 +125,18 @@ function compareHomepagePapers(a: LocalPaperSummary, b: LocalPaperSummary): numb
   if (attDiff !== 0) return attDiff;
 
   // 2. When attempts are 0 (or tied), prioritize papers with ~50 questions (40-60 questions)
-  const aNear50 = isAround50(a.recoveredQuestionCount) ? 1 : 0;
-  const bNear50 = isAround50(b.recoveredQuestionCount) ? 1 : 0;
+  const aRankedCount = a.rankedQuestionCount ?? a.recoveredQuestionCount;
+  const bRankedCount = b.rankedQuestionCount ?? b.recoveredQuestionCount;
+  const aNear50 = isAround50(aRankedCount) ? 1 : 0;
+  const bNear50 = isAround50(bRankedCount) ? 1 : 0;
   if (bNear50 !== aNear50) return bNear50 - aNear50;
 
   // 3. Year (prefer newer year: 2026 full papers, then 2025, 2024...)
   if (b.year !== a.year) return b.year - a.year;
 
   // 4. Proximity to 50 questions
-  const distA = Math.abs(a.recoveredQuestionCount - 50);
-  const distB = Math.abs(b.recoveredQuestionCount - 50);
+  const distA = Math.abs(aRankedCount - 50);
+  const distB = Math.abs(bRankedCount - 50);
   if (distA !== distB) return distA - distB;
 
   // 5. Fully keyed (no pending review)
@@ -143,8 +145,8 @@ function compareHomepagePapers(a: LocalPaperSummary, b: LocalPaperSummary): numb
   if (pendA !== pendB) return pendA - pendB;
 
   // 6. Scorable count
-  if (b.scorableQuestionCount !== a.scorableQuestionCount) {
-    return b.scorableQuestionCount - a.scorableQuestionCount;
+  if (bRankedCount !== aRankedCount) {
+    return bRankedCount - aRankedCount;
   }
 
   return a.title.localeCompare(b.title);

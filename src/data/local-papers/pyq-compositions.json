@@ -1,0 +1,2145 @@
+{
+  "version": 1,
+  "generatedAt": "source-data",
+  "targetQuestionCount": 50,
+  "papers": {
+    "accountancy-2023-06-02-shift-1": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "accountancy-2023-06-01-shift-1",
+          "questionId": "q23"
+        }
+      ]
+    },
+    "accountancy-2023-06-05-shift-1": {
+      "baseQuestionCount": 42,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "accountancy-2023-06-01-shift-1",
+          "questionId": "q39"
+        },
+        {
+          "paperSlug": "accountancy-2024-05-17-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-12-shift-3",
+          "questionId": "q20"
+        },
+        {
+          "paperSlug": "accountancy-2025-06-03-shift-2",
+          "questionId": "q29"
+        },
+        {
+          "paperSlug": "accountancy-2025-06-02-shift-2",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-10-shift-3",
+          "questionId": "q19"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-07-shift-1",
+          "questionId": "q28"
+        },
+        {
+          "paperSlug": "accountancy-2022",
+          "questionId": "q01"
+        }
+      ]
+    },
+    "accountancy-2023-06-07-shift-1": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "accountancy-2025-06-03-shift-2",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-02-shift-1",
+          "questionId": "q38"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-01-shift-1",
+          "questionId": "q28"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-12-shift-3",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-05-shift-1",
+          "questionId": "q42"
+        },
+        {
+          "paperSlug": "accountancy-2024-07-19-shift-1",
+          "questionId": "q12"
+        },
+        {
+          "paperSlug": "accountancy-2024-05-17-shift-2",
+          "questionId": "q33"
+        }
+      ]
+    },
+    "accountancy-2023-06-12-shift-3": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "accountancy-2025-06-03-shift-2",
+          "questionId": "q12"
+        },
+        {
+          "paperSlug": "accountancy-2025-06-02-shift-2",
+          "questionId": "q22"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-02-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "accountancy-2024-05-17-shift-2",
+          "questionId": "q28"
+        },
+        {
+          "paperSlug": "accountancy-2022",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "accountancy-2024-05-17-shift-2": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "accountancy-2023-06-01-shift-1",
+          "questionId": "q29"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-07-shift-1",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "accountancy-2024-07-19-shift-1": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "accountancy-2023-06-05-shift-1",
+          "questionId": "q16"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-12-shift-3",
+          "questionId": "q11"
+        },
+        {
+          "paperSlug": "accountancy-2023-06-10-shift-3",
+          "questionId": "q29"
+        }
+      ]
+    },
+    "applied-mathematics-2025-06-02-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "applied-mathematics-2025-06-03-shift-2",
+          "questionId": "q38"
+        },
+        {
+          "paperSlug": "applied-mathematics-2025-06-03-shift-2",
+          "questionId": "q43"
+        },
+        {
+          "paperSlug": "applied-mathematics-2025-06-03-shift-2",
+          "questionId": "q50"
+        },
+        {
+          "paperSlug": "applied-mathematics-2025-06-03-shift-2",
+          "questionId": "q48"
+        },
+        {
+          "paperSlug": "applied-mathematics-2025-06-03-shift-2",
+          "questionId": "q49"
+        }
+      ]
+    },
+    "applied-mathematics-2025-06-03-shift-2": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "applied-mathematics-2025-06-02-shift-1",
+          "questionId": "q40"
+        },
+        {
+          "paperSlug": "applied-mathematics-2025-06-02-shift-1",
+          "questionId": "q41"
+        },
+        {
+          "paperSlug": "applied-mathematics-2025-06-02-shift-1",
+          "questionId": "q42"
+        },
+        {
+          "paperSlug": "applied-mathematics-2025-06-02-shift-1",
+          "questionId": "q22"
+        }
+      ]
+    },
+    "biology-2022-08-18": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2022-08-23-shift-2",
+          "questionId": "q46"
+        },
+        {
+          "paperSlug": "biology-2023-06-01-shift-3",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "biology-2024-05-15-shift-1",
+          "questionId": "q18"
+        }
+      ]
+    },
+    "biology-2022-08-20": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2022-08-23-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "biology-2023-06-01-shift-3",
+          "questionId": "q49"
+        }
+      ]
+    },
+    "biology-2022-08-23-shift-2": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-05-22-shift-1",
+          "questionId": "q20"
+        }
+      ]
+    },
+    "biology-2022-08-30": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-05-22-shift-1",
+          "questionId": "q17"
+        },
+        {
+          "paperSlug": "biology-2022-08-23-shift-2",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "biology-2023-06-05-shift-3",
+          "questionId": "q49"
+        },
+        {
+          "paperSlug": "biology-2023-06-01-shift-3",
+          "questionId": "q11"
+        }
+      ]
+    },
+    "biology-2023-05-22-shift-1": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2024-05-15-shift-1",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "biology-2023-05-31-shift-3",
+          "questionId": "q48"
+        }
+      ]
+    },
+    "biology-2023-05-28-shift-1": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-05-31-shift-3",
+          "questionId": "q11"
+        }
+      ]
+    },
+    "biology-2023-05-30-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-05-31-shift-3",
+          "questionId": "q19"
+        },
+        {
+          "paperSlug": "biology-2024-05-15-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "biology-2022-08-18",
+          "questionId": "q27"
+        },
+        {
+          "paperSlug": "biology-2025-05-20-shift-2",
+          "questionId": "q36"
+        },
+        {
+          "paperSlug": "biology-2025-05-20-shift-1",
+          "questionId": "q18"
+        }
+      ]
+    },
+    "biology-2023-05-30-shift-2": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2024-05-29-shift-1",
+          "questionId": "q04"
+        },
+        {
+          "paperSlug": "biology-2025-05-20-shift-2",
+          "questionId": "q50"
+        },
+        {
+          "paperSlug": "biology-2022-08-18",
+          "questionId": "q31"
+        },
+        {
+          "paperSlug": "biology-2025-05-20-shift-1",
+          "questionId": "q01"
+        }
+      ]
+    },
+    "biology-2023-05-31-shift-3": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-06-01-shift-3",
+          "questionId": "q28"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-2",
+          "questionId": "q19"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-1",
+          "questionId": "q09"
+        }
+      ]
+    },
+    "biology-2023-06-01-shift-3": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2024-05-15-shift-1",
+          "questionId": "q01"
+        }
+      ]
+    },
+    "biology-2023-06-05-shift-3": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-05-31-shift-3",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-2",
+          "questionId": "q50"
+        }
+      ]
+    },
+    "biology-2023-06-10-shift-1": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-05-30-shift-2",
+          "questionId": "q24"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-1",
+          "questionId": "q08"
+        }
+      ]
+    },
+    "biology-2023-06-10-shift-3": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2025-05-20-shift-1",
+          "questionId": "q15"
+        },
+        {
+          "paperSlug": "biology-2025-05-20-shift-2",
+          "questionId": "q49"
+        }
+      ]
+    },
+    "biology-2024-05-15-shift-1": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2023-05-30-shift-2",
+          "questionId": "q11"
+        }
+      ]
+    },
+    "biology-2024-05-29-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2025-05-20-shift-1",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "biology-2025-05-20-shift-2",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "biology-2022-08-20",
+          "questionId": "q32"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-2",
+          "questionId": "q18"
+        }
+      ]
+    },
+    "biology-2024-07-19": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2025-05-20-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "biology-2025-05-20-shift-1",
+          "questionId": "q48"
+        }
+      ]
+    },
+    "biology-2025-05-20-shift-2": {
+      "baseQuestionCount": 42,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "biology-2024-05-29-shift-1",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "biology-2023-06-01-shift-3",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "biology-2023-05-28-shift-1",
+          "questionId": "q39"
+        },
+        {
+          "paperSlug": "biology-2024-07-19",
+          "questionId": "q38"
+        },
+        {
+          "paperSlug": "biology-2022-08-18",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "biology-2022-08-30",
+          "questionId": "q15"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-1",
+          "questionId": "q24"
+        },
+        {
+          "paperSlug": "biology-2023-05-30-shift-2",
+          "questionId": "q41"
+        }
+      ]
+    },
+    "business-studies-2023-06-10-shift-3": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-1",
+          "questionId": "q32"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-11-shift-3",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "business-studies-2024-05-17-shift-2",
+          "questionId": "q48"
+        }
+      ]
+    },
+    "business-studies-2023-06-11-shift-3": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "business-studies-2023-06-10-shift-3",
+          "questionId": "q12"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-3",
+          "questionId": "q41"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-2",
+          "questionId": "q28"
+        },
+        {
+          "paperSlug": "business-studies-2022",
+          "questionId": "q13"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-1",
+          "questionId": "q19"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-2",
+          "questionId": "q34"
+        },
+        {
+          "paperSlug": "business-studies-2024-05-17-shift-2",
+          "questionId": "q38"
+        }
+      ]
+    },
+    "business-studies-2023-06-12-shift-2": {
+      "baseQuestionCount": 44,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "business-studies-2023-06-10-shift-3",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-3",
+          "questionId": "q30"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-11-shift-3",
+          "questionId": "q24"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-2",
+          "questionId": "q32"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-1",
+          "questionId": "q26"
+        },
+        {
+          "paperSlug": "business-studies-2022",
+          "questionId": "q11"
+        }
+      ]
+    },
+    "business-studies-2023-06-12-shift-3": {
+      "baseQuestionCount": 41,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-2",
+          "questionId": "q26"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-1",
+          "questionId": "q20"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-11-shift-3",
+          "questionId": "q29"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-2",
+          "questionId": "q38"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-10-shift-3",
+          "questionId": "q11"
+        },
+        {
+          "paperSlug": "business-studies-2022",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "business-studies-2024-05-17-shift-2",
+          "questionId": "q42"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-2",
+          "questionId": "q27"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-1",
+          "questionId": "q16"
+        }
+      ]
+    },
+    "business-studies-2024-05-17-shift-2": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-3",
+          "questionId": "q40"
+        }
+      ]
+    },
+    "business-studies-2025-05-30-shift-1": {
+      "baseQuestionCount": 40,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-3",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "business-studies-2024-05-17-shift-2",
+          "questionId": "q12"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-11-shift-3",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "business-studies-2022",
+          "questionId": "q20"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-10-shift-3",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "business-studies-2025-05-30-shift-2",
+          "questionId": "q14"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-3",
+          "questionId": "q03"
+        },
+        {
+          "paperSlug": "business-studies-2023-06-12-shift-2",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "business-studies-2024-05-17-shift-2",
+          "questionId": "q13"
+        }
+      ]
+    },
+    "chemistry-2022-08-17": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-05-26-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-11-shift-3",
+          "questionId": "q04"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-12-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-11-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "chemistry-2025-05-21-shift-2",
+          "questionId": "q14"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-15-shift-1",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "chemistry-2025-05-23-shift-2",
+          "questionId": "q34"
+        }
+      ]
+    },
+    "chemistry-2022-08-18": {
+      "baseQuestionCount": 41,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-05-12-shift-2",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-22-shift-2",
+          "questionId": "q06"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-22-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-21-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "chemistry-2025-05-21-shift-2",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-05-shift-1",
+          "questionId": "q48"
+        },
+        {
+          "paperSlug": "chemistry-2022-08-17",
+          "questionId": "q14"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-13-shift-3",
+          "questionId": "q20"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-02-shift-3",
+          "questionId": "q38"
+        }
+      ]
+    },
+    "chemistry-2023-06-02-shift-3": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2025-05-21-shift-2",
+          "questionId": "q12"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-19-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-30-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-30-shift-2",
+          "questionId": "q04"
+        }
+      ]
+    },
+    "chemistry-2023-06-05-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2024-07-19",
+          "questionId": "q20"
+        },
+        {
+          "paperSlug": "chemistry-2024-05-29",
+          "questionId": "q49"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-15-shift-1",
+          "questionId": "q07"
+        },
+        {
+          "paperSlug": "chemistry-2022-08-17",
+          "questionId": "q48"
+        },
+        {
+          "paperSlug": "chemistry-2022-08-23",
+          "questionId": "q03"
+        }
+      ]
+    },
+    "chemistry-2023-06-07-shift-3": {
+      "baseQuestionCount": 40,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2023-06-10-shift-1",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "chemistry-2026-06-06-shift-1",
+          "questionId": "q50"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-13-shift-3",
+          "questionId": "q47"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-30-shift-2",
+          "questionId": "q03"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-30-shift-1",
+          "questionId": "q04"
+        },
+        {
+          "paperSlug": "chemistry-2024-07-19",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-26-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-29-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-19-shift-1",
+          "questionId": "q03"
+        },
+        {
+          "paperSlug": "chemistry-2024-05-29",
+          "questionId": "q48"
+        }
+      ]
+    },
+    "chemistry-2023-06-08-shift-3": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2022-08-17",
+          "questionId": "q33"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-10-shift-1",
+          "questionId": "q29"
+        }
+      ]
+    },
+    "chemistry-2023-06-10-shift-1": {
+      "baseQuestionCount": 42,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-06-06-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-15-shift-1",
+          "questionId": "q06"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-31-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-19-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-11-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-07-shift-3",
+          "questionId": "q20"
+        },
+        {
+          "paperSlug": "chemistry-2024-07-19",
+          "questionId": "q48"
+        },
+        {
+          "paperSlug": "chemistry-2025-05-23-shift-2",
+          "questionId": "q28"
+        }
+      ]
+    },
+    "chemistry-2023-06-11-shift-3": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2023-06-10-shift-1",
+          "questionId": "q41"
+        }
+      ]
+    },
+    "chemistry-2023-06-13-shift-3": {
+      "baseQuestionCount": 42,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-06-06-shift-1",
+          "questionId": "q07"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-15-shift-1",
+          "questionId": "q11"
+        },
+        {
+          "paperSlug": "chemistry-2025-05-23-shift-2",
+          "questionId": "q16"
+        },
+        {
+          "paperSlug": "chemistry-2025-05-21-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-07-shift-3",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-11-shift-3",
+          "questionId": "q31"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-11-shift-1",
+          "questionId": "q03"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-29-shift-2",
+          "questionId": "q04"
+        }
+      ]
+    },
+    "chemistry-2023-06-15-shift-1": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-05-29-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2024-05-29",
+          "questionId": "q04"
+        }
+      ]
+    },
+    "chemistry-2024-05-15-shift-1": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-05-11-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-07-shift-3",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-02-shift-3",
+          "questionId": "q42"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-29-shift-2",
+          "questionId": "q02"
+        }
+      ]
+    },
+    "chemistry-2024-05-29": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-05-11-shift-1",
+          "questionId": "q04"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-15-shift-1",
+          "questionId": "q07"
+        }
+      ]
+    },
+    "chemistry-2024-07-19": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-06-06-shift-1",
+          "questionId": "q40"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-29-shift-2",
+          "questionId": "q07"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-11-shift-3",
+          "questionId": "q47"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-15-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2022-08-18",
+          "questionId": "q01"
+        }
+      ]
+    },
+    "chemistry-2025-05-21-shift-2": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2023-06-02-shift-3",
+          "questionId": "q49"
+        },
+        {
+          "paperSlug": "chemistry-2022-08-17",
+          "questionId": "q23"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-07-shift-3",
+          "questionId": "q28"
+        },
+        {
+          "paperSlug": "chemistry-2025-05-23-shift-2",
+          "questionId": "q33"
+        },
+        {
+          "paperSlug": "chemistry-2024-05-15-shift-1",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-08-shift-3",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-13-shift-3",
+          "questionId": "q05"
+        }
+      ]
+    },
+    "chemistry-2025-05-23-shift-2": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2026-05-26-shift-1",
+          "questionId": "q03"
+        },
+        {
+          "paperSlug": "chemistry-2023-06-05-shift-1",
+          "questionId": "q49"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-19-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "chemistry-2022-08-23",
+          "questionId": "q13"
+        }
+      ]
+    },
+    "chemistry-2026-06-06-shift-1": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "chemistry-2023-06-08-shift-3",
+          "questionId": "q38"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-22-shift-1",
+          "questionId": "q07"
+        },
+        {
+          "paperSlug": "chemistry-2026-05-22-shift-2",
+          "questionId": "q08"
+        }
+      ]
+    },
+    "computer-science-2024-07-19-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "computer-science-2026-05-11-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "computer-science-2025",
+          "questionId": "q12"
+        },
+        {
+          "paperSlug": "computer-science-2022",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "computer-science-2026-05-21-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "computer-science-2026-05-31-shift-1",
+          "questionId": "q06"
+        }
+      ]
+    },
+    "computer-science-2025": {
+      "baseQuestionCount": 44,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "computer-science-2026-05-11-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "computer-science-2022",
+          "questionId": "q29"
+        },
+        {
+          "paperSlug": "computer-science-2026-05-31-shift-1",
+          "questionId": "q03"
+        },
+        {
+          "paperSlug": "computer-science-2026-05-21-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "computer-science-2024-07-19-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "computer-science-2026-05-11-shift-2",
+          "questionId": "q09"
+        }
+      ]
+    },
+    "economics-2024-05-16-shift-1": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "economics-2022",
+          "questionId": "q29"
+        },
+        {
+          "paperSlug": "economics-2025-05-30-shift-2",
+          "questionId": "q15"
+        }
+      ]
+    },
+    "english-2022-08-06-shift-1": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-11-shift-1",
+          "questionId": "q42"
+        },
+        {
+          "paperSlug": "english-2026-05-11-shift-2",
+          "questionId": "q01"
+        }
+      ]
+    },
+    "english-2022-08-10": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-06-07-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "english-2023-06-09-shift-2",
+          "questionId": "q21"
+        }
+      ]
+    },
+    "english-2022-08-18": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-29-shift-2",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "english-2023-06-10-shift-2",
+          "questionId": "q38"
+        },
+        {
+          "paperSlug": "english-2023-06-02-shift-3",
+          "questionId": "q47"
+        }
+      ]
+    },
+    "english-2022-08-22": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2023-06-11-shift-1",
+          "questionId": "q29"
+        },
+        {
+          "paperSlug": "english-2026-05-12-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "english-2026-05-12-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "english-2026-06-07-shift-2",
+          "questionId": "q09"
+        }
+      ]
+    },
+    "english-2023-06-09-shift-2": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2023-06-15-shift-3",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "english-2023-06-06-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "english-2024-05-29-shift-1",
+          "questionId": "q27"
+        }
+      ]
+    },
+    "english-2023-06-10-shift-2": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-13-shift-2",
+          "questionId": "q01"
+        }
+      ]
+    },
+    "english-2023-06-11-shift-1": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-31-shift-1",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "english-2023-06-15-shift-3": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-23-shift-2",
+          "questionId": "q04"
+        }
+      ]
+    },
+    "english-2024-05-29-shift-1": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-30-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "english-2026-05-19-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "english-2026-05-21-shift-1",
+          "questionId": "q09"
+        }
+      ]
+    },
+    "english-2025-05-20-shift-1": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-22-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "english-2023-06-11-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "english-2026-05-21-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "english-2023-05-21-shift-1",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "english-2025-05-20-shift-2": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-22-shift-2",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "english-2026-05-11-shift-1": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "english-2026-05-12-shift-2",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "english-2026-05-12-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "english-2023-06-05-shift-3",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "english-2026-05-20-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "english-2023-06-10-shift-2",
+          "questionId": "q40"
+        },
+        {
+          "paperSlug": "english-2026-06-07-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "english-2026-05-11-shift-2",
+          "questionId": "q05"
+        }
+      ]
+    },
+    "general-test-2025-05-20-shift-1": {
+      "baseQuestionCount": 44,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "general-test-2026-05-20-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "general-test-2022-08-06",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "general-test-2022-08-22",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "general-test-2022-08-18",
+          "questionId": "q51"
+        },
+        {
+          "paperSlug": "general-test-2024-05-29-shift-1",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "general-test-2026-05-14-shift-1",
+          "questionId": "q08"
+        }
+      ]
+    },
+    "general-test-2025-05-20-shift-2": {
+      "baseQuestionCount": 41,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "general-test-2026-05-14-shift-2",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "general-test-2026-05-14-shift-1",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "general-test-2022-08-23-shift-1",
+          "questionId": "q48"
+        },
+        {
+          "paperSlug": "general-test-2022-08-22",
+          "questionId": "q70"
+        },
+        {
+          "paperSlug": "general-test-2024-05-15-shift-3",
+          "questionId": "q60"
+        },
+        {
+          "paperSlug": "general-test-2022-08-08-shift-1",
+          "questionId": "q44"
+        },
+        {
+          "paperSlug": "cucet-2021-general-test",
+          "questionId": "q20"
+        },
+        {
+          "paperSlug": "general-test-2025-05-20-shift-1",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "general-test-2026-05-31-shift-1",
+          "questionId": "q08"
+        }
+      ]
+    },
+    "geography-2022": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "geography-2026-05-11-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "geography-2025-05-20-shift-1",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "geography-2025-05-16-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "geography-2026-05-15-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "geography-2026-05-21-shift-1",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "geography-2024-05-17-shift-1": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "geography-2026-05-14-shift-1",
+          "questionId": "q09"
+        }
+      ]
+    },
+    "geography-2025-05-20-shift-1": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "geography-2026-05-15-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "geography-2024-05-17-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "geography-2025-05-16-shift-1",
+          "questionId": "q49"
+        },
+        {
+          "paperSlug": "geography-2022",
+          "questionId": "q49"
+        }
+      ]
+    },
+    "hindi-2024-05-16-shift-2": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "hindi-2025",
+          "questionId": "q25"
+        },
+        {
+          "paperSlug": "hindi-2022-08-30-shift-2",
+          "questionId": "q33"
+        }
+      ]
+    },
+    "hindi-2025": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "hindi-2022-08-30-shift-2",
+          "questionId": "q28"
+        },
+        {
+          "paperSlug": "hindi-2024-05-16-shift-2",
+          "questionId": "q36"
+        },
+        {
+          "paperSlug": "hindi-2022-08-30-shift-2",
+          "questionId": "q29"
+        }
+      ]
+    },
+    "history-2022-08-21-shift-1": {
+      "baseQuestionCount": 40,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "history-2024-05-18-shift-1",
+          "questionId": "q18"
+        },
+        {
+          "paperSlug": "history-2025-06-21-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "history-2022-08-21-shift-2",
+          "questionId": "q38"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-2",
+          "questionId": "q07"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "history-2026-05-13-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "history-2026-05-21-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "history-2026-05-29-shift-2",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "history-2025-05-16-shift-1",
+          "questionId": "q48"
+        },
+        {
+          "paperSlug": "history-2025-06-03-shift-2",
+          "questionId": "q12"
+        }
+      ]
+    },
+    "history-2022-08-21-shift-2": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "history-2022-08-21-shift-1",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-2",
+          "questionId": "q06"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "history-2026-05-21-shift-1",
+          "questionId": "q04"
+        }
+      ]
+    },
+    "history-2024-05-18-shift-1": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "history-2025-05-16-shift-1",
+          "questionId": "q50"
+        },
+        {
+          "paperSlug": "history-2025-05-20-shift-1",
+          "questionId": "q05"
+        }
+      ]
+    },
+    "history-2025-05-16-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "history-2026-05-13-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "history-2022-08-21-shift-2",
+          "questionId": "q47"
+        },
+        {
+          "paperSlug": "history-2022-08-21-shift-1",
+          "questionId": "q40"
+        },
+        {
+          "paperSlug": "history-2025-05-20-shift-1",
+          "questionId": "q27"
+        },
+        {
+          "paperSlug": "history-2026-05-21-shift-1",
+          "questionId": "q02"
+        }
+      ]
+    },
+    "history-2025-05-20-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "history-2026-05-11-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "history-2026-05-29-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "history-2026-05-13-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "history-2022-08-21-shift-2",
+          "questionId": "q15"
+        }
+      ]
+    },
+    "history-2025-06-03-shift-2": {
+      "baseQuestionCount": 42,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "history-2022-08-21-shift-2",
+          "questionId": "q03"
+        },
+        {
+          "paperSlug": "history-2022-08-21-shift-1",
+          "questionId": "q17"
+        },
+        {
+          "paperSlug": "history-2026-05-21-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "history-2022",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-1",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-2",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "history-2026-05-29-shift-2",
+          "questionId": "q04"
+        },
+        {
+          "paperSlug": "history-2025-05-20-shift-1",
+          "questionId": "q09"
+        }
+      ]
+    },
+    "history-2025-06-21-shift-1": {
+      "baseQuestionCount": 44,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "history-2025-05-16-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "history-2026-05-21-shift-1",
+          "questionId": "q06"
+        },
+        {
+          "paperSlug": "history-2025-05-20-shift-1",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "history-2022",
+          "questionId": "q30"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-1",
+          "questionId": "q07"
+        },
+        {
+          "paperSlug": "history-2026-05-11-shift-2",
+          "questionId": "q02"
+        }
+      ]
+    },
+    "mathematics-2022-08-17": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "mathematics-2026-05-19-shift-1",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "mathematics-2024-05-16-shift-1",
+          "questionId": "q47"
+        },
+        {
+          "paperSlug": "mathematics-2024-07-19-shift-1",
+          "questionId": "q50"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-29-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-29-shift-2",
+          "questionId": "q04"
+        }
+      ]
+    },
+    "mathematics-2022-08-22": {
+      "baseQuestionCount": 42,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "mathematics-2024-05-16-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-31-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "mathematics-2022-08-17",
+          "questionId": "q19"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-30-shift-2",
+          "questionId": "q06"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-15-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-30-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-18-shift-1",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-18-shift-2",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "mathematics-2022-08-30": {
+      "baseQuestionCount": 40,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "mathematics-2026-05-22-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-22-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-18-shift-2",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-18-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-21-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-21-shift-1",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "mathematics-2025-06-03-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-20-shift-1",
+          "questionId": "q70"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-15-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "mathematics-2022-08-22",
+          "questionId": "q12"
+        }
+      ]
+    },
+    "mathematics-2024-05-16-shift-1": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "mathematics-2024-07-19-shift-1",
+          "questionId": "q38"
+        }
+      ]
+    },
+    "mathematics-2024-07-19-shift-1": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "mathematics-2026-05-30-shift-2",
+          "questionId": "q04"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-15-shift-1",
+          "questionId": "q06"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-30-shift-1",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "mathematics-2025-06-02-shift-1": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "mathematics-2025-06-03-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-26-shift-2",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "mathematics-2025-06-03-shift-2": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "mathematics-2026-05-26-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-20-shift-1",
+          "questionId": "q32"
+        },
+        {
+          "paperSlug": "mathematics-2024-07-19-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "mathematics-2026-05-22-shift-2",
+          "questionId": "q09"
+        }
+      ]
+    },
+    "physics-2022-08-22": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2024-05-16-shift-3",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "physics-2026-05-29-shift-2",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "physics-2026-05-29-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "physics-2022-08-26",
+          "questionId": "q19"
+        },
+        {
+          "paperSlug": "physics-2024-07-19-shift-1",
+          "questionId": "q08"
+        }
+      ]
+    },
+    "physics-2023-05-21-shift-3": {
+      "baseQuestionCount": 47,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2026-06-06-shift-1",
+          "questionId": "q09"
+        },
+        {
+          "paperSlug": "physics-2022-08-26",
+          "questionId": "q50"
+        },
+        {
+          "paperSlug": "physics-2022-08-22",
+          "questionId": "q28"
+        }
+      ]
+    },
+    "physics-2023-05-22-shift-3": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2026-06-06-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "physics-2026-05-19-shift-1",
+          "questionId": "q07"
+        },
+        {
+          "paperSlug": "physics-2023-05-30-shift-1",
+          "questionId": "q12"
+        },
+        {
+          "paperSlug": "physics-2026-05-14-shift-2",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "physics-2026-05-22-shift-2",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "physics-2026-05-22-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "physics-2023-05-25-shift-3",
+          "questionId": "q01"
+        }
+      ]
+    },
+    "physics-2023-05-25-shift-3": {
+      "baseQuestionCount": 49,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2024-07-19-shift-1",
+          "questionId": "q20"
+        }
+      ]
+    },
+    "physics-2023-05-30-shift-1": {
+      "baseQuestionCount": 45,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2026-05-14-shift-2",
+          "questionId": "q02"
+        },
+        {
+          "paperSlug": "physics-2024-07-19-shift-1",
+          "questionId": "q23"
+        },
+        {
+          "paperSlug": "physics-2025-05-20-shift-2",
+          "questionId": "q37"
+        },
+        {
+          "paperSlug": "physics-2022-08-06",
+          "questionId": "q13"
+        },
+        {
+          "paperSlug": "physics-2026-05-29-shift-1",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "physics-2023-06-09-shift-3": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2026-06-06-shift-1",
+          "questionId": "q06"
+        },
+        {
+          "paperSlug": "physics-2026-05-25-shift-1",
+          "questionId": "q08"
+        }
+      ]
+    },
+    "physics-2024-05-16-shift-3": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2023-06-09-shift-3",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "physics-2026-05-29-shift-1",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "physics-2025-05-20-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "physics-2026-05-25-shift-1",
+          "questionId": "q04"
+        },
+        {
+          "paperSlug": "physics-2026-05-30-shift-1",
+          "questionId": "q10"
+        },
+        {
+          "paperSlug": "physics-2022-08-26",
+          "questionId": "q41"
+        },
+        {
+          "paperSlug": "physics-2023-05-21-shift-3",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "physics-2024-07-19-shift-1": {
+      "baseQuestionCount": 43,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2026-06-06-shift-1",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "physics-2022-08-22",
+          "questionId": "q08"
+        },
+        {
+          "paperSlug": "physics-2022-08-26",
+          "questionId": "q22"
+        },
+        {
+          "paperSlug": "physics-2026-05-30-shift-1",
+          "questionId": "q05"
+        },
+        {
+          "paperSlug": "physics-2023-05-21-shift-3",
+          "questionId": "q46"
+        },
+        {
+          "paperSlug": "physics-2026-05-12-shift-2",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "physics-2026-05-15-shift-1",
+          "questionId": "q10"
+        }
+      ]
+    },
+    "physics-2025-05-20-shift-2": {
+      "baseQuestionCount": 48,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "physics-2022-08-26",
+          "questionId": "q01"
+        },
+        {
+          "paperSlug": "physics-2022-08-22",
+          "questionId": "q50"
+        }
+      ]
+    },
+    "political-science-2022": {
+      "baseQuestionCount": 46,
+      "questionCount": 50,
+      "questions": [
+        {
+          "paperSlug": "political-science-2024-05-18-shift-2",
+          "questionId": "q39"
+        },
+        {
+          "paperSlug": "political-science-2025-06-27-shift-2",
+          "questionId": "q19"
+        },
+        {
+          "paperSlug": "political-science-2025-06-20-shift-1",
+          "questionId": "q21"
+        },
+        {
+          "paperSlug": "political-science-2024-05-18-shift-2",
+          "questionId": "q38"
+        }
+      ]
+    }
+  },
+  "unfilled": [
+    {
+      "slug": "sociology-2024-05-18-shift-3",
+      "subject": "Sociology",
+      "baseQuestionCount": 49,
+      "missingCount": 1
+    }
+  ]
+}

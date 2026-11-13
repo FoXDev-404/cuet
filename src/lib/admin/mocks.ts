@@ -587,11 +587,11 @@ export async function disqualifyAttempt(
   const attempt = await first<{
     id: number;
     user_id: number | null;
-    mock_id: number;
+    version_id: number;
     status: string;
     is_first_attempt: number;
   }>(
-    "SELECT id, user_id, mock_id, status, is_first_attempt FROM attempts WHERE id = ?",
+    "SELECT id, user_id, version_id, status, is_first_attempt FROM attempts WHERE id = ?",
     attemptId,
   );
   if (!attempt) throw new Error("Attempt not found.");
@@ -610,16 +610,16 @@ export async function disqualifyAttempt(
 
   const replacement = await first<{ id: number }>(
     `SELECT a.id FROM attempts a
-     WHERE a.user_id = ? AND a.mock_id = ? AND a.status = 'submitted' AND a.id != ?
+     WHERE a.user_id = ? AND a.version_id = ? AND a.status = 'submitted' AND a.id != ?
        AND NOT EXISTS (
          SELECT 1 FROM attempts b
-         WHERE b.user_id = a.user_id AND b.mock_id = a.mock_id
+         WHERE b.user_id = a.user_id AND b.version_id = a.version_id
            AND b.status = 'submitted' AND b.is_first_attempt = 1
        )
      ORDER BY a.submitted_at ASC, a.id ASC
      LIMIT 1`,
     attempt.user_id,
-    attempt.mock_id,
+    attempt.version_id,
     attemptId,
   );
   if (!replacement) return { promoted: null };

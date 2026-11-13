@@ -288,9 +288,9 @@ export async function finalizeAttempt(
   if (attempt.user_id && mode === "submitted") {
     const earlier = await first<{ count: number }>(
       `SELECT COUNT(*) AS count FROM attempts
-       WHERE user_id = ? AND mock_id = ? AND id != ? AND status IN ('submitted', 'expired')`,
+       WHERE user_id = ? AND version_id = ? AND id != ? AND status IN ('submitted', 'expired')`,
       attempt.user_id,
-      attempt.mock_id,
+      attempt.version_id,
       attempt.id,
     );
     earlierFinished = earlier?.count ?? 0;

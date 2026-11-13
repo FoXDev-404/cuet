@@ -112,6 +112,8 @@ export interface RawIndexPaper {
   questionCount?: number | null;
   sourceQuestionCount?: number | null;
   scorableQuestionCount?: number | null;
+  rankedQuestionCount?: number | null;
+  rankedDurationMinutes?: number | null;
   pendingReviewCount?: number | null;
   imageQuestionCount?: number | null;
   assetCount?: number | null;
@@ -249,6 +251,8 @@ export interface LocalPaperSummary {
   recoveredQuestionCount: number;
   omittedQuestionCount: number;
   scorableQuestionCount: number;
+  rankedQuestionCount?: number;
+  rankedDurationMinutes?: number;
   pendingReviewCount: number;
   attemptCount: number;
   imageQuestionCount: number;
@@ -545,6 +549,8 @@ export function buildSummary(raw: RawIndexPaper): LocalPaperSummary | null {
     recoveredQuestionCount: questionCount,
     omittedQuestionCount: Math.max(0, sourceCount - questionCount),
     scorableQuestionCount: scorable,
+    rankedQuestionCount: Math.max(scorable, raw.rankedQuestionCount ?? scorable),
+    rankedDurationMinutes: raw.rankedDurationMinutes ?? durationMinutes,
     pendingReviewCount: Math.max(0, raw.pendingReviewCount ?? questionCount - scorable),
     attemptCount: Math.max(0, raw.attemptCount ?? 0),
     imageQuestionCount: Math.max(0, raw.imageQuestionCount ?? 0),
