@@ -1256,6 +1256,21 @@ Verification: Vitest 481/481 across 57 files; Playwright 73 passed, 2 skipped,
 committed in `8a0d662` had overwritten `docs/report/playwright-results.json`
 and broken the scorecard test, so the full artifact was regenerated.
 
+Post-deploy live verification (2026-11-13, commit `269ad22`): CI Quality Gate
+run `43283903103` succeeded and Auto deploy run `43283903373` succeeded; the
+production deployment is timestamped `2026-11-12T18:50:49Z`. On
+`https://cuetfreemocktest.com`, `/cuet-ug-marking-scheme` returns 200 with no
+robots meta, a self-canonical and an entry in the 288-URL sitemap;
+`/cuet-ug-important-dates` returns 200 with `noindex, follow` and is absent
+from the sitemap. `/mock/business-studies-2023-06-12-shift-2` and its
+`/instructions` page both emit `noindex, follow` and canonicalise to
+`/mock-tests/business-studies-2023-06-12-shift-2`; the zero-entry
+`/leaderboard/business-studies-2023-06-12-shift-2` emits `noindex, follow`;
+`/mock-tests/english-2022-08-06-shift-1` is 200 and indexable. The sitemap
+contains no `/mock/*/instructions` URLs and 137 `/mock-tests/*` pages. Its only
+`/mock/*` wrapper is the mini mock without a practice-paper page (self-canonical
+and indexable), and its only `/leaderboard/*` URL has attempts.
+
 ### Remaining
 
 - The remote D1 migration check stays `UNVERIFIED` on the free-tier row-read

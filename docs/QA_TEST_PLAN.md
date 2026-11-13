@@ -336,6 +336,18 @@ Acceptance:
 - `/mock/*/instructions`, wrapper `/mock/<slug>` and zero-entry `/leaderboard/<slug>` → `noindex, follow`; instructions/wrapper canonical → `/mock-tests/<slug>`; all absent from sitemap.
 - Unit tests cover DB-available, missing-row, `TODO_VERIFY` and outage paths.
 
+Post-deploy evidence (2026-11-13, commit `269ad22`): CI Quality Gate run
+`43283903103` succeeded; Auto deploy run `43283903373` succeeded and the
+production deployment is timestamped `2026-11-12T18:50:49Z`. Live checks on
+`https://cuetfreemocktest.com`:
+
+- `/cuet-ug-marking-scheme` → 200, no robots meta, self-canonical, present in the 288-URL sitemap.
+- `/cuet-ug-important-dates` → 200, `noindex, follow`, absent from the sitemap.
+- `/mock/business-studies-2023-06-12-shift-2` and its `/instructions` page → `noindex, follow`, canonical `/mock-tests/business-studies-2023-06-12-shift-2`.
+- `/leaderboard/business-studies-2023-06-12-shift-2` → `noindex, follow`.
+- `/mock-tests/english-2022-08-06-shift-1` → 200, indexable.
+- Sitemap: 288 URLs, 137 `/mock-tests/*` pages, zero `/mock/*/instructions` URLs. The one `/mock/*` wrapper is the mini mock without a practice-paper page (self-canonical, indexable); the one `/leaderboard/*` URL has attempts.
+
 Owner action: after deploy, use **Validate fix** on the GSC noindex report. The intentional exclusions remain; validation acknowledges the policy rather than requesting indexing of duplicate step pages.
 
 ---
@@ -356,7 +368,7 @@ Owner action: after deploy, use **Validate fix** on the GSC noindex report. The 
 | 9 Turso integrity | Pass | 23 migrations applied; `integrity_check` ok; `foreign_key_check` 0; 20,111 published questions; `dataChecks` orphanAttempts 0, orphanAnswers 0, duplicatePublicIds 0, duplicateQuestionPointers 0, duplicateMockSlugs 0 | Counts: 247 mocks, 245 papers, 7,527 practice questions, 77 attempts |
 | 10 Load & probes | Pass | 300@15 → 300×200, p50 82 ms / p95 359 / p99 896; 600@30 → 600×200, p50 95 / p95 156 / p99 223; 0 degraded, 0 network errors. Write probe: start 201, 11 autosaves, submit 200, result page/API 200, 8 parallel starts 201. Browser: initial render 1001 ms, reloads 182/175 ms, timer/questions/palette render, 0 page errors. Worker tail: 17/17 `outcome: ok`, `exceptions: []`, `logs: []` | CSP analytics blocking found under B8; live re-verify after deploy: 0 violations, beacon 200, GA 204 |
 | 11 Cleanup & sign-off | Pass | Probe attempts 136–145 and 10 answers deleted; max attempt ID back to 93, attempts 77, 0 leftovers. `npm run audit:reconciliation` → SUCCESS. CI Quality Gate run 42807575587 success; Auto deploy run 42807575422 success; live CSP verified | `docs/QA_TEST_PLAN.md` and `docs/PROGRESS.md` updated; `docs/report/report.json` left uncommitted |
-| 12 GSC noindex triage | Pass | 39 URLs classified: 28 instructions, 5 wrapper mocks, 4 zero-entry leaderboards, 2 core guides. Local probe after fix: `/cuet-ug-marking-scheme` indexable + self-canonical; `/cuet-ug-important-dates` `noindex, follow`; instructions/wrapper canonical → `/mock-tests/<slug>`; zero-entry leaderboard `noindex, follow`. Unit 481/481 (57 files); E2E 73 passed / 2 skipped / 0 failed; local SEO 287 sitemap / 290 audited / 0 mismatches; `astro check` 0 errors | Owner still needs GSC **Validate fix**; intentional exclusions stay noindex. `docs/report/playwright-results.json` regenerated after a targeted run had overwritten it |
+| 12 GSC noindex triage | Pass | 39 URLs classified: 28 instructions, 5 wrapper mocks, 4 zero-entry leaderboards, 2 core guides. Live after deploy of `269ad22` (CI run 43283903103 success; deploy run 43283903373 success): `/cuet-ug-marking-scheme` 200, no robots, self-canonical, in 288-URL sitemap; `/cuet-ug-important-dates` `noindex, follow`, absent from sitemap; instructions/wrapper canonical → `/mock-tests/<slug>`; zero-entry leaderboard `noindex, follow`; sample paper indexable. Unit 481/481 (57 files); E2E 73 passed / 2 skipped / 0 failed; local SEO 287 sitemap / 290 audited / 0 mismatches; `astro check` 0 errors | Owner still needs GSC **Validate fix**; intentional exclusions stay noindex. `docs/report/playwright-results.json` regenerated after a targeted run had overwritten it |
 
 Status values: `Pass`, `Fail`, `Blocked`, `Skipped (reason)`.
 
@@ -374,7 +386,7 @@ Status values: `Pass`, `Fail`, `Blocked`, `Skipped (reason)`.
 | B6 | 5 | Deadline test failed: API advertised 30 min but started attempt got 6 min | Fixture `duration_min` did not match official CUET per-question timing rule | Seed computes duration from subject/question rate (5 × 72s = 6 min) | Targeted test + full E2E pass (71/2/0) |
 | B7 | 8 | Link checker reported `404 /u/test-user` | Stale synthetic seed for a profile that is not public; `/u/[username]` correctly 404s non-public or missing users | Remove the stale seed; profile pages are covered when linked publicly | Production link check 0/474 internal, 0/5 external broken |
 | B8 | 10 | Browser console showed CSP violations for Cloudflare Insights beacon and GA4 collect requests | CSP allowlist omitted `static.cloudflareinsights.com`, `cloudflareinsights.com`, `analytics.google.com`, `*.google-analytics.com` | Add hosts to `script-src`/`connect-src` and add a middleware regression test | `middleware-headers.test.ts` 6/6; live post-deploy pages 0 CSP violations, beacon 200, GA collect 204 |
-| B9 | 12 | GSC reported `/cuet-ug-marking-scheme` as “Excluded by noindex” although its `exam_info` row is verified | `getExamInfo()` caught every database error and returned `{}`; the page treated that as unverified and emitted noindex during the 9 Nov crawl | `getExamInfoState()` reports availability; pages/sitemap use deploy-time last-known-good verification on outage and set `x-db-degraded` | Unit 481/481; local probe marking-scheme 200 with no robots meta; important-dates remains `noindex, follow` |
+| B9 | 12 | GSC reported `/cuet-ug-marking-scheme` as “Excluded by noindex” although its `exam_info` row is verified | `getExamInfo()` caught every database error and returned `{}`; the page treated that as unverified and emitted noindex during the 9 Nov crawl | `getExamInfoState()` reports availability; pages/sitemap use deploy-time last-known-good verification on outage and set `x-db-degraded` | Unit 481/481; live post-deploy marking-scheme 200 with no robots meta and self-canonical; important-dates remains `noindex, follow`; CI run 43283903103 success |
 
 ---
 
