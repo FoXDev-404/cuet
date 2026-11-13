@@ -5,6 +5,8 @@ import SeoIntro from "../components/SeoIntro.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { all } from "../lib/db";
 import { getSettings } from "../lib/settings";
+import { can } from "../lib/auth/admin";
+import { loadDraftSettings } from "../lib/admin/settings";
 import {
   HOMEPAGE_PRESENTATION_DEFAULTS,
   HOMEPAGE_PRESENTATION_KEYS,
@@ -27,9 +29,16 @@ import {
 
 const PATH = "/";
 const DEFAULT_TITLE = "CUET Free Mock Test Online | CUET UG Mock Test Series & PYQs";
+const isSitePreview =
+  Astro.url.searchParams.get("sitePreview") === "1" &&
+  Boolean(Astro.locals.admin && can(Astro.locals.admin.role, "settings.write"));
+if (isSitePreview) Astro.response.headers.set("Cache-Control", "private, no-store");
+const homepageSettings = isSitePreview
+  ? await loadDraftSettings()
+  : await getSettings([...HOMEPAGE_PRESENTATION_KEYS, "site_name"]);
 const presentation: Record<string, string> = {
   ...HOMEPAGE_PRESENTATION_DEFAULTS,
-  ...(await getSettings([...HOMEPAGE_PRESENTATION_KEYS, "site_name"])),
+  ...homepageSettings,
 };
 
 const heroTitle = presentation.home_hero_title || HOMEPAGE_PRESENTATION_DEFAULTS.home_hero_title;
@@ -406,7 +415,7 @@ const focusCards = [
 <BaseLayout
   title={title}
   description={description}
-  noindex={noindex}
+  noindex={noindex || isSitePreview}
   canonical={seo?.canonical_url}
   structuredData={structuredData}
 >

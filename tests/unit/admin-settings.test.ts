@@ -1,16 +1,44 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
+const mockSettingsStore = vi.hoisted(() => new Map<string, string>());
 vi.mock("../../src/lib/settings", () => ({
   getSettings: vi.fn(),
+  getSetting: vi.fn(),
   setSetting: vi.fn(),
 }));
 
-import { normalizeSettings, SETTING_FIELDS } from "../../src/lib/admin/settings";
+import { getSetting, getSettings, setSetting } from "../../src/lib/settings";
+import {
+  hasDraftSettings,
+  loadDraftSettings,
+  loadSettings,
+  loadSettingsRevisions,
+  normalizeSettings,
+  publishDraftSettings,
+  restoreSettingsRevision,
+  saveDraftSettings,
+  SETTING_FIELDS,
+} from "../../src/lib/admin/settings";
 import {
   HOMEPAGE_SECTION_ORDER,
   parseHomepageSectionOrder,
   parseSiteLinks,
 } from "../../src/lib/site-presentation";
+
+beforeEach(() => {
+  mockSettingsStore.clear();
+  vi.mocked(getSetting).mockImplementation(async (key, fallback = "") => mockSettingsStore.get(key) ?? fallback);
+  vi.mocked(getSettings).mockImplementation(async (keys) =>
+    Object.fromEntries(
+      keys.flatMap((key) =>
+        mockSettingsStore.has(key) ? [[key, mockSettingsStore.get(key)!]] : [],
+      ),
+    ),
+  );
+  vi.mocked(setSetting).mockImplementation(async (key, value) => {
+    mockSettingsStore.set(key, value);
+  });
+});
 
 function completeSettings(): Record<string, unknown> {
   return Object.fromEntries(SETTING_FIELDS.map((field) => [field.key, field.defaultValue]));
@@ -96,5 +124,26 @@ describe("admin site presentation settings", () => {
         home_section_order: ["faq", ...HOMEPAGE_SECTION_ORDER.slice(1)].join("\n"),
       }),
     ).toThrow(/each allowed section exactly once/i);
+  });
+
+  it("keeps drafts private until publication and restores prior versions as drafts", async () => {
+    const published = await loadSettings();
+    const draft = { ...published, site_name: "Draft CUET Site" };
+
+    await saveDraftSettings(draft, 7);
+    expect(await hasDraftSettings()).toBe(true);
+    expect((await loadSettings()).site_name).toBe(published.site_name);
+    expect((await loadDraftSettings()).site_name).toBe("Draft CUET Site");
+
+    const result = await publishDraftSettings(7);
+    expect(result.published).toBe(true);
+    expect((await loadSettings()).site_name).toBe("Draft CUET Site");
+
+    const [revision] = await loadSettingsRevisions();
+    expect(revision.settings.site_name).toBe(published.site_name);
+    const restored = await restoreSettingsRevision(revision.id, 7);
+    expect(restored?.hasDraft).toBe(true);
+    expect((await loadSettings()).site_name).toBe("Draft CUET Site");
+    expect((await loadDraftSettings()).site_name).toBe(published.site_name);
   });
 });

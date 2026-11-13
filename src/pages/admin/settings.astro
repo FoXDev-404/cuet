@@ -1,12 +1,19 @@
 ---
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import { can } from "../../lib/auth/admin";
-import { loadSettings, SETTING_FIELDS } from "../../lib/admin/settings";
+import {
+  hasDraftSettings,
+  loadDraftSettings,
+  loadSettingsRevisions,
+  SETTING_FIELDS,
+} from "../../lib/admin/settings";
 
 const admin = Astro.locals.admin!;
 if (!can(admin.role, "settings.write")) return Astro.redirect("/forbidden", 303);
 
-const settings = await loadSettings();
+const settings = await loadDraftSettings();
+const hasDraft = await hasDraftSettings();
+const revisions = await loadSettingsRevisions();
 const sections = [
   {
     key: "global",
@@ -39,10 +46,15 @@ const sections = [
     <div>
       <h1 class="text-2xl font-black tracking-tight">Site builder & settings</h1>
       <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
-        Update shared site identity, homepage components and operational switches. Every change is validated and written to the activity log.
+        Edit a draft, preview it privately, then publish when ready. Changes are validated and recorded in the activity log.
       </p>
     </div>
-    <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/" target="_blank" rel="noopener">Preview homepage</a>
+    <a class="rounded-lg border border-neutral-300 px-3 py-2 text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/?sitePreview=1" target="_blank" rel="noopener">Preview draft</a>
+  </div>
+
+  <div class:list={["mt-5 rounded-2xl border p-4 text-sm leading-6", hasDraft ? "border-blue-200 bg-blue-50 text-blue-900 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100" : "border-neutral-200 bg-neutral-50 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300"]}>
+    <p class="font-bold">{hasDraft ? "Unpublished draft saved" : "No unpublished draft"}</p>
+    <p class="mt-1">{hasDraft ? "The public site is unchanged until you publish. Draft preview is visible only to admins with site-settings permission." : "Saving creates a draft; it does not change the public site. Publish explicitly when the preview is ready."}</p>
   </div>
 
   <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
@@ -110,19 +122,79 @@ const sections = [
     ))}
 
     <div class="flex flex-wrap items-center gap-3">
-      <button class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="submit">Save settings</button>
+      <button class="rounded-lg border border-neutral-300 px-4 py-2.5 text-sm font-bold hover:bg-neutral-50 disabled:opacity-60 dark:border-neutral-700 dark:hover:bg-neutral-800" type="submit">Save draft</button>
+      <button id="publish-settings" class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700 disabled:opacity-60" type="button">Publish changes</button>
       <a class="text-sm font-semibold text-neutral-600 hover:underline dark:text-neutral-300" href="/admin">Back to dashboard</a>
     </div>
   </form>
 
+  <section class="mt-8 max-w-4xl rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900" aria-labelledby="settings-revisions-heading">
+    <div class="border-b border-neutral-100 pb-4 dark:border-neutral-800">
+      <h2 class="text-lg font-bold" id="settings-revisions-heading">Published revisions</h2>
+      <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Restore a prior version as a draft. It will not go live until you preview and publish it.</p>
+    </div>
+    {revisions.length > 0 ? (
+      <ul class="mt-4 space-y-3">
+        {revisions.map((revision) => (
+          <li class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-neutral-200 p-3 dark:border-neutral-800">
+            <div>
+              <p class="text-sm font-semibold">{new Date(revision.createdAt).toLocaleString()}</p>
+              <p class="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400">Snapshot captured by admin #{revision.adminId}</p>
+            </div>
+            <button
+              class="rounded-lg border border-neutral-300 px-3 py-2 text-xs font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800"
+              type="button"
+              data-restore-revision={revision.id}
+            >
+              Restore as draft
+            </button>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-400">No published revisions yet. A snapshot is created each time a draft is published.</p>
+    )}
+  </section>
+
   <script is:inline>
     const form = document.getElementById("settings-form");
     const statusBox = document.getElementById("settings-status");
+    const publishButton = document.getElementById("publish-settings");
 
     function showStatus(message, ok) {
       if (!statusBox) return;
       statusBox.textContent = message;
       statusBox.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/40 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
+    }
+
+    function settingsPayload() {
+      const payload = Object.fromEntries(new FormData(form).entries());
+      form.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+        payload[checkbox.name] = checkbox.checked ? "true" : "false";
+      });
+      return payload;
+    }
+
+    async function saveDraft() {
+      const response = await fetch("/api/admin/settings", {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(settingsPayload()),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "Could not save the draft.");
+      return result;
+    }
+
+    async function runSettingsAction(action, revisionId) {
+      const response = await fetch("/api/admin/settings", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action, revisionId }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "Could not complete the settings action.");
+      return result;
     }
 
     form?.addEventListener("submit", async (event) => {
@@ -131,25 +203,48 @@ const sections = [
       if (!button) return;
       button.disabled = true;
 
-      const payload = Object.fromEntries(new FormData(form).entries());
-      form.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
-        payload[checkbox.name] = checkbox.checked ? "true" : "false";
-      });
-
       try {
-        const response = await fetch("/api/admin/settings", {
-          method: "PUT",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        const result = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(result.error || "Could not save the settings.");
-        showStatus(result.changed === 0 ? "No changes to save." : "Settings saved.", true);
-        if (result.changed > 0) setTimeout(() => location.reload(), 600);
+        const result = await saveDraft();
+        showStatus(result.hasDraft ? "Draft saved. The public site is unchanged." : "Draft matches the published settings.", true);
+        setTimeout(() => location.reload(), 600);
       } catch (error) {
-        showStatus(error instanceof Error ? error.message : "Could not save the settings.", false);
+        showStatus(error instanceof Error ? error.message : "Could not save the draft.", false);
         button.disabled = false;
       }
+    });
+
+    publishButton?.addEventListener("click", async () => {
+      if (!window.confirm("Publish these site settings? This will make them visible to everyone.")) return;
+      publishButton.disabled = true;
+      try {
+        const saved = await saveDraft();
+        if (!saved.hasDraft) {
+          showStatus("There are no unpublished changes to publish.", true);
+          setTimeout(() => location.reload(), 600);
+          return;
+        }
+        await runSettingsAction("publish");
+        showStatus("Site settings published.", true);
+        setTimeout(() => location.reload(), 600);
+      } catch (error) {
+        showStatus(error instanceof Error ? error.message : "Could not publish the settings.", false);
+        publishButton.disabled = false;
+      }
+    });
+
+    document.querySelectorAll("[data-restore-revision]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        if (!window.confirm("Load this published revision as a draft? It will not go live until you publish.")) return;
+        button.disabled = true;
+        try {
+          await runSettingsAction("restore", button.dataset.restoreRevision);
+          showStatus("Revision restored as a draft.", true);
+          setTimeout(() => location.reload(), 600);
+        } catch (error) {
+          showStatus(error instanceof Error ? error.message : "Could not restore the revision.", false);
+          button.disabled = false;
+        }
+      });
     });
   </script>
 </AdminLayout>

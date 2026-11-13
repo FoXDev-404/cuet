@@ -1,4 +1,4 @@
-import { getSettings, setSetting } from "../settings";
+import { getSetting, getSettings, setSetting } from "../settings";
 import {
   HOMEPAGE_PRESENTATION_DEFAULTS,
   normalizeHomepageSectionOrder,
@@ -269,12 +269,166 @@ export const SETTING_FIELDS: SettingField[] = [
 ];
 
 export const SETTING_KEYS = SETTING_FIELDS.map((field) => field.key);
+const DRAFT_SETTING_KEY = "site_builder_draft";
+const REVISION_SETTING_KEY = "site_builder_revisions";
+const MAX_SETTING_REVISIONS = 10;
+
+export type SiteSettingsRevision = {
+  id: string;
+  createdAt: string;
+  adminId: number;
+  settings: Record<string, string>;
+};
+
+type SiteSettingsDraft = {
+  updatedAt: string;
+  updatedBy: number;
+  settings: Record<string, string>;
+};
 
 export async function loadSettings(): Promise<Record<string, string>> {
   const stored = await getSettings(SETTING_KEYS);
   return Object.fromEntries(
     SETTING_FIELDS.map((field) => [field.key, stored[field.key] ?? field.defaultValue]),
   );
+}
+
+async function loadDraftRecord(): Promise<SiteSettingsDraft | null> {
+  const raw = await getSetting(DRAFT_SETTING_KEY);
+  if (!raw) return null;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (
+      !parsed ||
+      typeof parsed !== "object" ||
+      !("settings" in parsed) ||
+      !("updatedAt" in parsed) ||
+      !("updatedBy" in parsed)
+    ) {
+      throw new Error("Draft record has an invalid shape.");
+    }
+    const record = parsed as SiteSettingsDraft;
+    return {
+      updatedAt: String(record.updatedAt),
+      updatedBy: Number(record.updatedBy),
+      settings: normalizeSettings({ ...(await loadSettings()), ...record.settings }),
+    };
+  } catch (error) {
+    console.error("site builder draft could not be loaded", error);
+    throw new Error("The saved site builder draft could not be loaded.");
+  }
+}
+
+export async function loadDraftSettings(): Promise<Record<string, string>> {
+  const draft = await loadDraftRecord();
+  return draft?.settings ?? loadSettings();
+}
+
+export async function hasDraftSettings(): Promise<boolean> {
+  return Boolean(await loadDraftRecord());
+}
+
+export async function saveDraftSettings(
+  input: Record<string, unknown>,
+  adminId: number,
+): Promise<{ settings: Record<string, string>; changed: Record<string, string>; hasDraft: boolean }> {
+  const values = normalizeSettings(input);
+  const before = await loadDraftSettings();
+  const published = await loadSettings();
+  const changed = Object.fromEntries(
+    Object.entries(values).filter(([key, value]) => before[key] !== value),
+  );
+  const hasDraft = Object.entries(values).some(([key, value]) => published[key] !== value);
+  await setSetting(
+    DRAFT_SETTING_KEY,
+    hasDraft
+      ? JSON.stringify({
+          settings: values,
+          updatedAt: new Date().toISOString(),
+          updatedBy: adminId,
+        } satisfies SiteSettingsDraft)
+      : "",
+  );
+  return { settings: values, changed, hasDraft };
+}
+
+export async function loadSettingsRevisions(): Promise<SiteSettingsRevision[]> {
+  const raw = await getSetting(REVISION_SETTING_KEY);
+  if (!raw) return [];
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed)) throw new Error("Revision history is not a list.");
+    return parsed
+      .filter(
+        (revision): revision is SiteSettingsRevision =>
+          Boolean(revision) &&
+          typeof revision === "object" &&
+          typeof revision.id === "string" &&
+          typeof revision.createdAt === "string" &&
+          typeof revision.adminId === "number" &&
+          typeof revision.settings === "object" &&
+          revision.settings !== null,
+      )
+      .slice(0, MAX_SETTING_REVISIONS);
+  } catch (error) {
+    console.error("site builder revision history could not be loaded", error);
+    throw new Error("Site builder revision history could not be loaded.");
+  }
+}
+
+export async function publishDraftSettings(
+  adminId: number,
+): Promise<{ settings: Record<string, string>; changed: Record<string, string>; published: boolean }> {
+  const draft = await loadDraftRecord();
+  const before = await loadSettings();
+  if (!draft) return { settings: before, changed: {}, published: false };
+
+  const changed = Object.fromEntries(
+    Object.entries(draft.settings).filter(([key, value]) => before[key] !== value),
+  );
+  if (Object.keys(changed).length === 0) {
+    await setSetting(DRAFT_SETTING_KEY, "");
+    return { settings: before, changed, published: false };
+  }
+
+  const revisions = await loadSettingsRevisions();
+  revisions.unshift({
+    id: crypto.randomUUID(),
+    createdAt: new Date().toISOString(),
+    adminId,
+    settings: before,
+  });
+  await setSetting(REVISION_SETTING_KEY, JSON.stringify(revisions.slice(0, MAX_SETTING_REVISIONS)));
+  await saveSettings(draft.settings);
+  await setSetting(DRAFT_SETTING_KEY, "");
+  return { settings: draft.settings, changed, published: true };
+}
+
+export async function restoreSettingsRevision(
+  revisionId: string,
+  adminId: number,
+): Promise<{ settings: Record<string, string>; changed: Record<string, string>; hasDraft: boolean } | null> {
+  const revision = (await loadSettingsRevisions()).find((item) => item.id === revisionId);
+  if (!revision) return null;
+
+  const values = normalizeSettings(revision.settings);
+  const before = await loadDraftSettings();
+  const published = await loadSettings();
+  const changed = Object.fromEntries(
+    Object.entries(values).filter(([key, value]) => before[key] !== value),
+  );
+  const hasDraft = Object.entries(values).some(([key, value]) => published[key] !== value);
+  await setSetting(
+    DRAFT_SETTING_KEY,
+    hasDraft
+      ? JSON.stringify({
+          settings: values,
+          updatedAt: new Date().toISOString(),
+          updatedBy: adminId,
+        } satisfies SiteSettingsDraft)
+      : "",
+  );
+  return { settings: values, changed, hasDraft };
 }
 
 export function normalizeSettings(input: Record<string, unknown>): Record<string, string> {

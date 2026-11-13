@@ -8,6 +8,8 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 import { siteUrl } from "../lib/site-url";
 import { getSettings } from "../lib/settings";
 import { isSafeInternalPath, parseSiteLinks } from "../lib/site-presentation";
+import { can } from "../lib/auth/admin";
+import { loadDraftSettings } from "../lib/admin/settings";
 import {
   adsenseClient,
   adSlotAllowed,
@@ -56,7 +58,10 @@ const {
   ogType: ogTypeOverride = "website",
 } = Astro.props;
 
-const robots = robotsOverride || (noindex ? "noindex, nofollow" : "");
+const isSitePreview =
+  Astro.url.searchParams.get("sitePreview") === "1" &&
+  Boolean(Astro.locals.admin && can(Astro.locals.admin.role, "settings.write"));
+const robots = isSitePreview ? "noindex, nofollow" : robotsOverride || (noindex ? "noindex, nofollow" : "");
 
 const structuredDataList = Array.isArray(structuredData)
   ? structuredData
@@ -79,16 +84,18 @@ if (canonicalOverride) {
     // An invalid stored value must never break rendering; keep the self URL.
   }
 }
-const presentationSettings = await getSettings([
-  "site_name",
-  "site_tagline",
-  "site_footer_note",
-  "footer_custom_links",
-  "header_custom_links",
-  "global_notice_enabled",
-  "global_notice_text",
-  "global_notice_href",
-]);
+const presentationSettings = isSitePreview
+  ? await loadDraftSettings()
+  : await getSettings([
+      "site_name",
+      "site_tagline",
+      "site_footer_note",
+      "footer_custom_links",
+      "header_custom_links",
+      "global_notice_enabled",
+      "global_notice_text",
+      "global_notice_href",
+    ]);
 const siteName = presentationSettings.site_name || "CUET Free Mock Test";
 const siteTagline =
   presentationSettings.site_tagline ??
@@ -234,6 +241,14 @@ const organization = {
       </noscript>
     ) : null}
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    {isSitePreview ? (
+      <aside class="border-b border-blue-200 bg-blue-50 text-blue-900 dark:border-blue-900 dark:bg-blue-950/50 dark:text-blue-100" aria-label="Draft preview">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2 text-sm sm:px-6">
+          <p><strong>Draft preview:</strong> only you can see these unpublished presentation changes; operational feature switches remain live.</p>
+          <a class="shrink-0 font-semibold underline underline-offset-2" href="/admin/settings">Back to Site Builder</a>
+        </div>
+      </aside>
+    ) : null}
     {globalNoticeEnabled ? (
       <aside class="border-b border-brand-200 bg-brand-50 text-brand-950 dark:border-brand-500/20 dark:bg-brand-950/60 dark:text-brand-100" aria-label="Site announcement">
         <div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2 text-sm sm:px-6">
