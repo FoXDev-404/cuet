@@ -6,7 +6,11 @@ vi.mock("../../src/lib/settings", () => ({
 }));
 
 import { normalizeSettings, SETTING_FIELDS } from "../../src/lib/admin/settings";
-import { parseSiteLinks } from "../../src/lib/site-presentation";
+import {
+  HOMEPAGE_SECTION_ORDER,
+  parseHomepageSectionOrder,
+  parseSiteLinks,
+} from "../../src/lib/site-presentation";
 
 function completeSettings(): Record<string, unknown> {
   return Object.fromEntries(SETTING_FIELDS.map((field) => [field.key, field.defaultValue]));
@@ -76,5 +80,21 @@ describe("admin site presentation settings", () => {
         header_custom_links: Array.from({ length: 5 }, (_, index) => `Page ${index + 1} | /page-${index + 1}`).join("\n"),
       }),
     ).toThrow(/up to 4/i);
+  });
+
+  it("allows homepage component reordering only with a complete unique section list", () => {
+    const reversedOrder = [...HOMEPAGE_SECTION_ORDER].reverse();
+    const result = normalizeSettings({
+      ...completeSettings(),
+      home_section_order: reversedOrder.join("\n"),
+    });
+
+    expect(parseHomepageSectionOrder(result.home_section_order)).toEqual(reversedOrder);
+    expect(() =>
+      normalizeSettings({
+        ...completeSettings(),
+        home_section_order: ["faq", ...HOMEPAGE_SECTION_ORDER.slice(1)].join("\n"),
+      }),
+    ).toThrow(/each allowed section exactly once/i);
   });
 });

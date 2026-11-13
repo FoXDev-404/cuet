@@ -25,6 +25,15 @@ export const HOMEPAGE_PRESENTATION_DEFAULTS = {
   home_library_heading: "Most Popular Mock Tests and subject-wise practice.",
   home_library_description:
     "Every paper below is a previous-year practice paper. Fully scored papers appear first, and every row opens the matching timed test or subject practice.",
+  home_section_order: [
+    "practice-library",
+    "shortcuts",
+    "year-archive",
+    "study-rhythm",
+    "focus-cards",
+    "faq",
+    "bottom-cta",
+  ].join("\n"),
   home_show_featured_panel: "true",
   home_show_paper_library: "true",
   home_show_shortcuts: "true",
@@ -39,6 +48,19 @@ export const HOMEPAGE_PRESENTATION_KEYS = Object.keys(
   HOMEPAGE_PRESENTATION_DEFAULTS,
 ) as (keyof typeof HOMEPAGE_PRESENTATION_DEFAULTS)[];
 
+export const HOMEPAGE_SECTION_ORDER = [
+  "practice-library",
+  "shortcuts",
+  "year-archive",
+  "study-rhythm",
+  "focus-cards",
+  "faq",
+  "bottom-cta",
+] as const;
+
+export type HomepageSectionId = (typeof HOMEPAGE_SECTION_ORDER)[number];
+export const DEFAULT_HOMEPAGE_SECTION_ORDER: HomepageSectionId[] = [...HOMEPAGE_SECTION_ORDER];
+
 export function isSafeInternalPath(value: string): boolean {
   const path = value.trim();
   if (!path.startsWith("/") || path.startsWith("//") || path.includes("\\")) return false;
@@ -51,6 +73,29 @@ export function isSafeInternalPath(value: string): boolean {
 
 export function safeInternalPath(value: string | undefined, fallback: string): string {
   return value && isSafeInternalPath(value) ? value.trim() : fallback;
+}
+
+export function normalizeHomepageSectionOrder(value: string): string {
+  const sections = value.split(/\r?\n/).map((section) => section.trim()).filter(Boolean);
+  if (
+    sections.length !== HOMEPAGE_SECTION_ORDER.length ||
+    new Set(sections).size !== HOMEPAGE_SECTION_ORDER.length ||
+    sections.some((section) => !HOMEPAGE_SECTION_ORDER.includes(section as HomepageSectionId))
+  ) {
+    throw new Error("Homepage section order must include each allowed section exactly once.");
+  }
+  return sections.join("\n");
+}
+
+export function parseHomepageSectionOrder(value: string | undefined): HomepageSectionId[] {
+  if (!value) return [...DEFAULT_HOMEPAGE_SECTION_ORDER];
+  const parsed = value.split(/\r?\n/).map((section) => section.trim());
+  const valid = parsed.filter(
+    (section): section is HomepageSectionId =>
+      HOMEPAGE_SECTION_ORDER.includes(section as HomepageSectionId),
+  );
+  const unique = [...new Set(valid)];
+  return [...unique, ...HOMEPAGE_SECTION_ORDER.filter((section) => !unique.includes(section))];
 }
 
 export interface SiteLink {

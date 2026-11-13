@@ -1,6 +1,7 @@
 import { getSettings, setSetting } from "../settings";
 import {
   HOMEPAGE_PRESENTATION_DEFAULTS,
+  normalizeHomepageSectionOrder,
   isSafeInternalPath,
   normalizeSiteLinks,
   SITE_PRESENTATION_DEFAULTS,
@@ -12,7 +13,7 @@ export type SettingField = {
   key: string;
   label: string;
   description: string;
-  type: "text" | "textarea" | "path" | "links" | "boolean";
+  type: "text" | "textarea" | "path" | "links" | "order" | "boolean";
   defaultValue: string;
   group: SettingsGroup;
   maxLength?: number;
@@ -224,6 +225,16 @@ export const SETTING_FIELDS: SettingField[] = [
     group: "homepage-sections" as const,
   })),
   {
+    key: "home_section_order",
+    label: "Homepage section order",
+    description: "Reorder these IDs one per line and keep each exactly once: practice-library, shortcuts, year-archive, study-rhythm, focus-cards, faq, bottom-cta. The hero stays fixed; the SEO intro moves with the year archive.",
+    type: "order",
+    defaultValue: HOMEPAGE_PRESENTATION_DEFAULTS.home_section_order,
+    group: "homepage-sections",
+    maxLength: 200,
+    rows: 7,
+  },
+  {
     key: "registration_enabled",
     label: "Registration open",
     description: "When off, new account signups return a closed-registration error. Existing users can still log in.",
@@ -291,6 +302,10 @@ export function normalizeSettings(input: Record<string, unknown>): Record<string
     }
     if (field.type === "links") {
       output[field.key] = normalizeSiteLinks(value, field.key === "header_custom_links" ? 4 : 8);
+      continue;
+    }
+    if (field.type === "order") {
+      output[field.key] = normalizeHomepageSectionOrder(value);
       continue;
     }
     output[field.key] = value;

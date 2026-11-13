@@ -8,6 +8,7 @@ import { getSettings } from "../lib/settings";
 import {
   HOMEPAGE_PRESENTATION_DEFAULTS,
   HOMEPAGE_PRESENTATION_KEYS,
+  parseHomepageSectionOrder,
   safeInternalPath,
 } from "../lib/site-presentation";
 import {
@@ -40,6 +41,9 @@ const heroTitleAfterHighlight =
   heroHighlightIndex >= 0
     ? heroTitle.slice(heroHighlightIndex + heroTitleHighlight.length)
     : heroTitle;
+const homeSectionOrder = parseHomepageSectionOrder(presentation.home_section_order);
+const homeSectionPosition = (section: (typeof homeSectionOrder)[number]) =>
+  homeSectionOrder.indexOf(section);
 const homeSectionVisible = {
   featuredPanel: presentation.home_show_featured_panel === "true",
   paperLibrary: presentation.home_show_paper_library === "true",
@@ -566,8 +570,9 @@ const focusCards = [
     </div>
   </section>
 
+  <div class="flex flex-col">
   {homeSectionVisible.paperLibrary ? (
-  <section class="relative bg-white py-14 dark:bg-ink-950 sm:py-16 lg:py-20" aria-labelledby="library-heading">
+  <section style={{ order: homeSectionPosition("practice-library") }} class="relative bg-white py-14 dark:bg-ink-950 sm:py-16 lg:py-20" aria-labelledby="library-heading">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
         <div>
@@ -700,7 +705,7 @@ const focusCards = [
   ) : null}
 
   {homeSectionVisible.shortcuts ? (
-  <section class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/60" aria-label="Library shortcuts">
+  <section style={{ order: homeSectionPosition("shortcuts") }} class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/60" aria-label="Library shortcuts">
     <div class="mx-auto grid max-w-6xl gap-3 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
       {featureLinks.map((feature) => (
         <a
@@ -723,6 +728,7 @@ const focusCards = [
   </section>
   ) : null}
 
+  <div style={{ order: homeSectionPosition("year-archive") }}>
   {homeSectionVisible.yearArchive ? (
   <section class="border-b border-neutral-200 bg-white py-10 dark:border-white/10 dark:bg-ink-950" aria-labelledby="local-practice-heading">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
@@ -770,9 +776,10 @@ const focusCards = [
   ) : null}
 
   <SeoIntro html={seo?.intro_html} width="wide" />
+  </div>
 
   {homeSectionVisible.studyRhythm ? (
-  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20" aria-labelledby="rhythm-heading">
+  <section style={{ order: homeSectionPosition("study-rhythm") }} class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20" aria-labelledby="rhythm-heading">
     <div class="grid gap-6 lg:grid-cols-[1fr_0.85fr] lg:items-end">
       <div>
         <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-700 dark:text-brand-300">A simple study rhythm</p>
@@ -806,7 +813,7 @@ const focusCards = [
   ) : null}
 
   {homeSectionVisible.focusCards ? (
-  <section class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/40" aria-labelledby="focus-heading">
+  <section style={{ order: homeSectionPosition("focus-cards") }} class="border-y border-neutral-200 bg-neutral-50 dark:border-white/10 dark:bg-ink-900/40" aria-labelledby="focus-heading">
     <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:py-20">
       <div>
         <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-700 dark:text-brand-300">Made for your next session</p>
@@ -850,13 +857,13 @@ const focusCards = [
   ) : null}
 
   {homeSectionVisible.faq ? (
-  <div class="mx-auto max-w-6xl px-4 pb-4 pt-10 sm:px-6">
+  <div style={{ order: homeSectionPosition("faq") }} class="mx-auto max-w-6xl px-4 pb-4 pt-10 sm:px-6">
     <FaqSection faqs={faqs} intro="Quick answers about accounts, timing, scoring and independence." />
   </div>
   ) : null}
 
   {homeSectionVisible.bottomCta ? (
-  <section class="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
+  <section style={{ order: homeSectionPosition("bottom-cta") }} class="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
     <div class="session-glow relative overflow-hidden rounded-3xl p-8 text-center text-white shadow-[var(--shadow-brand)] sm:p-12 lg:p-14">
       <span class="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full border border-white/10" aria-hidden="true"></span>
       <span class="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full border border-white/10" aria-hidden="true"></span>
@@ -885,4 +892,5 @@ const focusCards = [
     </div>
   </section>
   ) : null}
+  </div>
 </BaseLayout>

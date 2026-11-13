@@ -81,7 +81,7 @@ const sections = [
             return (
               <label class="block text-sm font-semibold">
                 {field.label}
-                {field.type === "textarea" || field.type === "links" ? (
+                {field.type === "textarea" || field.type === "links" || field.type === "order" ? (
                   <textarea
                     class="mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-normal dark:border-neutral-700 dark:bg-neutral-950"
                     name={field.key}
