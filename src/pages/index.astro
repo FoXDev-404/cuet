@@ -100,20 +100,18 @@ const localPendingCount = localPapers.reduce(
 );
 
 function paperRow(paper: LocalPaperSummary): PaperRow {
-  const fullyKeyed = paper.pendingReviewCount === 0;
   return {
     href: paper.path,
     title: paper.title,
     tags: [
-      { label: String(paper.year), tone: "violet" },
+      { label: "CUET PYQ With Solutions", tone: "violet" },
       { label: paper.subject.name, tone: "mint" },
-      {
-        label: fullyKeyed ? "Fully keyed" : `${paper.pendingReviewCount} pending`,
-        tone: fullyKeyed ? "mint" : "amber",
-      },
+      ...(paper.pendingReviewCount > 0
+        ? [{ label: `${paper.pendingReviewCount} pending`, tone: "amber" as const }]
+        : []),
     ],
     count: `${paper.recoveredQuestionCount} question${paper.recoveredQuestionCount === 1 ? "" : "s"}`,
-    meta: `${paper.durationMinutes} min · ${paper.attemptCount.toLocaleString("en-IN")} attempt${paper.attemptCount === 1 ? "" : "s"}`,
+    meta: `${paper.durationMinutes} min`,
   };
 }
 
@@ -392,7 +390,7 @@ const focusCards = [
       <div class="min-w-0">
         <p class="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/70 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-white/55">
           <span class="h-1.5 w-1.5 rounded-full bg-accent-500 shadow-[var(--shadow-brand)] dark:bg-accent-400" aria-hidden="true"></span>
-          {localPapers.length} previous-year papers · {localYears.length} exam years
+          Full-Length Mock Test · CUET PYQs With solutions
         </p>
 
         <h1 class="mt-6 max-w-2xl text-3xl font-black leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-5xl">
@@ -408,7 +406,7 @@ const focusCards = [
             href="/mock-tests"
             class="group inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-brand)] transition-colors hover:bg-brand-600"
           >
-            Browse {localPapers.length} Mock Tests
+            Take a <span class="text-amber-300">FREE</span> Mock Test
             <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"></path>
               <path d="m13 6 6 6-6 6"></path>
@@ -418,7 +416,7 @@ const focusCards = [
             href="/cuet-ug-previous-year-papers"
             class="inline-flex items-center gap-2 rounded-xl border border-neutral-300 bg-white/70 px-5 py-3 text-sm font-bold text-neutral-700 transition-colors hover:bg-white hover:text-neutral-900 dark:border-white/15 dark:bg-white/[0.03] dark:text-white/80 dark:hover:bg-white/[0.08] dark:hover:text-white"
           >
-            Browse Previous-Year Papers
+            Browse CUET PYQs
           </a>
         </div>
 
