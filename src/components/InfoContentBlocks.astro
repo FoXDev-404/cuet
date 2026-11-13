@@ -1,0 +1,75 @@
+---
+import type { InformationalPageBlock } from "../lib/site-content";
+
+interface Props {
+  blocks: InformationalPageBlock[];
+  className?: string;
+}
+
+const { blocks, className = "" } = Astro.props;
+---
+
+<div class={className}>
+  {blocks.map((block, index) => {
+    const headingSpacing = index === 0 ? "" : "mt-10";
+    if (block.type === "heading") {
+      return block.level === "h2" ? (
+        <h2 class:list={[headingSpacing, "text-2xl font-bold tracking-tight"]}>{block.text}</h2>
+      ) : (
+        <h3 class:list={[headingSpacing || "mt-7", "text-xl font-bold tracking-tight"]}>{block.text}</h3>
+      );
+    }
+
+    if (block.type === "paragraph") {
+      return (
+        <p class="mt-3 whitespace-pre-line text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+          {block.text}
+        </p>
+      );
+    }
+
+    if (block.type === "list") {
+      return (
+        <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-neutral-600 dark:text-neutral-300">
+          {block.items.map((item) => <li>{item}</li>)}
+        </ul>
+      );
+    }
+
+    if (block.type === "callout") {
+      const toneClasses =
+        block.tone === "warning"
+          ? "border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100"
+          : "border-neutral-200 bg-neutral-50 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300";
+      return (
+        <section class:list={[index === 0 ? "" : "mt-10", "rounded-2xl border p-5", toneClasses]}>
+          <h2 class="text-xl font-bold">{block.title}</h2>
+          <p class="mt-2 whitespace-pre-line text-sm leading-7">{block.text}</p>
+        </section>
+      );
+    }
+
+    if (block.type === "image") {
+      return (
+        <figure class:list={[index === 0 ? "" : "mt-8", "overflow-hidden rounded-2xl"]}>
+          <img
+            class="h-auto max-h-[36rem] w-full rounded-2xl object-contain"
+            src={`/api/media/${block.assetId}`}
+            alt={block.alt}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      );
+    }
+
+    return (
+      <a
+        class="mt-2 inline-block font-semibold text-brand-700 hover:underline dark:text-brand-300"
+        href={block.href}
+      >
+        {block.label}
+      </a>
+    );
+  })}
+</div>

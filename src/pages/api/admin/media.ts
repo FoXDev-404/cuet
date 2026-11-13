@@ -2,12 +2,51 @@ import type { APIRoute } from "astro";
 import { rateLimit } from "../../../lib/auth/rate-limit";
 import { requirePermission } from "../../../lib/auth/guard";
 import { audit } from "../../../lib/audit";
-import { run } from "../../../lib/db";
+import { all, run } from "../../../lib/db";
 import { apiError, forbiddenOrigin, isSameOrigin, json } from "../../../lib/http";
 import { inspectImage, isSafeImageSize } from "../../../lib/image";
 import { publicMediaUrl, putMedia, usingR2 } from "../../../lib/media";
 
 const MAX_BYTES = 500 * 1024;
+
+export const GET: APIRoute = async (context) => {
+  const guard = requirePermission(context, "media.write");
+  if (guard.response) return guard.response;
+
+  try {
+    const assets = await all<{
+      id: string;
+      object_key: string;
+      alt: string;
+      mime_type: string;
+      width: number | null;
+      height: number | null;
+      size_bytes: number;
+      created_at: string;
+    }>(
+      `SELECT id, object_key, alt, mime_type, width, height, size_bytes, created_at
+       FROM media_assets
+       WHERE deleted_at IS NULL
+       ORDER BY created_at DESC
+       LIMIT 100`,
+    );
+    return json({
+      assets: assets.map((asset) => ({
+        id: asset.id,
+        url: publicMediaUrl(asset.id, asset.object_key),
+        alt: asset.alt,
+        mimeType: asset.mime_type,
+        width: asset.width,
+        height: asset.height,
+        sizeBytes: asset.size_bytes,
+        createdAt: asset.created_at,
+      })),
+    });
+  } catch (error) {
+    console.error("media library load failed", error);
+    return apiError("Could not load the media library.", 500);
+  }
+};
 
 export const POST: APIRoute = async (context) => {
   if (!isSameOrigin(context.request)) return forbiddenOrigin();

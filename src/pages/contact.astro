@@ -1,15 +1,35 @@
 ---
 import { siteUrl } from "../lib/site-url";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import InfoContentBlocks from "../components/InfoContentBlocks.astro";
 import PageHero from "../components/PageHero.astro";
 import SeoIntro from "../components/SeoIntro.astro";
 import FaqSection from "../components/FaqSection.astro";
+import { can } from "../lib/auth/admin";
+import { getSettings } from "../lib/settings";
+import {
+  INFORMATIONAL_PAGE_SETTING_KEYS,
+  parseInformationalPageBlocks,
+} from "../lib/site-content";
+import { loadDraftSettings } from "../lib/admin/settings";
 import { breadcrumbJsonLd, getPageSeo, parseFaq, type FaqItem } from "../lib/seo";
 
 const PATH = "/contact";
 const DEFAULT_TITLE = "Contact CUET Free Mock Test — Corrections and Support";
 const DEFAULT_DESCRIPTION =
   "Contact the CUET Free Mock Test team for question corrections, account help, privacy requests, copyright concerns or partnership enquiries.";
+
+const isSitePreview =
+  Astro.url.searchParams.get("sitePreview") === "1" &&
+  Boolean(Astro.locals.admin && can(Astro.locals.admin.role, "settings.write"));
+if (isSitePreview) Astro.response.headers.set("Cache-Control", "private, no-store");
+const pageSettings = isSitePreview
+  ? await loadDraftSettings()
+  : await getSettings([INFORMATIONAL_PAGE_SETTING_KEYS.contact]);
+const contentBlocks = parseInformationalPageBlocks(
+  pageSettings[INFORMATIONAL_PAGE_SETTING_KEYS.contact],
+  "contact",
+);
 
 const DEFAULT_FAQ: FaqItem[] = [
   {
@@ -98,22 +118,7 @@ const structuredData = [
       </div>
     </section>
 
-    <section class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
-      <h2 class="text-xl font-bold">What to include</h2>
-      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-        <li>The page URL and, for a question, the paper name and question number.</li>
-        <li>A clear description of the problem and any evidence you can share.</li>
-        <li>For account issues, the username or email used to sign up — never send your password.</li>
-        <li>For copyright, the specific material and the basis of the request.</li>
-      </ul>
-    </section>
-
-    <section class="mt-10 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
-      <h2 class="font-bold text-amber-900 dark:text-amber-200">What we cannot help with</h2>
-      <p class="mt-2 text-sm leading-7 text-amber-900 dark:text-amber-100">
-        We cannot change an official NTA date, recover an NTA application, confirm a university cut-off or provide an official rank. Those matters belong to NTA and the admitting university. For exam dates and admit cards, use the official NTA CUET portal.
-      </p>
-    </section>
+    <InfoContentBlocks blocks={contentBlocks} className="mt-10" />
 
     <FaqSection faqs={faqs} />
 

@@ -1279,3 +1279,29 @@ and indexable), and its only `/leaderboard/*` URL has attempts.
   secret store.
 - The two admin review-queue E2E specs stay skipped until a pending-paper
   fixture exists.
+
+### Allowlisted informational page blocks (2026-11-13)
+
+The Site Builder now edits approved content blocks on About and Contact. It
+supports headings, paragraphs, lists, callouts and uploaded images with required
+alt text, with same-site links allowed only on About. A permission-checked Media
+library lets admins upload and reuse PNG, JPEG and WebP assets. Content is
+rendered as text and semantic elements; arbitrary HTML, scripts, external links
+and unapproved block types are rejected. Legal pages, contact addresses and
+fixed contact cards remain unchanged.
+
+Authenticated local verification covered save draft, private preview, publish
+and restore. The draft preview returned `private, no-store` and showed the test
+change while the public page stayed unchanged; publishing made it public, and
+restoring a prior revision staged it privately again. The test content was
+removed and the local site returned to its original published content with no
+pending draft. About and Contact returned 200, and the Contact editor exposed
+only its allowed block types. The focused settings tests pass (14/14), and the
+production build passed with no Astro errors or warnings.
+
+A non-mutating Playwright smoke suite checks the public page structure and fixed
+Contact email links, plus the About/Contact editor allowlists, available image
+block controls and draft preview URLs; both browser tests pass. Focused admin
+tests pass (25/25), and the production build passes with no errors or warnings.
+
+This work is local only; nothing was committed, pushed or deployed.

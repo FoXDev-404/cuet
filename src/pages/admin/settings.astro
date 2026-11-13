@@ -31,6 +31,11 @@ const sections = [
     description: "Show or hide optional homepage sections without changing their underlying content.",
   },
   {
+    key: "content-pages",
+    title: "Informational page blocks",
+    description: "Edit selected About and Contact content with approved blocks. Legal pages and contact addresses are not editable here.",
+  },
+  {
     key: "features",
     title: "Feature switches",
     description: "Control registration, discussions, maintenance and question sharing.",
@@ -74,6 +79,59 @@ const sections = [
         <div class="mt-4 space-y-4">
           {section.fields.map((field) => {
             const value = settings[field.key];
+            if (field.type === "blocks" && field.pageId) {
+              return (
+                <div
+                  class="rounded-xl border border-neutral-200 p-4 dark:border-neutral-800"
+                  data-page-block-editor={field.pageId}
+                >
+                  <div class="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <h3 class="text-sm font-bold">{field.label}</h3>
+                      <p class="mt-1 max-w-2xl text-xs leading-5 text-neutral-500 dark:text-neutral-400">{field.description}</p>
+                    </div>
+                    <div class="flex gap-3">
+                      <a
+                        class="text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300"
+                        href="/admin/media"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        Media library
+                      </a>
+                      <a
+                        class="text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300"
+                        href={`/${field.pageId}?sitePreview=1`}
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        Preview draft
+                      </a>
+                    </div>
+                  </div>
+                  <input
+                    type="hidden"
+                    name={field.key}
+                    value={value}
+                    data-page-block-json
+                  />
+                  <div class="mt-4 space-y-3" data-page-block-list></div>
+                  <button
+                    class="mt-3 rounded-lg border border-neutral-300 px-3 py-2 text-xs font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800"
+                    type="button"
+                    data-add-page-block
+                  >
+                    Add paragraph
+                  </button>
+                  <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+                    Text is escaped. HTML, scripts, external links and unapproved block types are rejected.
+                  </p>
+                  <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                    Image blocks use uploaded assets and require alternative text.
+                  </p>
+                </div>
+              );
+            }
             if (field.type === "boolean") {
               const enabled = value === "true";
               return (
@@ -167,6 +225,255 @@ const sections = [
       statusBox.className = `rounded-lg px-3 py-2 text-sm ${ok ? "bg-brand-50 text-brand-900 dark:bg-brand-950/40 dark:text-brand-200" : "bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-200"}`;
     }
 
+    const pageBlockTypes = {
+      about: ["heading", "paragraph", "list", "callout", "image", "internal_link"],
+      contact: ["heading", "paragraph", "list", "callout", "image"],
+    };
+
+    let mediaAssets = [];
+
+    function defaultPageBlock(type) {
+      if (type === "heading") return { type, level: "h2", text: "" };
+      if (type === "list") return { type, items: [""] };
+      if (type === "callout") return { type, tone: "neutral", title: "", text: "" };
+      if (type === "image") {
+        const asset = mediaAssets[0];
+        return { type, assetId: asset?.id || "", alt: asset?.alt || "" };
+      }
+      if (type === "internal_link") return { type, label: "", href: "/" };
+      return { type: "paragraph", text: "" };
+    }
+
+    function textControl(labelText, value, onInput, multiline = false, maxLength = 1000, rows = 3) {
+      const label = document.createElement("label");
+      label.className = "block text-xs font-semibold";
+      const caption = document.createElement("span");
+      caption.textContent = labelText;
+      const control = document.createElement(multiline ? "textarea" : "input");
+      control.className = "mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-normal dark:border-neutral-700 dark:bg-neutral-950";
+      if (multiline) control.rows = rows;
+      control.maxLength = maxLength;
+      control.value = value || "";
+      control.addEventListener("input", () => onInput(control.value));
+      label.append(caption, control);
+      return label;
+    }
+
+    function mediaAssetControl(labelText, selectedId, onChange) {
+      const label = document.createElement("label");
+      label.className = "block text-xs font-semibold";
+      const caption = document.createElement("span");
+      caption.textContent = labelText;
+      const control = document.createElement("select");
+      control.className = "mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-normal dark:border-neutral-700 dark:bg-neutral-950";
+
+      if (selectedId && !mediaAssets.some((asset) => asset.id === selectedId)) {
+        const missing = document.createElement("option");
+        missing.value = selectedId;
+        missing.textContent = "Missing asset — choose a replacement";
+        missing.selected = true;
+        control.append(missing);
+      } else {
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = mediaAssets.length ? "Choose an image" : "No uploaded images";
+        placeholder.selected = !selectedId;
+        control.append(placeholder);
+      }
+
+      mediaAssets.forEach((asset) => {
+        const option = document.createElement("option");
+        option.value = asset.id;
+        option.textContent = `${asset.alt} (${asset.width ?? "?"} × ${asset.height ?? "?"})`;
+        option.selected = asset.id === selectedId;
+        control.append(option);
+      });
+      control.addEventListener("change", () => onChange(control.value));
+      label.append(caption, control);
+      return label;
+    }
+
+    function selectControl(labelText, value, choices, onChange) {
+      const label = document.createElement("label");
+      label.className = "block text-xs font-semibold";
+      const caption = document.createElement("span");
+      caption.textContent = labelText;
+      const control = document.createElement("select");
+      control.className = "mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm font-normal dark:border-neutral-700 dark:bg-neutral-950";
+      choices.forEach((choice) => {
+        const option = document.createElement("option");
+        option.value = choice;
+        option.textContent = choice.replaceAll("_", " ");
+        option.selected = choice === value;
+        control.append(option);
+      });
+      control.addEventListener("change", () => onChange(control.value));
+      label.append(caption, control);
+      return label;
+    }
+
+    function actionButton(label, disabled, onClick) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "rounded-lg border border-neutral-300 px-2.5 py-1.5 text-xs font-semibold hover:bg-neutral-50 disabled:opacity-40 dark:border-neutral-700 dark:hover:bg-neutral-800";
+      button.textContent = label;
+      button.disabled = disabled;
+      button.addEventListener("click", onClick);
+      return button;
+    }
+
+    function renderPageBlockEditors() {
+      document.querySelectorAll("[data-page-block-editor]").forEach((editor) => {
+        const page = editor.dataset.pageBlockEditor;
+        const allowedTypes = pageBlockTypes[page];
+        const valueInput = editor.querySelector("[data-page-block-json]");
+        const blockList = editor.querySelector("[data-page-block-list]");
+        const addButton = editor.querySelector("[data-add-page-block]");
+        if (!allowedTypes || !valueInput || !blockList || !addButton) return;
+
+        let blocks;
+        try {
+          blocks = JSON.parse(valueInput.value);
+        } catch {
+          showStatus(`Could not load ${page} page blocks. Reload the page before editing.`, false);
+          addButton.disabled = true;
+          return;
+        }
+
+        const syncValue = () => {
+          valueInput.value = JSON.stringify(blocks);
+          addButton.disabled = blocks.length >= 20;
+        };
+
+        const render = () => {
+          blockList.replaceChildren();
+          blocks.forEach((block, index) => {
+            const card = document.createElement("fieldset");
+            card.className = "rounded-lg border border-neutral-200 p-3 dark:border-neutral-800";
+            const legend = document.createElement("legend");
+            legend.className = "px-1 text-xs font-bold";
+            legend.textContent = `Block ${index + 1}`;
+            card.append(legend);
+
+            const fields = document.createElement("div");
+            fields.className = "grid gap-3 sm:grid-cols-2";
+            const blockTypes = mediaAssets.length
+              ? allowedTypes
+              : allowedTypes.filter((type) => type !== "image");
+            if (block.type === "image" && !blockTypes.includes("image")) {
+              blockTypes.push("image");
+            }
+            fields.append(
+              selectControl("Block type", block.type, blockTypes, (type) => {
+                blocks[index] = defaultPageBlock(type);
+                syncValue();
+                render();
+              }),
+            );
+
+            if (block.type === "heading") {
+              fields.append(
+                selectControl("Heading level", block.level, ["h2", "h3"], (level) => {
+                  block.level = level;
+                  syncValue();
+                }),
+                textControl("Heading text", block.text, (text) => {
+                  block.text = text;
+                  syncValue();
+                }, false, 100),
+              );
+            } else if (block.type === "paragraph") {
+              fields.append(
+                textControl("Paragraph text", block.text, (text) => {
+                  block.text = text;
+                  syncValue();
+                }, true, 1500, 4),
+              );
+            } else if (block.type === "list") {
+              fields.append(
+                textControl("List items (one per line)", block.items.join("\n"), (text) => {
+                  block.items = text.split(/\r?\n/).map((item) => item.trim()).filter(Boolean);
+                  syncValue();
+                }, true, 6000, Math.max(3, Math.min(8, block.items.length + 1))),
+              );
+            } else if (block.type === "callout") {
+              fields.append(
+                selectControl("Callout style", block.tone, ["neutral", "warning"], (tone) => {
+                  block.tone = tone;
+                  syncValue();
+                }),
+                textControl("Callout title", block.title, (text) => {
+                  block.title = text;
+                  syncValue();
+                }, false, 100),
+                textControl("Callout text", block.text, (text) => {
+                  block.text = text;
+                  syncValue();
+                }, true, 1000, 3),
+              );
+            } else if (block.type === "internal_link") {
+              fields.append(
+                textControl("Link label", block.label, (text) => {
+                  block.label = text;
+                  syncValue();
+                }, false, 80),
+                textControl("Same-site path", block.href, (href) => {
+                  block.href = href;
+                  syncValue();
+                }, false, 300),
+              );
+            } else if (block.type === "image") {
+              fields.append(
+                mediaAssetControl("Uploaded image", block.assetId, (assetId) => {
+                  const asset = mediaAssets.find((item) => item.id === assetId);
+                  block.assetId = assetId;
+                  block.alt = asset?.alt || "";
+                  syncValue();
+                  render();
+                }),
+                textControl("Alternative text", block.alt, (alt) => {
+                  block.alt = alt;
+                  syncValue();
+                }, false, 300),
+              );
+            }
+
+            card.append(fields);
+            const actions = document.createElement("div");
+            actions.className = "mt-3 flex flex-wrap gap-2";
+            actions.append(
+              actionButton("Move up", index === 0, () => {
+                [blocks[index - 1], blocks[index]] = [blocks[index], blocks[index - 1]];
+                syncValue();
+                render();
+              }),
+              actionButton("Move down", index === blocks.length - 1, () => {
+                [blocks[index], blocks[index + 1]] = [blocks[index + 1], blocks[index]];
+                syncValue();
+                render();
+              }),
+              actionButton("Remove block", blocks.length === 1, () => {
+                blocks.splice(index, 1);
+                syncValue();
+                render();
+              }),
+            );
+            card.append(actions);
+            blockList.append(card);
+          });
+          syncValue();
+        };
+
+        addButton.addEventListener("click", () => {
+          if (blocks.length >= 20) return;
+          blocks.push(defaultPageBlock("paragraph"));
+          syncValue();
+          render();
+        });
+        render();
+      });
+    }
+
     function settingsPayload() {
       const payload = Object.fromEntries(new FormData(form).entries());
       form.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
@@ -174,6 +481,23 @@ const sections = [
       });
       return payload;
     }
+
+    async function loadPageBlockMediaAssets() {
+      try {
+        const response = await fetch("/api/admin/media", { cache: "no-store" });
+        const result = await response.json().catch(() => null);
+        if (!response.ok) throw new Error(result?.error || "Could not load uploaded images.");
+        if (!result || !Array.isArray(result.assets)) {
+          throw new Error("The media library returned an invalid response.");
+        }
+        mediaAssets = result.assets;
+      } catch (error) {
+        showStatus(error instanceof Error ? error.message : "Could not load uploaded images.", false);
+      }
+      renderPageBlockEditors();
+    }
+
+    loadPageBlockMediaAssets();
 
     async function saveDraft() {
       const response = await fetch("/api/admin/settings", {

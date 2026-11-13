@@ -24,6 +24,10 @@ import {
   parseHomepageSectionOrder,
   parseSiteLinks,
 } from "../../src/lib/site-presentation";
+import {
+  INFORMATIONAL_PAGE_DEFAULTS,
+  normalizeInformationalPageBlocks,
+} from "../../src/lib/site-content";
 
 beforeEach(() => {
   mockSettingsStore.clear();
@@ -126,24 +130,120 @@ describe("admin site presentation settings", () => {
     ).toThrow(/each allowed section exactly once/i);
   });
 
+  it("normalizes the default About and Contact block sets", () => {
+    const result = normalizeSettings(completeSettings());
+    const about = JSON.parse(result.page_about_blocks);
+    const contact = JSON.parse(result.page_contact_blocks);
+
+    expect(about).toEqual(INFORMATIONAL_PAGE_DEFAULTS.about);
+    expect(contact).toEqual(INFORMATIONAL_PAGE_DEFAULTS.contact);
+  });
+
+  it("accepts only page-allowlisted text blocks and safe internal links", () => {
+    const blocks = [
+      { type: "heading", level: "h2", text: "More about the site" },
+      { type: "paragraph", text: "This content is plain text." },
+      { type: "internal_link", label: "Practice", href: "/mock-tests" },
+    ];
+    const result = normalizeSettings({
+      ...completeSettings(),
+      page_about_blocks: JSON.stringify(blocks),
+    });
+
+    expect(JSON.parse(result.page_about_blocks)).toEqual(blocks);
+    expect(() =>
+      normalizeInformationalPageBlocks(
+        [{ type: "internal_link", label: "External", href: "https://example.com" }],
+        "about",
+      ),
+    ).toThrow(/same-site path/i);
+    expect(() =>
+      normalizeInformationalPageBlocks(
+        [{ type: "internal_link", label: "Not allowed here", href: "/about" }],
+        "contact",
+      ),
+    ).toThrow(/not allowed on this page/i);
+  });
+
+  it("accepts only uploaded media IDs with required plain-text alt text", () => {
+    const assetId = "74be4d60-50e7-4a32-b741-c116f6a20a1d";
+    expect(
+      normalizeInformationalPageBlocks(
+        [{ type: "image", assetId, alt: "A CUET practice paper open on a desk" }],
+        "contact",
+      ),
+    ).toEqual([{ type: "image", assetId, alt: "A CUET practice paper open on a desk" }]);
+    expect(() =>
+      normalizeInformationalPageBlocks(
+        [{ type: "image", assetId: "https://example.com/image.png", alt: "Image" }],
+        "about",
+      ),
+    ).toThrow(/uploaded media asset/i);
+    expect(() =>
+      normalizeInformationalPageBlocks(
+        [{ type: "image", assetId, alt: "<img>" }],
+        "about",
+      ),
+    ).toThrow(/plain-text/i);
+  });
+
+  it("rejects HTML, unknown block fields and oversized lists in page content", () => {
+    expect(() =>
+      normalizeInformationalPageBlocks(
+        [{ type: "paragraph", text: "<img src=x onerror=alert(1)>" }],
+        "about",
+      ),
+    ).toThrow(/plain-text/i);
+    expect(() =>
+      normalizeInformationalPageBlocks(
+        [{ type: "paragraph", text: "Safe text", html: "<b>ignored</b>" }],
+        "about",
+      ),
+    ).toThrow(/unsupported fields/i);
+    expect(() =>
+      normalizeInformationalPageBlocks(
+        [{ type: "list", items: Array.from({ length: 11 }, (_, index) => `Item ${index + 1}`) }],
+        "contact",
+      ),
+    ).toThrow(/1-10 items/i);
+  });
+
   it("keeps drafts private until publication and restores prior versions as drafts", async () => {
     const published = await loadSettings();
-    const draft = { ...published, site_name: "Draft CUET Site" };
+    const draft = {
+      ...published,
+      site_name: "Draft CUET Site",
+      page_about_blocks: JSON.stringify([
+        { type: "paragraph", text: "Draft about page content." },
+      ]),
+    };
 
     await saveDraftSettings(draft, 7);
     expect(await hasDraftSettings()).toBe(true);
     expect((await loadSettings()).site_name).toBe(published.site_name);
     expect((await loadDraftSettings()).site_name).toBe("Draft CUET Site");
+    expect(JSON.parse((await loadSettings()).page_about_blocks)).toEqual(
+      INFORMATIONAL_PAGE_DEFAULTS.about,
+    );
 
     const result = await publishDraftSettings(7);
     expect(result.published).toBe(true);
     expect((await loadSettings()).site_name).toBe("Draft CUET Site");
+    expect(JSON.parse((await loadSettings()).page_about_blocks)).toEqual([
+      { type: "paragraph", text: "Draft about page content." },
+    ]);
 
     const [revision] = await loadSettingsRevisions();
     expect(revision.settings.site_name).toBe(published.site_name);
+    expect(JSON.parse(revision.settings.page_about_blocks)).toEqual(
+      INFORMATIONAL_PAGE_DEFAULTS.about,
+    );
     const restored = await restoreSettingsRevision(revision.id, 7);
     expect(restored?.hasDraft).toBe(true);
     expect((await loadSettings()).site_name).toBe("Draft CUET Site");
     expect((await loadDraftSettings()).site_name).toBe(published.site_name);
+    expect(JSON.parse((await loadDraftSettings()).page_about_blocks)).toEqual(
+      INFORMATIONAL_PAGE_DEFAULTS.about,
+    );
   });
 });

@@ -6,19 +6,31 @@ import {
   normalizeSiteLinks,
   SITE_PRESENTATION_DEFAULTS,
 } from "../site-presentation";
+import {
+  INFORMATIONAL_PAGE_DEFAULTS,
+  INFORMATIONAL_PAGE_SETTING_KEYS,
+  normalizeInformationalPageBlocks,
+  type InformationalPageId,
+} from "../site-content";
 
-type SettingsGroup = "global" | "homepage" | "homepage-sections" | "features";
+type SettingsGroup =
+  | "global"
+  | "homepage"
+  | "homepage-sections"
+  | "content-pages"
+  | "features";
 
 export type SettingField = {
   key: string;
   label: string;
   description: string;
-  type: "text" | "textarea" | "path" | "links" | "order" | "boolean";
+  type: "text" | "textarea" | "path" | "links" | "order" | "boolean" | "blocks";
   defaultValue: string;
   group: SettingsGroup;
   maxLength?: number;
   rows?: number;
   allowEmpty?: boolean;
+  pageId?: InformationalPageId;
 };
 
 export const SETTING_FIELDS: SettingField[] = [
@@ -235,6 +247,24 @@ export const SETTING_FIELDS: SettingField[] = [
     rows: 7,
   },
   {
+    key: INFORMATIONAL_PAGE_SETTING_KEYS.about,
+    label: "About page content",
+    description: "Edit the About page using headings, paragraphs, lists, callouts, uploaded images and internal links.",
+    type: "blocks",
+    defaultValue: JSON.stringify(INFORMATIONAL_PAGE_DEFAULTS.about),
+    group: "content-pages",
+    pageId: "about",
+  },
+  {
+    key: INFORMATIONAL_PAGE_SETTING_KEYS.contact,
+    label: "Contact page guidance",
+    description: "Edit the Contact page guidance using headings, paragraphs, lists, callouts and uploaded images. Contact channels remain fixed.",
+    type: "blocks",
+    defaultValue: JSON.stringify(INFORMATIONAL_PAGE_DEFAULTS.contact),
+    group: "content-pages",
+    pageId: "contact",
+  },
+  {
     key: "registration_enabled",
     label: "Registration open",
     description: "When off, new account signups return a closed-registration error. Existing users can still log in.",
@@ -439,6 +469,11 @@ export function normalizeSettings(input: Record<string, unknown>): Record<string
       output[field.key] = raw === false || raw === "false" || raw === "0" || raw === 0 || raw === null || raw === undefined
         ? "false"
         : "true";
+      continue;
+    }
+    if (field.type === "blocks") {
+      if (!field.pageId) throw new Error(`${field.label} is missing its page allowlist.`);
+      output[field.key] = JSON.stringify(normalizeInformationalPageBlocks(raw, field.pageId));
       continue;
     }
     const value = String(raw ?? "").trim();

@@ -85,6 +85,7 @@ void/rescore attempts. Editors cannot purge. Contributors can only work on quest
 | `/admin/audit-log` | Filterable write history with before/after snapshots |
 | `/admin/moderation` | Reports, comments and discussion actions |
 | `/admin/announcements`, `/admin/blog`, `/admin/seo`, `/admin/exam-info` | Content and metadata |
+| `/admin/media` | Reusable image uploads with required alt text |
 | `/admin/leaderboard`, `/admin/settings` | Ranking controls and site settings |
 
 ---
@@ -205,6 +206,31 @@ history.
 `/admin/search` accepts a free-text query and returns questions, mocks, users and attempts.
 Search input is treated as data (parameterised queries); wildcards do not grant access to
 unpublished content or secrets.
+
+### 4.11 Editing About and Contact content
+
+Admins with `settings.write` can open `/admin/settings` and edit the approved content blocks on
+the About and Contact pages. Add, remove, reorder or update headings, paragraphs, lists and
+callouts. Uploaded images with required alt text are also available; About allows same-site
+links. Text is plain text: HTML, scripts and external links are rejected. The legal pages,
+contact addresses and fixed contact cards are not editable here.
+
+Use **Save draft** first; this does not change public pages. Open the About or Contact **Preview
+draft** link to review the private version. Only admins with `settings.write` can view draft
+previews. When the result is ready, use **Publish changes**. The public pages then show the
+published blocks.
+
+Each publish creates a revision. **Restore as draft** brings a previous revision back into the
+editor without publishing it; preview it and publish again when ready.
+
+### 4.12 Media library
+
+Admins with `media.write` can open `/admin/media` to upload and reuse images. Uploads accept
+PNG, JPEG or WebP up to 500 KB and require alternative text. The library lists the latest 100
+active assets. Use **Media library** from the About or Contact block editor, then add an image
+block and select the uploaded asset. Review its alt text in the page context before saving the
+draft and publishing. Images are referenced by their internal media ID; arbitrary image URLs
+cannot be added through these blocks.
 
 ---
 
