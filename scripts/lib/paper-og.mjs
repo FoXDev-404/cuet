@@ -239,11 +239,6 @@ export function paperOgCard(paper) {
           "Attempt with instant scoring and a leaderboard",
         ),
       ),
-      h(
-        "div",
-        { style: { fontSize: "15px", color: MUTED } },
-        "Not affiliated with NTA",
-      ),
     ),
   );
 }

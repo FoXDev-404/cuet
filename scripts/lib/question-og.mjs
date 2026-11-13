@@ -233,11 +233,6 @@ export function questionOgCard({ publicId, text, subjectName, year }) {
           "Free CUET mock tests",
         ),
       ),
-      h(
-        "div",
-        { style: { fontSize: "15px", color: MUTED } },
-        "Not affiliated with NTA",
-      ),
     ),
   );
 }
