@@ -86,7 +86,8 @@ const localYearNumbers = localYears.map((summary) => summary.year);
 const availableYearRange = localYears.length
   ? `${Math.min(...localYearNumbers)}–${Math.max(...localYearNumbers)}`
   : "previous exam years";
-const DEFAULT_DESCRIPTION = `Prepare for CUET UG 2027 with free online practice using previous-year papers from ${availableYearRange}. Start as a guest; sign in later to save your attempt.`;
+const DEFAULT_DESCRIPTION =
+  "Prepare for CUET UG with FREE Online CUET Mock Tests, NTA-Pattern Practice Papers and CUET Previous Year Questions (PYQs). Boost Your Exam Preparation.";
 const popularPapers = getPopularLocalPapers(12);
 const subjectRows = getLocalSubjectSummaries().slice(0, 6);
 const localQuestionCount = localPapers.reduce(
