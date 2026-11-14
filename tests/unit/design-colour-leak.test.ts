@@ -21,6 +21,7 @@ function walk(directory: string): string[] {
 /** Literal colours that are permitted because the platform requires a value. */
 function allowed(relativePath: string, line: string): boolean {
   if (line.includes('name="theme-color"')) return true;
+  if (relativePath === "lib/blog-artwork.ts") return true; // Standalone Open Graph SVG must embed its palette.
   if (relativePath === "pages/login.astro" && line.includes("<svg")) return true;
   return false;
 }

@@ -1,15 +1,9 @@
 import { env } from "cloudflare:workers";
-import { all } from "./db";
+import { all, first } from "./db";
 import type { AttemptQuestion } from "./attempts";
 import { parseOptions } from "./content";
 
-const MOCK_VERSION_CACHE_PREFIX = "cache:mock_version:v2:";
-// One hour, not "immutable forever": a D1 restore (backup rollback, re-import)
-// resets the version-id sequence while KV keeps old entries, so a NEW version
-// can reuse an OLD id. The mockId guard catches a different mock, but a
-// restored database can reuse BOTH the version id and the mock id with
-// different content — only a short TTL bounds that window. Re-reading one
-// version's questions once an hour is negligible against the daily budget.
+const MOCK_VERSION_CACHE_PREFIX = "cache:mock_version:v3:";
 const CACHE_TTL_SECONDS = 3_600;
 const MAX_VALUE_BYTES = 900_000;
 
@@ -21,8 +15,9 @@ function kvNamespace(): KVNamespace | null {
   }
 }
 
-export function mockVersionCacheKey(versionId: number): string {
-  return `${MOCK_VERSION_CACHE_PREFIX}${versionId}`;
+export function mockVersionCacheKey(versionId: number, identity?: string): string {
+  const suffix = identity ? `:${encodeURIComponent(identity)}` : "";
+  return `${MOCK_VERSION_CACHE_PREFIX}${versionId}${suffix}`;
 }
 
 type CachedMockVersion = {
@@ -35,20 +30,36 @@ type CachedMockVersion = {
  * Loads mock questions for a version, served from Workers KV when cached.
  * Contains only student-facing test fields (no correct_option or explanation).
  *
- * `expectedMockId` guards against version-id reuse: version rows are immutable
- * within a database lifetime, but a D1 restore (backup rollback, re-import)
- * resets the id sequence while KV keeps the old 7-day entries. When the caller
- * knows the owning mock, a cached payload for a different mock is treated as
- * stale and re-read from D1.
+ * The cache identity includes the owning mock's unique slug and creation time
+ * as well as the version creation time. D1 restore/re-import can reuse both
+ * numeric IDs while KV still contains rows from the previous database state.
  */
 export async function getMockVersionQuestions(
   versionId: number,
   expectedMockId?: number,
 ): Promise<AttemptQuestion[]> {
   const kv = kvNamespace();
-  const key = mockVersionCacheKey(versionId);
+  const identityRow = kv && expectedMockId != null
+    ? await first<{
+        slug: string;
+        mock_created_at: string;
+        version_created_at: string;
+      }>(
+        `SELECT m.slug, m.created_at AS mock_created_at,
+                v.created_at AS version_created_at
+         FROM mock_test_versions v
+         JOIN mock_tests m ON m.id = v.mock_id
+         WHERE v.id = ? AND m.id = ?`,
+        versionId,
+        expectedMockId,
+      )
+    : null;
+  const identity = identityRow
+    ? `${identityRow.slug}:${identityRow.mock_created_at}:${identityRow.version_created_at}`
+    : null;
+  const key = identity ? mockVersionCacheKey(versionId, identity) : null;
 
-  if (kv) {
+  if (kv && key) {
     try {
       const cached = await kv.get(key);
       if (cached) {
@@ -81,7 +92,7 @@ export async function getMockVersionQuestions(
     versionId,
   );
 
-  if (kv && questions.length > 0) {
+  if (kv && key && questions.length > 0) {
     try {
       const payload: CachedMockVersion = { mockId: expectedMockId ?? null, questions };
       const serialized = JSON.stringify(payload);
@@ -121,6 +132,13 @@ export async function invalidateMockVersionCache(versionId: number): Promise<voi
   const kv = kvNamespace();
   if (kv) {
     try {
+      const prefix = `${MOCK_VERSION_CACHE_PREFIX}${versionId}:`;
+      let cursor: string | undefined;
+      do {
+        const page = await kv.list({ prefix, cursor });
+        await Promise.all(page.keys.map((entry) => kv.delete(entry.name)));
+        cursor = page.list_complete ? undefined : page.cursor;
+      } while (cursor);
       await kv.delete(mockVersionCacheKey(versionId));
     } catch {
       // Non-fatal

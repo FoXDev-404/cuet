@@ -1569,6 +1569,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
       }
 
       function renderQuestion() {
+        area.dataset.ready = "false";
         const question = questions[state.index];
         if (!question) {
           area.innerHTML = "<p class='p-6 text-sm text-[var(--muted)]'>No questions in this attempt.</p>";
@@ -1658,6 +1659,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         updateSectionTabs();
         preloadNextImage();
         scheduleSharePrerender();
+        area.dataset.ready = "true";
       }
 
       /**

@@ -34,7 +34,9 @@ export default defineConfig({
         // Never let local E2E write to production Turso through .dev.vars.
         env: { USE_LOCAL_D1: "1" },
         url: baseURL,
-        reuseExistingServer: true,
+        // Do not inherit an already running app that may be connected to Turso
+        // or a stale build. Local E2E always needs the local D1 flag above.
+        reuseExistingServer: false,
         timeout: 120_000,
       },
 });

@@ -1,10 +1,8 @@
-import { execFileSync } from "node:child_process";
-import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import { seedUser, sessionCookie, sessionTokenFor } from "./auth-helpers";
+import { executeLocalD1 } from "../../scripts/lib/local-d1.mjs";
 
 const MOCK_LIST_PATHS = ["/mock-tests"];
-const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
 
 /** Keeps repeated local runs out of the shared rate-limit bucket. */
 function testClientIp(): string {
@@ -23,19 +21,7 @@ test.beforeEach(async ({ page }) => {
 function expireAttemptInLocalD1(attemptId: number): void {
   if (!Number.isInteger(attemptId) || attemptId <= 0) throw new Error("Invalid attempt id.");
   const deadline = new Date(Date.now() - 2 * 60 * 1000).toISOString();
-  execFileSync(
-    process.execPath,
-    [
-      WRANGLER_BIN,
-      "d1",
-      "execute",
-      "cuet-blueprint-db",
-      "--local",
-      "--command",
-      `UPDATE attempts SET deadline_at = '${deadline}' WHERE id = ${attemptId}`,
-    ],
-    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
-  );
+  executeLocalD1(`UPDATE attempts SET deadline_at = '${deadline}' WHERE id = ${attemptId}`);
 }
 
 /**
@@ -77,7 +63,9 @@ async function beginAttempt(page: Page): Promise<void> {
   await page.getByRole("button", { name: /Begin test/ }).click();
   await expect(page).toHaveURL(/\/attempt\/\d+$/);
   await expect(page.locator("#attempt-data")).toBeAttached();
-  await expect(page.locator("#question-area [data-option]").first()).toBeVisible();
+  const questionArea = page.locator("#question-area");
+  await expect(questionArea).toHaveAttribute("data-ready", "true");
+  await expect(questionArea.locator("[data-option]").first()).toBeVisible();
 }
 
 async function answerFirstQuestion(page: Page): Promise<void> {
@@ -169,6 +157,7 @@ test("a refresh resumes the same attempt with saved answers", async ({ page }) =
   await page.reload({ waitUntil: "load" });
   await expect(page).toHaveURL(/\/attempt\/\d+$/);
   await expect(page.locator("#attempt-data")).toBeAttached();
+  await expect(page.locator("#question-area")).toHaveAttribute("data-ready", "true");
   await expect(page.locator("#question-area [data-option].selected").first()).toBeVisible();
   await expect(page.locator("#save-state")).toHaveText(/Saved/);
 });

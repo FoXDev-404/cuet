@@ -96,6 +96,7 @@ function initSheet(root: HTMLElement): void {
   let failedKey = "";
   let queued = false;
   let generating = false;
+  let statusRevision = 0;
 
   function currentKey(): string {
     return `${language}:${includeAnswer ? "answer" : "plain"}`;
@@ -145,6 +146,7 @@ function initSheet(root: HTMLElement): void {
 
   async function generate(): Promise<void> {
     const key = currentKey();
+    const generationStatusRevision = statusRevision;
     if (blob && cacheKey === key) {
       showPreview();
       setState("ready");
@@ -175,7 +177,9 @@ function initSheet(root: HTMLElement): void {
       failedKey = "";
       showPreview();
       setState("ready");
-      setStatus("Image ready. Share it or download the PNG.");
+      if (statusRevision === generationStatusRevision) {
+        setStatus("Image ready. Share it or download the PNG.");
+      }
     } catch {
       blob = null;
       cacheKey = "";
@@ -187,7 +191,9 @@ function initSheet(root: HTMLElement): void {
       showError(
         "Could not create the image. You can still share the link with WhatsApp, Telegram or Copy link.",
       );
-      setStatus("Image unavailable.");
+      if (statusRevision === generationStatusRevision) {
+        setStatus("Image unavailable.");
+      }
     } finally {
       generating = false;
       if (queued || (cacheKey !== currentKey() && failedKey !== currentKey())) {
@@ -224,6 +230,7 @@ function initSheet(root: HTMLElement): void {
 
   async function copyLink(): Promise<void> {
     if (!shareUrl) return;
+    statusRevision += 1;
     try {
       await navigator.clipboard.writeText(shareUrl);
     } catch {
@@ -241,6 +248,7 @@ function initSheet(root: HTMLElement): void {
   }
 
   async function downloadImage(): Promise<void> {
+    statusRevision += 1;
     if (!blob || cacheKey !== currentKey()) {
       await generate();
     }
@@ -256,6 +264,7 @@ function initSheet(root: HTMLElement): void {
   }
 
   async function nativeShare(): Promise<void> {
+    statusRevision += 1;
     if (typeof navigator.share !== "function") {
       setStatus("Native sharing is not available in this browser.");
       return;

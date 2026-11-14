@@ -1,14 +1,14 @@
-import { execFileSync } from "node:child_process";
-import path from "node:path";
 import {
   expect,
   test,
   type APIRequestContext,
 } from "@playwright/test";
 import { SESSION_COOKIE, seedUser, sessionTokenFor } from "./auth-helpers";
-
-const DB_NAME = "cuet-blueprint-db";
-const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
+import {
+  executeLocalD1,
+  executeLocalD1WithRetry,
+  queryLocalD1,
+} from "../../scripts/lib/local-d1.mjs";
 
 /** The subset of the Playwright fixture this spec needs. */
 type ApiRequestFactory = {
@@ -45,23 +45,11 @@ function sqlString(value: string): string {
 
 /** Runs SQL against the same local D1 file the dev server uses. */
 function localD1(sql: string): void {
-  execFileSync(
-    process.execPath,
-    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--command", sql],
-    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
-  );
+  executeLocalD1(sql);
 }
 
 function localD1Rows<T>(sql: string): T[] {
-  const output = execFileSync(
-    process.execPath,
-    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--json", "--command", sql],
-    { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 120_000 },
-  );
-  const start = output.indexOf("[");
-  if (start < 0) throw new Error(`wrangler returned no JSON: ${output.slice(0, 200)}`);
-  const parsed = JSON.parse(output.slice(start)) as Array<{ results?: T[] }>;
-  return parsed[0]?.results ?? [];
+  return queryLocalD1<T>(sql);
 }
 
 async function firstPublishedMock(request: APIRequestContext): Promise<MockSummary | null> {
@@ -145,31 +133,27 @@ function setStudentCommentState(
 function cleanupStudent(student: Student): void {
   const email = sqlString(student.email);
   const user = `(SELECT id FROM users WHERE email = ${email})`;
-  localD1(
-    `DELETE FROM discussion_reports WHERE user_id IN ${user} OR discussion_id IN
-       (SELECT id FROM discussions WHERE user_id IN ${user})`,
-  );
-  localD1(
-    `DELETE FROM discussion_votes WHERE user_id IN ${user} OR discussion_id IN
-       (SELECT id FROM discussions WHERE user_id IN ${user})`,
-  );
   // Delete replies before their parents so the self-reference stays valid.
-  localD1(
-    `DELETE FROM discussions WHERE parent_id IN
-       (SELECT id FROM discussions WHERE user_id IN ${user})`,
-  );
-  localD1(`DELETE FROM discussions WHERE user_id IN ${user}`);
-  localD1(
-    `DELETE FROM attempt_answers WHERE attempt_id IN
-       (SELECT id FROM attempts WHERE user_id IN ${user})`,
-  );
-  localD1(`DELETE FROM attempts WHERE user_id IN ${user}`);
-  localD1(`DELETE FROM sessions WHERE user_id IN ${user}`);
-  localD1(`DELETE FROM bookmarks WHERE user_id IN ${user}`);
-  localD1(`DELETE FROM user_stats WHERE user_id IN ${user}`);
-  localD1(`DELETE FROM user_badges WHERE user_id IN ${user}`);
-  localD1(`DELETE FROM question_reports WHERE user_id IN ${user}`);
-  localD1(`DELETE FROM users WHERE email = ${email}`);
+  // One idempotent batch avoids repeated Wrangler startup and can safely retry
+  // a transient local D1 commit-token error.
+  executeLocalD1WithRetry(`
+    DELETE FROM discussion_reports WHERE user_id IN ${user} OR discussion_id IN
+      (SELECT id FROM discussions WHERE user_id IN ${user});
+    DELETE FROM discussion_votes WHERE user_id IN ${user} OR discussion_id IN
+      (SELECT id FROM discussions WHERE user_id IN ${user});
+    DELETE FROM discussions WHERE parent_id IN
+      (SELECT id FROM discussions WHERE user_id IN ${user});
+    DELETE FROM discussions WHERE user_id IN ${user};
+    DELETE FROM attempt_answers WHERE attempt_id IN
+      (SELECT id FROM attempts WHERE user_id IN ${user});
+    DELETE FROM attempts WHERE user_id IN ${user};
+    DELETE FROM sessions WHERE user_id IN ${user};
+    DELETE FROM bookmarks WHERE user_id IN ${user};
+    DELETE FROM user_stats WHERE user_id IN ${user};
+    DELETE FROM user_badges WHERE user_id IN ${user};
+    DELETE FROM question_reports WHERE user_id IN ${user};
+    DELETE FROM users WHERE email = ${email};
+  `);
 }
 
 test.beforeEach(async ({ page }) => {

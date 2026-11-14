@@ -1,7 +1,7 @@
-import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { expect, test, type Page } from "@playwright/test";
+import { executeLocalD1 as localD1, queryLocalD1 } from "../../scripts/lib/local-d1.mjs";
 
 type LocalIndexPaper = {
   slug: string;
@@ -20,8 +20,6 @@ const LOCAL_INDEX = JSON.parse(
   readFileSync(fileURLToPath(new URL("../../src/data/local-papers/index.json", import.meta.url)), "utf8"),
 ) as LocalIndex;
 
-const DB_NAME = "cuet-blueprint-db";
-const WRANGLER_BIN = fileURLToPath(new URL("../../node_modules/wrangler/bin/wrangler.js", import.meta.url));
 let previousAttemptSetting: string | null = null;
 let attemptSettingCaptured = false;
 
@@ -29,25 +27,8 @@ function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''")}'`;
 }
 
-/** Runs SQL against the same local D1 file the dev server reads. */
-function localD1(sql: string): void {
-  execFileSync(
-    process.execPath,
-    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--command", sql],
-    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
-  );
-}
-
 function localD1Rows<T>(sql: string): T[] {
-  const output = execFileSync(
-    process.execPath,
-    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--json", "--command", sql],
-    { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 120_000 },
-  );
-  const start = output.indexOf("[");
-  if (start < 0) throw new Error(`wrangler returned no JSON: ${output.slice(0, 200)}`);
-  const parsed = JSON.parse(output.slice(start)) as Array<{ results?: T[] }>;
-  return parsed[0]?.results ?? [];
+  return queryLocalD1<T>(sql);
 }
 
 /** Enables the live-attempt share button and remembers the original setting. */
@@ -99,7 +80,9 @@ async function beginAttempt(page: Page): Promise<void> {
   await page.getByRole("button", { name: /Begin test/ }).click();
   await expect(page).toHaveURL(/\/attempt\/\d+$/);
   await expect(page.locator("#attempt-data")).toBeAttached();
-  await expect(page.locator("#question-area [data-option]").first()).toBeVisible();
+  const questionArea = page.locator("#question-area");
+  await expect(questionArea).toHaveAttribute("data-ready", "true");
+  await expect(questionArea.locator("[data-option]").first()).toBeVisible();
 }
 
 async function submitAttempt(page: Page): Promise<void> {
@@ -198,6 +181,7 @@ test("a practice paper starts, autosaves, submits and shows a saved ranked resul
 
   await page.reload();
   await expect(page).toHaveURL(/\/attempt\/\d+$/);
+  await expect(page.locator("#question-area")).toHaveAttribute("data-ready", "true");
   await expect(page.locator("#question-area [data-option].selected").first()).toBeVisible();
   await expect(page.locator("#save-state")).toHaveText(/Saved/);
 
@@ -216,6 +200,7 @@ test("a practice paper starts, autosaves, submits and shows a saved ranked resul
 test("practice attempt sharing follows the admin setting and never links /q/", async ({
   page,
 }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test toggles a site setting in the local D1 database.",
@@ -285,7 +270,7 @@ test("the homepage shows refined most-popular papers in the hero and below", asy
   await page.goto("/");
 
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Prepare for CUET UG 2027 with FREE online practice",
+    "Boost Your CUET UG 2027 Preparation with FREE Online Mock Tests & PYQs",
   );
   await expect(page.getByText(/No account needed to start/)).toBeVisible();
 

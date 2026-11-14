@@ -8,42 +8,17 @@
  * hex of the cookie token, matching src/lib/auth/session.ts.
  */
 import { createHash, randomBytes } from "node:crypto";
-import { execFileSync } from "node:child_process";
-import path from "node:path";
-
-const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
-const DB_NAME = "cuet-blueprint-db";
+import { executeLocalD1WithRetry, queryLocalD1 } from "../../scripts/lib/local-d1.mjs";
 const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:4321";
 
 export const SESSION_COOKIE = "cuet_session";
-
-function runWranglerSql(sql: string): string {
-  try {
-    return execFileSync(
-      process.execPath,
-      [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--json", "--command", sql],
-      { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 120_000 },
-    );
-  } catch {
-    // Wrangler's CLI occasionally crashes on Windows (libuv assertion); retry once.
-    return execFileSync(
-      process.execPath,
-      [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--json", "--command", sql],
-      { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 120_000 },
-    );
-  }
-}
 
 function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''")}'`;
 }
 
 function d1Rows<T>(sql: string): T[] {
-  const output = runWranglerSql(sql);
-  const start = output.indexOf("[");
-  if (start < 0) throw new Error(`wrangler returned no JSON: ${output.slice(0, 200)}`);
-  const parsed = JSON.parse(output.slice(start)) as Array<{ results?: T[] }>;
-  return parsed[0]?.results ?? [];
+  return queryLocalD1<T>(sql);
 }
 
 export type SeededUser = {
@@ -67,12 +42,12 @@ export function seedUser(options: {
   const email = options.email.toLowerCase();
   const username = options.username ?? `e2e_${email.split("@")[0].replace(/[^a-z0-9_]/gi, "_").slice(0, 24)}`;
 
-  runWranglerSql(
+  executeLocalD1WithRetry(
     `INSERT OR IGNORE INTO users (username, email, password_hash, created_at)
      VALUES (${sqlString(username)}, ${sqlString(email)}, NULL, strftime('%Y-%m-%dT%H:%M:%fZ', 'now'));`,
   );
   if (options.admin) {
-    runWranglerSql(
+    executeLocalD1WithRetry(
       `INSERT OR IGNORE INTO admins (email, role, is_active, created_at)
        VALUES (${sqlString(email)}, ${sqlString(options.role ?? "super")}, 1, strftime('%Y-%m-%dT%H:%M:%fZ', 'now'));`,
     );
@@ -84,8 +59,8 @@ export function seedUser(options: {
 
   const token = randomBytes(32).toString("hex");
   const sessionId = createHash("sha256").update(token).digest("hex");
-  runWranglerSql(
-    `INSERT INTO sessions (id, user_id, expires_at) VALUES (${sqlString(sessionId)}, ${userId}, datetime('now', '+30 days'));`,
+  executeLocalD1WithRetry(
+    `INSERT OR IGNORE INTO sessions (id, user_id, expires_at) VALUES (${sqlString(sessionId)}, ${userId}, datetime('now', '+30 days'));`,
   );
 
   return { email, username, token };
@@ -109,8 +84,8 @@ export function sessionTokenFor(email: string): string {
   if (!userId) throw new Error(`No user row for ${email} — call seedUser first.`);
   const token = randomBytes(32).toString("hex");
   const sessionId = createHash("sha256").update(token).digest("hex");
-  runWranglerSql(
-    `INSERT INTO sessions (id, user_id, expires_at) VALUES (${sqlString(sessionId)}, ${userId}, datetime('now', '+30 days'));`,
+  executeLocalD1WithRetry(
+    `INSERT OR IGNORE INTO sessions (id, user_id, expires_at) VALUES (${sqlString(sessionId)}, ${userId}, datetime('now', '+30 days'));`,
   );
   return token;
 }

@@ -67,7 +67,7 @@ describe("Lockfile Version Consistency", () => {
 
 describe("Deterministic Scorecard Generator", () => {
   it("generates a valid scorecard with all 16 required areas", () => {
-    const data = generateScorecard();
+    const data = generateScorecard({ write: false });
     expect(data).toBeDefined();
     expect(data.product).toBe("CUET Free Mock Test");
     expect(data.overallVerdict).toBe("PARTIAL");
@@ -93,7 +93,7 @@ describe("Deterministic Scorecard Generator", () => {
   });
 
   it("caps Content Library at PARTIAL while unreviewed explanations or unconfirmed rights exist", () => {
-    const data = generateScorecard();
+    const data = generateScorecard({ write: false });
     const contentArea = data.scorecard.find(
       (s: { area: string }) => s.area === "Content library"
     );
@@ -102,7 +102,7 @@ describe("Deterministic Scorecard Generator", () => {
   });
 
   it("caps External Integrations at PARTIAL when production credentials are unset", () => {
-    const data = generateScorecard();
+    const data = generateScorecard({ write: false });
     const extArea = data.scorecard.find(
       (s: { area: string }) => s.area === "External integrations"
     );
@@ -111,7 +111,7 @@ describe("Deterministic Scorecard Generator", () => {
   });
 
   it("caps Deployment and Ops at PARTIAL when production deployment is pending", () => {
-    const data = generateScorecard();
+    const data = generateScorecard({ write: false });
     const opsArea = data.scorecard.find(
       (s: { area: string }) => s.area === "Deployment and ops"
     );
@@ -119,16 +119,25 @@ describe("Deterministic Scorecard Generator", () => {
   });
 
   it("sets Tests and CI to DONE only when unit, E2E, and a11y tests have zero failures", () => {
-    const data = generateScorecard();
+    const data = generateScorecard({
+      reports: {
+        vitestResults: { numTotalTests: 507, numFailedTests: 0, success: true },
+        playwrightResults: { stats: { expected: 60, unexpected: 0 } },
+        a11yResults: { totalScans: 272, failedScans: 0, failures: [] },
+      },
+      write: false,
+    });
     const testsArea = data.scorecard.find(
       (s: { area: string }) => s.area === "Tests and CI"
     );
     expect(testsArea?.status).toBe("DONE");
     expect(testsArea?.confidence).toBe("HIGH");
+    expect(data.metrics.tests.a11yScans).toBe(272);
+    expect(testsArea?.reason).toContain("272 axe-core scans passed");
   });
 
   it("contains Top 10 Problems and Top 5 Strengths with exact issue IDs", () => {
-    const data = generateScorecard();
+    const data = generateScorecard({ write: false });
     expect(data.top10Problems).toHaveLength(10);
     expect(data.top5Strengths).toHaveLength(5);
 

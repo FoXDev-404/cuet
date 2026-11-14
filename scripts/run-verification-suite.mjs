@@ -1,5 +1,5 @@
 import { spawn, execSync } from "node:child_process";
-import { copyFileSync, existsSync, unlinkSync, readdirSync, statSync } from "node:fs";
+import { copyFileSync, existsSync, unlinkSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { resolve, join } from "node:path";
 import http from "node:http";
 import { generateAppendixC } from "./generate-appendix-c.mjs";
@@ -66,7 +66,7 @@ function restoreDatabase() {
 function purgeMockVersionKVCache() {
   try {
     const list = execSync(
-      'npx wrangler kv key list --binding MEDIA_KV --local --prefix "cache:mock_version:v2:"',
+      'npx wrangler kv key list --binding MEDIA_KV --local --prefix "cache:mock_version:"',
       { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 120_000 },
     );
     const keys = JSON.parse(list.slice(list.indexOf("[")))

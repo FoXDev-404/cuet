@@ -5,6 +5,11 @@ import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import { generatePublicId, questionSharePath } from "../../src/lib/share/public-id";
 import { seedUser, sessionCookie, sessionTokenFor } from "./auth-helpers";
+import {
+  executeLocalD1,
+  executeLocalD1WithRetry,
+  queryLocalD1,
+} from "../../scripts/lib/local-d1.mjs";
 
 const require = createRequire(import.meta.url);
 const AXE_PATH = require.resolve("axe-core/axe.min.js");
@@ -17,8 +22,6 @@ const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22a", "wcag2
  * local D1 database, so they are skipped against a deployed base URL.
  */
 
-const DB_NAME = "cuet-blueprint-db";
-const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
 const MOCK_ID = 1;
 
 const questionIds: number[] = [];
@@ -74,38 +77,12 @@ function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''")}'`;
 }
 
-/** Wrangler's CLI occasionally dies with a Windows libuv assertion mid-run;
- * a single retry turns that flake into a pass without hiding real failures. */
-function runWranglerSql(args: string[]): string {
-  try {
-    return execFileSync(process.execPath, [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", ...args], {
-      cwd: process.cwd(),
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-      timeout: 120_000,
-    });
-  } catch {
-    // The known failure mode is a wrangler crash at exit, not a real D1 error.
-    return execFileSync(process.execPath, [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", ...args], {
-      cwd: process.cwd(),
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-      timeout: 120_000,
-    });
-  }
-}
-
-/** Runs SQL against the same local D1 file the dev server reads. */
 function localD1(sql: string): void {
-  runWranglerSql(["--command", sql]);
+  executeLocalD1(sql);
 }
 
 function localD1Rows<T>(sql: string): T[] {
-  const output = runWranglerSql(["--json", "--command", sql]);
-  const start = output.indexOf("[");
-  if (start < 0) throw new Error(`wrangler returned no JSON: ${output.slice(0, 200)}`);
-  const parsed = JSON.parse(output.slice(start)) as Array<{ results?: T[] }>;
-  return parsed[0]?.results ?? [];
+  return queryLocalD1<T>(sql);
 }
 
 function createFixture(input: FixtureInput): Fixture {
@@ -369,7 +346,7 @@ test.afterEach(() => {
   // Migration 0004 forbids hard-deleting published questions and published
   // mock versions. Soft-delete the fixtures and remove their public mappings,
   // exactly as the admin trash flow does.
-  localD1(`
+  executeLocalD1WithRetry(`
     DELETE FROM share_events WHERE public_id IN (${mappings}) OR mock_id IN (${mocks});
     DELETE FROM question_reports WHERE question_id IN (${ids});
     DELETE FROM attempt_answers WHERE question_id IN (${ids});
@@ -760,6 +737,7 @@ function pngDimensions(filePath: string): { width: number; height: number } {
 test("the share sheet generates a PNG and withholds the answer until toggled", async ({
   page,
 }) => {
+  test.setTimeout(90_000);
   const stamp = uniqueStamp();
   const explanation = `E2E-SHARE-CARD-ANSWER-${stamp}`;
   const fixture = createFixture({
@@ -775,7 +753,11 @@ test("the share sheet generates a PNG and withholds the answer until toggled", a
 
   const dialog = page.locator("[data-share-dialog]");
   await expect(dialog).toBeVisible();
+  const shareSheet = page.locator("[data-share-sheet]");
   const preview = page.locator("[data-share-preview]");
+  await expect(shareSheet).toHaveAttribute("data-share-state", "ready", {
+    timeout: 60_000,
+  });
   await expect(preview).toBeVisible({ timeout: 60_000 });
 
   const dimensions = await preview.evaluate((image: HTMLImageElement) => ({
@@ -809,7 +791,7 @@ test("the share sheet generates a PNG and withholds the answer until toggled", a
   });
   expect(inkPixels).toBeGreaterThan(0);
 
-  const card = page.locator("[data-share-card]");
+  const card = shareSheet.locator("[data-share-card]");
   await expect(card).toContainText(`cuetfreemocktest.com/q/${fixture.publicId}`);
   await expect(card).toContainText("Free CUET mock tests");
   await expect(card).toContainText("Gamma is the answer");
@@ -818,6 +800,9 @@ test("the share sheet generates a PNG and withholds the answer until toggled", a
   expect(await card.innerText()).not.toContain("SharePass123!");
 
   await page.locator("[data-share-answer-toggle]").check();
+  await expect(shareSheet).toHaveAttribute("data-share-state", "ready", {
+    timeout: 60_000,
+  });
   await expect(card.locator("[data-share-answer]")).toBeVisible();
   await expect(card).toContainText(explanation);
   await expect(card.locator("[data-share-option='2']")).toHaveClass(/is-correct/);
@@ -1106,6 +1091,7 @@ test("solutions pages share the canonical question link after submission", async
   page,
   context,
 }) => {
+  test.slow();
   const stamp = uniqueStamp();
   const fixture = createFixture({
     text: `E2E solutions share ${stamp}: which option is Alpha?`,
@@ -1234,9 +1220,7 @@ test("live attempts share only the mock link and keep the timer and autosave run
   setAttemptShareSetting("false");
   await page.reload();
   await expect(page.locator("[data-mock-share-trigger]")).toHaveCount(0);
-  // The option buttons exist in the server HTML before the island hydrates, so
-  // wait for the timer to leave its SSR placeholder before clicking an answer.
-  await expect(timer).not.toHaveText("--:--:--");
+  await expect(page.locator("#question-area")).toHaveAttribute("data-ready", "true");
 
   const saveResponse = page.waitForResponse((res) => {
     if (

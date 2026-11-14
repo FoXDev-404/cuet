@@ -82,6 +82,7 @@ const AUTHENTICATED_PATH_TEMPLATES = [
   "/dashboard/discussions",
   "/dashboard/settings",
   "/admin",
+  "/admin/content",
   "/admin/questions",
   "/admin/questions/new",
   "/admin/questions/import",

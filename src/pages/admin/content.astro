@@ -1,0 +1,186 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { can, type Permission } from "../../lib/auth/admin";
+
+const admin = Astro.locals.admin!;
+
+type ContentItem = {
+  href: string;
+  label: string;
+  description: string;
+  permission: Permission;
+  action?: { href: string; label: string };
+};
+
+const groups: { title: string; description: string; items: ContentItem[] }[] = [
+  {
+    title: "Assessment library",
+    description: "Build and maintain the question and practice content students use.",
+    items: [
+      { href: "/admin/questions", label: "Question bank", description: "Create, review, import and publish questions.", permission: "questions.write", action: { href: "/admin/questions/new", label: "New question" } },
+      { href: "/admin/passages", label: "Passages", description: "Manage reading passages linked to questions.", permission: "taxonomy.write" },
+      { href: "/admin/mocks", label: "Mock tests", description: "Assemble sections, validate and publish mock tests.", permission: "mocks.write", action: { href: "/admin/mocks/new", label: "New mock" } },
+      { href: "/admin/pyq", label: "Previous-year papers", description: "Maintain paper metadata, publication and rights status.", permission: "mocks.write" },
+    ],
+  },
+  {
+    title: "Editorial workflow",
+    description: "Review accuracy and manage content before and after publication.",
+    items: [
+      { href: "/admin/review", label: "Review queue", description: "Resolve pending answer keys, explanations and paper checks.", permission: "questions.write" },
+      { href: "/admin/blog", label: "Guides & blog", description: "Write, preview and publish editorial guides.", permission: "seo.write", action: { href: "/admin/blog", label: "Write a guide" } },
+      { href: "/admin/announcements", label: "Announcements", description: "Publish notices shown to students.", permission: "announcements.write" },
+    ],
+  },
+  {
+    title: "Website content",
+    description: "Manage the supporting pages, assets and search presentation.",
+    items: [
+      { href: "/admin/media", label: "Media library", description: "Upload and reuse accessible images with alt text.", permission: "media.write", action: { href: "/admin/media", label: "Add media" } },
+      { href: "/admin/seo", label: "SEO & pages", description: "Edit page titles, descriptions and search metadata.", permission: "seo.write" },
+      { href: "/admin/exam-info", label: "Exam information", description: "Maintain sourced and verified CUET facts.", permission: "exam_info.write" },
+      { href: "/admin/settings", label: "Site builder & settings", description: "Edit approved About and Contact content and site settings.", permission: "settings.write" },
+      { href: "/admin/data", label: "Advanced data manager", description: "Manage allow-listed content tables, including subjects and topics.", permission: "data.manage" },
+    ],
+  },
+];
+
+const visibleGroups = groups
+  .map((group) => ({ ...group, items: group.items.filter((item) => can(admin.role, item.permission)) }))
+  .filter((group) => group.items.length > 0);
+const visibleCount = visibleGroups.reduce((total, group) => total + group.items.length, 0);
+---
+
+<AdminLayout title="Content workspace" active="content" description="Manage assessment content, editorial review, and website publishing.">
+  <header class="admin-content-hero">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-[0.16em] text-brand-700 dark:text-brand-300">Content management</p>
+      <h1 class="mt-2 text-3xl font-black tracking-tight">Content workspace</h1>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+        Manage the student-facing question bank, practice library, editorial content, and website pages from one place.
+        You can access {visibleCount} content tools with your current role.
+      </p>
+    </div>
+    <div class="admin-content-hero-actions">
+      {can(admin.role, "questions.write") ? <a class="admin-create-button" href="/admin/questions/new">New question</a> : null}
+      {can(admin.role, "mocks.write") ? <a class="admin-secondary-button" href="/admin/mocks/new">New mock</a> : null}
+    </div>
+  </header>
+
+  <div class="admin-content-groups">
+    {visibleGroups.map((group) => (
+      <section class="admin-content-group" aria-labelledby={`content-${group.title.toLowerCase().replaceAll(" ", "-")}`}>
+        <div class="admin-content-group-heading">
+          <div>
+            <h2 id={`content-${group.title.toLowerCase().replaceAll(" ", "-")}`}>{group.title}</h2>
+            <p>{group.description}</p>
+          </div>
+          <span>{group.items.length} {group.items.length === 1 ? "tool" : "tools"}</span>
+        </div>
+        <div class="admin-content-grid">
+          {group.items.map((item) => (
+            <article class="admin-content-card">
+              <a class="admin-content-card-main" href={item.href}>
+                <span class="admin-content-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 5h16v14H4z M8 9h8 M8 13h8 M8 17h4" />
+                  </svg>
+                </span>
+                <span class="admin-content-card-copy">
+                  <strong>{item.label}</strong>
+                  <span>{item.description}</span>
+                </span>
+                <span class="admin-content-card-arrow" aria-hidden="true">→</span>
+              </a>
+              {item.action ? <a class="admin-content-card-action" href={item.action.href}>{item.action.label}</a> : null}
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+  {visibleGroups.length === 0 ? (
+    <section class="admin-content-empty" aria-live="polite">
+      <h2>No content tools assigned</h2>
+      <p>Your current admin role does not include content editing permissions. Contact a Super Admin if you need access.</p>
+      <a href="/admin">Return to dashboard</a>
+    </section>
+  ) : null}
+</AdminLayout>
+
+<style is:global>
+  .admin-content-hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 26px 28px;
+    border: 1px solid var(--admin-border);
+    border-radius: 20px;
+    background: radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--admin-accent) 13%, transparent), transparent 38%), var(--admin-surface);
+    box-shadow: var(--admin-shadow);
+  }
+  .admin-content-hero h1 { margin-bottom: 0; }
+  .admin-content-hero-actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 9px; }
+  .admin-secondary-button {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 13px;
+    border: 1px solid var(--admin-border);
+    border-radius: 11px;
+    background: var(--admin-surface);
+    color: var(--admin-ink);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .admin-secondary-button:hover { background: var(--admin-canvas); }
+  .admin-content-groups { display: grid; gap: 34px; margin-top: 32px; }
+  .admin-content-group-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+  .admin-content-group-heading h2 { margin: 0; font-size: 18px; font-weight: 800; }
+  .admin-content-group-heading p { margin: 5px 0 0; color: var(--admin-muted); font-size: 12px; }
+  .admin-content-group-heading > span { flex: 0 0 auto; color: var(--admin-muted); font-size: 11px; font-weight: 700; }
+  .admin-content-empty { margin-top: 28px; padding: 24px; border: 1px solid var(--admin-border); border-radius: 16px; background: var(--admin-surface); box-shadow: var(--admin-shadow); }
+  .admin-content-empty h2 { margin: 0; font-size: 16px; font-weight: 800; }
+  .admin-content-empty p { margin: 8px 0 14px; color: var(--admin-muted); font-size: 13px; }
+  .admin-content-empty a { color: var(--admin-accent); font-size: 12px; font-weight: 750; }
+  .admin-content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 13px; }
+  .admin-content-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--admin-border);
+    border-radius: 15px;
+    background: var(--admin-surface);
+    box-shadow: var(--admin-shadow);
+    transition: border-color 140ms ease, transform 140ms ease;
+  }
+  .admin-content-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--admin-accent) 48%, var(--admin-border)); }
+  .admin-content-card-main {
+    display: flex;
+    min-height: 114px;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 17px 17px 13px;
+    color: var(--admin-ink);
+    text-decoration: none;
+  }
+  .admin-content-card-icon { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; border-radius: 12px; background: color-mix(in srgb, var(--admin-accent) 12%, var(--admin-surface)); color: var(--admin-accent); }
+  .admin-content-card-icon svg { width: 19px; height: 19px; }
+  .admin-content-card-copy { display: grid; min-width: 0; gap: 5px; }
+  .admin-content-card-copy strong { font-size: 13px; font-weight: 800; }
+  .admin-content-card-copy > span { color: var(--admin-muted); font-size: 11px; line-height: 1.55; }
+  .admin-content-card-arrow { margin-left: auto; color: var(--admin-muted); font-size: 17px; transition: transform 140ms ease, color 140ms ease; }
+  .admin-content-card-main:hover .admin-content-card-arrow { transform: translateX(3px); color: var(--admin-accent); }
+  .admin-content-card-action { display: block; padding: 10px 17px; border-top: 1px solid var(--admin-border); color: var(--admin-link); font-size: 11px; font-weight: 750; text-decoration: none; }
+  .admin-content-card-action:hover { background: color-mix(in srgb, var(--admin-accent) 6%, var(--admin-surface)); color: var(--admin-link-hover); }
+  @media (max-width: 640px) {
+    .admin-content-hero { align-items: flex-start; flex-direction: column; padding: 21px 18px; }
+    .admin-content-groups { gap: 27px; margin-top: 26px; }
+    .admin-content-group-heading { align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .admin-content-card, .admin-content-card-arrow { transition: none; }
+  }
+</style>

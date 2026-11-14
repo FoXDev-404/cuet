@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-12T18:48:56.924Z",
-  "commitHash": "f0247c4f456f9e231301c5ffa18624138ffbb0be",
+  "generatedAt": "2026-11-14T10:27:56.259Z",
+  "commitHash": "a0e75bc4bed5b3848401fd7a5cb16923cc46c326",
   "product": "CUET Free Mock Test",
   "siteUrl": "https://cuetfreemocktest.com",
   "stage": "staging / partial-launch ready",
   "overallVerdict": "PARTIAL",
-  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 428 Vitest unit tests (49 files), 73 Playwright E2E tests, 232 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
+  "verdictRationale": "Core architecture, SSR test engine, client autosave, monotonic sequence sync, rights isolation, D1 capacity optimization, SEO structure, copy honesty, and security hardening are verified with 507 Vitest unit tests (60 files), 76 Playwright E2E tests, 272 axe-core accessibility scans, and 100% Lighthouse performance across all 9 core routes on production build. However, overall verdict is capped at PARTIAL because 214 previous-year practice papers have unknown copyright provenance (appropriately isolated and noindexed), 16,533 auto-generated explanations are pending human review in the review queue, and deployed staging performance audits with real edge/D1 latency are pending.",
   "scorecard": [
     {
       "area": "Test engine",
@@ -77,13 +77,13 @@
       "area": "Accessibility",
       "status": "DONE",
       "confidence": "HIGH",
-      "reason": "232 axe-core accessibility scans across 29 routes x 2 themes x 2 viewports (mobile 375px, desktop 1280px). 0 violations, 0 horizontal overflow issues."
+      "reason": "272 axe-core accessibility scans across 65 routes, covering light and dark themes and mobile/desktop viewports. 0 violations and 0 horizontal overflow issues."
     },
     {
       "area": "Tests and CI",
       "status": "DONE",
       "confidence": "HIGH",
-      "reason": "428 Vitest unit tests (49 files) passed; 73 Playwright E2E tests (9 spec files) passed; 232 axe-core scans passed; 0 failures. All verified on latest branch commit."
+      "reason": "507 Vitest unit tests (60 files) passed; 76 Playwright E2E tests (9 spec files) passed; 272 axe-core scans passed; 0 failures. All verified on latest branch commit."
     },
     {
       "area": "Deployment and ops",
@@ -191,7 +191,7 @@
     },
     {
       "title": "Comprehensive Automated Test & A11y Suite",
-      "description": "428 Vitest unit tests (49 files), 73 Playwright E2E tests (9 specs), and 232 axe-core accessibility scans with 0 violations and 0 horizontal overflow across light/dark themes and mobile/desktop viewports."
+      "description": "507 Vitest unit tests (60 files), 76 Playwright E2E tests (9 specs), and 272 axe-core accessibility scans with 0 violations and 0 horizontal overflow issues across light/dark themes and mobile/desktop viewports."
     },
     {
       "title": "Rigorous SEO Quality Gate & Content Isolation",
@@ -210,13 +210,13 @@
       "migrations": 20
     },
     "tests": {
-      "unitPassed": 428,
-      "unitTotal": 428,
-      "unitFiles": 49,
-      "e2ePassed": 73,
-      "e2eTotal": 75,
+      "unitPassed": 507,
+      "unitTotal": 507,
+      "unitFiles": 60,
+      "e2ePassed": 76,
+      "e2eTotal": 78,
       "e2eSkipped": 2,
-      "a11yScans": 232,
+      "a11yScans": 272,
       "a11yViolations": 0
     },
     "capacity": {

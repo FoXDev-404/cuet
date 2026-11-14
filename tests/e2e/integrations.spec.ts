@@ -1,27 +1,8 @@
-import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { expect, test } from "@playwright/test";
 
-const DB_NAME = "cuet-blueprint-db";
-const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
 const DEV_VARS = path.resolve(".dev.vars");
-
-function localD1(sql: string): void {
-  execFileSync(
-    process.execPath,
-    [WRANGLER_BIN, "d1", "execute", DB_NAME, "--local", "--command", sql],
-    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
-  );
-}
-
-function sqlString(value: string): string {
-  return `'${value.replace(/'/g, "''")}'`;
-}
-
-function uniqueStamp(): string {
-  return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
-}
 
 /** Read a local .dev.vars value without booting the Worker. */
 function devVar(name: string): string {

@@ -67,6 +67,7 @@ void/rescore attempts. Editors cannot purge. Contributors can only work on quest
 | Screen | What it is for |
 | --- | --- |
 | `/admin` | Counts, health, recent activity |
+| `/admin/content` | Permission-filtered overview of assessment, editorial and website content tools |
 | `/admin/review` | Papers and questions that still need a key, explanation or flag review |
 | `/admin/questions` | Filter, paginate, bulk-edit, export, duplicate, delete |
 | `/admin/questions/new` | Create a question |

@@ -22,6 +22,7 @@ import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { isValidPublicId } from "../src/lib/share/public-id.ts";
+import { queryLocalD1 } from "./lib/local-d1.mjs";
 import { loadQuestionOgFonts, renderQuestionOgPng } from "./lib/question-og.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -90,6 +91,8 @@ function runWrangler(wranglerArgs) {
 }
 
 function d1Json(command) {
+  if (local) return [{ results: queryLocalD1(command) }];
+
   const output = runWrangler([
     WRANGLER_BIN,
     "d1",

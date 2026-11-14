@@ -1,9 +1,7 @@
-import { execFileSync } from "node:child_process";
-import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import { seedUser, sessionCookie, sessionTokenFor } from "./auth-helpers";
+import { executeLocalD1 } from "../../scripts/lib/local-d1.mjs";
 
-const WRANGLER_BIN = path.resolve("node_modules/wrangler/bin/wrangler.js");
 const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL ?? "admin@cuetfreemocktest.com";
 
 function testClientIp(): string {
@@ -12,19 +10,7 @@ function testClientIp(): string {
 
 /** Runs SQL against the same local D1 file the dev server uses. */
 function localD1(sql: string): void {
-  execFileSync(
-    process.execPath,
-    [
-      WRANGLER_BIN,
-      "d1",
-      "execute",
-      "cuet-blueprint-db",
-      "--local",
-      "--command",
-      sql,
-    ],
-    { cwd: process.cwd(), stdio: "pipe", timeout: 120_000 },
-  );
+  executeLocalD1(sql);
 }
 
 async function loginAsAdmin(page: Page): Promise<void> {
@@ -35,6 +21,45 @@ async function loginAsAdmin(page: Page): Promise<void> {
 
 test.beforeEach(async ({ page }) => {
   await page.setExtraHTTPHeaders({ "cf-connecting-ip": testClientIp() });
+});
+
+test("admin sidebar collapses persistently and opens as a dismissible mobile drawer", async ({ page }) => {
+  test.skip(
+    Boolean(process.env.PLAYWRIGHT_BASE_URL),
+    "This test uses the local D1 admin account.",
+  );
+
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await loginAsAdmin(page);
+  await page.goto("/admin");
+
+  const sidebar = page.locator("#admin-sidebar");
+  const toggle = page.locator("#admin-menu-toggle");
+  await expect(toggle).toHaveAttribute("aria-label", "Hide admin navigation");
+  await expect(sidebar).toHaveAttribute("aria-hidden", "false");
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-label", "Show admin navigation");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(sidebar).toHaveAttribute("aria-hidden", "true");
+  await expect(page.locator("html")).toHaveAttribute("data-admin-sidebar-collapsed", "true");
+  await expect.poll(() => page.evaluate(() => localStorage.getItem("admin-sidebar-collapsed"))).toBe("true");
+
+  await page.reload();
+  await expect(toggle).toHaveAttribute("aria-label", "Show admin navigation");
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-label", "Hide admin navigation");
+  await expect(sidebar).toHaveAttribute("aria-hidden", "false");
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(toggle).toHaveAttribute("aria-label", "Open admin navigation");
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-label", "Close admin navigation");
+  await expect(sidebar).toHaveAttribute("aria-hidden", "false");
+
+  await page.keyboard.press("Escape");
+  await expect(toggle).toHaveAttribute("aria-label", "Open admin navigation");
+  await expect(sidebar).toHaveAttribute("aria-hidden", "true");
 });
 
 test("an editor creates, publishes and sees a mock test", async ({ page }) => {

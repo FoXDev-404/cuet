@@ -64,11 +64,8 @@ test("attempt stays usable on a throttled mobile connection", async ({ page }) =
 
   await page.getByRole("button", { name: /Begin test/ }).click();
   await expect(page).toHaveURL(/\/attempt\/\d+$/, { timeout: 60_000 });
+  await expect(page.locator("#question-area")).toHaveAttribute("data-ready", "true", { timeout: 60_000 });
   await expect(page.locator("#question-area [data-option]").first()).toBeVisible({ timeout: 60_000 });
-  // Server HTML renders the options before the island hydrates. On a throttled
-  // CPU a click can land on a button with no listener yet and be lost, so wait
-  // for the timer to leave its SSR placeholder first.
-  await expect(page.locator("#timer")).not.toHaveText("--:--:--", { timeout: 60_000 });
 
   // No horizontal overflow at 390 px, even while the throttled page is loading.
   const overflows = await page.evaluate(
@@ -90,6 +87,7 @@ test("attempt stays usable on a throttled mobile connection", async ({ page }) =
   // Refresh on the slow link: the saved answer must come back from D1.
   await page.reload({ waitUntil: "domcontentloaded" });
   await expect(page.locator("#attempt-data")).toBeAttached({ timeout: 60_000 });
+  await expect(page.locator("#question-area")).toHaveAttribute("data-ready", "true", { timeout: 60_000 });
   await expect(page.locator("#question-area [data-option].selected").first()).toBeVisible({ timeout: 60_000 });
 
   page.once("dialog", (dialog) => dialog.accept());

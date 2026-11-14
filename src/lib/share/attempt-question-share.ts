@@ -216,6 +216,7 @@ type SheetState = {
   failedKey: string;
   generating: boolean;
   generation: Promise<void> | null;
+  statusRevision: number;
   wired: boolean;
   current: AttemptShareRequest | null;
 };
@@ -230,6 +231,7 @@ const state: SheetState = {
   failedKey: "",
   generating: false,
   generation: null,
+  statusRevision: 0,
   wired: false,
   current: null,
 };
@@ -338,6 +340,7 @@ async function generate(el: SheetElements): Promise<void> {
   if (!current || !el.card) return;
   const language = normalizeShareLanguage(current.language);
   const key = `${current.question.id}:${language}`;
+  const generationStatusRevision = state.statusRevision;
   // Narrow once: TS loses the el.card null-narrowing inside the closure below.
   const card = el.card;
   if (!card) return;
@@ -372,7 +375,9 @@ async function generate(el: SheetElements): Promise<void> {
         el.preview.hidden = false;
       }
       if (el.previewLoading) el.previewLoading.hidden = true;
-      setStatus(el, "Image ready. Share it or download the PNG.");
+      if (state.statusRevision === generationStatusRevision) {
+        setStatus(el, "Image ready. Share it or download the PNG.");
+      }
     } catch {
       state.blob = null;
       state.cacheKey = "";
@@ -384,7 +389,9 @@ async function generate(el: SheetElements): Promise<void> {
         el,
         "Could not create the image. You can still share the link with WhatsApp, Telegram or Copy link.",
       );
-      setStatus(el, "Image unavailable.");
+      if (state.statusRevision === generationStatusRevision) {
+        setStatus(el, "Image unavailable.");
+      }
     } finally {
       state.generating = false;
       state.generation = null;
@@ -403,6 +410,7 @@ async function generate(el: SheetElements): Promise<void> {
 async function shareViaApp(el: SheetElements, channel: "whatsapp" | "telegram"): Promise<void> {
   const current = state.current;
   if (!current) return;
+  state.statusRevision += 1;
   if (!state.blob) {
     setStatus(el, "Preparing image…");
     await generate(el);
@@ -443,6 +451,7 @@ async function shareViaApp(el: SheetElements, channel: "whatsapp" | "telegram"):
 async function copyLink(el: SheetElements): Promise<void> {
   const url = state.current?.shareUrl;
   if (!url) return;
+  state.statusRevision += 1;
   try {
     await navigator.clipboard.writeText(url);
   } catch {
@@ -460,6 +469,7 @@ async function copyLink(el: SheetElements): Promise<void> {
 async function downloadImage(el: SheetElements): Promise<void> {
   const current = state.current;
   if (!current) return;
+  state.statusRevision += 1;
   if (!state.blob) await generate(el);
   if (!state.blob || !state.previewUrl) return;
   const link = document.createElement("a");
