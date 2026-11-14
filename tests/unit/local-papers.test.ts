@@ -327,7 +327,7 @@ describe("homepage curation", () => {
       const latestYear = Math.max(...own.map((paper) => paper.year));
       expect(subject.latestYear).toBe(latestYear);
       expect(subject.href).toBe(`/pyq/${latestYear}/${subject.subject.slug}`);
-      expect(subject.latestPaperPath).toContain(`/subject/${subject.subject.slug}/`);
+      expect(subject.latestPaperPath).toContain(`/${subject.subject.slug}/`);
     }
   });
 

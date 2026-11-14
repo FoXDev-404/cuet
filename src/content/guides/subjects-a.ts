@@ -51,7 +51,7 @@ These units look large because they have many formats. The marks are usually in 
 - For debentures, check whether the question says issued at par, premium or discount.
 - For every format, practise one full question end to end. Half a format is not knowledge.
 
-Use the [accountancy subject hub](/cuet-mock-test/accountancy) to find the available previous-year sets. The [2023 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/accountancy/accountancy-2023-06-01-shift-1) is a useful timed attempt once the basics are in place.
+Use the [accountancy subject hub](/cuet-mock-test/accountancy) to find the available previous-year sets. The [2023 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/accountancy/accountancy-2023-06-01-shift-1) is a useful timed attempt once the basics are in place.
 
 ## Interpretation questions
 
@@ -151,7 +151,7 @@ Write the difference in one line each. Review the list twice a week. This is a t
 - **One day** — full paper or a mixed set.
 - **One day** — review and update the error log.
 
-The [business studies subject hub](/cuet-mock-test/business-studies) collects the available papers. The [2023 shift 3 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/business-studies/business-studies-2023-06-10-shift-3) is a good timed attempt after the first two chapters are mapped.
+The [business studies subject hub](/cuet-mock-test/business-studies) collects the available papers. The [2023 shift 3 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/business-studies/business-studies-2023-06-10-shift-3) is a good timed attempt after the first two chapters are mapped.
 
 ## Traps that cost marks
 
@@ -215,7 +215,7 @@ For each theme, keep three things: a definition, two data points or examples fro
 - **One day** — timed sectional.
 - **One day** — full paper or review.
 
-The [economics subject hub](/cuet-mock-test/economics) lists the available sets. The [2024 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/economics/economics-2024-05-16-shift-1) is a good first timed attempt.
+The [economics subject hub](/cuet-mock-test/economics) lists the available sets. The [2024 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/economics/economics-2024-05-16-shift-1) is a good first timed attempt.
 
 ## Traps that cost marks
 
@@ -287,7 +287,7 @@ Write the difference in one line. Review the page twice a week.
 - **One day** — timed sectional.
 - **One day** — full paper or review.
 
-The [biology subject hub](/cuet-mock-test/biology) lists the available papers. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/biology/biology-2025-05-20-shift-1) is a recent timed attempt.
+The [biology subject hub](/cuet-mock-test/biology) lists the available papers. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/biology/biology-2025-05-20-shift-1) is a recent timed attempt.
 
 ## Traps that cost marks
 
@@ -363,7 +363,7 @@ Each has a different fix. Calculation errors need slower written steps; reading 
 - **One day** — full paper or mixed set.
 - **One day** — review and formula recall.
 
-The [mathematics subject hub](/cuet-mock-test/mathematics) lists the available papers. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/mathematics/mathematics-2025-06-02-shift-1) is a good timed attempt once the first three units are solid.
+The [mathematics subject hub](/cuet-mock-test/mathematics) lists the available papers. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/mathematics/mathematics-2025-06-02-shift-1) is a good timed attempt once the first three units are solid.
 
 ## Traps that cost marks
 
@@ -450,7 +450,7 @@ If the setup is wrong, every later step is wasted. Spend the extra thirty second
 - **One day** — full paper.
 - **One day** — review: units, rounding and table errors.
 
-The [applied mathematics subject hub](/cuet-mock-test/applied-mathematics) lists the available sets. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/applied-mathematics/applied-mathematics-2025-06-02-shift-1) is a good timed attempt.
+The [applied mathematics subject hub](/cuet-mock-test/applied-mathematics) lists the available sets. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/applied-mathematics/applied-mathematics-2025-06-02-shift-1) is a good timed attempt.
 
 ## Traps that cost marks
 
@@ -537,7 +537,7 @@ Do not memorise a list of acronyms without the function. CUET options often swap
 - **One day** — networks and Boolean/number-system drills.
 - **One day** — timed paper and review.
 
-The [computer science subject hub](/cuet-mock-test/computer-science) lists the available papers. The [2024 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/computer-science/computer-science-2024-07-19-shift-1) is a good timed attempt.
+The [computer science subject hub](/cuet-mock-test/computer-science) lists the available papers. The [2024 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/computer-science/computer-science-2024-07-19-shift-1) is a good timed attempt.
 
 ## Traps that cost marks
 

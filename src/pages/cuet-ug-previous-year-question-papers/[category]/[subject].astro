@@ -1,0 +1,188 @@
+---
+import { siteUrl } from "../../../lib/site-url";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import LocalPaperCard from "../../../components/LocalPaperCard.astro";
+import { allOr, firstOr } from "../../../lib/db";
+import { getLocalPapersForSubject } from "../../../lib/local-papers";
+import { getLocalSubjectCards } from "../../../lib/local-subject-fallback";
+import {
+  getPyqSubjectCategoryPath,
+  getPyqSubjectPath,
+} from "../../../lib/pyq-subject-path";
+import { parseMarkingScheme } from "../../../lib/content";
+import {
+  breadcrumbJsonLd,
+  itemListJsonLd,
+} from "../../../lib/seo";
+
+const subjectSlug = Astro.params.subject ?? "";
+const dbSubject = await firstOr<{ id: number; name: string; slug: string; type: string }>(
+  `SELECT s.id, s.name, s.slug, s.type
+   FROM subjects s
+   JOIN exams e ON e.id = s.exam_id
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+  null,
+  subjectSlug,
+);
+const localPapers = getLocalPapersForSubject(subjectSlug);
+const localSubject = getLocalSubjectCards().find((item) => item.slug === subjectSlug);
+const subject =
+  dbSubject ??
+  (localPapers[0]
+    ? { name: localPapers[0].subject.name, slug: localPapers[0].subject.slug }
+    : null);
+
+if (!subject) return new Response("Subject not found", { status: 404 });
+
+const subjectType = dbSubject?.type ?? localSubject?.type ?? "domain";
+const path = getPyqSubjectPath(subject.slug, subjectType);
+if (Astro.params.category !== getPyqSubjectCategoryPath(subjectType, subject.slug)) {
+  return Astro.redirect(path, 301);
+}
+const pyqs = dbSubject
+  ? await allOr<{
+      title: string;
+      slug: string;
+      duration_min: number;
+      total_marks: number;
+      marking_scheme: string;
+      pyq_year: number | null;
+      pyq_shift: string | null;
+      question_count: number;
+      attempt_count: number;
+    }>(
+      `SELECT m.title, m.slug, m.duration_min, m.total_marks, m.marking_scheme,
+              m.pyq_year, m.pyq_shift,
+              (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
+              (SELECT COUNT(*) FROM attempts a WHERE a.mock_id = m.id AND a.status IN ('submitted','expired')) AS attempt_count
+       FROM mock_tests m
+       WHERE m.type = 'pyq' AND m.status = 'published' AND m.deleted_at IS NULL
+         AND m.practice_paper_slug IS NULL AND m.subject_id = ?
+       ORDER BY m.pyq_year DESC, m.pyq_shift, m.id DESC
+       LIMIT 60`,
+      [],
+      dbSubject.id,
+    )
+  : [];
+
+if (pyqs.length === 0 && localPapers.length === 0) {
+  return new Response("No papers for this subject", { status: 404 });
+}
+
+const totalPapers = pyqs.length + localPapers.length;
+const pageTitle =
+  subject.slug === "general-test"
+    ? "NTA CUET UG General Aptitude Test PYQs | Free Online Practice"
+    : `NTA CUET UG ${subject.name} PYQs | Free Online Practice`;
+const pageDescription =
+  subject.slug === "general-test"
+    ? "Practice CUET UG General Aptitude Test PYQs Online for FREE with Answers. Attempt Timed NTA Previous Years Questions and Boost your Preparation for CUET UG 2027."
+    : `Practice CUET UG ${subject.name} previous-year PYQs online. Browse ${totalPapers} timed mocks by year and shift.`;
+const site = siteUrl(Astro.url);
+const structuredData = [
+  breadcrumbJsonLd(site, [
+    { name: "Home", path: "/" },
+    { name: "Previous-year papers", path: "/cuet-ug-previous-year-question-papers" },
+    { name: subject.name, path },
+  ]),
+  itemListJsonLd(site, [
+    ...pyqs.map((paper) => ({ name: paper.title, path: `/mock/${paper.slug}` })),
+    ...localPapers.map((paper) => ({ name: paper.title, path: paper.path })),
+  ]),
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  noindex
+  robots="noindex, follow"
+  structuredData={structuredData}
+>
+  <PageHero
+    eyebrow={`PYQs · ${subject.name}`}
+    title={
+      subject.slug === "general-test"
+        ? "NTA CUET UG General Aptitude Test PYQs - Practice Online"
+        : `${subject.name} Previous Year Question Papers`
+    }
+    intro={
+      subject.slug === "general-test"
+        ? "Practice CUET UG General Aptitude Test PYQs Online for FREE with Answers. Attempt Timed NTA Previous Years Questions and Boost your Preparation for CUET UG 2027."
+        : `Browse CUET UG ${subject.name} previous-year papers by year and shift. Choose a paper to start a timed practice attempt.`
+    }
+  />
+
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a class="hover:underline" href="/cuet-ug-previous-year-question-papers">Previous-year papers</a>
+      <span aria-hidden="true">/</span>
+      <span>{subject.name}</span>
+    </nav>
+
+    <section class="mt-8" aria-labelledby="subject-papers-heading">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight" id="subject-papers-heading">{subject.name} PYQs</h2>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+            {totalPapers} {totalPapers === 1 ? "PYQ" : "PYQs"} available
+          </p>
+        </div>
+        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-previous-year-question-papers">
+          All subjects →
+        </a>
+      </div>
+
+      {pyqs.length > 0 ? (
+        <div class="mt-5 grid gap-4 md:grid-cols-2">
+          {pyqs.map((paper) => {
+            const marking = parseMarkingScheme(paper.marking_scheme);
+            return (
+              <article class="flex flex-col rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                  {paper.pyq_year ? (
+                    <span class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold text-brand-900 dark:bg-brand-900/50 dark:text-brand-200">{paper.pyq_year}</span>
+                  ) : null}
+                  {paper.pyq_shift ? <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{paper.pyq_shift}</span> : null}
+                  <span class="rounded-full bg-neutral-100 px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{subject.name}</span>
+                </div>
+                <h3 class="mt-3 text-lg font-bold leading-snug">
+                  <a class="hover:text-brand-700 dark:hover:text-brand-300" href={`/mock/${paper.slug}`}>{paper.title}</a>
+                </h3>
+                <dl class="mt-4 grid grid-cols-3 gap-2 text-sm">
+                  <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                    <dt class="text-[11px] uppercase tracking-wide text-neutral-600 dark:text-neutral-400">Questions</dt>
+                    <dd class="font-bold">{paper.question_count}</dd>
+                  </div>
+                  <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                    <dt class="text-[11px] uppercase tracking-wide text-neutral-600 dark:text-neutral-400">Minutes</dt>
+                    <dd class="font-bold">{paper.duration_min}</dd>
+                  </div>
+                  <div class="rounded-lg bg-neutral-50 p-2 dark:bg-neutral-950">
+                    <dt class="text-[11px] uppercase tracking-wide text-neutral-600 dark:text-neutral-400">Marks</dt>
+                    <dd class="font-bold">{paper.total_marks}</dd>
+                  </div>
+                </dl>
+                <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
+                  +{marking.correct} correct · {marking.wrong} wrong · {paper.attempt_count} attempt{paper.attempt_count === 1 ? "" : "s"}
+                </p>
+                <a class="mt-4 inline-flex w-fit rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700" href={`/mock/${paper.slug}/instructions`}>
+                  Start this paper →
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      ) : null}
+
+      {localPapers.length > 0 ? (
+        <div class={pyqs.length > 0 ? "mt-8 grid gap-4 md:grid-cols-2" : "mt-5 grid gap-4 md:grid-cols-2"}>
+          {localPapers.map((paper) => <LocalPaperCard paper={paper} />)}
+        </div>
+      ) : null}
+    </section>
+  </div>
+</BaseLayout>

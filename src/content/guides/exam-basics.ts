@@ -132,7 +132,7 @@ If two options share the same opening sentence, compare the second sentence inst
 - **15 minutes** — grammar or para-jumbles, alternating days.
 - **10 minutes** — review every wrong answer and write the reason.
 
-Once a week, replace the loop with a full language section from a previous-year paper. The [English 20 May 2025 paper](/cuet-ug-previous-year-question-papers/language-pyqs/subject/english/english-2025-05-20-shift-1) is a recent shift with the real +5 and −1 marking, and the [English subject hub](/cuet-mock-test/english) collects the available sets.
+Once a week, replace the loop with a full language section from a previous-year paper. The [English 20 May 2025 paper](/cuet-ug-previous-year-question-papers/language-pyqs/english/english-2025-05-20-shift-1) is a recent shift with the real +5 and −1 marking, and the [English subject hub](/cuet-mock-test/english) collects the available sets.
 
 For the section structure and timing, read the [exam pattern guide](/cuet-ug-exam-pattern). For the wider preparation sequence, the [syllabus map](/cuet-ug-syllabus) shows how the language paper sits beside your domain subjects.`,
   },

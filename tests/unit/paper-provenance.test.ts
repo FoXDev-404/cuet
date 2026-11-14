@@ -65,7 +65,7 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
 
   it('practice paper page template indexes papers unless rights_status is restricted', () => {
     const template = readFileSync(
-      resolve(process.cwd(), 'src/pages/cuet-ug-previous-year-question-papers/[category]/subject/[subject]/[paper].astro'),
+      resolve(process.cwd(), 'src/pages/cuet-ug-previous-year-question-papers/[category]/[subject]/[paper].astro'),
       'utf8',
     );
     expect(template).toContain('const forceNoindex = paper.rightsStatus === "restricted";');

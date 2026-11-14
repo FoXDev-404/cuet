@@ -47,7 +47,7 @@ export function getPyqSubjectCategoryPath(type: string | null | undefined, slug:
 
 export function getPyqSubjectPath(slug: string, type: string | null | undefined): string {
   const category = getPyqSubjectCategoryPath(type, slug);
-  return `${PYQ_ARCHIVE_PATH}/${category}/subject/${encodeURIComponent(slug)}`;
+  return `${PYQ_ARCHIVE_PATH}/${category}/${encodeURIComponent(slug)}`;
 }
 
 export function getPyqPaperPath(

@@ -5,10 +5,9 @@ import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { allOr } from "../lib/db";
 import { hasMathSource, renderRichText } from "../lib/content";
-import { getLocalPaperYears, getLocalPapers } from "../lib/local-papers";
+import { getLocalPapers } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
-import { getPyqSubjectPath } from "../lib/pyq-subject-path";
-import { listPyqYears } from "../lib/pyq";
+import { getPyqPaperPath, getPyqSubjectPath } from "../lib/pyq-subject-path";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
@@ -26,6 +25,43 @@ const DEFAULT_DESCRIPTION =
 function formatNtaCuetTitle(title: string) {
   const subjectTitle = title.trim().replace(/^(?:NTA\s+)?CUET(?:\s+UG)?\s*/i, "");
   return `NTA CUET UG ${subjectTitle}`;
+}
+
+const MONTH_NUMBERS = new Map([
+  ["jan", "01"], ["january", "01"],
+  ["feb", "02"], ["february", "02"],
+  ["mar", "03"], ["march", "03"],
+  ["apr", "04"], ["april", "04"],
+  ["may", "05"],
+  ["jun", "06"], ["june", "06"],
+  ["jul", "07"], ["july", "07"],
+  ["aug", "08"], ["august", "08"],
+  ["sep", "09"], ["september", "09"],
+  ["oct", "10"], ["october", "10"],
+  ["nov", "11"], ["november", "11"],
+  ["dec", "12"], ["december", "12"],
+]);
+
+function formatPyqDate(dateText: string | null | undefined, title: string, slug: string, year: number) {
+  const source = `${dateText ?? ""} ${title} ${slug}`;
+  const numericDate = source.match(/\b(\d{4})-\s*(\d{1,2})-(\d{1,2})\b/);
+  if (numericDate) {
+    return `${numericDate[3].padStart(2, "0")}-${numericDate[2].padStart(2, "0")}-${numericDate[1]}`;
+  }
+
+  const dayFirstDate = source.match(/\b(\d{1,2})\s+([a-z]+)\s+(\d{4})\b/i);
+  const monthFirstDate = source.match(/\b([a-z]+)\s+(\d{1,2}),?\s+(\d{4})\b/i);
+  const namedDate = dayFirstDate
+    ? { day: dayFirstDate[1], month: dayFirstDate[2], year: dayFirstDate[3] }
+    : monthFirstDate
+      ? { day: monthFirstDate[2], month: monthFirstDate[1], year: monthFirstDate[3] }
+      : null;
+  const month = namedDate ? MONTH_NUMBERS.get(namedDate.month.toLowerCase()) : null;
+  if (namedDate && month) {
+    return `${namedDate.day.padStart(2, "0")}-${month}-${namedDate.year}`;
+  }
+
+  return String(year);
 }
 
 const DEFAULT_FAQ: FaqItem[] = [
@@ -86,8 +122,6 @@ const pyqs = await allOr<{
 );
 
 const localPapers = getLocalPapers();
-const localYears = getLocalPaperYears();
-const pyqYears = await listPyqYears();
 const subjectMap = new Map<
   string,
   {
@@ -99,6 +133,7 @@ const subjectMap = new Map<
       title: string;
       href: string;
       year: number;
+      dateLabel: string;
       shift: string | null;
       questionCount: number;
       durationMinutes: number;
@@ -126,8 +161,9 @@ for (const paper of pyqs) {
   summary.latestYear = Math.max(summary.latestYear, paper.pyq_year ?? 0);
   summary.papers.push({
     title: formatNtaCuetTitle(paper.title),
-    href: `/mock/${paper.slug}`,
+    href: getPyqPaperPath(paper.slug, paper.subject_slug, paper.subject_type),
     year: paper.pyq_year ?? 0,
+    dateLabel: formatPyqDate(paper.title, paper.title, paper.slug, paper.pyq_year ?? 0),
     shift: paper.pyq_shift,
     questionCount: paper.question_count,
     durationMinutes: paper.duration_min,
@@ -148,6 +184,7 @@ for (const paper of localPapers) {
     title: formatNtaCuetTitle(paper.title),
     href: paper.path,
     year: paper.year,
+    dateLabel: formatPyqDate(paper.dateLabel, paper.title, paper.slug, paper.year),
     shift: paper.shift,
     questionCount: paper.rankedQuestionCount ?? paper.recoveredQuestionCount,
     durationMinutes: paper.rankedDurationMinutes ?? paper.durationMinutes,
@@ -168,19 +205,6 @@ const subjectSections = [
   { title: "Language Subjects", id: "languages", subjects: subjectCards.filter((subject) => subject.category === "language") },
   { title: "Domain-Specific Subjects", id: "domain-specific-subjects", subjects: subjectCards.filter((subject) => subject.category === "domain") },
 ];
-
-const yearMap = new Map<number, { year: number; playable_count: number }>();
-for (const row of pyqYears) yearMap.set(row.year, { ...row });
-for (const row of localYears) {
-  const existing = yearMap.get(row.year);
-  yearMap.set(row.year, {
-    year: row.year,
-    playable_count: (existing?.playable_count ?? 0) + row.playable_count,
-  });
-}
-const playableYears = [...yearMap.values()]
-  .filter((row) => row.playable_count > 0)
-  .sort((a, b) => b.year - a.year);
 
 const totalPapers = pyqs.length + localPapers.length;
 const seo = await getPageSeo(PATH);
@@ -228,20 +252,7 @@ const steps = [
       <div class="mb-8 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm leading-7 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100" set:html={renderRichText(seo.intro_html)}></div>
     ) : null}
 
-    {playableYears.length > 0 ? (
-      <section class="mt-8">
-        <h2 class="text-lg font-bold">Browse by year</h2>
-        <div class="mt-3 flex flex-wrap gap-2">
-          {playableYears.map((row) => (
-            <a class="rounded-full border border-neutral-300 bg-white px-3.5 py-1.5 text-sm font-semibold hover:border-brand-300 hover:bg-brand-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:border-brand-700 dark:hover:bg-brand-950/40" href={`/pyq/${row.year}`}>
-              {row.year} <span class="text-xs font-normal text-neutral-500 dark:text-neutral-400">({row.playable_count})</span>
-            </a>
-          ))}
-        </div>
-      </section>
-    ) : null}
-
-    <section class="mt-10" aria-labelledby="pyq-subjects-heading">
+    <section class="mt-10">
       {totalPapers === 0 ? (
         <div class="mt-5 rounded-2xl border border-dashed border-neutral-300 p-10 text-center dark:border-neutral-700">
           <h3 class="font-bold">No PYQ paper is published yet</h3>
@@ -255,10 +266,6 @@ const steps = [
         </div>
       ) : (
         <div>
-          <h2 class="text-2xl font-bold tracking-tight" id="pyq-subjects-heading">Browse by subject</h2>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-            Choose a subject to browse its latest previous-year papers.
-          </p>
           <div class="mt-5 space-y-10">
             {subjectSections.map((section) => (
               <section aria-labelledby={`pyq-section-${section.id}`}>
@@ -281,38 +288,40 @@ const steps = [
                       <div class="px-4 pb-1 pt-4">
                         <h5 class="text-base font-bold">NTA CUET UG {subject.name} PYQs</h5>
                         <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
-                          Recent timed PYQs for {subject.name}.
+                          Practice Online for FREE and Boost Your NTA CUET UG 2027 Preparation.
                         </p>
                       </div>
 
                       <div class="mt-2">
                         {subject.papers.map((paper) => (
-                          <a
-                            href={paper.href}
+                          <div
                             class="group flex flex-col gap-2 border-t border-neutral-100 px-4 py-3 transition-colors hover:bg-neutral-50 dark:border-white/[0.07] dark:hover:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between"
                             data-pyq-paper-row
                           >
-                            <div class="min-w-0">
-                              <div class="flex flex-wrap items-center gap-1.5">
-                                <span class="rounded bg-brand-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
+                            <a href={paper.href} class="min-w-0 flex-1">
+                              <div class="flex flex-nowrap items-center gap-x-1.5 overflow-x-auto whitespace-nowrap">
+                                <span class="shrink-0 rounded bg-brand-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
                                   NTA CUET UG PYQ
                                 </span>
-                                <span class="rounded bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">
-                                  {subject.name}
+                                <span class="shrink-0 rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-neutral-600 dark:bg-white/10 dark:text-white/65">
+                                  {paper.dateLabel}{paper.shift ? ` ${paper.shift}` : ""}
                                 </span>
-                                <span class="rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-neutral-600 dark:bg-white/10 dark:text-white/65">
-                                  {paper.year}{paper.shift ? ` · ${paper.shift}` : ""}
+                                <span class="shrink-0 rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-bold text-neutral-600 dark:bg-white/10 dark:text-white/65">
+                                  <span class="font-bold text-accent-600 dark:text-accent-300">{paper.questionCount}</span> questions
                                 </span>
+                                <span class="shrink-0 rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-bold text-neutral-600 dark:bg-white/10 dark:text-white/65">{paper.durationMinutes} min</span>
                               </div>
                               <p class="mt-1.5 truncate text-sm font-semibold text-neutral-800 group-hover:text-brand-700 dark:text-white/75 dark:group-hover:text-white">
                                 {paper.title}
                               </p>
-                            </div>
-                            <div class="flex shrink-0 items-center gap-4 text-[10px] text-neutral-500 dark:text-white/55 sm:justify-end">
-                              <span><span class="font-bold text-accent-600 dark:text-accent-300">{paper.questionCount}</span> questions</span>
-                              <span>{paper.durationMinutes} min</span>
-                            </div>
-                          </a>
+                            </a>
+                            <a
+                              href={paper.href}
+                              class="inline-flex w-fit shrink-0 self-start rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-brand-700 sm:self-auto"
+                            >
+                              Start Test →
+                            </a>
+                          </div>
                         ))}
                       </div>
 

@@ -30,6 +30,10 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
       "utf8",
     );
     const categoryRoute = readFileSync(
+      join(root, "src/pages/cuet-ug-previous-year-question-papers/[category]/[subject].astro"),
+      "utf8",
+    );
+    const legacyCategoryRoute = readFileSync(
       join(root, "src/pages/cuet-ug-previous-year-question-papers/[category]/subject/[subject].astro"),
       "utf8",
     );
@@ -37,6 +41,7 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(previousRoute).toContain("Astro.redirect(getPyqSubjectPath(subject.slug, subject.type), 301)");
     expect(categoryRoute).toContain("const path = getPyqSubjectPath(subject.slug, subjectType)");
     expect(categoryRoute).toContain("Astro.params.category !== getPyqSubjectCategoryPath(subjectType, subject.slug)");
+    expect(legacyCategoryRoute).toContain("Astro.redirect(getPyqSubjectPath(subject.slug, subject.type), 301)");
   });
 
   it("verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to the archive paper path", () => {
@@ -53,7 +58,7 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
   it("redirects legacy /mock-tests paper URLs to their category subject detail pages", () => {
     const oldRoute = readFileSync(join(root, "src/pages/mock-tests/[slug].astro"), "utf8");
     const detailRoute = readFileSync(
-      join(root, "src/pages/cuet-ug-previous-year-question-papers/[category]/subject/[subject]/[paper].astro"),
+      join(root, "src/pages/cuet-ug-previous-year-question-papers/[category]/[subject]/[paper].astro"),
       "utf8",
     );
     expect(oldRoute).toContain("Astro.redirect(localPaperPath(paper.slug), 301)");

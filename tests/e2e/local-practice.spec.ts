@@ -8,6 +8,8 @@ type LocalIndexPaper = {
   title: string;
   subject: { slug: string; name: string };
   year: number;
+  dateLabel: string;
+  shift?: string | null;
   questionCount: number;
   scorableQuestionCount: number;
   pendingReviewCount: number;
@@ -67,9 +69,14 @@ function paperBySlug(slug: string): LocalIndexPaper {
 
 const SCORED_PAPER = paperBySlug("english-2022-08-06-shift-1");
 const DETAIL_PAPER = paperBySlug("biology-2025-05-20-shift-2");
+const GENERAL_TEST_PAPERS = [
+  paperBySlug("general-test-2025-05-20-shift-1"),
+  paperBySlug("general-test-2025-05-20-shift-2"),
+  paperBySlug("general-test-2022-08-06"),
+];
 const INSTRUCTIONS = `/mock/${SCORED_PAPER.slug}/instructions`;
-const SCORED_PAPER_PATH = `/cuet-ug-previous-year-question-papers/language-pyqs/subject/${SCORED_PAPER.subject.slug}/${SCORED_PAPER.slug}`;
-const DETAIL_PAPER_PATH = `/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/${DETAIL_PAPER.subject.slug}/${DETAIL_PAPER.slug}`;
+const SCORED_PAPER_PATH = `/cuet-ug-previous-year-question-papers/language-pyqs/${SCORED_PAPER.subject.slug}/${SCORED_PAPER.slug}`;
+const DETAIL_PAPER_PATH = `/cuet-ug-previous-year-question-papers/domain-subject-pyqs/${DETAIL_PAPER.subject.slug}/${DETAIL_PAPER.slug}`;
 
 test.beforeEach(async ({ page }) => {
   // Keep repeated local runs out of the shared rate-limit bucket.
@@ -131,6 +138,10 @@ test("practice detail reports the scored count when no questions are excluded", 
     "href",
     `/mock/${DETAIL_PAPER.slug}/instructions`,
   );
+  await expect(page.getByRole("link", { name: "All PYQs" })).toHaveAttribute(
+    "href",
+    "/cuet-ug-previous-year-question-papers",
+  );
   // Every generated paper gets a real OG preview image, not the logo fallback.
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
@@ -146,6 +157,13 @@ test("legacy mock-tests detail URLs permanently redirect to the categorized PYQ 
   });
   expect(response.status()).toBe(301);
   expect(response.headers().location).toBe(SCORED_PAPER_PATH);
+
+  const legacyArchiveResponse = await page.request.get(
+    `/cuet-ug-previous-year-question-papers/language-pyqs/subject/${SCORED_PAPER.subject.slug}/${SCORED_PAPER.slug}`,
+    { maxRedirects: 0 },
+  );
+  expect(legacyArchiveResponse.status()).toBe(301);
+  expect(legacyArchiveResponse.headers().location).toBe(SCORED_PAPER_PATH);
 });
 
 test("legacy practice URLs permanently redirect to mock-tests", async ({ page }) => {
@@ -279,16 +297,44 @@ test("practice papers are linked from their subject hub", async ({ page }) => {
 });
 
 test("PYQ cards and General Test metadata use the requested PYQ wording", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/cuet-ug-previous-year-question-papers");
+  await expect(page.getByRole("heading", { name: "Browse by year" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Browse by subject" })).toHaveCount(0);
   const subjectCards = page.locator("[data-pyq-subject-card]");
   await expect(subjectCards.first()).toBeVisible();
 
   for (const card of await subjectCards.all()) {
     await expect(card.locator(":scope > div:first-child > span")).toHaveText(/^\d+ PYQs$/);
+    await expect(
+      card.getByText("Practice Online for FREE and Boost Your NTA CUET UG 2027 Preparation.", {
+        exact: true,
+      }),
+    ).toBeVisible();
+  }
+
+  const generalTestRows = page
+    .locator('[data-pyq-subject-card][data-subject-slug="general-test"]')
+    .locator("[data-pyq-paper-row]");
+  for (const row of await generalTestRows.all()) {
+    const tagRow = row.locator(".min-w-0 > div");
+    const tags = tagRow.locator("span.rounded");
+    await expect(tags).toHaveCount(4);
+    await expect(tags.nth(1)).toHaveText(/^\d{2}-\d{2}-\d{4}(?: Shift \d+)?$/i);
+    await expect(tags.nth(2)).toContainText(/\d+ questions/);
+    await expect(tags.nth(3)).toHaveText(/\d+ min/);
+    const tagRows = await tags.evaluateAll((elements) =>
+      elements.map((element) => Math.round(element.getBoundingClientRect().top)),
+    );
+    expect(new Set(tagRows).size).toBe(1);
+    await expect(row.getByRole("link", { name: "Start Test →" })).toHaveAttribute(
+      "href",
+      /^\/cuet-ug-previous-year-question-papers\/general-aptitude-test-pyqs\/general-test\/.+$/,
+    );
   }
 
   await page.goto(
-    "/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/subject/general-test",
+    "/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/general-test",
   );
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "NTA CUET UG General Aptitude Test PYQs - Practice Online",
@@ -306,6 +352,48 @@ test("PYQ cards and General Test metadata use the requested PYQ wording", async 
     "content",
     "Practice CUET UG General Aptitude Test PYQs Online for FREE with Answers. Attempt Timed NTA Previous Years Questions and Boost your Preparation for CUET UG 2027.",
   );
+
+  const legacySubjectResponse = await page.request.get(
+    "/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/subject/general-test",
+    { maxRedirects: 0 },
+  );
+  expect(legacySubjectResponse.status()).toBe(301);
+  expect(legacySubjectResponse.headers().location).toBe(
+    "/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/general-test",
+  );
+});
+
+test("Accountancy subject archive uses the URL without /subject", async ({ page }) => {
+  const path = "/cuet-ug-previous-year-question-papers/domain-subject-pyqs/accountancy";
+  const response = await page.goto(path);
+  expect(response?.status()).toBe(200);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Accountancy");
+
+  const legacyResponse = await page.request.get(
+    "/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/accountancy",
+    { maxRedirects: 0 },
+  );
+  expect(legacyResponse.status()).toBe(301);
+  expect(legacyResponse.headers().location).toBe(path);
+});
+
+test("General Test paper pages use the requested date-specific metadata", async ({ page }) => {
+  for (const paper of GENERAL_TEST_PAPERS) {
+    const dateLabel = paper.dateLabel || String(paper.year);
+    const titleShift = paper.shift ? ` ${paper.shift}` : "";
+    const descriptionShift = paper.shift ? `, ${paper.shift}` : "";
+
+    await page.goto(
+      `/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/general-test/${paper.slug}`,
+    );
+    await expect(page).toHaveTitle(
+      `CUET UG General Test ${dateLabel}${titleShift} PYQ | Online Test`,
+    );
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+      "content",
+      `Practice the official NTA CUET UG General Test Previous Year Question Paper with Answers (${dateLabel}${descriptionShift}) Online for FREE and Boost your Exam Prep!`,
+    );
+  }
 });
 
 test("the homepage shows refined most-popular papers in the hero and below", async ({ page }) => {
