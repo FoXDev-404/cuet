@@ -12,10 +12,15 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     }
   });
 
-  it("verifies /pyq 301-redirects to /cuet-ug-previous-year-papers", () => {
+  it("verifies /pyq 301-redirects to /cuet-ug-previous-year-question-papers", () => {
     const file = readFileSync(join(root, "src/pages/pyq/index.ts"), "utf8");
-    expect(file).toContain('headers: { location: "/cuet-ug-previous-year-papers" }');
+    expect(file).toContain('headers: { location: "/cuet-ug-previous-year-question-papers" }');
     expect(file).toContain("status: 301");
+  });
+
+  it("verifies the former PYQ archive URL 301-redirects to the new URL", () => {
+    const file = readFileSync(join(root, "src/pages/cuet-ug-previous-year-papers.astro"), "utf8");
+    expect(file).toContain('Astro.redirect("/cuet-ug-previous-year-question-papers", 301)');
   });
 
   it("verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to /mock-tests/[slug]", () => {
@@ -33,6 +38,8 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(file).not.toContain('add("/cuet-mock-test"');
     expect(file).not.toContain('add("/cuet-ug-mock-test"');
     expect(file).not.toContain('add("/pyq"');
+    expect(file).toContain('add("/cuet-ug-previous-year-question-papers"');
+    expect(file).not.toContain('add("/cuet-ug-previous-year-papers"');
   });
 
   it("verifies sitemap.xml gates unverified exam info pages (important-dates)", () => {

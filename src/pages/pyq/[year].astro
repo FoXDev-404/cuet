@@ -80,7 +80,7 @@ const site = siteUrl(Astro.url);
 const structuredData = [
   breadcrumbJsonLd(site, [
     { name: "Home", path: "/" },
-    { name: "Previous-year papers", path: "/cuet-ug-previous-year-papers" },
+    { name: "Previous-year papers", path: "/cuet-ug-previous-year-question-papers" },
     { name: String(year), path: PATH },
   ]),
   itemListJsonLd(site, [
@@ -113,7 +113,7 @@ const structuredData = [
     <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
       <a class="hover:underline" href="/">Home</a>
       <span aria-hidden="true">/</span>
-      <a class="hover:underline" href="/cuet-ug-previous-year-papers">Previous-year papers</a>
+      <a class="hover:underline" href="/cuet-ug-previous-year-question-papers">Previous-year papers</a>
       <span aria-hidden="true">/</span>
       <span>{year}</span>
     </nav>
@@ -126,7 +126,7 @@ const structuredData = [
             {totalPapers} paper{totalPapers === 1 ? "" : "s"} · {subjectNames.length > 0 ? subjectNames.join(", ") : "mixed subjects"}
           </p>
         </div>
-        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-previous-year-papers">All years →</a>
+        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-previous-year-question-papers">All years →</a>
       </div>
 
       {playable.length > 0 ? (
@@ -190,7 +190,7 @@ const structuredData = [
           <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">Open the full archive to compare papers across sessions, or take a subject mock if your year is not published yet.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-previous-year-papers">All PYQ papers</a>
+          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-previous-year-question-papers">All PYQ papers</a>
           <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/mock-tests">Mock tests</a>
         </div>
       </div>

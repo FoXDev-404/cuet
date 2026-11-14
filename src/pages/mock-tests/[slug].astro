@@ -27,7 +27,7 @@ const paperOgImage = generatedPaperSlugs.includes(paper.slug)
 const structuredData = [
   breadcrumbJsonLd(site, [
     { name: "Home", path: "/" },
-    { name: "Previous-year papers", path: "/cuet-ug-previous-year-papers" },
+    { name: "Previous-year papers", path: "/cuet-ug-previous-year-question-papers" },
     { name: `${paper.year} ${paper.subject.name}`, path: `/pyq/${paper.year}/${paper.subject.slug}` },
     { name: paper.title, path },
   ]),
@@ -93,7 +93,7 @@ const forceNoindex = paper.rightsStatus === "restricted";
         <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
           <a class="hover:underline" href="/">Home</a>
           <span aria-hidden="true">/</span>
-          <a class="hover:underline" href="/cuet-ug-previous-year-papers">Previous-year papers</a>
+          <a class="hover:underline" href="/cuet-ug-previous-year-question-papers">Previous-year papers</a>
           <span aria-hidden="true">/</span>
           <a class="hover:underline" href={`/pyq/${paper.year}/${paper.subject.slug}`}>{paper.year} {paper.subject.name}</a>
           <span aria-hidden="true">/</span>
@@ -156,7 +156,7 @@ const forceNoindex = paper.rightsStatus === "restricted";
         <a class="mt-2 block rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={`/leaderboard/${paper.slug}`}>
           View leaderboard
         </a>
-        <a class="mt-2 block rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/cuet-ug-previous-year-papers">All previous-year papers</a>
+        <a class="mt-2 block rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-bold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href="/cuet-ug-previous-year-question-papers">All previous-year papers</a>
         <ul class="mt-5 space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
           <li>• Ranked: first submitted attempt counts on the leaderboard.</li>
           <li>• Saved to your dashboard and history.</li>

@@ -802,7 +802,7 @@ Leaderboards show username only regardless of profile setting.
 | `/mock/[slug]` | Mock detail: intro, leaderboard, discussion, FAQ |
 | `/cuet-mock-test/[subject]` | Subject page |
 | `/cuet-mock-test/[subject]/[topic]` | Topic page (unique text) |
-| `/cuet-ug-previous-year-papers`, `/pyq/[year]`, `/pyq/[year]/[subject]` | PYQs |
+| `/cuet-ug-previous-year-question-papers`, `/pyq/[year]`, `/pyq/[year]/[subject]` | PYQs |
 | `/cuet-ug-syllabus`, `/cuet-ug-syllabus/[subject]` | Syllabus |
 | `/cuet-ug-exam-pattern`, `/cuet-ug-important-dates`, `/cuet-ug-marking-scheme` | Exam info |
 | `/leaderboard`, `/leaderboard/[mock-slug]` | Leaderboards |

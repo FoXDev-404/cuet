@@ -93,7 +93,7 @@ DoD: JSON-LD inventory table per route group in the fix log.
 
 ## FIX 7 — DUPLICATE HUBS AND SITEMAP CONSISTENCY (P1)
 
-- Canonical map (default, matches the keyword map): `/cuet-ug-mock-test` is the mock hub; `/cuet-mock-test` (index only) 301-redirects to it while `/cuet-mock-test/{subject}` stays. `/pyq` 301-redirects to `/cuet-ug-previous-year-papers`. Check `slug_redirects` and canonicals for any other duplicates.
+- Canonical map (default, matches the keyword map): `/cuet-ug-mock-test` is the mock hub; `/cuet-mock-test` (index only) 301-redirects to it while `/cuet-mock-test/{subject}` stays. `/pyq` and `/cuet-ug-previous-year-papers` 301-redirect to `/cuet-ug-previous-year-question-papers`. Check `slug_redirects` and canonicals for any other duplicates.
 - Write `scripts/seo-consistency.mjs` that crawls the local/staging site and outputs: every URL with status, canonical, robots meta, JSON-LD types, title length, h1 count. Rules: every indexable URL (200, no noindex, self-canonical) is in the sitemap; every sitemap URL is 200, indexable and self-canonical; no private URL in the sitemap.
 - Explain and fix the gap between 243 sitemap URLs and the ~550 pages marked `index, follow` (mocks, papers, subjects). Decide per group which pages should be indexable, consistent with Fix 3 gates and thin-content rules (no near-empty pages).
 - Run the script in CI.

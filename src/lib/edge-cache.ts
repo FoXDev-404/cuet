@@ -26,7 +26,7 @@ const EDGE_CACHEABLE_EXACT_PATHS = new Set(["/sitemap.xml"]);
 const EDGE_CACHEABLE_PREFIXES = [
   "/mock-tests",
   "/blog",
-  "/cuet-ug-previous-year-papers",
+  "/cuet-ug-previous-year-question-papers",
   "/cuet-ug-syllabus",
   "/cuet-ug-exam-pattern",
   "/cuet-ug-marking-scheme",

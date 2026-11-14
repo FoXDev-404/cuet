@@ -160,7 +160,7 @@ Do not count repeated versions of a question as independent evidence of importan
 
 After review, close the explanation and solve the question again. Then create one small variation: change a value in a numerical example, explain the concept in your own words, or write why one distractor fails. This checks whether you learned the idea rather than memorised the answer letter.
 
-Keep a short list of concepts to revisit in a few days. Retest them with fresh questions where possible. The [PYQ library](/cuet-ug-previous-year-papers) gives you papers to work through, while the [error log](/blog/cuet-ug-error-log-guide) helps track what each attempt reveals.
+Keep a short list of concepts to revisit in a few days. Retest them with fresh questions where possible. The [PYQ library](/cuet-ug-previous-year-question-papers) gives you papers to work through, while the [error log](/blog/cuet-ug-error-log-guide) helps track what each attempt reveals.
 
 The useful question is not “Will this exact question repeat?” It is “What does this question show me that I still need to learn?”`,
   },

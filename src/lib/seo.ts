@@ -46,7 +46,7 @@ export const SEO_PATHS = [
   "/cuet-ug-exam-pattern",
   "/cuet-ug-marking-scheme",
   "/cuet-ug-important-dates",
-  "/cuet-ug-previous-year-papers",
+  "/cuet-ug-previous-year-question-papers",
   "/blog",
   "/leaderboard",
   "/about",

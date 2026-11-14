@@ -101,7 +101,7 @@ By applying the **Minimum Indexable Content Rule (Fix R7)**, thin archive list p
 
 | Route Group | Indexable Count | Sample URLs | Rationale |
 | :--- | :---: | :--- | :--- |
-| **Core Landing & Hubs** | **10** | `/, /cuet-ug-mock-test, /mock-tests, /cuet-ug-previous-year-papers, /leaderboard, /about, /contact, /privacy-policy, /terms, /disclaimer` | Substantive copy |
+| **Core Landing & Hubs** | **10** | `/, /cuet-ug-mock-test, /mock-tests, /cuet-ug-previous-year-question-papers, /leaderboard, /about, /contact, /privacy-policy, /terms, /disclaimer` | Substantive copy |
 | **Official Exam Guides** | **3** | `/cuet-ug-syllabus, /cuet-ug-exam-pattern, /cuet-ug-marking-scheme` | Substantive copy |
 | **Syllabus Subject Guides** | **19** | `/cuet-ug-syllabus/:subject (19 subjects)` | Substantive copy |
 | **Substantive Subject Hubs** | **11** | `/cuet-mock-test/:subject (subjects with >= 3 questions)` | Substantive copy |

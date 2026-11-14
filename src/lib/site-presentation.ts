@@ -18,7 +18,7 @@ export const HOMEPAGE_PRESENTATION_DEFAULTS = {
   home_hero_primary_label: "Take a FREE Mock Test",
   home_hero_primary_href: "/mock-tests",
   home_hero_secondary_label: "Browse CUET PYQs",
-  home_hero_secondary_href: "/cuet-ug-previous-year-papers",
+  home_hero_secondary_href: "/cuet-ug-previous-year-question-papers",
   home_hero_note:
     "No account needed to start. Sign in later to save your history and leaderboard attempt.",
   home_featured_heading: "Most Popular Mock Tests",

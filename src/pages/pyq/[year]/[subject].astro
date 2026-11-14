@@ -94,7 +94,7 @@ const site = siteUrl(Astro.url);
 const structuredData = [
   breadcrumbJsonLd(site, [
     { name: "Home", path: "/" },
-    { name: "Previous-year papers", path: "/cuet-ug-previous-year-papers" },
+    { name: "Previous-year papers", path: "/cuet-ug-previous-year-question-papers" },
     { name: String(year), path: `/pyq/${year}` },
     { name: subject.name, path: PATH },
   ]),
@@ -128,7 +128,7 @@ const structuredData = [
     <nav class="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400" aria-label="Breadcrumb">
       <a class="hover:underline" href="/">Home</a>
       <span aria-hidden="true">/</span>
-      <a class="hover:underline" href="/cuet-ug-previous-year-papers">Previous-year papers</a>
+      <a class="hover:underline" href="/cuet-ug-previous-year-question-papers">Previous-year papers</a>
       <span aria-hidden="true">/</span>
       <a class="hover:underline" href={`/pyq/${year}`}>{year}</a>
       <span aria-hidden="true">/</span>
@@ -177,7 +177,7 @@ const structuredData = [
           <h2 class="text-xl font-bold">{dbSubject ? `Compare with other ${subject.name} practice` : `More ${subject.name} papers`}</h2>
           <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">{dbSubject ? "A subject mock gives you a shorter diagnostic loop after the full paper." : "Browse the previous-year library to compare years and shifts."}</p>
         </div>
-        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={dbSubject ? `/cuet-mock-test/${subject.slug}` : "/cuet-ug-previous-year-papers"}>{dbSubject ? `Open ${subject.name} practice` : "All previous-year papers"}</a>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={dbSubject ? `/cuet-mock-test/${subject.slug}` : "/cuet-ug-previous-year-question-papers"}>{dbSubject ? `Open ${subject.name} practice` : "All previous-year papers"}</a>
       </div>
     </section>
   </div>

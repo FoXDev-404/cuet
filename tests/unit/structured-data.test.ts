@@ -73,7 +73,7 @@ describe("Fix 6 — Structured Data (JSON-LD) Governance", () => {
       "src/pages/cuet-ug-marking-scheme.astro",
       "src/pages/cuet-ug-syllabus.astro",
       "src/pages/cuet-ug-important-dates.astro",
-      "src/pages/cuet-ug-previous-year-papers.astro",
+      "src/pages/cuet-ug-previous-year-question-papers.astro",
     ];
 
     for (const pagePath of guidePages) {

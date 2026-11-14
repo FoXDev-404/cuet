@@ -206,7 +206,7 @@ export const GET: APIRoute = async ({ request }) => {
   if (isExamVerified("marking-scheme")) add("/cuet-ug-marking-scheme", { changefreq: "monthly", priority: "0.8" });
   if (isExamVerified("important-dates")) add("/cuet-ug-important-dates", { changefreq: "weekly", priority: "0.8" });
   if (playablePyqCount > 0 || localPapers.length > 0) {
-    add("/cuet-ug-previous-year-papers", { changefreq: "monthly", priority: "0.8" });
+    add("/cuet-ug-previous-year-question-papers", { changefreq: "monthly", priority: "0.8" });
   }
   if (localPapers.length > 0) {
     add("/mock-tests", { changefreq: "weekly", priority: "0.8" });
