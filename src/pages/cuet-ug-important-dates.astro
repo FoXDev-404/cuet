@@ -3,7 +3,7 @@ import { siteUrl } from "../lib/site-url";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
-import { renderRichText } from "../lib/content";
+import { hasMathSource, renderRichText } from "../lib/content";
 import { DB_DEGRADED_HEADER } from "../lib/db-resilient";
 import {
   articleJsonLd,
@@ -101,7 +101,7 @@ const plan = [
 ];
 ---
 
-<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} mathStyles={hasMathSource(seo?.intro_html)} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow="Important dates"
     title="Plan around verified dates, not forwarded screenshots"

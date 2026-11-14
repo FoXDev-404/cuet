@@ -5,7 +5,7 @@ import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { allOr } from "../lib/db";
 import { DB_DEGRADED_HEADER } from "../lib/db-resilient";
-import { parseMarkingScheme, renderRichText } from "../lib/content";
+import { hasMathSource, parseMarkingScheme, renderRichText } from "../lib/content";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
@@ -128,7 +128,7 @@ const stageCards = [
 ];
 ---
 
-<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} mathStyles={hasMathSource(seo?.intro_html)} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow="Exam pattern"
     title="Know the paper before the timer starts"

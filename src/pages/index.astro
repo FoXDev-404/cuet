@@ -1,5 +1,6 @@
 ---
 import { siteUrl } from "../lib/site-url";
+import { hasMathSource } from "../lib/content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SeoIntro from "../components/SeoIntro.astro";
 import FaqSection from "../components/FaqSection.astro";
@@ -415,6 +416,7 @@ const focusCards = [
 <BaseLayout
   title={title}
   description={description}
+  mathStyles={hasMathSource(seo?.intro_html)}
   noindex={noindex || isSitePreview}
   canonical={seo?.canonical_url}
   structuredData={structuredData}

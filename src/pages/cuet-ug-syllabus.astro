@@ -6,7 +6,7 @@ import FaqSection from "../components/FaqSection.astro";
 import { getLocalSubjectSummary } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
 import { getSubjectStats } from "../lib/subject-stats";
-import { renderRichText } from "../lib/content";
+import { hasMathSource, renderRichText } from "../lib/content";
 import { DB_DEGRADED_HEADER } from "../lib/db-resilient";
 import {
   articleJsonLd,
@@ -152,7 +152,7 @@ const groups = [
 ].filter((group) => group.items.length > 0);
 ---
 
-<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} mathStyles={hasMathSource(seo?.intro_html)} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow="Syllabus"
     title="The CUET UG syllabus, turned into a study plan"

@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import "katex/dist/katex.min.css";
+import katexStyles from "katex/dist/katex.min.css?inline";
 import { env } from "cloudflare:workers";
 import BrandLogo from "../components/BrandLogo.astro";
 import AdSlot from "../components/AdSlot.astro";
@@ -38,6 +38,8 @@ interface Props {
   image?: string | null;
   /** Accessible description for the social preview image. */
   imageAlt?: string;
+  /** Load KaTeX styling only on pages whose rendered content contains math. */
+  mathStyles?: boolean;
   /** Open Graph object type; blog articles pass "article". */
   ogType?: string;
 }
@@ -55,6 +57,7 @@ const {
   endAdSlot = true,
   image: imageOverride = null,
   imageAlt = "",
+  mathStyles = false,
   ogType: ogTypeOverride = "website",
 } = Astro.props;
 
@@ -154,6 +157,7 @@ const organization = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
+    {mathStyles ? <style set:html={katexStyles} /> : null}
     <script is:inline>
       (function () {
         try {
@@ -179,15 +183,26 @@ const organization = {
       </script>
     ) : null}
     {ga4Id ? (
-      <>
-        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
-        <script is:inline define:vars={{ ga4Id }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag("js", new Date());
-          gtag("config", ga4Id);
-        </script>
-      </>
+      <script is:inline define:vars={{ ga4Id }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag("js", new Date());
+        gtag("config", ga4Id);
+
+        function loadGtag() {
+          var script = document.createElement("script");
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4Id);
+          document.head.appendChild(script);
+        }
+
+        function scheduleGtag() {
+          window.setTimeout(loadGtag, 2000);
+        }
+
+        if (document.readyState === "complete") scheduleGtag();
+        else window.addEventListener("load", scheduleGtag, { once: true });
+      </script>
     ) : null}
     <title>{title}</title>
     <meta name="description" content={description} />

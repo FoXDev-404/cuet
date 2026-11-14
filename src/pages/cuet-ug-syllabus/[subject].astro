@@ -7,7 +7,7 @@ import { allOr, firstOr } from "../../lib/db";
 import { DB_DEGRADED_HEADER } from "../../lib/db-resilient";
 import { getLocalSubjectSummary } from "../../lib/local-papers";
 import { getSubjectStats } from "../../lib/subject-stats";
-import { renderRichText } from "../../lib/content";
+import { hasMathSource, renderRichText } from "../../lib/content";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
@@ -159,7 +159,7 @@ const structuredData = [
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 ---
 
-<BaseLayout title={title} description={description} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} mathStyles={hasMathSource(seo?.intro_html)} robots={noindex ? "noindex, follow" : undefined} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow={`Syllabus · ${subject.name}`}
     title={`${subject.name} syllabus, mapped to practice`}

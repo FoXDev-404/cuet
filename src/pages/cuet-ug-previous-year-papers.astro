@@ -5,7 +5,7 @@ import PageHero from "../components/PageHero.astro";
 import FaqSection from "../components/FaqSection.astro";
 import LocalPaperCard from "../components/LocalPaperCard.astro";
 import { allOr } from "../lib/db";
-import { parseMarkingScheme, renderRichText } from "../lib/content";
+import { hasMathSource, parseMarkingScheme, renderRichText } from "../lib/content";
 import { getLocalPaperYears, getLocalPapers } from "../lib/local-papers";
 import { listPyqYears } from "../lib/pyq";
 import {
@@ -130,7 +130,7 @@ const steps = [
 ];
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} mathStyles={hasMathSource(seo?.intro_html)} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow="Previous-year papers"
     title="Rehearse the paper, not a screenshot of it"

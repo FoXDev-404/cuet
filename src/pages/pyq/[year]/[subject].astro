@@ -7,7 +7,7 @@ import LocalPaperCard from "../../../components/LocalPaperCard.astro";
 import { firstOr } from "../../../lib/db";
 import { getLocalPapersForYear } from "../../../lib/local-papers";
 import { listPyqPapers, pyqMarking } from "../../../lib/pyq";
-import { renderRichText } from "../../../lib/content";
+import { hasMathSource, renderRichText } from "../../../lib/content";
 import {
   breadcrumbJsonLd,
   getPageSeo,
@@ -109,6 +109,7 @@ const structuredData = [
   title={title}
   description={description}
   noindex={noindex}
+  mathStyles={hasMathSource(seo?.intro_html)}
   robots={noindex ? "noindex, follow" : undefined}
   canonical={seo?.canonical_url}
   structuredData={structuredData}

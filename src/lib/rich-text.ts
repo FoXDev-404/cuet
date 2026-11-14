@@ -697,6 +697,11 @@ function renderBareScripts(value: string): string {
   });
 }
 
+/** Whether a rich-text source contains syntax that can render as KaTeX math. */
+export function hasMathSource(value: string | null | undefined): boolean {
+  return Boolean(value && /\$\$?[\s\S]+?\$\$?|\\\(|\\\[|\\begin\{/.test(value));
+}
+
 /**
  * Question content is authored by admins and extracted from official NTA papers.
  * Renders LaTeX math with KaTeX, formats tables, safe figures, markdown headings,

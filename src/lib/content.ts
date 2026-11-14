@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { renderPlainText, renderRichText } from "./rich-text";
+import { hasMathSource, renderPlainText, renderRichText } from "./rich-text";
 
-export { renderPlainText, renderRichText };
+export { hasMathSource, renderPlainText, renderRichText };
 
 export type QuestionOption = {
   text: string;

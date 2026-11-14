@@ -4,7 +4,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 import FaqSection from "../../../components/FaqSection.astro";
 import { allOr, firstOr } from "../../../lib/db";
-import { parseMarkingScheme, renderRichText } from "../../../lib/content";
+import { hasMathSource, parseMarkingScheme, renderRichText } from "../../../lib/content";
 import {
   breadcrumbJsonLd,
   getPageSeo,
@@ -167,7 +167,7 @@ const structuredData = [
 ].filter((item): item is Record<string, unknown> => Boolean(item));
 ---
 
-<BaseLayout title={title} description={description} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
+<BaseLayout title={title} description={description} mathStyles={hasMathSource(seo?.intro_html)} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
     eyebrow={`${subject.name} · ${topic.name}`}
     title={`${topic.name} practice for CUET UG ${subject.name}`}
