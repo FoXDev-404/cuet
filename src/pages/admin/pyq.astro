@@ -2,6 +2,7 @@
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import { all } from "../../lib/db";
 import { can } from "../../lib/auth/admin";
+import { getPyqPaperPath } from "../../lib/pyq-subject-path";
 
 const admin = Astro.locals.admin!;
 if (!can(admin.role, "mocks.write")) return Astro.redirect("/forbidden", 303);
@@ -18,6 +19,8 @@ const practicePapers = await all<{
   year: number;
   shift: string | null;
   subject_name: string;
+  subject_slug: string;
+  subject_type: string;
   source_file: string | null;
   source_url: string | null;
   source_type: string;
@@ -27,6 +30,7 @@ const practicePapers = await all<{
   verified_at: string | null;
 }>(
   `SELECT p.id, p.slug, p.title, p.year, p.shift, s.name AS subject_name,
+          s.slug AS subject_slug, s.type AS subject_type,
           p.source_file, p.source_url, p.source_type, p.rights_status,
           p.rights_note, p.verified_by, p.verified_at
    FROM practice_papers p
@@ -159,7 +163,7 @@ const filteredPapers = practicePapers.filter((p) => {
           <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-800/40" data-paper-id={paper.id}>
             <td class="p-3"><input type="checkbox" class="paper-check" value={paper.id} aria-label={`Select paper ${paper.title}`} /></td>
             <td class="p-3 font-semibold">
-              <a href={`/mock-tests/${paper.slug}`} target="_blank" class="text-brand-700 hover:underline dark:text-brand-300">
+              <a href={getPyqPaperPath(paper.slug, paper.subject_slug, paper.subject_type)} target="_blank" class="text-brand-700 hover:underline dark:text-brand-300">
                 {paper.title}
               </a>
               {paper.shift ? <span class="ml-1 text-neutral-600 dark:text-neutral-300">({paper.shift})</span> : null}

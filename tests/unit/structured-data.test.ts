@@ -87,7 +87,7 @@ describe("Fix 6 — Structured Data (JSON-LD) Governance", () => {
   it("verifies mock test and practice pages emit only BreadcrumbList and ItemList", () => {
     const testPages = [
       "src/pages/mock/[slug]/index.astro",
-      "src/pages/mock-tests/[slug].astro",
+      "src/pages/cuet-ug-previous-year-question-papers/[category]/subject/[subject]/[paper].astro",
       "src/pages/q/[slug].astro",
     ];
 

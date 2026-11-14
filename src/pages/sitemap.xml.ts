@@ -301,8 +301,8 @@ export const GET: APIRoute = async ({ request }) => {
 
   for (const mock of mocks) {
     if (isFixtureMock(mock)) continue;
-    // Imported previous-year papers are canonical on /mock-tests/<slug>, so only
-    // their leaderboard is a distinct indexable URL.
+    // Imported previous-year papers are canonical under the category/subject
+    // archive path, so only their leaderboard is another indexable URL.
     if (!mock.practice_paper_slug) {
       add(`/mock/${mock.slug}`, {
         lastmod: mock.updated_at ?? mock.published_at,

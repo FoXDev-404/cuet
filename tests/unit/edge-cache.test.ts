@@ -13,6 +13,11 @@ describe("edge cache path rules", () => {
     expect(isEdgeCacheablePath("/")).toBe(true);
     expect(isEdgeCacheablePath("/mock-tests")).toBe(true);
     expect(isEdgeCacheablePath("/mock-tests/english-2026-06-06-shift-1")).toBe(true);
+    expect(
+      isEdgeCacheablePath(
+        "/cuet-ug-previous-year-question-papers/language-pyqs/subject/english/english-2026-06-06-shift-1",
+      ),
+    ).toBe(true);
     expect(isEdgeCacheablePath("/blog/how-to-use-cuet-previous-year-papers")).toBe(true);
     expect(isEdgeCacheablePath("/cuet-ug-previous-year-question-papers")).toBe(true);
     expect(isEdgeCacheablePath("/cuet-ug-syllabus/physics")).toBe(true);

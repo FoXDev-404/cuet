@@ -1,0 +1,21 @@
+---
+import { firstOr } from "../../../lib/db";
+import { getLocalSubjectCards } from "../../../lib/local-subject-fallback";
+import { getPyqSubjectPath } from "../../../lib/pyq-subject-path";
+
+const subjectSlug = Astro.params.subject ?? "";
+const dbSubject = await firstOr<{ slug: string; type: string }>(
+  `SELECT s.slug, s.type
+   FROM subjects s
+   JOIN exams e ON e.id = s.exam_id
+   WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`,
+  null,
+  subjectSlug,
+);
+const localSubject = getLocalSubjectCards().find((subject) => subject.slug === subjectSlug);
+const subject = dbSubject ?? localSubject;
+
+if (!subject) return new Response("Subject not found", { status: 404 });
+
+return Astro.redirect(getPyqSubjectPath(subject.slug, subject.type), 301);
+---

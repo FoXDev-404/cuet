@@ -17,6 +17,7 @@ import {
   localPaperPath,
 } from "../../src/lib/local-papers";
 import { setPracticeLibraryStore, usePracticeLibrary } from "../../src/lib/practice-library";
+import { getPyqPaperPath } from "../../src/lib/pyq-subject-path";
 import {
   buildPaper,
   buildSummary,
@@ -98,7 +99,7 @@ describe("local previous-year library", () => {
       expect(paper.recoveredQuestionCount).toBeGreaterThan(0);
       expect(paper.scorableQuestionCount).toBeLessThanOrEqual(paper.recoveredQuestionCount);
       expect(paper.metaDescription.length).toBeGreaterThan(50);
-      expect(paper.path).toBe(`/mock-tests/${paper.slug}`);
+      expect(paper.path).toBe(getPyqPaperPath(paper.slug, paper.subject.slug));
       expect(paper.localPaper && paper.draft).toBe(true);
     }
   });
@@ -111,10 +112,21 @@ describe("local previous-year library", () => {
       expect(getLocalPapersForYear(entry.year)).toHaveLength(entry.paper_count);
     }
     const first = papers[0];
-    expect(localPaperPath(first.slug)).toBe(`/mock-tests/${first.slug}`);
+    expect(localPaperPath(first.slug)).toBe(getPyqPaperPath(first.slug, first.subject.slug));
     expect(isLocalPaperSlug(first.slug)).toBe(true);
     expect(isLocalPaperSlug("missing-paper")).toBe(false);
     expect(getLocalPaperSummary("missing-paper")).toBeNull();
+  });
+
+  it("replaces a cached legacy paper URL with its categorized archive path", () => {
+    const paper = SUMMARIES.find((summary) => summary.slug === KEYED_SLUG)!;
+    usePracticeLibrary([{ ...paper, path: `/mock-tests/${paper.slug}` }]);
+
+    const canonicalPath = getPyqPaperPath(paper.slug, paper.subject.slug);
+    expect(getLocalPaperSummary(paper.slug)?.path).toBe(canonicalPath);
+    expect(localPaperPath(paper.slug)).toBe(canonicalPath);
+
+    usePracticeLibrary(SUMMARIES);
   });
 
   it("loads every paper and finds every referenced crop on disk", async () => {
@@ -315,7 +327,7 @@ describe("homepage curation", () => {
       const latestYear = Math.max(...own.map((paper) => paper.year));
       expect(subject.latestYear).toBe(latestYear);
       expect(subject.href).toBe(`/pyq/${latestYear}/${subject.subject.slug}`);
-      expect(subject.latestPaperPath.startsWith("/mock-tests/")).toBe(true);
+      expect(subject.latestPaperPath).toContain(`/subject/${subject.subject.slug}/`);
     }
   });
 

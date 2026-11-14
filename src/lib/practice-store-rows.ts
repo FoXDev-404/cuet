@@ -1,6 +1,5 @@
 import {
   displayDate,
-  LOCAL_LIBRARY_PATH,
   LOCAL_MARKING_SCHEME,
   type LocalListPair,
   type LocalMatchList,
@@ -13,6 +12,7 @@ import {
   type LocalSubject,
 } from "./practice-normalize";
 import { calculateMockDuration } from "./exam-timing";
+import { getPyqPaperPath, getPyqSubjectType } from "./pyq-subject-path";
 
 /**
  * Row shapes and pure mappers for the D1 practice store.
@@ -135,7 +135,11 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
     reviewRequired: Boolean(row.review_required),
     localPaper: true,
     draft: true,
-    path: `${LOCAL_LIBRARY_PATH}/${row.slug}`,
+    path: getPyqPaperPath(
+      row.slug,
+      row.subject_slug,
+      getPyqSubjectType(undefined, row.subject_slug),
+    ),
   };
 }
 

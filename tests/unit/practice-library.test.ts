@@ -8,6 +8,7 @@ import {
 } from "../../src/lib/practice-library";
 import type { LocalPaperSummary } from "../../src/lib/practice-normalize";
 import { sortPracticeSummaries } from "../../src/lib/practice-normalize";
+import { getPyqPaperPath } from "../../src/lib/pyq-subject-path";
 
 function summary(slug: string): LocalPaperSummary {
   return {
@@ -37,7 +38,7 @@ function summary(slug: string): LocalPaperSummary {
     reviewRequired: false,
     localPaper: true,
     draft: true,
-    path: `/mock-tests/${slug}`,
+    path: getPyqPaperPath(slug, "biology"),
   };
 }
 

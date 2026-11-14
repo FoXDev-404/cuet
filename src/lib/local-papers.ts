@@ -1,7 +1,6 @@
 import {
   buildSubjectSummaries,
   copyMatchList,
-  LOCAL_LIBRARY_PATH,
   LOCAL_MARKING_SCHEME,
   type LocalListPair,
   type LocalMatchList,
@@ -14,6 +13,7 @@ import {
   type LocalSubjectSummary,
 } from "./practice-normalize";
 import { getConfiguredStore, getPracticeSnapshot } from "./practice-library";
+import { getPyqPaperPath } from "./pyq-subject-path";
 
 /**
  * Repo-backed previous-year practice papers.
@@ -140,6 +140,7 @@ export interface LocalPaperRuntime {
 function copySummary(paper: LocalPaperSummary): LocalPaperSummary {
   return {
     ...paper,
+    path: getPyqPaperPath(paper.slug, paper.subject.slug),
     subject: { ...paper.subject },
     markingScheme: { ...paper.markingScheme },
   };
@@ -170,7 +171,9 @@ function listableSnapshot() {
 }
 
 export function localPaperPath(slug: string): string {
-  return `${LOCAL_LIBRARY_PATH}/${slug}`;
+  const paper = getPracticeSnapshot().papersBySlug.get(slug);
+  if (!paper) throw new Error(`Local practice paper not found: ${slug}`);
+  return getPyqPaperPath(paper.slug, paper.subject.slug);
 }
 
 export function isLocalPaperSlug(slug: string): boolean {
@@ -204,7 +207,12 @@ export function getPopularLocalPapers(limit = 6): LocalPaperSummary[] {
 }
 
 function copySubjectSummary(summary: LocalSubjectSummary): LocalSubjectSummary {
-  return { ...summary, subject: { ...summary.subject } };
+  const paperSlug = summary.latestPaperPath.split("/").pop() ?? "";
+  return {
+    ...summary,
+    latestPaperPath: getPyqPaperPath(paperSlug, summary.subject.slug),
+    subject: { ...summary.subject },
+  };
 }
 
 export function getLocalSubjectSummaries(): LocalSubjectSummary[] {
@@ -229,7 +237,8 @@ export function getLocalPaperSummaries(): LocalPaperSummary[] {
 }
 
 export function getLocalPaperSummary(slug: string): LocalPaperSummary | null {
-  return getPracticeSnapshot().papersBySlug.get(slug) ?? null;
+  const paper = getPracticeSnapshot().papersBySlug.get(slug);
+  return paper ? copySummary(paper) : null;
 }
 
 export function getLocalPapersForYear(year: number): LocalPaperSummary[] {

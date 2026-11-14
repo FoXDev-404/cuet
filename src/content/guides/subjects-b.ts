@@ -70,7 +70,7 @@ These drills expose the difference between recognition and recall. If you can on
 - **One day** — timed sectional.
 - **One day** — full paper or review.
 
-The [history subject hub](/cuet-mock-test/history) lists the available sets. The [2025 shift 1 paper](/mock-tests/history-2025-05-16-shift-1) is a good timed attempt after two themes are framed.
+The [history subject hub](/cuet-mock-test/history) lists the available sets. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/history/history-2025-05-16-shift-1) is a good timed attempt after two themes are framed.
 
 ## Traps that cost marks
 
@@ -143,7 +143,7 @@ A common error is to mark both statements true and assume the reason explains th
 - **One day** — timed sectional.
 - **One day** — full paper or review.
 
-The [political science subject hub](/cuet-mock-test/political-science) lists the available papers. The [2024 shift 2 paper](/mock-tests/political-science-2024-05-18-shift-2) is a useful timed attempt.
+The [political science subject hub](/cuet-mock-test/political-science) lists the available papers. The [2024 shift 2 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/political-science/political-science-2024-05-18-shift-2) is a useful timed attempt.
 
 ## Traps that cost marks
 
@@ -217,7 +217,7 @@ Write the difference in one line and one example. Review the page twice a week.
 - **One day** — timed sectional.
 - **One day** — full paper or review.
 
-The [geography subject hub](/cuet-mock-test/geography) lists the available sets. The [2025 shift 1 paper](/mock-tests/geography-2025-05-16-shift-1) is a good timed attempt.
+The [geography subject hub](/cuet-mock-test/geography) lists the available sets. The [2025 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/geography/geography-2025-05-16-shift-1) is a good timed attempt.
 
 ## Traps that cost marks
 
@@ -291,7 +291,7 @@ The last drill is the hardest and the most useful.
 - **One day** — timed sectional.
 - **One day** — full paper or review.
 
-The [psychology subject hub](/cuet-mock-test/psychology) lists the available papers. The [2024 shift 1 paper](/mock-tests/psychology-2024-07-19-shift-1) is a good timed attempt.
+The [psychology subject hub](/cuet-mock-test/psychology) lists the available papers. The [2024 shift 1 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/psychology/psychology-2024-07-19-shift-1) is a good timed attempt.
 
 ## Traps that cost marks
 
@@ -362,7 +362,7 @@ If you cannot connect the concept to an example, you probably cannot apply it in
 - **One day** — timed sectional.
 - **One day** — full paper or review.
 
-The [sociology subject hub](/cuet-mock-test/sociology) lists the available papers. The [2024 shift 3 paper](/mock-tests/sociology-2024-05-18-shift-3) is a good timed attempt.
+The [sociology subject hub](/cuet-mock-test/sociology) lists the available papers. The [2024 shift 3 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/sociology/sociology-2024-05-18-shift-3) is a good timed attempt.
 
 ## Traps that cost marks
 
@@ -445,7 +445,7 @@ For a contract question, check whether all elements are present. For a tort ques
 - **One day** — timed sectional.
 - **One day** — review and error log.
 
-The [legal studies subject hub](/cuet-mock-test/legal-studies) lists the available paper. The [2022 paper](/mock-tests/legal-studies-2022) is the starting point.
+The [legal studies subject hub](/cuet-mock-test/legal-studies) lists the available paper. The [2022 paper](/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/legal-studies/legal-studies-2022) is the starting point.
 
 ## Traps that cost marks
 
@@ -520,7 +520,7 @@ For मुहावरे and लोकोक्तियाँ, learn the meani
 - **15 minutes** — grammar topic, alternating days.
 - **10 minutes** — review wrong answers and note the reason.
 
-Once a week, replace the loop with a full Hindi section. The [Hindi subject hub](/cuet-mock-test/hindi) lists the available sets, and the [2025 paper](/mock-tests/hindi-2025) is a recent timed attempt.
+Once a week, replace the loop with a full Hindi section. The [Hindi subject hub](/cuet-mock-test/hindi) lists the available sets, and the [2025 paper](/cuet-ug-previous-year-question-papers/language-pyqs/subject/hindi/hindi-2025) is a recent timed attempt.
 
 ## Traps that cost marks
 

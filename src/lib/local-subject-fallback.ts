@@ -1,4 +1,5 @@
 import { getLocalSubjectSummaries } from "./local-papers";
+import { getPyqSubjectType } from "./pyq-subject-path";
 
 /**
  * A subject card as the syllabus and mock-test hub pages render it. Field
@@ -13,33 +14,8 @@ export interface LocalSubjectCard {
   mock_count: number;
 }
 
-/** CUET language subjects. Everything else in the bundle is a domain subject. */
-const LANGUAGE_SLUGS = new Set([
-  "english",
-  "hindi",
-  "sanskrit",
-  "urdu",
-  "french",
-  "german",
-  "spanish",
-  "japanese",
-  "chinese",
-  "arabic",
-  "tamil",
-  "telugu",
-  "kannada",
-  "malayalam",
-  "marathi",
-  "gujarati",
-  "bengali",
-  "punjabi",
-  "odia",
-  "assamese",
-]);
-
 function typeFor(slug: string): LocalSubjectCard["type"] {
-  if (slug === "general-test") return "general";
-  return LANGUAGE_SLUGS.has(slug) ? "language" : "domain";
+  return getPyqSubjectType(undefined, slug);
 }
 
 /**

@@ -68,6 +68,8 @@ function paperBySlug(slug: string): LocalIndexPaper {
 const SCORED_PAPER = paperBySlug("english-2022-08-06-shift-1");
 const DETAIL_PAPER = paperBySlug("biology-2025-05-20-shift-2");
 const INSTRUCTIONS = `/mock/${SCORED_PAPER.slug}/instructions`;
+const SCORED_PAPER_PATH = `/cuet-ug-previous-year-question-papers/language-pyqs/subject/${SCORED_PAPER.subject.slug}/${SCORED_PAPER.slug}`;
+const DETAIL_PAPER_PATH = `/cuet-ug-previous-year-question-papers/domain-subject-pyqs/subject/${DETAIL_PAPER.subject.slug}/${DETAIL_PAPER.slug}`;
 
 test.beforeEach(async ({ page }) => {
   // Keep repeated local runs out of the shared rate-limit bucket.
@@ -98,13 +100,13 @@ test("practice library stays available and routes into the ranked engine", async
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "Practice with previous-year CUET mock tests",
   );
-  await expect(page.locator(`a[href="/mock-tests/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
+  await expect(page.locator(`a[href="${SCORED_PAPER_PATH}"]`).first()).toBeVisible();
 
-  await page.goto(`/mock-tests/${SCORED_PAPER.slug}`);
+  await page.goto(SCORED_PAPER_PATH);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "CUET UG English 6 August 2022",
   );
-  await expect(page.getByRole("link", { name: /Start ranked paper/ })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: /Start Test/ })).toHaveAttribute(
     "href",
     INSTRUCTIONS,
   );
@@ -117,7 +119,7 @@ test("practice library stays available and routes into the ranked engine", async
 test("practice detail reports the scored count when no questions are excluded", async ({
   page,
 }) => {
-  await page.goto(`/mock-tests/${DETAIL_PAPER.slug}`);
+  await page.goto(DETAIL_PAPER_PATH);
 
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "CUET UG Biology 20 May 2025",
@@ -125,7 +127,7 @@ test("practice detail reports the scored count when no questions are excluded", 
   await expect(page.getByText(/not included in the ranked paper/)).toHaveCount(0);
   const scoredCard = page.getByText("in the ranked paper").locator("..");
   await expect(scoredCard).toContainText(String(DETAIL_PAPER.scorableQuestionCount));
-  await expect(page.getByRole("link", { name: /Start ranked paper/ })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: /Start Test/ })).toHaveAttribute(
     "href",
     `/mock/${DETAIL_PAPER.slug}/instructions`,
   );
@@ -134,6 +136,16 @@ test("practice detail reports the scored count when no questions are excluded", 
     "content",
     new RegExp(`/og/papers/${DETAIL_PAPER.slug}\\.png$`),
   );
+});
+
+test("legacy mock-tests detail URLs permanently redirect to the categorized PYQ paper page", async ({
+  page,
+}) => {
+  const response = await page.request.get(`/mock-tests/${SCORED_PAPER.slug}`, {
+    maxRedirects: 0,
+  });
+  expect(response.status()).toBe(301);
+  expect(response.headers().location).toBe(SCORED_PAPER_PATH);
 });
 
 test("legacy practice URLs permanently redirect to mock-tests", async ({ page }) => {
@@ -263,7 +275,37 @@ test("submitting a practice paper increments the public ranked attempt counter",
 
 test("practice papers are linked from their subject hub", async ({ page }) => {
   await page.goto(`/cuet-mock-test/${SCORED_PAPER.subject.slug}`);
-  await expect(page.locator(`a[href="/mock-tests/${SCORED_PAPER.slug}"]`).first()).toBeVisible();
+  await expect(page.locator(`a[href="${SCORED_PAPER_PATH}"]`).first()).toBeVisible();
+});
+
+test("PYQ cards and General Test metadata use the requested PYQ wording", async ({ page }) => {
+  await page.goto("/cuet-ug-previous-year-question-papers");
+  const subjectCards = page.locator("[data-pyq-subject-card]");
+  await expect(subjectCards.first()).toBeVisible();
+
+  for (const card of await subjectCards.all()) {
+    await expect(card.locator(":scope > div:first-child > span")).toHaveText(/^\d+ PYQs$/);
+  }
+
+  await page.goto(
+    "/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/subject/general-test",
+  );
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "NTA CUET UG General Aptitude Test PYQs - Practice Online",
+  );
+  await expect(
+    page.getByText(
+      "Practice CUET UG General Aptitude Test PYQs Online for FREE with Answers. Attempt Timed NTA Previous Years Questions and Boost your Preparation for CUET UG 2027.",
+      { exact: true },
+    ),
+  ).toBeVisible();
+  await expect(page).toHaveTitle(
+    "NTA CUET UG General Aptitude Test PYQs | Free Online Practice",
+  );
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+    "content",
+    "Practice CUET UG General Aptitude Test PYQs Online for FREE with Answers. Attempt Timed NTA Previous Years Questions and Boost your Preparation for CUET UG 2027.",
+  );
 });
 
 test("the homepage shows refined most-popular papers in the hero and below", async ({ page }) => {
@@ -279,7 +321,7 @@ test("the homepage shows refined most-popular papers in the hero and below", asy
   await expect(
     heroPanel.getByRole("heading", { name: "Most Popular Mock Tests", level: 2 }),
   ).toBeVisible();
-  const heroLinks = heroPanel.locator('a[href^="/mock-tests/"]');
+  const heroLinks = heroPanel.locator('a[href^="/cuet-ug-previous-year-question-papers/"]');
   expect(await heroLinks.count()).toBeGreaterThan(0);
 
   await expect(
@@ -304,7 +346,7 @@ test("practice library copy is ranked and free of public OCR provenance", async 
   expect(html).not.toMatch(/\bunranked\b/i);
   expect(html).not.toMatch(/PaddleOCR|OCR export|extraction pipeline/i);
 
-  await page.goto(`/mock-tests/${SCORED_PAPER.slug}`);
+  await page.goto(SCORED_PAPER_PATH);
   const detail = await page.content();
   expect(detail).not.toMatch(/\bunranked\b/i);
   expect(detail).not.toMatch(/PaddleOCR|OCR export|recovered from source/i);

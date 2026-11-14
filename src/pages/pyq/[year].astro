@@ -121,9 +121,9 @@ const structuredData = [
     <section class="mt-8">
       <div class="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 class="text-2xl font-bold tracking-tight">{year} paper library</h2>
+          <h2 class="text-2xl font-bold tracking-tight">{year} PYQ library</h2>
           <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-            {totalPapers} paper{totalPapers === 1 ? "" : "s"} · {subjectNames.length > 0 ? subjectNames.join(", ") : "mixed subjects"}
+            {totalPapers} {totalPapers === 1 ? "PYQ" : "PYQs"} · {subjectNames.length > 0 ? subjectNames.join(", ") : "mixed subjects"}
           </p>
         </div>
         <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/cuet-ug-previous-year-question-papers">All years →</a>
@@ -190,7 +190,7 @@ const structuredData = [
           <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">Open the full archive to compare papers across sessions, or take a subject mock if your year is not published yet.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-previous-year-question-papers">All PYQ papers</a>
+          <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href="/cuet-ug-previous-year-question-papers">All PYQs</a>
           <a class="rounded-lg border border-white/40 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700" href="/mock-tests">Mock tests</a>
         </div>
       </div>

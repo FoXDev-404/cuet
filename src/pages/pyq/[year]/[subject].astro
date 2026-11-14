@@ -174,10 +174,10 @@ const structuredData = [
     <section class="mt-10 rounded-2xl bg-brand-600 p-6 text-white sm:p-8">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 class="text-xl font-bold">{dbSubject ? `Compare with other ${subject.name} practice` : `More ${subject.name} papers`}</h2>
+          <h2 class="text-xl font-bold">{dbSubject ? `Compare with other ${subject.name} practice` : `More ${subject.name} PYQs`}</h2>
           <p class="mt-2 max-w-xl text-sm leading-6 text-brand-50">{dbSubject ? "A subject mock gives you a shorter diagnostic loop after the full paper." : "Browse the previous-year library to compare years and shifts."}</p>
         </div>
-        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={dbSubject ? `/cuet-mock-test/${subject.slug}` : "/cuet-ug-previous-year-question-papers"}>{dbSubject ? `Open ${subject.name} practice` : "All previous-year papers"}</a>
+        <a class="rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-brand-800 hover:bg-brand-50" href={dbSubject ? `/cuet-mock-test/${subject.slug}` : "/cuet-ug-previous-year-question-papers"}>{dbSubject ? `Open ${subject.name} practice` : "All previous-year PYQs"}</a>
       </div>
     </section>
   </div>

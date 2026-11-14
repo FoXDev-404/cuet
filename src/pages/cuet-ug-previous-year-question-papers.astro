@@ -6,6 +6,8 @@ import FaqSection from "../components/FaqSection.astro";
 import { allOr } from "../lib/db";
 import { hasMathSource, renderRichText } from "../lib/content";
 import { getLocalPaperYears, getLocalPapers } from "../lib/local-papers";
+import { getLocalSubjectCards } from "../lib/local-subject-fallback";
+import { getPyqSubjectPath } from "../lib/pyq-subject-path";
 import { listPyqYears } from "../lib/pyq";
 import {
   articleJsonLd,
@@ -17,9 +19,14 @@ import {
 } from "../lib/seo";
 
 const PATH = "/cuet-ug-previous-year-question-papers";
-const DEFAULT_TITLE = "CUET UG Previous Year Question Papers | Practice Online";
+const DEFAULT_TITLE = "NTA CUET UG Previous Year Question Papers | Practice Online";
 const DEFAULT_DESCRIPTION =
   "Boost your NTA CUET UG 2027 Exam Preparation! Practice FREE CUET UG PYQs Online with Answers. Solve Previous Year Question Papers Online and Check your Speed and Accuracy.";
+
+function formatNtaCuetTitle(title: string) {
+  const subjectTitle = title.trim().replace(/^(?:NTA\s+)?CUET(?:\s+UG)?\s*/i, "");
+  return `NTA CUET UG ${subjectTitle}`;
+}
 
 const DEFAULT_FAQ: FaqItem[] = [
   {
@@ -61,11 +68,12 @@ const pyqs = await allOr<{
   pyq_shift: string | null;
   subject_name: string | null;
   subject_slug: string | null;
+  subject_type: string | null;
   question_count: number;
   duration_min: number;
 } >(
   `SELECT m.title, m.slug, m.pyq_year, m.pyq_shift,
-          s.name AS subject_name, s.slug AS subject_slug,
+          s.name AS subject_name, s.slug AS subject_slug, s.type AS subject_type,
           (SELECT COUNT(*) FROM mock_questions_current mq WHERE mq.mock_id = m.id) AS question_count,
           m.duration_min
    FROM mock_tests m
@@ -84,6 +92,7 @@ const subjectMap = new Map<
   string,
   {
     name: string;
+    category: "aptitude-test" | "domain" | "language";
     paperCount: number;
     latestYear: number;
     papers: {
@@ -96,10 +105,19 @@ const subjectMap = new Map<
     }[];
   }
 >();
+const localSubjectTypes = new Map(
+  getLocalSubjectCards().map((subject) => [subject.slug, subject.type]),
+);
+function subjectCategory(slug: string, type: string | null | undefined) {
+  if (type === "general" || slug === "general-test") return "aptitude-test" as const;
+  if (type === "language" || localSubjectTypes.get(slug) === "language") return "language" as const;
+  return "domain" as const;
+}
 for (const paper of pyqs) {
   if (!paper.subject_slug || !paper.subject_name) continue;
   const summary = subjectMap.get(paper.subject_slug) ?? {
     name: paper.subject_name,
+    category: subjectCategory(paper.subject_slug, paper.subject_type),
     paperCount: 0,
     latestYear: 0,
     papers: [],
@@ -107,7 +125,7 @@ for (const paper of pyqs) {
   summary.paperCount += 1;
   summary.latestYear = Math.max(summary.latestYear, paper.pyq_year ?? 0);
   summary.papers.push({
-    title: paper.title,
+    title: formatNtaCuetTitle(paper.title),
     href: `/mock/${paper.slug}`,
     year: paper.pyq_year ?? 0,
     shift: paper.pyq_shift,
@@ -119,6 +137,7 @@ for (const paper of pyqs) {
 for (const paper of localPapers) {
   const summary = subjectMap.get(paper.subject.slug) ?? {
     name: paper.subject.name,
+    category: subjectCategory(paper.subject.slug, localSubjectTypes.get(paper.subject.slug)),
     paperCount: 0,
     latestYear: 0,
     papers: [],
@@ -126,7 +145,7 @@ for (const paper of localPapers) {
   summary.paperCount += 1;
   summary.latestYear = Math.max(summary.latestYear, paper.year);
   summary.papers.push({
-    title: paper.title,
+    title: formatNtaCuetTitle(paper.title),
     href: paper.path,
     year: paper.year,
     shift: paper.shift,
@@ -144,6 +163,11 @@ const subjectCards = [...subjectMap.entries()]
       .slice(0, 5),
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
+const subjectSections = [
+  { title: "General Aptitude Test", id: "general-aptitude-test", subjects: subjectCards.filter((subject) => subject.category === "aptitude-test") },
+  { title: "Language Subjects", id: "languages", subjects: subjectCards.filter((subject) => subject.category === "language") },
+  { title: "Domain-Specific Subjects", id: "domain-specific-subjects", subjects: subjectCards.filter((subject) => subject.category === "domain") },
+];
 
 const yearMap = new Map<number, { year: number; playable_count: number }>();
 for (const row of pyqYears) yearMap.set(row.year, { ...row });
@@ -194,9 +218,9 @@ const steps = [
 
 <BaseLayout title={title} description={description} mathStyles={hasMathSource(seo?.intro_html)} noindex={noindex} canonical={seo?.canonical_url} structuredData={structuredData}>
   <PageHero
-    eyebrow="CUET UG Previous year question papers"
+    eyebrow="NTA CUET UG Previous year question papers"
     title="NTA CUET UG Previous Year Question Papers – Practice Online"
-    intro="Practice FREE CUET UG Previous Year Question Papers Online with Instant Answers. Attempt authentic NTA-Pattern Questions Boost your Preparation for the CUET UG 2027 Exam."
+    intro="Practice FREE NTA CUET UG Previous Year Question Papers Online with Instant Answers. Attempt authentic NTA-Pattern Questions and boost your CUET UG 2027 preparation."
   />
 
   <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
@@ -235,67 +259,74 @@ const steps = [
           <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
             Choose a subject to browse its latest previous-year papers.
           </p>
-          <div class="mt-5 grid gap-5 md:grid-cols-2">
-            {subjectCards.map((subject) => (
-              <section
-                class="flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.035]"
-                data-pyq-subject-card
-                data-subject-slug={subject.slug}
-                aria-labelledby={`pyq-subject-${subject.slug}`}
-              >
-                <div class="flex items-center justify-between gap-3 border-b border-neutral-200 px-4 py-3 dark:border-white/10">
-                  <h3 class="text-lg font-bold" id={`pyq-subject-${subject.slug}`}>{subject.name}</h3>
-                  <span class="shrink-0 text-[10px] font-semibold text-neutral-500 dark:text-white/55">
-                    {subject.paperCount} papers
-                  </span>
-                </div>
-
-                <div class="px-4 pb-1 pt-4">
-                  <h4 class="text-base font-bold">CUET UG {subject.name} Previous Year Papers</h4>
-                  <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
-                    Recent timed practice papers for {subject.name}.
-                  </p>
-                </div>
-
-                <div class="mt-2">
-                  {subject.papers.map((paper) => (
-                    <a
-                      href={paper.href}
-                      class="group flex flex-col gap-2 border-t border-neutral-100 px-4 py-3 transition-colors hover:bg-neutral-50 dark:border-white/[0.07] dark:hover:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between"
-                      data-pyq-paper-row
+          <div class="mt-5 space-y-10">
+            {subjectSections.map((section) => (
+              <section aria-labelledby={`pyq-section-${section.id}`}>
+                <h3 class="text-xl font-bold tracking-tight" id={`pyq-section-${section.id}`}>{section.title}</h3>
+                <div class="mt-4 grid gap-5 md:grid-cols-2">
+                  {section.subjects.map((subject) => (
+                    <section
+                      class="flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.035]"
+                      data-pyq-subject-card
+                      data-subject-slug={subject.slug}
+                      aria-labelledby={`pyq-subject-${subject.slug}`}
                     >
-                      <div class="min-w-0">
-                        <div class="flex flex-wrap items-center gap-1.5">
-                          <span class="rounded bg-brand-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
-                            CUET PYQ
-                          </span>
-                          <span class="rounded bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">
-                            {subject.name}
-                          </span>
-                          <span class="rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-neutral-600 dark:bg-white/10 dark:text-white/65">
-                            {paper.year}{paper.shift ? ` · ${paper.shift}` : ""}
-                          </span>
-                        </div>
-                        <p class="mt-1.5 truncate text-sm font-semibold text-neutral-800 group-hover:text-brand-700 dark:text-white/75 dark:group-hover:text-white">
-                          {paper.title}
+                      <div class="flex items-center justify-between gap-3 border-b border-neutral-200 px-4 py-3 dark:border-white/10">
+                        <h4 class="text-lg font-bold" id={`pyq-subject-${subject.slug}`}>{subject.name}</h4>
+                        <span class="shrink-0 text-[10px] font-semibold text-neutral-500 dark:text-white/55">
+                          {subject.paperCount} PYQs
+                        </span>
+                      </div>
+
+                      <div class="px-4 pb-1 pt-4">
+                        <h5 class="text-base font-bold">NTA CUET UG {subject.name} PYQs</h5>
+                        <p class="mt-1 text-xs text-neutral-500 dark:text-white/55">
+                          Recent timed PYQs for {subject.name}.
                         </p>
                       </div>
-                      <div class="flex shrink-0 items-center gap-4 text-[10px] text-neutral-500 dark:text-white/55 sm:justify-end">
-                        <span><span class="font-bold text-accent-600 dark:text-accent-300">{paper.questionCount}</span> questions</span>
-                        <span>{paper.durationMinutes} min</span>
+
+                      <div class="mt-2">
+                        {subject.papers.map((paper) => (
+                          <a
+                            href={paper.href}
+                            class="group flex flex-col gap-2 border-t border-neutral-100 px-4 py-3 transition-colors hover:bg-neutral-50 dark:border-white/[0.07] dark:hover:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between"
+                            data-pyq-paper-row
+                          >
+                            <div class="min-w-0">
+                              <div class="flex flex-wrap items-center gap-1.5">
+                                <span class="rounded bg-brand-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
+                                  NTA CUET UG PYQ
+                                </span>
+                                <span class="rounded bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">
+                                  {subject.name}
+                                </span>
+                                <span class="rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-neutral-600 dark:bg-white/10 dark:text-white/65">
+                                  {paper.year}{paper.shift ? ` · ${paper.shift}` : ""}
+                                </span>
+                              </div>
+                              <p class="mt-1.5 truncate text-sm font-semibold text-neutral-800 group-hover:text-brand-700 dark:text-white/75 dark:group-hover:text-white">
+                                {paper.title}
+                              </p>
+                            </div>
+                            <div class="flex shrink-0 items-center gap-4 text-[10px] text-neutral-500 dark:text-white/55 sm:justify-end">
+                              <span><span class="font-bold text-accent-600 dark:text-accent-300">{paper.questionCount}</span> questions</span>
+                              <span>{paper.durationMinutes} min</span>
+                            </div>
+                          </a>
+                        ))}
                       </div>
-                    </a>
+
+                      <a
+                        href={getPyqSubjectPath(subject.slug, subject.category)}
+                        class="mt-auto flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]"
+                      >
+                        {subject.paperCount > subject.papers.length
+                          ? `View more ${subject.name} PYQs`
+                          : `View all ${subject.name} PYQs`} →
+                      </a>
+                    </section>
                   ))}
                 </div>
-
-                <a
-                  href={`/pyq/subject/${subject.slug}`}
-                  class="mt-auto flex items-center justify-center gap-2 border-t border-neutral-200 px-4 py-3 text-[11px] font-bold text-brand-700 hover:bg-neutral-50 dark:border-white/10 dark:text-brand-300 dark:hover:bg-white/[0.03]"
-                >
-                  {subject.paperCount > subject.papers.length
-                    ? `View more ${subject.name} papers`
-                    : `View all ${subject.name} papers`} →
-                </a>
               </section>
             ))}
           </div>

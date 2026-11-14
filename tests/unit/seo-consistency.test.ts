@@ -23,14 +23,42 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(file).toContain('Astro.redirect("/cuet-ug-previous-year-question-papers", 301)');
   });
 
-  it("verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to /mock-tests/[slug]", () => {
+  it("verifies subject archive pages use category paths and redirect legacy routes", () => {
+    const pyqRoute = readFileSync(join(root, "src/pages/pyq/subject/[subject].astro"), "utf8");
+    const previousRoute = readFileSync(
+      join(root, "src/pages/cuet-ug-previous-year-question-papers/subject/[subject].astro"),
+      "utf8",
+    );
+    const categoryRoute = readFileSync(
+      join(root, "src/pages/cuet-ug-previous-year-question-papers/[category]/subject/[subject].astro"),
+      "utf8",
+    );
+    expect(pyqRoute).toContain("Astro.redirect(getPyqSubjectPath(subjectInfo.slug, subjectInfo.type), 301)");
+    expect(previousRoute).toContain("Astro.redirect(getPyqSubjectPath(subject.slug, subject.type), 301)");
+    expect(categoryRoute).toContain("const path = getPyqSubjectPath(subject.slug, subjectType)");
+    expect(categoryRoute).toContain("Astro.params.category !== getPyqSubjectCategoryPath(subjectType, subject.slug)");
+  });
+
+  it("verifies /mock/[slug] noindexes practice-paper wrapper mocks and sets canonical to the archive paper path", () => {
     const file = readFileSync(join(root, "src/pages/mock/[slug]/index.astro"), "utf8");
     expect(file).toContain("const isPracticeWrapper = Boolean(mock.practice_paper_slug)");
-    expect(file).toContain("const canonical = isPracticeWrapper ? `/mock-tests/${mock.practice_paper_slug}` : undefined");
+    expect(file).toContain("const canonical = isPracticeWrapper && mock.practice_paper_slug");
+    expect(file).toContain("localPaperPath(mock.practice_paper_slug)");
     expect(file).toContain("const noindex = totalQuestions === 0 || isPracticeWrapper");
     expect(file).toContain("canonical={canonical}");
     // noindex pages still pass crawl equity: `follow`, not `nofollow`.
     expect(file).toContain('robots={noindex ? "noindex, follow" : undefined}');
+  });
+
+  it("redirects legacy /mock-tests paper URLs to their category subject detail pages", () => {
+    const oldRoute = readFileSync(join(root, "src/pages/mock-tests/[slug].astro"), "utf8");
+    const detailRoute = readFileSync(
+      join(root, "src/pages/cuet-ug-previous-year-question-papers/[category]/subject/[subject]/[paper].astro"),
+      "utf8",
+    );
+    expect(oldRoute).toContain("Astro.redirect(localPaperPath(paper.slug), 301)");
+    expect(detailRoute).toContain("const slug = Astro.params.paper ??");
+    expect(detailRoute).toContain("canonical={path}");
   });
 
   it("verifies sitemap.xml excludes 301 redirects (/cuet-mock-test, /cuet-ug-mock-test, /pyq)", () => {

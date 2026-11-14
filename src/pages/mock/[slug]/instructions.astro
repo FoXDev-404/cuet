@@ -3,6 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { first } from "../../../lib/db";
 import { DB_DEGRADED_HEADER, dbUnavailableResponse } from "../../../lib/db-resilient";
 import { calculateMockDuration } from "../../../lib/exam-timing";
+import { localPaperPath } from "../../../lib/local-papers";
 import { getLocalMockFallback } from "../../../lib/local-mock-fallback";
 import { getGuestToken } from "../../../lib/auth/session";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
@@ -102,7 +103,7 @@ const lines = (mock.instructions ?? "")
 // point the canonical at the indexable paper (or overview) they belong to so
 // the duplicate cluster resolves to one URL.
 const canonical = mock.practice_paper_slug
-  ? `/mock-tests/${mock.practice_paper_slug}`
+  ? localPaperPath(mock.practice_paper_slug)
   : `/mock/${mock.slug}`;
 const generatedPaperSlugs: string[] = generatedPaperOgSlugs;
 const paperOgImage =

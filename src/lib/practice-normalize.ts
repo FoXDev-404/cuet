@@ -1,14 +1,15 @@
 /**
  * Pure normaliser for the refined previous-year practice library.
  *
- * This module has no imports on purpose: the same code is used by the runtime
- * D1 store, the JSON seed loader used in tests, and the import script
+ * This module avoids runtime and store dependencies: the same code is used by
+ * the runtime D1 store, the JSON seed loader used in tests, and the import script
  * (`scripts/import-practice-library.mjs`, run through Node's type stripping).
  * Keeping one implementation is what guarantees the imported rows and the
  * original JSON bundle describe exactly the same questions.
  */
 
 import { calculateMockDuration } from "./exam-timing.ts";
+import { getPyqPaperPath, getPyqSubjectType } from "./pyq-subject-path.ts";
 
 export interface RawOption {
   id?: string | null;
@@ -561,7 +562,7 @@ export function buildSummary(raw: RawIndexPaper): LocalPaperSummary | null {
     reviewRequired: raw.reviewRequired !== false,
     localPaper: true,
     draft: true,
-    path: `${LOCAL_LIBRARY_PATH}/${slug}`,
+    path: getPyqPaperPath(slug, subjectSlug, getPyqSubjectType(undefined, subjectSlug)),
   };
 }
 

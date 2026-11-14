@@ -77,7 +77,7 @@ const socialImage = new URL(imageOverride || "/logo.png", site).toString();
 let canonical = new URL(Astro.url.pathname, site);
 if (canonicalOverride) {
   try {
-    // Relative path overrides (for example `/mock-tests/<slug>`) are resolved
+    // Relative path overrides (for example a categorized PYQ paper URL) are resolved
     // against the canonical origin. Absolute values keep their old behaviour.
     const override = canonicalOverride.startsWith("/")
       ? new URL(canonicalOverride, site)

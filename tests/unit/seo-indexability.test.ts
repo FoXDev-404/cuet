@@ -15,7 +15,7 @@ describe("noindex duplicate routes stay crawlable", () => {
     const file = read("src/pages/mock/[slug]/instructions.astro");
     expect(file).toContain("m.practice_paper_slug");
     expect(file).toContain("const canonical = mock.practice_paper_slug");
-    expect(file).toContain("? `/mock-tests/${mock.practice_paper_slug}`");
+    expect(file).toContain("? localPaperPath(mock.practice_paper_slug)");
     expect(file).toContain('robots="noindex, follow"');
     expect(file).toContain("canonical={canonical}");
   });
