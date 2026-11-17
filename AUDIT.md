@@ -309,11 +309,13 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 
 | Route | Perf before | Perf after | A11y before | A11y after | BP before | BP after | SEO before | SEO after | LCP before | LCP after | TBT before | TBT after | CLS before | CLS after | Transfer before | Transfer after |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `/` | 100 | pending | 100 | pending | 100 | pending | 100 | pending | 939 ms | pending | 0 ms | pending | 0 | pending | 57.2 KB | pending |
-| `/mock-tests` | 100 | pending | 100 | pending | 100 | pending | 92 | pending | 921 ms | pending | 0 ms | pending | 0 | pending | 58.8 KB | pending |
-| `/attempt/:id` (share off) | 100 | pending | 100 | pending | 100 | pending | 58 | pending | 1684 ms | pending | 0 ms | pending | 0 | pending | 100.7 KB | pending |
-| `/result/:id` (private) | 100 | pending | 100 | pending | 100 | pending | 69 | pending | 930 ms | pending | 0 ms | pending | 0 | pending | 61.3 KB | pending |
-| `/attempt/:id` (share on, worst case) | 93 | pending | 100 | pending | 100 | pending | 58 | pending | 1734 ms | pending | 276 ms | pending | 0 | pending | 470.0 KB | pending |
+| `/` | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 939 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 57.2 KB | 57 KB |
+| `/mock-tests` | 100 | 100 | 100 | 100 | 100 | 100 | 92 | 100 | 921 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 58.8 KB | 59 KB |
+| `/attempt/:id` (share off) | 100 | 100 | 100 | 100 | 100 | 100 | 58 | 58 | 1684 ms | 1700 ms | 0 ms | 0 ms | 0 | 0 | 100.7 KB | 101 KB |
+| `/result/:id` (private) | 100 | 100 | 100 | 100 | 100 | 100 | 69 | 69 | 930 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 61.3 KB | 61 KB |
+| `/attempt/:id` (share on, worst case) | 93 | 91 | 100 | 100 | 100 | 100 | 58 | 58 | 1734 ms | 1800 ms | 276 ms | 340 ms | 0 | 0 | 470.0 KB | 470 KB |
+
+"After" was measured on 2026-11-17 with the same method. `/attempt/565` (share off) and `/result/565` used fresh guest attempts on the same mock 85 because baseline attempts 527/535 had expired or belonged to another guest cookie. The share-on row is not the production default; its payload is unchanged at 470 KB, and the small score/TBT delta is run variance already tracked under P2-10.
 
 ---
 
@@ -356,10 +358,10 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 ### Public pages
 
 - [ ] `/` loads, exactly one H1, no horizontal scroll, primary CTA starts a mock.
-- [ ] `/mock-tests` filters (search, year, subject, type, sort) work with and without JS; empty state is reachable; every "Start" link has a descriptive accessible name.
+- [x] `/mock-tests` filters (search, year, subject, type, sort) work with and without JS; empty state is reachable; every "Start" link has a descriptive accessible name.
 - [ ] `/mock/[slug]` wrapper canonicalises to the canonical paper; instructions page starts the exam; discussion page loads and is noindex.
 - [ ] PYQ archive, subject hubs, year pages and wrong-category redirects land on the canonical paper with a 301.
-- [ ] `/blog` and a blog post render; OG/Twitter preview uses a raster image; JSON-LD matches visible content.
+- [x] `/blog` and a blog post render; OG/Twitter preview uses a raster image; JSON-LD matches visible content.
 - [ ] `/leaderboard` loads, links are readable and tappable, and an empty leaderboard is gated correctly.
 - [ ] `/search` is noindex and does not leak private attempts.
 - [ ] Legal pages (`/privacy-policy`, `/terms`, `/disclaimer`, `/about`, `/contact`) are reachable from the footer and accurate.
@@ -441,7 +443,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 ---
 
-### Phase 1 — P0 and launch fixes (in progress)
+### Phase 1 — P0 and launch fixes (complete)
 
 **Done**
 
@@ -459,10 +461,14 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - Verification: new `tests/unit/http.test.ts` covers matching/cross-host/malformed `Origin` and the `Sec-Fetch-Site` fallback. Full unit suite **556/556**, build clean. E2E: `api-contracts` 12/12 (including missing-header 403 and `Sec-Fetch-Site` 200), `security` + `attempt-flow` + `topic-mapping` 15/15, `admin-flow` + `question-share-public` 29/29 with 2 skips.
 - **P1-7 (SEC-2):** the autosave endpoint now uses the existing KV limiter after the attempt ownership check: 120 writes per 60 s keyed by `attemptId:clientIp`. Checking ownership first prevents a stranger from draining another attempt's bucket. The client already leaves unsaved answers dirty on failure and retries on its next normal tick, so a temporary 429 does not lose data or create a tight retry loop.
 - Verification: the new E2E sends 120 empty autosaves (all 200) and asserts the 121st returns 429 with "Too many autosave"; full `security.spec.ts` 11/11.
+- **Close-out verification:** `scripts/a11y-audit.mjs` now sends the suite origin on its three API writes, so the attempt/result walk survives P1-6. The full axe audit completed **272 scans with 0 violations and 0 horizontal overflow**, including `/attempt/570`, `/result/570` and the solutions and discussion pages; the refreshed report is committed.
+- Lighthouse after results (§13): `/` and `/mock-tests` score **100 across performance, accessibility, best practices and SEO**; `/mock-tests` SEO moved **92 → 100** and LCP stayed at ~0.9 s. The production-like attempt page is **100/100/100/58** at **101 KB**, and the private result is **100/100/100/69** at **61 KB**. The non-default share-on worst case stays at **470 KB**; its 91 performance / 340 ms TBT is run variance, not a payload change.
+- Full unit suite **556/556**, build clean. Phase 1 changes are committed in nine reviewable commits.
 
-**Next in this phase**
+**Next**
 
-- Re-run the affected Lighthouse routes and the full axe audit, then close out Phase 1.
+- Phase 2: P1-4 (consent/GA4 disclosure), P1-8 (performance-budget enforcement and a working Lighthouse runner), then the P2 UI/UX and code items.
+- Production operations: apply `npm run db:turso:migrate` so migration `0028` reaches Turso, refresh the D1/Turso backup workflow, and decide whether to configure Cloudflare Access or accept the documented admin-session risk.
 
 ---
 
