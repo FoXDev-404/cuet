@@ -108,7 +108,7 @@ Redirects are implemented in `src/middleware.ts` (there is no `public/_redirects
 
 The refreshed `docs/report/a11y-results.json` records the 272/272 pass at commit `716d246` with `/attempt/533` as the attempt fixture.
 
-P1-11 (Phase 4) upgraded Astro **7.4.4 -> 7.4.12**, which clears both `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`; `npm audit` now reports **0 vulnerabilities**. The counters in the table above are the original baseline.
+P1-11 (Phase 4) upgraded Astro **7.4.4 -> 7.4.12**, which clears both `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`; `npm audit` now reports **0 vulnerabilities**. The Phase 4 a11y re-run after the upgrade passed **272/272** scans at `2c30f3c`. The counters in the table above are the original baseline.
 
 ---
 
@@ -393,7 +393,7 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 4 | SEO-6 / P2-5: blog structured data had no explicit decision or guard for `FAQPage`/`Quiz`/`LearningResource` | Kept `Article` + `BreadcrumbList` on blog posts, added `LearningResource` to the disallowed set, included `src/pages/blog/[slug].astro` in both structured-data guard tests, and documented the rationale | Focused unit `structured-data` **6/6**; full suite in §17 |
 | 4 | SEC-5 / SEC-6 / P2-7: CSP advertised dormant ad/analytics hosts, lacked COOP/CORP, and the global policy overwrote the media route's sandbox policy | Built the CSP from live integration state, added COOP `same-origin-allow-popups` and CORP `same-origin`, and stopped replacing route-specific policies | Focused `security-headers` + `middleware-headers` **18/18**; preview: dormant CSP had no ad/analytics hosts, enabled CSP had all of them, and COOP/CORP were present on `/`, `/login` and `/mock-tests`; full suite in §17 |
 | 4 | API-1 / P2-12: `questions/[id]/report.ts` hand-rolled the JSON error envelope, and `/api/v1` had no decision | Routed the route through `apiError()`, kept `/api` unversioned for internal-only use, and added guards against a new raw error envelope or a `v1` prefix | Focused `api-conventions` **3/3**; full suite in §17 |
-| 4 | SEC-9 / P1-11: `npm audit` reported a moderate Astro advisory (`GHSA-mh32-jxcr-mh9f` plus `GHSA-r3h5-4585-7x3w`) | Upgraded Astro **7.4.4 -> 7.4.12** within the `^7` range and refreshed the tracked versions in `docs/report/facts.json`, `APPENDIX_D_DEPENDENCIES.md`, `PROJECT_REPORT.md` and `BLUEPRINT-V2-COMPLIANCE.md` | Full suite **608/608**; build clean; `npm audit` **0 vulnerabilities** |
+| 4 | SEC-9 / P1-11: `npm audit` reported a moderate Astro advisory (`GHSA-mh32-jxcr-mh9f` plus `GHSA-r3h5-4585-7x3w`) | Upgraded Astro **7.4.4 -> 7.4.12** within the `^7` range and refreshed the tracked versions in `docs/report/facts.json`, `APPENDIX_D_DEPENDENCIES.md`, `PROJECT_REPORT.md` and `BLUEPRINT-V2-COMPLIANCE.md` | Full suite **608/608**; build clean; `npm audit` **0 vulnerabilities**; axe **272/272** scans, 0 violations |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -637,6 +637,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - Unit: **608/608** across 68 files, including the fixture-text, runner-override, `.env.example`, result-ad, profile-sitemap, structured-data, CSP and API-convention guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**; focused `seo-indexability` **19/19**; focused `structured-data` **6/6**; focused `security-headers` + `middleware-headers` **18/18**; focused `api-conventions` **3/3**.
 - Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
 - Dependencies: `npm audit` reports **0 vulnerabilities** after the Astro 7.4.12 upgrade; `package-lock.json` and `docs/report/facts.json` agree on the tracked versions.
+- Accessibility: `npm run test:a11y` on the dev server (the audit needs the dev-only `/dev/consent` preview) completed **272/272 scans with 0 WCAG A/AA violations and 0 horizontal overflow** at `2c30f3c`; `docs/report/a11y-results.json` was refreshed.
 - E2E: focused sitemap test **1/1 passed**; focused public-profile test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
 - Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
 - Preview measurement: `/leaderboard` title 51 characters; every sampled small leaderboard link rendered at 24 px.
