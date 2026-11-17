@@ -138,7 +138,26 @@ touched.
    staging Worker. Without them `/api/auth/google` returns
    `/login?error=google_not_configured`.
 
-## 9. Backups
+## 9. Production release path
+
+Production data is **Turso**, not D1. The `Deploy production` workflow and the
+`db:migrate:remote` / `db:import:*:remote` scripts still target the unused D1 binding;
+do not treat them as production data steps.
+
+1. Fetch the release commit and confirm `npm test`, `npm run build` and the E2E suite
+   pass on it.
+2. Apply pending Turso migrations and verify: `npm run db:turso:migrate` then
+   `npm run db:turso:verify`.
+3. Deploy the Worker with `npm run deploy` from the release checkout. This builds the
+   production environment and never touches staging.
+4. Smoke test `https://cuetfreemocktest.com`: `/api/health` must report
+   `"engine":"turso"`, and `/`, `/mock-tests`, `/sitemap.xml` and one mock instruction
+   page must return 200.
+5. Do not push `main` to release the code unless you intend the `Auto deploy production`
+   workflow to run. A `[skip deploy]` marker in the commit subject suppresses it, but an
+   explicit `npm run deploy` is easier to review.
+
+## 10. Backups
 
 1. Make the GitHub repository private if it is not already.
 2. Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as Actions secrets.
@@ -148,7 +167,7 @@ touched.
    than failing. Restore the secret.
 5. Record where the artifact is stored and who can access it.
 
-## 10. Production QA and sign-off
+## 11. Production QA and sign-off
 
 ```sh
 STAGING_BASE_URL=https://<production-domain> \

@@ -281,7 +281,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - Migrations `0026_rename_pyq_archive_path.sql`, `0027_practice_question_topics.sql` and `0028_fix_cuet_source_url.sql` were applied to production Turso on 2026-11-17. `npm run db:turso:verify` then reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 published questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks. Topic **pages** still stay unavailable until an editor supplies the CSV topic backfill; the schema is no longer the blocker.
 - `npm run check:env` validates D1/KV staging/production separation only. Extend it (or add a sibling check) to assert the effective production engine and required Turso secrets.
 - Local dev uses D1 and skips trailing-slash/canonical-host redirects; production uses Turso and enforces them. Local parity is P1-10.
-- Production deployment still serves `2026-11-17T07:42:43Z` / `716d246`; all audit fixes are local and intentionally unpushed.
+- Production deployment still serves `2026-11-17T07:42:43Z` / `716d246`. All audit fixes are on local `main` and pushed only to `release/audit-phase5`; production was not deployed. The `Deploy production` workflow's D1 migration/import steps are legacy and do not update Turso; a production release must run `db:turso:migrate` / `db:turso:verify` and then deploy the Worker (see the runbook).
 - Free-tier posture: Workers/KV/Cloudflare Analytics/Turso free tiers; no paid add-on is required by the planned fixes. Watch Turso row reads and the practice-library warm-up. Do not run broad remote D1 verification against the free-tier quota.
 
 ---
@@ -438,10 +438,11 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - Topic pages are blocked on the editorial CSV topic backfill; migration `0027` itself is applied to Turso. Until the CSV is imported, every `/cuet-mock-test/<subject>/<topic>` URL stays 404.
 - Turso backup credentials are missing, so scheduled backups are not running for the production Turso database. The Cloudflare D1 backup workflow succeeded on 2026-11-17, but that artifact covers D1/local data, not Turso.
 - The GitHub staging workflow is still blocked at its migration step: the repository `CLOUDFLARE_API_TOKEN` can deploy Workers but lacks D1 access (Cloudflare API error `7403`). Staging was therefore seeded and deployed from the authenticated local Wrangler session. A D1-capable token is required before the workflow can run end to end.
-- `staging.cuetfreemocktest.com` has no DNS record even though the zone is on Cloudflare. The reachable staging origin is currently the workers.dev URL via a one-off `SITE_URL` override; a normal staging deploy without that override redirects workers.dev back to the unreachable custom host.
+- The manual `Deploy production` workflow still runs D1 migrations and imports before deploying. Production data lives in Turso, so those steps touch a database the app does not read. Until the workflow is rewritten for Turso, release production with `db:turso:migrate` / `db:turso:verify` and `npm run deploy`, or dispatch it only for a code-only deploy with the D1 steps removed.
+- `staging.cuetfreemocktest.com` has no DNS record even though the zone is on Cloudflare. The committed staging `SITE_URL` is therefore the workers.dev origin; switch it back and add the custom hostname to the Google redirect URI list once DNS is fixed.
 - Staging has no `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`, so `/api/auth/google` returns `/login?error=google_not_configured`. The deployed Google callback cannot be verified until the staging Worker secrets and the Google redirect URI are configured.
 - Staging D1 has no seeded operator/admin, so an authenticated staging pass of `/dashboard` and `/admin` was not possible. Those pages were verified to redirect to `/login` when signed out; authenticated staging QA still needs a staging admin.
-- The staging `noindex` guard is committed but only takes effect on the next staging deploy. Until then the current workers.dev build still serves `Allow: /`.
+- The staging `noindex` guard is now live on `cuet-astro-staging`: every response sampled on 2026-11-17 carried `X-Robots-Tag: noindex, nofollow` and `/robots.txt` returned `User-agent: *\nDisallow: /`. Staging remains a public URL; the guard keeps it out of indexes, not out of reach.
 - Cloudflare Access is not configured; production admin uses the session fallback.
 - Local Lighthouse excludes GA4, AdSense and edge cache; field performance may differ. The local D1 data set also differs from Turso.
 - The P1-8 gate enforces medians, not every run. One subject-hub run scored 99 while the median was 100; a single slow run does not fail the audit. This avoids flaky gates, but a genuine regression that appears in only one of three runs can hide.
@@ -520,6 +521,15 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - [x] A post-P1-13 local audit passes 9/9 when `/q/` is supplied through `LIGHTHOUSE_PUBLIC_QUESTION` (or a real eligible question is in the sitemap).
 
 ### Security and operations
+
+- [x] On deployed staging: `/api/health`, `/mock-tests`, `/sitemap.xml` and a mock instructions page returned 200; `/dashboard` and `/admin` redirected 303 to `/login`.
+- [x] On deployed staging: `/sitemap.xml` had 219 URLs with 0 private, profile or `/q/` URLs, all on the workers.dev origin.
+- [x] On deployed staging: `/practice`, `/mock-test`, `/mock-test/*`, `/cuet-ug-mock-test` and the old PYQ archive path returned a direct 301.
+- [x] On deployed staging: a guest attempt returned 201 with `__Host-cuet_guest`; replaying the legacy `cuet_guest` token resumed it (200) and deleted the legacy cookie; a POST without `Origin` returned 403.
+- [x] On deployed staging: every sampled response, including `/robots.txt` and `/sitemap.xml`, carried `X-Robots-Tag: noindex, nofollow`, and `/robots.txt` disallowed all crawlers.
+- [x] On deployed staging: homepage had 0 AdSense, analytics, consent-banner and Cloudflare Insights markers; `/ads.txt` was 404 while ads stay off.
+- [ ] Google sign-in on staging (blocked: staging has no Google client id/secret).
+- [ ] Authenticated staging `/dashboard` and `/admin` (blocked: no seeded staging operator).
 
 - [ ] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, `COOP`, `CORP`).
 - [x] Private HTML and auth responses send `Cache-Control: no-store`.
@@ -728,6 +738,7 @@ Staging was seeded and deployed from the authenticated local Wrangler session be
 - Legacy redirects: `/practice`, `/mock-test`, `/mock-test/*`, `/cuet-ug-mock-test` and the old PYQ archive path return **301** to the canonical URLs. `/topics` and `/questions` are not routes and return 404.
 - Guest cookie: `/api/attempts/start` returned **201** with `__Host-cuet_guest=...; Max-Age=2592000; Path=/; HttpOnly; Secure; SameSite=Lax`. Replaying the token as `cuet_guest` returned **200 resumed**, set `__Host-cuet_guest` and deleted `cuet_guest`. `/attempt/3` was 200 with the guest cookie and 404 without it; `/result/3` redirected 303 to `/attempt/3` until the attempt is submitted. A POST without `Origin` or `Sec-Fetch-Site` returned **403**.
 - Google OAuth: `/api/auth/google?next=%2Fdashboard` redirects 303 to `/login?error=google_not_configured`, and `/login` renders the "not configured" notice with no Google link because the staging secrets are absent.
+- Staging noindex is live after re-deploying from the committed build: `/`, `/mock-tests`, `/login`, `/api/health`, `/sitemap.xml` and `/robots.txt` all returned `X-Robots-Tag: noindex, nofollow`, and `/robots.txt` returned `User-agent: *` / `Disallow: /`.
 
 **Lighthouse and accessibility**
 
@@ -737,7 +748,7 @@ Staging was seeded and deployed from the authenticated local Wrangler session be
 
 **Next**
 
-- Push `release/audit-phase5`, re-run CI, then deploy staging again so the `noindex` guard and committed `SITE_URL` are live and verify them by curl.
+- Confirm CI is green on `release/audit-phase5`, including the accessibility gate that failed before these fixes.
 - Obtain a D1-capable GitHub token, a staging admin/OAuth configuration and a DNS record for `staging.cuetfreemocktest.com` to close the operational blockers in §15.
 - Re-measure the Subject Hub on production before changing the Speed Index budget.
 
