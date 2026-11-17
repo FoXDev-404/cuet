@@ -48,6 +48,15 @@ describe("indexability and internal-link fixes", () => {
     expect(file).toContain('robots="noindex, follow"');
   });
 
+  it("keeps profile URLs out of the sitemap", () => {
+    // Profiles are linked from leaderboards and discussion for people, not
+    // for crawlers. A noindex URL in the sitemap only asks Google to fetch a
+    // page we do not want indexed, so the sitemap must never add one.
+    const sitemap = read("src/pages/sitemap.xml.ts");
+    expect(sitemap).not.toContain('add("/u/');
+    expect(sitemap).not.toContain("add(`/u/");
+  });
+
   it("links leaderboard usernames only when the profile is public", () => {
     for (const page of ["src/pages/leaderboard/index.astro", "src/pages/leaderboard/[slug].astro"]) {
       const file = read(page);

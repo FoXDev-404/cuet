@@ -593,6 +593,39 @@ test("robots.txt disallows /dev and /dev/ and sitemap excludes internal stylegui
   expect(xml).not.toContain("<loc>http://localhost:4321/dev</loc>");
 });
 
+test("public profiles stay followable but out of the index and sitemap", async ({ request }) => {
+  const stamp = uniqueStamp();
+  const student: Student = {
+    email: `e2e-profile-${stamp}@example.com`,
+    username: `profile_${stamp}`.slice(0, 30),
+  };
+  seedUser({ email: student.email, username: student.username });
+
+  try {
+    localD1(
+      `UPDATE users SET is_profile_public = 1 WHERE email = ${sqlString(student.email)}`,
+    );
+
+    const profile = await request.get(`/u/${student.username}`);
+    expect(profile.status()).toBe(200);
+    const html = await profile.text();
+    expect(html).toContain('<meta name="robots" content="noindex, follow"');
+    expect(html).toContain(`/u/${student.username}`);
+
+    const sitemap = await request.get("/sitemap.xml");
+    expect(sitemap.status()).toBe(200);
+    expect(await sitemap.text()).not.toContain(`/u/${student.username}`);
+
+    localD1(
+      `UPDATE users SET is_profile_public = 0 WHERE email = ${sqlString(student.email)}`,
+    );
+    const hidden = await request.get(`/u/${student.username}`);
+    expect(hidden.status()).toBe(404);
+  } finally {
+    cleanupStudent(student);
+  }
+});
+
 test("/dev/styleguide serves in development mode with noindex or 404 in production", async ({ request }) => {
   const res = await request.get("/dev/styleguide");
   if (res.status() === 404) {

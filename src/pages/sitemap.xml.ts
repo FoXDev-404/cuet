@@ -202,6 +202,9 @@ export const GET: APIRoute = async ({ request }) => {
     console.error("sitemap shared-question query failed", error);
   }
 
+  // Public profiles (`/u/[username]`) are deliberately absent: the page is
+  // noindex, follow and linked from leaderboards/discussion for people, not
+  // crawlers. Listing a noindex URL would only ask Google to fetch it.
   add("/", { changefreq: "weekly", priority: "1.0" });
   if (isExamVerified("syllabus")) add("/cuet-ug-syllabus", { changefreq: "monthly", priority: "0.9" });
   if (isExamVerified("exam-pattern")) add("/cuet-ug-exam-pattern", { changefreq: "monthly", priority: "0.9" });

@@ -163,7 +163,7 @@ Notes:
 - **External:** 1/51 broken at baseline — `https://exams.nta.ac.in/CUET-UG/` returned 404. It was used six times in `migrations/0020_exam_info_seed.sql` as `exam_info.source_url`.
 - Verified replacement: `https://cuet.nta.nic.in/` returns 200 and is the official CUET (UG) landing page (title contains "CUET (UG)", 94 KB). `https://nta.ac.in/` also returns 200.
 - **Resolved in Phase 1 (SEO-4):** `0020_exam_info_seed.sql` now uses `https://cuet.nta.nic.in/` and migration `0028_fix_cuet_source_url.sql` updates existing databases. The exam-info pages already used this URL as their fallback. A local crawl after applying the migration reported **0/362 internal and 0/39 external broken**. Production needs `npm run db:turso:migrate` before its crawl is clean.
-- Orphans: `/u/[username]` public profiles are not linked from the main navigation or leaderboard and are `noindex, follow`. This may be intentional; decide whether profiles are a product surface or remove the route from public discovery (P2-11).
+- Orphans: **resolved in Phase 4 (P2-11).** Leaderboard and discussion usernames link public profiles. Profiles remain `noindex, follow` and are deliberately kept out of the sitemap, so the route is a human-facing surface rather than an SEO page.
 
 ---
 
@@ -180,7 +180,7 @@ Strengths: every audited public page has exactly one H1, a canonical, an OG titl
 | SEO-5 | P2 | `/leaderboard` title is 61 characters; `/mock/...` wrapper is 61, `/instructions` 72, `/discussion` 90, `/result/527` 88 | Only `/leaderboard` is indexable; shorten it to <=60. The others are noindex/private and are low priority. |
 | SEO-6 | P2 | Blog index and posts carry only `Organization` (plus `BreadcrumbList`/`Article` on posts); no `FAQPage`, `Quiz` or `LearningResource` | Add structured data only where the visible page actually supports it. Do not invent FAQs. |
 | SEO-7 | P2 | Local sitemap includes 2 E2E fixture shared-question URLs | `listSeoIndexableQuestions()` in `src/lib/share/public-question-store.ts` lacks the fixture guard used for mocks in `src/pages/sitemap.xml.ts`. Add a fixture-slug filter. |
-| SEO-8 | P2 | Public `/u/[username]` profiles are orphaned and noindex | Decide product intent; if discoverable, link from leaderboard/discussion and add to the sitemap; otherwise leave noindex and stop treating them as SEO pages. |
+| SEO-8 | P2 | Public `/u/[username]` profiles are orphaned and noindex | Resolved in Phase 4 (P2-11): leaderboard and discussion usernames link public profiles; profiles stay `noindex, follow` and out of the sitemap. |
 | SEO-9 | Info | Attempt/result pages are intentionally metadata-light | Do not add canonical/OG/JSON-LD to private pages. A meta description would not lift the Lighthouse cap because `is-crawlable` is already 0. |
 
 Metadata audit details: `/signup` 301s to `/login?next=%2Fdashboard`; `/forgot-password` 301s to `/login`; both are intentional for a Google-only flow. Every other audited route has a canonical and OG image. The default OG image `https://cuetfreemocktest.com/logo.png` is live (200, `image/png`, 31,587 bytes), so the non-blog social preview path is healthy.
@@ -322,7 +322,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P2-8 — Result-page ad decision. Resolved in Phase 4.** The site intentionally serves no result ads: the result summary and solutions pages no longer opt in, `/result` is in `BLOCKED_AD_PATHS`, and a unit guard keeps both pages ad-free. The privacy policy already limits advertising to selected public content pages.
 - **P2-9 — Environment docs. Resolved in Phase 4.** `.env.example` is now a committed, comment-only pointer to `.dev.vars.example`; `.gitignore` keeps `.env*` ignored but re-includes `.env.example`, and a unit guard fails if the pointer ever duplicates a key.
 - **P2-10 — Attempt LCP/CLS. Resolved in Phase 3.** The share-font regression was the CLS/LCP driver. With intent-only prerender, the attempt page is 100 / LCP 1.24 s / CLS 0 in all three runs; first-image preload is no longer needed to meet the budget.
-- **P2-11 — Public-profile intent.** Link profiles from leaderboard/discussion or keep them noindex and out of the sitemap.
+- **P2-11 — Public-profile intent. Resolved in Phase 4.** Profiles stay `noindex, follow` and out of the sitemap, while leaderboard and discussion usernames link to them for people. A unit guard pins the sitemap decision and an E2E proves a public profile is 200 + noindex, absent from the sitemap, and 404 once the profile is made private again.
 - **P2-12 — API consistency.** Internal only: consider `/api/v1` and a consistent `{ ok, error }` envelope when the API is next touched; not worth a standalone refactor.
 
 ---
@@ -387,6 +387,7 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 4 | UX-2 / P2-2/P2-3/P2-4: small leaderboard links, stale autosave copy, 61-character leaderboard title | Raised every small leaderboard link to a 24 px target, changed the autosave copy to 15 seconds and shortened the title to 51 characters; added source guards | Focused tests 20/20; full suite **590/590**; build clean; preview measured title 51 and every sampled leaderboard link 24 px |
 | 4 | DOC-1 / P2-9: environment docs only covered `.dev.vars.example`, so tools that look for `.env.example` found nothing | Added a comment-only `.env.example` that points at `.dev.vars.example`, re-included it in `.gitignore`, and added a unit guard that fails if the pointer duplicates a key | Focused `env-separation` **7/7**; full suite in §17 |
 | 4 | ADS-5 / P2-8: result pages opted into ads even though the policy allows ads only on selected public content pages, contradicting the `AdSlot` comment and the ads QA checklist | Decided to serve no result ads: removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, added a source guard, and documented the decision | Unit `integrations` **12/12**; preview with `ADSENSE_CLIENT`, `ADSENSE_SLOT_ID` and `ADSENSE_CMP_ACTIVE=1`: `/result/629` and `/result/629/solutions` returned 0 `adsbygoogle` and 0 AdSense script, while `/` and `/mock-tests` still served the unit |
+| 4 | SEO-10 / P2-11: public profiles were noindex but the sitemap exclusion and private-profile 404 had no regression coverage | Kept profiles `noindex, follow` and out of the sitemap, documented the intent in the sitemap source, and added a unit guard plus an E2E covering public-profile 200/noindex, sitemap absence and private-profile 404 | Focused unit `seo-indexability` **19/19**; focused E2E **1/1 passed** |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -617,19 +618,20 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - P2-4: `/leaderboard` title shortened from 61 to 51 characters.
 - P2-9: added a comment-only `.env.example` that points at `.dev.vars.example`. `.gitignore` keeps `.env*` ignored but re-includes the pointer, and a unit guard fails if a key is ever duplicated into it.
 - P2-8: decided to serve no result ads. Removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, and added a source guard. The privacy policy already limits advertising to selected public content pages.
+- P2-11: kept public profiles `noindex, follow` and out of the sitemap while leaderboard and discussion usernames link to them. Added a sitemap source guard and an E2E for public-profile 200/noindex, sitemap absence and private-profile 404.
 
 **Verification**
 
-- Unit: **592/592** across 66 files, including the fixture-text, runner-override, `.env.example` and result-ad guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**.
+- Unit: **593/593** across 66 files, including the fixture-text, runner-override, `.env.example`, result-ad and profile-sitemap guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**; focused `seo-indexability` **19/19**.
 - Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
-- E2E: focused sitemap test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
+- E2E: focused sitemap test **1/1 passed**; focused public-profile test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
 - Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
 - Preview measurement: `/leaderboard` title 51 characters; every sampled small leaderboard link rendered at 24 px.
 - Ads preview: with `ADSENSE_CLIENT`, `ADSENSE_SLOT_ID` and `ADSENSE_CMP_ACTIVE=1`, a fresh guest attempt 629 returned 0 `adsbygoogle` and 0 AdSense script on `/result/629` and `/result/629/solutions`, while `/` and `/mock-tests` still served the unit.
 
 **Next**
 
-- P2-5/P2-7/P2-11/P2-12.
+- P2-5/P2-7/P2-12.
 - Apply `npm run db:turso:migrate` when the next push is allowed so `0028` reaches Turso; re-run the production link crawl after deploy.
 
 ---
