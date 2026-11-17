@@ -178,7 +178,7 @@ Strengths: every audited public page has exactly one H1, a canonical, an OG titl
 | SEO-3 | P1 | Twitter card tags use `property=` instead of the standard `name=` | `src/layouts/BaseLayout.astro:230-232`. Change to `name="twitter:card"`, `name="twitter:image"`, `name="twitter:image:alt"`. |
 | SEO-4 | P1 | `https://exams.nta.ac.in/CUET-UG/` is a 404 source link | Fixed in Phase 1 (P1-3): seed updated to `https://cuet.nta.nic.in/` and migration `0028_fix_cuet_source_url.sql` updates existing rows. |
 | SEO-5 | P2 | `/leaderboard` title is 61 characters; `/mock/...` wrapper is 61, `/instructions` 72, `/discussion` 90, `/result/527` 88 | Only `/leaderboard` is indexable; shorten it to <=60. The others are noindex/private and are low priority. |
-| SEO-6 | P2 | Blog index and posts carry only `Organization` (plus `BreadcrumbList`/`Article` on posts); no `FAQPage`, `Quiz` or `LearningResource` | Add structured data only where the visible page actually supports it. Do not invent FAQs. |
+| SEO-6 | P2 | Blog index and posts carry only `Organization` (plus `BreadcrumbList`/`Article` on posts); no `FAQPage`, `Quiz` or `LearningResource` | **Resolved in Phase 4 (P2-5):** this is the intended shape. Blog posts emit `Article` + `BreadcrumbList`; `FAQPage`, `Quiz`, `Course` and now `LearningResource` stay disallowed because the visible content does not support them. Guarded by `tests/unit/structured-data.test.ts`. |
 | SEO-7 | P2 | Local sitemap includes 2 E2E fixture shared-question URLs | `listSeoIndexableQuestions()` in `src/lib/share/public-question-store.ts` lacks the fixture guard used for mocks in `src/pages/sitemap.xml.ts`. Add a fixture-slug filter. |
 | SEO-8 | P2 | Public `/u/[username]` profiles are orphaned and noindex | Resolved in Phase 4 (P2-11): leaderboard and discussion usernames link public profiles; profiles stay `noindex, follow` and out of the sitemap. |
 | SEO-9 | Info | Attempt/result pages are intentionally metadata-light | Do not add canonical/OG/JSON-LD to private pages. A meta description would not lift the Lighthouse cap because `is-crawlable` is already 0. |
@@ -316,7 +316,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P2-2 — Leaderboard touch targets. Resolved in Phase 4.** Small leaderboard links now use `inline-block py-0.5` (or `line-clamp-1 py-0.5`) and measure exactly 24 px high in Playwright at 390 px.
 - **P2-3 — Autosave copy. Resolved in Phase 4.** The attempt help text now says 15 seconds, matching `setInterval(..., 15000)`; a source guard keeps the two in sync.
 - **P2-4 — Title lengths. Resolved in Phase 4.** `/leaderboard` is now 51 characters; a unit guard caps the indexable title at 60.
-- **P2-5 — Blog structured data.** Add `FAQPage`/`Quiz`/`LearningResource` only where the visible content supports it.
+- **P2-5 — Blog structured data. Resolved in Phase 4.** Blog posts keep `Article` + `BreadcrumbList`; `FAQPage`, `Quiz`, `Course` and `LearningResource` stay disallowed because the visible content does not support them. The guard now covers `src/pages/blog/[slug].astro` in both the allow-list test and the disallowed-schema sweep, and the rationale is documented in `docs/SEO_RULES.md`.
 - **P2-6 — Cookie prefixes.** Move to `__Host-` names with a one-time logout.
 - **P2-7 — CSP/COOP/CORP.** Replace `'unsafe-inline'` with nonces/hashes; add COOP/CORP; narrow ad domains when ads are off.
 - **P2-8 — Result-page ad decision. Resolved in Phase 4.** The site intentionally serves no result ads: the result summary and solutions pages no longer opt in, `/result` is in `BLOCKED_AD_PATHS`, and a unit guard keeps both pages ad-free. The privacy policy already limits advertising to selected public content pages.
@@ -388,6 +388,7 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 4 | DOC-1 / P2-9: environment docs only covered `.dev.vars.example`, so tools that look for `.env.example` found nothing | Added a comment-only `.env.example` that points at `.dev.vars.example`, re-included it in `.gitignore`, and added a unit guard that fails if the pointer duplicates a key | Focused `env-separation` **7/7**; full suite in §17 |
 | 4 | ADS-5 / P2-8: result pages opted into ads even though the policy allows ads only on selected public content pages, contradicting the `AdSlot` comment and the ads QA checklist | Decided to serve no result ads: removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, added a source guard, and documented the decision | Unit `integrations` **12/12**; preview with `ADSENSE_CLIENT`, `ADSENSE_SLOT_ID` and `ADSENSE_CMP_ACTIVE=1`: `/result/629` and `/result/629/solutions` returned 0 `adsbygoogle` and 0 AdSense script, while `/` and `/mock-tests` still served the unit |
 | 4 | SEO-10 / P2-11: public profiles were noindex but the sitemap exclusion and private-profile 404 had no regression coverage | Kept profiles `noindex, follow` and out of the sitemap, documented the intent in the sitemap source, and added a unit guard plus an E2E covering public-profile 200/noindex, sitemap absence and private-profile 404 | Focused unit `seo-indexability` **19/19**; focused E2E **1/1 passed** |
+| 4 | SEO-6 / P2-5: blog structured data had no explicit decision or guard for `FAQPage`/`Quiz`/`LearningResource` | Kept `Article` + `BreadcrumbList` on blog posts, added `LearningResource` to the disallowed set, included `src/pages/blog/[slug].astro` in both structured-data guard tests, and documented the rationale | Focused unit `structured-data` **6/6**; full suite in §17 |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -619,10 +620,11 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - P2-9: added a comment-only `.env.example` that points at `.dev.vars.example`. `.gitignore` keeps `.env*` ignored but re-includes the pointer, and a unit guard fails if a key is ever duplicated into it.
 - P2-8: decided to serve no result ads. Removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, and added a source guard. The privacy policy already limits advertising to selected public content pages.
 - P2-11: kept public profiles `noindex, follow` and out of the sitemap while leaderboard and discussion usernames link to them. Added a sitemap source guard and an E2E for public-profile 200/noindex, sitemap absence and private-profile 404.
+- P2-5: blog posts emit `Article` + `BreadcrumbList`; `FAQPage`, `Quiz`, `Course` and `LearningResource` stay disallowed. Both structured-data guard tests now cover `src/pages/blog/[slug].astro`, and `docs/SEO_RULES.md` explains why `LearningResource` is not a fit for editorial guides.
 
 **Verification**
 
-- Unit: **593/593** across 66 files, including the fixture-text, runner-override, `.env.example`, result-ad and profile-sitemap guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**; focused `seo-indexability` **19/19**.
+- Unit: **594/594** across 66 files, including the fixture-text, runner-override, `.env.example`, result-ad, profile-sitemap and structured-data guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**; focused `seo-indexability` **19/19**; focused `structured-data` **6/6**.
 - Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
 - E2E: focused sitemap test **1/1 passed**; focused public-profile test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
 - Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
@@ -631,7 +633,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 **Next**
 
-- P2-5/P2-7/P2-12.
+- P2-7/P2-12.
 - Apply `npm run db:turso:migrate` when the next push is allowed so `0028` reaches Turso; re-run the production link crawl after deploy.
 
 ---

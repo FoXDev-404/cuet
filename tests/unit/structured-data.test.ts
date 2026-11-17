@@ -26,10 +26,21 @@ const ALLOWED_SCHEMAS = new Set([
   "ListItem",
 ]);
 
-const DISALLOWED_SCHEMAS = ["Quiz", "Course", "FAQPage", "Product", "Question", "Answer"];
+const DISALLOWED_SCHEMAS = [
+  "Quiz",
+  "Course",
+  "FAQPage",
+  "Product",
+  "Question",
+  "Answer",
+  // LearningResource only earns rich results for full course-like programs with
+  // a syllabus and provider. A CUET guide is an article, not a course, so emit
+  // Article + BreadcrumbList instead (see docs/SEO_RULES.md).
+  "LearningResource",
+];
 
 describe("Fix 6 — Structured Data (JSON-LD) Governance", () => {
-  it("strictly disallows Quiz, Course, and FAQPage schemas across the entire codebase", () => {
+  it("strictly disallows Quiz, Course, FAQPage and LearningResource schemas across the entire codebase", () => {
     const srcFiles = getFilesRecursively(join(process.cwd(), "src"));
     const violations: { file: string; type: string }[] = [];
 
@@ -74,6 +85,7 @@ describe("Fix 6 — Structured Data (JSON-LD) Governance", () => {
       "src/pages/cuet-ug-syllabus.astro",
       "src/pages/cuet-ug-important-dates.astro",
       "src/pages/cuet-ug-previous-year-question-papers.astro",
+      "src/pages/blog/[slug].astro",
     ];
 
     for (const pagePath of guidePages) {
@@ -81,7 +93,17 @@ describe("Fix 6 — Structured Data (JSON-LD) Governance", () => {
       expect(content).not.toContain("FAQPage");
       expect(content).not.toContain("Quiz");
       expect(content).not.toContain("Course");
+      expect(content).not.toContain("LearningResource");
     }
+  });
+
+  it("keeps blog posts on Article + BreadcrumbList", () => {
+    const content = readFileSync(
+      join(process.cwd(), "src/pages/blog/[slug].astro"),
+      "utf8",
+    );
+    expect(content).toContain("articleJsonLd");
+    expect(content).toContain("breadcrumbJsonLd");
   });
 
   it("verifies mock test and practice pages emit only BreadcrumbList and ItemList", () => {

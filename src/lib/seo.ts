@@ -140,6 +140,8 @@ export function formatVerified(value: string | null | undefined): string | null 
 
 // FAQPage schema was intentionally removed per Google Search guidelines (Aug 2023 update restricts FAQ rich results to government and health sites).
 // Quiz and Course schemas are disallowed per /docs/SEO_RULES.md.
+// LearningResource is also disallowed: guides are articles, not full courses, and
+// Article + BreadcrumbList is the accurate, supported surface for blog posts.
 
 export function breadcrumbJsonLd(
   site: URL,
