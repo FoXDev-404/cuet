@@ -224,7 +224,7 @@ Remaining nits:
 
 Present and working:
 
-- Security headers on production: CSP, HSTS (`max-age=31536000; includeSubDomains`), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy`; `X-Robots-Tag: noindex, nofollow` on private paths.
+- Security headers on production: CSP (ad and analytics hosts only when the integration is configured), HSTS (`max-age=31536000; includeSubDomains`), COOP (`same-origin-allow-popups`), CORP (`same-origin`), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy`; `X-Robots-Tag: noindex, nofollow` on private paths.
 - OAuth `state` is validated; admin RBAC is enforced server-side; session tokens are stored hashed; answer keys are not serialized into the attempt page and scoring is server-side.
 - Rate limits exist for attempt start, submit, comments and media upload; admin uploads validate bytes and reject SVG; no secrets are committed.
 - `SameSite=Lax`, `HttpOnly` session cookie; `Secure` in production.
@@ -237,8 +237,8 @@ Gaps:
 | SEC-2 | P1 | `/api/attempts/[id]/answers` had no rate limit | Fixed in Phase 1 (P1-7): after the ownership check, the endpoint allows 120 saves per minute per attempt + client IP; excess requests return 429. Keying after the access check prevents another user from exhausting an attempt's bucket. |
 | SEC-3 | P1 | Private/auth HTML had no `Cache-Control: no-store`; `/login` returned 200 without it | Fixed in Phase 1 (P1-5): `applySecurityHeaders()` now sets `Cache-Control: no-store` and `Pragma: no-cache` for every `isPrivatePath()` route, which covers attempts, results, dashboards, auth pages, admin and authenticated APIs. The edge cache only stores allowlisted public paths, so it cannot overwrite this. |
 | SEC-4 | P2 | Session/guest cookie is `cuet_session` / `cuet_guest`, not `__Host-` | Rename to `__Host-cuet_session` / `__Host-cuet_guest` with `Path=/`, `Secure`, no `Domain`; this logs existing sessions out once. |
-| SEC-5 | P2 | CSP allows `script-src 'unsafe-inline'` and advertises AdSense/Google ad domains even when ads are unconfigured | Move inline scripts to nonces/hashes, then drop `'unsafe-inline'`; conditionally narrow ad domains when `ADSENSE_CLIENT` is empty. |
-| SEC-6 | P2 | No `Cross-Origin-Opener-Policy` or `Cross-Origin-Resource-Policy` | Add `COOP: same-origin` and `CORP: same-origin` after confirming no cross-origin embedding is required. |
+| SEC-5 | P2 | CSP allowed `script-src 'unsafe-inline'` and advertised AdSense/Google ad domains even when ads were unconfigured | **Partially resolved in Phase 4 (P2-7):** ad and analytics hosts are now emitted only when that integration is configured (`src/lib/security-headers.ts`), so the dormant policy no longer advertises them. `'unsafe-inline'` remains for scripts and styles until the nonce/hash migration described in §15. |
+| SEC-6 | P2 | No `Cross-Origin-Opener-Policy` or `Cross-Origin-Resource-Policy` | Fixed in Phase 4 (P2-7): every Worker response now carries COOP `same-origin-allow-popups` (OAuth popups keep working) and CORP `same-origin`. |
 | SEC-7 | P2 | Production admin auth uses the session fallback (`ADMIN_ALLOW_SESSION_IN_PROD=1`); Cloudflare Access is not configured | Enable Access, or document the accepted risk and enforce a strong password + login rate limit. Do not flip the flag without an Access app. |
 | SEC-8 | P2 | `.env.example` is missing (`.dev.vars.example` exists) | Add a documented example with empty values and comments. |
 | SEC-9 | P2 | `npm audit` reports 1 moderate Astro XSS advisory | Update Astro within the supported range and re-run build/tests. |
@@ -318,12 +318,12 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P2-4 — Title lengths. Resolved in Phase 4.** `/leaderboard` is now 51 characters; a unit guard caps the indexable title at 60.
 - **P2-5 — Blog structured data. Resolved in Phase 4.** Blog posts keep `Article` + `BreadcrumbList`; `FAQPage`, `Quiz`, `Course` and `LearningResource` stay disallowed because the visible content does not support them. The guard now covers `src/pages/blog/[slug].astro` in both the allow-list test and the disallowed-schema sweep, and the rationale is documented in `docs/SEO_RULES.md`.
 - **P2-6 — Cookie prefixes.** Move to `__Host-` names with a one-time logout.
-- **P2-7 — CSP/COOP/CORP.** Replace `'unsafe-inline'` with nonces/hashes; add COOP/CORP; narrow ad domains when ads are off.
+- **P2-7 — CSP/COOP/CORP. Resolved in Phase 4 (scope split).** COOP and CORP are set on every Worker response. The CSP is built from live integration state, so dormant AdSense/GA4/GTM hosts are no longer advertised, and a route-specific policy (media `default-src 'none'; sandbox`) is preserved instead of being overwritten. `'unsafe-inline'` remains for scripts and styles until a nonce/hash migration; that residual risk is recorded in §15.
 - **P2-8 — Result-page ad decision. Resolved in Phase 4.** The site intentionally serves no result ads: the result summary and solutions pages no longer opt in, `/result` is in `BLOCKED_AD_PATHS`, and a unit guard keeps both pages ad-free. The privacy policy already limits advertising to selected public content pages.
 - **P2-9 — Environment docs. Resolved in Phase 4.** `.env.example` is now a committed, comment-only pointer to `.dev.vars.example`; `.gitignore` keeps `.env*` ignored but re-includes `.env.example`, and a unit guard fails if the pointer ever duplicates a key.
 - **P2-10 — Attempt LCP/CLS. Resolved in Phase 3.** The share-font regression was the CLS/LCP driver. With intent-only prerender, the attempt page is 100 / LCP 1.24 s / CLS 0 in all three runs; first-image preload is no longer needed to meet the budget.
 - **P2-11 — Public-profile intent. Resolved in Phase 4.** Profiles stay `noindex, follow` and out of the sitemap, while leaderboard and discussion usernames link to them for people. A unit guard pins the sitemap decision and an E2E proves a public profile is 200 + noindex, absent from the sitemap, and 404 once the profile is made private again.
-- **P2-12 — API consistency.** Internal only: consider `/api/v1` and a consistent `{ ok, error }` envelope when the API is next touched; not worth a standalone refactor.
+- **P2-12 — API consistency. Resolved in Phase 4 (decision + small fix).** `/api` stays unversioned because it is internal-only; a `/api/v1` contract would double maintenance without a consumer. The shared `{ ok, ... }` / `{ error }` envelope is now consistent: `questions/[id]/report.ts` was the last route hand-rolling it, and a unit guard fails on a new raw error envelope or a `v1` folder. Revisit versioning only when a third party consumes the API, keeping old paths as aliases.
 
 ---
 
@@ -389,6 +389,8 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 4 | ADS-5 / P2-8: result pages opted into ads even though the policy allows ads only on selected public content pages, contradicting the `AdSlot` comment and the ads QA checklist | Decided to serve no result ads: removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, added a source guard, and documented the decision | Unit `integrations` **12/12**; preview with `ADSENSE_CLIENT`, `ADSENSE_SLOT_ID` and `ADSENSE_CMP_ACTIVE=1`: `/result/629` and `/result/629/solutions` returned 0 `adsbygoogle` and 0 AdSense script, while `/` and `/mock-tests` still served the unit |
 | 4 | SEO-10 / P2-11: public profiles were noindex but the sitemap exclusion and private-profile 404 had no regression coverage | Kept profiles `noindex, follow` and out of the sitemap, documented the intent in the sitemap source, and added a unit guard plus an E2E covering public-profile 200/noindex, sitemap absence and private-profile 404 | Focused unit `seo-indexability` **19/19**; focused E2E **1/1 passed** |
 | 4 | SEO-6 / P2-5: blog structured data had no explicit decision or guard for `FAQPage`/`Quiz`/`LearningResource` | Kept `Article` + `BreadcrumbList` on blog posts, added `LearningResource` to the disallowed set, included `src/pages/blog/[slug].astro` in both structured-data guard tests, and documented the rationale | Focused unit `structured-data` **6/6**; full suite in §17 |
+| 4 | SEC-5 / SEC-6 / P2-7: CSP advertised dormant ad/analytics hosts, lacked COOP/CORP, and the global policy overwrote the media route's sandbox policy | Built the CSP from live integration state, added COOP `same-origin-allow-popups` and CORP `same-origin`, and stopped replacing route-specific policies | Focused `security-headers` + `middleware-headers` **18/18**; preview: dormant CSP had no ad/analytics hosts, enabled CSP had all of them, and COOP/CORP were present on `/`, `/login` and `/mock-tests`; full suite in §17 |
+| 4 | API-1 / P2-12: `questions/[id]/report.ts` hand-rolled the JSON error envelope, and `/api/v1` had no decision | Routed the route through `apiError()`, kept `/api` unversioned for internal-only use, and added guards against a new raw error envelope or a `v1` prefix | Focused `api-conventions` **3/3**; full suite in §17 |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -401,6 +403,8 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - A visitor who clears site data or blocks `localStorage` loses the stored choice; the banner returns and analytics stays off until they choose again. This fails closed, but the choice cannot be remembered.
 - The consent banner is not exercised by Lighthouse with a real GA4 id. Its markup is small and fixed-position, but the configured path should be re-measured on the deployed origin before go-live.
 - The privacy policy still describes email/password signup and password hashes, while production auth is Google-only. That copy needs a separate accuracy pass, tracked outside P1-4.
+- The CSP still allows `'unsafe-inline'` for scripts and styles. Astro's hydration bootstrap, the inline consent/theme/share snippets and dynamic `style=` attributes need nonces or hashes before that directive can be removed. Astro 7 has native CSP hashing, but adopting it must also cover `is:inline` third-party snippets (GA4/GTM/AdSense), so it stays a separate, test-heavy migration. Until then, CSP does not stop an injected inline script.
+- Session and guest cookies still use the unprefixed `cuet_session` / `cuet_guest` names (P2-6). Moving to `__Host-` requires a one-time logout or a dual-read migration that re-issues the prefixed cookie on the next authenticated request; it needs its own rollout window and cross-environment (HTTP localhost vs HTTPS production) verification, so it was not folded into Phase 4.
 - No GSC/Bing access: indexing, coverage and Core Web Vitals field data cannot be verified from this environment.
 - No authenticated production admin/dashboard pass; admin RBAC is verified by tests and code review, not by a live production session.
 - Production Turso vs local D1 means query counts, content counts and migration state can differ. Do not treat local D1 as production.
@@ -485,11 +489,11 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 ### Security and operations
 
-- [ ] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
+- [ ] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, `COOP`, `CORP`).
 - [x] Private HTML and auth responses send `Cache-Control: no-store`.
 - [x] Cross-origin POST/PUT/PATCH/DELETE is rejected; same-origin writes succeed.
 - [ ] Login, attempt start, submit, answers and comments rate limits return 429 under load without locking out normal use.
-- [ ] Session cookie is `HttpOnly`, `Secure`, `SameSite=Lax`, and ideally `__Host-`.
+- [ ] Session cookie is `HttpOnly`, `Secure`, `SameSite=Lax`; the `__Host-` prefix is deferred to P2-6 (§15).
 - [ ] `/api/health` reports the expected engine and DB state; `/ads.txt` matches the configured publisher.
 - [ ] Deploy, rollback and backup/restore are exercised in staging; production deployment matches the intended commit.
 
@@ -621,19 +625,22 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - P2-8: decided to serve no result ads. Removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, and added a source guard. The privacy policy already limits advertising to selected public content pages.
 - P2-11: kept public profiles `noindex, follow` and out of the sitemap while leaderboard and discussion usernames link to them. Added a sitemap source guard and an E2E for public-profile 200/noindex, sitemap absence and private-profile 404.
 - P2-5: blog posts emit `Article` + `BreadcrumbList`; `FAQPage`, `Quiz`, `Course` and `LearningResource` stay disallowed. Both structured-data guard tests now cover `src/pages/blog/[slug].astro`, and `docs/SEO_RULES.md` explains why `LearningResource` is not a fit for editorial guides.
+- P2-7: COOP `same-origin-allow-popups` and CORP `same-origin` are set on every Worker response. The CSP is built from live integration state, so ad and analytics hosts appear only when configured, and route-specific policies are preserved. `'unsafe-inline'` remains until the nonce/hash migration (§15).
+- P2-12: kept `/api` unversioned for internal-only use and moved the last hand-rolled error response in `questions/[id]/report.ts` onto `apiError()`. A unit guard pins the shared envelope and blocks a `v1` prefix until an external consumer exists.
 
 **Verification**
 
-- Unit: **594/594** across 66 files, including the fixture-text, runner-override, `.env.example`, result-ad, profile-sitemap and structured-data guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**; focused `seo-indexability` **19/19**; focused `structured-data` **6/6**.
+- Unit: **608/608** across 68 files, including the fixture-text, runner-override, `.env.example`, result-ad, profile-sitemap, structured-data, CSP and API-convention guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**; focused `seo-indexability` **19/19**; focused `structured-data` **6/6**; focused `security-headers` + `middleware-headers` **18/18**; focused `api-conventions` **3/3**.
 - Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
 - E2E: focused sitemap test **1/1 passed**; focused public-profile test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
 - Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
 - Preview measurement: `/leaderboard` title 51 characters; every sampled small leaderboard link rendered at 24 px.
 - Ads preview: with `ADSENSE_CLIENT`, `ADSENSE_SLOT_ID` and `ADSENSE_CMP_ACTIVE=1`, a fresh guest attempt 629 returned 0 `adsbygoogle` and 0 AdSense script on `/result/629` and `/result/629/solutions`, while `/` and `/mock-tests` still served the unit.
+- CSP preview: with every integration unset, `/` and `/login` returned COOP/CORP and no `googlesyndication`, `doubleclick`, `googletagmanager` or `google-analytics` hosts. With AdSense and GA4 configured, `/`, `/login` and `/mock-tests` returned all four host groups.
 
 **Next**
 
-- P2-7/P2-12.
+- Phase 4 P2 polish is complete except P2-6 (cookie prefixes), which is deferred to its own rollout window (see §15).
 - Apply `npm run db:turso:migrate` when the next push is allowed so `0028` reaches Turso; re-run the production link crawl after deploy.
 
 ---
