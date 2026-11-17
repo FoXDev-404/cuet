@@ -11,6 +11,7 @@ import { trackDbMetrics } from "./lib/db";
 import { DB_DEGRADED_HEADER } from "./lib/db-resilient";
 import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
 import { edgeCacheKeyRequest, edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
+import { isPrivatePath } from "./lib/private-paths";
 
 /**
  * The Workers runtime exposes `caches.default` (the per-colo edge cache),
@@ -23,35 +24,6 @@ function edgeCache(): { match: Cache["match"]; put: Cache["put"] } | null {
 }
 
 setPracticeLibraryStore(practiceLibraryD1Store);
-
-const NOINDEX_PREFIXES = [
-  "/dev",
-  "/admin",
-  "/api/admin",
-  "/api/attempts",
-  "/api/results",
-  "/api/auth",
-  "/attempt",
-  "/result",
-  "/dashboard",
-  "/login",
-  "/signup",
-  "/forgot-password",
-  "/reset-password",
-  "/verify-email",
-  "/search",
-  "/api/bookmarks",
-  "/api/account",
-  "/api/me",
-  "/api/discussions",
-  "/api/leaderboards",
-];
-
-function isPrivatePath(pathname: string): boolean {
-  return NOINDEX_PREFIXES.some(
-    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
-  );
-}
 
 function isAdminPath(pathname: string): boolean {
   return pathname === "/admin" || pathname.startsWith("/admin/");
