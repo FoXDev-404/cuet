@@ -165,6 +165,8 @@ Metadata audit details: `/signup` 301s to `/login?next=%2Fdashboard`; `/forgot-p
 
 **Resolved in Phase 1 (SEO-1):** the 24 mock start links keep the visible label "Start" and now include the paper title as in-flow `sr-only` text, so the link inner text is "Start CUET UG … Previous Year Paper". Three mobile Lighthouse runs of `/mock-tests` after the change scored **SEO 100, performance 100, accessibility 100, best practices 100** (LCP median 936 ms, transfer unchanged at 58.8 KB). An E2E assertion covers the row's descriptive text.
 
+**Resolved in Phase 1 (SEO-2, SEO-3):** repository guides now have pre-generated 1200×630 PNG share images (34 PNGs, 1,534 KB total) written to `public/og/blog/` by `npm run og:guides`, following the existing paper/question OG workflow. `guideOgImagePath()` returns the PNG for repository guides and `/logo.png` for database posts, while `guideImagePath()` keeps the SVG thumbnail for DB posts (the endpoint is unchanged and still returns SVG). Twitter card tags now use the standard `name=` attribute. A pre-rendered PNG route was attempted first but the Cloudflare adapter cannot bundle `@resvg/resvg-js`'s native binary, so generation happens outside the build and the images are committed.
+
 ---
 
 ## 7. Accessibility and UX
@@ -320,6 +322,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | 0 | No product code changes yet; baseline only | Preserved `docs/AUDIT.md`; wrote this audit; refreshed `docs/report/a11y-results.json` to `716d246` / 272 scans | `npm test`, `npm run build`, a11y report, Lighthouse baseline |
 | 1 | ADS-1 / P0-1: AdSense loaded on the active attempt screen, contradicting the privacy policy | Removed the AdSense `<script>`, `AdSlot` usage and unused imports/consts from `src/pages/attempt/[id].astro`; added `/attempt` to `BLOCKED_AD_PATHS`; flipped the unit expectation and added a source-level regression guard | Focused tests 15/15, full suite 543/543, build clean; preview with valid `ADSENSE_*` showed 0 ad markers on `/attempt/535` while `/mock-tests` still served AdSense |
 | 1 | SEO-1: 24 non-descriptive "Start" links on `/mock-tests` (Lighthouse SEO 92) | Kept the visible "Start" label and added the paper title as `sr-only` in-flow text in `PaperRow.astro`; added an E2E assertion for the row text | Lighthouse 3/3 runs: SEO **92 -> 100**, perf/a11y/BP 100, LCP 936 ms, 58.8 KB; focused E2E passed |
+| 1 | SEO-2 / SEO-3: blog OG images were SVG (not rendered by major social platforms) and Twitter tags used `property=` | Repository guides now get pre-generated 1200x630 PNGs from `scripts/generate-guide-og.mjs` (`npm run og:guides`, committed under `public/og/blog/`); DB posts keep the SVG thumbnail but share `/logo.png`. Twitter tags changed to `name=`. New `src/lib/guide-images.ts` centralises both paths; unit tests cover the mapping, PNG existence and tag attribute | Full suite **547/547**, build clean; preview: `/blog/cuet-ug-syllabus-and-ncert-books` emits `og:image` and `twitter:image` as `.png`, `name="twitter:*"`, PNG served `200 image/png` (46,832 bytes), SVG thumbnail endpoint still `200` |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -440,10 +443,12 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - Regression coverage: `tests/unit/integrations.test.ts` now asserts `/attempt/42` and `/attempt/42/` are blocked, and a source-level guard fails if the attempt page regains `AdSlot`, `adsbygoogle` or `pagead2.googlesyndication.com`.
 - Verification: focused tests 15/15, full suite **543/543**, `npm run build` clean. A preview with valid `ADSENSE_CLIENT`/`ADSENSE_SLOT_ID` served `/attempt/535` with zero ad markers (86,175 bytes) while `/mock-tests` still loaded AdSense, confirming the env vars were active and the block is route-specific.
 - **P1-1 (SEO-1):** mock start links now carry the paper title as `sr-only` text while keeping the visible "Start" label. `/mock-tests` Lighthouse SEO rose from **92 to 100** on all three runs with performance/accessibility/best-practices at 100; an E2E assertion guards the row text.
+- **P1-2 (SEO-2/SEO-3):** added `src/lib/guide-images.ts` and `scripts/generate-guide-og.mjs`; 34 repository guides now share as 1200×630 PNGs in `public/og/blog/` (1,534 KB total). Database posts keep the SVG thumbnail and fall back to `/logo.png` for sharing. Twitter card metadata now uses `name=`. Regression tests cover paths, PNG existence and the tag attribute.
+- Verification: full suite **547/547**, `npm run build` clean. Preview confirmed `og:image`/`twitter:image` as PNG, `name="twitter:*"`, the PNG served `200 image/png` at 46,832 bytes and the SVG thumbnail endpoint still `200`.
 
 **Next in this phase**
 
-- P1-2 (social metadata), P1-3 (NTA URL), P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
+- P1-3 (NTA URL), P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
 
 ---
 

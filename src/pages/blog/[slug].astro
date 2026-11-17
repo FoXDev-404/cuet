@@ -11,6 +11,7 @@ import {
   getGuide,
   getRelatedGuides,
   guideImagePath,
+  guideOgImagePath,
   guidePath,
   type GuidePost,
 } from "../../lib/guides";
@@ -38,7 +39,8 @@ const title = seo?.title || post.title;
 const description = limitSeoDescription(seo?.description || post.description);
 const noindex = (seo?.noindex ?? 0) === 1;
 const site = siteUrl(Astro.url);
-const socialImage = new URL(guideImagePath(post.slug), site).toString();
+const socialImage = new URL(guideOgImagePath(post.slug), site).toString();
+const artworkImage = guideImagePath(post.slug);
 const category = GUIDE_CATEGORY_META[post.category];
 const headings = articleHeadings(post.body);
 const readingMinutes = estimateReadingMinutes(post.body);
@@ -107,7 +109,7 @@ const structuredData = [
 
         <figure class="mt-6 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)]">
           <img
-            src={socialImage}
+            src={artworkImage}
             alt={`Illustration for ${post.title}: a CUET study checklist and progress chart.`}
             width="1200"
             height="630"

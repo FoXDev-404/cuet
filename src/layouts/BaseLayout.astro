@@ -227,9 +227,9 @@ const organization = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
     {imageAlt ? <meta property="og:image:alt" content={imageAlt} /> : null}
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image" content={socialImage} />
-    {imageAlt ? <meta property="twitter:image:alt" content={imageAlt} /> : null}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={socialImage} />
+    {imageAlt ? <meta name="twitter:image:alt" content={imageAlt} /> : null}
     <script type="application/ld+json" set:html={JSON.stringify(organization)} />
     {structuredDataList.map((data) => (
       <script type="application/ld+json" set:html={JSON.stringify(data)} />

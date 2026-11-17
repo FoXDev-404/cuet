@@ -161,6 +161,4 @@ export function guidePath(slug: string): string {
   return `/blog/${slug}`;
 }
 
-export function guideImagePath(slug: string): string {
-  return `/og/blog/${encodeURIComponent(slug)}.svg`;
-}
+export { guideImagePath, guideOgImagePath } from "./guide-images";
