@@ -16,8 +16,12 @@
 import { spawnSync } from "node:child_process";
 import { mkdtempSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { DatabaseSync } from "node:sqlite";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const WRANGLER_BIN = join(ROOT, "node_modules", "wrangler", "bin", "wrangler.js");
 
 const REMOTE = process.argv.includes("--remote");
 const DATABASE = (() => {
@@ -37,7 +41,7 @@ if (!/^[a-z0-9][a-z0-9-]{1,62}$/.test(DATABASE)) {
   console.error(`Invalid D1 database name: ${DATABASE}`);
   process.exit(1);
 }
-const d1Dir = resolve(process.cwd(), ".wrangler/state/v3/d1/miniflare-D1DatabaseObject");
+const d1Dir = resolve(ROOT, ".wrangler/state/v3/d1/miniflare-D1DatabaseObject");
 
 const statements = [
   // Practice questions ------------------------------------------------------
@@ -67,11 +71,17 @@ const countQuery = (table) =>
   `SELECT explanation_source, explanation_status, count(*) AS count FROM ${table} GROUP BY explanation_source, explanation_status`;
 
 function wrangler(args, options = {}) {
-  const result = spawnSync("npx", ["wrangler", "d1", "execute", DATABASE, ...ENV_ARGS, ...args], {
-    cwd: process.cwd(),
-    encoding: options.encoding ?? "utf8",
-    stdio: options.stdio ?? "inherit",
-  });
+  // Running Wrangler's JS entrypoint through Node avoids the Windows `npx`
+  // shim, which spawnSync cannot resolve without a shell.
+  const result = spawnSync(
+    process.execPath,
+    [WRANGLER_BIN, "d1", "execute", DATABASE, ...ENV_ARGS, ...args],
+    {
+      cwd: ROOT,
+      encoding: options.encoding ?? "utf8",
+      stdio: options.stdio ?? "inherit",
+    },
+  );
   if (result.error) throw result.error;
   if (result.status !== 0) process.exit(result.status ?? 1);
   return result.stdout ?? "";

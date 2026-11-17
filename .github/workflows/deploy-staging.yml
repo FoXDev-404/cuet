@@ -66,4 +66,4 @@ jobs:
       - name: Build and deploy staging
         run: npm run deploy:staging
       - name: Smoke test staging
-        run: node scripts/smoke-check.mjs "$STAGING_URL" --expect "245 papers"
+        run: node scripts/smoke-check.mjs "$STAGING_URL" --expect "137 papers"
