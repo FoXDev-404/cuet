@@ -15,6 +15,8 @@ type LocalIndexPaper = {
   scorableQuestionCount: number;
   pendingReviewCount: number;
   durationMinutes: number;
+  rankedQuestionCount: number;
+  rankedDurationMinutes: number;
 };
 
 type LocalIndex = { papers?: LocalIndexPaper[] | null };
@@ -169,7 +171,7 @@ test("practice detail reports the scored count when no questions are excluded", 
   );
   await expect(page.getByText(/not included in the ranked paper/)).toHaveCount(0);
   const scoredCard = page.getByText("in the ranked paper").locator("..");
-  await expect(scoredCard).toContainText(String(DETAIL_PAPER.scorableQuestionCount));
+  await expect(scoredCard).toContainText(String(DETAIL_PAPER.rankedQuestionCount));
   await expect(page.getByRole("link", { name: /Start Test/ })).toHaveAttribute(
     "href",
     `/mock/${DETAIL_PAPER.slug}/instructions`,
@@ -240,7 +242,9 @@ test("a practice paper starts, autosaves, submits and shows a saved ranked resul
 }) => {
   await page.goto(INSTRUCTIONS);
   await expect(page.getByRole("heading", { name: "Before you start" })).toBeVisible();
-  await expect(page.getByText(`${SCORED_PAPER.durationMinutes} min`, { exact: true })).toBeVisible();
+  await expect(
+    page.getByText(`${SCORED_PAPER.rankedDurationMinutes} min`, { exact: true }),
+  ).toBeVisible();
 
   await beginAttempt(page);
 
