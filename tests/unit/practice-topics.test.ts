@@ -195,5 +195,8 @@ describe("practice topic aggregation", () => {
     expect(script).toContain("planPracticeTopicUpdates");
     expect(script).toContain("--apply");
     expect(script).toContain("--remote");
+    expect(script).toContain("--turso");
+    expect(script).toContain("createTursoClient");
+    expect(script).toContain("transaction(\"write\")");
   });
 });

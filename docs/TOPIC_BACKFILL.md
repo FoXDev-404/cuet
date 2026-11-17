@@ -1,11 +1,11 @@
 # Topic backfill runbook
 
 **Status:** migration `0027_practice_question_topics.sql` and the editor import
-are implemented in the repository. The migration was applied to the local
-Miniflare database for verification; the production D1 migration and the first
-real CSV import have **not** been applied. Until they are, every
-`/cuet-mock-test/<subject>/<topic>` URL stays `404` (topic pages require at
-least one live tagged question).
+are implemented in the repository. The migration is applied to local Miniflare
+and to **production Turso** (verified 2026-11-17: 28 migrations, integrity and
+foreign keys ok). The first real CSV import has **not** been applied, so every
+`/cuet-mock-test/<subject>/<topic>` URL still returns `404` (topic pages require
+at least one live tagged question).
 
 ## 1. Why a backfill is required
 
@@ -118,10 +118,16 @@ text to create a key; use the existing `question_key`.
 # Validate and report only (default; writes nothing)
 node scripts/tag-practice-questions.mjs --file topic-map.csv
 
+# Validate against production Turso without writing
+node --env-file-if-exists=.dev.vars scripts/tag-practice-questions.mjs --file topic-map.csv --turso
+
 # Apply locally
 node scripts/tag-practice-questions.mjs --file topic-map.csv --apply
 
-# Apply to production D1
+# Apply to production Turso (reads TURSO_* from .dev.vars)
+node --env-file-if-exists=.dev.vars scripts/tag-practice-questions.mjs --file topic-map.csv --apply --turso
+
+# Apply to production D1 (legacy path; needs an authenticated Wrangler)
 node scripts/tag-practice-questions.mjs --file topic-map.csv --apply --remote
 
 # Apply to another D1 database
@@ -131,13 +137,24 @@ node scripts/tag-practice-questions.mjs --file topic-map.csv --apply --remote --
 node scripts/tag-practice-questions.mjs --file topic-map.csv --db path/to/local.sqlite
 ```
 
-The remote path uploads a temporary `.sql` file through
+The Turso path reads the mapping context and writes every update inside one
+interactive `write` transaction; an unexpected row count rolls the whole import
+back. The remote D1 path uploads a temporary `.sql` file through
 `wrangler d1 execute --remote --file`. Each statement updates one row by its
 `(paper_slug, question_key)` pair, so a retry after a partial failure is safe.
 The local path wraps the same updates in a transaction and rolls back on the
 first unexpected row count.
 
 ## 6. Verification
+
+The import's dry run prints the current tagged total for the selected target.
+Run it with `--turso` after an import to confirm the production count, then
+check a topic URL that received tags, for example
+`/cuet-mock-test/chemistry/chemical-bonding`. Expected: `200`, the tagged
+practice papers listed, and the URL present in `/sitemap.xml`. A topic with no
+tags must stay `404`.
+
+Local checks:
 
 ```powershell
 # Tagged rows overall
@@ -147,10 +164,11 @@ npx wrangler d1 execute cuet-blueprint-db --local --command "SELECT COUNT(*) AS 
 npx wrangler d1 execute cuet-blueprint-db --local --command "SELECT t.slug, COUNT(*) AS tagged FROM practice_questions pq JOIN practice_papers pp ON pp.slug = pq.paper_slug JOIN topics t ON t.id = pq.topic_id WHERE pp.subject_id = (SELECT id FROM subjects WHERE slug = 'chemistry') AND pq.deleted_at IS NULL GROUP BY t.slug ORDER BY tagged DESC;"
 ```
 
-Then check a topic URL that received tags, for example
-`/cuet-mock-test/chemistry/chemical-bonding`. Expected: `200`, the tagged
-practice papers listed, and the URL present in `/sitemap.xml`. A topic with no
-tags must stay `404`.
+Turso schema/data sanity check (read-only):
+
+```powershell
+npm run db:turso:verify
+```
 
 Publication gate check: a paper with 29 live questions is excluded even if
 tagged; the same paper at 30 questions is included. This is covered by
@@ -174,6 +192,11 @@ tagged; the same paper at 30 questions is included. This is covered by
   that only with a verified backup.
 
 ## 8. Current diagnosis (local D1, 2026-11-15)
+
+Local counts are shown here because they were the audit source; production
+Turso has since been migrated to `0027` and has slightly different content
+counts (24,761 published timed questions, 7,527 live practice questions). The
+topic state is the same: no tags have been imported yet.
 
 | Check | Value |
 | --- | ---: |
@@ -202,3 +225,7 @@ On the local Miniflare database (migration 0027 applied):
 
 The 30-question boundary is also asserted in
 `tests/unit/practice-topics.test.ts` against an in-memory SQLite database.
+
+Production Turso: a dry run of `scripts/tag-practice-questions.mjs --turso`
+resolved a real paper/question/topic triple and reported `Turso` as the target
+without writing. The first real CSV import remains an editorial task.

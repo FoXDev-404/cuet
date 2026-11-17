@@ -17,6 +17,8 @@
  *       Apply locally.
  *   node scripts/tag-practice-questions.mjs --file topic-map.csv --apply --remote
  *       Apply to production D1 (needs an authenticated Wrangler).
+ *   node scripts/tag-practice-questions.mjs --file topic-map.csv --apply --turso
+ *       Apply to the production Turso database (reads TURSO_* from .dev.vars).
  *   node scripts/tag-practice-questions.mjs --file topic-map.csv --apply \
  *       --remote --database cuet-d1-staging
  *       Apply to another D1 database.
@@ -37,10 +39,12 @@ import {
   parsePracticeTopicCsv,
   planPracticeTopicUpdates,
 } from "../src/lib/practice-topics.ts";
+import { createTursoClient, queryRows } from "./turso-lib.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const D1_DIR = join(ROOT, ".wrangler", "state", "v3", "d1", "miniflare-D1DatabaseObject");
 const REMOTE = process.argv.includes("--remote");
+const TURSO = process.argv.includes("--turso");
 const APPLY = process.argv.includes("--apply");
 const DRY_RUN = !APPLY;
 
@@ -68,6 +72,11 @@ const ENV_ARGS = WRANGLER_ENV ? ["--env", WRANGLER_ENV] : [];
 
 const explicitDb = option("--db");
 if (REMOTE && explicitDb) fail("Use either --remote or --db, not both.");
+if (REMOTE && TURSO) fail("Use either --remote or --turso, not both.");
+if (TURSO && explicitDb) fail("Use either --turso or --db, not both.");
+if (TURSO && (WRANGLER_ENV !== null || option("--database") !== null)) {
+  fail("--turso reads TURSO_* from .dev.vars; drop --database/--env.");
+}
 
 function sqlString(value) {
   return `'${String(value).replace(/'/g, "''")}'`;
@@ -122,7 +131,7 @@ function localDatabasePath() {
   return join(D1_DIR, files[0].name);
 }
 
-function collectContext(paperSlugs) {
+async function collectContext(paperSlugs) {
   const placeholders = paperSlugs.map(() => "?").join(",");
   const paperSql = `SELECT slug, subject_id FROM practice_papers
     WHERE slug IN (${placeholders})
@@ -134,7 +143,12 @@ function collectContext(paperSlugs) {
   let paperRows;
   let questionRows;
   let topicRows;
-  if (REMOTE) {
+  if (TURSO) {
+    const client = createTursoClient();
+    paperRows = await queryRows(client, paperSql, paperSlugs);
+    questionRows = await queryRows(client, questionSql, paperSlugs);
+    topicRows = await queryRows(client, topicSql);
+  } else if (REMOTE) {
     const inList = paperSlugs.map(sqlString).join(",");
     paperRows = remoteRows(paperSql.replace(placeholders, inList), []);
     questionRows = remoteRows(questionSql.replace(placeholders, inList));
@@ -181,7 +195,7 @@ if (parsed.errors.length > 0) {
 if (parsed.rows.length === 0) fail("The CSV contains no mapping rows.");
 
 const paperSlugs = [...new Set(parsed.rows.map((row) => row.paperSlug))];
-const context = collectContext(paperSlugs);
+const context = await collectContext(paperSlugs);
 const planned = planPracticeTopicUpdates(parsed.rows, context);
 if (planned.errors.length > 0) {
   console.error("Mapping validation failed:");
@@ -189,14 +203,38 @@ if (planned.errors.length > 0) {
   fail(`${planned.errors.length} mapping error(s); nothing was written.`);
 }
 
+const target = TURSO ? "Turso" : REMOTE ? `remote D1 ${DATABASE}` : "local D1";
 console.log(
   `${DRY_RUN ? "🔎 Dry run" : "✍️  Import"} — ${planned.updates.length} tag(s) across ${
     new Set(planned.updates.map((row) => row.paperSlug)).size
-  } paper(s), ${REMOTE ? `remote D1 ${DATABASE}` : "local D1"}.`,
+  } paper(s), ${target}.`,
 );
 
 if (DRY_RUN) {
   console.log("\nNo rows written. Re-run with --apply to persist the mapping.");
+} else if (TURSO) {
+  const client = createTursoClient();
+  const transaction = await client.transaction("write");
+  try {
+    for (const row of planned.updates) {
+      const result = await transaction.execute({
+        sql: `UPDATE practice_questions SET topic_id = ?, updated_at = CURRENT_TIMESTAMP
+              WHERE paper_slug = ? AND question_key = ? AND deleted_at IS NULL`,
+        args: [row.topicId, row.paperSlug, row.questionKey],
+      });
+      if (Number(result.rowsAffected) !== 1) {
+        throw new Error(
+          `Expected one row for ${row.paperSlug}/${row.questionKey}, changed ${result.rowsAffected}.`,
+        );
+      }
+    }
+    await transaction.commit();
+  } catch (error) {
+    await transaction.rollback().catch(() => {});
+    transaction.close();
+    fail(`Import rolled back: ${error.message}`);
+  }
+  transaction.close();
 } else if (REMOTE) {
   const dir = mkdtempSync(join(tmpdir(), "cuet-topic-tags-"));
   const file = join(dir, "tag-practice-questions.sql");
@@ -238,7 +276,9 @@ if (DRY_RUN) {
 
 const countSql =
   "SELECT COUNT(*) AS tagged FROM practice_questions WHERE topic_id IS NOT NULL AND deleted_at IS NULL";
-if (REMOTE) {
+if (TURSO) {
+  console.table(await queryRows(createTursoClient(), countSql));
+} else if (REMOTE) {
   console.table(remoteRows(countSql));
 } else {
   const db = new DatabaseSync(localDatabasePath(), { readOnly: true });
