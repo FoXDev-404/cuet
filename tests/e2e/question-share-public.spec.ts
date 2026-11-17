@@ -603,25 +603,31 @@ test("only fully eligible shared questions enter the sitemap and get an OG image
   test.slow();
   const stamp = uniqueStamp();
   const fixture = createFixture({
-    text: `E2E sitemap eligible ${stamp}: which option is Alpha?`,
+    text: `Sitemap eligible ${stamp}: which option is Alpha?`,
     revealPolicy: "public",
     rightsOk: 1,
     seoIndexable: 1,
   });
   const notIndexable = createFixture({
-    text: `E2E sitemap off ${stamp}: which option is Beta?`,
+    text: `Sitemap off ${stamp}: which option is Beta?`,
     revealPolicy: "public",
     rightsOk: 1,
     seoIndexable: 0,
   });
   const attemptedOnly = createFixture({
-    text: `E2E sitemap attempted ${stamp}: which option is Gamma?`,
+    text: `Sitemap attempted ${stamp}: which option is Gamma?`,
     revealPolicy: "attempted_only",
     rightsOk: 1,
     seoIndexable: 1,
   });
   const inPublishedMock = createFixture({
-    text: `E2E sitemap mock ${stamp}: which option is Delta?`,
+    text: `Sitemap mock ${stamp}: which option is Delta?`,
+    revealPolicy: "public",
+    rightsOk: 1,
+    seoIndexable: 1,
+  });
+  const fixtureText = createFixture({
+    text: `E2E fixture ${stamp}: which option is Epsilon?`,
     revealPolicy: "public",
     rightsOk: 1,
     seoIndexable: 1,
@@ -632,7 +638,7 @@ test("only fully eligible shared questions enter the sitemap and get an OG image
   expect(sitemapResponse.status()).toBe(200);
   const sitemap = await sitemapResponse.text();
   expect(sitemap).toContain(fixture.path);
-  for (const excluded of [notIndexable, attemptedOnly, inPublishedMock]) {
+  for (const excluded of [notIndexable, attemptedOnly, inPublishedMock, fixtureText]) {
     expect(sitemap).not.toContain(excluded.path);
     expect(sitemap).not.toContain(excluded.publicId);
   }

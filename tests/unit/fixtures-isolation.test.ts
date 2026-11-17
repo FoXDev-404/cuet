@@ -56,6 +56,11 @@ describe("Fixture & Test Data Isolation (Fix R5)", () => {
         isFixtureQuestion({ text: "E2E fixture question 01: Which option is correct?" }),
       ).toBe(true);
       expect(isFixtureQuestion({ text: "Sample fixture question for audit" })).toBe(true);
+      expect(
+        isFixtureQuestion({ text: "E2E sitemap eligible abc123: which option is Alpha?" }),
+      ).toBe(true);
+      expect(isFixtureQuestion({ text: "Fixture question: which option is Beta?" })).toBe(true);
+      expect(isFixtureQuestion({ text: "Test fixture question: which option is Gamma?" })).toBe(true);
     });
 
     it("allows real exam questions", () => {
@@ -69,8 +74,27 @@ describe("Fixture & Test Data Isolation (Fix R5)", () => {
           text: "Linear inequalities corresponding to the shaded feasible region OABCO in the given figure are",
         }),
       ).toBe(false);
+      expect(
+        isFixtureQuestion({ text: "Sitemap eligible abc123: which option is Alpha?" }),
+      ).toBe(false);
+      expect(
+        isFixtureQuestion({ text: "A test of the emergency broadcast system is scheduled" }),
+      ).toBe(false);
       expect(isFixtureQuestion(null)).toBe(false);
       expect(isFixtureQuestion(undefined)).toBe(false);
+    });
+
+    it("keeps the public-question resolver on the shared fixture rule", () => {
+      const source = readFileSync(
+        resolve(process.cwd(), "src/lib/share/public-question-store.ts"),
+        "utf8",
+      );
+      expect(source).toContain(
+        'import { isFixtureQuestion } from "../fixtures";',
+      );
+      expect(source).toContain("isFixtureQuestion({ text: published.text })");
+      expect(source).toContain("isFixtureQuestion({ text: published.text_hi })");
+      expect(source).toContain("&& !fixtureQuestion");
     });
   });
 

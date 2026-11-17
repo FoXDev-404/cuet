@@ -153,7 +153,7 @@ Notes:
 - The attempt page fell from **100.7 KB** (share off) and **470 KB** (share on) to **68.7 KB** because the share-card fonts are no longer fetched during page idle. They are prerendered only after `pointerover`/`focusin` on the Share control, so the 361 KB payload is now an explicit user action rather than an initial cost.
 - The admin dashboard went from **CLS 0.328** to **CLS 0** after `data-admin-js` is set in the head, which keeps the mobile sidebar out of normal flow before hydration. LCP is 1.09 s.
 - SEO 58-69 on `/attempt`, `/result`, `/admin`, `/mock/...` and `/mock/.../instructions` remains intentional `noindex`; the target is no accidental indexability, not a perfect SEO score.
-- The local database exposes only the E2E sitemap fixture as an indexable shared question. The runner prefers a non-fixture `/q/` URL when one exists; evidence here uses the fixture because the other 27 candidates are drafts. This is a content-state limitation, not a route issue.
+- The local database exposed only the E2E sitemap fixture as an indexable shared question at the time of this run. P1-13 subsequently excludes fixture text from `seoEligible`, so fixture `/q/` URLs can no longer enter the sitemap. A post-P1-13 verification run (3 runs, same method) passed **9/9**; it audited a temporary non-fixture question seeded into local D1 and removed afterwards. The committed evidence above was intentionally left unchanged because P1-13 changes sitemap membership and robots metadata, not route performance. See §17 Phase 4.
 
 ---
 
@@ -308,14 +308,14 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P1-10 — Local/production parity.** Remove the localhost exception for trailing-slash/canonical-host redirects in a test-only-safe way, or add a dedicated preview mode that matches production and document it.
 - **P1-11 — Dependency advisory.** Update Astro for `GHSA-mh32-jxcr-mh9f`; re-run build/tests/a11y.
 - **P1-12 — Backups.** Provision the D1/Turso backup workflow secrets and verify a restore, or document the accepted risk and manual backup runbook.
-- **P1-13 — Sitemap fixture guard.** Filter E2E fixture questions from `listSeoIndexableQuestions()`.
+- **P1-13 — Sitemap fixture guard. Resolved in Phase 4.** `isFixtureQuestion` now treats text that starts with `e2e`/`fixture` (and the existing fixture markers) as synthetic. `resolvePublicQuestion` applies that rule to `seoEligible`, so the `/q/` page, the sitemap and the structured data all share one eligibility check. The sitemap E2E proves a non-fixture eligible question is included while an `E2E fixture ...` question is excluded, and the unit guards pin the rule plus the resolver source.
 
 ### P2 — polish and hardening
 
 - **P2-1 — Lazy share fonts. Resolved in Phase 3.** The attempt page no longer fetches `share-fonts-base.json` during idle; the share prerender runs only after `pointerover` or `focusin` on the Share control. Attempt initial transfer is 68.7 KB.
-- **P2-2 — Leaderboard touch targets.** Raise the 20 px links to at least 24 px.
-- **P2-3 — Autosave copy.** Align "every 10 seconds" with the 15-second interval.
-- **P2-4 — Title lengths.** Shorten `/leaderboard` (the only indexable page over 60 characters) to <=60; leave `/mock/...` wrapper, instructions, discussion and result titles alone unless those pages are edited.
+- **P2-2 — Leaderboard touch targets. Resolved in Phase 4.** Small leaderboard links now use `inline-block py-0.5` (or `line-clamp-1 py-0.5`) and measure exactly 24 px high in Playwright at 390 px.
+- **P2-3 — Autosave copy. Resolved in Phase 4.** The attempt help text now says 15 seconds, matching `setInterval(..., 15000)`; a source guard keeps the two in sync.
+- **P2-4 — Title lengths. Resolved in Phase 4.** `/leaderboard` is now 51 characters; a unit guard caps the indexable title at 60.
 - **P2-5 — Blog structured data.** Add `FAQPage`/`Quiz`/`LearningResource` only where the visible content supports it.
 - **P2-6 — Cookie prefixes.** Move to `__Host-` names with a one-time logout.
 - **P2-7 — CSP/COOP/CORP.** Replace `'unsafe-inline'` with nonces/hashes; add COOP/CORP; narrow ad domains when ads are off.
@@ -383,6 +383,8 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 3 | PERF-1 / P1-8: the attempt page fetched 361 KB of share-card fonts during idle (100.7 KB share off, 470 KB share on) | Removed `scheduleSharePrerender()` from page load; `prerenderShareForTrigger()` now runs on Share `pointerover`/`focusin`, so the fonts are fetched only when the user asks for a share card | Attempt initial transfer **68.7 KB** (from 100.7/470 KB), LCP 1.24 s, CLS 0, performance 100 in 3/3 runs; focused share E2E passed |
 | 3 | PERF-2: the admin mobile sidebar painted in normal flow before hydration (CLS 0.328) | Set `document.documentElement.dataset.adminJs = "true"` in the `AdminLayout` head script so the sidebar is hidden before first paint | `/admin` CLS **0.328 -> 0**, LCP 1.09 s, 44.9 KB; admin E2E passed |
 | 3 | PERF-3: `scripts/lighthouse-audit.mjs` was stale, used hard-coded ids and did not enforce `performance-budget.json` | Rewrote route discovery and auth seeding, added `scripts/lib/perf-budget.mjs`, and made the runner exit non-zero on any route/global breach; it now records the Lighthouse version | 18 unit tests; 9/9 routes pass; evidence in `docs/report/lighthouse/` |
+| 4 | SEO-6 / P1-13: E2E fixture questions could enter `/sitemap.xml` and be served as indexable `/q/` pages | Strengthened `isFixtureQuestion` (text starting with `e2e`/`fixture`, plus the existing markers) and applied it in `resolvePublicQuestion`, so page robots, JSON-LD and the sitemap share one rule; added `LIGHTHOUSE_PUBLIC_QUESTION` for audits when the sitemap has no eligible question | Focused E2E sitemap test passed (1/1); unit suite in §17; sitemap returns `qUrls=0` locally after removing the fixture; 3-run Lighthouse verification 9/9 PASS |
+| 4 | UX-2 / P2-2/P2-3/P2-4: small leaderboard links, stale autosave copy, 61-character leaderboard title | Raised every small leaderboard link to a 24 px target, changed the autosave copy to 15 seconds and shortened the title to 51 characters; added source guards | Focused tests 20/20; full suite **590/590**; build clean; preview measured title 51 and every sampled leaderboard link 24 px |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -405,7 +407,8 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - The P1-8 gate enforces medians, not every run. One subject-hub run scored 99 while the median was 100; a single slow run does not fail the audit. This avoids flaky gates, but a genuine regression that appears in only one of three runs can hide.
 - The budgets are app-specific targets, not Core Web Vitals thresholds. `maxInitialDomNodes` counts total DOM and is conservative; a route can pass the cap while a late client-only expansion raises the real initial count.
 - Lighthouse is installed via `npx` and the repository does not pin it in `package.json`. Evidence records `13.6.0`, but a later run may use a different version and change scores. Pin or document the version before treating score deltas as regressions.
-- The public-question evidence is the local E2E sitemap fixture; no non-fixture question is published locally. Opening the Share sheet still fetches ~361 KB of fonts by design, so measure that interaction separately if share previews are enabled in production.
+- The committed `/q/` Lighthouse evidence predates P1-13 and therefore audits the E2E sitemap fixture. Fixtures are now excluded from the sitemap and render `noindex`; the post-P1-13 verification used a temporary non-fixture question. A production audit should use a real published question or `LIGHTHOUSE_PUBLIC_QUESTION=/q/...`. Opening the Share sheet still fetches ~361 KB of fonts by design, so measure that interaction separately if share previews are enabled in production.
+- The fixture rule is text-based (`e2e`, `fixture` prefixes). A synthetic question with neutral text would still pass; the local audit question is an example. Keep test fixtures clearly labelled and use `LIGHTHOUSE_PUBLIC_QUESTION` only for audit fixtures that never reach production.
 - Real iOS/Android device testing remains outstanding.
 - Free-tier row-read quotas remain a cost/availability risk, especially for cold-start practice-library warm-up and submit.
 
@@ -422,7 +425,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - [ ] `/mock/[slug]` wrapper canonicalises to the canonical paper; instructions page starts the exam; discussion page loads and is noindex.
 - [ ] PYQ archive, subject hubs, year pages and wrong-category redirects land on the canonical paper with a 301.
 - [x] `/blog` and a blog post render; OG/Twitter preview uses a raster image; JSON-LD matches visible content.
-- [ ] `/leaderboard` loads, links are readable and tappable, and an empty leaderboard is gated correctly.
+- [x] `/leaderboard` loads, links are readable and tappable (small links measure 24 px high), and an empty leaderboard is gated correctly.
 - [ ] `/search` is noindex and does not leak private attempts.
 - [ ] Legal pages (`/privacy-policy`, `/terms`, `/disclaimer`, `/about`, `/contact`) are reachable from the footer and accurate.
 
@@ -439,7 +442,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 - [ ] Start creates an attempt and shows the server deadline.
 - [ ] Refresh/resume keeps answers and remaining time; no duplicate attempt is created.
-- [ ] Autosave debounce and 15-second interval both persist; the help text matches.
+- [x] Autosave debounce and 15-second interval both persist; the help text matches.
 - [ ] Closing/reopening the tab flushes the last dirty answer (or shows a clear warning).
 - [ ] Palette navigation, mark-for-review, language toggle, timer warning and auto-submit at expiry work.
 - [ ] Submit confirmation shows counts; submit scores server-side; result shows score, accuracy, subject analysis and retake CTA.
@@ -461,7 +464,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 ### SEO and redirects
 
 - [ ] Every indexable page has one title, description, canonical, OG title/image and valid JSON-LD.
-- [ ] `/sitemap.xml` contains no fixture, private or empty routes; canonical/`og:url` match.
+- [x] `/sitemap.xml` contains no fixture, private or empty routes; `E2E fixture ...` questions are excluded while a non-fixture eligible question is included. Canonical/`og:url` match.
 - [ ] `/robots.txt` disallows private paths and points to the sitemap.
 - [ ] Legacy paths (`/practice*`, `/mock-test*`, `/pyq`, `/cuet-ug-previous-year-papers`, wrong-category PYQ) 301 once, not in a chain.
 - [ ] Trailing slash, `www`, `http` and `workers.dev` hosts 301 to the canonical origin.
@@ -474,7 +477,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - [x] The admin mobile sidebar does not shift the page on first paint (CLS 0).
 - [x] Committed Lighthouse evidence contains no `cuet_session`/`cuet_guest` cookie material and no `headers-*.json`.
 - [ ] Re-run the audit on the deployed origin with GA4, AdSense (when enabled) and edge cache active.
-- [ ] Confirm a real published `/q/` question is selected when the production sitemap exposes one.
+- [x] A post-P1-13 local audit passes 9/9 when `/q/` is supplied through `LIGHTHOUSE_PUBLIC_QUESTION` (or a real eligible question is in the sitemap).
 
 ### Security and operations
 
@@ -599,6 +602,33 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 ---
 
+### Phase 4 — P1-13 sitemap fixture guard and P2 polish (2026-11-17)
+
+**Done**
+
+- `isFixtureQuestion` now detects text that starts with `e2e` or `fixture` (case-insensitive, trimmed) in addition to the existing `e2e fixture` / `fixture question` markers.
+- `resolvePublicQuestion` applies the fixture check to `seoEligible`, so the `/q/` page robots tag, the JSON-LD decision and `listSeoIndexableQuestions()` all use one rule. Fixture questions can no longer enter the sitemap through a stale `seo_indexable=1` flag.
+- The sitemap E2E now creates a non-fixture eligible question (`Sitemap eligible ...`) and proves it is included, while a separate `E2E fixture ...` question is excluded alongside the noindex, attempted-only and published-mock cases.
+- `scripts/lighthouse-audit.mjs` reads `LIGHTHOUSE_PUBLIC_QUESTION=/q/...` when the sitemap has no eligible question. Discovery now trusts the sitemap (fixtures are excluded there) instead of preferring a non-`e2e` URL.
+- P2-2: every small leaderboard link uses `inline-block py-0.5` (or `line-clamp-1 py-0.5`) and measures 24 px high.
+- P2-3: attempt help text now says 15 seconds, matching the `15000` ms autosave interval.
+- P2-4: `/leaderboard` title shortened from 61 to 51 characters.
+
+**Verification**
+
+- Unit: **590/590** across 66 files, including the new fixture-text and runner-override guards; focused `attempt-time` + `seo-consistency` **20/20**.
+- Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
+- E2E: focused sitemap test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
+- Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
+- Preview measurement: `/leaderboard` title 51 characters; every sampled small leaderboard link rendered at 24 px.
+
+**Next**
+
+- P2-9 `.env.example` pointer, then P2-5/P2-7/P2-8/P2-11/P2-12.
+- Apply `npm run db:turso:migrate` when the next push is allowed so `0028` reaches Turso; re-run the production link crawl after deploy.
+
+---
+
 ## 18. Reproduction commands
 
 ```sh
@@ -618,6 +648,9 @@ npx wrangler dev --config dist/server/wrangler.json --persist-to .wrangler/state
 
 # Budgeted mobile Lighthouse audit (9 routes x 3 runs, light)
 npm run audit:lighthouse -- --runs=3
+
+# Local audit when no eligible /q/ question is in the sitemap (fixtures are excluded)
+$env:LIGHTHOUSE_PUBLIC_QUESTION="/q/<ten-character-public-id>"; npm run audit:lighthouse -- --runs=3
 
 # Raw single-route run (debug only; the budgeted runner is the source of truth)
 npx lighthouse http://localhost:4321/ \

@@ -26,6 +26,8 @@
  *
  * Set LIGHTHOUSE_SKIP_ADMIN=1 to omit /admin. Set LIGHTHOUSE_SKIP_ATTEMPT=1 to
  * skip attempt/result provisioning against a host where writes are unwanted.
+ * Set LIGHTHOUSE_PUBLIC_QUESTION=/q/... when the sitemap has no eligible shared
+ * question (fixtures are excluded from the sitemap and cannot be audited).
  */
 
 import { exec, execFileSync, spawn } from "node:child_process";
@@ -402,21 +404,29 @@ async function discoverMockId(slug) {
   return match ? Number(match[1]) : null;
 }
 
-async function discoverSharedQuestion() {
+async function sitemapQuestionPath() {
   const sitemap = await fetchText("/sitemap.xml");
-  if (sitemap) {
-    const locs = [...sitemap.matchAll(/<loc>([^<]*\/q\/[^<]+)<\/loc>/g)].map(
-      (match) => match[1],
-    );
-    // Prefer a real question over the E2E fixture that also appears in the
-    // sitemap. Fall back to the first entry on a fixture-only database.
-    const loc = locs.find((value) => !/\/q\/e2e-/i.test(value)) ?? locs[0];
-    if (loc) {
-      try {
-        return new URL(loc).pathname;
-      } catch {}
-    }
+  if (!sitemap) return null;
+  const match = sitemap.match(/<loc>([^<]*\/q\/[^<]+)<\/loc>/);
+  if (!match) return null;
+  try {
+    return new URL(match[1]).pathname;
+  } catch {
+    return null;
   }
+}
+
+async function discoverSharedQuestion() {
+  const override = process.env.LIGHTHOUSE_PUBLIC_QUESTION?.trim();
+  if (override) {
+    if (override.startsWith("/q/")) return override;
+    console.warn("  -> LIGHTHOUSE_PUBLIC_QUESTION must start with /q/; ignoring it.");
+  }
+
+  // The sitemap is the production source of truth: fixtures and noindex
+  // questions are excluded there, so they are never audited as public pages.
+  const discovered = await sitemapQuestionPath();
+  if (discovered) return discovered;
 
   const fallback = "/q/uPJRyUwJ3s";
   try {

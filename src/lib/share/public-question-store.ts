@@ -1,4 +1,5 @@
 import { all, first } from "../db";
+import { isFixtureQuestion } from "../fixtures";
 import { isValidPublicId, questionSharePath } from "./public-id";
 import type { RevealPolicy } from "./policy";
 import {
@@ -204,14 +205,22 @@ export async function resolvePublicQuestion(
     hasSubmittedAttempt: submitted,
   });
 
-  const seoEligible = isSeoEligible({
-    published: true,
-    seoIndexable: Number(mapping.seo_indexable) === 1,
-    revealPolicy,
-    rightsOk,
-    hasExplanation: Boolean(published.explanation?.trim()),
-    inPublishedMock,
-  });
+  // E2E-generated questions are exercise fixtures, never search results. The
+  // sitemap resolves through this function, so filtering here keeps the page
+  // and the sitemap on the same eligibility rule.
+  const fixtureQuestion =
+    isFixtureQuestion({ text: published.text }) ||
+    isFixtureQuestion({ text: published.text_hi });
+
+  const seoEligible =
+    isSeoEligible({
+      published: true,
+      seoIndexable: Number(mapping.seo_indexable) === 1,
+      revealPolicy,
+      rightsOk,
+      hasExplanation: Boolean(published.explanation?.trim()),
+      inPublishedMock,
+    }) && !fixtureQuestion;
 
   const relatedMocks = memberships
     .filter((mock) => mock.status === "published")

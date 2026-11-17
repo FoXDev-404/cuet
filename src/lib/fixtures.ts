@@ -56,7 +56,13 @@ export function isFixtureQuestion(
 ): boolean {
   if (!question) return false;
   const text = (question.text ?? "").toLowerCase().trim();
-  return text.includes("e2e fixture") || text.includes("fixture question");
+  return (
+    text.startsWith("e2e") ||
+    text.startsWith("fixture") ||
+    text.startsWith("test fixture") ||
+    text.includes("e2e fixture") ||
+    text.includes("fixture question")
+  );
 }
 
 /**

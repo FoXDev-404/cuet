@@ -263,13 +263,17 @@ describe("performance budget configuration", () => {
     expect(source).toContain("process.exitCode = 1");
   });
 
-  it("records the Lighthouse version and prefers a real question over the E2E fixture", () => {
+  it("records the Lighthouse version and lets a caller pin the public question", () => {
     const source = readFileSync(join(ROOT, "scripts/lighthouse-audit.mjs"), "utf8");
 
     expect(source).toContain("raw.lighthouseVersion");
     expect(source).toContain("lighthouseVersions");
     expect(source).toContain("lighthouseVersion:");
-    expect(source).toContain("/\\/q\\/e2e-/i.test");
+    expect(source).toContain("LIGHTHOUSE_PUBLIC_QUESTION");
+    expect(source).toContain("sitemapQuestionPath");
+    // Fixtures are excluded from the sitemap, so the old e2e-preference filter
+    // must not reappear and quietly audit a noindex page.
+    expect(source).not.toContain("/\\/q\\/e2e-/i.test");
   });
 
   it("keeps session cookies out of the committed audit evidence", () => {
