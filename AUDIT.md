@@ -211,7 +211,7 @@ Gaps:
 
 | ID | Severity | Finding | Fix |
 | --- | --- | --- | --- |
-| SEC-1 | P1 | `isSameOrigin()` returns `true` when the `Origin` header is absent (`src/lib/http.ts:15-24`) | For state-changing methods, require a valid `Origin` or `Sec-Fetch-Site: same-origin`; fail closed for browser requests. Keep an explicit allowance only if a non-browser client is supported. |
+| SEC-1 | P1 | `isSameOrigin()` returned `true` when the `Origin` header was absent (`src/lib/http.ts:15-24`) | Fixed in Phase 1 (P1-6): a request with `Origin` is still host-checked; without `Origin`, only `Sec-Fetch-Site: same-origin` is accepted. Requests with neither header are rejected. `same-site`, `cross-site`, malformed and `Origin: null` are rejected. E2E request contexts now send the suite origin explicitly. |
 | SEC-2 | P1 | `/api/attempts/[id]/answers` has no rate limit | Add a per-attempt/IP bucket (for example 120 writes/minute) and a 429 test. Autosave is debounced, so a generous limit is enough. |
 | SEC-3 | P1 | Private/auth HTML had no `Cache-Control: no-store`; `/login` returned 200 without it | Fixed in Phase 1 (P1-5): `applySecurityHeaders()` now sets `Cache-Control: no-store` and `Pragma: no-cache` for every `isPrivatePath()` route, which covers attempts, results, dashboards, auth pages, admin and authenticated APIs. The edge cache only stores allowlisted public paths, so it cannot overwrite this. |
 | SEC-4 | P2 | Session/guest cookie is `cuet_session` / `cuet_guest`, not `__Host-` | Rename to `__Host-cuet_session` / `__Host-cuet_guest` with `Path=/`, `Secure`, no `Domain`; this logs existing sessions out once. |
@@ -327,6 +327,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | 1 | SEO-2 / SEO-3: blog OG images were SVG (not rendered by major social platforms) and Twitter tags used `property=` | Repository guides now get pre-generated 1200x630 PNGs from `scripts/generate-guide-og.mjs` (`npm run og:guides`, committed under `public/og/blog/`); DB posts keep the SVG thumbnail but share `/logo.png`. Twitter tags changed to `name=`. New `src/lib/guide-images.ts` centralises both paths; unit tests cover the mapping, PNG existence and tag attribute | Full suite **547/547**, build clean; preview: `/blog/cuet-ug-syllabus-and-ncert-books` emits `og:image` and `twitter:image` as `.png`, `name="twitter:*"`, PNG served `200 image/png` (46,832 bytes), SVG thumbnail endpoint still `200` |
 | 1 | SEO-4: `https://exams.nta.ac.in/CUET-UG/` returns 404 and was stored in six `exam_info` rows | Updated `migrations/0020_exam_info_seed.sql` for fresh databases and added `migrations/0028_fix_cuet_source_url.sql` to update existing rows; `exam-facts.test.ts` asserts the exact working URL and runs the migration | Local migration applied; DB rows all `https://cuet.nta.nic.in/`; `scripts/check-links.mjs http://localhost:4321`: **0/362 internal, 0/39 external broken** |
 | 1 | SEC-3: private/auth responses lacked `Cache-Control: no-store` | `applySecurityHeaders()` now sets `Cache-Control: no-store` and `Pragma: no-cache` inside the existing `isPrivatePath()` branch; a unit test pins the gated placement | Preview headers: `/login` 200, `/dashboard` 303, `/attempt/535` 200, `/search` 200, `/result/999` 404 and `/admin` 303 all sent `no-store`/`Pragma: no-cache`; public `/`, `/mock-tests` and `/blog` were unchanged (no forced `no-store`) |
+| 1 | SEC-1: `isSameOrigin()` accepted state-changing requests with no `Origin` header | A present `Origin` must match the request host; without it, only `Sec-Fetch-Site: same-origin` is accepted. `same-site`, `cross-site`, malformed and `Origin: null` are rejected. Playwright API contexts now send the suite origin, with a bare context proving the missing-header 403 | New `http.test.ts` 8/8; full suite **556/556**, build clean; E2E `api-contracts` 12/12, `security`/`attempt-flow`/`topic-mapping` 15/15, `admin-flow`/`question-share-public` 29/29 (2 skipped) |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -403,7 +404,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 - [ ] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
 - [x] Private HTML and auth responses send `Cache-Control: no-store`.
-- [ ] Cross-origin POST/PUT/PATCH/DELETE is rejected; same-origin writes succeed.
+- [x] Cross-origin POST/PUT/PATCH/DELETE is rejected; same-origin writes succeed.
 - [ ] Login, attempt start, submit, answers and comments rate limits return 429 under load without locking out normal use.
 - [ ] Session cookie is `HttpOnly`, `Secure`, `SameSite=Lax`, and ideally `__Host-`.
 - [ ] `/api/health` reports the expected engine and DB state; `/ads.txt` matches the configured publisher.
@@ -453,10 +454,12 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - Verification: migration applied locally; all six rows updated; `scripts/check-links.mjs http://localhost:4321` reported **0/362 internal, 0/39 external broken**.
 - **P1-5 (SEC-3):** `applySecurityHeaders()` now sends `Cache-Control: no-store` and `Pragma: no-cache` for every `isPrivatePath()` response. Because the header helper also wraps auth failures, maintenance rewrites and redirects, those paths are covered before any page renders. The edge cache allowlist already excludes private paths, so it cannot overwrite the header.
 - Verification: focused middleware tests 7/7. Preview headers: `/login`, `/dashboard`, `/attempt/535`, `/search`, `/result/999` and `/admin` all returned `no-store` + `Pragma: no-cache`; public `/`, `/mock-tests` and `/blog` were unchanged.
+- **P1-6 (SEC-1):** `isSameOrigin()` no longer fails open. A present `Origin` must match the request host; a missing `Origin` is accepted only with `Sec-Fetch-Site: same-origin`. Requests with neither header, `same-site`, `cross-site` or a malformed origin are rejected. All 57 API route files that export a write method already call this helper, so no route changes were needed. Playwright now sends the suite origin on API request contexts; a dedicated no-header context proves the 403 end to end.
+- Verification: new `tests/unit/http.test.ts` covers matching/cross-host/malformed `Origin` and the `Sec-Fetch-Site` fallback. Full unit suite **556/556**, build clean. E2E: `api-contracts` 12/12 (including missing-header 403 and `Sec-Fetch-Site` 200), `security` + `attempt-flow` + `topic-mapping` 15/15, `admin-flow` + `question-share-public` 29/29 with 2 skips.
 
 **Next in this phase**
 
-- P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
+- P1-7 (autosave rate limit), then re-run the affected Lighthouse routes.
 
 ---
 

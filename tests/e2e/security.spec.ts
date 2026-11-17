@@ -75,6 +75,9 @@ async function newStudent(
   const context = await playwright.request.newContext({
     baseURL,
     extraHTTPHeaders: {
+      // This helper replaces the suite default headers, so add the Origin
+      // that state-changing API routes require.
+      origin: new URL(baseURL ?? "http://localhost:4321").origin,
       "cf-connecting-ip": testClientIp(),
       cookie: `${SESSION_COOKIE}=${token}`,
     },

@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:4321";
+const origin = new URL(baseURL).origin;
 const webServerCommand = process.env.PLAYWRIGHT_SERVER_COMMAND
   ? process.env.PLAYWRIGHT_SERVER_COMMAND
   : process.env.USE_PROD_BUILD
@@ -19,6 +20,10 @@ export default defineConfig({
   ],
   use: {
     baseURL,
+    // Playwright's APIRequestContext does not send Origin, but every
+    // state-changing API route requires it. Same-origin browser requests
+    // tolerate the override; the app makes no cross-origin fetch calls.
+    extraHTTPHeaders: { origin },
     trace: "on-first-retry",
   },
   projects: [

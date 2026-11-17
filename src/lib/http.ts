@@ -14,12 +14,19 @@ export function apiError(message: string, status = 400): Response {
 
 export function isSameOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
-  if (!origin) return true;
-  try {
-    return new URL(origin).host === new URL(request.url).host;
-  } catch {
-    return false;
+  if (origin) {
+    try {
+      return new URL(origin).host === new URL(request.url).host;
+    } catch {
+      return false;
+    }
   }
+  // Browsers send Origin on state-changing fetch/XHR calls. Some same-origin
+  // requests omit it and expose Sec-Fetch-Site instead, which must be exactly
+  // "same-origin" ("same-site" is a different origin). A request with neither
+  // header is not a browser cross-site request we can trust, so fail closed
+  // instead of letting any non-browser client skip the CSRF check.
+  return request.headers.get("sec-fetch-site") === "same-origin";
 }
 
 export function forbiddenOrigin(): Response {

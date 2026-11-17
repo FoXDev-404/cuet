@@ -167,6 +167,36 @@ test.describe("API security", () => {
     expect([401, 403]).toContain(publish.status());
   });
 
+  test("writes without Origin or Sec-Fetch-Site are rejected", async ({ playwright, baseURL }) => {
+    const bare = await playwright.request.newContext({
+      baseURL,
+      // Explicitly replace the suite's default Origin header so this request
+      // looks like a non-browser client.
+      extraHTTPHeaders: {},
+    });
+    try {
+      const response = await bare.post("/api/auth/logout");
+      expect(response.status()).toBe(403);
+      expect(await response.json()).toMatchObject({
+        error: "Cross-origin request blocked.",
+      });
+    } finally {
+      await bare.dispose();
+    }
+  });
+
+  test("Sec-Fetch-Site: same-origin is accepted without Origin", async ({ playwright, baseURL }) => {
+    const sameOrigin = await playwright.request.newContext({
+      baseURL,
+      extraHTTPHeaders: { "sec-fetch-site": "same-origin" },
+    });
+    try {
+      expect((await sameOrigin.post("/api/auth/logout")).status()).toBe(200);
+    } finally {
+      await sameOrigin.dispose();
+    }
+  });
+
   test("private endpoints require a session or admin role", async ({ request }) => {
     expect((await request.get("/api/me/history")).status()).toBe(401);
     expect((await request.get("/api/admin/questions")).status()).toBe(401);
