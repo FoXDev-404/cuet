@@ -102,7 +102,7 @@ Redirects are implemented in `src/middleware.ts` (there is no `public/_redirects
 | `npm run seo:check` | **PASS** | 234 local sitemap URLs, 238 audited, **0 mismatches** |
 | `npm run lint:copy` | **PASS** | 309 files, 0 violations |
 | `npm run check:env` | **PASS** | Staging/production D1 and KV separation verified. It does **not** validate Turso. |
-| `scripts/check-links.mjs` | **1 external broken** | 0/363 internal broken; 1/51 external broken (`exams.nta.ac.in/CUET-UG/` -> 404) |
+| `scripts/check-links.mjs` | **PASS after P1-3** | 0/363 internal broken; the only external break (`exams.nta.ac.in/CUET-UG/` -> 404) is fixed by migration 0028; local crawl after the fix: 0/362 internal, 0/39 external |
 | `npm run test:a11y` | **PASS** | 272/272 scans, 0 WCAG A/AA violations, 0 horizontal overflow |
 | Responsive pass | **PASS** | 360/414/768/1024/1440 on `/`, `/mock-tests`, instructions, `/blog`, `/leaderboard`, PYQ archive and a live attempt: 0 overflow, exactly one H1 per page |
 
@@ -138,9 +138,9 @@ Notes:
 ## 5. Broken links and link quality
 
 - **Internal:** 0/363 broken.
-- **External:** 1/51 broken — `https://exams.nta.ac.in/CUET-UG/` returns 404. It is used six times in `migrations/0020_exam_info_seed.sql` as `exam_info.source_url`.
-- Verified replacement: `https://cuet.nta.nic.in/` returns 200 (as do `https://nta.ac.in/` and `https://exams.nta.ac.in/`). Confirm the official CUET UG landing page with the exam authority before shipping.
-- Fix path: add a new migration that updates `exam_info.source_url` (and update the seed for fresh databases), then re-run the link crawler.
+- **External:** 1/51 broken at baseline — `https://exams.nta.ac.in/CUET-UG/` returned 404. It was used six times in `migrations/0020_exam_info_seed.sql` as `exam_info.source_url`.
+- Verified replacement: `https://cuet.nta.nic.in/` returns 200 and is the official CUET (UG) landing page (title contains "CUET (UG)", 94 KB). `https://nta.ac.in/` also returns 200.
+- **Resolved in Phase 1 (SEO-4):** `0020_exam_info_seed.sql` now uses `https://cuet.nta.nic.in/` and migration `0028_fix_cuet_source_url.sql` updates existing databases. The exam-info pages already used this URL as their fallback. A local crawl after applying the migration reported **0/362 internal and 0/39 external broken**. Production needs `npm run db:turso:migrate` before its crawl is clean.
 - Orphans: `/u/[username]` public profiles are not linked from the main navigation or leaderboard and are `noindex, follow`. This may be intentional; decide whether profiles are a product surface or remove the route from public discovery (P2-11).
 
 ---
@@ -154,7 +154,7 @@ Strengths: every audited public page has exactly one H1, a canonical, an OG titl
 | SEO-1 | P1 | `/mock-tests` has 24 non-descriptive "Start" links; SEO 92 | Lighthouse `link-text`. Add `aria-label`/visually hidden paper name, e.g. "Start English 6 August 2022 Shift 1 mock test". Keep the visible word "Start" for WCAG 2.5.3. |
 | SEO-2 | P1 | Blog OG images are SVG, which major social platforms do not render | `src/lib/guides.ts:164-165` returns `/og/blog/<slug>.svg`. Generate PNG/JPEG with the existing `@resvg/resvg-js` dependency, or use a PNG fallback; validate with X/Facebook debuggers. |
 | SEO-3 | P1 | Twitter card tags use `property=` instead of the standard `name=` | `src/layouts/BaseLayout.astro:230-232`. Change to `name="twitter:card"`, `name="twitter:image"`, `name="twitter:image:alt"`. |
-| SEO-4 | P1 | `https://exams.nta.ac.in/CUET-UG/` is a 404 source link | See section 5. |
+| SEO-4 | P1 | `https://exams.nta.ac.in/CUET-UG/` is a 404 source link | Fixed in Phase 1 (P1-3): seed updated to `https://cuet.nta.nic.in/` and migration `0028_fix_cuet_source_url.sql` updates existing rows. |
 | SEO-5 | P2 | `/leaderboard` title is 61 characters; `/mock/...` wrapper is 61, `/instructions` 72, `/discussion` 90, `/result/527` 88 | Only `/leaderboard` is indexable; shorten it to <=60. The others are noindex/private and are low priority. |
 | SEO-6 | P2 | Blog index and posts carry only `Organization` (plus `BreadcrumbList`/`Article` on posts); no `FAQPage`, `Quiz` or `LearningResource` | Add structured data only where the visible page actually supports it. Do not invent FAQs. |
 | SEO-7 | P2 | Local sitemap includes 2 E2E fixture shared-question URLs | `listSeoIndexableQuestions()` in `src/lib/share/public-question-store.ts` lacks the fixture guard used for mocks in `src/pages/sitemap.xml.ts`. Add a fixture-slug filter. |
@@ -166,6 +166,8 @@ Metadata audit details: `/signup` 301s to `/login?next=%2Fdashboard`; `/forgot-p
 **Resolved in Phase 1 (SEO-1):** the 24 mock start links keep the visible label "Start" and now include the paper title as in-flow `sr-only` text, so the link inner text is "Start CUET UG … Previous Year Paper". Three mobile Lighthouse runs of `/mock-tests` after the change scored **SEO 100, performance 100, accessibility 100, best practices 100** (LCP median 936 ms, transfer unchanged at 58.8 KB). An E2E assertion covers the row's descriptive text.
 
 **Resolved in Phase 1 (SEO-2, SEO-3):** repository guides now have pre-generated 1200×630 PNG share images (34 PNGs, 1,534 KB total) written to `public/og/blog/` by `npm run og:guides`, following the existing paper/question OG workflow. `guideOgImagePath()` returns the PNG for repository guides and `/logo.png` for database posts, while `guideImagePath()` keeps the SVG thumbnail for DB posts (the endpoint is unchanged and still returns SVG). Twitter card tags now use the standard `name=` attribute. A pre-rendered PNG route was attempted first but the Cloudflare adapter cannot bundle `@resvg/resvg-js`'s native binary, so generation happens outside the build and the images are committed.
+
+**Resolved in Phase 1 (SEO-4):** all six `exam_info.source_url` rows now point at `https://cuet.nta.nic.in/`. The local link crawl after applying migration 0028 reported 0 broken internal and external links; `exam-facts.test.ts` now asserts the exact URL and applies the migration in its in-memory schema.
 
 ---
 
@@ -323,6 +325,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | 1 | ADS-1 / P0-1: AdSense loaded on the active attempt screen, contradicting the privacy policy | Removed the AdSense `<script>`, `AdSlot` usage and unused imports/consts from `src/pages/attempt/[id].astro`; added `/attempt` to `BLOCKED_AD_PATHS`; flipped the unit expectation and added a source-level regression guard | Focused tests 15/15, full suite 543/543, build clean; preview with valid `ADSENSE_*` showed 0 ad markers on `/attempt/535` while `/mock-tests` still served AdSense |
 | 1 | SEO-1: 24 non-descriptive "Start" links on `/mock-tests` (Lighthouse SEO 92) | Kept the visible "Start" label and added the paper title as `sr-only` in-flow text in `PaperRow.astro`; added an E2E assertion for the row text | Lighthouse 3/3 runs: SEO **92 -> 100**, perf/a11y/BP 100, LCP 936 ms, 58.8 KB; focused E2E passed |
 | 1 | SEO-2 / SEO-3: blog OG images were SVG (not rendered by major social platforms) and Twitter tags used `property=` | Repository guides now get pre-generated 1200x630 PNGs from `scripts/generate-guide-og.mjs` (`npm run og:guides`, committed under `public/og/blog/`); DB posts keep the SVG thumbnail but share `/logo.png`. Twitter tags changed to `name=`. New `src/lib/guide-images.ts` centralises both paths; unit tests cover the mapping, PNG existence and tag attribute | Full suite **547/547**, build clean; preview: `/blog/cuet-ug-syllabus-and-ncert-books` emits `og:image` and `twitter:image` as `.png`, `name="twitter:*"`, PNG served `200 image/png` (46,832 bytes), SVG thumbnail endpoint still `200` |
+| 1 | SEO-4: `https://exams.nta.ac.in/CUET-UG/` returns 404 and was stored in six `exam_info` rows | Updated `migrations/0020_exam_info_seed.sql` for fresh databases and added `migrations/0028_fix_cuet_source_url.sql` to update existing rows; `exam-facts.test.ts` asserts the exact working URL and runs the migration | Local migration applied; DB rows all `https://cuet.nta.nic.in/`; `scripts/check-links.mjs http://localhost:4321`: **0/362 internal, 0/39 external broken** |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -445,10 +448,12 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - **P1-1 (SEO-1):** mock start links now carry the paper title as `sr-only` text while keeping the visible "Start" label. `/mock-tests` Lighthouse SEO rose from **92 to 100** on all three runs with performance/accessibility/best-practices at 100; an E2E assertion guards the row text.
 - **P1-2 (SEO-2/SEO-3):** added `src/lib/guide-images.ts` and `scripts/generate-guide-og.mjs`; 34 repository guides now share as 1200×630 PNGs in `public/og/blog/` (1,534 KB total). Database posts keep the SVG thumbnail and fall back to `/logo.png` for sharing. Twitter card metadata now uses `name=`. Regression tests cover paths, PNG existence and the tag attribute.
 - Verification: full suite **547/547**, `npm run build` clean. Preview confirmed `og:image`/`twitter:image` as PNG, `name="twitter:*"`, the PNG served `200 image/png` at 46,832 bytes and the SVG thumbnail endpoint still `200`.
+- **P1-3 (SEO-4):** replaced the dead `https://exams.nta.ac.in/CUET-UG/` source with the official `https://cuet.nta.nic.in/` in the seed, added migration `0028_fix_cuet_source_url.sql` for existing databases, and tightened `exam-facts.test.ts`.
+- Verification: migration applied locally; all six rows updated; `scripts/check-links.mjs http://localhost:4321` reported **0/362 internal, 0/39 external broken**.
 
 **Next in this phase**
 
-- P1-3 (NTA URL), P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
+- P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
 
 ---
 

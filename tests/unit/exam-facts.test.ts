@@ -25,6 +25,7 @@ const MIGRATIONS = [
   "0018_explanation_provenance_and_review.sql",
   "0019_attempt_sequence_and_capacity.sql",
   "0020_exam_info_seed.sql",
+  "0028_fix_cuet_source_url.sql",
 ];
 
 function createTestDb(): DatabaseSync {
@@ -60,13 +61,13 @@ describe("Fix 5 — Exam Facts and Scoring from Data", () => {
     // Verified facts must have official source_url and last_verified
     const pattern = byKey.get("exam-pattern")!;
     expect(pattern.value).toContain("CUET (UG)");
-    expect(pattern.source_url).toMatch(/^https:\/\/exams\.nta\.ac\.in\/CUET-UG/);
+    expect(pattern.source_url).toBe("https://cuet.nta.nic.in/");
     expect(pattern.last_verified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
 
     const marking = byKey.get("marking-scheme")!;
     expect(marking.value).toContain("+5");
     expect(marking.value).toContain("-1");
-    expect(marking.source_url).toMatch(/^https:\/\/exams\.nta\.ac\.in\/CUET-UG/);
+    expect(marking.source_url).toBe("https://cuet.nta.nic.in/");
     expect(marking.last_verified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 
