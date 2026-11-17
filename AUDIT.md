@@ -236,7 +236,9 @@ Other privacy findings:
 | ADS-5 | P2 | The submitted result page has no ad slot, although the policy allows post-test ads | Decide explicitly: add a compliant, consent-gated unit after the result summary, or document that the site intentionally serves no result ads. |
 | ADS-6 | Info | `/ads.txt` returns 404 while no publisher is configured | Intentional. Add the live URL and expected record to `docs/EXTERNAL_SETUP.md`; verify after configuration. |
 
-The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds()` and `adSlotAllowed()`. The attempt page bypasses both by rendering its own script. That is the defect.
+The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds()` and `adSlotAllowed()`. The attempt page bypassed both by rendering its own script. That was the defect.
+
+**Resolved in Phase 1 (P0-1):** the attempt page no longer imports `AdSlot` or the AdSense helpers, emits no ad script and renders no unit. `/attempt` is also in `BLOCKED_AD_PATHS`, so a future `AdSlot` placement on that route still renders nothing. Verified with valid `ADSENSE_*` env vars in a preview: `/attempt/535` returned no `adsbygoogle`, `pagead2.googlesyndication.com` or ad-unit markup, while `/mock-tests` still loaded the script and unit.
 
 ---
 
@@ -314,6 +316,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | Phase | Issue | Fix | Verification |
 | --- | --- | --- | --- |
 | 0 | No product code changes yet; baseline only | Preserved `docs/AUDIT.md`; wrote this audit; refreshed `docs/report/a11y-results.json` to `716d246` / 272 scans | `npm test`, `npm run build`, a11y report, Lighthouse baseline |
+| 1 | ADS-1 / P0-1: AdSense loaded on the active attempt screen, contradicting the privacy policy | Removed the AdSense `<script>`, `AdSlot` usage and unused imports/consts from `src/pages/attempt/[id].astro`; added `/attempt` to `BLOCKED_AD_PATHS`; flipped the unit expectation and added a source-level regression guard | Focused tests 15/15, full suite 543/543, build clean; preview with valid `ADSENSE_*` showed 0 ad markers on `/attempt/535` while `/mock-tests` still served AdSense |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -321,7 +324,7 @@ Future phases append one row per fix and a short phase summary at the end of thi
 
 ## 15. Remaining risks and blocked items
 
-- AdSense is dormant but the attempt-page violation is one env-var change away from being live. P0-1 is the first Phase 1 fix.
+- AdSense is dormant, and the attempt-page violation (ADS-1) was fixed in Phase 1; ads remain off until consent, `/ads.txt` and the go-live checklist are complete.
 - No GSC/Bing access: indexing, coverage and Core Web Vitals field data cannot be verified from this environment.
 - No authenticated production admin/dashboard pass; admin RBAC is verified by tests and code review, not by a live production session.
 - Production Turso vs local D1 means query counts, content counts and migration state can differ. Do not treat local D1 as production.
@@ -423,6 +426,20 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 1. Fix P0-1 and add regression coverage.
 2. Then P1-1 (mock start links), P1-2 (social metadata), P1-3 (NTA URL), P1-5 (private cache) and P1-6/P1-7 (Origin/rate limit) in small commits.
 3. Re-run build, tests, a11y and the affected Lighthouse routes after each phase; append a summary here.
+
+---
+
+### Phase 1 — P0 and launch fixes (in progress)
+
+**Done**
+
+- **P0-1:** removed AdSense from the active attempt screen. The page no longer imports `AdSlot`/`adsenseClient`/`adsenseSlot`, emits the loader script or renders a unit; `/attempt` is blocked in `adSlotAllowed()` as a second line of defence.
+- Regression coverage: `tests/unit/integrations.test.ts` now asserts `/attempt/42` and `/attempt/42/` are blocked, and a source-level guard fails if the attempt page regains `AdSlot`, `adsbygoogle` or `pagead2.googlesyndication.com`.
+- Verification: focused tests 15/15, full suite **543/543**, `npm run build` clean. A preview with valid `ADSENSE_CLIENT`/`ADSENSE_SLOT_ID` served `/attempt/535` with zero ad markers (86,175 bytes) while `/mock-tests` still loaded AdSense, confirming the env vars were active and the block is route-specific.
+
+**Next in this phase**
+
+- P1-1 (descriptive mock start links), P1-2 (social metadata), P1-3 (NTA URL), P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
 
 ---
 

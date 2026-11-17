@@ -102,10 +102,10 @@ export function shouldServeAds(explicit: boolean | undefined, robots: string): b
  * Routes that must never receive an ad unit.
  *
  * This is a second line of defence. Ads default on for public pages, so this
- * guard blocks admin, API, dashboard, auth, search, styleguide, user-profile
- * and exam-start routes even if a slot is placed too broadly. Attempt, result
- * and practice-paper pages opt in explicitly because they are noindex but
- * still carry enough content for an end-of-content unit.
+ * guard blocks admin, API, dashboard, auth, search, styleguide, user-profile,
+ * exam-start and active-attempt routes even if a slot is placed too broadly.
+ * Result and practice-paper pages opt in explicitly because they are noindex
+ * but still carry enough content for an end-of-content unit.
  */
 const BLOCKED_AD_PATHS: RegExp[] = [
   /^\/admin(?:\/|$)/,
@@ -117,6 +117,7 @@ const BLOCKED_AD_PATHS: RegExp[] = [
   /^\/reset-password(?:\/|$)/,
   /^\/verify-email(?:\/|$)/,
   /^\/search(?:\/|$)/,
+  /^\/attempt(?:\/|$)/,
   /^\/u(?:\/|$)/,
   /^\/dev(?:\/|$)/,
   /\/take(?:\/|$)/,

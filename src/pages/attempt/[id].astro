@@ -1,8 +1,6 @@
 ---
 import "../../styles/global.css";
 import "katex/dist/katex.min.css";
-import { env } from "cloudflare:workers";
-import AdSlot from "../../components/AdSlot.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
 import DiscussionPreview from "../../components/DiscussionPreview.astro";
 import MockShareSheet from "../../components/MockShareSheet.astro";
@@ -24,13 +22,9 @@ import { imageDimensionsForUrls } from "../../lib/media-dimensions";
 import { getSetting } from "../../lib/settings";
 import { siteUrl } from "../../lib/site-url";
 import { calculateMockDuration } from "../../lib/exam-timing";
-import { adsenseClient, adsenseSlot } from "../../lib/integrations";
 import { run } from "../../lib/db";
 import { shareMappingsForQuestionIds } from "../../lib/share/public-question-store";
 import { attemptQuestionShareUrl } from "../../lib/share/attempt-question";
-
-const adClient = adsenseClient(env);
-const showAds = Boolean(adClient && adsenseSlot(env));
 
 const id = Number(Astro.params.id);
 if (!Number.isInteger(id) || id <= 0) return new Response("Attempt not found", { status: 404 });
@@ -350,14 +344,6 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
     <title>{data.mockTitle} — Attempt</title>
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {showAds ? (
-      <script
-        is:inline
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
-        crossorigin="anonymous"
-      ></script>
-    ) : null}
     <script is:inline>
       (function () {
         try {
@@ -1219,8 +1205,6 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         note="Open during the attempt. Comments may mention answers, so use them as hints. Your first submitted attempt is the one that counts on the leaderboard."
       />
     </section>
-
-    {showAds ? <AdSlot /> : null}
 
     {questionShareEnabled ? (
       <div data-attempt-share-sheet>

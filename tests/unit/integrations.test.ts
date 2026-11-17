@@ -86,6 +86,8 @@ describe("optional integration flags", () => {
       "/reset-password/token",
       "/search?q=cuet",
       "/mock-tests/2022-english-1/take",
+      "/attempt/42",
+      "/attempt/42/",
       "/u/student",
       "/dev/styleguide",
       "https://example.com/cuet-ug-mock-test",
@@ -115,7 +117,6 @@ describe("optional integration flags", () => {
       "/mock-tests/",
       "/mock-tests?subject=physics",
       "/mock-tests/applied-mathematics-2025-06-02-shift-1",
-      "/attempt/42",
       "/result/42",
       "/result/42/solutions",
       "/cuet-ug-syllabus",
@@ -125,5 +126,17 @@ describe("optional integration flags", () => {
     ]) {
       expect(adSlotAllowed(path), path).toBe(true);
     }
+  });
+
+  it("never loads AdSense on the active attempt screen", () => {
+    // The privacy policy promises that the active test screen never loads the
+    // advertising script or an ad unit. Keep this guard close to the source so
+    // re-adding a slot to the player fails the unit suite even without a browser.
+    const attempt = readFileSync(resolve(process.cwd(), "src/pages/attempt/[id].astro"), "utf8");
+    expect(attempt).not.toContain("AdSlot");
+    expect(attempt).not.toContain("adsbygoogle");
+    expect(attempt).not.toContain("pagead2.googlesyndication.com");
+    expect(attempt).not.toContain("adsenseClient");
+    expect(attempt).not.toContain("adsenseSlot");
   });
 });
