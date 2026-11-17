@@ -163,6 +163,8 @@ Strengths: every audited public page has exactly one H1, a canonical, an OG titl
 
 Metadata audit details: `/signup` 301s to `/login?next=%2Fdashboard`; `/forgot-password` 301s to `/login`; both are intentional for a Google-only flow. Every other audited route has a canonical and OG image. The default OG image `https://cuetfreemocktest.com/logo.png` is live (200, `image/png`, 31,587 bytes), so the non-blog social preview path is healthy.
 
+**Resolved in Phase 1 (SEO-1):** the 24 mock start links keep the visible label "Start" and now include the paper title as in-flow `sr-only` text, so the link inner text is "Start CUET UG … Previous Year Paper". Three mobile Lighthouse runs of `/mock-tests` after the change scored **SEO 100, performance 100, accessibility 100, best practices 100** (LCP median 936 ms, transfer unchanged at 58.8 KB). An E2E assertion covers the row's descriptive text.
+
 ---
 
 ## 7. Accessibility and UX
@@ -317,6 +319,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | --- | --- | --- | --- |
 | 0 | No product code changes yet; baseline only | Preserved `docs/AUDIT.md`; wrote this audit; refreshed `docs/report/a11y-results.json` to `716d246` / 272 scans | `npm test`, `npm run build`, a11y report, Lighthouse baseline |
 | 1 | ADS-1 / P0-1: AdSense loaded on the active attempt screen, contradicting the privacy policy | Removed the AdSense `<script>`, `AdSlot` usage and unused imports/consts from `src/pages/attempt/[id].astro`; added `/attempt` to `BLOCKED_AD_PATHS`; flipped the unit expectation and added a source-level regression guard | Focused tests 15/15, full suite 543/543, build clean; preview with valid `ADSENSE_*` showed 0 ad markers on `/attempt/535` while `/mock-tests` still served AdSense |
+| 1 | SEO-1: 24 non-descriptive "Start" links on `/mock-tests` (Lighthouse SEO 92) | Kept the visible "Start" label and added the paper title as `sr-only` in-flow text in `PaperRow.astro`; added an E2E assertion for the row text | Lighthouse 3/3 runs: SEO **92 -> 100**, perf/a11y/BP 100, LCP 936 ms, 58.8 KB; focused E2E passed |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -436,10 +439,11 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - **P0-1:** removed AdSense from the active attempt screen. The page no longer imports `AdSlot`/`adsenseClient`/`adsenseSlot`, emits the loader script or renders a unit; `/attempt` is blocked in `adSlotAllowed()` as a second line of defence.
 - Regression coverage: `tests/unit/integrations.test.ts` now asserts `/attempt/42` and `/attempt/42/` are blocked, and a source-level guard fails if the attempt page regains `AdSlot`, `adsbygoogle` or `pagead2.googlesyndication.com`.
 - Verification: focused tests 15/15, full suite **543/543**, `npm run build` clean. A preview with valid `ADSENSE_CLIENT`/`ADSENSE_SLOT_ID` served `/attempt/535` with zero ad markers (86,175 bytes) while `/mock-tests` still loaded AdSense, confirming the env vars were active and the block is route-specific.
+- **P1-1 (SEO-1):** mock start links now carry the paper title as `sr-only` text while keeping the visible "Start" label. `/mock-tests` Lighthouse SEO rose from **92 to 100** on all three runs with performance/accessibility/best-practices at 100; an E2E assertion guards the row text.
 
 **Next in this phase**
 
-- P1-1 (descriptive mock start links), P1-2 (social metadata), P1-3 (NTA URL), P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
+- P1-2 (social metadata), P1-3 (NTA URL), P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
 
 ---
 

@@ -110,6 +110,12 @@ test("practice library stays available and routes into the ranked engine", async
   );
   await expect(page.locator(`a[href="${SCORED_PAPER_PATH}"]`).first()).toBeVisible();
 
+  // The visible label stays "Start"; the paper title is in-flow text so the
+  // link has a descriptive inner text for Lighthouse as well as a11y tooling.
+  await expect(
+    page.locator(`a[href="/mock/${SCORED_PAPER.slug}/instructions"]`).first(),
+  ).toContainText(SCORED_PAPER.title);
+
   await page.goto(SCORED_PAPER_PATH);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "CUET UG English 6 August 2022",
