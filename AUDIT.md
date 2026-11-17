@@ -35,7 +35,7 @@ The requested stack was Cloudflare Pages/Functions, D1, KV and Firebase Auth (Go
 | Hosting | Cloudflare Pages + Functions | Cloudflare Workers + static assets via `@astrojs/cloudflare`; Astro 7 SSR (`output: "server"`) | Keep. Document the deviation. |
 | Database | D1 | Local D1; **production uses Turso/libSQL over HTTP** (`/api/health` returns `"engine":"turso"`; `TURSO_*` secrets are set). The production D1 binding `DB` is currently unused. | Keep Turso for now; make it the single documented target (P1-9). Do not remove D1 or Turso secrets without a data migration plan. |
 | KV | KV | `SESSION` and `MEDIA_KV` namespaces; staging/production separated | Matches. |
-| Auth | Firebase Auth, Google-only | Custom Google OAuth + server sessions (`cuet_session`), guest attempts (`cuet_guest`); Google sign-in is the production path | Keep. Firebase would be a rewrite with no user-visible benefit. |
+| Auth | Firebase Auth, Google-only | Custom Google OAuth + server sessions (`__Host-cuet_session`), guest attempts (`__Host-cuet_guest`); Google sign-in is the production path | Keep. Firebase would be a rewrite with no user-visible benefit. |
 | Email | Not specified | Resend/Brevo adapters exist; production email is unconfigured and password reset is disabled | Keep disabled until a provider is chosen. |
 | Ads | AdSense | Env-gated AdSense; `ADSENSE_CLIENT` and `ADSENSE_SLOT_ID` are empty in production, so ads are dormant and `/ads.txt` is 404 | Keep dormant until consent, policy and route-safety fixes ship. P1-4 adds a third `ADSENSE_CMP_ACTIVE` gate; a certified CMP is still required. |
 | Analytics | Not specified | GA4 `G-Y1JPT7SNQJ` and Cloudflare Web Analytics are live; no GTM, no AdSense, no Funding Choices | P1-4 adds an opt-in gate and policy disclosure in code; production rollout is still pending deployment. Cloudflare analytics stays unconditional and cookieless. |
@@ -229,7 +229,7 @@ Present and working:
 - Security headers on production: CSP (ad and analytics hosts only when the integration is configured), HSTS (`max-age=31536000; includeSubDomains`), COOP (`same-origin-allow-popups`), CORP (`same-origin`), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy`; `X-Robots-Tag: noindex, nofollow` on private paths.
 - OAuth `state` is validated; admin RBAC is enforced server-side; session tokens are stored hashed; answer keys are not serialized into the attempt page and scoring is server-side.
 - Rate limits exist for attempt start, submit, comments and media upload; admin uploads validate bytes and reject SVG; no secrets are committed.
-- `SameSite=Lax`, `HttpOnly` session cookie; `Secure` in production.
+- `SameSite=Lax`, `HttpOnly` session and guest cookies; `__Host-` prefix with `Secure` and `Path=/`; legacy unprefixed names are read and promoted on next use.
 
 Gaps:
 
@@ -238,10 +238,10 @@ Gaps:
 | SEC-1 | P1 | `isSameOrigin()` returned `true` when the `Origin` header was absent (`src/lib/http.ts:15-24`) | Fixed in Phase 1 (P1-6): a request with `Origin` is still host-checked; without `Origin`, only `Sec-Fetch-Site: same-origin` is accepted. Requests with neither header are rejected. `same-site`, `cross-site`, malformed and `Origin: null` are rejected. E2E request contexts now send the suite origin explicitly. |
 | SEC-2 | P1 | `/api/attempts/[id]/answers` had no rate limit | Fixed in Phase 1 (P1-7): after the ownership check, the endpoint allows 120 saves per minute per attempt + client IP; excess requests return 429. Keying after the access check prevents another user from exhausting an attempt's bucket. |
 | SEC-3 | P1 | Private/auth HTML had no `Cache-Control: no-store`; `/login` returned 200 without it | Fixed in Phase 1 (P1-5): `applySecurityHeaders()` now sets `Cache-Control: no-store` and `Pragma: no-cache` for every `isPrivatePath()` route, which covers attempts, results, dashboards, auth pages, admin and authenticated APIs. The edge cache only stores allowlisted public paths, so it cannot overwrite this. |
-| SEC-4 | P2 | Session/guest cookie is `cuet_session` / `cuet_guest`, not `__Host-` | Rename to `__Host-cuet_session` / `__Host-cuet_guest` with `Path=/`, `Secure`, no `Domain`; this logs existing sessions out once. |
+| SEC-4 | P2 | Session/guest cookie is `cuet_session` / `cuet_guest`, not `__Host-` | Fixed in Phase 5 (P2-6): new cookies are `__Host-cuet_session` / `__Host-cuet_guest` with `HttpOnly`, `Secure`, `SameSite=Lax`, `Path=/` and no `Domain`. Both legacy names are still read for one rollout window; a valid legacy token is promoted on its next request and the old cookie is deleted in the same response, so no user is signed out. |
 | SEC-5 | P2 | CSP allowed `script-src 'unsafe-inline'` and advertised AdSense/Google ad domains even when ads were unconfigured | **Partially resolved in Phase 4 (P2-7):** ad and analytics hosts are now emitted only when that integration is configured (`src/lib/security-headers.ts`), so the dormant policy no longer advertises them. `'unsafe-inline'` remains for scripts and styles until the nonce/hash migration described in §15. |
 | SEC-6 | P2 | No `Cross-Origin-Opener-Policy` or `Cross-Origin-Resource-Policy` | Fixed in Phase 4 (P2-7): every Worker response now carries COOP `same-origin-allow-popups` (OAuth popups keep working) and CORP `same-origin`. |
-| SEC-7 | P2 | Production admin auth uses the session fallback (`ADMIN_ALLOW_SESSION_IN_PROD=1`); Cloudflare Access is not configured | Enable Access, or document the accepted risk and enforce a strong password + login rate limit. Do not flip the flag without an Access app. |
+| SEC-7 | P2 | Production admin auth uses the session fallback (`ADMIN_ALLOW_SESSION_IN_PROD=1`); Cloudflare Access is not configured | Enable Access, or document the accepted risk and rely on the Google account plus the admin allowlist, RBAC and audit log. Do not flip the flag without an Access app. |
 | SEC-8 | P2 | `.env.example` is missing (`.dev.vars.example` exists) | Add a documented example with empty values and comments. |
 | SEC-9 | P2 | `npm audit` reports 1 moderate Astro XSS advisory | Fixed in Phase 4 (P1-11): Astro upgraded 7.4.4 -> 7.4.12 within the `^7` range, clearing `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`; `npm audit` reports 0 vulnerabilities. |
 
@@ -278,7 +278,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 
 - **Production is Turso, not D1.** `/api/health` returns `{"db":"ok","engine":"turso"}` and `wrangler secret list --name cuet-astro` shows `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`. The production `DB` D1 binding in `wrangler.jsonc` is unused. `npm run check:migrations-remote` and `npm run db:migrate:remote` target D1, so they do **not** describe or migrate production. This must be resolved before the next schema-dependent feature.
 - Decision for this cycle: keep Turso, document it as the production target, and use `db:turso:migrate` / `db:turso:verify` for production. Do not delete the D1 binding or the Turso secrets until a data migration/rollback plan exists.
-- Migration `0027_practice_question_topics.sql` is not applied to production; topic pages stay unavailable until it and the CSV topic backfill are applied to Turso. This is a content launch blocker, not a UI bug.
+- Migrations `0026_rename_pyq_archive_path.sql`, `0027_practice_question_topics.sql` and `0028_fix_cuet_source_url.sql` were applied to production Turso on 2026-11-17. `npm run db:turso:verify` then reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 published questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks. Topic **pages** still stay unavailable until an editor supplies the CSV topic backfill; the schema is no longer the blocker.
 - `npm run check:env` validates D1/KV staging/production separation only. Extend it (or add a sibling check) to assert the effective production engine and required Turso secrets.
 - Local dev uses D1 and skips trailing-slash/canonical-host redirects; production uses Turso and enforces them. Local parity is P1-10.
 - Production deployment `2026-11-17T07:42:43Z` matches HEAD `716d246`; no unreleased fix is live.
@@ -306,7 +306,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P1-6 — Origin/CSRF hardening.** Fail closed when `Origin` is absent on state-changing requests, with an explicit `Sec-Fetch-Site` fallback.
 - **P1-7 — Autosave rate limit.** Add a per-attempt/IP bucket to the answers endpoint and test 429 behaviour.
 - **P1-8 — Performance governance. Resolved in Phase 3.** `scripts/lighthouse-audit.mjs` now discovers live mocks/questions, seeds guest/admin sessions, reads `performance-budget.json` and exits non-zero when a route or global metric breaches its cap. All nine audited routes pass; attempt transfer fell to 68.7 KB and admin CLS to 0. See §4, §8 and §17.
-- **P1-9 — Turso/D1 single source of truth.** Document the production engine, update deploy/runbook commands, apply migration `0027` + topic backfill to Turso, and make `check:env` assert the effective engine. Keep D1 only as an explicit local/legacy path until a migration decision is made.
+- **P1-9 — Turso/D1 single source of truth.** Document the production engine, update deploy/runbook commands, apply migration `0027` + topic backfill to Turso, and make `check:env` assert the effective engine. Keep D1 only as an explicit local/legacy path until a migration decision is made. **Partially resolved in Phase 5:** `0026`, `0027` and `0028` are applied to production Turso and verified, and the topic importer now supports `--turso`; the editorial CSV topic backfill is still pending.
 - **P1-10 — Local/production parity.** Remove the localhost exception for trailing-slash/canonical-host redirects in a test-only-safe way, or add a dedicated preview mode that matches production and document it.
 - **P1-11 — Dependency advisory. Resolved in Phase 4.** Astro upgraded to `7.4.12` (`npm install astro@^7.4.12`), clearing `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`. `docs/report/facts.json` and the dependency references were refreshed, the build is clean, the full unit suite passes and `npm audit` reports **0 vulnerabilities**.
 - **P1-12 — Backups.** Provision the D1/Turso backup workflow secrets and verify a restore, or document the accepted risk and manual backup runbook.
@@ -319,7 +319,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P2-3 — Autosave copy. Resolved in Phase 4.** The attempt help text now says 15 seconds, matching `setInterval(..., 15000)`; a source guard keeps the two in sync.
 - **P2-4 — Title lengths. Resolved in Phase 4.** `/leaderboard` is now 51 characters; a unit guard caps the indexable title at 60.
 - **P2-5 — Blog structured data. Resolved in Phase 4.** Blog posts keep `Article` + `BreadcrumbList`; `FAQPage`, `Quiz`, `Course` and `LearningResource` stay disallowed because the visible content does not support them. The guard now covers `src/pages/blog/[slug].astro` in both the allow-list test and the disallowed-schema sweep, and the rationale is documented in `docs/SEO_RULES.md`.
-- **P2-6 — Cookie prefixes.** Move to `__Host-` names with a one-time logout.
+- **P2-6 — Cookie prefixes. Resolved in Phase 5.** Session and guest cookies now use `__Host-cuet_session` / `__Host-cuet_guest` (`HttpOnly`, `Secure`, `SameSite=Lax`, `Path=/`, no `Domain`). The legacy names stay readable for one rollout window; a valid legacy token is promoted on its next request and deleted in the same response, so there is no forced logout. Unit tests cover the helpers and an E2E proves `/dashboard` stays 200 while the cookie is promoted.
 - **P2-7 — CSP/COOP/CORP. Resolved in Phase 4 (scope split).** COOP and CORP are set on every Worker response. The CSP is built from live integration state, so dormant AdSense/GA4/GTM hosts are no longer advertised, and a route-specific policy (media `default-src 'none'; sandbox`) is preserved instead of being overwritten. `'unsafe-inline'` remains for scripts and styles until a nonce/hash migration; that residual risk is recorded in §15.
 - **P2-8 — Result-page ad decision. Resolved in Phase 4.** The site intentionally serves no result ads: the result summary and solutions pages no longer opt in, `/result` is in `BLOCKED_AD_PATHS`, and a unit guard keeps both pages ad-free. The privacy policy already limits advertising to selected public content pages.
 - **P2-9 — Environment docs. Resolved in Phase 4.** `.env.example` is now a committed, comment-only pointer to `.dev.vars.example`; `.gitignore` keeps `.env*` ignored but re-includes `.env.example`, and a unit guard fails if the pointer ever duplicates a key.
@@ -405,13 +405,13 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - GA4 is now opt-in and public-only, so its pageviews will be lower than Cloudflare Web Analytics (which counts every page) and lower than historical GA4 totals. Do not reconcile the two as if they were the same measure.
 - A visitor who clears site data or blocks `localStorage` loses the stored choice; the banner returns and analytics stays off until they choose again. This fails closed, but the choice cannot be remembered.
 - The consent banner is not exercised by Lighthouse with a real GA4 id. Its markup is small and fixed-position, but the configured path should be re-measured on the deployed origin before go-live.
-- The privacy policy still describes email/password signup and password hashes, while production auth is Google-only. That copy needs a separate accuracy pass, tracked outside P1-4.
+- The privacy policy and support copy now describe Google-only sign-in accurately, including the four production accounts that still carry an unused legacy password hash. Those hashes cannot be used to sign in and are removed when the account is deleted; no password-reset route is exposed.
 - The CSP still allows `'unsafe-inline'` for scripts and styles. Astro's hydration bootstrap, the inline consent/theme/share snippets and dynamic `style=` attributes need nonces or hashes before that directive can be removed. Astro 7 has native CSP hashing, but adopting it must also cover `is:inline` third-party snippets (GA4/GTM/AdSense), so it stays a separate, test-heavy migration. Until then, CSP does not stop an injected inline script.
-- Session and guest cookies still use the unprefixed `cuet_session` / `cuet_guest` names (P2-6). Moving to `__Host-` requires a one-time logout or a dual-read migration that re-issues the prefixed cookie on the next authenticated request; it needs its own rollout window and cross-environment (HTTP localhost vs HTTPS production) verification, so it was not folded into Phase 4.
+- Session and guest cookies now use `__Host-` names (P2-6). Legacy `cuet_session` / `cuet_guest` cookies are still read during the rollout window; a valid legacy token is promoted and the old cookie deleted on its next request. Remove the dual-read path after all live sessions have rotated (at most 30 days after deploy), then re-run the cookie unit/E2E guards.
 - No GSC/Bing access: indexing, coverage and Core Web Vitals field data cannot be verified from this environment.
 - No authenticated production admin/dashboard pass; admin RBAC is verified by tests and code review, not by a live production session.
 - Production Turso vs local D1 means query counts, content counts and migration state can differ. Do not treat local D1 as production.
-- Topic pages are blocked on migration `0027` + CSV backfill applied to Turso.
+- Topic pages are blocked on the editorial CSV topic backfill; migration `0027` itself is applied to Turso. Until the CSV is imported, every `/cuet-mock-test/<subject>/<topic>` URL stays 404.
 - D1 backup secrets are missing; backups are not running.
 - Cloudflare Access is not configured; production admin uses the session fallback.
 - Local Lighthouse excludes GA4, AdSense and edge cache; field performance may differ. The local D1 data set also differs from Turso.
@@ -496,7 +496,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - [x] Private HTML and auth responses send `Cache-Control: no-store`.
 - [x] Cross-origin POST/PUT/PATCH/DELETE is rejected; same-origin writes succeed.
 - [ ] Login, attempt start, submit, answers and comments rate limits return 429 under load without locking out normal use.
-- [ ] Session cookie is `HttpOnly`, `Secure`, `SameSite=Lax`; the `__Host-` prefix is deferred to P2-6 (§15).
+- [x] Session and guest cookies are `HttpOnly`, `Secure`, `SameSite=Lax`, `Path=/`, with the `__Host-` prefix; a legacy `cuet_session` cookie is promoted to `__Host-cuet_session` without signing the user out.
 - [ ] `/api/health` reports the expected engine and DB state; `/ads.txt` matches the configured publisher.
 - [ ] Deploy, rollback and backup/restore are exercised in staging; production deployment matches the intended commit.
 
@@ -648,6 +648,34 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 - Phase 4 P2 polish is complete except P2-6 (cookie prefixes), which is deferred to its own rollout window (see §15).
 - Apply `npm run db:turso:migrate` when the next push is allowed so `0028` reaches Turso; re-run the production link crawl after deploy.
+
+---
+
+### Phase 5 — Auth accuracy, cookie prefixes and Turso migrations (2026-11-17)
+
+**Done**
+
+- Auth copy is now accurate for the Google-only flow. The privacy policy, terms, contact guidance, admin invite hint and the OAuth config comment no longer describe email/password signup. The policy still discloses that four production accounts carry an unused legacy password hash; it cannot sign in and is deleted with the account.
+- Session and guest cookies moved to `__Host-cuet_session` / `__Host-cuet_guest` (`HttpOnly`, `Secure`, `SameSite=Lax`, `Path=/`, no `Domain`). The legacy names remain readable for one rollout window.
+- A valid legacy session or guest token is promoted on its next request: the `__Host-` cookie is written and the legacy cookie is deleted in the same response. No user is signed out.
+- The privacy policy cookie table, `docs/WEBSITE_SITEMAP.md` and the auth E2E helper now use the prefixed names; the E2E helper exports the legacy name for the migration test.
+- Applied production Turso migrations `0026_rename_pyq_archive_path.sql`, `0027_practice_question_topics.sql` and `0028_fix_cuet_source_url.sql` after a dry run reported all three pending.
+- `scripts/tag-practice-questions.mjs` now supports `--turso`: it reads mapping context through the Turso client and applies all tags in one interactive `write` transaction, rolling back on an unexpected row count. The production topic import no longer has to go through the unused D1 binding.
+
+**Verification**
+
+- Unit: **617/617** across 70 files. Focused cookie helpers **7/7**; focused `auth-copy` + `consent` **9/9**.
+- Type check: `astro check` 0 errors, 0 warnings.
+- Build: clean; the secret scan passed and removed the local env file from `dist/`.
+- E2E: the legacy-session promotion test passes **1/1** — `/dashboard` stays 200, `__Host-cuet_session` is present, and `cuet_session` is gone.
+- Turso: `npm run db:turso:verify` reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 published questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks. A `tag-practice-questions.mjs --turso` dry run resolved a real paper/question/topic triple and reported `Turso` as the target without writing.
+
+**Next**
+
+- Keep the legacy cookie reads for at most one session lifetime (30 days), then remove them and re-run the cookie guards.
+- Import the editorial CSV topic backfill (`docs/TOPIC_BACKFILL.md`); the schema is now live in production.
+- Provision Turso backup credentials and exercise a restore.
+- Migrate CSP `'unsafe-inline'` to nonces or hashes as a separate, test-heavy change.
 
 ---
 
