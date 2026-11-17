@@ -31,6 +31,15 @@ const axePath = require.resolve("axe-core/axe.min.js");
 
 const baseURL =
   process.env.A11Y_BASE_URL ?? process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:4321";
+// Playwright's APIRequestContext does not send Origin, but state-changing API
+// routes reject writes without one (or Sec-Fetch-Site: same-origin).
+const apiHeaders = (() => {
+  try {
+    return { origin: new URL(baseURL).origin };
+  } catch {
+    return {};
+  }
+})();
 const adminEmail = process.env.A11Y_ADMIN_EMAIL ?? "";
 const adminPassword = process.env.A11Y_ADMIN_PASSWORD ?? "";
 const storageState = process.env.A11Y_STORAGE_STATE;
@@ -362,7 +371,10 @@ async function auditPublic(browser) {
       );
       const attemptId = page.url().match(/\/attempt\/(\d+)$/)?.[1];
       if (attemptId) {
-        await context.request.post(`${baseURL}/api/attempts/${attemptId}/submit`, { data: {} });
+        await context.request.post(`${baseURL}/api/attempts/${attemptId}/submit`, {
+          data: {},
+          headers: apiHeaders,
+        });
       }
     }
   }
@@ -396,6 +408,7 @@ async function auditPublic(browser) {
   } else if (mockId) {
     const started = await context.request.post(`${baseURL}/api/attempts/start`, {
       data: { mockId },
+      headers: apiHeaders,
     });
     const attempt = started.ok() ? await started.json() : null;
     if (attempt?.attemptId) {
@@ -422,6 +435,7 @@ async function auditPublic(browser) {
 
       await context.request.post(`${baseURL}/api/attempts/${attempt.attemptId}/submit`, {
         data: {},
+        headers: apiHeaders,
       });
 
       for (const viewport of VIEWPORTS) {
