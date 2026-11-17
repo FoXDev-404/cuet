@@ -27,7 +27,9 @@ jobs:
   deploy:
     name: Staging D1 import, deploy and smoke
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    # `release/*` lets a release candidate reach staging before it is merged to
+    # main. Production deploys never run from this workflow.
+    if: (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) && github.repository == 'FoXDev-404/cuet'
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
