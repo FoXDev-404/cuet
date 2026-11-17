@@ -25,7 +25,7 @@ const structuredData = [
     name: title,
     description,
     url: new URL(PATH, site).toString(),
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-17",
   },
 ];
 ---
@@ -34,8 +34,8 @@ const structuredData = [
   <PageHero
     eyebrow="Privacy"
     title="Privacy policy"
-    intro="This page explains what the site stores, why it stores it, and what you can ask us to change or delete. It also describes the optional analytics and advertising integrations that can be enabled by configuration."
-    updated="31 October 2026"
+    intro="This page explains what the site stores, why it stores it, and what you can ask us to change or delete. It also describes cookieless Cloudflare analytics, optional Google Analytics 4 that loads only after you allow it, and advertising that is not currently enabled."
+    updated="17 November 2026"
   />
 
   <SeoIntro html={seo?.intro_html} />
@@ -57,6 +57,7 @@ const structuredData = [
         <li><strong class="text-neutral-900 dark:text-neutral-100">Discussion data:</strong> comments, replies, votes, reports and moderation status. Comments are stored as plain text.</li>
         <li><strong class="text-neutral-900 dark:text-neutral-100">Share data:</strong> when you share a question or mock, we store an aggregate event with the shared question's public id or the mock id, the surface, the channel and, if you are signed in, your user id. We do not store an IP address, attempt id, score or recipient in this event.</li>
         <li><strong class="text-neutral-900 dark:text-neutral-100">Technical data:</strong> the IP address and request metadata processed by our hosting provider for security, rate limiting and abuse prevention. We do not build advertising profiles.</li>
+        <li><strong class="text-neutral-900 dark:text-neutral-100">Optional analytics data:</strong> if you allow analytics, Google Analytics 4 receives the page you viewed, an approximate location derived from your IP address, device and browser information, and a random client identifier. It does not receive your name, email address, answers or scores.</li>
         <li><strong class="text-neutral-900 dark:text-neutral-100">Contact data:</strong> whatever you include when you email us about a correction, account or privacy request.</li>
       </ul>
     </section>
@@ -86,11 +87,21 @@ const structuredData = [
               <td class="px-3 py-2">Links a guest attempt to this browser so it can be resumed or claimed after signup.</td>
               <td class="px-3 py-2">Session or up to 30 days</td>
             </tr>
+            <tr>
+              <td class="px-3 py-2 font-mono">_ga</td>
+              <td class="px-3 py-2">Distinguishes browsers for Google Analytics 4. Set only after you allow analytics.</td>
+              <td class="px-3 py-2">Up to 2 years</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 font-mono">_ga_*</td>
+              <td class="px-3 py-2">Keeps Google Analytics 4 session state for this site. Set only after you allow analytics.</td>
+              <td class="px-3 py-2">Up to 2 years</td>
+            </tr>
           </tbody>
         </table>
       </div>
       <p class="mt-2">
-        The light/dark preference is stored in your browser's <code class="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">localStorage</code>, not sent to the server. Our hosting provider may set strictly necessary security cookies at the edge. If Google AdSense is enabled on content pages, Google may set advertising or measurement cookies as described in section 11; the active test screen never loads the advertising script.
+        The light/dark preference is stored in your browser's <code class="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">localStorage</code>, not sent to the server. The <code class="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">cuet_consent_v1</code> entry stores your analytics choice in this browser and is not sent to the server. Our hosting provider may set strictly necessary security cookies at the edge. Advertising is not currently enabled. If it is enabled later, Google may set advertising or measurement cookies as described in section 11; the active test screen never loads the advertising script.
       </p>
     </section>
 
@@ -101,6 +112,7 @@ const structuredData = [
         <li>To run an attempt: hide answers before submit, autosave progress, enforce the deadline and calculate the score on the server.</li>
         <li>To show your dashboard, attempt history, solutions and site-relative rank.</li>
         <li>To operate discussions, moderation, reports and abuse controls.</li>
+        <li>To measure aggregate usage if you allow analytics, so content and practice papers can be improved.</li>
         <li>To investigate errors, protect the service and comply with legal obligations.</li>
       </ul>
       <p class="mt-2">
@@ -111,14 +123,14 @@ const structuredData = [
     <section>
       <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">5. Legal bases</h2>
       <p class="mt-2">
-        Where data-protection law requires a legal basis, we rely on the performance of the service you asked for (running an attempt or account), your consent (creating an account, posting a comment), our legitimate interest in keeping the service secure and preventing abuse, and compliance with legal obligations. You can withdraw consent for optional features without losing access to the core practice tools.
+        Where data-protection law requires a legal basis, we rely on the performance of the service you asked for (running an attempt or account), your consent (creating an account, posting a comment), our legitimate interest in keeping the service secure and preventing abuse, and compliance with legal obligations. For optional Google Analytics 4 we rely on your consent, which you can give, refuse or withdraw at any time. Refusing or withdrawing does not limit any practice feature; only optional analytics stops. You can withdraw consent for optional features without losing access to the core practice tools.
       </p>
     </section>
 
     <section>
       <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">6. Sharing and processors</h2>
       <p class="mt-2">
-        The site runs on Cloudflare infrastructure. Cloudflare processes requests and stores the database and media objects on our behalf. If you choose Google sign-in, Google authenticates you and shares the basic profile data needed to create the account. We do not share your email or attempt history with advertisers.
+        The site runs on Cloudflare infrastructure. Cloudflare processes requests and stores the database and media objects on our behalf. If you choose Google sign-in, Google authenticates you and shares the basic profile data needed to create the account. If you allow analytics, Google processes Google Analytics 4 measurement data on our behalf as described in section 11. We do not share your email or attempt history with advertisers.
       </p>
       <p class="mt-2">
         We may disclose data if required by law, to respond to a valid legal request, or to protect the rights and safety of users. If the project is transferred, data may move to the successor entity under the same commitments.
@@ -132,6 +144,8 @@ const structuredData = [
         <li>Attempts and scores may be retained in an anonymised or pseudonymised form because leaderboard and historical-paper integrity depend on them.</li>
         <li>Session tokens expire automatically. Password-reset tokens are single-use and time-limited.</li>
         <li>Technical logs are kept only as long as needed for security and troubleshooting.</li>
+        <li>Google Analytics 4 event data is retained for up to 14 months, after which it is deleted or aggregated according to the configured retention setting.</li>
+        <li>Your analytics choice stays in this browser until you change it or clear site data.</li>
         <li>Moderation records may be retained to enforce community rules and document decisions.</li>
       </ul>
     </section>
@@ -150,6 +164,9 @@ const structuredData = [
         {" "}<a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="mailto:privacy@cuetfreemocktest.com">privacy@cuetfreemocktest.com</a>
         {" "}from the address on your account. We may need to verify that the account belongs to you before acting. You can also complain to your local data-protection authority.
       </p>
+      <p class="mt-2">
+        To change or withdraw your analytics choice, use the <strong class="text-neutral-900 dark:text-neutral-100">Privacy choices</strong> control in the footer or the <strong class="text-neutral-900 dark:text-neutral-100">Manage privacy choices</strong> button in section 11. Withdrawing after analytics has loaded removes the Google Analytics cookies and reloads the page.
+      </p>
     </section>
 
     <section>
@@ -159,15 +176,43 @@ const structuredData = [
       </p>
     </section>
 
-    <section>
+    <section id="advertising-and-analytics" class="scroll-mt-24">
       <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">11. Advertising and analytics</h2>
+
+      <h3 class="mt-4 text-base font-bold text-neutral-900 dark:text-neutral-100">Cloudflare Web Analytics</h3>
       <p class="mt-2">
-        The site can run Cloudflare Web Analytics, which reports aggregate page views and performance without cookies or cross-site tracking. It can also run Google AdSense on selected content pages after approval. When AdSense is enabled, Google and its partners may use cookies or similar identifiers to serve and measure ads, including personalised ads where consent and local law allow it. You can review Google's advertising controls at
+        The site uses Cloudflare Web Analytics to count page views and measure performance. It is cookieless, does not fingerprint visitors and does not build cross-site profiles. It runs on every page, including private pages, and is not affected by the analytics choice below.
+      </p>
+
+      <h3 class="mt-4 text-base font-bold text-neutral-900 dark:text-neutral-100">Google Analytics 4 (optional)</h3>
+      <p class="mt-2">
+        If you choose <strong class="text-neutral-900 dark:text-neutral-100">Allow analytics</strong>, the site loads Google Analytics 4 with measurement ID <code class="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">G-Y1JPT7SNQJ</code>. Google receives the page you viewed, an approximate location derived from your IP address, device and browser information, and a random client identifier stored in the <code class="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">_ga</code> and <code class="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">_ga_*</code> cookies for up to 2 years. It does not receive your name, email address, answers or scores. Event data is retained for up to 14 months. Google processes this data on our behalf and may process it outside your state or country under its contractual safeguards.
+      </p>
+      <p class="mt-2">
+        The legal basis is your consent. You can refuse or withdraw it at any time, and refusing keeps every feature available. Google Analytics 4 is never loaded on the active test screen, results, dashboard, admin, sign-in or search pages. Withdrawing after it has loaded clears the Google Analytics cookies and reloads the page. You can also install the
+        <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">Google Analytics opt-out browser add-on</a>
+        and read
+        <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Google's privacy policy</a>.
+      </p>
+
+      <h3 class="mt-4 text-base font-bold text-neutral-900 dark:text-neutral-100">Advertising</h3>
+      <p class="mt-2">
+        Advertising is not currently enabled. If it is enabled later, Google AdSense may run only on selected public content pages and only after a Google-certified consent management platform is live. Google and its partners may then use cookies or similar identifiers to serve and measure ads, including personalised ads where consent and local law allow it. Analytics consent is not advertising consent. You can review Google's advertising controls at
         <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="https://myadcenter.google.com/" rel="noopener noreferrer" target="_blank">My Ad Center</a>.
       </p>
       <p class="mt-2">
-        Ads are never placed on the active test screen, an in-progress result, a dashboard or any page with little publisher content. If neither integration is configured, the site loads no analytics beacon and no advertising script. Before enabling advertising in a region that requires consent, the operator must configure an approved consent mechanism; this policy will be updated if the integrations or providers change.
+        Ads are never placed on the active test screen, an in-progress result, a dashboard or any page with little publisher content. If Google Analytics is not configured, the site loads no Google Analytics script.
       </p>
+      <button
+        type="button"
+        data-open-consent
+        aria-controls="consent-banner"
+        aria-expanded="false"
+        hidden
+        class="mt-4 cursor-pointer rounded-lg border border-neutral-300 px-3 py-2 text-sm font-semibold text-neutral-800 hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-800"
+      >
+        Manage privacy choices
+      </button>
     </section>
 
     <section>

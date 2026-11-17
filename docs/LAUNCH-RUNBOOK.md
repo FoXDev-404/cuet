@@ -86,23 +86,36 @@ npm run build
    `GSC_VERIFICATION` (or DNS verification).
 2. Set the Cloudflare Web Analytics token in `CF_ANALYTICS_TOKEN` if you want the
    beacon. Disable automatic dashboard injection to avoid double counting.
-3. Deploy.
-4. Confirm the verification meta tag and analytics beacon appear only after their
+3. Set `GA4_MEASUREMENT_ID` if you want optional Google Analytics 4. Leave it empty to
+   ship no Google analytics script and no consent banner.
+4. Deploy.
+5. Confirm the verification meta tag and Cloudflare beacon appear only after their
    variables are set. View source with both unset to confirm nothing is emitted.
-5. Submit `https://<production-domain>/sitemap.xml` and check the first crawl report.
-6. Confirm `/blog` remains `noindex` until a complete guide is published, and that
+6. Open a public page in a clean browser profile. Before a choice, there must be no
+   `googletagmanager.com` request and the consent banner must be visible. Reject, reload
+   and confirm no request. Clear the site's storage, allow analytics and confirm one
+   `gtag/js` request that persists across reloads. Reopen the banner from the footer
+   control and confirm rejection clears `_ga*` and reloads.
+7. Confirm no banner, analytics request or openable privacy control appears on
+   `/attempt`, `/result`, `/dashboard`, `/admin`, auth or `/search`.
+8. Submit `https://<production-domain>/sitemap.xml` and check the first crawl report.
+9. Confirm `/blog` remains `noindex` until a complete guide is published, and that
    attempt/result/dashboard/admin routes stay out of the index.
 
 ## 7. AdSense (only after content review and approval)
 
 1. Apply to AdSense and complete site review. Do not add the script before approval.
-2. Configure a Google-certified consent mechanism for regions that require it.
+2. Configure a Google-certified consent mechanism for regions that require it. The
+   first-party analytics gate does not satisfy this.
 3. Set `ADSENSE_CLIENT` and `ADSENSE_SLOT_ID`.
-4. Deploy and verify `/ads.txt` returns the publisher record.
-5. Check a content page: one unit, labelled, no layout overflow. Check `/attempt/*` and
+4. After the CMP is verified live, set `ADSENSE_CMP_ACTIVE=1`. Setting only the client
+   and slot is not sufficient: the loader and every ad unit stay off without this
+   attestation.
+5. Deploy and verify `/ads.txt` returns the publisher record.
+6. Check a content page: one unit, labelled, no layout overflow. Check `/attempt/*` and
    `/result/*`: no AdSense script and no `<ins>` unit.
-6. Watch policy and performance reports for the first week; remove the slot by clearing
-   `ADSENSE_SLOT_ID` if fill or layout is poor.
+7. Watch policy and performance reports for the first week; remove the slot by clearing
+   `ADSENSE_SLOT_ID` or `ADSENSE_CMP_ACTIVE` if fill or layout is poor.
 
 ## 8. Backups
 

@@ -26,8 +26,11 @@ Local values go in `.dev.vars` (gitignored; start from `.dev.vars.example`).
 | `MEDIA_PUBLIC_URL` | Public var | No | R2 media is served through `/api/media/<id>`. |
 | `CF_ANALYTICS_TOKEN` | Public var | No | No Cloudflare Web Analytics beacon is injected. |
 | `GSC_VERIFICATION` | Public var | No | No `google-site-verification` meta tag is emitted. |
+| `GA4_MEASUREMENT_ID` | Public var | No | No Google Analytics 4 script is emitted, and no consent banner appears. GA4 loads only after a visitor allows analytics. |
+| `GTM_CONTAINER_ID` | Public var | No | No Google Tag Manager script is emitted. When set, GTM replaces the direct GA4 loader. |
 | `ADSENSE_CLIENT` | Public var | No | No AdSense loader, no ad units, and `/ads.txt` returns 404. |
 | `ADSENSE_SLOT_ID` | Public var | No | The loader can run, but manual ad units render nothing until a numeric slot is set. |
+| `ADSENSE_CMP_ACTIVE` | Public var | No | Ads stay completely off even when the client and slot are set. Only `1` or `true` attests that a Google-certified CMP is live. |
 | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | GitHub secrets | No | The scheduled backup job skips with a notice. |
 
 Public values can be edited in `wrangler.jsonc` or the Cloudflare dashboard. Credentials
@@ -172,7 +175,38 @@ should use `CF_ACCESS_*`.
 Cloudflare Web Analytics is aggregate and cookie-free. No consent banner is required
 for the beacon itself, but review the current Cloudflare terms for your jurisdiction.
 
-## 7. Google Search Console
+## 7. Google Analytics 4 and consent
+
+GA4 is optional and denied until the visitor chooses **Allow analytics** in the
+banner. The choice is stored in `localStorage` under `cuet_consent_v1`; HTML stays
+anonymous and edge-cacheable. `GTM_CONTAINER_ID` wins over `GA4_MEASUREMENT_ID`, so
+page views are not counted twice.
+
+1. In Google Analytics create a Web data stream for the production origin and copy
+   its measurement ID (`G-...`).
+2. Set it:
+   ```jsonc
+   "GA4_MEASUREMENT_ID": "G-<measurement-id>"
+   ```
+   Do not set both `GA4_MEASUREMENT_ID` and `GTM_CONTAINER_ID` unless GTM is genuinely
+   managing analytics; the direct loader is suppressed when GTM is present.
+3. Deploy and open a public page in a clean browser profile. Before any choice there
+   must be no request to `googletagmanager.com` or `google-analytics.com`, and the
+   banner must be visible.
+4. Click **Reject**, reload, and confirm no request is made. Clear the site's storage
+   and repeat with **Allow analytics**; one `gtag/js` request should follow and persist
+   across reloads.
+5. Use the footer **Privacy choices** control (or **Manage privacy choices** in the
+   privacy policy) to reopen the banner. Rejecting after analytics has loaded clears
+   `_ga`, `_ga_*` and `_gid` and reloads the page.
+6. Confirm the banner and any analytics request are absent on `/attempt`, `/result`,
+   `/dashboard`, `/admin`, auth and `/search`. Cloudflare Web Analytics still counts
+   those pages.
+
+This first-party gate is not a Google-certified CMP. It covers GA4 only. Advertising
+requires a certified CMP and the separate `ADSENSE_CMP_ACTIVE` attestation below.
+
+## 8. Google Search Console
 
 1. Add the production site as a **Domain** property (DNS verification) or a **URL-prefix**
    property (meta tag verification).
@@ -188,7 +222,7 @@ for the beacon itself, but review the current Cloudflare terms for your jurisdic
 5. Recheck coverage after the first crawl. `/blog` stays `noindex` until a guide is
    published; attempt, result, dashboard, admin, auth and search routes stay private.
 
-## 8. Google AdSense
+## 9. Google AdSense
 
 Do not enable ads before the site has enough original, useful content and the legal
 pages are live. Approval is not guaranteed.
@@ -196,22 +230,27 @@ pages are live. Approval is not guaranteed.
 1. Apply to AdSense with the production domain. Complete any identity, payment and
    site-review steps in the AdSense dashboard.
 2. After approval, create a responsive display ad unit and copy its numeric slot ID.
-3. Set:
+3. Configure Google's consent management platform (or another Google-certified CMP) in
+   AdSense before serving ads in regions that require consent. The first-party analytics
+   gate is not a CMP and does not satisfy this requirement.
+4. After the CMP is live, set the client, slot and attestation:
    ```jsonc
    "ADSENSE_CLIENT": "ca-pub-<publisher-id>",
-   "ADSENSE_SLOT_ID": "<numeric-slot-id>"
+   "ADSENSE_SLOT_ID": "<numeric-slot-id>",
+   "ADSENSE_CMP_ACTIVE": "1"
    ```
-4. Deploy. The loader is emitted only on pages that opt in with the BaseLayout `ads`
+   `ADSENSE_CMP_ACTIVE` is an operator attestation, not proof that the CMP works. Setting
+   only the client and slot no longer activates the loader or any ad unit.
+5. Deploy. The loader is emitted only on pages that opt in with the BaseLayout `ads`
    prop; currently the mock-test hub and published blog articles. `/ads.txt` is served
    automatically from `ADSENSE_CLIENT` and returns 404 while unset.
-5. Configure Google's consent management platform (or another Google-certified CMP) in
-   AdSense before serving ads in regions that require consent. The code does not replace
-   a CMP.
-6. Verify that no `adsbygoogle` script or `<ins>` unit appears on `/attempt/*`,
+6. Ads are intentionally off for now. Do not set `ADSENSE_CMP_ACTIVE=1` until the CMP,
+   policy review and route checks are complete.
+7. Verify that no `adsbygoogle` script or `<ins>` unit appears on `/attempt/*`,
    `/result/*`, `/dashboard/*`, `/admin/*`, auth, search or practice routes. The route
    guard and the explicit `ads` opt-in both enforce this.
 
-## 9. D1 backups
+## 10. D1 backups
 
 The workflow is `.github/workflows/d1-backup.yml`.
 
@@ -243,6 +282,11 @@ curl -sS -o /dev/null -w '%{http_code}\n' https://<host>/ads.txt
 
 - View source: no `cloudflareinsights`, `adsbygoogle` or `google-site-verification`
   output when the corresponding variable is empty.
+- With GA4 configured: no `googletagmanager.com` request before an analytics choice, one
+  after **Allow analytics**, none after **Reject** plus reload, and no banner or request
+  on private routes.
+- With `ADSENSE_CLIENT` and `ADSENSE_SLOT_ID` set but `ADSENSE_CMP_ACTIVE` empty, no
+  `adsbygoogle` script and no `<ins>` unit appear anywhere.
 - `/login` hides the Google button when OAuth is not configured.
 - `/forgot-password` shows the disabled notice when neither email nor the dev flag is
   available.

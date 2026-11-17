@@ -62,3 +62,18 @@ describe("consent wiring", () => {
     expect(gate).toContain("data-open-consent");
   });
 });
+
+describe("policy disclosure", () => {
+  it("discloses GA4, the consent basis and the ads gate", () => {
+    const policy = readFileSync(resolve(process.cwd(), "src/pages/privacy-policy.astro"), "utf8");
+    expect(policy).toContain("Google Analytics 4");
+    expect(policy).toContain("G-Y1JPT7SNQJ");
+    expect(policy).toContain('id="advertising-and-analytics"');
+    expect(policy).toContain("data-open-consent");
+    expect(policy).toContain("Google-certified consent management platform");
+    expect(policy).not.toContain("If neither integration is configured");
+    const setup = readFileSync(resolve(process.cwd(), "docs/EXTERNAL_SETUP.md"), "utf8");
+    expect(setup).toContain("GA4_MEASUREMENT_ID");
+    expect(setup).toContain("ADSENSE_CMP_ACTIVE");
+  });
+});

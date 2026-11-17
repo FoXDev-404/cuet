@@ -32,4 +32,8 @@ CF_ANALYTICS_TOKEN=
 GSC_VERIFICATION=
 ADSENSE_CLIENT=
 ADSENSE_SLOT_ID=
+# Set to 1 only after a Google-certified CMP is live; ads stay off otherwise.
+ADSENSE_CMP_ACTIVE=
 GTM_CONTAINER_ID=
+# Google Analytics 4 (optional). GA4 loads only after a visitor allows it.
+GA4_MEASUREMENT_ID=
