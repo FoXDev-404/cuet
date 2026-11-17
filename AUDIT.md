@@ -670,6 +670,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 - Unit: **617/617** across 70 files. Focused cookie helpers **7/7**; focused `auth-copy` + `consent` **9/9**.
 - Type check: `astro check` 0 errors, 0 warnings.
+- Accessibility: `npm run test:a11y` completed **272 scans with 0 WCAG A/AA violations and 0 horizontal overflow**; `docs/report/a11y-results.json` was refreshed after the Phase 5 copy changes.
 - Build: clean; the secret scan passed and removed the local env file from `dist/`.
 - E2E: full suite **96 passed / 2 skipped**. The legacy-session promotion test passes — `/dashboard` stays 200, `__Host-cuet_session` is present, and `cuet_session` is gone.
 - Turso: `npm run db:turso:verify` reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 published questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks. A `tag-practice-questions.mjs --turso` dry run resolved a real paper/question/topic triple and reported `Turso` as the target without writing.
