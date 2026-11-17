@@ -49,10 +49,22 @@ describe("middleware security headers", () => {
     // Cloudflare injects its beacon on the deployed host and GA4 posts events to
     // analytics.google.com / www.google.com. A missing allowlist entry is silent
     // in the UI but drops all analytics, so pin both script and connect hosts.
-    expect(source).toContain("https://static.cloudflareinsights.com");
-    expect(source).toContain("https://cloudflareinsights.com");
-    expect(source).toContain("https://analytics.google.com");
-    expect(source).toContain("https://*.google-analytics.com");
+    const securityHeaders = readFileSync(
+      join(process.cwd(), "src/lib/security-headers.ts"),
+      "utf8",
+    );
+    expect(securityHeaders).toContain("https://static.cloudflareinsights.com");
+    expect(securityHeaders).toContain("https://cloudflareinsights.com");
+    expect(securityHeaders).toContain("https://analytics.google.com");
+    expect(securityHeaders).toContain("https://*.google-analytics.com");
+  });
+
+  it("adds COOP and CORP and preserves route-specific policies", () => {
+    expect(source).toContain('headers.set("cross-origin-opener-policy"');
+    expect(source).toContain('headers.set("cross-origin-resource-policy"');
+    // Media responses ship `default-src 'none'; sandbox`; the global policy
+    // must not replace it.
+    expect(source).toContain('if (!headers.has("content-security-policy"))');
   });
 
   it("routes host and trailing-slash redirects through the header helper", () => {

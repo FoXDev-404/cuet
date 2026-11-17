@@ -12,6 +12,12 @@ import { DB_DEGRADED_HEADER } from "./lib/db-resilient";
 import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
 import { edgeCacheKeyRequest, edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
 import { isPrivatePath } from "./lib/private-paths";
+import {
+  CROSS_ORIGIN_OPENER_POLICY,
+  CROSS_ORIGIN_RESOURCE_POLICY,
+  contentSecurityPolicy,
+  cspIntegrations,
+} from "./lib/security-headers";
 
 /**
  * The Workers runtime exposes `caches.default` (the per-colo edge cache),
@@ -33,23 +39,6 @@ function isAdminApi(pathname: string): boolean {
   return pathname.startsWith("/api/admin/");
 }
 
-const CONTENT_SECURITY_POLICY = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "frame-ancestors 'self'",
-  "form-action 'self'",
-  "img-src 'self' data: blob: https:",
-  "font-src 'self' data:",
-  "style-src 'self' 'unsafe-inline'",
-  "script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://www.google.com https://www.googletagmanager.com https://static.cloudflareinsights.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://adservice.google.com https://fundingchoicesmessages.google.com",
-  "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.google.com https://cloudflareinsights.com https://*.cloudflareinsights.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://adservice.google.com https://fundingchoicesmessages.google.com",
-  "frame-src 'self' https://accounts.google.com https://www.google.com https://*.firebaseapp.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://fundingchoicesmessages.google.com https://www.googletagmanager.com",
-  "worker-src 'self' blob:",
-  "manifest-src 'self'",
-  "media-src 'self'",
-].join("; ");
-
 /**
  * Applies the security baseline to every response, including middleware
  * early-returns (auth failures, maintenance, redirects) that never reach the
@@ -60,7 +49,16 @@ function applySecurityHeaders(response: Response, pathname: string): Response {
   // headers. Copy them into a mutable set before adding the security policy.
   const headers = new Headers(response.headers);
   headers.set("strict-transport-security", "max-age=31536000; includeSubDomains");
-  headers.set("content-security-policy", CONTENT_SECURITY_POLICY);
+  // A route may ship a stricter policy (media responses use
+  // `default-src 'none'; sandbox`). Never widen it with the site-wide policy.
+  if (!headers.has("content-security-policy")) {
+    headers.set(
+      "content-security-policy",
+      contentSecurityPolicy(cspIntegrations(env)),
+    );
+  }
+  headers.set("cross-origin-opener-policy", CROSS_ORIGIN_OPENER_POLICY);
+  headers.set("cross-origin-resource-policy", CROSS_ORIGIN_RESOURCE_POLICY);
   headers.set("x-content-type-options", "nosniff");
   headers.set("referrer-policy", "strict-origin-when-cross-origin");
   headers.set("x-frame-options", "SAMEORIGIN");

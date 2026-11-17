@@ -39,6 +39,15 @@ Public values can be edited in `wrangler.jsonc` or the Cloudflare dashboard. Cre
 must use `npx wrangler secret put <NAME>` and must never be committed. Confirm the active
 Worker version after changing secrets or vars.
 
+### Content Security Policy
+
+`src/lib/security-headers.ts` builds the CSP from the integrations that are actually
+configured. Google Tag Manager/GA4 hosts appear only when `GTM_CONTAINER_ID` or
+`GA4_MEASUREMENT_ID` is set, and AdSense hosts only when the client, slot and
+`ADSENSE_CMP_ACTIVE` attestation are all valid. When adding a new third-party endpoint,
+add its host there and cover it in `tests/unit/security-headers.test.ts`; otherwise the
+browser blocks the request while the server-rendered markup looks correct.
+
 ## 1. Domain and `SITE_URL`
 
 1. Register the domain and add it as a zone in Cloudflare. Point the registrar at the
