@@ -41,4 +41,14 @@ describe('Production Guards (Fix 2)', () => {
     expect(middleware).toContain('adminAuthMode === "session" && !allowSessionInProd');
     expect(middleware).toContain('status: 503');
   });
+
+  it('keeps the staging deployment out of search indexes', () => {
+    const middleware = readFileSync(resolve(process.cwd(), 'src/middleware.ts'), 'utf8');
+    expect(middleware).toContain('deployedEnv === "staging"');
+    expect(middleware).toContain('headers.set("x-robots-tag", "noindex, nofollow")');
+
+    const robotsFile = readFileSync(resolve(process.cwd(), 'src/pages/robots.txt.ts'), 'utf8');
+    expect(robotsFile).toContain('deployedEnv === "staging"');
+    expect(robotsFile).toContain('"User-agent: *\\nDisallow: /\\n"');
+  });
 });

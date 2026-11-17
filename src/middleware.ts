@@ -74,6 +74,15 @@ function applySecurityHeaders(response: Response, pathname: string): Response {
     headers.set("cache-control", "no-store");
     headers.set("pragma", "no-cache");
   }
+  // The staging Worker is reachable on a public workers.dev hostname. Keep the
+  // whole deployment out of search indexes regardless of the request host so a
+  // crawl of the preview origin cannot compete with production canonicals.
+  const deployedEnv = String((env as unknown as Record<string, unknown>).ENV ?? "")
+    .trim()
+    .toLowerCase();
+  if (deployedEnv === "staging") {
+    headers.set("x-robots-tag", "noindex, nofollow");
+  }
   const body = response.status === 204 || response.status === 304 ? null : response.body;
   return new Response(body, {
     status: response.status,
