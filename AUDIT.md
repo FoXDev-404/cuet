@@ -368,6 +368,22 @@ One `/` run scored 82 with TBT 518 ms and CLS 0.136 while the preview's Workers 
 
 Share-on is now cheap at initial load; opening the Share sheet still fetches ~361 KB of fonts, by design. The admin CLS was measured after the P1-8 fix. The public-question route uses the local E2E sitemap fixture because no non-fixture question is published locally; the runner prefers a real `/q/` URL when one is present.
 
+**Deployed staging check (2026-11-17, Lighthouse 13.6.0).** Same mobile/3-run/light method against the deployed Worker, not a local build. The full evidence is in `docs/report/lighthouse-staging/`. Staging skips `/admin` (no seeded operator) and `/q/[id]` (no public question), so seven routes were measured.
+
+| Route | Perf | A11y | BP | SEO | LCP | TBT | CLS | Transfer | Budget |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| `/` | 99 | 100 | 100 | 100 | 1.19 s | 0 ms | 0 | 58.7 KB | PASS |
+| `/mock-tests` | 100 | 100 | 100 | 100 | 1.09 s | 0 ms | 0 | 60.0 KB | PASS |
+| `/cuet-mock-test/english` | 99 | 100 | 100 | 100 | 1.10 s | 41 ms | 0 | 56.1 KB | **FAIL** — SI 3818 ms > 3500 ms |
+| `/mock/[slug]` | 99 | 100 | 100 | 69 | 1.16 s | 0 ms | 0 | 63.0 KB | PASS |
+| `/mock/[slug]/instructions` | 100 | 100 | 100 | 69 | 1.04 s | 0 ms | 0 | 53.2 KB | PASS |
+| `/attempt/[id]` | 100 | 100 | 100 | 58 | 1.11 s | 0 ms | 0 | 70.0 KB | PASS |
+| `/result/[id]` | 100 | 100 | 100 | 69 | 0.97 s | 0 ms | 0 | 63.5 KB | PASS |
+
+The Subject Hub Speed Index breach is a staging artifact of TTFB, not a rendering regression: the two valid runs reported SI 3723 ms and 3913 ms with LCP 0.99 s and 1.22 s, and the Lighthouse LCP breakdown attributes 1754 ms to time-to-first-byte. Staging has `ENV=staging`, which deliberately skips the production edge cache, so TTFB was 1.25-1.53 s versus roughly 0.3 s locally. Perf is still 99 and every other metric is inside budget. Re-measure on the production cache path before treating this as a budget change; do not raise the budget from a staging-only sample.
+
+Lighthouse returned `NO_NAVSTART` on 5 of 21 staging runs. The runner tolerated one failed run per route and every route kept at least two valid samples, so all medians above are computed from real navigations.
+
 ---
 
 ## 14. Fixed issues log
@@ -397,6 +413,11 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 5 | SEC-4 / P2-6: session and guest cookies used unprefixed names and could be overwritten by a sibling subdomain | Added `src/lib/auth/cookies.ts` with `__Host-cuet_session` / `__Host-cuet_guest` (`HttpOnly`, `Secure`, `SameSite=Lax`, `Path=/`, no `Domain`), kept legacy reads, and promoted a valid legacy token by writing the prefixed cookie and deleting the old one in the same response | Cookie helpers **7/7**; full suite **617/617**; build clean; E2E proves `/dashboard` stays 200, the `__Host-` cookie is set and the legacy cookie is removed; full E2E **96 passed / 2 skipped** |
 | 5 | DOC-2: privacy policy, terms, contact copy and admin guidance still described email/password sign-in | Rewrote the account, security, cookies and support copy for Google-only sign-in; disclosed the four legacy password hashes without claiming they are usable | Focused `auth-copy` + `consent` **9/9**; full suite **617/617** |
 | 5 | OPS-1: `0026`, `0027` and `0028` were pending on production Turso, and the topic importer only targeted D1 | Dry-ran and applied all three migrations to Turso; added `--turso` to `scripts/tag-practice-questions.mjs` with a single interactive `write` transaction and row-count rollback; updated the runbook | `db:turso:verify`: **28 migrations**, integrity/foreign keys ok, 24,761 published and 7,527 practice questions, 0 orphan/duplicate checks; Turso dry run resolved a real paper/question/topic triple without writing |
+| 5 | CI-1: release-branch CI failed at Playwright because `local-practice.spec.ts` asserted the pre-ranked-import counts (42 questions / 58 minutes) on a clean database that now seeds 50 / 60 | Asserted `rankedQuestionCount` and `rankedDurationMinutes` instead of the paper-level fields; reproduced the failure on a freshly seeded local D1 before fixing | Red before the fix (`42` vs rendered `50`); focused E2E **2/2** after; full E2E **96 passed / 2 skipped** |
+| 5 | CI-2: the staging workflow could not resolve `cuet-d1-staging` (missing `--env staging`), only ran from `main`, expected `245 papers`, and the Windows backfill script could not spawn `npx` | Added `--env staging` to every staging DB script, allowed `release/*` to dispatch staging, updated the smoke expectation to `137 papers`, and made the backfill run Wrangler through `node` | Workflow now resolves the staging D1; it reaches the migration step and is blocked there by the token permission (see §15) |
+| 5 | A11Y-2: the PYQ archive tag row scrolled horizontally but was not keyboard-focusable, so axe reported `scrollable-region-focusable` on four English rows at 375/1280 px in both themes | Kept the single-line layout and added `tabindex="0"` to the scroll container | Focused axe scan at 375 px: **0 violations, 0 overflow**; full a11y run recorded in §17 |
+| 5 | A11Y-3: `/admin/seo` overflowed the mobile viewport by 399 px because long path names could not shrink inside the grid | Added `min-w-0` to both grid sections and `min-w-0 flex-1` to the path label | Focused axe scan at 375 px: **0 violations, 0 overflow**; full a11y run recorded in §17 |
+| 5 | OPS-2: the staging workers.dev origin served `Allow: /` and no `noindex`, so the preview could compete with production in search | Added a staging-only `X-Robots-Tag: noindex, nofollow` in middleware and a staging-only `Disallow: /` `robots.txt`; production and local development are unchanged | Source guard **5/5**; deployed header check recorded in §17 |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -415,7 +436,12 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - No authenticated production admin/dashboard pass; admin RBAC is verified by tests and code review, not by a live production session.
 - Production Turso vs local D1 means query counts, content counts and migration state can differ. Do not treat local D1 as production.
 - Topic pages are blocked on the editorial CSV topic backfill; migration `0027` itself is applied to Turso. Until the CSV is imported, every `/cuet-mock-test/<subject>/<topic>` URL stays 404.
-- Turso/D1 backup credentials are missing; scheduled backups are not running.
+- Turso backup credentials are missing, so scheduled backups are not running for the production Turso database. The Cloudflare D1 backup workflow succeeded on 2026-11-17, but that artifact covers D1/local data, not Turso.
+- The GitHub staging workflow is still blocked at its migration step: the repository `CLOUDFLARE_API_TOKEN` can deploy Workers but lacks D1 access (Cloudflare API error `7403`). Staging was therefore seeded and deployed from the authenticated local Wrangler session. A D1-capable token is required before the workflow can run end to end.
+- `staging.cuetfreemocktest.com` has no DNS record even though the zone is on Cloudflare. The reachable staging origin is currently the workers.dev URL via a one-off `SITE_URL` override; a normal staging deploy without that override redirects workers.dev back to the unreachable custom host.
+- Staging has no `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`, so `/api/auth/google` returns `/login?error=google_not_configured`. The deployed Google callback cannot be verified until the staging Worker secrets and the Google redirect URI are configured.
+- Staging D1 has no seeded operator/admin, so an authenticated staging pass of `/dashboard` and `/admin` was not possible. Those pages were verified to redirect to `/login` when signed out; authenticated staging QA still needs a staging admin.
+- The staging `noindex` guard is committed but only takes effect on the next staging deploy. Until then the current workers.dev build still serves `Allow: /`.
 - Cloudflare Access is not configured; production admin uses the session fallback.
 - Local Lighthouse excludes GA4, AdSense and edge cache; field performance may differ. The local D1 data set also differs from Turso.
 - The P1-8 gate enforces medians, not every run. One subject-hub run scored 99 while the median was 100; a single slow run does not fail the audit. This avoids flaky gates, but a genuine regression that appears in only one of three runs can hide.
@@ -681,6 +707,39 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - Import the editorial CSV topic backfill (`docs/TOPIC_BACKFILL.md`); the schema is now live in production.
 - Provision Turso backup credentials and exercise a restore.
 - Migrate CSP `'unsafe-inline'` to nonces or hashes as a separate, test-heavy change.
+
+---
+
+### Phase 5 — deployed staging verification (2026-11-17)
+
+Staging was seeded and deployed from the authenticated local Wrangler session because the GitHub token lacking D1 permission is still an open blocker. The release branch is `release/audit-phase5`; production (`716d246`) was not touched.
+
+**Infrastructure**
+
+- Migrations **0021-0028** applied to `cuet-d1-staging`; practice import **7,527** rows; ranked import applied; explanation backfill reported practice **5,378 ai_draft / 26 banner / 2,123 none** and questions **5,645 / 28 / 2,206**.
+- `cuet-astro-staging` deployed, then re-deployed with `SITE_URL=https://cuet-astro-staging.cuet-platform.workers.dev` because `staging.cuetfreemocktest.com` has no DNS record.
+- Smoke: `/api/health`, `/mock-tests`, `/sitemap.xml` and `/mock/psychology-2024-07-19-shift-1/instructions` all returned **200**. The first text assertion expected `245 papers`; staging publishes **137**, so the workflow expectation was corrected to `137`.
+
+**Deployed QA**
+
+- `/dashboard` and `/admin` redirect **303** to `/login?next=...`; `/login` returns 200. There is no seeded staging operator, so authenticated staging pages could not be exercised.
+- `/sitemap.xml`: **219** URLs, **0** `/q/`, **0** private/auth/attempt/result URLs, **0** profile URLs, and every URL uses the workers.dev origin.
+- Homepage: **0** AdSense markers, **0** analytics loaders, **0** Cloudflare Insights beacons. `/ads.txt` is 404 while ads stay off.
+- Legacy redirects: `/practice`, `/mock-test`, `/mock-test/*`, `/cuet-ug-mock-test` and the old PYQ archive path return **301** to the canonical URLs. `/topics` and `/questions` are not routes and return 404.
+- Guest cookie: `/api/attempts/start` returned **201** with `__Host-cuet_guest=...; Max-Age=2592000; Path=/; HttpOnly; Secure; SameSite=Lax`. Replaying the token as `cuet_guest` returned **200 resumed**, set `__Host-cuet_guest` and deleted `cuet_guest`. `/attempt/3` was 200 with the guest cookie and 404 without it; `/result/3` redirected 303 to `/attempt/3` until the attempt is submitted. A POST without `Origin` or `Sec-Fetch-Site` returned **403**.
+- Google OAuth: `/api/auth/google?next=%2Fdashboard` redirects 303 to `/login?error=google_not_configured`, and `/login` renders the "not configured" notice with no Google link because the staging secrets are absent.
+
+**Lighthouse and accessibility**
+
+- Deployed staging Lighthouse: **6 of 7** routes pass; the Subject Hub Speed Index miss and its TTFB explanation are recorded in §13. Evidence lives in `docs/report/lighthouse-staging/`; the local baseline in `docs/report/lighthouse/` was restored from git.
+- Local re-verification after the a11y fixes: unit **618/618** across 70 files, `npm run build` clean (0 errors, 0 warnings, secret scan passed), full E2E **96 passed / 2 skipped**, full axe **272 scans / 0 WCAG A/AA violations / 0 horizontal overflow**.
+- The a11y fixes that came out of CI were the PYQ tag scroll container missing `tabindex="0"` and `/admin/seo` overflowing 375 px by 399 px. Source guards for the staging noindex are **5/5**.
+
+**Next**
+
+- Push `release/audit-phase5`, re-run CI, then deploy staging again so the `noindex` guard and committed `SITE_URL` are live and verify them by curl.
+- Obtain a D1-capable GitHub token, a staging admin/OAuth configuration and a DNS record for `staging.cuetfreemocktest.com` to close the operational blockers in §15.
+- Re-measure the Subject Hub on production before changing the Speed Index budget.
 
 ---
 

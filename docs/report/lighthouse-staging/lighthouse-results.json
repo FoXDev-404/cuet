@@ -1,0 +1,695 @@
+[
+  {
+    "page": "Home",
+    "theme": "light",
+    "url": "/",
+    "runs": 3,
+    "perfMedian": 99,
+    "perfMin": 99,
+    "perfMax": 100,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcpMs": 1192,
+    "tbtMs": 0,
+    "cls": 0,
+    "fcpMs": 1192,
+    "speedIndexMs": 3177,
+    "transferKb": 58.7,
+    "domNodes": 640,
+    "budgetPattern": "/",
+    "budgetPass": true,
+    "budgetChecks": [
+      {
+        "metric": "performanceScore",
+        "label": "Performance score",
+        "actual": 99,
+        "limit": 85,
+        "unit": "score",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "transferKb",
+        "label": "Transfer size",
+        "actual": 58.7,
+        "limit": 250,
+        "unit": "KB",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "lcpMs",
+        "label": "LCP",
+        "actual": 1192,
+        "limit": 4000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "tbtMs",
+        "label": "TBT",
+        "actual": 0,
+        "limit": 600,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "cls",
+        "label": "CLS",
+        "actual": 0,
+        "limit": 0.1,
+        "unit": "score",
+        "pass": true,
+        "required": true,
+        "note": "unitless"
+      },
+      {
+        "metric": "fcpMs",
+        "label": "FCP",
+        "actual": 1192,
+        "limit": 2000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "speedIndexMs",
+        "label": "Speed Index",
+        "actual": 3177,
+        "limit": 3500,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "domNodes",
+        "label": "Total DOM nodes",
+        "actual": 640,
+        "limit": 1200,
+        "unit": "nodes",
+        "pass": true,
+        "required": true,
+        "note": "Upper bound for initial DOM nodes"
+      }
+    ],
+    "topIssues": "Reduce initial server response time; Document request latency",
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "page": "Mock Test Hub",
+    "theme": "light",
+    "url": "/mock-tests",
+    "runs": 2,
+    "perfMedian": 100,
+    "perfMin": 100,
+    "perfMax": 100,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcpMs": 1095,
+    "tbtMs": 0,
+    "cls": 0,
+    "fcpMs": 1095,
+    "speedIndexMs": 2023,
+    "transferKb": 60,
+    "domNodes": 880,
+    "budgetPattern": "/mock-tests",
+    "budgetPass": true,
+    "budgetChecks": [
+      {
+        "metric": "performanceScore",
+        "label": "Performance score",
+        "actual": 100,
+        "limit": 85,
+        "unit": "score",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "transferKb",
+        "label": "Transfer size",
+        "actual": 60,
+        "limit": 250,
+        "unit": "KB",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "lcpMs",
+        "label": "LCP",
+        "actual": 1095,
+        "limit": 4000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "tbtMs",
+        "label": "TBT",
+        "actual": 0,
+        "limit": 600,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "cls",
+        "label": "CLS",
+        "actual": 0,
+        "limit": 0.1,
+        "unit": "score",
+        "pass": true,
+        "required": true,
+        "note": "unitless"
+      },
+      {
+        "metric": "fcpMs",
+        "label": "FCP",
+        "actual": 1095,
+        "limit": 2000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "speedIndexMs",
+        "label": "Speed Index",
+        "actual": 2023,
+        "limit": 3500,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "domNodes",
+        "label": "Total DOM nodes",
+        "actual": 880,
+        "limit": 1200,
+        "unit": "nodes",
+        "pass": true,
+        "required": true,
+        "note": "Upper bound for initial DOM nodes"
+      }
+    ],
+    "topIssues": "Network dependency tree; Render-blocking requests",
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "page": "Subject Hub",
+    "theme": "light",
+    "url": "/cuet-mock-test/english",
+    "runs": 2,
+    "perfMedian": 99,
+    "perfMin": 98,
+    "perfMax": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcpMs": 1105,
+    "tbtMs": 41,
+    "cls": 0,
+    "fcpMs": 1105,
+    "speedIndexMs": 3818,
+    "transferKb": 56.1,
+    "domNodes": 752,
+    "budgetPattern": "/cuet-mock-test/english",
+    "budgetPass": false,
+    "budgetChecks": [
+      {
+        "metric": "performanceScore",
+        "label": "Performance score",
+        "actual": 99,
+        "limit": 80,
+        "unit": "score",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "transferKb",
+        "label": "Transfer size",
+        "actual": 56.1,
+        "limit": 250,
+        "unit": "KB",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "lcpMs",
+        "label": "LCP",
+        "actual": 1105,
+        "limit": 4000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "tbtMs",
+        "label": "TBT",
+        "actual": 41,
+        "limit": 600,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "cls",
+        "label": "CLS",
+        "actual": 0,
+        "limit": 0.1,
+        "unit": "score",
+        "pass": true,
+        "required": true,
+        "note": "unitless"
+      },
+      {
+        "metric": "fcpMs",
+        "label": "FCP",
+        "actual": 1105,
+        "limit": 2000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "speedIndexMs",
+        "label": "Speed Index",
+        "actual": 3818,
+        "limit": 3500,
+        "unit": "ms",
+        "pass": false,
+        "required": true
+      },
+      {
+        "metric": "domNodes",
+        "label": "Total DOM nodes",
+        "actual": 752,
+        "limit": 1200,
+        "unit": "nodes",
+        "pass": true,
+        "required": true,
+        "note": "Upper bound for initial DOM nodes"
+      }
+    ],
+    "topIssues": "Reduce initial server response time; Document request latency",
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "page": "Mock Detail",
+    "theme": "light",
+    "url": "/mock/english-2026-06-06-shift-1",
+    "runs": 3,
+    "perfMedian": 99,
+    "perfMin": 99,
+    "perfMax": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcpMs": 1155,
+    "tbtMs": 0,
+    "cls": 0,
+    "fcpMs": 1155,
+    "speedIndexMs": 3107,
+    "transferKb": 63,
+    "domNodes": 268,
+    "budgetPattern": "/mock/[slug]",
+    "budgetPass": true,
+    "budgetChecks": [
+      {
+        "metric": "performanceScore",
+        "label": "Performance score",
+        "actual": 99,
+        "limit": 85,
+        "unit": "score",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "transferKb",
+        "label": "Transfer size",
+        "actual": 63,
+        "limit": 200,
+        "unit": "KB",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "lcpMs",
+        "label": "LCP",
+        "actual": 1155,
+        "limit": 4000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "tbtMs",
+        "label": "TBT",
+        "actual": 0,
+        "limit": 600,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "cls",
+        "label": "CLS",
+        "actual": 0,
+        "limit": 0.1,
+        "unit": "score",
+        "pass": true,
+        "required": true,
+        "note": "unitless"
+      },
+      {
+        "metric": "fcpMs",
+        "label": "FCP",
+        "actual": 1155,
+        "limit": 2000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "speedIndexMs",
+        "label": "Speed Index",
+        "actual": 3107,
+        "limit": 3500,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "domNodes",
+        "label": "Total DOM nodes",
+        "actual": 268,
+        "limit": 1200,
+        "unit": "nodes",
+        "pass": true,
+        "required": true,
+        "note": "Upper bound for initial DOM nodes"
+      }
+    ],
+    "topIssues": "Reduce initial server response time; Page is blocked from indexing",
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "page": "Instructions",
+    "theme": "light",
+    "url": "/mock/english-2026-06-06-shift-1/instructions",
+    "runs": 2,
+    "perfMedian": 100,
+    "perfMin": 100,
+    "perfMax": 100,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcpMs": 1040,
+    "tbtMs": 0,
+    "cls": 0,
+    "fcpMs": 1040,
+    "speedIndexMs": 2407,
+    "transferKb": 53.2,
+    "domNodes": 207,
+    "budgetPattern": "/mock/[slug]/instructions",
+    "budgetPass": true,
+    "budgetChecks": [
+      {
+        "metric": "performanceScore",
+        "label": "Performance score",
+        "actual": 100,
+        "limit": 85,
+        "unit": "score",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "transferKb",
+        "label": "Transfer size",
+        "actual": 53.2,
+        "limit": 200,
+        "unit": "KB",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "lcpMs",
+        "label": "LCP",
+        "actual": 1040,
+        "limit": 4000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "tbtMs",
+        "label": "TBT",
+        "actual": 0,
+        "limit": 600,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "cls",
+        "label": "CLS",
+        "actual": 0,
+        "limit": 0.1,
+        "unit": "score",
+        "pass": true,
+        "required": true,
+        "note": "unitless"
+      },
+      {
+        "metric": "fcpMs",
+        "label": "FCP",
+        "actual": 1040,
+        "limit": 2000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "speedIndexMs",
+        "label": "Speed Index",
+        "actual": 2407,
+        "limit": 3500,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "domNodes",
+        "label": "Total DOM nodes",
+        "actual": 207,
+        "limit": 1200,
+        "unit": "nodes",
+        "pass": true,
+        "required": true,
+        "note": "Upper bound for initial DOM nodes"
+      }
+    ],
+    "topIssues": "Reduce initial server response time; Page is blocked from indexing; Network dependency tree",
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "page": "Attempt Screen",
+    "theme": "light",
+    "url": "/attempt/5",
+    "runs": 2,
+    "perfMedian": 100,
+    "perfMin": 100,
+    "perfMax": 100,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 58,
+    "lcpMs": 1107,
+    "tbtMs": 0,
+    "cls": 0,
+    "fcpMs": 1107,
+    "speedIndexMs": 2680,
+    "transferKb": 70,
+    "domNodes": 201,
+    "budgetPattern": "/attempt/[id]",
+    "budgetPass": true,
+    "budgetChecks": [
+      {
+        "metric": "performanceScore",
+        "label": "Performance score",
+        "actual": 100,
+        "limit": 75,
+        "unit": "score",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "transferKb",
+        "label": "Transfer size",
+        "actual": 70,
+        "limit": 300,
+        "unit": "KB",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "lcpMs",
+        "label": "LCP",
+        "actual": 1107,
+        "limit": 4000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "tbtMs",
+        "label": "TBT",
+        "actual": 0,
+        "limit": 600,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "cls",
+        "label": "CLS",
+        "actual": 0,
+        "limit": 0.1,
+        "unit": "score",
+        "pass": true,
+        "required": true,
+        "note": "unitless"
+      },
+      {
+        "metric": "fcpMs",
+        "label": "FCP",
+        "actual": 1107,
+        "limit": 2000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "speedIndexMs",
+        "label": "Speed Index",
+        "actual": 2680,
+        "limit": 3500,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "domNodes",
+        "label": "Total DOM nodes",
+        "actual": 201,
+        "limit": 1200,
+        "unit": "nodes",
+        "pass": true,
+        "required": true,
+        "note": "Upper bound for initial DOM nodes"
+      }
+    ],
+    "topIssues": "Reduce initial server response time; Document does not have a meta description",
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "page": "Result Screen",
+    "theme": "light",
+    "url": "/result/4",
+    "runs": 2,
+    "perfMedian": 100,
+    "perfMin": 99,
+    "perfMax": 100,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcpMs": 973,
+    "tbtMs": 0,
+    "cls": 0,
+    "fcpMs": 973,
+    "speedIndexMs": 2983,
+    "transferKb": 63.5,
+    "domNodes": 278,
+    "budgetPattern": "/result/[id]",
+    "budgetPass": true,
+    "budgetChecks": [
+      {
+        "metric": "performanceScore",
+        "label": "Performance score",
+        "actual": 100,
+        "limit": 85,
+        "unit": "score",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "transferKb",
+        "label": "Transfer size",
+        "actual": 63.5,
+        "limit": 250,
+        "unit": "KB",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "lcpMs",
+        "label": "LCP",
+        "actual": 973,
+        "limit": 4000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "tbtMs",
+        "label": "TBT",
+        "actual": 0,
+        "limit": 600,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "cls",
+        "label": "CLS",
+        "actual": 0,
+        "limit": 0.1,
+        "unit": "score",
+        "pass": true,
+        "required": true,
+        "note": "unitless"
+      },
+      {
+        "metric": "fcpMs",
+        "label": "FCP",
+        "actual": 973,
+        "limit": 2000,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "speedIndexMs",
+        "label": "Speed Index",
+        "actual": 2983,
+        "limit": 3500,
+        "unit": "ms",
+        "pass": true,
+        "required": true
+      },
+      {
+        "metric": "domNodes",
+        "label": "Total DOM nodes",
+        "actual": 278,
+        "limit": 1200,
+        "unit": "nodes",
+        "pass": true,
+        "required": true,
+        "note": "Upper bound for initial DOM nodes"
+      }
+    ],
+    "topIssues": "Reduce initial server response time; Page is blocked from indexing",
+    "lighthouseVersion": "13.6.0"
+  }
+]
