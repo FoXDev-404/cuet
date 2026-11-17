@@ -5,6 +5,8 @@ integration is inert when its variables are absent or malformed: no script, tag 
 button is emitted, and no request is made. Values live in `wrangler.jsonc`
 under `vars` when they are public, or as Worker secrets when they are credentials.
 Local values go in `.dev.vars` (gitignored; start from `.dev.vars.example`).
+`.env.example` is a committed pointer for tools that expect that filename; it
+carries no keys, so `.dev.vars.example` stays the single source of truth.
 
 ## Variable reference
 

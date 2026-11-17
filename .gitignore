@@ -13,6 +13,7 @@ playwright-report/
 
 # Local secrets
 .env*
+!.env.example
 .dev.vars
 
 # Lighthouse session headers (cookies must never be committed)

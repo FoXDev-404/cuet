@@ -320,7 +320,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P2-6 — Cookie prefixes.** Move to `__Host-` names with a one-time logout.
 - **P2-7 — CSP/COOP/CORP.** Replace `'unsafe-inline'` with nonces/hashes; add COOP/CORP; narrow ad domains when ads are off.
 - **P2-8 — Result-page ad decision.** Add a consent-gated post-test unit or explicitly document "no result ads".
-- **P2-9 — Environment docs.** Add `.env.example` alongside `.dev.vars.example`.
+- **P2-9 — Environment docs. Resolved in Phase 4.** `.env.example` is now a committed, comment-only pointer to `.dev.vars.example`; `.gitignore` keeps `.env*` ignored but re-includes `.env.example`, and a unit guard fails if the pointer ever duplicates a key.
 - **P2-10 — Attempt LCP/CLS. Resolved in Phase 3.** The share-font regression was the CLS/LCP driver. With intent-only prerender, the attempt page is 100 / LCP 1.24 s / CLS 0 in all three runs; first-image preload is no longer needed to meet the budget.
 - **P2-11 — Public-profile intent.** Link profiles from leaderboard/discussion or keep them noindex and out of the sitemap.
 - **P2-12 — API consistency.** Internal only: consider `/api/v1` and a consistent `{ ok, error }` envelope when the API is next touched; not worth a standalone refactor.
@@ -385,6 +385,7 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 3 | PERF-3: `scripts/lighthouse-audit.mjs` was stale, used hard-coded ids and did not enforce `performance-budget.json` | Rewrote route discovery and auth seeding, added `scripts/lib/perf-budget.mjs`, and made the runner exit non-zero on any route/global breach; it now records the Lighthouse version | 18 unit tests; 9/9 routes pass; evidence in `docs/report/lighthouse/` |
 | 4 | SEO-6 / P1-13: E2E fixture questions could enter `/sitemap.xml` and be served as indexable `/q/` pages | Strengthened `isFixtureQuestion` (text starting with `e2e`/`fixture`, plus the existing markers) and applied it in `resolvePublicQuestion`, so page robots, JSON-LD and the sitemap share one rule; added `LIGHTHOUSE_PUBLIC_QUESTION` for audits when the sitemap has no eligible question | Focused E2E sitemap test passed (1/1); unit suite in §17; sitemap returns `qUrls=0` locally after removing the fixture; 3-run Lighthouse verification 9/9 PASS |
 | 4 | UX-2 / P2-2/P2-3/P2-4: small leaderboard links, stale autosave copy, 61-character leaderboard title | Raised every small leaderboard link to a 24 px target, changed the autosave copy to 15 seconds and shortened the title to 51 characters; added source guards | Focused tests 20/20; full suite **590/590**; build clean; preview measured title 51 and every sampled leaderboard link 24 px |
+| 4 | DOC-1 / P2-9: environment docs only covered `.dev.vars.example`, so tools that look for `.env.example` found nothing | Added a comment-only `.env.example` that points at `.dev.vars.example`, re-included it in `.gitignore`, and added a unit guard that fails if the pointer duplicates a key | Focused `env-separation` **7/7**; full suite in §17 |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -613,10 +614,11 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - P2-2: every small leaderboard link uses `inline-block py-0.5` (or `line-clamp-1 py-0.5`) and measures 24 px high.
 - P2-3: attempt help text now says 15 seconds, matching the `15000` ms autosave interval.
 - P2-4: `/leaderboard` title shortened from 61 to 51 characters.
+- P2-9: added a comment-only `.env.example` that points at `.dev.vars.example`. `.gitignore` keeps `.env*` ignored but re-includes the pointer, and a unit guard fails if a key is ever duplicated into it.
 
 **Verification**
 
-- Unit: **590/590** across 66 files, including the new fixture-text and runner-override guards; focused `attempt-time` + `seo-consistency` **20/20**.
+- Unit: **590/590** across 66 files, including the new fixture-text and runner-override guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7** after the P2-9 guard.
 - Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
 - E2E: focused sitemap test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
 - Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
@@ -624,7 +626,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 **Next**
 
-- P2-9 `.env.example` pointer, then P2-5/P2-7/P2-8/P2-11/P2-12.
+- P2-5/P2-7/P2-8/P2-11/P2-12.
 - Apply `npm run db:turso:migrate` when the next push is allowed so `0028` reaches Turso; re-run the production link crawl after deploy.
 
 ---

@@ -66,6 +66,22 @@ describe('Environment Separation & Guard Policies', () => {
     expect(pkg.scripts?.deploy).toContain('scripts/deploy-production.mjs');
   });
 
+  it('ships an .env.example pointer without duplicating configuration', () => {
+    const example = readFileSync(resolve(process.cwd(), '.env.example'), 'utf8');
+    expect(example).toContain('.dev.vars.example');
+    expect(example).toContain('cp .dev.vars.example .dev.vars');
+
+    // Keep one source of truth: no keys duplicated into the pointer file.
+    const assignments = example
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => /^[A-Z0-9_]+=/.test(line));
+    expect(assignments).toEqual([]);
+
+    const ignore = readFileSync(resolve(process.cwd(), '.gitignore'), 'utf8');
+    expect(ignore).toContain('!.env.example');
+  });
+
   it('check-env-separation.mjs script passes and exits with code 0', () => {
     const output = execSync('node scripts/check-env-separation.mjs', { encoding: 'utf8' });
     expect(output).toContain('Environment separation check PASSED');
