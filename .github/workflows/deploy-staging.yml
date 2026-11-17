@@ -13,7 +13,7 @@ on:
       staging_url:
         description: Staging URL used for the smoke check
         required: true
-        default: https://staging.cuetfreemocktest.com
+        default: https://cuet-astro-staging.cuet-platform.workers.dev
         type: string
 
 permissions:

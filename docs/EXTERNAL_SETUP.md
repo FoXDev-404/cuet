@@ -70,8 +70,8 @@ hits, so visitors keep stale HTML long after the edge copy expires. Never add a 
 Rule that covers `/attempt`, `/result`, `/api`, `/admin`, `/dashboard` or authenticated
 responses; those paths are deliberately excluded in the middleware.
 
-The current `wrangler.jsonc` value points at staging. Replace it for production or use a
-separate Wrangler environment with its own `SITE_URL` and `vars`.
+The top-level `wrangler.jsonc` value is for local development; every deployed
+environment (`staging`, `production`) sets its own `SITE_URL`.
 
 ## 2. Google OAuth
 

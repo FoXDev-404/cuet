@@ -104,7 +104,11 @@
       ],
       "vars": {
         "ENV": "staging",
-        "SITE_URL": "https://staging.cuetfreemocktest.com",
+        // workers.dev is the reachable staging origin until the custom
+        // hostname has a DNS record; switch this back to
+        // https://staging.cuetfreemocktest.com after DNS and the Google
+        // redirect URI are configured.
+        "SITE_URL": "https://cuet-astro-staging.cuet-platform.workers.dev",
         "DEV_SHOW_RESET_LINK": "1",
         "ADMIN_AUTH_MODE": "session",
         "CF_ACCESS_TEAM_DOMAIN": "",

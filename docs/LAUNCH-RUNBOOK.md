@@ -117,7 +117,28 @@ npm run build
 7. Watch policy and performance reports for the first week; remove the slot by clearing
    `ADSENSE_SLOT_ID` or `ADSENSE_CMP_ACTIVE` if fill or layout is poor.
 
-## 8. Backups
+## 8. Staging release path
+
+Staging is a separate Worker (`cuet-astro-staging`) and D1 database
+(`cuet-d1-staging`). The **Deploy staging** workflow imports the committed practice
+library, deploys the Worker and runs the smoke check; production resources are never
+touched.
+
+1. Make sure `CLOUDFLARE_API_TOKEN` has **D1 Edit** as well as Workers and KV write.
+   Without D1 permission the migration step fails with Cloudflare error `7403` even
+   though the Worker itself could deploy.
+2. Dispatch **Deploy staging** from `main` or a `release/*` branch with
+   `confirm=deploy-staging`.
+3. The committed staging `SITE_URL` is the workers.dev origin until
+   `staging.cuetfreemocktest.com` has a DNS record; switch it back and add the
+   custom hostname to the Google OAuth redirect URI list once DNS is fixed.
+4. Staging responses carry `X-Robots-Tag: noindex, nofollow` and `robots.txt` disallows
+   every crawler while `ENV=staging`; do not remove that guard for convenience.
+5. Google sign-in on staging needs `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` on the
+   staging Worker. Without them `/api/auth/google` returns
+   `/login?error=google_not_configured`.
+
+## 9. Backups
 
 1. Make the GitHub repository private if it is not already.
 2. Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as Actions secrets.
@@ -127,7 +148,7 @@ npm run build
    than failing. Restore the secret.
 5. Record where the artifact is stored and who can access it.
 
-## 9. Production QA and sign-off
+## 10. Production QA and sign-off
 
 ```sh
 STAGING_BASE_URL=https://<production-domain> \
