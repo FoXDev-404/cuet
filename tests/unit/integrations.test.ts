@@ -5,6 +5,7 @@ import {
   adsTxtRecord,
   adSlotAllowed,
   adsenseClient,
+  adsenseCmpActive,
   adsenseSlot,
   analyticsToken,
   googleSiteVerification,
@@ -138,5 +139,24 @@ describe("optional integration flags", () => {
     expect(attempt).not.toContain("pagead2.googlesyndication.com");
     expect(attempt).not.toContain("adsenseClient");
     expect(attempt).not.toContain("adsenseSlot");
+  });
+});
+
+describe("ads CMP attestation", () => {
+  it("keeps ads off until a certified CMP is attested", () => {
+    expect(adsenseCmpActive({})).toBe(false);
+    expect(adsenseCmpActive({ ADSENSE_CMP_ACTIVE: "" })).toBe(false);
+    expect(adsenseCmpActive({ ADSENSE_CMP_ACTIVE: "0" })).toBe(false);
+    expect(adsenseCmpActive({ ADSENSE_CMP_ACTIVE: "yes" })).toBe(false);
+    expect(adsenseCmpActive({ ADSENSE_CMP_ACTIVE: "TODO_VERIFY" })).toBe(false);
+    expect(adsenseCmpActive({ ADSENSE_CMP_ACTIVE: "1" })).toBe(true);
+    expect(adsenseCmpActive({ ADSENSE_CMP_ACTIVE: "true" })).toBe(true);
+  });
+
+  it("requires the CMP attestation in both ad render paths", () => {
+    const layout = readFileSync(resolve(process.cwd(), "src/layouts/BaseLayout.astro"), "utf8");
+    expect(layout).toContain("adsenseCmpActive(env)");
+    const slot = readFileSync(resolve(process.cwd(), "src/components/AdSlot.astro"), "utf8");
+    expect(slot).toContain("adsenseCmpActive(env)");
   });
 });

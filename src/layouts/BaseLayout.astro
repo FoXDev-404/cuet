@@ -12,6 +12,7 @@ import { can } from "../lib/auth/admin";
 import { loadDraftSettings } from "../lib/admin/settings";
 import {
   adsenseClient,
+  adsenseCmpActive,
   adSlotAllowed,
   analyticsToken,
   ga4MeasurementId,
@@ -125,7 +126,8 @@ const gtmId = gtmContainerId(env);
 // GA4 direct gtag.js is used only when GTM isn't managing analytics, so page
 // views are never double-counted across the two pipelines.
 const ga4Id = gtmId ? "" : ga4MeasurementId(env);
-const adsCanRender = shouldServeAds(ads, robots) && adSlotAllowed(path);
+const adsCanRender =
+  shouldServeAds(ads, robots) && adSlotAllowed(path) && adsenseCmpActive(env);
 const adClient = adsCanRender ? adsenseClient(env) : "";
 
 const desktopNav = [

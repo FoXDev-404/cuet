@@ -41,5 +41,6 @@ declare namespace Cloudflare {
     GSC_VERIFICATION?: string;
     ADSENSE_CLIENT?: string;
     ADSENSE_SLOT_ID?: string;
+    ADSENSE_CMP_ACTIVE?: string;
   }
 }

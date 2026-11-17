@@ -12,6 +12,7 @@ export type IntegrationEnv = {
   GSC_VERIFICATION?: string;
   ADSENSE_CLIENT?: string;
   ADSENSE_SLOT_ID?: string;
+  ADSENSE_CMP_ACTIVE?: string;
   GTM_CONTAINER_ID?: string;
   GA4_MEASUREMENT_ID?: string;
 };
@@ -81,6 +82,16 @@ export function adsenseClient(envLike: IntegrationEnv): string {
 export function adsenseSlot(envLike: IntegrationEnv): string {
   const slot = clean(envLike.ADSENSE_SLOT_ID);
   return ADSENSE_SLOT.test(slot) ? slot : "";
+}
+
+/**
+ * Ads are allowed only after the operator attests that a Google-certified
+ * consent management platform is live. The client/slot pair alone must never
+ * activate advertising.
+ */
+export function adsenseCmpActive(envLike: IntegrationEnv): boolean {
+  const value = clean(envLike.ADSENSE_CMP_ACTIVE).toLowerCase();
+  return value === "1" || value === "true";
 }
 
 /** The one-line ads.txt record required for an AdSense publisher. */

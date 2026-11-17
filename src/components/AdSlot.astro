@@ -1,6 +1,6 @@
 ---
 import { env } from "cloudflare:workers";
-import { adsenseClient, adsenseSlot, adSlotAllowed } from "../lib/integrations";
+import { adsenseClient, adsenseCmpActive, adsenseSlot, adSlotAllowed } from "../lib/integrations";
 
 /**
  * Manual AdSense unit.
@@ -17,7 +17,9 @@ interface Props {
 const { label = "Advertisement" } = Astro.props;
 const client = adsenseClient(env);
 const slot = adsenseSlot(env);
-const visible = Boolean(client && slot && adSlotAllowed(Astro.url.pathname));
+const visible = Boolean(
+  client && slot && adsenseCmpActive(env) && adSlotAllowed(Astro.url.pathname),
+);
 ---
 
 {visible ? (
