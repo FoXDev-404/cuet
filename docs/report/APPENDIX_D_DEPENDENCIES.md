@@ -8,7 +8,7 @@ _Extracted from `package.json` and `package-lock.json` on 2026-11-04T20:12:11.32
 | :--- | :---: | :--- |
 | `@astrojs/cloudflare` | `14.4.3` | Cloudflare Workers adapter |
 | `@astrojs/react` | `^7.1.2` | Interactive client components |
-| `astro` | `7.4.4` | Core web framework with SSR support |
+| `astro` | `7.4.12` | Core web framework with SSR support |
 | `html-to-image` | `^1.11.13` | Production runtime dependency |
 | `jose` | `^6.1.0` | JWT verification for Cloudflare Access |
 | `katex` | `0.19.1` | LaTeX math rendering for questions and formulas |

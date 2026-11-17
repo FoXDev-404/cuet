@@ -131,7 +131,7 @@ The next exam cycle year is dynamically loaded from the `exam_info` table (store
 
 ### Core Runtime & Dependency Versions (from `package-lock.json`)
 - **Language:** TypeScript 5.9.3 (Target: ES2022)
-- **Web Framework:** Astro v7.4.4 (Server-Side Rendered mode)
+- **Web Framework:** Astro v7.4.12 (Server-Side Rendered mode)
 - **Runtime Adapter:** `@astrojs/cloudflare` v14.4.3
 - **Component Engine:** React v19.3.0 (`@astrojs/react` v7.1.2)
 - **Styling Engine:** Tailwind CSS v4.3.3 (Semantic CSS variables)

@@ -4,7 +4,7 @@
   "dependencies": {
     "packageVersion": "0.1.0",
     "dependencies": {
-      "astro": "7.4.4",
+      "astro": "7.4.12",
       "@astrojs/cloudflare": "14.4.3",
       "tailwindcss": "4.3.3",
       "@playwright/test": "1.64.1",
@@ -19,7 +19,7 @@
     "allDependencies": {
       "@astrojs/cloudflare": "^14.4.3",
       "@astrojs/react": "^7.1.2",
-      "astro": "^7.4.4",
+      "astro": "^7.4.12",
       "html-to-image": "^1.11.13",
       "jose": "^6.1.0",
       "katex": "^0.19.1",

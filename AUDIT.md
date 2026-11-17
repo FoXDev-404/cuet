@@ -41,7 +41,7 @@ The requested stack was Cloudflare Pages/Functions, D1, KV and Firebase Auth (Go
 | Analytics | Not specified | GA4 `G-Y1JPT7SNQJ` and Cloudflare Web Analytics are live; no GTM, no AdSense, no Funding Choices | P1-4 adds an opt-in gate and policy disclosure in code; production rollout is still pending deployment. Cloudflare analytics stays unconditional and cookieless. |
 | Deploy | — | `npm run deploy` builds with the production env and runs `wrangler deploy`; production deployment matches HEAD | Keep. |
 
-Core versions: Astro `7.4.4`, Tailwind `4.3.3`, React `19.3.0` (islands), TypeScript `5.9.3`, Vitest `5.0.5`, Playwright `1.64.1`, Wrangler `4.156.0`.
+Core versions: Astro `7.4.12`, Tailwind `4.3.3`, React `19.3.0` (islands), TypeScript `5.9.3`, Vitest `5.0.5`, Playwright `1.64.1`, Wrangler `4.156.0`.
 
 ---
 
@@ -107,6 +107,8 @@ Redirects are implemented in `src/middleware.ts` (there is no `public/_redirects
 | Responsive pass | **PASS** | 360/414/768/1024/1440 on `/`, `/mock-tests`, instructions, `/blog`, `/leaderboard`, PYQ archive and a live attempt: 0 overflow, exactly one H1 per page |
 
 The refreshed `docs/report/a11y-results.json` records the 272/272 pass at commit `716d246` with `/attempt/533` as the attempt fixture.
+
+P1-11 (Phase 4) upgraded Astro **7.4.4 -> 7.4.12**, which clears both `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`; `npm audit` now reports **0 vulnerabilities**. The counters in the table above are the original baseline.
 
 ---
 
@@ -241,7 +243,7 @@ Gaps:
 | SEC-6 | P2 | No `Cross-Origin-Opener-Policy` or `Cross-Origin-Resource-Policy` | Fixed in Phase 4 (P2-7): every Worker response now carries COOP `same-origin-allow-popups` (OAuth popups keep working) and CORP `same-origin`. |
 | SEC-7 | P2 | Production admin auth uses the session fallback (`ADMIN_ALLOW_SESSION_IN_PROD=1`); Cloudflare Access is not configured | Enable Access, or document the accepted risk and enforce a strong password + login rate limit. Do not flip the flag without an Access app. |
 | SEC-8 | P2 | `.env.example` is missing (`.dev.vars.example` exists) | Add a documented example with empty values and comments. |
-| SEC-9 | P2 | `npm audit` reports 1 moderate Astro XSS advisory | Update Astro within the supported range and re-run build/tests. |
+| SEC-9 | P2 | `npm audit` reports 1 moderate Astro XSS advisory | Fixed in Phase 4 (P1-11): Astro upgraded 7.4.4 -> 7.4.12 within the `^7` range, clearing `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`; `npm audit` reports 0 vulnerabilities. |
 
 Operational security note: the D1 backup workflow exists, but its secrets are missing, so backups are not running. This is an ops P1, not a code defect.
 
@@ -306,7 +308,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P1-8 — Performance governance. Resolved in Phase 3.** `scripts/lighthouse-audit.mjs` now discovers live mocks/questions, seeds guest/admin sessions, reads `performance-budget.json` and exits non-zero when a route or global metric breaches its cap. All nine audited routes pass; attempt transfer fell to 68.7 KB and admin CLS to 0. See §4, §8 and §17.
 - **P1-9 — Turso/D1 single source of truth.** Document the production engine, update deploy/runbook commands, apply migration `0027` + topic backfill to Turso, and make `check:env` assert the effective engine. Keep D1 only as an explicit local/legacy path until a migration decision is made.
 - **P1-10 — Local/production parity.** Remove the localhost exception for trailing-slash/canonical-host redirects in a test-only-safe way, or add a dedicated preview mode that matches production and document it.
-- **P1-11 — Dependency advisory.** Update Astro for `GHSA-mh32-jxcr-mh9f`; re-run build/tests/a11y.
+- **P1-11 — Dependency advisory. Resolved in Phase 4.** Astro upgraded to `7.4.12` (`npm install astro@^7.4.12`), clearing `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`. `docs/report/facts.json` and the dependency references were refreshed, the build is clean, the full unit suite passes and `npm audit` reports **0 vulnerabilities**.
 - **P1-12 — Backups.** Provision the D1/Turso backup workflow secrets and verify a restore, or document the accepted risk and manual backup runbook.
 - **P1-13 — Sitemap fixture guard. Resolved in Phase 4.** `isFixtureQuestion` now treats text that starts with `e2e`/`fixture` (and the existing fixture markers) as synthetic. `resolvePublicQuestion` applies that rule to `seoEligible`, so the `/q/` page, the sitemap and the structured data all share one eligibility check. The sitemap E2E proves a non-fixture eligible question is included while an `E2E fixture ...` question is excluded, and the unit guards pin the rule plus the resolver source.
 
@@ -391,6 +393,7 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 4 | SEO-6 / P2-5: blog structured data had no explicit decision or guard for `FAQPage`/`Quiz`/`LearningResource` | Kept `Article` + `BreadcrumbList` on blog posts, added `LearningResource` to the disallowed set, included `src/pages/blog/[slug].astro` in both structured-data guard tests, and documented the rationale | Focused unit `structured-data` **6/6**; full suite in §17 |
 | 4 | SEC-5 / SEC-6 / P2-7: CSP advertised dormant ad/analytics hosts, lacked COOP/CORP, and the global policy overwrote the media route's sandbox policy | Built the CSP from live integration state, added COOP `same-origin-allow-popups` and CORP `same-origin`, and stopped replacing route-specific policies | Focused `security-headers` + `middleware-headers` **18/18**; preview: dormant CSP had no ad/analytics hosts, enabled CSP had all of them, and COOP/CORP were present on `/`, `/login` and `/mock-tests`; full suite in §17 |
 | 4 | API-1 / P2-12: `questions/[id]/report.ts` hand-rolled the JSON error envelope, and `/api/v1` had no decision | Routed the route through `apiError()`, kept `/api` unversioned for internal-only use, and added guards against a new raw error envelope or a `v1` prefix | Focused `api-conventions` **3/3**; full suite in §17 |
+| 4 | SEC-9 / P1-11: `npm audit` reported a moderate Astro advisory (`GHSA-mh32-jxcr-mh9f` plus `GHSA-r3h5-4585-7x3w`) | Upgraded Astro **7.4.4 -> 7.4.12** within the `^7` range and refreshed the tracked versions in `docs/report/facts.json`, `APPENDIX_D_DEPENDENCIES.md`, `PROJECT_REPORT.md` and `BLUEPRINT-V2-COMPLIANCE.md` | Full suite **608/608**; build clean; `npm audit` **0 vulnerabilities** |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -627,11 +630,13 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - P2-5: blog posts emit `Article` + `BreadcrumbList`; `FAQPage`, `Quiz`, `Course` and `LearningResource` stay disallowed. Both structured-data guard tests now cover `src/pages/blog/[slug].astro`, and `docs/SEO_RULES.md` explains why `LearningResource` is not a fit for editorial guides.
 - P2-7: COOP `same-origin-allow-popups` and CORP `same-origin` are set on every Worker response. The CSP is built from live integration state, so ad and analytics hosts appear only when configured, and route-specific policies are preserved. `'unsafe-inline'` remains until the nonce/hash migration (§15).
 - P2-12: kept `/api` unversioned for internal-only use and moved the last hand-rolled error response in `questions/[id]/report.ts` onto `apiError()`. A unit guard pins the shared envelope and blocks a `v1` prefix until an external consumer exists.
+- P1-11: upgraded Astro **7.4.4 -> 7.4.12** within the `^7` range, which clears `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`. Refreshed `docs/report/facts.json` and the three documents that cite the framework version.
 
 **Verification**
 
 - Unit: **608/608** across 68 files, including the fixture-text, runner-override, `.env.example`, result-ad, profile-sitemap, structured-data, CSP and API-convention guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**; focused `seo-indexability` **19/19**; focused `structured-data` **6/6**; focused `security-headers` + `middleware-headers` **18/18**; focused `api-conventions` **3/3**.
 - Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
+- Dependencies: `npm audit` reports **0 vulnerabilities** after the Astro 7.4.12 upgrade; `package-lock.json` and `docs/report/facts.json` agree on the tracked versions.
 - E2E: focused sitemap test **1/1 passed**; focused public-profile test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
 - Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
 - Preview measurement: `/leaderboard` title 51 characters; every sampled small leaderboard link rendered at 24 px.
