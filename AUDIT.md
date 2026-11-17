@@ -380,7 +380,18 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | `/attempt/[id]` | 100 | 100 | 100 | 58 | 1.11 s | 0 ms | 0 | 70.0 KB | PASS |
 | `/result/[id]` | 100 | 100 | 100 | 69 | 0.97 s | 0 ms | 0 | 63.5 KB | PASS |
 
-The Subject Hub Speed Index breach is a staging artifact of TTFB, not a rendering regression: the two valid runs reported SI 3723 ms and 3913 ms with LCP 0.99 s and 1.22 s, and the Lighthouse LCP breakdown attributes 1754 ms to time-to-first-byte. Staging has `ENV=staging`, which deliberately skips the production edge cache, so TTFB was 1.25-1.53 s versus roughly 0.3 s locally. Perf is still 99 and every other metric is inside budget. Re-measure on the production cache path before treating this as a budget change; do not raise the budget from a staging-only sample.
+The Subject Hub Speed Index breach is a staging artifact of TTFB, not a rendering regression: the two valid runs reported SI 3723 ms and 3913 ms with LCP 0.99 s and 1.22 s, and the Lighthouse LCP breakdown attributes 1754 ms to time-to-first-byte. Staging has `ENV=staging`, which deliberately skips the production edge cache, so TTFB was 1.25-1.53 s versus roughly 0.3 s locally. Perf is still 99 and every other metric is inside budget.
+
+**Production Subject Hub re-measure (2026-11-17, after release).** Same route, same mobile/light method, against `https://cuetfreemocktest.com`. Evidence and the exact command are in `docs/report/lighthouse-production/`.
+
+| Run | Perf | Speed Index | LCP | TBT | CLS | TTFB |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 (cold cache) | 98 | 3534 ms | 1598 ms | 0 ms | 0 | 1321 ms |
+| 2 | 100 | 1491 ms | 1072 ms | 0 ms | 0 | 172 ms |
+| 3 | 99 | 1641 ms | 1616 ms | 0 ms | 0 | 211 ms |
+| **Median** | **99** | **1641 ms** | **1598 ms** | **0 ms** | **0** | **211 ms** |
+
+Production is comfortably inside the 3500 ms budget once the edge cache is warm (runs 2-3). Run 1 populated the cache. The staging miss is confirmed as staging-only and the budget stays at 3500 ms; a cold-cache first request after a deploy can still measure ~3.5 s, which is why the gate uses medians.
 
 Lighthouse returned `NO_NAVSTART` on 5 of 21 staging runs. The runner tolerated one failed run per route and every route kept at least two valid samples, so all medians above are computed from real navigations.
 
@@ -428,7 +439,7 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - AdSense is dormant, and the attempt-page violation (ADS-1) was fixed in Phase 1; ads remain off until consent, `/ads.txt` and the go-live checklist are complete. `ADSENSE_CMP_ACTIVE` now gates both the loader and the unit, but it is an operator attestation, not technical proof: a Google-certified CMP, policy review and AdSense approval are still required before ads can render.
 - GA4 is now opt-in and public-only, so its pageviews will be lower than Cloudflare Web Analytics (which counts every page) and lower than historical GA4 totals. Do not reconcile the two as if they were the same measure.
 - A visitor who clears site data or blocks `localStorage` loses the stored choice; the banner returns and analytics stays off until they choose again. This fails closed, but the choice cannot be remembered.
-- The consent banner is not exercised by Lighthouse with a real GA4 id. Its markup is small and fixed-position, but the configured path should be re-measured on the deployed origin before go-live.
+- The consent banner is now exercised on the deployed origin with the real GA4 id: the production Subject Hub Lighthouse run (2026-11-17) rendered "Your privacy choices" with Allow/Reject and made **0** analytics requests while no choice was stored. The post-accept path (GA4 actually loading) is still not measured, because it deliberately loads a third-party script; check it on a staging session before go-live.
 - The privacy policy and support copy now describe Google-only sign-in accurately, including the four production accounts that still carry an unused legacy password hash. Those hashes cannot be used to sign in and are removed when the account is deleted; no password-reset route is exposed.
 - The CSP still allows `'unsafe-inline'` for scripts and styles. Astro's hydration bootstrap, the inline consent/theme/share snippets and dynamic `style=` attributes need nonces or hashes before that directive can be removed. Astro 7 has native CSP hashing, but adopting it must also cover `is:inline` third-party snippets (GA4/GTM/AdSense), so it stays a separate, test-heavy migration. Until then, CSP does not stop an injected inline script.
 - Session and guest cookies now use `__Host-` names (P2-6). Legacy `cuet_session` / `cuet_guest` cookies are still read during the rollout window; a valid legacy token is promoted and the old cookie deleted on its next request. Remove the dual-read path after all live sessions have rotated (at most 30 days after deploy), then re-run the cookie unit/E2E guards.
@@ -761,12 +772,13 @@ Staging was seeded and deployed from the authenticated local Wrangler session be
 - Sitemap: **235** URLs, **1** real `/q/` URL, **0** profile, **0** private/auth/attempt/result and **0** non-canonical hosts.
 - `/robots.txt` serves `Allow: /` with the private paths disallowed and the canonical sitemap URL. `http://`, `www.` and the `workers.dev` host each return a single **301** to `https://cuetfreemocktest.com`; a trailing slash on `/mock-tests/` returns **301** to `/mock-tests`.
 - Homepage: **0** `adsbygoogle` markers; the only external script is the Cloudflare Insights beacon. The GA4/GTM snippets are inline definitions behind the consent gate, so no analytics request fires before a choice.
+- The production Subject Hub Lighthouse run used a fresh browser profile with GA4 configured. Its screenshot shows the consent banner ("Your privacy choices" / Allow / Reject) and its network log contains **0** analytics requests, confirming the gate fails closed on the deployed origin.
 - The PYQ archive serves **64** focusable `tabindex="0"` containers, so the A11Y-2 fix is live.
 
 **Next**
 
 - Obtain a D1-capable GitHub token, a staging admin/OAuth configuration and a DNS record for `staging.cuetfreemocktest.com` to close the operational blockers in §15.
-- Re-measure the Subject Hub on production before changing the Speed Index budget.
+- The Subject Hub budget question is closed: production measures SI 1641 ms median (see §13), so the 3500 ms budget stays.
 
 ---
 
