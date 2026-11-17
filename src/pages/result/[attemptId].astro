@@ -64,6 +64,7 @@ const accuracy = totals.answered > 0 ? Math.round((totals.correct / totals.answe
 const attemptedPercent = totals.total > 0 ? Math.round((totals.answered / totals.total) * 100) : 0;
 const isGuest = attempt.user_id === null;
 const expired = attempt.status === "expired";
+const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}`)}`;
 const scoreTone =
   totals.score >= 0
     ? "text-brand-700 dark:text-brand-300"
@@ -192,7 +193,7 @@ const myBoardRank = leaderboardRows.find((row) => row.user_id === attempt.user_i
           Retake this mock
         </a>
         {isGuest ? (
-          <a class="rounded-lg border border-brand-300 bg-brand-50 px-4 py-2.5 text-sm font-bold text-brand-900 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-200" href="/signup">
+          <a class="rounded-lg border border-brand-300 bg-brand-50 px-4 py-2.5 text-sm font-bold text-brand-900 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-200" href={loginHref}>
             Save this result — create a free account
           </a>
         ) : (
@@ -275,7 +276,7 @@ const myBoardRank = leaderboardRows.find((row) => row.user_id === attempt.user_i
           <p class="font-semibold text-neutral-700 dark:text-neutral-200">No ranked attempts yet.</p>
           <p class="mt-1">Your paper is scored. The board opens as soon as a registered student finishes a first attempt.</p>
           {isGuest ? (
-            <a class="mt-3 inline-block rounded-lg bg-brand-600 px-4 py-2 font-bold text-white hover:bg-brand-700" href="/signup">Create an account to enter</a>
+            <a class="mt-3 inline-block rounded-lg bg-brand-600 px-4 py-2 font-bold text-white hover:bg-brand-700" href={loginHref}>Create an account to enter</a>
           ) : null}
         </div>
       ) : (
@@ -319,7 +320,7 @@ const myBoardRank = leaderboardRows.find((row) => row.user_id === attempt.user_i
       <div class="border-t border-neutral-100 px-5 py-3 text-xs text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
         {isGuest ? (
           <span>
-            Your attempt is saved on this browser. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/signup">Create a free account</a> to claim it and enter this board.
+            Your attempt is saved on this browser. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={loginHref}>Create a free account</a> to claim it and enter this board.
           </span>
         ) : myBoardRank ? (
           <span>You are #{myBoardRank} on this paper. Only your first submitted attempt is ranked.</span>

@@ -65,14 +65,15 @@ const [rows, summary, mine] = await Promise.all([
     rank: number;
     user_id: number;
     username: string;
+    is_profile_public: number;
     score: number;
     correct: number;
     wrong: number;
     time_taken_sec: number;
     submitted_at: string;
   }>(
-    `SELECT rank, user_id, username, score, correct, wrong, time_taken_sec, submitted_at FROM (
-       SELECT a.user_id, u.username, a.score, a.correct, a.wrong, a.time_taken_sec, a.submitted_at,
+    `SELECT rank, user_id, username, is_profile_public, score, correct, wrong, time_taken_sec, submitted_at FROM (
+       SELECT a.user_id, u.username, u.is_profile_public, a.score, a.correct, a.wrong, a.time_taken_sec, a.submitted_at,
               RANK() OVER (ORDER BY a.score DESC, a.time_taken_sec ASC, (CASE WHEN a.correct + a.wrong > 0 THEN a.correct * 1.0 / (a.correct + a.wrong) ELSE 0 END) DESC) AS rank
        FROM attempts a JOIN users u ON u.id = a.user_id
        WHERE a.version_id = ? AND a.status = 'submitted' AND a.is_first_attempt = 1 AND u.deleted_at IS NULL
@@ -204,7 +205,9 @@ const structuredData = breadcrumbJsonLd(site, [
                   #{row.rank}
                 </td>
                 <td class="max-w-[16rem] truncate px-4 py-3 font-medium">
-                  {row.username}
+                  {row.is_profile_public ? (
+                    <a class="hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/u/${row.username}`}>{row.username}</a>
+                  ) : row.username}
                   {isMe ? <span class="ml-2 rounded-full bg-brand-600 px-2 py-0.5 text-[10px] font-bold uppercase text-white">You</span> : null}
                 </td>
                 <td class="px-4 py-3 text-right font-bold">{row.score}<span class="text-xs font-normal text-neutral-600 dark:text-neutral-400"> / {mock.total_marks}</span></td>

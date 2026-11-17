@@ -20,7 +20,7 @@ import {
 const PATH = "/cuet-ug-previous-year-question-papers";
 const DEFAULT_TITLE = "NTA CUET UG Previous Year Question Papers | Practice Online";
 const DEFAULT_DESCRIPTION =
-  "Boost your NTA CUET UG 2027 Exam Preparation! Practice FREE CUET UG PYQs Online with Answers. Solve Previous Year Question Papers Online and Check your Speed and Accuracy.";
+  "Practice free NTA CUET UG previous year question papers online with answers. Solve authentic PYQs, check your speed and accuracy, and prepare for CUET UG 2027.";
 
 function formatNtaCuetTitle(title: string) {
   const subjectTitle = title.trim().replace(/^(?:NTA\s+)?CUET(?:\s+UG)?\s*/i, "");
@@ -201,8 +201,8 @@ const subjectCards = [...subjectMap.entries()]
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
 const subjectSections = [
-  { title: "General Aptitude Test", id: "general-aptitude-test", subjects: subjectCards.filter((subject) => subject.category === "aptitude-test") },
   { title: "Language Subjects", id: "languages", subjects: subjectCards.filter((subject) => subject.category === "language") },
+  { title: "General Aptitude Test", id: "general-aptitude-test", subjects: subjectCards.filter((subject) => subject.category === "aptitude-test") },
   { title: "Domain-Specific Subjects", id: "domain-specific-subjects", subjects: subjectCards.filter((subject) => subject.category === "domain") },
 ];
 

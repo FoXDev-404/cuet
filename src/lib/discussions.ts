@@ -13,6 +13,7 @@ export type DiscussionRow = {
   upvotes: number;
   created_at: string;
   username: string;
+  is_profile_public: number;
   avatar_url: string | null;
   question_text: string | null;
   reported: number;
@@ -80,7 +81,7 @@ export async function loadVisibleThreads(
   const rows = await all<DiscussionRow>(
     `SELECT d.id, d.mock_id, d.question_id, d.user_id, d.parent_id, d.body, d.status,
             d.is_pinned, d.is_best_answer, d.upvotes, d.created_at,
-            u.username, u.avatar_url, q.text AS question_text,
+            u.username, u.is_profile_public, u.avatar_url, q.text AS question_text,
             CASE WHEN dr.id IS NULL THEN 0 ELSE 1 END AS reported
      FROM discussions d
      JOIN users u ON u.id = d.user_id
@@ -106,7 +107,7 @@ export async function loadOwnPending(
   return all<DiscussionRow>(
     `SELECT d.id, d.mock_id, d.question_id, d.user_id, d.parent_id, d.body, d.status,
             d.is_pinned, d.is_best_answer, d.upvotes, d.created_at,
-            u.username, u.avatar_url, q.text AS question_text, 0 AS reported
+            u.username, u.is_profile_public, u.avatar_url, q.text AS question_text, 0 AS reported
      FROM discussions d
      JOIN users u ON u.id = d.user_id
      LEFT JOIN questions q ON q.id = d.question_id
@@ -132,7 +133,7 @@ export async function findDiscussion(id: number): Promise<DiscussionRow | null> 
   return first<DiscussionRow>(
     `SELECT d.id, d.mock_id, d.question_id, d.user_id, d.parent_id, d.body, d.status,
             d.is_pinned, d.is_best_answer, d.upvotes, d.created_at,
-            u.username, u.avatar_url, NULL AS question_text, 0 AS reported
+            u.username, u.is_profile_public, u.avatar_url, NULL AS question_text, 0 AS reported
      FROM discussions d JOIN users u ON u.id = d.user_id
      WHERE d.id = ?`,
     id,
@@ -183,7 +184,7 @@ export async function loadMockThreadFeed(
   const roots = await all<DiscussionRow>(
     `SELECT d.id, d.mock_id, d.question_id, d.user_id, d.parent_id, d.body, d.status,
             d.is_pinned, d.is_best_answer, d.upvotes, d.created_at,
-            u.username, u.avatar_url, q.text AS question_text,
+            u.username, u.is_profile_public, u.avatar_url, q.text AS question_text,
             CASE WHEN dr.id IS NULL THEN 0 ELSE 1 END AS reported
      FROM discussions d
      JOIN users u ON u.id = d.user_id
@@ -204,7 +205,7 @@ export async function loadMockThreadFeed(
       ? await all<DiscussionRow>(
           `SELECT d.id, d.mock_id, d.question_id, d.user_id, d.parent_id, d.body, d.status,
                   d.is_pinned, d.is_best_answer, d.upvotes, d.created_at,
-                  u.username, u.avatar_url, q.text AS question_text,
+                  u.username, u.is_profile_public, u.avatar_url, q.text AS question_text,
                   CASE WHEN dr.id IS NULL THEN 0 ELSE 1 END AS reported
            FROM discussions d
            JOIN users u ON u.id = d.user_id

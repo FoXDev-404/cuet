@@ -8,6 +8,7 @@ type LocalIndexPaper = {
   title: string;
   subject: { slug: string; name: string };
   year: number;
+  date?: string | null;
   dateLabel: string;
   shift?: string | null;
   questionCount: number;
@@ -123,6 +124,35 @@ test("practice library stays available and routes into the ranked engine", async
   );
 });
 
+test("the instructions back link names the paper without a literal dollar sign", async ({
+  page,
+}) => {
+  await page.goto(INSTRUCTIONS);
+
+  await expect(
+    page.getByRole("link", { name: `← Back to ${SCORED_PAPER.title}`, exact: true }),
+  ).toBeVisible();
+});
+
+test("the PYQ archive meta description stays inside the SERP window", async ({ page }) => {
+  await page.goto("/cuet-ug-previous-year-question-papers");
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description).not.toBeNull();
+  expect(description!.length).toBeGreaterThanOrEqual(120);
+  expect(description!.length).toBeLessThanOrEqual(160);
+});
+
+test("the PYQ archive lists language subjects before general aptitude and domain subjects", async ({
+  page,
+}) => {
+  await page.goto("/cuet-ug-previous-year-question-papers");
+  await expect(page.locator("h3[id^='pyq-section-']")).toHaveText([
+    "Language Subjects",
+    "General Aptitude Test",
+    "Domain-Specific Subjects",
+  ]);
+});
+
 test("practice detail reports the scored count when no questions are excluded", async ({
   page,
 }) => {
@@ -164,6 +194,15 @@ test("legacy mock-tests detail URLs permanently redirect to the categorized PYQ 
   );
   expect(legacyArchiveResponse.status()).toBe(301);
   expect(legacyArchiveResponse.headers().location).toBe(SCORED_PAPER_PATH);
+});
+
+test("an unknown practice topic renders the themed 404 with a 404 status", async ({ page }) => {
+  const response = await page.goto("/cuet-mock-test/english/not-a-real-topic");
+  expect(response?.status()).toBe(404);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "That page is not here." }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Go home" })).toHaveAttribute("href", "/");
 });
 
 test("legacy practice URLs permanently redirect to mock-tests", async ({ page }) => {
@@ -393,6 +432,14 @@ test("General Test paper pages use the requested date-specific metadata", async 
       "content",
       `Practice the official NTA CUET UG General Test Previous Year Question Paper with Answers (${dateLabel}${descriptionShift}) Online for FREE and Boost your Exam Prep!`,
     );
+    if (paper.shift && paper.date) {
+      const [year, month, day] = paper.date.split("-");
+      await expect(page.locator("[data-paper-shift-tag]")).toHaveText(
+        `${day}-${month}-${year} ${paper.shift}`,
+      );
+    } else {
+      await expect(page.locator("[data-paper-shift-tag]")).toHaveCount(0);
+    }
   }
 });
 

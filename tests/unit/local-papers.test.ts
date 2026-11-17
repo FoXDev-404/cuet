@@ -13,8 +13,12 @@ import {
   getLocalSubjectSummary,
   getPopularLocalPapers,
   gradeLocalPaper,
+  hasLocalPapersForYear,
+  isLocalPaperListed,
   isLocalPaperSlug,
   localPaperPath,
+  localPaperRobots,
+  MIN_LISTED_QUESTIONS,
 } from "../../src/lib/local-papers";
 import { setPracticeLibraryStore, usePracticeLibrary } from "../../src/lib/practice-library";
 import { getPyqPaperPath } from "../../src/lib/pyq-subject-path";
@@ -85,6 +89,40 @@ setPracticeLibraryStore({
 });
 usePracticeLibrary(SUMMARIES);
 
+describe("local paper indexability", () => {
+  it("keeps a listed paper indexable and marks a hidden paper noindex, follow", () => {
+    const listed = getLocalPaperSummary("chemistry-2026-06-06-shift-1");
+    expect(listed).not.toBeNull();
+    expect(listed!.recoveredQuestionCount).toBeGreaterThanOrEqual(MIN_LISTED_QUESTIONS);
+    expect(isLocalPaperListed(listed!)).toBe(true);
+    expect(localPaperRobots(listed!)).toBeUndefined();
+
+    const hidden = getLocalPaperSummary("chemistry-2026-05-11-shift-1");
+    expect(hidden).not.toBeNull();
+    expect(hidden!.recoveredQuestionCount).toBeLessThan(MIN_LISTED_QUESTIONS);
+    expect(isLocalPaperListed(hidden!)).toBe(false);
+    expect(localPaperRobots(hidden!)).toBe("noindex, follow");
+  });
+
+  it("matches the listing gate for every indexed paper", () => {
+    const listedSlugs = new Set(getLocalPapers().map((paper) => paper.slug));
+    expect(listedSlugs.size).toBe(137);
+    expect(SUMMARIES.length).toBe(245);
+
+    for (const summary of SUMMARIES) {
+      expect(isLocalPaperListed(summary), summary.slug).toBe(listedSlugs.has(summary.slug));
+      if (!listedSlugs.has(summary.slug)) {
+        expect(localPaperRobots(summary), summary.slug).toBe("noindex, follow");
+      }
+    }
+  });
+
+  it("marks restricted papers noindex, follow even when they are listed", () => {
+    const restricted = { ...SUMMARIES[0], rightsStatus: "restricted" as const };
+    expect(localPaperRobots(restricted)).toBe("noindex, follow");
+  });
+});
+
 describe("local previous-year library", () => {
   it("loads the generated index with unique slugs and usable summaries", () => {
     const papers = getLocalPapers();
@@ -102,6 +140,12 @@ describe("local previous-year library", () => {
       expect(paper.path).toBe(getPyqPaperPath(paper.slug, paper.subject.slug));
       expect(paper.localPaper && paper.draft).toBe(true);
     }
+  });
+
+  it("knows which years exist in the archive, including hidden papers", () => {
+    expect(hasLocalPapersForYear(2026)).toBe(true);
+    expect(hasLocalPapersForYear(2023)).toBe(true);
+    expect(hasLocalPapersForYear(1999)).toBe(false);
   });
 
   it("filters by year and resolves paths", () => {

@@ -10,7 +10,7 @@ import { getSetting } from "./lib/settings";
 import { trackDbMetrics } from "./lib/db";
 import { DB_DEGRADED_HEADER } from "./lib/db-resilient";
 import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
-import { edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
+import { edgeCacheKeyRequest, edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
 
 /**
  * The Workers runtime exposes `caches.default` (the per-colo edge cache),
@@ -198,9 +198,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
     });
 
   const cache = edgeCacheable ? edgeCache() : null;
-  if (cache) {
+  const cacheKey = cache ? edgeCacheKeyRequest(context.request) : null;
+  if (cache && cacheKey) {
     try {
-      const cached = await cache.match(context.request);
+      const cached = await cache.match(cacheKey);
       if (cached) {
         const hit = applySecurityHeaders(cached, requestedPath);
         hit.headers.set("x-edge-cache", "HIT");
@@ -349,7 +350,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Store fresh anonymous 200 responses in the edge cache: HTML pages for 5
   // minutes, the sitemap for 6 hours. Strip Set-Cookie so one visitor's
   // cookies are never served to another.
-  if (cache && secured.status === 200 && !degraded) {
+  if (cache && cacheKey && secured.status === 200 && !degraded) {
     const contentType = secured.headers.get("content-type") ?? "";
     const cacheableType = isEdgeCacheableContentType(contentType);
     if (cacheableType && !secured.headers.has("set-cookie")) {
@@ -363,7 +364,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
         headers.delete("set-cookie");
         headers.set("cache-control", `public, max-age=${cacheTtl}`);
         await cache.put(
-          context.request,
+          cacheKey,
           new Response(secured.clone().body, {
             status: secured.status,
             headers,

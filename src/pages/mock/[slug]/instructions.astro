@@ -114,7 +114,7 @@ const paperOgImage =
 
 <BaseLayout title={`Instructions — ${mock.title}`} robots="noindex, follow" canonical={canonical} image={paperOgImage}>
   <section class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
-    <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/mock/${mock.slug}`}>← Back to ${mock.title}</a>
+    <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/mock/${mock.slug}`}>← Back to {mock.title}</a>
     <h1 class="mt-4 text-3xl font-black tracking-tight">Before you start</h1>
     <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">{mock.attempt_count.toLocaleString("en-IN")} attempt{mock.attempt_count === 1 ? "" : "s"} so far. Read these instructions carefully. The server starts the clock when you click Begin.</p>
 

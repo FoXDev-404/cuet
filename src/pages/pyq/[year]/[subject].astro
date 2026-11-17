@@ -5,8 +5,12 @@ import PageHero from "../../../components/PageHero.astro";
 import FaqSection from "../../../components/FaqSection.astro";
 import LocalPaperCard from "../../../components/LocalPaperCard.astro";
 import { firstOr } from "../../../lib/db";
-import { getLocalPapersForYear } from "../../../lib/local-papers";
+import { getLocalPapersForYear, getLocalSubjectSummary, hasLocalPapersForYear } from "../../../lib/local-papers";
 import { listPyqPapers, pyqMarking } from "../../../lib/pyq";
+import {
+  getPyqSubjectType,
+  resolveEmptyPyqArchiveRedirect,
+} from "../../../lib/pyq-subject-path";
 import { hasMathSource, renderRichText } from "../../../lib/content";
 import {
   breadcrumbJsonLd,
@@ -23,13 +27,14 @@ if (!Number.isInteger(year) || year < 2000 || year > 2100) {
   return new Response("Year not found", { status: 404 });
 }
 
-const dbSubject = await firstOr<{ id: number; name: string; slug: string }>(
-  `SELECT s.id, s.name, s.slug FROM subjects s
+const dbSubject = await firstOr<{ id: number; name: string; slug: string; type: string }>(
+  `SELECT s.id, s.name, s.slug, s.type FROM subjects s
    JOIN exams e ON e.id = s.exam_id
    WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`, null,
   subjectSlug,
 );
-const localPapers = getLocalPapersForYear(year).filter(
+const yearPapers = getLocalPapersForYear(year);
+const localPapers = yearPapers.filter(
   (paper) => paper.subject.slug === subjectSlug,
 );
 // Subjects such as Applied Mathematics exist only in the practice library, not
@@ -51,6 +56,30 @@ const allPapers = dbSubject
   : [];
 const papers = allPapers.filter((paper) => Boolean(paper.mock_slug));
 if (papers.length === 0 && localPapers.length === 0) {
+  // The pair is valid, but every paper is hidden from the listings. Keep the
+  // URL useful by sending visitors to the canonical subject hub. A year with
+  // no papers at all, or an unknown subject, stays a genuine 404.
+  const yearHasPapers =
+    hasLocalPapersForYear(year) ||
+    Boolean(
+      await firstOr<{ present: number }>(
+        `SELECT 1 AS present
+         FROM pyq_papers p
+         JOIN mock_tests m ON m.pyq_paper_id = p.id
+           AND m.status = 'published' AND m.deleted_at IS NULL
+         WHERE p.year = ? AND p.status = 'published' AND p.deleted_at IS NULL
+         LIMIT 1`,
+        null,
+        year,
+      ),
+    );
+  const redirectTarget = resolveEmptyPyqArchiveRedirect({
+    yearHasPapers,
+    subjectKnown: Boolean(dbSubject || getLocalSubjectSummary(subjectSlug)),
+    subjectSlug,
+    subjectType: dbSubject?.type ?? getPyqSubjectType(undefined, subjectSlug),
+  });
+  if (redirectTarget) return Astro.redirect(redirectTarget, 303);
   return new Response("No papers for this subject", { status: 404 });
 }
 const totalPapers = papers.length + localPapers.length;

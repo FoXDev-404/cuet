@@ -21,6 +21,27 @@
 export const EDGE_CACHE_TTL_SECONDS = 300;
 export const EDGE_CACHE_SITEMAP_TTL_SECONDS = 6 * 60 * 60;
 
+/**
+ * Bump this whenever a cached response shape or URL contract changes. It is
+ * added to the synthetic cache key only, never to the visitor-facing URL, so a
+ * deploy stops reading stale entries immediately without a purge API.
+ */
+export const EDGE_CACHE_VERSION = "v2-no-subject-pyq";
+export const EDGE_CACHE_VERSION_PARAM = "__edge_cache_version";
+
+/**
+ * Build the key used with the Cache API. The real request URL is unchanged;
+ * only the synthetic key carries the version marker.
+ */
+export function edgeCacheKeyRequest(
+  request: Request,
+  version: string = EDGE_CACHE_VERSION,
+): Request {
+  const url = new URL(request.url);
+  url.searchParams.set(EDGE_CACHE_VERSION_PARAM, version);
+  return new Request(url.toString(), { method: request.method });
+}
+
 const EDGE_CACHEABLE_EXACT_PATHS = new Set(["/sitemap.xml"]);
 
 const EDGE_CACHEABLE_PREFIXES = [

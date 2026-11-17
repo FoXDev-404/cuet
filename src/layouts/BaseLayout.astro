@@ -886,13 +886,20 @@ const organization = {
           moreSheet.classList.remove("hidden");
           document.body.classList.add("overflow-hidden");
           if (moreBtn) moreBtn.setAttribute("aria-expanded", "true");
+          // Move keyboard focus into the dialog, not leave it behind the backdrop.
+          moreClose?.focus();
         }
 
         function closeMoreSheet() {
-          if (!moreSheet) return;
+          // Escape fires on every keypress; only restore focus when the sheet
+          // was actually open, or the trigger would steal focus on any Escape.
+          if (!moreSheet || moreSheet.classList.contains("hidden")) return;
           moreSheet.classList.add("hidden");
           document.body.classList.remove("overflow-hidden");
-          if (moreBtn) moreBtn.setAttribute("aria-expanded", "false");
+          if (moreBtn) {
+            moreBtn.setAttribute("aria-expanded", "false");
+            moreBtn.focus();
+          }
         }
 
         moreBtn?.addEventListener("click", openMoreSheet);

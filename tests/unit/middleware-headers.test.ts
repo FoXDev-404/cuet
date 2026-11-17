@@ -30,7 +30,7 @@ describe("middleware security headers", () => {
     expect(source).toContain('response.headers.get(DB_DEGRADED_HEADER) === "1"');
     expect(source).toContain('secured.headers.get(DB_DEGRADED_HEADER) === "1"');
     expect(source).toContain('secured.headers.set("cache-control", "no-store")');
-    expect(source).toContain("if (cache && secured.status === 200 && !degraded)");
+    expect(source).toContain("if (cache && cacheKey && secured.status === 200 && !degraded)");
   });
 
   it("allows the configured analytics endpoints", () => {

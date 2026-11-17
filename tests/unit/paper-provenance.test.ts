@@ -63,18 +63,19 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
     expect(doc).toContain('rights_status = \'restricted\'');
   });
 
-  it('practice paper page template indexes papers unless rights_status is restricted', () => {
+  it('practice paper page keeps restricted and unlisted papers out of the index', () => {
     const template = readFileSync(
       resolve(process.cwd(), 'src/pages/cuet-ug-previous-year-question-papers/[category]/[subject]/[paper].astro'),
       'utf8',
     );
-    expect(template).toContain('const forceNoindex = paper.rightsStatus === "restricted";');
-    expect(template).toContain('noindex={forceNoindex}');
+    expect(template).toContain('localPaperRobots');
+    expect(template).toContain('robots={localPaperRobots(paper)}');
     expect(template).toContain('/contact#takedown');
   });
 
-  it('sitemap generator excludes only restricted practice papers', () => {
+  it('sitemap generator iterates the listed library and skips restricted papers', () => {
     const sitemap = readFileSync(resolve(process.cwd(), 'src/pages/sitemap.xml.ts'), 'utf8');
+    expect(sitemap).toContain('const localPapers = getLocalPapers();');
     expect(sitemap).toContain('if (paper.rightsStatus === "restricted") continue;');
   });
 });

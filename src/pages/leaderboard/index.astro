@@ -70,9 +70,10 @@ const topRows =
         time_taken_sec: number;
         correct: number;
         username: string;
+        is_profile_public: number;
       }>(
-        `SELECT mock_id, rank, score, time_taken_sec, correct, username FROM (
-           SELECT m.id AS mock_id, a.score, a.time_taken_sec, a.correct, u.username,
+        `SELECT mock_id, rank, score, time_taken_sec, correct, username, is_profile_public FROM (
+           SELECT m.id AS mock_id, a.score, a.time_taken_sec, a.correct, u.username, u.is_profile_public,
                   RANK() OVER (
                     PARTITION BY m.id
                     ORDER BY a.score DESC, a.time_taken_sec ASC,
@@ -112,6 +113,7 @@ const overall = await allOr<{
   rank: number;
   user_id: number;
   username: string;
+  is_profile_public: number;
   mock_title: string;
   mock_slug: string;
   practice_paper_slug: string | null;
@@ -120,10 +122,10 @@ const overall = await allOr<{
   percentage: number;
   time_taken_sec: number;
 }>(
-  `SELECT rank, user_id, username, mock_title, mock_slug, practice_paper_slug,
+  `SELECT rank, user_id, username, is_profile_public, mock_title, mock_slug, practice_paper_slug,
           score, total_marks, percentage, time_taken_sec
    FROM (
-     SELECT u.id AS user_id, u.username, m.title AS mock_title, m.slug AS mock_slug,
+     SELECT u.id AS user_id, u.username, u.is_profile_public, m.title AS mock_title, m.slug AS mock_slug,
             m.practice_paper_slug, a.score, v.total_marks, a.time_taken_sec,
             (a.score * 100.0 / NULLIF(v.total_marks, 0)) AS percentage,
             RANK() OVER (
@@ -233,7 +235,11 @@ const structuredData = [
                     {medals[row.rank - 1] ? <span class="mr-1" aria-hidden="true">{medals[row.rank - 1]}</span> : null}
                     #{row.rank}
                   </td>
-                  <td class="max-w-[12rem] truncate px-5 py-3 font-semibold">{row.username}</td>
+                  <td class="max-w-[12rem] truncate px-5 py-3 font-semibold">
+                    {row.is_profile_public ? (
+                      <a class="hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/u/${row.username}`}>{row.username}</a>
+                    ) : row.username}
+                  </td>
                   <td class="max-w-[20rem] px-5 py-3">
                     <a class="line-clamp-1 font-medium hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/leaderboard/${row.mock_slug}`}>{row.mock_title}</a>
                     <span class="mt-0.5 block text-[10px] font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
@@ -301,7 +307,11 @@ const structuredData = [
                     {top.map((row) => (
                       <li class="flex items-center gap-3 rounded-xl bg-neutral-50 px-3 py-2 text-sm dark:bg-neutral-950">
                         <span class="w-7 text-center text-base" aria-hidden="true">{medals[row.rank - 1] ?? row.rank}</span>
-                        <span class="min-w-0 flex-1 truncate font-medium">{row.username}</span>
+                        <span class="min-w-0 flex-1 truncate font-medium">
+                          {row.is_profile_public ? (
+                            <a class="hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/u/${row.username}`}>{row.username}</a>
+                          ) : row.username}
+                        </span>
                         <span class="font-bold">{row.score}<span class="text-xs font-normal text-neutral-600 dark:text-neutral-400"> / {mock.total_marks}</span></span>
                       </li>
                     ))}

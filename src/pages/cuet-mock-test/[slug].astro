@@ -8,6 +8,7 @@ import { allOr, firstOr } from "../../lib/db";
 import { DB_DEGRADED_HEADER } from "../../lib/db-resilient";
 import { parseMarkingScheme } from "../../lib/content";
 import { getLocalPapers, getLocalSubjectSummary } from "../../lib/local-papers";
+import { practiceTopicCountSql } from "../../lib/practice-topics";
 import { getSubjectStats } from "../../lib/subject-stats";
 import {
   breadcrumbJsonLd,
@@ -58,7 +59,8 @@ const [topics, papers] = await Promise.all([
               JOIN mock_tests m ON m.id = mq.mock_id
               WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
                 AND m.status = 'published' AND m.deleted_at IS NULL
-                AND m.practice_paper_slug IS NULL) AS count
+                AND m.practice_paper_slug IS NULL)
+            + ${practiceTopicCountSql("t.id")} AS count
      FROM topics t
      WHERE t.subject_id = ? AND t.deleted_at IS NULL
      ORDER BY t.name`, [],

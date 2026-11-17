@@ -112,6 +112,11 @@ describe("repository guide library", () => {
           if (!PAPER_SLUGS.has(url.slice("/mock-tests/".length))) bad.push(`${guide.slug} -> ${url}`);
           continue;
         }
+        if (url.startsWith("/cuet-ug-previous-year-question-papers/")) {
+          const paperSlug = url.split("/").pop() ?? "";
+          if (!PAPER_SLUGS.has(paperSlug)) bad.push(`${guide.slug} -> ${url}`);
+          continue;
+        }
         if (url.startsWith("/cuet-mock-test/")) {
           if (!SUBJECT_SLUGS.has(url.slice("/cuet-mock-test/".length))) {
             bad.push(`${guide.slug} -> ${url}`);

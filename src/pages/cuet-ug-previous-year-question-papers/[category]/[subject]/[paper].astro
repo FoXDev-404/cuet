@@ -1,7 +1,7 @@
 ---
 import { siteUrl } from "../../../../lib/site-url";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import { getLocalPaperSummary, getLocalPapersForSubject, localPaperPath } from "../../../../lib/local-papers";
+import { getLocalPaperSummary, getLocalPapersForSubject, localPaperPath, localPaperRobots } from "../../../../lib/local-papers";
 import {
   getPyqSubjectCategoryPath,
   getPyqSubjectPath,
@@ -66,6 +66,10 @@ const savedMetaDescription = paper.metaDescription?.trim();
 const datePart =
   paper.dateLabel && paper.dateLabel !== "Date not printed" ? paper.dateLabel : String(paper.year);
 const shiftPart = paper.shift ? ` ${paper.shift}` : "";
+const shiftTagDate = paper.date?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+const shiftTag = paper.shift
+  ? `${shiftTagDate ? `${shiftTagDate[3]}-${shiftTagDate[2]}-${shiftTagDate[1]} ` : ""}${paper.shift}`
+  : null;
 const isGeneralTest = paper.subject.slug === "general-test";
 const generalTestMetaDescription =
   `Practice the official NTA CUET UG General Test Previous Year Question Paper with Answers (${datePart}${paper.shift ? `, ${paper.shift}` : ""}) Online for FREE and Boost your Exam Prep!`;
@@ -95,9 +99,10 @@ const seoTitle = isGeneralTest
     ? `${titleBase} | CUET Mock`
     : titleBase;
 
-// Imported papers are indexable. Only an explicit rights restriction keeps a
-// paper out of search; `unknown` papers still expose the takedown path below.
-const forceNoindex = paper.rightsStatus === "restricted";
+// Imported papers are indexable only when they appear in the public listings.
+// Restricted papers and partial papers under MIN_LISTED_QUESTIONS stay
+// crawlable but out of the index; `unknown` rights still expose the takedown
+// path below.
 ---
 
 <BaseLayout
@@ -105,7 +110,7 @@ const forceNoindex = paper.rightsStatus === "restricted";
   description={metaDescription}
   structuredData={structuredData}
   canonical={path}
-  noindex={forceNoindex}
+  robots={localPaperRobots(paper)}
   image={paperOgImage}
   ads
 >
@@ -125,7 +130,7 @@ const forceNoindex = paper.rightsStatus === "restricted";
         <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
           <a class="rounded-full bg-brand-100 px-2.5 py-1 font-semibold uppercase tracking-wide text-brand-900 hover:underline dark:bg-brand-900/50 dark:text-brand-200" href={`/pyq/${paper.year}`}>PYQ · {paper.year}</a>
           <a class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 hover:underline dark:bg-neutral-950 dark:text-neutral-300" href={`/pyq/${paper.year}/${paper.subject.slug}`}>{paper.subject.name}</a>
-          {paper.shift ? <span class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{paper.shift}</span> : null}
+          {shiftTag ? <span data-paper-shift-tag class="rounded-full bg-white px-2.5 py-1 font-semibold text-neutral-600 dark:bg-neutral-950 dark:text-neutral-300">{shiftTag}</span> : null}
         </div>
 
         <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">{paper.title}</h1>

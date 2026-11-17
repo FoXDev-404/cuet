@@ -3,6 +3,7 @@ import { all, type BindValue } from "../lib/db";
 import { resolveExamVerification } from "../lib/exam-verification";
 import { getLocalPapers } from "../lib/local-papers";
 import { getLocalSubjectCards } from "../lib/local-subject-fallback";
+import { practiceTopicCountSql } from "../lib/practice-topics";
 import { listSeoIndexableQuestions, type SeoIndexableQuestion } from "../lib/share/public-question-store";
 import { siteUrl } from "../lib/site-url";
 import { getSubjectStats, type SubjectStatRow } from "../lib/subject-stats";
@@ -134,7 +135,8 @@ export const GET: APIRoute = async ({ request }) => {
                 JOIN mock_questions_current mq ON mq.question_id = q.id
                 JOIN mock_tests m ON m.id = mq.mock_id
                 WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
-                  AND m.status = 'published' AND m.deleted_at IS NULL) AS question_count
+                  AND m.status = 'published' AND m.deleted_at IS NULL)
+              + ${practiceTopicCountSql("t.id")} AS question_count
        FROM topics t
        JOIN subjects s ON s.id = t.subject_id
        JOIN exams e ON e.id = s.exam_id

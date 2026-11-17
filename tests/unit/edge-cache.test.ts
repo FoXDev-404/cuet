@@ -1,7 +1,12 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   EDGE_CACHE_SITEMAP_TTL_SECONDS,
   EDGE_CACHE_TTL_SECONDS,
+  EDGE_CACHE_VERSION,
+  EDGE_CACHE_VERSION_PARAM,
+  edgeCacheKeyRequest,
   edgeCacheTtlForPath,
   isEdgeCacheableContentType,
   isEdgeCacheablePath,
@@ -90,6 +95,40 @@ describe("edge cache TTL", () => {
     expect(EDGE_CACHE_SITEMAP_TTL_SECONDS).toBe(21_600);
     expect(edgeCacheTtlForPath("/blog/guide")).toBe(EDGE_CACHE_TTL_SECONDS);
     expect(edgeCacheTtlForPath("/sitemap.xml")).toBe(EDGE_CACHE_SITEMAP_TTL_SECONDS);
+  });
+});
+
+describe("edge cache key versioning", () => {
+  it("puts the version on the synthetic key and leaves the request URL untouched", () => {
+    const request = new Request("https://cuetfreemocktest.com/sitemap.xml");
+    const key = edgeCacheKeyRequest(request);
+    const keyUrl = new URL(key.url);
+
+    expect(keyUrl.pathname).toBe("/sitemap.xml");
+    expect(keyUrl.searchParams.get(EDGE_CACHE_VERSION_PARAM)).toBe(EDGE_CACHE_VERSION);
+    expect(request.url).toBe("https://cuetfreemocktest.com/sitemap.xml");
+    expect(key.method).toBe("GET");
+  });
+
+  it("changes the key when the cache version changes", () => {
+    const request = new Request("https://cuetfreemocktest.com/sitemap.xml");
+    const current = new URL(edgeCacheKeyRequest(request).url);
+    const previous = new URL(edgeCacheKeyRequest(request, "v1-old-prefix").url);
+    expect(current.toString()).not.toBe(previous.toString());
+    expect(previous.searchParams.get(EDGE_CACHE_VERSION_PARAM)).toBe("v1-old-prefix");
+  });
+
+  it("keeps HEAD cache probes as HEAD requests", () => {
+    const request = new Request("https://cuetfreemocktest.com/sitemap.xml", { method: "HEAD" });
+    expect(edgeCacheKeyRequest(request).method).toBe("HEAD");
+  });
+
+  it("uses the versioned key for both cache reads and writes", () => {
+    const file = readFileSync(join(process.cwd(), "src/middleware.ts"), "utf8");
+    expect(file).toContain("edgeCacheKeyRequest");
+    expect(file).toContain("cache.match(cacheKey)");
+    expect(file).toMatch(/cache\.put\(\s*cacheKey,/);
+    expect(file).toContain("!degraded");
   });
 });
 

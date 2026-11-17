@@ -156,6 +156,31 @@ function copySummary(paper: LocalPaperSummary): LocalPaperSummary {
 export const MIN_LISTED_QUESTIONS = 30;
 
 /**
+ * Papers below {@link MIN_LISTED_QUESTIONS} are hidden from the public
+ * listings, rails and the sitemap. Their detail pages still 200 so direct URLs
+ * and in-flight attempts keep working, but they must not be indexed.
+ */
+export function isLocalPaperListed(
+  paper: Pick<LocalPaperSummary, "recoveredQuestionCount">,
+): boolean {
+  return paper.recoveredQuestionCount >= MIN_LISTED_QUESTIONS;
+}
+
+/**
+ * Robots directive for a paper detail page. Restricted papers and papers
+ * hidden from the listings stay crawlable but out of the index; only listed,
+ * non-restricted papers are indexable.
+ */
+export function localPaperRobots(
+  paper: Pick<LocalPaperSummary, "recoveredQuestionCount" | "rightsStatus">,
+): "noindex, follow" | undefined {
+  if (paper.rightsStatus === "restricted" || !isLocalPaperListed(paper)) {
+    return "noindex, follow";
+  }
+  return undefined;
+}
+
+/**
  * The practice snapshot as the public listings should see it: papers under
  * {@link MIN_LISTED_QUESTIONS} removed and the subject rollups rebuilt from
  * what remains. Detail-page accessors (getLocalPaperSummary, getLocalPaper,
@@ -164,9 +189,7 @@ export const MIN_LISTED_QUESTIONS = 30;
  */
 function listableSnapshot() {
   const snapshot = getPracticeSnapshot();
-  const papers = snapshot.papers.filter(
-    (paper) => paper.recoveredQuestionCount >= MIN_LISTED_QUESTIONS,
-  );
+  const papers = snapshot.papers.filter(isLocalPaperListed);
   return { ...snapshot, papers, subjectSummaries: buildSubjectSummaries(papers) };
 }
 
@@ -243,6 +266,15 @@ export function getLocalPaperSummary(slug: string): LocalPaperSummary | null {
 
 export function getLocalPapersForYear(year: number): LocalPaperSummary[] {
   return getLocalPapers().filter((paper) => paper.year === year);
+}
+
+/**
+ * Whether the archive holds any paper for a year, including papers hidden from
+ * the public listings. Used by `/pyq/[year]/[subject]` so a valid year with no
+ * listable paper in one subject redirects to that subject hub instead of 404.
+ */
+export function hasLocalPapersForYear(year: number): boolean {
+  return getPracticeSnapshot().papers.some((paper) => paper.year === year);
 }
 
 export function getLocalPapersForSubject(subjectSlug: string): LocalPaperSummary[] {

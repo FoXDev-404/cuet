@@ -5,6 +5,7 @@ import PageHero from "../../../components/PageHero.astro";
 import FaqSection from "../../../components/FaqSection.astro";
 import { allOr, firstOr } from "../../../lib/db";
 import { hasMathSource, parseMarkingScheme, renderRichText } from "../../../lib/content";
+import { practiceTopicCountSql, PRACTICE_TOPIC_MIN_QUESTIONS } from "../../../lib/practice-topics";
 import {
   breadcrumbJsonLd,
   getPageSeo,
@@ -16,40 +17,57 @@ import {
 const subjectSlug = Astro.params.subject ?? "";
 const topicSlug = Astro.params.topic ?? "";
 
+/**
+ * Missing topics are real 404s, but a plain-text body loses the site shell and
+ * the route back into practice. Rewrite to the themed 404 page and keep the
+ * outer status at 404 (a rewrite by itself always renders as 200).
+ */
+async function notFoundResponse(): Promise<Response> {
+  const response = await Astro.rewrite("/404");
+  const headers = new Headers(response.headers);
+  // The inner render is a 200 until we wrap it; never let the PWA cache it.
+  headers.delete("x-pwa-cacheable");
+  return new Response(response.body, { status: 404, headers });
+}
+
 const subject = await firstOr<{ id: number; name: string; slug: string; type: string }>(
   `SELECT s.id, s.name, s.slug, s.type
    FROM subjects s JOIN exams e ON e.id = s.exam_id
    WHERE s.slug = ? AND s.is_active = 1 AND e.slug = 'cuet-ug' AND e.is_active = 1`, null,
   subjectSlug,
 );
-if (!subject) return new Response("Topic not found", { status: 404 });
+if (!subject) return notFoundResponse();
 
 const topic = await firstOr<{ id: number; name: string; slug: string }>(
   "SELECT id, name, slug FROM topics WHERE slug = ? AND subject_id = ? AND deleted_at IS NULL", null,
   topicSlug,
   subject.id,
 );
-if (!topic) return new Response("Topic not found", { status: 404 });
+if (!topic) return notFoundResponse();
 
 const questionCount = await firstOr<{ count: number }>(
-  `SELECT COUNT(DISTINCT q.id) AS count
-   FROM questions q
-   JOIN mock_questions_current mq ON mq.question_id = q.id
-   JOIN mock_tests m ON m.id = mq.mock_id
-   WHERE q.topic_id = ? AND q.status = 'published' AND q.deleted_at IS NULL
-     AND m.status = 'published' AND m.deleted_at IS NULL
-     AND m.practice_paper_slug IS NULL
-     AND m.slug NOT LIKE 'e2e-%'
-     AND m.slug NOT LIKE '%fixture%'
-     AND m.slug NOT LIKE '%publish-check%'
-     AND m.slug NOT LIKE 'slow-network-%'
-     AND LOWER(m.title) NOT LIKE '%fixture%'`, null,
+  `SELECT
+     (SELECT COUNT(DISTINCT q.id) AS count
+      FROM questions q
+      JOIN mock_questions_current mq ON mq.question_id = q.id
+      JOIN mock_tests m ON m.id = mq.mock_id
+      WHERE q.topic_id = ? AND q.status = 'published' AND q.deleted_at IS NULL
+        AND m.status = 'published' AND m.deleted_at IS NULL
+        AND m.practice_paper_slug IS NULL
+        AND m.slug NOT LIKE 'e2e-%'
+        AND m.slug NOT LIKE '%fixture%'
+        AND m.slug NOT LIKE '%publish-check%'
+        AND m.slug NOT LIKE 'slow-network-%'
+        AND LOWER(m.title) NOT LIKE '%fixture%')
+     +
+     ${practiceTopicCountSql("?")} AS count`, null,
+  topic.id,
   topic.id,
 );
 const publishedQuestions = questionCount?.count ?? 0;
-if (publishedQuestions === 0) return new Response("Topic not published yet", { status: 404 });
+if (publishedQuestions === 0) return notFoundResponse();
 
-const [papers, relatedTopics] = await Promise.all([
+const [timedPapers, practicePapers, relatedTopics] = await Promise.all([
   allOr<{
     id: number;
     title: string;
@@ -84,6 +102,41 @@ const [papers, relatedTopics] = await Promise.all([
     topic.id,
     topic.id,
   ),
+  allOr<{
+    id: number;
+    title: string;
+    slug: string;
+    type: string;
+    duration_min: number;
+    total_marks: number;
+    marking_scheme: string;
+    question_count: number;
+    topic_question_count: number;
+  }>(
+    `SELECT p.id, p.title, m.slug, 'PYQ' AS type, p.duration_min,
+            (SELECT COUNT(*) FROM practice_questions pq
+              WHERE pq.paper_slug = p.slug AND pq.deleted_at IS NULL) * 5 AS total_marks,
+            '{"correct":5,"wrong":-1,"skipped":0}' AS marking_scheme,
+            (SELECT COUNT(*) FROM practice_questions pq
+              WHERE pq.paper_slug = p.slug AND pq.deleted_at IS NULL) AS question_count,
+            (SELECT COUNT(*) FROM practice_questions pq
+              WHERE pq.paper_slug = p.slug AND pq.deleted_at IS NULL
+                AND pq.topic_id = ?) AS topic_question_count
+     FROM practice_papers p
+     JOIN mock_tests m ON m.practice_paper_slug = p.slug
+       AND m.status = 'published' AND m.deleted_at IS NULL
+     WHERE p.publication_status = 'published' AND p.deleted_at IS NULL
+       AND (SELECT COUNT(*) FROM practice_questions pq
+            WHERE pq.paper_slug = p.slug AND pq.deleted_at IS NULL) >= ${PRACTICE_TOPIC_MIN_QUESTIONS}
+       AND EXISTS (
+         SELECT 1 FROM practice_questions pq
+         WHERE pq.paper_slug = p.slug AND pq.deleted_at IS NULL AND pq.topic_id = ?
+       )
+     ORDER BY p.year DESC, p.exam_date DESC, p.id DESC
+     LIMIT 24`, [],
+    topic.id,
+    topic.id,
+  ),
   allOr<{ name: string; slug: string; count: number }>(
     `SELECT t.name, t.slug,
             (SELECT COUNT(DISTINCT q.id) FROM questions q
@@ -91,7 +144,8 @@ const [papers, relatedTopics] = await Promise.all([
               JOIN mock_tests m ON m.id = mq.mock_id
               WHERE q.topic_id = t.id AND q.status = 'published' AND q.deleted_at IS NULL
                 AND m.status = 'published' AND m.deleted_at IS NULL
-                AND m.practice_paper_slug IS NULL) AS count
+                AND m.practice_paper_slug IS NULL)
+            + ${practiceTopicCountSql("t.id")} AS count
      FROM topics t
      WHERE t.subject_id = ? AND t.id != ? AND t.deleted_at IS NULL
      ORDER BY count DESC, t.name
@@ -100,6 +154,8 @@ const [papers, relatedTopics] = await Promise.all([
     topic.id,
   ),
 ]);
+
+const papers = [...practicePapers, ...timedPapers];
 
 const PATH = `/cuet-mock-test/${subject.slug}/${topic.slug}`;
 const seo = await getPageSeo(PATH);
