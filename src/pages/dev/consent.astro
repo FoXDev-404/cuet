@@ -17,11 +17,11 @@ const allow = Astro.url.searchParams.get("allow") !== "0";
     <meta name="robots" content="noindex, nofollow" />
     <title>Consent gate preview</title>
   </head>
-  <body class="min-h-screen bg-neutral-50 p-6 text-neutral-900">
+  <body class="min-h-screen bg-neutral-50 p-6 text-neutral-900 dark:bg-ink-950 dark:text-neutral-100">
     <main class="mx-auto max-w-2xl">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">Internal · not indexed</p>
-      <h1 class="mt-2 text-2xl font-black">Consent gate preview</h1>
-      <p class="mt-2 text-sm text-neutral-600">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">Internal · not indexed</p>
+      <h1 class="mt-2 text-2xl font-black dark:text-white">Consent gate preview</h1>
+      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
         The real consent component with a fake GA4 id. Development only.
       </p>
       <button
@@ -30,7 +30,7 @@ const allow = Astro.url.searchParams.get("allow") !== "0";
         aria-controls="consent-banner"
         aria-expanded="false"
         hidden
-        class="mt-6 cursor-pointer rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold"
+        class="mt-6 cursor-pointer rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold dark:border-white/20 dark:text-white"
       >
         Privacy choices
       </button>
