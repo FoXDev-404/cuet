@@ -523,7 +523,7 @@ test("public reveal answers guests and search indexing follows every flag", asyn
   const stamp = uniqueStamp();
   const explanation = `E2E-PUBLIC-EXPLANATION-${stamp}`;
   const fixture = createFixture({
-    text: `E2E share public ${stamp}: which option is Gamma?`,
+    text: `Share public ${stamp}: which option is Gamma?`,
     correctOption: 2,
     explanation,
     revealPolicy: "public",

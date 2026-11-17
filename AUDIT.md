@@ -661,13 +661,14 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - The privacy policy cookie table, `docs/WEBSITE_SITEMAP.md` and the auth E2E helper now use the prefixed names; the E2E helper exports the legacy name for the migration test.
 - Applied production Turso migrations `0026_rename_pyq_archive_path.sql`, `0027_practice_question_topics.sql` and `0028_fix_cuet_source_url.sql` after a dry run reported all three pending.
 - `scripts/tag-practice-questions.mjs` now supports `--turso`: it reads mapping context through the Turso client and applies all tags in one interactive `write` transaction, rolling back on an unexpected row count. The production topic import no longer has to go through the unused D1 binding.
+- Fixed a stale question-share E2E fixture whose text started with `E2E`; the P1-13 fixture rule correctly refused to index it. The test now uses neutral question text so it can exercise the `seo_indexable` transition.
 
 **Verification**
 
 - Unit: **617/617** across 70 files. Focused cookie helpers **7/7**; focused `auth-copy` + `consent` **9/9**.
 - Type check: `astro check` 0 errors, 0 warnings.
 - Build: clean; the secret scan passed and removed the local env file from `dist/`.
-- E2E: the legacy-session promotion test passes **1/1** — `/dashboard` stays 200, `__Host-cuet_session` is present, and `cuet_session` is gone.
+- E2E: full suite **96 passed / 2 skipped**. The legacy-session promotion test passes — `/dashboard` stays 200, `__Host-cuet_session` is present, and `cuet_session` is gone.
 - Turso: `npm run db:turso:verify` reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 published questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks. A `tag-practice-questions.mjs --turso` dry run resolved a real paper/question/topic triple and reported `Turso` as the target without writing.
 
 **Next**
