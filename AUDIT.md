@@ -441,7 +441,7 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - The manual `Deploy production` workflow still runs D1 migrations and imports before deploying. Production data lives in Turso, so those steps touch a database the app does not read. Until the workflow is rewritten for Turso, release production with `db:turso:migrate` / `db:turso:verify` and `npm run deploy`, or dispatch it only for a code-only deploy with the D1 steps removed.
 - `staging.cuetfreemocktest.com` has no DNS record even though the zone is on Cloudflare. The committed staging `SITE_URL` is therefore the workers.dev origin; switch it back and add the custom hostname to the Google redirect URI list once DNS is fixed.
 - Staging has no `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`, so `/api/auth/google` returns `/login?error=google_not_configured`. The deployed Google callback cannot be verified until the staging Worker secrets and the Google redirect URI are configured.
-- Staging D1 has no seeded operator/admin, so an authenticated staging pass of `/dashboard` and `/admin` was not possible. Those pages were verified to redirect to `/login` when signed out; authenticated staging QA still needs a staging admin.
+- Staging D1 has no seeded operator/admin, so an authenticated staging pass of `/dashboard` and `/admin` was not possible. Those pages were verified to redirect to `/login` when signed out; authenticated staging QA still needs a staging admin. Seeding one is also blocked right now because `cuet-d1-staging` has exhausted Cloudflare's free-tier daily row-write limit (`7500`); the seed attempt wrote nothing and the quota resets at midnight UTC.
 - The staging `noindex` guard is now live on `cuet-astro-staging`: every response sampled on 2026-11-17 carried `X-Robots-Tag: noindex, nofollow` and `/robots.txt` returned `User-agent: *\nDisallow: /`. Staging remains a public URL; the guard keeps it out of indexes, not out of reach.
 - Cloudflare Access is not configured; production admin uses the session fallback.
 - Local Lighthouse excludes GA4, AdSense and edge cache; field performance may differ. The local D1 data set also differs from Turso.
@@ -744,6 +744,7 @@ Staging was seeded and deployed from the authenticated local Wrangler session be
 
 - Deployed staging Lighthouse: **6 of 7** routes pass; the Subject Hub Speed Index miss and its TTFB explanation are recorded in §13. Evidence lives in `docs/report/lighthouse-staging/`; the local baseline in `docs/report/lighthouse/` was restored from git.
 - Local re-verification after the a11y fixes: unit **618/618** across 70 files, `npm run build` clean (0 errors, 0 warnings, secret scan passed), full E2E **96 passed / 2 skipped**, full axe **272 scans / 0 WCAG A/AA violations / 0 horizontal overflow**.
+- Production packaging check: a `CLOUDFLARE_ENV=production npm run build` followed by `npx wrangler deploy --dry-run` exited 0 and resolved `ENV=production`, `SITE_URL=https://cuetfreemocktest.com`, `GA4_MEASUREMENT_ID` present, AdSense vars blank, D1 `cuet-blueprint-db` and both KV bindings. Nothing was uploaded to production.
 - The a11y fixes that came out of CI were the PYQ tag scroll container missing `tabindex="0"` and `/admin/seo` overflowing 375 px by 399 px. Source guards for the staging noindex are **5/5**.
 
 **Next**

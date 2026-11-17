@@ -137,6 +137,9 @@ touched.
 5. Google sign-in on staging needs `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` on the
    staging Worker. Without them `/api/auth/google` returns
    `/login?error=google_not_configured`.
+6. The staging D1 database is on the free tier. A full import plus explanation
+   backfill can exhaust the daily row-write limit (`7500`); writes then fail until
+   midnight UTC. Do not re-run imports just to clear a transient error.
 
 ## 9. Production release path
 
