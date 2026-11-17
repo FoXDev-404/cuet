@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   CONSENT_DENIED,
@@ -44,5 +46,19 @@ describe("consent decisions", () => {
     for (const path of ["/attempt/1", "/result/1", "/dashboard", "/admin/x", "/login", "/api/x", "/dev/styleguide", "/search?q=x"]) {
       expect(consentUiAllowed(path), path).toBe(false);
     }
+  });
+});
+
+describe("consent wiring", () => {
+  it("keeps the loaders out of BaseLayout and behind the consent component", () => {
+    const layout = readFileSync(resolve(process.cwd(), "src/layouts/BaseLayout.astro"), "utf8");
+    expect(layout).toContain("<ConsentGate");
+    expect(layout).not.toContain('gtag("config"');
+    expect(layout).not.toContain("googletagmanager.com/gtm.js");
+    const gate = readFileSync(resolve(process.cwd(), "src/components/ConsentGate.astro"), "utf8");
+    expect(gate).toContain("localStorage.getItem");
+    expect(gate).toContain("googletagmanager.com/gtag/js");
+    expect(gate).toContain("location.reload()");
+    expect(gate).toContain("data-open-consent");
   });
 });

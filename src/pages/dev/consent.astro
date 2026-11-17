@@ -1,0 +1,40 @@
+---
+import "../../styles/global.css";
+import ConsentGate from "../../components/ConsentGate.astro";
+
+if (import.meta.env.PROD) {
+  return new Response("Not found", { status: 404 });
+}
+
+const allow = Astro.url.searchParams.get("allow") !== "0";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Consent gate preview</title>
+  </head>
+  <body class="min-h-screen bg-neutral-50 p-6 text-neutral-900">
+    <main class="mx-auto max-w-2xl">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">Internal · not indexed</p>
+      <h1 class="mt-2 text-2xl font-black">Consent gate preview</h1>
+      <p class="mt-2 text-sm text-neutral-600">
+        The real consent component with a fake GA4 id. Development only.
+      </p>
+      <button
+        type="button"
+        data-open-consent
+        aria-controls="consent-banner"
+        aria-expanded="false"
+        hidden
+        class="mt-6 cursor-pointer rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold"
+      >
+        Privacy choices
+      </button>
+    </main>
+    <ConsentGate ga4Id="G-DEVTEST123" allowAnalytics={allow} />
+  </body>
+</html>

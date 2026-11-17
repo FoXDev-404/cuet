@@ -8,6 +8,19 @@ const webServerCommand = process.env.PLAYWRIGHT_SERVER_COMMAND
     ? "npx wrangler dev --port 4321 --ip 127.0.0.1"
     : "npm run dev";
 
+// A developer may configure GA4 locally. Seeding a rejected choice keeps the
+// consent banner (and any analytics request) out of unrelated specs. The
+// consent spec overrides this with an empty storage state.
+const consentStorageState = {
+  cookies: [],
+  origins: [
+    {
+      origin,
+      localStorage: [{ name: "cuet_consent_v1", value: "v1:analytics=0" }],
+    },
+  ],
+};
+
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: false,
@@ -24,6 +37,7 @@ export default defineConfig({
     // state-changing API route requires it. Same-origin browser requests
     // tolerate the override; the app makes no cross-origin fetch calls.
     extraHTTPHeaders: { origin },
+    storageState: consentStorageState,
     trace: "on-first-retry",
   },
   projects: [

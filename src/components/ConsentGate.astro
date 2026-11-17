@@ -1,0 +1,217 @@
+---
+/**
+ * Optional analytics consent gate.
+ *
+ * Renders nothing unless a valid GA4 or GTM id is configured and the current
+ * page is public. The banner is hidden until the inline script confirms that
+ * no choice is stored, so a JavaScript-disabled visitor sees no dead control
+ * and no analytics request is ever made.
+ */
+import { CONSENT_DENIED, CONSENT_GRANTED, CONSENT_STORAGE_KEY } from "../lib/consent";
+
+interface Props {
+  ga4Id?: string;
+  gtmId?: string;
+  allowAnalytics?: boolean;
+}
+
+const { ga4Id = "", gtmId = "", allowAnalytics = true } = Astro.props;
+const active = allowAnalytics && Boolean(ga4Id || gtmId);
+---
+
+{active ? (
+  <>
+    <p id="consent-status" role="status" aria-live="polite" class="sr-only"></p>
+    <aside
+      id="consent-banner"
+      role="region"
+      aria-labelledby="consent-banner-title"
+      tabindex="-1"
+      hidden
+      class="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-40 px-3 lg:bottom-4 lg:px-4"
+    >
+      <div class="mx-auto max-w-3xl rounded-xl border border-neutral-200 bg-white p-4 text-sm text-neutral-700 shadow-lg dark:border-white/10 dark:bg-ink-950 dark:text-white/70">
+        <h2 id="consent-banner-title" class="text-base font-bold text-neutral-900 dark:text-white">
+          Your privacy choices
+        </h2>
+        <p class="mt-2">
+          We use cookieless Cloudflare analytics to count page views. With your permission we also
+          use Google Analytics 4 to understand how people use the site. You can change this choice
+          at any time from the footer or the
+          <a class="font-semibold underline underline-offset-2" href="/privacy-policy#advertising-and-analytics">privacy policy</a>.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button
+            type="button"
+            data-consent-choice="granted"
+            class="cursor-pointer rounded-lg border border-neutral-300 bg-white px-3 py-2 font-semibold text-neutral-800 hover:bg-neutral-100 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+          >
+            Allow analytics
+          </button>
+          <button
+            type="button"
+            data-consent-choice="denied"
+            class="cursor-pointer rounded-lg border border-neutral-300 bg-white px-3 py-2 font-semibold text-neutral-800 hover:bg-neutral-100 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+          >
+            Reject
+          </button>
+        </div>
+      </div>
+    </aside>
+    <script is:inline define:vars={{ CONSENT_STORAGE_KEY, CONSENT_GRANTED, CONSENT_DENIED, ga4Id, gtmId }}>
+      (function () {
+        var banner = document.getElementById("consent-banner");
+        var status = document.getElementById("consent-status");
+        var openers = document.querySelectorAll("[data-open-consent]");
+        var choices = document.querySelectorAll("[data-consent-choice]");
+        var analyticsLoaded = false;
+
+        function readDecision() {
+          try {
+            var raw = window.localStorage.getItem(CONSENT_STORAGE_KEY);
+            if (raw === CONSENT_GRANTED) return "granted";
+            if (raw === CONSENT_DENIED) return "denied";
+          } catch (e) {}
+          return null;
+        }
+
+        function storeDecision(value) {
+          try {
+            window.localStorage.setItem(CONSENT_STORAGE_KEY, value);
+            return true;
+          } catch (e) {
+            return false;
+          }
+        }
+
+        function setExpanded(value) {
+          for (var i = 0; i < openers.length; i++) {
+            openers[i].setAttribute("aria-expanded", value);
+          }
+        }
+
+        function showOpeners() {
+          for (var i = 0; i < openers.length; i++) {
+            openers[i].removeAttribute("hidden");
+            openers[i].setAttribute("aria-expanded", "false");
+          }
+        }
+
+        function showBanner(focusBanner) {
+          if (!banner) return;
+          banner.removeAttribute("hidden");
+          setExpanded("true");
+          if (focusBanner) banner.focus();
+        }
+
+        function hideBanner() {
+          if (!banner) return;
+          banner.setAttribute("hidden", "");
+          setExpanded("false");
+          // Keep keyboard focus on a visible control instead of losing it.
+          for (var i = 0; i < openers.length; i++) {
+            if (!openers[i].hasAttribute("hidden")) {
+              openers[i].focus();
+              return;
+            }
+          }
+        }
+
+        function loadGtm() {
+          if (analyticsLoaded || !gtmId) return;
+          analyticsLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var first = document.getElementsByTagName("script")[0];
+          var script = document.createElement("script");
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(gtmId);
+          first.parentNode.insertBefore(script, first);
+        }
+
+        function loadGa4() {
+          if (analyticsLoaded || !ga4Id) return;
+          analyticsLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            window.dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", ga4Id);
+
+          function inject() {
+            var script = document.createElement("script");
+            script.async = true;
+            script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga4Id);
+            document.head.appendChild(script);
+          }
+
+          if (document.readyState === "complete") inject();
+          else
+            window.addEventListener(
+              "load",
+              function () {
+                window.setTimeout(inject, 2000);
+              },
+              { once: true },
+            );
+        }
+
+        function loadAnalytics() {
+          if (gtmId) loadGtm();
+          else if (ga4Id) loadGa4();
+        }
+
+        function clearAnalyticsCookies() {
+          var cookies = document.cookie ? document.cookie.split(";") : [];
+          for (var i = 0; i < cookies.length; i++) {
+            var name = cookies[i].split("=")[0].replace(/^\s+|\s+$/g, "");
+            if (name === "_ga" || name === "_gid" || name.indexOf("_ga_") === 0) {
+              document.cookie = name + "=; Max-Age=0; path=/; SameSite=Lax";
+              document.cookie =
+                name + "=; Max-Age=0; path=/; domain=" + location.hostname + "; SameSite=Lax";
+            }
+          }
+        }
+
+        function choose(granted) {
+          storeDecision(granted ? CONSENT_GRANTED : CONSENT_DENIED);
+          if (status) {
+            status.textContent = granted ? "Analytics allowed." : "Analytics rejected.";
+          }
+
+          var wasLoaded = analyticsLoaded;
+          hideBanner();
+
+          if (granted) {
+            loadAnalytics();
+            return;
+          }
+
+          if (wasLoaded) {
+            clearAnalyticsCookies();
+            window.location.reload();
+          }
+        }
+
+        for (var i = 0; i < openers.length; i++) {
+          openers[i].addEventListener("click", function () {
+            showBanner(true);
+          });
+        }
+
+        for (var j = 0; j < choices.length; j++) {
+          choices[j].addEventListener("click", function () {
+            choose(this.getAttribute("data-consent-choice") === "granted");
+          });
+        }
+
+        showOpeners();
+
+        var decision = readDecision();
+        if (decision === "granted") loadAnalytics();
+        else if (!decision) showBanner(false);
+      })();
+    </script>
+  </>
+) : null}

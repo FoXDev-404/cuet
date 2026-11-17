@@ -79,6 +79,10 @@ const STATIC_PUBLIC_PATHS = [
   "/forgot-password",
 ];
 
+// The dev-only consent preview only exists locally; a remote audit would scan
+// the production 404 instead of the banner.
+if (isLocalBase) STATIC_PUBLIC_PATHS.push("/dev/consent");
+
 // Placeholders are filled from the live admin APIs after login. Production
 // content ids change, so hard-coded ids such as /admin/questions/1 would scan a
 // deleted row or redirect to a 404.
