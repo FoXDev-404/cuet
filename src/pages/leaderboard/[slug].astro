@@ -131,7 +131,7 @@ const structuredData = breadcrumbJsonLd(site, [
   <section class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
     <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
       <nav class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-        <a class="hover:underline" href="/leaderboard">Leaderboard</a>
+        <a class="inline-block py-0.5 hover:underline" href="/leaderboard">Leaderboard</a>
         <span aria-hidden="true">/</span>
         <span class="truncate">{mock.title}</span>
       </nav>
@@ -177,7 +177,7 @@ const structuredData = breadcrumbJsonLd(site, [
       </p>
     ) : (
       <p class="mt-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400">
-        <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/login?next=${encodeURIComponent(`/leaderboard/${mock.slug}`)}`}>Log in</a>
+        <a class="inline-block py-0.5 font-semibold text-brand-700 hover:underline dark:text-brand-300" href={`/login?next=${encodeURIComponent(`/leaderboard/${mock.slug}`)}`}>Log in</a>
         {" "}or take the mock as a guest; creating an account afterwards adds that attempt to the board.
       </p>
     )}
@@ -206,7 +206,7 @@ const structuredData = breadcrumbJsonLd(site, [
                 </td>
                 <td class="max-w-[16rem] truncate px-4 py-3 font-medium">
                   {row.is_profile_public ? (
-                    <a class="hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/u/${row.username}`}>{row.username}</a>
+                    <a class="inline-block py-0.5 hover:text-brand-700 hover:underline dark:hover:text-brand-300" href={`/u/${row.username}`}>{row.username}</a>
                   ) : row.username}
                   {isMe ? <span class="ml-2 rounded-full bg-brand-600 px-2 py-0.5 text-[10px] font-bold uppercase text-white">You</span> : null}
                 </td>
@@ -220,7 +220,7 @@ const structuredData = breadcrumbJsonLd(site, [
       </table>
       {rows.length === 0 ? (
         <div class="px-4 py-12 text-center text-sm text-neutral-500 dark:text-neutral-400">
-          No ranked attempts yet. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href={startHref}>Take the first attempt →</a>
+          No ranked attempts yet. <a class="inline-block py-0.5 font-semibold text-brand-700 hover:underline dark:text-brand-300" href={startHref}>Take the first attempt →</a>
         </div>
       ) : null}
     </div>

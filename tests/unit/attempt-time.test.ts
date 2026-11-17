@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   ATTEMPT_GRACE_SECONDS,
@@ -40,5 +42,12 @@ describe("attempt deadline helpers (Fix 10 Item 1)", () => {
     ).toBe(true);
     expect(hasExpired({ deadline_at: DEADLINE }, deadlineMs + 16_000)).toBe(true);
     expect(hasExpired({ deadline_at: DEADLINE }, deadlineMs + 60 * 60 * 1000)).toBe(true);
+  });
+
+  it("keeps the autosave copy aligned with the 15-second interval", () => {
+    const source = readFileSync(join(process.cwd(), "src/pages/attempt/[id].astro"), "utf8");
+    expect(source).toContain("saveAnswers(true), 15000");
+    expect(source).toContain("Answers autosave every 15 seconds.");
+    expect(source).not.toContain("Answers autosave every 10 seconds.");
   });
 });

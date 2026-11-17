@@ -117,5 +117,26 @@ describe("Fix 7 — Duplicate Hubs and Sitemap Consistency", () => {
     expect(sitemap).toContain("hasSubstantiveSeoIntro(row.intro_html)");
     expect(sitemap).toContain("if (indexableArchivePaths.has(path))");
   });
+
+  it("keeps the indexable leaderboard title within 60 characters", () => {
+    const file = readFileSync(join(root, "src/pages/leaderboard/index.astro"), "utf8");
+    const match = file.match(/const DEFAULT_TITLE = "([^"]+)";/);
+    expect(match?.[1]).toBeTruthy();
+    expect(match![1].length).toBeLessThanOrEqual(60);
+  });
+
+  it("gives small leaderboard links a 24px-class vertical target", () => {
+    for (const page of [
+      "src/pages/leaderboard/index.astro",
+      "src/pages/leaderboard/[slug].astro",
+    ]) {
+      const file = readFileSync(join(root, page), "utf8");
+      const inlineLinks = file.match(/<a class="[^"]*hover:underline[^"]*"/g) ?? [];
+      expect(inlineLinks.length, page).toBeGreaterThan(0);
+      for (const link of inlineLinks) {
+        expect(link, `${page}: ${link}`).toMatch(/inline-block py-0\.5|line-clamp-1 py-0\.5/);
+      }
+    }
+  });
 });
 
