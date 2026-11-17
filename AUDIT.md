@@ -37,8 +37,8 @@ The requested stack was Cloudflare Pages/Functions, D1, KV and Firebase Auth (Go
 | KV | KV | `SESSION` and `MEDIA_KV` namespaces; staging/production separated | Matches. |
 | Auth | Firebase Auth, Google-only | Custom Google OAuth + server sessions (`cuet_session`), guest attempts (`cuet_guest`); Google sign-in is the production path | Keep. Firebase would be a rewrite with no user-visible benefit. |
 | Email | Not specified | Resend/Brevo adapters exist; production email is unconfigured and password reset is disabled | Keep disabled until a provider is chosen. |
-| Ads | AdSense | Env-gated AdSense; `ADSENSE_CLIENT` and `ADSENSE_SLOT_ID` are empty in production, so ads are dormant and `/ads.txt` is 404 | Keep dormant until consent, policy and route-safety fixes ship. |
-| Analytics | Not specified | GA4 `G-Y1JPT7SNQJ` and Cloudflare Web Analytics are live; no GTM, no AdSense, no Funding Choices | Add a consent gate and privacy-policy disclosure before expanding (P1-4). |
+| Ads | AdSense | Env-gated AdSense; `ADSENSE_CLIENT` and `ADSENSE_SLOT_ID` are empty in production, so ads are dormant and `/ads.txt` is 404 | Keep dormant until consent, policy and route-safety fixes ship. P1-4 adds a third `ADSENSE_CMP_ACTIVE` gate; a certified CMP is still required. |
+| Analytics | Not specified | GA4 `G-Y1JPT7SNQJ` and Cloudflare Web Analytics are live; no GTM, no AdSense, no Funding Choices | P1-4 adds an opt-in gate and policy disclosure in code; production rollout is still pending deployment. Cloudflare analytics stays unconditional and cookieless. |
 | Deploy | — | `npm run deploy` builds with the production env and runs `wrangler deploy`; production deployment matches HEAD | Keep. |
 
 Core versions: Astro `7.4.4`, Tailwind `4.3.3`, React `19.3.0` (islands), TypeScript `5.9.3`, Vitest `5.0.5`, Playwright `1.64.1`, Wrangler `4.156.0`.
@@ -246,6 +246,8 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 
 **Resolved in Phase 1 (P0-1):** the attempt page no longer imports `AdSlot` or the AdSense helpers, emits no ad script and renders no unit. `/attempt` is also in `BLOCKED_AD_PATHS`, so a future `AdSlot` placement on that route still renders nothing. Verified with valid `ADSENSE_*` env vars in a preview: `/attempt/535` returned no `adsbygoogle`, `pagead2.googlesyndication.com` or ad-unit markup, while `/mock-tests` still loaded the script and unit.
 
+**Resolved in Phase 2 (P1-4):** the attempt page and the loader are now protected by the Phase 1 route guards plus a new CMP attestation. GA4 and GTM are opt-in: `ConsentGate.astro` reads the versioned `cuet_consent_v1` localStorage choice, missing or malformed values mean no analytics, and the banner is hidden until the script confirms there is no choice, so a JavaScript-disabled visitor sees no dead control. The unconditional head loaders and GTM's `<noscript>` iframe were removed. The component renders only on public paths, while Cloudflare Web Analytics remains unconditional and cookieless. The privacy policy now names GA4 (`G-Y1JPT7SNQJ`), the `_ga`/`_ga_*` cookies, up to 14 months of event retention, Google's processor role, international processing and the opt-out add-on, and documents withdrawal. ADS-4 is enforced in code: `ADSENSE_CMP_ACTIVE` must be `1` or `true` in addition to `ADSENSE_CLIENT` and `ADSENSE_SLOT_ID`, and both the BaseLayout loader and `AdSlot` check it. Ads stay off for now; a Google-certified CMP is still mandatory before go-live.
+
 ---
 
 ## 11. Data, environment and deployment
@@ -275,7 +277,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P1-1 — Descriptive mock start links.** Fix the 24 "Start" links on `/mock-tests`; target SEO 100 on that route.
 - **P1-2 — Social metadata.** Use `name=` for Twitter tags; replace SVG blog OG images with PNG/JPEG; validate with X and Facebook debuggers.
 - **P1-3 — Broken NTA source URL.** Add a migration + seed update to `https://cuet.nta.nic.in/` (verify first); re-run the link crawler.
-- **P1-4 — Consent and GA4 disclosure.** Add a consent gate for ads/analytics where required; update the privacy policy to name GA4 and describe the consent basis.
+- **P1-4 — Consent and GA4 disclosure. Resolved in Phase 2.** GA4/GTM now load only after an explicit `Allow analytics` choice, only on public pages; Cloudflare Web Analytics stays cookieless and unconditional. The policy names GA4 and its basis, and `ADSENSE_CMP_ACTIVE` blocks ads until a certified CMP is attested. See §10 and §17.
 - **P1-5 — Private response caching.** Add `Cache-Control: no-store` to private/auth HTML and authenticated APIs.
 - **P1-6 — Origin/CSRF hardening.** Fail closed when `Origin` is absent on state-changing requests, with an explicit `Sec-Fetch-Site` fallback.
 - **P1-7 — Autosave rate limit.** Add a per-attempt/IP bucket to the answers endpoint and test 429 behaviour.
@@ -317,6 +319,15 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 
 "After" was measured on 2026-11-17 with the same method. `/attempt/565` (share off) and `/result/565` used fresh guest attempts on the same mock 85 because baseline attempts 527/535 had expired or belonged to another guest cookie. The share-on row is not the production default; its payload is unchanged at 470 KB, and the small score/TBT delta is run variance already tracked under P2-10.
 
+**Phase 2 P1-4 re-measure (2026-11-17).** Same method. The local production build has no GA4 id, so the consent component renders nothing and the gate adds no request or markup to these routes. This measures the unchanged public shell, not the configured-banner path.
+
+| Route | Perf | A11y | BP | SEO | LCP | TBT | CLS | Transfer |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `/` | 100 | 100 | 100 | 100 | 981 ms | 0 ms | 0 | 57 KB |
+| `/privacy-policy` (new) | 100 | 100 | 100 | 100 | 926 ms | 0 ms | 0 | 56 KB |
+
+One `/` run scored 82 with TBT 518 ms and CLS 0.136 while the preview's Workers runtime restarted; Lighthouse recorded no layout-shift element. The other two runs were 100/0/0, so the median stands. `/privacy-policy` scored 100 in all three runs.
+
 ---
 
 ## 14. Fixed issues log
@@ -338,7 +349,11 @@ Future phases append one row per fix and a short phase summary at the end of thi
 
 ## 15. Remaining risks and blocked items
 
-- AdSense is dormant, and the attempt-page violation (ADS-1) was fixed in Phase 1; ads remain off until consent, `/ads.txt` and the go-live checklist are complete.
+- AdSense is dormant, and the attempt-page violation (ADS-1) was fixed in Phase 1; ads remain off until consent, `/ads.txt` and the go-live checklist are complete. `ADSENSE_CMP_ACTIVE` now gates both the loader and the unit, but it is an operator attestation, not technical proof: a Google-certified CMP, policy review and AdSense approval are still required before ads can render.
+- GA4 is now opt-in and public-only, so its pageviews will be lower than Cloudflare Web Analytics (which counts every page) and lower than historical GA4 totals. Do not reconcile the two as if they were the same measure.
+- A visitor who clears site data or blocks `localStorage` loses the stored choice; the banner returns and analytics stays off until they choose again. This fails closed, but the choice cannot be remembered.
+- The consent banner is not exercised by Lighthouse with a real GA4 id. Its markup is small and fixed-position, but the configured path should be re-measured on the deployed origin before go-live.
+- The privacy policy still describes email/password signup and password hashes, while production auth is Google-only. That copy needs a separate accuracy pass, tracked outside P1-4.
 - No GSC/Bing access: indexing, coverage and Core Web Vitals field data cannot be verified from this environment.
 - No authenticated production admin/dashboard pass; admin RBAC is verified by tests and code review, not by a live production session.
 - Production Turso vs local D1 means query counts, content counts and migration state can differ. Do not treat local D1 as production.
@@ -388,11 +403,15 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 ### Ads and privacy
 
-- [ ] With `ADSENSE_*` empty: no AdSense script, no ad unit, `/ads.txt` 404.
-- [ ] With `ADSENSE_*` set in a preview: no ad script or unit on `/attempt`, `/result`, `/dashboard`, `/login`, `/admin` or `/search`.
-- [ ] Ads appear only on allowed content pages, after consent where required.
-- [ ] The consent banner can accept/reject; rejection prevents personalised ads/GA4 where required.
-- [ ] The privacy policy names GA4, Cloudflare Web Analytics and AdSense accurately.
+- [x] With `ADSENSE_*` empty: no AdSense script, no ad unit, `/ads.txt` 404.
+- [x] With `ADSENSE_CLIENT`/`ADSENSE_SLOT_ID` set but `ADSENSE_CMP_ACTIVE` empty: no loader and no ad unit on any route (unit guard plus source-level checks).
+- [ ] With `ADSENSE_CMP_ACTIVE=1` in a preview: no ad script or unit on `/attempt`, `/result`, `/dashboard`, `/login`, `/admin` or `/search`.
+- [ ] Ads appear only on allowed content pages, after the certified CMP is live.
+- [x] With GA4 configured on a public page: no `googletagmanager.com` request before a choice, the banner is visible, Reject persists and never loads, Allow loads once, and a reload keeps the choice.
+- [x] The footer and privacy-policy controls reopen the banner; rejection after a load clears `_ga*` and reloads.
+- [x] No banner, no request and no openable control on `/attempt`, `/result`, `/dashboard`, `/admin`, auth or `/search` (`?allow=0` dev harness plus the shared private-path guard).
+- [x] With JavaScript disabled: the banner and controls are hidden and no analytics request occurs (E2E).
+- [x] The privacy policy names GA4, its cookies, retention, processor and opt-out, and distinguishes analytics consent from advertising consent.
 
 ### SEO and redirects
 
@@ -469,6 +488,33 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 - Phase 2: P1-4 (consent/GA4 disclosure), P1-8 (performance-budget enforcement and a working Lighthouse runner), then the P2 UI/UX and code items.
 - Production operations: apply `npm run db:turso:migrate` so migration `0028` reaches Turso, refresh the D1/Turso backup workflow, and decide whether to configure Cloudflare Access or accept the documented admin-session risk.
+
+---
+
+### Phase 2 — P1-4 consent gate and GA4 disclosure (2026-11-17)
+
+**Done**
+
+- Shared `NOINDEX_PREFIXES`/`isPrivatePath` in `src/lib/private-paths.ts`, consumed by the middleware and the consent code, so analytics scope and `noindex`/`no-store` cannot drift apart.
+- Added `src/lib/consent.ts`: versioned `cuet_consent_v1` storage values, strict parsing (malformed and future versions mean "no decision"), GA4/GTM detection and a public-page predicate.
+- Removed the unconditional GA4/GTM head loaders and the GTM `<noscript>` iframe from `BaseLayout`. Added `ConsentGate.astro` with equal-prominence Allow/Reject buttons, a polite status message, focus return to the opener, and withdrawal that clears `_ga`/`_ga_*`/`_gid` and reloads.
+- Added the development-only `/dev/consent` harness (fake `G-DEVTEST123`, `?allow=0` suppression), Playwright storage-state seeding, six consent E2E tests, source guards and a local-only axe scan.
+- Added `ADSENSE_CMP_ACTIVE`; both the BaseLayout loader and `AdSlot` now require `1` or `true`. Ads remain off by owner decision for roughly 5–6 months.
+- Updated the privacy policy (review date 17 November 2026), `docs/EXTERNAL_SETUP.md`, `docs/LAUNCH-RUNBOOK.md` and `.dev.vars.example`.
+
+**Verification**
+
+- Unit: **568/568** across 65 files.
+- Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
+- E2E: **94 passed, 2 skipped**.
+- Axe: **276 scans, 0 violations, 0 horizontal overflow** (four new scans cover `/dev/consent`).
+- Lighthouse medians (§13): `/` 100/100/100/100, LCP 981 ms; `/privacy-policy` 100/100/100/100, LCP 926 ms, 56 KB.
+- Commits: `30eedf0`, `09a7509`, `8ac6999`, `4edfffa`, `2dbd3ae`, plus this audit record. All local with `[skip deploy]`.
+
+**Next**
+
+- P1-8: refresh `scripts/lighthouse-audit.mjs`, make it read `performance-budget.json`, and fail the run when a route breaches its budget.
+- Before any push: confirm the consent component on the deployed origin with the real GA4 id, then record the configured-banner Lighthouse run.
 
 ---
 

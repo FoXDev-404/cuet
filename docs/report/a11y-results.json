@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-11-17T10:47:14.438Z",
-  "commitHash": "bead901",
+  "timestamp": "2026-11-17T13:36:32.049Z",
+  "commitHash": "2dbd3ae",
   "axeVersion": "4.14.0",
-  "totalScans": 272,
-  "passedScans": 272,
+  "totalScans": 276,
+  "passedScans": 276,
   "failedScans": 0,
   "failures": [],
   "scans": [
@@ -848,6 +848,46 @@
       "passed": true
     },
     {
+      "label": "public",
+      "path": "/dev/consent",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/dev/consent",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/dev/consent",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "public",
+      "path": "/dev/consent",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
       "label": "public-question",
       "path": "/q/e2e-sitemap-eligible-mw6hnnp0m8b15i-which-option-Hq096gse6Y",
       "viewport": "desktop",
@@ -1129,7 +1169,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1139,7 +1179,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1149,7 +1189,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1159,7 +1199,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1169,7 +1209,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1179,7 +1219,7 @@
     },
     {
       "label": "attempt",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1189,7 +1229,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1199,7 +1239,7 @@
     },
     {
       "label": "attempt-palette",
-      "path": "/attempt/570",
+      "path": "/attempt/603",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1209,7 +1249,7 @@
     },
     {
       "label": "result",
-      "path": "/result/570",
+      "path": "/result/603",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1219,27 +1259,7 @@
     },
     {
       "label": "result",
-      "path": "/result/570",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "result",
-      "path": "/result/570/solutions",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "result",
-      "path": "/result/570/solutions",
+      "path": "/result/603",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1249,7 +1269,27 @@
     },
     {
       "label": "result",
-      "path": "/result/570",
+      "path": "/result/603/solutions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/603/solutions",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "result",
+      "path": "/result/603",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1259,7 +1299,7 @@
     },
     {
       "label": "result",
-      "path": "/result/570",
+      "path": "/result/603",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1269,7 +1309,7 @@
     },
     {
       "label": "result",
-      "path": "/result/570/solutions",
+      "path": "/result/603/solutions",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1279,7 +1319,7 @@
     },
     {
       "label": "result",
-      "path": "/result/570/solutions",
+      "path": "/result/603/solutions",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
@@ -1929,7 +1969,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/963",
+      "path": "/admin/mocks/969",
       "viewport": "desktop",
       "width": 1280,
       "theme": "light",
@@ -1939,47 +1979,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/963",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/963",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/963",
-      "viewport": "mobile",
-      "width": 375,
-      "theme": "dark",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/963/preview",
-      "viewport": "desktop",
-      "width": 1280,
-      "theme": "light",
-      "violations": [],
-      "overflow": 0,
-      "passed": true
-    },
-    {
-      "label": "auth",
-      "path": "/admin/mocks/963/preview",
+      "path": "/admin/mocks/969",
       "viewport": "desktop",
       "width": 1280,
       "theme": "dark",
@@ -1989,7 +1989,7 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/963/preview",
+      "path": "/admin/mocks/969",
       "viewport": "mobile",
       "width": 375,
       "theme": "light",
@@ -1999,7 +1999,47 @@
     },
     {
       "label": "auth",
-      "path": "/admin/mocks/963/preview",
+      "path": "/admin/mocks/969",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/969/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/969/preview",
+      "viewport": "desktop",
+      "width": 1280,
+      "theme": "dark",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/969/preview",
+      "viewport": "mobile",
+      "width": 375,
+      "theme": "light",
+      "violations": [],
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "label": "auth",
+      "path": "/admin/mocks/969/preview",
       "viewport": "mobile",
       "width": 375,
       "theme": "dark",
