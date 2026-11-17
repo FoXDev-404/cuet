@@ -131,7 +131,29 @@ Notes:
 - One of the three production-like attempt runs scored 97 with CLS `0.093`; the median is 100 / 0. The variance is tracked as P2-10.
 - `/mock-tests` SEO 92 has a single cause: 24 links whose visible/accessible text is only "Start". Lighthouse `link-text` lists them (for example `/mock/mathematics-2026-05-20-shift-1/instructions`). Fix with an accessible name that still contains the visible word "Start" (P1-1).
 - `/attempt` SEO 58 is `is-crawlable` (intentional noindex) plus a missing meta description. `/result` SEO 69 is the intentional noindex. Adding metadata would not make private pages indexable; the correct target is "no accidental indexability", not SEO 100.
-- The per-route budgets in `performance-budget.json` are documented but **not enforced**. `scripts/check-perf-budget.mjs` checks only total JS/CSS; `scripts/lighthouse-audit.mjs` does not read the budget file and is stale (see P1-8).
+- The per-route budgets in `performance-budget.json` are now **enforced** by `scripts/lighthouse-audit.mjs`; the Phase 3 re-measure below is the first run that fails the process on a breach.
+
+**Phase 3 P1-8 re-measure (2026-11-17, Lighthouse 13.6.0).** Same mobile simulated-4G method, three runs, light theme, production build, local D1.
+
+| Route | Perf | A11y | BP | SEO | LCP | TBT | CLS | Transfer | Budget |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| `/` | 100 | 100 | 100 | 100 | 930 ms | 0 ms | 0 | 57.2 KB | PASS |
+| `/mock-tests` | 100 | 100 | 100 | 100 | 920 ms | 0 ms | 0 | 58.9 KB | PASS |
+| `/cuet-mock-test/english` | 100 | 100 | 100 | 100 | 930 ms | 0 ms | 0 | 55.2 KB | PASS |
+| `/mock/[slug]` | 100 | 100 | 100 | 69 | 930 ms | 0 ms | 0 | 61.1 KB | PASS |
+| `/mock/[slug]/instructions` | 100 | 100 | 100 | 69 | 930 ms | 0 ms | 0 | 52.0 KB | PASS |
+| `/attempt/[id]` | 100 | 100 | 100 | 58 | 1240 ms | 0 ms | 0 | 68.7 KB | PASS |
+| `/result/[id]` | 100 | 100 | 100 | 69 | 930 ms | 0 ms | 0 | 61.6 KB | PASS |
+| `/q/[id]` | 100 | 100 | 100 | 100 | 930 ms | 0 ms | 0 | 70.6 KB | PASS |
+| `/admin` | 100 | 100 | 100 | 63 | 1090 ms | 0 ms | 0 | 44.9 KB | PASS |
+
+Notes:
+
+- All nine routes pass their route transfer/score budget and the global LCP, TBT, CLS, FCP, Speed Index and total-DOM caps. Every route scored 100 except one subject-hub run at 99; the three-run median is 100.
+- The attempt page fell from **100.7 KB** (share off) and **470 KB** (share on) to **68.7 KB** because the share-card fonts are no longer fetched during page idle. They are prerendered only after `pointerover`/`focusin` on the Share control, so the 361 KB payload is now an explicit user action rather than an initial cost.
+- The admin dashboard went from **CLS 0.328** to **CLS 0** after `data-admin-js` is set in the head, which keeps the mobile sidebar out of normal flow before hydration. LCP is 1.09 s.
+- SEO 58-69 on `/attempt`, `/result`, `/admin`, `/mock/...` and `/mock/.../instructions` remains intentional `noindex`; the target is no accidental indexability, not a perfect SEO score.
+- The local database exposes only the E2E sitemap fixture as an indexable shared question. The runner prefers a non-fixture `/q/` URL when one exists; evidence here uses the fixture because the other 27 candidates are drafts. This is a content-state limitation, not a route issue.
 
 ---
 
@@ -188,11 +210,11 @@ Remaining nits:
 
 ## 8. Performance
 
-- Home, mock list and result transfer **57-61 KB** and ship **0 KB of client JS**; the server-rendered architecture is working as intended.
-- The attempt page transfers **100.7 KB** with sharing off. With sharing on it jumps to **470 KB** because `prerenderAttemptQuestionShare` fetches `share-fonts-base.json`: 492,391 bytes raw, **361.3 KB** over the wire, plus ~19 KB of JS. This violates the 300 KB attempt budget and adds 276 ms TBT.
-- Root cause is the share-card font cache, not the exam UI. Production has `share_question_during_attempt=false`, so this is latent today. If the feature is enabled, it becomes a P1 regression.
-- `scripts/check-perf-budget.mjs` enforces only total JS/CSS. `performance-budget.json` claims per-route transfer limits are enforced by the Lighthouse audit, but `scripts/lighthouse-audit.mjs` does not read the budget file and is stale (`/api/auth/login`, mock `439`, attempt `739`, result `740`). The route budgets are therefore decorative.
-- Attempt LCP is 1.68 s and the first question image is ~37.7 KB. Preloading/fetch-prioritising the first image is a possible P2 improvement; it is already inside the 4 s budget.
+- Home, mock list, subject hub, mock detail, instructions, result and public question transfer **52-71 KB** and ship **0 KB of client JS**; the server-rendered architecture is working as intended.
+- The attempt page is **68.7 KB** at LCP **1.24 s**. It used to transfer 100.7 KB with sharing off and 470 KB with sharing on, because `prerenderAttemptQuestionShare` fetched `share-fonts-base.json` (492,391 bytes raw, **361.3 KB** over the wire) during page idle. P1-8 moved that work behind a Share `pointerover`/`focusin` intent, so the 361 KB is paid only when a user asks for a share card. Share-on no longer violates the 300 KB initial-load budget.
+- The admin dashboard is **44.9 KB** with CLS 0. Setting `data-admin-js` in the head keeps the mobile sidebar out of normal flow before hydration; the previous in-flow paint produced CLS 0.328.
+- `scripts/check-perf-budget.mjs` still enforces total JS/CSS. `scripts/lighthouse-audit.mjs` now enforces `performance-budget.json` route and global caps on the three-run median and exits non-zero on a breach. It discovers live mocks and questions, seeds guest/admin sessions, sanitizes session headers out of committed reports and records the Lighthouse version.
+- Attempt LCP is 1.24 s and the first question image is ~37.7 KB. Preloading/fetch-prioritising the first image remains optional; it is already well inside the 4 s budget.
 - The first local health request after startup reported 17,687 rows read, consistent with the practice-library warm-up. It is cached, but cold-start Turso row reads should be monitored for cost.
 - DB query profile (local): attempt start 2 queries / 59 rows read / 12 written; attempt page 5-6 queries / 7-152 rows; submit 10 queries / 346 rows read / 199 written. Query counts are well inside the invocation budget; rows are the billing metric to watch.
 
@@ -281,7 +303,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P1-5 — Private response caching.** Add `Cache-Control: no-store` to private/auth HTML and authenticated APIs.
 - **P1-6 — Origin/CSRF hardening.** Fail closed when `Origin` is absent on state-changing requests, with an explicit `Sec-Fetch-Site` fallback.
 - **P1-7 — Autosave rate limit.** Add a per-attempt/IP bucket to the answers endpoint and test 429 behaviour.
-- **P1-8 — Performance governance.** Refresh `scripts/lighthouse-audit.mjs` (remove the removed login endpoint and hard-coded mock/attempt IDs), make it read `performance-budget.json`, and fail the run when a route exceeds its transfer/score budget or the metrics exceed the documented caps.
+- **P1-8 — Performance governance. Resolved in Phase 3.** `scripts/lighthouse-audit.mjs` now discovers live mocks/questions, seeds guest/admin sessions, reads `performance-budget.json` and exits non-zero when a route or global metric breaches its cap. All nine audited routes pass; attempt transfer fell to 68.7 KB and admin CLS to 0. See §4, §8 and §17.
 - **P1-9 — Turso/D1 single source of truth.** Document the production engine, update deploy/runbook commands, apply migration `0027` + topic backfill to Turso, and make `check:env` assert the effective engine. Keep D1 only as an explicit local/legacy path until a migration decision is made.
 - **P1-10 — Local/production parity.** Remove the localhost exception for trailing-slash/canonical-host redirects in a test-only-safe way, or add a dedicated preview mode that matches production and document it.
 - **P1-11 — Dependency advisory.** Update Astro for `GHSA-mh32-jxcr-mh9f`; re-run build/tests/a11y.
@@ -290,7 +312,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 
 ### P2 — polish and hardening
 
-- **P2-1 — Lazy share fonts.** If `share_question_during_attempt` is ever enabled, fetch the 361 KB font JSON only after the user opens Share, not during page idle. Promote to P1 at that moment.
+- **P2-1 — Lazy share fonts. Resolved in Phase 3.** The attempt page no longer fetches `share-fonts-base.json` during idle; the share prerender runs only after `pointerover` or `focusin` on the Share control. Attempt initial transfer is 68.7 KB.
 - **P2-2 — Leaderboard touch targets.** Raise the 20 px links to at least 24 px.
 - **P2-3 — Autosave copy.** Align "every 10 seconds" with the 15-second interval.
 - **P2-4 — Title lengths.** Shorten `/leaderboard` (the only indexable page over 60 characters) to <=60; leave `/mock/...` wrapper, instructions, discussion and result titles alone unless those pages are edited.
@@ -299,7 +321,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P2-7 — CSP/COOP/CORP.** Replace `'unsafe-inline'` with nonces/hashes; add COOP/CORP; narrow ad domains when ads are off.
 - **P2-8 — Result-page ad decision.** Add a consent-gated post-test unit or explicitly document "no result ads".
 - **P2-9 — Environment docs.** Add `.env.example` alongside `.dev.vars.example`.
-- **P2-10 — Attempt LCP/CLS.** Preload or fetch-prioritise the first question image; investigate the one run with CLS 0.093.
+- **P2-10 — Attempt LCP/CLS. Resolved in Phase 3.** The share-font regression was the CLS/LCP driver. With intent-only prerender, the attempt page is 100 / LCP 1.24 s / CLS 0 in all three runs; first-image preload is no longer needed to meet the budget.
 - **P2-11 — Public-profile intent.** Link profiles from leaderboard/discussion or keep them noindex and out of the sitemap.
 - **P2-12 — API consistency.** Internal only: consider `/api/v1` and a consistent `{ ok, error }` envelope when the API is next touched; not worth a standalone refactor.
 
@@ -317,7 +339,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | `/result/:id` (private) | 100 | 100 | 100 | 100 | 100 | 100 | 69 | 69 | 930 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 61.3 KB | 61 KB |
 | `/attempt/:id` (share on, worst case) | 93 | 91 | 100 | 100 | 100 | 100 | 58 | 58 | 1734 ms | 1800 ms | 276 ms | 340 ms | 0 | 0 | 470.0 KB | 470 KB |
 
-"After" was measured on 2026-11-17 with the same method. `/attempt/565` (share off) and `/result/565` used fresh guest attempts on the same mock 85 because baseline attempts 527/535 had expired or belonged to another guest cookie. The share-on row is not the production default; its payload is unchanged at 470 KB, and the small score/TBT delta is run variance already tracked under P2-10.
+"After" was measured on 2026-11-17 with the same method. `/attempt/565` (share off) and `/result/565` used fresh guest attempts on the same mock 85 because baseline attempts 527/535 had expired or belonged to another guest cookie. The share-on row is not the production default; its payload was unchanged at 470 KB at this point, and the small score/TBT delta is run variance already tracked under P2-10. P1-8 later removed the idle font fetch, so the share-on initial load is now 68.7 KB.
 
 **Phase 2 P1-4 re-measure (2026-11-17).** Same method. The local production build has no GA4 id, so the consent component renders nothing and the gate adds no request or markup to these routes. This measures the unchanged public shell, not the configured-banner path.
 
@@ -327,6 +349,22 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | `/privacy-policy` (new) | 100 | 100 | 100 | 100 | 926 ms | 0 ms | 0 | 56 KB |
 
 One `/` run scored 82 with TBT 518 ms and CLS 0.136 while the preview's Workers runtime restarted; Lighthouse recorded no layout-shift element. The other two runs were 100/0/0, so the median stands. `/privacy-policy` scored 100 in all three runs.
+
+**Phase 3 P1-8 re-measure (2026-11-17, Lighthouse 13.6.0).** Same method. The full nine-route table is in §4; this tracks the material deltas.
+
+| Route | Perf | CLS before → after | Transfer before → after | LCP before → after |
+| --- | ---: | ---: | ---: | ---: |
+| `/` | 100 | 0 → 0 | 57.2 KB → 57.2 KB | 939 ms → 930 ms |
+| `/mock-tests` | 100 | 0 → 0 | 58.8 KB → 58.9 KB | 921 ms → 920 ms |
+| `/attempt/:id` (share off) | 100 | 0 → 0 | 100.7 KB → **68.7 KB** | 1684 ms → **1240 ms** |
+| `/attempt/:id` (share on, initial load) | 100 | 0 → 0 | 470.0 KB → **68.7 KB** | 1734 ms → **1240 ms** |
+| `/result/:id` (private) | 100 | 0 → 0 | 61.3 KB → 61.6 KB | 930 ms → 930 ms |
+| `/admin` (mobile) | 100 | **0.328 → 0** | n/a → 44.9 KB | n/a → 1090 ms |
+| `/q/[id]` (new) | 100 | n/a → 0 | n/a → 70.6 KB | n/a → 930 ms |
+| `/cuet-mock-test/english` (new) | 100 | n/a → 0 | n/a → 55.2 KB | n/a → 930 ms |
+| `/mock/[slug]` + instructions (new) | 100 | n/a → 0 | n/a → 52.0-61.1 KB | n/a → 930 ms |
+
+Share-on is now cheap at initial load; opening the Share sheet still fetches ~361 KB of fonts, by design. The admin CLS was measured after the P1-8 fix. The public-question route uses the local E2E sitemap fixture because no non-fixture question is published locally; the runner prefers a real `/q/` URL when one is present.
 
 ---
 
@@ -342,6 +380,9 @@ One `/` run scored 82 with TBT 518 ms and CLS 0.136 while the preview's Workers 
 | 1 | SEC-3: private/auth responses lacked `Cache-Control: no-store` | `applySecurityHeaders()` now sets `Cache-Control: no-store` and `Pragma: no-cache` inside the existing `isPrivatePath()` branch; a unit test pins the gated placement | Preview headers: `/login` 200, `/dashboard` 303, `/attempt/535` 200, `/search` 200, `/result/999` 404 and `/admin` 303 all sent `no-store`/`Pragma: no-cache`; public `/`, `/mock-tests` and `/blog` were unchanged (no forced `no-store`) |
 | 1 | SEC-1: `isSameOrigin()` accepted state-changing requests with no `Origin` header | A present `Origin` must match the request host; without it, only `Sec-Fetch-Site: same-origin` is accepted. `same-site`, `cross-site`, malformed and `Origin: null` are rejected. Playwright API contexts now send the suite origin, with a bare context proving the missing-header 403 | New `http.test.ts` 8/8; full suite **556/556**, build clean; E2E `api-contracts` 12/12, `security`/`attempt-flow`/`topic-mapping` 15/15, `admin-flow`/`question-share-public` 29/29 (2 skipped) |
 | 1 | SEC-2: `/api/attempts/[id]/answers` had no rate limit | After the ownership check, the endpoint uses the KV limiter with bucket `attempt-answers` and key `attemptId:clientIp`, allowing 120 saves per 60 s and returning 429 beyond that. The autosave client leaves answers dirty and retries on its next normal tick, so a temporary limit does not lose data | E2E sends 120 saves then asserts the 121st is 429 with "Too many autosave"; full `security.spec.ts` 11/11; unit suite **556/556**, build clean |
+| 3 | PERF-1 / P1-8: the attempt page fetched 361 KB of share-card fonts during idle (100.7 KB share off, 470 KB share on) | Removed `scheduleSharePrerender()` from page load; `prerenderShareForTrigger()` now runs on Share `pointerover`/`focusin`, so the fonts are fetched only when the user asks for a share card | Attempt initial transfer **68.7 KB** (from 100.7/470 KB), LCP 1.24 s, CLS 0, performance 100 in 3/3 runs; focused share E2E passed |
+| 3 | PERF-2: the admin mobile sidebar painted in normal flow before hydration (CLS 0.328) | Set `document.documentElement.dataset.adminJs = "true"` in the `AdminLayout` head script so the sidebar is hidden before first paint | `/admin` CLS **0.328 -> 0**, LCP 1.09 s, 44.9 KB; admin E2E passed |
+| 3 | PERF-3: `scripts/lighthouse-audit.mjs` was stale, used hard-coded ids and did not enforce `performance-budget.json` | Rewrote route discovery and auth seeding, added `scripts/lib/perf-budget.mjs`, and made the runner exit non-zero on any route/global breach; it now records the Lighthouse version | 18 unit tests; 9/9 routes pass; evidence in `docs/report/lighthouse/` |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -360,7 +401,11 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - Topic pages are blocked on migration `0027` + CSV backfill applied to Turso.
 - D1 backup secrets are missing; backups are not running.
 - Cloudflare Access is not configured; production admin uses the session fallback.
-- Local Lighthouse excludes GA4, AdSense and edge cache; field performance may differ.
+- Local Lighthouse excludes GA4, AdSense and edge cache; field performance may differ. The local D1 data set also differs from Turso.
+- The P1-8 gate enforces medians, not every run. One subject-hub run scored 99 while the median was 100; a single slow run does not fail the audit. This avoids flaky gates, but a genuine regression that appears in only one of three runs can hide.
+- The budgets are app-specific targets, not Core Web Vitals thresholds. `maxInitialDomNodes` counts total DOM and is conservative; a route can pass the cap while a late client-only expansion raises the real initial count.
+- Lighthouse is installed via `npx` and the repository does not pin it in `package.json`. Evidence records `13.6.0`, but a later run may use a different version and change scores. Pin or document the version before treating score deltas as regressions.
+- The public-question evidence is the local E2E sitemap fixture; no non-fixture question is published locally. Opening the Share sheet still fetches ~361 KB of fonts by design, so measure that interaction separately if share previews are enabled in production.
 - Real iOS/Android device testing remains outstanding.
 - Free-tier row-read quotas remain a cost/availability risk, especially for cold-start practice-library warm-up and submit.
 
@@ -422,6 +467,15 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - [ ] Trailing slash, `www`, `http` and `workers.dev` hosts 301 to the canonical origin.
 - [ ] 404 and 500 pages render useful recovery links and are noindex.
 
+### Performance governance
+
+- [x] `npm run audit:lighthouse -- --runs=3` exits 0 and all nine routes pass their route and global budgets.
+- [x] `/attempt/:id` does not request `share-fonts-base.json` before the Share control is hovered or focused.
+- [x] The admin mobile sidebar does not shift the page on first paint (CLS 0).
+- [x] Committed Lighthouse evidence contains no `cuet_session`/`cuet_guest` cookie material and no `headers-*.json`.
+- [ ] Re-run the audit on the deployed origin with GA4, AdSense (when enabled) and edge cache active.
+- [ ] Confirm a real published `/q/` question is selected when the production sitemap exposes one.
+
 ### Security and operations
 
 - [ ] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
@@ -481,7 +535,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - **P1-7 (SEC-2):** the autosave endpoint now uses the existing KV limiter after the attempt ownership check: 120 writes per 60 s keyed by `attemptId:clientIp`. Checking ownership first prevents a stranger from draining another attempt's bucket. The client already leaves unsaved answers dirty on failure and retries on its next normal tick, so a temporary 429 does not lose data or create a tight retry loop.
 - Verification: the new E2E sends 120 empty autosaves (all 200) and asserts the 121st returns 429 with "Too many autosave"; full `security.spec.ts` 11/11.
 - **Close-out verification:** `scripts/a11y-audit.mjs` now sends the suite origin on its three API writes, so the attempt/result walk survives P1-6. The full axe audit completed **272 scans with 0 violations and 0 horizontal overflow**, including `/attempt/570`, `/result/570` and the solutions and discussion pages; the refreshed report is committed.
-- Lighthouse after results (§13): `/` and `/mock-tests` score **100 across performance, accessibility, best practices and SEO**; `/mock-tests` SEO moved **92 → 100** and LCP stayed at ~0.9 s. The production-like attempt page is **100/100/100/58** at **101 KB**, and the private result is **100/100/100/69** at **61 KB**. The non-default share-on worst case stays at **470 KB**; its 91 performance / 340 ms TBT is run variance, not a payload change.
+- Lighthouse after results (§13): `/` and `/mock-tests` score **100 across performance, accessibility, best practices and SEO**; `/mock-tests` SEO moved **92 → 100** and LCP stayed at ~0.9 s. The production-like attempt page is **100/100/100/58** at **101 KB**, and the private result is **100/100/100/69** at **61 KB**. The non-default share-on worst case stayed at **470 KB** at this point; P1-8 later removed the idle font fetch and cut the initial load to 68.7 KB.
 - Full unit suite **556/556**, build clean. Phase 1 changes are committed in nine reviewable commits.
 
 **Next**
@@ -518,6 +572,33 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 ---
 
+### Phase 3 — P1-8 performance governance (2026-11-17)
+
+**Done**
+
+- Rebuilt `scripts/lighthouse-audit.mjs` around `performance-budget.json`: live mock/question discovery, guest attempt/result creation, optional admin seeding from `LIGHTHOUSE_ADMIN_COOKIE` or a storage-state file, three-run medians and a non-zero exit on any route/global breach.
+- Added `scripts/lib/perf-budget.mjs` (pure route matcher/evaluator) and 18 unit tests covering exact/dynamic matching, score/transfer/LCP/TBT/CLS/FCP/SI/DOM caps, missing metrics, message formatting and source guards.
+- `performance-budget.json` v1.2.0 renames the retired `/cuet-ug-mock-test` key to `/mock-tests` and documents the conservative total-DOM check.
+- Fixed the attempt share-font regression: `scheduleSharePrerender()` no longer runs during page idle; `pointerover`/`focusin` on the Share control triggers it. Attempt initial transfer fell from 100.7 KB (share off) and 470 KB (share on) to **68.7 KB**.
+- Fixed admin mobile CLS: `data-admin-js` is set in the head before the sidebar can paint. CLS fell from **0.328 to 0**.
+- Security hygiene: Lighthouse header files now live in `os.tmpdir()`, raw reports are sanitized before writing, `headers-*.json` is ignored, and the previously tracked headers plus stale light `run4`/`run5`/`report` files were removed.
+- The runner records `lighthouseVersion` in `lighthouse-results.json` and `SUMMARY.md` (13.6.0 for this run).
+
+**Verification**
+
+- Unit: **586/586** across 66 files (18 in `perf-budget.test.ts`).
+- Build: `astro check` 0 errors, 0 warnings, 12 hints; build clean; secret scan passed.
+- Lighthouse: **9/9 routes pass**, performance 100 on every median, TBT and CLS 0 everywhere, transfer 44.9–70.6 KB, LCP 0.93–1.24 s. Evidence in `docs/report/lighthouse/`.
+- Focused E2E: `question-share-public.spec.ts` + `admin-flow.spec.ts` **29 passed / 2 skipped**. The canonical full Playwright report was left unchanged.
+- No session cookie material remains in the committed evidence.
+
+**Next**
+
+- P1-9/P1-10/P1-11 operational items, then the P2 UI/UX and code backlog.
+- Re-measure on the deployed origin once GA4 consent, ads and edge cache are active.
+
+---
+
 ## 18. Reproduction commands
 
 ```sh
@@ -535,7 +616,10 @@ node scripts/check-links.mjs https://cuetfreemocktest.com
 npx wrangler dev --config dist/server/wrangler.json --persist-to .wrangler/state --port 4321 \
   --var USE_LOCAL_D1:1 --var SITE_URL:http://localhost:4321 --var ENV:development
 
-# Mobile Lighthouse (light theme)
+# Budgeted mobile Lighthouse audit (9 routes x 3 runs, light)
+npm run audit:lighthouse -- --runs=3
+
+# Raw single-route run (debug only; the budgeted runner is the source of truth)
 npx lighthouse http://localhost:4321/ \
   --chrome-flags="--headless --force-prefers-color-scheme=light --no-sandbox --disable-gpu" \
   --only-categories=performance,accessibility,best-practices,seo \
