@@ -98,6 +98,11 @@ function applySecurityHeaders(response: Response, pathname: string): Response {
   );
   if (isPrivatePath(pathname)) {
     headers.set("x-robots-tag", "noindex, nofollow");
+    // Private HTML (attempts, results, dashboards, auth) and authenticated
+    // APIs must never be stored by a browser, shared proxy or the edge cache.
+    // Public pages keep whatever cache policy the route or _headers assigned.
+    headers.set("cache-control", "no-store");
+    headers.set("pragma", "no-cache");
   }
   const body = response.status === 204 || response.status === 304 ? null : response.body;
   return new Response(body, {

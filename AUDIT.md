@@ -213,7 +213,7 @@ Gaps:
 | --- | --- | --- | --- |
 | SEC-1 | P1 | `isSameOrigin()` returns `true` when the `Origin` header is absent (`src/lib/http.ts:15-24`) | For state-changing methods, require a valid `Origin` or `Sec-Fetch-Site: same-origin`; fail closed for browser requests. Keep an explicit allowance only if a non-browser client is supported. |
 | SEC-2 | P1 | `/api/attempts/[id]/answers` has no rate limit | Add a per-attempt/IP bucket (for example 120 writes/minute) and a 429 test. Autosave is debounced, so a generous limit is enough. |
-| SEC-3 | P1 | Private/auth HTML has no `Cache-Control: no-store`; `/login` returns 200 without it | Add `no-store` (and `Pragma: no-cache`) for `/attempt`, `/result`, `/dashboard`, `/login`, `/reset-password`, `/verify-email`, `/admin` and authenticated API responses. Verify the edge cache already bypasses them. |
+| SEC-3 | P1 | Private/auth HTML had no `Cache-Control: no-store`; `/login` returned 200 without it | Fixed in Phase 1 (P1-5): `applySecurityHeaders()` now sets `Cache-Control: no-store` and `Pragma: no-cache` for every `isPrivatePath()` route, which covers attempts, results, dashboards, auth pages, admin and authenticated APIs. The edge cache only stores allowlisted public paths, so it cannot overwrite this. |
 | SEC-4 | P2 | Session/guest cookie is `cuet_session` / `cuet_guest`, not `__Host-` | Rename to `__Host-cuet_session` / `__Host-cuet_guest` with `Path=/`, `Secure`, no `Domain`; this logs existing sessions out once. |
 | SEC-5 | P2 | CSP allows `script-src 'unsafe-inline'` and advertises AdSense/Google ad domains even when ads are unconfigured | Move inline scripts to nonces/hashes, then drop `'unsafe-inline'`; conditionally narrow ad domains when `ADSENSE_CLIENT` is empty. |
 | SEC-6 | P2 | No `Cross-Origin-Opener-Policy` or `Cross-Origin-Resource-Policy` | Add `COOP: same-origin` and `CORP: same-origin` after confirming no cross-origin embedding is required. |
@@ -326,6 +326,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | 1 | SEO-1: 24 non-descriptive "Start" links on `/mock-tests` (Lighthouse SEO 92) | Kept the visible "Start" label and added the paper title as `sr-only` in-flow text in `PaperRow.astro`; added an E2E assertion for the row text | Lighthouse 3/3 runs: SEO **92 -> 100**, perf/a11y/BP 100, LCP 936 ms, 58.8 KB; focused E2E passed |
 | 1 | SEO-2 / SEO-3: blog OG images were SVG (not rendered by major social platforms) and Twitter tags used `property=` | Repository guides now get pre-generated 1200x630 PNGs from `scripts/generate-guide-og.mjs` (`npm run og:guides`, committed under `public/og/blog/`); DB posts keep the SVG thumbnail but share `/logo.png`. Twitter tags changed to `name=`. New `src/lib/guide-images.ts` centralises both paths; unit tests cover the mapping, PNG existence and tag attribute | Full suite **547/547**, build clean; preview: `/blog/cuet-ug-syllabus-and-ncert-books` emits `og:image` and `twitter:image` as `.png`, `name="twitter:*"`, PNG served `200 image/png` (46,832 bytes), SVG thumbnail endpoint still `200` |
 | 1 | SEO-4: `https://exams.nta.ac.in/CUET-UG/` returns 404 and was stored in six `exam_info` rows | Updated `migrations/0020_exam_info_seed.sql` for fresh databases and added `migrations/0028_fix_cuet_source_url.sql` to update existing rows; `exam-facts.test.ts` asserts the exact working URL and runs the migration | Local migration applied; DB rows all `https://cuet.nta.nic.in/`; `scripts/check-links.mjs http://localhost:4321`: **0/362 internal, 0/39 external broken** |
+| 1 | SEC-3: private/auth responses lacked `Cache-Control: no-store` | `applySecurityHeaders()` now sets `Cache-Control: no-store` and `Pragma: no-cache` inside the existing `isPrivatePath()` branch; a unit test pins the gated placement | Preview headers: `/login` 200, `/dashboard` 303, `/attempt/535` 200, `/search` 200, `/result/999` 404 and `/admin` 303 all sent `no-store`/`Pragma: no-cache`; public `/`, `/mock-tests` and `/blog` were unchanged (no forced `no-store`) |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -401,7 +402,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 ### Security and operations
 
 - [ ] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
-- [ ] Private HTML and auth responses send `Cache-Control: no-store`.
+- [x] Private HTML and auth responses send `Cache-Control: no-store`.
 - [ ] Cross-origin POST/PUT/PATCH/DELETE is rejected; same-origin writes succeed.
 - [ ] Login, attempt start, submit, answers and comments rate limits return 429 under load without locking out normal use.
 - [ ] Session cookie is `HttpOnly`, `Secure`, `SameSite=Lax`, and ideally `__Host-`.
@@ -450,10 +451,12 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - Verification: full suite **547/547**, `npm run build` clean. Preview confirmed `og:image`/`twitter:image` as PNG, `name="twitter:*"`, the PNG served `200 image/png` at 46,832 bytes and the SVG thumbnail endpoint still `200`.
 - **P1-3 (SEO-4):** replaced the dead `https://exams.nta.ac.in/CUET-UG/` source with the official `https://cuet.nta.nic.in/` in the seed, added migration `0028_fix_cuet_source_url.sql` for existing databases, and tightened `exam-facts.test.ts`.
 - Verification: migration applied locally; all six rows updated; `scripts/check-links.mjs http://localhost:4321` reported **0/362 internal, 0/39 external broken**.
+- **P1-5 (SEC-3):** `applySecurityHeaders()` now sends `Cache-Control: no-store` and `Pragma: no-cache` for every `isPrivatePath()` response. Because the header helper also wraps auth failures, maintenance rewrites and redirects, those paths are covered before any page renders. The edge cache allowlist already excludes private paths, so it cannot overwrite the header.
+- Verification: focused middleware tests 7/7. Preview headers: `/login`, `/dashboard`, `/attempt/535`, `/search`, `/result/999` and `/admin` all returned `no-store` + `Pragma: no-cache`; public `/`, `/mock-tests` and `/blog` were unchanged.
 
 **Next in this phase**
 
-- P1-5 (private cache), P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
+- P1-6/P1-7 (Origin/rate limit), then re-run the affected Lighthouse routes.
 
 ---
 
