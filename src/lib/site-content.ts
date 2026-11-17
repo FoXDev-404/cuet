@@ -89,7 +89,7 @@ export const INFORMATIONAL_PAGE_DEFAULTS: Record<
       items: [
         "The page URL and, for a question, the paper name and question number.",
         "A clear description of the problem and any evidence you can share.",
-        "For account issues, the username or email used to sign up. Never send your password.",
+        "For account issues, the email used to sign in with Google. Never send a Google password or session cookie.",
         "For copyright, the specific material and the basis of the request.",
       ],
     },

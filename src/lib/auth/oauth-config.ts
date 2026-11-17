@@ -1,6 +1,6 @@
 /**
  * Google OAuth configuration detection. The button is hidden unless both a
- * client id and secret are present; email/password login always remains.
+ * client id and secret are present. Google is the only sign-in method.
  */
 
 export type GoogleOAuthEnv = {
