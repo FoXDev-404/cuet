@@ -299,6 +299,44 @@ test("repeated autosave requests keep one answer row per question", async ({
   }
 });
 
+test("autosave writes are rate-limited per attempt", async ({
+  playwright,
+  baseURL,
+  request,
+}) => {
+  const mock = await firstPublishedMock(request);
+  test.skip(!mock, "No published mock test is available in this environment.");
+  if (!mock) return;
+
+  const student = await newStudent(playwright, baseURL);
+  let attemptId = 0;
+  try {
+    const started = await student.context.post("/api/attempts/start", {
+      data: { mockId: mock.id },
+    });
+    expect(started.status()).toBe(201);
+    attemptId = ((await started.json()) as { attemptId: number }).attemptId;
+
+    // The interval autosave is ~4 writes/minute; 120 is a generous ceiling.
+    // Empty batches keep the check focused on the limiter, not answer writes.
+    for (let index = 1; index <= 120; index += 1) {
+      const response = await student.context.put(`/api/attempts/${attemptId}/answers`, {
+        data: { answers: [] },
+      });
+      expect(response.status(), `autosave ${index}`).toBe(200);
+    }
+
+    const blocked = await student.context.put(`/api/attempts/${attemptId}/answers`, {
+      data: { answers: [] },
+    });
+    expect(blocked.status()).toBe(429);
+    expect(await blocked.text()).toContain("Too many autosave");
+  } finally {
+    await student.context.dispose();
+    cleanupStudent(student.student);
+  }
+});
+
 test("client-supplied deadline and scoring fields are ignored", async ({
   playwright,
   baseURL,

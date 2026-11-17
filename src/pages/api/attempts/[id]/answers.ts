@@ -7,10 +7,11 @@ import {
   remainingSeconds,
 } from "../../../../lib/attempts";
 import { getGuestToken } from "../../../../lib/auth/session";
+import { rateLimit } from "../../../../lib/auth/rate-limit";
 import { normalizeIncomingAnswers, saveAttemptAnswers } from "../../../../lib/attempt-save";
 import { getMockVersionQuestionMeta } from "../../../../lib/mock-cache";
 import { run } from "../../../../lib/db";
-import { apiError, forbiddenOrigin, isSameOrigin, json } from "../../../../lib/http";
+import { apiError, clientIp, forbiddenOrigin, isSameOrigin, json } from "../../../../lib/http";
 
 export const PUT: APIRoute = async (context) => {
   if (!isSameOrigin(context.request)) return forbiddenOrigin();
@@ -20,6 +21,21 @@ export const PUT: APIRoute = async (context) => {
   if (!attempt || !canAccessAttempt(attempt, context.locals.user, getGuestToken(context.cookies))) {
     return apiError("Attempt not found.", 404);
   }
+
+  // Autosave runs every ~15s (4 writes/minute), so 120/minute leaves ample
+  // headroom for multiple tabs and manual saves while capping a runaway client.
+  // Keying on the attempt keeps different papers independent; the IP suffix
+  // avoids one shared attempt id being drained from many clients.
+  const limit = await rateLimit(
+    "attempt-answers",
+    `${attempt.id}:${clientIp(context.request)}`,
+    120,
+    60,
+  );
+  if (!limit.allowed) {
+    return apiError("Too many autosave requests. Wait a moment and try again.", 429);
+  }
+
   if (attempt.status !== "in_progress") {
     return json({ ok: false, status: attempt.status, redirect: `/result/${attempt.id}` }, 409);
   }
