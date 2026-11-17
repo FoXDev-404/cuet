@@ -114,9 +114,12 @@ export function shouldServeAds(explicit: boolean | undefined, robots: string): b
  *
  * This is a second line of defence. Ads default on for public pages, so this
  * guard blocks admin, API, dashboard, auth, search, styleguide, user-profile,
- * exam-start and active-attempt routes even if a slot is placed too broadly.
- * Result and practice-paper pages opt in explicitly because they are noindex
- * but still carry enough content for an end-of-content unit.
+ * exam-start, active-attempt, result and practice-paper routes even if a slot
+ * is placed too broadly.
+ *
+ * Result pages deliberately serve no ads: they are private, noindex and show
+ * one student's score, while the privacy policy promises ads only on selected
+ * public content pages.
  */
 const BLOCKED_AD_PATHS: RegExp[] = [
   /^\/admin(?:\/|$)/,
@@ -129,6 +132,7 @@ const BLOCKED_AD_PATHS: RegExp[] = [
   /^\/verify-email(?:\/|$)/,
   /^\/search(?:\/|$)/,
   /^\/attempt(?:\/|$)/,
+  /^\/result(?:\/|$)/,
   /^\/u(?:\/|$)/,
   /^\/dev(?:\/|$)/,
   /\/take(?:\/|$)/,

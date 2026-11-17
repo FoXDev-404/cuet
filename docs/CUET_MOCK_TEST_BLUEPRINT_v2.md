@@ -867,7 +867,7 @@ Checklist:
 - Do not place ads before approval. Avoid popup or redirect ad networks.
 - Keep the site stable during review.
 - If rejected: read the email reason (Low Value / Navigation / Insufficient Content), fix, reapply (2-3 attempts is common).
-- After approval: add ads gradually. Place them on result, blog and content pages. Never on the active test screen or on screens with little publisher content.
+- After approval: add ads gradually. Place them on public content pages (the current policy serves no ads on private result pages). Never on the active test screen or on screens with little publisher content.
 - Moderate comments (spam can hurt ad eligibility).
 - Check the current official AdSense policies right before applying.
 

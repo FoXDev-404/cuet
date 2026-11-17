@@ -261,7 +261,7 @@ Other privacy findings:
 | ADS-2 | P1 | No consent/CMP; GA4 loads unconditionally ~2 s after page load | Add a consent gate for regions that require it before enabling personalised ads or GA4; keep Cloudflare Web Analytics (cookieless) as the fallback. |
 | ADS-3 | P1 | Privacy policy names Cloudflare Web Analytics and AdSense but not GA4 | Add GA4 (`G-Y1JPT7SNQJ`), its purpose, retention and opt-out/consent basis; update the "if neither integration is configured" sentence so it does not imply GA4 is absent. |
 | ADS-4 | P1 | Enabling AdSense without `/ads.txt`, consent and route blocking would be non-compliant | Treat `ADSENSE_CLIENT`/`ADSENSE_SLOT_ID` as a go-live checklist, not just env vars: ads.txt, CMP, policy, route tests, AdSense review. |
-| ADS-5 | P2 | The submitted result page has no ad slot, although the policy allows post-test ads | Decide explicitly: add a compliant, consent-gated unit after the result summary, or document that the site intentionally serves no result ads. |
+| ADS-5 | P2 | The submitted result page had an end-of-content ad opt-in, although the policy allows ads only on selected public content pages | **Resolved in Phase 4:** decided to serve no result ads. Removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, and added a source guard. Revisit only as a separate, policy-reviewed change. |
 | ADS-6 | Info | `/ads.txt` returns 404 while no publisher is configured | Intentional. Add the live URL and expected record to `docs/EXTERNAL_SETUP.md`; verify after configuration. |
 
 The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds()` and `adSlotAllowed()`. The attempt page bypassed both by rendering its own script. That was the defect.
@@ -319,7 +319,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P2-5 — Blog structured data.** Add `FAQPage`/`Quiz`/`LearningResource` only where the visible content supports it.
 - **P2-6 — Cookie prefixes.** Move to `__Host-` names with a one-time logout.
 - **P2-7 — CSP/COOP/CORP.** Replace `'unsafe-inline'` with nonces/hashes; add COOP/CORP; narrow ad domains when ads are off.
-- **P2-8 — Result-page ad decision.** Add a consent-gated post-test unit or explicitly document "no result ads".
+- **P2-8 — Result-page ad decision. Resolved in Phase 4.** The site intentionally serves no result ads: the result summary and solutions pages no longer opt in, `/result` is in `BLOCKED_AD_PATHS`, and a unit guard keeps both pages ad-free. The privacy policy already limits advertising to selected public content pages.
 - **P2-9 — Environment docs. Resolved in Phase 4.** `.env.example` is now a committed, comment-only pointer to `.dev.vars.example`; `.gitignore` keeps `.env*` ignored but re-includes `.env.example`, and a unit guard fails if the pointer ever duplicates a key.
 - **P2-10 — Attempt LCP/CLS. Resolved in Phase 3.** The share-font regression was the CLS/LCP driver. With intent-only prerender, the attempt page is 100 / LCP 1.24 s / CLS 0 in all three runs; first-image preload is no longer needed to meet the budget.
 - **P2-11 — Public-profile intent.** Link profiles from leaderboard/discussion or keep them noindex and out of the sitemap.
@@ -386,6 +386,7 @@ Share-on is now cheap at initial load; opening the Share sheet still fetches ~36
 | 4 | SEO-6 / P1-13: E2E fixture questions could enter `/sitemap.xml` and be served as indexable `/q/` pages | Strengthened `isFixtureQuestion` (text starting with `e2e`/`fixture`, plus the existing markers) and applied it in `resolvePublicQuestion`, so page robots, JSON-LD and the sitemap share one rule; added `LIGHTHOUSE_PUBLIC_QUESTION` for audits when the sitemap has no eligible question | Focused E2E sitemap test passed (1/1); unit suite in §17; sitemap returns `qUrls=0` locally after removing the fixture; 3-run Lighthouse verification 9/9 PASS |
 | 4 | UX-2 / P2-2/P2-3/P2-4: small leaderboard links, stale autosave copy, 61-character leaderboard title | Raised every small leaderboard link to a 24 px target, changed the autosave copy to 15 seconds and shortened the title to 51 characters; added source guards | Focused tests 20/20; full suite **590/590**; build clean; preview measured title 51 and every sampled leaderboard link 24 px |
 | 4 | DOC-1 / P2-9: environment docs only covered `.dev.vars.example`, so tools that look for `.env.example` found nothing | Added a comment-only `.env.example` that points at `.dev.vars.example`, re-included it in `.gitignore`, and added a unit guard that fails if the pointer duplicates a key | Focused `env-separation` **7/7**; full suite in §17 |
+| 4 | ADS-5 / P2-8: result pages opted into ads even though the policy allows ads only on selected public content pages, contradicting the `AdSlot` comment and the ads QA checklist | Decided to serve no result ads: removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, added a source guard, and documented the decision | Unit `integrations` **12/12**; preview with `ADSENSE_CLIENT`, `ADSENSE_SLOT_ID` and `ADSENSE_CMP_ACTIVE=1`: `/result/629` and `/result/629/solutions` returned 0 `adsbygoogle` and 0 AdSense script, while `/` and `/mock-tests` still served the unit |
 
 Future phases append one row per fix and a short phase summary at the end of this file.
 
@@ -454,7 +455,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 - [x] With `ADSENSE_*` empty: no AdSense script, no ad unit, `/ads.txt` 404.
 - [x] With `ADSENSE_CLIENT`/`ADSENSE_SLOT_ID` set but `ADSENSE_CMP_ACTIVE` empty: no loader and no ad unit on any route (unit guard plus source-level checks).
-- [ ] With `ADSENSE_CMP_ACTIVE=1` in a preview: no ad script or unit on `/attempt`, `/result`, `/dashboard`, `/login`, `/admin` or `/search`.
+- [x] With `ADSENSE_CMP_ACTIVE=1` in a preview: no ad script or unit on `/attempt`, `/result`, `/dashboard`, `/login`, `/admin` or `/search` (verified 2026-11-17 with a fresh guest attempt: `/result/629` and its solutions page returned 0 `adsbygoogle` and 0 AdSense script, while `/` and `/mock-tests` still served the unit).
 - [ ] Ads appear only on allowed content pages, after the certified CMP is live.
 - [x] With GA4 configured on a public page: no `googletagmanager.com` request before a choice, the banner is visible, Reject persists and never loads, Allow loads once, and a reload keeps the choice.
 - [x] The footer and privacy-policy controls reopen the banner; rejection after a load clears `_ga*` and reloads.
@@ -615,18 +616,20 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - P2-3: attempt help text now says 15 seconds, matching the `15000` ms autosave interval.
 - P2-4: `/leaderboard` title shortened from 61 to 51 characters.
 - P2-9: added a comment-only `.env.example` that points at `.dev.vars.example`. `.gitignore` keeps `.env*` ignored but re-includes the pointer, and a unit guard fails if a key is ever duplicated into it.
+- P2-8: decided to serve no result ads. Removed the `ads` opt-in from the result summary and solutions pages, added `/result` to `BLOCKED_AD_PATHS`, and added a source guard. The privacy policy already limits advertising to selected public content pages.
 
 **Verification**
 
-- Unit: **590/590** across 66 files, including the new fixture-text and runner-override guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7** after the P2-9 guard.
+- Unit: **592/592** across 66 files, including the fixture-text, runner-override, `.env.example` and result-ad guards; focused `attempt-time` + `seo-consistency` **20/20**; focused `env-separation` **7/7**; focused `integrations` **12/12**.
 - Build: `astro check` 0 errors, 0 warnings; build clean; secret scan passed.
 - E2E: focused sitemap test **1/1 passed**; local `/sitemap.xml` returned **0** `/q/` URLs after the fixture was removed.
 - Lighthouse: a post-P1-13 3-run verification passed **9/9** route budgets. The committed evidence was left at the Phase 3 snapshot because route rendering and transfer did not change; the verification used a temporary non-fixture question that was soft-deleted afterwards.
 - Preview measurement: `/leaderboard` title 51 characters; every sampled small leaderboard link rendered at 24 px.
+- Ads preview: with `ADSENSE_CLIENT`, `ADSENSE_SLOT_ID` and `ADSENSE_CMP_ACTIVE=1`, a fresh guest attempt 629 returned 0 `adsbygoogle` and 0 AdSense script on `/result/629` and `/result/629/solutions`, while `/` and `/mock-tests` still served the unit.
 
 **Next**
 
-- P2-5/P2-7/P2-8/P2-11/P2-12.
+- P2-5/P2-7/P2-11/P2-12.
 - Apply `npm run db:turso:migrate` when the next push is allowed so `0028` reaches Turso; re-run the production link crawl after deploy.
 
 ---

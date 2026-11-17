@@ -74,7 +74,7 @@ describe("optional integration flags", () => {
     expect(shouldServeAds(false, "index, follow")).toBe(false);
   });
 
-  it("never allows ad units on admin, API, dashboard, auth or thin routes", () => {
+  it("never allows ad units on admin, API, dashboard, auth, result or thin routes", () => {
     for (const path of [
       "/dashboard",
       "/dashboard/history",
@@ -89,6 +89,9 @@ describe("optional integration flags", () => {
       "/mock-tests/2022-english-1/take",
       "/attempt/42",
       "/attempt/42/",
+      "/result/42",
+      "/result/42/",
+      "/result/42/solutions",
       "/u/student",
       "/dev/styleguide",
       "https://example.com/cuet-ug-mock-test",
@@ -118,8 +121,6 @@ describe("optional integration flags", () => {
       "/mock-tests/",
       "/mock-tests?subject=physics",
       "/mock-tests/applied-mathematics-2025-06-02-shift-1",
-      "/result/42",
-      "/result/42/solutions",
       "/cuet-ug-syllabus",
       "/cuet-ug-marking-scheme",
       "/mock/starter-mock",
@@ -139,6 +140,21 @@ describe("optional integration flags", () => {
     expect(attempt).not.toContain("pagead2.googlesyndication.com");
     expect(attempt).not.toContain("adsenseClient");
     expect(attempt).not.toContain("adsenseSlot");
+  });
+
+  it("serves no ads on result or solutions pages", () => {
+    // The published policy allows ads only on selected public content pages.
+    // Result pages are private and show one student's score, so the explicit
+    // opt-in must not return even though the route guard also blocks it.
+    for (const file of [
+      "src/pages/result/[attemptId].astro",
+      "src/pages/result/[attemptId]/solutions.astro",
+    ]) {
+      const source = readFileSync(resolve(process.cwd(), file), "utf8").replace(/\r\n/g, "\n");
+      expect(source, file).not.toContain("\n  ads\n");
+      expect(source, file).not.toContain("AdSlot");
+      expect(source, file).not.toContain("adsbygoogle");
+    }
   });
 });
 

@@ -250,7 +250,10 @@ pages are live. Approval is not guaranteed.
    policy review and route checks are complete.
 7. Verify that no `adsbygoogle` script or `<ins>` unit appears on `/attempt/*`,
    `/result/*`, `/dashboard/*`, `/admin/*`, auth, search or practice routes. The route
-   guard and the explicit `ads` opt-in both enforce this.
+   guard and the explicit `ads` opt-in both enforce this. The result summary and
+   solutions pages intentionally serve no ads: the published policy limits advertising to
+   selected public content pages, so do not re-add an `ads` opt-in there without a policy
+   change and a consent review.
 
 ## 10. D1 backups
 
