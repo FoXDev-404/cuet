@@ -747,9 +747,13 @@ Staging was seeded and deployed from the authenticated local Wrangler session be
 - Production packaging check: a `CLOUDFLARE_ENV=production npm run build` followed by `npx wrangler deploy --dry-run` exited 0 and resolved `ENV=production`, `SITE_URL=https://cuetfreemocktest.com`, `GA4_MEASUREMENT_ID` present, AdSense vars blank, D1 `cuet-blueprint-db` and both KV bindings. Nothing was uploaded to production.
 - The a11y fixes that came out of CI were the PYQ tag scroll container missing `tabindex="0"` and `/admin/seo` overflowing 375 px by 399 px. Source guards for the staging noindex are **5/5**.
 
+**Release verification**
+
+- CI is green on `release/audit-phase5`: runs **44146231049** (`d843187`), **44148732180** (`ca151a8`) and **44150761454** (`ca146d0`) all completed successfully, including the Playwright and accessibility gates that failed before the a11y fixes.
+- The release branch contains `main` up to `ca146d0`. `main` itself was not pushed, so no production deploy was triggered.
+
 **Next**
 
-- Confirm CI is green on `release/audit-phase5`, including the accessibility gate that failed before these fixes.
 - Obtain a D1-capable GitHub token, a staging admin/OAuth configuration and a DNS record for `staging.cuetfreemocktest.com` to close the operational blockers in §15.
 - Re-measure the Subject Hub on production before changing the Speed Index budget.
 
