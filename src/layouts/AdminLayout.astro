@@ -115,6 +115,10 @@ const initials = (user?.email ?? "A")
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <script is:inline>
+      // Mark JS as available before the sidebar paints. Without this the
+      // mobile fallback renders the sidebar in normal flow for one frame and
+      // the main column then jumps by ~270px (Lighthouse CLS 0.33).
+      document.documentElement.dataset.adminJs = "true";
       (function () {
         try {
           var stored = localStorage.getItem("theme");

@@ -1642,34 +1642,25 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         renderPalette();
         updateSectionTabs();
         preloadNextImage();
-        scheduleSharePrerender();
         area.dataset.ready = "true";
       }
 
       /**
-       * Renders the share image for the on-screen question while the candidate
-       * reads it, so tapping Share never waits on generation. Runs in an idle
-       * slot and silently skips if the candidate has already moved on.
+       * The share card embeds ~360 KB of fonts. Pre-rendering it on page load
+       * charged every attempt (even ones that never share) for an image most
+       * candidates never open. Only start the render when the candidate shows
+       * intent — hovering, focusing or touching the share button — and let the
+       * sheet generate on demand otherwise.
        */
-      function scheduleSharePrerender() {
+      const sharePrerenderKeys = new Set<string>();
+      function prerenderShareForTrigger(trigger: Element | null) {
+        if (!trigger || state.timeUp || state.submitting || state.finishing) return;
         const question = questions[state.index];
-        if (!question?.share || state.timeUp || state.submitting || state.finishing) return;
-        const wantedId = question.id;
-        const wantedIndex = state.index;
-        const run = () => {
-          if (state.timeUp || state.submitting || state.finishing) return;
-          const currentQuestion = questions[state.index];
-          if (!currentQuestion || currentQuestion.id !== wantedId || !currentQuestion.share) return;
-          void prerenderAttemptQuestionShare(shareRequestFor(currentQuestion, wantedIndex));
-        };
-        const idleApi = window as Window & {
-          requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
-        };
-        if (typeof idleApi.requestIdleCallback === "function") {
-          idleApi.requestIdleCallback(run, { timeout: 2500 });
-        } else {
-          window.setTimeout(run, 900);
-        }
+        if (!question?.share) return;
+        const key = `${question.id}:${state.language}`;
+        if (sharePrerenderKeys.has(key)) return;
+        sharePrerenderKeys.add(key);
+        void prerenderAttemptQuestionShare(shareRequestFor(question, state.index));
       }
 
       function updateSectionTabs() {
@@ -1966,6 +1957,20 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         if (!question?.share) return;
         event.preventDefault();
         void openAttemptQuestionShare(shareRequestFor(question, state.index));
+      });
+      document.addEventListener("pointerover", (event) => {
+        const trigger = (event.target as HTMLElement | null)?.closest<HTMLElement>(
+          "[data-attempt-share-trigger]",
+        );
+        if (!trigger) return;
+        const related = event.relatedTarget as Node | null;
+        if (related && trigger.contains(related)) return;
+        prerenderShareForTrigger(trigger);
+      });
+      document.addEventListener("focusin", (event) => {
+        prerenderShareForTrigger(
+          (event.target as HTMLElement | null)?.closest<HTMLElement>("[data-attempt-share-trigger]") ?? null,
+        );
       });
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {

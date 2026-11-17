@@ -1,47 +1,192 @@
 /**
  * scripts/lighthouse-audit.mjs
  *
- * Lighthouse mobile audit runner for key pages in both light and dark themes.
- * Runs against the production build (wrangler dev on dist/ at http://localhost:4321).
- * Computes MEDIAN and min/max across N runs per route and theme (default: 5 runs).
- * Stores raw reports in docs/report/lighthouse/
- * Outputs aggregated scores and summary table in docs/report/lighthouse/SUMMARY.md.
+ * Mobile Lighthouse audit and route-budget gate for the production build.
+ *
+ *   npm run build
+ *   npm run audit:lighthouse
+ *
+ * Defaults: 3 runs per route, light theme, mobile simulated throttling. The
+ * runner discovers a published mock and a shared public question from the
+ * running app instead of relying on hard-coded content ids, provisions a fresh
+ * guest attempt and result, and seeds a disposable local admin session when
+ * auditing localhost. `performance-budget.json` is the source of truth for the
+ * pass/fail decision; a breach exits non-zero.
+ *
+ * Options:
+ *   --runs=3                     Runs per route/theme (1-10)
+ *   --themes=light               Comma-separated: light,dark
+ *   --base-url=http://...        Target origin (also LIGHTHOUSE_BASE_URL)
+ *   --spawn=auto                 auto | never. Auto starts dist/ with wrangler.
+ *
+ * Authenticated pages:
+ *   LIGHTHOUSE_ADMIN_COOKIE      Full Cookie header (e.g. "cuet_session=...")
+ *   LIGHTHOUSE_STORAGE_STATE     Playwright storage-state JSON (A11Y_STORAGE_STATE also works)
+ *   Localhost with neither        Seeds a disposable session in local D1.
+ *
+ * Set LIGHTHOUSE_SKIP_ADMIN=1 to omit /admin. Set LIGHTHOUSE_SKIP_ATTEMPT=1 to
+ * skip attempt/result provisioning against a host where writes are unwanted.
  */
 
-import { exec, spawn } from "node:child_process";
-import { mkdirSync, writeFileSync, existsSync } from "node:fs";
-import { readFile } from "node:fs/promises";
+import { exec, execFileSync, spawn } from "node:child_process";
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
+import { createHash, randomBytes } from "node:crypto";
 import { join } from "node:path";
 import os from "node:os";
+import {
+  describeFailure,
+  evaluateBudget,
+  matchRouteBudget,
+} from "./lib/perf-budget.mjs";
 
 const args = process.argv.slice(2);
 function getArg(name, defaultValue) {
   const prefix = `--${name}=`;
-  const match = args.find((a) => a.startsWith(prefix));
+  const match = args.find((value) => value.startsWith(prefix));
   return match ? match.slice(prefix.length) : defaultValue;
 }
+function hasFlag(name) {
+  return args.includes(`--${name}`);
+}
 
-const RUNS = parseInt(getArg("runs", "5"), 10);
+if (hasFlag("help")) {
+  console.log(
+    [
+      "Usage: node scripts/lighthouse-audit.mjs [options]",
+      "",
+      "  --runs=3              Runs per route/theme (default 3, max 10)",
+      "  --themes=light        Comma-separated themes: light,dark (default light)",
+      "  --base-url=<origin>   Target origin (default http://localhost:4321)",
+      "  --spawn=auto          auto | never (default auto: start dist/ with wrangler)",
+      "",
+      "Budgets are read from performance-budget.json and enforced on the median.",
+      "Exit code is 1 when any route exceeds a score, transfer, metric or DOM cap.",
+    ].join("\n"),
+  );
+  process.exit(0);
+}
+
+const RUNS = Math.min(10, Math.max(1, Number.parseInt(getArg("runs", "3"), 10) || 3));
+const THEMES = [
+  ...new Set(
+    getArg("themes", "light")
+      .split(",")
+      .map((theme) => theme.trim().toLowerCase())
+      .filter(Boolean),
+  ),
+];
+const INVALID_THEMES = THEMES.filter((theme) => !["light", "dark"].includes(theme));
+if (THEMES.length === 0 || INVALID_THEMES.length > 0) {
+  console.error(`Invalid --themes value. Use light, dark or light,dark. Got: ${THEMES.join(",") || "<empty>"}`);
+  process.exit(1);
+}
+
 const BASE_URL = (
-  process.env.BASE_URL ??
-  process.env.PLAYWRIGHT_BASE_URL ??
-  "http://localhost:4321"
-).replace(/\/$/, "");
+  getArg(
+    "base-url",
+    process.env.LIGHTHOUSE_BASE_URL ??
+      process.env.PLAYWRIGHT_BASE_URL ??
+      "http://localhost:4321",
+  ) ?? "http://localhost:4321"
+).replace(/\/+$/, "");
+const SITE_ORIGIN = (() => {
+  try {
+    return new URL(BASE_URL).origin;
+  } catch {
+    return null;
+  }
+})();
+if (!SITE_ORIGIN) {
+  console.error(`Invalid --base-url: ${BASE_URL}`);
+  process.exit(1);
+}
 
-const OUTPUT_DIR = join(process.cwd(), "docs", "report", "lighthouse");
-const GUEST_HEADERS_FILE = join(OUTPUT_DIR, "headers-guest.json");
-const ADMIN_HEADERS_FILE = join(OUTPUT_DIR, "headers-admin.json");
+const SPAWN_MODE = getArg("spawn", "auto");
+if (!["auto", "never"].includes(SPAWN_MODE)) {
+  console.error(`Invalid --spawn value: ${SPAWN_MODE}. Use auto or never.`);
+  process.exit(1);
+}
 
-const THEMES = ["light", "dark"];
+const skipAdmin = /^(1|true|yes)$/i.test(process.env.LIGHTHOUSE_SKIP_ADMIN ?? "");
+const skipAttempt = /^(1|true|yes)$/i.test(process.env.LIGHTHOUSE_SKIP_ATTEMPT ?? "");
 
-async function waitForServer(url, timeoutMs = 60000) {
+const ROOT = process.cwd();
+const OUTPUT_DIR = join(ROOT, "docs", "report", "lighthouse");
+const BUDGET_FILE = join(ROOT, "performance-budget.json");
+// Cookie headers are session credentials. Keep them out of the committed
+// evidence directory; Lighthouse also copies them into the report config.
+const HEADER_DIR = mkdtempSync(join(os.tmpdir(), "cuet-lighthouse-"));
+const GUEST_HEADERS_FILE = join(HEADER_DIR, "headers-guest.json");
+const ADMIN_HEADERS_FILE = join(HEADER_DIR, "headers-admin.json");
+const WRANGLER_BIN = join(ROOT, "node_modules", "wrangler", "bin", "wrangler.js");
+const DIST_CONFIG = join(ROOT, "dist", "server", "wrangler.json");
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+const IS_LOCAL = LOCAL_HOSTS.has(new URL(BASE_URL).hostname);
+const LOCAL_ADMIN_EMAIL = "lighthouse-local@cuetfreemocktest.test";
+
+function loadBudget() {
+  if (!existsSync(BUDGET_FILE)) {
+    throw new Error("performance-budget.json not found. Add route budgets before auditing.");
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(readFileSync(BUDGET_FILE, "utf8"));
+  } catch (error) {
+    throw new Error(`performance-budget.json is not valid JSON: ${error.message}`);
+  }
+  if (!parsed.routeBudgets || typeof parsed.routeBudgets !== "object") {
+    throw new Error("performance-budget.json has no routeBudgets object.");
+  }
+  if (!parsed.metrics?.mobileSimulated4G) {
+    throw new Error("performance-budget.json has no metrics.mobileSimulated4G caps.");
+  }
+  return parsed;
+}
+
+function median(values) {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 !== 0
+    ? sorted[mid]
+    : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+
+function round(value, digits = 0) {
+  const factor = 10 ** digits;
+  return Math.round(value * factor) / factor;
+}
+
+function parseMetricMs(displayValue) {
+  if (!displayValue) return null;
+  const match = displayValue.match(/([\d,.]+)\s*(s|ms)/i);
+  if (!match) return null;
+  const num = Number.parseFloat(match[1].replace(/,/g, ""));
+  return match[2].toLowerCase() === "s" ? Math.round(num * 1000) : Math.round(num);
+}
+
+function auditNumeric(audits, id) {
+  const audit = audits?.[id];
+  if (!audit) return null;
+  if (Number.isFinite(audit.numericValue)) return audit.numericValue;
+  return parseMetricMs(audit.displayValue);
+}
+
+async function waitForServer(url, timeoutMs = 60_000) {
   const start = Date.now();
   while (Date.now() - start < timeoutMs) {
     try {
-      const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
-      if (res.status >= 200 && res.status < 500) return true;
+      const response = await fetch(url, { signal: AbortSignal.timeout(2_000) });
+      if (response.status >= 200 && response.status < 500) return true;
     } catch {}
-    await new Promise((r) => setTimeout(r, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1_000));
   }
   return false;
 }
@@ -49,199 +194,476 @@ async function waitForServer(url, timeoutMs = 60000) {
 function runLighthouseCommand(url, outputPath, theme, headerFile) {
   return new Promise((resolve, reject) => {
     const chromeFlags = `--headless --force-prefers-color-scheme=${theme} --no-sandbox --disable-gpu`;
-    let cmd = `npx lighthouse "${url}" --chrome-flags="${chromeFlags}" --output=json --output-path="${outputPath}" --only-categories=performance,accessibility,best-practices,seo --form-factor=mobile --throttling-method=simulate --quiet`;
-
+    let command = `npx lighthouse "${url}" --chrome-flags="${chromeFlags}" --output=json --output-path="${outputPath}" --only-categories=performance,accessibility,best-practices,seo --form-factor=mobile --throttling-method=simulate --quiet`;
     if (headerFile && existsSync(headerFile)) {
-      cmd += ` --extra-headers="${headerFile}"`;
+      command += ` --extra-headers="${headerFile}"`;
     }
 
-    exec(cmd, { maxBuffer: 10 * 1024 * 1024 }, (error, _stdout, stderr) => {
+    exec(command, { maxBuffer: 32 * 1024 * 1024, timeout: 300_000 }, (error, _stdout, stderr) => {
       if (!error && existsSync(outputPath)) {
         resolve();
       } else {
-        reject(new Error(`Lighthouse failed (${error?.code}): ${stderr.slice(0, 300) || error?.message}`));
+        reject(
+          new Error(
+            `Lighthouse failed (${error?.code ?? "unknown"}): ${
+              stderr?.slice(0, 300) || error?.message || "no output"
+            }`,
+          ),
+        );
       }
     });
   });
 }
 
-function median(values) {
-  if (values.length === 0) return 0;
-  const sorted = [...values].sort((a, b) => a - b);
-  const mid = Math.floor(sorted.length / 2);
-  return sorted.length % 2 !== 0 ? sorted[mid] : Math.round((sorted[mid - 1] + sorted[mid]) / 2);
+/**
+ * Lighthouse copies the --extra-headers values into configSettings.extraHeaders.
+ * The raw JSON is committed as audit evidence, so strip the Cookie header
+ * before it ever reaches the repository. Edit the text (instead of a
+ * JSON.parse/stringify round-trip) so the diff stays limited to the header.
+ */
+function readSanitizedReport(outputPath) {
+  const text = readFileSync(outputPath, "utf8");
+  let cleaned = text.replace(/,\s*"extraHeaders"\s*:\s*\{[^}]*\}/, "");
+  // Defensive fallback if Lighthouse ever emits the key first or changes its
+  // formatting: a parse/stringify round-trip still removes the credential.
+  if (cleaned.includes('"extraHeaders"')) {
+    const raw = JSON.parse(cleaned);
+    if (raw?.configSettings?.extraHeaders) {
+      delete raw.configSettings.extraHeaders;
+      cleaned = JSON.stringify(raw, null, 2);
+    }
+  }
+  if (cleaned !== text) writeFileSync(outputPath, cleaned, "utf8");
+  return JSON.parse(cleaned);
 }
 
-function parseMetricMs(displayValue) {
-  if (!displayValue) return 0;
-  const match = displayValue.match(/([\d,.]+)\s*(s|ms)/i);
-  if (!match) return 0;
-  const num = parseFloat(match[1].replace(/,/g, ""));
-  return match[2].toLowerCase() === "s" ? Math.round(num * 1000) : Math.round(num);
+function cookieHeaderFromStorageState(file) {
+  if (!file) return null;
+  if (!existsSync(file)) {
+    console.warn(`  -> Storage state not found: ${file}`);
+    return null;
+  }
+  try {
+    const state = JSON.parse(readFileSync(file, "utf8"));
+    const cookies = Array.isArray(state.cookies) ? state.cookies : [];
+    const header = cookies
+      .filter((cookie) => cookie && cookie.name && typeof cookie.value === "string")
+      .map((cookie) => `${cookie.name}=${cookie.value}`)
+      .join("; ");
+    return header || null;
+  } catch (error) {
+    console.warn(`  -> Could not read storage state: ${error.message}`);
+    return null;
+  }
+}
+
+/**
+ * Create a disposable admin session in the local D1 database. The product has
+ * no password form, so this mirrors the E2E/a11y fixtures: seed the user, the
+ * admin row and a session whose id is the SHA-256 of the cookie token.
+ */
+function seedLocalAdminSession() {
+  if (!existsSync(WRANGLER_BIN)) {
+    throw new Error("wrangler is not installed; run npm install first.");
+  }
+  const token = randomBytes(32).toString("hex");
+  const sessionId = createHash("sha256").update(token).digest("hex");
+  const sql = [
+    `DELETE FROM sessions WHERE user_id = (SELECT id FROM users WHERE lower(email) = lower('${LOCAL_ADMIN_EMAIL}'));`,
+    `INSERT OR IGNORE INTO users (username, email, password_hash) VALUES ('lighthouse_local_admin', '${LOCAL_ADMIN_EMAIL}', NULL);`,
+    `INSERT OR IGNORE INTO admins (email, role, is_active) VALUES ('${LOCAL_ADMIN_EMAIL}', 'super', 1);`,
+    `UPDATE admins SET is_active = 1, role = 'super' WHERE lower(email) = lower('${LOCAL_ADMIN_EMAIL}');`,
+    `INSERT INTO sessions (id, user_id, expires_at) SELECT '${sessionId}', id, datetime('now', '+30 days') FROM users WHERE lower(email) = lower('${LOCAL_ADMIN_EMAIL}');`,
+  ].join("\n");
+
+  execFileSync(
+    process.execPath,
+    [
+      WRANGLER_BIN,
+      "d1",
+      "execute",
+      "cuet-blueprint-db",
+      "--local",
+      "--persist-to",
+      ".wrangler/state",
+      "--command",
+      sql,
+    ],
+    { cwd: ROOT, stdio: "pipe", timeout: 120_000 },
+  );
+  return `cuet_session=${token}`;
+}
+
+function resolveAdminCookie() {
+  const explicit = process.env.LIGHTHOUSE_ADMIN_COOKIE?.trim();
+  if (explicit) {
+    console.log("  -> Using LIGHTHOUSE_ADMIN_COOKIE for authenticated pages.");
+    return explicit;
+  }
+
+  const storageState =
+    process.env.LIGHTHOUSE_STORAGE_STATE ?? process.env.A11Y_STORAGE_STATE;
+  const fromStorage = cookieHeaderFromStorageState(storageState);
+  if (fromStorage) {
+    console.log("  -> Using the supplied storage state for authenticated pages.");
+    return fromStorage;
+  }
+
+  if (IS_LOCAL) {
+    try {
+      const cookie = seedLocalAdminSession();
+      console.log("  -> Seeded a disposable local admin session.");
+      return cookie;
+    } catch (error) {
+      console.warn(`  -> Local admin seed failed: ${error.message}`);
+    }
+  }
+
+  return null;
+}
+
+function spawnPreviewServer() {
+  if (!existsSync(DIST_CONFIG)) {
+    throw new Error("dist/server/wrangler.json not found. Run `npm run build` first.");
+  }
+  if (!existsSync(WRANGLER_BIN)) {
+    throw new Error("wrangler is not installed; run npm install first.");
+  }
+
+  const port = new URL(BASE_URL).port || "4321";
+  const child = spawn(
+    process.execPath,
+    [
+      WRANGLER_BIN,
+      "dev",
+      "--config",
+      "dist/server/wrangler.json",
+      "--persist-to",
+      ".wrangler/state",
+      "--port",
+      port,
+      "--var",
+      "USE_LOCAL_D1:1",
+      "--var",
+      `SITE_URL:${SITE_ORIGIN}`,
+      "--var",
+      "ENV:development",
+    ],
+    { cwd: ROOT, stdio: ["ignore", "pipe", "pipe"], windowsHide: true },
+  );
+
+  child.stdout?.on("data", () => {});
+  child.stderr?.on("data", () => {});
+  return child;
+}
+
+function stopSpawnedServer(child) {
+  if (!child?.pid) return;
+  try {
+    if (process.platform === "win32") {
+      execFileSync("taskkill", ["/PID", String(child.pid), "/T", "/F"], {
+        stdio: "ignore",
+      });
+    } else {
+      child.kill("SIGTERM");
+    }
+  } catch {}
+}
+
+async function fetchText(pathname, headers = {}) {
+  try {
+    const response = await fetch(`${BASE_URL}${pathname}`, {
+      headers,
+      redirect: "follow",
+      signal: AbortSignal.timeout(15_000),
+    });
+    return response.ok ? response.text() : null;
+  } catch {
+    return null;
+  }
+}
+
+async function discoverMockSlug() {
+  const html = await fetchText("/mock-tests");
+  if (!html) return null;
+  // The library links straight to /mock/<slug>/instructions; accept the
+  // detail page too so a future hub redesign does not break discovery.
+  for (const match of html.matchAll(/href="\/mock\/([^"/?#]+)(?:\/[^"?#]*)?"/g)) {
+    const slug = match[1];
+    if (/^[a-z0-9-]+$/i.test(slug)) return slug;
+  }
+  return null;
+}
+
+async function discoverMockId(slug) {
+  const html = await fetchText(`/mock/${encodeURIComponent(slug)}/instructions`);
+  if (!html) return null;
+  const match = html.match(/data-mock-id="(\d+)"/);
+  return match ? Number(match[1]) : null;
+}
+
+async function discoverSharedQuestion() {
+  const sitemap = await fetchText("/sitemap.xml");
+  if (sitemap) {
+    const locs = [...sitemap.matchAll(/<loc>([^<]*\/q\/[^<]+)<\/loc>/g)].map(
+      (match) => match[1],
+    );
+    // Prefer a real question over the E2E fixture that also appears in the
+    // sitemap. Fall back to the first entry on a fixture-only database.
+    const loc = locs.find((value) => !/\/q\/e2e-/i.test(value)) ?? locs[0];
+    if (loc) {
+      try {
+        return new URL(loc).pathname;
+      } catch {}
+    }
+  }
+
+  const fallback = "/q/uPJRyUwJ3s";
+  try {
+    const response = await fetch(`${BASE_URL}${fallback}`, {
+      redirect: "manual",
+      signal: AbortSignal.timeout(5_000),
+    });
+    if (response.status === 200 || response.status === 301) return fallback;
+  } catch {}
+  return null;
+}
+
+async function postJson(pathname, body, cookie) {
+  const response = await fetch(`${BASE_URL}${pathname}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      origin: SITE_ORIGIN,
+      ...(cookie ? { cookie } : {}),
+    },
+    body: JSON.stringify(body),
+  });
+  const text = await response.text();
+  if (!response.ok) {
+    throw new Error(`${response.status} ${text.slice(0, 180)}`);
+  }
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(`Expected JSON from ${pathname}`);
+  }
+}
+
+async function provisionAttempts(mockId, guestCookie) {
+  const submitted = await postJson("/api/attempts/start", { mockId }, guestCookie);
+  if (!submitted.attemptId) throw new Error("Attempt start returned no attemptId.");
+  await postJson(`/api/attempts/${submitted.attemptId}/submit`, {}, guestCookie);
+
+  const active = await postJson("/api/attempts/start", { mockId }, guestCookie);
+  if (!active.attemptId) throw new Error("Second attempt start returned no attemptId.");
+
+  return {
+    resultPath: `/result/${submitted.attemptId}`,
+    attemptPath: `/attempt/${active.attemptId}`,
+  };
+}
+
+async function preflight(target) {
+  try {
+    const response = await fetch(`${BASE_URL}${target.path}`, {
+      headers: target.cookie ? { cookie: target.cookie } : {},
+      redirect: "manual",
+      signal: AbortSignal.timeout(5_000),
+    });
+    if (response.status === 200) {
+      console.log(`  [OK 200] ${target.name} (${target.path})`);
+      return true;
+    }
+    if (response.status >= 300 && response.status < 400) {
+      console.error(`  [REDIRECT ${response.status}] ${target.path} -> ${response.headers.get("location")}`);
+    } else {
+      console.error(`  [FAIL ${response.status}] ${target.path}`);
+    }
+  } catch (error) {
+    console.error(`  [ERROR] ${target.path}: ${error.message}`);
+  }
+  return false;
+}
+
+function toMarkdown(results, failures) {
+  const themes = [...new Set(results.map((row) => row.theme))];
+  const lighthouseVersions =
+    [...new Set(results.map((row) => row.lighthouseVersion))].filter(Boolean).join(", ") ||
+    "unknown";
+  const lines = [
+    "# Lighthouse Mobile Audit Results",
+    "",
+    `*Audited against ${BASE_URL} on ${new Date().toISOString()}*`,
+    `- **Tool:** Lighthouse (via npx) ${lighthouseVersions}, mobile emulation, simulated 4G throttling`,
+    `- **Method:** ${RUNS} independent run(s) per route and theme; scores and metrics are medians.`,
+    `- **Themes:** ${themes.join(", ") || "none"}`,
+    `- **Environment:** Windows/Linux runner, Node.js ${process.version}, Host: ${os.hostname()}`,
+    `- **Budgets:** \`performance-budget.json\` — route transfer/score plus LCP, TBT, CLS, FCP, Speed Index and total DOM caps.`,
+    "",
+    "| Page | Theme | Runs | Perf [min-max] | A11y | Best Practices | SEO | LCP | TBT | CLS | Transfer | Budget |",
+    "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
+    ...results.map(
+      (row) =>
+        `| ${row.page} | ${row.theme} | ${row.runs} | **${row.perfMedian}** [${row.perfMin}-${row.perfMax}] | ${row.a11y} | ${row.bp} | ${row.seo} | ${(row.lcpMs / 1000).toFixed(2)}s | ${row.tbtMs}ms | ${row.cls} | ${row.transferKb} KB | ${row.budgetPass ? "PASS" : "FAIL"} (${row.budgetPattern ?? "no budget"}) |`,
+    ),
+    "",
+    "## Budget results",
+    "",
+  ];
+
+  if (failures.length === 0) {
+    lines.push("All audited routes passed their budgets.");
+  } else {
+    lines.push("The following checks failed:", "");
+    for (const failure of failures) lines.push(`- ${failure}`);
+  }
+
+  lines.push(
+    "",
+    "> `maxInitialDomNodes` is evaluated against Lighthouse's `dom-size` audit, which counts total DOM nodes. Total DOM is an upper bound for the initial count, so this check is conservative.",
+    "",
+  );
+  return lines.join("\n");
 }
 
 async function main() {
   console.log("================================================================");
-  console.log("CUET Free Mock Test — Production Lighthouse Mobile Audit (Fix R2)");
-  console.log(`Target Base URL: ${BASE_URL}`);
-  console.log(`Runs per Route & Theme: ${RUNS}`);
-  console.log(`Output Directory: ${OUTPUT_DIR}`);
+  console.log("CUET Free Mock Test — Lighthouse mobile audit and budget gate");
+  console.log(`Target: ${BASE_URL}`);
+  console.log(`Runs per route/theme: ${RUNS}`);
+  console.log(`Themes: ${THEMES.join(", ")}`);
+  console.log(`Budget file: ${BUDGET_FILE}`);
   console.log("================================================================\n");
 
-  if (!existsSync(OUTPUT_DIR)) {
-    mkdirSync(OUTPUT_DIR, { recursive: true });
-  }
+  const budget = loadBudget();
+  console.log(
+    `Loaded ${Object.keys(budget.routeBudgets).length} route budgets and the ${Object.keys(budget.metrics.mobileSimulated4G).length}-metric mobile cap set.\n`,
+  );
 
-  // Ensure headers files exist and log in as admin
-  writeFileSync(GUEST_HEADERS_FILE, JSON.stringify({ Cookie: "cuet_guest=lighthouse_guest_token_2026" }), "utf8");
+  mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  let adminCookie = "cuet_session=lighthouse_admin_test_session_token_2026";
-  try {
-    const loginRes = await fetch(`${BASE_URL}/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        origin: BASE_URL,
-      },
-      body: JSON.stringify({
-        email: process.env.A11Y_ADMIN_EMAIL ?? "admin@cuetfreemocktest.com",
-        password: process.env.A11Y_ADMIN_PASSWORD ?? "AdminPass123!",
-      }),
-    });
-    const setCookie = loginRes.headers.get("set-cookie");
-    if (setCookie) {
-      adminCookie = setCookie.split(";")[0];
-      console.log("  -> Admin logged in successfully for audit.");
-    }
-  } catch (err) {
-    console.warn("  -> Admin login failed; using fallback cookie:", err.message);
-  }
-
-  writeFileSync(ADMIN_HEADERS_FILE, JSON.stringify({ Cookie: adminCookie }), "utf8");
+  const guestToken = `lighthouse_${randomBytes(16).toString("hex")}`;
+  const guestCookie = `cuet_guest=${guestToken}`;
+  writeFileSync(GUEST_HEADERS_FILE, JSON.stringify({ Cookie: guestCookie }), "utf8");
 
   let spawnedServer = null;
-  const isAvailable = await waitForServer(`${BASE_URL}/`, 2000);
-
-  if (!isAvailable) {
-    console.log(`Base URL ${BASE_URL} not running. Spawning wrangler dev on production build...`);
-    spawnedServer = spawn("npx", ["wrangler", "dev", "--port", "4321"], {
-      stdio: "pipe",
-      shell: true,
-    });
-    const ready = await waitForServer(`${BASE_URL}/`, 60000);
-    if (!ready) {
-      console.error("FAIL: Could not start local server within 60s.");
-      if (spawnedServer) spawnedServer.kill();
-      process.exit(1);
-    }
-    console.log("Production build server is ready!\n");
-  }
-
-  // Provision active attempt & submitted result for lighthouse audits
-  console.log("Provisioning fresh test attempt and result on real mock (Physics Shift 2)...");
-  let attemptPath = "/attempt/739";
-  let resultPath = "/result/740";
-
   try {
-    // 1. Create first attempt and submit it for result view
-    const resRes = await fetch(`${BASE_URL}/api/attempts/start`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        origin: BASE_URL,
-        cookie: "cuet_guest=lighthouse_guest_token_2026",
-      },
-      body: JSON.stringify({ mockId: 439 }),
-    });
-    const resData = await resRes.json();
-    if (resData.attemptId) {
-      await fetch(`${BASE_URL}/api/attempts/${resData.attemptId}/submit`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          origin: BASE_URL,
-          cookie: "cuet_guest=lighthouse_guest_token_2026",
-        },
-        body: JSON.stringify({}),
-      });
-      resultPath = `/result/${resData.attemptId}`;
-      console.log(`  -> Submitted Result created: ${resultPath}`);
-
-      // 2. Create second attempt and leave in_progress for attempt screen
-      const attRes = await fetch(`${BASE_URL}/api/attempts/start`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          origin: BASE_URL,
-          cookie: "cuet_guest=lighthouse_guest_token_2026",
-        },
-        body: JSON.stringify({ mockId: 439 }),
-      });
-      const attData = await attRes.json();
-      if (attData.attemptId) {
-        attemptPath = `/attempt/${attData.attemptId}`;
-        console.log(`  -> Active Attempt created: ${attemptPath}`);
+    const available = await waitForServer(`${BASE_URL}/`, 2_000);
+    if (!available) {
+      if (SPAWN_MODE === "never") {
+        throw new Error(`No server at ${BASE_URL} and --spawn=never.`);
       }
+      if (!IS_LOCAL) {
+        throw new Error(`No server at ${BASE_URL}. Start it or use --spawn=never with a reachable host.`);
+      }
+      console.log(`No server at ${BASE_URL}; starting the production build with wrangler...`);
+      spawnedServer = spawnPreviewServer();
+      if (!(await waitForServer(`${BASE_URL}/`, 120_000))) {
+        throw new Error("The production preview did not become ready within 120s.");
+      }
+      console.log("Production preview is ready.\n");
     }
-  } catch (err) {
-    console.warn("Could not provision dynamic attempt; falling back to static attempt ids:", err.message);
-  }
 
-  const AUDIT_TARGETS = [
-    { id: "home", name: "Home", path: "/" },
-    { id: "hubs", name: "Hubs (Mock Test)", path: "/mock-tests" },
-    { id: "mock-detail", name: "Mock Detail", path: "/mock/physics-2026-05-31-shift-2" },
-    { id: "instructions", name: "Instructions", path: "/mock/physics-2026-05-31-shift-2/instructions" },
-    { id: "attempt", name: "Attempt Screen", path: attemptPath, headerFile: GUEST_HEADERS_FILE, cookie: "cuet_guest=lighthouse_guest_token_2026" },
-    { id: "result", name: "Result Screen", path: resultPath, headerFile: GUEST_HEADERS_FILE, cookie: "cuet_guest=lighthouse_guest_token_2026" },
-    { id: "subject", name: "Subject Page", path: "/cuet-mock-test/physics" },
-    { id: "public-question", name: "Public Question Page", path: "/q/e2e-fixture-question-01-which-option-uPJRyUwJ3s" },
-    { id: "admin", name: "Admin Dashboard", path: "/admin", headerFile: ADMIN_HEADERS_FILE, cookie: adminCookie },
-  ];
-
-  // Pre-flight check
-  console.log("\nPre-flight HTTP 200 check for all audit targets...");
-  let preflightFailed = false;
-  for (const target of AUDIT_TARGETS) {
-    const headers = {};
-    if (target.cookie) headers.cookie = target.cookie;
-
-    try {
-      const res = await fetch(`${BASE_URL}${target.path}`, {
-        headers,
-        redirect: "manual",
-        signal: AbortSignal.timeout(5000),
-      });
-      if (res.status === 200) {
-        console.log(`  [OK 200] ${target.name} (${target.path})`);
-      } else if (res.status >= 300 && res.status < 400) {
-        console.warn(`  [REDIRECT ${res.status}] ${target.path} -> ${res.headers.get("location")}`);
-        preflightFailed = true;
+    let adminCookie = null;
+    if (!skipAdmin) {
+      adminCookie = resolveAdminCookie();
+      if (adminCookie) {
+        writeFileSync(ADMIN_HEADERS_FILE, JSON.stringify({ Cookie: adminCookie }), "utf8");
       } else {
-        console.error(`  [FAIL ${res.status}] ${target.path}`);
-        preflightFailed = true;
+        console.warn("  -> No admin session available; /admin will be skipped.");
       }
-    } catch (e) {
-      console.error(`  [ERROR] ${target.path}: ${e.message}`);
-      preflightFailed = true;
+    } else {
+      console.log("  -> LIGHTHOUSE_SKIP_ADMIN is set; /admin will be skipped.");
     }
-  }
 
-  if (preflightFailed) {
-    console.error("\nFAIL: Pre-flight check failed for one or more targets.");
-    if (spawnedServer) spawnedServer.kill();
-    process.exit(1);
-  }
+    const targets = [
+      { id: "home", name: "Home", path: "/" },
+      { id: "hubs", name: "Mock Test Hub", path: "/mock-tests" },
+      { id: "subject", name: "Subject Hub", path: "/cuet-mock-test/english" },
+    ];
 
-  console.log(`\nAll targets returned OK 200! Starting Lighthouse audits (${RUNS} runs per route & theme)...\n`);
+    const slug = await discoverMockSlug();
+    if (!slug) {
+      throw new Error("Could not discover a published mock from /mock-tests.");
+    }
+    console.log(`Discovered mock: ${slug}`);
+    targets.push(
+      { id: "mock-detail", name: "Mock Detail", path: `/mock/${slug}` },
+      { id: "instructions", name: "Instructions", path: `/mock/${slug}/instructions` },
+    );
 
-  const aggregatedResults = [];
+    if (!skipAttempt) {
+      const mockId = await discoverMockId(slug);
+      if (!mockId) throw new Error(`Could not read data-mock-id for /mock/${slug}.`);
+      try {
+        const { resultPath, attemptPath } = await provisionAttempts(mockId, guestCookie);
+        console.log(`Provisioned result: ${resultPath}`);
+        console.log(`Provisioned attempt: ${attemptPath}`);
+        targets.push(
+          {
+            id: "attempt",
+            name: "Attempt Screen",
+            path: attemptPath,
+            cookie: guestCookie,
+            headerFile: GUEST_HEADERS_FILE,
+          },
+          {
+            id: "result",
+            name: "Result Screen",
+            path: resultPath,
+            cookie: guestCookie,
+            headerFile: GUEST_HEADERS_FILE,
+          },
+        );
+      } catch (error) {
+        throw new Error(`Could not provision attempt/result pages: ${error.message}`);
+      }
+    } else {
+      console.log("LIGHTHOUSE_SKIP_ATTEMPT is set; attempt/result pages will be skipped.");
+    }
 
-  try {
-    for (const target of AUDIT_TARGETS) {
+    const sharedQuestionPath = await discoverSharedQuestion();
+    if (sharedQuestionPath) {
+      targets.push({
+        id: "public-question",
+        name: "Public Question",
+        path: sharedQuestionPath,
+      });
+    } else {
+      console.warn("No shared public question found; /q/[id] will be skipped.");
+    }
+
+    if (adminCookie) {
+      targets.push({
+        id: "admin",
+        name: "Admin Dashboard",
+        path: "/admin",
+        cookie: adminCookie,
+        headerFile: ADMIN_HEADERS_FILE,
+      });
+    }
+
+    console.log("\nPre-flight HTTP 200 check for all audit targets...");
+    const readyTargets = [];
+    for (const target of targets) {
+      if (await preflight(target)) readyTargets.push(target);
+    }
+    if (readyTargets.length !== targets.length) {
+      throw new Error("Pre-flight failed for one or more targets.");
+    }
+
+    console.log(
+      `\nAll ${readyTargets.length} targets returned 200. Starting ${RUNS} run(s) per route/theme...\n`,
+    );
+
+    const results = [];
+    const budgetFailures = [];
+
+    for (const target of readyTargets) {
       for (const theme of THEMES) {
         const fullUrl = `${BASE_URL}${target.path}`;
-        console.log(`\nAuditing [${target.name}] (${theme} theme) across ${RUNS} runs...`);
+        console.log(`\nAuditing [${target.name}] (${theme}) across ${RUNS} run(s)...`);
 
         const runData = {
           perf: [],
@@ -251,156 +673,223 @@ async function main() {
           lcpMs: [],
           tbtMs: [],
           cls: [],
-          lcpDisplay: [],
-          tbtDisplay: [],
+          fcpMs: [],
+          speedIndexMs: [],
+          transferKb: [],
+          domNodes: [],
+          lighthouseVersions: new Set(),
           topIssues: new Set(),
         };
 
-        for (let r = 1; r <= RUNS; r++) {
-          const outputPath = join(OUTPUT_DIR, `${target.id}.${theme}.run${r}.json`);
-          const startTime = Date.now();
-          process.stdout.write(`  Run ${r}/${RUNS}... `);
+        for (let run = 1; run <= RUNS; run += 1) {
+          const outputPath = join(OUTPUT_DIR, `${target.id}.${theme}.run${run}.json`);
+          process.stdout.write(`  Run ${run}/${RUNS}... `);
+          const started = Date.now();
 
           try {
             await runLighthouseCommand(fullUrl, outputPath, theme, target.headerFile);
-            const duration = ((Date.now() - startTime) / 1000).toFixed(1);
-            process.stdout.write(`Done (${duration}s)\n`);
-
-            const raw = JSON.parse(await readFile(outputPath, "utf8"));
+            const raw = readSanitizedReport(outputPath);
             const categories = raw.categories ?? {};
             const audits = raw.audits ?? {};
 
-            const perf = Math.round((categories.performance?.score ?? 0) * 100);
-            const a11y = Math.round((categories.accessibility?.score ?? 0) * 100);
-            const bp = Math.round((categories["best-practices"]?.score ?? 0) * 100);
-            const seo = Math.round((categories.seo?.score ?? 0) * 100);
+            const performanceScore = Math.round((categories.performance?.score ?? 0) * 100);
+            const accessibilityScore = Math.round((categories.accessibility?.score ?? 0) * 100);
+            const bestPracticesScore = Math.round(
+              (categories["best-practices"]?.score ?? 0) * 100,
+            );
+            const seoScore = Math.round((categories.seo?.score ?? 0) * 100);
 
-            const lcpStr = audits["largest-contentful-paint"]?.displayValue ?? "";
-            const tbtStr = audits["total-blocking-time"]?.displayValue ?? "";
-            const clsVal = audits["cumulative-layout-shift"]?.numericValue ?? 0;
+            const lcp = auditNumeric(audits, "largest-contentful-paint");
+            const tbt = auditNumeric(audits, "total-blocking-time");
+            const cls = auditNumeric(audits, "cumulative-layout-shift");
+            const fcp = auditNumeric(audits, "first-contentful-paint");
+            const speedIndex = auditNumeric(audits, "speed-index");
+            const transferBytes = auditNumeric(audits, "total-byte-weight");
+            // Lighthouse 13.6 renamed dom-size to dom-size-insight. Accept
+            // both so a runner upgrade does not silently skip the DOM cap.
+            const domNodes =
+              auditNumeric(audits, "dom-size") ?? auditNumeric(audits, "dom-size-insight");
 
-            runData.perf.push(perf);
-            runData.a11y.push(a11y);
-            runData.bp.push(bp);
-            runData.seo.push(seo);
-            runData.lcpMs.push(parseMetricMs(lcpStr));
-            runData.tbtMs.push(parseMetricMs(tbtStr));
-            runData.cls.push(clsVal);
-            runData.lcpDisplay.push(lcpStr);
-            runData.tbtDisplay.push(tbtStr);
+            const missing = Object.entries({
+              LCP: lcp,
+              TBT: tbt,
+              CLS: cls,
+              FCP: fcp,
+              "Speed Index": speedIndex,
+              "Transfer size": transferBytes,
+              "DOM nodes": domNodes,
+            })
+              .filter(([, value]) => value === null)
+              .map(([name]) => name);
+
+            if (missing.length > 0) {
+              throw new Error(`Lighthouse report is missing: ${missing.join(", ")}`);
+            }
+
+            runData.perf.push(performanceScore);
+            runData.a11y.push(accessibilityScore);
+            runData.bp.push(bestPracticesScore);
+            runData.seo.push(seoScore);
+            runData.lcpMs.push(lcp);
+            runData.tbtMs.push(tbt);
+            runData.cls.push(cls);
+            runData.fcpMs.push(fcp);
+            runData.speedIndexMs.push(speedIndex);
+            runData.transferKb.push(transferBytes / 1024);
+            runData.domNodes.push(domNodes);
+            if (raw.lighthouseVersion) {
+              runData.lighthouseVersions.add(raw.lighthouseVersion);
+            }
 
             Object.values(audits)
-              .filter((a) => typeof a.score === "number" && a.score < 0.9 && a.title && a.description)
+              .filter(
+                (audit) =>
+                  typeof audit.score === "number" &&
+                  audit.score < 0.9 &&
+                  audit.title &&
+                  audit.description,
+              )
               .sort((a, b) => (a.score ?? 1) - (b.score ?? 1))
               .slice(0, 2)
-              .forEach((a) => runData.topIssues.add(a.title));
-          } catch (err) {
-            process.stdout.write(`Failed: ${err.message}\n`);
+              .forEach((audit) => runData.topIssues.add(audit.title));
+
+            process.stdout.write(`done (${((Date.now() - started) / 1000).toFixed(1)}s)\n`);
+          } catch (error) {
+            process.stdout.write(`FAILED: ${error.message}\n`);
           }
         }
 
-        if (runData.perf.length > 0) {
-          const medPerf = median(runData.perf);
-          const minPerf = Math.min(...runData.perf);
-          const maxPerf = Math.max(...runData.perf);
-
-          const medA11y = median(runData.a11y);
-          const medBp = median(runData.bp);
-          const medSeo = median(runData.seo);
-
-          const medLcp = median(runData.lcpMs);
-          const medTbt = median(runData.tbtMs);
-          const medCls = (runData.cls.reduce((a, b) => a + b, 0) / runData.cls.length).toFixed(3);
-
-          const issuesList = Array.from(runData.topIssues).slice(0, 3).join("; ") || "None";
-
-          aggregatedResults.push({
+        const minimumSamples = RUNS >= 3 ? Math.ceil((RUNS * 2) / 3) : 1;
+        if (runData.perf.length < minimumSamples) {
+          const detail =
+            runData.perf.length === 0
+              ? "every Lighthouse run failed"
+              : `only ${runData.perf.length}/${RUNS} Lighthouse runs succeeded`;
+          budgetFailures.push(`${target.path} (${theme}): ${detail}`);
+          results.push({
             page: target.name,
             theme,
             url: target.path,
             runs: runData.perf.length,
-            perfMedian: medPerf,
-            perfMin: minPerf,
-            perfMax: maxPerf,
-            a11y: medA11y,
-            bp: medBp,
-            seo: medSeo,
-            lcpMs: medLcp,
-            tbtMs: medTbt,
-            cls: medCls,
-            topIssues: issuesList,
+            perfMedian: 0,
+            perfMin: 0,
+            perfMax: 0,
+            a11y: 0,
+            bp: 0,
+            seo: 0,
+            lcpMs: 0,
+            tbtMs: 0,
+            cls: 0,
+            transferKb: 0,
+            domNodes: 0,
+            budgetPattern: null,
+            budgetPass: false,
+            budgetChecks: [],
+            topIssues: detail,
+            lighthouseVersion: "not captured",
           });
+          continue;
         }
+
+        const metrics = {
+          performanceScore: round(median(runData.perf)),
+          transferKb: round(median(runData.transferKb), 1),
+          lcpMs: round(median(runData.lcpMs)),
+          tbtMs: round(median(runData.tbtMs)),
+          cls: round(median(runData.cls), 3),
+          fcpMs: round(median(runData.fcpMs)),
+          speedIndexMs: round(median(runData.speedIndexMs)),
+          domNodes: round(median(runData.domNodes)),
+        };
+
+        const matched = matchRouteBudget(budget.routeBudgets, target.path);
+        const evaluation = evaluateBudget({
+          budget: matched?.budget,
+          metrics,
+          metricsBudgets: budget.metrics.mobileSimulated4G,
+          limits: budget.limits ?? {},
+        });
+
+        for (const failed of evaluation.checks.filter((entry) => !entry.pass)) {
+          budgetFailures.push(describeFailure(`${target.path} (${theme})`, failed));
+        }
+
+        results.push({
+          page: target.name,
+          theme,
+          url: target.path,
+          runs: runData.perf.length,
+          perfMedian: metrics.performanceScore,
+          perfMin: Math.min(...runData.perf),
+          perfMax: Math.max(...runData.perf),
+          a11y: round(median(runData.a11y)),
+          bp: round(median(runData.bp)),
+          seo: round(median(runData.seo)),
+          lcpMs: metrics.lcpMs,
+          tbtMs: metrics.tbtMs,
+          cls: metrics.cls,
+          fcpMs: metrics.fcpMs,
+          speedIndexMs: metrics.speedIndexMs,
+          transferKb: metrics.transferKb,
+          domNodes: metrics.domNodes,
+          budgetPattern: matched?.pattern ?? null,
+          budgetPass: evaluation.pass,
+          budgetChecks: evaluation.checks,
+          topIssues: Array.from(runData.topIssues).slice(0, 3).join("; ") || "None",
+          lighthouseVersion:
+            Array.from(runData.lighthouseVersions).sort().join(", ") || "unknown",
+        });
       }
     }
 
     console.log("\n================================================================");
-    console.log(`LIGHTHOUSE MOBILE AUDIT SUMMARY (${RUNS} Runs Median per Target)`);
+    console.log(`LIGHTHOUSE MOBILE SUMMARY (${RUNS} run median, ${THEMES.join("/")})`);
     console.log("================================================================\n");
 
     console.table(
-      aggregatedResults.map((r) => ({
-        Page: r.page,
-        Theme: r.theme,
-        "Perf (Med [min-max])": `${r.perfMedian} [${r.perfMin}-${r.perfMax}]`,
-        A11y: r.a11y,
-        "Best Pract": r.bp,
-        SEO: r.seo,
-        LCP: `${(r.lcpMs / 1000).toFixed(1)}s`,
-        CLS: r.cls,
-        TBT: `${r.tbtMs}ms`,
-      }))
+      results.map((row) => ({
+        Page: row.page,
+        Theme: row.theme,
+        "Perf (med [min-max])": `${row.perfMedian} [${row.perfMin}-${row.perfMax}]`,
+        A11y: row.a11y,
+        "Best Pract": row.bp,
+        SEO: row.seo,
+        LCP: `${(row.lcpMs / 1000).toFixed(2)}s`,
+        TBT: `${row.tbtMs}ms`,
+        CLS: row.cls,
+        Transfer: `${row.transferKb} KB`,
+        Budget: row.budgetPass ? "PASS" : "FAIL",
+      })),
     );
 
-    const mdTable = [
-      "# Lighthouse Mobile Audit Results (Median Across 5 Runs)",
-      "",
-      `*Audited against Production Build (\`wrangler dev\` on \`dist/\`) on ${new Date().toISOString()}*`,
-      `- **Tool Version:** Lighthouse v13.6.0`,
-      `- **Form Factor:** Mobile (emulated screen: 360x640, dpr 2)`,
-      `- **Throttling:** Simulated 4G (RTT: 150ms, Throughput: 1.6Mbps, CPU Slowdown: 4x)`,
-      `- **Environment:** Windows, Node.js ${process.version}, Host: ${os.hostname()}`,
-      `- **Methodology:** ${RUNS} independent runs per route and theme. Scores, LCP, and TBT report the **MEDIAN** value with min-max spread.`,
-      "",
-      "| Page | Theme | Runs | Perf (Median [min-max]) | A11y | Best Practices | SEO | LCP (Median) | CLS | TBT (Median) | Top Issues |",
-      "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
-      ...aggregatedResults.map(
-        (r) =>
-          `| ${r.page} | ${r.theme} | ${r.runs} | **${r.perfMedian}** [${r.perfMin}-${r.perfMax}] | ${r.a11y} | ${r.bp} | ${r.seo} | ${(r.lcpMs / 1000).toFixed(1)}s | ${r.cls} | ${r.tbtMs}ms | ${r.topIssues} |`
-      ),
-      "",
-      "## Performance Budget Verification",
-      "",
-      "| Route | Target LCP Budget | Measured LCP (Median) | Target TBT Budget | Measured TBT (Median) | Budget Status |",
-      "| :--- | :---: | :---: | :---: | :---: | :--- |",
-      ...aggregatedResults
-        .filter((r) => r.theme === "light")
-        .map((r) => {
-          const lcpPass = r.lcpMs <= 4000;
-          const tbtPass = r.tbtMs <= 600;
-          const status = lcpPass && tbtPass ? "PASS" : "PARTIAL (Optimization applied)";
-          return `| ${r.page} | <= 4.0s | ${(r.lcpMs / 1000).toFixed(1)}s | <= 600ms | ${r.tbtMs}ms | ${status} |`;
-        }),
-      "",
-    ].join("\n");
-
-    writeFileSync(join(OUTPUT_DIR, "SUMMARY.md"), mdTable, "utf8");
     writeFileSync(
       join(OUTPUT_DIR, "lighthouse-results.json"),
-      JSON.stringify(aggregatedResults, null, 2),
-      "utf8"
+      JSON.stringify(results, null, 2),
+      "utf8",
     );
-    console.log(`\nSummary report written to ${join(OUTPUT_DIR, "SUMMARY.md")}`);
-    console.log(`JSON results written to ${join(OUTPUT_DIR, "lighthouse-results.json")}`);
+    writeFileSync(join(OUTPUT_DIR, "SUMMARY.md"), toMarkdown(results, budgetFailures), "utf8");
+
+    console.log(`\nSummary: ${join(OUTPUT_DIR, "SUMMARY.md")}`);
+    console.log(`Results: ${join(OUTPUT_DIR, "lighthouse-results.json")}`);
+
+    if (budgetFailures.length > 0) {
+      console.error(`\nFAIL: ${budgetFailures.length} performance budget check(s) failed:`);
+      for (const failure of budgetFailures) console.error(`  - ${failure}`);
+      console.error("\nFix the route, or revise performance-budget.json deliberately.");
+      process.exitCode = 1;
+    } else {
+      console.log("\nPASS: every audited route is within its performance budget.");
+    }
   } finally {
+    rmSync(HEADER_DIR, { recursive: true, force: true });
     if (spawnedServer) {
-      console.log("Stopping spawned server...");
-      spawnedServer.kill();
+      console.log("Stopping the spawned preview...");
+      stopSpawnedServer(spawnedServer);
     }
   }
 }
 
-main().catch((err) => {
-  console.error("FATAL:", err);
-  process.exit(1);
+main().catch((error) => {
+  console.error(`\nFATAL: ${error.message}`);
+  process.exitCode = 1;
 });

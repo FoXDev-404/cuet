@@ -74,12 +74,18 @@ export function generateScorecard({ reports = {}, write = true } = {}) {
   const accessibilityStatus = a11yPass ? "DONE" : "PARTIAL";
 
   // Rule 3: Performance
-  // Even though local production build achieves 100% median across all 9 routes,
-  // we cap at PARTIAL pending live audit on deployed staging with real edge/D1 network roundtrips.
-  const auditTargetCount = lhResults?.length ?? 18;
+  // Even though local production build achieves strong medians, cap at PARTIAL
+  // pending a live audit on deployed staging with real edge/D1 network roundtrips.
+  const auditRouteCount = lhResults
+    ? new Set(lhResults.map((row) => row.url).filter(Boolean)).size
+    : 9;
+  const auditRunCounts = new Set(
+    (lhResults ?? []).map((row) => row.runs).filter((runs) => Number.isFinite(runs)),
+  );
+  const auditRunLabel =
+    auditRunCounts.size === 1 ? `${[...auditRunCounts][0]}-run` : "multi-run";
   const perfStatus = "PARTIAL";
-  const perfReason =
-    `Production build 5-run mobile audit achieved 100% Performance across all ${Math.floor(auditTargetCount / 2)} core routes x 2 themes (Attempt LCP 1.5s–1.6s, TBT 0ms; Subject LCP 0.9s). Capped at PARTIAL pending live audit on deployed Cloudflare staging with real edge/D1 network latency across a full 50-question paper and solutions page.`;
+  const perfReason = `Production build ${auditRunLabel} mobile audit covered ${auditRouteCount} core routes against the route budgets. Capped at PARTIAL pending live audit on deployed Cloudflare staging with real edge/D1 network latency across a full 50-question paper and solutions page.`;
 
   // Rule 4: Content Library
   const stats = facts?.database?.explanationStats;

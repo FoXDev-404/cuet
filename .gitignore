@@ -15,6 +15,9 @@ playwright-report/
 .env*
 .dev.vars
 
+# Lighthouse session headers (cookies must never be committed)
+docs/report/lighthouse/headers-*.json
+
 # Local database backups
 backup-*.sql
 backups/
