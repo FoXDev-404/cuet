@@ -3,7 +3,7 @@ import { defineMiddleware } from "astro:middleware";
 import { env } from "cloudflare:workers";
 import { bootstrapSuperAdmin, getAdminByEmail, getAdminForUser } from "./lib/auth/admin";
 import { accessModeEnabled, verifyAccessRequest } from "./lib/auth/access";
-import { getSessionUser } from "./lib/auth/session";
+import { getSessionUser, hasSessionCookie } from "./lib/auth/session";
 import { ensurePracticeLibrary, setPracticeLibraryStore } from "./lib/practice-library";
 import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
@@ -168,7 +168,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
       method: context.request.method,
       pathname: requestedPath,
       search: context.url.search,
-      hasSessionCookie: Boolean(context.cookies.get("cuet_session")?.value),
+      hasSessionCookie: hasSessionCookie(context.cookies),
       isProduction: currentEnvironment === "production",
     });
 

@@ -3,7 +3,7 @@ import {
   test,
   type APIRequestContext,
 } from "@playwright/test";
-import { SESSION_COOKIE, seedUser, sessionTokenFor } from "./auth-helpers";
+import { SESSION_COOKIE, LEGACY_SESSION_COOKIE, seedUser, sessionTokenFor } from "./auth-helpers";
 import {
   executeLocalD1,
   executeLocalD1WithRetry,
@@ -165,6 +165,36 @@ test.beforeEach(async ({ page }) => {
     "These tests create and remove accounts and attempts in the local D1 database.",
   );
   await page.setExtraHTTPHeaders({ "cf-connecting-ip": testClientIp() });
+});
+
+test("a legacy session cookie is promoted to __Host- without signing the user out", async ({
+  context,
+  page,
+  baseURL,
+}) => {
+  const stamp = uniqueStamp();
+  const email = `e2e-legacy-${stamp}@example.com`;
+  seedUser({ email, username: `legacy_${stamp}`.slice(0, 30) });
+  const token = sessionTokenFor(email);
+
+  await context.addCookies([
+    {
+      name: LEGACY_SESSION_COOKIE,
+      value: token,
+      domain: new URL(baseURL ?? "http://localhost:4321").hostname,
+      path: "/",
+      secure: true,
+    },
+  ]);
+
+  const response = await page.goto("/dashboard");
+  expect(response?.status()).toBe(200);
+
+  const cookies = await context.cookies();
+  expect(cookies.some((cookie) => cookie.name === SESSION_COOKIE && cookie.value === token)).toBe(
+    true,
+  );
+  expect(cookies.some((cookie) => cookie.name === LEGACY_SESSION_COOKIE)).toBe(false);
 });
 
 test("a signed-in student cannot read or mutate another student's attempt", async ({

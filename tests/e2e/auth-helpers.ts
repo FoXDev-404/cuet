@@ -11,7 +11,8 @@ import { createHash, randomBytes } from "node:crypto";
 import { executeLocalD1WithRetry, queryLocalD1 } from "../../scripts/lib/local-d1.mjs";
 const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:4321";
 
-export const SESSION_COOKIE = "cuet_session";
+export const SESSION_COOKIE = "__Host-cuet_session";
+export const LEGACY_SESSION_COOKIE = "cuet_session";
 
 function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''")}'`;
@@ -67,8 +68,20 @@ export function seedUser(options: {
 }
 
 /** Cookie object for BrowserContext.addCookies / APIRequestContext cookies. */
-export function sessionCookie(token: string): { name: string; value: string; domain: string; path: string } {
-  return { name: SESSION_COOKIE, value: token, domain: new URL(BASE_URL).hostname, path: "/" };
+export function sessionCookie(token: string): {
+  name: string;
+  value: string;
+  domain: string;
+  path: string;
+  secure: boolean;
+} {
+  return {
+    name: SESSION_COOKIE,
+    value: token,
+    domain: new URL(BASE_URL).hostname,
+    path: "/",
+    secure: true,
+  };
 }
 
 /** Cookie header for APIRequestContext calls created without a browser context. */

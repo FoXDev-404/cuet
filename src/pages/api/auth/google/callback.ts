@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { createSession, GUEST_COOKIE } from "../../../../lib/auth/session";
+import { createSession, clearGuestToken, getGuestToken } from "../../../../lib/auth/session";
 import { exchangeGoogleCode, fetchGoogleProfile, isGoogleConfigured } from "../../../../lib/auth/oauth";
 import {
   claimGuestAttempts,
@@ -63,8 +63,8 @@ export const GET: APIRoute = async ({ request, cookies }) => {
     if (user.deleted_at) return fail("account_disabled");
 
     await createSession(cookies, user.id);
-    const claimed = await claimGuestAttempts(user.id, cookies.get(GUEST_COOKIE)?.value);
-    cookies.delete(GUEST_COOKIE, { path: "/" });
+    const claimed = await claimGuestAttempts(user.id, getGuestToken(cookies));
+    clearGuestToken(cookies);
 
     return new Response(null, {
       status: 303,

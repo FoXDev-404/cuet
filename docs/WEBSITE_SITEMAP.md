@@ -1194,7 +1194,7 @@ Sitemap multi-query failure par degraded header set karta hai aur partial sitema
 ### 9.7 Auth and permission model
 
 - Public user auth Google OAuth se hota hai; login page par password form nahi.
-- Session cookie `cuet_session`; guest attempts guest token se bind hote hain.
+- Session cookie `__Host-cuet_session`; guest attempts guest token se bind hote hain.
 - Admin auth production me `ADMIN_AUTH_MODE=session` + explicit `ADMIN_ALLOW_SESSION_IN_PROD=1`; Cloudflare Access mode bhi code me supported hai.
 - Admin role permissions `can()` se check hoti hain; sidebar items permission-gated hain.
 - Admin pages unauth request par 303 login; non-admin session `/forbidden`; admin APIs 401/403.
