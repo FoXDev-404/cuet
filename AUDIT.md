@@ -242,7 +242,7 @@ Gaps:
 | SEC-5 | P2 | CSP allowed `script-src 'unsafe-inline'` and advertised AdSense/Google ad domains even when ads were unconfigured | **Partially resolved in Phase 4 (P2-7):** ad and analytics hosts are now emitted only when that integration is configured (`src/lib/security-headers.ts`), so the dormant policy no longer advertises them. `'unsafe-inline'` remains for scripts and styles until the nonce/hash migration described in §15. |
 | SEC-6 | P2 | No `Cross-Origin-Opener-Policy` or `Cross-Origin-Resource-Policy` | Fixed in Phase 4 (P2-7): every Worker response now carries COOP `same-origin-allow-popups` (OAuth popups keep working) and CORP `same-origin`. |
 | SEC-7 | P2 | Production admin auth uses the session fallback (`ADMIN_ALLOW_SESSION_IN_PROD=1`); Cloudflare Access is not configured | Enable Access, or document the accepted risk and rely on the Google account plus the admin allowlist, RBAC and audit log. Do not flip the flag without an Access app. |
-| SEC-8 | P2 | `.env.example` is missing (`.dev.vars.example` exists) | Add a documented example with empty values and comments. |
+| SEC-8 | P2 | `.env.example` is missing (`.dev.vars.example` exists) | Fixed in Phase 4 (P2-9): `.env.example` is a committed, comment-only pointer to `.dev.vars.example`; a unit guard rejects duplicated keys. |
 | SEC-9 | P2 | `npm audit` reports 1 moderate Astro XSS advisory | Fixed in Phase 4 (P1-11): Astro upgraded 7.4.4 -> 7.4.12 within the `^7` range, clearing `GHSA-mh32-jxcr-mh9f` and `GHSA-r3h5-4585-7x3w`; `npm audit` reports 0 vulnerabilities. |
 
 Operational security note: the D1 backup workflow exists, but its secrets are missing, so backups are not running. This is an ops P1, not a code defect.
@@ -276,12 +276,12 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 
 ## 11. Data, environment and deployment
 
-- **Production is Turso, not D1.** `/api/health` returns `{"db":"ok","engine":"turso"}` and `wrangler secret list --name cuet-astro` shows `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`. The production `DB` D1 binding in `wrangler.jsonc` is unused. `npm run check:migrations-remote` and `npm run db:migrate:remote` target D1, so they do **not** describe or migrate production. This must be resolved before the next schema-dependent feature.
+- **Production is Turso, not D1.** `/api/health` returns `{"db":"ok","engine":"turso"}` and `wrangler secret list --name cuet-astro` shows `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`. The production `DB` D1 binding in `wrangler.jsonc` is unused. `npm run check:migrations-remote` and `npm run db:migrate:remote` target D1, so they do **not** describe or migrate production; use `db:turso:migrate` / `db:turso:verify` instead.
 - Decision for this cycle: keep Turso, document it as the production target, and use `db:turso:migrate` / `db:turso:verify` for production. Do not delete the D1 binding or the Turso secrets until a data migration/rollback plan exists.
 - Migrations `0026_rename_pyq_archive_path.sql`, `0027_practice_question_topics.sql` and `0028_fix_cuet_source_url.sql` were applied to production Turso on 2026-11-17. `npm run db:turso:verify` then reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 published questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks. Topic **pages** still stay unavailable until an editor supplies the CSV topic backfill; the schema is no longer the blocker.
 - `npm run check:env` validates D1/KV staging/production separation only. Extend it (or add a sibling check) to assert the effective production engine and required Turso secrets.
 - Local dev uses D1 and skips trailing-slash/canonical-host redirects; production uses Turso and enforces them. Local parity is P1-10.
-- Production deployment `2026-11-17T07:42:43Z` matches HEAD `716d246`; no unreleased fix is live.
+- Production deployment still serves `2026-11-17T07:42:43Z` / `716d246`; all audit fixes are local and intentionally unpushed.
 - Free-tier posture: Workers/KV/Cloudflare Analytics/Turso free tiers; no paid add-on is required by the planned fixes. Watch Turso row reads and the practice-library warm-up. Do not run broad remote D1 verification against the free-tier quota.
 
 ---
@@ -412,7 +412,7 @@ Future phases append one row per fix and a short phase summary at the end of thi
 - No authenticated production admin/dashboard pass; admin RBAC is verified by tests and code review, not by a live production session.
 - Production Turso vs local D1 means query counts, content counts and migration state can differ. Do not treat local D1 as production.
 - Topic pages are blocked on the editorial CSV topic backfill; migration `0027` itself is applied to Turso. Until the CSV is imported, every `/cuet-mock-test/<subject>/<topic>` URL stays 404.
-- D1 backup secrets are missing; backups are not running.
+- Turso/D1 backup credentials are missing; scheduled backups are not running.
 - Cloudflare Access is not configured; production admin uses the session fallback.
 - Local Lighthouse excludes GA4, AdSense and edge cache; field performance may differ. The local D1 data set also differs from Turso.
 - The P1-8 gate enforces medians, not every run. One subject-hub run scored 99 while the median was 100; a single slow run does not fail the audit. This avoids flaky gates, but a genuine regression that appears in only one of three runs can hide.
