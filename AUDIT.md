@@ -337,11 +337,11 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | `/` | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 939 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 57.2 KB | 57 KB |
 | `/mock-tests` | 100 | 100 | 100 | 100 | 100 | 100 | 92 | 100 | 921 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 58.8 KB | 59 KB |
-| `/attempt/:id` (share off) | 100 | 100 | 100 | 100 | 100 | 100 | 58 | 58 | 1684 ms | 1700 ms | 0 ms | 0 ms | 0 | 0 | 100.7 KB | 101 KB |
-| `/result/:id` (private) | 100 | 100 | 100 | 100 | 100 | 100 | 69 | 69 | 930 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 61.3 KB | 61 KB |
-| `/attempt/:id` (share on, worst case) | 93 | 91 | 100 | 100 | 100 | 100 | 58 | 58 | 1734 ms | 1800 ms | 276 ms | 340 ms | 0 | 0 | 470.0 KB | 470 KB |
+| `/attempt/:id` (share off) | 100 | 100 | 100 | 100 | 100 | 100 | 58 | 58 | 1684 ms | 1240 ms | 0 ms | 0 ms | 0 | 0 | 100.7 KB | 68.7 KB |
+| `/result/:id` (private) | 100 | 100 | 100 | 100 | 100 | 100 | 69 | 69 | 930 ms | 900 ms | 0 ms | 0 ms | 0 | 0 | 61.3 KB | 61.6 KB |
+| `/attempt/:id` (share on, initial load) | 93 | 100 | 100 | 100 | 100 | 100 | 58 | 58 | 1734 ms | 1240 ms | 276 ms | 0 ms | 0 | 0 | 470.0 KB | 68.7 KB |
 
-"After" was measured on 2026-11-17 with the same method. `/attempt/565` (share off) and `/result/565` used fresh guest attempts on the same mock 85 because baseline attempts 527/535 had expired or belonged to another guest cookie. The share-on row is not the production default; its payload was unchanged at 470 KB at this point, and the small score/TBT delta is run variance already tracked under P2-10. P1-8 later removed the idle font fetch, so the share-on initial load is now 68.7 KB.
+"After" was measured on 2026-11-17 with the same method. `/attempt/565` (share off) and `/result/565` used fresh guest attempts on the same mock 85 because baseline attempts 527/535 had expired or belonged to another guest cookie. The attempt and share-on rows show the final P1-8 numbers: the idle font fetch was removed, so opening the Share sheet is the only action that still downloads ~361 KB of share fonts. The earlier Phase 1 snapshot was 101 KB and 470 KB respectively; the interim delta is recorded in §17.
 
 **Phase 2 P1-4 re-measure (2026-11-17).** Same method. The local production build has no GA4 id, so the consent component renders nothing and the gate adds no request or markup to these routes. This measures the unchanged public shell, not the configured-banner path.
 
