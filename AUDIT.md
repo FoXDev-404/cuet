@@ -3,7 +3,7 @@
 - **Audit date:** 2026-11-17
 - **Baseline commit:** `716d246` (`Refine PYQ archive ordering, routing, and SEO safeguards`)
 - **Production:** <https://cuetfreemocktest.com>
-- **Worker:** `cuet-astro`, deployment `2026-11-17T07:42:43Z` (matches `716d246`)
+- **Worker:** `cuet-astro`, baseline deployment `2026-11-17T07:42:43Z` (`716d246`). Released from this audit on `2026-11-17T21:10:40Z` at commit `c604ce3`, version `1f6b53d2-fdf8-4896-992f-2921524386e1`.
 - **Scope:** UI/UX, frontend, backend, security, SEO, performance, accessibility and AdSense readiness. Incremental fixes only; no rewrite.
 
 > `docs/AUDIT.md` is the historical Phase A audit dated 2026-10-31 and is preserved unchanged. This file is the current Phase 0 audit and the running log for this improvement cycle.
@@ -281,7 +281,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - Migrations `0026_rename_pyq_archive_path.sql`, `0027_practice_question_topics.sql` and `0028_fix_cuet_source_url.sql` were applied to production Turso on 2026-11-17. `npm run db:turso:verify` then reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 published questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks. Topic **pages** still stay unavailable until an editor supplies the CSV topic backfill; the schema is no longer the blocker.
 - `npm run check:env` validates D1/KV staging/production separation only. Extend it (or add a sibling check) to assert the effective production engine and required Turso secrets.
 - Local dev uses D1 and skips trailing-slash/canonical-host redirects; production uses Turso and enforces them. Local parity is P1-10.
-- Production deployment still serves `2026-11-17T07:42:43Z` / `716d246`. All audit fixes are on local `main` and pushed only to `release/audit-phase5`; production was not deployed. The `Deploy production` workflow's D1 migration/import steps are legacy and do not update Turso; a production release must run `db:turso:migrate` / `db:turso:verify` and then deploy the Worker (see the runbook).
+- Production was released on 2026-11-17T21:10:40Z from `c604ce3` (version `1f6b53d2-fdf8-4896-992f-2921524386e1`), replacing the `716d246` / `f2b02b0b` deployment. `db:turso:verify` passed immediately before the upload (28 migrations, integrity/foreign keys ok, 0 orphan/duplicate checks). The `Deploy production` workflow's D1 migration/import steps are legacy and do not update Turso; a production release must run `db:turso:migrate` / `db:turso:verify` and then `npm run deploy` (see the runbook).
 - Free-tier posture: Workers/KV/Cloudflare Analytics/Turso free tiers; no paid add-on is required by the planned fixes. Watch Turso row reads and the practice-library warm-up. Do not run broad remote D1 verification against the free-tier quota.
 
 ---
@@ -506,9 +506,9 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 - [ ] Every indexable page has one title, description, canonical, OG title/image and valid JSON-LD.
 - [x] `/sitemap.xml` contains no fixture, private or empty routes; `E2E fixture ...` questions are excluded while a non-fixture eligible question is included. Canonical/`og:url` match.
-- [ ] `/robots.txt` disallows private paths and points to the sitemap.
-- [ ] Legacy paths (`/practice*`, `/mock-test*`, `/pyq`, `/cuet-ug-previous-year-papers`, wrong-category PYQ) 301 once, not in a chain.
-- [ ] Trailing slash, `www`, `http` and `workers.dev` hosts 301 to the canonical origin.
+- [x] `/robots.txt` disallows private paths and points to the sitemap (verified on production 2026-11-17: `Allow: /` with `/admin`, `/api/`, `/attempt/`, `/result/`, `/dashboard`, `/login`, `/search` and the other private routes disallowed, plus the canonical sitemap URL).
+- [ ] Legacy paths (`/practice*`, `/mock-test*`, `/pyq`, `/cuet-ug-previous-year-papers`, wrong-category PYQ) 301 once, not in a chain. (`/practice` returned a single 301 on production; the full list was verified on staging.)
+- [x] Trailing slash, `www`, `http` and `workers.dev` hosts 301 to the canonical origin (verified on production 2026-11-17).
 - [ ] 404 and 500 pages render useful recovery links and are noindex.
 
 ### Performance governance
@@ -722,7 +722,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 
 ### Phase 5 — deployed staging verification (2026-11-17)
 
-Staging was seeded and deployed from the authenticated local Wrangler session because the GitHub token lacking D1 permission is still an open blocker. The release branch is `release/audit-phase5`; production (`716d246`) was not touched.
+Staging was seeded and deployed from the authenticated local Wrangler session because the GitHub token lacking D1 permission is still an open blocker. The release branch is `release/audit-phase5`; production stayed on `716d246` during the audit and was released at the end (below).
 
 **Infrastructure**
 
@@ -750,7 +750,18 @@ Staging was seeded and deployed from the authenticated local Wrangler session be
 **Release verification**
 
 - CI is green on `release/audit-phase5`: runs **44146231049** (`d843187`), **44148732180** (`ca151a8`) and **44150761454** (`ca146d0`) all completed successfully, including the Playwright and accessibility gates that failed before the a11y fixes.
-- The release branch contains `main` up to `ca146d0`. `main` itself was not pushed, so no production deploy was triggered.
+- The release branch contains `main` up to `c604ce3`. `main` itself was never pushed, so the `Auto deploy production` workflow never ran. Production was released explicitly with `npm run deploy`.
+
+**Production release (2026-11-17T21:10:40Z)**
+
+- Pre-flight: `npm run db:turso:verify` reported **28 migrations**, `integrity: ok`, `foreignKeys: ok`, 24,761 questions, 7,527 practice questions, 87 attempts, 8 users and 0 orphan/duplicate checks.
+- `npm run deploy` built with `CLOUDFLARE_ENV=production`, uploaded 39 changed assets and the Worker with the production bindings (`ENV=production`, `SITE_URL=https://cuetfreemocktest.com`, GA4 present, AdSense blank), and deployed version **`1f6b53d2-fdf8-4896-992f-2921524386e1`**.
+- Live smoke: `/api/health` **200** `{"ok":true,"db":"ok","engine":"turso"}`; `/`, `/mock-tests`, `/sitemap.xml` and `/mock/psychology-2024-07-19-shift-1/instructions` **200**; `/ads.txt` **404**; `/practice` **301** to `/mock-tests`; `/dashboard` **303** to `/login?next=%2Fdashboard`; `/login` **200**.
+- Headers: no `X-Robots-Tag: noindex` on production (the staging guard did not leak); `/api/health` and `/ads.txt` send `Cache-Control: no-store`; public pages send the expected `public, max-age` values.
+- Sitemap: **235** URLs, **1** real `/q/` URL, **0** profile, **0** private/auth/attempt/result and **0** non-canonical hosts.
+- `/robots.txt` serves `Allow: /` with the private paths disallowed and the canonical sitemap URL. `http://`, `www.` and the `workers.dev` host each return a single **301** to `https://cuetfreemocktest.com`; a trailing slash on `/mock-tests/` returns **301** to `/mock-tests`.
+- Homepage: **0** `adsbygoogle` markers; the only external script is the Cloudflare Insights beacon. The GA4/GTM snippets are inline definitions behind the consent gate, so no analytics request fires before a choice.
+- The PYQ archive serves **64** focusable `tabindex="0"` containers, so the A11Y-2 fix is live.
 
 **Next**
 
