@@ -285,6 +285,12 @@ passed with no `.dev.vars` values in the bundle.
 7. Production redirect sweep **462/462**, page sweep **250/250** and content
    checks **0 issues** (section 8).
 
+Credential rotation: the exposed `TURSO_AUTH_TOKEN` was rotated on 18 November
+2026 at 07:47 UTC. All database tokens were invalidated (a pre-rotation token
+returned `401`), a new token was written to `.dev.vars` and the Worker secret,
+and production pages were re-verified with live database queries under Worker
+version `9f87d537-37bb-4288-90f5-149f8ad6f5f6`.
+
 Known external blockers that remain outside this rebuild:
 
 - Staging D1’s daily row-write limit was exhausted earlier; it resets at
@@ -294,8 +300,6 @@ Known external blockers that remain outside this rebuild:
 - Staging lacks `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`, and
   `staging.cuetfreemocktest.com` has no DNS record.
 - Turso backup credentials are missing; scheduled backups are not running.
-- `TURSO_AUTH_TOKEN` was exposed during earlier screenshot work and still needs
-  rotation.
 - Two image-option questions lack assets and stay quarantined:
   `chemistry-2026-06-06-shift-1` q02/q49.
 - No GSC/Bing access, no authenticated production admin/dashboard pass, and no
