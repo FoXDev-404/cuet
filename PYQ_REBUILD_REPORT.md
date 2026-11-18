@@ -1,8 +1,10 @@
-# PYQ rebuild — local apply and verification report
+# PYQ rebuild — apply and verification report
 
 Date: 18 November 2026
-Target: **local D1 only** (`cuet-blueprint-db`, `.wrangler/state/v3/d1`)
-Production Turso and production deployment: **not touched**
+Targets: **local D1** (`cuet-blueprint-db`, `.wrangler/state/v3/d1`) and
+**production Turso** (worker `cuet-astro`)
+Production deployment: **deployed 18 November 2026, 07:31 UTC**
+(version `8b76ae22-b74c-4f44-a235-f22947a4e8ff`)
 
 ## 1. Outcome
 
@@ -17,6 +19,8 @@ papers that already had exactly 50 questions were left untouched.
 - 231 old mock-wrapper URLs redirected
 - 132 public practice papers remain listed: 118 new sets + 14 untouched
 - No question content, answer key, explanation or old attempt was deleted
+- Applied to local D1, applied to production Turso, and deployed to
+  `https://cuetfreemocktest.com`
 
 ## 2. Before / after row counts
 
@@ -45,6 +49,32 @@ the rebuild.
 
 All 24 pre-existing attempts and all 959 pre-existing answers from the backup
 were found again by primary key after the rebuild (0 missing).
+
+### Production Turso
+
+Production backup before any write:
+`backups/pyq-rebuild-2026-11-18T07-27-07-430Z/`
+(`rows.json` SHA-256 `8d6cccfdd1dbbe1a48b96608b6a1e51482bd57d8461a51ebf58d9e52c7f29dfb`).
+
+| Table | Before | After | Delta |
+|---|---:|---:|---:|
+| `practice_papers` | 245 | 363 | +118 |
+| `practice_questions` | 7,527 | 13,427 | +5,900 |
+| `practice_passages` | 134 | 160 | +26 |
+| `mock_tests` | 247 | 365 | +118 |
+| `mock_test_versions` | 786 | 904 | +118 |
+| `mock_questions` | 24,904 | 30,804 | +5,900 |
+| `questions` | 24,761 | 30,661 | +5,900 |
+| `passages` | 484 | 510 | +26 |
+| `attempts` | 87 | 87 | 0 |
+| `attempt_answers` | 1,626 | 1,626 | 0 |
+| `slug_redirects` | 0 | 231 | +231 |
+
+The production database had re-imported the same 245 paper slugs with different
+row ids, so the seed now resolves `source_paper_id` with
+`(SELECT id FROM practice_papers WHERE slug = ?)` instead of hard-coding the
+local id. All 5,900 provenance links resolve to the correct production papers;
+`scratch/verify-turso-rebuild.mjs` reports 0 mismatches.
 
 ## 3. Set catalogue
 
@@ -92,16 +122,19 @@ were found again by primary key after the rebuild (0 missing).
 - Exactly-50 papers remain `is_archived = 0` and keep returning HTTP 200.
 
 The complete machine-readable list is `PYQ_REDIRECT_STATUS.csv` (462 rows:
-231 paper URLs + 231 mock wrappers). Every row was then fetched from a local
-server and checked for the exact status and `Location`:
+231 paper URLs + 231 mock wrappers). Every row was fetched with
+`redirect: "manual"` first from a local server and then from production, and
+checked for the exact status and `Location`:
 
-- Paper URLs: **231/231** returned `301` with the mapped replacement.
-- Old mock wrappers: **231/231** returned `301` with the mapped mock or hub.
-- Total: **462/462, 0 failures**. The per-URL evidence is
-  `PYQ_REDIRECT_HTTP_RESULTS.csv`.
+- Local: **462/462** returned `301`, 0 failures.
+- Production: **462/462** returned `301` with the exact mapped target, 0
+  failures.
 
-All **132** live paper pages (118 rebuilt sets + 14 untouched papers) returned
-`200`, as did all **118** rebuilt-set instructions pages (250/250).
+The per-URL evidence is `PYQ_REDIRECT_HTTP_RESULTS.csv`; the production rerun
+produced the same file byte-for-byte.
+
+All **250** live URLs (132 paper pages + 118 instructions pages) returned
+`200` on both hosts; the production sweep is recorded in this report.
 
 Spot checks performed in Playwright:
 
@@ -202,6 +235,25 @@ checked 462, failures 0
 checked 250, failures 0
 ```
 
+Both sweeps were repeated against `https://cuetfreemocktest.com` after the
+deploy and returned identical results:
+
+```
+{ paper_url: { total: 231, ok: 231 },
+  mock_wrapper: { total: 231, ok: 231 } }
+checked 462, failures 0
+
+{ untouched_paper: { total: 14, ok: 14 },
+  rebuilt_set: { total: 118, ok: 118 },
+  rebuilt_set_instructions: { total: 118, ok: 118 } }
+checked 250, failures 0
+```
+
+`node scratch/verify-production-content.mjs` additionally checks the deployed
+HTML and sitemap: 132 hub rows (118 sets + 14 untouched), 0 archived links,
+pooled/reduced notes, unchanged paper 200, paper → set 301, instructions 200,
+118 set URLs in the sitemap and 0 archived URLs — **0 issues**.
+
 ### Build
 
 `npm run build` — **0 errors, 0 warnings** (48 hints from pre-existing scripts),
@@ -210,11 +262,30 @@ passed with no `.dev.vars` values in the bundle.
 
 ## 9. Production status
 
-The rebuild has **not** been applied to Turso or production D1, and nothing has
-been deployed. Production deployment remains a separate, explicit
-`npm run deploy` step after the production data migration is approved and run.
+**Applied and deployed.**
 
-Known external blockers that do not affect the local result:
+1. Backup: `backups/pyq-rebuild-2026-11-18T07-27-07-430Z/`, `rows.json`
+   SHA-256 `8d6cccfdd1dbbe1a48b96608b6a1e51482bd57d8461a51ebf58d9e52c7f29dfb`.
+2. `scripts/turso-migrate.mjs` applied `0029`, `0030` and `0031`
+   (31 migrations total); SQLite `integrity_check` is `ok` and
+   `foreign_key_check` is clean.
+3. `node --env-file-if-exists=.dev.vars scripts/apply-pyq-rebuild.mjs --turso`
+   applied **118/118** sets and archived 231 papers with 231 redirects.
+4. `scripts/turso-verify.mjs`: 30,661 published questions, 0 orphan attempts,
+   0 orphan answers, 0 duplicate public ids, 0 duplicate question pointers,
+   0 duplicate mock slugs.
+5. `scratch/verify-turso-rebuild.mjs`: 118 sets, 117 English + 1 Hindi,
+   5,900 practice + 5,900 ranked rows, 5,900 distinct fully tagged sources,
+   26 + 26 passages, 231 archived papers, 231 redirects (12 hub targets,
+   0 broken), 0 published old mocks, 0 untouched papers archived, and the
+   87 attempts / 1,626 answers preserved — **0 issues**.
+6. `npm run deploy` uploaded worker `cuet-astro` version
+   `8b76ae22-b74c-4f44-a235-f22947a4e8ff` at 07:31 UTC; the custom domain
+   `https://cuetfreemocktest.com` serves the new data.
+7. Production redirect sweep **462/462**, page sweep **250/250** and content
+   checks **0 issues** (section 8).
+
+Known external blockers that remain outside this rebuild:
 
 - Staging D1’s daily row-write limit was exhausted earlier; it resets at
   midnight UTC.
@@ -229,6 +300,8 @@ Known external blockers that do not affect the local result:
   `chemistry-2026-06-06-shift-1` q02/q49.
 - No GSC/Bing access, no authenticated production admin/dashboard pass, and no
   physical iOS/Android pass was available.
+- The 12 zero-target short papers redirect to their subject hub; there was no
+  same-subject content to rebuild them from.
 
 ## 10. Commands
 
@@ -242,4 +315,15 @@ npm run build                                # astro check + build
 node scratch/write-redirect-report.mjs       # regenerate the redirect CSV
 node scratch/verify-redirects-http.mjs       # 462 live redirect checks
 node scratch/verify-live-paper-http.mjs      # 250 live page checks
+
+# Production apply (18 Nov 2026)
+node --env-file-if-exists=.dev.vars scripts/backup-pyq-tables.mjs --turso
+node --env-file-if-exists=.dev.vars scripts/turso-migrate.mjs
+node --env-file-if-exists=.dev.vars scripts/apply-pyq-rebuild.mjs --turso
+node --env-file-if-exists=.dev.vars scripts/turso-verify.mjs
+node --env-file-if-exists=.dev.vars scratch/verify-turso-rebuild.mjs
+npm run deploy
+node scratch/verify-redirects-http.mjs https://cuetfreemocktest.com
+node scratch/verify-live-paper-http.mjs https://cuetfreemocktest.com
+node scratch/verify-production-content.mjs
 ```
