@@ -85,6 +85,13 @@ function sql(value) {
   return `'${String(value).replace(/'/g, "''")}'`;
 }
 const json = (value) => sql(JSON.stringify(value ?? null));
+/**
+ * Resolve provenance against the target database. The plan stores the source
+ * paper's local id, but production re-imported the same slugs with different
+ * ids; the slug is the stable key in both databases.
+ */
+const sourcePaperIdExpr = (slug) =>
+  `(SELECT id FROM practice_papers WHERE slug = ${sql(slug)})`;
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -376,7 +383,7 @@ for (const set of planData.sets) {
          ${sql(content.assetsJson)}, ${sql(content.sourcePagesJson)}, ${sql(content.reviewFlagsJson)},
          ${sql(content.explanationSource)}, ${sql(content.explanationStatus)},
          ${sql(content.reviewedBy)}, ${sql(content.reviewedAt)},
-         ${source.source_year}, ${sql(source.source_date)}, ${sql(source.source_shift)}, ${source.source_paper_id}
+         ${source.source_year}, ${sql(source.source_date)}, ${sql(source.source_shift)}, ${sourcePaperIdExpr(source.source_paper_slug)}
        ) ON CONFLICT(paper_slug, question_key) DO NOTHING;`,
       `UPDATE practice_questions
        SET explanation_source = ${sql(content.explanationSource)},
@@ -452,7 +459,7 @@ for (const set of planData.sets) {
          ${sql(content.explanationSource)}, ${sql(content.explanationStatus)},
          ${sql(content.reviewedBy)}, ${sql(content.reviewedAt)},
          ${source.source_year}, ${sql(source.source_date)}, ${sql(source.source_shift)},
-         ${source.source_question_no}, ${source.source_paper_id}, ${slug}, ${sql(sourceKey)},
+         ${source.source_question_no}, ${sourcePaperIdExpr(source.source_paper_slug)}, ${slug}, ${sql(sourceKey)},
          strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
        ) ON CONFLICT(source_key) WHERE source_key IS NOT NULL DO NOTHING;`,
       `UPDATE questions
