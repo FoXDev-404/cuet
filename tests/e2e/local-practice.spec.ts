@@ -70,12 +70,24 @@ function paperBySlug(slug: string): LocalIndexPaper {
   return paper;
 }
 
-const SCORED_PAPER = paperBySlug("english-2022-08-06-shift-1");
-const DETAIL_PAPER = paperBySlug("biology-2025-05-20-shift-2");
-const GENERAL_TEST_PAPERS = [
-  paperBySlug("general-test-2025-05-20-shift-1"),
-  paperBySlug("general-test-2025-05-20-shift-2"),
-  paperBySlug("general-test-2022-08-06"),
+const SCORED_PAPER = paperBySlug("english-2023-05-21-shift-1");
+// Exactly-50 papers are never archived, so this one keeps its own URL.
+const DETAIL_PAPER = paperBySlug("biology-2025-05-20-shift-1");
+// The rebuild archived the old short General Test papers; their URLs now
+// redirect to the 50-question sets that replaced them.
+const ARCHIVED_GENERAL_TEST_PAPERS = [
+  {
+    slug: "general-test-2025-05-20-shift-1",
+    replacement: "cuet-general-test-pyq-set-15",
+  },
+  {
+    slug: "general-test-2025-05-20-shift-2",
+    replacement: "cuet-general-test-pyq-set-16",
+  },
+  {
+    slug: "general-test-2022-08-06",
+    replacement: "cuet-general-test-pyq-set-2",
+  },
 ];
 const INSTRUCTIONS = `/mock/${SCORED_PAPER.slug}/instructions`;
 const SCORED_PAPER_PATH = `/cuet-ug-previous-year-question-papers/language-pyqs/${SCORED_PAPER.subject.slug}/${SCORED_PAPER.slug}`;
@@ -106,7 +118,7 @@ async function submitAttempt(page: Page): Promise<void> {
 test("practice library stays available and routes into the ranked engine", async ({ page }) => {
   // The unfiltered library is sorted by paper size and paginated, so filter to
   // the fixture paper's year before asserting its row is linked.
-  await page.goto("/mock-tests?year=2022");
+  await page.goto("/mock-tests?year=2023");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "Practice with previous-year CUET mock tests",
   );
@@ -119,9 +131,7 @@ test("practice library stays available and routes into the ranked engine", async
   ).toContainText(SCORED_PAPER.title);
 
   await page.goto(SCORED_PAPER_PATH);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "CUET UG English 6 August 2022",
-  );
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(SCORED_PAPER.title);
   await expect(page.getByRole("link", { name: /Start Test/ })).toHaveAttribute(
     "href",
     INSTRUCTIONS,
@@ -170,8 +180,10 @@ test("practice detail reports the scored count when no questions are excluded", 
     "CUET UG Biology 20 May 2025",
   );
   await expect(page.getByText(/not included in the ranked paper/)).toHaveCount(0);
-  const scoredCard = page.getByText("in the ranked paper").locator("..");
-  await expect(scoredCard).toContainText(String(DETAIL_PAPER.rankedQuestionCount));
+  const scoredCard = page.getByText("Questions", { exact: true }).locator("..");
+  await expect(scoredCard).toContainText(
+    String(DETAIL_PAPER.rankedQuestionCount ?? DETAIL_PAPER.scorableQuestionCount),
+  );
   await expect(page.getByRole("link", { name: /Start Test/ })).toHaveAttribute(
     "href",
     `/mock/${DETAIL_PAPER.slug}/instructions`,
@@ -243,7 +255,7 @@ test("a practice paper starts, autosaves, submits and shows a saved ranked resul
   await page.goto(INSTRUCTIONS);
   await expect(page.getByRole("heading", { name: "Before you start" })).toBeVisible();
   await expect(
-    page.getByText(`${SCORED_PAPER.rankedDurationMinutes} min`, { exact: true }),
+    page.getByText(`${SCORED_PAPER.rankedDurationMinutes ?? 60} min`, { exact: true }),
   ).toBeVisible();
 
   await beginAttempt(page);
@@ -305,7 +317,7 @@ test("practice attempt sharing follows the admin setting and never links /q/", a
   const dialog = page.locator("[data-attempt-share-dialog]");
   await expect(dialog).toBeVisible();
   const card = page.locator("[data-attempt-share-card]");
-  await expect(card.locator(".asq-title")).toContainText("CUET UG English 6 August 2022");
+  await expect(card.locator(".asq-title")).toContainText(SCORED_PAPER.title);
   await expect(card).not.toContainText("Correct answer");
   await expect(page.locator("[data-attempt-share-preview]")).toBeVisible({ timeout: 30_000 });
 
@@ -369,7 +381,9 @@ test("PYQ cards and General Test metadata use the requested PYQ wording", async 
     const tagRow = row.locator(".min-w-0 > div");
     const tags = tagRow.locator("span.rounded");
     await expect(tags).toHaveCount(4);
-    await expect(tags.nth(1)).toHaveText(/^\d{2}-\d{2}-\d{4}(?: Shift \d+)?$/i);
+    await expect(tags.nth(1)).toHaveText(
+      /^(\d{2}-\d{2}-\d{4}(?: Shift \d+)?|\d{4})$/i,
+    );
     await expect(tags.nth(2)).toContainText(/\d+ questions/);
     await expect(tags.nth(3)).toHaveText(/\d+ min/);
     const tagRows = await tags.evaluateAll((elements) =>
@@ -426,30 +440,22 @@ test("Accountancy subject archive uses the URL without /subject", async ({ page 
   expect(legacyResponse.headers().location).toBe(path);
 });
 
-test("General Test paper pages use the requested date-specific metadata", async ({ page }) => {
-  for (const paper of GENERAL_TEST_PAPERS) {
-    const dateLabel = paper.dateLabel || String(paper.year);
-    const titleShift = paper.shift ? ` ${paper.shift}` : "";
-    const descriptionShift = paper.shift ? `, ${paper.shift}` : "";
+test("archived short General Test papers permanently redirect to their 50-question set", async ({
+  page,
+}) => {
+  for (const paper of ARCHIVED_GENERAL_TEST_PAPERS) {
+    const legacyPath = `/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/general-test/${paper.slug}`;
+    const replacementPath = `/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/general-test/${paper.replacement}`;
 
-    await page.goto(
-      `/cuet-ug-previous-year-question-papers/general-aptitude-test-pyqs/general-test/${paper.slug}`,
-    );
-    await expect(page).toHaveTitle(
-      `CUET UG General Test ${dateLabel}${titleShift} PYQ | Online Test`,
-    );
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute(
-      "content",
-      `Practice the official NTA CUET UG General Test Previous Year Question Paper with Answers (${dateLabel}${descriptionShift}) Online for FREE and Boost your Exam Prep!`,
-    );
-    if (paper.shift && paper.date) {
-      const [year, month, day] = paper.date.split("-");
-      await expect(page.locator("[data-paper-shift-tag]")).toHaveText(
-        `${day}-${month}-${year} ${paper.shift}`,
-      );
-    } else {
-      await expect(page.locator("[data-paper-shift-tag]")).toHaveCount(0);
-    }
+    const response = await page.request.get(legacyPath, { maxRedirects: 0 });
+    expect(response.status()).toBe(301);
+    expect(response.headers().location).toBe(replacementPath);
+
+    await page.goto(legacyPath);
+    await expect(page).toHaveURL(new RegExp(`${replacementPath}$`));
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("General Test");
+    const questionsCard = page.getByText("Questions", { exact: true }).locator("..");
+    await expect(questionsCard).toContainText("50");
   }
 });
 

@@ -44,6 +44,10 @@ export type AttemptQuestion = {
   passage_body_hi: string | null;
   passage_image_url: string | null;
   passage_image_alt: string | null;
+  /** Original CUET paper metadata; null when the source was not printed. */
+  source_year: number | null;
+  source_date: string | null;
+  source_shift: string | null;
 };
 
 export type AttemptAnswer = {
@@ -391,6 +395,10 @@ export type AttemptResult = {
     total_marks: number;
     marking_scheme: string;
     practice_paper_slug: string | null;
+    /** Paper-level fallback for old questions without their own source tags. */
+    paper_year: number | null;
+    paper_date: string | null;
+    paper_shift: string | null;
   };
   rank: number | null;
   percentile: number | null;
@@ -421,10 +429,16 @@ export async function loadResult(
     total_marks: number;
     marking_scheme: string;
     practice_paper_slug: string | null;
+    paper_year: number | null;
+    paper_date: string | null;
+    paper_shift: string | null;
   }>(
     `SELECT m.id, m.title, m.slug, m.type, v.duration_min, v.total_marks, v.marking_scheme,
-            m.practice_paper_slug
-     FROM mock_tests m JOIN mock_test_versions v ON v.id = ?
+            m.practice_paper_slug,
+            pp.year AS paper_year, pp.exam_date AS paper_date, pp.shift AS paper_shift
+     FROM mock_tests m
+     JOIN mock_test_versions v ON v.id = ?
+     LEFT JOIN practice_papers pp ON pp.slug = m.practice_paper_slug
      WHERE m.id = ?`,
     attempt.version_id,
     attempt.mock_id,
@@ -451,6 +465,7 @@ export async function loadResult(
               q.correct_option, q.explanation, q.explanation_hi,
               q.explanation_image_url, q.explanation_image_alt,
               q.explanation_source, q.explanation_status,
+              q.source_year, q.source_date, q.source_shift,
               aa.selected, COALESCE(aa.time_spent_sec, 0) AS time_spent_sec,
               COALESCE(aa.marked_for_review, 0) AS marked_for_review, aa.is_correct
        FROM mock_questions mq

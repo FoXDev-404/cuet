@@ -8,7 +8,7 @@ import { getLocalMockFallback } from "../../../lib/local-mock-fallback";
 import { getGuestToken } from "../../../lib/auth/session";
 import { findInProgressAttempt, settleAttempt } from "../../../lib/attempts";
 import { parseMarkingScheme } from "../../../lib/content";
-import { oldSlugRedirect } from "../../../lib/slug-redirects";
+import { oldSlugRedirect, redirectTargetPath } from "../../../lib/slug-redirects";
 import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
 import generatedPaperOgSlugs from "../../../data/og-papers.json";
 
@@ -71,7 +71,7 @@ try {
 }
 if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
-  if (target) return Astro.redirect(`/mock/${target}/instructions`, 301);
+  if (target) return Astro.redirect(redirectTargetPath(target, "/instructions"), 301);
   return new Response("Mock test not found", { status: 404 });
 }
 

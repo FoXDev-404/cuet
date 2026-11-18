@@ -25,6 +25,7 @@ import { calculateMockDuration } from "../../lib/exam-timing";
 import { run } from "../../lib/db";
 import { shareMappingsForQuestionIds } from "../../lib/share/public-question-store";
 import { attemptQuestionShareUrl } from "../../lib/share/attempt-question";
+import { questionSourceTag } from "../../lib/source-tag";
 
 const id = Number(Astro.params.id);
 if (!Number.isInteger(id) || id <= 0) return new Response("Attempt not found", { status: 404 });
@@ -58,11 +59,16 @@ const [mock, rawQuestions, savedAnswers] = await Promise.all([
       marking_scheme: string;
       duration_min: number;
       subject_name: string | null;
+      paper_year: number | null;
+      paper_date: string | null;
+      paper_shift: string | null;
     }>(
       `SELECT m.title, m.slug, m.practice_paper_slug, v.total_marks, v.marking_scheme,
-              v.duration_min, s.name AS subject_name
+              v.duration_min, s.name AS subject_name,
+              pp.year AS paper_year, pp.exam_date AS paper_date, pp.shift AS paper_shift
        FROM mock_tests m JOIN mock_test_versions v ON v.id = ?
        LEFT JOIN subjects s ON s.id = m.subject_id
+       LEFT JOIN practice_papers pp ON pp.slug = m.practice_paper_slug
        WHERE m.id = ?`,
       attempt!.version_id,
       attempt!.mock_id,
@@ -248,11 +254,18 @@ const questions = rawQuestions.map((question, index) => {
     return true;
   });
 
+  const source = questionSourceTag(question, {
+    year: mock?.paper_year ?? null,
+    date: mock?.paper_date ?? null,
+    shift: mock?.paper_shift ?? null,
+  });
+
   return {
     id: question.id,
     section: question.section,
     position: question.position,
     share: shareLinks.get(question.id) ?? null,
+    source: source?.tag ?? null,
     text: question.text,
     text_hi: question.text_hi,
     rendered_text: renderRichText(question.text),
@@ -1310,6 +1323,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
         section: string;
         position: number;
         share: { url: string; publicId: string | null } | null;
+        source: string | null;
         text: string;
         text_hi: string | null;
         rendered_text?: string;
@@ -1591,6 +1605,7 @@ const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
                 <span class="exam-question-number">Question ${state.index + 1}</span>
                 <span class="exam-marks">${marksLabel}</span>
                 <span class="exam-badge">${escapeHtml(question.section)}</span>
+                ${question.source ? `<span class="exam-badge">${escapeHtml(question.source)}</span>` : ""}
               </div>
               <div class="flex flex-wrap items-center gap-1.5">
                 ${question.share ? `<button type="button" class="exam-share-btn" data-attempt-share-trigger aria-label="Share this question" title="Share this question"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 10.7 6.8-3.4M8.6 13.3l6.8 3.4"></path></svg></button>` : ""}

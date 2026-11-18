@@ -32,6 +32,7 @@ const INDEX_SQL = `
     p.exam_date,
     p.date_label,
     p.shift,
+    p.language,
     p.duration_min,
     p.source_file,
     p.source_method,
@@ -49,10 +50,18 @@ const INDEX_SQL = `
     s.code AS subject_code,
     COUNT(q.id) AS question_count,
     COALESCE(SUM(CASE WHEN q.deleted_at IS NULL AND q.correct_option IS NOT NULL THEN 1 ELSE 0 END), 0) AS scorable_count,
+    COALESCE((SELECT COUNT(DISTINCT qq.source_paper_id)
+       FROM practice_questions qq
+       WHERE qq.paper_slug = p.slug AND qq.source_paper_id IS NOT NULL), 0) AS source_paper_count,
     COALESCE((SELECT COUNT(*)
       FROM mock_questions_current mq
       JOIN mock_tests m ON m.id = mq.mock_id
       WHERE m.practice_paper_slug = p.slug AND m.status = 'published' AND m.deleted_at IS NULL), 0) AS ranked_question_count,
+    COALESCE((SELECT v.duration_min
+      FROM mock_tests m
+      JOIN mock_test_versions v ON v.id = m.current_version_id
+      WHERE m.practice_paper_slug = p.slug AND m.status = 'published' AND m.deleted_at IS NULL
+      LIMIT 1), 0) AS ranked_duration_min,
     COALESCE(SUM(CASE WHEN q.deleted_at IS NULL AND q.assets_json <> '[]' THEN 1 ELSE 0 END), 0) AS image_question_count,
     COALESCE(SUM(CASE WHEN q.deleted_at IS NULL THEN json_array_length(q.assets_json) ELSE 0 END), 0) AS asset_count,
     (SELECT COUNT(*) FROM attempts a
@@ -63,6 +72,7 @@ const INDEX_SQL = `
   LEFT JOIN practice_questions q
     ON q.paper_slug = p.slug
   WHERE p.deleted_at IS NULL AND p.publication_status = 'published'
+    AND p.is_archived = 0
   GROUP BY p.id
   ORDER BY p.year DESC, s.name ASC, p.exam_date ASC, p.shift ASC
 `;
@@ -96,13 +106,16 @@ async function readPaperFromD1(slug: string): Promise<LocalPaper | null> {
       .prepare(
         `SELECT
            p.slug, p.title, p.meta_description, p.year, p.exam_date, p.date_label, p.shift,
-           p.duration_min, p.source_file, p.source_method, p.source_url, p.source_type,
+           p.language, p.duration_min, p.source_file, p.source_method, p.source_url, p.source_type,
            p.rights_status, p.rights_note, p.verified_by, p.verified_at, p.source_question_count,
            p.publication_status, p.review_required,
+           (SELECT COUNT(DISTINCT qq.source_paper_id) FROM practice_questions qq
+              WHERE qq.paper_slug = p.slug AND qq.source_paper_id IS NOT NULL) AS source_paper_count,
            s.name AS subject_name, s.slug AS subject_slug, s.code AS subject_code
          FROM practice_papers p
          JOIN subjects s ON s.id = p.subject_id
-         WHERE p.slug = ? AND p.deleted_at IS NULL AND p.publication_status = 'published'`,
+         WHERE p.slug = ? AND p.deleted_at IS NULL AND p.publication_status = 'published'
+           AND p.is_archived = 0`,
       )
       .bind(slug),
     db

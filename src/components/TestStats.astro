@@ -1,0 +1,50 @@
+---
+import type { TestStats } from "../lib/test-stats";
+
+interface Props {
+  stats: TestStats;
+  attempts?: number | null;
+  compact?: boolean;
+}
+
+const { stats, attempts = null, compact = false } = Astro.props;
+const cell = compact ? "p-3" : "p-4";
+const value = compact ? "text-xl" : "text-2xl";
+---
+
+<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+  <div class={`rounded-xl border border-neutral-200 bg-white ${cell} dark:border-neutral-800 dark:bg-neutral-950`}>
+    <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</p>
+    <p class={`mt-1 font-black ${value}`}>{stats.totalQuestions}</p>
+    <p class="text-[11px] text-neutral-500 dark:text-neutral-400">
+      {stats.totalQuestions === stats.scoredQuestions
+        ? "in this test"
+        : `${stats.scoredQuestions} scored in the ranked test`}
+    </p>
+  </div>
+  <div class={`rounded-xl border border-neutral-200 bg-white ${cell} dark:border-neutral-800 dark:bg-neutral-950`}>
+    <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p>
+    <p class={`mt-1 font-black ${value}`}>{stats.durationMinutes} min</p>
+    <p class="text-[11px] text-neutral-500 dark:text-neutral-400">Auto-submits at zero</p>
+  </div>
+  <div class={`rounded-xl border border-neutral-200 bg-white ${cell} dark:border-neutral-800 dark:bg-neutral-950`}>
+    <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Max marks</p>
+    <p class={`mt-1 font-black ${value}`}>{stats.maxMarks}</p>
+    <p class="text-[11px] text-neutral-500 dark:text-neutral-400">
+      +{stats.marks.correct} correct · −{Math.abs(stats.marks.wrong)} wrong
+    </p>
+  </div>
+  {attempts !== null ? (
+    <div class={`rounded-xl border border-neutral-200 bg-white ${cell} dark:border-neutral-800 dark:bg-neutral-950`}>
+      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempts</p>
+      <p class={`mt-1 font-black ${value}`}>{attempts.toLocaleString("en-IN")}</p>
+      <p class="text-[11px] text-neutral-500 dark:text-neutral-400">submitted so far</p>
+    </div>
+  ) : (
+    <div class={`rounded-xl border border-neutral-200 bg-white ${cell} dark:border-neutral-800 dark:bg-neutral-950`}>
+      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Marking</p>
+      <p class={`mt-1 font-black ${value}`}>{stats.marks.correct} / {stats.marks.wrong}</p>
+      <p class="text-[11px] text-neutral-500 dark:text-neutral-400">correct / wrong answer</p>
+    </div>
+  )}
+</div>

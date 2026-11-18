@@ -1,5 +1,6 @@
 ---
 import { getLocalPaperSummary } from "../../../lib/local-papers";
+import { archivedPaperRedirect } from "../../../lib/slug-redirects";
 
 /**
  * The old unranked player is retired. Practice papers now run through the
@@ -7,7 +8,11 @@ import { getLocalPaperSummary } from "../../../lib/local-papers";
  */
 const slug = Astro.params.slug ?? "";
 const paper = getLocalPaperSummary(slug);
-if (!paper) return new Response("Practice paper not found", { status: 404 });
+if (!paper) {
+  const archivedTarget = await archivedPaperRedirect(slug);
+  if (archivedTarget) return Astro.redirect(archivedTarget, 301);
+  return new Response("Practice paper not found", { status: 404 });
+}
 
 return Astro.redirect(`/mock/${paper.slug}/instructions`, 301);
 ---

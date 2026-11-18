@@ -14,6 +14,7 @@ import { dbUnavailableResponse } from "../../../lib/db-resilient";
 import { formatDuration, parseMarkingScheme, parseOptions, renderRichText } from "../../../lib/content";
 import { imageDimensionsForUrls } from "../../../lib/media-dimensions";
 import { siteUrl } from "../../../lib/site-url";
+import { questionSourceTag } from "../../../lib/source-tag";
 import { questionSharePath } from "../../../lib/share/public-id";
 import { shareMappingsForQuestionIds } from "../../../lib/share/public-question-store";
 import type { ShareAnswer, ShareQuestion } from "../../../lib/share/types";
@@ -154,9 +155,15 @@ const questions = result.questions.map((question, index) => {
   const explanationAsset = rawAssets.find(
     (asset) => asset.kind === "explanation" || asset.url.includes("-exp-"),
   );
+  const source = questionSourceTag(question, {
+    year: result.mock.paper_year,
+    date: result.mock.paper_date,
+    shift: result.mock.paper_shift,
+  });
 
   return {
     ...question,
+    source,
     image_url: questionImageUrl,
     options: options.map(withDimensions),
     optionsHi: parseOptions(question.options_hi).map(withDimensions),
@@ -209,6 +216,13 @@ const counts = {
   wrong: questions.filter((question) => question.state === "wrong").length,
   skipped: questions.filter((question) => question.state === "skipped").length,
 };
+const sourceYears = [
+  ...new Set(
+    questions
+      .map((question) => question.source?.year ?? null)
+      .filter((year): year is number => year !== null),
+  ),
+].sort((a, b) => b - a);
 const letters = ["A", "B", "C", "D", "E", "F"];
 
 // Practice papers are recovered from third-party sources; question sharing
@@ -317,6 +331,18 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
           {filter} ({counts[filter]})
         </button>
       ))}
+      {sourceYears.length > 1 ? (
+        <label class="ml-auto flex items-center gap-2 text-xs font-semibold text-neutral-600 dark:text-neutral-300">
+          Source year
+          <select
+            id="solution-year"
+            class="rounded-lg border border-neutral-300 bg-white px-2 py-1.5 text-xs font-semibold dark:border-neutral-700 dark:bg-neutral-900"
+          >
+            <option value="">All years</option>
+            {sourceYears.map((year) => <option value={String(year)}>{year}</option>)}
+          </select>
+        </label>
+      ) : null}
     </div>
 
     <div class="mt-5 space-y-4" id="solution-list">
@@ -326,10 +352,14 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
         <article
           class="rounded-2xl border border-neutral-200 bg-white p-4 sm:p-5 dark:border-neutral-800 dark:bg-neutral-900"
           data-state={question.state}
+          data-source-year={question.source?.year ?? ""}
         >
           <div class="flex flex-wrap items-center gap-2 text-xs">
             <span class="font-bold text-neutral-500 dark:text-neutral-400">Q{index + 1}</span>
             <span class="rounded-full bg-neutral-100 px-2.5 py-0.5 font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">{question.section}</span>
+            {question.source ? (
+              <span class="rounded-full bg-brand-50 px-2.5 py-0.5 font-semibold text-brand-800 dark:bg-brand-950/50 dark:text-brand-200">{question.source.tag}</span>
+            ) : null}
             <span
               class:list={[
                 "rounded-full px-2.5 py-0.5 font-semibold",
@@ -595,14 +625,18 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
     const list = document.getElementById("solution-list");
     const cards = [...(list?.querySelectorAll<HTMLElement>("[data-state]") ?? [])];
     const filterButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-filter]")];
+    const yearSelect = document.getElementById("solution-year") as HTMLSelectElement | null;
+    let activeState = "all";
 
-    function applyFilter(filter: string) {
+    function applyFilters() {
+      const year = yearSelect?.value ?? "";
       for (const card of cards) {
-        const show = filter === "all" || card.dataset.state === filter;
-        card.classList.toggle("hidden", !show);
+        const matchesState = activeState === "all" || card.dataset.state === activeState;
+        const matchesYear = !year || card.dataset.sourceYear === year;
+        card.classList.toggle("hidden", !(matchesState && matchesYear));
       }
       for (const button of filterButtons) {
-        const active = button.dataset.filter === filter;
+        const active = button.dataset.filter === activeState;
         button.classList.toggle("border-brand-600", active);
         button.classList.toggle("bg-brand-600", active);
         button.classList.toggle("text-white", active);
@@ -612,8 +646,12 @@ const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}/solut
     }
 
     for (const button of filterButtons) {
-      button.addEventListener("click", () => applyFilter(button.dataset.filter ?? "all"));
+      button.addEventListener("click", () => {
+        activeState = button.dataset.filter ?? "all";
+        applyFilters();
+      });
     }
+    yearSelect?.addEventListener("change", applyFilters);
 
     document.querySelectorAll<HTMLFormElement>("[data-report-form]").forEach((form) => {
       form.addEventListener("submit", async (event) => {

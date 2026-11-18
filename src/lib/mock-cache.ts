@@ -3,7 +3,7 @@ import { all, first } from "./db";
 import type { AttemptQuestion } from "./attempts";
 import { parseOptions } from "./content";
 
-const MOCK_VERSION_CACHE_PREFIX = "cache:mock_version:v3:";
+const MOCK_VERSION_CACHE_PREFIX = "cache:mock_version:v4:";
 const CACHE_TTL_SECONDS = 3_600;
 const MAX_VALUE_BYTES = 900_000;
 
@@ -82,6 +82,7 @@ export async function getMockVersionQuestions(
   const questions = await all<AttemptQuestion>(
     `SELECT q.id, mq.section, mq.position, q.subject_id, q.text, q.text_hi, q.options,
             q.options_hi, q.image_url, q.image_alt, q.assets_json, q.passage_id,
+            q.source_year, q.source_date, q.source_shift,
             p.body AS passage_body, p.body_hi AS passage_body_hi,
             p.image_url AS passage_image_url, p.image_alt AS passage_image_alt
      FROM mock_questions mq

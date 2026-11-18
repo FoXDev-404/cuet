@@ -165,6 +165,7 @@ export function practiceTopicCountSql(topicColumn = "t.id"): string {
               AND pq.deleted_at IS NULL
               AND pp.deleted_at IS NULL
               AND pp.publication_status = 'published'
+              AND pp.is_archived = 0
               AND tt.deleted_at IS NULL
               AND (SELECT COUNT(*) FROM practice_questions pq_all
                    WHERE pq_all.paper_slug = pp.slug

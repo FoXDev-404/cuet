@@ -41,10 +41,12 @@ describe('Paper Provenance & Rights Policy Gates (Fix 3)', () => {
       }
     ).papers.length;
 
-    expect(total).toBe(librarySize);
+    // The database also holds the 118 rebuilt 50-question sets, so it is now
+    // larger than the bundled index (which only carries the legacy papers).
+    expect(total).toBeGreaterThanOrEqual(librarySize);
     // Imported OCR papers enter the library as unknown rights; clearance is a
     // separate editorial action, so the whole imported set starts unknown.
-    expect(map.get('unknown')).toBe(librarySize);
+    expect(map.get('unknown')).toBe(total);
   });
 
   it('adSlotAllowed allows explicitly opted-in practice papers and blocks the take flow', () => {

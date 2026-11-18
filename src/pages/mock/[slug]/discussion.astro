@@ -9,7 +9,7 @@ import { chatTone, displayInitial, safeAvatarUrl } from "../../../lib/chat";
 import "katex/dist/katex.min.css";
 import { formatDateTime, renderPlainText, renderRichText } from "../../../lib/content";
 import { getSetting } from "../../../lib/settings";
-import { oldSlugRedirect } from "../../../lib/slug-redirects";
+import { oldSlugRedirect, redirectTargetPath } from "../../../lib/slug-redirects";
 import { isFixtureMock, isFixtureSlug, isProductionEnvironment } from "../../../lib/fixtures";
 
 const slug = Astro.params.slug ?? "";
@@ -33,7 +33,7 @@ try {
 }
 if (!mock || (isProductionEnvironment() && isFixtureMock(mock))) {
   const target = await oldSlugRedirect(slug);
-  if (target) return Astro.redirect(`/mock/${target}/discussion`, 301);
+  if (target) return Astro.redirect(redirectTargetPath(target, "/discussion"), 301);
   return new Response("Discussion not found", { status: 404 });
 }
 

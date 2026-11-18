@@ -107,9 +107,11 @@ export interface RawIndexPaper {
   date?: string | null;
   dateLabel?: string | null;
   shift?: string | null;
+  language?: string | null;
   durationMinutes?: number | null;
   sourceFile?: string | null;
   sourceMethod?: string | null;
+  sourcePaperCount?: number | null;
   questionCount?: number | null;
   sourceQuestionCount?: number | null;
   scorableQuestionCount?: number | null;
@@ -217,6 +219,9 @@ export interface LocalPaper {
   date: string | null;
   dateLabel: string;
   shift: string | null;
+  language: "English" | "Hindi";
+  paperType: "practice_set" | "original_paper";
+  sourcePaperCount: number;
   durationMinutes: number;
   sourceFile: string | null;
   sourceMethod: string | null;
@@ -245,6 +250,9 @@ export interface LocalPaperSummary {
   date: string | null;
   dateLabel: string;
   shift: string | null;
+  language: "English" | "Hindi";
+  paperType: "practice_set" | "original_paper";
+  sourcePaperCount: number;
   durationMinutes: number;
   markingScheme: { correct: number; wrong: number; skipped: number };
   totalQuestions: number;
@@ -498,6 +506,9 @@ export function buildPaper(
     date: date || null,
     dateLabel: summary.dateLabel || displayDate(date),
     shift: summary.shift,
+    language: summary.language,
+    paperType: summary.paperType,
+    sourcePaperCount: summary.sourcePaperCount,
     durationMinutes: summary.durationMinutes,
     sourceFile: cleanText(exam.sourceFile) || summary.sourceFile,
     sourceMethod: cleanText(exam.sourceMethod) || summary.sourceMethod,
@@ -528,6 +539,7 @@ export function buildSummary(raw: RawIndexPaper): LocalPaperSummary | null {
     questionCount > 0
       ? calculateMockDuration(scorable || questionCount, subjectName).durationMinutes
       : (raw.durationMinutes ?? LOCAL_DURATION_MINUTES);
+  const sourceMethod = cleanText(raw.sourceMethod) || null;
   return {
     id: cleanText(raw.id) || `local-${slug}`,
     slug,
@@ -543,6 +555,12 @@ export function buildSummary(raw: RawIndexPaper): LocalPaperSummary | null {
     date,
     dateLabel: cleanText(raw.dateLabel) || displayDate(date),
     shift: cleanText(raw.shift) || null,
+    language: raw.language === "Hindi" ? "Hindi" : "English",
+    paperType:
+      sourceMethod === "pyq_rebuild_pooled" || sourceMethod === "pyq_rebuild_reduced"
+        ? "practice_set"
+        : "original_paper",
+    sourcePaperCount: Math.max(1, Number(raw.sourcePaperCount) || 1),
     durationMinutes,
     markingScheme: { ...LOCAL_MARKING_SCHEME },
     totalQuestions: questionCount,
@@ -557,7 +575,7 @@ export function buildSummary(raw: RawIndexPaper): LocalPaperSummary | null {
     imageQuestionCount: Math.max(0, raw.imageQuestionCount ?? 0),
     assetCount: Math.max(0, raw.assetCount ?? 0),
     sourceFile: cleanText(raw.sourceFile) || null,
-    sourceMethod: cleanText(raw.sourceMethod) || null,
+    sourceMethod,
     publicationStatus: cleanText(raw.publicationStatus) || "draft",
     reviewRequired: raw.reviewRequired !== false,
     localPaper: true,

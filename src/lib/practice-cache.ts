@@ -20,8 +20,8 @@ import { env } from "cloudflare:workers";
  */
 
 const CACHE_PREFIX = "cache:practice";
-export const PRACTICE_INDEX_CACHE_KEY = `${CACHE_PREFIX}:index:v2`;
-const PAPER_CACHE_PREFIX = `${CACHE_PREFIX}:paper:v2:`;
+export const PRACTICE_INDEX_CACHE_KEY = `${CACHE_PREFIX}:index:v4`;
+const PAPER_CACHE_PREFIX = `${CACHE_PREFIX}:paper:v4:`;
 /** Per-subject question/mock rollups used by the syllabus and mock hubs. */
 export const SUBJECT_STATS_CACHE_KEY = `${CACHE_PREFIX}:subjects:v1`;
 

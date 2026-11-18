@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import DiscussionPreview from "../../components/DiscussionPreview.astro";
+import TestStats from "../../components/TestStats.astro";
 import { getGuestToken } from "../../lib/auth/session";
 import { allOr } from "../../lib/db";
 import { dbUnavailableResponse } from "../../lib/db-resilient";
@@ -10,7 +11,8 @@ import {
   loadResult,
   settleAttempt,
 } from "../../lib/attempts";
-import { formatDateTime, formatDuration } from "../../lib/content";
+import { formatDateTime, formatDuration, parseMarkingScheme } from "../../lib/content";
+import { getTestStats } from "../../lib/test-stats";
 
 const attemptId = Number(Astro.params.attemptId);
 if (!Number.isInteger(attemptId) || attemptId <= 0) {
@@ -62,6 +64,12 @@ const totals = sections.reduce(
 
 const accuracy = totals.answered > 0 ? Math.round((totals.correct / totals.answered) * 1000) / 10 : 0;
 const attemptedPercent = totals.total > 0 ? Math.round((totals.answered / totals.total) * 100) : 0;
+const stats = getTestStats({
+  totalQuestions: totals.total,
+  scoredQuestions: totals.total,
+  durationMinutes: mock.duration_min,
+  markingScheme: parseMarkingScheme(mock.marking_scheme),
+});
 const isGuest = attempt.user_id === null;
 const expired = attempt.status === "expired";
 const loginHref = `/login?next=${encodeURIComponent(`/result/${attempt.id}`)}`;
@@ -126,6 +134,10 @@ const myBoardRank = leaderboardRows.find((row) => row.user_id === attempt.user_i
       <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
         Scored on the server on {formatDateTime(attempt.submitted_at)} · {formatDuration(attempt.time_taken_sec)} used of {mock.duration_min} minutes.
       </p>
+
+      <div class="mt-5">
+        <TestStats stats={stats} compact />
+      </div>
 
       {expired ? (
         <p class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">

@@ -30,6 +30,7 @@ export interface PaperIndexRow {
   exam_date: string | null;
   date_label: string;
   shift: string | null;
+  language?: string | null;
   duration_min: number;
   source_file: string | null;
   source_method: string | null;
@@ -48,8 +49,10 @@ export interface PaperIndexRow {
   question_count: number;
   scorable_count: number;
   ranked_question_count?: number | null;
+  ranked_duration_min?: number | null;
   image_question_count: number;
   asset_count: number;
+  source_paper_count?: number | null;
   attempt_count?: number | null;
 }
 
@@ -97,6 +100,10 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
   const questionCount = Number(row.question_count) || 0;
   const scorable = Math.min(Number(row.scorable_count) || 0, questionCount);
   const sourceCount = Math.max(Number(row.source_question_count) || 0, questionCount);
+  const paperType =
+    row.source_method === "pyq_rebuild_pooled" || row.source_method === "pyq_rebuild_reduced"
+      ? ("practice_set" as const)
+      : ("original_paper" as const);
   return {
     id: `local-${row.slug}`,
     slug: row.slug,
@@ -107,6 +114,9 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
     date: row.exam_date,
     dateLabel: row.date_label || displayDate(row.exam_date),
     shift: row.shift,
+    language: row.language === "Hindi" ? "Hindi" : "English",
+    paperType,
+    sourcePaperCount: Math.max(1, Number(row.source_paper_count) || 1),
     durationMinutes: calculateMockDuration(scorable || questionCount, row.subject_name).durationMinutes,
     markingScheme: { ...LOCAL_MARKING_SCHEME },
     totalQuestions: questionCount,
@@ -115,10 +125,14 @@ export function mapIndexRow(row: PaperIndexRow): LocalPaperSummary {
     omittedQuestionCount: Math.max(0, sourceCount - questionCount),
     scorableQuestionCount: scorable,
     rankedQuestionCount: Math.max(scorable, Number(row.ranked_question_count) || scorable),
-    rankedDurationMinutes: calculateMockDuration(
-      Math.max(scorable, Number(row.ranked_question_count) || scorable),
-      row.subject_name,
-    ).durationMinutes,
+    // The live mock version owns the server deadline; the estimate is only a
+    // fallback for a paper that has no published ranked mock.
+    rankedDurationMinutes:
+      Math.max(0, Number(row.ranked_duration_min) || 0) ||
+      calculateMockDuration(
+        Math.max(scorable, Number(row.ranked_question_count) || scorable),
+        row.subject_name,
+      ).durationMinutes,
     pendingReviewCount: Math.max(0, questionCount - scorable),
     attemptCount: Math.max(0, Number(row.attempt_count) || 0),
     imageQuestionCount: Number(row.image_question_count) || 0,
@@ -209,6 +223,12 @@ export function mapPaperRow(
     date: row.exam_date,
     dateLabel: row.date_label || displayDate(row.exam_date),
     shift: row.shift,
+    language: row.language === "Hindi" ? "Hindi" : "English",
+    paperType:
+      row.source_method === "pyq_rebuild_pooled" || row.source_method === "pyq_rebuild_reduced"
+        ? "practice_set"
+        : "original_paper",
+    sourcePaperCount: Math.max(1, Number(row.source_paper_count) || 1),
     durationMinutes: calculateMockDuration(
       scorableQuestionCount || normalised.length,
       row.subject_name,

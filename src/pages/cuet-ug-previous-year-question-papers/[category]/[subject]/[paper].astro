@@ -1,7 +1,10 @@
 ---
 import { siteUrl } from "../../../../lib/site-url";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import TestStats from "../../../../components/TestStats.astro";
 import { getLocalPaperSummary, getLocalPapersForSubject, localPaperPath, localPaperRobots } from "../../../../lib/local-papers";
+import { archivedPaperRedirect } from "../../../../lib/slug-redirects";
+import { getTestStats } from "../../../../lib/test-stats";
 import {
   getPyqSubjectCategoryPath,
   getPyqSubjectPath,
@@ -11,6 +14,13 @@ import { breadcrumbJsonLd, rankedPaperMetaDescription } from "../../../../lib/se
 import generatedPaperOgSlugs from "../../../../data/og-papers.json";
 
 const slug = Astro.params.paper ?? "";
+
+// Archived papers keep their content and question rows, but their public URL
+// permanently redirects to the 50-question set (or subject hub) that replaced
+// them. Exactly-50 papers are not archived and keep returning 200.
+const archivedTarget = await archivedPaperRedirect(slug);
+if (archivedTarget) return Astro.redirect(archivedTarget, 301);
+
 const paper = getLocalPaperSummary(slug);
 if (!paper) return new Response("Practice paper not found", { status: 404 });
 
@@ -28,6 +38,18 @@ const site = siteUrl(Astro.url);
 const rankedQuestionCount = paper.rankedQuestionCount ?? paper.scorableQuestionCount;
 const rankedDurationMinutes = paper.rankedDurationMinutes ?? paper.durationMinutes;
 const sourcedQuestionCount = Math.max(0, rankedQuestionCount - paper.scorableQuestionCount);
+const stats = getTestStats({
+  totalQuestions: paper.recoveredQuestionCount,
+  scoredQuestions: rankedQuestionCount,
+  rankedDurationMinutes,
+  markingScheme: paper.markingScheme,
+});
+const mergedSetNote =
+  paper.sourceMethod === "pyq_rebuild_pooled"
+    ? `${rankedQuestionCount} questions pooled from ${paper.sourcePaperCount} CUET papers; each question keeps its original source tag.`
+    : paper.sourceMethod === "pyq_rebuild_reduced"
+      ? `Reduced from the original ${paper.sourceQuestionCount}-question paper; ${Math.max(0, paper.omittedQuestionCount)} questions omitted.`
+      : null;
 
 // The OG card for this paper exists only when the offline generator rendered
 // it (src/data/og-papers.json is the committed manifest); otherwise the
@@ -137,33 +159,19 @@ const seoTitle = isGeneralTest
         <p class="mt-4 max-w-2xl leading-7 text-neutral-600 dark:text-neutral-300">
           Attempt the CUET {paper.subject.name} {paper.dateLabel}{paper.shift ? ` ${paper.shift}` : ""} previous-year paper as a free, timed mock test. The ranked test has {rankedQuestionCount} scored questions and a {rankedDurationMinutes}-minute server deadline{ sourcedQuestionCount > 0 ? `, including ${sourcedQuestionCount} keyed questions from other CUET PYQ papers` : ""}; your result includes rank, percentile, a per-question review and explanations.
         </p>
+        {mergedSetNote ? (
+          <p class="mt-3 max-w-2xl rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm leading-6 text-brand-900 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100">
+            {mergedSetNote}
+          </p>
+        ) : null}
         {paper.pendingReviewCount > 0 ? (
           <p class="mt-3 max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
             {paper.pendingReviewCount} question{paper.pendingReviewCount === 1 ? " is" : "s are"} not included in the ranked paper because the printed answer key could not be verified. The ranked attempt contains {rankedQuestionCount} scored questions.
           </p>
         ) : null}
 
-        <div class="mt-6 grid max-w-2xl grid-cols-2 gap-3 text-sm sm:grid-cols-4">
-          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
-            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Questions</p>
-            <p class="mt-1 text-xl font-black">{paper.sourceQuestionCount}</p>
-            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">in the original paper</p>
-          </div>
-          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
-            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Duration</p>
-            <p class="mt-1 text-xl font-black">{rankedDurationMinutes} min</p>
-            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">Auto-submits at zero</p>
-          </div>
-          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
-            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Scored</p>
-            <p class="mt-1 text-xl font-black">{rankedQuestionCount}</p>
-            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">in the ranked paper</p>
-          </div>
-          <div class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-950">
-            <p class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Attempts</p>
-            <p class="mt-1 text-xl font-black">{paper.attemptCount.toLocaleString("en-IN")}</p>
-            <p class="text-[11px] text-neutral-500 dark:text-neutral-400">submitted so far</p>
-          </div>
+        <div class="mt-6 max-w-2xl">
+          <TestStats stats={stats} attempts={paper.attemptCount} />
         </div>
 
         <div class="mt-6 rounded-xl border border-neutral-200 bg-white p-4 text-sm dark:border-neutral-800 dark:bg-neutral-950">

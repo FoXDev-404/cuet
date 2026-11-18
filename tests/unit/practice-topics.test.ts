@@ -138,6 +138,7 @@ describe("practice topic aggregation", () => {
     expect(sql).toContain("pq.topic_id = t.id");
     expect(sql).toContain("pq.deleted_at IS NULL");
     expect(sql).toContain("pp.publication_status = 'published'");
+    expect(sql).toContain("pp.is_archived = 0");
     expect(sql).toContain("tt.subject_id = pp.subject_id");
     expect(sql).toContain(`>= ${PRACTICE_TOPIC_MIN_QUESTIONS}`);
   });
@@ -146,10 +147,10 @@ describe("practice topic aggregation", () => {
     const db = new DatabaseSync(":memory:");
     db.exec(`
       CREATE TABLE topics (id INTEGER PRIMARY KEY, slug TEXT, subject_id INTEGER, deleted_at TEXT);
-      CREATE TABLE practice_papers (slug TEXT PRIMARY KEY, subject_id INTEGER, publication_status TEXT, deleted_at TEXT);
+      CREATE TABLE practice_papers (slug TEXT PRIMARY KEY, subject_id INTEGER, publication_status TEXT, is_archived INTEGER NOT NULL DEFAULT 0, deleted_at TEXT);
       CREATE TABLE practice_questions (id INTEGER PRIMARY KEY, paper_slug TEXT, question_key TEXT, topic_id INTEGER, deleted_at TEXT);
       INSERT INTO topics VALUES (41, 'chemical-bonding', 3, NULL);
-      INSERT INTO practice_papers VALUES ('chemistry-sample', 3, 'published', NULL);
+      INSERT INTO practice_papers VALUES ('chemistry-sample', 3, 'published', 0, NULL);
     `);
     const insert = db.prepare(
       "INSERT INTO practice_questions (paper_slug, question_key, topic_id) VALUES ('chemistry-sample', ?, 41)",

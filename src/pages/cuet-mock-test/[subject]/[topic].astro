@@ -126,6 +126,7 @@ const [timedPapers, practicePapers, relatedTopics] = await Promise.all([
      JOIN mock_tests m ON m.practice_paper_slug = p.slug
        AND m.status = 'published' AND m.deleted_at IS NULL
      WHERE p.publication_status = 'published' AND p.deleted_at IS NULL
+       AND p.is_archived = 0
        AND (SELECT COUNT(*) FROM practice_questions pq
             WHERE pq.paper_slug = p.slug AND pq.deleted_at IS NULL) >= ${PRACTICE_TOPIC_MIN_QUESTIONS}
        AND EXISTS (
