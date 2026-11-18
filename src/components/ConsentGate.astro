@@ -6,6 +6,17 @@
  * page is public. The banner is hidden until the inline script confirms that
  * no choice is stored, so a JavaScript-disabled visitor sees no dead control
  * and no analytics request is ever made.
+ *
+ * The choice lives in localStorage (`cuet_consent_v1`). No server reads it and
+ * the page is edge-cacheable, so no consent cookie is set: a cookie would
+ * duplicate the same client-side state without a server-side consumer. The
+ * stored choice itself never expires, which is the 12-month-or-longer retention
+ * the policy describes.
+ *
+ * Layout: a small fixed card in the bottom-left corner on tablet/desktop and a
+ * full-width bottom sheet on phones. Fixed positioning means it cannot push
+ * content, so it contributes no layout shift. It never covers the header, the
+ * hero or the mobile bottom navigation.
  */
 import { CONSENT_DENIED, CONSENT_GRANTED, CONSENT_STORAGE_KEY } from "../lib/consent";
 
@@ -22,42 +33,63 @@ const active = allowAnalytics && Boolean(ga4Id || gtmId);
 {active ? (
   <>
     <p id="consent-status" role="status" aria-live="polite" class="sr-only"></p>
-    <aside
+    <div
       id="consent-banner"
-      role="region"
-      aria-labelledby="consent-banner-title"
+      role="dialog"
+      aria-label="Cookie consent"
+      aria-live="polite"
+      aria-describedby="consent-banner-text"
       tabindex="-1"
       hidden
-      class="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-40 px-3 lg:bottom-4 lg:px-4"
+      data-visible="false"
+      class="consent-banner"
     >
-      <div class="mx-auto max-w-3xl rounded-xl border border-neutral-200 bg-white p-4 text-sm text-neutral-700 shadow-lg dark:border-white/10 dark:bg-ink-950 dark:text-white/70">
-        <h2 id="consent-banner-title" class="text-base font-bold text-neutral-900 dark:text-white">
-          Your privacy choices
-        </h2>
-        <p class="mt-2">
-          We use cookieless Cloudflare analytics to count page views. With your permission we also
-          use Google Analytics 4 to understand how people use the site. You can change this choice
-          at any time from the footer or the
-          <a class="font-semibold underline underline-offset-2" href="/privacy-policy#advertising-and-analytics">privacy policy</a>.
-        </p>
-        <div class="mt-3 flex flex-wrap gap-2">
+      <div
+        class="consent-card rounded-xl border border-neutral-200 bg-white text-neutral-600 shadow-lg shadow-neutral-950/5 dark:border-white/10 dark:bg-ink-800 dark:text-white/70 dark:shadow-black/50"
+      >
+        <div class="flex items-start gap-2.5">
+          <svg
+            class="mt-px h-4 w-4 shrink-0 text-brand-600 dark:text-brand-300"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 2.5a9.5 9.5 0 1 0 9.5 9.5 4 4 0 0 1-4.7-4.8A9.5 9.5 0 0 0 12 2.5Z"></path>
+            <circle cx="9" cy="9.5" r="1" fill="currentColor" stroke="none"></circle>
+            <circle cx="8" cy="14.5" r="1" fill="currentColor" stroke="none"></circle>
+            <circle cx="13" cy="16.5" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+          <p id="consent-banner-text" class="text-[13px] leading-4">
+            We use cookies to understand how the site is used and improve it. See our{" "}
+            <a
+              class="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800 dark:text-brand-300 dark:hover:text-brand-200"
+              href="/privacy-policy#advertising-and-analytics"
+            >
+              Privacy Policy</a>.
+          </p>
+        </div>
+        <div class="consent-actions">
           <button
             type="button"
             data-consent-choice="granted"
-            class="cursor-pointer rounded-lg border border-neutral-300 bg-white px-3 py-2 font-semibold text-neutral-800 hover:bg-neutral-100 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+            class="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-600 px-4 text-[13px] font-semibold text-white transition-colors hover:bg-brand-700 focus-visible:outline-2 focus-visible:outline-offset-2 dark:bg-brand-500 dark:hover:bg-brand-600 md:min-h-9"
           >
-            Allow analytics
+            Accept
           </button>
           <button
             type="button"
             data-consent-choice="denied"
-            class="cursor-pointer rounded-lg border border-neutral-300 bg-white px-3 py-2 font-semibold text-neutral-800 hover:bg-neutral-100 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+            class="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 text-[13px] font-semibold text-neutral-800 transition-colors hover:bg-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/20 dark:bg-transparent dark:text-white dark:hover:bg-white/10 md:min-h-9"
           >
             Reject
           </button>
         </div>
       </div>
-    </aside>
+    </div>
     <script is:inline define:vars={{ CONSENT_STORAGE_KEY, CONSENT_GRANTED, CONSENT_DENIED, ga4Id, gtmId }}>
       (function () {
         var banner = document.getElementById("consent-banner");
@@ -65,6 +97,9 @@ const active = allowAnalytics && Boolean(ga4Id || gtmId);
         var openers = document.querySelectorAll("[data-open-consent]");
         var choices = document.querySelectorAll("[data-consent-choice]");
         var analyticsLoaded = false;
+        var autoTimer = 0;
+        var hideTimer = 0;
+        var adObserver = null;
 
         function readDecision() {
           try {
@@ -97,17 +132,72 @@ const active = allowAnalytics && Boolean(ga4Id || gtmId);
           }
         }
 
+        /**
+         * A visible AdSense anchor ad sits at the bottom edge. Lift the card
+         * out of its way, and keep watching briefly because the ad is injected
+         * asynchronously after page load.
+         */
+        function anchorAdVisible() {
+          return Boolean(
+            document.querySelector(
+              'ins.adsbygoogle[data-ad-format="anchor"], ins.adsbygoogle[data-anchor-status], [data-ads-anchor]',
+            ),
+          );
+        }
+
+        function avoidAnchorAd() {
+          if (!banner || banner.classList.contains("consent-banner--raised")) return;
+          if (!anchorAdVisible()) return;
+          banner.classList.add("consent-banner--raised");
+        }
+
+        function watchForAnchorAd() {
+          avoidAnchorAd();
+          if (!banner || adObserver || typeof window.MutationObserver !== "function") return;
+          if (banner.classList.contains("consent-banner--raised")) return;
+          adObserver = new MutationObserver(function () {
+            avoidAnchorAd();
+            if (banner.classList.contains("consent-banner--raised")) {
+              adObserver.disconnect();
+              adObserver = null;
+            }
+          });
+          adObserver.observe(document.body, { childList: true });
+          window.setTimeout(function () {
+            if (!adObserver) return;
+            adObserver.disconnect();
+            adObserver = null;
+          }, 15000);
+        }
+
         function showBanner(focusBanner) {
           if (!banner) return;
+          if (autoTimer) {
+            window.clearTimeout(autoTimer);
+            autoTimer = 0;
+          }
+          if (hideTimer) {
+            window.clearTimeout(hideTimer);
+            hideTimer = 0;
+          }
+          watchForAnchorAd();
           banner.removeAttribute("hidden");
+          // Force a frame with the closed styles so the slide-up actually runs.
+          void banner.offsetHeight;
+          banner.setAttribute("data-visible", "true");
           setExpanded("true");
           if (focusBanner) banner.focus();
         }
 
         function hideBanner() {
           if (!banner) return;
-          banner.setAttribute("hidden", "");
+          banner.setAttribute("data-visible", "false");
           setExpanded("false");
+          var delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 200;
+          hideTimer = window.setTimeout(function () {
+            hideTimer = 0;
+            banner.setAttribute("hidden", "");
+          }, delay);
           // Keep keyboard focus on a visible control instead of losing it.
           for (var i = 0; i < openers.length; i++) {
             if (!openers[i].hasAttribute("hidden")) {
@@ -210,8 +300,105 @@ const active = allowAnalytics && Boolean(ga4Id || gtmId);
 
         var decision = readDecision();
         if (decision === "granted") loadAnalytics();
-        else if (!decision) showBanner(false);
+        else if (!decision)
+          autoTimer = window.setTimeout(function () {
+            autoTimer = 0;
+            if (!readDecision()) showBanner(false);
+          }, 1000);
       })();
     </script>
   </>
 ) : null}
+
+<style>
+  /* Compact bottom-left card on tablet/desktop, bottom sheet on phones. Fixed,
+     so it never pushes content and cannot add layout shift. On phones and small
+     tablets the site has a 4rem bottom navigation, so the sheet sits above it
+     instead of covering it. */
+  .consent-banner {
+    position: fixed;
+    z-index: 40;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: calc(4rem + 0.75rem + env(safe-area-inset-bottom));
+    max-height: 40dvh;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 200ms ease-out,
+      transform 200ms ease-out;
+  }
+
+  .consent-banner[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .consent-banner--raised {
+    bottom: calc(4rem + 0.75rem + 4.5rem + env(safe-area-inset-bottom));
+  }
+
+  .consent-card {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .consent-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 359px) {
+    .consent-actions {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .consent-banner {
+      left: 1rem;
+      right: auto;
+      bottom: calc(4rem + 1rem);
+      width: min(420px, calc(100vw - 2rem));
+      max-height: none;
+    }
+
+    .consent-banner--raised {
+      bottom: calc(4rem + 1rem + 4.5rem);
+    }
+
+    .consent-card {
+      /* 16px gutters, 12px vertical so the card stays at ~100px tall. */
+      padding: 0.75rem 1rem;
+    }
+
+    .consent-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.375rem;
+    }
+
+    .consent-actions > button {
+      min-width: 5.25rem;
+    }
+  }
+
+  /* The bottom navigation is hidden from this breakpoint up. */
+  @media (min-width: 1024px) {
+    .consent-banner {
+      bottom: calc(1rem + env(safe-area-inset-bottom));
+    }
+
+    .consent-banner--raised {
+      bottom: calc(1rem + 4.5rem + env(safe-area-inset-bottom));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .consent-banner {
+      transition: none;
+    }
+  }
+</style>

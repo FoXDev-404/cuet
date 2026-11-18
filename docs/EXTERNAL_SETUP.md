@@ -188,7 +188,7 @@ for the beacon itself, but review the current Cloudflare terms for your jurisdic
 
 ## 7. Google Analytics 4 and consent
 
-GA4 is optional and denied until the visitor chooses **Allow analytics** in the
+GA4 is optional and denied until the visitor chooses **Accept** in the
 banner. The choice is stored in `localStorage` under `cuet_consent_v1`; HTML stays
 anonymous and edge-cacheable. `GTM_CONTAINER_ID` wins over `GA4_MEASUREMENT_ID`, so
 page views are not counted twice.
@@ -205,9 +205,9 @@ page views are not counted twice.
    must be no request to `googletagmanager.com` or `google-analytics.com`, and the
    banner must be visible.
 4. Click **Reject**, reload, and confirm no request is made. Clear the site's storage
-   and repeat with **Allow analytics**; one `gtag/js` request should follow and persist
+   and repeat with **Accept**; one `gtag/js` request should follow and persist
    across reloads.
-5. Use the footer **Privacy choices** control (or **Manage privacy choices** in the
+5. Use the footer **Cookie settings** control (or **Manage cookie settings** in the
    privacy policy) to reopen the banner. Rejecting after analytics has loaded clears
    `_ga`, `_ga_*` and `_gid` and reloads the page.
 6. Confirm the banner and any analytics request are absent on `/attempt`, `/result`,
@@ -297,7 +297,7 @@ curl -sS -o /dev/null -w '%{http_code}\n' https://<host>/ads.txt
 - View source: no `cloudflareinsights`, `adsbygoogle` or `google-site-verification`
   output when the corresponding variable is empty.
 - With GA4 configured: no `googletagmanager.com` request before an analytics choice, one
-  after **Allow analytics**, none after **Reject** plus reload, and no banner or request
+  after **Accept**, none after **Reject** plus reload, and no banner or request
   on private routes.
 - With `ADSENSE_CLIENT` and `ADSENSE_SLOT_ID` set but `ADSENSE_CMP_ACTIVE` empty, no
   `adsbygoogle` script and no `<ins>` unit appear anywhere.

@@ -301,7 +301,7 @@ The AdSense loader in `BaseLayout` is correctly double-gated by `shouldServeAds(
 - **P1-1 — Descriptive mock start links.** Fix the 24 "Start" links on `/mock-tests`; target SEO 100 on that route.
 - **P1-2 — Social metadata.** Use `name=` for Twitter tags; replace SVG blog OG images with PNG/JPEG; validate with X and Facebook debuggers.
 - **P1-3 — Broken NTA source URL.** Add a migration + seed update to `https://cuet.nta.nic.in/` (verify first); re-run the link crawler.
-- **P1-4 — Consent and GA4 disclosure. Resolved in Phase 2.** GA4/GTM now load only after an explicit `Allow analytics` choice, only on public pages; Cloudflare Web Analytics stays cookieless and unconditional. The policy names GA4 and its basis, and `ADSENSE_CMP_ACTIVE` blocks ads until a certified CMP is attested. See §10 and §17.
+- **P1-4 — Consent and GA4 disclosure. Resolved in Phase 2.** GA4/GTM now load only after an explicit `Accept` choice, only on public pages; Cloudflare Web Analytics stays cookieless and unconditional. The policy names GA4 and its basis, and `ADSENSE_CMP_ACTIVE` blocks ads until a certified CMP is attested. See §10 and §17. The banner was redesigned for compactness in §19.
 - **P1-5 — Private response caching.** Add `Cache-Control: no-store` to private/auth HTML and authenticated APIs.
 - **P1-6 — Origin/CSRF hardening.** Fail closed when `Origin` is absent on state-changing requests, with an explicit `Sec-Fetch-Site` fallback.
 - **P1-7 — Autosave rate limit.** Add a per-attempt/IP bucket to the answers endpoint and test 429 behaviour.
@@ -814,3 +814,64 @@ npx lighthouse http://localhost:4321/ \
 # Accessibility
 npm run test:a11y
 ```
+
+---
+
+## 19. Post-audit change — consent banner redesign (2026-11-18)
+
+**Why.** The Phase 2 banner was a roughly 766 px wide, centred card with a heading
+and three lines of copy. On the live homepage it covered the hero's secondary CTA
+and the paper-count line, and the policy link could render without the space before
+"Privacy Policy". The consent behaviour itself was correct.
+
+**What changed.**
+
+- `src/components/ConsentGate.astro`: compact fixed bottom-left card on
+  tablet/desktop (`min(420px, 100vw - 2rem)`, 16 px gutters, 12 px vertical
+  padding) and a full-width bottom sheet on phones (12 px side margins, 16 px
+  padding, `max-height: 40dvh`). It reserves the 4rem mobile/tablet bottom
+  navigation, so it never covers the nav, and it offsets further if an AdSense
+  anchor ad is present. Slide-up/fade is 200 ms and disabled under
+  `prefers-reduced-motion`. Copy is two lines with an explicit space before the
+  policy link; buttons are `Accept` (filled) and `Reject` (outline), equal size.
+  The wrapper is a non-modal `role="dialog"` named "Cookie consent" with
+  `aria-live="polite"`, no backdrop, and no scroll lock.
+- `src/layouts/BaseLayout.astro` and `src/pages/dev/consent.astro`: the opener is
+  now **Cookie settings**. `src/pages/privacy-policy.astro`: user-facing copy now
+  says **Accept**, **Cookie settings** and **Manage cookie settings**.
+- `scripts/a11y-audit.mjs`: waits for the 1 s banner on `/dev/consent` before
+  scanning, so axe actually audits the visible banner in both themes.
+- `docs/EXTERNAL_SETUP.md`: manual QA steps use the new labels.
+
+**Unchanged.** Storage key `cuet_consent_v1` and the exact values
+`v1:analytics=1` / `v1:analytics=0`; the public-page-only rule; the 1 s first-visit
+prompt; no GA4/GTM request before Accept; Reject after a grant clears `_ga*` and
+reloads; the choice persists across reloads. No consent cookie is set because no
+server code reads one (documented in the component) — a cookie would duplicate the
+same client-side state without a consumer.
+
+**Measured.**
+
+- 1440×900: 420×100 px, 16 px from the left and bottom edges; does not intersect
+  the hero CTA.
+- 768×1024: 420×100 px (sits above the visible tablet bottom nav).
+- 390×844: 366×110 px, 12 px side margins, 76 px from the bottom (12 px above the
+  4rem nav). 360×780: 336×110 px. Buttons are 44 px tall on mobile.
+- `tests/e2e/consent.spec.ts`: **11/11** passed, including the 1 s delay, the space
+  before "Privacy Policy", persistence, reopen/withdraw, desktop/mobile budgets,
+  the 360/768 widths and the no-JavaScript fail-closed case.
+- Unit suite **618/618**; axe **272 scans**, 0 WCAG A/AA violations, 0 horizontal
+  overflow, including `/dev/consent` in both themes at both viewports.
+- Evidence: `docs/report/consent-redesign/` (before/after PNGs, e2e JSON, README).
+
+**Capture note.** The after screenshots use a local production build against
+read-only production Turso with a temporary `GA4_MEASUREMENT_ID="G-DEVTEST123"`.
+The `.dev.vars` edit was reverted and the file is not in git; no analytics request
+is made before a choice.
+
+**Deliberate deviations.** Astro does not hydrate this component, so the small
+inline script stays at the end of the body instead of a separate lazy chunk; it
+runs after the document is parsed and the banner still appears only after 1 s, so
+it never competes with LCP. The "12-month cookie" clause is not used for the same
+reason (no server consumer); the localStorage choice has no expiry.
+

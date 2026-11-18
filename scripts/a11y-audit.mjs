@@ -337,7 +337,16 @@ async function auditPublic(browser) {
   console.log("\nPublic pages");
   for (const path of STATIC_PUBLIC_PATHS) {
     for (const viewport of VIEWPORTS) {
-      await auditPath(page, "public", path, viewport);
+      // The consent banner appears after 1s, so wait for it before scanning or
+      // axe would only see the hidden element and skip it.
+      const waitFor =
+        path === "/dev/consent"
+          ? (target) =>
+              target
+                .locator('#consent-banner[data-visible="true"]')
+                .waitFor({ state: "visible", timeout: 10_000 })
+          : undefined;
+      await auditPath(page, "public", path, viewport, waitFor);
     }
   }
 
