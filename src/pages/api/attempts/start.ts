@@ -7,9 +7,16 @@ import { apiUnavailableResponse } from "../../../lib/db-resilient";
 import { apiError, clientIp, forbiddenOrigin, isSameOrigin, json } from "../../../lib/http";
 import { isFixtureMock, isProductionEnvironment } from "../../../lib/fixtures";
 import { rankedDurationMinutes } from "../../../lib/ranked-duration";
+import { bodyLimitExceeds } from "../../../lib/body-limit";
+
+/** The start payload is `{ mockId }`; anything larger is abuse or a bug. */
+const MAX_BODY_BYTES = 8 * 1024;
 
 export const POST: APIRoute = async (context) => {
   if (!isSameOrigin(context.request)) return forbiddenOrigin();
+  if (bodyLimitExceeds(context.request, MAX_BODY_BYTES)) {
+    return apiError("Request body is too large.", 413);
+  }
 
   try {
     let body: Record<string, unknown>;
