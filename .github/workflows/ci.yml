@@ -51,6 +51,10 @@ jobs:
       - name: Production Build
         run: npm run build
 
+      - name: Data Integrity Audit
+        timeout-minutes: 10
+        run: npm run test:data
+
       - name: SEO Consistency & Sitemap Audit
         timeout-minutes: 10
         run: npm run seo:check
@@ -71,6 +75,10 @@ jobs:
           done
           npx astro dev logs || true
           exit 1
+
+      - name: Link & Redirect Check
+        timeout-minutes: 15
+        run: npm run test:links
 
       - name: Accessibility (WCAG A/AA) Audit
         timeout-minutes: 20

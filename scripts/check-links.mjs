@@ -156,7 +156,9 @@ async function main() {
   }
 
   console.log(`\nSUMMARY: ${badInternal.length}/${internalEntries.length} internal broken, ${badExternal.length}/${externalEntries.length} external broken`);
-  if (badInternal.length > 0 || badExternal.length > 0) process.exit(1);
+  // Internal links are a release blocker. External links depend on third-party
+  // networks and rate limiting, so they are reported, not gated.
+  if (badInternal.length > 0) process.exit(1);
 }
 
 main();

@@ -497,6 +497,10 @@ summaryLines.push("- Mixed Devanagari in non-Hindi questions is a heuristic hint
 summaryLines.push("- Explanation gaps are P2 data debt (content), not functional defects.");
 summaryLines.push("- Sources: local D1 only (`wrangler d1 execute --local --json`). Production Turso was not queried.");
 
+const p1Findings = findings.filter((row) => row.severity === "P1");
+summaryLines.push("");
+summaryLines.push(`**P1 integrity findings: ${p1Findings.length}**`);
+
 mkdirSync(OUT_DIR, { recursive: true });
 writeFileSync(
   join(OUT_DIR, "data-audit.csv"),
@@ -510,5 +514,12 @@ writeFileSync(
   ].join("\n") + "\n",
 );
 writeFileSync(join(OUT_DIR, "data-audit-summary.md"), summaryLines.join("\n") + "\n");
-console.log(`Findings: ${findings.length}`);
+console.log(`Findings: ${findings.length} (P1: ${p1Findings.length})`);
+if (p1Findings.length) {
+  console.log("❌ P1 integrity findings present:");
+  for (const finding of p1Findings) {
+    console.log(`  - ${finding.check} ${finding.identifier}: ${finding.detail}`);
+  }
+  process.exitCode = 1;
+}
 console.log(`Wrote ${join(OUT_DIR, "data-audit.csv")} and ${join(OUT_DIR, "data-audit-summary.md")}`);
