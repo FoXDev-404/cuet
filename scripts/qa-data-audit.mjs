@@ -120,8 +120,14 @@ for (const paper of papers) {
         segments.length === 3 &&
         segments[0] === "cuet-ug-previous-year-question-papers" &&
         CATEGORIES.has(segments[1]);
+      // BUG-001 approved retarget: these two archived papers now land on the
+      // subject practice hubs, which render 200 with an honest empty state.
+      const isPracticeHub =
+        segments.length === 2 &&
+        segments[0] === "cuet-mock-test" &&
+        [...subjects.values()].some((row) => row.slug === segments[1]);
       const tail = segments[segments.length - 1];
-      if (!isSubjectHub && tail) {
+      if (!isSubjectHub && !isPracticeHub && tail) {
         const target = papers.find((row) => row.slug === tail);
         if (!target) {
           issue("archived_replaced_by", "practice_paper", subject, paper.slug,
