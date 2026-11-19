@@ -1,6 +1,6 @@
 # TEST_PLAN — complete QA run for cuetfreemocktest.com (2026-11-19)
 
-Status: Phase 0 complete. Testing not started. **No application code is changed until Phase A is done and `TEST_REPORT.md` exists and is reviewed.**
+Status: Phase 0 complete. **This plan was executed twice**: the original pass and a fresh full re-run on 2026-11-19 evening (all areas A1–A12 repeated, reports and raw artifacts overwritten). Latest results are in `TEST_REPORT.md` / `FIX_REPORT.md`.
 
 ## 1. Scope and environment
 
