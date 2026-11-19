@@ -100,16 +100,17 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-const REBUILD_FIXTURE_PATH =
-  "/cuet-ug-previous-year-question-papers/domain-subject-pyqs/accountancy/cuet-accountancy-pyq-set-1";
+const REBUILD_FIXTURE_MARKER = /cuet-[a-z-]+-pyq-set-\d+/;
 
 /**
  * The rebuild is applied to local D1 and production, not to the legacy seed
- * fixture CI imports. Tests that assert its data shape skip without it.
+ * fixture CI imports. Tests that assert its data shape skip without it. The
+ * sitemap marker keeps a real 404 on a set page from being skipped silently.
  */
 async function skipWithoutRebuild(page: Page): Promise<void> {
-  const fixture = await page.request.get(REBUILD_FIXTURE_PATH, { maxRedirects: 0 });
-  test.skip(fixture.status() !== 200, "PYQ rebuild fixture is not applied to this database.");
+  const sitemap = await page.request.get("/sitemap.xml");
+  const body = sitemap.ok() ? await sitemap.text() : "";
+  test.skip(!REBUILD_FIXTURE_MARKER.test(body), "PYQ rebuild fixture is not applied to this database.");
 }
 
 async function beginAttempt(page: Page): Promise<void> {

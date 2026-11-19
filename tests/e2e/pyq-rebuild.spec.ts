@@ -32,9 +32,14 @@ const UNTOUCHED = {
 
 test.beforeEach(async ({ page, request }) => {
   // The rebuild is applied to local D1 and production, not to the legacy seed
-  // fixture CI imports. Skip these assertions when that fixture is absent.
-  const fixture = await request.get(POOLED.path, { maxRedirects: 0 });
-  test.skip(fixture.status() !== 200, "PYQ rebuild fixture is not applied to this database.");
+  // fixture CI imports. Use the sitemap as the marker so a real 404 on a set
+  // page still fails instead of silently skipping.
+  const sitemap = await request.get("/sitemap.xml");
+  const sitemapBody = sitemap.ok() ? await sitemap.text() : "";
+  test.skip(
+    !/cuet-[a-z-]+-pyq-set-\d+/.test(sitemapBody),
+    "PYQ rebuild fixture is not applied to this database.",
+  );
   await page.setExtraHTTPHeaders({
     "cf-connecting-ip": `198.51.100.${Math.floor(Math.random() * 200) + 1}`,
   });
