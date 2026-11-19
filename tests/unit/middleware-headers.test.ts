@@ -75,4 +75,14 @@ describe("middleware security headers", () => {
       "applySecurityHeaders(Response.redirect(slashTarget.toString(), 301), requestedPath)",
     );
   });
+
+  it("enables canonical redirects locally only through the preview opt-in", () => {
+    // Production behaviour must not depend on the preview flag: without an
+    // approved loopback origin, a localhost request keeps both early returns.
+    expect(source).toContain("previewCanonicalOrigin(hostname, env.PREVIEW_CANONICAL_ORIGIN)");
+    expect(source).toContain("allowLocalAliases: Boolean(previewOrigin)");
+    expect(source).toContain(
+      "const enforceCanonicalRedirects = Boolean(previewOrigin) || !localHost;",
+    );
+  });
 });

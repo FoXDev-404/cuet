@@ -23,6 +23,12 @@ declare namespace Cloudflare {
     MEDIA_PUBLIC_URL?: string;
     ASSETS?: Fetcher;
     SITE_URL: string;
+    /**
+     * Optional loopback origin for local preview parity. When set on a
+     * localhost request, canonical-host and trailing-slash redirects run as
+     * they do in production. Never set this in production.
+     */
+    PREVIEW_CANONICAL_ORIGIN?: string;
     GOOGLE_CLIENT_ID?: string;
     GOOGLE_CLIENT_SECRET?: string;
     DEV_SHOW_RESET_LINK?: string;

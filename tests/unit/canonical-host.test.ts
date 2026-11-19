@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { canonicalHostRedirect, trailingSlashRedirect } from "../../src/lib/canonical-host";
+import {
+  canonicalHostRedirect,
+  previewCanonicalOrigin,
+  trailingSlashRedirect,
+} from "../../src/lib/canonical-host";
 
 const SITE = "https://cuetfreemocktest.com";
 
@@ -47,6 +51,35 @@ describe("canonicalHostRedirect", () => {
       SITE,
     );
     expect(target?.toString()).toBe("https://cuetfreemocktest.com/mock-tests/biology");
+  });
+
+  it("leaves loopback aliases alone unless preview mode opts in", () => {
+    const request = new URL("http://127.0.0.1:4321/mock-tests/biology/");
+    expect(canonicalHostRedirect(request, "http://localhost:4321")).toBeNull();
+    expect(
+      canonicalHostRedirect(request, "http://localhost:4321", {
+        allowLocalAliases: true,
+      })?.toString(),
+    ).toBe("http://localhost:4321/mock-tests/biology");
+  });
+});
+
+describe("previewCanonicalOrigin", () => {
+  it("accepts a loopback preview origin only on a loopback request host", () => {
+    expect(previewCanonicalOrigin("localhost", "http://localhost:4321")).toBe(
+      "http://localhost:4321",
+    );
+    expect(previewCanonicalOrigin("127.0.0.1", "http://localhost:4321")).toBe(
+      "http://localhost:4321",
+    );
+    expect(previewCanonicalOrigin("cuetfreemocktest.com", "http://localhost:4321")).toBeNull();
+  });
+
+  it("rejects non-loopback, malformed and non-web origins", () => {
+    expect(previewCanonicalOrigin("localhost", "https://cuetfreemocktest.com")).toBeNull();
+    expect(previewCanonicalOrigin("localhost", "not a url")).toBeNull();
+    expect(previewCanonicalOrigin("localhost", "ftp://localhost:4321")).toBeNull();
+    expect(previewCanonicalOrigin("localhost", "")).toBeNull();
   });
 });
 

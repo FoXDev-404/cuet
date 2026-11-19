@@ -11,6 +11,12 @@ GOOGLE_CLIENT_SECRET=
 # Public origin used for canonical links and cookie security.
 SITE_URL=http://localhost:4321
 
+# Optional local preview parity. Set to the loopback origin this dev server
+# serves (for example http://localhost:4321) to make canonical-host and
+# trailing-slash redirects behave as they do in production. Leave blank for
+# normal development; never set this in production.
+PREVIEW_CANONICAL_ORIGIN=
+
 # Turso Cloud (optional). When TURSO_DATABASE_URL is set the app talks to
 # Turso over libSQL; leave both blank to keep using the local D1 binding.
 TURSO_DATABASE_URL=

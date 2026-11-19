@@ -9,7 +9,12 @@ import { practiceLibraryD1Store } from "./lib/practice-store-d1";
 import { getSetting } from "./lib/settings";
 import { trackDbMetrics } from "./lib/db";
 import { DB_DEGRADED_HEADER } from "./lib/db-resilient";
-import { canonicalHostRedirect, trailingSlashRedirect } from "./lib/canonical-host";
+import {
+  canonicalHostRedirect,
+  isLoopbackHost,
+  previewCanonicalOrigin,
+  trailingSlashRedirect,
+} from "./lib/canonical-host";
 import { edgeCacheKeyRequest, edgeCacheTtlForPath, isEdgeCacheableContentType, shouldAttemptEdgeCache } from "./lib/edge-cache";
 import { isPrivatePath } from "./lib/private-paths";
 import {
@@ -123,22 +128,32 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const requestedPath = context.url.pathname;
 
   // Workers routes are reachable over plain HTTP; browsers and crawlers must not
-  // see a second origin. Local development is exempt.
+  // see a second origin. Local development is exempt unless
+  // PREVIEW_CANONICAL_ORIGIN opts in, which makes the local server exercise the
+  // same host and trailing-slash redirects as production.
   const hostname = context.url.hostname;
-  const localHost = hostname === "localhost" || hostname === "127.0.0.1" || hostname === "[::1]";
+  const localHost = isLoopbackHost(hostname);
+  const previewOrigin = localHost
+    ? previewCanonicalOrigin(hostname, env.PREVIEW_CANONICAL_ORIGIN)
+    : null;
+  const canonicalSiteUrl = previewOrigin ?? env.SITE_URL;
+  const enforceCanonicalRedirects = Boolean(previewOrigin) || !localHost;
 
   // Alternate hosts (the workers.dev preview URL and www) permanently redirect
   // to the configured SITE_URL origin. Running before the HTTPS upgrade keeps
   // plain-HTTP preview requests to a single hop. Only reads are redirected so a
   // form POST to a preview host is never converted into a GET.
   const isReadRequest = context.request.method === "GET" || context.request.method === "HEAD";
-  if (!localHost && isReadRequest) {
-    const canonicalTarget = canonicalHostRedirect(context.url, env.SITE_URL);
+  if (enforceCanonicalRedirects && isReadRequest) {
+    const canonicalTarget = canonicalHostRedirect(context.url, canonicalSiteUrl, {
+      allowLocalAliases: Boolean(previewOrigin),
+    });
     if (canonicalTarget) {
       return applySecurityHeaders(Response.redirect(canonicalTarget.toString(), 301), requestedPath);
     }
   }
 
+  // A local preview has no TLS listener, so the HTTPS upgrade stays off there.
   if (context.url.protocol === "http:" && !localHost) {
     const httpsUrl = new URL(context.url.toString());
     httpsUrl.protocol = "https:";
@@ -147,7 +162,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   // Duplicate content: /path/ and /path both returned a self-canonical 200.
   // Send the slashed variant to the canonical no-slash URL instead.
-  if (!localHost && isReadRequest) {
+  if (enforceCanonicalRedirects && isReadRequest) {
     const slashTarget = trailingSlashRedirect(context.url, context.request.method);
     if (slashTarget) {
       return applySecurityHeaders(Response.redirect(slashTarget.toString(), 301), requestedPath);

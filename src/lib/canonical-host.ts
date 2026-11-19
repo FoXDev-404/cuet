@@ -9,9 +9,51 @@
  * SITE_URL is missing/invalid, or when the host is unrelated (for example a
  * local dev host or a staging domain).
  */
+
+const LOOPBACK_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+
+export function isLoopbackHost(hostname: string): boolean {
+  return LOOPBACK_HOSTS.has(hostname.toLowerCase());
+}
+
+export type CanonicalHostOptions = {
+  /**
+   * Preview mode: loopback aliases (127.0.0.1, [::1]) redirect to the
+   * configured loopback origin so local previews exercise the same host
+   * canonicalisation as production.
+   */
+  allowLocalAliases?: boolean;
+};
+
+/**
+ * Resolve the loopback origin used by the local preview mode. Production and
+ * non-loopback request hosts always return null so this cannot override the
+ * real canonical domain.
+ */
+export function previewCanonicalOrigin(
+  requestHostname: string,
+  configuredPreviewOrigin: string | null | undefined,
+): string | null {
+  if (!isLoopbackHost(requestHostname)) return null;
+  const configured = (configuredPreviewOrigin ?? "").trim();
+  if (!configured) return null;
+
+  let preview: URL;
+  try {
+    preview = new URL(configured);
+  } catch {
+    return null;
+  }
+  if (preview.protocol !== "http:" && preview.protocol !== "https:") return null;
+  if (preview.username || preview.password) return null;
+  if (!isLoopbackHost(preview.hostname)) return null;
+  return preview.origin;
+}
+
 export function canonicalHostRedirect(
   requestUrl: URL,
   configuredSiteUrl: string | null | undefined,
+  options: CanonicalHostOptions = {},
 ): URL | null {
   const configured = (configuredSiteUrl ?? "").trim();
   if (!configured) return null;
@@ -30,7 +72,9 @@ export function canonicalHostRedirect(
 
   const isWorkerHost = host.endsWith(".workers.dev");
   const isWwwAlias = host === `www.${canonicalHost}`;
-  if (!isWorkerHost && !isWwwAlias) return null;
+  const isLocalAlias =
+    Boolean(options.allowLocalAliases) && isLoopbackHost(host) && isLoopbackHost(canonicalHost);
+  if (!isWorkerHost && !isWwwAlias && !isLocalAlias) return null;
 
   const target = new URL(requestUrl.toString());
   target.protocol = canonical.protocol;
