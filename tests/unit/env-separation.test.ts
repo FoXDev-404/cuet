@@ -1,7 +1,26 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { execSync } from 'node:child_process';
+import { execSync, spawn } from 'node:child_process';
+import http from 'node:http';
+
+function runScript(
+  args: string[],
+): Promise<{ code: number; stdout: string; stderr: string }> {
+  // The stub health server lives in this process, so a synchronous execSync
+  // would block it from answering. Spawn asynchronously instead.
+  return new Promise((resolveRun, reject) => {
+    const child = spawn('node', ['scripts/check-env-separation.mjs', ...args], {
+      cwd: process.cwd(),
+    });
+    let stdout = '';
+    let stderr = '';
+    child.stdout.on('data', (chunk) => (stdout += chunk));
+    child.stderr.on('data', (chunk) => (stderr += chunk));
+    child.on('error', reject);
+    child.on('close', (code) => resolveRun({ code: code ?? 1, stdout, stderr }));
+  });
+}
 
 function stripJsoncComments(content: string) {
   return content
@@ -80,6 +99,80 @@ describe('Environment Separation & Guard Policies', () => {
 
     const ignore = readFileSync(resolve(process.cwd(), '.gitignore'), 'utf8');
     expect(ignore).toContain('!.env.example');
+  });
+
+  it('keeps engine-selection flags and Turso secrets out of committed vars', () => {
+    const raw = readFileSync(resolve(process.cwd(), 'wrangler.jsonc'), 'utf8');
+    const config = JSON.parse(stripJsoncComments(raw));
+
+    const blocks: Array<[string, any]> = [
+      ['top-level', config],
+      ['env.deploy2026', config.env?.deploy2026],
+      ['env.staging', config.env?.staging],
+      ['env.production', config.env?.production],
+    ];
+    const forbidden = [
+      'USE_LOCAL_D1',
+      'USE_TURSO_LOCAL',
+      'PREVIEW_CANONICAL_ORIGIN',
+      'TURSO_DATABASE_URL',
+      'TURSO_AUTH_TOKEN',
+    ];
+
+    for (const [label, block] of blocks) {
+      const vars = block?.vars ?? {};
+      for (const key of forbidden) {
+        expect(vars, `${label} must not commit ${key}`).not.toHaveProperty(key);
+      }
+    }
+  });
+
+  it('requires staging and production origins to be non-loopback https URLs', () => {
+    const raw = readFileSync(resolve(process.cwd(), 'wrangler.jsonc'), 'utf8');
+    const config = JSON.parse(stripJsoncComments(raw));
+
+    for (const label of ['staging', 'production'] as const) {
+      const url = config.env?.[label]?.vars?.SITE_URL;
+      expect(url, `${label} must set SITE_URL`).toBeDefined();
+      const parsed = new URL(url);
+      expect(parsed.protocol).toBe('https:');
+      expect(['localhost', '127.0.0.1', '::1', '[::1]']).not.toContain(
+        parsed.hostname.toLowerCase(),
+      );
+    }
+  });
+
+  it('check-env-separation.mjs --live asserts the deployed engine', async () => {
+    async function withHealth(body: unknown) {
+      const server = http.createServer((_req, res) => {
+        res.setHeader('content-type', 'application/json');
+        res.end(JSON.stringify(body));
+      });
+      await new Promise<void>((resolveListen) =>
+        server.listen(0, '127.0.0.1', resolveListen),
+      );
+      const address = server.address() as { port: number };
+      return { server, url: `http://127.0.0.1:${address.port}` };
+    }
+
+    const healthy = await withHealth({ ok: true, db: 'ok', engine: 'turso' });
+    try {
+      const result = await runScript(['--live', healthy.url]);
+      expect(result.stderr).toBe('');
+      expect(result.code).toBe(0);
+      expect(result.stdout).toContain('engine=turso');
+    } finally {
+      await new Promise((resolveClose) => healthy.server.close(resolveClose));
+    }
+
+    const wrongEngine = await withHealth({ ok: true, db: 'ok', engine: 'd1' });
+    try {
+      const result = await runScript(['--live', wrongEngine.url]);
+      expect(result.code).toBe(1);
+      expect(result.stderr).toContain('d1');
+    } finally {
+      await new Promise((resolveClose) => wrongEngine.server.close(resolveClose));
+    }
   });
 
   it('check-env-separation.mjs script passes and exits with code 0', () => {

@@ -13,6 +13,7 @@
     "seo:check": "node scripts/seo-consistency.mjs",
     "lint:copy": "node scripts/copy-lint.mjs",
     "check:env": "node scripts/check-env-separation.mjs",
+  "check:env:live": "node scripts/check-env-separation.mjs --live https://cuetfreemocktest.com",
     "check:migrations-remote": "node scripts/check-migrations-remote.mjs",
     "export:content": "node scripts/export-content.mjs",
     "purge:test-data": "node scripts/purge-test-data.mjs",
