@@ -48,5 +48,8 @@ Thumbs.db
 # Local scratch space (debug scripts, demo-tunnel binaries, diagnostics).
 /scratch/
 
+# Generated QA artifacts (reports, screenshots, traces) — never committed.
+/test-artifacts/
+
 # Local ZCode session state.
 /.zcode/
