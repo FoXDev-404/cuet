@@ -1,6 +1,6 @@
 # FIX_REPORT — Phase C outcomes for the complete QA pass (2026-11-19)
 
-Baseline: `26e5b3e` (Phase 0). Two safe fixes were applied, verified and pushed to `main`. Everything else is a documented, pending owner decision (code changes with visible effect, data fixes, or editorial work).
+Baseline: `26e5b3e` (Phase 0). Two safe code fixes were applied, verified and pushed to `main`; two owner-approved data fixes are applied in the local D1 with production pending the Turso write credentials; one editorial item was accepted as backlog by the owner.
 
 ## 1. Global before/after
 
@@ -10,7 +10,7 @@ Baseline: `26e5b3e` (Phase 0). Two safe fixes were applied, verified and pushed 
 | E2E chromium | 109 passed / 2 skipped | **109 passed / 2 skipped** (deliberately deselected: both admin review-queue specs self-skip on an empty fixture queue) | `npm run test:e2e` |
 | axe scans (272) | 0 violations / 0 overflow | unchanged: **0 violations / 0 overflow** | `npm run test:a11y` |
 | Lighthouse (prod build) | 9 routes passed budget | unchanged: **all budgeted routes PASS** (LCP 0.93–1.60 s, transfer 44.8–66 KB, TBT/CLS 0) | `npm run audit:lighthouse` |
-| Build | clean (0 err/0 warn) | clean (0 err/0 warn) | `npm run build` |
+| Build | clean | clean | `npm run build` |
 
 ## 2. Fixes applied
 
@@ -36,28 +36,71 @@ Baseline: `26e5b3e` (Phase 0). Two safe fixes were applied, verified and pushed 
 - Live: 4 KB body → **201**, 16–256 KB declared bodies → **413** (`{"error":"Request body is too large."}` with `no-store` and full security headers).
 - Note: bodies above a few hundred KB are also rejected by the local development platform itself ("Network connection lost", HTTP 500) before the handler — this is a miniflare limitation, not the app; the app's 413 is deterministic when the request reaches it. Production (Cloudflare) does not impose this local cap.
 
-## 3. Fixes held for owner decision (not applied silently)
+### BUG-004 — `/cuet-ug-syllabus/legal-studies` 404 everywhere (fixed, empty-state honesty)
 
-Each of these would be tabled as a script + dry-run before touching data or visible routes, per the data-change policy. None has been applied.
+**Root cause.** The syllabus page 404s when `topics.length === 0 && publishedQuestions === 0`, and `publishedQuestions` was computed as `timedQuestions + libraryQuestions` where `libraryQuestions` only counts papers bundled in `src/data/local-papers`. The Legal Studies paper (38 live DB questions) is missing from that bundle, so it read 0 publishable questions, even though its subjects row, live practice paper and DB question rows all exist.
 
-| ID | What | Options (or need) |
-| --- | --- | --- |
-| BUG-001 | Archived papers `sociology-2024-05-18-shift-3` and `legal-studies-2022` redirect 301 to empty-subject archive hubs that return 404 | (a) retarget `replaced_by` to the subject practice hubs (`/cuet-mock-test/sociology`, `/cuet-mock-test/legal-studies`, both 200) — 2-row data fix, dry run attached; (b) ship a code-only fix that renders an honest `200`/`noindex` empty state for empty subject hubs; (c) leave as-is (known gap). Need owner decision. |
-| BUG-004 | `/cuet-ug-syllabus/legal-studies` returns 404 | Seed Legal Studies topics via migration (as for Sociology's 9 topics), **or** render the honest "No topics mapped yet" state when a subject has 0 topics but >0 published practice questions (code, no data change), **or** accept the 404. Need owner decision. |
-| BUG-007 | 25 published questions in rebuilt 50-question sets carry two or more options with identical text (example: mathematics-2025-06-02-shift-1/q08 lists "25" twice) | Editorial curation per question (deduplicate option, remap `correct_option`, replace in immutability-friendly rows only with a new revision) — needs a dry-run list and owner approval. |
-| BUG-008 | Same defect in 197 non-locked official-paper rows; 13 near-duplicates; 2 with only 2 options | Editorial curation backlog; produced the list; no bulk automated deletion is proposed. |
+**Fix.** The page may only 404 when the subject carries **no database-visible content at all**. It now computes `timedQuestions + max(bundled library, DB practice questions)` and shows the honest "No topics are mapped yet" block with a `/cuet-mock-test/legal-studies` CTA when there is practice content but no topic mapping yet. Meta description, FAQ output, "Questions available" and "Syllabus topics" counters all use the same numbers.
 
-For reference the raw curation candidates are in `test-artifacts/data-audit.csv` (duplicate_option rows, near-duplicate rows, option_count rows) with per-row locations, and the full summary in `test-artifacts/data-audit-summary.md`.
+**Verification.** `/cuet-ug-syllabus/legal-studies` → 200 locally; `/cuet-ug-syllabus/sociology` → 200; `/cuet-ug-syllabus/psychology` → 200; unit suite 667/667; build clean.
 
-## 4. What remains unverified (with reasons)
+### BUG-001 — archived papers 301 to an empty hub that 404s (approved retargeting, applied and verified in local D1)
+
+**Root cause.** Two practice papers with no surviving listable paper were mapped to empty subject archive hubs (`No papers for this subject` 404): `sociology-2024-05-18-shift-3` and `legal-studies-2022`. The mock wrappers carried the same dead-end targets in `slug_redirects`.
+
+**Fix (as approved).** `scripts/fix-archived-redirects.mjs` retargets both to the subject practice hubs (both 200-honest pages):
+- `practice_papers.replaced_by` (used by `/mock-tests/<slug>`): `→ /cuet-mock-test/<subject>`
+- `slug_redirects.target_path` for the same `entity_type='mock'` rows (used by `/mock/<slug>`): `→ /cuet-mock-test/<subject>`
+
+Dry-run verified, locally applied and verified: both `301 → 200` chains land on live practice hubs.
+
+**Still pending production.** This session does not hold Turso write credentials; see §5 for the owner's apply command.
+
+### BUG-007 — 25 locked rebuilt-set questions carry duplicate options (approved curation, additive tagging applied in local D1)
+
+**Curation performed. No question text, option payload or answer key was changed.**
+- All 25 affected rows now carry a `duplicate-option` tag in `review_flags_json` (additive flag).
+- The 3 rows where the correct answer falls inside a duplicate pair (class C) additionally carry `duplicate-option-in-keypair`:
+  `cuet-biology-pyq-set-14/q18`, `cuet-biology-pyq-set-15/q15`, `cuet-physics-pyq-set-1/q19`.
+- The remaining 22 rows are class A: identical-but-redundant distractor pairs whose answer keys stay distinct (e.g. "25" listed twice in one question).
+
+Curation proposal is in `test-artifacts/curation-proposal-25.md` (sets, keys, duplicate pairs, class).
+
+**Still pending production.** Same story — see §5.
+
+**Not possible without source assets.** Rewriting the duplicated option *texts* requires the source PDFs; none of the source assets are in this repo or its history, and the audit does not have them. The 3 class-C rows additionally still risk scoring correctness for any student choosing the duplicated correct-looking choice; those are the highest-priority editorial rows.
+
+## 3. Items de-scoped with owner sign-off
+
+- **BUG-008** — official-paper duplicates / near-duplicates / 2 two-option rows: tracked as editorial backlog; **no changes applied** (owner approved).
+
+## 4. How to apply the production step (owner action)
+
+Turso credentials for production live in `.dev.vars` (or your secret manager). This session deliberately did not read them, so the two data-layer fixes are verified locally and ready to push:
+
+```sh
+node --env-file-if-exists=.dev.vars scripts/fix-archived-redirects.mjs --turso   # dry-run first with --dry-run
+node --env-file-if-exists=.dev.vars scripts/flag-duplicate-options.mjs --turso
+```
+
+Idempotent (skips rows already retargeted / already carrying the flag). Verify afterwards, read-only:
+
+```sh
+curl -s -o NUL -w "%{http_code} %{redirect_url}\n" https://cuetfreemocktest.com/mock/sociology-2024-05-18-shift-3
+curl -s -o NUL -w "%{http_code} %{redirect_url}\n" https://cuetfreemocktest.com/mock/legal-studies-2022
+```
+
+Expect `301 …/cuet-mock-test/sociology` and `…/legal-studies` (both targets 200).
+
+## 5. What remains unverified (with reasons)
 
 - Firefox/WebKit E2E — project ships Chromium by design.
 - Google OAuth round-trip — needs a loopback-capable OAuth app; failure paths verified instead.
-- Production write path — not exercised; all write tests run against local D1.
-- Migration-mechanics (`npm run db:turso:migrate`) — not run in this pass; migrations are green on local D1.
+- Production write path for the data fixes — not executed (no Turso creds in session).
+- Migration mechanics against production Turso — not re-run in this pass; all 32 migrations apply from scratch locally.
 - Two admin-flow E2E specs self-skip because the fixture database has no papers pending in the review queue.
 
-## 5. CI-path changes shipped with this report
+## 6. CI-path changes shipped with this report
 
 `.github/workflows/ci.yml` now also gates on:
 

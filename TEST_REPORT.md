@@ -209,11 +209,13 @@ See `test-artifacts/data-audit-summary.md` for the full table. Highlights:
 
 ## 6. Verdict and Phase C
 
-**GO with fixes.** No P0/P1. The five P2 and one P3 items are actionable:
+**GO with fixes — all six bugs are now resolved or dispositioned.**
 
-- **BUG-002** (timer inconsistency) — safe code fix (prefer stored/locked duration when set) with a regression unit test. No data migration.
-- **BUG-003** (unbounded body) — safe code fix (Content-Length guard) with a regression test.
-- **BUG-007** (duplicate options in rebuilt sets) — **data fix; dry-run required**; needs owner approval (see BUGS.csv).
-- **BUG-001** (replaced_by → 404) — **data/editorial decision** (retarget or accept as known-gap); needs dry-run approval.
-- **BUG-004** (legal-studies syllabus 404) — **editorial/seed decision**: seed Legal Studies topics OR render the honest empty state; needs owner guidance.
-- **BUG-008** (official paper duplicates) — content curation backlog; dry-run bulk deletion is **not** performed silently.
+- **BUG-002** (timer inconsistency) — fixed in `62a27b0` (`fix(exam)`), verified end-to-end.
+- **BUG-003** (unbounded body) — fixed in `b180582` (`fix(api)`), verified end-to-end.
+- **BUG-004** (legal-studies syllabus 404) — fixed in app code; renders the honest empty state with a 38-question DB-derived counter.
+- **BUG-001** (redirect → 404) — approved "retarget to subject practice hubs"; applied and verified **in the local D1** (both the `replaced_by` 301 and the `slug_redirects` 301); production pending the owner's Turso run (§5 of FIX_REPORT.md).
+- **BUG-007** (duplicate options in rebuilt sets) — approved curation: 25 rows flagged `duplicate-option` (+ `duplicate-option-in-keypair` for the 3 class-C rows), verified **in the local D1**; option-text rewriting awaits the source PDFs.
+- **BUG-008** — tracked as editorial backlog (owner approved), no bulk deletion proposed.
+
+After the owner's `--turso` apply, production will carry all of these fixes without changing scoring behaviour or content.

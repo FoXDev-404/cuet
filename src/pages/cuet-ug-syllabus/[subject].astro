@@ -63,9 +63,32 @@ const topics = await allOr<{ id: number; name: string; slug: string; count: numb
 const localSummary = getLocalSubjectSummary(subject.slug);
 const subjectStat = (await statsPromise).find((row) => row.slug === subject.slug);
 const libraryQuestions = localSummary?.questionCount ?? 0;
+// Archived practice papers still hold live DB questions that power the subject
+// hub. Use them when the bundled library copy is missing or stale — and never
+// double-count the same questions by taking the maximum, not the sum.
+const dbPracticeRow = subject.id
+  ? await allOr<{ cnt: number }>(
+      `SELECT COUNT(*) AS cnt FROM practice_questions pq
+       JOIN practice_papers pp ON pp.slug = pq.paper_slug
+       WHERE pp.subject_id = ? AND pq.deleted_at IS NULL AND pp.deleted_at IS NULL`,
+      [],
+      subject.id,
+    )
+  : [];
 const timedQuestions = subjectStat?.bank_question_count ?? 0;
-const publishedQuestions = timedQuestions + libraryQuestions;
-const papers = (subjectStat?.mock_count ?? 0) + (localSummary?.paperCount ?? 0);
+const libraryUnionCount = Math.max(libraryQuestions, Number(dbPracticeRow[0]?.cnt ?? 0));
+const publishedQuestions = timedQuestions + libraryUnionCount;
+const practicePaperRow = subject.id
+  ? await allOr<{ cnt: number }>(
+      `SELECT COUNT(*) AS cnt FROM practice_papers
+       WHERE subject_id = ? AND publication_status = 'published' AND deleted_at IS NULL AND is_archived = 0`,
+      [],
+      subject.id,
+    )
+  : [];
+const papers =
+  (subjectStat?.mock_count ?? 0) +
+  Math.max(localSummary?.paperCount ?? 0, Number(practicePaperRow[0]?.cnt ?? 0));
 const topicsWithPractice = topics.filter((topic) => topic.count > 0).length;
 if (topics.length === 0 && publishedQuestions === 0) {
   return new Response("Subject syllabus not published yet", { status: 404 });
