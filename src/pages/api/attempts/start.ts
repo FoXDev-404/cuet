@@ -6,7 +6,7 @@ import { first, run } from "../../../lib/db";
 import { apiUnavailableResponse } from "../../../lib/db-resilient";
 import { apiError, clientIp, forbiddenOrigin, isSameOrigin, json } from "../../../lib/http";
 import { isFixtureMock, isProductionEnvironment } from "../../../lib/fixtures";
-import { calculateMockDuration } from "../../../lib/exam-timing";
+import { rankedDurationMinutes } from "../../../lib/ranked-duration";
 
 export const POST: APIRoute = async (context) => {
   if (!isSameOrigin(context.request)) return forbiddenOrigin();
@@ -80,9 +80,11 @@ export const POST: APIRoute = async (context) => {
 
     if (!user && !guestToken) guestToken = ensureGuestToken(context.cookies);
 
-    const durationMin = (mock.question_count && mock.question_count > 0)
-      ? calculateMockDuration(mock.question_count, mock.subject_name).durationMinutes
-      : (mock.duration_min ?? 60);
+    const durationMin = rankedDurationMinutes(
+      mock.duration_min,
+      mock.question_count ?? 0,
+      mock.subject_name,
+    );
 
     const startedAt = new Date();
     const deadlineAt = new Date(startedAt.getTime() + durationMin * 60 * 1000);

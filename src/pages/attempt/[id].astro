@@ -21,7 +21,7 @@ import { renderRichText } from "../../lib/rich-text";
 import { imageDimensionsForUrls } from "../../lib/media-dimensions";
 import { getSetting } from "../../lib/settings";
 import { siteUrl } from "../../lib/site-url";
-import { calculateMockDuration } from "../../lib/exam-timing";
+import { rankedDurationMinutes } from "../../lib/ranked-duration";
 import { run } from "../../lib/db";
 import { shareMappingsForQuestionIds } from "../../lib/share/public-question-store";
 import { attemptQuestionShareUrl } from "../../lib/share/attempt-question";
@@ -317,9 +317,11 @@ const sections = [...new Set(questions.map((question) => question.section))];
 const hasHindiContent = questions.some(
   (question) => Boolean(question.text_hi) || question.options_hi.length > 0 || Boolean(question.passage?.body_hi),
 );
-const effectiveDurationMin = questions.length > 0
-  ? calculateMockDuration(questions.length, mock?.subject_name).durationMinutes
-  : (mock?.duration_min ?? 60);
+const effectiveDurationMin = rankedDurationMinutes(
+  mock?.duration_min,
+  questions.length,
+  mock?.subject_name,
+);
 
 // Align deadline with question-based duration if misaligned
 const expectedDeadlineMs = Date.parse(attempt.started_at) + effectiveDurationMin * 60 * 1000;
