@@ -46,7 +46,7 @@ if (!DRY_RUN && !LOCAL && !TURSO) {
   console.error("Usage: node scripts/flag-duplicate-options.mjs [--dry-run|--local|--turso]");
   process.exit(2);
 }
-if (TURSO && !(getTursoConfig()?.url && getTursoConfig()?.token)) {
+if (TURSO && !(getTursoConfig()?.url && getTursoConfig()?.authToken)) {
   console.error("TURSO_DATABASE_URL / TURSO_AUTH_TOKEN missing (set them in .dev.vars).");
   process.exit(2);
 }

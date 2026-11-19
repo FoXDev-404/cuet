@@ -30,7 +30,7 @@ if (!DRY_RUN && !LOCAL && !TURSO) {
   console.error("Usage: node scripts/fix-archived-redirects.mjs [--dry-run|--local|--turso]");
   process.exit(2);
 }
-if (TURSO && !(getTursoConfig()?.url && getTursoConfig()?.token)) {
+if (TURSO && !(getTursoConfig()?.url && getTursoConfig()?.authToken)) {
   console.error("TURSO_DATABASE_URL / TURSO_AUTH_TOKEN missing (set them in .dev.vars).");
   process.exit(2);
 }
@@ -240,16 +240,24 @@ async function main() {
   const before = await inspectRemote(client);
   console.log("Before:");
   for (const fix of before) {
-    console.log(`  ${fix.slug}: replaced_by=${fix.before?.replaced_by ?? "MISSING"}`);
-    if (fix.before && Number(fix.before.is_archived) !== 1) {
-      throw new Error(`${fix.slug} is not archived — refusing to retarget.`);
+    if (fix.kind === "practice_paper") {
+      console.log(`  practice_papers ${fix.slug}: replaced_by=${fix.before?.replaced_by ?? "MISSING"}`);
+      if (fix.before && Number(fix.before.is_archived) !== 1) {
+        throw new Error(`${fix.slug} is not archived — refusing to retarget.`);
+      }
+    } else {
+      console.log(`  slug_redirects ${fix.slug}: target_path=${fix.before?.target_path ?? "MISSING"}`);
+      if (!fix.before) {
+        throw new Error(`slug redirect for ${fix.slug} is missing — refusing to continue.`);
+      }
     }
   }
   await applyRemote(client);
   const after = await inspectRemote(client);
   console.log("After:");
   for (const fix of after) {
-    console.log(`  ${fix.slug}: replaced_by=${fix.before?.replaced_by ?? "MISSING"}`);
+    const value = fix.kind === "practice_paper" ? `replaced_by=${fix.before?.replaced_by}` : `target_path=${fix.before?.target_path ?? "null"}`;
+    console.log(`  ${fix.kind} ${fix.slug}: ${value}`);
   }
 }
 

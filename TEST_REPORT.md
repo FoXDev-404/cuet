@@ -22,19 +22,20 @@ This is a **from-scratch re-execution of Phases 0–A** on the fixed codebase (`
 | A11 | Security headers / privacy | PASS — all headers present on public/private; no before-consent analytics; 4 XSS payloads do not execute |
 | A12 | Visual baselines | Baselines captured locally; committed `toHaveScreenshot` baselines intentionally deferred (Windows↔Linux font noise) |
 
-**Findings:** 0 new P0/P1 application bugs in this re-run. One QA-tooling false positive was found and fixed (BUG-009). All six earlier application/data bugs are resolved or explicitly dispositioned (see §2). **Release verdict: GO**, with the two owner-side production data steps in §4 still outstanding.
+**Findings:** 0 new P0/P1 application bugs in this re-run. One QA-tooling false positive was found and fixed (BUG-009). All six earlier application/data bugs were resolved or dispositioned; in the follow-up to this re-run the two production data fixes were also applied and verified live (see below). **Release verdict: GO.**
 
 ## 2. Full bug table (status after this re-run)
 
 | ID | Sev | Area / route | Expected vs. actual (condensed) | Evidence | Suspected file | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| BUG-001 | P2 | Archived paper 301 chains (`/mock/<slug>`, `/mock-tests/<slug>`) | 301 → 200 vs. 301 → 404 empty hub for 2 papers | `scratch/qa-redirect-audit.mjs` (fresh run: 0/462 failures locally) | `practice_papers.replaced_by`, `slug_redirects.target_path` | **Fixed locally** (retargeted to subject practice hubs); production needs owner's `--turso` run |
+| BUG-001 | P2 | Archived paper 301 chains (`/mock/<slug>`, `/mock-tests/<slug>`) | 301 → 200 vs. 301 → 404 empty hub for 2 papers | Production read-only curl: all 4 URLs 301 → practice hubs, both 200 | `practice_papers.replaced_by`, `slug_redirects.target_path` | **FIXED LIVE** — 4 rows retargeted in production Turso |
 | BUG-002 | P2 | General Test ranked sets / attempt deadline | 60 min advertised vs. 50 min enforced | DB attempt deadline arithmetic (3,000 s before; 3,600 s after) | `src/lib/ranked-duration.ts`, `start.ts` | **Fixed & live** (`62a27b0`) |
 | BUG-003 | P2 | `/api/attempts/start` body size | 413 vs. 201 for 4 MB | Fresh probes: 4 KB→201, 16/64/256 KB→413 | `src/lib/body-limit.ts`, `start.ts` | **Fixed & live** (`b180582`) |
 | BUG-004 | P2 | `/cuet-ug-syllabus/legal-studies` | 200 empty state vs. 404 | Fresh local 200; live production 200 (deploy `baed73ad`) | `src/pages/cuet-ug-syllabus/[subject].astro` | **Fixed & live** (`714532e`) |
-| BUG-007 | P2 | 25 locked-set questions, duplicate options | No duplicate options vs. identical pairs (3 with key inside pair) | `test-artifacts/curation-proposal-25.md`, `data-audit.csv` | `practice_questions.options_json` / `review_flags_json` | **Curation applied locally** (additive review tags); production needs owner's `--turso` run |
+| BUG-007 | P2 | 25 locked-set questions, duplicate options | No duplicate options vs. identical pairs (3 with key inside pair) | `test-artifacts/curation-proposal-25.md`, `data-audit.csv`; Turso read-only: 25 flagged, 3 keypair | `practice_questions.options_json` / `review_flags_json` | **CURATION LIVE** — 25 additive review tags in production Turso; option texts need source PDFs |
 | BUG-008 | P3 | 197 official-paper duplicate options, 13 near-dups, 2 two-option rows | n/a — editorial debt | `test-artifacts/data-audit.csv` | `practice_questions.options_json` | **Backlog** (owner-approved, no changes) |
 | BUG-009 | P3 | QA tooling — `scripts/qa-data-audit.mjs` | Approved practice-hub redirect targets were flagged as unknown paper slugs (2 false P1s) | Fresh A4 run initially reported 2 P1s; after fix 0 P1 | `scripts/qa-data-audit.mjs` | **Fixed** (`fbd384c`) with source-guard regression test |
+| BUG-010 | P3 | QA tooling — production one-off scripts | `--turso` aborted with "credentials missing" and a kind-agnostic pre-flight | Both `--turso` runs succeeded after the fix | `scripts/fix-archived-redirects.mjs`, `scripts/flag-duplicate-options.mjs` | **Fixed** with 2 regression tests |
 
 ## 3. Data integrity summary (fresh A4 run)
 
@@ -74,13 +75,11 @@ axe: **272 scans, 0 WCAG A/AA violations, 0 horizontal overflow** (light/dark at
 
 Deliberately untested, with reasons: Firefox/WebKit (repository ships a Chromium-only Playwright project); Google OAuth round-trip (no loopback OAuth app — failure paths and seeded admin used instead); physical device lab; production write paths (read-only production policy — all writes against local D1); Cloudflare Pages preview deploys (this project deploys Workers, not Pages); `npm run db:turso:migrate` against production (not re-run; local migrations clean). The two admin review-queue E2E specs self-skip because the fixture DB has nothing pending in that queue.
 
-## 6. Owner action still required (production data)
+## 6. Production data fixes — applied and verified
 
-The two approved data fixes are applied and verified in the local D1 but **not in production**, because this session does not hold Turso write credentials (never printed or requested):
+The two approved data fixes were applied to production Turso in the follow-up to this re-run (with `.dev.vars` credentials, never printed):
 
-```sh
-node --env-file-if-exists=.dev.vars scripts/fix-archived-redirects.mjs --turso   # BUG-001
-node --env-file-if-exists=.dev.vars scripts/flag-duplicate-options.mjs --turso   # BUG-007
-```
+- **BUG-001:** `scripts/fix-archived-redirects.mjs --turso` — 4 rows updated (2 `practice_papers.replaced_by`, 2 `slug_redirects.target_path`). Read-only production curl verified all four legacy URLs now `301 → /cuet-mock-test/<subject>`, and both targets return **200**.
+- **BUG-007:** `scripts/flag-duplicate-options.mjs --turso` — 25 additive `review_flags_json` tags applied. Read-only Turso query verified 25 flagged rows, including the 3 `duplicate-option-in-keypair` rows. No question text, options or answer keys were changed.
 
-Details, dry-run commands and read-only verification URLs are in `FIX_REPORT.md` §4.
+The one remaining content item (BUG-008) is an approved editorial backlog; rewriting duplicate option texts requires the source PDFs, which are not in this repo.

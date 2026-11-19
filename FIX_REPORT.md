@@ -19,15 +19,16 @@ This re-run re-executed Phases 0–A on the fixed codebase and overwrote all rep
 - **BUG-002** (`fix(exam)`, `62a27b0`) — stored locked duration now authoritative for attempt deadlines; General Test sets enforce 60 minutes. Live.
 - **BUG-003** (`fix(api)`, `b180582`) — 8 KiB body cap on attempt-start; 4 KB→201, 16–256 KB→413 re-verified this run. Live.
 - **BUG-004** (`714532e`) — `/cuet-ug-syllabus/legal-studies` renders the honest empty state; re-verified 200 locally and in production (`baed73ad`). Live.
-- **BUG-001** — local D1 retargeted by `scripts/fix-archived-redirects.mjs` (`practice_papers.replaced_by` + `slug_redirects.target_path`); fresh redirect audit 0/462 failures. Production still needs the owner's `--turso` run (no Turso creds in this session).
-- **BUG-007** — 25 locked-set rows carry additive `duplicate-option` review tags (3 also `duplicate-option-in-keypair`) in the local D1; production still needs the owner's `--turso` run. Option texts cannot be repaired without the source PDFs.
+- **BUG-001** — production Turso retarget applied via `scripts/fix-archived-redirects.mjs --turso` (4 rows: 2 `replaced_by`, 2 `target_path`). Read-only curl verified all four legacy URLs now `301 → /cuet-mock-test/<subject>` with both targets **200**. **FIXED LIVE.**
+- **BUG-007** — production Turso curation applied via `scripts/flag-duplicate-options.mjs --turso` (25 additive review flags; 3 with `duplicate-option-in-keypair`). Verified by read-only Turso query: 25 flagged rows, 3 keypair rows. No text/options/keys changed. **FIXED LIVE.**
 - **BUG-008** — editorial backlog; no changes.
-- **BUG-009** (this run) — `scripts/qa-data-audit.mjs` now accepts `/cuet-mock-test/<subject>` as a valid archived-paper target; fixed in `fbd384c` with a source-guard regression test. Re-run shows 0 P1.
+- **BUG-009** (re-run) — `scripts/qa-data-audit.mjs` now accepts `/cuet-mock-test/<subject>` as a valid archived-paper target; fixed in `fbd384c` with a source-guard regression test. Re-run shows 0 P1.
+- **BUG-010** (this turn) — both `--turso` scripts checked `config.token` instead of `config.authToken` (false "credentials missing") and the redirect pre-flight applied the `is_archived` check to slug-redirect rows (abort before write). Fixed in both scripts with 2 regression tests; both `--turso` runs then succeeded.
 
-## Owner action (unchanged from the first pass)
+## Owner action (none outstanding for code/data)
 
-Apply the two approved data fixes to production Turso with your credentials (dry-run first with `--dry-run`), then verify with read-only curl; exact commands and expected 301 targets are in `TEST_REPORT.md` §6 and in the original `FIX_REPORT` instructions. All other fixes are already deployed and verified.
+All approved fixes are now deployed or applied in production. The only residual is the editorial backlog (BUG-008) and the 3 class-C questions whose duplicate correct-looking options need source-PDF review; no automated change is safe without those source assets.
 
 ## Regressions introduced by the fresh run
 
-None. The only tracked-file changes from this run are refreshed evidence (`docs/report/a11y-results.json`, `docs/report/lighthouse/*`), the two new report artifacts and the BUG-009 tooling fix.
+None. Tracked-file changes are refreshed evidence (`docs/report/a11y-results.json`, `docs/report/lighthouse/*`), the two new report artifacts and the BUG-009 tooling fix.
