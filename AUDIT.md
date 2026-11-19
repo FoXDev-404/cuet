@@ -542,7 +542,7 @@ Use this after each phase and before the final close-out. Test at 360, 768 and 1
 - [ ] Google sign-in on staging (blocked: staging has no Google client id/secret).
 - [ ] Authenticated staging `/dashboard` and `/admin` (blocked: no seeded staging operator).
 
-- [ ] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, `COOP`, `CORP`).
+- [x] Security headers are present in production (`CSP`, `HSTS`, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, `COOP`, `CORP`). Verified with `curl -D -` on `/` after the 2026-11-19 deploy (`8c13936b`; see §20).
 - [x] Private HTML and auth responses send `Cache-Control: no-store`.
 - [x] Cross-origin POST/PUT/PATCH/DELETE is rejected; same-origin writes succeed.
 - [ ] Login, attempt start, submit, answers and comments rate limits return 429 under load without locking out normal use.
@@ -874,4 +874,62 @@ inline script stays at the end of the body instead of a separate lazy chunk; it
 runs after the document is parsed and the banner still appears only after 1 s, so
 it never competes with LCP. The "12-month cookie" clause is not used for the same
 reason (no server consumer); the localStorage choice has no expiry.
+
+---
+
+## 20. Post-audit change — production re-verification and local preview parity (2026-11-19)
+
+**P1-10 — local/production parity (resolved).** Local development returned 200
+for every path, so the production URL canonicalisation could not be exercised
+locally. `PREVIEW_CANONICAL_ORIGIN` now opts a loopback server in:
+`previewCanonicalOrigin()` only accepts http(s) origins on a loopback host, and
+`canonicalHostRedirect()` maps loopback aliases (`127.0.0.1`, `[::1]`) onto that
+origin when `allowLocalAliases` is passed. Production, staging and any
+non-loopback request are unchanged; the flag is absent from the committed
+`env.*.vars` and `check:env` now fails if it ever appears there. Verified
+against a production build (`wrangler dev --var
+PREVIEW_CANONICAL_ORIGIN:http://localhost:4321`): `/mock-tests/` returned **301**
+`→ /mock-tests` on both `localhost` and `127.0.0.1`, while `/mock-tests`
+returned **200**. New unit coverage in `tests/unit/canonical-host.test.ts`; a
+source guard in `tests/unit/middleware-headers.test.ts` pins the opt-in.
+`.dev.vars.example` documents the flag and the runtime engine selection.
+
+**P1-9 — engine assertion (partially resolved).** `check:env` now also rejects
+committed engine-forcing flags (`USE_LOCAL_D1`, `USE_TURSO_LOCAL`,
+`PREVIEW_CANONICAL_ORIGIN`) and committed Turso credentials in every `vars`
+block, and requires staging/production `SITE_URL` to be non-loopback https
+origins. `npm run check:env:live` fetches a deployed `/api/health` and requires
+`engine=turso` (verified: `engine=turso`, `db=ok`). The live mode is opt-in so
+CI never depends on the network; the remaining work (CSV topic backfill) is
+editorial and not code.
+
+**Production re-verification after the `292d99a` deploy (version
+`8c13936b-1810-4959-9c0c-9f0a993a8232`, 2026-11-19T13:35Z).**
+`/api/health` **200** `{"ok":true,"db":"ok","engine":"turso"}`;
+`/` **200**; `/mock-tests` **200**; `/mock-tests/` **301** to `/mock-tests`;
+`/practice`, `/pyq` and `/cuet-ug-previous-year-papers` each **301** to their
+canonical targets; `www.cuetfreemocktest.com` and the `workers.dev` host each
+**301** to the apex; `/sitemap.xml` **225** URLs with **0** mock-test URLs for
+legal-studies/sociology and **0** non-canonical hosts; headers on `/` carry
+HSTS (`max-age=31536000; includeSubDomains`), CSP, `X-Content-Type-Options:
+nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options:
+SAMEORIGIN`, `Permissions-Policy: camera=(), microphone=(), geolocation=(),
+payment=()`, COOP `same-origin-allow-popups` and CORP `same-origin`. Auto-deploy
+ran from `292d99a`; CI Quality Gate completed **success** (run
+**44534840559**).
+
+**Tooling follow-up (`cd8e5d3`, `[skip deploy]`).** The `--live` health check no
+longer calls `process.exit()` after network I/O — doing so asserted in libuv on
+Windows after a TLS request. The script reports failures through a typed error
+and sets `process.exitCode`. Focused `env-separation` tests **10/10**, full
+suite **656/656**, live check against production passes. CI Quality Gate on
+`cd8e5d3` completed **success** (run **44539656244**); the auto-deploy run
+**44539656224** skipped the build because the commit is tooling/docs only.
+
+**Not done here:** the CSP `'unsafe-inline'` migration (§15) needs a dedicated,
+test-heavy change covering the 21 `is:inline` scripts and the consent gate;
+`P1-12` backups wait for Turso backup secrets; the editorial topic backfill and
+rights metadata remain with the editors; the four QA Trash rows stay
+soft-deleted to preserve attempt and audit history; legacy cookie removal lands
+no earlier than ~2026-12-17.
 

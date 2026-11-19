@@ -17,10 +17,17 @@ SITE_URL=http://localhost:4321
 # normal development; never set this in production.
 PREVIEW_CANONICAL_ORIGIN=
 
-# Turso Cloud (optional). When TURSO_DATABASE_URL is set the app talks to
-# Turso over libSQL; leave both blank to keep using the local D1 binding.
+# Turso Cloud (optional). The engine is selected at runtime: astro dev always
+# uses the local D1 binding unless USE_TURSO_LOCAL=1 (which makes a local
+# server talk to Turso over HTTP, so be sure your credentials are the right
+# database). Built previews and production use Turso whenever TURSO_DATABASE_URL
+# is set, unless USE_LOCAL_D1=1 forces the local binding. Leave both flags blank
+# for normal development; never commit them to wrangler.jsonc (check:env rejects
+# them) and never point them at production data from a local machine.
 TURSO_DATABASE_URL=
 TURSO_AUTH_TOKEN=
+USE_LOCAL_D1=
+USE_TURSO_LOCAL=
 
 # Legacy (unused by any current flow): password-reset email delivery was
 # retired together with email/password auth in November 2026.
