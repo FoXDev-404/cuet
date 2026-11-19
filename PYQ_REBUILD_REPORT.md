@@ -199,6 +199,10 @@ baseline assertions that the rebuild intentionally changes).
 (the two skips are the existing admin review-queue tests, which self-skip when
 no paper is pending in `/admin/review`).
 
+The rebuild-dependent E2E specs self-skip when the database does not contain the
+applied rebuild, which is the case for the legacy seed fixture CI imports. They
+run in full against the local applied fixture and production.
+
 New `tests/e2e/pyq-rebuild.spec.ts` covers:
 
 - 50-question stats and provenance notes for pooled, passage-bearing and reduced
@@ -389,10 +393,12 @@ papers); `practice_passages` (160) and `passages` (510) are separate stores.
 
 ### Fixes implemented, deployed and verified
 
-Deployed to production on 18 November 2026. The final Worker version is
-`5cecd6e7-f6a4-4b61-91ea-49019ba5b310`; the two earlier deploys in the pass
-were `12610bb1-fdbb-47c3-b2a7-0800b6951cf4` and
-`875aecf7-b12c-4efc-8261-4fd7f3b54d60`.
+The QA fixes were deployed to production in worker versions
+`12610bb1-fdbb-47c3-b2a7-0800b6951cf4`, `875aecf7-b12c-4efc-8261-4fd7f3b54d60`
+and `5cecd6e7-f6a4-4b61-91ea-49019ba5b310`. Pushing commit `c010edc` on
+19 November 2026 then triggered the repository's auto-deploy workflow, which
+rebuilt the same commit as `fedd8b52-7959-4355-bfef-cc3fbff2208d`; its
+production smoke test passed.
 
 1. Review queue now pages 25 rows, shows the active total, orders active papers
    first, and offers active/archived/all filters (`tests/unit/admin-pagination.test.ts`).
