@@ -15,6 +15,9 @@ export const DEFAULT_SITE_DESCRIPTION =
 export {
   hasSubstantiveSeoIntro,
   limitSeoDescription,
+  mockMetaDescription,
+  paperSeoTitle,
+  paperSetLabel,
   rankedPaperMetaDescription,
 } from "./seo-content";
 

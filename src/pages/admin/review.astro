@@ -1,7 +1,7 @@
 ---
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import { can } from "../../lib/auth/admin";
-import { all } from "../../lib/db";
+import { all, first } from "../../lib/db";
 import { renderRichText } from "../../lib/content";
 import { cachedAdminStats } from "../../lib/admin/stats-cache";
 
@@ -49,30 +49,43 @@ const {
 const filterStatus = Astro.url.searchParams.get("status") || "all";
 const filterSource = Astro.url.searchParams.get("source") || "all";
 const filterKeyed = Astro.url.searchParams.get("keyed") || "all";
+const filterArchived = Astro.url.searchParams.get("archived") || "active";
+const REVIEW_PAGE_SIZE = 25;
+const page = Math.max(Number(Astro.url.searchParams.get("page") ?? 1) || 1, 1);
 
-let query = `
-  SELECT q.id, q.paper_slug, q.source_question_no, q.stem, q.correct_option,
-         q.explanation, q.explanation_source, q.explanation_status, q.reviewed_by, q.reviewed_at,
-         p.title AS paper_title
-  FROM practice_questions q
-  JOIN practice_papers p ON p.slug = q.paper_slug
-  WHERE q.deleted_at IS NULL
-`;
+const where = ["q.deleted_at IS NULL"];
 const params: any[] = [];
 if (filterStatus !== "all") {
-  query += ` AND q.explanation_status = ?`;
+  where.push("q.explanation_status = ?");
   params.push(filterStatus);
 }
 if (filterSource !== "all") {
-  query += ` AND q.explanation_source = ?`;
+  where.push("q.explanation_source = ?");
   params.push(filterSource);
 }
 if (filterKeyed === "keyed") {
-  query += ` AND q.correct_option IS NOT NULL`;
+  where.push("q.correct_option IS NOT NULL");
 } else if (filterKeyed === "unkeyed") {
-  query += ` AND q.correct_option IS NULL`;
+  where.push("q.correct_option IS NULL");
 }
-query += ` ORDER BY q.id ASC LIMIT 50`;
+if (filterArchived === "active") {
+  where.push("p.is_archived = 0");
+} else if (filterArchived === "archived") {
+  where.push("p.is_archived = 1");
+}
+const whereSql = `WHERE ${where.join(" AND ")}`;
+
+const countRow = await first<{ total: number }>(
+  `SELECT COUNT(*) AS total
+   FROM practice_questions q
+   JOIN practice_papers p ON p.slug = q.paper_slug
+   ${whereSql}`,
+  ...params,
+);
+const total = countRow?.total ?? 0;
+const totalPages = Math.max(Math.ceil(total / REVIEW_PAGE_SIZE), 1);
+const currentPage = Math.min(page, totalPages);
+const offset = (currentPage - 1) * REVIEW_PAGE_SIZE;
 
 const queueQuestions = await all<{
   id: number;
@@ -86,7 +99,28 @@ const queueQuestions = await all<{
   reviewed_by: string | null;
   reviewed_at: string | null;
   paper_title: string;
-}>(query, ...params);
+}>(
+  `SELECT q.id, q.paper_slug, q.source_question_no, q.stem, q.correct_option,
+          q.explanation, q.explanation_source, q.explanation_status, q.reviewed_by, q.reviewed_at,
+          p.title AS paper_title
+   FROM practice_questions q
+   JOIN practice_papers p ON p.slug = q.paper_slug
+   ${whereSql}
+   ORDER BY p.is_archived ASC, q.id ASC
+   LIMIT ? OFFSET ?`,
+  ...params,
+  REVIEW_PAGE_SIZE,
+  offset,
+);
+
+const rangeStart = total === 0 ? 0 : offset + 1;
+const rangeEnd = Math.min(offset + queueQuestions.length, total);
+
+function pageHref(target: number): string {
+  const next = new URLSearchParams(Astro.url.searchParams);
+  next.set("page", String(target));
+  return `?${next.toString()}`;
+}
 ---
 
 <AdminLayout title="Explanation Editorial Review Queue" active="review">
@@ -172,7 +206,17 @@ const queueQuestions = await all<{
           <option value="unkeyed" selected={filterKeyed === "unkeyed"}>Unkeyed Questions Only</option>
         </select>
       </label>
-      <span class="ml-auto text-neutral-600 dark:text-neutral-400 font-normal">Showing first 50 items</span>
+      <label>
+        Papers:
+        <select name="archived" class="ml-1 rounded border border-neutral-300 bg-transparent px-2 py-1 text-xs dark:border-neutral-700" onchange="this.form.submit()">
+          <option value="active" selected={filterArchived === "active"}>Active papers</option>
+          <option value="archived" selected={filterArchived === "archived"}>Archived papers</option>
+          <option value="all" selected={filterArchived === "all"}>All papers</option>
+        </select>
+      </label>
+      <span class="ml-auto font-normal text-neutral-600 dark:text-neutral-400">
+        Showing {rangeStart}–{rangeEnd} of {total} · page {currentPage} of {totalPages}
+      </span>
     </form>
   </div>
 
@@ -242,6 +286,21 @@ const queueQuestions = await all<{
         </div>
       </article>
     ))}
+    {queueQuestions.length === 0 ? (
+      <p class="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-14 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400">
+        No questions match these filters.
+      </p>
+    ) : null}
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      Showing {rangeStart}–{rangeEnd} of {total} · page {currentPage} of {totalPages}
+    </p>
+    <div class="flex gap-2">
+      {currentPage > 1 ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage - 1)}>Previous</a> : null}
+      {currentPage < totalPages ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage + 1)}>Next</a> : null}
+    </div>
   </div>
 </AdminLayout>
 

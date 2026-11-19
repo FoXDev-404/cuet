@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import {
   hasSubstantiveSeoIntro,
   limitSeoDescription,
+  mockMetaDescription,
   rankedPaperMetaDescription,
 } from "../../src/lib/seo-content";
 
@@ -134,6 +135,39 @@ describe("substantive SEO archive content", () => {
     expect(description.length).toBeLessThanOrEqual(160);
     expect(description.endsWith("...")).toBe(true);
     expect(description).not.toContain("gui...");
+  });
+
+  it("never returns a description longer than 160 characters", () => {
+    const description = limitSeoDescription(`${"a".repeat(159)} tail`);
+    expect(description.length).toBeLessThanOrEqual(160);
+  });
+
+  it("builds a 120-160 character description for a short mock title", () => {
+    const description = mockMetaDescription({
+      title: "CUET UG English Grammar Mini Mock",
+      questionCount: 10,
+      durationMinutes: 10,
+    });
+    expect(description.length).toBeGreaterThanOrEqual(120);
+    expect(description.length).toBeLessThanOrEqual(160);
+    expect(description).toContain("10 questions");
+    expect(description).toContain("10 minutes");
+  });
+
+  it("trims a long mock title instead of exceeding the description limit", () => {
+    const description = mockMetaDescription({
+      title: `CUET UG ${"Very Long Subject Name ".repeat(6)}Mock`,
+      questionCount: 50,
+      durationMinutes: 60,
+    });
+    expect(description.length).toBeLessThanOrEqual(160);
+  });
+
+  it("does not leave a dangling connector before the ellipsis", () => {
+    const description = limitSeoDescription(`${"x".repeat(149)} and a tail that runs long`);
+    expect(description.endsWith("...")).toBe(true);
+    expect(description).not.toMatch(/\b(?:and|a|an|the|with|of|to|or)\.\.\.$/);
+    expect(description.length).toBeLessThanOrEqual(160);
   });
 });
 

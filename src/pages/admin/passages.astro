@@ -11,12 +11,24 @@ const params = Astro.url.searchParams;
 const q = (params.get("q") ?? "").trim().slice(0, 100);
 const subjectId = Number(params.get("subject") ?? 0);
 const selectedId = Number(params.get("id") ?? 0);
+const page = Math.max(Number(params.get("page") ?? 1) || 1, 1);
 
-const [subjects, passages] = await Promise.all([
+const [subjects, listing] = await Promise.all([
   all<{ id: number; name: string }>("SELECT id, name FROM subjects WHERE is_active = 1 ORDER BY name"),
-  listPassages(q, subjectId),
+  listPassages(q, subjectId, false, page),
 ]);
+const passages = listing.rows;
 const selected = selectedId > 0 ? await findPassage(selectedId) : null;
+const totalPages = Math.max(Math.ceil(listing.total / listing.per), 1);
+const currentPage = Math.min(listing.page, totalPages);
+const rangeStart = listing.total === 0 ? 0 : (listing.page - 1) * listing.per + 1;
+const rangeEnd = Math.min((listing.page - 1) * listing.per + passages.length, listing.total);
+
+function pageHref(target: number): string {
+  const next = new URLSearchParams(params);
+  next.set("page", String(target));
+  return `?${next.toString()}`;
+}
 
 function plain(value: string, limit = 180): string {
   const text = value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
@@ -34,8 +46,8 @@ function plain(value: string, limit = 180): string {
       </p>
     </div>
     <div class="rounded-xl border border-neutral-200 bg-white px-4 py-3 text-right dark:border-neutral-800 dark:bg-neutral-900">
-      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Loaded</p>
-      <p class="text-2xl font-black tabular-nums">{passages.length}</p>
+      <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Passages</p>
+      <p class="text-2xl font-black tabular-nums">{listing.total}</p>
     </div>
   </div>
 
@@ -73,6 +85,17 @@ function plain(value: string, limit = 180): string {
         <div class="rounded-2xl border border-dashed border-neutral-300 bg-white px-6 py-14 text-center dark:border-neutral-700 dark:bg-neutral-900">
           <p class="font-bold">No passages yet</p>
           <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Create one on the right, then attach it to comprehension questions.</p>
+        </div>
+      ) : null}
+      {listing.total > 0 ? (
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2 text-sm">
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">
+            Showing {rangeStart}–{rangeEnd} of {listing.total} · page {currentPage} of {totalPages}
+          </p>
+          <div class="flex gap-2">
+            {currentPage > 1 ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage - 1)}>Previous</a> : null}
+            {currentPage < totalPages ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage + 1)}>Next</a> : null}
+          </div>
         </div>
       ) : null}
     </section>

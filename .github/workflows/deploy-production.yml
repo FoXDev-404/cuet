@@ -1,13 +1,15 @@
 name: Deploy production
 
-# Manual, guarded release of the code plus the committed practice library.
+# Manual, guarded release of the Worker code. Production content lives in
+# Turso and is migrated/applied separately (see PYQ_REBUILD_REPORT.md); this
+# workflow never seeds the legacy D1 practice library.
 # Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID as repository secrets
 # before dispatching. The job never runs on a normal push.
 on:
   workflow_dispatch:
     inputs:
       confirm:
-        description: Type "deploy" to run remote migrations, content import and deploy
+        description: Type "deploy" to run migrations and deploy
         required: true
         type: string
       production_url:
@@ -25,7 +27,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: Remote D1 import, deploy and smoke
+    name: Deploy and smoke
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.repository == 'FoXDev-404/cuet'
     env:
@@ -55,13 +57,7 @@ jobs:
         run: npm ci
       - name: Apply remote migrations
         run: npx wrangler d1 migrations apply cuet-blueprint-db --remote
-      - name: Import practice papers
-        run: node scripts/import-practice-library.mjs --remote
-      - name: Import ranked mocks
-        run: node scripts/import-ranked-practice.mjs --remote
-      - name: Classify explanation provenance
-        run: node scripts/backfill-explanation-provenance.mjs --remote
       - name: Build and deploy
         run: npm run deploy
       - name: Smoke test production
-        run: node scripts/smoke-check.mjs "$PRODUCTION_URL" --expect "137 papers"
+        run: node scripts/smoke-check.mjs "$PRODUCTION_URL" --expect "132 papers"

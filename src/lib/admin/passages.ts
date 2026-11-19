@@ -19,7 +19,17 @@ export const PASSAGE_LIMITS = {
   imageAlt: 300,
 } as const;
 
-export async function listPassages(query: string, subjectId: number, includeDeleted = false): Promise<PassageRow[]> {
+export const PASSAGE_PAGE_SIZE = 25;
+
+export async function listPassages(
+  query: string,
+  subjectId: number,
+  includeDeleted = false,
+  page = 1,
+  per = PASSAGE_PAGE_SIZE,
+): Promise<{ rows: PassageRow[]; total: number; page: number; per: number }> {
+  const safePer = Math.min(Math.max(per, 1), 100);
+  const safePage = Math.max(page, 1);
   const where = [includeDeleted ? "1 = 1" : "p.deleted_at IS NULL"];
   const params: (string | number)[] = [];
   const term = query.trim().slice(0, 100);
@@ -31,15 +41,28 @@ export async function listPassages(query: string, subjectId: number, includeDele
     where.push("p.subject_id = ?");
     params.push(subjectId);
   }
-  return all<PassageRow>(
+  const whereSql = where.join(" AND ");
+  const count = await first<{ total: number }>(
+    `SELECT COUNT(*) AS total
+     FROM passages p JOIN subjects s ON s.id = p.subject_id
+     WHERE ${whereSql}`,
+    ...params,
+  );
+  const total = count?.total ?? 0;
+  const totalPages = Math.max(Math.ceil(total / safePer), 1);
+  const currentPage = Math.min(safePage, totalPages);
+  const rows = await all<PassageRow>(
     `SELECT p.id, p.subject_id, s.name AS subject_name, p.body, p.body_hi,
             p.image_url, p.image_alt, p.deleted_at,
             (SELECT COUNT(*) FROM questions q WHERE q.passage_id = p.id AND q.deleted_at IS NULL) AS question_count
      FROM passages p JOIN subjects s ON s.id = p.subject_id
-     WHERE ${where.join(" AND ")}
-     ORDER BY p.id DESC LIMIT 200`,
+     WHERE ${whereSql}
+     ORDER BY p.id DESC LIMIT ? OFFSET ?`,
     ...params,
+    safePer,
+    (currentPage - 1) * safePer,
   );
+  return { rows, total, page: currentPage, per: safePer };
 }
 
 export async function findPassage(id: number): Promise<PassageRow | null> {

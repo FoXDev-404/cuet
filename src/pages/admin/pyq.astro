@@ -1,18 +1,71 @@
 ---
 import AdminLayout from "../../layouts/AdminLayout.astro";
-import { all } from "../../lib/db";
+import { all, first } from "../../lib/db";
 import { can } from "../../lib/auth/admin";
 import { getPyqPaperPath } from "../../lib/pyq-subject-path";
 
 const admin = Astro.locals.admin!;
 if (!can(admin.role, "mocks.write")) return Astro.redirect("/forbidden", 303);
 
-const subjects = await all<{ id: number; name: string }>(
-  `SELECT s.id, s.name FROM subjects s JOIN exams e ON e.id = s.exam_id
-   WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1 ORDER BY s.name`,
-);
+const PYQ_PAGE_SIZE = 25;
+const params = Astro.url.searchParams;
+const filterRights = params.get("rights") || "all";
+const filterYear = params.get("year") || "all";
+const filterSubject = params.get("subject") || "all";
+const page = Math.max(Number(params.get("page") ?? 1) || 1, 1);
 
-const practicePapers = await all<{
+const where = ["p.deleted_at IS NULL"];
+const queryParams: (string | number)[] = [];
+if (filterRights !== "all") {
+  where.push("p.rights_status = ?");
+  queryParams.push(filterRights);
+}
+if (filterYear !== "all") {
+  where.push("p.year = ?");
+  queryParams.push(filterYear);
+}
+if (filterSubject !== "all") {
+  where.push("s.name = ?");
+  queryParams.push(filterSubject);
+}
+const whereSql = where.join(" AND ");
+
+const [subjects, counts, yearRows, countRow] = await Promise.all([
+  all<{ id: number; name: string }>(
+    `SELECT s.id, s.name FROM subjects s JOIN exams e ON e.id = s.exam_id
+     WHERE e.slug = 'cuet-ug' AND e.is_active = 1 AND s.is_active = 1 ORDER BY s.name`,
+  ),
+  first<{ total: number; unknown_count: number; cleared_count: number; restricted_count: number }>(
+    `SELECT COUNT(*) AS total,
+            SUM(CASE WHEN rights_status = 'unknown' THEN 1 ELSE 0 END) AS unknown_count,
+            SUM(CASE WHEN rights_status = 'cleared' THEN 1 ELSE 0 END) AS cleared_count,
+            SUM(CASE WHEN rights_status = 'restricted' THEN 1 ELSE 0 END) AS restricted_count
+     FROM practice_papers WHERE deleted_at IS NULL`,
+  ),
+  all<{ year: number }>(
+    "SELECT DISTINCT year FROM practice_papers WHERE deleted_at IS NULL ORDER BY year DESC",
+  ),
+  first<{ total: number }>(
+    `SELECT COUNT(*) AS total
+     FROM practice_papers p
+     JOIN subjects s ON s.id = p.subject_id
+     WHERE ${whereSql}`,
+    ...queryParams,
+  ),
+]);
+
+const totalCount = Number(counts?.total ?? 0);
+const unknownCount = Number(counts?.unknown_count ?? 0);
+const clearedCount = Number(counts?.cleared_count ?? 0);
+const restrictedCount = Number(counts?.restricted_count ?? 0);
+const years = yearRows.map((row) => row.year);
+
+const total = Number(countRow?.total ?? 0);
+const totalPages = Math.max(Math.ceil(total / PYQ_PAGE_SIZE), 1);
+const currentPage = Math.min(page, totalPages);
+const offset = (currentPage - 1) * PYQ_PAGE_SIZE;
+
+const paperRows = await all<{
   id: number;
   slug: string;
   title: string;
@@ -35,27 +88,22 @@ const practicePapers = await all<{
           p.rights_note, p.verified_by, p.verified_at
    FROM practice_papers p
    JOIN subjects s ON s.id = p.subject_id
-   WHERE p.deleted_at IS NULL
-   ORDER BY p.year DESC, s.name ASC, p.shift ASC`,
+   WHERE ${whereSql}
+   ORDER BY p.year DESC, s.name ASC, p.shift ASC
+   LIMIT ? OFFSET ?`,
+  ...queryParams,
+  PYQ_PAGE_SIZE,
+  offset,
 );
 
-const totalCount = practicePapers.length;
-const unknownCount = practicePapers.filter((p) => p.rights_status === "unknown").length;
-const clearedCount = practicePapers.filter((p) => p.rights_status === "cleared").length;
-const restrictedCount = practicePapers.filter((p) => p.rights_status === "restricted").length;
+const rangeStart = total === 0 ? 0 : offset + 1;
+const rangeEnd = Math.min(offset + paperRows.length, total);
 
-const years = [...new Set(practicePapers.map((p) => p.year))].sort((a, b) => b - a);
-
-const filterRights = Astro.url.searchParams.get("rights") || "all";
-const filterYear = Astro.url.searchParams.get("year") || "all";
-const filterSubject = Astro.url.searchParams.get("subject") || "all";
-
-const filteredPapers = practicePapers.filter((p) => {
-  if (filterRights !== "all" && p.rights_status !== filterRights) return false;
-  if (filterYear !== "all" && String(p.year) !== filterYear) return false;
-  if (filterSubject !== "all" && p.subject_name !== filterSubject) return false;
-  return true;
-});
+function pageHref(target: number): string {
+  const next = new URLSearchParams(params);
+  next.set("page", String(target));
+  return `?${next.toString()}`;
+}
 ---
 
 <AdminLayout title="Paper Provenance & Rights Manager" active="pyq">
@@ -64,7 +112,7 @@ const filteredPapers = practicePapers.filter((p) => {
       <h1 class="text-2xl font-black tracking-tight">Paper Provenance & Rights Manager</h1>
       <p class="mt-1 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
         Review source attribution, verify provenance, and manage copyright clearance for previous-year practice papers.
-        Papers not marked <strong>cleared</strong> are automatically quarantined with <code>noindex</code>, excluded from sitemaps, and stripped of ads.
+        Only papers marked <strong>Restricted</strong> are quarantined with <code>noindex</code> and excluded from sitemaps. <strong>Unknown</strong> papers stay live and indexable while provenance is confirmed; report a rights issue from any paper page.
       </p>
     </div>
     <div class="flex flex-wrap gap-2">
@@ -82,12 +130,12 @@ const filteredPapers = practicePapers.filter((p) => {
     <div class="rounded-2xl border border-amber-300 bg-amber-50/50 p-4 shadow-sm dark:border-amber-800 dark:bg-amber-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">Unknown / Pending</p>
       <p class="mt-2 text-3xl font-black text-amber-900 dark:text-amber-100">{unknownCount}</p>
-      <p class="mt-1 text-xs text-amber-700 dark:text-amber-300">Forced noindex, no ads</p>
+      <p class="mt-1 text-xs text-amber-700 dark:text-amber-300">Live · rights unconfirmed</p>
     </div>
     <div class="rounded-2xl border border-emerald-300 bg-emerald-50/50 p-4 shadow-sm dark:border-emerald-800 dark:bg-emerald-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">Cleared</p>
       <p class="mt-2 text-3xl font-black text-emerald-900 dark:text-emerald-100">{clearedCount}</p>
-      <p class="mt-1 text-xs text-emerald-700 dark:text-emerald-300">Indexable, verified</p>
+      <p class="mt-1 text-xs text-emerald-700 dark:text-emerald-300">Rights confirmed</p>
     </div>
     <div class="rounded-2xl border border-rose-300 bg-rose-50/50 p-4 shadow-sm dark:border-rose-800 dark:bg-rose-950/20">
       <p class="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300">Restricted</p>
@@ -159,7 +207,7 @@ const filteredPapers = practicePapers.filter((p) => {
         </tr>
       </thead>
       <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800">
-        {filteredPapers.map((paper) => (
+        {paperRows.map((paper) => (
           <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-800/40" data-paper-id={paper.id}>
             <td class="p-3"><input type="checkbox" class="paper-check" value={paper.id} aria-label={`Select paper ${paper.title}`} /></td>
             <td class="p-3 font-semibold">
@@ -202,8 +250,25 @@ const filteredPapers = practicePapers.filter((p) => {
             </td>
           </tr>
         ))}
+        {paperRows.length === 0 ? (
+          <tr>
+            <td colspan="8" class="p-8 text-center text-neutral-500 dark:text-neutral-400">
+              No papers match these filters.
+            </td>
+          </tr>
+        ) : null}
       </tbody>
     </table>
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      Showing {rangeStart}–{rangeEnd} of {total} · page {currentPage} of {totalPages}
+    </p>
+    <div class="flex gap-2">
+      {currentPage > 1 ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage - 1)}>Previous</a> : null}
+      {currentPage < totalPages ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage + 1)}>Next</a> : null}
+    </div>
   </div>
 </AdminLayout>
 

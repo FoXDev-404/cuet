@@ -10,7 +10,7 @@ import {
   getPyqSubjectPath,
   getPyqSubjectType,
 } from "../../../../lib/pyq-subject-path";
-import { breadcrumbJsonLd, rankedPaperMetaDescription } from "../../../../lib/seo";
+import { breadcrumbJsonLd, limitSeoDescription, paperSeoTitle, paperSetLabel, rankedPaperMetaDescription } from "../../../../lib/seo";
 import generatedPaperOgSlugs from "../../../../data/og-papers.json";
 
 const slug = Astro.params.paper ?? "";
@@ -78,16 +78,17 @@ const instructions = [
   "Correct options and explanations appear only after you submit, on the same screen.",
 ];
 
+const setLabel = paperSetLabel({ title: paper.title, sourceMethod: paper.sourceMethod });
 const generatedMetaDescription = rankedPaperMetaDescription({
   dateLabel: paper.dateLabel,
   subject: paper.subject.name,
   questionCount: rankedQuestionCount,
   durationMinutes: rankedDurationMinutes,
+  setLabel,
 });
 const savedMetaDescription = paper.metaDescription?.trim();
 const datePart =
   paper.dateLabel && paper.dateLabel !== "Date not printed" ? paper.dateLabel : String(paper.year);
-const shiftPart = paper.shift ? ` ${paper.shift}` : "";
 const shiftTagDate = paper.date?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
 const shiftTag = paper.shift
   ? `${shiftTagDate ? `${shiftTagDate[3]}-${shiftTagDate[2]}-${shiftTagDate[1]} ` : ""}${paper.shift}`
@@ -95,14 +96,18 @@ const shiftTag = paper.shift
 const isGeneralTest = paper.subject.slug === "general-test";
 const generalTestMetaDescription =
   `Practice the official NTA CUET UG General Test Previous Year Question Paper with Answers (${datePart}${paper.shift ? `, ${paper.shift}` : ""}) Online for FREE and Boost your Exam Prep!`;
-const metaDescription = isGeneralTest
-  ? generalTestMetaDescription
-  : sourcedQuestionCount === 0 &&
-      savedMetaDescription &&
-      savedMetaDescription.length >= 120 &&
-      savedMetaDescription.length <= 160
-    ? savedMetaDescription
-    : generatedMetaDescription;
+const metaDescription = limitSeoDescription(
+  isGeneralTest && !setLabel
+    ? generalTestMetaDescription
+    : setLabel
+      ? generatedMetaDescription
+      : sourcedQuestionCount === 0 &&
+          savedMetaDescription &&
+          savedMetaDescription.length >= 120 &&
+          savedMetaDescription.length <= 160
+        ? savedMetaDescription
+        : generatedMetaDescription,
+);
 
 const relatedPapers = getLocalPapersForSubject(paper.subject.slug)
   .filter((candidate) => candidate.slug !== paper.slug && candidate.rightsStatus !== "restricted")
@@ -114,12 +119,14 @@ const relatedPapers = getLocalPapersForSubject(paper.subject.slug)
   )
   .slice(0, 6);
 
-const titleBase = `CUET ${paper.subject.name} ${datePart}${shiftPart} Paper`;
-const seoTitle = isGeneralTest
-  ? `CUET UG General Test ${datePart}${shiftPart} PYQ | Online Test`
-  : `${titleBase} | CUET Mock`.length <= 65
-    ? `${titleBase} | CUET Mock`
-    : titleBase;
+const seoTitle = paperSeoTitle({
+  subjectName: paper.subject.name,
+  dateLabel: datePart,
+  shift: paper.shift,
+  paperTitle: paper.title,
+  sourceMethod: paper.sourceMethod,
+  isGeneralTest,
+});
 
 // Imported papers are indexable only when they appear in the public listings.
 // Restricted papers and partial papers under MIN_LISTED_QUESTIONS stay

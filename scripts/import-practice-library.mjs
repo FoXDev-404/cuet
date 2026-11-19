@@ -7,6 +7,10 @@
  *   node scripts/import-practice-library.mjs --remote
  *   node scripts/import-practice-library.mjs --dry-run
  *
+ * The importer refuses to run when the target database already has archived
+ * papers: that is the 50-question PYQ rebuild. Pass --allow-archive-reset only
+ * when you deliberately intend to overwrite the archived seed rows.
+ *
  * The JSON files stay in the repo as the seed. Re-running the import replaces
  * every practice paper row for the slugs in index.json (including questions and
  * passages), so admin edits are reset to the seed.
@@ -20,6 +24,7 @@ import {
   buildSummary,
   createStoredKeys,
 } from "../src/lib/practice-normalize.ts";
+import { archiveGuardDecision } from "./lib/import-guard.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const INDEX_FILE = join(ROOT, "src", "data", "local-papers", "index.json");
@@ -49,6 +54,7 @@ const CHUNK_BYTES = 1_500_000;
 const args = new Set(process.argv.slice(2));
 const remote = args.has("--remote");
 const dryRun = args.has("--dry-run");
+const allowArchiveReset = args.has("--allow-archive-reset");
 const target = remote ? "--remote" : "--local";
 
 function readJson(file) {
@@ -66,6 +72,32 @@ function sql(value) {
 
 function json(value) {
   return sql(JSON.stringify(value ?? null));
+}
+
+/** Reads the archive count before a destructive seed import. */
+function countArchivedPapers() {
+  const command =
+    `npx wrangler d1 execute ${DB_NAME} ${target}${ENV_FLAG} --json ` +
+    `--command "SELECT COUNT(*) AS count FROM practice_papers WHERE is_archived = 1"`;
+  const result = spawnSync(command, { cwd: ROOT, encoding: "utf8", shell: true });
+  const output = `${result.stdout ?? ""}\n${result.stderr ?? ""}`;
+  if (result.status !== 0) {
+    if (/no such table/i.test(output)) return 0;
+    return null;
+  }
+  const start = output.indexOf("[");
+  const end = output.lastIndexOf("]");
+  if (start < 0 || end <= start) return null;
+  try {
+    const parsed = JSON.parse(output.slice(start, end + 1));
+    const rows = Array.isArray(parsed)
+      ? parsed.flatMap((entry) => (Array.isArray(entry?.results) ? entry.results : []))
+      : [];
+    const count = Number(rows[0]?.count);
+    return Number.isFinite(count) ? count : null;
+  } catch {
+    return null;
+  }
 }
 
 const index = readJson(INDEX_FILE);
@@ -314,6 +346,25 @@ console.log(`\nGenerated ${files.length} SQL file(s) in ${OUT_DIR}`);
 if (dryRun) {
   console.log("Dry run: no D1 statements executed.");
   process.exit(0);
+}
+
+// ---------------------------------------------------------------------------
+// Archive guard
+// ---------------------------------------------------------------------------
+const archivedPapers = countArchivedPapers();
+const guard = archiveGuardDecision(archivedPapers, allowArchiveReset);
+if (guard.blocked) {
+  console.error(`\n${guard.message}`);
+  process.exit(1);
+}
+if (archivedPapers === null) {
+  console.warn(
+    "\nWarning: archive state could not be verified, but --allow-archive-reset was passed.",
+  );
+} else if (archivedPapers > 0) {
+  console.warn(
+    `\nWarning: resetting the archive with --allow-archive-reset (${archivedPapers} archived paper(s)).`,
+  );
 }
 
 for (const [index, file] of files.entries()) {

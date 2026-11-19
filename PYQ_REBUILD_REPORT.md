@@ -331,3 +331,115 @@ node scratch/verify-redirects-http.mjs https://cuetfreemocktest.com
 node scratch/verify-live-paper-http.mjs https://cuetfreemocktest.com
 node scratch/verify-production-content.mjs
 ```
+
+## 11. Admin/editor QA pass (18 Nov 2026)
+
+Signed in as Super Admin (`rajpal010304@gmail.com`). The QA sweep was read-only.
+The only production write was a deliberately reversible announcement probe at
+the end of the pass, recorded below.
+
+Verified: dashboard, search, content workspace, questions, passages, mocks,
+PYQ library, review queue, blog, announcements, attempts, users, moderation,
+leaderboard, media, SEO, exam info, settings, admins, data manager, trash and
+audit log all return 200 with no console errors. Public pages, result pages,
+question preview and mock preview load; question search works; the archived
+URL sweep is 462/462 permanent redirects.
+
+Findings (none invalidate the applied rebuild):
+
+1. Review queue is not usable at scale: the query is `ORDER BY q.id ASC
+   LIMIT 50`, with no pagination and no paper-status filter. The library has
+   6,600 active practice questions and 4,425 AI-draft explanations; all 50
+   default rows are archived (`applied-mathematics-2025-06-02-shift-1`,
+   IDs 30037-30086). Filtering `?source=ai_draft` still returns only 50.
+2. `/admin/passages` silently lists 200 of 510 passages (`listPassages`
+   `LIMIT 200`), with no pager. Search and subject filters can still reach
+   older rows, but the full list cannot be browsed.
+3. The PYQ rights copy contradicts the code. The admin says papers not marked
+   `cleared` are "automatically quarantined with noindex" and "excluded from
+   sitemaps", and labels the Unknown card "Forced noindex, no ads". The code
+   quarantines only `restricted`. All 363 papers are `unknown`; all 132 active
+   papers are in the sitemap and indexable. Ads are currently off globally,
+   but rights status does not gate them.
+4. Twenty duplicate title groups and twenty duplicate description groups
+   cover 39 of the 118 set pages (for example, chemistry sets 15-17 and
+   English sets 12-15 share one title and one description). The set number is
+   omitted from the generated title/description in the paper page.
+5. Published mock #1109 shows 50 publish-validation blockers ("Missing
+   explanation") despite being live. This is consistent with the accepted
+   1,457/5,900 missing set explanations; a v2 republish stays blocked until
+   those explanations are written.
+6. The GitHub deploy workflows still run the legacy practice-library import,
+   which deletes and reinserts all 245 old papers with the archive flags at
+   their defaults. Staging uses that D1 database, so the import would undo the
+   231-paper archive and its redirects there. Production reads Turso, so the
+   production workflow's D1 import is wasted work and only a landmine if the
+   Worker ever falls back to D1. Both smoke assertions still expect "137
+   papers"; the live site serves 132.
+7. The mobile admin sidebar emits an `aria-hidden` focus warning when it
+   closes with a navigation link focused. `/admin/pyq` (363 paper rows) and
+   `/admin/mocks` (364 rows) render every row without pagination.
+8. Trash holds four QA artifacts: `qa-admin-mvz50gql@cuetfreemocktest.com`,
+   two test questions and `CUET UG English Starter Mock`.
+
+Confirmed not defects: negative attempt scores are valid; the 1,457 missing
+set explanations are the accepted limitation; all `rights_status = 'unknown'`
+predates the rebuild (the pre-apply backup also had unknown for all 245
+papers); `practice_passages` (160) and `passages` (510) are separate stores.
+
+### Fixes implemented, deployed and verified
+
+Deployed to production on 18 November 2026. The final Worker version is
+`5cecd6e7-f6a4-4b61-91ea-49019ba5b310`; the two earlier deploys in the pass
+were `12610bb1-fdbb-47c3-b2a7-0800b6951cf4` and
+`875aecf7-b12c-4efc-8261-4fd7f3b54d60`.
+
+1. Review queue now pages 25 rows, shows the active total, orders active papers
+   first, and offers active/archived/all filters (`tests/unit/admin-pagination.test.ts`).
+2. Passages use a SQL count plus 25-row pages; the API returns
+   `{ passages, total, page, per }`.
+3. Rights copy now says only `Restricted` is quarantined/noindexed; `Unknown`
+   is labelled "Live · rights unconfirmed". Database rights are unchanged.
+4. Rebuilt paper titles and descriptions carry the `PYQ Set N` label; subjects
+   with short names also get the date range so titles stay within 35-65
+   characters. The production sitemap audit reports 225 URLs, 0 mismatches and
+   no title/description warnings, with no duplicate titles or descriptions
+   across the 132 papers.
+5. Finding 5 remains the accepted explanation limitation.
+6. Production workflow no longer runs the legacy practice seed imports and its
+   smoke check expects 132 papers. `scripts/lib/import-guard.mjs` makes the
+   importer refuse an archive reset unless `--allow-archive-reset` is passed.
+7. The admin sidebar moves focus before applying `aria-hidden`/`inert`; the E2E
+   test asserts the console warning is gone. `/admin/pyq` and `/admin/mocks` now
+   page 25 rows each with totals, ranges and prev/next links.
+8. The four QA Trash rows stay soft-deleted. Purging them is blocked by live
+   references: the two test questions have 83 attempt answers and 2 mock
+   questions; the starter mock has 42 attempts, 7 discussions and one saved
+   version; the QA admin has 13 audit entries plus `created_by` references.
+   A purge would destroy real attempt history, so it needs a retention
+   decision rather than a trash cleanup.
+9. The live SEO audit found two sitemap defects and one description defect:
+   `/cuet-mock-test/legal-studies` and `/cuet-mock-test/sociology` were
+   `noindex` but listed, and `/cuet-ug-syllabus/legal-studies` returned 404.
+   Subject and syllabus URLs now come from the same gates as their routes
+   (`src/lib/sitemap-subjects.ts`), and mock detail descriptions are generated
+   to 120-160 characters with no dangling connector before the ellipsis.
+
+Production write probe: created an inactive announcement ("QA write verification
+2026-11-18 — safe to delete"), confirmed it appeared in the admin list, deleted
+it, then purged it from `/admin/trash` using the typed id confirmation. The
+audit log records `announcement.create` (13:23:49Z), `announcement.delete`
+(13:24:02Z) and `trash.purge` (13:24:16Z); `announcements` has zero live rows
+and Trash is back to the four QA artifacts. This was the only production write
+made during the QA pass.
+
+Verification after these fixes: `npm test` 649/649 passed, `astro check` 0
+errors and 0 warnings (49 hints), `npm run build` passed, `npm run lint:copy`
+reported 0 violations, `npm run check:env` passed, and the production
+`npm run seo:check` reports 225 sitemap URLs, 230 audited URLs and 0
+mismatches. Live checks confirmed review/passages/PYQ/mocks pagination, the
+corrected rights copy, the 159-character mini-mock description, and 132 paper
+detail pages returning 200 with self-canonical metadata. The work is committed
+and pushed to `origin/main`; production was deployed only with `npm run deploy`.
+
+

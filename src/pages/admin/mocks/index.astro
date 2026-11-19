@@ -1,8 +1,20 @@
 ---
 import AdminLayout from "../../../layouts/AdminLayout.astro";
-import { all } from "../../../lib/db";
+import { all, first } from "../../../lib/db";
 import { getAdminMockCounts } from "../../../lib/admin/stats-cache";
 import { formatDateTime } from "../../../lib/content";
+
+const MOCKS_PAGE_SIZE = 25;
+const params = Astro.url.searchParams;
+const page = Math.max(Number(params.get("page") ?? 1) || 1, 1);
+
+const countRow = await first<{ total: number }>(
+  "SELECT COUNT(*) AS total FROM mock_tests WHERE deleted_at IS NULL",
+);
+const total = Number(countRow?.total ?? 0);
+const totalPages = Math.max(Math.ceil(total / MOCKS_PAGE_SIZE), 1);
+const currentPage = Math.min(page, totalPages);
+const offset = (currentPage - 1) * MOCKS_PAGE_SIZE;
 
 const [mockRows, mockCounts] = await Promise.all([
   all<{
@@ -20,7 +32,10 @@ const [mockRows, mockCounts] = await Promise.all([
             m.published_at, m.updated_at
      FROM mock_tests m
      WHERE m.deleted_at IS NULL
-     ORDER BY m.id DESC`,
+     ORDER BY m.id DESC
+     LIMIT ? OFFSET ?`,
+    MOCKS_PAGE_SIZE,
+    offset,
   ),
   getAdminMockCounts(),
 ]);
@@ -32,6 +47,15 @@ const mocks = mockRows.map((mock) => ({
   question_count: mockCounts.questions[String(mock.id)] ?? 0,
   attempt_count: mockCounts.attempts[String(mock.id)] ?? 0,
 }));
+
+const rangeStart = total === 0 ? 0 : offset + 1;
+const rangeEnd = Math.min(offset + mocks.length, total);
+
+function pageHref(target: number): string {
+  const next = new URLSearchParams(params);
+  next.set("page", String(target));
+  return `?${next.toString()}`;
+}
 
 const statusClass: Record<string, string> = {
   draft: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300",
@@ -91,5 +115,15 @@ const statusClass: Record<string, string> = {
         No mock tests yet. <a class="font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/admin/mocks/new">Build the first one</a>.
       </div>
     ) : null}
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      Showing {rangeStart}–{rangeEnd} of {total} · page {currentPage} of {totalPages}
+    </p>
+    <div class="flex gap-2">
+      {currentPage > 1 ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage - 1)}>Previous</a> : null}
+      {currentPage < totalPages ? <a class="rounded-lg border border-neutral-300 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800" href={pageHref(currentPage + 1)}>Next</a> : null}
+    </div>
   </div>
 </AdminLayout>

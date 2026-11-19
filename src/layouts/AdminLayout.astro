@@ -269,6 +269,11 @@ const initials = (user?.email ?? "A")
         menuToggle?.setAttribute("title", label.replace(" admin navigation", " sidebar"));
         scrim?.setAttribute("tabindex", mobileViewport.matches && visible ? "0" : "-1");
         if (sidebar) {
+          // Never hide a subtree that still owns focus: browsers block
+          // aria-hidden in that state and keyboard users are left nowhere.
+          if (!visible && sidebar.contains(document.activeElement)) {
+            menuToggle?.focus();
+          }
           sidebar.inert = !visible;
           sidebar.setAttribute("aria-hidden", String(!visible));
         }

@@ -27,6 +27,8 @@ backups/
 # PaddleOCR raw exports and caches are archived outside the repo.
 # Restore them before rebuilding the practice library from source scans.
 tools/ocr/OCR DATA/
+__pycache__/
+*.pyc
 
 # OS junk
 .DS_Store

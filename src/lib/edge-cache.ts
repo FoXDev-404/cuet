@@ -26,7 +26,7 @@ export const EDGE_CACHE_SITEMAP_TTL_SECONDS = 6 * 60 * 60;
  * added to the synthetic cache key only, never to the visitor-facing URL, so a
  * deploy stops reading stale entries immediately without a purge API.
  */
-export const EDGE_CACHE_VERSION = "v2-no-subject-pyq";
+export const EDGE_CACHE_VERSION = "v3-sitemap-subject-gates";
 export const EDGE_CACHE_VERSION_PARAM = "__edge_cache_version";
 
 /**

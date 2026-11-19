@@ -29,6 +29,13 @@ test("admin sidebar collapses persistently and opens as a dismissible mobile dra
     "This test uses the local D1 admin account.",
   );
 
+  const ariaHiddenWarnings: string[] = [];
+  page.on("console", (message) => {
+    if (message.type() === "warning" && message.text().includes("aria-hidden")) {
+      ariaHiddenWarnings.push(message.text());
+    }
+  });
+
   await page.setViewportSize({ width: 1280, height: 800 });
   await loginAsAdmin(page);
   await page.goto("/admin");
@@ -60,6 +67,52 @@ test("admin sidebar collapses persistently and opens as a dismissible mobile dra
   await page.keyboard.press("Escape");
   await expect(toggle).toHaveAttribute("aria-label", "Open admin navigation");
   await expect(sidebar).toHaveAttribute("aria-hidden", "true");
+  expect(ariaHiddenWarnings).toEqual([]);
+});
+
+test("admin review queue, passages, PYQ rows and mocks paginate instead of truncating", async ({ page }) => {
+  test.skip(
+    Boolean(process.env.PLAYWRIGHT_BASE_URL),
+    "This test uses the local D1 fixture.",
+  );
+
+  await loginAsAdmin(page);
+
+  await page.goto("/admin/review");
+  await expect(page.getByText(/Showing 1–25 of \d+/).first()).toBeVisible();
+  const firstId = await page.locator("article[data-id]").first().getAttribute("data-id");
+  await page.getByRole("link", { name: "Next" }).click();
+  await expect(page).toHaveURL(/[?&]page=2/);
+  await expect(page.getByText(/Showing 26–50 of \d+/).first()).toBeVisible();
+  const secondPageFirstId = await page.locator("article[data-id]").first().getAttribute("data-id");
+  expect(secondPageFirstId).not.toBe(firstId);
+
+  await page.goto("/admin/passages");
+  await expect(page.getByText(/Showing 1–25 of \d+/)).toBeVisible();
+  expect(await page.locator("section article").count()).toBe(25);
+  const total = Number((await page.getByText(/Showing 1–25 of (\d+)/).textContent())?.match(/of (\d+)/)?.[1]);
+  expect(total).toBeGreaterThan(25);
+  await page.getByRole("link", { name: "Next" }).click();
+  await expect(page.getByText(/Showing 26–50 of \d+/)).toBeVisible();
+
+  await page.goto("/admin/pyq");
+  await expect(page.getByText(/Showing 1–25 of \d+/)).toBeVisible();
+  expect(await page.locator("tbody tr[data-paper-id]").count()).toBe(25);
+  const pyqTotal = Number((await page.getByText(/Showing 1–25 of (\d+)/).textContent())?.match(/of (\d+)/)?.[1]);
+  expect(pyqTotal).toBeGreaterThan(25);
+  const firstPaperId = await page.locator("tbody tr[data-paper-id]").first().getAttribute("data-paper-id");
+  await page.getByRole("link", { name: "Next" }).click();
+  await expect(page.getByText(/Showing 26–50 of \d+/)).toBeVisible();
+  const secondPagePaperId = await page.locator("tbody tr[data-paper-id]").first().getAttribute("data-paper-id");
+  expect(secondPagePaperId).not.toBe(firstPaperId);
+
+  await page.goto("/admin/mocks");
+  await expect(page.getByText(/Showing 1–25 of \d+/)).toBeVisible();
+  expect(await page.locator("tbody tr").count()).toBe(25);
+  const mocksTotal = Number((await page.getByText(/Showing 1–25 of (\d+)/).textContent())?.match(/of (\d+)/)?.[1]);
+  expect(mocksTotal).toBeGreaterThan(25);
+  await page.getByRole("link", { name: "Next" }).click();
+  await expect(page.getByText(/Showing 26–50 of \d+/)).toBeVisible();
 });
 
 test("an editor creates, publishes and sees a mock test", async ({ page }) => {

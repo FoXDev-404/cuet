@@ -10,6 +10,7 @@ import { getSubjectStats, type SubjectStatRow } from "../lib/subject-stats";
 import { isFixtureMock } from "../lib/fixtures";
 import { getRepoGuides } from "../lib/guides";
 import { hasSubstantiveSeoIntro } from "../lib/seo";
+import { sitemapSubjectPaths, sitemapSyllabusPaths } from "../lib/sitemap-subjects";
 
 type UrlEntry = { loc: string; lastmod?: string | null; changefreq?: string; priority?: string };
 
@@ -49,8 +50,8 @@ export const GET: APIRoute = async ({ request }) => {
     practice_paper_slug: string | null;
     eligible: number;
   }[] = [];
-  let subjects: { slug: string; question_count: number; mock_count: number }[] = [];
-  let syllabusSubjects: { slug: string; topic_count: number; question_count: number }[] = [];
+  let subjectPaths: string[] = [];
+  let syllabusPaths: string[] = [];
   let topics: { subject_slug: string; topic_slug: string; question_count: number }[] = [];
   let pyqYears: { year: number; playable_count: number }[] = [];
   let archiveSeoRows: { path: string; intro_html: string | null; noindex: number }[] = [];
@@ -62,8 +63,6 @@ export const GET: APIRoute = async ({ request }) => {
   // when D1 is at its daily row-read limit.
   const repoGuides = getRepoGuides();
   const localSubjectSlugs = new Set(localPapers.map((paper) => paper.subject.slug));
-  const hasPracticeContent = (slug: string, questionCount: number, paperCount: number) =>
-    questionCount > 0 || paperCount > 0 || localSubjectSlugs.has(slug);
 
   // Fetch the rollup before the big try so a stats failure cannot drop the
   // mock/PYQ/blog URLs that follow it.
@@ -94,11 +93,16 @@ export const GET: APIRoute = async ({ request }) => {
       [],
     );
     const cuetSubjects = subjectStats.filter((subject) => subject.exam_slug === "cuet-ug");
-    subjects = cuetSubjects.map((subject) => ({
-      slug: subject.slug,
-      question_count: subject.all_mock_question_count,
-      mock_count: subject.all_mock_count,
-    }));
+    const subjectSeoRows = await readAll<{ path: string; noindex: number }>(
+      "subject-seo",
+      `SELECT path, noindex FROM page_seo
+       WHERE path LIKE '/cuet-mock-test/%' OR path LIKE '/cuet-ug-syllabus/%'`,
+      [],
+    );
+    const noindexSubjectPaths = new Set(
+      subjectSeoRows.filter((row) => row.noindex === 1).map((row) => row.path),
+    );
+    subjectPaths = sitemapSubjectPaths(cuetSubjects, localSubjectSlugs, noindexSubjectPaths);
     const topicCountRows = await readAll<{ subject_id: number; topic_count: number }>(
       "topic-counts",
       `SELECT subject_id, COUNT(*) AS topic_count FROM topics
@@ -108,25 +112,18 @@ export const GET: APIRoute = async ({ request }) => {
     const topicCounts = new Map(
       topicCountRows.map((row) => [row.subject_id, Number(row.topic_count)]),
     );
-    syllabusSubjects = cuetSubjects.map((subject) => ({
-      slug: subject.slug,
-      topic_count: topicCounts.get(subject.id) ?? 0,
-      question_count: subject.all_mock_question_count,
-    }));
+    syllabusPaths = sitemapSyllabusPaths(
+      cuetSubjects,
+      topicCounts,
+      localSubjectSlugs,
+      noindexSubjectPaths,
+    );
     if (cuetSubjects.length === 0) {
       // D1 and the cache are both unavailable. Keep the bundled subjects in
       // the sitemap instead of dropping their internal links.
       const localCards = getLocalSubjectCards();
-      subjects = localCards.map((card) => ({
-        slug: card.slug,
-        question_count: 0,
-        mock_count: card.mock_count,
-      }));
-      syllabusSubjects = localCards.map((card) => ({
-        slug: card.slug,
-        topic_count: 0,
-        question_count: 0,
-      }));
+      subjectPaths = localCards.map((card) => `/cuet-mock-test/${card.slug}`);
+      syllabusPaths = localCards.map((card) => `/cuet-ug-syllabus/${card.slug}`);
     }
     topics = await readAll(
       "topics",
@@ -230,16 +227,12 @@ export const GET: APIRoute = async ({ request }) => {
   add("/terms", { changefreq: "yearly", priority: "0.3" });
   add("/disclaimer", { changefreq: "yearly", priority: "0.3" });
 
-  for (const subject of subjects) {
-    if (hasPracticeContent(subject.slug, subject.question_count, subject.mock_count)) {
-      add(`/cuet-mock-test/${subject.slug}`, { changefreq: "weekly", priority: "0.7" });
-    }
+  for (const path of subjectPaths) {
+    add(path, { changefreq: "weekly", priority: "0.7" });
   }
 
-  for (const subject of syllabusSubjects) {
-    if (subject.topic_count > 0 || hasPracticeContent(subject.slug, subject.question_count, 0)) {
-      add(`/cuet-ug-syllabus/${subject.slug}`, { changefreq: "monthly", priority: "0.6" });
-    }
+  for (const path of syllabusPaths) {
+    add(path, { changefreq: "monthly", priority: "0.6" });
   }
 
   for (const topic of topics) {

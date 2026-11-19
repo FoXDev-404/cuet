@@ -8,12 +8,18 @@ export const GET: APIRoute = async (context) => {
   const guard = requirePermission(context, "taxonomy.write");
   if (guard.response) return guard.response;
   const params = context.url.searchParams;
+  const page = Number(params.get("page") ?? 1);
+  const listing = await listPassages(
+    params.get("q") ?? "",
+    Number(params.get("subject") ?? 0),
+    params.get("deleted") === "1",
+    Number.isFinite(page) ? page : 1,
+  );
   return json({
-    passages: await listPassages(
-      params.get("q") ?? "",
-      Number(params.get("subject") ?? 0),
-      params.get("deleted") === "1",
-    ),
+    passages: listing.rows,
+    total: listing.total,
+    page: listing.page,
+    per: listing.per,
   });
 };
 
