@@ -2,6 +2,26 @@
 
 This is a **from-scratch re-execution of Phases 0–A** on the fixed codebase (`fbd384c`), not a copy of the earlier report. Baseline, data audit, crawls, security probes, full E2E, axe, SEO and Lighthouse were all run again and their artifacts in `test-artifacts/`, `docs/report/a11y-results.json` and `docs/report/lighthouse/` overwritten with the new evidence. Production was queried **read-only** only.
 
+## Frontend re-verification — 2026-11-20 (HEAD `961e3c5`)
+
+A second fresh frontend pass was run on the current HEAD. No application source changed; only evidence artifacts were refreshed.
+
+| Gate | Fresh result |
+| --- | --- |
+| Build + typecheck | **PASS** — `astro check` 0 errors / 0 warnings (644 files), build complete, secret guard PASS |
+| E2E (Chromium) | **109 passed / 2 skipped / 0 failed**, exit 0 |
+| a11y | **272 axe scans, 0 WCAG A/AA violations, 0 horizontal overflow**, exit 0 |
+| Responsive | **72 screenshots** (360/390/768/1024/1440/1920 × light/dark), **0 overflow** |
+| Mobile flow (390×844) | mock list → instructions → begin → answer → submit → result → solutions; **0 page errors**, no overflow at every step |
+| Links | **0/345 internal broken, 0/40 external broken**, exit 0 |
+| Sitemap | **213/213 URLs return 200**, 0 redirects |
+| Lighthouse (mobile, 3-run median) | **8/8 budgets PASS** — Perf/A11y/Best Practices 100, LCP 0.93–1.60 s, TBT/CLS 0, transfer 44.8–65.9 KB |
+| SEO consistency | **213 sitemap URLs = 213 indexable URLs, 0 mismatches** |
+| Unit | **670/670** (80 files), exit 0 |
+| Data integrity | **0 P1** (21,046 P2/P3 editorial findings) |
+
+Notes: the first data-audit attempt raced `seo:check`'s wrangler shutdown for the local D1 file and exited non-zero; a clean rerun passed. One dev-server-only Astro console warning (`audit's match function: Failed to fetch`) appeared during E2E startup and does not affect any request, test, or the production build. The 2 skipped E2E specs remain the admin review-queue flows that self-skip on the empty fixture.
+
 ## 1. Executive summary
 
 | Area | Area | Result |
