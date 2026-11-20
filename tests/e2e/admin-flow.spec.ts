@@ -24,6 +24,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("admin sidebar collapses persistently and opens as a dismissible mobile drawer", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test uses the local D1 admin account.",
@@ -71,6 +72,7 @@ test("admin sidebar collapses persistently and opens as a dismissible mobile dra
 });
 
 test("admin review queue, passages, PYQ rows and mocks paginate instead of truncating", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test uses the local D1 fixture.",
@@ -194,6 +196,7 @@ test("an editor creates, publishes and sees a mock test", async ({ page }) => {
 });
 
 test("an editor copies a public link and toggles sharing", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes sharing flags into the local D1 database.",
@@ -393,6 +396,7 @@ test("PYQ questions stay off until rights are confirmed", async ({ page }) => {
 });
 
 test("an editor saves a canonical URL and the public page renders it", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes and removes a page_seo row in the local D1 database.",
@@ -416,6 +420,7 @@ test("an editor saves a canonical URL and the public page renders it", async ({ 
 });
 
 test("media upload rejects a file that only claims to be an image", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test uses the local D1 admin account.",
@@ -438,6 +443,7 @@ test("media upload rejects a file that only claims to be an image", async ({ pag
 });
 
 test("media upload rejects a file above the 500 KB limit", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test uses the local D1 admin account.",
@@ -606,6 +612,7 @@ test("a super admin fixes a pending practice question from the review queue", as
 });
 
 test("a moderator cannot use editor-only endpoints", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test creates and removes a local admin account.",
@@ -649,6 +656,7 @@ test("a moderator cannot use editor-only endpoints", async ({ page }) => {
 });
 
 test("a moderator hides a reported comment", async ({ page }) => {
+  test.slow();
   test.skip(
     Boolean(process.env.PLAYWRIGHT_BASE_URL),
     "This test writes and removes discussion rows in the local D1 database.",

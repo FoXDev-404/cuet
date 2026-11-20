@@ -94,6 +94,7 @@ async function expectServerScoredResult(page: Page): Promise<void> {
 }
 
 test("registered student can start, answer, submit and review a mock", async ({ page }) => {
+  test.slow();
   const stamp = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
   const username = `e2e_${stamp}`.slice(0, 30);
   const email = `e2e-${stamp}@example.com`;

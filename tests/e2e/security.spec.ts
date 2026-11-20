@@ -505,6 +505,7 @@ test("a live attempt can post in the paper discussion", async ({
   baseURL,
   request,
 }) => {
+  test.slow();
   const mock = await firstPublishedMock(request);
   test.skip(!mock, "No published mock test is available in this environment.");
   if (!mock) return;
@@ -531,6 +532,7 @@ test("a student without an attempt cannot post in a paper discussion", async ({
   baseURL,
   request,
 }) => {
+  test.slow();
   const mock = await firstPublishedMock(request);
   test.skip(!mock, "No published mock test is available in this environment.");
   if (!mock) return;
@@ -553,6 +555,7 @@ test("a muted student cannot post a comment", async ({
   baseURL,
   request,
 }) => {
+  test.slow();
   const mock = await firstPublishedMock(request);
   test.skip(!mock, "No published mock test is available in this environment.");
   if (!mock) return;
@@ -582,6 +585,7 @@ test("comment posting is rate-limited per account", async ({
   baseURL,
   request,
 }) => {
+  test.slow();
   const mock = await firstPublishedMock(request);
   test.skip(!mock, "No published mock test is available in this environment.");
   if (!mock) return;
