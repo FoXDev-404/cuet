@@ -50,6 +50,7 @@ Thumbs.db
 
 # Generated QA artifacts (reports, screenshots, traces) — never committed.
 /test-artifacts/
+/coverage/
 
 # Local ZCode session state.
 /.zcode/

@@ -14,6 +14,7 @@ scripts/a11y-audit.mjs       axe-core WCAG A/AA scan
 scripts/lighthouse-audit.mjs  Budgeted Lighthouse medians
 scripts/qa-data-audit.mjs     Data-integrity audit (D1)
 scripts/check-links.mjs       Broken internal/external links
+scripts/qa-redirect-audit.mjs Archived-paper and legacy-slug 301 audit
 scripts/check-env-separation.mjs  Env/engine guard
 performance-budget.json        Route Lighthouse caps
 ```
@@ -51,6 +52,9 @@ Google OAuth round-trip cannot be exercised locally (no OAuth app registered for
 # unit + integration
 npm test                       # 670 tests as of 2026-11-20
 
+# unit coverage (v8; writes coverage/ — HTML + json-summary)
+npm run test:coverage
+
 # build (astro check + astro build + secret scan)
 npm run build
 
@@ -73,6 +77,9 @@ npm run test:data
 # broken links (needs a running server on :4321)
 npx astro dev --background --port 4321 && npm run test:links
 
+# archived-paper / legacy-slug redirects (needs the same running server + local D1)
+npm run test:redirects
+
 # env separation / live engine probe
 npm run check:env            # static
 npm run check:env:live       # fetch https://cuetfreemocktest.com/api/health
@@ -80,7 +87,7 @@ npm run check:env:live       # fetch https://cuetfreemocktest.com/api/health
 # budgeted Lighthouse (needs port 4321 free, spawns its own wrangler preview)
 npm run audit:lighthouse -- --runs=3
 
-# all of the above (unit + e2e + a11y + lighthouse)
+# unit + e2e + a11y + lighthouse (not the server-dependent link/redirect/data gates)
 npm run test:all
 ```
 
@@ -90,11 +97,12 @@ What runs on every push/PR and what is blocking:
 
 | Step | Blocking on P0/P1 regression? |
 | --- | --- |
-| Lint copy, env separation, type check, unit tests, build | yes (job fails) |
+| Lint copy, env separation, type check, unit tests + coverage, build | yes (job fails) |
 | SEO consistency & sitemap audit | yes |
 | Data integrity audit (`npm run test:data`, P1s fail) | yes |
 | Playwright E2E | yes |
-| Link & redirect check (internal only; external links are informational) | yes, internal only |
+| Link check (internal only; external links are informational) | yes, internal only |
+| Archived-paper / legacy-slug redirect audit (`npm run test:redirects`) | yes |
 | Accessibility (axe) | yes |
 | Lighthouse local | run locally via `npm run audit:lighthouse`; budget is stronger than CI noise tolerance, intentionally not wired as a blocking PR gate |
 
@@ -110,6 +118,7 @@ Preview deployments go through the `Deploy staging` / `Auto deploy production` w
 | axe results | `docs/report/a11y-results.json` | committed |
 | Lighthouse raw runs + summary | `docs/report/lighthouse/` | committed |
 | Data audit CSV/summary | `test-artifacts/data-audit.csv`, `test-artifacts/data-audit-summary.md` | local; CI uploads 7 days |
+| Unit coverage (v8) | `coverage/` (text, HTML, `coverage-summary.json`) | local; CI uploads 7 days |
 | Link/responsive logs, sitemap CSV, screenshots | `test-artifacts/` | local only (gitignored) |
 
 `test-artifacts/` is deliberately gitignored. A fresh clone has no raw logs or screenshots; rerun the gate to regenerate them. The tracked JSON files are the durable evidence of record. To keep a local E2E run from overwriting the committed JSON, set `PLAYWRIGHT_JSON_OUTPUT_NAME=test-artifacts/e2e-<label>.json`.
