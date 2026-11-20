@@ -131,13 +131,34 @@ test("an editor creates, publishes and sees a mock test", async ({ page }) => {
   await page.locator('[data-field="title"]').fill(title);
   await expect(page.locator('[data-field="slug"]')).toHaveValue(/e2e-publish-check/);
   await page.locator("#section-order").fill("General Test, Language");
+  const titleInput = page.locator('[data-field="title"]');
+  const slugInput = page.locator('[data-field="slug"]');
+  const sectionOrderInput = page.locator("#section-order");
   // The builder prioritises explainable questions, but be explicit: a mock
   // cannot be published while a selected question has no written explanation.
-  const publishableRow = page
+  const publishableRows = page
     .locator("[data-question-row]")
-    .filter({ hasNotText: "No explanation" })
-    .first();
-  await publishableRow.locator("[data-question-checkbox]").check();
+    .filter({ hasNotText: "No explanation" });
+  await expect(publishableRows.first()).toBeVisible();
+  expect(await publishableRows.count()).toBeGreaterThanOrEqual(50);
+  // BUG-011: every published mock must contain exactly 50 questions. Re-apply
+  // the form setup and only the missing checks so a transient dev-server reload
+  // cannot leave a partial selection (or an empty title) behind.
+  await expect(async () => {
+    if ((await titleInput.inputValue()) !== title) await titleInput.fill(title);
+    if ((await sectionOrderInput.inputValue()) !== "General Test, Language") {
+      await sectionOrderInput.fill("General Test, Language");
+    }
+    for (let index = 0; index < 50; index += 1) {
+      const checkbox = publishableRows.nth(index).locator("[data-question-checkbox]");
+      if (!(await checkbox.isChecked())) await checkbox.check();
+    }
+    const selected = await page.locator("[data-selected-count]").textContent();
+    if (selected !== "50") {
+      throw new Error(`Expected 50 selected questions, got ${selected ?? "nothing"}.`);
+    }
+  }).toPass({ timeout: 60_000 });
+  await expect(slugInput).toHaveValue(/e2e-publish-check/);
   await page.getByRole("button", { name: "Create mock" }).click();
   await page.waitForURL(/\/admin\/mocks\/\d+$/);
 
