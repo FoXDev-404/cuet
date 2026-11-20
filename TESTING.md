@@ -15,6 +15,7 @@ scripts/lighthouse-audit.mjs  Budgeted Lighthouse medians
 scripts/qa-data-audit.mjs     Data-integrity audit (D1)
 scripts/check-links.mjs       Broken internal/external links
 scripts/qa-redirect-audit.mjs Archived-paper and legacy-slug 301 audit
+scripts/fix-english-mini-mock-v2.mjs  One-off 5→50 mock repair template (BUG-011)
 scripts/check-env-separation.mjs  Env/engine guard
 performance-budget.json        Route Lighthouse caps
 ```
@@ -50,7 +51,7 @@ Google OAuth round-trip cannot be exercised locally (no OAuth app registered for
 
 ```sh
 # unit + integration
-npm test                       # 670 tests as of 2026-11-20
+npm test                       # 677 tests as of 2026-11-20
 
 # unit coverage (v8; writes coverage/ — HTML + json-summary)
 npm run test:coverage
@@ -127,7 +128,7 @@ Preview deployments go through the `Deploy staging` / `Auto deploy production` w
 
 - **Unit/logic** — mirror the repo pattern (`tests/unit/<thing>.test.ts`, Vitest). Prefer testing a pure helper or a source guard; if the behaviour needs context, seed it like `tests/unit/env-separation.test.ts`.
 - **API contract** — extend `tests/e2e/api-contracts.spec.ts` with seeded local fixtures (never against production).
-- **E2E flow** — add a spec under `tests/e2e/`; keep it chromium-only, seed-eg deterministic, and re-use the helpers in `tests/e2e/admin-flow.spec.ts`. The webServer config auto-starts the app and guarantees `USE_LOCAL_D1=1`, so writes never touch production.
+- **E2E flow** — add a spec under `tests/e2e/`; keep it chromium-only, seed-eg deterministic, and re-use the helpers in `tests/e2e/admin-flow.spec.ts`. The webServer config auto-starts the app and guarantees `USE_LOCAL_D1=1`, so writes never touch production. Specs that drive local D1 through the Wrangler helpers can exceed Playwright's 30 s default; call `test.slow()` at the top of those tests.
 - **Data invariant** — add the assertion to `scripts/qa-data-audit.mjs` if it is a structural property (counts, orphans, dupes); exit code 1 on P1.
 - **Lighthouse budget** — tighten `performance-budget.json` only with evidence and a rationale.
 
@@ -135,11 +136,12 @@ Preview deployments go through the `Deploy staging` / `Auto deploy production` w
 
 1. **Editorial first.** The paper editor imports questions via the admin import; answers and explanations get reviewed against the source.
 2. **Immutability invariants** are enforced by triggers; bypassing them destroys audit history.
-3. **Counts.** Rebuilt ranked sets are expected to have exactly 50 non-deleted distinct questions; `duration_locked = 1` means the paper is deliberately locked at an official duration (60 minutes for all current sets).
+3. **Counts.** Every public published mock version must have exactly 50 distinct questions; `publishMockVersion` rejects any other count, and `npm run test:data` rates a non-50 published version P1 (directly seeded E2E fixtures and archived redirect stubs are exempt). Rebuilt ranked sets are also expected to have exactly 50 non-deleted distinct questions; `duration_locked = 1` means the paper is deliberately locked at an official duration (60 minutes for all current sets).
 4. **Validation** — run `npm run test:data`; it must report **0 P1** before release. Warnings for missing explanations are editorial, not release-blocking.
 5. **Redirects** — retiring a paper means keep the row, set `is_archived = 1`, point `replaced_by` at the replacement set or the subject's previous-year hub (pick a 200 target), and let `slug_redirects` give the 301. Never delete rows that attempts or audit log reference.
 6. **Topic mapping** — tag questions via `scripts/tag-practice-questions.mjs` (supports `--turso`); dry-run first, then apply inside one interactive write transaction.
 7. **Production data** — migrations go via `npm run db:turso:migrate` after a dry run; seeds via the matching `db:import:*:remote` scripts. Always confirm the engine (`npm run check:env:live` before and after).
+8. **Repairing a non-50 published mock** — never edit a published version or delete attempts. `scripts/fix-english-mini-mock-v2.mjs` is the applied template: `--dry-run` first, then (with explicit owner approval) `--turso` writes a JSON backup and one transaction that inserts the replacement version as `draft`, adds the 50 question rows, publishes it, supersedes the old version and updates `mock_tests.current_version_id`. Attempts keep their original `version_id`, so their questions and marks stay resolvable. The script re-runs refuse once the target is already migrated.
 
 ## 7. Manual QA checklist before any release
 
