@@ -49,7 +49,7 @@ Google OAuth round-trip cannot be exercised locally (no OAuth app registered for
 
 ```sh
 # unit + integration
-npm test                       # 667 tests as of 2026-11-19
+npm test                       # 670 tests as of 2026-11-20
 
 # build (astro check + astro build + secret scan)
 npm run build
@@ -99,6 +99,20 @@ What runs on every push/PR and what is blocking:
 | Lighthouse local | run locally via `npm run audit:lighthouse`; budget is stronger than CI noise tolerance, intentionally not wired as a blocking PR gate |
 
 Preview deployments go through the `Deploy staging` / `Auto deploy production` workflows; a `[skip deploy]` in the commit subject opts out of the automatic production deploy.
+
+### Artifacts and evidence
+
+| Evidence | Location | Retention |
+| --- | --- | --- |
+| E2E JSON (machine-readable) | `docs/report/playwright-results.json` | committed |
+| E2E HTML report | `playwright-report/` | CI artifact, 7 days (generated when `CI=1`) |
+| E2E traces/screenshots on failure | `test-results/` | CI artifact, 7 days |
+| axe results | `docs/report/a11y-results.json` | committed |
+| Lighthouse raw runs + summary | `docs/report/lighthouse/` | committed |
+| Data audit CSV/summary | `test-artifacts/data-audit.csv`, `test-artifacts/data-audit-summary.md` | local; CI uploads 7 days |
+| Link/responsive logs, sitemap CSV, screenshots | `test-artifacts/` | local only (gitignored) |
+
+`test-artifacts/` is deliberately gitignored. A fresh clone has no raw logs or screenshots; rerun the gate to regenerate them. The tracked JSON files are the durable evidence of record. To keep a local E2E run from overwriting the committed JSON, set `PLAYWRIGHT_JSON_OUTPUT_NAME=test-artifacts/e2e-<label>.json`.
 
 ## 5. Adding a test
 

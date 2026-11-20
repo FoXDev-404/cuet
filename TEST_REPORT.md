@@ -84,14 +84,33 @@ axe: **272 scans, 0 WCAG A/AA violations, 0 horizontal overflow** (light/dark at
 
 | Suite | Result | Artifact |
 | --- | --- | --- |
-| Unit (`npm test`) | 668/668, 79 files | console + this report |
-| E2E (`npm run test:e2e`, Chromium) | 109 passed / 2 skipped / 0 failed | `test-artifacts/e2e-results.json` |
-| Data audit (`npm run test:data`) | 0 P1, 21,046 editorial findings | `test-artifacts/data-audit.csv` |
+| Unit (`npm test`) | 670/670, 80 files | console + this report |
+| E2E (`npm run test:e2e`, Chromium) | 109 passed / 2 skipped / 0 failed | `docs/report/playwright-results.json` (tracked) + `test-artifacts/e2e-frontend-verify.json` (local copy) |
+| Data audit (`npm run test:data`) | 0 P1, 21,046 editorial findings | `test-artifacts/data-audit.csv`, `test-artifacts/data-audit-summary.md` |
 | a11y (`npm run test:a11y`) | 272/272 pass | `docs/report/a11y-results.json` |
-| Link check (`npm run test:links`) | 0/345 internal, 0/40 external broken | console |
-| Sitemap crawl / SEO | 213 URLs all 200; 0 SEO mismatches | `test-artifacts/qa-sitemap-check.csv`, `qa-titles.csv` |
-| Redirect audit | 462 targets, 0 failures locally | console + `scratch/qa-redirect-audit.mjs` |
-| Responsive | 72 screenshots, 0 overflow | `test-artifacts/screenshots/`, `responsive-overflows.txt` |
+| Link check (`npm run test:links`) | 0/345 internal, 0/40 external broken | `test-artifacts/links-frontend-verify.log` |
+| Sitemap crawl / SEO | 213 URLs all 200; 0 SEO mismatches | `test-artifacts/qa-sitemap-frontend-verify.csv`, `test-artifacts/qa-titles.csv` |
+| Redirect audit | 462 targets, 0 failures locally | console + `scratch/qa-redirect-audit.mjs` (local-only) |
+| Responsive | 72 screenshots, 0 overflow | `test-artifacts/screenshots/`, `test-artifacts/responsive-frontend-verify.log` |
+
+### 5.1 Artifact integrity (2026-11-20)
+
+A read-only validator parsed every machine-readable artifact and recomputed the reported numbers rather than trusting filenames. All required checks pass; the only gaps are evidence portability, not test results.
+
+- **E2E JSON:** 111 specs / 111 tests / 111 results — 109 passed, 2 skipped, 0 failed, 0 flaky, 580 s.
+- **axe JSON:** 272 scans at 375 px and 1280 px, both themes, 65 paths, 0 violations, 0 overflow, run against `961e3c5`.
+- **Lighthouse:** 8 routes × 3 runs; every reported median recomputes from the raw run files; 64 required budget checks pass.
+- **Data audit CSV:** 21,046 rows, 0 P1. **Sitemap CSV:** 213 rows, all HTTP 200, 0 redirects.
+- **Screenshots:** 76 valid PNGs — 72 responsive (6 pages × 6 widths × 2 themes) and 4 mobile-flow shots at 390×844 @2x.
+- **Logs and report:** every claimed summary is present, and `TEST_REPORT.md` matches the JSON/CSV values.
+
+Evidence portability:
+
+- **Committed:** `docs/report/playwright-results.json`, `docs/report/a11y-results.json`, and `docs/report/lighthouse/`.
+- **Local-only:** everything under `test-artifacts/` is gitignored. Raw logs, screenshots, sitemap/data CSVs and mobile-flow shots exist only on the machine that ran the suite; rerun the gate to regenerate them.
+- **CI:** every run now uploads the E2E JSON, HTML report, failure traces and data-audit outputs for 7 days, including green runs.
+
+Known evidence gaps: unit line coverage is not measured (`@vitest/coverage-v8` is not installed, so "coverage" here means test scope, not a percentage); the 462-redirect audit depends on a local-only script under ignored `scratch/`; browser coverage is Chromium-only.
 
 Deliberately untested, with reasons: Firefox/WebKit (repository ships a Chromium-only Playwright project); Google OAuth round-trip (no loopback OAuth app — failure paths and seeded admin used instead); physical device lab; production write paths (read-only production policy — all writes against local D1); Cloudflare Pages preview deploys (this project deploys Workers, not Pages); `npm run db:turso:migrate` against production (not re-run; local migrations clean). The two admin review-queue E2E specs self-skip because the fixture DB has nothing pending in that queue.
 

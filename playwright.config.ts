@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices, type ReporterDescription } from "@playwright/test";
 
 const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:4321";
 const origin = new URL(baseURL).origin;
@@ -21,16 +21,22 @@ const consentStorageState = {
   ],
 };
 
+const reporters: ReporterDescription[] = [
+  [process.env.CI ? "github" : "list"],
+  ["json", { outputFile: process.env.PLAYWRIGHT_JSON_OUTPUT_NAME || "docs/report/playwright-results.json" }],
+];
+if (process.env.CI) {
+  // Uploaded as a CI artifact together with the JSON and failure traces.
+  reporters.push(["html", { outputFolder: "playwright-report", open: "never" }]);
+}
+
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: 1,
-  reporter: [
-    [process.env.CI ? "github" : "list"],
-    ["json", { outputFile: process.env.PLAYWRIGHT_JSON_OUTPUT_NAME || "docs/report/playwright-results.json" }],
-  ],
+  reporter: reporters,
   use: {
     baseURL,
     // Playwright's APIRequestContext does not send Origin, but every
