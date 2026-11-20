@@ -424,7 +424,7 @@ for (const v of versions) {
       "published version has zero questions", "P1");
   } else if (v.status === "published" && !fixture && qcount !== 50) {
     issue("version_question_count", "mock_version", "unknown", `${v.slug} v${v.version_no}`,
-      `${qcount} questions (expected 50)`, "P2");
+      `${qcount} questions (expected 50)`, "P1");
   }
 }
 

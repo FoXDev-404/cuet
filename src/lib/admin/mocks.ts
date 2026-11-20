@@ -425,6 +425,11 @@ export async function publishMockVersion(mockId: number, versionId: number): Pro
   const version = await findVersion(versionId);
   if (!version || version.mock_id !== mockId) throw new Error("Version does not belong to this mock.");
   const questions = await listVersionQuestions(versionId);
+  if (questions.length !== 50) {
+    throw new Error(
+      `A published mock test must have exactly 50 questions; this version has ${questions.length}.`,
+    );
+  }
   const problem = await validateQuestionsForPublish(questions.map((row) => row.question_id));
   if (problem) throw new Error(problem);
 

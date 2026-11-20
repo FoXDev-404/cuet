@@ -16,4 +16,15 @@ describe("qa-data-audit redirect target classification", () => {
     expect(source).toContain("isPracticeHub");
     expect(source).toContain("!isSubjectHub && !isPracticeHub");
   });
+
+  it("treats any published non-50-question mock as a P1 release blocker (BUG-011)", () => {
+    // A 5-question mock shipped to production because the audit only rated
+    // non-50 versions P2 and the publish path did not enforce the count.
+    const block = source.slice(
+      source.indexOf("published version has zero questions"),
+      source.indexOf("// duplicate slugs"),
+    );
+    expect(block).toContain("qcount !== 50");
+    expect(block).toContain("questions (expected 50)`, \"P1\"");
+  });
 });
